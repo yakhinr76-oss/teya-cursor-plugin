@@ -14,8 +14,11 @@ winget install Python.Python.3.12
 git clone https://github.com/Horosheff/aphelia
 cd aphelia
 
-# 3. Скопируй Lite-файлы из teya-cursor-plugin/docs/aphelia-lite/ в корень aphelia:
-#    install-plugin-lite.ps1, INSTALL-6GB.md, scripts/voice_cloud.py, shared/aphelia.env.example
+# 3. Lite-файлы из teya-cursor-plugin/docs/aphelia-lite/
+Copy-Item ..\teya-cursor-plugin\docs\aphelia-lite\install-plugin-lite.ps1 .
+Copy-Item ..\teya-cursor-plugin\docs\aphelia-lite\INSTALL-6GB.md .
+Copy-Item ..\teya-cursor-plugin\docs\aphelia-lite\voice_cloud.py .\scripts\
+Copy-Item ..\teya-cursor-plugin\docs\aphelia-lite\aphelia.env.example .\shared\
 
 .\install-plugin-lite.ps1
 

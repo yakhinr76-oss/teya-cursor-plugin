@@ -1,0 +1,83 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Туры с детьми из Уфы: на что смотреть при выборе отеля",
+      "description": "Перелёт, питание, детская инфраструктура и тихий отдых — критерии подбора для семей из Уфы.",
+      "datePublished": "2026-10-17",
+      "author": {
+        "@type": "Person",
+        "name": "Елена Ковалева",
+        "jobTitle": "Главный эксперт по поисковой оптимизации и GEO/AEO-стратегиям",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Турагентство «Жираф»"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ООО «Жираф»",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://b2b-tour.ru/wp-content/themes/zhiraf-ufa/assets/images/logo-zhiraf.png"
+        }
+      },
+      "inLanguage": "ru-RU",
+      "mainEntityOfPage": "https://b2b-tour.ru/tury-s-detmi-iz-ufy/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "С какого возраста ребёнку нужен загранпаспорт?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На каждого туриста, включая младенца, оформляют свой загранпаспорт. Данные должны совпасть с договором."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Есть ли прямой рейс Уфа — Турция с детьми?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На части дат доступны чартеры без пересадки; на других — стыковки. Менеджер покажет схему перелёта в расчёте тура."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Обязателен ли детский клуб?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Для спокойного отдыха с малышом иногда лучше тихий отель без громкой анимации."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как указать детей в заявке?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Возраст на дату вылета и количество мест в номере. Это влияет на цену и рассадку."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Входит ли детское меню в AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Зависит от отеля. Попросите описание питания у менеджера до оплаты."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли поехать с бабушкой без мамы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Часто нужно нотариальное согласие родителя. Подготовьте документы заранее по правилам страны и авиакомпании."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Турция или Египет из Уфы: как выбрать направление под ваш отдых",
+      "description": "Сравниваем форматы отдыха без цен «от»: перелёт, курорты, сезон и для кого подходит каждое направление.",
+      "datePublished": "2026-10-17",
+      "author": {
+        "@type": "Person",
+        "name": "Елена Ковалева",
+        "jobTitle": "Главный эксперт по поисковой оптимизации и GEO/AEO-стратегиям",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Турагентство «Жираф»"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ООО «Жираф»",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://b2b-tour.ru/wp-content/themes/zhiraf-ufa/assets/images/logo-zhiraf.png"
+        }
+      },
+      "inLanguage": "ru-RU",
+      "mainEntityOfPage": "https://b2b-tour.ru/turciya-ili-egipet-iz-ufy/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Турция или Египет «всё включено» — что общего?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Оба направления продаются пакетами с перелётом из Уфы и питанием AI/UAI в многих отелях."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Куда лучше с детьми из Уфы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Зависит от возраста и темперамента: Турция чаще выбирается за разнообразие семейных отелей; Египет — за спокойный отельный отдых с учётом рифа и солнца."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Где дешевле?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Цены меняются ежедневно; в этой статье сравнение без стоимости. Запросите актуальный расчёт у менеджера."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужна ли виза?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Правила зависят от даты поездки и типа паспорта. Уточните перед бронированием у менеджера и в официальных источниках."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как сравнить перелёты?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Смотрите пару рейсов целиком: вылет из Уфы и обратный, время в пути и пересадки."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как начать подбор в «Жираф»?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Заявка на сайте, звонок +7 901 810-50-18 или визит на ул. Гагарина, 74/1."
+          }
+        }
+      ]
+    }
+  ]
+}

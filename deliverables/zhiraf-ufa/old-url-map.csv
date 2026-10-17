@@ -1,0 +1,7 @@
+old_path,new_path,redirect_type,notes
+/o-nas,/o-nas/,301,Страница «О нас»
+/kontacty,/kontakty/,301,Возможна унификация slug (транслит); сохранить 301 со старого
+/blog,/blog/,301,Архив блога
+/rasskazy,/rasskazy/,301,Раздел историй/рассказов туристов
+/tour,/tour/,301,Каталог/лендинг туров — уточнить целевую структуру
+/politika-konfidenczialnosti/,/politika-konfidenczialnosti/,301,Политика конфиденциальности

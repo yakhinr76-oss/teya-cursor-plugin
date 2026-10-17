@@ -138,31 +138,80 @@ function zhiraf_ufa_reading_time( $post_id = null ) {
 }
 
 /**
- * Editorial blog topics (no fake articles).
+ * Whether to show verified reviews block (off until client provides sources).
+ *
+ * @return bool
+ */
+function zhiraf_ufa_show_reviews_block() {
+	return (bool) get_theme_mod( 'zhiraf_show_reviews', false );
+}
+
+/**
+ * Latest posts for homepage stories block.
+ *
+ * @return WP_Post[]
+ */
+function zhiraf_ufa_home_blog_posts() {
+	$q = new WP_Query(
+		array(
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'posts_per_page'      => 4,
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+	return $q->posts;
+}
+
+/**
+ * Category label for story card (first category or default).
+ *
+ * @param int $post_id Post ID.
+ * @return string
+ */
+function zhiraf_ufa_story_category_label( $post_id ) {
+	$cats = get_the_category( $post_id );
+	if ( ! empty( $cats ) ) {
+		return $cats[0]->name;
+	}
+	return __( 'Советы', 'zhiraf-ufa' );
+}
+
+/**
+ * Fallback stories when no WP posts yet.
  *
  * @return array<int,array<string,string>>
  */
-function zhiraf_ufa_blog_topics() {
+function zhiraf_ufa_blog_fallback_stories() {
 	return array(
 		array(
-			'title' => __( 'Как купить тур в Уфе: от заявки до вылета', 'zhiraf-ufa' ),
-			'topic' => 'BT-01',
-			'note'  => __( 'Тема редакционного плана', 'zhiraf-ufa' ),
+			'title'    => __( 'Как купить тур в Уфе: от заявки до вылета', 'zhiraf-ufa' ),
+			'category' => __( 'Гид', 'zhiraf-ufa' ),
+			'date'     => '',
+			'url'      => home_url( '/blog/' ),
+			'image'    => 'blog-featured.jpg',
 		),
 		array(
-			'title' => __( 'Что входит в тур «всё включено»', 'zhiraf-ufa' ),
-			'topic' => 'BT-02',
-			'note'  => __( 'Тема редакционного плана', 'zhiraf-ufa' ),
+			'title'    => __( 'Что входит в тур «всё включено»', 'zhiraf-ufa' ),
+			'category' => __( 'Питание', 'zhiraf-ufa' ),
+			'date'     => '',
+			'url'      => home_url( '/blog/' ),
+			'image'    => 'blog-thumb-1.jpg',
 		),
 		array(
-			'title' => __( 'Документы для первой заграницы из Уфы', 'zhiraf-ufa' ),
-			'topic' => 'BT-03',
-			'note'  => __( 'Тема редакционного плана', 'zhiraf-ufa' ),
+			'title'    => __( 'Документы для поездки за границу', 'zhiraf-ufa' ),
+			'category' => __( 'Документы', 'zhiraf-ufa' ),
+			'date'     => '',
+			'url'      => home_url( '/blog/' ),
+			'image'    => 'blog-thumb-2.jpg',
 		),
 		array(
-			'title' => __( 'Когда выгоднее бронировать тур из Уфы', 'zhiraf-ufa' ),
-			'topic' => 'BT-04',
-			'note'  => __( 'Тема редакционного плана', 'zhiraf-ufa' ),
+			'title'    => __( 'Туры с детьми из Уфы', 'zhiraf-ufa' ),
+			'category' => __( 'Семья', 'zhiraf-ufa' ),
+			'date'     => '',
+			'url'      => home_url( '/blog/' ),
+			'image'    => 'blog-thumb-3.jpg',
 		),
 	);
 }

@@ -20,16 +20,16 @@
     });
   }
 
-  /* Destination filter */
-  qsa('.chip-filter').forEach(function (bar) {
-    var chips = qsa('.chip', bar);
+  /* Destination filter (tabs or legacy chips) */
+  function bindDestFilter(bar, tabSelector) {
+    var tabs = qsa(tabSelector, bar);
     var section = bar.closest('.destinations') || bar.parentElement;
     var cards = qsa('.dest-card', section);
-    chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.remove('is-active'); });
-        chip.classList.add('is-active');
-        var filter = chip.getAttribute('data-filter');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (c) { c.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        var filter = tab.getAttribute('data-filter');
         cards.forEach(function (card) {
           var dest = card.getAttribute('data-dest');
           var show = filter === 'all' || dest === filter;
@@ -37,7 +37,9 @@
         });
       });
     });
-  });
+  }
+  qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.dest-tab'); });
+  qsa('.chip-filter').forEach(function (bar) { bindDestFilter(bar, '.chip'); });
 
   /* Cookie banner */
   var banner = qs('#cookie-banner');

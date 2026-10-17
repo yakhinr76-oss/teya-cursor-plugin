@@ -6,18 +6,13 @@
       "palette": [
         { "slug": "background", "color": "#FAF8F5", "name": "Background" },
         { "slug": "primary", "color": "#E87A5D", "name": "Primary" },
-        { "slug": "secondary", "color": "#2D2D2D", "name": "Secondary" },
+        { "slug": "secondary", "color": "#2B2B2B", "name": "Secondary" },
         { "slug": "surface", "color": "#F5F2ED", "name": "Surface" },
         { "slug": "outline", "color": "#E8E3DC", "name": "Outline" }
       ]
     },
     "typography": {
       "fontFamilies": [
-        {
-          "fontFamily": "\"Playfair Display\", Georgia, serif",
-          "name": "Playfair Display",
-          "slug": "playfair"
-        },
         {
           "fontFamily": "Manrope, system-ui, sans-serif",
           "name": "Manrope",
@@ -26,14 +21,14 @@
       ],
       "fontSizes": [
         { "slug": "sm", "size": "14px", "name": "Small" },
-        { "slug": "md", "size": "16px", "name": "Medium" },
+        { "slug": "md", "size": "17px", "name": "Medium" },
         { "slug": "lg", "size": "18px", "name": "Large" },
-        { "slug": "xl", "size": "32px", "name": "XL" }
+        { "slug": "xl", "size": "36px", "name": "XL" }
       ]
     },
     "layout": {
-      "contentSize": "720px",
-      "wideSize": "1200px"
+      "contentSize": "1240px",
+      "wideSize": "1280px"
     }
   },
   "styles": {
@@ -43,19 +38,7 @@
     },
     "typography": {
       "fontFamily": "var(--wp--preset--font-family--manrope)",
-      "fontSize": "var(--wp--preset--font-size--md)",
-      "lineHeight": "1.6"
-    },
-    "elements": {
-      "heading": {
-        "typography": {
-          "fontFamily": "var(--wp--preset--font-family--playfair)",
-          "fontWeight": "600"
-        }
-      },
-      "link": {
-        "color": { "text": "#E87A5D" }
-      }
+      "fontSize": "var(--wp--preset--font-size--md)"
     }
   }
 }

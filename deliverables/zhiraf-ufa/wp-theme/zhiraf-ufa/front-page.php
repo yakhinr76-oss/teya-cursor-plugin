@@ -31,6 +31,7 @@ get_header();
 				zhiraf_ufa_img( 'hero-uae.jpg', __( 'ОАЭ на закате', 'zhiraf-ufa' ), 'collage-img collage-img--2', true );
 				zhiraf_ufa_img( 'hero-thailand.jpg', __( 'Пляж Таиланда', 'zhiraf-ufa' ), 'collage-img collage-img--3', true );
 				zhiraf_ufa_img( 'hero-egypt.jpg', __( 'Египет', 'zhiraf-ufa' ), 'collage-img collage-img--4', true );
+				?>
 			</div>
 		</div>
 	</section>

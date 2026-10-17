@@ -22,18 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <header class="site-header" id="site-header">
 	<div class="container site-header__inner">
 		<div class="site-branding">
-			<?php
-			if ( has_custom_logo() ) {
-				the_custom_logo();
-			} else {
-				?>
-				<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Жираф — на главную', 'zhiraf-ufa' ); ?>">
-					<span class="site-logo__mark" aria-hidden="true">🦒</span>
-					<span class="site-logo__text">Жираф</span>
-				</a>
-				<?php
-			}
-			?>
+			<?php zhiraf_ufa_render_site_logo( 'header' ); ?>
 		</div>
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Главная навигация', 'zhiraf-ufa' ); ?>">
 			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-menu-wrap">

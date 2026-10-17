@@ -66,11 +66,27 @@ def upsert_page(slug: str, title: str, status: str = "publish") -> dict:
     return request("POST", "/wp-json/wp/v2/pages", payload)
 
 
-def publish_excalibur_post(project_root: Path) -> dict | None:
-    meta_path = project_root / "teya-memory/blog/articles/kak-kupit-tur-v-ufe/article.meta.json"
-    html_path = project_root / "teya-memory/blog/articles/kak-kupit-tur-v-ufe/article.html"
+def _article_paths(project_root: Path, slug: str) -> tuple[Path, Path]:
+    candidates = [
+        (
+            project_root / f"deliverables/zhiraf-ufa/excalibur-articles/articles/{slug}/article.meta.json",
+            project_root / f"deliverables/zhiraf-ufa/excalibur-articles/articles/{slug}/article.html",
+        ),
+        (
+            project_root / f"teya-memory/blog/articles/{slug}/article.meta.json",
+            project_root / f"teya-memory/blog/articles/{slug}/article.html",
+        ),
+    ]
+    for meta_path, html_path in candidates:
+        if meta_path.is_file() and html_path.is_file():
+            return meta_path, html_path
+    return candidates[0][0], candidates[0][1]
+
+
+def publish_excalibur_post(project_root: Path, slug: str = "kak-kupit-tur-v-ufe") -> dict | None:
+    meta_path, html_path = _article_paths(project_root, slug)
     if not meta_path.is_file() or not html_path.is_file():
-        print("WARN: Excalibur article not found, skipping post")
+        print(f"WARN: Excalibur article {slug} not found, skipping post")
         return None
     meta = json.loads(meta_path.read_text(encoding="utf-8"))
     content = html_path.read_text(encoding="utf-8")
@@ -99,8 +115,12 @@ def main() -> int:
     me = request("GET", "/wp-json/wp/v2/users/me")
     print(f"Authenticated as: {me.get('name')} ({me.get('slug')})")
 
-    print("Setting blog_public=0 (noindex staging)…")
-    request("POST", "/wp-json/wp/v2/settings", {"blog_public": False})
+    print("Setting blog_public=0 (noindex staging) and site_logo=2671…")
+    request(
+        "POST",
+        "/wp-json/wp/v2/settings",
+        {"blog_public": False, "site_logo": 2671},
+    )
 
     pages = [
         ("o-nas", "О нас"),
@@ -113,9 +133,11 @@ def main() -> int:
         upsert_page(slug, title)
         print(f"Page OK: /{slug}/")
 
-    post = publish_excalibur_post(root)
-    if post:
-        print(f"Post OK: /blog/{post.get('slug')}/")
+    for slug_dir in sorted((root / "deliverables/zhiraf-ufa/excalibur-articles/articles").glob("*")):
+        if slug_dir.is_dir():
+            post = publish_excalibur_post(root, slug_dir.name)
+            if post:
+                print(f"Post OK: {post.get('link')}")
 
     print(
         "\nMANUAL: Upload & activate theme zhiraf-ufa in WP Admin → Внешний вид → Темы, "

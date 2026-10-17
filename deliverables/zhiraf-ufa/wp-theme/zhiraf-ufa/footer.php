@@ -12,7 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <footer class="site-footer">
 	<div class="container site-footer__grid">
 		<div class="site-footer__brand">
-			<p class="footer-title"><?php esc_html_e( 'Турагентство «Жираф»', 'zhiraf-ufa' ); ?></p>
+			<?php zhiraf_ufa_render_site_logo( 'footer' ); ?>
+			<p class="footer-title screen-reader-text"><?php esc_html_e( 'Турагентство «Жираф»', 'zhiraf-ufa' ); ?></p>
 			<p class="footer-desc"><?php esc_html_e( 'Подбор туров с вылетом из Уфы — честно и по-человечески.', 'zhiraf-ufa' ); ?></p>
 			<p class="footer-nap">
 				<?php esc_html_e( 'ул. Юрия Гагарина, 74/1, офис 3, Уфа', 'zhiraf-ufa' ); ?><br>

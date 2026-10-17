@@ -65,6 +65,18 @@ h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 .site-logo { display: flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; font-weight: 700; }
 .site-logo__mark { font-size: 1.5rem; }
+.site-logo-link,
+.site-footer-logo-link { display: inline-block; line-height: 0; text-decoration: none; }
+.site-logo-img,
+.site-branding .custom-logo,
+.site-footer__brand .custom-logo {
+  max-height: 56px;
+  width: auto;
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+.site-footer__brand .site-footer-logo-link { margin-bottom: 12px; }
 .site-nav { flex: 1; display: flex; justify-content: center; }
 .primary-menu { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
 .primary-menu a { color: var(--color-text); text-decoration: none; font-weight: 500; }

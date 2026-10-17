@@ -12,6 +12,11 @@
 
 Preview-страница (без WP): `deliverables/zhiraf-ufa/preview/home.html`
 
+## Follow-up после [Live QA b2b-tour.ru](bc-5c27e2d5-6bb4-508c-8de0-81c186e96d68)
+
+- **Квиз:** исправлена валидация шагов (`div` не поддерживает `checkValidity()`), сброс на шаг 1 при открытии, `finally` на AJAX submit.
+- **Статьи:** опубликовать `python3 scripts/publish_zhiraf_excalibur_posts.py` (нужен `B2B_TOUR_WP_APP_PASSWORD` в среде агента).
+
 ## Сверка с референсом Globe Trekker
 
 | Блок | Статус |

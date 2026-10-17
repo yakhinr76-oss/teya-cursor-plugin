@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<button type="button" class="quiz-modal__close" data-quiz-close aria-label="<?php esc_attr_e( 'Закрыть', 'zhiraf-ufa' ); ?>">×</button>
 		<h2 id="quiz-title" class="quiz-modal__title"><?php esc_html_e( 'Подбор тура за 2 минуты', 'zhiraf-ufa' ); ?></h2>
 		<form id="quiz-form" class="quiz-form" novalidate>
+			<input type="hidden" name="zhiraf_hp" value="" tabindex="-1" autocomplete="off" class="zhiraf-hp" aria-hidden="true" />
 			<div class="quiz-step is-active" data-step="1">
 				<p class="quiz-step__label"><?php esc_html_e( 'Шаг 1 из 4', 'zhiraf-ufa' ); ?></p>
 				<h3><?php esc_html_e( 'Состав путешественников', 'zhiraf-ufa' ); ?></h3>

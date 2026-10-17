@@ -64,10 +64,10 @@
   var modal = qs('#quiz-modal');
   var quizForm = qs('#quiz-form');
   function openQuiz() {
-    if (!modal) return;
+    if (!modal || !quizForm) return;
+    goStep(0);
     modal.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
-    qs('.quiz-step.is-active', modal)?.focus?.();
   }
   function closeQuiz() {
     if (!modal) return;
@@ -86,6 +86,20 @@
 
   var steps = qsa('.quiz-step', quizForm);
   var current = 0;
+  function validateQuizStep(stepEl) {
+    if (!stepEl) return false;
+    var fields = qsa('input, select, textarea', stepEl).filter(function (f) {
+      return f.type !== 'hidden' && !f.classList.contains('zhiraf-hp');
+    });
+    var ok = true;
+    fields.forEach(function (field) {
+      if (!field.checkValidity()) {
+        ok = false;
+        field.reportValidity();
+      }
+    });
+    return ok;
+  }
   function goStep(n) {
     steps.forEach(function (step, i) {
       var active = i === n;
@@ -93,12 +107,19 @@
       step.hidden = !active;
     });
     current = n;
+    var activeBtn = qs('.quiz-next', steps[n]);
+    if (activeBtn) {
+      activeBtn.disabled = false;
+      activeBtn.removeAttribute('aria-busy');
+    }
   }
   qsa('.quiz-next', quizForm).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var step = steps[current];
-      if (!step.checkValidity()) {
-        step.reportValidity();
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      btn.disabled = false;
+      btn.removeAttribute('aria-busy');
+      if (!validateQuizStep(steps[current])) {
         return;
       }
       if (current < steps.length - 1) goStep(current + 1);
@@ -113,6 +134,11 @@
   /* AJAX forms */
   function postForm(form, action) {
     var status = qs('.form-status', form);
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+    }
     var fd = new FormData(form);
     fd.append('action', action);
     fd.append('nonce', cfg.nonce || '');
@@ -126,6 +152,12 @@
       })
       .catch(function () {
         if (status) status.textContent = 'Ошибка сети';
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.removeAttribute('aria-busy');
+        }
       });
   }
 

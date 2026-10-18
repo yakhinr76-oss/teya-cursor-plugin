@@ -59,7 +59,7 @@
 - **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, ветка `cursor/zhiraf-b2b-site-a2bf` после pull)
 - **Проверки:** `php -l` темы (34 PHP, 0 ошибок); paint local `preview/home.html` + Playwright fullpage после прокрутки → `/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png` и копии в `teya-memory/wp/paint-qa/`; computed styles (CTA #E87A5D, фон #FAF8F5); сверка с AURA/blueprint.
 - **Артефакты:** `teya-memory/wp/design-integrity-report.md`, `teya-memory/wp/paint-qa/paint-qa-report.md`, `paint-evidence.json`, fragment `teya-memory/fragments/aurora-team-design-guardian.md`
-- **Вердикт:** **❌ DESIGN BLOCKER** — на момент проверки в `front-page.php` не было `audience-tabs` / `trust-social` / `faq-home` (см. §7 motion — доработка в той же ветке); Unbounded+Google CDN; meaningful images < minimum на preview; inner pages без paint.
+- **Вердикт:** **⚠️ DESIGN FIXES NEEDED** — funnel-секции в теме после §7 motion; paint снят со stale `preview/home.html` (8/12 img); Unbounded+Google CDN; inner pages без paint.
 
 ## 9. Роль: aurora-team-qa (финальная проверка)
 - **Агент:** `agents/aurora-team-qa.md`, `skills/aurora-team-qa/SKILL.md`

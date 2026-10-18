@@ -5,7 +5,7 @@
 | project | zhiraf-ufa |
 | theme_slug | `zhiraf-ufa` |
 | mode | **local-only** |
-| design_guardian | `design-integrity-report.md` → **❌ DESIGN BLOCKER** |
+| design_guardian | `design-integrity-report.md` → **⚠️ DESIGN FIXES NEEDED** |
 | paint_qa | `paint-evidence.json` → **verdict: fail** |
 | checked_at | 2026-10-18 |
 | agent | aurora-team-qa (run bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e) |
@@ -31,7 +31,7 @@
 
 Final QA cannot pass while design status ≠ `✅ DESIGN OK`. **Blocked.**
 
-Critical design issues: missing blueprint sections, Unbounded typography, paint image minimum, no inner-page screenshots.
+Critical design issues: Unbounded typography, stale preview paint (image minimum), no inner-page screenshots.
 
 ## Maps & artifacts presence
 
@@ -58,7 +58,7 @@ Critical design issues: missing blueprint sections, Unbounded typography, paint 
 | Public `lorem` / `TODO` / fake reviews | ✅ Not found in theme templates |
 | Form placeholders | ✅ OK (input placeholders allowed) |
 | H1 on front-page vs content pack | ⚠️ Mismatch — generic hero title |
-| FAQ visible on home | ❌ Section missing |
+| FAQ visible on home | ✅ `faq-home` in theme (not in static preview) |
 | Blog section | ⚠️ Editorial present; funnel order wrong |
 
 ## SEO / technical (static)

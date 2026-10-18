@@ -30,6 +30,11 @@
 | aurora-team-asset-packager | `bc-a36c4774-8895-561d-aebf-55df2ca8eb31` | да |
 | aurora-team-artifact-auditor | `bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e` | да |
 | aurora-team-report-compiler + release-gate | `bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e` | да (compiler → `teya_release_gate.py`) |
+| copywriter (§17 copy cleanup & FAQ) | `bc-7e9e921f-827c-50a8-b634-11ec26a8fbcf` | да |
+| wp-theme-builder (§17 FAQPage schema & mirror) | `bc-a7a4c486-5ef1-5a2a-be67-cc8eb792ffef` | да |
+| seo-qa (§17 19 URL & schema audit) | `bc-8a99c6c2-46eb-5e04-ba09-ca6984e1b8c2` | да |
+| paint-qa (§17 38 PNG refresh) | `bc-c4b918ce-16e6-51e9-9a25-e51c8a14352b` | да |
+| release-gate-auditor (§17 gate verification) | `bc-18ca6b59-9ae5-5e63-95aa-f2be6cf4117b` | да |
 
 ---
 
@@ -282,5 +287,58 @@ AURA **Globe Trekker** blog pack (**1 featured + 5 cards**, serif **H1–H3**, e
 | `teya_release_gate.py` | **PASS** (exit **0**) |
 | Deploy | **no** |
 
+- **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)
+- **Paint evidence:** [`teya-memory/wp/paint-qa/paint-evidence.json`](../../teya-memory/wp/paint-qa/paint-evidence.json)
+
+---
+
+## 17. Copy cleanup, FAQPage schema, Paint QA & Release Gate (18.10.2026)
+
+Комплексный этап очистки текстов от служебных SEO-утечек, глубокой фактологической проработки направлений, интеграции структурированных микроразметок FAQPage JSON-LD, верификации мета-тегов и схем, обновления визуальных скриншотов (38 PNG) и финального подтверждения release gate (**PASS**).
+
+| Шаг / Роль | agent_id (`bc-…`) | Коммит / артефакт | Результат |
+|------------|-------------------|-------------------|-----------|
+| 1. Копирайтер (aurora-team-content) | `bc-7e9e921f-827c-50a8-b634-11ec26a8fbcf` | **4861198** | Очистка всех SEO-утечек (**0 leaks**); глубокая фактология (сезонность, температуры воды/воздуха, прямой перелёт из Уфы, визы, отели); FAQ-блоки на всех страницах; скрипт `scripts/zhiraf_copy_lint.sh` (**PASS**); отчёт [`teya-memory/wp/copy-quality-report.md`](../../teya-memory/wp/copy-quality-report.md); объёмы слов по всем **19 URL** (все ≥ нормативов: страны ≥900, офферы ≥700, курорты ≥600) |
+| 2. Page Builder (wp-theme-builder) | `bc-a7a4c486-5ef1-5a2a-be67-cc8eb792ffef` | **dbc02dd** | Внедрение схемы `FAQPage` JSON-LD в `inc/seo.php`; синхронизация FAQ-аккордеонов в шаблонах; валидация `php -l` (**52/52** файлов OK); зеркалирование темы в `teya-memory/wp/theme/zhiraf-ufa/` |
+| 3. SEO-QA (aurora-team-qa) | `bc-8a99c6c2-46eb-5e04-ba09-ca6984e1b8c2` | **c37ee2e** | Верификация 19 URL; проверка мета-тегов с гео-привязкой к Уфе; валидация JSON-LD (`BreadcrumbList`, `WebSite`, `FAQPage`); 301-редирект `/tour/tailand/phuket/` → `/tour/tailand/`; `noindex` на staging; отчёт [`teya-memory/wp/seo-geo-verification.md`](../../teya-memory/wp/seo-geo-verification.md) |
+| 4. Paint QA (aurora-team-design-guardian) | `bc-c4b918ce-16e6-51e9-9a25-e51c8a14352b` | **1d5a875** | Полностраничные скриншоты 19 маршрутов в 1440px и 390px (**38 PNG**); обновление `deliverables/zhiraf-ufa/paint/` и `teya-memory/wp/paint-qa/` (`paint-evidence.json` verdict: **pass**) |
+| 5. Release Gate Auditor (aurora-team-release-gate) | `bc-18ca6b59-9ae5-5e63-95aa-f2be6cf4117b` | **HEAD** | Тесты `python3 scripts/teya_release_gate.py --project-root /workspace` (**PASS**, exit code 0); `bash scripts/zhiraf_copy_lint.sh` (**PASS**, 0 leaks); `php -l` (**PASS**); отчёт [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md) |
+
+### Сводка объёмов текстов и FAQ (19 коммерческих URL)
+
+1. `/` — 423 слова, 8 Q&A
+2. `/tour/` — 173 слова, 5 Q&A
+3. `/goryashchie-tury/` — 781 слово (≥700), 7 Q&A
+4. `/vse-vklyucheno/` — 831 слово (≥700), 7 Q&A
+5. `/tour/turciya/` — 1 092 слова (≥900), 8 Q&A
+6. `/tour/oae/` — 1 070 слов (≥900), 8 Q&A
+7. `/tour/egipet/` — 1 009 слов (≥900), 8 Q&A
+8. `/tour/tailand/` — 954 слова (≥900), 8 Q&A
+9. `/tour/vietnam/` — 980 слов (≥900), 8 Q&A
+10. `/tour/turciya/antalya/` — 630 слов (≥600), 7 Q&A
+11. `/tour/egipet/hurgada/` — 620 слов (≥600), 7 Q&A
+12. `/tour/egipet/sharm-el-sheyh/` — 644 слова (≥600), 7 Q&A
+13. `/tour/vietnam/nyachang/` — 603 слова (≥600), 7 Q&A
+14. `/tour/vietnam/fukuok/` — 612 слов (≥600), 7 Q&A
+15. `/o-nas/` — 643 слова, 6 Q&A
+16. `/kontakty/` — 80 слов (NAP)
+17. `/blog/` — 20 слов (Editorial Archive)
+18. `/politika-konfidenczialnosti/` — 102 слова (152-ФЗ)
+19. `/politika-cookies/` — 61 слово (Cookies)
+
+### Итог §17
+
+| Gate | Статус |
+|------|--------|
+| Copy cleanup & facts (0 leaks) | **✅** (**4861198**) |
+| FAQPage schema & WP mirror | **✅** (**dbc02dd**) |
+| SEO/GEO & Schema audit | **✅** (**c37ee2e**) |
+| Paint QA (38 screenshots) | **✅** (**1d5a875**) |
+| Copy Linter (`zhiraf_copy_lint.sh`) | **PASS** (0 leaks) |
+| `teya_release_gate.py` | **PASS** (exit **0**) |
+| Deploy | **no** |
+
+- **Copy report:** [`teya-memory/wp/copy-quality-report.md`](../../teya-memory/wp/copy-quality-report.md)
+- **SEO/GEO verification:** [`teya-memory/wp/seo-geo-verification.md`](../../teya-memory/wp/seo-geo-verification.md)
 - **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)
 - **Paint evidence:** [`teya-memory/wp/paint-qa/paint-evidence.json`](../../teya-memory/wp/paint-qa/paint-evidence.json)

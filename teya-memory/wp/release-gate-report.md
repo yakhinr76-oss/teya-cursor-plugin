@@ -7,9 +7,9 @@
 | status | **PASS** |
 | theme_slug | `zhiraf-ufa` |
 | gate_script_sha256 | `50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d` |
-| pillow | installed (`pip3 install Pillow` in runner env) |
-| checked_at | 2026-10-18T16:04:40+00:00 |
-| git_ref | `a06c6d5` (chore(paint-qa): 19 Wordstat routes, drop Phuket screenshots) |
+| pillow | installed (`pip install Pillow` in runner env) |
+| checked_at | 2026-10-18T16:20:00+00:00 |
+| git_ref | `aa54024` (SEO merge) + paint refresh (pipeline-log §15) |
 | deploy | **not run** (`public_site_url` empty) |
 
 ## Stdout
@@ -20,4 +20,10 @@ TEYA RELEASE GATE PASS
 
 ## Artifact fixes (this run)
 
-None — gate passed on existing artifacts after Pillow was available for raster decode-verify.
+None — first gate attempt failed only because Pillow was missing in the runner; after `pip install Pillow`, gate passed without changing repo artifacts.
+
+## Context
+
+- Integrated branch tip after merge: **aa54024** (`fix(seo): audit 19 URL`)
+- Metrika **45658173** on **70f05ad** (ancestor of tip)
+- Paint re-captured **38** PNG (19 Wordstat routes × 1440/390) post-merge PHP SEO changes; `paint-evidence.json` updated

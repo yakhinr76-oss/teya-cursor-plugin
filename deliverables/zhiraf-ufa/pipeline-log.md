@@ -218,3 +218,41 @@
 
 - **Fragment (опц.):** `teya-memory/fragments/wordstat-api-pipeline.md` — не создан; сводка в §14
 - **Release report:** `teya-memory/wp/release-gate-report.md`
+
+---
+
+## 15. Metrika + SEO audit merge (18.10.2026)
+
+Интеграция **Яндекс.Метрики** (`70f05ad`, счётчик **45658173**, consent-gated init + `reachGoal`) и merge **`origin/cursor/seo-qa-19url-audit-67f2`** → **`aa54024`** (fast-forward, конфликтов нет). После merge PHP темы (SEO/meta/H1) — полный paint **19** Wordstat-маршрутов × **1440/390**; gate с **Pillow** decode-verify.
+
+| Шаг | Коммит / артефакт | Результат |
+|-----|-------------------|-----------|
+| 1. Metrika (conversion) | **70f05ad** | Метрика **45658173**, consent → init, цели `lead_submit` / `phone_click` / `messengers_click` |
+| 2. Merge SEO audit | **aa54024** | `fix(seo): audit 19 URL` — Wordstat в copy, titles/descriptions, breadcrumb JSON-LD; зеркало в `teya-memory/wp/theme/zhiraf-ufa/` |
+| 3. paint (post-merge PHP) | `capture-all-paint.mjs` | **38** fullpage PNG (**19** × 1440/390); `teya-memory/wp/paint-qa/paint-evidence.json` (`verdict: pass`); копии в `/opt/cursor/artifacts/zhiraf-*.png` |
+| 4. release gate | `teya_release_gate.py` **07628b4** | **`exit_code` 0 — PASS** (Pillow в runner); отчёт `teya-memory/wp/release-gate-report.md` |
+| Deploy | — | **no** |
+
+### SEO fixes (из internal `seo-qa-worker-report`)
+
+1. **`inc/seo.php`** — titles/descriptions: `/`, `/tour/`, `/blog/`, legal; meta map; breadcrumb JSON-LD (hub, destination, offer, blog archive)
+2. **`inc/assets.php`** — offer hub Wordstat **3480** / **561**
+3. **`inc/destination-landings.php`** — Wordstat: Турция 2498/5875, Анталья 344, Кемер 70, Аланья 122, ОАЭ 274, Дубай 196, Египет 1983, курорты 853/233, дети 32, Вьетнам description
+4. **`inc/offer-landings.php`** — горящие **3480**, всё включено **561**, блок направлений с актуальными показами
+5. **`inc/resort-landings.php`** — всё включено **561**, FAQ Кемер/Аланья
+6. **`page-tour.php`** — H1 «Направления отдыха с вылетом из Уфы»
+7. **`home.php`** — H1 блога по pack
+8. **`page-kontakty.php`** — H1 «Контакты «Жираф» в Уфе»
+
+### Итог
+
+| Gate | Статус |
+|------|--------|
+| Metrika 45658173 | **✅** (`70f05ad`) |
+| SEO 19 URL merge | **✅** (`aa54024`) |
+| Paint 19 routes | **✅** (38 screenshots) |
+| `teya_release_gate.py` | **PASS** (exit **0**) |
+| Deploy | **no** |
+
+- **SEO/GEO verification:** [`teya-memory/wp/seo-geo-verification.md`](../../teya-memory/wp/seo-geo-verification.md)
+- **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)

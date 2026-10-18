@@ -71,10 +71,12 @@ add_action( 'after_setup_theme', 'zhiraf_ufa_setup' );
  */
 function zhiraf_ufa_primary_menu_fallback() {
 	$items = array(
-		home_url( '/tour/' )           => __( 'Туры', 'zhiraf-ufa' ),
-		home_url( '/o-nas/' )          => __( 'О нас', 'zhiraf-ufa' ),
-		home_url( '/blog/' )           => __( 'Блог', 'zhiraf-ufa' ),
-		home_url( '/kontakty/' )       => __( 'Контакты', 'zhiraf-ufa' ),
+		home_url( '/tour/' )              => __( 'Туры', 'zhiraf-ufa' ),
+		home_url( '/goryashchie-tury/' )  => __( 'Горящие', 'zhiraf-ufa' ),
+		home_url( '/vse-vklyucheno/' )    => __( 'Всё включено', 'zhiraf-ufa' ),
+		home_url( '/o-nas/' )             => __( 'О нас', 'zhiraf-ufa' ),
+		home_url( '/blog/' )              => __( 'Блог', 'zhiraf-ufa' ),
+		home_url( '/kontakty/' )          => __( 'Контакты', 'zhiraf-ufa' ),
 	);
 	echo '<ul class="primary-menu">';
 	foreach ( $items as $url => $label ) {

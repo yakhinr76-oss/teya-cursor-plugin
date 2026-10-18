@@ -30,6 +30,25 @@ get_header();
 					<button type="button" class="chip" data-filter="<?php echo esc_attr( $dest['slug'] ); ?>"><?php echo esc_html( $dest['name'] ); ?></button>
 				<?php endforeach; ?>
 			</div>
+			<div class="chip-filter chip-filter--offers" aria-label="<?php esc_attr_e( 'Популярные форматы', 'zhiraf-ufa' ); ?>">
+				<?php foreach ( zhiraf_ufa_offer_hub_links() as $offer ) : ?>
+					<a class="chip chip--link" href="<?php echo esc_url( $offer['url'] ); ?>">
+						<?php echo esc_html( $offer['label'] ); ?>
+						<span class="chip__stat"><?php echo esc_html( (string) $offer['wordstat'] ); ?></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+			<div class="resort-hub-links">
+				<p class="resort-hub-links__title"><?php esc_html_e( 'Курорты (Wordstat Уфа)', 'zhiraf-ufa' ); ?></p>
+				<ul class="resort-link-list resort-link-list--inline">
+					<?php foreach ( zhiraf_ufa_resort_hub_links() as $link ) : ?>
+						<li>
+							<a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a>
+							<span class="resort-link-list__stat"><?php echo esc_html( (string) $link['wordstat'] ); ?></span>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 			<div class="dest-grid dest-grid--large">
 				<?php foreach ( zhiraf_ufa_destinations() as $dest ) : ?>
 					<article class="dest-card dest-card--large" data-dest="<?php echo esc_attr( $dest['slug'] ); ?>">

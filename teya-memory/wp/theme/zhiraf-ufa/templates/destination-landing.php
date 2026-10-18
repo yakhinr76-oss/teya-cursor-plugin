@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 					<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Все направления', 'zhiraf-ufa' ); ?></a>
 				</p>
 				<h1><?php echo esc_html( $dest['h1'] ); ?></h1>
-				<p class="lead"><?php echo esc_html( $dest['hero_lead'] ); ?></p>
+				<p class="lead"><?php echo esc_html( ! empty( $dest['hero_lead_extended'] ) ? $dest['hero_lead_extended'] : $dest['hero_lead'] ); ?></p>
 				<button type="button" class="btn btn--primary btn--lg" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>">
 					<?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?>
 				</button>
@@ -29,6 +29,14 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 		</div>
 	</section>
 
+	<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
+		<section class="section geo-answer-block bg-milky">
+			<div class="container container--narrow">
+				<p class="geo-answer-block__text"><?php echo esc_html( $dest['geo_answer'] ); ?></p>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	<section class="section dest-landing-prose bg-milky">
 		<div class="container container--narrow">
 			<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>
@@ -37,6 +45,34 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 			<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
 			<h2><?php esc_html_e( 'Сезон и климат', 'zhiraf-ufa' ); ?></h2>
 			<p><?php echo esc_html( $dest['season'] ); ?></p>
+			<?php if ( ! empty( $dest['extra_sections'] ) ) : ?>
+				<?php foreach ( $dest['extra_sections'] as $section ) : ?>
+					<?php if ( ! empty( $section['h2'] ) ) : ?>
+						<h2><?php echo esc_html( $section['h2'] ); ?></h2>
+					<?php endif; ?>
+					<?php if ( ! empty( $section['lead'] ) ) : ?>
+						<p><?php echo esc_html( $section['lead'] ); ?></p>
+					<?php endif; ?>
+					<?php if ( ! empty( $section['paragraphs'] ) ) : ?>
+						<?php foreach ( $section['paragraphs'] as $para ) : ?>
+							<p><?php echo wp_kses_post( $para ); ?></p>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			<?php if ( ! empty( $dest['resort_links'] ) ) : ?>
+				<h2><?php esc_html_e( 'Курорты с отдельными страницами', 'zhiraf-ufa' ); ?></h2>
+				<ul class="resort-link-list">
+					<?php foreach ( $dest['resort_links'] as $link ) : ?>
+						<li>
+							<a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a>
+							<?php if ( ! empty( $link['wordstat'] ) ) : ?>
+								<span class="resort-link-list__stat"><?php echo esc_html( (string) $link['wordstat'] ); ?> <?php esc_html_e( 'показов/мес.', 'zhiraf-ufa' ); ?></span>
+							<?php endif; ?>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
 			<?php if ( ! empty( $dest['blog_links'] ) ) : ?>
 				<p class="dest-landing-links">
 					<?php

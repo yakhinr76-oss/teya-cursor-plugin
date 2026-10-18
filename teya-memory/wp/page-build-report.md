@@ -4,46 +4,64 @@
 |------|----------|
 | theme_slug | `zhiraf-ufa` |
 | theme_path | `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/` |
-| blueprint_ref | `teya-memory/wp/aurora-team-blueprint.md` |
-| content_ref | `teya-memory/wp/page-content-pack.md` |
-| artifact_readiness | `teya-memory/wp/artifact-readiness-report.md` → **READY** |
+| mirror_path | `teya-memory/wp/theme/zhiraf-ufa/` |
+| content_ref | `teya-memory/wp/page-content-pack.md` (20 URL, 8 NEW) |
 | date | 2026-10-18 |
-| generated_by | aurora-team-report-compiler (evidence compile) |
-| agent_bc_id | `bc-9773db71-f3bd-5d80-831c-70ba4f27911b` |
+| generated_by | wp-theme-builder (bc-78870dfb) |
+| branch | `cursor/zhiraf-b2b-site-a2bf` |
 
-## Test build pages (blueprint 5)
+## 8 NEW landings
 
-| URL | Template | Build status | Notes |
-|-----|----------|--------------|-------|
-| `/` | `front-page.php` | ✅ built | Funnel P0: hero, audience-tabs, destinations, steps, trust-social, faq-home, lead-action, blog teaser, subscribe |
-| `/tour/` | `page-tour.php` | ✅ built | Catalog hub |
-| `/o-nas/` | `page-o-nas.php` | ✅ built | Trust / E-E-A-T |
-| `/kontakty/` | `page-kontakty.php` | ✅ built | NAP + form |
-| `/blog/` | `home.php` | ✅ built | Archive shell; Excalibur publish — BLOG INTEGRATOR backlog |
+| URL | Template / routing | Status |
+|-----|-------------------|--------|
+| `/goryashchie-tury/` | `page-goryashchie-tury.php` → `templates/offer-landing.php` | ✅ |
+| `/vse-vklyucheno/` | `page-vse-vklyucheno.php` → `templates/offer-landing.php` | ✅ |
+| `/tour/turciya/antalya/` | rewrite → `page-tour-resort.php` | ✅ |
+| `/tour/egipet/hurgada/` | rewrite → `page-tour-resort.php` | ✅ |
+| `/tour/egipet/sharm-el-sheyh/` | rewrite → `page-tour-resort.php` | ✅ |
+| `/tour/tailand/phuket/` | rewrite → `page-tour-resort.php` | ✅ |
+| `/tour/vietnam/nyachang/` | rewrite → `page-tour-resort.php` | ✅ |
+| `/tour/vietnam/fukuok/` | rewrite → `page-tour-resort.php` | ✅ |
 
-## Backlog (Phase 1 resume)
+## Rewrite approach
 
-| URL | Status |
-|-----|--------|
-| `/tour/turciya/` … `/tour/vietnam/` | ✅ `page-{slug}.php` + `destination-landing.php` (static preview `preview/tour-*.html`) |
-| `/blog/{slug}/` | `single.php` present; WP posts / Excalibur import not in this compile |
-| Politika pages | ✅ templates exist |
+- `inc/tour-routing.php`: `^tour/([^/]+)/([^/]+)/?$` → query vars `zhiraf_tour_country`, `zhiraf_tour_resort`; `template_include` loads `page-tour-resort.php` when `zhiraf_ufa_get_resort_landing()` matches.
+- Registry: `inc/resort-landings.php` (6 курортов); офферы: `inc/offer-landings.php`.
+- `after_switch_theme` → `flush_rewrite_rules()` (активация темы на WP).
+- Страны `/tour/{slug}/` — по-прежнему `page-{slug}.php` + расширенный `inc/destination-landings.php` (секции Kemer 82, Alanya 58, Pattaya 49, s detmi 20, Dubai 87).
 
-## Blog slot (homepage)
+## Country page updates
 
-- Teasers / featured BT-01 per `page-content-pack.md`; **no** inline Excalibur HTML bodies in theme templates.
-- Excalibur sources: `deliverables/zhiraf-ufa/excalibur-articles/articles/*` (6× PASS QA).
+| Страна | Below-threshold sections |
+|--------|-------------------------|
+| Турция | Кемер 82, Аланья 58, с детьми 20; Анталья → child URL |
+| ОАЭ | Дубай 87 |
+| Египет | с детьми 20; таблица Хургада/Шарм |
+| Таиланд | Паттайя 49; Пхукет → child URL |
+| Вьетнам | ссылки Нячанг 193, Фукуок 183 |
 
-## Motion / hooks preserved
+## Nav / internal links
 
-Per `animation-implementation-report.md`: `data-motion="hero"`, `data-three-canvas`, `.reveal`, `.trust-social`, `.audience-tabs`, `.faq-home`.
+- Header fallback: `/goryashchie-tury/`, `/vse-vklyucheno/`
+- Footer: колонка «Форматы и курорты», Вьетнам в направлениях
+- `/tour/` hub: чипы офферов + список курортов
+- Главная: секция `section--offers-wordstat`
 
-## Paint evidence (linked)
+## Build QA
 
-| Page | Paint |
-|------|-------|
-| All build + landings + legal (static preview) | ✅ 12 pages × 1440/390 → `/opt/cursor/artifacts/zhiraf-{slug}-*.png`, `teya-memory/wp/paint-qa/` (`aurora-team-paint-evidence`, `bc-646a0fe3`) |
+| Check | Result |
+|-------|--------|
+| `npx sass` → `assets/dist/style.css` | ✅ |
+| `php -l` all `*.php` in theme | ✅ **49 files**, 0 errors |
+| Deploy zhiraf-ufa.ru | ❌ not run (per task) |
+| `teya_release_gate.py` | ❌ not run (per task) |
+
+## Files added (theme)
+
+- `inc/tour-routing.php`, `inc/resort-landings.php`, `inc/offer-landings.php`
+- `page-goryashchie-tury.php`, `page-vse-vklyucheno.php`, `page-tour-resort.php`
+- `templates/offer-landing.php`, `templates/resort-landing.php`
 
 ## Verdict
 
-**success** (local test build) — templates + static paint evidence complete; live WP deploy paint — backlog.
+**success** — Phase 1 page-build: 8 NEW URLs + country sections + linking; mirror synced to `teya-memory/wp/theme/zhiraf-ufa/`.

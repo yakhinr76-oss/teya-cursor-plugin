@@ -29,6 +29,17 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<li><a href="<?php echo esc_url( home_url( '/tour/oae/' ) ); ?>"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/tour/egipet/' ) ); ?>"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/tour/tailand/' ) ); ?>"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/vietnam/' ) ); ?>"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></a></li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<p class="footer-col__title"><?php esc_html_e( 'Форматы и курорты', 'zhiraf-ufa' ); ?></p>
+			<ul class="footer-menu">
+				<li><a href="<?php echo esc_url( home_url( '/goryashchie-tury/' ) ); ?>"><?php esc_html_e( 'Горящие туры', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/vse-vklyucheno/' ) ); ?>"><?php esc_html_e( 'Всё включено', 'zhiraf-ufa' ); ?></a></li>
+				<?php foreach ( zhiraf_ufa_resort_hub_links() as $link ) : ?>
+					<li><a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a></li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 		<div class="footer-col">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Destination landing: Vietnam (/tour/vietnam/).
+ * Offer landing: all inclusive (/vse-vklyucheno/).
  *
  * @package Zhiraf_Ufa
  */
@@ -10,5 +10,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-zhiraf_ufa_render_destination_landing( 'vietnam' );
+zhiraf_ufa_render_offer_landing( 'vse-vklyucheno' );
 get_footer();

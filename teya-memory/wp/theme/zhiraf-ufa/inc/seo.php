@@ -126,9 +126,47 @@ function zhiraf_ufa_meta_descriptions() {
 		'home'     => 'Подберём тур из Уфы в Турцию, ОАЭ, Египет, Таиланд и Вьетнам. Честная консультация, офис на Гагарина. Заявка без обязательств.',
 		'o-nas'    => 'История семейного турагентства с 2011 года: команда, ценности, реестр ТА 0012822.',
 		'kontakty' => 'Телефон +7 901 810-50-18, email office@zhiraf-ufa.ru, часы работы, карта, реквизиты ООО «Жираф».',
-		'tour'     => 'Турция, ОАЭ, Египет, Таиланд, Вьетнам и Россия — подбор под даты и бюджет.',
-		'blog'     => 'Статьи о подготовке к поездке, направлениях и отдыхе с детьми.',
+		'tour'              => 'Турция, ОАЭ, Египет, Таиланд, Вьетнам и Россия — подбор под даты и бюджет.',
+		'blog'              => 'Статьи о подготовке к поездке, направлениях и отдыхе с детьми.',
+		'goryashchie-tury'  => 'Горящие туры из Уфы — подбор без цен «от» на сайте.',
+		'vse-vklyucheno'    => 'Туры «всё включено» с вылетом из Уфы — AI/UAI в договоре.',
 	);
+}
+
+/**
+ * SEO meta for current request (destination, offer, resort).
+ *
+ * @return array{title?:string,description?:string}|null
+ */
+function zhiraf_ufa_current_landing_seo() {
+	$ctx = zhiraf_ufa_current_resort_context();
+	if ( $ctx ) {
+		$resort = zhiraf_ufa_get_resort_landing( $ctx['country'], $ctx['resort'] );
+		if ( $resort ) {
+			return array(
+				'title'       => $resort['title'],
+				'description' => $resort['description'],
+			);
+		}
+	}
+	if ( is_page() ) {
+		$slug = get_post_field( 'post_name', get_queried_object_id() );
+		$offer = zhiraf_ufa_get_offer_landing( $slug );
+		if ( $offer ) {
+			return array(
+				'title'       => $offer['title'],
+				'description' => $offer['description'],
+			);
+		}
+		$dest = zhiraf_ufa_get_destination_landing( $slug );
+		if ( $dest && ! empty( $dest['title'] ) ) {
+			return array(
+				'title'       => $dest['title'],
+				'description' => $dest['description'],
+			);
+		}
+	}
+	return null;
 }
 
 /**
@@ -153,12 +191,9 @@ function zhiraf_ufa_document_title( $title ) {
 	if ( is_home() && ! is_front_page() ) {
 		return 'Блог «Жираф» | Туры из Уфы и советы';
 	}
-	if ( is_page() ) {
-		$slug = get_post_field( 'post_name', get_queried_object_id() );
-		$dest = zhiraf_ufa_get_destination_landing( $slug );
-		if ( $dest && ! empty( $dest['title'] ) ) {
-			return $dest['title'];
-		}
+	$landing_seo = zhiraf_ufa_current_landing_seo();
+	if ( $landing_seo && ! empty( $landing_seo['title'] ) ) {
+		return $landing_seo['title'];
 	}
 	return $title;
 }
@@ -179,12 +214,12 @@ function zhiraf_ufa_head_meta() {
 	$desc = '';
 	if ( is_front_page() ) {
 		$desc = zhiraf_ufa_meta_descriptions()['home'];
-	} elseif ( is_page() ) {
-		$slug = get_post_field( 'post_name', get_queried_object_id() );
-		$dest = zhiraf_ufa_get_destination_landing( $slug );
-		if ( $dest && ! empty( $dest['description'] ) ) {
-			$desc = $dest['description'];
-		} else {
+	} elseif ( is_page() || zhiraf_ufa_current_resort_context() ) {
+		$landing_seo = zhiraf_ufa_current_landing_seo();
+		if ( $landing_seo && ! empty( $landing_seo['description'] ) ) {
+			$desc = $landing_seo['description'];
+		} elseif ( is_page() ) {
+			$slug = get_post_field( 'post_name', get_queried_object_id() );
 			$map  = zhiraf_ufa_meta_descriptions();
 			$desc = isset( $map[ $slug ] ) ? $map[ $slug ] : wp_strip_all_tags( get_the_excerpt() );
 		}
@@ -197,6 +232,10 @@ function zhiraf_ufa_head_meta() {
 	}
 
 	$canonical = is_singular() ? get_permalink() : ( is_front_page() ? home_url( '/' ) : ( is_home() ? home_url( '/blog/' ) : '' ) );
+	$resort_ctx  = zhiraf_ufa_current_resort_context();
+	if ( $resort_ctx ) {
+		$canonical = zhiraf_ufa_resort_url( $resort_ctx['country'], $resort_ctx['resort'] );
+	}
 	$canonical = zhiraf_ufa_canonical_public_url( $canonical );
 	$is_staging = zhiraf_ufa_is_staging_host();
 
@@ -321,7 +360,24 @@ function zhiraf_ufa_breadcrumb_json_ld() {
 		'name'     => 'Главная',
 		'item'     => zhiraf_ufa_canonical_public_url( home_url( '/' ) ),
 	);
-	if ( is_singular() ) {
+	$resort_ctx = zhiraf_ufa_current_resort_context();
+	if ( $resort_ctx ) {
+		$resort = zhiraf_ufa_get_resort_landing( $resort_ctx['country'], $resort_ctx['resort'] );
+		if ( $resort ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => $resort['country_name'],
+				'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' . $resort_ctx['country'] . '/' ) ),
+			);
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => $resort['h1'],
+				'item'     => zhiraf_ufa_canonical_public_url( zhiraf_ufa_resort_url( $resort_ctx['country'], $resort_ctx['resort'] ) ),
+			);
+		}
+	} elseif ( is_singular() ) {
 		$items[] = array(
 			'@type'    => 'ListItem',
 			'position' => $pos++,

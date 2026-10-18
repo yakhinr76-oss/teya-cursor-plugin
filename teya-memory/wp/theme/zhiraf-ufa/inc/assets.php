@@ -79,6 +79,26 @@ function zhiraf_ufa_img( $filename, $alt, $class = '', $lazy = true, $priority =
  *
  * @return array<int,array<string,string>>
  */
+/**
+ * Offer hub links (Wordstat).
+ *
+ * @return array<int,array{label:string,url:string,wordstat:int}>
+ */
+function zhiraf_ufa_offer_hub_links() {
+	return array(
+		array(
+			'label'    => __( 'Горящие туры', 'zhiraf-ufa' ),
+			'url'      => home_url( '/goryashchie-tury/' ),
+			'wordstat' => 3024,
+		),
+		array(
+			'label'    => __( 'Всё включено', 'zhiraf-ufa' ),
+			'url'      => home_url( '/vse-vklyucheno/' ),
+			'wordstat' => 735,
+		),
+	);
+}
+
 function zhiraf_ufa_destinations() {
 	return array(
 		array(

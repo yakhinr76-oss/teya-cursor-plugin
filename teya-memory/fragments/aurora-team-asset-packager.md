@@ -17,6 +17,6 @@ Ready assets: 17/17.
 
 ## Theme local verify
 
-- `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images`: **38/38** raster files `decode_verified` (Pillow verify+load).
-- Repaired 0-byte: `dest-uae-new.jpg`, `hero-collage-1.jpg`.
-- `media-map.json` synced to theme root + `assets/`.
+- Hero/dest registry pairs: **distinct sha256** (restored dest stock `731a983`; no `allow_duplicate_of`).
+- `deliverables/.../assets/images`: **38/38** `decode_verified`.
+- Maps synced: `wp-media-map.json`, `teya-memory/wp/theme/zhiraf-ufa/media-map.json`, deliverables theme `media-map.json`.

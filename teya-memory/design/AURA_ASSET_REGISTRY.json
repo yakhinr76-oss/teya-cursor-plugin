@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "project": "zhiraf-ufa",
-  "updated_at": "2026-10-18T13:45:00Z",
+  "updated_at": "2026-10-18T13:46:28+00:00",
   "mcp_kv_available": false,
   "mcp_blocker": "namespace mcp-kv: needsAuth — новые production-изображения через gpt-image-2 недоступны в этом run",
   "policy": "teya/shared/visual-assets-mcp-policy.md",
@@ -21,7 +21,6 @@
       "remote_packaged_url": "",
       "detected_format": "jpeg",
       "bytes": 192739,
-      "allow_duplicate_of": "dest-uae",
       "status": "ready",
       "decode_verified": true
     },
@@ -40,7 +39,6 @@
       "remote_packaged_url": "",
       "detected_format": "jpeg",
       "bytes": 96848,
-      "allow_duplicate_of": "dest-turkey",
       "status": "ready",
       "decode_verified": true
     },
@@ -77,7 +75,6 @@
       "remote_packaged_url": "",
       "detected_format": "jpeg",
       "bytes": 102322,
-      "allow_duplicate_of": "dest-thailand",
       "status": "ready",
       "decode_verified": true
     },

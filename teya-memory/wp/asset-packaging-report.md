@@ -1,8 +1,8 @@
 # Asset Packaging Report — zhiraf-ufa
 
 **Theme slug:** `zhiraf-ufa`
-**Generated at:** 2026-10-18T13:37:31+00:00
-**Script:** `teya/scripts/package_mcp_assets.py`
+**Generated at:** 2026-10-18T13:46:03+00:00
+**Script:** local decode verify (distinct hero/dest stock files)
 **Verdict:** READY
 
 ## Summary
@@ -11,57 +11,41 @@
 | --- | ---: |
 | Registry assets | 17 |
 | Ready assets | 17 |
+| Unique sha256 (registry) | 17 |
 | Blockers | 0 |
 
-## Download Contract
+## Hero vs dest bytes
 
-- Probe: `Range: bytes=0-15`.
-- File size: only `Content-Range */total` is authoritative for range responses.
-- Chunks: 8192-byte Range requests with retries.
-- Verification: byte signature + Pillow `verify()` + second `load()`.
-- Format mismatch: WebP/JPEG/GIF to `.png` is re-encoded, never renamed.
+Восстановлены **разные** stock-файлы для карточек направлений (git `731a983` / `SOURCES.md` dest-* IDs). `dest-*-new.jpg` синхронизированы с `dest-*.jpg` для UAE, Turkey, Thailand. `allow_duplicate_of` **удалён** из registry и media-map.
+
+| pair | hero sha256 (prefix) | dest sha256 (prefix) |
+| --- | --- | --- |
+| uae | `7860dfdb…` | `31eccccb…` |
+| turkey | `e6ffc39d…` | `a0e46761…` |
+| thailand | `2a2bb775…` | `ce79897b…` |
 
 ## Per Asset
 
-| id | status | source | format | bytes | WxH | local_path |
-| --- | --- | --- | --- | ---: | ---: | --- |
-| hero-uae | ok | user_provided_copy | jpeg | 192739 | 800x1200 | `assets/images/hero-uae.jpg` |
-| hero-turkey | ok | user_provided_copy | jpeg | 96848 | 800x533 | `assets/images/hero-turkey.jpg` |
-| hero-egypt | ok | user_provided_copy | jpeg | 93908 | 800x533 | `assets/images/hero-egypt.jpg` |
-| hero-thailand | ok | user_provided_copy | jpeg | 102322 | 800x554 | `assets/images/hero-thailand.jpg` |
-| hero-vietnam | ok | user_provided_copy | jpeg | 98587 | 800x500 | `assets/images/hero-vietnam.jpg` |
-| dest-turkey | ok | user_provided_copy | jpeg | 96848 | 800x533 | `assets/images/dest-turkey-new.jpg` |
-| dest-uae | ok | user_provided_copy | jpeg | 192739 | 800x1200 | `assets/images/dest-uae-new.jpg` |
-| dest-egypt | ok | user_provided_copy | jpeg | 82565 | 800x534 | `assets/images/dest-egypt-new.jpg` |
-| dest-thailand | ok | user_provided_copy | jpeg | 102322 | 800x554 | `assets/images/dest-thailand-new.jpg` |
-| dest-vietnam | ok | user_provided_copy | jpeg | 93381 | 800x533 | `assets/images/dest-vietnam-new.jpg` |
-| subscribe-bg | ok | user_provided_copy | jpeg | 217817 | 1600x1064 | `assets/images/subscribe-bg.jpg` |
-| catalog-hub | ok | user_provided_copy | jpeg | 177401 | 1200x797 | `assets/images/catalog-hub.jpg` |
-| team-travel | ok | user_provided_copy | jpeg | 115868 | 1200x800 | `assets/images/team-travel.jpg` |
-| office-ufa | ok | user_provided_copy | jpeg | 117648 | 1200x801 | `assets/images/office-ufa.jpg` |
-| blog-cover-01 | ok | user_provided_copy | jpeg | 211071 | 1200x1500 | `assets/images/blog-cover-01.jpg` |
-| article-main | ok | user_provided_copy | jpeg | 179943 | 1200x800 | `assets/images/article-main.jpg` |
-| logo-client | ok | user_provided_copy | png | 6028 | 167x56 | `assets/images/logo-zhiraf-client.png` |
+| id | status | format | bytes | WxH | local_path | decode_verified |
+| --- | --- | --- | ---: | ---: | --- | --- |
+| hero-uae | ok | jpeg | 192739 | 800x1200 | `assets/images/hero-uae.jpg` | true |
+| hero-turkey | ok | jpeg | 96848 | 800x533 | `assets/images/hero-turkey.jpg` | true |
+| hero-egypt | ok | jpeg | 93908 | 800x533 | `assets/images/hero-egypt.jpg` | true |
+| hero-thailand | ok | jpeg | 102322 | 800x554 | `assets/images/hero-thailand.jpg` | true |
+| hero-vietnam | ok | jpeg | 98587 | 800x500 | `assets/images/hero-vietnam.jpg` | true |
+| dest-turkey | ok | jpeg | 86134 | 800x533 | `assets/images/dest-turkey-new.jpg` | true |
+| dest-uae | ok | jpeg | 112572 | 800x1200 | `assets/images/dest-uae-new.jpg` | true |
+| dest-egypt | ok | jpeg | 82565 | 800x534 | `assets/images/dest-egypt-new.jpg` | true |
+| dest-thailand | ok | jpeg | 113307 | 800x534 | `assets/images/dest-thailand-new.jpg` | true |
+| dest-vietnam | ok | jpeg | 93381 | 800x533 | `assets/images/dest-vietnam-new.jpg` | true |
+| subscribe-bg | ok | jpeg | 217817 | 1600x1064 | `assets/images/subscribe-bg.jpg` | true |
+| catalog-hub | ok | jpeg | 177401 | 1200x797 | `assets/images/catalog-hub.jpg` | true |
+| team-travel | ok | jpeg | 115868 | 1200x800 | `assets/images/team-travel.jpg` | true |
+| office-ufa | ok | jpeg | 117648 | 1200x801 | `assets/images/office-ufa.jpg` | true |
+| blog-cover-01 | ok | jpeg | 211071 | 1200x1500 | `assets/images/blog-cover-01.jpg` | true |
+| article-main | ok | jpeg | 179943 | 1200x800 | `assets/images/article-main.jpg` | true |
+| logo-client | ok | png | 6028 | 167x56 | `assets/images/logo-zhiraf-client.png` | true |
 
-## Theme folder decode audit (`deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa`)
+## Theme folder decode audit
 
-**Source:** `existing_theme_asset` (локальные файлы темы; MCP KV `needsAuth`, скачивание не выполнялось).
-
-| Metric | Value |
-| --- | ---: |
-| Raster files scanned | 38 |
-| `decode_verified` | 38 |
-| Blockers | 0 |
-
-### Repairs (0-byte placeholders)
-
-| File | Action |
-| --- | --- |
-| `assets/images/dest-uae-new.jpg` | Восстановлен из `dest-uae.jpg` (192739 bytes, JPEG 800×1200) |
-| `assets/images/hero-collage-1.jpg` | Восстановлен из `hero-uae.jpg` (legacy collage asset, не в PHP) |
-
-### Registry duplicate bytes (allowed)
-
-Пары hero/dest с одним stock-файлом помечены `allow_duplicate_of` в `AURA_ASSET_REGISTRY.json` и в `wp-media-map.json` / theme `media-map.json`: `hero-thailand`→`dest-thailand`, `hero-uae`→`dest-uae`, `hero-turkey`→`dest-turkey`. `teya_release_gate.py` учитывает это при проверке sha256.
-
-Packaged copies: `teya-memory/wp/theme/zhiraf-ufa/assets/images/` (17 registry assets).
+`deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images`: **38/38** raster files `decode_verified` (Pillow verify + load).

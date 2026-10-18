@@ -1,7 +1,7 @@
 {
   "theme_slug": "zhiraf-ufa",
-  "generated_at": "2026-10-18T13:37:31+00:00",
-  "source": "teya/scripts/package_mcp_assets.py",
+  "generated_at": "2026-10-18T13:46:28+00:00",
+  "source": "aurora-team-asset-packager",
   "transport_status": "pass",
   "assets": [
     {
@@ -10,8 +10,6 @@
       "local_path": "assets/images/hero-uae.jpg",
       "path": "assets/images/hero-uae.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "ОАЭ — пляж и небоскрёбы",
       "detected_format": "jpeg",
@@ -23,7 +21,7 @@
       "height": 1200,
       "download_method": "existing_file",
       "decode_verified": true,
-      "allow_duplicate_of": "dest-uae"
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-uae.jpg"
     },
     {
       "id": "hero-turkey",
@@ -31,8 +29,6 @@
       "local_path": "assets/images/hero-turkey.jpg",
       "path": "assets/images/hero-turkey.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Турция — курорт",
       "detected_format": "jpeg",
@@ -44,7 +40,7 @@
       "height": 533,
       "download_method": "existing_file",
       "decode_verified": true,
-      "allow_duplicate_of": "dest-turkey"
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-turkey.jpg"
     },
     {
       "id": "hero-egypt",
@@ -52,8 +48,6 @@
       "local_path": "assets/images/hero-egypt.jpg",
       "path": "assets/images/hero-egypt.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Египет — море",
       "detected_format": "jpeg",
@@ -64,7 +58,8 @@
       "width": 800,
       "height": 533,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-egypt.jpg"
     },
     {
       "id": "hero-thailand",
@@ -72,8 +67,6 @@
       "local_path": "assets/images/hero-thailand.jpg",
       "path": "assets/images/hero-thailand.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Таиланд",
       "detected_format": "jpeg",
@@ -85,7 +78,7 @@
       "height": 554,
       "download_method": "existing_file",
       "decode_verified": true,
-      "allow_duplicate_of": "dest-thailand"
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-thailand.jpg"
     },
     {
       "id": "hero-vietnam",
@@ -93,8 +86,6 @@
       "local_path": "assets/images/hero-vietnam.jpg",
       "path": "assets/images/hero-vietnam.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Вьетнам",
       "detected_format": "jpeg",
@@ -105,7 +96,8 @@
       "width": 800,
       "height": 500,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-vietnam.jpg"
     },
     {
       "id": "dest-turkey",
@@ -113,19 +105,18 @@
       "local_path": "assets/images/dest-turkey-new.jpg",
       "path": "assets/images/dest-turkey-new.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Турция — вертикальная карточка направления",
       "detected_format": "jpeg",
       "expected_extension": ".jpg",
       "content_type": "image/jpeg",
-      "bytes": 96848,
-      "sha256": "e6ffc39d279a1c9e4d528bf9c310c4debb1c98d53ba04a1500800c3ed657071c",
-      "width": 800,
-      "height": 533,
+      "bytes": 86134,
+      "sha256": "a0e46761ab4a1d9950b2343fd9731d060233b496b998424b6567c8a704aa080b",
+      "width": 900,
+      "height": 598,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/dest-turkey-new.jpg"
     },
     {
       "id": "dest-uae",
@@ -133,19 +124,18 @@
       "local_path": "assets/images/dest-uae-new.jpg",
       "path": "assets/images/dest-uae-new.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "ОАЭ — вертикальная карточка",
       "detected_format": "jpeg",
       "expected_extension": ".jpg",
       "content_type": "image/jpeg",
-      "bytes": 192739,
-      "sha256": "7860dfdb837ffa8f5ec3ef4c39f745646a298d2386985f8a92c3ea4fbc40f021",
-      "width": 800,
-      "height": 1200,
+      "bytes": 112572,
+      "sha256": "31eccccbb6145e2730d7d0d969e68f59b92cedd62f6c7ae6814545b4333df89d",
+      "width": 900,
+      "height": 600,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/dest-uae-new.jpg"
     },
     {
       "id": "dest-egypt",
@@ -153,8 +143,6 @@
       "local_path": "assets/images/dest-egypt-new.jpg",
       "path": "assets/images/dest-egypt-new.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Египет — вертикальная карточка",
       "detected_format": "jpeg",
@@ -165,7 +153,8 @@
       "width": 800,
       "height": 534,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/dest-egypt-new.jpg"
     },
     {
       "id": "dest-thailand",
@@ -173,19 +162,18 @@
       "local_path": "assets/images/dest-thailand-new.jpg",
       "path": "assets/images/dest-thailand-new.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Таиланд — вертикальная карточка",
       "detected_format": "jpeg",
       "expected_extension": ".jpg",
       "content_type": "image/jpeg",
-      "bytes": 102322,
-      "sha256": "2a2bb7758d5ee948148115418f9bd138703932cdbbc0a42795846c43aaa2090c",
-      "width": 800,
-      "height": 554,
+      "bytes": 113307,
+      "sha256": "ce79897b899cd7912c9d293dcb17674493b9a818ce99f83a99cb67647153472d",
+      "width": 900,
+      "height": 601,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/dest-thailand-new.jpg"
     },
     {
       "id": "dest-vietnam",
@@ -193,8 +181,6 @@
       "local_path": "assets/images/dest-vietnam-new.jpg",
       "path": "assets/images/dest-vietnam-new.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Вьетнам — вертикальная карточка",
       "detected_format": "jpeg",
@@ -205,7 +191,8 @@
       "width": 800,
       "height": 533,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/dest-vietnam-new.jpg"
     },
     {
       "id": "subscribe-bg",
@@ -213,8 +200,6 @@
       "local_path": "assets/images/subscribe-bg.jpg",
       "path": "assets/images/subscribe-bg.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Подписка — full-bleed фото путешествия",
       "detected_format": "jpeg",
@@ -225,7 +210,8 @@
       "width": 1600,
       "height": 1064,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/subscribe-bg.jpg"
     },
     {
       "id": "catalog-hub",
@@ -233,8 +219,6 @@
       "local_path": "assets/images/catalog-hub.jpg",
       "path": "assets/images/catalog-hub.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Каталог туров — hero",
       "detected_format": "jpeg",
@@ -245,7 +229,8 @@
       "width": 1200,
       "height": 797,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/catalog-hub.jpg"
     },
     {
       "id": "team-travel",
@@ -253,8 +238,6 @@
       "local_path": "assets/images/team-travel.jpg",
       "path": "assets/images/team-travel.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Команда за работой",
       "detected_format": "jpeg",
@@ -265,7 +248,8 @@
       "width": 1200,
       "height": 800,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/team-travel.jpg"
     },
     {
       "id": "office-ufa",
@@ -273,8 +257,6 @@
       "local_path": "assets/images/office-ufa.jpg",
       "path": "assets/images/office-ufa.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Офис на Гагарина, Уфа",
       "detected_format": "jpeg",
@@ -285,7 +267,8 @@
       "width": 1200,
       "height": 801,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/office-ufa.jpg"
     },
     {
       "id": "blog-cover-01",
@@ -293,8 +276,6 @@
       "local_path": "assets/images/blog-cover-01.jpg",
       "path": "assets/images/blog-cover-01.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Обложка блога (placeholder)",
       "detected_format": "jpeg",
@@ -305,7 +286,8 @@
       "width": 1200,
       "height": 1500,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg"
     },
     {
       "id": "article-main",
@@ -313,8 +295,6 @@
       "local_path": "assets/images/article-main.jpg",
       "path": "assets/images/article-main.jpg",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Главная статья editorial",
       "detected_format": "jpeg",
@@ -325,7 +305,8 @@
       "width": 1200,
       "height": 800,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/article-main.jpg"
     },
     {
       "id": "logo-client",
@@ -333,8 +314,6 @@
       "local_path": "assets/images/logo-zhiraf-client.png",
       "path": "assets/images/logo-zhiraf-client.png",
       "remote_url": "",
-      "source_url": null,
-      "transparent_url": null,
       "requires_background_removal": false,
       "alt_text": "Логотип Жираф (header)",
       "detected_format": "png",
@@ -345,9 +324,8 @@
       "width": 167,
       "height": 56,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/logo-zhiraf-client.png"
     }
-  ],
-  "duplicate_bytes_policy": "allow_duplicate_of_from_registry",
-  "updated_at": "2026-10-18T13:43:59+00:00"
+  ]
 }

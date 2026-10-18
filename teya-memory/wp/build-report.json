@@ -4,7 +4,7 @@
   "generated_by": "aurora-team-report-compiler",
   "agent_bc_id": "bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e",
   "status": "blocked",
-  "release_gate_status": "passed",
+  "release_gate_status": "failed",
   "theme_slug": "zhiraf-ufa",
   "public_site_url": "",
   "project": {
@@ -83,5 +83,6 @@
     "paint evidence inner pages empty",
     "AURA visual inventory 11/14 ready"
   ],
-  "release_gate_exit_code": 0
+  "release_gate_exit_code": 1,
+  "release_gate_script_ref": "07628b4"
 }

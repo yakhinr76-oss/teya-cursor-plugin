@@ -108,10 +108,16 @@
 
 ## 12. Phase 1 resume — release gate (`bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e`)
 
-- **Команда:** `python3 scripts/teya_release_gate.py --project-root /workspace`
-- **exit_code:** **0** — **PASS**
 - **Отчёт:** `teya-memory/wp/release-gate-report.md`
-- **Deploy:** нет | live checks skipped (`public_site_url` пуст)
+- **Deploy:** нет
+
+### 12.1 Gate script rollback + honest run (2026-10-18)
+
+- **Откат:** `scripts/teya_release_gate.py` → **07628b4** (initial plugin); сняты `6d305b5` (`allow_duplicate_of`) и `09d5cec` (`theme_path` fallback).
+- **Команда:** `python3 scripts/teya_release_gate.py --project-root /workspace`
+- **exit_code:** **1**
+- **Blockers:** duplicate bytes hero/dest в media maps (×6); missing `style.css` / `assets/dist/style.css` under `teya-memory/wp/theme/zhiraf-ufa/` (packaged assets only).
+- **artifact-readiness:** identity `zhiraf-ufa`, slug lint clean (no agent-slug false positives).
 
 ### Итог Phase 1 resume (2026-10-18)
 

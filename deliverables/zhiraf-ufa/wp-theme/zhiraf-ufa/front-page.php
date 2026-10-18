@@ -32,7 +32,7 @@ $dest_all   = zhiraf_ufa_destinations();
 				</div>
 				
 				<!-- Airplane Trajectory SVG -->
-				<svg class="hero-collage__flight-path" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<svg class="hero-collage__flight-path" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 					<path d="M10,180 Q100,50 380,80" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="6,6" fill="none"/>
 					<path d="M370,75 L385,81 L370,87 Z" fill="var(--color-primary)" />
 				</svg>

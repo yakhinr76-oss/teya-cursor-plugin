@@ -180,41 +180,41 @@
 
 ---
 
-## 13. Wordstat URL-map (18.10.2026)
+## 14. Wordstat API refresh (18.10.2026)
 
-Честный конвейер после Wordstat-среза **Уфа 172** (833 фразы): от URL-map до gate **PASS** на `af9ce66`, **без production deploy**.
+Повторный честный прогон на **Yandex Search API v2** (регион **Уфа 172**): обновлённые частотности → **19** страниц в карте (**7 NEW**, без отдельного URL Пхукета), paint **38** PNG, gate **PASS** на `a06c6d5`, **без production deploy**.
 
 | Шаг | agent_id (`bc-…`) | Коммит / артефакт | Результат |
 |-----|-------------------|-------------------|-----------|
-| 1. Координатор (semantic URL-map) | lead / yadryshko handoff | **0b2883c** | [`wordstat/url-map.md`](../../teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md), `06-url-map.csv` — **20 страниц** (12 есть + **8 новых**) |
-| 2. aurora-team-content | `bc-96c7bc04-…` | **82b6778** | `page-content-pack.md`, `07-content-briefs.md`, fragment `aurora-team-content.md` |
-| 3. PAGE BUILDER (wp-theme-builder) | `bc-78870dfb-…` | **a2c6672** | **8** лендингов + `inc/tour-routing.php` (resort rewrites); `php -l` **49/0**; отчёт `teya-memory/wp/page-build-report.md` |
-| 4. paint (design-guardian QA) | `bc-91bdee58-…` | **d5cf815** | **40** fullpage PNG (20 URL × 1440/390) → `/opt/cursor/artifacts/`; preview scripts в `deliverables/zhiraf-ufa/preview/` |
-| 5. release gate | `bc-5ed0ebcc-…` | **af9ce66** | `teya_release_gate.py` **07628b4** (SHA256 без изменений); **exit 0 PASS** — только fix артефактов темы под gate, скрипт не трогали |
+| 1. yadryshko (semantic + API) | `bc-6807d4c8-…` | **6715a4d** | API test **HTTP 200**, **45** успешных вызовов; `wordstat/_run_stats.json`; [`wordstat/url-map.md`](../../teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md), `06-url-map.csv` — **19** URL (**7 NEW**); **1754** включённых фраз |
+| 2. aurora-team-content | — | **fd92227** | `page-content-pack.md`, briefs — **19** страниц, **7 NEW**, Phuket → секция на `/tour/tailand/` |
+| 3. PAGE BUILDER (theme) | — | **94af27c** | Снят `/tour/tailand/phuket/`; Thailand sections + Wordstat sync; `php -l` OK |
+| 4. paint (design-guardian QA) | `bc-6dc66391-…` | **a06c6d5** | **38** fullpage PNG (**19** маршрутов × 1440/390); `paint-evidence.json`; preview `deliverables/zhiraf-ufa/preview/` |
+| 5. release gate | — | **a06c6d5** | `teya_release_gate.py` **07628b4** (SHA256 `50f71547…`, скрипт не меняли); **`exit_code` 0 — PASS** — `teya-memory/wp/release-gate-report.md` (worker не обновил `git_ref` после paint; локальный re-run на `a06c6d5` + Pillow → **PASS**) |
 
-### 8 новых URL (порог ≥100 показов/мес., Уфа)
+### 7 NEW URL (порог ≥100, API 18.10.2026)
 
-1. `/goryashchie-tury/` (горящие **3024**)
-2. `/vse-vklyucheno/` (всё включено **735**)
-3. `/tour/turciya/antalya/` (**122**)
-4. `/tour/egipet/hurgada/` (**327**)
-5. `/tour/egipet/sharm-el-sheyh/` (**242**)
-6. `/tour/tailand/phuket/` (**125**)
-7. `/tour/vietnam/nyachang/` (**193**)
-8. `/tour/vietnam/fukuok/` (**183**)
+1. `/goryashchie-tury/` (горящие **3480**)
+2. `/vse-vklyucheno/` (всё включено **561**)
+3. `/tour/turciya/antalya/` (**344** totalCount по seed)
+4. `/tour/egipet/hurgada/` (**853**)
+5. `/tour/egipet/sharm-el-sheyh/` (**233**)
+6. `/tour/vietnam/nyachang/` (**481**)
+7. `/tour/vietnam/fukuok/` (**386**)
 
-Ниже порога 100 — секции на странах (Кемер 82, Аланья 58, Паттайя 49, с детьми 20); см. URL-map.
+**Снято с отдельного URL:** `/tour/tailand/phuket/` (пхукет **58+55** &lt;100) → секция на [`/tour/tailand/`](../../teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md).
 
-### Итог Wordstat pipeline (18.10.2026)
+### Итог Wordstat API pipeline (18.10.2026)
 
 | Gate | Статус |
 |------|--------|
-| URL-map + CSV | **✅** (`0b2883c`) |
-| Content 20 URL | **✅** (`82b6778`) |
-| Theme 8 NEW + routing | **✅** (`a2c6672`, `php -l` 49/0) |
-| Paint 20 routes | **✅** (`d5cf815`, 40 screenshots) |
-| `teya_release_gate.py` | **PASS** (exit 0, script **07628b4**, ref **af9ce66**) |
+| Wordstat API (200, 45 calls) | **✅** (`6715a4d`) |
+| URL-map **19** страниц | **✅** — [финальная карта](../../teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md) |
+| Content 19 URL | **✅** (`fd92227`) |
+| Theme (Phuket URL removed) | **✅** (`94af27c`) |
+| Paint 19 routes | **✅** (`a06c6d5`, 38 screenshots) |
+| `teya_release_gate.py` | **PASS** (exit **0**, ref **a06c6d5**) |
 | Deploy | **no** |
 
-- **Журнал / fragment:** `teya-memory/fragments/wordstat-pipeline.md`
+- **Fragment (опц.):** `teya-memory/fragments/wordstat-api-pipeline.md` — не создан; сводка в §14
 - **Release report:** `teya-memory/wp/release-gate-report.md`

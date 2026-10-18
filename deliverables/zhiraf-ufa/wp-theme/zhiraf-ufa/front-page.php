@@ -12,7 +12,7 @@ $dest_all   = zhiraf_ufa_destinations();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					Открывайте мир <br><span class="hero-premium__title-highlight">вместе</span> с нами
+					Открывайте мир <br><span class="hero-premium__title-highlight">вместе</span>&nbsp;с&nbsp;нами
 				</h1>
 				<p class="hero-premium__subtitle">Индивидуальные туры из Уфы. Безупречный сервис и внимание к каждой детали вашего отдыха. Мы поможем вам найти идеальный курорт.</p>
 				<div class="hero-premium__actions">
@@ -136,20 +136,25 @@ $dest_all   = zhiraf_ufa_destinations();
 									if ( $thumb_id ) {
 										echo wp_get_attachment_image( $thumb_id, 'large', false, array( 'class' => 'editorial-main__img' ) );
 									} else {
-										zhiraf_ufa_img( 'article-main.jpg', get_the_title( $main_post ), 'editorial-main__img', true );
+										zhiraf_ufa_img( 'article-fallback.jpg', get_the_title( $main_post ), 'editorial-main__img', true );
 									}
 								}
 								?>
 							</div>
 							<div class="editorial-main__content">
+								<?php 
+								$cat_name = is_array($main_post) ? $main_post['category'] : zhiraf_ufa_story_category_label( $main_post->ID );
+								if ( $cat_name && $cat_name !== 'Uncategorized' && $cat_name !== 'Без рубрики' ) :
+								?>
 								<span class="editorial-cat">
-									<?php echo is_array($main_post) ? esc_html($main_post['category']) : esc_html( zhiraf_ufa_story_category_label( $main_post->ID ) ); ?>
+									<?php echo esc_html( $cat_name ); ?>
 								</span>
+								<?php endif; ?>
 								<h3 class="editorial-main__title">
 									<?php echo is_array($main_post) ? esc_html($main_post['title']) : esc_html( get_the_title( $main_post ) ); ?>
 								</h3>
 								<time class="editorial-date">
-									<?php echo is_array($main_post) ? 'Окт 15, 2026' : get_the_date( '', $main_post ); ?> · 4 мин
+									<?php echo is_array($main_post) ? '15 октября 2026' : wp_date( 'j F Y', get_post_timestamp( $main_post ) ); ?> · 4 мин чтения
 								</time>
 								<p class="editorial-main__excerpt">
 									<?php 
@@ -171,7 +176,7 @@ $dest_all   = zhiraf_ufa_destinations();
 						<a href="<?php echo is_array($post) ? esc_url($post['url']) : esc_url( get_permalink( $post ) ); ?>" class="editorial-list-item">
 							<div class="editorial-list-item__img-wrap">
 								<?php 
-								$fallback_imgs = ['article-1.jpg', 'article-2.jpg', 'article-3.jpg'];
+								$fallback_imgs = ['article-fallback.jpg', 'article-fallback.jpg', 'article-fallback.jpg'];
 								if ( is_array($post) ) {
 									zhiraf_ufa_img( $fallback_imgs[$i % 3], $post['title'], 'editorial-list-item__img', true );
 								} else {
@@ -179,20 +184,25 @@ $dest_all   = zhiraf_ufa_destinations();
 									if ( $thumb_id ) {
 										echo wp_get_attachment_image( $thumb_id, 'thumbnail', false, array( 'class' => 'editorial-list-item__img' ) );
 									} else {
-										zhiraf_ufa_img( $fallback_imgs[$i % 3], get_the_title( $post ), 'editorial-list-item__img', true );
+										zhiraf_ufa_img( 'article-fallback.jpg', get_the_title( $post ), 'editorial-list-item__img', true );
 									}
 								}
 								?>
 							</div>
 							<div class="editorial-list-item__content">
+								<?php 
+								$cat_name = is_array($post) ? $post['category'] : zhiraf_ufa_story_category_label( $post->ID );
+								if ( $cat_name && $cat_name !== 'Uncategorized' && $cat_name !== 'Без рубрики' ) :
+								?>
 								<span class="editorial-cat">
-									<?php echo is_array($post) ? esc_html($post['category']) : esc_html( zhiraf_ufa_story_category_label( $post->ID ) ); ?>
+									<?php echo esc_html( $cat_name ); ?>
 								</span>
+								<?php endif; ?>
 								<h4 class="editorial-list-item__title">
 									<?php echo is_array($post) ? esc_html($post['title']) : esc_html( get_the_title( $post ) ); ?>
 								</h4>
 								<time class="editorial-date">
-									<?php echo is_array($post) ? 'Окт '.(10+$i).', 2026' : get_the_date( '', $post ); ?> · 5 мин
+									<?php echo is_array($post) ? (10+$i).' октября 2026' : wp_date( 'j F Y', get_post_timestamp( $post ) ); ?> · 5 мин чтения
 								</time>
 							</div>
 						</a>
@@ -233,7 +243,7 @@ $dest_all   = zhiraf_ufa_destinations();
 		</div>
 		<div class="container reveal">
 			<div class="subscribe-premium__content">
-				<h2>Свежие идеи для<br>ваших путешествий</h2>
+				<h2>Подборки туров и советы — на почту</h2>
 				<p>Подпишитесь на нашу рассылку, чтобы первыми узнавать о лучших предложениях.</p>
 				<form class="subscribe-premium__form">
 					<input type="email" placeholder="Ваш email" required class="subscribe-input" />

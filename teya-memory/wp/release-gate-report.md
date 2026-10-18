@@ -8,8 +8,8 @@
 | theme_slug | `zhiraf-ufa` |
 | gate_script_sha256 | `50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d` |
 | pillow | installed (`Pillow-13.0.0` in runner env) |
-| checked_at | 2026-10-18T21:20:00+00:00 |
-| git_ref | **40dd43f** (§18 Globe Trekker tour prices & expanded home page release verification) |
+| checked_at | 2026-10-18T21:40:00+00:00 |
+| git_ref | **51f63c3** (§18 edits release verification: resort photos, single-operator subtitles, paint QA & release gate) |
 | deploy | **not run** (`public_site_url` empty) |
 
 ## Stdout
@@ -42,8 +42,8 @@ None — zero gate blockers, Pillow установлен в окружении �
 
 ## Context
 
-- Branch tip: **40dd43f** (`chore(zhiraf-ufa): paint QA captures for §18 tour price cards and expanded home page`)
-- Pipeline Stage: **§18 Globe Trekker Tour Price Engine, Expanded Home Copy, Paint QA & Release Gate PASS**
+- Branch tip: **51f63c3** (`chore(zhiraf-ufa): update agent_bc_id in capture-all-paint script` + resort photos & subtitles)
+- Pipeline Stage: **§18 Globe Trekker Tour Price Engine, Expanded Home Copy, Paint QA & Release Gate PASS (Edits Verified)**
 - Theme mirrored: `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/` → `teya-memory/wp/theme/zhiraf-ufa/` (55 PHP файлов, BG API ценовой движок с WP-Cron и transients кэшем, `card-tour-price.php`, FAQPage schema JSON-LD, zero SEO leaks)
 - Copy quality: 19 канонических URL word counts соответствуют пороговым значениям, проверены фактологические параметры (климат, визы, перелеты из Уфы UFA), `scripts/zhiraf_copy_lint.sh` exit 0
 - Paint evidence: **19 маршрутов × 1440px / 390px** (38 PNG) в `deliverables/zhiraf-ufa/paint/` и `teya-memory/wp/paint-qa/` (`paint-evidence.json` verdict: pass)

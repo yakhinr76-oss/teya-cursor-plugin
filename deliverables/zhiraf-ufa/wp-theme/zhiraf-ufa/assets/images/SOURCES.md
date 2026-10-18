@@ -5,8 +5,8 @@
 | hero-turkey.jpg | Unsplash | Photo ID 1520250497591 — https://unsplash.com/photos/beach-resort |
 | hero-uae.jpg | Unsplash | Photo ID 1512453979798 — https://unsplash.com/photos/dubai-skyline |
 | hero-thailand.jpg | Unsplash (via dest-thailand.jpg) | Photo ID 1537953773345 |
-| hero-egypt.jpg | Unsplash (via dest-egypt-new.jpg) | Red Sea resort & beach |
-| hero-vietnam.jpg | Unsplash (via dest-vietnam-new.jpg) | Photo ID 1528127269322 — Nha Trang beach |
+| hero-egypt.jpg | Unsplash (via dest-egypt.jpg) | Photo ID 1572252009286 |
+| hero-vietnam.jpg | Unsplash | Photo ID 1559592413 — https://unsplash.com/photos/vietnam |
 | dest-turkey.jpg | Unsplash | Photo ID 1507525428034 |
 | dest-uae.jpg | Unsplash | Photo ID 1518684079 |
 | dest-egypt.jpg | Unsplash (dest-egypt-new.jpg) | Red Sea resort & beach |

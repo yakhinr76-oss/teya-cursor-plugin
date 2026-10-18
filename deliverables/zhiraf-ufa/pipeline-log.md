@@ -42,6 +42,7 @@
 | paint-qa (§18 tour price cards capture) | `bc-0351c800-bd5a-5537-bc28-99dd60a3169c` | да |
 | release-gate-auditor (§18 release gate verification) | `bc-0d13e97b-f467-5768-b693-e95d454b93df` | да |
 | pipeline-log-compiler (§18 log compilation) | `bc-94c818d5-a1a2-51dc-ae0e-c3e6ebacfa4c` | да |
+| release-gate-auditor (§18 edits release gate PASS) | `bc-4ba1d94a-9558-5d3e-b429-aa4fc3e90865` | да |
 
 ---
 
@@ -367,7 +368,8 @@ AURA **Globe Trekker** blog pack (**1 featured + 5 cards**, serif **H1–H3**, e
 | 5. SEO-QA Инженер (aurora-team-qa) | `bc-603126be-b364-5e13-91b3-4f9e1e19d675` | **16ba9ed** | Полный аудит 19 канонических URL; верификация Schema.org JSON-LD (`TravelAgency` / `TouristInformationCenter`, `WebSite`, `BreadcrumbList`, `FAQPage`, `Article`); 0 служебных SEO-утечек по линтеру; отчет [`teya-memory/wp/seo-qa-tour-prices-report.md`](../../teya-memory/wp/seo-qa-tour-prices-report.md) |
 | 6. Paint QA (aurora-team-design-guardian) | `bc-0351c800-bd5a-5537-bc28-99dd60a3169c` | **40dd43f** | Playwright захват 19 маршрутов в разрешениях 1440px (desktop) и 390px (mobile) = **38 полностраничных PNG**; верификация рендера карточек туров на главной и посадочных страниц стран; отчет [`teya-memory/wp/paint-qa/paint-qa-report.md`](../../teya-memory/wp/paint-qa/paint-qa-report.md), `paint-evidence.json` (**verdict: pass**) |
 | 7. Release Gate Auditor (aurora-team-release-gate) | `bc-0d13e97b-f467-5768-b693-e95d454b93df` | **7ee073e** | Тесты `python3 scripts/teya_release_gate.py --project-root /workspace` (**PASS**, exit code 0, SHA256 `50f71547…`); `bash scripts/zhiraf_copy_lint.sh` (**PASS**, 0 leaks); `php -l` (**55/55** OK); отчет [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md) |
-| 8. Pipeline Log Compiler | `bc-94c818d5-a1a2-51dc-ae0e-c3e6ebacfa4c` | **HEAD** | Сводка этапа §18 в `deliverables/zhiraf-ufa/pipeline-log.md` |
+| 8. Pipeline Log Compiler | `bc-94c818d5-a1a2-51dc-ae0e-c3e6ebacfa4c` | **7f71b3c** | Сводка этапа §18 в `deliverables/zhiraf-ufa/pipeline-log.md` |
+| 9. Release Gate Auditor (§18 edits re-check) | `bc-4ba1d94a-9558-5d3e-b429-aa4fc3e90865` | **HEAD** | Ре-валидация правок §18 (resort photos, single-operator subtitles, paint QA): `teya_release_gate.py` (**PASS**, exit code 0), `zhiraf_copy_lint.sh` (**PASS**, 0 leaks), `php -l` (**55/55** OK); обновление отчёта и журнала конвейера |
 
 ### Детальный анализ компонентов §18
 

@@ -58,17 +58,56 @@
       "blockers": []
     },
     {
-      "id": "front-page:editorial",
+      "id": "front-page:editorial-globe",
       "page": "/",
-      "required_background": "bg-milky",
+      "blueprint_ref": "AURA_BLOG_SECTION_BLUEPRINT.json#surfaces.home_blog_teaser",
+      "required_background": "#FAF8F5 bg-milky",
       "required_visuals": [
-        "featured 16:9",
-        "3 thumbs"
+        "1 featured 16:9",
+        "5 card thumbs 16:9 or 1:1 stack"
       ],
-      "required_cards": 4,
+      "required_cards": 6,
+      "required_typography": "Cormorant Garamond H3 titles; Manrope body/meta UI",
+      "required_meta": "blog-meta-row: rubrika, optional country, read_time",
+      "required_motion": "reveal stagger; image hover scale",
+      "transition_in": "flat from steps",
+      "transition_out": "subscribe full-bleed",
+      "wireframe": "AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md#1",
       "blockers": [
-        "editorial thumbs may need per-post thumbs"
+        "PHP: front-page only featured — implement editorial-globe 1+5",
+        "per-post thumbnails for stack cards",
+        "local cormorant woff2 in theme assets"
       ]
+    },
+    {
+      "id": "page-blog:archive",
+      "page": "/blog/",
+      "blueprint_ref": "AURA_BLOG_SECTION_BLUEPRINT.json#surfaces.blog_archive",
+      "required_background": "#FAF8F5 hero + white or milky grid section",
+      "required_visuals": [
+        "optional first-page featured 16:9",
+        "post-grid 16:9 cards"
+      ],
+      "required_cards": "3+ per page grid",
+      "required_typography": "H1 archive + card titles serif; body Manrope",
+      "required_meta": "blog-meta-row on each card",
+      "wireframe": "AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md#2",
+      "blockers": [
+        "home.php generic post-grid — add globe classes and featured slot"
+      ]
+    },
+    {
+      "id": "page-blog:single",
+      "page": "/blog/{slug}/",
+      "blueprint_ref": "AURA_BLOG_SECTION_BLUEPRINT.json#surfaces.single_post",
+      "required_background": "#FAF8F5",
+      "required_visuals": [
+        "entry hero 16:9 when thumbnail"
+      ],
+      "required_typography": "H1 + content H2/H3 serif; prose body Manrope",
+      "required_meta": "blog-meta-row under title",
+      "wireframe": "AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md#3",
+      "blockers": []
     },
     {
       "id": "front-page:trust-social",

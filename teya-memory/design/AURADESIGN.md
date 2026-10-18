@@ -114,7 +114,7 @@ assets:
 - Контент **1240px** (`theme.json` layout.contentSize), padding 20px.
 - Hero: 50/50 grid, коллаж absolute с z-index choreography.
 - Destinations: 5 колонок desktop, aspect 3:4, hover scale фото.
-- Editorial: 1.5fr / 1fr.
+- Editorial blog (Globe Trekker): 1 featured 16:9 + 5 cards — asymmetric grid; см. `AURA_BLOG_SECTION_BLUEPRINT.json`.
 - Subscribe: overlay 50%, centered form, pill inputs.
 
 ## Philosophy & Vibe
@@ -136,12 +136,13 @@ assets:
 
 ## Typography Hierarchy
 
-- **Display/H1:** Manrope 800, negative tracking, italic accent word допустим.
-- **H2 section:** 2.5rem, 800.
-- **Body:** 17px Manrope 400, muted `#666` для вторичного текста.
-- **Кириллица:** только пары из `aura-cyrillic-google-fonts` — здесь **Manrope + Manrope** (без Playfair, без Unbounded в целевом контракте; в SCSS темы ещё есть Unbounded — Aurora: выровнять на Manrope 800 per GLOBE-TREKKER-REDESIGN).
+- **Display/H1 (сайт, не статья):** Manrope 800, negative tracking, italic accent word допустим.
+- **H2 section (главная и внутренние лендинги):** 2.5rem, Manrope 800.
+- **Body / UI:** 17px Manrope 400–600, muted `#666` для вторичного текста.
+- **Блог editorial (Globe Trekker):** **Cormorant Garamond** 600–700 только для H1–H3 в зонах `.editorial-blog-teaser`, `.site-main--blog`, `.entry--single .entry-content h2/h3`; body статьи и meta labels остаются **Manrope**. Без Playfair. Пути шрифтов в теме — `AURA_BLOG_SECTION_BLUEPRINT.json` → `typography.theme_font_files`; serif **только local @font-face**, без Google CDN (taste gate).
+- **Кириллица:** skill `aura-cyrillic-google-fonts` — пара **Cormorant Garamond + Manrope** для блога; остальной сайт Manrope-only.
 
-Подключение: один Google Fonts URL с `display=swap`, preconnect.
+Manrope: предпочтительно `assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2`; fallback Google Fonts URL с `display=swap` если variable ещё не подключён в `inc/enqueues.php`.
 
 ## Layout & Grid
 

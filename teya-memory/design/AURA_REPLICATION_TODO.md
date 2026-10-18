@@ -10,7 +10,9 @@
 ## P1 — внутренние страницы test build
 
 - [ ] `/tour/` — визуально связать chip-filter с tab-btn стилем главной
-- [ ] `/blog/` — card grid 16:9 + blog cover series lock
+- [ ] `/blog/` — Globe Trekker per `AURA_BLOG_SECTION_BLUEPRINT.json` (featured archive, 3-col grid, meta row, serif H1–H3)
+- [ ] Главная editorial — 1 featured + 5 cards (`editorial-globe` partial)
+- [ ] `assets/fonts/cormorant-garamond/*.woff2` + `@font-face` (no CDN)
 - [ ] `/kontakty/` — hero с `office-ufa.jpg` если нет
 
 ## P2 — assets (MCP KV после OAuth)

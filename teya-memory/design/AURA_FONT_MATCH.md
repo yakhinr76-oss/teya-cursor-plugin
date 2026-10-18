@@ -4,33 +4,40 @@
 
 ## Источник
 
-Globe Trekker: bold geometric sans, tight tracking, без serif display.
+Globe Trekker: geometric sans для UI и секций сайта; **editorial blog** — serif display на заголовках статей (H1–H3), тёплый журнальный контраст с Manrope body.
 
-## Выбранная пара
+## Выбранные пары
 
-| Роль | Шрифт | Кириллица |
-|------|-------|-----------|
-| Display / H1–H4 | **Manrope** 800 | ✅ Cyrillic |
-| Body / UI | **Manrope** 400–600 | ✅ |
+| Роль | Шрифт | Кириллица | Scope |
+|------|-------|-----------|--------|
+| Site display / H1–H2 секций | **Manrope** 800 | ✅ Cyrillic | hero, section-title, tour, footer |
+| Body / UI / meta sans | **Manrope** 400–700 | ✅ | весь сайт + тело статей |
+| Blog display H1–H3 | **Cormorant Garamond** 600–700 | ✅ Cyrillic | только блог (см. blueprint selectors) |
 
-**Пара:** Manrope + Manrope (editorial travel, русский B2C).
+**Пара editorial:** Cormorant Garamond + Manrope (skill каталог «Editorial / Журнал»).
 
-## Подключение
+## Файлы в теме (documented paths)
 
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-```
+| Гарнитура | Путь в теме |
+|-----------|-------------|
+| Manrope variable | `assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2` |
+| Cormorant SemiBold | `assets/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2` |
+| Cormorant Bold | `assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2` |
 
-Тема также использует локальный variable woff2: `assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2` — предпочтительно для production (меньше запросов).
+CSS variable: `--font-sans` (Manrope), `--font-blog-display` (Cormorant Garamond).
+
+**Cormorant:** подключать только через `@font-face` в SCSS — **без** `fonts.googleapis.com` для blog display (taste gate).
+
+**Manrope:** локальный variable предпочтительнее одного woff2; Google CDN допустим как fallback до self-host в enqueues.
 
 ## Отклонения в текущей теме
 
-- `main.scss` задаёт `--font-head: 'Unbounded'` — **не соответствует** GLOBE-TREKKER-REDESIGN («Manrope 800, без Playfair»). Aurora: заменить на Manrope 800.
+- `main.scss` задаёт `--font-head: 'Unbounded'` — **не соответствует** GLOBE-TREKKER-REDESIGN. Aurora: Manrope 800 для `--font-head`.
+- Блог без serif и без `blog-meta-row` — см. `AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md`.
 
 ## Запрещено
 
-- Playfair для русских заголовков без проверки
-- Inter как default body
-- Space Grotesk / Plus Jakarta для RU
+- Playfair
+- Google CDN для Cormorant в production blog headings
+- Serif на H1 hero главной или на карточках направлений
+- Inter / Space Grotesk как default body

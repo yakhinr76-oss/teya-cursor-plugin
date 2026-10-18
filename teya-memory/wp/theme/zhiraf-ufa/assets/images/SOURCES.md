@@ -5,13 +5,13 @@
 | hero-turkey.jpg | Unsplash | Photo ID 1520250497591 — https://unsplash.com/photos/beach-resort |
 | hero-uae.jpg | Unsplash | Photo ID 1512453979798 — https://unsplash.com/photos/dubai-skyline |
 | hero-thailand.jpg | Unsplash (via dest-thailand.jpg) | Photo ID 1537953773345 |
-| hero-egypt.jpg | Unsplash (via dest-egypt.jpg) | Photo ID 1572252009286 |
-| hero-vietnam.jpg | Unsplash | Photo ID 1559592413 — https://unsplash.com/photos/vietnam |
-| dest-turkey.jpg | Unsplash | Photo ID 1507525428034 |
-| dest-uae.jpg | Unsplash | Photo ID 1518684079 |
-| dest-egypt.jpg | Unsplash (dest-egypt-new.jpg) | Red Sea resort & beach |
-| dest-thailand.jpg | Unsplash | Photo ID 1537953773345 |
-| dest-vietnam.jpg | Unsplash (dest-vietnam-new.jpg) | Photo ID 1528127269322 — Nha Trang beach |
+| hero-egypt.jpg | Wikimedia Commons | Sharm el-Sheikh, Ras Um Sid Bay & coral reef (CC-BY-SA) |
+| hero-vietnam.jpg | Wikimedia Commons | Phu Quoc, Bai Sao Beach tropical palms & sand (CC-BY-SA) |
+| dest-turkey.jpg | Unsplash | Photo ID 1507525428034 — Mediterranean beach & resort |
+| dest-uae.jpg | Unsplash | Photo ID 1518684079 — Dubai skyline & beach |
+| dest-egypt.jpg | Wikimedia Commons | Hurghada, Beach Albatros Red Sea coast resort (CC-BY-SA, no pyramids) |
+| dest-thailand.jpg | Unsplash | Photo ID 1537953773345 — Phuket tropical beach |
+| dest-vietnam.jpg | Wikimedia Commons | Nha Trang, Tran Phu beach & city coastline (CC-BY-SA, no Ha Long bay) |
 | office-ufa.jpg | Unsplash | Photo ID 1497366216548 — modern office interior |
 | travel-passport.jpg | Unsplash | Photo ID 1488646953014 — travel planning |
 | catalog-hub.jpg | Copy of travel-passport.jpg | Same as above |

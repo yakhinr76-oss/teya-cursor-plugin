@@ -84,6 +84,17 @@ for (const p of pages) {
       copyFileSync(artifact, deliverablesPaintPath);
       copyFileSync(artifact, deliverablesArtifactPath);
 
+      if (p.slug === 'home' && vp.suffix === '1440') {
+        const hotToursEl = await page.$('#hot-tours');
+        if (hotToursEl) {
+          const hotToursPath = join(deliverablesPaintDir, 'section-home-hot-tours.png');
+          await hotToursEl.screenshot({ path: hotToursPath });
+          copyFileSync(hotToursPath, join(screenshotsDir, 'section-home-hot-tours.png'));
+          copyFileSync(hotToursPath, join(artifactsDir, 'section-home-hot-tours.png'));
+          copyFileSync(hotToursPath, join(paintDir, 'section-home-hot-tours.png'));
+        }
+      }
+
       screenshotRecords.push({
         slug: p.slug,
         path: p.path,

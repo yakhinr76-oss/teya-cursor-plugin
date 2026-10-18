@@ -58,7 +58,7 @@
       "decode_verified": true,
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 93908
+      "bytes": 90067
     },
     {
       "id": "hero-thailand",
@@ -94,7 +94,7 @@
       "decode_verified": true,
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 98587
+      "bytes": 63970
     },
     {
       "id": "dest-turkey",
@@ -110,7 +110,7 @@
       "notes": "Локальный файл темы; MCP KV не вызывался (needsAuth).",
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 96848,
+      "bytes": 86134,
       "status": "ready",
       "decode_verified": true
     },
@@ -128,7 +128,7 @@
       "notes": "Локальный файл темы; MCP KV не вызывался (needsAuth).",
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 192739,
+      "bytes": 112572,
       "status": "ready",
       "decode_verified": true
     },
@@ -148,7 +148,7 @@
       "decode_verified": true,
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 82565
+      "bytes": 104085
     },
     {
       "id": "dest-thailand",
@@ -164,7 +164,7 @@
       "notes": "Локальный файл темы; MCP KV не вызывался (needsAuth).",
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 102322,
+      "bytes": 113307,
       "status": "ready",
       "decode_verified": true
     },
@@ -184,7 +184,7 @@
       "decode_verified": true,
       "remote_packaged_url": "",
       "detected_format": "jpeg",
-      "bytes": 93381
+      "bytes": 153217
     },
     {
       "id": "subscribe-bg",

@@ -23,7 +23,6 @@ const pages = [
   { slug: 'tour-turciya-antalya', path: '/tour/turciya/antalya/' },
   { slug: 'tour-egipet-hurgada', path: '/tour/egipet/hurgada/' },
   { slug: 'tour-egipet-sharm-el-sheyh', path: '/tour/egipet/sharm-el-sheyh/' },
-  { slug: 'tour-tailand-phuket', path: '/tour/tailand/phuket/' },
   { slug: 'tour-vietnam-nyachang', path: '/tour/vietnam/nyachang/' },
   { slug: 'tour-vietnam-fukuok', path: '/tour/vietnam/fukuok/' },
   { slug: 'o-nas', path: '/o-nas/' },

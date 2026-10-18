@@ -12,7 +12,6 @@ export const routeMap = {
   '/tour/turciya/antalya/': 'tour-turciya-antalya.html',
   '/tour/egipet/hurgada/': 'tour-egipet-hurgada.html',
   '/tour/egipet/sharm-el-sheyh/': 'tour-egipet-sharm-el-sheyh.html',
-  '/tour/tailand/phuket/': 'tour-tailand-phuket.html',
   '/tour/vietnam/nyachang/': 'tour-vietnam-nyachang.html',
   '/tour/vietnam/fukuok/': 'tour-vietnam-fukuok.html',
   '/o-nas/': 'o-nas.html',

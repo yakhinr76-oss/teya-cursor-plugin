@@ -5,12 +5,13 @@
 | theme_slug | `zhiraf-ufa` |
 | theme_path | `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/` |
 | mirror_path | `teya-memory/wp/theme/zhiraf-ufa/` |
-| content_ref | `teya-memory/wp/page-content-pack.md` (20 URL, 8 NEW) |
+| content_ref | `teya-memory/wp/page-content-pack.md` (19 URL, 7 NEW) |
+| wordstat_ref | `teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md` |
 | date | 2026-10-18 |
-| generated_by | wp-theme-builder (bc-78870dfb) |
+| generated_by | wp-theme-builder (page-builder worker) |
 | branch | `cursor/zhiraf-b2b-site-a2bf` |
 
-## 8 NEW landings
+## 7 NEW landings (≥100, без Пхукета)
 
 | URL | Template / routing | Status |
 |-----|-------------------|--------|
@@ -19,49 +20,50 @@
 | `/tour/turciya/antalya/` | rewrite → `page-tour-resort.php` | ✅ |
 | `/tour/egipet/hurgada/` | rewrite → `page-tour-resort.php` | ✅ |
 | `/tour/egipet/sharm-el-sheyh/` | rewrite → `page-tour-resort.php` | ✅ |
-| `/tour/tailand/phuket/` | rewrite → `page-tour-resort.php` | ✅ |
 | `/tour/vietnam/nyachang/` | rewrite → `page-tour-resort.php` | ✅ |
 | `/tour/vietnam/fukuok/` | rewrite → `page-tour-resort.php` | ✅ |
+
+**Снято с URL-карты:** `/tour/tailand/phuket/` → 301 на `/tour/tailand/`; контент — секции Пхукет (58+55) и Паттайя (119).
 
 ## Rewrite approach
 
 - `inc/tour-routing.php`: `^tour/([^/]+)/([^/]+)/?$` → query vars `zhiraf_tour_country`, `zhiraf_tour_resort`; `template_include` loads `page-tour-resort.php` when `zhiraf_ufa_get_resort_landing()` matches.
-- Registry: `inc/resort-landings.php` (6 курортов); офферы: `inc/offer-landings.php`.
+- Registry: `inc/resort-landings.php` (**5** курортов: antalya, hurgada, sharm-el-sheyh, nyachang, fukuok); офферы: `inc/offer-landings.php`.
+- `inc/redirects.php`: legacy + retired `/tour/tailand/phuket/` → `/tour/tailand/`.
 - `after_switch_theme` → `flush_rewrite_rules()` (активация темы на WP).
-- Страны `/tour/{slug}/` — по-прежнему `page-{slug}.php` + расширенный `inc/destination-landings.php` (секции Kemer 82, Alanya 58, Pattaya 49, s detmi 20, Dubai 87).
+- Страны `/tour/{slug}/` — `page-{slug}.php` + `inc/destination-landings.php` (секции Kemer, Alanya, Dubai, **Phuket/Pattaya**, s detmi).
 
-## Country page updates
+## Country page updates (Wordstat 18.10)
 
-| Страна | Below-threshold sections |
-|--------|-------------------------|
-| Турция | Кемер 82, Аланья 58, с детьми 20; Анталья → child URL |
-| ОАЭ | Дубай 87 |
-| Египет | с детьми 20; таблица Хургада/Шарм |
-| Таиланд | Паттайя 49; Пхукет → child URL |
-| Вьетнам | ссылки Нячанг 193, Фукуок 183 |
+| Страна | Секции / дочерние URL |
+|--------|------------------------|
+| Турция | Кемер, Аланья, с детьми; Анталья → child URL (344) |
+| ОАЭ | Дубай (секция) |
+| Египет | с детьми; Хургада 853, Шарм 233 |
+| Таиланд | **Пхукет 58+55**, **Паттайя 119** — только секции; hub lead **84** |
+| Вьетнам | Нячанг 481, Фукуок 386; hub **614** |
 
 ## Nav / internal links
 
 - Header fallback: `/goryashchie-tury/`, `/vse-vklyucheno/`
-- Footer: колонка «Форматы и курорты», Вьетнам в направлениях
+- Footer: колонка «Форматы и курорты» — **без** Пхукета (5 курортов)
 - `/tour/` hub: чипы офферов + список курортов
-- Главная: секция `section--offers-wordstat`
+- Preview: удалён `tour-tailand-phuket.html` и маршрут в `wordstat-routes.mjs`
+
+## Semantic core sync
+
+- `06-url-map.csv` — без строки phuket (секции в notes `/tour/tailand/`)
+- `05-clusters.csv` — `CL-TH-PKT` → `section-only` на `/tour/tailand/`
 
 ## Build QA
 
 | Check | Result |
 |-------|--------|
 | `npx sass` → `assets/dist/style.css` | ✅ |
-| `php -l` all `*.php` in theme | ✅ **49 files**, 0 errors |
+| `php -l` all `*.php` in theme | ✅ |
 | Deploy zhiraf-ufa.ru | ❌ not run (per task) |
 | `teya_release_gate.py` | ❌ not run (per task) |
 
-## Files added (theme)
-
-- `inc/tour-routing.php`, `inc/resort-landings.php`, `inc/offer-landings.php`
-- `page-goryashchie-tury.php`, `page-vse-vklyucheno.php`, `page-tour-resort.php`
-- `templates/offer-landing.php`, `templates/resort-landing.php`
-
 ## Verdict
 
-**success** — Phase 1 page-build: 8 NEW URLs + country sections + linking; mirror synced to `teya-memory/wp/theme/zhiraf-ufa/`.
+**success** — 19-page map: 7 NEW resort/offer URLs, Phuket demoted to Thailand sections, Wordstat freqs in PHP, mirror `teya-memory/wp/theme/zhiraf-ufa/`.

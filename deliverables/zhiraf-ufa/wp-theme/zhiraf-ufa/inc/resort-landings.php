@@ -19,7 +19,6 @@ function zhiraf_ufa_resort_landing_index() {
 		array( 'country' => 'turciya', 'resort' => 'antalya' ),
 		array( 'country' => 'egipet', 'resort' => 'hurgada' ),
 		array( 'country' => 'egipet', 'resort' => 'sharm-el-sheyh' ),
-		array( 'country' => 'tailand', 'resort' => 'phuket' ),
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
 		array( 'country' => 'vietnam', 'resort' => 'fukuok' ),
 	);
@@ -41,7 +40,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'description'   => __( 'Туры в Анталью с вылетом из Уфы: отель, перелёт, питание AI/UAI. Подбор без цен «от».', 'zhiraf-ufa' ),
 			'image'         => 'dest-turkey.jpg',
 			'image_alt'     => __( 'Анталья, курорт Турции', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Анталья из Уфы — 122 показа в месяц по Wordstat: запрос стабильный у тех, кто уже определился с курортом Турции. Родительское направление — туры в Турцию (1117 показов).', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Анталья из Уфы — 344 показа в месяц по Wordstat: запрос стабильный у тех, кто уже определился с курортом Турции. Родительское направление — туры в Турцию из Уфы (2498).', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Анталья, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Почему выбирают Анталью из Уфы? Регион с развитой отельной базой и пляжами Средиземного моря; из Уфы в сезон доступны пакетные чартеры у туроператоров. Мы подбираем отель и питание под семью или пару — состав фиксируется в договоре.', 'zhiraf-ufa' ),
 			'sections'      => array(
@@ -101,7 +100,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'description'   => __( 'Хургада с вылетом из Уфы: подбор пакета, перелёт и отель без прайса «от».', 'zhiraf-ufa' ),
 			'image'         => 'dest-egypt.jpg',
 			'image_alt'     => __( 'Хургада, Красное море', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Хургада из Уфы — 327 показов/мес. — сильнее, чем соседний Шарм по региональному спросу. Родитель: Египет (858 показов).', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Хургада из Уфы — 853 показа/мес. — сильнее, чем соседний Шарм по региональному спросу. Родитель: туры в Египет из Уфы (1983).', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Хургада, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Что такое Хургада для туриста из Уфы? Курорт на Красном море с линейкой отелей «всё включено»; пакет из Уфы включает перелёт и проживание по условиям оператора. Менеджер сравнивает 2–4 варианта на ваши даты.', 'zhiraf-ufa' ),
 			'sections'      => array(
@@ -118,7 +117,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'faq'           => array(
 				array(
 					'q' => __( 'Шарм или Хургада?', 'zhiraf-ufa' ),
-					'a' => __( 'Шарм-эль-Шейх (242 показа) — другой формат бухт.', 'zhiraf-ufa' ),
+					'a' => __( 'Шарм-эль-Шейх (233 показа) — другой формат бухт.', 'zhiraf-ufa' ),
 					'link' => zhiraf_ufa_resort_url( 'egipet', 'sharm-el-sheyh' ),
 				),
 				array(
@@ -147,14 +146,14 @@ function zhiraf_ufa_resort_landing_data() {
 			'description'   => __( 'Шарм-эль-Шейх с вылетом из Уфы: подбор пакета без цен «от» на сайте.', 'zhiraf-ufa' ),
 			'image'         => 'dest-egypt.jpg',
 			'image_alt'     => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Шарм-эль-Шейх из Уфы — 242 показа/мес. Альтернатива — Хургада (327). Хаб: Египет.', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Шарм-эль-Шейх из Уфы — 233 показа/мес. Альтернатива — Хургада (853). Хаб: туры в Египет из Уфы (1983).', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Шарм-эль-Шейх, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Шарм из Уфы — кому подходит? Курорт с развитой отельной базой на Синае; часто выбирают за пляжи и дайвинг-инфраструктуру. Перелёт и отель — в пакете оператора из Уфы.', 'zhiraf-ufa' ),
 			'sections'      => array(),
 			'faq'           => array(
 				array(
 					'q' => __( 'Хургада или Шарм?', 'zhiraf-ufa' ),
-					'a' => __( 'Обсудим в заявке; Хургада — 327 показов в Уфе.', 'zhiraf-ufa' ),
+					'a' => __( 'Обсудим в заявке; Хургада — 853 показа в Уфе.', 'zhiraf-ufa' ),
 					'link' => zhiraf_ufa_resort_url( 'egipet', 'hurgada' ),
 				),
 				array(
@@ -174,49 +173,6 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 			),
 		),
-		'tailand/phuket'  => array(
-			'country'       => 'tailand',
-			'country_name'  => __( 'Таиланд', 'zhiraf-ufa' ),
-			'resort'        => 'phuket',
-			'h1'            => __( 'Туры на Пхукет из Уфы', 'zhiraf-ufa' ),
-			'title'         => __( 'Пхукет из Уфы — туры | «Жираф»', 'zhiraf-ufa' ),
-			'description'   => __( 'Пхукет с вылетом из Уфы: перелёт, отель и питание — без прайса на сайте.', 'zhiraf-ufa' ),
-			'image'         => 'dest-thailand.jpg',
-			'image_alt'     => __( 'Пхукет, Таиланд', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Пхукет из Уфы — 125 показов — единственный курорт Таиланда с отдельным URL в Phase 1. Таиланд — хаб; Паттайя (49) — секция на странице страны.', 'zhiraf-ufa' ),
-			'quiz_prefill'  => __( 'Пхукет, вылет из Уфы', 'zhiraf-ufa' ),
-			'geo_answer'    => __( 'Пхукет из Уфы — что в пакете? Перелёт до Таиланда, проживание на острове, трансфер и питание по коду оператора. Длительность перелёта обсуждаем заранее.', 'zhiraf-ufa' ),
-			'sections'      => array(
-				array(
-					'h2' => __( 'Перелёт из Уфы', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Обычно с пересадкой; точное время зависит от рейса — покажем варианты в подборе. Для семей это критично — учтём в квизе.', 'zhiraf-ufa' ),
-					),
-				),
-			),
-			'faq'           => array(
-				array(
-					'q' => __( 'Пхукет или Паттайя?', 'zhiraf-ufa' ),
-					'a' => __( 'Сравним в подборе; Паттайя — 49 показов, без отдельного URL.', 'zhiraf-ufa' ),
-					'link' => home_url( '/tour/tailand/' ),
-				),
-				array(
-					'q' => __( 'Всё включено?', 'zhiraf-ufa' ),
-					'a' => __( 'Зависит от отеля.', 'zhiraf-ufa' ),
-					'link' => home_url( '/vse-vklyucheno/' ),
-				),
-				array(
-					'q' => __( 'Горящие?', 'zhiraf-ufa' ),
-					'a' => __( 'Горящие туры из Уфы — 3024 показов по смежному запросу.', 'zhiraf-ufa' ),
-					'link' => home_url( '/goryashchie-tury/' ),
-				),
-				array(
-					'q' => __( 'С детьми?', 'zhiraf-ufa' ),
-					'a' => __( 'Чек-лист в блоге.', 'zhiraf-ufa' ),
-					'link' => home_url( '/blog/tury-s-detmi-iz-ufy/' ),
-				),
-			),
-		),
 		'vietnam/nyachang' => array(
 			'country'       => 'vietnam',
 			'country_name'  => __( 'Вьетнам', 'zhiraf-ufa' ),
@@ -226,14 +182,14 @@ function zhiraf_ufa_resort_landing_data() {
 			'description'   => __( 'Нячанг с вылетом из Уфы: пакетный тур без цен «от» на сайте.', 'zhiraf-ufa' ),
 			'image'         => 'dest-vietnam.jpg',
 			'image_alt'     => __( 'Нячанг, Вьетнам', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Нячанг из Уфы — 193 показа/мес. Сравнение с Фукуоком (183) — в заявке. Хаб: Вьетнам (262).', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Нячанг из Уфы — 481 показ/мес. Сравнение с Фукуоком (386) — в заявке. Хаб: туры во Вьетнам из Уфы (614).', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Нячанг, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Нячанг для туристов из Уфы: курорт на побережье Южного Вьетнама; пакет из Уфы — перелёт, отель, часто AI.', 'zhiraf-ufa' ),
 			'sections'      => array(),
 			'faq'           => array(
 				array(
 					'q' => __( 'Нячанг или Фукуок?', 'zhiraf-ufa' ),
-					'a' => __( 'Фукуок — 183 показа; островной формат.', 'zhiraf-ufa' ),
+					'a' => __( 'Фукуок — 386 показов; островной формат.', 'zhiraf-ufa' ),
 					'link' => zhiraf_ufa_resort_url( 'vietnam', 'fukuok' ),
 				),
 				array(
@@ -262,14 +218,14 @@ function zhiraf_ufa_resort_landing_data() {
 			'description'   => __( 'Фукуок с вылетом из Уфы: подбор пакета в офисе на Гагарина.', 'zhiraf-ufa' ),
 			'image'         => 'dest-vietnam.jpg',
 			'image_alt'     => __( 'Фукуок, Вьетнам', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Фукуок из Уфы — 183 показа/мес. Островной пляжный формат; перелёт длиннее, чем в Турцию — обсуждаем до брони. Хаб: Вьетнам (262).', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Фукуок из Уфы — 386 показов/мес. Островной пляжный формат; перелёт длиннее, чем в Турцию — обсуждаем до брони. Хаб: туры во Вьетнам из Уфы (614).', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Фукуок, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Фукуок из Уфы: островной отдых; пакет включает перелёт и проживание по условиям оператора. Сравним с Нячангом (193) в подборе.', 'zhiraf-ufa' ),
 			'sections'      => array(),
 			'faq'           => array(
 				array(
 					'q' => __( 'Фукуок или Нячанг?', 'zhiraf-ufa' ),
-					'a' => __( 'Нячанг — 193 показа; побережье материка.', 'zhiraf-ufa' ),
+					'a' => __( 'Нячанг — 481 показ; побережье материка.', 'zhiraf-ufa' ),
 					'link' => zhiraf_ufa_resort_url( 'vietnam', 'nyachang' ),
 				),
 				array(
@@ -331,32 +287,27 @@ function zhiraf_ufa_resort_hub_links() {
 		array(
 			'label'    => __( 'Анталья', 'zhiraf-ufa' ),
 			'url'      => zhiraf_ufa_resort_url( 'turciya', 'antalya' ),
-			'wordstat' => 122,
+			'wordstat' => 344,
 		),
 		array(
 			'label'    => __( 'Хургада', 'zhiraf-ufa' ),
 			'url'      => zhiraf_ufa_resort_url( 'egipet', 'hurgada' ),
-			'wordstat' => 327,
+			'wordstat' => 853,
 		),
 		array(
 			'label'    => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ),
 			'url'      => zhiraf_ufa_resort_url( 'egipet', 'sharm-el-sheyh' ),
-			'wordstat' => 242,
-		),
-		array(
-			'label'    => __( 'Пхукет', 'zhiraf-ufa' ),
-			'url'      => zhiraf_ufa_resort_url( 'tailand', 'phuket' ),
-			'wordstat' => 125,
+			'wordstat' => 233,
 		),
 		array(
 			'label'    => __( 'Нячанг', 'zhiraf-ufa' ),
 			'url'      => zhiraf_ufa_resort_url( 'vietnam', 'nyachang' ),
-			'wordstat' => 193,
+			'wordstat' => 481,
 		),
 		array(
 			'label'    => __( 'Фукуок', 'zhiraf-ufa' ),
 			'url'      => zhiraf_ufa_resort_url( 'vietnam', 'fukuok' ),
-			'wordstat' => 183,
+			'wordstat' => 386,
 		),
 	);
 }

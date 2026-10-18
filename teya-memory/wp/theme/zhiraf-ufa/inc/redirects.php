@@ -21,6 +21,8 @@ function zhiraf_ufa_legacy_redirect_map() {
 		'/rasskazy'                    => '/blog/',
 		'/rasskazy/'                   => '/blog/',
 		'/politika-konfidenczialnosti' => '/politika-konfidenczialnosti/',
+		'/tour/tailand/phuket'         => '/tour/tailand/',
+		'/tour/tailand/phuket/'        => '/tour/tailand/',
 	);
 }
 

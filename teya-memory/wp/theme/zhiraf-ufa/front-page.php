@@ -89,7 +89,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 	<section class="section section--destinations bg-milky">
 		<div class="container destinations">
 			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Направления', 'zhiraf-ufa' ); ?></h2>
+				<h2 class="section-title"><?php esc_html_e( 'Направления и вылеты из Уфы', 'zhiraf-ufa' ); ?></h2>
 				<div class="section-tabs dest-tabs" role="tablist">
 					<button type="button" class="tab-btn is-active" data-filter="all"><?php esc_html_e( 'Популярные', 'zhiraf-ufa' ); ?></button>
 					<button type="button" class="tab-btn" data-filter="oae"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></button>
@@ -111,6 +111,23 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 						</div>
 					</a>
 				<?php endforeach; ?>
+			</div>
+
+			<div class="dest-flight-logistics reveal" style="margin-top:40px;background:var(--color-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--color-border);">
+				<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+					<div>
+						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Прямые рейсы из аэропорта «Уфа» (UFA)', 'zhiraf-ufa' ); ?></h3>
+						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
+							<?php esc_html_e( 'Прямые чартеры: Египет (Хургада, Шарм-эль-Шейх), ОАЭ (Дубай, Шарджа) и Турция (Анталья, Стамбул). Время в пути 4.5–5.5 часов.', 'zhiraf-ufa' ); ?>
+						</p>
+					</div>
+					<div>
+						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Направления со стыковкой через Москву', 'zhiraf-ufa' ); ?></h3>
+						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
+							<?php esc_html_e( 'Таиланд (Пхукет, Паттайя) и Вьетнам (Нячанг, Фукуок). Подбираем единый билет с удобной стыковкой в Москве.', 'zhiraf-ufa' ); ?>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -138,28 +155,29 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 	<section class="section section--how-it-works">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Как это работает', 'zhiraf-ufa' ); ?></h2>
+				<h2 class="section-title"><?php esc_html_e( 'Как мы подбираем тур: пошаговый процесс', 'zhiraf-ufa' ); ?></h2>
+				<p class="lead"><?php esc_html_e( 'От заявки и пожеланий до контроля вылета и сопровождения 24/7.', 'zhiraf-ufa' ); ?></p>
 			</div>
 			<div class="steps-row">
 				<div class="step-card reveal">
 					<div class="step-number">01</div>
-					<h3><?php esc_html_e( 'Заявка', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Оставляете заявку или проходите короткий квиз на сайте.', 'zhiraf-ufa' ); ?></p>
+					<h3><?php esc_html_e( 'Заявка и пожелания', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Оставляете заявку или проходите квиз. Уточняем состав семьи, даты, бюджет и пожелания.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-1">
 					<div class="step-number">02</div>
-					<h3><?php esc_html_e( 'Подбор', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Менеджер предлагает 2–4 варианта под даты, бюджет и состав.', 'zhiraf-ufa' ); ?></p>
+					<h3><?php esc_html_e( 'Экспертный подбор', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Сравниваем операторов и готовим 2–4 проверенных варианта с вылетом из Уфы без спама.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-2">
 					<div class="step-number">03</div>
-					<h3><?php esc_html_e( 'Договор', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Оформляем договор онлайн или в офисе на Гагарина.', 'zhiraf-ufa' ); ?></p>
+					<h3><?php esc_html_e( 'Договор и оплата', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Официальный договор онлайн или в офисе на Гагарина, 74/1. Оплата по безналу или эквайрингу с чеком.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-3">
 					<div class="step-number">04</div>
-					<h3><?php esc_html_e( 'Отдых', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Вы летите с вылетом из Уфы — мы на связи до возвращения.', 'zhiraf-ufa' ); ?></p>
+					<h3><?php esc_html_e( 'Контроль вылета 24/7', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Выдаём ваучеры, отслеживаем рейс из аэропорта «Уфа» и остаёмся на связи до возвращения.', 'zhiraf-ufa' ); ?></p>
 				</div>
 			</div>
 			<p class="steps-cta reveal">
@@ -171,12 +189,16 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 	<section class="section section--trust trust-social">
 		<div class="container trust-social__grid">
 			<div class="trust-social__content reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Почему нам доверяют в Уфе', 'zhiraf-ufa' ); ?></h2>
+				<h2 class="section-title"><?php esc_html_e( 'Гарантии и работа агентства «Жираф»', 'zhiraf-ufa' ); ?></h2>
+				<p class="lead" style="margin-top:12px;margin-bottom:16px;">
+					<?php esc_html_e( 'Турагентство «Жираф» — семейная компания в Уфе с апреля 2011 года. Работаем открыто и строго по закону.', 'zhiraf-ufa' ); ?>
+				</p>
 				<ul class="trust-social__facts">
-					<li><strong><?php esc_html_e( 'ООО «Жираф»', 'zhiraf-ufa' ); ?></strong> — <?php esc_html_e( 'РТА 0012822', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'Семейное агентство с апреля 2011 года', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'Офис: ул. Юрия Гагарина, 74/1, офис 3', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'Пн–Пт 10:00–19:00, Сб 11:00–15:00', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Официальный статус:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'ООО «Жираф», реестровый номер РТА 0012822.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Защита туристов:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'работа строго по 132-ФЗ и 152-ФЗ.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Прямые шлюзы туроператоров:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'бронирование в системах операторов с фингарантиями.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Оплата и чеки:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'официальный договор, безналичная и эквайринг-оплата с чеком.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Офис в Уфе:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'ул. Юрия Гагарина, 74/1, офис 3.', 'zhiraf-ufa' ); ?></li>
 				</ul>
 				<div class="trust-social__links">
 					<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
@@ -187,6 +209,22 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 			<div class="trust-social__visual reveal reveal-delay-1">
 				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства Жираф в Уфе', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
 				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда турагентства «Жираф»', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
+		<div class="container reveal">
+			<div class="reviews-placeholder-card" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px;text-align:center;max-width:860px;margin:0 auto;">
+				<h2 class="section-title" style="font-size:2rem;margin-bottom:12px;"><?php esc_html_e( 'Отзывы туристов из Уфы', 'zhiraf-ufa' ); ?></h2>
+				<p style="color:var(--color-muted);font-size:1.0625rem;line-height:1.6;margin-bottom:24px;">
+					<?php esc_html_e( 'Мы не публикуем заказные отзывы на сайте. Реальные оценки туристов из Уфы и отзывы с рейтингом доступны на Яндекс.Картах, в 2ГИС и ВКонтакте.', 'zhiraf-ufa' ); ?>
+				</p>
+				<div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+					<a href="https://yandex.ru/maps" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'Рейтинг Яндекс.Карт', 'zhiraf-ufa' ); ?></a>
+					<a href="https://2gis.ru/ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'Рейтинг 2ГИС', 'zhiraf-ufa' ); ?></a>
+					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'ВКонтакте', 'zhiraf-ufa' ); ?></a>
+				</div>
 			</div>
 		</div>
 	</section>

@@ -12,7 +12,7 @@
 |------|----------|
 | Wordstat | туры из уфы **33489**; турагентство уфа **2046** |
 | H1 | Туры с вылетом из Уфы — подбор без давления |
-| Блоки | hero, audience-tabs, destinations, **offers-wordstat** (горящие из уфы 3480, AI 561), how-it-works, trust, FAQ, lead, blog teaser |
+| Блоки | hero, audience-tabs, destinations (логистика рейсов UFA и стыковки через Москву), **offers-wordstat** (горящие из уфы 3480, AI 561), how-it-works (пошаговый подбор и сопровождение 24/7), trust (132-ФЗ, 152-ФЗ, РТА 0012822, чеки), reviews-placeholder (Яндекс.Карты, 2ГИС), FAQ (8 Q&A), lead, blog teaser |
 | Links out | `/tour/`, `/goryashchie-tury/`, `/vse-vklyucheno/`, `/kontakty/`, BT-01 |
 
 ---

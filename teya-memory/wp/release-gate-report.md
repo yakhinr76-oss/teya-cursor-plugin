@@ -7,9 +7,9 @@
 | status | **PASS** |
 | theme_slug | `zhiraf-ufa` |
 | gate_script_sha256 | `50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d` |
-| pillow | installed |
-| checked_at | 2026-10-18T15:34:39+00:00 |
-| git_ref | `d5cf815` (paint QA Wordstat 20 routes) |
+| pillow | installed (`pip3 install Pillow` in runner env) |
+| checked_at | 2026-10-18T16:04:40+00:00 |
+| git_ref | `a06c6d5` (chore(paint-qa): 19 Wordstat routes, drop Phuket screenshots) |
 | deploy | **not run** (`public_site_url` empty) |
 
 ## Stdout
@@ -20,9 +20,4 @@ TEYA RELEASE GATE PASS
 
 ## Artifact fixes (this run)
 
-Restored theme release artifacts under `teya-memory/wp/theme/zhiraf-ufa/` from packaged deliverables:
-
-- `media-map.json` (`transport_status`: pass)
-- `style.css`
-- `assets/dist/` (compiled CSS/JS)
-- `assets/images/hero-uae.jpg`, `hero-collage-1.jpg`, `dest-thailand-new.jpg`
+None — gate passed on existing artifacts after Pillow was available for raster decode-verify.

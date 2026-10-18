@@ -1,35 +1,42 @@
 # Seed map — запросы и интенты (Уфа)
 
-Режим: **WORDSTAT DEGRADED** (частотности не собраны). Семантика на уровне seed + кластеров; при появлении MCP — пересобрать `03`–`04`.
+Режим: **Wordstat API v2** (регион **172**, 45 вызовов, 18.10.2026). Частотности в `03`–`04`.
 
-## Seed-группы (12 planned Wordstat calls)
+## Seed-группы (основные вызовы)
 
 | # | Seed | Интент | Кластер | Страница |
 |---|------|--------|---------|----------|
 | 1 | туры из уфы | commercial | CL-HOME, CL-CATALOG | `/`, `/tour/` |
-| 2 | купить тур уфа | commercial | CL-BUY, CL-BLOG-BUY | `/`, `/kontakty/`, блог BT-01 |
-| 3 | турция из уфы | commercial | CL-TR | `/tour/turciya/` |
-| 4 | оаэ из уфы | commercial | CL-UAE | `/tour/oae/` |
-| 5 | египет из уфы | commercial | CL-EG | `/tour/egipet/` |
-| 6 | таиланд из уфы | commercial | CL-TH | `/tour/tailand/` |
-| 7 | вьетнам из уфы | commercial | CL-VN | `/tour/vietnam/` |
-| 8 | тур все включено | informational | CL-AI | BT-02 |
-| 9 | документы заграница тур | informational | CL-DOCS | BT-03 |
-| 10 | туры с детьми уфа | mixed | CL-KIDS | BT-04 |
-| 11 | страховка рассрочка тур | informational | CL-INS | BT-05 |
-| 12 | турция или египет | informational | CL-CMP | BT-06 |
+| 2 | горящие туры из уфы | commercial | CL-HOT | `/goryashchie-tury/` |
+| 3 | купить тур уфа | commercial | CL-BUY, CL-BLOG-BUY | `/`, `/kontakty/`, блог BT-01 |
+| 4 | турагентство уфа | navigational | CL-ABOUT | `/o-nas/` |
+| 5 | туры в турцию из уфы | commercial | CL-TR | `/tour/turciya/` |
+| 6 | анталья из уфы | commercial | CL-TR-ANT | `/tour/turciya/antalya/` |
+| 7 | туры в египет из уфы | commercial | CL-EG | `/tour/egipet/` |
+| 8 | хургада / шарм эль шейх из уфы | commercial | CL-EG-HRG, CL-EG-SSH | курорты Египта |
+| 9 | туры в оаэ / дубай из уфы | commercial | CL-UAE | `/tour/oae/` |
+| 10 | туры в таиланд из уфы | commercial | CL-TH | `/tour/tailand/` |
+| 11 | пхукет / паттайя (секции) | commercial | CL-TH | секции `/tour/tailand/` |
+| 12 | туры во вьетнам из уфы | commercial | CL-VN | `/tour/vietnam/` |
+| 13 | нячанг / фукуок из уфы | commercial | CL-VN-NHA, CL-VN-PQC | курорты Вьетнама |
+| 14 | все включено из уфы | mixed | CL-AI | `/vse-vklyucheno/`, BT-02 |
+| 15 | туры с детьми из уфы | mixed | CL-KIDS | BT-04, секции стран |
+| 16–20 | документы, страховка, сравнение | informational | CL-DOCS, CL-INS, CL-CMP | блог BT-03…BT-06 |
+
+Волна 2: расширение по топ-запросам из `04` + доп. seeds (`путевки из уфы`, `туры турция`, …).
 
 ## Исключения (не включать в ядро)
 
 - «дешевые туры уфа», «самая низкая цена» — без подтверждённой ценовой политики
 - Визы в страны вне каталога Phase 1
 - Корпоративные / MICE — вне scope темы
+- Турецкий язык / сериалы / билеты без турпакета
 
 ## GEO-вопросы (для H2/FAQ)
 
 1. Сколько стоит тур из Уфы? → нейтрально: зависит от дат; CTA квиз
 2. Как купить тур в Уфе? → BT-01
 3. Куда лететь из Уфы зимой/летом? → табы направлений + BT-06
-4. Что входит в «всё включено»? → BT-02
+4. Что входит в «всё включено»? → BT-02 + `/vse-vklyucheno/`
 5. Какие документы нужны? → BT-03
 6. Можно с детьми? → BT-04 + квиз «состав семьи»

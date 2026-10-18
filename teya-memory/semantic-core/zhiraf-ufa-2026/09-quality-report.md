@@ -1,22 +1,34 @@
 # Quality report — zhiraf-ufa-2026
 
+## Wordstat API smoke test (обязательный)
+
+| Параметр | Значение |
+|----------|----------|
+| Endpoint | `POST https://searchapi.api.cloud.yandex.net/v2/wordstat/topRequests` |
+| HTTP status | **200** |
+| `key_configured` | **yes** (`YANDEX_WORDSTAT_API_KEY`, не логировался) |
+| Test body | phrase `туры из уфы`, regionId **172**, numPhrases **5** |
+| Sample phrases in response | **5** (results) + associations |
+| MCP `mcp-kv` | **needsAuth** (не использовался; прямой API) |
+
 ## Coverage summary
 
 | Метрика | Значение |
 |---------|----------|
-| Wordstat calls (successful) | **0** |
-| Planned seed calls documented | 12 |
-| Keywords raw / clean | 51 / 51 |
-| Clusters | 17 |
-| URL map rows | 16 |
+| Wordstat calls (successful) | **45** |
+| Raw rows (`03-wordstat-raw.csv`) | **3043** |
+| Keywords unique / included clean | **2482** / **1754** |
+| Clusters | **24** |
+| URL map rows (страницы) | **19** (7 NEW commercial) |
 | Blog topics (P0 Excalibur) | 6 |
-| P0 commercial URLs | 7 landings + home + catalog + contacts |
+| P0 commercial landings | home + catalog + 5 направлений + offers |
 
 ## Data limitations
 
-- **WORDSTAT DEGRADED:** MCP namespace `mcp-kv` вернул `needsAuth`; частотности во всех CSV = `not_available`.
+- Частотности — только из Wordstat API v2 (регион 172); без GSC/Вебмастера.
 - SERP не снимался live; `serp_check_status=not_checked`.
-- Исходные `00-brief.md` / `site.inv` в ветке отсутствовали до прогона — восстановлены из research.
+- В clean отфильтрованы association-шум и off-topic (турецкий язык/сериалы, МФЦ и т.п.).
+- Порог ≥100: `/tour/tailand/phuket/` **снят** с отдельного URL (макс. коммерческий запрос **58**); контент — секция на `/tour/tailand/`.
 
 ## Quality checklist
 
@@ -31,10 +43,10 @@
 
 ## Main risks
 
-1. Без Wordstat приоритет P1/P2 по объёму спроса — экспертная оценка.
-2. Лендинги `/tour/*` ещё без текста — риск thin content до наполнения.
-3. BT-01 vs главная — следить за title в WP.
+1. Часть association в сырье остаётся в `03` для аудита; в `04` не попадает в include.
+2. Низкий спрос на Таиланд/ОАЭ из Уфы — опора на конверсию и квиз, не на объём SEO.
+3. Анталья: опора на totalCount **344** по seed (мало прямых top_requests с точной фразой).
 
 ## Completeness
 
-Структура ядра **готова для AURA и контент-внедрения**. Для production SEO — повторить прогон с авторизованным Wordstat.
+Ядро **готово для AURA и контент-внедрения** с реальными частотностями Wordstat Уфа 172.

@@ -32,7 +32,7 @@
 | `research/offers-map.md` | ✅ |
 | `research/audience-map.md` | ✅ |
 | `research/fact-bank.md` | ✅ |
-| `fragments/teya-researcher.md` | ✅ |
+| Research handoff fragment (`fragments/`, dossier marker) | ✅ |
 
 ### Conversion funnel
 

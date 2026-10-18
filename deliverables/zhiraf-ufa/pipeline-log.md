@@ -109,9 +109,10 @@
 ## 12. Phase 1 resume — release gate (`bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e`)
 
 - **Команда:** `python3 scripts/teya_release_gate.py --project-root /workspace`
-- **exit_code:** **1** (честно зафиксирован)
+- **exit_code:** **1** (re-run 2026-10-18 после фикса artifact-readiness identity)
 - **Отчёт:** `teya-memory/wp/release-gate-report.md`, fragment `aurora-team-release-gate.md`
-- **Blockers (machine):** slug lint `teya-researcher` в artifact-readiness; duplicate bytes hero/dest в media-map (допустимо в registry, gate строже)
+- **Fixed:** artifact-readiness-report.md — текст/поля под `zhiraf-ufa`, slug lint PASS
+- **Blockers (machine):** duplicate bytes hero/dest в `wp-media-map.json` + theme `media-map.json` (registry `allow_duplicate_of`; gate script не учитывает)
 - **Deploy:** нет | live checks skipped (`public_site_url` пуст в compiled spec)
 
 ### Итог Phase 1 resume (2026-10-18)

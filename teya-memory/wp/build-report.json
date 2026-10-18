@@ -78,7 +78,7 @@
   "reduced_motion_status": "implemented",
   "threejs_scene_status": "implemented",
   "blockers": [
-    "release gate exit 1: artifact-readiness slug lint; duplicate hero/dest bytes in media maps",
+    "release gate exit 1: duplicate hero/dest bytes in media maps (registry allow_duplicate_of)",
     "destination landings /tour/* not built",
     "paint evidence inner pages empty",
     "AURA visual inventory 11/14 ready"

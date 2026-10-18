@@ -83,6 +83,9 @@ $metrika_id = get_theme_mod( 'zhiraf_metrika_id', '' );
 })();
 </script>
 
+	<div class="site-watermark" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; max-width: 120px; opacity: 0.6; pointer-events: none;">
+		<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo-zhiraf.png' ); ?>" alt="Жираф" />
+	</div>
 <?php wp_footer(); ?>
 </body>
 </html>

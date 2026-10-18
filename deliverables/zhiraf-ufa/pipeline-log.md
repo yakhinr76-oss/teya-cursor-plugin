@@ -60,14 +60,19 @@
 - **Отчёт:** `teya-memory/wp/animation-motion-map.md`, `animation-implementation-report.md`
 - **Taste follow-up** (`bc-fb384920`): T04/T09, trust-social стили, preview sync.
 
-## 8. Роль: aurora-team-design-guardian (дизайн-gate)
+## 8. Phase1 resume — Aurora step 14 (`bc-9773db71-f3bd-5d80-831c-70ba4f27911b`)
+- **THEME BASE:** `teya-memory/wp/theme-base-report.md`; cookie banner + privacy/cookies links; `teya-memory/wp/conversion-tracking-map.md` (blocker: Metrika ID).
+- **PAGE BUILDER:** 5 лендингов `/tour/turciya|oae|egipet|tailand|vietnam/` — `page-*.php`, `inc/destination-landings.php`, quiz prefill; `teya-memory/wp/page-build-report.md`.
+- **QA:** `sass` → `assets/dist/style.css`; `php -l` — 41 PHP, 0 ошибок. Коммит + push `cursor/zhiraf-b2b-site-a2bf`. Деплой — нет.
+
+## 9. Роль: aurora-team-design-guardian (дизайн-gate)
 - **Агент:** `agents/aurora-team-design-guardian.md`, `skills/aurora-team-design-guardian/SKILL.md`
 - **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, финальный re-run после motion + taste)
 - **Проверки:** `php -l` 34/34; Playwright fullpage (scroll) `preview/home.html` → `/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png`; `teya-memory/wp/paint-qa/*`; Manrope-only; meaningful images ≥12; funnel-секции vs blueprint.
 - **Артефакты:** `teya-memory/wp/design-integrity-report.md`, `paint-qa-report.md`, `paint-evidence.json` (`verdict: pass`), fragment `aurora-team-design-guardian.md`
 - **Вердикт:** **✅ DESIGN OK** — **local test build** (inner-page paint и live deploy — вне scope)
 
-## 9. Роль: aurora-team-qa (финальная проверка)
+## 10. Роль: aurora-team-qa (финальная проверка)
 - **Агент:** `agents/aurora-team-qa.md`, `skills/aurora-team-qa/SKILL.md`
 - **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, финальный re-run)
 - **Проверки:** Design Guardian **✅ DESIGN OK**; paint evidence on disk + `pass`; WP theme contract; anti-haltura; deferred: оставшиеся wp maps, `site-spec.json`, live robots/sitemap, `teya_release_gate.py` (нет в репо).

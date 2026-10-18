@@ -51,7 +51,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 	<div class="cookie-banner__inner">
 		<p><?php
 		printf(
-			wp_kses_post( __( 'Cookies для работы сайта. <a href="%1$s">Политика cookies</a>.', 'zhiraf-ufa' ) ),
+			wp_kses_post( __( 'Cookies для работы сайта. <a href="%1$s">Политика конфиденциальности</a> и <a href="%2$s">политика cookies</a>.', 'zhiraf-ufa' ) ),
+			esc_url( home_url( '/politika-konfidenczialnosti/' ) ),
 			esc_url( home_url( '/politika-cookies/' ) )
 		);
 		?></p>

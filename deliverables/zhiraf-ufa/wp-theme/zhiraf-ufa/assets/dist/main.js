@@ -113,7 +113,16 @@
     document.body.style.overflow = '';
   }
   qsa('[data-quiz-open]').forEach(function (btn) {
-    btn.addEventListener('click', openQuiz);
+    btn.addEventListener('click', function () {
+      var prefill = btn.getAttribute('data-quiz-prefill');
+      if (prefill && quizForm) {
+        var wishes = qs('[name="quiz_wishes"]', quizForm);
+        if (wishes && !wishes.value) {
+          wishes.value = prefill;
+        }
+      }
+      openQuiz();
+    });
   });
   qsa('[data-quiz-close]').forEach(function (btn) {
     btn.addEventListener('click', closeQuiz);

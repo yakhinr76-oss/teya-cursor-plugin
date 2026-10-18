@@ -153,6 +153,13 @@ function zhiraf_ufa_document_title( $title ) {
 	if ( is_home() && ! is_front_page() ) {
 		return 'Блог «Жираф» | Туры из Уфы и советы';
 	}
+	if ( is_page() ) {
+		$slug = get_post_field( 'post_name', get_queried_object_id() );
+		$dest = zhiraf_ufa_get_destination_landing( $slug );
+		if ( $dest && ! empty( $dest['title'] ) ) {
+			return $dest['title'];
+		}
+	}
 	return $title;
 }
 add_filter( 'pre_get_document_title', 'zhiraf_ufa_document_title', 20 );
@@ -174,8 +181,13 @@ function zhiraf_ufa_head_meta() {
 		$desc = zhiraf_ufa_meta_descriptions()['home'];
 	} elseif ( is_page() ) {
 		$slug = get_post_field( 'post_name', get_queried_object_id() );
-		$map  = zhiraf_ufa_meta_descriptions();
-		$desc = isset( $map[ $slug ] ) ? $map[ $slug ] : wp_strip_all_tags( get_the_excerpt() );
+		$dest = zhiraf_ufa_get_destination_landing( $slug );
+		if ( $dest && ! empty( $dest['description'] ) ) {
+			$desc = $dest['description'];
+		} else {
+			$map  = zhiraf_ufa_meta_descriptions();
+			$desc = isset( $map[ $slug ] ) ? $map[ $slug ] : wp_strip_all_tags( get_the_excerpt() );
+		}
 	} elseif ( is_singular( 'post' ) ) {
 		$desc = has_excerpt() ? get_the_excerpt() : wp_trim_words( get_the_content(), 30 );
 	} elseif ( is_search() || is_404() ) {

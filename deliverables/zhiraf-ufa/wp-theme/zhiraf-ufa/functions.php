@@ -17,6 +17,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/setup.php';
 require_once ZHIRAF_UFA_DIR . '/inc/logo.php';
 require_once ZHIRAF_UFA_DIR . '/inc/enqueues.php';
 require_once ZHIRAF_UFA_DIR . '/inc/assets.php';
+require_once ZHIRAF_UFA_DIR . '/inc/destination-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/seo.php';
 require_once ZHIRAF_UFA_DIR . '/inc/customizer.php';
 require_once ZHIRAF_UFA_DIR . '/inc/breadcrumbs.php';

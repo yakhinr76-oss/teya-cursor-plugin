@@ -1,11 +1,33 @@
-=== AURORA-TEAM-CONTENT (SEO/GEO ТЕКСТЫ) ===
-## Статус: ✅
+=== AURORA-TEAM-CONTENT (EDITORIAL & COMMERCIAL COPY) ===
+## Статус: ✅ READY & VERIFIED
 Content pack: teya-memory/wp/page-content-pack.md
-Pages covered: **19** URL (/, /tour/, /goryashchie-tury/, /vse-vklyucheno/, 5× country, **5×** resort, /o-nas/, /kontakty/, /blog/, 2× politika)
-NEW landing copy: **7** URLs (горящие, всё включено, antalya, hurgada, sharm-el-sheyh, nyachang, fukuok) — **без** `/tour/tailand/phuket/`
-Wordstat: Уфа 172, 18.10.2026, **45** API — `wordstat/url-map.md`; частотности в copy (напр. туры из уфы **33489**, горящие из уфы **3480**, всё включено **561**)
-Below-threshold sections only: Кемер **70**, Аланья **122**, Пхукет **58+55**, Паттайя **119**, с детьми **32**
-Briefs: teya-memory/semantic-core/zhiraf-ufa-2026/07-content-briefs.md
-Blog angles: teya-memory/semantic-core/zhiraf-ufa-2026/11-blog-topics.md (6 Excalibur P0 slugs unchanged)
-Missing facts: subscribe/newsletter, tour operators list, installment banks, parking, map review URLs
-Blockers: none for content — WP templates for **7** new routes + offers-wordstat block still Aurora
+Quality & Word Count Report: teya-memory/wp/copy-quality-report.md
+Copy Linter: scripts/zhiraf_copy_lint.sh (Exit code: 0, ZERO SEO leaks)
+
+### Покрытие и объёмы текстов (19 страниц):
+- **5× Страновые направления** (≥900 слов):
+  - Турция (`/tour/turciya/`): **1 092** слова, 8 FAQ
+  - ОАЭ (`/tour/oae/`): **1 070** слов, 8 FAQ
+  - Египет (`/tour/egipet/`): **1 009** слов, 8 FAQ
+  - Таиланд (`/tour/tailand/`): **954** слова, 8 FAQ
+  - Вьетнам (`/tour/vietnam/`): **980** слов, 8 FAQ
+- **5× Курортные лендинги** (≥600 слов):
+  - Анталья (`/tour/turciya/antalya/`): **630** слов, 7 FAQ
+  - Хургада (`/tour/egipet/hurgada/`): **620** слов, 7 FAQ
+  - Шарм-эль-Шейх (`/tour/egipet/sharm-el-sheyh/`): **644** слова, 7 FAQ
+  - Нячанг (`/tour/vietnam/nyachang/`): **603** слова, 7 FAQ
+  - Фукуок (`/tour/vietnam/fukuok/`): **612** слов, 7 FAQ
+- **2× Офферные лендинги** (≥700 слов):
+  - Горящие туры (`/goryashchie-tury/`): **781** слово, 7 FAQ
+  - Всё включено (`/vse-vklyucheno/`): **831** слово, 7 FAQ
+- **Главная (`/`)** — 423 слова (чистая секция офферов без Wordstat, 8 FAQ)
+- **О нас (`/o-nas/`)** — 643 слова (история, стандарты, команда, 6 FAQ)
+- **Каталог (`/tour/`)** — 173 слова (интро, чипы курортов и офферов, FAQ)
+- **Контакты (`/kontakty/`)** — 80 слов (NAP, реквизиты, форма)
+- **Блог (`/blog/`)** — архивный хаб
+- **Правовые страницы** — `/politika-konfidenczialnosti/` (102 слова), `/politika-cookies/` (61 слово)
+
+### Редакторское качество и комплаенс:
+- **Устранение SEO-утечек:** 0 вхождений «показ», «показов/мес», «slug», «URL-map», «секция», «Wordstat», битых токенов `%1$s`. Все поисковые ключи вплетены органично в связную прозу.
+- **Фактологическая база:** проверенные данные по сезонам помесячно, температурам воды/воздуха, времени прямого перелёта из аэропорта Уфы, визовым правилам для граждан РФ, курортным регионам и типам отелей.
+- **38-ФЗ комплаенс:** отсутствие необоснованных превосходных степеней («лучший/№1»), фиктивных цен «от», выдуманных отзывов.

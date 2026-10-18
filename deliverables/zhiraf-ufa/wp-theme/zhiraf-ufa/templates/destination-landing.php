@@ -61,13 +61,13 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 				<?php endforeach; ?>
 			<?php endif; ?>
 			<?php if ( ! empty( $dest['resort_links'] ) ) : ?>
-				<h2><?php esc_html_e( 'Курорты с отдельными страницами', 'zhiraf-ufa' ); ?></h2>
+				<h2><?php esc_html_e( 'Курорты направления', 'zhiraf-ufa' ); ?></h2>
 				<ul class="resort-link-list">
 					<?php foreach ( $dest['resort_links'] as $link ) : ?>
 						<li>
 							<a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a>
-							<?php if ( ! empty( $link['wordstat'] ) ) : ?>
-								<span class="resort-link-list__stat"><?php echo esc_html( (string) $link['wordstat'] ); ?> <?php esc_html_e( 'показов/мес.', 'zhiraf-ufa' ); ?></span>
+							<?php if ( ! empty( $link['desc'] ) ) : ?>
+								<span class="resort-link-list__desc"><?php echo esc_html( $link['desc'] ); ?></span>
 							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
@@ -111,7 +111,7 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 	<section class="section dest-landing-cta">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
-			<p><?php esc_html_e( 'Оставьте заявку в квизе — менеджер предложит 2–4 варианта с вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
+			<p><?php esc_html_e( 'Оставьте заявку в квизе — менеджер предложит 2–4 проверенных варианта с вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
 			<button type="button" class="btn btn--primary" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>">
 				<?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?>
 			</button>

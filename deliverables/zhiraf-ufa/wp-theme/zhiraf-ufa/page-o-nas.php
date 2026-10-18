@@ -16,45 +16,127 @@ get_header();
 	<section class="page-hero page-hero--editorial">
 		<div class="container">
 			<h1><?php esc_html_e( 'О турагентстве «Жираф» в Уфе', 'zhiraf-ufa' ); ?></h1>
-			<p class="lead"><?php esc_html_e( 'Семейное агентство с апреля 2011 года. Подбираем туры с вылетом из Уфы честно — как для друзей.', 'zhiraf-ufa' ); ?></p>
+			<p class="lead"><?php esc_html_e( 'Семейное турагентство в Уфе с апреля 2011 года. Честно подбираем и организуем пакетные туры с прямым вылетом из Уфы — без фиктивных цен «от», без навязчивого спама и со строгим соблюдением стандартов туристического законодательства.', 'zhiraf-ufa' ); ?></p>
 		</div>
 	</section>
+
 	<section class="section">
 		<div class="container about-grid">
 			<div class="prose">
-				<h2><?php esc_html_e( 'История', 'zhiraf-ufa' ); ?></h2>
-				<p><?php esc_html_e( 'Основатели Зульфия и Ксения открыли офис в 2011 году. В 2014 к команде присоединились Лия, Алина и Рафаэль. Сегодня «Жираф» — это менеджеры, которые сопровождают клиента от первой заявки до возвращения.', 'zhiraf-ufa' ); ?></p>
-				<h2><?php esc_html_e( 'Ценности', 'zhiraf-ufa' ); ?></h2>
+				<h2><?php esc_html_e( 'Наша история и развитие', 'zhiraf-ufa' ); ?></h2>
+				<p><?php esc_html_e( 'Турагентство «Жираф» основано в Уфе в апреле 2011 года Зульфией и Ксенией. С первых дней работы главным ориентиром стало бережное и честное отношение к путешественникам: подбирать поездку так, как мы выбираем отдых для своих семей и близких друзей. В 2014 году команда расширилась — к развитию агентства присоединились Рафаэль, Лия и Алина.', 'zhiraf-ufa' ); ?></p>
+				<p><?php esc_html_e( 'За годы работы агентство ООО «Жираф» (реестровый номер в Едином федеральном реестре турагентств — РТА 0012822, ИНН 0278177191, ОГРН 1110280012457) выстроило прямые надёжные партнёрские отношения с ведущими туроператорами России. Мы непрерывно инспектируем курорты и отели Турции, ОАЭ, Египта, Таиланда и Вьетнама, чтобы предоставлять проверенную и объективную информацию о каждом объекте размещения.', 'zhiraf-ufa' ); ?></p>
+
+				<h2><?php esc_html_e( 'Ключевые принципы работы', 'zhiraf-ufa' ); ?></h2>
 				<ul>
-					<li><?php esc_html_e( 'Прозрачность — объясняем, за что платите', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'Уважение к времени — готовим варианты, а не «100 отелей на почту»', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'Локальность — офис в Уфе, можно приехать лично', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Честность и прозрачность:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'мы открыто озвучиваем полную и окончательную стоимость тура, детализируем концепции питания (AI/UAI), информируем о возможных отельных депозитах, налогах и сборах до заключения договора.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Экспертный фокус и уважение к времени:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'вместо бесконечных списков из десятков случайных отелей мы готовим персональную подборку из 2–4 наиболее подходящих вариантов, чётко сравнивая их плюсы и минусы.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Локальное присутствие и живой контакт:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'наш физический офис расположен в Уфе на ул. Юрия Гагарина, 74/1 (офис 3). Вы всегда можете встретиться с менеджером лично, выпить кофе и спокойно обсудить детали будущей поездки.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Сопровождение на всех этапах:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'мы остаёмся на связи от момента первого обращения и подготовки документов до вылета из Уфы, заселения в отель и благополучного возвращения домой.', 'zhiraf-ufa' ); ?></li>
 				</ul>
-				<p><a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>"><?php esc_html_e( 'Контакты и реквизиты', 'zhiraf-ufa' ); ?></a> · <a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог туров', 'zhiraf-ufa' ); ?></a></p>
+
+				<p>
+					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>" class="btn btn--outline btn--sm"><?php esc_html_e( 'Контакты и реквизиты', 'zhiraf-ufa' ); ?></a>
+					<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>" class="btn btn--outline btn--sm"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
+				</p>
 			</div>
 			<div class="about-visual">
-				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда за работой', 'zhiraf-ufa' ), 'about-img', true ); ?>
-				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис', 'zhiraf-ufa' ), 'about-img', true ); ?>
+				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда турагентства «Жираф» за работой', 'zhiraf-ufa' ), 'about-img', true ); ?>
+				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства «Жираф» в Уфе на улице Гагарина', 'zhiraf-ufa' ), 'about-img', true ); ?>
 			</div>
 		</div>
 	</section>
+
 	<section class="section section--sand">
 		<div class="container">
-			<h2><?php esc_html_e( 'Команда', 'zhiraf-ufa' ); ?></h2>
+			<div class="section-head reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Команда агентства «Жираф»', 'zhiraf-ufa' ); ?></h2>
+				<p class="lead"><?php esc_html_e( 'Специалисты с многолетним опытом работы в туризме, знающие специфику курортов и отельную базу.', 'zhiraf-ufa' ); ?></p>
+			</div>
 			<div class="team-grid">
-				<div class="team-card"><h3><?php esc_html_e( 'Рафаэль', 'zhiraf-ufa' ); ?></h3><p><?php esc_html_e( 'Директор', 'zhiraf-ufa' ); ?></p></div>
-				<div class="team-card"><h3><?php esc_html_e( 'Зульфия', 'zhiraf-ufa' ); ?></h3><p><?php esc_html_e( 'Основатель, зам. директора', 'zhiraf-ufa' ); ?></p></div>
-				<div class="team-card"><h3><?php esc_html_e( 'Альфия', 'zhiraf-ufa' ); ?></h3><p><?php esc_html_e( 'Менеджер', 'zhiraf-ufa' ); ?></p></div>
-				<div class="team-card"><h3><?php esc_html_e( 'Гульнара', 'zhiraf-ufa' ); ?></h3><p><?php esc_html_e( 'Менеджер', 'zhiraf-ufa' ); ?></p></div>
+				<div class="team-card">
+					<h3><?php esc_html_e( 'Рафаэль', 'zhiraf-ufa' ); ?></h3>
+					<p class="team-card__role"><?php esc_html_e( 'Директор', 'zhiraf-ufa' ); ?></p>
+					<p class="team-card__desc"><?php esc_html_e( 'Организация работы агентства, контроль качества сервиса, юридическое сопровождение договоров и стратегическое партнёрство с туроператорами.', 'zhiraf-ufa' ); ?></p>
+				</div>
+				<div class="team-card">
+					<h3><?php esc_html_e( 'Зульфия', 'zhiraf-ufa' ); ?></h3>
+					<p class="team-card__role"><?php esc_html_e( 'Основатель, заместитель директора', 'zhiraf-ufa' ); ?></p>
+					<p class="team-card__desc"><?php esc_html_e( 'У истоков агентства с 2011 года. Эксперт по сложным индивидуальным маршрутам, премиальным резортам Турции, ОАЭ и семейному отдыху.', 'zhiraf-ufa' ); ?></p>
+				</div>
+				<div class="team-card">
+					<h3><?php esc_html_e( 'Альфия', 'zhiraf-ufa' ); ?></h3>
+					<p class="team-card__role"><?php esc_html_e( 'Ведущий менеджер по туризму', 'zhiraf-ufa' ); ?></p>
+					<p class="team-card__desc"><?php esc_html_e( 'Специализируется на пляжных направлениях Средиземного и Красного морей (Турция, Египет), подборе отелей All Inclusive и турах для семей с детьми.', 'zhiraf-ufa' ); ?></p>
+				</div>
+				<div class="team-card">
+					<h3><?php esc_html_e( 'Гульнара', 'zhiraf-ufa' ); ?></h3>
+					<p class="team-card__role"><?php esc_html_e( 'Менеджер по туризму', 'zhiraf-ufa' ); ?></p>
+					<p class="team-card__desc"><?php esc_html_e( 'Эксперт по направлениям Азии и Ближнего Востока (Таиланд, Вьетнам, ОАЭ), визовым правилам, стыковочным авиаперелётам и экскурсионным турам.', 'zhiraf-ufa' ); ?></p>
+				</div>
 			</div>
 		</div>
 	</section>
-	<section class="section cta-strip">
-		<div class="container cta-strip__inner">
-			<p><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></p>
-			<button type="button" class="btn btn--primary" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+
+	<section class="section bg-milky">
+		<div class="container container--narrow">
+			<div class="section-head reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Частые вопросы о работе агентства', 'zhiraf-ufa' ); ?></h2>
+			</div>
+			<div class="faq-home__list">
+				<details class="faq-home__item">
+					<summary class="faq-home__question"><?php esc_html_e( 'Как давно работает турагентство «Жираф» в Уфе?', 'zhiraf-ufa' ); ?></summary>
+					<div class="faq-home__answer">
+						<p><?php esc_html_e( 'ООО «Жираф» непрерывно работает на туристическом рынке Уфы с апреля 2011 года. Наше агентство внесено в Единый федеральный реестр турагентств под номером РТА 0012822.', 'zhiraf-ufa' ); ?></p>
+					</div>
+				</details>
+				<details class="faq-home__item">
+					<summary class="faq-home__question"><?php esc_html_e( 'Чем покупка в «Жираф» отличается от самостоятельного поиска на агрегаторах?', 'zhiraf-ufa' ); ?></summary>
+					<div class="faq-home__answer">
+						<p><?php esc_html_e( 'На онлайн-агрегаторах предварительные цены нередко меняются при переходе к оплате из-за скрытых доплат за багаж или топливных сборов. Мы проводим ручную верификацию каждого тура, проверяем реальный статус рейсов из Уфы, предупреждаем о нюансах отеля и оформляем официальный договор с защитой прав туриста.', 'zhiraf-ufa' ); ?></p>
+					</div>
+				</details>
+				<details class="faq-home__item">
+					<summary class="faq-home__question"><?php esc_html_e( 'Берёте ли вы комиссию за подбор тура?', 'zhiraf-ufa' ); ?></summary>
+					<div class="faq-home__answer">
+						<p><?php esc_html_e( 'Консультация и подбор тура в нашем агентстве бесплатны. Стоимость пакетного тура для туриста строго соответствует официальным тарифам туроператоров без скрытых наценок.', 'zhiraf-ufa' ); ?></p>
+					</div>
+				</details>
+				<details class="faq-home__item">
+					<summary class="faq-home__question"><?php esc_html_e( 'Можно ли оформить тур дистанционно без визита в офис?', 'zhiraf-ufa' ); ?></summary>
+					<div class="faq-home__answer">
+						<p><?php esc_html_e( 'Да, мы работаем как в уютном офисе на ул. Гагарина, 74/1, так и полностью дистанционно. Договор заключается в электронном виде, оплата производится по защищённой банковской ссылке, а билеты, ваучеры и страховки отправляются в мессенджер и на email.', 'zhiraf-ufa' ); ?></p>
+					</div>
+				</details>
+				<details class="faq-home__item">
+					<summary class="faq-home__question"><?php esc_html_e( 'С какими туроператорами сотрудничает ООО «Жираф»?', 'zhiraf-ufa' ); ?></summary>
+					<div class="faq-home__answer">
+						<p><?php esc_html_e( 'Мы сотрудничаем только с надёжными туроператорами, включёнными в Единый федеральный реестр туроператоров РФ и имеющими подтверждённое финансовое обеспечение и фонды персональной ответственности в ассоциации «Турпомощь».', 'zhiraf-ufa' ); ?></p>
+					</div>
+				</details>
+				<details class="faq-home__item">
+					<summary class="faq-home__question"><?php esc_html_e( 'Что делать, если во время отдыха возникли непредвиденные вопросы?', 'zhiraf-ufa' ); ?></summary>
+					<div class="faq-home__answer">
+						<p><?php esc_html_e( 'Ваш персональный менеджер остаётся на связи на протяжении всего путешествия. Мы помогаем решать вопросы с отельным гидом, трансфером, страховой компанией и авиаперевозчиком.', 'zhiraf-ufa' ); ?></p>
+					</div>
+				</details>
+			</div>
 		</div>
 	</section>
+
+	<section class="section cta-strip">
+		<div class="container cta-strip__inner">
+			<div class="cta-strip__content">
+				<h2><?php esc_html_e( 'Готовы доверить организацию отпуска профессионалам?', 'zhiraf-ufa' ); ?></h2>
+				<p><?php esc_html_e( 'Пройдите короткий квиз или оставьте заявку — менеджер свяжется с вами и подготовит 2–4 проверенных варианта с прямым вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
+			</div>
+			<div class="cta-strip__actions">
+				<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+				<a href="tel:+79018105018" class="btn btn--outline btn--lg" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
+			</div>
+		</div>
+	</section>
+
 	<?php
 	while ( have_posts() ) {
 		the_post();

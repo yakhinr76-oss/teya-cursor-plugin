@@ -3,18 +3,127 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Контакты — preview</title>
+  <title>Контакты «Жираф» в Уфе</title>
   <link rel="stylesheet" href="../wp-theme/zhiraf-ufa/assets/dist/style.css" />
   <style>
-    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2') format('woff2');font-weight:200 800;font-display:swap;}
-    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Variable.woff2') format('woff2');font-weight:200 800;font-display:swap;}
+    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Cormorant Garamond';src:url('../wp-theme/zhiraf-ufa/assets/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Cormorant Garamond';src:url('../wp-theme/zhiraf-ufa/assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
   </style>
 </head>
-<body><header class="site-header"><div class="container site-header__inner">
+<body><header class="site-header" id="site-header"><div class="container site-header__inner">
   <div class="site-branding"><a href="home.html"><img src="../wp-theme/zhiraf-ufa/assets/images/logo-zhiraf-client.png" alt="Жираф" width="167" height="56" style="height:40px;width:auto"></a></div>
   <nav class="site-nav" aria-label="Главная навигация"><ul class="primary-menu" style="display:flex;gap:32px"><li><a href="tour.html">Туры</a></li><li><a href="o-nas.html">О нас</a></li><li><a href="blog.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></nav>
-  <div class="site-header__actions"><a class="header-phone" href="tel:+79018105018">+7 901 810-50-18</a><button type="button" class="btn btn--primary btn--sm">Подобрать тур</button></div>
+  <div class="site-header__actions"><a class="header-phone" href="tel:+79018105018">+7 901 810-50-18</a><button type="button" class="btn btn--outline btn--sm">Подобрать тур</button></div>
 </div></header><main id="primary" class="site-main site-main--contacts">
-<section class="page-hero"><div class="container"><h1>Контакты «Жираф» в Уфе</h1></div></section>
-<section class="section"><div class="container contact-grid"><div class="contact-cards"><div class="contact-card"><h2>Телефон</h2><a href="tel:+79018105018">+7 901 810-50-18</a></div><div class="contact-card"><h2>Адрес</h2><p>ул. Гагарина, 74/1, Уфа</p></div></div></div></section></main><footer class="site-footer"><div class="container"><p>ООО «Жираф» · РТА 0012822 · <a href="politika-konfidenczialnosti.html">Политика</a> · <a href="politika-cookies.html">Cookies</a></p></div></footer>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Контакты «Жираф» в Уфе</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <h2>Телефон</h2>
+          <a href="tel:+79018105018">+7 901 810-50-18</a>
+        </div>
+        <div class="contact-card">
+          <h2>Email</h2>
+          <a href="mailto:office@zhiraf-ufa.ru">office@zhiraf-ufa.ru</a>
+        </div>
+        <div class="contact-card">
+          <h2>Адрес</h2>
+          <p>ул. Юрия Гагарина, 74/1, офис 3, г. Уфа, 450068</p>
+        </div>
+        <div class="contact-card">
+          <h2>Часы работы</h2>
+          <p>Пн–Пт 10:00–19:00, Сб 11:00–15:00</p>
+        </div>
+      </div>
+      <form class="zhiraf-form mini-form" data-action="zhiraf_lead">
+        <h2>Быстрая заявка</h2>
+        <label class="form-field"><span>Имя</span><input name="name" required /></label>
+        <label class="form-field"><span>Телефон</span><input name="phone" type="tel" required /></label>
+        <button type="submit" class="btn btn--primary">Отправить</button>
+        <p class="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+  <section class="section map-section">
+    <div class="container">
+      <h2>Как нас найти</h2>
+      <div class="map-frame">
+        <iframe title="Карта — офис Жираф" src="https://yandex.ru/map-widget/v1/?ll=55.979%2C54.738&amp;z=16&amp;pt=55.979,54.738,pm2rdm" width="100%" height="400" style="border:0;" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+  <section class="section section--sand">
+    <div class="container prose requisites">
+      <h2>Реквизиты</h2>
+      <p>ООО «Жираф», ИНН 0278177191, ОГРН 1110280012457</p>
+      <p>Юридический адрес: 450068, РБ, г. Уфа, б-р Плеханова, д. 5, кв. 123</p>
+      <p>Банк: ПАО «ПРОМСВЯЗЬБАНК», БИК 042202803</p>
+      <p><a href="o-nas.html">О компании</a></p>
+    </div>
+  </section>
+</main><footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <a href="home.html"><img src="../wp-theme/zhiraf-ufa/assets/images/logo-zhiraf-client.png" alt="Жираф" width="167" height="56" style="height:40px;width:auto"></a>
+      <p class="footer-desc">Подбор туров с вылетом из Уфы — честно и по-человечески.</p>
+      <p class="footer-nap">
+        ул. Юрия Гагарина, 74/1, офис 3, Уфа<br>
+        <a href="tel:+79018105018">+7 901 810-50-18</a><br>
+        <a href="mailto:office@zhiraf-ufa.ru">office@zhiraf-ufa.ru</a>
+      </p>
+      <p class="footer-rta">ООО «Жираф» · РТА 0012822</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col__title">Навигация</p>
+      <ul class="footer-menu">
+        <li><a href="tour.html">Туры</a></li>
+        <li><a href="o-nas.html">О нас</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col__title">Направления</p>
+      <ul class="footer-menu">
+        <li><a href="tour-turciya.html">Турция</a></li>
+        <li><a href="tour-oae.html">ОАЭ</a></li>
+        <li><a href="tour-egipet.html">Египет</a></li>
+        <li><a href="tour-tailand.html">Таиланд</a></li>
+        <li><a href="tour-vietnam.html">Вьетнам</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col__title">Форматы и курорты</p>
+      <ul class="footer-menu">
+        <li><a href="goryashchie-tury.html">Горящие туры</a></li>
+        <li><a href="vse-vklyucheno.html">Всё включено</a></li>
+        <li><a href="tour-turciya-antalya.html">Анталья</a></li>
+        <li><a href="tour-egipet-hurgada.html">Хургада</a></li>
+        <li><a href="tour-egipet-sharm-el-sheyh.html">Шарм-эль-Шейх</a></li>
+        <li><a href="tour-vietnam-nyachang.html">Нячанг</a></li>
+        <li><a href="tour-vietnam-fukuok.html">Фукуок</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col__title">Правовая информация</p>
+      <ul class="footer-menu">
+        <li><a href="politika-konfidenczialnosti.html">Политика конфиденциальности</a></li>
+        <li><a href="politika-cookies.html">Политика cookies</a></li>
+      </ul>
+      <button type="button" class="btn btn--primary btn--sm" style="margin-top:24px">Подобрать тур</button>
+    </div>
+  </div>
+  <div class="site-footer__legal">
+    <div class="container">
+      <p>© 2026 ООО «Жираф». Туры из Уфы.</p>
+    </div>
+  </div>
+</footer>
 <script src="../wp-theme/zhiraf-ufa/assets/dist/main.js" defer></script></body></html>

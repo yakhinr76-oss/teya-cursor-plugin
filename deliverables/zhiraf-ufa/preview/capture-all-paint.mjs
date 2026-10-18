@@ -6,9 +6,14 @@ import { prepareHomeBlogBlock, scrollFullPage } from './paint-scroll.mjs';
 
 const baseHost = 'http://127.0.0.1:8765';
 const artifactsDir = '/opt/cursor/artifacts';
+const screenshotsDir = '/opt/cursor/artifacts/screenshots';
 const paintDir = '/workspace/teya-memory/wp/paint-qa';
+const deliverablesPaintDir = '/workspace/deliverables/zhiraf-ufa/paint';
+
 mkdirSync(artifactsDir, { recursive: true });
+mkdirSync(screenshotsDir, { recursive: true });
 mkdirSync(paintDir, { recursive: true });
+mkdirSync(deliverablesPaintDir, { recursive: true });
 
 /** @type {{ slug: string, path: string }[]} */
 const pages = [
@@ -67,10 +72,18 @@ for (const p of pages) {
       }
       await scrollFullPage(page);
       const artifact = join(artifactsDir, `zhiraf-${p.slug}-${vp.suffix}.png`);
+      const screenshotCopy = join(screenshotsDir, `zhiraf-${p.slug}-${vp.suffix}.png`);
       const paintName = paintFilename(p.slug, vp.suffix);
       const paintPath = join(paintDir, paintName);
+      const deliverablesPaintPath = join(deliverablesPaintDir, paintName);
+      const deliverablesArtifactPath = join(deliverablesPaintDir, `zhiraf-${p.slug}-${vp.suffix}.png`);
+
       await page.screenshot({ path: artifact, fullPage: true });
+      copyFileSync(artifact, screenshotCopy);
       copyFileSync(artifact, paintPath);
+      copyFileSync(artifact, deliverablesPaintPath);
+      copyFileSync(artifact, deliverablesArtifactPath);
+
       screenshotRecords.push({
         slug: p.slug,
         path: p.path,
@@ -79,6 +92,7 @@ for (const p of pages) {
         http_status: status,
         artifact,
         paint: `teya-memory/wp/paint-qa/${paintName}`,
+        deliverables_paint: `deliverables/zhiraf-ufa/paint/${paintName}`,
       });
       if (status !== 200) {
         failed.push({ slug: p.slug, path: p.path, viewport: vp.suffix, http_status: status });
@@ -97,7 +111,7 @@ const evidence = {
   theme_slug: 'zhiraf-ufa',
   mode: 'local-only',
   checked_at: new Date().toISOString(),
-  agent_bc_id: 'bc-6dc66391-136a-53f5-9722-9896f4c3dbc6',
+  agent_bc_id: 'bc-c4b918ce-0187-5411-9bc2-8b2c781bb79a',
   page_build_ref: 'teya-memory/wp/page-build-report.md',
   wordstat_routes: pages.map((p) => p.path),
   screenshots: screenshotRecords,

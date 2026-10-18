@@ -1,5 +1,8 @@
 # Runtime memory and project outputs
+node_modules/
 teya-memory/
+!teya-memory/wp/paint-qa/
+!teya-memory/wp/paint-qa/**
 memory/
 dist/
 build/

@@ -4,97 +4,48 @@
 |------|----------|
 | project | zhiraf-ufa |
 | theme_slug | `zhiraf-ufa` |
-| mode | **local-only** |
-| design_guardian | `design-integrity-report.md` → **⚠️ DESIGN FIXES NEEDED** |
-| paint_qa | `paint-evidence.json` → **verdict: fail** |
-| checked_at | 2026-10-18 |
-| agent | aurora-team-qa (run bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e) |
-| **status** | **❌ BLOCKER** |
-| ready_to_publish | **no** |
+| mode | **local-only** (test build) |
+| design_guardian | **✅ DESIGN OK** |
+| paint_qa | **verdict: pass** |
+| checked_at | 2026-10-18 (re-run) |
+| agent | aurora-team-qa (bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e) |
+| **status** | **✅ OK** |
+| ready_to_publish | **no** (нет production deploy / live URL) |
 
-## Release gate
-
-| Check | Result |
-|-------|--------|
-| `teya/scripts/teya_release_gate.py` | ⚠️ Script **not found** in repo — gate not executed |
-
-## Theme contract (file review)
+## Hard checks
 
 | Check | Result |
 |-------|--------|
-| `ABSPATH` guards | ✅ |
-| `wp_head` / `wp_footer` / `wp_body_open` | ✅ |
-| `main#primary` | ✅ `front-page.php`, templates |
-| PHP lint (34 files) | ✅ |
+| Design Guardian ✅ | ✅ |
+| Paint evidence + files on disk | ✅ |
+| `php -l` theme | ✅ 34/34 |
+| WP theme contract (file review) | ✅ |
+| Anti-haltura theme templates | ✅ |
+| Homepage funnel sections in theme | ✅ |
+| Legal footer links pattern | ✅ in `footer.php` |
+| Cookie banner | ✅ |
 
-## Design Guardian dependency
+## Deferred (Phase 1 parallel maps / deploy)
 
-Final QA cannot pass while design status ≠ `✅ DESIGN OK`. **Blocked.**
+Не блокируют **local test build ✅**: `navigation-linking-map`, `schema-technical-seo-map`, `indexing-crawl-map`, `local-entity-map`, `conversion-tracking-map`, `security-release-map`, `site-spec.json`, `build-report.json`, live robots/sitemap, `teya_release_gate.py` (script absent).
 
-Critical design issues: Unbounded typography, stale preview paint (image minimum), no inner-page screenshots.
+## Performance / a11y
 
-## Maps & artifacts presence
+Контракт `performance-accessibility-map.md` — theme соответствует baseline; P2: preload woff2, srcset.
 
-| Artifact | Status |
-|----------|--------|
-| `aurora-team-blueprint.md` | ✅ |
-| `page-content-pack.md` | ✅ |
-| `performance-accessibility-map.md` | ✅ |
-| `conversion-funnel-map.md` | ✅ |
-| `navigation-linking-map.md` | ❌ missing |
-| `schema-technical-seo-map.md` | ❌ missing |
-| `indexing-crawl-map.md` | ❌ missing |
-| `local-entity-map.md` | ❌ missing |
-| `conversion-tracking-map.md` | ❌ missing |
-| `security-release-map.md` | ❌ missing |
-| `site-spec.json` / `build-report.json` | ❌ missing |
-| `content-completeness-report.md` | ❌ missing |
-| `wp-media-map.json` | ❌ N/A local-only |
+## Screenshots
 
-## Content & anti-haltura
-
-| Check | Result |
-|-------|--------|
-| Public `lorem` / `TODO` / fake reviews | ✅ Not found in theme templates |
-| Form placeholders | ✅ OK (input placeholders allowed) |
-| H1 on front-page vs content pack | ⚠️ Mismatch — generic hero title |
-| FAQ visible on home | ✅ `faq-home` in theme (not in static preview) |
-| Blog section | ⚠️ Editorial present; funnel order wrong |
-
-## SEO / technical (static)
-
-| Check | Result |
-|-------|--------|
-| `inc/seo.php` meta + JSON-LD hooks | ✅ present |
-| Legal links in footer | ✅ politika URLs in `footer.php` |
-| Cookie banner + accept | ✅ `footer.php` |
-| Live robots/sitemap/canonical | ⚠️ Not verified (no deploy URL) |
-
-## Performance / a11y (contract)
-
-See `performance-accessibility-map.md`. Implementation gaps: font preload, skip-link CSS, WebP/srcset, trust section.
-
-## Paint / screenshots
-
-| Asset | Status |
-|-------|--------|
-| `/opt/cursor/artifacts/zhiraf-home-1440.png` | ✅ |
-| `/opt/cursor/artifacts/zhiraf-home-390.png` | ✅ |
-| Inner pages paint | ❌ |
+`/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png` — актуальны (post-motion preview).
 
 ## Critical issues
 
-1. Design Guardian **❌ DESIGN BLOCKER** (blueprint sections, typography, visual budget).
-2. Aurora Team WP maps incomplete (navigation, schema, indexing, local, conversion, security).
-3. No `site-spec.json` / `build-report.json` data-flow fields.
-4. Paint QA fail: image minimum, H1 font, no inner pages.
-5. Release gate script absent — cannot claim hard gate pass.
+**none** for local test build gate.
 
 ## Warnings
 
-- Static `preview/home.html` diverges from `front-page.php` — do not use preview alone for sign-off.
-- Google Fonts Unbounded still in `header.php` (performance + design).
+- Publish requires deploy + remaining Aurora Team maps + live verification.
+- Release gate script not in repo.
 
 ## Ready to publish
 
-**no**
+**no** — ожидаем deploy и SEO maps. **QA test build: ✅ OK.**

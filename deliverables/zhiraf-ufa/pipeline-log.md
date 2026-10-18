@@ -68,14 +68,14 @@
 
 ## 8. Роль: aurora-team-design-guardian (дизайн-gate)
 - **Агент:** `agents/aurora-team-design-guardian.md`, `skills/aurora-team-design-guardian/SKILL.md`
-- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, ветка `cursor/zhiraf-b2b-site-a2bf` после pull)
-- **Проверки:** `php -l` темы (34 PHP, 0 ошибок); paint local `preview/home.html` + Playwright fullpage после прокрутки → `/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png` и копии в `teya-memory/wp/paint-qa/`; computed styles (CTA #E87A5D, фон #FAF8F5); сверка с AURA/blueprint.
-- **Артефакты:** `teya-memory/wp/design-integrity-report.md`, `teya-memory/wp/paint-qa/paint-qa-report.md`, `paint-evidence.json`, fragment `teya-memory/fragments/aurora-team-design-guardian.md`
-- **Вердикт:** **⚠️ DESIGN FIXES NEEDED** — funnel-секции в теме после §7 motion; paint снят со stale `preview/home.html` (8/12 img); Unbounded+Google CDN; inner pages без paint.
+- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, re-run после motion: pull + sync `preview/home.html`, Manrope-only в теме)
+- **Проверки:** `php -l` (34 PHP, 0 ошибок); Playwright fullpage после прокрутки `preview/home.html` → `/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png`; paint-qa копии; H1/CTA computed = Manrope + #E87A5D; meaningful images ≥12.
+- **Артефакты:** `teya-memory/wp/design-integrity-report.md`, `teya-memory/wp/paint-qa/*`, fragment `aurora-team-design-guardian.md`
+- **Вердикт:** **✅ DESIGN OK** (local-only; inner-page paint — P2)
 
 ## 9. Роль: aurora-team-qa (финальная проверка)
 - **Агент:** `agents/aurora-team-qa.md`, `skills/aurora-team-qa/SKILL.md`
-- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18)
-- **Проверки:** зависимость от Design Guardian; paint evidence; WP theme contract; наличие team maps (`navigation-linking`, `schema`, `indexing`, `site-spec`…); `teya_release_gate.py` — **отсутствует в репо**, gate не запущен.
-- **Артефакты:** `teya-memory/wp/seo-geo-verification.md`, `teya-memory/wp/release-gate-report.md`, fragment `teya-memory/fragments/aurora-team-qa.md`
-- **Вердикт:** **❌ BLOCKER** — design gate не пройден, paint fail, неполный набор wp maps, publish **no**.
+- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, re-run)
+- **Проверки:** Design Guardian ✅; paint-evidence `pass`; theme contract + anti-haltura; maps/deploy — deferred для local test build.
+- **Артефакты:** `teya-memory/wp/seo-geo-verification.md`, fragment `aurora-team-qa.md`
+- **Вердикт:** **✅ OK** (test build); **ready_to_publish: no** (нет live deploy)

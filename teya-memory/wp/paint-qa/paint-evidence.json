@@ -1,0 +1,47 @@
+{
+  "public_site_url": null,
+  "preview_url": "http://127.0.0.1:8765/preview/home.html",
+  "theme_slug": "zhiraf-ufa",
+  "project": "zhiraf-ufa",
+  "mode": "local-only",
+  "checked_at": "2026-10-18T07:28:00Z",
+  "agent_bc_id": "bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e",
+  "screenshots": {
+    "home_1440": "teya-memory/wp/paint-qa/home-1440-fullpage.png",
+    "home_375": "teya-memory/wp/paint-qa/home-375-fullpage.png",
+    "artifacts_mirror": {
+      "home_1440": "/opt/cursor/artifacts/zhiraf-home-1440.png",
+      "home_390": "/opt/cursor/artifacts/zhiraf-home-390.png"
+    },
+    "pages": []
+  },
+  "computed_styles": {
+    "hero_background": "rgb(250, 248, 245)",
+    "primary_cta_background": "rgb(232, 122, 93)",
+    "body_font_family": "Manrope, sans-serif",
+    "h1_font_family": "Unbounded, Manrope, sans-serif"
+  },
+  "asset_counts": {
+    "meaningful_image_elements_home_preview": 8,
+    "minimum_meaningful_image_assets_homepage": 12,
+    "meaningful_image_elements_theme_front_page_estimate": 10,
+    "broken_images_preview": 0
+  },
+  "css_network": {
+    "theme_css_url": "/wp-theme/zhiraf-ufa/assets/dist/style.css",
+    "theme_css_status": 200,
+    "browser_requested_theme_css": true,
+    "browser_requested_theme_js": false,
+    "subresource_request_count": 11,
+    "note": "Static preview; WP enqueue JS not loaded"
+  },
+  "paint_application": {
+    "body_has_theme_class": true,
+    "hero_has_expected_class": false,
+    "hero_background_matches_aura": true,
+    "primary_cta_matches_aura": true,
+    "unstyled_html_detected": false,
+    "preview_vs_wp_drift": "preview uses hero-globe; theme front-page.php uses hero-premium and more sections"
+  },
+  "verdict": "fail"
+}

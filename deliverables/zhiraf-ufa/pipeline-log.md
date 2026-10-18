@@ -27,6 +27,9 @@
 | wp-theme-builder (полный цикл) | `bc-9773db71-f3bd-5d80-831c-70ba4f27911b` | **нет** — handoff в motion-run, не отдельный builder-агент |
 | aurora-team-performance-a11y | `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` | да |
 | aurora-team-design-guardian + aurora-team-qa | `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` | да (один run: guardian → QA) |
+| aurora-team-asset-packager | `bc-a36c4774-8895-561d-aebf-55df2ca8eb31` | да |
+| aurora-team-artifact-auditor | `bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e` | да |
+| aurora-team-report-compiler + release-gate | `bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e` | да (compiler → `teya_release_gate.py`) |
 
 ---
 
@@ -85,3 +88,37 @@
 | Design Guardian | **✅ DESIGN OK** (local) |
 | Final QA | **✅ OK** (local test build) |
 | Publish | **no** — deploy + SEO/indexing maps |
+
+---
+
+## 10. Phase 1 resume — artifact auditor (`bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e`)
+
+- **Роль:** `aurora-team-artifact-auditor`
+- **Артефакты:** `teya-memory/wp/artifact-readiness-report.md`, `fragments/aurora-team-artifact-auditor.md`
+- **Вердикт:** **READY** (maps + design + semantic + assets 17/17)
+- **Deploy:** нет
+
+## 11. Phase 1 resume — report compiler (`bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e`)
+
+- **Роль:** `aurora-team-report-compiler`
+- **Inputs:** split evidence (в т.ч. восстановлены `theme-base-report.md`, `page-build-report.md`, `asset-transport-report.md` skipped)
+- **Outputs:** `site-spec.json`, `build-report.json` (`status: blocked`), `content-completeness-report.md`, fragment `aurora-team-report-compiler.md`
+- **Факты:** test build 5 templates ✅; `/tour/*` landings ❌; paint home ✅ / inner `pages[]` пуст; visual **11/14**
+- **Theme paths:** packaged assets `teya-memory/wp/theme/zhiraf-ufa/`; полная тема `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/` (gate run с Pillow + `wp-media-map.json`)
+
+## 12. Phase 1 resume — release gate (`bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e`)
+
+- **Команда:** `python3 scripts/teya_release_gate.py --project-root /workspace`
+- **exit_code:** **1** (честно зафиксирован)
+- **Отчёт:** `teya-memory/wp/release-gate-report.md`, fragment `aurora-team-release-gate.md`
+- **Blockers (machine):** slug lint `teya-researcher` в artifact-readiness; duplicate bytes hero/dest в media-map (допустимо в registry, gate строже)
+- **Deploy:** нет | live checks skipped (`public_site_url` пуст в compiled spec)
+
+### Итог Phase 1 resume (2026-10-18)
+
+| Gate | Статус |
+|------|--------|
+| Artifact inputs | **READY** |
+| Compiled reports | **blocked** (content/paint/landings gaps) |
+| `teya_release_gate.py` | **exit 1** — RELEASE BLOCKER |
+| Publish | **no** |

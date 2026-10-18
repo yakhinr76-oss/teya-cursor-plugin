@@ -214,6 +214,21 @@ def theme_slug_from_reports(site_spec: dict[str, Any], build_report: dict[str, A
     ).strip()
 
 
+def theme_dir_from_reports(project_root: Path, site_spec: dict[str, Any], theme_slug: str) -> Path:
+    """Packaged assets may live under teya-memory/wp/theme/<slug>/; full theme in site-spec theme_path."""
+    memory_theme = project_root / "teya-memory" / "wp" / "theme" / theme_slug if theme_slug else Path()
+    if memory_theme.is_dir():
+        has_css = (memory_theme / "style.css").is_file() or (memory_theme / "assets" / "dist" / "style.css").is_file()
+        if has_css:
+            return memory_theme
+    raw_path = str(site_spec.get("theme_path") or "").strip().rstrip("/")
+    if raw_path:
+        deliverable_theme = (project_root / raw_path).resolve()
+        if deliverable_theme.is_dir():
+            return deliverable_theme
+    return memory_theme
+
+
 def resolve_local_path(project_root: Path, raw_path: str) -> Path:
     path = Path(raw_path)
     if path.is_absolute():
@@ -659,7 +674,7 @@ def main() -> int:
     build_report = read_json(wp_dir / "build-report.json", errors)
     theme_slug = theme_slug_from_reports(site_spec, build_report)
     public_url = public_url_from_reports(site_spec, build_report)
-    theme_dir = project_root / "teya-memory" / "wp" / "theme" / theme_slug if theme_slug else Path()
+    theme_dir = theme_dir_from_reports(project_root, site_spec, theme_slug)
 
     if not theme_slug:
         errors.append("cannot determine theme_slug from reports")

@@ -12,23 +12,23 @@ $dest_all   = zhiraf_ufa_destinations();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					Discover the World's <br><span class="hero-premium__title-highlight">Hidden</span> Wonders
+					Открывайте мир <br><span class="hero-premium__title-highlight">вместе</span> с нами
 				</h1>
-				<p class="hero-premium__subtitle">Find the unique moments and hidden gems that ignite unforgettable experiences. From rare encounters to remarkable destinations, we help you uncover the spark that turns every trip into a cherished story.</p>
+				<p class="hero-premium__subtitle">Индивидуальные туры из Уфы. Безупречный сервис и внимание к каждой детали вашего отдыха. Мы поможем вам найти идеальный курорт.</p>
 				<div class="hero-premium__actions">
-					<button class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e('Plan your trip', 'zhiraf-ufa'); ?></button>
+					<button class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e('Подобрать тур', 'zhiraf-ufa'); ?></button>
 				</div>
 			</div>
 			
 			<div class="hero-premium__collage reveal reveal-delay-1">
 				<div class="hero-collage__img hero-collage__img--1">
-					<?php zhiraf_ufa_img( 'hero-turkey.jpg', 'Turkey', '', false, true ); ?>
+					<?php zhiraf_ufa_img( 'hero-uae.jpg', 'ОАЭ', '', false, true ); ?>
 				</div>
 				<div class="hero-collage__img hero-collage__img--2">
-					<?php zhiraf_ufa_img( 'hero-uae.jpg', 'UAE', '', false, true ); ?>
+					<?php zhiraf_ufa_img( 'hero-turkey.jpg', 'Турция', '', false, true ); ?>
 				</div>
 				<div class="hero-collage__img hero-collage__img--3">
-					<?php zhiraf_ufa_img( 'hero-egypt.jpg', 'Egypt', '', false, true ); ?>
+					<?php zhiraf_ufa_img( 'hero-egypt.jpg', 'Египет', '', false, true ); ?>
 				</div>
 				
 				<!-- Airplane Trajectory SVG -->
@@ -44,13 +44,14 @@ $dest_all   = zhiraf_ufa_destinations();
 	<section class="section section--destinations bg-milky">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title">Top Destinations</h2>
+				<h2 class="section-title">Направления</h2>
 				<div class="section-tabs">
-					<button class="tab-btn active">Popular</button>
-					<button class="tab-btn">Asia</button>
-					<button class="tab-btn">Europe</button>
-					<button class="tab-btn">Africa & Middle East</button>
-					<a href="#" class="tab-link-all">Explore all destinations</a>
+					<button class="tab-btn active">Популярные</button>
+					<button class="tab-btn">ОАЭ</button>
+					<button class="tab-btn">Турция</button>
+					<button class="tab-btn">Египет</button>
+					<button class="tab-btn">Таиланд</button>
+					<button class="tab-btn">Вьетнам</button>
 				</div>
 			</div>
 			
@@ -62,7 +63,7 @@ $dest_all   = zhiraf_ufa_destinations();
 						</div>
 						<div class="dest-premium-card__content">
 							<h3 class="dest-premium-card__title"><?php echo esc_html( $dest['name'] ); ?></h3>
-							<p class="dest-premium-card__subtitle"><?php echo esc_html( $dest['name'] ); ?> · Tours</p>
+							<p class="dest-premium-card__subtitle">Туры из Уфы</p>
 						</div>
 					</a>
 				<?php endforeach; ?>
@@ -70,18 +71,49 @@ $dest_all   = zhiraf_ufa_destinations();
 		</div>
 	</section>
 
-	<!-- Editorial Blog/Articles 1 Big + List -->
-	<section class="section section--editorial">
+	<!-- How It Works (New Premium Section) -->
+	<section class="section section--how-it-works">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title">Latest Stories</h2>
-				<a href="#" class="btn btn--outline btn--sm">Read more articles</a>
+				<h2 class="section-title">Как это работает</h2>
+			</div>
+			<div class="steps-row">
+				<div class="step-card reveal">
+					<div class="step-number">01</div>
+					<h3>Заявка</h3>
+					<p>Вы оставляете заявку или проходите короткий квиз на сайте.</p>
+				</div>
+				<div class="step-card reveal reveal-delay-1">
+					<div class="step-number">02</div>
+					<h3>Подбор</h3>
+					<p>Мы собираем лучшие варианты туров под ваши пожелания и бюджет.</p>
+				</div>
+				<div class="step-card reveal reveal-delay-2">
+					<div class="step-number">03</div>
+					<h3>Бронирование</h3>
+					<p>Оформляем договор онлайн или в нашем уютном офисе.</p>
+				</div>
+				<div class="step-card reveal reveal-delay-3">
+					<div class="step-number">04</div>
+					<h3>Отдых</h3>
+					<p>Вы наслаждаетесь идеальным отпуском без лишних забот.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Editorial Blog/Articles 1 Big + List -->
+	<section class="section section--editorial bg-milky">
+		<div class="container">
+			<div class="section-head reveal">
+				<h2 class="section-title">Полезные статьи</h2>
+				<a href="/blog/" class="btn btn--outline btn--sm">Читать все статьи</a>
 			</div>
 			<div class="editorial-layout">
 				<?php 
 				$main_post = null;
 				$list_posts = [];
-				if ( ! empty( $blog_posts ) ) {
+				if ( ! empty( $blog_posts ) && count($blog_posts) >= 4 ) {
 					$main_post = $blog_posts[0];
 					$list_posts = array_slice($blog_posts, 1, 3);
 				} else {
@@ -117,10 +149,16 @@ $dest_all   = zhiraf_ufa_destinations();
 									<?php echo is_array($main_post) ? esc_html($main_post['title']) : esc_html( get_the_title( $main_post ) ); ?>
 								</h3>
 								<time class="editorial-date">
-									<?php echo is_array($main_post) ? 'Aug 12, 2024' : get_the_date( '', $main_post ); ?> · 4 min read
+									<?php echo is_array($main_post) ? 'Окт 15, 2026' : get_the_date( '', $main_post ); ?> · 4 мин
 								</time>
 								<p class="editorial-main__excerpt">
-									It seems that in California, almost any problem can be solved with a combination of avocados, yoga, and dogs. After all, food, health, and...
+									<?php 
+									if ( is_array($main_post) ) {
+										echo "Подробный обзор лучших отелей для незабываемого отдыха с детьми...";
+									} else {
+										echo wp_trim_words( get_the_excerpt( $main_post ), 20 );
+									}
+									?>
 								</p>
 							</div>
 						</a>
@@ -154,7 +192,7 @@ $dest_all   = zhiraf_ufa_destinations();
 									<?php echo is_array($post) ? esc_html($post['title']) : esc_html( get_the_title( $post ) ); ?>
 								</h4>
 								<time class="editorial-date">
-									<?php echo is_array($post) ? 'Aug '.(15+$i).', 2024' : get_the_date( '', $post ); ?> · 5 min read
+									<?php echo is_array($post) ? 'Окт '.(10+$i).', 2026' : get_the_date( '', $post ); ?> · 5 мин
 								</time>
 							</div>
 						</a>
@@ -164,18 +202,42 @@ $dest_all   = zhiraf_ufa_destinations();
 		</div>
 	</section>
 
+	<!-- Request Form (Заявка) -->
+	<section class="section section--form">
+		<div class="container reveal">
+			<div class="form-premium">
+				<div class="form-premium__text">
+					<h2 class="section-title">Оставьте заявку на подбор</h2>
+					<p>Наши эксперты свяжутся с вами в течение 15 минут.</p>
+				</div>
+				<form class="form-premium__fields" action="#" method="POST">
+					<input type="text" placeholder="Ваше имя" required class="form-input" />
+					<input type="tel" placeholder="Телефон" required class="form-input" />
+					<button type="submit" class="btn btn--primary">Отправить</button>
+				</form>
+				<p class="form-premium__note text-center">
+					<label class="subscribe-agree">
+						<input type="checkbox" required checked>
+						Согласен с <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'politika-konfidenczialnosti' ) ) ); ?>">политикой конфиденциальности</a> (ФЗ-152)
+					</label>
+				</p>
+			</div>
+		</div>
+	</section>
+
 	<!-- Subscribe section on Photo -->
 	<section class="section section--subscribe">
 		<div class="subscribe-premium__bg">
-			<?php zhiraf_ufa_img( 'subscribe-bg.jpg', 'Subscribe', 'subscribe-premium__img', false, true ); ?>
+			<?php zhiraf_ufa_img( 'subscribe-bg.jpg', 'Подписка', 'subscribe-premium__img', false, true ); ?>
 			<div class="subscribe-premium__overlay"></div>
 		</div>
 		<div class="container reveal">
 			<div class="subscribe-premium__content">
-				<h2>Get Your Travel Inspiration<br>Straight to Your Inbox</h2>
+				<h2>Свежие идеи для<br>ваших путешествий</h2>
+				<p>Подпишитесь на нашу рассылку, чтобы первыми узнавать о лучших предложениях.</p>
 				<form class="subscribe-premium__form">
-					<input type="email" placeholder="Your email address" required class="subscribe-input" />
-					<button type="submit" class="btn btn--primary">Subscribe</button>
+					<input type="email" placeholder="Ваш email" required class="subscribe-input" />
+					<button type="submit" class="btn btn--primary">Подписаться</button>
 				</form>
 				<p class="subscribe-premium__note">
 					<label class="subscribe-agree">

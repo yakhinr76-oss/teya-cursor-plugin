@@ -294,3 +294,43 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1
   .site-footer__grid { grid-template-columns: 1fr; }
   .cookie-banner { left: 16px; right: 16px; max-width: none; bottom: 16px; }
 }
+
+/* Additional How it Works & Request Form */
+.section--how-it-works { background-color: var(--color-white); }
+.steps-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+}
+.step-card {
+  padding: 32px 24px; background: var(--color-bg); border-radius: var(--radius-md);
+  text-align: center; transition: transform 0.3s ease;
+}
+.step-card:hover { transform: translateY(-5px); }
+.step-number {
+  font-family: var(--font-head); font-size: 2.5rem; color: rgba(232, 122, 93, 0.2);
+  font-weight: 800; margin-bottom: 16px; line-height: 1;
+}
+.step-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+.step-card p { font-size: 0.9375rem; color: var(--color-muted); margin: 0; }
+
+.section--form { background-color: var(--color-sand); }
+.form-premium {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.form-premium__text { margin-bottom: 32px; }
+.form-premium__fields {
+  display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; margin-bottom: 16px;
+}
+.form-input {
+  padding: 16px 24px; border-radius: 50px; border: 1px solid var(--color-border);
+  font-family: var(--font-sans); font-size: 16px; outline: none; background: #fff;
+}
+.form-input:focus { border-color: var(--color-primary); }
+.text-center { text-align: center; }
+
+@media (max-width: 768px) {
+  .steps-row { grid-template-columns: repeat(2, 1fr); }
+  .form-premium__fields { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .steps-row { grid-template-columns: 1fr; }
+}

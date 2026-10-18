@@ -136,3 +136,85 @@
 | Compiled reports | **blocked** (content/paint/landings gaps) |
 | `teya_release_gate.py` | **PASS** (exit 0, script 07628b4) |
 | Publish | **no** |
+
+---
+
+## 13. Wordstat URL-map (18.10.2026)
+
+Честный конвейер после Wordstat-среза **Уфа 172** (833 фразы): от URL-map до gate **PASS** на `af9ce66`, **без production deploy**.
+
+| Шаг | agent_id (`bc-…`) | Коммит / артефакт | Результат |
+|-----|-------------------|-------------------|-----------|
+| 1. Координатор (semantic URL-map) | lead / yadryshko handoff | **0b2883c** | [`wordstat/url-map.md`](../../teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md), `06-url-map.csv` — **20 страниц** (12 есть + **8 новых**) |
+| 2. aurora-team-content | `bc-96c7bc04-…` | **82b6778** | `page-content-pack.md`, `07-content-briefs.md`, fragment `aurora-team-content.md` |
+| 3. PAGE BUILDER (wp-theme-builder) | `bc-78870dfb-…` | **a2c6672** | **8** лендингов + `inc/tour-routing.php` (resort rewrites); `php -l` **49/0**; отчёт `teya-memory/wp/page-build-report.md` |
+| 4. paint (design-guardian QA) | `bc-91bdee58-…` | **d5cf815** | **40** fullpage PNG (20 URL × 1440/390) → `/opt/cursor/artifacts/`; preview scripts в `deliverables/zhiraf-ufa/preview/` |
+| 5. release gate | `bc-5ed0ebcc-…` | **af9ce66** | `teya_release_gate.py` **07628b4** (SHA256 без изменений); **exit 0 PASS** — только fix артефактов темы под gate, скрипт не трогали |
+
+### 8 новых URL (порог ≥100 показов/мес., Уфа)
+
+1. `/goryashchie-tury/` (горящие **3024**)
+2. `/vse-vklyucheno/` (всё включено **735**)
+3. `/tour/turciya/antalya/` (**122**)
+4. `/tour/egipet/hurgada/` (**327**)
+5. `/tour/egipet/sharm-el-sheyh/` (**242**)
+6. `/tour/tailand/phuket/` (**125**)
+7. `/tour/vietnam/nyachang/` (**193**)
+8. `/tour/vietnam/fukuok/` (**183**)
+
+Ниже порога 100 — секции на странах (Кемер 82, Аланья 58, Паттайя 49, с детьми 20); см. URL-map.
+
+### Итог Wordstat pipeline (18.10.2026)
+
+| Gate | Статус |
+|------|--------|
+| URL-map + CSV | **✅** (`0b2883c`) |
+| Content 20 URL | **✅** (`82b6778`) |
+| Theme 8 NEW + routing | **✅** (`a2c6672`, `php -l` 49/0) |
+| Paint 20 routes | **✅** (`d5cf815`, 40 screenshots) |
+| `teya_release_gate.py` | **PASS** (exit 0, script **07628b4**, ref **af9ce66**) |
+| Deploy | **no** |
+
+- **Журнал / fragment:** `teya-memory/fragments/wordstat-pipeline.md`
+- **Release report:** `teya-memory/wp/release-gate-report.md`
+
+---
+
+## 13. Wordstat URL-map (18.10.2026)
+
+Честный конвейер после Wordstat-среза **Уфа 172** (833 фразы): от URL-map до gate **PASS** на `af9ce66`, **без production deploy**.
+
+| Шаг | agent_id (`bc-…`) | Коммит / артефакт | Результат |
+|-----|-------------------|-------------------|-----------|
+| 1. Координатор (semantic URL-map) | lead / yadryshko handoff | **0b2883c** | [`wordstat/url-map.md`](../../teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md), `06-url-map.csv` — **20 страниц** (12 есть + **8 новых**) |
+| 2. aurora-team-content | `bc-96c7bc04-…` | **82b6778** | `page-content-pack.md`, `07-content-briefs.md`, fragment `aurora-team-content.md` |
+| 3. PAGE BUILDER (wp-theme-builder) | `bc-78870dfb-…` | **a2c6672** | **8** лендингов + `inc/tour-routing.php` (resort rewrites); `php -l` **49/0**; отчёт `teya-memory/wp/page-build-report.md` |
+| 4. paint (design-guardian QA) | `bc-91bdee58-…` | **d5cf815** | **40** fullpage PNG (20 URL × 1440/390) → `/opt/cursor/artifacts/`; preview scripts в `deliverables/zhiraf-ufa/preview/` |
+| 5. release gate | `bc-5ed0ebcc-…` | **af9ce66** | `teya_release_gate.py` **07628b4** (SHA256 без изменений); **exit 0 PASS** — только fix артефактов темы под gate, скрипт не трогали |
+
+### 8 новых URL (порог ≥100 показов/мес., Уфа)
+
+1. `/goryashchie-tury/` (горящие **3024**)
+2. `/vse-vklyucheno/` (всё включено **735**)
+3. `/tour/turciya/antalya/` (**122**)
+4. `/tour/egipet/hurgada/` (**327**)
+5. `/tour/egipet/sharm-el-sheyh/` (**242**)
+6. `/tour/tailand/phuket/` (**125**)
+7. `/tour/vietnam/nyachang/` (**193**)
+8. `/tour/vietnam/fukuok/` (**183**)
+
+Ниже порога 100 — секции на странах (Кемер 82, Аланья 58, Паттайя 49, с детьми 20); см. URL-map.
+
+### Итог Wordstat pipeline (18.10.2026)
+
+| Gate | Статус |
+|------|--------|
+| URL-map + CSV | **✅** (`0b2883c`) |
+| Content 20 URL | **✅** (`82b6778`) |
+| Theme 8 NEW + routing | **✅** (`a2c6672`, `php -l` 49/0) |
+| Paint 20 routes | **✅** (`d5cf815`, 40 screenshots) |
+| `teya_release_gate.py` | **PASS** (exit 0, script **07628b4**, ref **af9ce66**) |
+| Deploy | **no** |
+
+- **Журнал / fragment:** `teya-memory/fragments/wordstat-pipeline.md`
+- **Release report:** `teya-memory/wp/release-gate-report.md`

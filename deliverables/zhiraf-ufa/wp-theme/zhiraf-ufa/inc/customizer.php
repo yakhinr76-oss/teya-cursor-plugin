@@ -57,7 +57,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'zhiraf_metrika_id',
 		array(
-			'default'           => '',
+			'default'           => '45658173',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -65,7 +65,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 		'zhiraf_metrika_id',
 		array(
 			'label'       => __( 'Yandex Metrika ID', 'zhiraf-ufa' ),
-			'description' => __( 'Оставьте пустым для stub без счётчика.', 'zhiraf-ufa' ),
+			'description' => __( 'Пустое значение отключает счётчик (staging). По умолчанию: 45658173.', 'zhiraf-ufa' ),
 			'section'     => 'zhiraf_ufa_brand',
 			'type'        => 'text',
 		)

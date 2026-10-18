@@ -16,8 +16,9 @@
 | office_email | office@zhiraf-ufa.ru |
 | date | 2026-10-18 |
 | author | aurora-team-conversion |
-| implementation_status | **partial** — PHP/forms/cookie storage в теме; цели Метрики/GA4 и баннер cookies — доработка |
-| legal_consent_status | **❌** — cookie banner без ссылки на политику конфиденциальности (см. § Consent) |
+| metrika_id | **45658173** (owner-provided; theme_mod default `zhiraf_metrika_id`) |
+| implementation_status | **complete** — Metrika после consent, `zhirafTrack` / `reachGoal` в `assets/dist/main.js` |
+| legal_consent_status | **✅** — баннер с ссылками на обе политики; Метрика только после accept |
 
 ---
 
@@ -137,8 +138,16 @@ Form-side callout copy (из content pack): под квизом/формой —
 | Кнопка «Принять» / «Принять cookies» | ✅ текст «Принять» |
 | Хранение согласия | ✅ `localStorage` key `zhiraf_cookie_consent` |
 | Ссылка «Политика cookies» | ✅ в тексте баннера |
-| Ссылка «Политика конфиденциальности» | **❌ отсутствует в тексте баннера** |
+| Ссылка «Политика конфиденциальности» | ✅ в тексте баннера (`footer.php`) |
 | Метрика только после accept | ✅ `footer.php` + event `zhiraf:cookie-accepted` |
+
+### Cookie consent flow (runtime)
+
+1. При первом визите `#cookie-banner` показывается, если в `localStorage` нет ключа `zhiraf_cookie_consent`.
+2. Клик **Принять** → `localStorage.setItem('zhiraf_cookie_consent','1')` → `CustomEvent('zhiraf:cookie-accepted')` (`assets/dist/main.js`).
+3. Слушатель в `footer.php` вызывает `loadMetrika()`: подключает `https://mc.yandex.ru/metrika/tag.js` (async/defer), затем `ym(<id>,'init',{ webvisor:true, clickmap, trackLinks, accurateTrackBounce })`.
+4. ID счётчика: `get_theme_mod('zhiraf_metrika_id','45658173')`; пустое значение в Customizer отключает загрузку (staging).
+5. Цели `reachGoal` отправляются через `window.zhirafTrack()` только при наличии consent; до инициализации `ym` цели буферизуются и сбрасываются после загрузки тега.
 
 **Рекомендуемый copy баннера (Aurora):**
 
@@ -182,43 +191,46 @@ Form-side callout copy (из content pack): под квизом/формой —
 ### Общие правила
 
 1. Яндекс.Метрика грузится **только** после `zhiraf_cookie_consent` (или повторного визита с consent).
-2. ID Метрики: theme mod `zhiraf_metrika_id` (Customizer) — **production ID needs_user_fact**.
+2. ID Метрики: theme mod `zhiraf_metrika_id` (Customizer), default **45658173**.
 3. GA4: **не подключён в теме** — добавить gtag.js с тем же consent gate, если клиент даст `G-XXXXXXXX`.
 4. Единая JS-функция `zhirafTrack(eventName, params)` → `ym(METRIKA_ID,'reachGoal', eventName, params)` и `gtag('event', eventName, params)`.
 
-### События (имена одинаковы в Metrika goals и GA4 custom events)
+### События (имена = цели `reachGoal` в Метрике 45658173)
 
-| event_name | Триггер | params (optional) |
-|------------|---------|-------------------|
-| `cta_hero_quiz_open` | click `[data-quiz-open]` в hero | — |
-| `cta_header_quiz_open` | header pill | — |
-| `cta_sticky_quiz_open` | sticky quiz button | — |
-| `cta_footer_quiz_open` | footer | — |
-| `cta_audience_quiz_open` | audience tab CTA | `segment` |
-| `quiz_step_1` … `quiz_step_4` | quiz «Далее» / step enter | `step` |
-| `quiz_submit` | quiz AJAX success | `composition`, `month`, `budget` (без PII в аналитике) |
-| `lead_form_start` | first focus lead field | `form_context` |
-| `lead_form_submit` | lead AJAX success | `form_context` |
-| `phone_click` | `a[data-track="phone"]` | `placement` (header, footer, sticky, trust) |
-| `email_click` | `a[data-track="email"]` | `placement` |
-| `messenger_click` | VK / future WA/TG | `channel` |
-| `dest_card_click` | destination card | `country` |
-| `blog_teaser_click` | blog CTA | — |
-| `audience_tab_family` … | tab select | см. funnel-map |
-| `subscribe_submit` | subscribe success | — |
+Создайте в интерфейсе Метрики **JavaScript-цели** с идентификаторами, совпадающими с `event_name` (тип «JavaScript-событие»).
 
-### Implementation gap (тема на 2026-10-18)
+| event_name (reachGoal) | Триггер | params (optional) | Приоритет |
+|------------------------|---------|-------------------|-----------|
+| `quiz_submit` | quiz AJAX success | `composition`, `month`, `budget` | **North Star** |
+| `phone_click` | `a[data-track="phone"]` | `placement` | **North Star** |
+| `lead_form_submit` | lead AJAX success | `form_context` | P0 |
+| `messenger_click` | VK (`data-track="messenger"` / href vk.com) | `channel` (`vk`) | P0 |
+| `cta_hero_quiz_open` | `[data-quiz-open]` в `.hero-premium` | — | P1 |
+| `cta_header_quiz_open` | header pill | — | P1 |
+| `cta_sticky_quiz_open` | `#sticky-mobile-cta` | — | P1 |
+| `cta_footer_quiz_open` | footer | — | P1 |
+| `cta_audience_quiz_open` | audience panel CTA | `segment` | P1 |
+| `cta_lead_section_quiz_open` | `#lead-action` | — | P1 |
+| `cta_section_quiz_open` | прочие секции | `section` | P2 |
+| `quiz_step_1` … `quiz_step_4` | открытие шага / «Далее» | `step` | P2 |
+| `lead_form_start` | first focus lead field | `form_context` | P2 |
+| `email_click` | `a[data-track="email"]` | `placement` | P2 |
+| `dest_card_click` | `.dest-premium-card` | `country` | P2 |
+| `blog_teaser_click` | `data-track="blog_teaser"` | — | P2 |
+| `audience_tab_*` | выбор таба аудитории | — | P2 |
+| `subscribe_submit` | subscribe success | — | hold |
+
+### Implementation (тема, 2026-10-18)
 
 | Item | Файл | Статус |
 |------|------|--------|
-| `data-track` на tel/email/blog | header, footer, front-page | разметка ✅ |
-| Обработчик `data-track` + quiz open goals | `assets/dist/main.js` | **❌ не реализован** |
-| Quiz step goals | main.js | **❌** |
-| `quiz_submit` / `lead_form_submit` on success | main.js `postForm` | **❌** |
-| Metrika loader after consent | `footer.php` | ✅ partial (нет init counter params) |
-| GA4 | — | **❌ отсутствует** |
-
-**Aurora checklist:** дописать `zhirafTrack` в `assets/src/js/main.js`, пересобрать dist; на `[data-quiz-open]` добавить `data-cta-context` для различения зон; на success в `postForm` вызывать goals; quiz steps в `goStep` / `quiz-next`.
+| Default Metrika ID 45658173 | `inc/customizer.php` | ✅ |
+| Metrika loader + `ym(init)` webvisor after consent | `footer.php` | ✅ |
+| `zhirafTrack` → `ym(...,'reachGoal',...)` | `assets/src/js/main.js` → `assets/dist/main.js` | ✅ |
+| `phone_click`, `messenger_click`, `quiz_submit`, `lead_form_submit` | main.js | ✅ |
+| Quiz / CTA / step goals | main.js | ✅ |
+| GA4 gtag hook (если появится `gtag`) | main.js | stub ✅ |
+| GA4 script | — | **не подключён** (needs_user_fact) |
 
 ---
 
@@ -235,7 +247,7 @@ Form-side callout copy (из content pack): под квизом/формой —
 
 | Credential | Статус |
 |------------|--------|
-| `zhiraf_metrika_id` | needs_user_fact |
+| `zhiraf_metrika_id` | **45658173** (default в теме; override в Customizer) |
 | GA4 measurement ID | needs_user_fact |
 | SMTP / SPF | needs_user_fact |
 | `ZHIRAF_UON_API_URL` / `KEY` | not configured |
@@ -247,11 +259,11 @@ Form-side callout copy (из content pack): под квизом/формой —
 
 | # | Blocker | Owner |
 |---|---------|-------|
-| 1 | Cookie banner: нет ссылки на политику конфиденциальности в UI баннера | Aurora theme |
-| 2 | Analytics goals не отправляются (JS) | Aurora theme |
-| 3 | Production Metrika ID не задан | Client / deploy |
+| — | Нет блокеров по трекингу в теме | — |
 
 **Forms + 152-ФЗ checkbox:** ✅ при опубликованных legal pages.
+
+**Post-deploy:** в кабинете Метрики 45658173 создать JS-цели с именами из таблицы выше; smoke: accept cookies → Network `tag.js` → клик tel → `reachGoal phone_click`.
 
 ---
 

@@ -74,21 +74,26 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 <?php get_template_part( 'template-parts/quiz', 'modal' ); ?>
 
 <?php
-$metrika_id = get_theme_mod( 'zhiraf_metrika_id', '' );
+$metrika_id = trim( (string) get_theme_mod( 'zhiraf_metrika_id', '45658173' ) );
 ?>
 <script>
 (function(){
 	'use strict';
-	var METRIKA_ID = <?php echo $metrika_id ? wp_json_encode( $metrika_id ) : 'null'; ?>;
+	var METRIKA_ID = <?php echo $metrika_id !== '' ? wp_json_encode( $metrika_id ) : 'null'; ?>;
 	window.zhirafMetrika = { id: METRIKA_ID, ready: false };
 	function loadMetrika(){
 		if(!METRIKA_ID || window.zhirafMetrika.ready){return;}
 		if(!window.localStorage.getItem('zhiraf_cookie_consent')){return;}
-		var s=document.createElement('script');
-		s.src='https://mc.yandex.ru/metrika/tag.js';
-		s.defer=true;
-		document.body.appendChild(s);
 		window.zhirafMetrika.ready=true;
+		(function(m,e,t,r,i,k,a){
+			m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments);};
+			m[i].l=1*new Date();
+			for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+			k=e.createElement(t);k.async=1;k.defer=1;k.src=r;
+			a=e.getElementsByTagName(t)[0];a.parentNode.insertBefore(k,a);
+		})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+		var counterId=parseInt(METRIKA_ID,10);
+		if(counterId){ym(counterId,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});}
 	}
 	document.addEventListener('zhiraf:cookie-accepted', loadMetrika);
 	if(METRIKA_ID && window.localStorage.getItem('zhiraf_cookie_consent')){loadMetrika();}

@@ -182,7 +182,7 @@ $teaser     = zhiraf_ufa_blog_teaser_bt01();
 				</ul>
 				<div class="trust-social__links">
 					<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
-					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank"><?php esc_html_e( 'Мы ВКонтакте', 'zhiraf-ufa' ); ?></a>
+					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" data-track="messenger" data-channel="vk"><?php esc_html_e( 'Мы ВКонтакте', 'zhiraf-ufa' ); ?></a>
 					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>"><?php esc_html_e( 'Контакты и карта', 'zhiraf-ufa' ); ?></a>
 				</div>
 			</div>

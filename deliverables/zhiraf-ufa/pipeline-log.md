@@ -35,6 +35,12 @@
 | seo-qa (§17 19 URL & schema audit) | `bc-8a99c6c2-46eb-5e04-ba09-ca6984e1b8c2` | да |
 | paint-qa (§17 38 PNG refresh) | `bc-c4b918ce-16e6-51e9-9a25-e51c8a14352b` | да |
 | release-gate-auditor (§17 gate verification) | `bc-18ca6b59-9ae5-5e63-95aa-f2be6cf4117b` | да |
+| bg-api-researcher (§18 BG API spec & fixtures) | `bc-4a0b2d6a-4933-5c0a-9fb8-51fbbff0fbc5` | да |
+| copywriter (§18 expanded home copy 600-800 words) | `bc-04b39b08-8f85-5a1e-8fe5-19e4de6e507b` | да |
+| wp-theme-builder (§18 BG API engine & cards) | `bc-4b537d97-17b5-55de-a2cc-4161b9a9d592` | да |
+| seo-qa (§18 19 URL, Schema & copy lint) | `bc-603126be-b364-5e13-91b3-4f9e1e19d675` | да |
+| paint-qa (§18 tour price cards capture) | `bc-0351c800-bd5a-5537-bc28-99dd60a3169c` | да |
+| release-gate-auditor (§18 release gate verification) | `bc-0d13e97b-f467-5768-b693-e95d454b93df` | да |
 
 ---
 
@@ -342,3 +348,37 @@ AURA **Globe Trekker** blog pack (**1 featured + 5 cards**, serif **H1–H3**, e
 - **SEO/GEO verification:** [`teya-memory/wp/seo-geo-verification.md`](../../teya-memory/wp/seo-geo-verification.md)
 - **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)
 - **Paint evidence:** [`teya-memory/wp/paint-qa/paint-evidence.json`](../../teya-memory/wp/paint-qa/paint-evidence.json)
+
+---
+
+## 18. Globe Trekker Tour Price Engine (BG API) & Expanded Home Copy (18.10.2026)
+
+Комплексный этап интеграции живых цен туроператора Библио-Глобус (BG API) из Уфы, расширения полезного видимого текста главной страницы до 600–800 слов (копирайтер + SEO-QA), вёрстки карточек туров в дизайн-системе Globe Trekker, валидации 19 URL, захвата скриншотов (Paint QA) и подтверждения Release Gate (**PASS**).
+
+| Шаг / Роль | agent_id (`bc-…`) | Коммит / артефакт | Результат |
+|------------|-------------------|-------------------|-----------|
+| 1. BG API Researcher | `bc-4a0b2d6a-4933-5c0a-9fb8-51fbbff0fbc5` | **f5c19e0** | Спецификация [`teya-memory/wp/bg-api-spec.md`](../../teya-memory/wp/bg-api-spec.md); фикстуры `data/bg-tours-fixtures.json` (7 туров для главной, по 5 туров для 5 стран: Турция, Египет, ОАЭ, Таиланд, Вьетнам); исследование полей (ночи `duration` vs `f7`, рублевая цена `RUR` в `action=price`, cookies `A1`/`Z1`/`L`). |
+| 2. Копирайтер (aurora-team-content) | `bc-04b39b08-8f85-5a1e-8fe5-19e4de6e507b` | **eaaffe7** | Расширение полезного текста главной с 423 до **793 слов** без SEO-утечек (`zhiraf_copy_lint.sh` 0 leaks). Блоки: 4 шага подбора тура, логистика из Уфы (прямые в Египет, ОАЭ, Турцию; стыковки в Таиланд, Вьетнам), юридические гарантии (ООО «Жираф», РТА 0012822, 132-ФЗ, 152-ФЗ, эквайринг, кассовые чеки), 8 FAQ вопросов с геопривязкой к Уфе, честный плейсхолдер отзывов (Яндекс.Карты, 2ГИС) без вымышленных цитат. |
+| 3. WP Theme Builder (Backend & UI) | `bc-4b537d97-17b5-55de-a2cc-4161b9a9d592` | **7e754d0** / **53dbe49** | Модуль `inc/bg-api.php` с WP-Cron фоновой синхронизацией (`zhiraf_bg_sync_prices`, TTL 6ч), хранением в transients, fallback на фикстуры, страницей настроек логина/пароля в WP Admin. Шаблон карточки `card-tour-price.php` и стили `_tour-cards.scss` в эстетике Globe Trekker (#FAF8F5, #E87A5D, бейджи звезд, плашки прямого рейса, дисклеймер 38-ФЗ). Секции `#hot-tours` на главной и `#dest-tours` на страницах направлений с интеграцией квиза и Метрики `45658173`. Синхронизация превью `generate-preview-pages.mjs`. |
+| 4. SEO-QA (aurora-team-qa) | `bc-603126be-b364-5e13-91b3-4f9e1e19d675` | **16ba9ed** | Полный аудит 19 канонических URL; валидация микроразметки `FAQPage` (8 Q&A главной), `TouristInformationCenter` / `TravelAgency`, `BreadcrumbList`; `scripts/zhiraf_copy_lint.sh` — 0 утечек; отчёт [`teya-memory/wp/seo-qa-tour-prices-report.md`](../../teya-memory/wp/seo-qa-tour-prices-report.md). |
+| 5. Paint QA (aurora-team-design-guardian) | `bc-0351c800-bd5a-5537-bc28-99dd60a3169c` | **40dd43f** | Playwright захват десктоп (1440px) и мобильных (390px) скриншотов главной страницы и страниц направлений, а также отдельных скриншотов секций карточек туров (`section-home-hot-tours.png`, `section-destination-tours.png`, `turkey-desktop.png`, `egypt-desktop.png`). Проверка палитры, типографики и адаптивной сетки. |
+| 6. Release Gate Auditor | `bc-0d13e97b-f467-5768-b693-e95d454b93df` | **7ee073e** | Проверка `php -l` (55/55 файлов синтаксически корректны); `bash scripts/zhiraf_copy_lint.sh` (0 утечек); `python3 scripts/teya_release_gate.py --project-root /workspace` (**PASS**, exit code 0, скрипт не модифицирован); отчёт [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md). |
+
+### Итог §18
+
+| Gate | Статус |
+|------|--------|
+| BG API Spec & Fixtures | **✅** (**f5c19e0**) |
+| Expanded Home Copy (793 words, 0 leaks) | **✅** (**eaaffe7**) |
+| BG API Engine (WP-Cron, transients) | **✅** (**7e754d0**) |
+| Globe Trekker Tour Cards UI | **✅** (**53dbe49**) |
+| SEO-QA & Schema Validation (19 URL) | **✅** (**16ba9ed**) |
+| Paint QA Capture (Desktop & Mobile) | **✅** (**40dd43f**) |
+| Copy Linter (`zhiraf_copy_lint.sh`) | **PASS** (0 leaks) |
+| PHP Linter (`php -l`) | **PASS** (55/55 OK) |
+| `teya_release_gate.py` | **PASS** (exit **0**) |
+| Deploy | **no** |
+
+- **BG API Spec:** [`teya-memory/wp/bg-api-spec.md`](../../teya-memory/wp/bg-api-spec.md)
+- **SEO-QA Tour Prices Report:** [`teya-memory/wp/seo-qa-tour-prices-report.md`](../../teya-memory/wp/seo-qa-tour-prices-report.md)
+- **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)

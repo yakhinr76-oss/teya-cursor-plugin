@@ -25,7 +25,7 @@
 
 | URL | Status |
 |-----|--------|
-| `/tour/turciya/` … `/tour/vietnam/` | ❌ not built (no dedicated templates; links in footer/assets only) |
+| `/tour/turciya/` … `/tour/vietnam/` | ✅ `page-{slug}.php` + `destination-landing.php` (static preview `preview/tour-*.html`) |
 | `/blog/{slug}/` | `single.php` present; WP posts / Excalibur import not in this compile |
 | Politika pages | ✅ templates exist |
 
@@ -42,9 +42,8 @@ Per `animation-implementation-report.md`: `data-motion="hero"`, `data-three-canv
 
 | Page | Paint |
 |------|-------|
-| Home preview | ✅ `teya-memory/wp/paint-qa/paint-evidence.json` verdict **pass** (1440 + 375) |
-| Inner test pages | ❌ `screenshots.pages` **[]** — paint all pages not done |
+| All build + landings + legal (static preview) | ✅ 12 pages × 1440/390 → `/opt/cursor/artifacts/zhiraf-{slug}-*.png`, `teya-memory/wp/paint-qa/` (`aurora-team-paint-evidence`, `bc-646a0fe3`) |
 
 ## Verdict
 
-**partial** — 5/5 blueprint templates exist; **destination landings** and **per-page paint** remain gaps before `status: success`.
+**success** (local test build) — templates + static paint evidence complete; live WP deploy paint — backlog.

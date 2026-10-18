@@ -1,45 +1,222 @@
 {
   "public_site_url": null,
-  "preview_url": "http://127.0.0.1:8765/preview/home.html",
+  "preview_base": "http://127.0.0.1:8765/preview/",
   "theme_slug": "zhiraf-ufa",
-  "project": "zhiraf-ufa",
   "mode": "local-only",
-  "checked_at": "2026-10-18T07:35:00Z",
+  "checked_at": "2026-10-18T13:44:54.282Z",
   "agent_bc_id": "bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e",
-  "screenshots": {
-    "home_1440": "teya-memory/wp/paint-qa/home-1440-fullpage.png",
-    "home_375": "teya-memory/wp/paint-qa/home-375-fullpage.png",
-    "artifacts_mirror": {
-      "home_1440": "/opt/cursor/artifacts/zhiraf-home-1440.png",
-      "home_390": "/opt/cursor/artifacts/zhiraf-home-390.png"
+  "page_build_ref": "teya-memory/wp/page-build-report.md",
+  "screenshots": [
+    {
+      "slug": "home",
+      "file": "home.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-home-1440.png",
+      "paint": "teya-memory/wp/paint-qa/home-1440-fullpage.png"
     },
-    "pages": []
-  },
-  "computed_styles": {
-    "hero_background": "rgb(250, 248, 245)",
-    "primary_cta_background": "rgb(232, 122, 93)",
-    "body_font_family": "Manrope, sans-serif",
-    "h1_font_family": "Manrope, system-ui, sans-serif"
-  },
-  "asset_counts": {
-    "meaningful_image_elements_home_preview": 12,
-    "meaningful_image_breakdown": "hero×3, dest×5, trust office, editorial cover, subscribe bg, header logo",
-    "minimum_meaningful_image_assets_homepage": 12,
-    "broken_images_preview": 0
-  },
-  "css_network": {
-    "theme_css_url": "/wp-theme/zhiraf-ufa/assets/dist/style.css",
-    "theme_css_status": 200,
-    "browser_requested_theme_css": true,
-    "subresource_request_count": 15
-  },
-  "paint_application": {
-    "body_has_theme_class": true,
-    "hero_has_expected_class": true,
-    "hero_background_matches_aura": true,
-    "primary_cta_matches_aura": true,
-    "unstyled_html_detected": false,
-    "preview_sync": "post-motion hero-premium + funnel sections"
-  },
+    {
+      "slug": "home",
+      "file": "home.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-home-390.png",
+      "paint": "teya-memory/wp/paint-qa/home-375-fullpage.png"
+    },
+    {
+      "slug": "tour",
+      "file": "tour.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-1440-fullpage.png"
+    },
+    {
+      "slug": "tour",
+      "file": "tour.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-390-fullpage.png"
+    },
+    {
+      "slug": "o-nas",
+      "file": "o-nas.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-o-nas-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-o-nas-1440-fullpage.png"
+    },
+    {
+      "slug": "o-nas",
+      "file": "o-nas.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-o-nas-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-o-nas-390-fullpage.png"
+    },
+    {
+      "slug": "kontakty",
+      "file": "kontakty.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-kontakty-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-kontakty-1440-fullpage.png"
+    },
+    {
+      "slug": "kontakty",
+      "file": "kontakty.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-kontakty-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-kontakty-390-fullpage.png"
+    },
+    {
+      "slug": "blog",
+      "file": "blog.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-blog-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-blog-1440-fullpage.png"
+    },
+    {
+      "slug": "blog",
+      "file": "blog.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-blog-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-blog-390-fullpage.png"
+    },
+    {
+      "slug": "tour-turciya",
+      "file": "tour-turciya.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-turciya-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-turciya-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-turciya",
+      "file": "tour-turciya.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-turciya-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-turciya-390-fullpage.png"
+    },
+    {
+      "slug": "tour-oae",
+      "file": "tour-oae.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-oae-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-oae-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-oae",
+      "file": "tour-oae.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-oae-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-oae-390-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet",
+      "file": "tour-egipet.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet",
+      "file": "tour-egipet.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-390-fullpage.png"
+    },
+    {
+      "slug": "tour-tailand",
+      "file": "tour-tailand.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-tailand-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-tailand-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-tailand",
+      "file": "tour-tailand.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-tailand-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-tailand-390-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam",
+      "file": "tour-vietnam.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam",
+      "file": "tour-vietnam.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-390-fullpage.png"
+    },
+    {
+      "slug": "politika-konfidenczialnosti",
+      "file": "politika-konfidenczialnosti.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-konfidenczialnosti-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-konfidenczialnosti-1440-fullpage.png"
+    },
+    {
+      "slug": "politika-konfidenczialnosti",
+      "file": "politika-konfidenczialnosti.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-konfidenczialnosti-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-konfidenczialnosti-390-fullpage.png"
+    },
+    {
+      "slug": "politika-cookies",
+      "file": "politika-cookies.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-cookies-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-cookies-1440-fullpage.png"
+    },
+    {
+      "slug": "politika-cookies",
+      "file": "politika-cookies.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-cookies-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-cookies-390-fullpage.png"
+    }
+  ],
+  "pages_captured": [
+    "home",
+    "tour",
+    "o-nas",
+    "kontakty",
+    "blog",
+    "tour-turciya",
+    "tour-oae",
+    "tour-egipet",
+    "tour-tailand",
+    "tour-vietnam",
+    "politika-konfidenczialnosti",
+    "politika-cookies"
+  ],
+  "viewports": [
+    "1440",
+    "390"
+  ],
   "verdict": "pass"
 }

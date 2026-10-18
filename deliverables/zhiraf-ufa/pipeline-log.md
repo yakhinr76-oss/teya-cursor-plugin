@@ -122,9 +122,11 @@
 ### 12.2 Post-packager gate run (Pillow, script 07628b4)
 
 - **Команда:** `pip install Pillow` → `python3 scripts/teya_release_gate.py --project-root /workspace`
-- **gate script:** без изменений (diff vs 07628b4 = 0)
-- **exit_code:** **1**
-- **Blockers (артефакты only):** duplicate hero/dest bytes в `wp-media-map.json` + theme `media-map.json`; нет CSS в `teya-memory/wp/theme/zhiraf-ufa/` (полная тема в `deliverables/`)
+- **gate script:** SHA256 `50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d` — **match 07628b4** (файл не правился)
+- **packager:** `5287fb4` — полная тема в `teya-memory/wp/theme/zhiraf-ufa/`, distinct dest bytes
+- **exit_code:** **0** — **PASS**
+- **Отчёт:** `teya-memory/wp/release-gate-report.md`
+- **Deploy:** нет
 
 ### Итог Phase 1 resume (2026-10-18)
 
@@ -132,5 +134,5 @@
 |------|--------|
 | Artifact inputs | **READY** |
 | Compiled reports | **blocked** (content/paint/landings gaps) |
-| `teya_release_gate.py` | **exit 1** — RELEASE BLOCKER |
+| `teya_release_gate.py` | **PASS** (exit 0, script 07628b4) |
 | Publish | **no** |

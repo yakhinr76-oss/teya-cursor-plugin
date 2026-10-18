@@ -1,7 +1,7 @@
 === AURORA-TEAM-RELEASE-GATE (MACHINE GATE) ===
-## Статус: ❌ RELEASE BLOCKER (artifacts)
+## Статус: ✅ PASS
 Command: python3 scripts/teya_release_gate.py --project-root /workspace
-Script: 07628b4 (unchanged)
-Exit code: 1
+Gate script SHA256: 50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d (07628b4)
+Exit code: 0
 Report: teya-memory/wp/release-gate-report.md
-Blockers: media-map duplicate bytes; teya-memory theme path assets-only
+Deploy: not run

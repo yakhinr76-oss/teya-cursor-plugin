@@ -1,81 +1,82 @@
-# Teya Pipeline Log — Zhiraf Ufa (B2B Tour)
+# Teya Pipeline Log — Жираф Уфа (`zhiraf-ufa`)
 
-Этот лог содержит отчет об эмуляции полного пайплайна Teya, согласно архитектуре мультиагентной системы. Каждая роль выполнила проверку текущего состояния темы `zhiraf-ufa` и внесла корректировки.
+**Дата среза:** 2026-10-18  
+**Ветка:** `cursor/zhiraf-b2b-site-a2bf`  
+**Тема:** `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/`  
+**Режим:** CONVERSION-FIRST test build (local-only, без production deploy)
+
+Журнал фактических прогонов ролей Teya по проекту «Жираф»: артефакты в `teya-memory/`, код темы в `deliverables/`. Не симуляция — зафиксированы реальные коммиты, отчёты и блокеры.
+
+---
+
+## 0. Потоки Teya
+
+Отдельный поток = отдельный Cloud Agent (`bc-…`). Если **нет** — работа вошла через lead/motion/координатор (в т.ч. после сбоя `CreateAgent`).
+
+| Роль | agent_id (`bc-…`) | Отдельный поток |
+|------|-------------------|-----------------|
+| teya-researcher | `bc-2ff004ba-69e5-577e-8c25-8bfdb9713f06` | да |
+| yadryshko (semantic core) | `bc-9245beaf-51c1-55b8-9662-24124b50eeb4` | да |
+| aura-designer (AURA pack) | `bc-dac8c4ec-2000-57ff-9988-ffb88bed57b2` | да |
+| aurora-team-design-taste (PLAN/AUDIT) | `bc-fb384920-07f1-54e6-9b21-7a0887017051` | да |
+| aurora-team-conversion-architect (funnel) | `bc-94545bc7-2d9b-57a5-b2a0-de076c7edf9a` | да |
+| excalibur + geo-qa | `bc-7471fd45-7f74-5df5-a2d9-bf085bab67c0` | да |
+| aurora-team-lead (blueprint) | `bc-ab1cbcd4-ae66-5ab7-b213-55ca7558f984` | да |
+| aurora-team-content (`page-content-pack`) | `bc-ab1cbcd4-ae66-5ab7-b213-55ca7558f984` | **нет** — через lead (отдельный CreateAgent падал) |
+| aurora-team-motion + сборка главной | `bc-9773db71-f3bd-5d80-831c-70ba4f27911b` | да |
+| wp-theme-builder (полный цикл) | `bc-9773db71-f3bd-5d80-831c-70ba4f27911b` | **нет** — handoff в motion-run, не отдельный builder-агент |
+| aurora-team-performance-a11y | `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` | да |
+| aurora-team-design-guardian + aurora-team-qa | `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` | да (один run: guardian → QA) |
+
+---
 
 ## 1. Роль: teya-researcher (Аудит)
 - **Файлы контекста:** `agents/teya-researcher.md`, `skills/teya-researcher/SKILL.md`
-- **Что сделано:** Проведён аудит текущей собранной темы на соответствие оригинальному брифу и референсу (Globe Trekker). 
-- **Вердикт:** Структура и премиальный флоу заложены корректно. Ограничение ширины в 1280px соблюдено. Блоки соответствуют флоу продажи туров.
+- **Что сделано:** Аудит темы и брифа (Globe Trekker), dossier + research pack.
+- **Вердикт:** Research gate ✅
 
 ## 2. Роль: aura-designer + aura-cyrillic-google-fonts + aura-shape-replication (Дизайн и Типографика)
-- **Файлы контекста:** `agents/aura-designer.md`, `skills/aura-designer/SKILL.md`, `skills/aura-cyrillic-google-fonts/SKILL.md`, `skills/aura-shape-replication/SKILL.md`
-- **Что сделано:** Проверка дизайн-системы, шрифтов и форм (скруглений). 
-  - Обнаружен конфликт: шрифт `Manrope` подгружается локально (в `inc/enqueues.php`), но также вызывается через Google Fonts CDN в `header.php`. 
-  - Проверена кириллица `Unbounded`. 
-  - Скругления `var(--radius-lg)` и `var(--radius-md)` соответствуют референсу.
-- **Вердикт (Правки):** Убрать `Manrope` из CDN-ссылки в `header.php` для оптимизации, оставить там только `Unbounded`.
+- **Файлы контекста:** `agents/aura-designer.md`, skills AURA
+- **Что сделано:** `teya-memory/design/*`, AURA pack (MCP KV needsAuth — локальные assets).
+- **Вердикт:** Design pack ✅; финальная типографика — Manrope-only после §7–8
 
 ## 3. Роль: wp-theme-builder (Вёрстка и интеграция)
 - **Файлы контекста:** `agents/wp-theme-builder.md`, `skills/wp-theme-builder/SKILL.md`
-- **Что сделано:** Оценка качества PHP-кода (инкапсуляция, функции, WordPress стэндарт). CSS разбит на переменные BEM/Custom Properties. 
-- **Вердикт:** Код соответствует стандартам. Ошибок `php -l` нет. Подготовка `dist/` работает штатно.
+- **Что сделано:** Базовая тема `zhiraf-ufa`; доработка P0 главной — в §7 (motion-run).
+- **Вердикт:** `php -l` ✅; полный builder-конвейер — не отдельный поток (см. §0)
 
-## 4. Команда: aurora-team-* (Глубокий аудит качества)
-- **design-guardian & design-taste:** Проверили отступы, контраст и отказ от водяного знака (согласно жесткому требованию клиента). Водяной знак полностью изгнан из проекта.
-- **content & motion:** Анимации на GSAP (класс `.reveal`) работают корректно. Иерархия контента не нарушена.
-- **performance-a11y (Доступность):** 
-  - Обнаружено отсутствие `:focus-visible` для кнопок и ссылок.
-  - Декоративная SVG-траектория самолета в Hero не имеет `aria-hidden="true"`.
-  - **Правки:** Добавлены стили фокуса. SVG помечена как скрытая для скринридеров.
-- **qa:** Общая целостность подтверждена. Куки-баннер зафиксирован снизу без перекрытия кнопок.
+## 4. Команда: aurora-team-* (ранний аудит)
+- Ранние правки: focus-visible, `aria-hidden` на flight SVG, cookie banner.
+- Актуальные gate-отчёты — §8–9.
 
 ## 5. Роль: excalibur + excalibur-geo-qa (Тексты и Локализация)
-- **Файлы контекста:** `agents/excalibur.md`, `skills/excalibur-geo-qa/SKILL.md`
-- **Что сделано:** Проверка привязки к региону (Уфа).
-- **Вердикт:** Во всех критичных блоках («Hero», «Подвал», «Направления») упоминается **Уфа** (туры из Уфы, офис в Уфе). Направления (Турция, ОАЭ, Египет, Таиланд, Вьетнам) корректны. Правки не требуются.
+- **Вердикт:** 6/6 статей GEO QA ✅; привязка к Уфе в контенте
 
 ## 6. Роль: yadryshko-semantic-core (SEO и Семантика)
-- **Файлы контекста:** `agents/yadryshko.md`, `skills/yadryshko-semantic-core/SKILL.md`
-- **Что сделано:** Проверка тегов (`main`, `section`, `header`, `footer`) и иерархии `h1-h4`. Проверка 152-ФЗ и `noindex`.
-- **Вердикт:** Семантическая верстка корректна. Заголовки идут по порядку. Согласия 152-ФЗ присутствуют. 
-
-### Итог применения пайплайна:
-1. Вырезан лишний вызов Manrope из CDN.
-2. Добавлено `aria-hidden="true"` в декоративный SVG.
-3. Добавлен `:focus-visible` для обеспечения стандартов a11y.
+- **Вердикт:** `teya-memory/semantic-core/zhiraf-ufa-2026/` ✅
 
 ## 7. Роль: aurora-team-motion + wp-theme-builder handoff (`bc-9773db71-f3bd-5d80-831c-70ba4f27911b`)
-- **Контекст:** `agents/aurora-team-motion.md`, `agents/wp-theme-builder.md`, `teya-memory/wp/animation-motion-map.md`, `teya-memory/wp/aurora-team-blueprint.md`
-- **Тема:** `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/`
-- **Сделано:**
-  - Главная по funnel P0: `audience-tabs`, `trust-social`, `faq-home`, порядок секций, blog teaser BT-01 (Excalibur excerpt), subscribe hold.
-  - Motion: `motion-home.js` (селекторы, hero timeline, flight path), `motion-hero-ambient.js` + local Three.js r128.
-  - Сборка `assets/dist/style.css` (sass), `php -l` по всем PHP темы — OK.
-- **Деплой:** не выполнялся.
-- **Отчёт:** `teya-memory/wp/animation-implementation-report.md`
-
-### 7.1 QA follow-up (`bc-646a0fe3`, `bc-9773db71-f3bd-5d80-831c-70ba4f27911b`)
-- **Preview:** `deliverables/zhiraf-ufa/preview/home.html` синхронизирован с `front-page.php` (audience, trust, faq, lead, teaser, subscribe); пути `../wp-theme/zhiraf-ufa/assets/images/*` (12 tourism imgs).
-- **Шрифты:** убран Google CDN Unbounded из `header.php`; headlines — Manrope 800 (`AURA_TASTE_PROFILE`).
-- **Сборка:** `sass` → `dist/style.css`, `php -l` OK.
-
-### 7.2 Taste audit fixes (`bc-fb384920`)
-- **T04:** `.btn` — transitions только по `background-color`, `color`, `border-color`, `opacity` (без `all`).
-- **T09:** Manrope-only (local `@font-face` в `enqueues.php`); CDN Unbounded удалён; body 17px, headings Manrope 800.
-- **Tokens:** `--color-sand` в `:root`; усилены стили `.trust-social` (+ `team-travel.jpg` в trust visual).
-- **Preview:** `preview/home.html` синхронизирован с темой.
-- **Статус:** готово к повторному TASTE AUDIT / paint QA.
+- **Сделано:** funnel P0 на `front-page.php`, motion (GSAP + Three ambient), `sass` → `dist/style.css`, `php -l` OK.
+- **Отчёт:** `teya-memory/wp/animation-motion-map.md`, `animation-implementation-report.md`
+- **Taste follow-up** (`bc-fb384920`): T04/T09, trust-social стили, preview sync.
 
 ## 8. Роль: aurora-team-design-guardian (дизайн-gate)
 - **Агент:** `agents/aurora-team-design-guardian.md`, `skills/aurora-team-design-guardian/SKILL.md`
-- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, re-run после motion: pull + sync `preview/home.html`, Manrope-only в теме)
-- **Проверки:** `php -l` (34 PHP, 0 ошибок); Playwright fullpage после прокрутки `preview/home.html` → `/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png`; paint-qa копии; H1/CTA computed = Manrope + #E87A5D; meaningful images ≥12.
-- **Артефакты:** `teya-memory/wp/design-integrity-report.md`, `teya-memory/wp/paint-qa/*`, fragment `aurora-team-design-guardian.md`
-- **Вердикт:** **✅ DESIGN OK** (local-only; inner-page paint — P2)
+- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, финальный re-run после motion + taste)
+- **Проверки:** `php -l` 34/34; Playwright fullpage (scroll) `preview/home.html` → `/opt/cursor/artifacts/zhiraf-home-1440.png`, `zhiraf-home-390.png`; `teya-memory/wp/paint-qa/*`; Manrope-only; meaningful images ≥12; funnel-секции vs blueprint.
+- **Артефакты:** `teya-memory/wp/design-integrity-report.md`, `paint-qa-report.md`, `paint-evidence.json` (`verdict: pass`), fragment `aurora-team-design-guardian.md`
+- **Вердикт:** **✅ DESIGN OK** — **local test build** (inner-page paint и live deploy — вне scope)
 
 ## 9. Роль: aurora-team-qa (финальная проверка)
 - **Агент:** `agents/aurora-team-qa.md`, `skills/aurora-team-qa/SKILL.md`
-- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, re-run)
-- **Проверки:** Design Guardian ✅; paint-evidence `pass`; theme contract + anti-haltura; maps/deploy — deferred для local test build.
+- **Run:** `bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e` (2026-10-18, финальный re-run)
+- **Проверки:** Design Guardian **✅ DESIGN OK**; paint evidence on disk + `pass`; WP theme contract; anti-haltura; deferred: оставшиеся wp maps, `site-spec.json`, live robots/sitemap, `teya_release_gate.py` (нет в репо).
 - **Артефакты:** `teya-memory/wp/seo-geo-verification.md`, fragment `aurora-team-qa.md`
-- **Вердикт:** **✅ OK** (test build); **ready_to_publish: no** (нет live deploy)
+- **Вердикт:** **✅ OK** — **local test build** | **ready_to_publish: no** (нет production URL / полного deploy gate)
+
+### Итог 2026-10-18 (test build)
+| Gate | Статус |
+|------|--------|
+| Design Guardian | **✅ DESIGN OK** (local) |
+| Final QA | **✅ OK** (local test build) |
+| Publish | **no** — deploy + SEO/indexing maps |

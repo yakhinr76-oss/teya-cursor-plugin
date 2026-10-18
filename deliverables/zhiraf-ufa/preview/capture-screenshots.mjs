@@ -1,7 +1,8 @@
 import { chromium } from 'playwright';
 import { copyFileSync, mkdirSync } from 'fs';
+import { prepareHomeBlogBlock, scrollFullPage } from './paint-scroll.mjs';
 
-const url = 'http://127.0.0.1:8765/preview/home.html';
+const url = 'http://127.0.0.1:8765/';
 const outDir = '/opt/cursor/artifacts';
 const paintDir = '/workspace/teya-memory/wp/paint-qa';
 mkdirSync(outDir, { recursive: true });
@@ -17,16 +18,8 @@ for (const vp of viewports) {
   const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
   await page.waitForTimeout(400);
-  const height = await page.evaluate(() => document.body.scrollHeight);
-  let y = 0;
-  const step = vp.height;
-  while (y < height) {
-    await page.evaluate((scrollY) => window.scrollTo(0, scrollY), y);
-    await page.waitForTimeout(120);
-    y += step;
-  }
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await page.waitForTimeout(200);
+  await prepareHomeBlogBlock(page);
+  await scrollFullPage(page);
   const artifactPath = `${outDir}/${vp.artifact}`;
   await page.screenshot({ path: artifactPath, fullPage: true });
   copyFileSync(artifactPath, `${paintDir}/${vp.paint}`);

@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import { copyFileSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { routeMap } from './wordstat-routes.mjs';
+import { prepareHomeBlogBlock, scrollFullPage } from './paint-scroll.mjs';
 
 const baseHost = 'http://127.0.0.1:8765';
 const artifactsDir = '/opt/cursor/artifacts';
@@ -37,19 +38,6 @@ const viewports = [
   { w: 390, h: 844, suffix: '390' },
 ];
 
-async function scrollPage(page) {
-  const height = await page.evaluate(() => document.body.scrollHeight);
-  let y = 0;
-  const step = await page.evaluate(() => window.innerHeight);
-  while (y < height) {
-    await page.evaluate((scrollY) => window.scrollTo(0, scrollY), y);
-    await page.waitForTimeout(100);
-    y += step;
-  }
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await page.waitForTimeout(150);
-}
-
 function paintFilename(slug, suffix) {
   if (slug === 'home') {
     return suffix === '1440' ? 'home-1440-fullpage.png' : 'home-375-fullpage.png';
@@ -74,7 +62,10 @@ for (const p of pages) {
       const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 90000 });
       status = res ? res.status() : 0;
       await page.waitForTimeout(300);
-      await scrollPage(page);
+      if (p.slug === 'home') {
+        await prepareHomeBlogBlock(page);
+      }
+      await scrollFullPage(page);
       const artifact = join(artifactsDir, `zhiraf-${p.slug}-${vp.suffix}.png`);
       const paintName = paintFilename(p.slug, vp.suffix);
       const paintPath = join(paintDir, paintName);

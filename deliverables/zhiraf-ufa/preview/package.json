@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preview": "node preview-server.mjs",
+    "paint:home-blog": "node capture-paint-home-blog.mjs",
+    "paint:all": "node capture-all-paint.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
   },
   "keywords": [],
   "author": "",

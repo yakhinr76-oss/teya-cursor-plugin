@@ -60,7 +60,7 @@
 | Check | Result |
 |-------|--------|
 | `npx sass` → `assets/dist/style.css` | ✅ |
-| `php -l` all `*.php` in theme | ✅ |
+| `php -l` all `*.php` in theme | ⚠️ CLI недоступен в cloud VM; синтаксис не проверялся этим прогоном |
 | Deploy zhiraf-ufa.ru | ❌ not run (per task) |
 | `teya_release_gate.py` | ❌ not run (per task) |
 

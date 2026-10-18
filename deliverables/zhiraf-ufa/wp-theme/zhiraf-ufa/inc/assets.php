@@ -167,6 +167,364 @@ function zhiraf_ufa_show_reviews_block() {
 }
 
 /**
+ * Path to Excalibur articles in repo deliverables (dev); empty on production FTP-only.
+ *
+ * @return string
+ */
+function zhiraf_ufa_excalibur_articles_base() {
+	$path = dirname( ZHIRAF_UFA_DIR, 2 ) . '/excalibur-articles/articles';
+	return is_dir( $path ) ? $path : '';
+}
+
+/**
+ * Static editorial fields per BT article (fallback when JSON not on disk).
+ *
+ * @return array<string,array<string,mixed>>
+ */
+function zhiraf_ufa_excalibur_article_static_catalog() {
+	return array(
+		'kak-kupit-tur-v-ufe'              => array(
+			'topic_id'   => 'BT-01',
+			'category'   => __( 'Гид', 'zhiraf-ufa' ),
+			'country'    => '',
+			'char_count' => 8925,
+			'title'      => __( 'Как купить тур в Уфе — пошаговая инструкция', 'zhiraf-ufa' ),
+			'excerpt'    => __( 'Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.', 'zhiraf-ufa' ),
+			'image'      => 'blog-cover-01.jpg',
+		),
+		'chto-vhodit-v-tur-vse-vklyucheno' => array(
+			'topic_id'   => 'BT-02',
+			'category'   => __( 'Питание', 'zhiraf-ufa' ),
+			'country'    => '',
+			'char_count' => 6033,
+			'title'      => __( 'Что входит в «всё включено» в туре', 'zhiraf-ufa' ),
+			'excerpt'    => __( 'Питание, перелёт, трансфер и отель — что обычно входит в пакетный тур из Уфы и на что смотреть при выборе.', 'zhiraf-ufa' ),
+			'image'      => 'blog-cover-02.jpg',
+		),
+		'dokumenty-dlya-zagranicy-iz-ufy'  => array(
+			'topic_id'   => 'BT-03',
+			'category'   => __( 'Документы', 'zhiraf-ufa' ),
+			'country'    => '',
+			'char_count' => 5794,
+			'title'      => __( 'Документы для заграницы — чек-лист', 'zhiraf-ufa' ),
+			'excerpt'    => __( 'Загранпаспорт, страховка, билеты и дети — базовый список перед туром с вылетом из Уфы. Не юридическая консультация.', 'zhiraf-ufa' ),
+			'image'      => 'blog-cover-03.jpg',
+		),
+		'tury-s-detmi-iz-ufy'              => array(
+			'topic_id'   => 'BT-04',
+			'category'   => __( 'Семья', 'zhiraf-ufa' ),
+			'country'    => __( 'Турция', 'zhiraf-ufa' ),
+			'char_count' => 4957,
+			'title'      => __( 'Туры с детьми из Уфы — советы по отелю', 'zhiraf-ufa' ),
+			'excerpt'    => __( 'Перелёт, питание, детская инфраструктура и тихий отдых — критерии подбора для семей из Уфы.', 'zhiraf-ufa' ),
+			'image'      => 'blog-cover-04.jpg',
+		),
+		'strahovka-i-rassrochka-na-tur'    => array(
+			'topic_id'   => 'BT-05',
+			'category'   => __( 'Страхование', 'zhiraf-ufa' ),
+			'country'    => '',
+			'char_count' => 4749,
+			'title'      => __( 'Страховка и рассрочка на тур', 'zhiraf-ufa' ),
+			'excerpt'    => __( 'Какие вопросы задать про полис и оплату частями перед покупкой тура из Уфы. Партнёры — только после подтверждения заказчиком.', 'zhiraf-ufa' ),
+			'image'      => 'blog-cover-05.jpg',
+		),
+		'turciya-ili-egipet-iz-ufy'        => array(
+			'topic_id'   => 'BT-06',
+			'category'   => __( 'Направления', 'zhiraf-ufa' ),
+			'country'    => __( 'Турция · Египет', 'zhiraf-ufa' ),
+			'char_count' => 5066,
+			'title'      => __( 'Турция или Египет из Уфы — сравнение', 'zhiraf-ufa' ),
+			'excerpt'    => __( 'Сравниваем форматы отдыха без цен «от»: перелёт, курорты, сезон и для кого подходит каждое направление.', 'zhiraf-ufa' ),
+			'image'      => 'blog-cover-06.jpg',
+		),
+	);
+}
+
+/**
+ * Ordered slugs for six Excalibur BT articles.
+ *
+ * @return string[]
+ */
+function zhiraf_ufa_excalibur_article_slugs() {
+	return array(
+		'kak-kupit-tur-v-ufe',
+		'chto-vhodit-v-tur-vse-vklyucheno',
+		'dokumenty-dlya-zagranicy-iz-ufy',
+		'tury-s-detmi-iz-ufy',
+		'strahovka-i-rassrochka-na-tur',
+		'turciya-ili-egipet-iz-ufy',
+	);
+}
+
+/**
+ * Normalize SEO title from article.meta.json.
+ *
+ * @param string $title_seo Raw title_seo.
+ * @return string
+ */
+function zhiraf_ufa_excalibur_clean_title( $title_seo ) {
+	$title = preg_replace( '/\s*\|\s*Блог.*$/u', '', (string) $title_seo );
+	return trim( $title );
+}
+
+/**
+ * Read minutes from Excalibur char_count.
+ *
+ * @param int $char_count Characters from meta.
+ * @return int
+ */
+function zhiraf_ufa_read_minutes_from_chars( $char_count ) {
+	return max( 1, (int) ceil( (int) $char_count / 1500 ) );
+}
+
+/**
+ * Human-readable read time label.
+ *
+ * @param int $minutes Minutes.
+ * @return string
+ */
+function zhiraf_ufa_read_minutes_label( $minutes ) {
+	return sprintf(
+		/* translators: %d: minutes */
+		_n( '%d мин чтения', '%d мин чтения', (int) $minutes, 'zhiraf-ufa' ),
+		(int) $minutes
+	);
+}
+
+/**
+ * Six Excalibur demo posts (meta + excerpt + theme cover).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_excalibur_demo_posts() {
+	$base    = zhiraf_ufa_excalibur_articles_base();
+	$static  = zhiraf_ufa_excalibur_article_static_catalog();
+	$posts   = array();
+
+	foreach ( zhiraf_ufa_excalibur_article_slugs() as $slug ) {
+		$row = $static[ $slug ];
+		$dir = $base ? $base . '/' . $slug : '';
+
+		if ( $dir && is_readable( $dir . '/article.meta.json' ) ) {
+			$meta_raw = file_get_contents( $dir . '/article.meta.json' );
+			$meta     = json_decode( (string) $meta_raw, true );
+			if ( is_array( $meta ) ) {
+				if ( ! empty( $meta['topic_id'] ) ) {
+					$row['topic_id'] = (string) $meta['topic_id'];
+				}
+				if ( ! empty( $meta['char_count'] ) ) {
+					$row['char_count'] = (int) $meta['char_count'];
+				}
+				if ( ! empty( $meta['meta_ab']['title_seo'] ) ) {
+					$row['title'] = zhiraf_ufa_excalibur_clean_title( $meta['meta_ab']['title_seo'] );
+				}
+				if ( ! empty( $meta['meta_ab']['description_seo'] ) ) {
+					$row['excerpt'] = (string) $meta['meta_ab']['description_seo'];
+				}
+			}
+		}
+
+		if ( $dir && is_readable( $dir . '/excerpt.md' ) ) {
+			$excerpt_file = trim( (string) file_get_contents( $dir . '/excerpt.md' ) );
+			if ( '' !== $excerpt_file ) {
+				$row['excerpt'] = $excerpt_file;
+			}
+		}
+
+		$wp_post = get_page_by_path( $slug, OBJECT, 'post' );
+		if ( $wp_post && 'publish' === $wp_post->post_status ) {
+			$row['post_id'] = $wp_post->ID;
+			$row['title']   = get_the_title( $wp_post );
+			$row['url']     = get_permalink( $wp_post );
+			if ( has_excerpt( $wp_post ) ) {
+				$row['excerpt'] = get_the_excerpt( $wp_post );
+			}
+			$row['category'] = zhiraf_ufa_story_category_label( $wp_post->ID );
+		} else {
+			$row['post_id'] = 0;
+			$row['url']     = home_url( '/blog/' . $slug . '/' );
+		}
+
+		$row['slug']         = $slug;
+		$row['read_minutes'] = zhiraf_ufa_read_minutes_from_chars( (int) $row['char_count'] );
+		$posts[]             = $row;
+	}
+
+	return $posts;
+}
+
+/**
+ * Blog card from published WP post.
+ *
+ * @param WP_Post $post Post.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_blog_card_from_post( WP_Post $post ) {
+	$slug    = $post->post_name;
+	$covers  = zhiraf_ufa_excalibur_article_static_catalog();
+	$image   = isset( $covers[ $slug ]['image'] ) ? $covers[ $slug ]['image'] : 'blog-cover-01.jpg';
+	$country = isset( $covers[ $slug ]['country'] ) ? $covers[ $slug ]['country'] : '';
+	$minutes = max( 1, (int) ceil( str_word_count( wp_strip_all_tags( $post->post_content ) ) / 200 ) );
+
+	return array(
+		'slug'          => $slug,
+		'title'         => get_the_title( $post ),
+		'excerpt'       => has_excerpt( $post ) ? get_the_excerpt( $post ) : wp_trim_words( wp_strip_all_tags( $post->post_content ), 28 ),
+		'url'           => get_permalink( $post ),
+		'category'      => zhiraf_ufa_story_category_label( $post->ID ),
+		'country'       => $country,
+		'read_minutes'  => $minutes,
+		'image'         => $image,
+		'post_id'       => $post->ID,
+		'topic_id'      => isset( $covers[ $slug ]['topic_id'] ) ? $covers[ $slug ]['topic_id'] : '',
+	);
+}
+
+/**
+ * Merge latest WP posts with Excalibur demo to fill six slots.
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_home_blog_cards_six() {
+	$q = new WP_Query(
+		array(
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'posts_per_page'      => 6,
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+
+	$cards = array();
+	$seen  = array();
+	foreach ( $q->posts as $post ) {
+		$cards[]           = zhiraf_ufa_blog_card_from_post( $post );
+		$seen[ $post->post_name ] = true;
+	}
+
+	foreach ( zhiraf_ufa_excalibur_demo_posts() as $demo ) {
+		if ( count( $cards ) >= 6 ) {
+			break;
+		}
+		if ( isset( $seen[ $demo['slug'] ] ) ) {
+			continue;
+		}
+		$cards[] = $demo;
+	}
+
+	return array_slice( $cards, 0, 6 );
+}
+
+/**
+ * Homepage Globe Trekker bundle: 1 featured + 3 stack + 2 row2.
+ *
+ * @return array{featured:array<string,mixed>,stack:array<int,array<string,mixed>>,row2:array<int,array<string,mixed>>}
+ */
+function zhiraf_ufa_home_globe_blog_bundle() {
+	$all     = zhiraf_ufa_home_blog_cards_six();
+	$featured = $all[0] ?? zhiraf_ufa_excalibur_demo_posts()[0];
+	$rest    = array_slice( $all, 1 );
+	$stack   = array_slice( $rest, 0, 3 );
+	$row2    = array_slice( $rest, 3, 2 );
+
+	while ( count( $stack ) < 3 ) {
+		$stack[] = array(
+			'slug'         => '',
+			'title'        => '',
+			'excerpt'      => '',
+			'url'          => home_url( '/blog/' ),
+			'category'     => '',
+			'country'      => '',
+			'read_minutes' => 1,
+			'image'        => 'blog-cover-01.jpg',
+			'post_id'      => 0,
+		);
+	}
+
+	return array(
+		'featured' => $featured,
+		'stack'    => $stack,
+		'row2'     => $row2,
+	);
+}
+
+/**
+ * Render blog card image (attachment or theme asset).
+ *
+ * @param array<string,mixed> $card     Card data.
+ * @param string              $class    Img class.
+ * @param bool                $lazy     Lazy load.
+ * @param bool                $priority LCP priority.
+ */
+function zhiraf_ufa_blog_card_image( $card, $class, $lazy = true, $priority = false ) {
+	if ( ! empty( $card['post_id'] ) ) {
+		$thumb_id = get_post_thumbnail_id( (int) $card['post_id'] );
+		if ( $thumb_id ) {
+			$attrs = array(
+				'class' => $class,
+			);
+			if ( $lazy && ! $priority ) {
+				$attrs['loading'] = 'lazy';
+			}
+			if ( $priority ) {
+				$attrs['loading']       = 'eager';
+				$attrs['fetchpriority'] = 'high';
+			}
+			echo wp_get_attachment_image( $thumb_id, 'large', false, $attrs );
+			return;
+		}
+	}
+	zhiraf_ufa_img(
+		! empty( $card['image'] ) ? $card['image'] : 'blog-cover-01.jpg',
+		! empty( $card['title'] ) ? $card['title'] : '',
+		$class,
+		$lazy,
+		$priority
+	);
+}
+
+/**
+ * Blog meta row markup.
+ *
+ * @param array<string,mixed> $card    Card.
+ * @param array<string,mixed> $args    compact, show_date.
+ */
+function zhiraf_ufa_blog_meta_row( $card, $args = array() ) {
+	$compact  = ! empty( $args['compact'] );
+	$show_date = ! empty( $args['show_date'] );
+	$classes  = 'blog-meta-row' . ( $compact ? ' blog-meta-row--compact' : '' );
+
+	$parts = array();
+	if ( ! empty( $card['category'] ) ) {
+		$parts[] = '<span class="blog-meta__rubrika">' . esc_html( $card['category'] ) . '</span>';
+	}
+	if ( ! $compact && ! empty( $card['country'] ) ) {
+		$parts[] = '<span class="blog-meta__country">' . esc_html( $card['country'] ) . '</span>';
+	}
+	if ( ! empty( $card['read_minutes'] ) ) {
+		$parts[] = '<span class="blog-meta__read-time">' . esc_html( zhiraf_ufa_read_minutes_label( (int) $card['read_minutes'] ) ) . '</span>';
+	}
+	if ( $show_date && ! empty( $card['date'] ) ) {
+		$parts[] = '<span class="blog-meta__date">' . esc_html( $card['date'] ) . '</span>';
+	}
+
+	if ( empty( $parts ) ) {
+		return;
+	}
+
+	echo '<p class="' . esc_attr( $classes ) . '">';
+	$count = count( $parts );
+	foreach ( $parts as $i => $part ) {
+		echo $part; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in part.
+		if ( $i < $count - 1 ) {
+			echo '<span class="blog-meta__sep" aria-hidden="true">·</span>';
+		}
+	}
+	echo '</p>';
+}
+
+/**
  * Latest posts for homepage stories block.
  *
  * @return WP_Post[]
@@ -176,7 +534,7 @@ function zhiraf_ufa_home_blog_posts() {
 		array(
 			'post_type'           => 'post',
 			'post_status'         => 'publish',
-			'posts_per_page'      => 4,
+			'posts_per_page'      => 6,
 			'ignore_sticky_posts' => true,
 			'no_found_rows'       => true,
 		)
@@ -209,27 +567,8 @@ function zhiraf_ufa_story_category_label( $post_id ) {
  * @return array{title:string,excerpt:string,url:string,category:string,image:string}
  */
 function zhiraf_ufa_blog_teaser_bt01() {
-	$slug = 'kak-kupit-tur-v-ufe';
-	$post = get_page_by_path( $slug, OBJECT, 'post' );
-	if ( $post && 'publish' === $post->post_status ) {
-		$excerpt = has_excerpt( $post ) ? get_the_excerpt( $post ) : wp_trim_words( wp_strip_all_tags( $post->post_content ), 28 );
-		return array(
-			'title'    => get_the_title( $post ),
-			'excerpt'  => $excerpt,
-			'url'      => get_permalink( $post ),
-			'category' => zhiraf_ufa_story_category_label( $post->ID ),
-			'image'    => '',
-			'post_id'  => $post->ID,
-		);
-	}
-	return array(
-		'title'    => __( 'Как купить тур в Уфе — пошаговая инструкция', 'zhiraf-ufa' ),
-		'excerpt'  => __( 'Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.', 'zhiraf-ufa' ),
-		'url'      => home_url( '/blog/kak-kupit-tur-v-ufe/' ),
-		'category' => __( 'Гид', 'zhiraf-ufa' ),
-		'image'    => 'blog-cover-01.jpg',
-		'post_id'  => 0,
-	);
+	$demo = zhiraf_ufa_excalibur_demo_posts();
+	return $demo[0];
 }
 
 /**
@@ -333,35 +672,22 @@ function zhiraf_ufa_home_faq_items() {
 }
 
 function zhiraf_ufa_blog_fallback_stories() {
-	return array(
-		array(
-			'title'    => __( 'Как купить тур в Уфе: от заявки до вылета', 'zhiraf-ufa' ),
-			'category' => __( 'Гид', 'zhiraf-ufa' ),
-			'excerpt'  => __( 'Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.', 'zhiraf-ufa' ),
-			'date'     => '',
-			'url'      => home_url( '/blog/kak-kupit-tur-v-ufe/' ),
-			'image'    => 'blog-featured.jpg',
-		),
-		array(
-			'title'    => __( 'Что входит в тур «всё включено»', 'zhiraf-ufa' ),
-			'category' => __( 'Питание', 'zhiraf-ufa' ),
-			'date'     => '',
-			'url'      => home_url( '/blog/' ),
-			'image'    => 'blog-thumb-1.jpg',
-		),
-		array(
-			'title'    => __( 'Документы для поездки за границу', 'zhiraf-ufa' ),
-			'category' => __( 'Документы', 'zhiraf-ufa' ),
-			'date'     => '',
-			'url'      => home_url( '/blog/' ),
-			'image'    => 'blog-thumb-2.jpg',
-		),
-		array(
-			'title'    => __( 'Туры с детьми из Уфы', 'zhiraf-ufa' ),
-			'category' => __( 'Семья', 'zhiraf-ufa' ),
-			'date'     => '',
-			'url'      => home_url( '/blog/' ),
-			'image'    => 'blog-thumb-3.jpg',
-		),
-	);
+	return zhiraf_ufa_excalibur_demo_posts();
+}
+
+/**
+ * Editorial plan topics (legacy empty-state helper).
+ *
+ * @return array<int,array{title:string,note:string,topic:string}>
+ */
+function zhiraf_ufa_blog_topics() {
+	$topics = array();
+	foreach ( zhiraf_ufa_excalibur_demo_posts() as $post ) {
+		$topics[] = array(
+			'title' => $post['title'],
+			'note'  => $post['excerpt'],
+			'topic' => $post['topic_id'],
+		);
+	}
+	return $topics;
 }

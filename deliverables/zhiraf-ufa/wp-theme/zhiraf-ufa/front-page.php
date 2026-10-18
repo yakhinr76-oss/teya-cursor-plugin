@@ -7,7 +7,6 @@ get_header();
 $dest_all   = zhiraf_ufa_destinations();
 $audience   = zhiraf_ufa_audience_segments();
 $faq_items  = zhiraf_ufa_home_faq_items();
-$teaser     = zhiraf_ufa_blog_teaser_bt01();
 ?>
 <main id="primary" class="site-main site-main--home">
 
@@ -243,29 +242,7 @@ $teaser     = zhiraf_ufa_blog_teaser_bt01();
 				<h2 class="section-title"><?php esc_html_e( 'Полезные статьи', 'zhiraf-ufa' ); ?></h2>
 				<a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="btn btn--outline btn--sm" data-track="blog_teaser"><?php esc_html_e( 'Все статьи', 'zhiraf-ufa' ); ?></a>
 			</div>
-			<article class="editorial-teaser reveal">
-				<a href="<?php echo esc_url( $teaser['url'] ); ?>" class="editorial-main__link">
-					<div class="editorial-main__img-wrap">
-						<?php
-						if ( ! empty( $teaser['post_id'] ) ) {
-							$thumb_id = get_post_thumbnail_id( $teaser['post_id'] );
-							if ( $thumb_id ) {
-								echo wp_get_attachment_image( $thumb_id, 'large', false, array( 'class' => 'editorial-main__img' ) );
-							} else {
-								zhiraf_ufa_img( 'blog-cover-01.jpg', $teaser['title'], 'editorial-main__img', true );
-							}
-						} else {
-							zhiraf_ufa_img( $teaser['image'], $teaser['title'], 'editorial-main__img', true );
-						}
-						?>
-					</div>
-					<div class="editorial-main__content">
-						<span class="editorial-cat"><?php echo esc_html( $teaser['category'] ); ?></span>
-						<h3 class="editorial-main__title"><?php echo esc_html( $teaser['title'] ); ?></h3>
-						<p class="editorial-main__excerpt"><?php echo esc_html( $teaser['excerpt'] ); ?></p>
-					</div>
-				</a>
-			</article>
+			<?php get_template_part( 'template-parts/blog/editorial-globe' ); ?>
 		</div>
 	</section>
 

@@ -8,6 +8,8 @@
   <style>
     @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
     @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Cormorant Garamond';src:url('../wp-theme/zhiraf-ufa/assets/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Cormorant Garamond';src:url('../wp-theme/zhiraf-ufa/assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
   </style>
 </head>
 <body>
@@ -205,18 +207,59 @@
         <h2 class="section-title">Полезные статьи</h2>
         <a href="#" class="btn btn--outline btn--sm">Все статьи</a>
       </div>
-      <article class="editorial-teaser reveal">
-        <a href="#" class="editorial-main__link">
-          <div class="editorial-main__img-wrap">
-            <img class="editorial-main__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg" alt="Как купить тур в Уфе" loading="lazy" />
-          </div>
-          <div class="editorial-main__content">
-            <span class="editorial-cat">Гид</span>
-            <h3 class="editorial-main__title">Как купить тур в Уфе — пошаговая инструкция</h3>
-            <p class="editorial-main__excerpt">Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.</p>
-          </div>
-        </a>
-      </article>
+      <div class="editorial-globe reveal">
+        <div class="editorial-globe__featured">
+          <a href="blog.html" class="editorial-globe__featured-link editorial-main__link">
+            <div class="editorial-main__img-wrap">
+              <img class="editorial-main__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg" alt="Как купить тур в Уфе" loading="eager" fetchpriority="high" />
+            </div>
+            <div class="editorial-main__content">
+              <p class="blog-meta-row"><span class="blog-meta__rubrika">Гид</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">6 мин чтения</span></p>
+              <h3 class="editorial-main__title">Как купить тур в Уфе — пошаговая инструкция</h3>
+              <p class="editorial-main__excerpt">Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.</p>
+            </div>
+          </a>
+        </div>
+        <div class="editorial-globe__stack editorial-globe-stack">
+          <a href="blog.html" class="editorial-globe-stack__link">
+            <div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-02.jpg" alt="" loading="lazy" /></div>
+            <div class="editorial-globe-stack__body">
+              <p class="blog-meta-row blog-meta-row--compact"><span class="blog-meta__rubrika">Питание</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">5 мин чтения</span></p>
+              <h3 class="editorial-globe-stack__title">Что входит в «всё включено» в туре</h3>
+            </div>
+          </a>
+          <a href="blog.html" class="editorial-globe-stack__link">
+            <div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-03.jpg" alt="" loading="lazy" /></div>
+            <div class="editorial-globe-stack__body">
+              <p class="blog-meta-row blog-meta-row--compact"><span class="blog-meta__rubrika">Документы</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+              <h3 class="editorial-globe-stack__title">Документы для заграницы — чек-лист</h3>
+            </div>
+          </a>
+          <a href="blog.html" class="editorial-globe-stack__link">
+            <div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-04.jpg" alt="" loading="lazy" /></div>
+            <div class="editorial-globe-stack__body">
+              <p class="blog-meta-row blog-meta-row--compact"><span class="blog-meta__rubrika">Семья</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+              <h3 class="editorial-globe-stack__title">Туры с детьми из Уфы — советы по отелю</h3>
+            </div>
+          </a>
+        </div>
+        <div class="editorial-globe__row2">
+          <article class="editorial-globe-card">
+            <a href="blog.html" class="editorial-globe-card__link">
+              <div class="editorial-globe-card__img-wrap"><img class="editorial-globe-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-05.jpg" alt="" loading="lazy" /></div>
+              <p class="blog-meta-row"><span class="blog-meta__rubrika">Страхование</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+              <h3 class="editorial-globe-card__title">Страховка и рассрочка на тур</h3>
+            </a>
+          </article>
+          <article class="editorial-globe-card">
+            <a href="blog.html" class="editorial-globe-card__link">
+              <div class="editorial-globe-card__img-wrap"><img class="editorial-globe-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-06.jpg" alt="" loading="lazy" /></div>
+              <p class="blog-meta-row"><span class="blog-meta__rubrika">Направления</span><span class="blog-meta__sep">·</span><span class="blog-meta__country">Турция · Египет</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+              <h3 class="editorial-globe-card__title">Турция или Египет из Уфы — сравнение</h3>
+            </a>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 

@@ -265,7 +265,6 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1
 
 .steps-cta { text-align: center; margin-top: 32px; }
 .form-premium__alt { margin-top: 16px; }
-.editorial-teaser { max-width: 720px; }
 .subscribe-premium__hold { opacity: 0.9; margin-bottom: 16px; }
 
 .sticky-mobile-cta {
@@ -581,3 +580,5 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
 }
+
+@import 'blog-globe';

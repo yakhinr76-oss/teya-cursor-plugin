@@ -6,15 +6,83 @@
   <title>Блог — preview</title>
   <link rel="stylesheet" href="../wp-theme/zhiraf-ufa/assets/dist/style.css" />
   <style>
-    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2') format('woff2');font-weight:200 800;font-display:swap;}
-    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Variable.woff2') format('woff2');font-weight:200 800;font-display:swap;}
+    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Cormorant Garamond';src:url('../wp-theme/zhiraf-ufa/assets/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+    @font-face{font-family:'Cormorant Garamond';src:url('../wp-theme/zhiraf-ufa/assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
   </style>
 </head>
-<body><header class="site-header"><div class="container site-header__inner">
+<body>
+<header class="site-header"><div class="container site-header__inner">
   <div class="site-branding"><a href="home.html"><img src="../wp-theme/zhiraf-ufa/assets/images/logo-zhiraf-client.png" alt="Жираф" width="167" height="56" style="height:40px;width:auto"></a></div>
   <nav class="site-nav" aria-label="Главная навигация"><ul class="primary-menu" style="display:flex;gap:32px"><li><a href="tour.html">Туры</a></li><li><a href="o-nas.html">О нас</a></li><li><a href="blog.html">Блог</a></li><li><a href="kontakty.html">Контакты</a></li></ul></nav>
   <div class="site-header__actions"><a class="header-phone" href="tel:+79018105018">+7 901 810-50-18</a><button type="button" class="btn btn--primary btn--sm">Подобрать тур</button></div>
-</div></header><main id="primary" class="site-main site-main--blog">
-<section class="page-hero"><div class="container"><h1>Блог и советы</h1></div></section>
-<section class="section"><div class="container"><article class="story-card"><img src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg" alt="Статья" loading="lazy" class="story-card__img" /><h3>Как купить тур в Уфе</h3></article></div></section></main><footer class="site-footer"><div class="container"><p>ООО «Жираф» · РТА 0012822 · <a href="politika-konfidenczialnosti.html">Политика</a> · <a href="politika-cookies.html">Cookies</a></p></div></footer>
-<script src="../wp-theme/zhiraf-ufa/assets/dist/main.js" defer></script></body></html>
+</div></header>
+<main id="primary" class="site-main site-main--blog">
+  <section class="page-hero page-hero--blog">
+    <div class="container">
+      <h1>Блог о путешествиях из Уфы</h1>
+      <p>Практические материалы о подготовке к поездке и направлениях с вылетом из Уфы.</p>
+    </div>
+  </section>
+  <section class="section blog-archive-section">
+    <div class="container">
+      <article class="blog-featured">
+        <a href="#" class="blog-featured__link">
+          <div class="blog-featured__img-wrap">
+            <img class="blog-featured__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg" alt="Как купить тур в Уфе" loading="eager" />
+          </div>
+          <p class="blog-meta-row"><span class="blog-meta__rubrika">Гид</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">6 мин чтения</span></p>
+          <h2 class="blog-featured__title">Как купить тур в Уфе — пошаговая инструкция</h2>
+          <p class="blog-featured__excerpt">Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.</p>
+        </a>
+      </article>
+      <div class="post-grid post-grid--globe">
+        <article class="post-card post-card--globe">
+          <a href="#" class="post-card__link">
+            <div class="post-card__img-wrap"><img class="post-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-02.jpg" alt="" loading="lazy" /></div>
+            <p class="blog-meta-row"><span class="blog-meta__rubrika">Питание</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">5 мин чтения</span></p>
+            <h2 class="post-card__title">Что входит в «всё включено» в туре</h2>
+            <p class="post-card__excerpt">Питание, перелёт, трансфер и отель — что обычно входит в пакетный тур из Уфы.</p>
+          </a>
+        </article>
+        <article class="post-card post-card--globe">
+          <a href="#" class="post-card__link">
+            <div class="post-card__img-wrap"><img class="post-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-03.jpg" alt="" loading="lazy" /></div>
+            <p class="blog-meta-row"><span class="blog-meta__rubrika">Документы</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+            <h2 class="post-card__title">Документы для заграницы — чек-лист</h2>
+            <p class="post-card__excerpt">Загранпаспорт, страховка, билеты и дети — базовый список перед туром.</p>
+          </a>
+        </article>
+        <article class="post-card post-card--globe">
+          <a href="#" class="post-card__link">
+            <div class="post-card__img-wrap"><img class="post-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-04.jpg" alt="" loading="lazy" /></div>
+            <p class="blog-meta-row"><span class="blog-meta__rubrika">Семья</span><span class="blog-meta__sep">·</span><span class="blog-meta__country">Турция</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+            <h2 class="post-card__title">Туры с детьми из Уфы — советы по отелю</h2>
+            <p class="post-card__excerpt">Перелёт, питание, детская инфраструктура — критерии подбора для семей из Уфы.</p>
+          </a>
+        </article>
+        <article class="post-card post-card--globe">
+          <a href="#" class="post-card__link">
+            <div class="post-card__img-wrap"><img class="post-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-05.jpg" alt="" loading="lazy" /></div>
+            <p class="blog-meta-row"><span class="blog-meta__rubrika">Страхование</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+            <h2 class="post-card__title">Страховка и рассрочка на тур</h2>
+            <p class="post-card__excerpt">Вопросы про полис и рассрочку перед покупкой тура из Уфы.</p>
+          </a>
+        </article>
+        <article class="post-card post-card--globe">
+          <a href="#" class="post-card__link">
+            <div class="post-card__img-wrap"><img class="post-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-06.jpg" alt="" loading="lazy" /></div>
+            <p class="blog-meta-row"><span class="blog-meta__rubrika">Направления</span><span class="blog-meta__sep">·</span><span class="blog-meta__country">Турция · Египет</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
+            <h2 class="post-card__title">Турция или Египет из Уфы — сравнение</h2>
+            <p class="post-card__excerpt">Сравниваем форматы отдыха без цен «от»: перелёт, курорты, сезон.</p>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><div class="container"><p>ООО «Жираф» · РТА 0012822 · <a href="politika-konfidenczialnosti.html">Политика</a> · <a href="politika-cookies.html">Cookies</a></p></div></footer>
+<script src="../wp-theme/zhiraf-ufa/assets/dist/main.js" defer></script>
+</body>
+</html>

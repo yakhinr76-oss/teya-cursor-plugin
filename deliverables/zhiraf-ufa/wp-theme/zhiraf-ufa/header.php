@@ -1,13 +1,5 @@
 <?php
-/**
- * Header template.
- *
- * @package Zhiraf_Ufa
- */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -36,7 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 						'theme_location' => 'primary',
 						'menu_class'     => 'primary-menu',
 						'container'      => false,
-						'fallback_cb'    => 'zhiraf_ufa_primary_menu_fallback',
 					)
 				);
 				?>
@@ -44,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</nav>
 		<div class="site-header__actions">
 			<a class="header-phone" href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a>
-			<button type="button" class="btn btn--primary btn--sm" data-quiz-open>
+			<button type="button" class="btn btn--outline btn--sm" data-quiz-open>
 				<?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?>
 			</button>
 		</div>

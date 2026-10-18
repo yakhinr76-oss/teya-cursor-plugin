@@ -1,13 +1,5 @@
 <?php
-/**
- * Footer template.
- *
- * @package Zhiraf_Ufa
- */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 ?>
 <footer class="site-footer">
 	<div class="container site-footer__grid">
@@ -20,10 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<a href="mailto:office@zhiraf-ufa.ru" data-track="email">office@zhiraf-ufa.ru</a>
 			</p>
 			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?></p>
-			<div class="footer-social">
-				<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" aria-label="ВКонтакте">VK</a>
-				<a href="https://wa.me/79018105018" rel="noopener noreferrer" target="_blank" aria-label="WhatsApp">WA</a>
-			</div>
 		</div>
 		<div class="footer-col">
 			<p class="footer-col__title"><?php esc_html_e( 'Навигация', 'zhiraf-ufa' ); ?></p>
@@ -49,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li><a href="<?php echo esc_url( home_url( '/politika-konfidenczialnosti/' ) ); ?>"><?php esc_html_e( 'Политика конфиденциальности', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/politika-cookies/' ) ); ?>"><?php esc_html_e( 'Политика cookies', 'zhiraf-ufa' ); ?></a></li>
 			</ul>
-			<button type="button" class="btn btn--primary btn--sm" style="margin-top:16px" data-quiz-open><?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?></button>
+			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open><?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?></button>
 		</div>
 	</div>
 	<div class="site-footer__legal">
@@ -67,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			esc_url( home_url( '/politika-cookies/' ) )
 		);
 		?></p>
-		<button type="button" class="btn btn--primary" id="cookie-accept"><?php esc_html_e( 'Принять', 'zhiraf-ufa' ); ?></button>
+		<button type="button" class="btn btn--primary btn--sm" id="cookie-accept"><?php esc_html_e( 'Принять', 'zhiraf-ufa' ); ?></button>
 	</div>
 </div>
 

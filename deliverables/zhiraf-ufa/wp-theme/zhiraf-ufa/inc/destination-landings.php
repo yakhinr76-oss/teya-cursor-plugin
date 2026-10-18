@@ -509,7 +509,12 @@ function zhiraf_ufa_destination_landing_data() {
  */
 function zhiraf_ufa_get_destination_landing( $slug ) {
 	$data = zhiraf_ufa_destination_landing_data();
-	return isset( $data[ $slug ] ) ? $data[ $slug ] : null;
+	if ( isset( $data[ $slug ] ) ) {
+		$row         = $data[ $slug ];
+		$row['slug'] = $slug;
+		return $row;
+	}
+	return null;
 }
 
 /**

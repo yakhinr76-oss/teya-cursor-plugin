@@ -132,6 +132,36 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
+	<section class="section section--hot-tours bg-sand" id="hot-tours">
+		<div class="container">
+			<div class="section-head reveal">
+				<div>
+					<h2 class="section-title"><?php esc_html_e( 'Горящие туры из Уфы', 'zhiraf-ufa' ); ?></h2>
+					<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
+						<?php esc_html_e( 'Реальные предложения ведущих туроператоров на 2 взрослых с вылетом из международного аэропорта «Уфа». Без скрытых доплат.', 'zhiraf-ufa' ); ?>
+					</p>
+				</div>
+				<div class="section-tabs tour-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Фильтр туров по странам', 'zhiraf-ufa' ); ?>">
+					<button type="button" class="tab-btn is-active" data-tour-filter="all"><?php esc_html_e( 'Все направления', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-tour-filter="turciya"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-tour-filter="oae"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-tour-filter="egipet"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-tour-filter="tailand"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-tour-filter="vietnam"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></button>
+				</div>
+			</div>
+
+			<div class="tour-price-grid tour-price-grid--home">
+				<?php
+				$hot_tours = zhiraf_ufa_get_hot_tours( 8 );
+				foreach ( $hot_tours as $tour_item ) :
+					get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item ) );
+				endforeach;
+				?>
+			</div>
+		</div>
+	</section>
+
 	<section class="section section--offers-wordstat bg-milky">
 		<div class="container">
 			<div class="section-head reveal">

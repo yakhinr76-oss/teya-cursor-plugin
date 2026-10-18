@@ -1,8 +1,120 @@
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
+const fixtures = JSON.parse(
+  readFileSync(join(__dir, '../wp-theme/zhiraf-ufa/data/bg-tours-fixtures.json'), 'utf8')
+);
+
+const countryNames = {
+  turciya: 'Турция',
+  oae: 'ОАЭ',
+  egipet: 'Египет',
+  tailand: 'Таиланд',
+  vietnam: 'Вьетнам',
+};
+
+const countryPrepositional = {
+  turciya: 'в Турцию',
+  oae: 'в ОАЭ',
+  egipet: 'в Египет',
+  tailand: 'в Таиланд',
+  vietnam: 'во Вьетнам',
+};
+
+function pluralNights(n) {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return `${n} ночь`;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return `${n} ночи`;
+  return `${n} ночей`;
+}
+
+function tourImage(tour) {
+  const map = {
+    turciya: 'dest-turkey.jpg',
+    oae: 'dest-uae.jpg',
+    egipet: 'dest-egypt.jpg',
+    tailand: 'dest-thailand.jpg',
+    vietnam: 'dest-vietnam.jpg',
+  };
+  return map[tour.country_slug] || 'dest-turkey.jpg';
+}
+
+function renderTourCard(tour) {
+  const starsBadge = tour.stars ? `<span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: ${tour.stars}"><span class="star-icon" aria-hidden="true">★</span>${tour.stars}</span>` : '';
+  const starsText = tour.stars ? `<span class="tour-card__hotel-stars">${tour.stars}</span>` : '';
+  const countryName = countryNames[tour.country_slug] || '';
+  const countryBadge = countryName ? `<span class="tour-card__badge tour-card__badge--country">${countryName}</span>` : '';
+  const nightsFormatted = pluralNights(tour.nights || 0);
+  const prefill = `${tour.hotel_name || ''} ${tour.stars || ''}, ${tour.resort || ''}, вылет ${tour.departure_date || ''}, ${nightsFormatted}`;
+  const imgFile = tourImage(tour);
+
+  return `<article class="tour-card reveal" data-dest="${tour.country_slug}">
+    <div class="tour-card__media">
+      ${img(imgFile, `${tour.resort} — ${tour.hotel_name}`, 'class="tour-card__img"')}
+      <div class="tour-card__badges">
+        ${countryBadge}
+        ${starsBadge}
+      </div>
+    </div>
+    <div class="tour-card__body">
+      <div class="tour-card__header">
+        <h3 class="tour-card__hotel">
+          ${tour.hotel_name}
+          ${starsText}
+        </h3>
+        <p class="tour-card__resort">
+          <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>${tour.resort}</span>
+        </p>
+      </div>
+      <div class="tour-card__meta">
+        <div class="tour-card__meta-item">
+          <span class="tour-card__meta-label">Вылет из Уфы:</span>
+          <strong class="tour-card__meta-value">${tour.departure_date}</strong>
+        </div>
+        <div class="tour-card__meta-item">
+          <span class="tour-card__meta-label">Длительность:</span>
+          <strong class="tour-card__meta-value">${nightsFormatted}</strong>
+        </div>
+        <div class="tour-card__meta-item tour-card__meta-item--meal">
+          <span class="tour-card__meta-label">Питание:</span>
+          <span class="tour-card__meal-badge" title="${tour.meal_name}">
+            <span class="tour-card__meal-code">${tour.meal_code}</span>
+            <span class="tour-card__meal-desc">${tour.meal_name}</span>
+          </span>
+        </div>
+      </div>
+      <div class="tour-card__footer">
+        <div class="tour-card__price-wrap">
+          <div class="tour-card__price-row">
+            <span class="tour-card__price">${tour.price_formatted}</span>
+            <span class="tour-card__tourists">${tour.tourists}</span>
+          </div>
+          <p class="tour-card__fallback-note">
+            <span class="tour-card__status-dot" aria-hidden="true"></span>
+            цена ${tour.price_formatted} на ${tour.price_date}, уточните актуальную стоимость у менеджера
+          </p>
+          <p class="tour-card__disclaimer">${tour.disclaimer}</p>
+        </div>
+        <button
+          type="button"
+          class="btn btn--primary tour-card__cta"
+          data-modal-open="quiz"
+          data-quiz-open
+          data-quiz-prefill="${prefill}"
+          data-tour-hotel="${tour.hotel_name}"
+          data-cta-context="tour_card_quiz_open"
+        >
+          Подобрать тур
+        </button>
+      </div>
+    </div>
+  </article>`;
+}
+
 const img = (f, alt, attrs = '') =>
   `<img src="../wp-theme/zhiraf-ufa/assets/images/${f}" alt="${alt}" loading="lazy" ${attrs} />`;
 
@@ -412,6 +524,27 @@ function destinationMain(data) {
     }
   }
 
+  const destSlug = data.slug || '';
+  const destTours = (fixtures.destinations && fixtures.destinations[destSlug]) ? fixtures.destinations[destSlug].slice(0, 6) : [];
+  let toursSectionHtml = '';
+  if (destTours.length > 0) {
+    const prep = countryPrepositional[destSlug] || `в ${data.name}`;
+    toursSectionHtml = `
+  <section class="section section--dest-tours bg-sand" id="dest-tours">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2 class="section-title">Актуальные туры ${prep} из Уфы</h2>
+          <p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">Проверенные пакетные предложения туроператора на 2 взрослых с перелётом из Уфы.</p>
+        </div>
+      </div>
+      <div class="tour-price-grid tour-price-grid--dest">
+        ${destTours.map(renderTourCard).join('\n')}
+      </div>
+    </div>
+  </section>`;
+  }
+
   return `<main id="primary" class="site-main site-main--destination">
   <section class="dest-landing-hero">
     <div class="container dest-landing-hero__grid">
@@ -433,6 +566,8 @@ function destinationMain(data) {
       <p class="geo-answer-block__text">${data.geo_answer}</p>
     </div>
   </section>` : ''}
+
+  ${toursSectionHtml}
 
   <section class="section dest-landing-prose bg-milky">
     <div class="container container--narrow">
@@ -1285,6 +1420,7 @@ const pages = {
 };
 
 for (const [slug, data] of Object.entries(landings)) {
+  data.slug = slug;
   pages[`tour-${slug}.html`] = wrap(`${data.h1} — Жираф`, destinationMain(data));
 }
 

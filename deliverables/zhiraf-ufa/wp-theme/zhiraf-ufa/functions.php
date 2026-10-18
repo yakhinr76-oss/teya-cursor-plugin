@@ -29,3 +29,4 @@ require_once ZHIRAF_UFA_DIR . '/inc/forms.php';
 require_once ZHIRAF_UFA_DIR . '/inc/redirects.php';
 require_once ZHIRAF_UFA_DIR . '/inc/class-uon-crm.php';
 require_once ZHIRAF_UFA_DIR . '/inc/bg-api.php';
+require_once ZHIRAF_UFA_DIR . '/inc/tours.php';

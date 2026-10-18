@@ -69,7 +69,10 @@
   function quizOpenGoal(btn) {
     var ctx = btn.getAttribute('data-cta-context');
     if (ctx) {
-      window.zhirafTrack(ctx);
+      window.zhirafTrack(ctx, {
+        hotel: btn.getAttribute('data-tour-hotel') || '',
+        context: ctx,
+      });
       return;
     }
     if (btn.closest('.site-header')) {
@@ -188,6 +191,26 @@
   qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.tab-btn'); });
   qsa('.chip-filter').forEach(function (bar) { bindDestFilter(bar, '.chip'); });
 
+  /* Tour price filter tabs */
+  function bindTourFilter(bar) {
+    var tabs = qsa('[data-tour-filter]', bar);
+    var section = bar.closest('.section--hot-tours') || bar.parentElement;
+    var cards = qsa('.tour-card', section);
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (c) { c.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        var filter = tab.getAttribute('data-tour-filter');
+        cards.forEach(function (card) {
+          var dest = card.getAttribute('data-dest');
+          var show = filter === 'all' || dest === filter;
+          card.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+  }
+  qsa('.tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+
   /* Audience tabs */
   var audienceRoot = qs('.audience-tabs');
   if (audienceRoot) {
@@ -265,12 +288,12 @@
     modal.setAttribute('hidden', '');
     document.body.style.overflow = '';
   }
-  qsa('[data-quiz-open]').forEach(function (btn) {
+  qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var prefill = btn.getAttribute('data-quiz-prefill');
       if (prefill && quizForm) {
         var wishes = qs('[name="quiz_wishes"]', quizForm);
-        if (wishes && !wishes.value) {
+        if (wishes) {
           wishes.value = prefill;
         }
       }

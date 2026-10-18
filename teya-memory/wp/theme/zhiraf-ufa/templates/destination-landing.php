@@ -37,6 +37,42 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 		</section>
 	<?php endif; ?>
 
+	<?php
+	$dest_slug  = ! empty( $dest['slug'] ) ? $dest['slug'] : ( isset( $slug ) ? $slug : '' );
+	if ( empty( $dest_slug ) ) {
+		$dest_slug = get_post_field( 'post_name', get_post() );
+	}
+	$dest_tours = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_tours( $dest_slug, 6 ) : array();
+	?>
+	<?php if ( ! empty( $dest_tours ) ) : ?>
+		<section class="section section--dest-tours bg-sand" id="dest-tours">
+			<div class="container">
+				<div class="section-head reveal">
+					<div>
+						<h2 class="section-title">
+							<?php
+							printf(
+								/* translators: %s: country name in prepositional */
+								esc_html__( 'Актуальные туры %s из Уфы', 'zhiraf-ufa' ),
+								esc_html( zhiraf_ufa_country_prepositional( $dest_slug ) )
+							);
+							?>
+						</h2>
+						<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
+							<?php esc_html_e( 'Проверенные пакетные предложения туроператора на 2 взрослых с перелётом из Уфы.', 'zhiraf-ufa' ); ?>
+						</p>
+					</div>
+				</div>
+
+				<div class="tour-price-grid tour-price-grid--dest">
+					<?php foreach ( $dest_tours as $tour_item ) : ?>
+						<?php get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item ) ); ?>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	<section class="section dest-landing-prose bg-milky">
 		<div class="container container--narrow">
 			<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>

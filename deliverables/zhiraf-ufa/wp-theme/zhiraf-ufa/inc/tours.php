@@ -1,0 +1,107 @@
+<?php
+/**
+ * Tour price cards helpers and integration.
+ *
+ * @package Zhiraf_Ufa
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Resolve resort/destination image for tour card.
+ *
+ * @param array<string,mixed> $tour Tour data.
+ * @return string Image filename in assets/images/.
+ */
+function zhiraf_ufa_tour_image( $tour ) {
+	$slug = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : 'turciya';
+	$slug_map = array(
+		'turkey'   => 'turciya',
+		'uae'      => 'oae',
+		'egypt'    => 'egipet',
+		'thailand' => 'tailand',
+	);
+	if ( isset( $slug_map[ $slug ] ) ) {
+		$slug = $slug_map[ $slug ];
+	}
+
+	$map = array(
+		'turciya' => 'dest-turkey.jpg',
+		'oae'     => 'dest-uae.jpg',
+		'egipet'  => 'dest-egypt.jpg',
+		'tailand' => 'dest-thailand.jpg',
+		'vietnam' => 'dest-vietnam.jpg',
+	);
+
+	return isset( $map[ $slug ] ) ? $map[ $slug ] : 'dest-turkey.jpg';
+}
+
+/**
+ * Format Russian plural for nights.
+ *
+ * @param int $nights Number of nights.
+ * @return string
+ */
+function zhiraf_ufa_plural_nights( $nights ) {
+	$n      = (int) $nights;
+	$mod10  = $n % 10;
+	$mod100 = $n % 100;
+
+	if ( $mod100 >= 11 && $mod100 <= 19 ) {
+		return sprintf( /* translators: %d: nights */ _n( '%d ночей', '%d ночей', $n, 'zhiraf-ufa' ), $n );
+	}
+	if ( 1 === $mod10 ) {
+		return sprintf( /* translators: %d: night */ _n( '%d ночь', '%d ночь', $n, 'zhiraf-ufa' ), $n );
+	}
+	if ( $mod10 >= 2 && $mod10 <= 4 ) {
+		return sprintf( /* translators: %d: nights */ _n( '%d ночи', '%d ночи', $n, 'zhiraf-ufa' ), $n );
+	}
+
+	return sprintf( /* translators: %d: nights */ _n( '%d ночей', '%d ночей', $n, 'zhiraf-ufa' ), $n );
+}
+
+/**
+ * Get country label in prepositional/accusative for heading.
+ *
+ * @param string $country_slug Country slug.
+ * @return string
+ */
+function zhiraf_ufa_country_prepositional( $country_slug ) {
+	$map = array(
+		'turciya'  => __( 'в Турцию', 'zhiraf-ufa' ),
+		'turkey'   => __( 'в Турцию', 'zhiraf-ufa' ),
+		'oae'      => __( 'в ОАЭ', 'zhiraf-ufa' ),
+		'uae'      => __( 'в ОАЭ', 'zhiraf-ufa' ),
+		'egipet'   => __( 'в Египет', 'zhiraf-ufa' ),
+		'egypt'    => __( 'в Египет', 'zhiraf-ufa' ),
+		'tailand'  => __( 'в Таиланд', 'zhiraf-ufa' ),
+		'thailand' => __( 'в Таиланд', 'zhiraf-ufa' ),
+		'vietnam'  => __( 'во Вьетнам', 'zhiraf-ufa' ),
+	);
+
+	return isset( $map[ $country_slug ] ) ? $map[ $country_slug ] : __( 'по направлению', 'zhiraf-ufa' );
+}
+
+/**
+ * Get normalized country name.
+ *
+ * @param string $country_slug Country slug.
+ * @return string
+ */
+function zhiraf_ufa_tour_country_name( $country_slug ) {
+	$map = array(
+		'turciya'  => __( 'Турция', 'zhiraf-ufa' ),
+		'turkey'   => __( 'Турция', 'zhiraf-ufa' ),
+		'oae'      => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'uae'      => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'egipet'   => __( 'Египет', 'zhiraf-ufa' ),
+		'egypt'    => __( 'Египет', 'zhiraf-ufa' ),
+		'tailand'  => __( 'Таиланд', 'zhiraf-ufa' ),
+		'thailand' => __( 'Таиланд', 'zhiraf-ufa' ),
+		'vietnam'  => __( 'Вьетнам', 'zhiraf-ufa' ),
+	);
+
+	return isset( $map[ $country_slug ] ) ? $map[ $country_slug ] : '';
+}

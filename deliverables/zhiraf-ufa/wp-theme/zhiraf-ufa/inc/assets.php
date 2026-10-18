@@ -89,12 +89,12 @@ function zhiraf_ufa_offer_hub_links() {
 		array(
 			'label'    => __( 'Горящие туры', 'zhiraf-ufa' ),
 			'url'      => home_url( '/goryashchie-tury/' ),
-			'wordstat' => 3024,
+			'wordstat' => 3480,
 		),
 		array(
 			'label'    => __( 'Всё включено', 'zhiraf-ufa' ),
 			'url'      => home_url( '/vse-vklyucheno/' ),
-			'wordstat' => 735,
+			'wordstat' => 561,
 		),
 	);
 }

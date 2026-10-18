@@ -16,7 +16,7 @@ get_header();
 	<section class="page-hero page-hero--catalog">
 		<div class="container catalog-hero">
 			<div>
-				<h1><?php esc_html_e( 'Туры с вылетом из Уфы', 'zhiraf-ufa' ); ?></h1>
+				<h1><?php esc_html_e( 'Направления отдыха с вылетом из Уфы', 'zhiraf-ufa' ); ?></h1>
 				<p class="lead"><?php esc_html_e( 'Турция, ОАЭ, Египет, Таиланд, Вьетнам и отдых по России — подбор под даты и бюджет без фиктивных цен «от».', 'zhiraf-ufa' ); ?></p>
 			</div>
 			<?php zhiraf_ufa_img( 'catalog-hub.jpg', __( 'Путешествие', 'zhiraf-ufa' ), 'catalog-hero__img', true ); ?>

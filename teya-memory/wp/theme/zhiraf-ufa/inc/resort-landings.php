@@ -54,7 +54,7 @@ function zhiraf_ufa_resort_landing_data() {
 					'h2' => __( '«Всё включено» в Анталье', 'zhiraf-ufa' ),
 					'paragraphs' => array(
 						sprintf(
-							__( 'Многие отели работают в формате AI — детали по странице «всё включено» (735 показов) и %s.', 'zhiraf-ufa' ),
+							__( 'Многие отели работают в формате AI — детали по странице «всё включено» (561 показ/мес.) и %s.', 'zhiraf-ufa' ),
 							'<a href="' . esc_url( home_url( '/blog/chto-vhodit-v-tur-vse-vklyucheno/' ) ) . '">статье BT-02</a>'
 						),
 					),
@@ -72,7 +72,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'faq'           => array(
 				array(
 					'q' => __( 'Чем Анталья отличается от Кемера?', 'zhiraf-ufa' ),
-					'a' => __( 'Кемер — другой микроклимат и формат бухты; оба обсуждаем на странице Турции (секции Кемер 82, Аланья 58 показов).', 'zhiraf-ufa' ),
+					'a' => __( 'Кемер — другой микроклимат и формат бухты; оба обсуждаем на странице Турции (секции Кемер 70, Аланья 122 показов).', 'zhiraf-ufa' ),
 					'link' => home_url( '/tour/turciya/' ),
 				),
 				array(
@@ -108,7 +108,7 @@ function zhiraf_ufa_resort_landing_data() {
 					'h2' => __( 'Подбор пакета', 'zhiraf-ufa' ),
 					'paragraphs' => array(
 						sprintf(
-							__( 'Питание AI/UAI, трансфер, страховка — по voucher. Всё включено из Уфы — 735 показов: %s.', 'zhiraf-ufa' ),
+							__( 'Питание AI/UAI, трансфер, страховка — по voucher. Всё включено из Уфы — 561 показ/мес.: %s.', 'zhiraf-ufa' ),
 							'<a href="' . esc_url( home_url( '/vse-vklyucheno/' ) ) . '">' . esc_html__( 'страница формата', 'zhiraf-ufa' ) . '</a>'
 						),
 					),

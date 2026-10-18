@@ -123,13 +123,13 @@ add_filter( 'robots_txt', 'zhiraf_ufa_robots_txt', 10, 2 );
  */
 function zhiraf_ufa_meta_descriptions() {
 	return array(
-		'home'     => 'Подберём тур из Уфы в Турцию, ОАЭ, Египет, Таиланд и Вьетнам. Честная консультация, офис на Гагарина. Заявка без обязательств.',
+		'home'     => 'Пакетные туры с вылетом из Уфы: подбор 2–4 вариантов, офис на Гагарина. Квиз за 2 минуты. Турагентство «Жираф» с 2011 года.',
 		'o-nas'    => 'История семейного турагентства с 2011 года: команда, ценности, реестр ТА 0012822.',
 		'kontakty' => 'Телефон +7 901 810-50-18, email office@zhiraf-ufa.ru, часы работы, карта, реквизиты ООО «Жираф».',
-		'tour'              => 'Турция, ОАЭ, Египет, Таиланд, Вьетнам и Россия — подбор под даты и бюджет.',
-		'blog'              => 'Статьи о подготовке к поездке, направлениях и отдыхе с детьми.',
-		'goryashchie-tury'  => 'Горящие туры из Уфы — подбор без цен «от» на сайте.',
-		'vse-vklyucheno'    => 'Туры «всё включено» с вылетом из Уфы — AI/UAI в договоре.',
+		'tour'              => 'Турция, ОАЭ, Египет, Таиланд и Вьетнам — пакетные туры из Уфы. Подбор без прайс-борда на сайте. Квиз за 2 минуты.',
+		'blog'              => 'Как купить тур, документы, «всё включено», отдых с детьми — статьи «Жираф» без рекламных цен «от».',
+		'goryashchie-tury'  => 'Актуальные горящие пакеты с вылетом из Уфы — без фиктивных цен «от», заявка и квиз.',
+		'vse-vklyucheno'    => 'Пакеты AI/UAI с вылетом из Уфы: что входит в тур — честно, в договоре.',
 	);
 }
 
@@ -177,19 +177,25 @@ function zhiraf_ufa_current_landing_seo() {
  */
 function zhiraf_ufa_document_title( $title ) {
 	if ( is_front_page() ) {
-		return 'Туры из Уфы | Турагентство «Жираф» — подбор и консультация';
+		return 'Туры из Уфы — подбор пакетных туров | «Жираф»';
 	}
 	if ( is_page( 'o-nas' ) ) {
-		return 'О нас | Турагентство «Жираф» — с 2011 года в Уфе';
+		return 'О турагентстве «Жираф» в Уфе — с 2011 года';
 	}
 	if ( is_page( 'kontakty' ) ) {
-		return 'Контакты | «Жираф» — ул. Гагарина 74/1, офис 3';
+		return 'Контакты «Жираф» — офис в Уфе, Гагарина 74/1';
 	}
 	if ( is_page( 'tour' ) ) {
-		return 'Каталог туров из Уфы | Направления «Жираф»';
+		return 'Направления отдыха с вылетом из Уфы | «Жираф»';
+	}
+	if ( is_page( 'politika-konfidenczialnosti' ) ) {
+		return 'Политика конфиденциальности | «Жираф»';
+	}
+	if ( is_page( 'politika-cookies' ) ) {
+		return 'Политика cookies | «Жираф»';
 	}
 	if ( is_home() && ! is_front_page() ) {
-		return 'Блог «Жираф» | Туры из Уфы и советы';
+		return 'Блог о путешествиях из Уфы | «Жираф»';
 	}
 	$landing_seo = zhiraf_ufa_current_landing_seo();
 	if ( $landing_seo && ! empty( $landing_seo['title'] ) ) {
@@ -377,12 +383,58 @@ function zhiraf_ufa_breadcrumb_json_ld() {
 				'item'     => zhiraf_ufa_canonical_public_url( zhiraf_ufa_resort_url( $resort_ctx['country'], $resort_ctx['resort'] ) ),
 			);
 		}
+	} elseif ( is_page( 'tour' ) ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => $pos++,
+			'name'     => __( 'Направления отдыха с вылетом из Уфы', 'zhiraf-ufa' ),
+			'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' ) ),
+		);
+	} elseif ( is_page() ) {
+		$slug  = get_post_field( 'post_name', get_queried_object_id() );
+		$dest  = zhiraf_ufa_get_destination_landing( $slug );
+		$offer = zhiraf_ufa_get_offer_landing( $slug );
+		if ( $dest ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => __( 'Каталог направлений', 'zhiraf-ufa' ),
+				'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' ) ),
+			);
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => $dest['h1'],
+				'item'     => zhiraf_ufa_canonical_public_url( get_permalink() ),
+			);
+		} elseif ( $offer ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => $offer['h1'],
+				'item'     => zhiraf_ufa_canonical_public_url( get_permalink() ),
+			);
+		} else {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => get_the_title(),
+				'item'     => zhiraf_ufa_canonical_public_url( get_permalink() ),
+			);
+		}
 	} elseif ( is_singular() ) {
 		$items[] = array(
 			'@type'    => 'ListItem',
 			'position' => $pos++,
 			'name'     => get_the_title(),
 			'item'     => zhiraf_ufa_canonical_public_url( get_permalink() ),
+		);
+	} elseif ( is_home() ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => $pos++,
+			'name'     => __( 'Блог о путешествиях из Уфы', 'zhiraf-ufa' ),
+			'item'     => zhiraf_ufa_canonical_public_url( home_url( '/blog/' ) ),
 		);
 	}
 	$schema = array(

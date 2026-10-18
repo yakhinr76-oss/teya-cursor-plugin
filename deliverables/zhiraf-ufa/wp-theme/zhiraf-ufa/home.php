@@ -14,7 +14,7 @@ get_header();
 <main id="primary" class="site-main site-main--blog">
 	<section class="page-hero">
 		<div class="container">
-			<h1><?php esc_html_e( 'Блог и советы путешественникам', 'zhiraf-ufa' ); ?></h1>
+			<h1><?php esc_html_e( 'Блог о путешествиях из Уфы', 'zhiraf-ufa' ); ?></h1>
 			<p><?php esc_html_e( 'Практические материалы о подготовке к поездке и направлениях с вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
 		</div>
 	</section>

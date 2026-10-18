@@ -106,7 +106,7 @@ const evidence = {
   theme_slug: 'zhiraf-ufa',
   mode: 'local-only',
   checked_at: new Date().toISOString(),
-  agent_bc_id: 'bc-91bdee58-5338-5e99-96bc-c55e5d7d1505',
+  agent_bc_id: 'bc-6dc66391-136a-53f5-9722-9896f4c3dbc6',
   page_build_ref: 'teya-memory/wp/page-build-report.md',
   wordstat_routes: pages.map((p) => p.path),
   screenshots: screenshotRecords,

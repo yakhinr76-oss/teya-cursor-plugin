@@ -3,8 +3,8 @@
   "preview_base": "http://127.0.0.1:8765/",
   "theme_slug": "zhiraf-ufa",
   "mode": "local-only",
-  "checked_at": "2026-10-18T15:33:25.391Z",
-  "agent_bc_id": "bc-91bdee58-5338-5e99-96bc-c55e5d7d1505",
+  "checked_at": "2026-10-18T16:03:34.233Z",
+  "agent_bc_id": "bc-6dc66391-136a-53f5-9722-9896f4c3dbc6",
   "page_build_ref": "teya-memory/wp/page-build-report.md",
   "wordstat_routes": [
     "/",
@@ -19,7 +19,6 @@
     "/tour/turciya/antalya/",
     "/tour/egipet/hurgada/",
     "/tour/egipet/sharm-el-sheyh/",
-    "/tour/tailand/phuket/",
     "/tour/vietnam/nyachang/",
     "/tour/vietnam/fukuok/",
     "/o-nas/",
@@ -246,24 +245,6 @@
       "paint": "teya-memory/wp/paint-qa/page-tour-egipet-sharm-el-sheyh-390-fullpage.png"
     },
     {
-      "slug": "tour-tailand-phuket",
-      "path": "/tour/tailand/phuket/",
-      "file": "tour-tailand-phuket.html",
-      "viewport": "1440",
-      "http_status": 200,
-      "artifact": "/opt/cursor/artifacts/zhiraf-tour-tailand-phuket-1440.png",
-      "paint": "teya-memory/wp/paint-qa/page-tour-tailand-phuket-1440-fullpage.png"
-    },
-    {
-      "slug": "tour-tailand-phuket",
-      "path": "/tour/tailand/phuket/",
-      "file": "tour-tailand-phuket.html",
-      "viewport": "390",
-      "http_status": 200,
-      "artifact": "/opt/cursor/artifacts/zhiraf-tour-tailand-phuket-390.png",
-      "paint": "teya-memory/wp/paint-qa/page-tour-tailand-phuket-390-fullpage.png"
-    },
-    {
       "slug": "tour-vietnam-nyachang",
       "path": "/tour/vietnam/nyachang/",
       "file": "tour-vietnam-nyachang.html",
@@ -403,7 +384,6 @@
     "tour-turciya-antalya",
     "tour-egipet-hurgada",
     "tour-egipet-sharm-el-sheyh",
-    "tour-tailand-phuket",
     "tour-vietnam-nyachang",
     "tour-vietnam-fukuok",
     "o-nas",

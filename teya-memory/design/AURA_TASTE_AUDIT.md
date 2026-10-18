@@ -1,37 +1,54 @@
 # AURA Taste Audit
 
-- mode: TASTE AUDIT → **RECOVERY**
+- mode: TASTE RECOVERY (re-audit)
+- prior_audit: 2026-10-18 BLOCKER (`6ee38cc`)
 - project: Турагентство «Жираф», Уфа
 - theme_slug: `zhiraf-ufa`
 - theme_path: `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/`
 - date: 2026-10-18
 - profile: `teya-memory/design/AURA_TASTE_PROFILE.md` (design_ambition: **polished**)
-- initial_auditor: `bc-fb384920` — **❌ BLOCKER** (T04, T09)
-- recovery_agent: `bc-9773db71-f3bd-5d80-831c-70ba4f27911b`
-- verdict: **✅ READY FOR RE-QA**
+- impeccable: `AURA_IMPECCABLE_REPORT.json` — **pass** (0 findings)
+- verdict: **✅ PASS**
 
-## Initial hard fails (resolved)
+## Summary
 
-| ID | Was | Fix (2026-10-18) |
-|----|-----|------------------|
-| T04 | `.btn { transition: all }` | `background-color`, `color`, `border-color`, `opacity` 0.2s |
-| T09 | Unbounded Google CDN + `--font-head` Unbounded | CDN removed from `header.php`; Manrope local only; headings 800 |
-| P11 | trust-social missing | `front-page.php` section + SCSS |
-| — | `--color-sand` | `#f5f2ed` in `:root` |
-| Preview | stale `preview/home.html` | P0 funnel sync, 12 img paths |
+После merge **motion + funnel P0** (`fcca144`) и recovery-фиксов (Manrope-only, explicit `.btn` transitions, trust-social, `--color-sand`) тема соответствует профилю **polished**. GSAP `motion-home.js`: hero timeline, stagger, dest row, `prefers-reduced-motion`. Impeccable: 0 findings.
 
-## Re-check checklist (for bc-fb384920 / Guardian)
+## Resolved vs initial BLOCKER
 
-- [ ] No `fonts.googleapis.com` / Unbounded
-- [ ] `.btn` computed `transition-property` ≠ `all`
-- [ ] `preview/home.html` — audience, trust, faq visible
-- [ ] Homepage meaningful images ≥12 (hero×3, dest×5, trust×2, blog, subscribe)
+| Issue | Initial | Recovery |
+|-------|---------|----------|
+| T04 `transition: all` | FAIL | PASS |
+| T09 Unbounded | FAIL | PASS — local Manrope, CDN removed |
+| trust-social | missing | PASS |
+| `--color-sand` | undefined | PASS |
+| T08 touch | WARN | PASS — `btn--sm` min-height 44px |
 
-## Open warnings (non-blocker)
+## Checklist T01–T15
 
-- **T08:** `btn--sm` height &lt;44px on some header CTAs — optional min-height fix.
-- **§8–9 QA maps / paint:** re-run Guardian after preview refresh.
+All **PASS** (0 hard fails). T01–T03, T05–T15 unchanged from editorial baseline; T04/T09/T08 closed as above.
 
-## Prior audit notes (T01–T15)
+## Positive craft P01–P15
 
-Impeccable detect on deliverables theme: **0 findings**. T01–T03, T05–T08 (warn), T10–T15 passed on initial pass except T04/T09.
+All **PASS** at polished tier (P01/P04/P07/P12 soft — met). Homepage ≥6 layout families; ≥12 images; quiz + tabs; trust block.
+
+## Layout variance
+
+Targets in `AURA_TASTE_PROFILE.md` — **met**.
+
+## Impeccable
+
+```text
+npx impeccable detect --json deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/
+→ []
+```
+
+## Warnings (non-blocking)
+
+- MCP blog cover unity — profile waiver.
+- Guardian: WP paint vs static `preview/home.html` — separate gate.
+- Three.js hero ambient — verify reduced-motion off in `motion-hero-ambient.js`.
+
+## Verdict
+
+**✅ PASS** — ready for release QA with Design Guardian on deployed WP.

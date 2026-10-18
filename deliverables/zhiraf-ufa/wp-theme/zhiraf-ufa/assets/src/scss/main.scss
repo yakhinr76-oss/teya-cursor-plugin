@@ -8,8 +8,8 @@
   --color-border: #e8e3dc;
   --color-sand: #f5f2ed;
   
-  --font-sans: 'Manrope', sans-serif;
-  --font-head: 'Unbounded', 'Manrope', sans-serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-head: 'Manrope', system-ui, sans-serif;
   
   --container-max: 1280px;
   --header-h: 80px;
@@ -24,7 +24,7 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.6;
   color: var(--color-text);
   background: var(--color-bg);
@@ -54,7 +54,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1
   display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--font-sans); font-weight: 700; font-size: 15px;
   padding: 12px 24px; border-radius: 50px;
-  border: none; cursor: pointer; transition: all 0.3s ease;
+  border: none; cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
   text-decoration: none;
 }
 .btn--primary {
@@ -203,17 +204,23 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1
 }
 
 /* Trust social */
-.trust-social { background: var(--color-sand); }
+.section--trust.trust-social {
+  background: var(--color-sand);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
 .trust-social__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
+.trust-social__content .section-title { margin-bottom: 8px; }
 .trust-social__facts {
   margin: 24px 0;
   padding-left: 1.25rem;
   color: var(--color-muted);
+  list-style: disc;
 }
 .trust-social__facts li { margin-bottom: 8px; }
 .trust-social__links {
@@ -222,11 +229,20 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1
   gap: 16px 24px;
   font-weight: 700;
 }
+.trust-social__links a {
+  transition: color 0.2s ease;
+}
+.trust-social__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .trust-social__img {
   border-radius: var(--radius-lg);
   width: 100%;
   object-fit: cover;
   aspect-ratio: 4/3;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
 /* FAQ home */

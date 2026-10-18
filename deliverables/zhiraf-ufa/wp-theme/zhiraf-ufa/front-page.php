@@ -167,6 +167,7 @@ $teaser     = zhiraf_ufa_blog_teaser_bt01();
 			</div>
 			<div class="trust-social__visual reveal reveal-delay-1">
 				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства Жираф в Уфе', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
+				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда турагентства «Жираф»', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
 			</div>
 		</div>
 	</section>

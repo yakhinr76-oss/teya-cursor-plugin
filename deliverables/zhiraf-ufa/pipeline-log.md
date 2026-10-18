@@ -17,7 +17,7 @@
 
 ## 3. Роль: wp-theme-builder (Вёрстка и интеграция)
 - **Файлы контекста:** `agents/wp-theme-builder.md`, `skills/wp-theme-builder/SKILL.md`
-- **Что сделано:** Оценка качества PHP-кода (инкапсуляция, функции, WordPress стэндард). CSS разбит на переменные BEM/Custom Properties. 
+- **Что сделано:** Оценка качества PHP-кода (инкапсуляция, функции, WordPress стэндарт). CSS разбит на переменные BEM/Custom Properties. 
 - **Вердикт:** Код соответствует стандартам. Ошибок `php -l` нет. Подготовка `dist/` работает штатно.
 
 ## 4. Команда: aurora-team-* (Глубокий аудит качества)
@@ -53,6 +53,18 @@
   - Сборка `assets/dist/style.css` (sass), `php -l` по всем PHP темы — OK.
 - **Деплой:** не выполнялся.
 - **Отчёт:** `teya-memory/wp/animation-implementation-report.md`
+
+### 7.1 QA follow-up (`bc-646a0fe3`, `bc-9773db71-f3bd-5d80-831c-70ba4f27911b`)
+- **Preview:** `deliverables/zhiraf-ufa/preview/home.html` синхронизирован с `front-page.php` (audience, trust, faq, lead, teaser, subscribe); пути `../wp-theme/zhiraf-ufa/assets/images/*` (12 tourism imgs).
+- **Шрифты:** убран Google CDN Unbounded из `header.php`; headlines — Manrope 800 (`AURA_TASTE_PROFILE`).
+- **Сборка:** `sass` → `dist/style.css`, `php -l` OK.
+
+### 7.2 Taste audit fixes (`bc-fb384920`)
+- **T04:** `.btn` — transitions только по `background-color`, `color`, `border-color`, `opacity` (без `all`).
+- **T09:** Manrope-only (local `@font-face` в `enqueues.php`); CDN Unbounded удалён; body 17px, headings Manrope 800.
+- **Tokens:** `--color-sand` в `:root`; усилены стили `.trust-social` (+ `team-travel.jpg` в trust visual).
+- **Preview:** `preview/home.html` синхронизирован с темой.
+- **Статус:** готово к повторному TASTE AUDIT / paint QA.
 
 ## 8. Роль: aurora-team-design-guardian (дизайн-gate)
 - **Агент:** `agents/aurora-team-design-guardian.md`, `skills/aurora-team-design-guardian/SKILL.md`

@@ -190,7 +190,7 @@
 | 2. aurora-team-content | — | **fd92227** | `page-content-pack.md`, briefs — **19** страниц, **7 NEW**, Phuket → секция на `/tour/tailand/` |
 | 3. PAGE BUILDER (theme) | — | **94af27c** | Снят `/tour/tailand/phuket/`; Thailand sections + Wordstat sync; `php -l` OK |
 | 4. paint (design-guardian QA) | `bc-6dc66391-…` | **a06c6d5** | **38** fullpage PNG (**19** маршрутов × 1440/390); `paint-evidence.json`; preview `deliverables/zhiraf-ufa/preview/` |
-| 5. release gate | — | **a06c6d5** | `teya_release_gate.py` **07628b4** (SHA256 `50f71547…`, скрипт не меняли); **`exit_code` 0 — PASS** — `teya-memory/wp/release-gate-report.md` (worker не обновил `git_ref` после paint; локальный re-run на `a06c6d5` + Pillow → **PASS**) |
+| 5. release gate | — | **ac0e203** (report) / **a06c6d5** (paint) | `teya_release_gate.py` **07628b4** (SHA256 `50f71547…`, скрипт не меняли); **`exit_code` 0 — PASS** — `teya-memory/wp/release-gate-report.md` (`git_ref` `a06c6d5`) |
 
 ### 7 NEW URL (порог ≥100, API 18.10.2026)
 

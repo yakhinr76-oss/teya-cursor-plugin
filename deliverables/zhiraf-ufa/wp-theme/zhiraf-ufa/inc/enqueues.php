@@ -79,6 +79,31 @@ function zhiraf_ufa_enqueue_assets() {
 				'in_footer' => true,
 			)
 		);
+
+		$three_path = ZHIRAF_UFA_DIR . '/assets/vendor/three/three.min.js';
+		if ( file_exists( $three_path ) ) {
+			wp_enqueue_script(
+				'zhiraf-three',
+				ZHIRAF_UFA_URI . '/assets/vendor/three/three.min.js',
+				array(),
+				'0.170.0',
+				array(
+					'strategy'  => 'defer',
+					'in_footer' => true,
+				)
+			);
+			$ambient = ZHIRAF_UFA_DIR . '/assets/js/motion-hero-ambient.js';
+			wp_enqueue_script(
+				'zhiraf-motion-ambient',
+				ZHIRAF_UFA_URI . '/assets/js/motion-hero-ambient.js',
+				array( 'zhiraf-three' ),
+				file_exists( $ambient ) ? (string) filemtime( $ambient ) : ZHIRAF_UFA_VERSION,
+				array(
+					'strategy'  => 'defer',
+					'in_footer' => true,
+				)
+			);
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zhiraf_ufa_enqueue_assets' );

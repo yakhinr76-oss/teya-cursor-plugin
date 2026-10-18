@@ -24,7 +24,7 @@
   function bindDestFilter(bar, tabSelector) {
     var tabs = qsa(tabSelector, bar);
     var section = bar.closest('.destinations') || bar.parentElement;
-    var cards = qsa('.dest-card', section);
+    var cards = qsa('.dest-card, .dest-premium-card', section);
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (c) { c.classList.remove('is-active'); });
@@ -38,8 +38,46 @@
       });
     });
   }
-  qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.dest-tab'); });
+  qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.tab-btn'); });
   qsa('.chip-filter').forEach(function (bar) { bindDestFilter(bar, '.chip'); });
+
+  /* Audience tabs */
+  var audienceRoot = qs('.audience-tabs');
+  if (audienceRoot) {
+    var aTabs = qsa('.audience-tabs__tab', audienceRoot);
+    var aPanels = qsa('.audience-tabs__panel', audienceRoot);
+    aTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var id = tab.getAttribute('data-audience');
+        aTabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        aPanels.forEach(function (panel) {
+          var show = panel.getAttribute('data-audience-panel') === id;
+          panel.classList.toggle('is-active', show);
+          panel.hidden = !show;
+        });
+      });
+    });
+  }
+
+  /* Sticky mobile CTA after trust block */
+  var trustBlock = qs('.trust-social');
+  var stickyCta = qs('#sticky-mobile-cta');
+  if (trustBlock && stickyCta && window.matchMedia('(max-width: 768px)').matches) {
+    var stickyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyCta.removeAttribute('hidden');
+        } else {
+          stickyCta.setAttribute('hidden', '');
+        }
+      });
+    }, { threshold: 0 });
+    stickyObs.observe(trustBlock);
+  }
 
   /* Cookie banner */
   var banner = qs('#cookie-banner');

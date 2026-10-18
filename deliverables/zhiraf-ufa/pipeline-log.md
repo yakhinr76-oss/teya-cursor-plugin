@@ -43,3 +43,13 @@
 1. Вырезан лишний вызов Manrope из CDN.
 2. Добавлено `aria-hidden="true"` в декоративный SVG.
 3. Добавлен `:focus-visible` для обеспечения стандартов a11y.
+
+## 7. Роль: aurora-team-motion + wp-theme-builder handoff (`bc-9773db71-f3bd-5d80-831c-70ba4f27911b`)
+- **Контекст:** `agents/aurora-team-motion.md`, `agents/wp-theme-builder.md`, `teya-memory/wp/animation-motion-map.md`, `teya-memory/wp/aurora-team-blueprint.md`
+- **Тема:** `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/`
+- **Сделано:**
+  - Главная по funnel P0: `audience-tabs`, `trust-social`, `faq-home`, порядок секций, blog teaser BT-01 (Excalibur excerpt), subscribe hold.
+  - Motion: `motion-home.js` (селекторы, hero timeline, flight path), `motion-hero-ambient.js` + local Three.js r128.
+  - Сборка `assets/dist/style.css` (sass), `php -l` по всем PHP темы — OK.
+- **Деплой:** не выполнялся.
+- **Отчёт:** `teya-memory/wp/animation-implementation-report.md`

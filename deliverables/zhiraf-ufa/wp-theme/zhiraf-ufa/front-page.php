@@ -1,38 +1,42 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 get_header();
 
-$blog_posts = zhiraf_ufa_home_blog_posts();
 $dest_all   = zhiraf_ufa_destinations();
+$audience   = zhiraf_ufa_audience_segments();
+$faq_items  = zhiraf_ufa_home_faq_items();
+$teaser     = zhiraf_ufa_blog_teaser_bt01();
 ?>
 <main id="primary" class="site-main site-main--home">
 
-	<!-- Premium Hero with Collage -->
-	<section class="hero-premium">
+	<section class="hero-premium" data-motion="hero">
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					Открывайте мир <br><span class="hero-premium__title-highlight">вместе</span>&nbsp;с&nbsp;нами
+					<?php esc_html_e( 'Туры с вылетом из Уфы — подбор без давления', 'zhiraf-ufa' ); ?>
 				</h1>
-				<p class="hero-premium__subtitle">Индивидуальные туры из Уфы. Безупречный сервис и внимание к каждой детали вашего отдыха. Мы поможем вам найти идеальный курорт.</p>
+				<p class="hero-premium__subtitle">
+					<?php esc_html_e( 'Устали от безликого поиска и скрытых доплат? Подберём 2–4 варианта с вылетом из Уфы — честно, без впаривания. Офис на Гагарина, 74/1.', 'zhiraf-ufa' ); ?>
+				</p>
 				<div class="hero-premium__actions">
-					<button class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e('Подобрать тур', 'zhiraf-ufa'); ?></button>
+					<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
 				</div>
 			</div>
-			
-			<div class="hero-premium__collage reveal reveal-delay-1">
-				<div class="hero-collage__img hero-collage__img--1">
+
+			<div class="hero-premium__collage reveal reveal-delay-1" data-three-canvas="hero-ambient">
+				<div class="hero-ambient-canvas" aria-hidden="true"></div>
+				<div class="hero-collage__img hero-collage__img--1 collage-tile">
 					<?php zhiraf_ufa_img( 'hero-uae.jpg', 'ОАЭ', '', false, true ); ?>
 				</div>
-				<div class="hero-collage__img hero-collage__img--2">
+				<div class="hero-collage__img hero-collage__img--2 collage-tile">
 					<?php zhiraf_ufa_img( 'hero-turkey.jpg', 'Турция', '', false, true ); ?>
 				</div>
-				<div class="hero-collage__img hero-collage__img--3">
+				<div class="hero-collage__img hero-collage__img--3 collage-tile">
 					<?php zhiraf_ufa_img( 'hero-egypt.jpg', 'Египет', '', false, true ); ?>
 				</div>
-				
-				<!-- Airplane Trajectory SVG -->
-				<svg class="hero-collage__flight-path" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+				<svg class="hero-collage__flight-path" data-motion="flight-path" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 					<path d="M10,180 Q100,50 380,80" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="6,6" fill="none"/>
 					<path d="M370,75 L385,81 L370,87 Z" fill="var(--color-primary)" />
 				</svg>
@@ -40,30 +44,71 @@ $dest_all   = zhiraf_ufa_destinations();
 		</div>
 	</section>
 
-	<!-- Destinations with Tabs -->
-	<section class="section section--destinations bg-milky">
+	<section class="section section--audience bg-milky" id="audience-tabs">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title">Направления</h2>
-				<div class="section-tabs">
-					<button class="tab-btn active">Популярные</button>
-					<button class="tab-btn">ОАЭ</button>
-					<button class="tab-btn">Турция</button>
-					<button class="tab-btn">Египет</button>
-					<button class="tab-btn">Таиланд</button>
-					<button class="tab-btn">Вьетнам</button>
+				<h2 class="section-title"><?php esc_html_e( 'Кому подойдёт наш подбор', 'zhiraf-ufa' ); ?></h2>
+			</div>
+			<div class="audience-tabs">
+				<div class="audience-tabs__nav" role="tablist" aria-label="<?php esc_attr_e( 'Сегменты аудитории', 'zhiraf-ufa' ); ?>">
+					<?php foreach ( $audience as $i => $seg ) : ?>
+						<button
+							type="button"
+							class="audience-tabs__tab<?php echo 0 === $i ? ' is-active' : ''; ?>"
+							role="tab"
+							id="audience-tab-<?php echo esc_attr( $seg['id'] ); ?>"
+							aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"
+							aria-controls="audience-panel-<?php echo esc_attr( $seg['id'] ); ?>"
+							data-audience="<?php echo esc_attr( $seg['id'] ); ?>"
+						><?php echo esc_html( $seg['label'] ); ?></button>
+					<?php endforeach; ?>
+				</div>
+				<?php foreach ( $audience as $i => $seg ) : ?>
+					<div
+						class="audience-tabs__panel reveal<?php echo 0 === $i ? ' is-active' : ''; ?>"
+						role="tabpanel"
+						id="audience-panel-<?php echo esc_attr( $seg['id'] ); ?>"
+						aria-labelledby="audience-tab-<?php echo esc_attr( $seg['id'] ); ?>"
+						data-audience-panel="<?php echo esc_attr( $seg['id'] ); ?>"
+						<?php echo $i > 0 ? 'hidden' : ''; ?>
+					>
+						<ul class="audience-tabs__list">
+							<?php foreach ( $seg['items'] as $item ) : ?>
+								<li><?php echo esc_html( $item ); ?></li>
+							<?php endforeach; ?>
+						</ul>
+						<div class="audience-tabs__actions">
+							<button type="button" class="btn btn--primary" data-quiz-open><?php echo esc_html( $seg['cta'] ); ?></button>
+							<a class="audience-tabs__link" href="<?php echo esc_url( $seg['link'] ); ?>"><?php esc_html_e( 'Подробнее', 'zhiraf-ufa' ); ?></a>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--destinations bg-milky">
+		<div class="container destinations">
+			<div class="section-head reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Направления', 'zhiraf-ufa' ); ?></h2>
+				<div class="section-tabs dest-tabs" role="tablist">
+					<button type="button" class="tab-btn is-active" data-filter="all"><?php esc_html_e( 'Популярные', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-filter="oae"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-filter="turciya"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-filter="egipet"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-filter="tailand"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="tab-btn" data-filter="vietnam"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></button>
 				</div>
 			</div>
-			
 			<div class="dest-premium-row">
-				<?php foreach ( $dest_all as $index => $dest ) : ?>
-					<a href="<?php echo esc_url( $dest['url'] ); ?>" class="dest-premium-card reveal">
+				<?php foreach ( $dest_all as $dest ) : ?>
+					<a href="<?php echo esc_url( $dest['url'] ); ?>" class="dest-premium-card dest-card" data-dest="<?php echo esc_attr( $dest['slug'] ); ?>">
 						<div class="dest-premium-card__bg">
 							<?php zhiraf_ufa_img( $dest['image'], $dest['alt'], 'dest-premium-card__img', true ); ?>
 						</div>
 						<div class="dest-premium-card__content">
 							<h3 class="dest-premium-card__title"><?php echo esc_html( $dest['name'] ); ?></h3>
-							<p class="dest-premium-card__subtitle">Туры из Уфы</p>
+							<p class="dest-premium-card__subtitle"><?php esc_html_e( 'Туры из Уфы', 'zhiraf-ufa' ); ?></p>
 						</div>
 					</a>
 				<?php endforeach; ?>
@@ -71,194 +116,156 @@ $dest_all   = zhiraf_ufa_destinations();
 		</div>
 	</section>
 
-	<!-- How It Works (New Premium Section) -->
 	<section class="section section--how-it-works">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title">Как это работает</h2>
+				<h2 class="section-title"><?php esc_html_e( 'Как это работает', 'zhiraf-ufa' ); ?></h2>
 			</div>
 			<div class="steps-row">
 				<div class="step-card reveal">
 					<div class="step-number">01</div>
-					<h3>Заявка</h3>
-					<p>Вы оставляете заявку или проходите короткий квиз на сайте.</p>
+					<h3><?php esc_html_e( 'Заявка', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Оставляете заявку или проходите короткий квиз на сайте.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-1">
 					<div class="step-number">02</div>
-					<h3>Подбор</h3>
-					<p>Мы собираем лучшие варианты туров под ваши пожелания и бюджет.</p>
+					<h3><?php esc_html_e( 'Подбор', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Менеджер предлагает 2–4 варианта под даты, бюджет и состав.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-2">
 					<div class="step-number">03</div>
-					<h3>Бронирование</h3>
-					<p>Оформляем договор онлайн или в нашем уютном офисе.</p>
+					<h3><?php esc_html_e( 'Договор', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Оформляем договор онлайн или в офисе на Гагарина.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-3">
 					<div class="step-number">04</div>
-					<h3>Отдых</h3>
-					<p>Вы наслаждаетесь идеальным отпуском без лишних забот.</p>
+					<h3><?php esc_html_e( 'Отдых', 'zhiraf-ufa' ); ?></h3>
+					<p><?php esc_html_e( 'Вы летите с вылетом из Уфы — мы на связи до возвращения.', 'zhiraf-ufa' ); ?></p>
 				</div>
+			</div>
+			<p class="steps-cta reveal">
+				<button type="button" class="btn btn--outline" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+			</p>
+		</div>
+	</section>
+
+	<section class="section section--trust trust-social">
+		<div class="container trust-social__grid">
+			<div class="trust-social__content reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Почему нам доверяют в Уфе', 'zhiraf-ufa' ); ?></h2>
+				<ul class="trust-social__facts">
+					<li><strong><?php esc_html_e( 'ООО «Жираф»', 'zhiraf-ufa' ); ?></strong> — <?php esc_html_e( 'РТА 0012822', 'zhiraf-ufa' ); ?></li>
+					<li><?php esc_html_e( 'Семейное агентство с апреля 2011 года', 'zhiraf-ufa' ); ?></li>
+					<li><?php esc_html_e( 'Офис: ул. Юрия Гагарина, 74/1, офис 3', 'zhiraf-ufa' ); ?></li>
+					<li><?php esc_html_e( 'Пн–Пт 10:00–19:00, Сб 11:00–15:00', 'zhiraf-ufa' ); ?></li>
+				</ul>
+				<div class="trust-social__links">
+					<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
+					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank"><?php esc_html_e( 'Мы ВКонтакте', 'zhiraf-ufa' ); ?></a>
+					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>"><?php esc_html_e( 'Контакты и карта', 'zhiraf-ufa' ); ?></a>
+				</div>
+			</div>
+			<div class="trust-social__visual reveal reveal-delay-1">
+				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства Жираф в Уфе', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
 			</div>
 		</div>
 	</section>
 
-	<!-- Editorial Blog/Articles 1 Big + List -->
-	<section class="section section--editorial bg-milky">
+	<section class="section section--faq faq-home bg-milky" id="faq-home">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title">Полезные статьи</h2>
-				<a href="/blog/" class="btn btn--outline btn--sm">Читать все статьи</a>
+				<h2 class="section-title"><?php esc_html_e( 'Частые вопросы', 'zhiraf-ufa' ); ?></h2>
 			</div>
-			<div class="editorial-layout">
-				<?php 
-				$main_post = null;
-				$list_posts = [];
-				if ( ! empty( $blog_posts ) && count($blog_posts) >= 4 ) {
-					$main_post = $blog_posts[0];
-					$list_posts = array_slice($blog_posts, 1, 3);
-				} else {
-					$fallback = zhiraf_ufa_blog_fallback_stories();
-					$main_post = $fallback[0];
-					$list_posts = array_slice($fallback, 1, 3);
-				}
-				?>
-				
-				<?php if ( $main_post ) : ?>
-					<!-- MAIN ARTICLE -->
-					<div class="editorial-main reveal">
-						<a href="<?php echo is_array($main_post) ? esc_url($main_post['url']) : esc_url( get_permalink( $main_post ) ); ?>" class="editorial-main__link">
-							<div class="editorial-main__img-wrap">
-								<?php 
-								if ( is_array($main_post) ) {
-									zhiraf_ufa_img( 'article-main.jpg', $main_post['title'], 'editorial-main__img', true );
-								} else {
-									$thumb_id = get_post_thumbnail_id( $main_post );
-									if ( $thumb_id ) {
-										echo wp_get_attachment_image( $thumb_id, 'large', false, array( 'class' => 'editorial-main__img' ) );
-									} else {
-										zhiraf_ufa_img( 'article-fallback.jpg', get_the_title( $main_post ), 'editorial-main__img', true );
-									}
-								}
-								?>
-							</div>
-							<div class="editorial-main__content">
-								<?php 
-								$cat_name = is_array($main_post) ? $main_post['category'] : zhiraf_ufa_story_category_label( $main_post->ID );
-								if ( $cat_name && $cat_name !== 'Uncategorized' && $cat_name !== 'Без рубрики' ) :
-								?>
-								<span class="editorial-cat">
-									<?php echo esc_html( $cat_name ); ?>
-								</span>
-								<?php endif; ?>
-								<h3 class="editorial-main__title">
-									<?php echo is_array($main_post) ? esc_html($main_post['title']) : esc_html( get_the_title( $main_post ) ); ?>
-								</h3>
-								<time class="editorial-date">
-									<?php echo is_array($main_post) ? '15 октября 2026' : wp_date( 'j F Y', get_post_timestamp( $main_post ) ); ?> · 4 мин чтения
-								</time>
-								<p class="editorial-main__excerpt">
-									<?php 
-									if ( is_array($main_post) ) {
-										echo "Подробный обзор лучших отелей для незабываемого отдыха с детьми...";
-									} else {
-										echo wp_trim_words( get_the_excerpt( $main_post ), 20 );
-									}
-									?>
-								</p>
-							</div>
-						</a>
-					</div>
-				<?php endif; ?>
-
-				<!-- LIST ARTICLES -->
-				<div class="editorial-list reveal reveal-delay-1">
-					<?php foreach ( $list_posts as $i => $post ) : ?>
-						<a href="<?php echo is_array($post) ? esc_url($post['url']) : esc_url( get_permalink( $post ) ); ?>" class="editorial-list-item">
-							<div class="editorial-list-item__img-wrap">
-								<?php 
-								$fallback_imgs = ['article-fallback.jpg', 'article-fallback.jpg', 'article-fallback.jpg'];
-								if ( is_array($post) ) {
-									zhiraf_ufa_img( $fallback_imgs[$i % 3], $post['title'], 'editorial-list-item__img', true );
-								} else {
-									$thumb_id = get_post_thumbnail_id( $post );
-									if ( $thumb_id ) {
-										echo wp_get_attachment_image( $thumb_id, 'thumbnail', false, array( 'class' => 'editorial-list-item__img' ) );
-									} else {
-										zhiraf_ufa_img( 'article-fallback.jpg', get_the_title( $post ), 'editorial-list-item__img', true );
-									}
-								}
-								?>
-							</div>
-							<div class="editorial-list-item__content">
-								<?php 
-								$cat_name = is_array($post) ? $post['category'] : zhiraf_ufa_story_category_label( $post->ID );
-								if ( $cat_name && $cat_name !== 'Uncategorized' && $cat_name !== 'Без рубрики' ) :
-								?>
-								<span class="editorial-cat">
-									<?php echo esc_html( $cat_name ); ?>
-								</span>
-								<?php endif; ?>
-								<h4 class="editorial-list-item__title">
-									<?php echo is_array($post) ? esc_html($post['title']) : esc_html( get_the_title( $post ) ); ?>
-								</h4>
-								<time class="editorial-date">
-									<?php echo is_array($post) ? (10+$i).' октября 2026' : wp_date( 'j F Y', get_post_timestamp( $post ) ); ?> · 5 мин чтения
-								</time>
-							</div>
-						</a>
-					<?php endforeach; ?>
-				</div>
+			<div class="faq-home__list">
+				<?php foreach ( $faq_items as $faq ) : ?>
+					<details class="faq-home__item reveal">
+						<summary class="faq-home__question"><?php echo esc_html( $faq['q'] ); ?></summary>
+						<div class="faq-home__answer">
+							<p><?php echo esc_html( $faq['a'] ); ?></p>
+							<?php if ( ! empty( $faq['link'] ) ) : ?>
+								<p><a href="<?php echo esc_url( $faq['link'] ); ?>"><?php esc_html_e( 'Читать в блоге', 'zhiraf-ufa' ); ?></a></p>
+							<?php endif; ?>
+						</div>
+					</details>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
 
-	<!-- Request Form (Заявка) -->
-	<section class="section section--form">
+	<section class="section section--form lead-action" id="lead-action">
 		<div class="container reveal">
 			<div class="form-premium">
 				<div class="form-premium__text">
-					<h2 class="section-title">Оставьте заявку на подбор</h2>
-					<p>Наши эксперты свяжутся с вами в течение 15 минут.</p>
+					<h2 class="section-title"><?php esc_html_e( 'Оставьте заявку на подбор', 'zhiraf-ufa' ); ?></h2>
+					<p><?php esc_html_e( 'Перезвоним в рабочее время и уточним детали поездки.', 'zhiraf-ufa' ); ?></p>
 				</div>
-				<form class="form-premium__fields" action="#" method="POST">
-					<input type="text" placeholder="Ваше имя" required class="form-input" />
-					<input type="tel" placeholder="Телефон" required class="form-input" />
-					<button type="submit" class="btn btn--primary">Отправить</button>
+				<form class="zhiraf-form" data-action="zhiraf_lead">
+					<div class="form-premium__fields">
+						<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" />
+						<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" />
+						<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Отправить', 'zhiraf-ufa' ); ?></button>
+					</div>
+					<?php zhiraf_ufa_consent_fields( 'home-lead' ); ?>
 				</form>
-				<p class="form-premium__note text-center">
-					<label class="subscribe-agree">
-						<input type="checkbox" required checked>
-						Согласен с <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'politika-konfidenczialnosti' ) ) ); ?>">политикой конфиденциальности</a> (ФЗ-152)
-					</label>
+				<p class="form-status" role="status"></p>
+				<p class="form-premium__alt">
+					<button type="button" class="btn btn--outline btn--sm" data-quiz-open><?php esc_html_e( 'Или пройти квиз', 'zhiraf-ufa' ); ?></button>
 				</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Subscribe section on Photo -->
-	<section class="section section--subscribe">
+	<section class="section section--editorial editorial-blog-teaser bg-milky">
+		<div class="container">
+			<div class="section-head reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Полезные статьи', 'zhiraf-ufa' ); ?></h2>
+				<a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="btn btn--outline btn--sm" data-track="blog_teaser"><?php esc_html_e( 'Все статьи', 'zhiraf-ufa' ); ?></a>
+			</div>
+			<article class="editorial-teaser reveal">
+				<a href="<?php echo esc_url( $teaser['url'] ); ?>" class="editorial-main__link">
+					<div class="editorial-main__img-wrap">
+						<?php
+						if ( ! empty( $teaser['post_id'] ) ) {
+							$thumb_id = get_post_thumbnail_id( $teaser['post_id'] );
+							if ( $thumb_id ) {
+								echo wp_get_attachment_image( $thumb_id, 'large', false, array( 'class' => 'editorial-main__img' ) );
+							} else {
+								zhiraf_ufa_img( 'blog-cover-01.jpg', $teaser['title'], 'editorial-main__img', true );
+							}
+						} else {
+							zhiraf_ufa_img( $teaser['image'], $teaser['title'], 'editorial-main__img', true );
+						}
+						?>
+					</div>
+					<div class="editorial-main__content">
+						<span class="editorial-cat"><?php echo esc_html( $teaser['category'] ); ?></span>
+						<h3 class="editorial-main__title"><?php echo esc_html( $teaser['title'] ); ?></h3>
+						<p class="editorial-main__excerpt"><?php echo esc_html( $teaser['excerpt'] ); ?></p>
+					</div>
+				</a>
+			</article>
+		</div>
+	</section>
+
+	<section class="section section--subscribe section--subscribe-hold" aria-label="<?php esc_attr_e( 'Подписка на рассылку', 'zhiraf-ufa' ); ?>">
 		<div class="subscribe-premium__bg">
-			<?php zhiraf_ufa_img( 'subscribe-bg.jpg', 'Подписка', 'subscribe-premium__img', false, true ); ?>
+			<?php zhiraf_ufa_img( 'subscribe-bg.jpg', __( 'Подписка на подборки туров', 'zhiraf-ufa' ), 'subscribe-premium__img', false, true ); ?>
 			<div class="subscribe-premium__overlay"></div>
 		</div>
 		<div class="container reveal">
 			<div class="subscribe-premium__content">
-				<h2>Подборки туров и советы — на почту</h2>
-				<p>Подпишитесь на нашу рассылку, чтобы первыми узнавать о лучших предложениях.</p>
-				<form class="subscribe-premium__form">
-					<input type="email" placeholder="Ваш email" required class="subscribe-input" />
-					<button type="submit" class="btn btn--primary">Подписаться</button>
-				</form>
-				<p class="subscribe-premium__note">
-					<label class="subscribe-agree">
-						<input type="checkbox" required checked>
-						Согласен с <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'politika-konfidenczialnosti' ) ) ); ?>">политикой конфиденциальности</a> (ФЗ-152)
-					</label>
-				</p>
+				<h2><?php esc_html_e( 'Подборки туров и советы — на почту', 'zhiraf-ufa' ); ?></h2>
+				<p class="subscribe-premium__hold"><?php esc_html_e( 'Рассылка готовится — оставьте заявку через квиз или позвоните, пока подключаем email-канал.', 'zhiraf-ufa' ); ?></p>
+				<p><button type="button" class="btn btn--primary" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button></p>
 			</div>
 		</div>
 	</section>
 
 </main>
+
+<div class="sticky-mobile-cta" id="sticky-mobile-cta" hidden>
+	<a href="tel:+79018105018" class="btn btn--outline btn--sm" data-track="phone"><?php esc_html_e( 'Позвонить', 'zhiraf-ufa' ); ?></a>
+	<button type="button" class="btn btn--primary btn--sm" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+</div>
 <?php
 get_footer();

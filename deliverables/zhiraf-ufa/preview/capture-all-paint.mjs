@@ -1,26 +1,36 @@
 import { chromium } from 'playwright';
 import { copyFileSync, mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { routeMap } from './wordstat-routes.mjs';
 
-const baseUrl = 'http://127.0.0.1:8765/preview/';
+const baseHost = 'http://127.0.0.1:8765';
 const artifactsDir = '/opt/cursor/artifacts';
 const paintDir = '/workspace/teya-memory/wp/paint-qa';
 mkdirSync(artifactsDir, { recursive: true });
 mkdirSync(paintDir, { recursive: true });
 
+/** @type {{ slug: string, path: string }[]} */
 const pages = [
-  { slug: 'home', file: 'home.html' },
-  { slug: 'tour', file: 'tour.html' },
-  { slug: 'o-nas', file: 'o-nas.html' },
-  { slug: 'kontakty', file: 'kontakty.html' },
-  { slug: 'blog', file: 'blog.html' },
-  { slug: 'tour-turciya', file: 'tour-turciya.html' },
-  { slug: 'tour-oae', file: 'tour-oae.html' },
-  { slug: 'tour-egipet', file: 'tour-egipet.html' },
-  { slug: 'tour-tailand', file: 'tour-tailand.html' },
-  { slug: 'tour-vietnam', file: 'tour-vietnam.html' },
-  { slug: 'politika-konfidenczialnosti', file: 'politika-konfidenczialnosti.html' },
-  { slug: 'politika-cookies', file: 'politika-cookies.html' },
+  { slug: 'home', path: '/' },
+  { slug: 'tour', path: '/tour/' },
+  { slug: 'goryashchie-tury', path: '/goryashchie-tury/' },
+  { slug: 'vse-vklyucheno', path: '/vse-vklyucheno/' },
+  { slug: 'tour-turciya', path: '/tour/turciya/' },
+  { slug: 'tour-oae', path: '/tour/oae/' },
+  { slug: 'tour-egipet', path: '/tour/egipet/' },
+  { slug: 'tour-tailand', path: '/tour/tailand/' },
+  { slug: 'tour-vietnam', path: '/tour/vietnam/' },
+  { slug: 'tour-turciya-antalya', path: '/tour/turciya/antalya/' },
+  { slug: 'tour-egipet-hurgada', path: '/tour/egipet/hurgada/' },
+  { slug: 'tour-egipet-sharm-el-sheyh', path: '/tour/egipet/sharm-el-sheyh/' },
+  { slug: 'tour-tailand-phuket', path: '/tour/tailand/phuket/' },
+  { slug: 'tour-vietnam-nyachang', path: '/tour/vietnam/nyachang/' },
+  { slug: 'tour-vietnam-fukuok', path: '/tour/vietnam/fukuok/' },
+  { slug: 'o-nas', path: '/o-nas/' },
+  { slug: 'kontakty', path: '/kontakty/' },
+  { slug: 'blog', path: '/blog/' },
+  { slug: 'politika-konfidenczialnosti', path: '/politika-konfidenczialnosti/' },
+  { slug: 'politika-cookies', path: '/politika-cookies/' },
 ];
 
 const viewports = [
@@ -41,33 +51,51 @@ async function scrollPage(page) {
   await page.waitForTimeout(150);
 }
 
+function paintFilename(slug, suffix) {
+  if (slug === 'home') {
+    return suffix === '1440' ? 'home-1440-fullpage.png' : 'home-375-fullpage.png';
+  }
+  return `page-${slug}-${suffix}-fullpage.png`;
+}
+
 const browser = await chromium.launch();
 const screenshotRecords = [];
+const failed = [];
 
 for (const p of pages) {
+  if (!routeMap[p.path]) {
+    failed.push({ slug: p.slug, path: p.path, reason: 'missing routeMap entry' });
+    continue;
+  }
   for (const vp of viewports) {
     const page = await browser.newPage({ viewport: { width: vp.w, height: vp.h } });
-    const url = baseUrl + p.file;
-    const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 90000 });
-    const status = res ? res.status() : 0;
-    await page.waitForTimeout(300);
-    await scrollPage(page);
-    const artifact = join(artifactsDir, `zhiraf-${p.slug}-${vp.suffix}.png`);
-    const paintName =
-      p.slug === 'home'
-        ? `home-${vp.suffix === '1440' ? '1440' : '375'}-fullpage.png`
-        : `page-${p.slug}-${vp.suffix}-fullpage.png`;
-    const paintPath = join(paintDir, paintName);
-    await page.screenshot({ path: artifact, fullPage: true });
-    copyFileSync(artifact, paintPath);
-    screenshotRecords.push({
-      slug: p.slug,
-      file: p.file,
-      viewport: vp.suffix,
-      http_status: status,
-      artifact,
-      paint: `teya-memory/wp/paint-qa/${paintName}`,
-    });
+    const url = baseHost + p.path;
+    let status = 0;
+    try {
+      const res = await page.goto(url, { waitUntil: 'networkidle', timeout: 90000 });
+      status = res ? res.status() : 0;
+      await page.waitForTimeout(300);
+      await scrollPage(page);
+      const artifact = join(artifactsDir, `zhiraf-${p.slug}-${vp.suffix}.png`);
+      const paintName = paintFilename(p.slug, vp.suffix);
+      const paintPath = join(paintDir, paintName);
+      await page.screenshot({ path: artifact, fullPage: true });
+      copyFileSync(artifact, paintPath);
+      screenshotRecords.push({
+        slug: p.slug,
+        path: p.path,
+        file: routeMap[p.path],
+        viewport: vp.suffix,
+        http_status: status,
+        artifact,
+        paint: `teya-memory/wp/paint-qa/${paintName}`,
+      });
+      if (status !== 200) {
+        failed.push({ slug: p.slug, path: p.path, viewport: vp.suffix, http_status: status });
+      }
+    } catch (e) {
+      failed.push({ slug: p.slug, path: p.path, viewport: vp.suffix, error: String(e) });
+    }
     await page.close();
   }
 }
@@ -75,17 +103,26 @@ await browser.close();
 
 const evidence = {
   public_site_url: null,
-  preview_base: baseUrl,
+  preview_base: baseHost + '/',
   theme_slug: 'zhiraf-ufa',
   mode: 'local-only',
   checked_at: new Date().toISOString(),
-  agent_bc_id: 'bc-646a0fe3-3bb0-5e28-bdf3-d4cafb2cc25e',
+  agent_bc_id: 'bc-91bdee58-5338-5e99-96bc-c55e5d7d1505',
   page_build_ref: 'teya-memory/wp/page-build-report.md',
+  wordstat_routes: pages.map((p) => p.path),
   screenshots: screenshotRecords,
-  pages_captured: pages.map((p) => p.slug),
+  pages_captured: [...new Set(screenshotRecords.map((r) => r.slug))],
   viewports: ['1440', '390'],
-  verdict: screenshotRecords.length === pages.length * 2 ? 'pass' : 'fail',
+  failed_routes: failed,
+  verdict:
+    failed.length === 0 && screenshotRecords.length === pages.length * 2 ? 'pass' : 'fail',
 };
 
 writeFileSync(join(paintDir, 'paint-evidence.json'), JSON.stringify(evidence, null, 2));
-console.log('captured', screenshotRecords.length, 'screenshots, verdict', evidence.verdict);
+console.log(
+  JSON.stringify({
+    captured: screenshotRecords.length,
+    verdict: evidence.verdict,
+    failed: failed.length,
+  })
+);

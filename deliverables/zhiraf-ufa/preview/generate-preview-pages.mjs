@@ -89,17 +89,65 @@ const pages = {
   ),
 };
 
-for (const [slug, data] of Object.entries(landings)) {
-  pages[`tour-${slug}.html`] = wrap(
-    `${data.h1} — preview`,
-    `<main id="primary" class="site-main site-main--destination">
+function destinationMain(data) {
+  return `<main id="primary" class="site-main site-main--destination">
 <section class="dest-landing-hero"><div class="container dest-landing-hero__grid">
-<div class="dest-landing-hero__copy"><h1>${data.h1}</h1><p class="lead">Вылет из Уфы — подбор без давления.</p><button type="button" class="btn btn--primary btn--lg">Подобрать тур</button></div>
+<div class="dest-landing-hero__copy"><h1>${data.h1}</h1><p class="lead">${data.lead || 'Вылет из Уфы — подбор без давления.'}</p><button type="button" class="btn btn--primary btn--lg">Подобрать тур</button></div>
 <div class="dest-landing-hero__visual">${img(data.img, data.alt, 'class="dest-landing-hero__img"')}</div>
 </div></section>
-<section class="section dest-landing-prose bg-milky"><div class="container container--narrow"><h2>Для кого</h2><p>Семьи и пары из Уфы.</p></div></section>
-<section class="section dest-landing-faq"><div class="container container--narrow"><details class="faq-home__item" open><summary>Вопрос</summary><p>Ответ менеджера.</p></details></div></section></main>`
-  );
+<section class="section dest-landing-prose bg-milky"><div class="container container--narrow"><h2>Для кого</h2><p>${data.geo || 'Семьи и пары из Уфы.'}</p></div></section>
+<section class="section dest-landing-faq"><div class="container container--narrow"><details class="faq-home__item" open><summary>Частый вопрос</summary><p>Ответ менеджера «Жираф».</p></details></div></section></main>`;
+}
+
+function offerMain(data) {
+  return `<main id="primary" class="site-main site-main--offer">
+<section class="page-hero page-hero--offer"><div class="container page-hero__grid">
+<div><p class="eyebrow">${data.eyebrow}</p><h1>${data.h1}</h1><p class="lead">${data.lead}</p><button type="button" class="btn btn--primary btn--lg">${data.cta}</button></div>
+${img(data.img, data.alt, 'class="page-hero__img"')}
+</div></section>
+<section class="section bg-milky"><div class="container container--narrow prose"><h2>Коротко</h2><p>${data.geo}</p></div></section></main>`;
+}
+
+for (const [slug, data] of Object.entries(landings)) {
+  pages[`tour-${slug}.html`] = wrap(`${data.h1} — preview`, destinationMain(data));
+}
+
+const offers = {
+  'goryashchie-tury': {
+    h1: 'Горящие туры из Уфы',
+    eyebrow: 'Вылет из Уфы · без прайс-борда',
+    lead: 'По данным поиска в Уфе тысячи раз в месяц ищут горящие туры из Уфы (3024 показа/мес.) — понимаем, что важны даты и скорость ответа.',
+    geo: 'Горящий тур из Уфы — пакет с близкими датами вылета, когда у оператора остаются места. Состав услуг фиксируем в договоре.',
+    img: 'hero-turkey.jpg',
+    alt: 'Пляжный отдых, вылет из Уфы',
+    cta: 'Подобрать горящий тур',
+  },
+  'vse-vklyucheno': {
+    h1: 'Туры «всё включено» из Уфы',
+    eyebrow: 'AI / UAI · пакет из Уфы',
+    lead: 'Запрос «всё включено из Уфы» — 735 показов в месяц по Wordstat.',
+    geo: 'В пакет обычно входят перелёт из Уфы, проживание, трансфер и питание по коду оператора (AI/UAI).',
+    img: 'dest-turkey.jpg',
+    alt: 'Турция, отель с питанием всё включено',
+    cta: 'Подобрать тур «всё включено»',
+  },
+};
+
+for (const [slug, data] of Object.entries(offers)) {
+  pages[`${slug}.html`] = wrap(`${data.h1} — preview`, offerMain(data));
+}
+
+const resorts = [
+  { file: 'tour-turciya-antalya', h1: 'Туры в Анталью из Уфы', img: 'dest-turkey.jpg', alt: 'Анталья', lead: 'Анталья из Уфы — 122 показа в месяц по Wordstat.', geo: 'Курорт на Средиземном море; пакет из Уфы — перелёт и отель по условиям оператора.' },
+  { file: 'tour-egipet-hurgada', h1: 'Туры в Хургаду из Уфы', img: 'dest-egypt.jpg', alt: 'Хургада', lead: 'Хургада из Уфы — 327 показов/мес.', geo: 'Курорт на Красном море с линейкой отелей «всё включено».' },
+  { file: 'tour-egipet-sharm-el-sheyh', h1: 'Туры в Шарм-эль-Шейх из Уфы', img: 'dest-egypt.jpg', alt: 'Шарм-эль-Шейх', lead: 'Шарм-эль-Шейх из Уфы — 242 показа/мес.', geo: 'Курорт на Синае; перелёт и отель — в пакете оператора из Уфы.' },
+  { file: 'tour-tailand-phuket', h1: 'Туры на Пхукет из Уфы', img: 'dest-thailand.jpg', alt: 'Пхукет', lead: 'Пхукет из Уфы — 125 показов.', geo: 'Перелёт до Таиланда, проживание на острове, трансфер и питание по коду оператора.' },
+  { file: 'tour-vietnam-nyachang', h1: 'Туры в Нячанг из Уфы', img: 'dest-vietnam.jpg', alt: 'Нячанг', lead: 'Нячанг из Уфы — 193 показа/мес.', geo: 'Курорт на побережье Южного Вьетнама; пакет из Уфы — перелёт, отель, часто AI.' },
+  { file: 'tour-vietnam-fukuok', h1: 'Туры на Фукуок из Уфы', img: 'dest-vietnam.jpg', alt: 'Фукуок', lead: 'Фукуок из Уфы — 183 показа/мес.', geo: 'Островной отдых; пакет включает перелёт и проживание по условиям оператора.' },
+];
+
+for (const r of resorts) {
+  pages[`${r.file}.html`] = wrap(`${r.h1} — preview`, destinationMain(r));
 }
 
 for (const [file, html] of Object.entries(pages)) {

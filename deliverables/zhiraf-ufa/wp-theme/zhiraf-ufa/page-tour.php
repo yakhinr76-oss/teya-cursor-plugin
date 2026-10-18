@@ -67,6 +67,23 @@ get_header();
 			<p><?php esc_html_e( 'Мы сравниваем предложения всех ведущих туроператоров, проверяем реальную доступность авиабилетов из Уфы и формируем персональную подборку из 2–4 оптимальных вариантов с фиксированной стоимостью и официальным договором.', 'zhiraf-ufa' ); ?></p>
 		</div>
 	</section>
+	<section class="section bg-milky" id="faq-catalog">
+		<div class="container container--narrow">
+			<div class="section-head reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Частые вопросы о направлениях и турах', 'zhiraf-ufa' ); ?></h2>
+			</div>
+			<div class="faq-home__list">
+				<?php foreach ( zhiraf_ufa_catalog_faq_items() as $item ) : ?>
+					<details class="faq-home__item">
+						<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
+						<div class="faq-home__answer">
+							<p><?php echo esc_html( $item['a'] ); ?></p>
+						</div>
+					</details>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
 	<section class="section">
 		<div class="container narrow">
 			<h2><?php esc_html_e( 'Не нашли нужное направление?', 'zhiraf-ufa' ); ?></h2>

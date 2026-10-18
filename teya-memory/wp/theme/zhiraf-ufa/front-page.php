@@ -118,14 +118,13 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 	<section class="section section--offers-wordstat bg-milky">
 		<div class="container">
 			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Популярные форматы поиска из Уфы', 'zhiraf-ufa' ); ?></h2>
-				<p class="lead"><?php esc_html_e( 'По Wordstat в регионе Уфа тысячи запросов в месяц — мы закрываем интент подбором, без фейкового прайса.', 'zhiraf-ufa' ); ?></p>
+				<h2 class="section-title"><?php esc_html_e( 'Популярные форматы отдыха из Уфы', 'zhiraf-ufa' ); ?></h2>
+				<p class="lead"><?php esc_html_e( 'Подбираем проверенные туры под ваш формат поездки: от срочных горящих предложений до спокойного семейного отдыха «всё включено».', 'zhiraf-ufa' ); ?></p>
 			</div>
 			<div class="chip-filter chip-filter--offers">
 				<?php foreach ( zhiraf_ufa_offer_hub_links() as $offer ) : ?>
 					<a class="chip chip--link" href="<?php echo esc_url( $offer['url'] ); ?>">
 						<?php echo esc_html( $offer['label'] ); ?>
-						<span class="chip__stat"><?php echo esc_html( (string) $offer['wordstat'] ); ?></span>
 					</a>
 				<?php endforeach; ?>
 				<a class="chip chip--link" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>

@@ -445,3 +445,70 @@ function zhiraf_ufa_breadcrumb_json_ld() {
 	echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 }
 add_action( 'wp_head', 'zhiraf_ufa_breadcrumb_json_ld', 6 );
+
+/**
+ * FAQPage JSON-LD schema for pages with FAQ.
+ */
+function zhiraf_ufa_faq_json_ld() {
+	$faq_items = array();
+
+	if ( is_front_page() ) {
+		$faq_items = zhiraf_ufa_home_faq_items();
+	} elseif ( zhiraf_ufa_current_resort_context() ) {
+		$resort_ctx  = zhiraf_ufa_current_resort_context();
+		$resort_data = zhiraf_ufa_get_resort_landing( $resort_ctx['country'], $resort_ctx['resort'] );
+		if ( $resort_data && ! empty( $resort_data['faq'] ) ) {
+			$faq_items = $resort_data['faq'];
+		}
+	} elseif ( is_page() ) {
+		$slug = get_post_field( 'post_name', get_queried_object_id() );
+		if ( 'o-nas' === $slug ) {
+			$faq_items = zhiraf_ufa_about_faq_items();
+		} elseif ( 'tour' === $slug ) {
+			$faq_items = zhiraf_ufa_catalog_faq_items();
+		} else {
+			$dest = zhiraf_ufa_get_destination_landing( $slug );
+			if ( $dest && ! empty( $dest['faq'] ) ) {
+				$faq_items = $dest['faq'];
+			} else {
+				$offer = zhiraf_ufa_get_offer_landing( $slug );
+				if ( $offer && ! empty( $offer['faq'] ) ) {
+					$faq_items = $offer['faq'];
+				}
+			}
+		}
+	}
+
+	if ( empty( $faq_items ) || ! is_array( $faq_items ) ) {
+		return;
+	}
+
+	$main_entities = array();
+	foreach ( $faq_items as $item ) {
+		if ( empty( $item['q'] ) || empty( $item['a'] ) ) {
+			continue;
+		}
+		$main_entities[] = array(
+			'@type'          => 'Question',
+			'name'           => wp_strip_all_tags( $item['q'] ),
+			'acceptedAnswer' => array(
+				'@type' => 'Answer',
+				'text'  => wp_strip_all_tags( $item['a'] ),
+			),
+		);
+	}
+
+	if ( empty( $main_entities ) ) {
+		return;
+	}
+
+	$schema = array(
+		'@context'   => 'https://schema.org',
+		'@type'      => 'FAQPage',
+		'mainEntity' => $main_entities,
+	);
+
+	echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
+}
+add_action( 'wp_head', 'zhiraf_ufa_faq_json_ld', 7 );
+

@@ -84,42 +84,14 @@ get_header();
 				<h2 class="section-title"><?php esc_html_e( 'Частые вопросы о работе агентства', 'zhiraf-ufa' ); ?></h2>
 			</div>
 			<div class="faq-home__list">
-				<details class="faq-home__item">
-					<summary class="faq-home__question"><?php esc_html_e( 'Как давно работает турагентство «Жираф» в Уфе?', 'zhiraf-ufa' ); ?></summary>
-					<div class="faq-home__answer">
-						<p><?php esc_html_e( 'ООО «Жираф» непрерывно работает на туристическом рынке Уфы с апреля 2011 года. Наше агентство внесено в Единый федеральный реестр турагентств под номером РТА 0012822.', 'zhiraf-ufa' ); ?></p>
-					</div>
-				</details>
-				<details class="faq-home__item">
-					<summary class="faq-home__question"><?php esc_html_e( 'Чем покупка в «Жираф» отличается от самостоятельного поиска на агрегаторах?', 'zhiraf-ufa' ); ?></summary>
-					<div class="faq-home__answer">
-						<p><?php esc_html_e( 'На онлайн-агрегаторах предварительные цены нередко меняются при переходе к оплате из-за скрытых доплат за багаж или топливных сборов. Мы проводим ручную верификацию каждого тура, проверяем реальный статус рейсов из Уфы, предупреждаем о нюансах отеля и оформляем официальный договор с защитой прав туриста.', 'zhiraf-ufa' ); ?></p>
-					</div>
-				</details>
-				<details class="faq-home__item">
-					<summary class="faq-home__question"><?php esc_html_e( 'Берёте ли вы комиссию за подбор тура?', 'zhiraf-ufa' ); ?></summary>
-					<div class="faq-home__answer">
-						<p><?php esc_html_e( 'Консультация и подбор тура в нашем агентстве бесплатны. Стоимость пакетного тура для туриста строго соответствует официальным тарифам туроператоров без скрытых наценок.', 'zhiraf-ufa' ); ?></p>
-					</div>
-				</details>
-				<details class="faq-home__item">
-					<summary class="faq-home__question"><?php esc_html_e( 'Можно ли оформить тур дистанционно без визита в офис?', 'zhiraf-ufa' ); ?></summary>
-					<div class="faq-home__answer">
-						<p><?php esc_html_e( 'Да, мы работаем как в уютном офисе на ул. Гагарина, 74/1, так и полностью дистанционно. Договор заключается в электронном виде, оплата производится по защищённой банковской ссылке, а билеты, ваучеры и страховки отправляются в мессенджер и на email.', 'zhiraf-ufa' ); ?></p>
-					</div>
-				</details>
-				<details class="faq-home__item">
-					<summary class="faq-home__question"><?php esc_html_e( 'С какими туроператорами сотрудничает ООО «Жираф»?', 'zhiraf-ufa' ); ?></summary>
-					<div class="faq-home__answer">
-						<p><?php esc_html_e( 'Мы сотрудничаем только с надёжными туроператорами, включёнными в Единый федеральный реестр туроператоров РФ и имеющими подтверждённое финансовое обеспечение и фонды персональной ответственности в ассоциации «Турпомощь».', 'zhiraf-ufa' ); ?></p>
-					</div>
-				</details>
-				<details class="faq-home__item">
-					<summary class="faq-home__question"><?php esc_html_e( 'Что делать, если во время отдыха возникли непредвиденные вопросы?', 'zhiraf-ufa' ); ?></summary>
-					<div class="faq-home__answer">
-						<p><?php esc_html_e( 'Ваш персональный менеджер остаётся на связи на протяжении всего путешествия. Мы помогаем решать вопросы с отельным гидом, трансфером, страховой компанией и авиаперевозчиком.', 'zhiraf-ufa' ); ?></p>
-					</div>
-				</details>
+				<?php foreach ( zhiraf_ufa_about_faq_items() as $item ) : ?>
+					<details class="faq-home__item">
+						<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
+						<div class="faq-home__answer">
+							<p><?php echo esc_html( $item['a'] ); ?></p>
+						</div>
+					</details>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>

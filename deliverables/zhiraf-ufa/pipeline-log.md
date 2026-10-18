@@ -123,8 +123,8 @@
 
 - **Команда:** `pip install Pillow` → `python3 scripts/teya_release_gate.py --project-root /workspace`
 - **gate script:** SHA256 `50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d` — **match 07628b4** (файл не правился)
-- **packager:** `5287fb4` — полная тема в `teya-memory/wp/theme/zhiraf-ufa/`, distinct dest bytes
-- **exit_code:** **0** — **PASS**
+- **packager:** `5287fb4`+ (fixes after `fa6987f`) — полная тема в `teya-memory/wp/theme/zhiraf-ufa/`, distinct dest bytes
+- **exit_code:** **0** — **PASS** (re-run подтверждён на HEAD `1b65ab6`)
 - **Отчёт:** `teya-memory/wp/release-gate-report.md`
 - **Deploy:** нет
 

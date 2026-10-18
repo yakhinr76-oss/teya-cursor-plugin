@@ -1,0 +1,37 @@
+{
+  "container_content_max": "1240px",
+  "container_padding_inline": "20px",
+  "header_height": "80px",
+  "header_behavior": "sticky + backdrop blur",
+  "hero_grid": "1fr 1fr desktop; stack mobile content first",
+  "hero_collage_positions": {
+    "tile_1": {
+      "w": 240,
+      "h": 320,
+      "top": 0,
+      "left": 0,
+      "z": 2
+    },
+    "tile_2": {
+      "w": 200,
+      "h": 260,
+      "top": 200,
+      "left": 200,
+      "z": 3
+    },
+    "tile_3": {
+      "w": 220,
+      "h": 280,
+      "top": 40,
+      "right": 0,
+      "z": 1
+    }
+  },
+  "dest_row": "5 columns desktop → 2 tablet → horizontal scroll or 1 col mobile",
+  "editorial_grid": "1.5fr 1fr → stack on mobile",
+  "z_index_rules": [
+    "collage photos below flight SVG",
+    "dest caption above gradient scrim"
+  ],
+  "logo_watermark": "FORBIDDEN on all pages and slides"
+}

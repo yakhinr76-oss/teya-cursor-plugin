@@ -1,0 +1,42 @@
+{
+  "topics": [
+    {
+      "slug": "kak-kupit-tur-v-ufe",
+      "topic_archetype": "how_to",
+      "topic_scene_descriptor": "Уфимский офисный стол с блокнотом, ручкой и паспортом, мягкий дневной свет из окна",
+      "cover_alt_text": "Как купить тур в Уфе — рабочее место менеджера с документами"
+    },
+    {
+      "slug": "chto-vhodit-v-tur-vse-vklyucheno",
+      "topic_archetype": "comparison",
+      "topic_scene_descriptor": "Курортный стол с коктейлем и тарелкой у моря, тёплый закатный свет",
+      "cover_alt_text": "Что входит в тур «всё включено» — отдых у моря"
+    },
+    {
+      "slug": "dokumenty-dlya-zagranicy-iz-ufy",
+      "topic_archetype": "legal_docs",
+      "topic_scene_descriptor": "Паспорт, загранпаспорт и авиабилет на текстурированном фоне, аккуратная flat lay",
+      "cover_alt_text": "Документы для заграницы из Уфы"
+    },
+    {
+      "slug": "tury-s-detmi-iz-ufy",
+      "topic_archetype": "family",
+      "topic_scene_descriptor": "Семья с чемоданом в аэропорту, силуэты, тёплый свет, без читаемых лиц",
+      "cover_alt_text": "Туры с детьми из Уфы"
+    },
+    {
+      "slug": "strahovka-i-rassrochka-na-tur",
+      "topic_archetype": "insurance",
+      "topic_scene_descriptor": "Страховой полис рядом с солнцезащитными очками на песке, макро деталь",
+      "cover_alt_text": "Страховка и рассрочка на тур"
+    },
+    {
+      "slug": "turciya-ili-egipet-iz-ufy",
+      "topic_archetype": "seasonal",
+      "topic_scene_descriptor": "Два мини-пейзажа в одном кадре: средиземноморская бухта и египетские пальмы, мягкий split",
+      "cover_alt_text": "Турция или Египет из Уфы — сравнение направлений"
+    }
+  ],
+  "status": "prompts_ready_mcp_blocked",
+  "use_concept_assembly": true
+}

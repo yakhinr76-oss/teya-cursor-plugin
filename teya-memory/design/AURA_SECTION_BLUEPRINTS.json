@@ -1,0 +1,154 @@
+{
+  "sections": [
+    {
+      "id": "global:header",
+      "page": "*",
+      "required_background": "#FAF8F5 90% + blur",
+      "required_visuals": [
+        "logo-zhiraf-client.png header only — not watermark"
+      ],
+      "required_cards": 0,
+      "required_motion": "sticky",
+      "transition_in": null,
+      "transition_out": "hero",
+      "blockers": []
+    },
+    {
+      "id": "front-page:hero-premium",
+      "page": "/",
+      "required_background": "milky #FAF8F5",
+      "required_visuals": [
+        "hero-uae.jpg",
+        "hero-turkey.jpg",
+        "hero-egypt.jpg",
+        "SVG flight path"
+      ],
+      "required_cards": 0,
+      "required_cta": [
+        "single btn--primary pill Подобрать тур"
+      ],
+      "required_motion": "reveal on scroll optional",
+      "transition_in": "from header",
+      "transition_out": "destinations milky",
+      "responsive": {
+        "375": "collage height 360px; H1 2.25rem"
+      },
+      "blockers": []
+    },
+    {
+      "id": "front-page:destinations",
+      "page": "/",
+      "required_background": "bg-milky",
+      "required_visuals": [
+        "5x dest-*-new.jpg vertical"
+      ],
+      "required_cards": 5,
+      "required_motion": "tab filter JS",
+      "transition_in": "flat",
+      "transition_out": "white steps",
+      "blockers": []
+    },
+    {
+      "id": "front-page:steps",
+      "page": "/",
+      "required_background": "#ffffff",
+      "required_visuals": [],
+      "required_cards": 4,
+      "required_motion": "stagger reveal-delay",
+      "blockers": []
+    },
+    {
+      "id": "front-page:editorial",
+      "page": "/",
+      "required_background": "bg-milky",
+      "required_visuals": [
+        "featured 16:9",
+        "3 thumbs"
+      ],
+      "required_cards": 4,
+      "blockers": [
+        "editorial thumbs may need per-post thumbs"
+      ]
+    },
+    {
+      "id": "front-page:trust-social",
+      "page": "/",
+      "required_background": "#F5F2ED surface or white",
+      "required_visuals": [
+        "office-ufa.jpg OR team-travel.jpg"
+      ],
+      "required_cards": 3,
+      "required_cta": [
+        "VK vk.com/zhiraf_ufa",
+        "tel +79018105018",
+        "kontakty"
+      ],
+      "copy_rules": [
+        "no fake quotes",
+        "no star ratings"
+      ],
+      "blockers": [
+        "section not in front-page.php — Aurora implementation required"
+      ]
+    },
+    {
+      "id": "front-page:form-premium",
+      "page": "/",
+      "required_background": "white",
+      "required_visuals": [],
+      "required_cards": 1,
+      "blockers": []
+    },
+    {
+      "id": "front-page:subscribe",
+      "page": "/",
+      "required_background": "subscribe-bg.jpg full bleed",
+      "required_visuals": [
+        "subscribe-bg.jpg"
+      ],
+      "required_cards": 0,
+      "blockers": []
+    },
+    {
+      "id": "page-tour:hero",
+      "page": "/tour/",
+      "required_background": "catalog hero",
+      "required_visuals": [
+        "catalog-hub.jpg"
+      ],
+      "required_cards": 0,
+      "blockers": []
+    },
+    {
+      "id": "page-tour:grid",
+      "page": "/tour/",
+      "required_background": "white",
+      "required_visuals": [
+        "dest images large grid"
+      ],
+      "required_cards": 5,
+      "blockers": []
+    },
+    {
+      "id": "page-about:visual",
+      "page": "/o-nas/",
+      "required_background": "white",
+      "required_visuals": [
+        "team-travel.jpg",
+        "office-ufa.jpg"
+      ],
+      "required_cards": 4,
+      "blockers": []
+    },
+    {
+      "id": "global:footer",
+      "page": "*",
+      "required_background": "white",
+      "required_visuals": [
+        "logo footer"
+      ],
+      "required_cards": 0,
+      "blockers": []
+    }
+  ]
+}

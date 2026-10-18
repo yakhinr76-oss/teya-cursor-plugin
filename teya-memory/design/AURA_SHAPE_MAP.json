@@ -1,0 +1,52 @@
+{
+  "shapes": [
+    {
+      "id": "pill-button",
+      "type": "capsule",
+      "border_radius": "9999px",
+      "stroke": "none",
+      "shadow": "none",
+      "source": "Globe Trekker CTA"
+    },
+    {
+      "id": "photo-tile-lg",
+      "type": "rounded-rect",
+      "border_radius": "24px",
+      "shadow": "0 20px 40px rgba(0,0,0,0.1)",
+      "source": "hero collage"
+    },
+    {
+      "id": "dest-card",
+      "type": "rounded-rect",
+      "border_radius": "24px",
+      "aspect": "3/4",
+      "source": "vertical dest cards"
+    },
+    {
+      "id": "flight-path",
+      "type": "dashed-curve",
+      "implementation": "inline-svg",
+      "stroke": "#E87A5D",
+      "stroke_dasharray": "6,6",
+      "source": "hero"
+    },
+    {
+      "id": "editorial-thumb",
+      "type": "rounded-rect",
+      "border_radius": "16px",
+      "aspect": "1/1",
+      "source": "blog list"
+    },
+    {
+      "id": "subscribe-input",
+      "type": "capsule",
+      "border_radius": "9999px",
+      "source": "subscribe block"
+    }
+  ],
+  "forbidden": [
+    "brutal black borders",
+    "logo watermark overlay on sections",
+    "generic blob decorations not in source"
+  ]
+}

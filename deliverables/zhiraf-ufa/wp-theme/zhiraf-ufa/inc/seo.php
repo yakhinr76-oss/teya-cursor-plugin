@@ -9,6 +9,113 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/** Canonical public host (see teya-memory/site.inv → project.public_site_url). */
+define( 'ZHIRAF_UFA_PUBLIC_SITE_URL', 'https://zhiraf-ufa.ru' );
+
+/**
+ * Whether the current request is on staging (b2b-tour.ru).
+ *
+ * @return bool
+ */
+function zhiraf_ufa_is_staging_host() {
+	$host = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( (string) $_SERVER['HTTP_HOST'] ) : '';
+	return ( '' !== $host && false !== strpos( $host, 'b2b-tour.ru' ) );
+}
+
+/**
+ * Map a staging URL to the public canonical host (path + query preserved).
+ *
+ * @param string $url Full URL.
+ * @return string
+ */
+function zhiraf_ufa_canonical_public_url( $url ) {
+	if ( ! zhiraf_ufa_is_staging_host() || ! $url ) {
+		return $url;
+	}
+	$public = trailingslashit( ZHIRAF_UFA_PUBLIC_SITE_URL );
+	$path   = wp_parse_url( $url, PHP_URL_PATH );
+	$query  = wp_parse_url( $url, PHP_URL_QUERY );
+	if ( ! is_string( $path ) ) {
+		$path = '/';
+	}
+	$out = $public . ltrim( $path, '/' );
+	if ( $query ) {
+		$out .= '?' . $query;
+	}
+	return $out;
+}
+
+/**
+ * Staging: discourage all crawlers (meta + header + robots.txt).
+ */
+function zhiraf_ufa_staging_noindex_headers() {
+	if ( ! zhiraf_ufa_is_staging_host() || headers_sent() ) {
+		return;
+	}
+	header( 'X-Robots-Tag: noindex, nofollow', true );
+}
+add_action( 'send_headers', 'zhiraf_ufa_staging_noindex_headers', 0 );
+
+/**
+ * Staging robots.txt — block entire site.
+ *
+ * @param string $output Default robots output.
+ * @param bool   $public Whether blog_public is true.
+ * @return string
+ */
+function zhiraf_ufa_robots_txt( $output, $public ) {
+	if ( zhiraf_ufa_is_staging_host() ) {
+		return "User-agent: *\nDisallow: /\n";
+	}
+
+	$lines = array(
+		'User-agent: *',
+		'Allow: /wp-content/uploads/',
+		'Allow: /wp-content/themes/zhiraf-ufa/assets/',
+		'Disallow: /wp-admin/',
+		'Allow: /wp-admin/admin-ajax.php',
+		'Disallow: /wp-json/',
+		'Disallow: /?s=',
+		'Disallow: /search/',
+		'',
+		'User-agent: Googlebot',
+		'Allow: /',
+		'',
+		'User-agent: Yandex',
+		'Allow: /',
+		'',
+		'User-agent: Bingbot',
+		'Allow: /',
+		'',
+		'User-agent: GPTBot',
+		'Allow: /',
+		'',
+		'User-agent: OAI-SearchBot',
+		'Allow: /',
+		'',
+		'User-agent: ChatGPT-User',
+		'Allow: /',
+		'',
+		'User-agent: ClaudeBot',
+		'Allow: /',
+		'',
+		'User-agent: PerplexityBot',
+		'Allow: /',
+		'',
+		'User-agent: Google-Extended',
+		'Allow: /',
+		'',
+		'User-agent: CCBot',
+		'Allow: /',
+		'',
+		'Sitemap: ' . trailingslashit( ZHIRAF_UFA_PUBLIC_SITE_URL ) . 'sitemap_index.xml',
+		'Host: zhiraf-ufa.ru',
+	);
+
+	return implode( "\n", $lines ) . "\n";
+}
+add_filter( 'robots_txt', 'zhiraf_ufa_robots_txt', 10, 2 );
+
 /**
  * Meta descriptions map.
  *
@@ -78,11 +185,13 @@ function zhiraf_ufa_head_meta() {
 	}
 
 	$canonical = is_singular() ? get_permalink() : ( is_front_page() ? home_url( '/' ) : ( is_home() ? home_url( '/blog/' ) : '' ) );
-	$host = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( (string) $_SERVER['HTTP_HOST'] ) : '';
-	$is_staging = ( false !== strpos( $host, 'b2b-tour.ru' ) );
+	$canonical = zhiraf_ufa_canonical_public_url( $canonical );
+	$is_staging = zhiraf_ufa_is_staging_host();
 
-	if ( $is_staging || is_search() || is_404() ) {
+	if ( $is_staging ) {
 		echo '<meta name="robots" content="noindex, nofollow" />' . "\n";
+	} elseif ( is_search() || is_404() ) {
+		echo '<meta name="robots" content="noindex, follow" />' . "\n";
 	} else {
 		echo '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />' . "\n";
 	}
@@ -102,7 +211,7 @@ function zhiraf_ufa_head_meta() {
 	<?php if ( $desc ) : ?>
 	<meta property="og:description" content="<?php echo esc_attr( wp_strip_all_tags( $desc ) ); ?>" />
 	<?php endif; ?>
-	<meta property="og:url" content="<?php echo esc_url( $canonical ? $canonical : home_url( '/' ) ); ?>" />
+	<meta property="og:url" content="<?php echo esc_url( $canonical ? $canonical : zhiraf_ufa_canonical_public_url( home_url( '/' ) ) ); ?>" />
 	<meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
 	<meta property="og:locale" content="ru_RU" />
 	<meta property="og:image" content="<?php echo esc_url( $og_image ); ?>" />
@@ -119,15 +228,16 @@ add_action( 'wp_head', 'zhiraf_ufa_head_meta', 1 );
  * JSON-LD Organization + WebSite.
  */
 function zhiraf_ufa_json_ld() {
+	$site_url = zhiraf_ufa_canonical_public_url( home_url( '/' ) );
 	$data = array(
 		'@context' => 'https://schema.org',
 		'@graph'   => array(
 			array(
 				'@type' => 'TravelAgency',
-				'@id'   => home_url( '/#organization' ),
+				'@id'   => trailingslashit( $site_url ) . '#organization',
 				'name'  => 'Турагентство «Жираф»',
 				'legalName' => 'ООО «Жираф»',
-				'url'   => home_url( '/' ),
+				'url'   => $site_url,
 				'email' => 'office@zhiraf-ufa.ru',
 				'telephone' => '+7-901-810-50-18',
 				'address' => array(
@@ -155,13 +265,13 @@ function zhiraf_ufa_json_ld() {
 			),
 			array(
 				'@type' => 'WebSite',
-				'@id'   => home_url( '/#website' ),
-				'url'   => home_url( '/' ),
+				'@id'   => trailingslashit( $site_url ) . '#website',
+				'url'   => $site_url,
 				'name'  => get_bloginfo( 'name' ),
-				'publisher' => array( '@id' => home_url( '/#organization' ) ),
+				'publisher' => array( '@id' => trailingslashit( $site_url ) . '#organization' ),
 				'potentialAction' => array(
 					'@type'       => 'SearchAction',
-					'target'      => home_url( '/?s={search_term_string}' ),
+					'target'      => trailingslashit( $site_url ) . '?s={search_term_string}',
 					'query-input' => 'required name=search_term_string',
 				),
 			),
@@ -174,9 +284,9 @@ function zhiraf_ufa_json_ld() {
 			'headline'         => get_the_title(),
 			'datePublished'    => get_the_date( 'c' ),
 			'dateModified'     => get_the_modified_date( 'c' ),
-			'mainEntityOfPage' => get_permalink(),
+			'mainEntityOfPage' => zhiraf_ufa_canonical_public_url( get_permalink() ),
 			'author'           => array( '@type' => 'Organization', 'name' => 'Турагентство «Жираф»' ),
-			'publisher'        => array( '@id' => home_url( '/#organization' ) ),
+			'publisher'        => array( '@id' => trailingslashit( $site_url ) . '#organization' ),
 		);
 	}
 
@@ -197,14 +307,14 @@ function zhiraf_ufa_breadcrumb_json_ld() {
 		'@type'    => 'ListItem',
 		'position' => $pos++,
 		'name'     => 'Главная',
-		'item'     => home_url( '/' ),
+		'item'     => zhiraf_ufa_canonical_public_url( home_url( '/' ) ),
 	);
 	if ( is_singular() ) {
 		$items[] = array(
 			'@type'    => 'ListItem',
 			'position' => $pos++,
 			'name'     => get_the_title(),
-			'item'     => get_permalink(),
+			'item'     => zhiraf_ufa_canonical_public_url( get_permalink() ),
 		);
 	}
 	$schema = array(

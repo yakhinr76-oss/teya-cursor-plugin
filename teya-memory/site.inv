@@ -3,6 +3,7 @@
 ```yaml
 project:
   name: "Жираф"
+  public_site_url: "https://zhiraf-ufa.ru"
   domain_target: "zhiraf-ufa.ru"
   domain_staging: "b2b-tour.ru"
   region: "Уфа"

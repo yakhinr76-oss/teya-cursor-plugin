@@ -18,7 +18,7 @@ $dest_show  = array_slice( $dest_all, 0, 4 );
 
 <main id="primary" class="site-main site-main--home">
 
-	<section class="hero-globe" aria-labelledby="hero-heading">
+	<section class="hero-globe reveal" aria-labelledby="hero-heading">
 		<div class="container hero-globe__grid">
 			<div class="hero-globe__copy">
 				<h1 id="hero-heading">

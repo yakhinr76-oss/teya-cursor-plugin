@@ -1,0 +1,52 @@
+﻿query,canonical_query,source_sources,frequency_region,frequency_value,intent_initial,intent_confidence,cluster_candidate,include_status,exclude_reason,notes
+туры из уфы,туры из уфы,туры из уфы,Уфа,not_available,commercial,0.75,CL-HOME,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+тур из уфы,тур из уфы,туры из уфы,Уфа,not_available,commercial,0.75,CL-HOME,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+путевки из уфы,путевки из уфы,туры из уфы,Уфа,not_available,commercial,0.75,CL-HOME,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+отдых из уфы,отдых из уфы,туры из уфы,Уфа,not_available,commercial,0.75,CL-HOME,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+купить тур из уфы,купить тур из уфы,туры из уфы,Уфа,not_available,commercial,0.85,CL-BUY,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры уфа все включено,туры уфа все включено,туры из уфы,Уфа,not_available,informational,0.9,CL-AI,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+горящие туры из уфы,горящие туры из уфы,туры из уфы,Уфа,not_available,commercial,0.75,CL-HOME,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туроператоры уфа туры,туроператоры уфа туры,туры из уфы,Уфа,not_available,commercial,0.7,CL-CATALOG,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+купить тур в уфе,купить тур в уфе,купить тур уфа,Уфа,not_available,commercial,0.85,CL-BUY,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+забронировать тур уфа,забронировать тур уфа,купить тур уфа,Уфа,not_available,commercial,0.85,CL-BUY,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+турагентство уфа купить тур,турагентство уфа купить тур,купить тур уфа,Уфа,not_available,commercial,0.85,CL-BUY,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+тур в офисе уфа,тур в офисе уфа,купить тур уфа,Уфа,not_available,commercial,0.85,CL-BUY,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+договор на тур уфа,договор на тур уфа,купить тур уфа,Уфа,not_available,commercial,0.85,CL-BUY,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+турция из уфы,турция из уфы,турция из уфы,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры в турцию из уфы,туры в турцию из уфы,турция из уфы,Уфа,not_available,commercial,0.7,CL-CATALOG,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+турция все включено из уфы,турция все включено из уфы,турция из уфы,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+чартер уфа турция,чартер уфа турция,турция из уфы,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+анталья из уфы,анталья из уфы,турция из уфы,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+оаэ из уфы,оаэ из уфы,оаэ из уфы,Уфа,not_available,commercial,0.8,CL-UAE,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+дубай из уфы,дубай из уфы,оаэ из уфы,Уфа,not_available,commercial,0.8,CL-UAE,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры в оаэ из уфы,туры в оаэ из уфы,оаэ из уфы,Уфа,not_available,commercial,0.8,CL-UAE,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+эмираты из уфы все включено,эмираты из уфы все включено,оаэ из уфы,Уфа,not_available,commercial,0.8,CL-UAE,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+египет из уфы,египет из уфы,египет из уфы,Уфа,not_available,commercial,0.8,CL-EG,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+хургада из уфы,хургада из уфы,египет из уфы,Уфа,not_available,commercial,0.8,CL-EG,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+шарм эль шейх из уфы,шарм эль шейх из уфы,египет из уфы,Уфа,not_available,commercial,0.8,CL-EG,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры египет все включено уфа,туры египет все включено уфа,египет из уфы,Уфа,not_available,commercial,0.8,CL-EG,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+таиланд из уфы,таиланд из уфы,таиланд из уфы,Уфа,not_available,commercial,0.75,CL-TH,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+пхукет из уфы,пхукет из уфы,таиланд из уфы,Уфа,not_available,commercial,0.75,CL-TH,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры таиланд из уфы,туры таиланд из уфы,таиланд из уфы,Уфа,not_available,commercial,0.75,CL-TH,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+паттайя из уфы,паттайя из уфы,таиланд из уфы,Уфа,not_available,commercial,0.75,CL-TH,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+вьетнам из уфы,вьетнам из уфы,вьетнам из уфы,Уфа,not_available,commercial,0.7,CL-VN,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+нячанг из уфы,нячанг из уфы,вьетнам из уфы,Уфа,not_available,commercial,0.7,CL-VN,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры вьетнам из уфы,туры вьетнам из уфы,вьетнам из уфы,Уфа,not_available,commercial,0.7,CL-VN,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+что входит в тур все включено,что входит в тур все включено,тур все включено,Уфа,not_available,informational,0.9,CL-AI,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+ai uai разница,ai uai разница,тур все включено,Уфа,not_available,informational,0.9,CL-AI,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+пакетный тур что входит,пакетный тур что входит,тур все включено,Уфа,not_available,informational,0.9,CL-AI,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+путевка все включено состав,путевка все включено состав,тур все включено,Уфа,not_available,informational,0.9,CL-AI,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+документы для заграницы,документы для заграницы,документы заграница тур,Уфа,not_available,informational,0.9,CL-DOCS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+загранпаспорт ребенку тур,загранпаспорт ребенку тур,документы заграница тур,Уфа,not_available,informational,0.9,CL-DOCS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+что взять в тур документы,что взять в тур документы,документы заграница тур,Уфа,not_available,informational,0.9,CL-DOCS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+страховка для тура документы,страховка для тура документы,документы заграница тур,Уфа,not_available,informational,0.9,CL-DOCS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+туры с детьми из уфы,туры с детьми из уфы,туры с детьми уфа,Уфа,not_available,mixed,0.8,CL-KIDS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+отдых с детьми из уфы,отдых с детьми из уфы,туры с детьми уфа,Уфа,not_available,mixed,0.8,CL-KIDS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+отель с детским клубом турция,отель с детским клубом турция,туры с детьми уфа,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+семейный тур из уфы,семейный тур из уфы,туры с детьми уфа,Уфа,not_available,mixed,0.8,CL-KIDS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+страховка для путешествия,страховка для путешествия,страховка рассрочка тур,Уфа,not_available,informational,0.85,CL-INS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+медицинская страховка в туре,медицинская страховка в туре,страховка рассрочка тур,Уфа,not_available,informational,0.85,CL-INS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+рассрочка на тур уфа,рассрочка на тур уфа,страховка рассрочка тур,Уфа,not_available,informational,0.85,CL-INS,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+турция или египет из уфы,турция или египет из уфы,турция или египет,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+куда поехать из уфы море,куда поехать из уфы море,турция или египет,Уфа,not_available,informational,0.85,CL-CMP,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected
+турция или египет все включено,турция или египет все включено,турция или египет,Уфа,not_available,commercial,0.8,CL-TR,include,,WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected

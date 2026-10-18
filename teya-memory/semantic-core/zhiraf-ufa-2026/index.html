@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Полный отчёт Core: zhiraf ufa 2026</title>
+  <style>
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:#111; background:#fff; line-height:1.5; }
+    header { padding:44px 52px 30px; border-bottom:1px solid #ddd; background:linear-gradient(180deg,#fff,#f7f7f7); }
+    main { max-width:1180px; margin:0 auto; padding:34px 28px 70px; }
+    h1 { font-size:42px; line-height:1.08; margin:0 0 14px; letter-spacing:-.03em; }
+    h2 { font-size:28px; margin:42px 0 14px; padding-top:8px; border-top:2px solid #111; }
+    h3 { font-size:20px; margin:28px 0 10px; }
+    p { margin:0 0 12px; }
+    .lead { font-size:18px; max-width:900px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; margin:22px 0; }
+    .card { border:1px solid #ddd; border-radius:14px; padding:16px; background:#fafafa; }
+    .card b { display:block; font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:#555; margin-bottom:8px; }
+    .card span { font-size:28px; font-weight:700; }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    table { width:100%; border-collapse:collapse; margin:12px 0 24px; font-size:14px; }
+    th,td { border:1px solid #ddd; padding:8px 9px; vertical-align:top; text-align:left; }
+    th { background:#efefef; position:sticky; top:0; z-index:1; }
+    code { background:#f0f0f0; padding:1px 5px; border-radius:4px; }
+    .note { border-left:4px solid #111; padding:12px 14px; background:#fafafa; margin:16px 0; }
+    .pill { display:inline-block; border:1px solid #111; border-radius:999px; padding:2px 9px; margin:2px; font-size:12px; }
+    li { margin:0 0 7px; }
+    footer { padding:24px 52px; border-top:1px solid #ddd; color:#555; }
+    @media (max-width:800px) { header { padding:28px 22px; } .two { grid-template-columns:1fr; } h1 { font-size:32px; } }
+  </style>
+</head>
+<body>
+<header>
+  <p>Semantic Core / SEO + GEO / Wordstat / Cursor sub-agent</p>
+  <h1>Полный отчёт по семантическому ядру: zhiraf ufa 2026</h1>
+  <p class="lead">Это общий файл “всё в одном”: выводы, методика, таблицы, карта страниц, контент-план, риски, ограничения и рекомендации.</p>
+</header>
+<main>
+  <section>
+    <h2>1. Краткий вывод</h2>
+    <div class="grid">
+      <div class="card"><b>Строк Wordstat</b><span>51</span></div>
+      <div class="card"><b>Очищенных запросов</b><span>51</span></div>
+      <div class="card"><b>Включено</b><span>51</span></div>
+      <div class="card"><b>Исключено</b><span>0</span></div>
+      <div class="card"><b>Кластеров</b><span>17</span></div>
+      <div class="card"><b>P0/P1</b><span>17</span></div>
+    </div>
+    <p>Пакет показывает, какие темы уже можно переводить в страницы, какие требуют проверки SERP, где есть риск каннибализации и что делать в ближайшие 7/30/90 дней.</p>
+  </section>
+
+  <section>
+    <h2>2. Файлы пакета</h2>
+    <ul><li><a href="README.md">README.md</a></li><li><a href="00-brief.md">00-brief.md</a></li><li><a href="01-site-inventory.md">01-site-inventory.md</a></li><li><a href="02-seed-map.md">02-seed-map.md</a></li><li><a href="03-wordstat-raw.csv">03-wordstat-raw.csv</a></li><li><a href="04-keywords-clean.csv">04-keywords-clean.csv</a></li><li><a href="05-clusters.csv">05-clusters.csv</a></li><li><a href="06-url-map.csv">06-url-map.csv</a></li><li><a href="07-content-briefs.md">07-content-briefs.md</a></li><li><a href="08-serp-geo-notes.md">08-serp-geo-notes.md</a></li><li><a href="09-quality-report.md">09-quality-report.md</a></li><li><a href="10-todo.md">10-todo.md</a></li><li><a href="12-implementation-roadmap.md">12-implementation-roadmap.md</a></li></ul>
+  </section>
+
+  <section>
+    <h2>3. Что уже хорошо и что мешает росту</h2>
+    <div class="two">
+      <div class="note">
+        <h3>Что уже хорошо</h3>
+        <ul>
+          <li>Есть карта спроса, кластеры и URL-решения.</li>
+          <li>Есть P0/P1 приоритеты для ближайшей работы.</li>
+          <li>Есть отдельные брифы и roadmap внедрения.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Что мешает</h3>
+        <ul>
+          <li>Без live SERP нельзя считать границы кластеров финальными.</li>
+          <li>Без GSC/Яндекс.Вебмастера неизвестны фактические URL-показы.</li>
+          <li>Шумные seed-направления требуют ручной фильтрации.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Покрытие Wordstat</h2>
+    <table><thead><tr><th>Seed-фраза</th><th>Строк Wordstat</th></tr></thead><tbody><tr><td>туры из уфы</td><td>8</td></tr><tr><td>купить тур уфа</td><td>5</td></tr><tr><td>турция из уфы</td><td>5</td></tr><tr><td>оаэ из уфы</td><td>4</td></tr><tr><td>египет из уфы</td><td>4</td></tr><tr><td>таиланд из уфы</td><td>4</td></tr><tr><td>тур все включено</td><td>4</td></tr><tr><td>документы заграница тур</td><td>4</td></tr><tr><td>туры с детьми уфа</td><td>4</td></tr><tr><td>вьетнам из уфы</td><td>3</td></tr><tr><td>страховка рассрочка тур</td><td>3</td></tr><tr><td>турция или египет</td><td>3</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>5. Структура ядра</h2>
+    <p>Приоритеты: <span class="pill">P0: 15</span> <span class="pill">P1: 2</span></p>
+    <p>URL-статусы: <span class="pill">создать: 13</span> <span class="pill">готово: 4</span></p>
+    <p>Интенты: <span class="pill">commercial: 9</span> <span class="pill">informational: 5</span> <span class="pill">mixed: 1</span> <span class="pill">navigational: 2</span></p>
+    <table><thead><tr><th>ID</th><th>Кластер</th><th>Главный запрос</th><th>Интент</th><th>Частотность</th><th>Тип страницы</th><th>Приоритет</th><th>Целевой URL</th><th>Статус URL</th><th>Примечания</th></tr></thead><tbody><tr><td>CL-HOME</td><td>Туры из Уфы (главная)</td><td>туры из уфы</td><td>commercial</td><td>not_available</td><td>landing</td><td>P0</td><td>/</td><td>создать</td><td>blog_topic=BT-01</td></tr><tr><td>CL-BUY</td><td>Как купить тур в Уфе</td><td>купить тур в уфе</td><td>commercial</td><td>not_available</td><td>landing</td><td>P0</td><td>/kontakty/</td><td>создать</td><td>blog_topic=BT-01</td></tr><tr><td>CL-CATALOG</td><td>Каталог направлений</td><td>туры из уфы направления</td><td>commercial</td><td>not_available</td><td>hub</td><td>P0</td><td>/tour/</td><td>готово</td><td></td></tr><tr><td>CL-TR</td><td>Турция из Уфы</td><td>турция из уфы</td><td>commercial</td><td>not_available</td><td>landing</td><td>P0</td><td>/tour/turciya/</td><td>создать</td><td>blog_topic=BT-06</td></tr><tr><td>CL-UAE</td><td>ОАЭ из Уфы</td><td>оаэ из уфы</td><td>commercial</td><td>not_available</td><td>landing</td><td>P0</td><td>/tour/oae/</td><td>создать</td><td></td></tr><tr><td>CL-EG</td><td>Египет из Уфы</td><td>египет из уфы</td><td>commercial</td><td>not_available</td><td>landing</td><td>P0</td><td>/tour/egipet/</td><td>создать</td><td>blog_topic=BT-06</td></tr><tr><td>CL-TH</td><td>Таиланд из Уфы</td><td>таиланд из уфы</td><td>commercial</td><td>not_available</td><td>landing</td><td>P0</td><td>/tour/tailand/</td><td>создать</td><td></td></tr><tr><td>CL-VN</td><td>Вьетнам из Уфы</td><td>вьетнам из уфы</td><td>commercial</td><td>not_available</td><td>landing</td><td>P1</td><td>/tour/vietnam/</td><td>создать</td><td></td></tr><tr><td>CL-ABOUT</td><td>О компании и доверие</td><td>турагентство жираф уфа</td><td>navigational</td><td>not_available</td><td>landing</td><td>P1</td><td>/o-nas/</td><td>готово</td><td></td></tr><tr><td>CL-CONTACT</td><td>Контакты и офис</td><td>жираф турагентство уфа адрес</td><td>navigational</td><td>not_available</td><td>landing</td><td>P0</td><td>/kontakty/</td><td>готово</td><td>blog_topic=BT-01</td></tr><tr><td>CL-AI</td><td>Состав пакета / всё включено</td><td>что входит в тур все включено</td><td>informational</td><td>not_available</td><td>blog</td><td>P0</td><td>/blog/chto-vhodit-v-tur-vse-vklyucheno/</td><td>создать</td><td>blog_topic=BT-02</td></tr><tr><td>CL-DOCS</td><td>Документы перед туром</td><td>документы для заграницы</td><td>informational</td><td>not_available</td><td>blog</td><td>P0</td><td>/blog/dготовоumenty-dlya-zagranicy-iz-ufy/</td><td>создать</td><td>blog_topic=BT-03</td></tr><tr><td>CL-KIDS</td><td>Туры с детьми</td><td>туры с детьми из уфы</td><td>mixed</td><td>not_available</td><td>blog</td><td>P0</td><td>/blog/tury-s-detmi-iz-ufy/</td><td>создать</td><td>blog_topic=BT-04</td></tr><tr><td>CL-INS</td><td>Страховка и оплата</td><td>страховка для путешествия</td><td>informational</td><td>not_available</td><td>blog</td><td>P0</td><td>/blog/strahovka-i-rassrochka-na-tur/</td><td>создать</td><td>blog_topic=BT-05</td></tr><tr><td>CL-CMP</td><td>Сравнение направлений</td><td>турция или египет из уфы</td><td>informational</td><td>not_available</td><td>blog</td><td>P0</td><td>/blog/turciya-ili-egipet-iz-ufy/</td><td>создать</td><td>blog_topic=BT-06</td></tr><tr><td>CL-BLOG-BUY</td><td>Покупка тура (блог)</td><td>как купить тур в уфе</td><td>informational</td><td>not_available</td><td>blog</td><td>P0</td><td>/blog/kak-kupit-tur-v-ufe/</td><td>создать</td><td>blog_topic=BT-01</td></tr><tr><td>CL-QUIZ</td><td>Квиз подбора</td><td>подобрать тур уфа</td><td>commercial</td><td>not_available</td><td>conversion</td><td>P0</td><td>/</td><td>готово</td><td></td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>6. URL roadmap</h2>
+    <table><thead><tr><th>Целевой URL</th><th>Статус</th><th>Тип страницы</th><th>Кластеры</th><th>Главные запросы</th><th>Рекомендуемый H1</th><th>Задача</th><th>Примечания</th></tr></thead><tbody><tr><td>/</td><td>готово</td><td>home</td><td>CL-HOME|CL-QUIZ|CL-BUY</td><td>туры из уфы|купить тур из уфы</td><td>Туры с вылетом из Уфы — подбор без давления</td><td>hero+quiz</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/tour/</td><td>готово</td><td>hub</td><td>CL-CATALOG</td><td>туры из уфы направления|отдых из уфы</td><td>Направления отдыха с вылетом из Уфы</td><td>catalog chips</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/tour/turciya/</td><td>создать</td><td>destination</td><td>CL-TR</td><td>турция из уфы|туры в турцию из уфы</td><td>Туры в Турцию из Уфы</td><td>destination landing</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/tour/oae/</td><td>создать</td><td>destination</td><td>CL-UAE</td><td>оаэ из уфы|дубай из уфы</td><td>Туры в ОАЭ из Уфы</td><td>destination landing</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/tour/egipet/</td><td>создать</td><td>destination</td><td>CL-EG</td><td>египет из уфы|хургада из уфы</td><td>Туры в Египет из Уфы</td><td>destination landing</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/tour/tailand/</td><td>создать</td><td>destination</td><td>CL-TH</td><td>таиланд из уфы|пхукет из уфы</td><td>Туры в Таиланд из Уфы</td><td>destination landing</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/tour/vietnam/</td><td>создать</td><td>destination</td><td>CL-VN</td><td>вьетнам из уфы|нячанг из уфы</td><td>Туры во Вьетнам из Уфы</td><td>destination landing</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/o-nas/</td><td>готово</td><td>trust</td><td>CL-ABOUT</td><td>турагентство жираф уфа</td><td>О турагентстве «Жираф» в Уфе</td><td>E-E-A-T</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/kontakty/</td><td>готово</td><td>local</td><td>CL-CONTACT|CL-BUY</td><td>жираф уфа телефон|купить тур в уфе</td><td>Контакты «Жираф» в Уфе</td><td>NAP+form</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/</td><td>готово</td><td>hub</td><td>CL-AI|CL-DOCS</td><td>блог туры уфа</td><td>Блог о турах из Уфы</td><td>archive</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/kak-kupit-tur-v-ufe/</td><td>создать</td><td>article</td><td>CL-BLOG-BUY</td><td>как купить тур в уфе</td><td>Как купить тур в Уфе: пошагово</td><td>Excalibur P0</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/chto-vhodit-v-tur-vse-vklyucheno/</td><td>создать</td><td>article</td><td>CL-AI</td><td>что входит в тур все включено</td><td>Что входит в «всё включено»</td><td>Excalibur P0</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/dготовоumenty-dlya-zagranicy-iz-ufy/</td><td>создать</td><td>article</td><td>CL-DOCS</td><td>документы для заграницы</td><td>Документы для заграницы — чек-лист</td><td>Excalibur P0</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/tury-s-detmi-iz-ufy/</td><td>создать</td><td>article</td><td>CL-KIDS</td><td>туры с детьми из уфы</td><td>Туры с детьми из Уфы</td><td>Excalibur P0</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/strahovka-i-rassrochka-na-tur/</td><td>создать</td><td>article</td><td>CL-INS</td><td>страховка для путешествия</td><td>Страховка и рассрочка на тур</td><td>Excalibur P0</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr><tr><td>/blog/turciya-ili-egipet-iz-ufy/</td><td>создать</td><td>article</td><td>CL-CMP</td><td>турция или египет из уфы</td><td>Турция или Египет из Уфы</td><td>Excalibur P0</td><td>CONVERSION-FIRST: CTA quiz on landings</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>7. Очищенные запросы</h2>
+    <table><thead><tr><th>Запрос</th><th>Каноническая формулировка</th><th>Частотность</th><th>Интент</th><th>Уверенность</th><th>Кандидат в кластер</th><th>Статус</th><th>Причина исключения</th><th>Примечания</th></tr></thead><tbody><tr><td>туры из уфы</td><td>туры из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-HOME</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>тур из уфы</td><td>тур из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-HOME</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>путевки из уфы</td><td>путевки из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-HOME</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>отдых из уфы</td><td>отдых из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-HOME</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>купить тур из уфы</td><td>купить тур из уфы</td><td>not_available</td><td>commercial</td><td>0.85</td><td>CL-BUY</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры уфа все включено</td><td>туры уфа все включено</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-AI</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>горящие туры из уфы</td><td>горящие туры из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-HOME</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туроператоры уфа туры</td><td>туроператоры уфа туры</td><td>not_available</td><td>commercial</td><td>0.7</td><td>CL-CATALOG</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>купить тур в уфе</td><td>купить тур в уфе</td><td>not_available</td><td>commercial</td><td>0.85</td><td>CL-BUY</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>забронировать тур уфа</td><td>забронировать тур уфа</td><td>not_available</td><td>commercial</td><td>0.85</td><td>CL-BUY</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>турагентство уфа купить тур</td><td>турагентство уфа купить тур</td><td>not_available</td><td>commercial</td><td>0.85</td><td>CL-BUY</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>тур в офисе уфа</td><td>тур в офисе уфа</td><td>not_available</td><td>commercial</td><td>0.85</td><td>CL-BUY</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>договор на тур уфа</td><td>договор на тур уфа</td><td>not_available</td><td>commercial</td><td>0.85</td><td>CL-BUY</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>турция из уфы</td><td>турция из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры в турцию из уфы</td><td>туры в турцию из уфы</td><td>not_available</td><td>commercial</td><td>0.7</td><td>CL-CATALOG</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>турция все включено из уфы</td><td>турция все включено из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>чартер уфа турция</td><td>чартер уфа турция</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>анталья из уфы</td><td>анталья из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>оаэ из уфы</td><td>оаэ из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-UAE</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>дубай из уфы</td><td>дубай из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-UAE</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры в оаэ из уфы</td><td>туры в оаэ из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-UAE</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>эмираты из уфы все включено</td><td>эмираты из уфы все включено</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-UAE</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>египет из уфы</td><td>египет из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-EG</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>хургада из уфы</td><td>хургада из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-EG</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>шарм эль шейх из уфы</td><td>шарм эль шейх из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-EG</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры египет все включено уфа</td><td>туры египет все включено уфа</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-EG</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>таиланд из уфы</td><td>таиланд из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-TH</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>пхукет из уфы</td><td>пхукет из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-TH</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры таиланд из уфы</td><td>туры таиланд из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-TH</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>паттайя из уфы</td><td>паттайя из уфы</td><td>not_available</td><td>commercial</td><td>0.75</td><td>CL-TH</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>вьетнам из уфы</td><td>вьетнам из уфы</td><td>not_available</td><td>commercial</td><td>0.7</td><td>CL-VN</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>нячанг из уфы</td><td>нячанг из уфы</td><td>not_available</td><td>commercial</td><td>0.7</td><td>CL-VN</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры вьетнам из уфы</td><td>туры вьетнам из уфы</td><td>not_available</td><td>commercial</td><td>0.7</td><td>CL-VN</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>что входит в тур все включено</td><td>что входит в тур все включено</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-AI</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>ai uai разница</td><td>ai uai разница</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-AI</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>пакетный тур что входит</td><td>пакетный тур что входит</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-AI</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>путевка все включено состав</td><td>путевка все включено состав</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-AI</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>документы для заграницы</td><td>документы для заграницы</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-DOCS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>загранпаспорт ребенку тур</td><td>загранпаспорт ребенку тур</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-DOCS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>что взять в тур документы</td><td>что взять в тур документы</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-DOCS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>страховка для тура документы</td><td>страховка для тура документы</td><td>not_available</td><td>informational</td><td>0.9</td><td>CL-DOCS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>туры с детьми из уфы</td><td>туры с детьми из уфы</td><td>not_available</td><td>mixed</td><td>0.8</td><td>CL-KIDS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>отдых с детьми из уфы</td><td>отдых с детьми из уфы</td><td>not_available</td><td>mixed</td><td>0.8</td><td>CL-KIDS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>отель с детским клубом турция</td><td>отель с детским клубом турция</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>семейный тур из уфы</td><td>семейный тур из уфы</td><td>not_available</td><td>mixed</td><td>0.8</td><td>CL-KIDS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>страховка для путешествия</td><td>страховка для путешествия</td><td>not_available</td><td>informational</td><td>0.85</td><td>CL-INS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>медицинская страховка в туре</td><td>медицинская страховка в туре</td><td>not_available</td><td>informational</td><td>0.85</td><td>CL-INS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>рассрочка на тур уфа</td><td>рассрочка на тур уфа</td><td>not_available</td><td>informational</td><td>0.85</td><td>CL-INS</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>турция или египет из уфы</td><td>турция или египет из уфы</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>куда поехать из уфы море</td><td>куда поехать из уфы море</td><td>not_available</td><td>informational</td><td>0.85</td><td>CL-CMP</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>турция или египет все включено</td><td>турция или египет все включено</td><td>not_available</td><td>commercial</td><td>0.8</td><td>CL-TR</td><td>включить</td><td></td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>8. Wordstat-сырьё</h2>
+    <table><thead><tr><th>Дата</th><th>Seed-фраза</th><th>Запрос</th><th>Частотность</th><th>Регион</th><th>Устройство</th><th>Источник</th><th>Примечания</th></tr></thead><tbody><tr><td>2026-10-18</td><td>туры из уфы</td><td>туры из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>тур из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>путевки из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>отдых из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>купить тур из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>туры уфа все включено</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>горящие туры из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры из уфы</td><td>туроператоры уфа туры</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>купить тур уфа</td><td>купить тур в уфе</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>купить тур уфа</td><td>забронировать тур уфа</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>купить тур уфа</td><td>турагентство уфа купить тур</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>купить тур уфа</td><td>тур в офисе уфа</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>купить тур уфа</td><td>договор на тур уфа</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция из уфы</td><td>турция из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция из уфы</td><td>туры в турцию из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция из уфы</td><td>турция все включено из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция из уфы</td><td>чартер уфа турция</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция из уфы</td><td>анталья из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>оаэ из уфы</td><td>оаэ из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>оаэ из уфы</td><td>дубай из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>оаэ из уфы</td><td>туры в оаэ из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>оаэ из уфы</td><td>эмираты из уфы все включено</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>египет из уфы</td><td>египет из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>египет из уфы</td><td>хургада из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>египет из уфы</td><td>шарм эль шейх из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>египет из уфы</td><td>туры египет все включено уфа</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>таиланд из уфы</td><td>таиланд из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>таиланд из уфы</td><td>пхукет из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>таиланд из уфы</td><td>туры таиланд из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>таиланд из уфы</td><td>паттайя из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>вьетнам из уфы</td><td>вьетнам из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>вьетнам из уфы</td><td>нячанг из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>вьетнам из уфы</td><td>туры вьетнам из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>тур все включено</td><td>что входит в тур все включено</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>тур все включено</td><td>ai uai разница</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>тур все включено</td><td>пакетный тур что входит</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>тур все включено</td><td>путевка все включено состав</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>документы заграница тур</td><td>документы для заграницы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>документы заграница тур</td><td>загранпаспорт ребенку тур</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>документы заграница тур</td><td>что взять в тур документы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>документы заграница тур</td><td>страховка для тура документы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры с детьми уфа</td><td>туры с детьми из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры с детьми уфа</td><td>отдых с детьми из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры с детьми уфа</td><td>отель с детским клубом турция</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>туры с детьми уфа</td><td>семейный тур из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>страховка рассрочка тур</td><td>страховка для путешествия</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>страховка рассрочка тур</td><td>медицинская страховка в туре</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>страховка рассрочка тур</td><td>рассрочка на тур уфа</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция или египет</td><td>турция или египет из уфы</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция или египет</td><td>куда поехать из уфы море</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr><tr><td>2026-10-18</td><td>турция или египет</td><td>турция или египет все включено</td><td>not_available</td><td>Уфа</td><td>все устройства</td><td>seed_degraded</td><td>WORDSTAT_DEGRADED; mcp-kv needsAuth; frequency not collected</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>9. Практические рекомендации по страницам</h2>
+    <table><thead><tr><th>Приоритет</th><th>Кластер</th><th>Что сделать</th><th>URL</th><th>Почему важно</th><th>Риск / примечание</th></tr></thead><tbody><tr><td>P0</td><td>Туры из Уфы (главная)</td><td>Создать страницу</td><td>/</td><td>высокая</td><td>blog_topic=BT-01</td></tr><tr><td>P0</td><td>Как купить тур в Уфе</td><td>Создать страницу</td><td>/kontakty/</td><td>высокая</td><td>blog_topic=BT-01</td></tr><tr><td>P0</td><td>Каталог направлений</td><td>Проверить и развить</td><td>/tour/</td><td>высокая</td><td></td></tr><tr><td>P0</td><td>Турция из Уфы</td><td>Создать страницу</td><td>/tour/turciya/</td><td>высокая</td><td>blog_topic=BT-06</td></tr><tr><td>P0</td><td>ОАЭ из Уфы</td><td>Создать страницу</td><td>/tour/oae/</td><td>высокая</td><td></td></tr><tr><td>P0</td><td>Египет из Уфы</td><td>Создать страницу</td><td>/tour/egipet/</td><td>высокая</td><td>blog_topic=BT-06</td></tr><tr><td>P0</td><td>Таиланд из Уфы</td><td>Создать страницу</td><td>/tour/tailand/</td><td>средняя</td><td></td></tr><tr><td>P1</td><td>Вьетнам из Уфы</td><td>Создать страницу</td><td>/tour/vietnam/</td><td>средняя</td><td></td></tr><tr><td>P1</td><td>О компании и доверие</td><td>Проверить и развить</td><td>/o-nas/</td><td>средняя</td><td></td></tr><tr><td>P0</td><td>Контакты и офис</td><td>Проверить и развить</td><td>/kontakty/</td><td>высокая</td><td>blog_topic=BT-01</td></tr><tr><td>P0</td><td>Состав пакета / всё включено</td><td>Создать страницу</td><td>/blog/chto-vhodit-v-tur-vse-vklyucheno/</td><td>высокая</td><td>blog_topic=BT-02</td></tr><tr><td>P0</td><td>Документы перед туром</td><td>Создать страницу</td><td>/blog/dготовоumenty-dlya-zagranicy-iz-ufy/</td><td>высокая</td><td>blog_topic=BT-03</td></tr><tr><td>P0</td><td>Туры с детьми</td><td>Создать страницу</td><td>/blog/tury-s-detmi-iz-ufy/</td><td>высокая</td><td>blog_topic=BT-04</td></tr><tr><td>P0</td><td>Страховка и оплата</td><td>Создать страницу</td><td>/blog/strahovka-i-rassrochka-na-tur/</td><td>средняя</td><td>blog_topic=BT-05</td></tr><tr><td>P0</td><td>Сравнение направлений</td><td>Создать страницу</td><td>/blog/turciya-ili-egipet-iz-ufy/</td><td>высокая</td><td>blog_topic=BT-06</td></tr><tr><td>P0</td><td>Покупка тура (блог)</td><td>Создать страницу</td><td>/blog/kak-kupit-tur-v-ufe/</td><td>высокая</td><td>blog_topic=BT-01</td></tr><tr><td>P0</td><td>Квиз подбора</td><td>Проверить и развить</td><td>/</td><td>высокая</td><td></td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>10. Полные текстовые разделы</h2>
+    <article><h3>Бриф</h3><h2>Run brief — semantic core «Жираф» Уфа</h2>
+<p>| Поле | Значение |</p>
+<p>|------|----------|</p>
+<p>| Run slug | `zhiraf-ufa-2026` |</p>
+<p>| Дата прогона | 2026-10-18 |</p>
+<p>| Агент | yadryshko-semantic-core |</p>
+<p>| Регион Wordstat | Уфа (id 172 — уточнить при MCP) |</p>
+<p>| Цель | CONVERSION-FIRST: квиз + телефон |</p>
+<p>| Направления P0 | Турция, ОАЭ, Египет, Таиланд, Вьетнам |</p>
+<h3>Входы</h3>
+<li>`teya-memory/00-brief.md`, `site.inv` (восстановлены в этом прогоне)</li>
+<li>`teya-memory/research/*`</li>
+<li>Excalibur: `deliverables/zhiraf-ufa/excalibur-articles/articles/*`</li>
+<h3>Ограничения</h3>
+<li>Wordstat MCP (`mcp-kv`): **needsAuth** → частотности `not_available`, 0 успешных вызовов</li>
+<li>Без цен «от», без выдуманных отзывов (anti-haltura)</li>
+<h3>Выход</h3>
+<p>Полный набор файлов run-folder + fragment `teya-memory/fragments/core.md`.</p></article><article><h3>Инвентаризация сайта</h3><h2>Site inventory — Phase 1 `zhiraf-ufa`</h2>
+<p>**Домен цель:** zhiraf-ufa.ru | **Staging:** b2b-tour.ru (noindex)</p>
+<h3>Страницы в теме (есть шаблон / контент)</h3>
+<p>| URL | Шаблон / файл | Статус контента |</p>
+<p>|-----|---------------|-----------------|</p>
+<p>| `/` | `front-page.php` | Hero, табы направлений, квиз, блог-слот |</p>
+<p>| `/o-nas/` | `page-o-nas.php` | История, команда |</p>
+<p>| `/kontakty/` | `page-kontakty.php` | NAP, форма, карта |</p>
+<p>| `/tour/` | `page-tour.php` | Хаб, чипы направлений |</p>
+<p>| `/blog/` | `home.php` / archive | Архив постов |</p>
+<h3>Планируемые лендинги (footer + `zhiraf_ufa_destinations()`)</h3>
+<p>| Slug | URL |</p>
+<p>|------|-----|</p>
+<p>| turciya | `/tour/turciya/` |</p>
+<p>| oae | `/tour/oae/` |</p>
+<p>| egipet | `/tour/egipet/` |</p>
+<p>| tailand | `/tour/tailand/` |</p>
+<p>| vietnam | `/tour/vietnam/` |</p>
+<h3>Блог Excalibur (репозиторий, P0)</h3>
+<p>| Slug | topic_id |</p>
+<p>|------|----------|</p>
+<p>| `kak-kupit-tur-v-ufe` | BT-01 |</p>
+<p>| `chto-vhodit-v-tur-vse-vklyucheno` | BT-02 |</p>
+<p>| `dготовоumenty-dlya-zagranicy-iz-ufy` | BT-03 |</p>
+<p>| `tury-s-detmi-iz-ufy` | BT-04 |</p>
+<p>| `strahovka-i-rassrochka-na-tur` | BT-05 |</p>
+<p>| `turciya-ili-egipet-iz-ufy` | BT-06 |</p>
+<h3>Conversion assets</h3>
+<li>Квиз: `quiz-modal.php`, 4 шага, лиды → office@zhiraf-ufa.ru</li>
+<li>Primary CTA: «Подобрать тур»</li>
+<li>Телефон: +7 901 810-50-18</li>
+<h3>Schema</h3>
+<p>`TravelAgency` + `WebSite` — `inc/seo.php`</p>
+<h3>Пробелы (не блокер ядра)</h3>
+<li>Лендинги `/tour/{slug}/` — контент по `06-url-map.csv`</li>
+<li>FAQ на главной — рекомендовано в dossier §9</li>
+<li>Отзывы — намеренно отключены</li></article><article><h3>Карта seed-запросов</h3><h2>Seed map — запросы и интенты (Уфа)</h2>
+<p>Режим: **WORDSTAT DEGRADED** (частотности не собраны). Семантика на уровне seed + кластеров; при появлении MCP — пересобрать `03`–`04`.</p>
+<h3>Seed-группы (12 planned Wordstat calls)</h3>
+<p>| # | Seed | Интент | Кластер | Страница |</p>
+<p>|---|------|--------|---------|----------|</p>
+<p>| 1 | туры из уфы | commercial | CL-HOME, CL-CATALOG | `/`, `/tour/` |</p>
+<p>| 2 | купить тур уфа | commercial | CL-BUY, CL-BLOG-BUY | `/`, `/kontakty/`, блог BT-01 |</p>
+<p>| 3 | турция из уфы | commercial | CL-TR | `/tour/turciya/` |</p>
+<p>| 4 | оаэ из уфы | commercial | CL-UAE | `/tour/oae/` |</p>
+<p>| 5 | египет из уфы | commercial | CL-EG | `/tour/egipet/` |</p>
+<p>| 6 | таиланд из уфы | commercial | CL-TH | `/tour/tailand/` |</p>
+<p>| 7 | вьетнам из уфы | commercial | CL-VN | `/tour/vietnam/` |</p>
+<p>| 8 | тур все включено | informational | CL-AI | BT-02 |</p>
+<p>| 9 | документы заграница тур | informational | CL-DOCS | BT-03 |</p>
+<p>| 10 | туры с детьми уфа | mixed | CL-KIDS | BT-04 |</p>
+<p>| 11 | страховка рассрочка тур | informational | CL-INS | BT-05 |</p>
+<p>| 12 | турция или египет | informational | CL-CMP | BT-06 |</p>
+<h3>Исключения (не включать в ядро)</h3>
+<li>«дешевые туры уфа», «самая низкая цена» — без подтверждённой ценовой политики</li>
+<li>Визы в страны вне каталога Phase 1</li>
+<li>Корпоративные / MICE — вне scope темы</li>
+<h3>GEO-вопросы (для H2/FAQ)</h3>
+<p>1. Сколько стоит тур из Уфы? → нейтрально: зависит от дат; CTA квиз</p>
+<p>2. Как купить тур в Уфе? → BT-01</p>
+<p>3. Куда лететь из Уфы зимой/летом? → табы направлений + BT-06</p>
+<p>4. Что входит в «всё включено»? → BT-02</p>
+<p>5. Какие документы нужны? → BT-03</p>
+<p>6. Можно с детьми? → BT-04 + квиз «состав семьи»</p></article><article><h3>Контент-брифы</h3><h2>Content briefs — CONVERSION-FIRST</h2>
+<p>**Правило:** каждая коммерческая страница — один primary CTA (квиз) + телефон в шапке; информационные статьи — CTA в конце + 2–3 ссылки на лендинги.</p>
+<p>---</p>
+<h3>P0: `/` (CL-HOME, CL-QUIZ)</h3>
+<li>**H1:** Туры с вылетом из Уфы — подбор без давления</li>
+<li>**Блоки:** hero (Globe Trekker), табы 5 направлений, 4 шага «как работает», слот блога (BT-01 первым), форма/подписка, FAQ (6 вопросов из dossier §10)</li>
+<li>**Trust:** РТА, ссылка VK, без fake reviews</li>
+<li>**Internal links:** `/tour/`, `/blog/kak-kupit-tur-v-ufe/`, `/kontakty/`</li>
+<p>---</p>
+<h3>P0: `/tour/` (CL-CATALOG)</h3>
+<li>**H1:** Направления отдыха с вылетом из Уфы</li>
+<li>**Блоки:** карточки/чипы 5 стран; короткий текст «как подбираем»; CTA квиз</li>
+<li>**Links:** все `/tour/{slug}/`, `/blog/turciya-ili-egipet-iz-ufy/`</li>
+<p>---</p>
+<h3>P0: Destination landings</h3>
+<p>Общий шаблон для `/tour/turciya/`, `oae`, `egipet`, `tailand`, `vietnam`:</p>
+<p>| Блок | Содержание |</p>
+<p>|------|------------|</p>
+<p>| Hero | H1 + страна + «вылет из Уфы» |</p>
+<p>| Для кого | Семья / пара / первая поездка (без «лучший») |</p>
+<p>| Что уточняем | Даты, питание, перелёт, трансфер |</p>
+<p>| Сезон | Общеотраслевые подсказки, без гарантии погоды |</p>
+<p>| FAQ | 4–5 GEO-вопросов по стране |</p>
+<p>| CTA | Квиз с предзаполнением направления (если тех. возможно) |</p>
+<p>**Турция:** усилить связку с BT-04, BT-06.</p>
+<p>**ОАЭ:** зимний спрос, город+пляж.</p>
+<p>**Египет:** Красное море, сравнение с Турцией (BT-06).</p>
+<p>**Таиланд / Вьетнам:** длительный перелёт — честно в копирайте.</p>
+<p>---</p>
+<h3>P0: `/kontakty/` (CL-CONTACT, CL-BUY)</h3>
+<li>NAP, часы, карта, форма, реквизиты</li>
+<li>Answer block: «Как купить тур в офисе на Гагарина» → шаги + ссылка BT-01</li>
+<p>---</p>
+<h3>P0: `/o-nas/` (CL-ABOUT)</h3>
+<li>E-E-A-T: с 2011, команда поимённо, ценности из темы</li>
+<li>Без маркетинговых цифр с legacy-сайта</li>
+<p>---</p>
+<h3>Блог (кратко — полные брифы в `11-blog-topics.md`)</h3>
+<p>| URL | Статус Excalibur | Действие |</p>
+<p>|-----|------------------|----------|</p>
+<p>| `/blog/kak-kupit-tur-v-ufe/` | HTML в репо | Publish WP, canonical, schema |</p>
+<p>| Остальные 5 BT | HTML в репо | То же |</p>
+<p>**Cannibalization guard:** коммерческий интент «купить тур» — главная + контакты; блог BT-01 = informational how-to.</p>
+<p>---</p>
+<h3>Answer blocks (GEO) — вставки на лендинги</h3>
+<p>**Что такое пакетный тур из Уфы?**</p>
+<p>Перелёт, проживание, трансфер и питание по коду оператора; точный состав — в договоре и voucher.</p>
+<p>**Чем агентство отличается от OTA?**</p>
+<p>Подбор 2–4 вариантов, офис в Уфе, сопровождение до договора (без обещания «дешевле всех»).</p>
+<p>**Нужна ли виза?**</p>
+<p>По направлению Phase 1 — уточнять актуальные правила; не юрконсультация → BT-03.</p></article><article><h3>SERP / GEO заметки</h3><h2>SERP / GEO notes</h2>
+<p>**SERP live:** не проверялся (2026-10-18). Интенты назначены по dossier + типу запроса.</p>
+<h3>Yandex / Google (Уфа)</h3>
+<p>| Тип запроса | Ожидаемая выдача | Рекомендация Жираф |</p>
+<p>|-------------|------------------|-------------------|</p>
+<p>| «туры из уфы» | Агрегаторы + сети | Не конкурировать прайсом; УТП офис + квиз |</p>
+<p>| «турция из уфы» | Смешанная: OTA + ТА | Лендинг направления + BT-06 |</p>
+<p>| «как купить тур в уфе» | Статьи + карты | BT-01 P0, schema FAQ |</p>
+<p>| «документы для заграницы» | Гос/медиа | Чек-лист BT-03, дисклеймер |</p>
+<h3>AI / answer snippets</h3>
+<li>Короткие определения в начале H2 (40–60 слов): «всё включено», «пакетный тур»</li>
+<li>Таблица сравнения Турция/Египет (уже в BT-06) — кандидат в featured snippet</li>
+<li>Списки документов — маркированные, без юридических гарантий</li>
+<h3>Local pack</h3>
+<li>NAP на `/kontakty/` = fact-bank</li>
+<li>Единый телефон в schema и footer</li>
+<li>**needs_user_fact:** URL Яндекс.Карт для отзывов позже</li>
+<h3>После запуска проверить (7 дней)</h3>
+<p>1. Яндекс.Вебмастер: целевые запросы Уфа</p>
+<p>2. Покрытие `/tour/*` в индексе</p>
+<p>3. Cannibalization: главная vs BT-01 (разные title/H1)</p></article><article><h3>Отчёт качества</h3><h2>Quality report — zhiraf-ufa-2026</h2>
+<h3>Coverage summary</h3>
+<p>| Метрика | Значение |</p>
+<p>|---------|----------|</p>
+<p>| Wordstat calls (successful) | **0** |</p>
+<p>| Planned seed calls documented | 12 |</p>
+<p>| Keywords raw / clean | 51 / 51 |</p>
+<p>| Clusters | 17 |</p>
+<p>| URL map rows | 16 |</p>
+<p>| Blog topics (P0 Excalibur) | 6 |</p>
+<p>| P0 commercial URLs | 7 landings + home + catalog + contacts |</p>
+<h3>Data limitations</h3>
+<li>**WORDSTAT DEGRADED:** MCP namespace `mcp-kv` вернул `needsAuth`; частотности во всех CSV = `not_available`.</li>
+<li>SERP не снимался live; `serp_check_status=не проверено`.</li>
+<li>Исходные `00-brief.md` / `site.inv` в ветке отсутствовали до прогона — восстановлены из research.</li>
+<h3>Quality checklist</h3>
+<p>| Проверка | Статус |</p>
+<p>|----------|--------|</p>
+<p>| Slug блога = Excalibur folders | ✅ |</p>
+<p>| 5 направлений в url-map | ✅ |</p>
+<p>| CONVERSION-FIRST на лендингах | ✅ |</p>
+<p>| Нет выдуманных частотностей | ✅ |</p>
+<p>| Anti-haltura (цены/отзывы) | ✅ |</p>
+<p>| index.html без битых замен | проверить после build |</p>
+<h3>Main risks</h3>
+<p>1. Без Wordstat приоритет P1/P2 по объёму спроса — экспертная оценка.</p>
+<p>2. Лендинги `/tour/*` ещё без текста — риск thin content до наполнения.</p>
+<p>3. BT-01 vs главная — следить за title в WP.</p>
+<h3>Completeness</h3>
+<p>Структура ядра **готова для AURA и контент-внедрения**. Для production SEO — повторить прогон с авторизованным Wordstat.</p></article><article><h3>TODO</h3><h2>TODO — владелец / роли</h2>
+<p>| Задача | Статус | Роль |</p>
+<p>|--------|--------|------|</p>
+<p>| Semantic core run files | done | SEO (Ядрышко) |</p>
+<p>| Авторизовать MCP Wordstat, пересобрать 03–04 | next | SEO / владелец |</p>
+<p>| Тексты 5 лендингов `/tour/*` по 07-briefs | backlog | редактор |</p>
+<p>| Publish 6 Excalibur в WP | check | контент / Aurora |</p>
+<p>| FAQ блок на главной (6 Q) | backlog | контент |</p>
+<p>| Яндекс.Метрика prod ID | backlog | владелец |</p>
+<p>| Список туроператоров для trust-блока | backlog | владелец |</p>
+<p>| Проверка cannibalization BT-01 vs `/` | check | SEO |</p>
+<p>| Webmaster: sitemap + регион Уфа | next | SEO |</p>
+<p>**Легенда:** done | check | next | backlog</p></article><article><h3>План внедрения</h3><h2>Implementation roadmap</h2>
+<h3>7 дней</h3>
+<p>1. Опубликовать 6 постов WP по slug из `11-blog-topics.md` (Excalibur HTML).</p>
+<p>2. Создать черновики страниц `/tour/turciya/` … `vietnam/` по `07-content-briefs.md`.</p>
+<p>3. Добавить FAQ-секцию на главной (6 вопросов из dossier).</p>
+<p>4. Проверить internal links из статей на лендинги.</p>
+<p>5. Яндекс.Вебмастер: sitemap, регион.</p>
+<h3>30 дней</h3>
+<p>1. Наполнить все 5 destination landings (уникальный текст ≥ 1200 слов каждый).</p>
+<p>2. Авторизовать Wordstat MCP → обновить частотности, уточнить P1/P2.</p>
+<p>3. SERP-срез топ-10 по 5 seed-запросам Уфа.</p>
+<p>4. Подключить Метрику (needs_user_fact).</p>
+<p>5. Trust-блок: операторы / VK (по фактам клиента).</p>
+<h3>90 дней</h3>
+<p>1. Контент P1: Россия в каталоге (если подтверждено).</p>
+<p>2. Опционально «горящие» без цен на экране — только CTA.</p>
+<p>3. Local SEO: карты, единый NAP audit.</p>
+<p>4. Пересмотр кластеров после GSC/Вебмастер (3 мес данных).</p>
+<h3>Роли</h3>
+<p>| Этап | Aurora / WP | Excalibur | SEO | Владелец |</p>
+<p>|------|-------------|-----------|-----|----------|</p>
+<p>| Блог P0 | шаблон, publish | готово | мета | — |</p>
+<p>| Лендинги | page template | — | briefs | тексты |</p>
+<p>| Wordstat | — | — | rerun | MCP auth |</p></article>
+  </section>
+
+  <section>
+    <h2>11. Итоговые рекомендации</h2>
+    <h3>Что улучшить первым</h3>
+    <ol>
+      <li>Развести информационные и коммерческие интенты по разным страницам.</li>
+      <li>Создать или обновить все P0-страницы.</li>
+      <li>Проверить live SERP по P0/P1 запросам.</li>
+      <li>Подключить GSC и Яндекс.Вебмастер.</li>
+      <li>Добавить кейсы, доверие, FAQ/GEO-блоки и сильные CTA.</li>
+    </ol>
+    <h3>План 7/30/90 дней</h3>
+    <ul>
+      <li>7 дней: проверить SERP, конкурентов, URL-структуру и первые ТЗ.</li>
+      <li>30 дней: опубликовать P0-страницы, перелинковать, добавить FAQ.</li>
+      <li>90 дней: сравнить показы/клики/CTR, обновить title/description, пересобрать ядро по фактическим данным.</li>
+    </ul>
+  </section>
+</main>
+<footer>Сгенерировано Core. Частотности не выдумываются; ограничения должны быть явно указаны в отчёте качества.</footer>
+</body>
+</html>

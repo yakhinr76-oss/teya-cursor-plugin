@@ -15,7 +15,7 @@ get_header();
 <main id="primary" class="site-main site-main--contacts">
 	<section class="page-hero">
 		<div class="container">
-			<h1><?php esc_html_e( 'Контакты турагентства «Жираф» в Уфе', 'zhiraf-ufa' ); ?></h1>
+			<h1><?php esc_html_e( 'Контакты «Жираф» в Уфе', 'zhiraf-ufa' ); ?></h1>
 		</div>
 	</section>
 	<section class="section">

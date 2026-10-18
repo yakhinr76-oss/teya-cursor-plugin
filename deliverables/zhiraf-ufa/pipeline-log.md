@@ -256,3 +256,31 @@
 
 - **SEO/GEO verification:** [`teya-memory/wp/seo-geo-verification.md`](../../teya-memory/wp/seo-geo-verification.md)
 - **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)
+
+---
+
+## 16. Globe Trekker blog (18.10.2026)
+
+AURA **Globe Trekker** blog pack (**1 featured + 5 cards**, serif **H1–H3**, editorial archive): blueprint **252193a**, WP/builder **1ae1824** (Cormorant Garamond, `template-parts/blog/*`, `home.php` / `front-page.php`, preview `home.html` + `blog.html`). Paint worker на ветке не коммитил после **1ae1824** — локально обновлены **home** и **`/blog/`** × **1440/390**, зеркало темы в `teya-memory`, gate **PASS**.
+
+| Шаг | Коммит / агент | Результат |
+|-----|----------------|-----------|
+| 1. AURA (blueprint) | **252193a** | Globe Trekker blog pack (1+5, serif H1–H3) |
+| 2. wp-theme-builder | **1ae1824** | Тема + preview sync; covers **blog-cover-02…06**; `_blog-globe.scss` |
+| 3. mirror | `bc-8d4d71f5-…` | `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/` → `teya-memory/wp/theme/zhiraf-ufa/` |
+| 4. paint (home + blog) | `bc-8d4d71f5-…` | **4** fullpage PNG (home + blog × 1440/390); `paint-evidence.json` обновлён (`git_ref` **1ae1824**, **38** total, `verdict: pass`) |
+| 5. release gate | `teya_release_gate.py` **07628b4** | **`exit_code` 0 — PASS**; `teya-memory/wp/release-gate-report.md` |
+| Deploy | — | **no** |
+
+### Итог
+
+| Gate | Статус |
+|------|--------|
+| AURA Globe Trekker | **✅** (**252193a** / **1ae1824**) |
+| teya-memory theme mirror | **✅** |
+| Paint home + blog | **✅** (4 PNG refresh, 38 в evidence) |
+| `teya_release_gate.py` | **PASS** (exit **0**) |
+| Deploy | **no** |
+
+- **Release report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)
+- **Paint evidence:** [`teya-memory/wp/paint-qa/paint-evidence.json`](../../teya-memory/wp/paint-qa/paint-evidence.json)

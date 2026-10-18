@@ -22,7 +22,8 @@
       "width": 800,
       "height": 1200,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "allow_duplicate_of": "dest-uae"
     },
     {
       "id": "hero-turkey",
@@ -42,7 +43,8 @@
       "width": 800,
       "height": 533,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "allow_duplicate_of": "dest-turkey"
     },
     {
       "id": "hero-egypt",
@@ -82,7 +84,8 @@
       "width": 800,
       "height": 554,
       "download_method": "existing_file",
-      "decode_verified": true
+      "decode_verified": true,
+      "allow_duplicate_of": "dest-thailand"
     },
     {
       "id": "hero-vietnam",
@@ -344,5 +347,7 @@
       "download_method": "existing_file",
       "decode_verified": true
     }
-  ]
+  ],
+  "duplicate_bytes_policy": "allow_duplicate_of_from_registry",
+  "updated_at": "2026-10-18T13:43:59+00:00"
 }

@@ -326,28 +326,29 @@ def main() -> int:
             item["detected_format"] = local_format
             item["decode_verified"] = True
             item["bytes"] = len(local_bytes)
-            media_assets.append(
-                {
-                    "id": ident,
-                    "registry_id": ident,
-                    "local_path": rel_path,
-                    "path": rel_path,
-                    "remote_url": remote_url,
-                    "source_url": item.get("url"),
-                    "transparent_url": item.get("transparent_url"),
-                    "requires_background_removal": bool(item.get("requires_background_removal")),
-                    "alt_text": item.get("alt_text") or item.get("alt") or "",
-                    "detected_format": local_format,
-                    "expected_extension": dest.suffix.lower(),
-                    "content_type": f"image/{'jpeg' if local_format == 'jpeg' else local_format}",
-                    "bytes": len(local_bytes),
-                    "sha256": row["sha256"],
-                    "width": width,
-                    "height": height,
-                    "download_method": "range_chunks_8192" if row["source"].startswith("range") else "existing_file",
-                    "decode_verified": True,
-                }
-            )
+            media_entry: dict[str, Any] = {
+                "id": ident,
+                "registry_id": ident,
+                "local_path": rel_path,
+                "path": rel_path,
+                "remote_url": remote_url,
+                "source_url": item.get("url"),
+                "transparent_url": item.get("transparent_url"),
+                "requires_background_removal": bool(item.get("requires_background_removal")),
+                "alt_text": item.get("alt_text") or item.get("alt") or "",
+                "detected_format": local_format,
+                "expected_extension": dest.suffix.lower(),
+                "content_type": f"image/{'jpeg' if local_format == 'jpeg' else local_format}",
+                "bytes": len(local_bytes),
+                "sha256": row["sha256"],
+                "width": width,
+                "height": height,
+                "download_method": "range_chunks_8192" if row["source"].startswith("range") else "existing_file",
+                "decode_verified": True,
+            }
+            if item.get("allow_duplicate_of"):
+                media_entry["allow_duplicate_of"] = str(item["allow_duplicate_of"])
+            media_assets.append(media_entry)
         except Exception as exc:  # noqa: BLE001 - convert every asset failure into report evidence.
             row.update({"status": "blocker", "error": str(exc), "decode_verified": False})
             item["status"] = "blocker"

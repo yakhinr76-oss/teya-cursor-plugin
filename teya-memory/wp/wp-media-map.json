@@ -23,7 +23,8 @@
       "height": 1200,
       "download_method": "existing_file",
       "decode_verified": true,
-      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-uae.jpg"
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-uae.jpg",
+      "allow_duplicate_of": "dest-uae"
     },
     {
       "id": "hero-turkey",
@@ -44,7 +45,8 @@
       "height": 533,
       "download_method": "existing_file",
       "decode_verified": true,
-      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-turkey.jpg"
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-turkey.jpg",
+      "allow_duplicate_of": "dest-turkey"
     },
     {
       "id": "hero-egypt",
@@ -86,7 +88,8 @@
       "height": 554,
       "download_method": "existing_file",
       "decode_verified": true,
-      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-thailand.jpg"
+      "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/hero-thailand.jpg",
+      "allow_duplicate_of": "dest-thailand"
     },
     {
       "id": "hero-vietnam",
@@ -361,5 +364,7 @@
       "decode_verified": true,
       "local_source_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/images/logo-zhiraf-client.png"
     }
-  ]
+  ],
+  "duplicate_bytes_policy": "allow_duplicate_of_from_registry",
+  "updated_at": "2026-10-18T13:43:59+00:00"
 }

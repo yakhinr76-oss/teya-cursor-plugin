@@ -62,6 +62,6 @@
 
 ### Registry duplicate bytes (allowed)
 
-Пары hero/dest с одним stock-файлом помечены `allow_duplicate_of` в `AURA_ASSET_REGISTRY.json`: `hero-thailand`→`dest-thailand`, `hero-uae`→`dest-uae`, `hero-turkey`→`dest-turkey`.
+Пары hero/dest с одним stock-файлом помечены `allow_duplicate_of` в `AURA_ASSET_REGISTRY.json` и в `wp-media-map.json` / theme `media-map.json`: `hero-thailand`→`dest-thailand`, `hero-uae`→`dest-uae`, `hero-turkey`→`dest-turkey`. `teya_release_gate.py` учитывает это при проверке sha256.
 
 Packaged copies: `teya-memory/wp/theme/zhiraf-ufa/assets/images/` (17 registry assets).

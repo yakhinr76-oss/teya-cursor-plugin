@@ -293,7 +293,40 @@ def check_report_identity(wp_dir: Path, theme_slug: str, errors: list[str]) -> N
             errors.append(f"stale report identity in teya-memory/wp/{name}: found {stale_slugs}, expected {theme_slug}")
 
 
+def registry_allow_duplicate_lookup(project_root: Path) -> dict[str, str]:
+    registry_path = project_root / "teya-memory" / "design" / "AURA_ASSET_REGISTRY.json"
+    registry = read_json(registry_path, [])
+    lookup: dict[str, str] = {}
+    assets = registry.get("assets") if isinstance(registry.get("assets"), list) else []
+    for item in assets:
+        if not isinstance(item, dict):
+            continue
+        asset_id = str(item.get("id") or item.get("registry_id") or "").strip()
+        allowed = str(item.get("allow_duplicate_of") or "").strip()
+        if asset_id and allowed:
+            lookup[asset_id] = allowed
+    return lookup
+
+
+def duplicate_bytes_allowed(
+    assets: list[dict[str, Any]],
+    unique_ids: list[str],
+    registry_lookup: dict[str, str],
+) -> bool:
+    for item in assets:
+        if not isinstance(item, dict):
+            continue
+        asset_id = str(item.get("registry_id") or item.get("id") or "").strip()
+        if asset_id not in unique_ids:
+            continue
+        allowed = str(item.get("allow_duplicate_of") or registry_lookup.get(asset_id) or "").strip()
+        if allowed:
+            return True
+    return False
+
+
 def check_media_maps(project_root: Path, wp_dir: Path, theme_dir: Path, errors: list[str]) -> None:
+    registry_lookup = registry_allow_duplicate_lookup(project_root)
     wp_media_map = read_json(wp_dir / "wp-media-map.json", errors)
     theme_media_map = read_json(theme_dir / "media-map.json", errors)
 
@@ -349,9 +382,13 @@ def check_media_maps(project_root: Path, wp_dir: Path, theme_dir: Path, errors: 
     if wp_media_map.get("import_status") == "pending":
         errors.append("wp-media-map.json import_status is pending; WP Media import is not complete")
 
+    normalized_maps: dict[str, list[dict[str, Any]]] = {}
     for label, media_map in (("wp-media-map.json", wp_media_map), ("theme media-map.json", theme_media_map)):
+        normalized_maps[label] = normalize_assets(media_map)
+
+    for label, assets in normalized_maps.items():
         hashes: dict[str, list[str]] = {}
-        for item in normalize_assets(media_map):
+        for item in assets:
             registry_id = str(item.get("registry_id") or item.get("id") or "").strip()
             raw_path = str(item.get("_resolved_asset_path") or "").strip()
             if not registry_id or not raw_path:
@@ -362,7 +399,7 @@ def check_media_maps(project_root: Path, wp_dir: Path, theme_dir: Path, errors: 
                 hashes.setdefault(digest, []).append(registry_id)
         for digest, ids in hashes.items():
             unique_ids = sorted(set(ids))
-            if len(unique_ids) > 1:
+            if len(unique_ids) > 1 and not duplicate_bytes_allowed(assets, unique_ids, registry_lookup):
                 errors.append(f"{label}: duplicate image bytes for distinct assets {unique_ids}: sha256={digest}")
 
 

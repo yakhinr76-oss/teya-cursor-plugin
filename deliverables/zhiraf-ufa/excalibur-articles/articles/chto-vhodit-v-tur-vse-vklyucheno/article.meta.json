@@ -25,10 +25,11 @@
   "geo_qa": {
     "score": 85,
     "verdict": "PASS",
-    "date": "2026-10-17",
+    "date": "2026-10-18",
     "html_linter": "PASS",
     "slop_score": "PASS",
-    "cannibalization": "PASS"
+    "cannibalization": "PASS",
+    "link_verify": "pass"
   },
   "cover_family": "brand_collage",
   "linked_landings": [

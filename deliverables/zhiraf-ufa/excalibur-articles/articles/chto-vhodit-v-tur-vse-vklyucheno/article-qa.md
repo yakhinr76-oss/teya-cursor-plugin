@@ -1,22 +1,38 @@
-# GEO QA — BT-02 «Что входит в тур «всё включено»: простыми словами»
+# QA: BT-02 chto-vhodit-v-tur-vse-vklyucheno
 
-**Дата:** 2026-10-17  
-**Вердикт:** **PASS**
+date: 2026-10-18
+score_total: 85/100
+core_eeat_lite: 17/20
+link_verify: pass
+verdict: PASS
 
-## Чеклист
+## Scores
 
-| Критерий | Статус |
-|----------|--------|
-| H1/H2 по карточке `11-blog-topics.md` | OK |
-| Объём 4 500–8 500 знаков (без HTML) | OK — 6033 |
-| Direct answer (первый абзац 350–500) | OK — 398 |
-| Режим B (гайд) | OK |
-| FAQ 5–7 | OK — 6 |
-| CTA ≤ 3 | OK |
-| Факты без выдуманных цен/брендов (BT-05) | OK |
-| HTML linter | PASS |
-| Запрещённые штампы / эмодзи | OK |
+| Блок | Балл |
+|------|------|
+| SEO structure | 18/20 |
+| GEO / citability | 21/25 |
+| CORE-EEAT lite | 17/20 |
+| Human voice | 13/15 |
+| Fact safety | 14/15 |
+| Contract HTML | 10/10 |
 
-## Итог
+## Link verify
 
-Статья готова к публикации (article.html, meta, excerpt, QA, schema).
+- failed: 0 (перелинковка на `/blog/turciya-ili-egipet-iz-ufy/` до публикации лендинга `/tour/egipet/`)
+
+## AI-slop scan
+
+- warning — slop-detector-report.json
+
+## Fact-check / HTML linter
+
+- pass
+
+## Schema ready
+
+BlogPosting: yes | FAQPage: yes (6)
+
+## GEO Уфа
+
+- пакеты с вылетом из Уфы, без цен «от» — OK

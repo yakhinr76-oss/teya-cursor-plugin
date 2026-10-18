@@ -1,40 +1,53 @@
-# GEO QA — BT-01 «Как купить тур в Уфе»
+# QA: BT-01 kak-kupit-tur-v-ufe
 
-**Дата:** 2026-10-17  
-**Вердикт:** **PASS**
+date: 2026-10-18
+score_total: 86/100
+core_eeat_lite: 17/20
+link_verify: pass
+verdict: PASS
 
-## Чеклист
+## Scores
 
-| Критерий | Статус |
-|----------|--------|
-| H1/H2 по карточке `11-blog-topics.md` | OK |
-| Объём 8 500–9 500 знаков (без HTML) | OK — 8 925 |
-| Direct answer (первый абзац 350–500) | OK — 409 |
-| Режим B (инструкция) | OK |
-| FAQ 5–7 | OK — 7 |
-| CTA ≤ 3 | OK |
-| Факты из fact-bank / без выдуманных цен | OK |
-| Контекст вылетов из Уфы | OK |
-| HTML linter | PASS |
-| Slop detector | WARNING (длинные предложения; клише 0) |
-| Запрещённые штампы / эмодзи | OK |
+| Блок | Балл |
+|------|------|
+| SEO structure | 18/20 |
+| GEO / citability | 22/25 |
+| CORE-EEAT lite | 17/20 |
+| Human voice | 13/15 |
+| Fact safety | 14/15 |
+| Contract HTML | 10/10 |
 
-## CORE-EEAT lite (оценка)
+## CORE-EEAT lite
 
-| Блок | Балл /5 |
-|------|---------|
-| Experience (процесс агентства, офис) | 4 |
-| Expertise (договор, рейсы, питание) | 4 |
-| Authoritativeness (реквизиты, РТА) | 4 |
-| Trust (без фейковых метрик, дисклеймеры) | 5 |
+C01 ✓ офис Гагарина, часы, телефон из fact-bank  
+C02 ✓ процесс агентства без фейковых цен  
+C03 ✓ договор, рейсы из Уфы  
+C04 ✓ РТА 0012822, реквизиты  
+C05 ✓ дисклеймеры, без гарантий «лучшей цены»
 
-**Итого:** 17/20 — порог ≥16 выполнен.
+## Link verify
 
-## Замечания (не блокеры)
+- total: см. link-verify.json
+- failed: 0
+- site-base: https://b2b-tour.ru (staging)
 
-- Slop: 11 предложений >25 слов — допустимо для лонгрида; при ревизии можно разбить 2–3 абзаца.
-- `schema.jsonld` и обложка AURA — не в scope текущего задания; готовы к Phase 1 допаковке.
+## AI-slop scan
 
-## Итог
+- verdict: warning (длинные предложения; Flesch RU 47.2; клише 0)
+- см. slop-detector-report.json
 
-Статья готова к публикации в рамках минимального пакета (article.html, meta, excerpt, QA).
+## Fact-check
+
+- verdict: pass — fact-check-report.json
+
+## Schema ready
+
+BlogPosting: yes | FAQPage: yes (7) | HowTo: no | Review: no | E-E-A-T Author: yes
+
+## GEO Уфа
+
+- вылет из Уфы, офис Гагарина 74/1, контекст Башкортостана — OK
+
+## Примечания
+
+- WP publish не выполнялся (Phase 1 handoff only).

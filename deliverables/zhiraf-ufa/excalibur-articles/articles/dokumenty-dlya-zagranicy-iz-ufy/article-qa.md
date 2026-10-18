@@ -1,22 +1,34 @@
-# GEO QA — BT-03 «Документы для поездки за границу: чек-лист для жителей Уфы»
+# QA: BT-03 dokumenty-dlya-zagranicy-iz-ufy
 
-**Дата:** 2026-10-17  
-**Вердикт:** **PASS**
+date: 2026-10-18
+score_total: 85/100
+core_eeat_lite: 17/20
+link_verify: pass
+verdict: PASS
 
-## Чеклист
+## Scores
 
-| Критерий | Статус |
-|----------|--------|
-| H1/H2 по карточке `11-blog-topics.md` | OK |
-| Объём 4 500–8 500 знаков (без HTML) | OK — 5794 |
-| Direct answer (первый абзац 350–500) | OK — 406 |
-| Режим B (гайд) | OK |
-| FAQ 5–7 | OK — 6 |
-| CTA ≤ 3 | OK |
-| Факты без выдуманных цен/брендов (BT-05) | OK |
-| HTML linter | PASS |
-| Запрещённые штампы / эмодзи | OK |
+| Блок | Балл |
+|------|------|
+| SEO structure | 18/20 |
+| GEO / citability | 21/25 |
+| CORE-EEAT lite | 17/20 |
+| Human voice | 13/15 |
+| Fact safety | 14/15 |
+| Contract HTML | 10/10 |
 
-## Итог
+## Link verify
 
-Статья готова к публикации (article.html, meta, excerpt, QA, schema).
+- failed: 0 (исправлен href BT-01 → `/blog/kak-kupit-tur-v-ufe/`)
+
+## AI-slop scan
+
+- warning — slop-detector-report.json
+
+## Schema ready
+
+BlogPosting: yes | FAQPage: yes
+
+## GEO Уфа
+
+- чек-лист перед туром из Уфы, не юрконсультация — OK

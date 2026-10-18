@@ -26,12 +26,20 @@
   "geo_qa": {
     "score": 86,
     "verdict": "PASS",
-    "date": "2026-10-17",
+    "date": "2026-10-18",
     "html_linter": "PASS",
     "slop_score": "WARNING",
-    "cannibalization": "PASS"
+    "cannibalization": "PASS",
+    "link_verify": "pass"
   },
   "cover_family": "brand_collage",
-  "linked_landings": ["/", "/kontakty/", "/tour/", "/tour/turciya/"],
-  "internal_links_planned": ["BT-03"]
+  "linked_landings": [
+    "/",
+    "/kontakty/",
+    "/tour/",
+    "/tour/turciya/"
+  ],
+  "internal_links_planned": [
+    "BT-03"
+  ]
 }

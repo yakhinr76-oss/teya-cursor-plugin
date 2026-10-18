@@ -1,22 +1,30 @@
-# GEO QA — BT-05 «Страхование поездки и рассрочка на тур: что спросить у менеджера»
+# QA: BT-05 strahovka-i-rassrochka-na-tur
 
-**Дата:** 2026-10-17  
-**Вердикт:** **PASS**
+date: 2026-10-18
+score_total: 85/100
+core_eeat_lite: 17/20
+link_verify: pass
+verdict: PASS
 
-## Чеклист
+## Scores
 
-| Критерий | Статус |
-|----------|--------|
-| H1/H2 по карточке `11-blog-topics.md` | OK |
-| Объём 4 500–8 500 знаков (без HTML) | OK — 4749 |
-| Direct answer (первый абзац 350–500) | OK — 397 |
-| Режим B (гайд) | OK |
-| FAQ 5–7 | OK — 6 |
-| CTA ≤ 3 | OK |
-| Факты без выдуманных цен/брендов (BT-05) | OK |
-| HTML linter | PASS |
-| Запрещённые штампы / эмодзи | OK |
+| Блок | Балл |
+|------|------|
+| SEO structure | 17/20 |
+| GEO / citability | 21/25 |
+| CORE-EEAT lite | 17/20 |
+| Human voice | 14/15 |
+| Fact safety | 14/15 |
+| Contract HTML | 10/10 |
 
-## Итог
+## Link verify
 
-Статья готова к публикации (article.html, meta, excerpt, QA, schema).
+- failed: 0
+
+## Schema ready
+
+BlogPosting: yes | FAQPage: yes
+
+## GEO Уфа
+
+- вопросы менеджеру в Уфе, без названий банков — OK

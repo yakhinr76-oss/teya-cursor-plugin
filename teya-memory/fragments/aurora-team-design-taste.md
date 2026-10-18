@@ -1,10 +1,13 @@
 === AURORA-TEAM-DESIGN-TASTE (ANTI-SLOP UI) ===
-## Статус: ✅ READY
-Mode: TASTE PLAN
+## Статус: ❌ BLOCKER
+Mode: TASTE AUDIT
 Theme: zhiraf-ufa
-design_ambition: polished (B2B premium Globe Trekker editorial)
-AURA_TASTE_PROFILE.md: ✓
-Key mandates: T01–T15 anti-slop; P01/P04/P07/P12 soft craft; homepage ≥5 layout families, ≥12 images, collage hero + vertical dest + editorial asymmetric; no fake reviews / AI purple slop / transition:all
-Waivers: MCP KV needsAuth → local AURA_ASSET_REGISTRY + theme files OK; optional wave transition skipped (ref JPG missing); trust-social = Aurora implementation P0
-Handoff: Aurora Team Lead, aurora-team-conversion-architect, aurora-team-content, aurora PAGE BUILDER, aurora-team-motion MOTION PLAN must read `teya-memory/design/AURA_TASTE_PROFILE.md`
-Next: TASTE AUDIT after PAGE BUILDER + trust block + Manrope-only cleanup
+Path: deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/
+design_ambition: polished
+AURA_TASTE_PROFILE.md: ✓ (baseline)
+AURA_TASTE_AUDIT.md: ✓
+AURA_IMPECCABLE_REPORT.json: ✓ pass (0 findings, deliverables path)
+Hard fails: T04 `transition: all` on `.btn`; T09 Unbounded display vs Manrope-only
+Warnings: T08 small `btn--sm`; P11 missing trust-social section; `--color-sand` undefined
+Craft OK: hero collage+SVG, dest 3:4+tabs, editorial 1+3, subscribe bleed, quiz modal, no AI purple slop
+Handoff: Aurora PAGE BUILDER — fix list in AURA_TASTE_AUDIT.md § Required fixes → TASTE RECOVERY

@@ -4,12 +4,13 @@
 |-------|-------|
 | command | `python3 scripts/teya_release_gate.py --project-root /workspace` |
 | exit_code | **1** |
-| status | **RELEASE BLOCKER** |
+| status | **RELEASE BLOCKER** (артефакты / layout темы, не скрипт gate) |
 | theme_slug | `zhiraf-ufa` |
-| gate_script | `scripts/teya_release_gate.py` @ **07628b4** (reverted; без allow_duplicate_of / theme_path hacks) |
-| checked_at | 2026-10-18T13:52:00+00:00 |
+| gate_script | `scripts/teya_release_gate.py` — **идентичен 07628b4** (без локальных правок) |
+| pillow | installed (`pip install Pillow`) |
+| checked_at | 2026-10-18T13:54:00+00:00 |
 | agent_bc_id | `bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e` |
-| deploy | **not run** (`public_site_url` empty → live checks skipped) |
+| deploy | **not run** |
 
 ## Stdout
 
@@ -25,7 +26,7 @@ TEYA RELEASE GATE FAILED
 - missing css file: /workspace/teya-memory/wp/theme/zhiraf-ufa/assets/dist/style.css
 ```
 
-## Blockers (summary)
+## Артефактные blockers (owner: packager / theme layout, не gate)
 
-1. Duplicate raster bytes hero/dest в `wp-media-map.json` и theme `media-map.json` (6 строк).
-2. В `teya-memory/wp/theme/zhiraf-ufa/` нет полной темы (только packaged assets) — gate 07628b4 не читает `site-spec.theme_path`.
+1. **Media maps:** одинаковые байты у пар hero/dest (3 пары × 2 map = 6 ошибок) — нужны distinct files или согласованный контракт registry без дублей в maps.
+2. **Theme path:** gate ожидает полную тему в `teya-memory/wp/theme/zhiraf-ufa/`; сейчас packaged `assets/` + `media-map.json`, PHP/CSS в `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/`.

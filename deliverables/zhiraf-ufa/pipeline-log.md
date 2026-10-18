@@ -119,6 +119,13 @@
 - **Blockers:** duplicate bytes hero/dest в media maps (×6); missing `style.css` / `assets/dist/style.css` under `teya-memory/wp/theme/zhiraf-ufa/` (packaged assets only).
 - **artifact-readiness:** identity `zhiraf-ufa`, slug lint clean (no agent-slug false positives).
 
+### 12.2 Post-packager gate run (Pillow, script 07628b4)
+
+- **Команда:** `pip install Pillow` → `python3 scripts/teya_release_gate.py --project-root /workspace`
+- **gate script:** без изменений (diff vs 07628b4 = 0)
+- **exit_code:** **1**
+- **Blockers (артефакты only):** duplicate hero/dest bytes в `wp-media-map.json` + theme `media-map.json`; нет CSS в `teya-memory/wp/theme/zhiraf-ufa/` (полная тема в `deliverables/`)
+
 ### Итог Phase 1 resume (2026-10-18)
 
 | Gate | Статус |

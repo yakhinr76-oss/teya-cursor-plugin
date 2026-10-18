@@ -138,7 +138,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				<div>
 					<h2 class="section-title"><?php esc_html_e( 'Горящие туры из Уфы', 'zhiraf-ufa' ); ?></h2>
 					<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
-						<?php esc_html_e( 'Реальные предложения ведущих туроператоров на 2 взрослых с вылетом из международного аэропорта «Уфа». Без скрытых доплат.', 'zhiraf-ufa' ); ?>
+						<?php esc_html_e( 'Цены туроператора Библио-Глобус с прямым вылетом из Уфы и стыковками в Москве. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
 					</p>
 				</div>
 				<div class="section-tabs tour-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Фильтр туров по странам', 'zhiraf-ufa' ); ?>">

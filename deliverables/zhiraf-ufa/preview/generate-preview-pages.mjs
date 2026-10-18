@@ -32,6 +32,16 @@ function pluralNights(n) {
 }
 
 function tourImage(tour) {
+  if (tour && tour.image) return tour.image;
+  const resort = (tour && tour.resort) ? String(tour.resort).toLowerCase() : '';
+  const slug = (tour && tour.country_slug) ? String(tour.country_slug) : 'turciya';
+
+  if (resort.includes('хургад') || resort.includes('шарм')) return 'dest-egypt.jpg';
+  if (resort.includes('нячанг') || resort.includes('фукуок')) return 'dest-vietnam.jpg';
+  if (resort.includes('пхукет') || resort.includes('паттай')) return 'dest-thailand.jpg';
+  if (resort.includes('дубай') || resort.includes('шардж') || resort.includes('аджман') || resort.includes('умм')) return 'dest-uae.jpg';
+  if (resort.includes('анталь') || resort.includes('стамбул')) return 'dest-turkey.jpg';
+
   const map = {
     turciya: 'dest-turkey.jpg',
     oae: 'dest-uae.jpg',
@@ -39,7 +49,7 @@ function tourImage(tour) {
     tailand: 'dest-thailand.jpg',
     vietnam: 'dest-vietnam.jpg',
   };
-  return map[tour.country_slug] || 'dest-turkey.jpg';
+  return map[slug] || 'dest-turkey.jpg';
 }
 
 function renderTourCard(tour) {
@@ -535,7 +545,7 @@ function destinationMain(data) {
       <div class="section-head reveal">
         <div>
           <h2 class="section-title">Актуальные туры ${prep} из Уфы</h2>
-          <p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">Проверенные пакетные предложения туроператора на 2 взрослых с перелётом из Уфы.</p>
+          <p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">Цены туроператора Библио-Глобус с прямым вылетом из Уфы и стыковками в Москве. Обновление каждые 6 часов.</p>
         </div>
       </div>
       <div class="tour-price-grid tour-price-grid--dest">

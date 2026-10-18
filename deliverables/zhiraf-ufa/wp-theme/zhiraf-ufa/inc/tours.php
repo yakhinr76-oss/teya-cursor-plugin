@@ -16,7 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string Image filename in assets/images/.
  */
 function zhiraf_ufa_tour_image( $tour ) {
-	$slug = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : 'turciya';
+	if ( ! empty( $tour['image'] ) ) {
+		return (string) $tour['image'];
+	}
+
+	$resort = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
+	$slug   = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : 'turciya';
+
 	$slug_map = array(
 		'turkey'   => 'turciya',
 		'uae'      => 'oae',
@@ -25,6 +31,24 @@ function zhiraf_ufa_tour_image( $tour ) {
 	);
 	if ( isset( $slug_map[ $slug ] ) ) {
 		$slug = $slug_map[ $slug ];
+	}
+
+	if ( '' !== $resort ) {
+		if ( false !== mb_strpos( $resort, 'хургад', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'шарм', 0, 'UTF-8' ) ) {
+			return 'dest-egypt.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'нячанг', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'фукуок', 0, 'UTF-8' ) ) {
+			return 'dest-vietnam.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'пхукет', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'паттай', 0, 'UTF-8' ) ) {
+			return 'dest-thailand.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'дубай', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'шардж', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'аджман', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'умм', 0, 'UTF-8' ) ) {
+			return 'dest-uae.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'анталь', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'стамбул', 0, 'UTF-8' ) ) {
+			return 'dest-turkey.jpg';
+		}
 	}
 
 	$map = array(

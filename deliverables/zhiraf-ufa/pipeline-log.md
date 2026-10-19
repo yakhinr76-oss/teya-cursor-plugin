@@ -43,6 +43,7 @@
 | release-gate-auditor (§18 release gate verification) | `bc-0d13e97b-f467-5768-b693-e95d454b93df` | да |
 | pipeline-log-compiler (§18 log compilation) | `bc-94c818d5-a1a2-51dc-ae0e-c3e6ebacfa4c` | да |
 | release-gate-auditor (§18 edits release gate PASS) | `bc-4ba1d94a-9558-5d3e-b429-aa4fc3e90865` | да |
+| wp-theme-builder (§18 resort photo fix & Paint QA) | `bc-20f11296-03c6-54e8-b357-bc78c3f01028` | да |
 
 ---
 

@@ -36,11 +36,14 @@ function tourImage(tour) {
   const resort = (tour && tour.resort) ? String(tour.resort).toLowerCase() : '';
   const slug = (tour && tour.country_slug) ? String(tour.country_slug) : 'turciya';
 
-  if (resort.includes('хургад') || resort.includes('шарм')) return 'dest-egypt.jpg';
-  if (resort.includes('нячанг') || resort.includes('фукуок')) return 'dest-vietnam.jpg';
+  if (resort.includes('стамбул')) return 'hero-turkey.jpg';
+  if (resort.includes('анталь') || resort.includes('кемер') || resort.includes('алань') || resort.includes('сиде') || resort.includes('белек')) return 'dest-turkey.jpg';
+  if (resort.includes('шарм')) return 'hero-egypt.jpg';
+  if (resort.includes('хургад')) return 'dest-egypt.jpg';
+  if (resort.includes('фукуок')) return 'hero-vietnam.jpg';
+  if (resort.includes('нячанг')) return 'dest-vietnam.jpg';
   if (resort.includes('пхукет') || resort.includes('паттай')) return 'dest-thailand.jpg';
-  if (resort.includes('дубай') || resort.includes('шардж') || resort.includes('аджман') || resort.includes('умм')) return 'dest-uae.jpg';
-  if (resort.includes('анталь') || resort.includes('стамбул')) return 'dest-turkey.jpg';
+  if (resort.includes('дубай') || resort.includes('шардж') || resort.includes('аджман') || resort.includes('умм') || resort.includes('рас') || resort.includes('фуджейр')) return 'dest-uae.jpg';
 
   const map = {
     turciya: 'dest-turkey.jpg',
@@ -882,7 +885,7 @@ const resorts = [
     country: 'egipet',
     country_name: 'Египет',
     h1: 'Туры в Шарм-эль-Шейх из Уфы',
-    image: 'dest-egypt.jpg',
+    image: 'hero-egypt.jpg',
     image_alt: 'Шарм-эль-Шейх — коралловые рифы Синайского полуострова и отдых на Красном море',
     hero_lead: 'Туры в Шарм-эль-Шейх с прямым вылетом из Уфы: фантастический подводный мир Красного моря, отели в безветренных бухтах для зимнего отдыха и система «всё включено».',
     hero_lead_extended: 'Шарм-эль-Шейх — знаменитый курорт на юге Синайского полуострова, признанная мировая столица снорклинга и дайвинга. Живые коралловые сады начинаются прямо у отельных пляжей, а закрытые бухты защищают туристов от ветров в зимний период. Турагентство «Жираф» в Уфе подбирает туры в Шарм-эль-Шейх с учётом особенностей бухт, глубины рифа и инфраструктуры отелей.',
@@ -963,7 +966,7 @@ const resorts = [
     country: 'vietnam',
     country_name: 'Вьетнам',
     h1: 'Туры на Фукуок из Уфы',
-    image: 'dest-vietnam.jpg',
+    image: 'hero-vietnam.jpg',
     image_alt: 'Фукуок — тропические пляжи острова в Сиамском заливе',
     hero_lead: 'Туры на остров Фукуок с вылетом из Уфы: уединённый тропический рай в Сиамском заливе, чистейшие лазурные пляжи без волн, роскошные закаты и первоклассные резорты.',
     hero_lead_extended: 'Фукуок — самый большой остров Вьетнама, расположенный в тёплых водах Сиамского залива. Это идеальное место для тех, кто ищет гармонию с природой, спокойное море цвета бирюзы, мягкий белый песок и современные отели премиального уровня. Турагентство «Жираф» в Уфе подбирает туры на Фукуок для пар, семей с детьми и ценителей экзотического релакса, обеспечивая надёжный трансфер и высокий уровень сервиса.',

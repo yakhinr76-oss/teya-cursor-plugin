@@ -7,7 +7,7 @@
 | page_build_ref | `teya-memory/wp/page-build-report.md` |
 | theme_ref | `e83ce46`+ (`cursor/zhiraf-b2b-site-a2bf`) — resort-accurate tour card photos & honest single-operator subtitle |
 | url_map_ref | `teya-memory/semantic-core/zhiraf-ufa-2026/wordstat/url-map.md` |
-| checked_at | 2026-10-18 |
+| checked_at | 2026-10-19 |
 | agent | paint QA (`bc-7503b3bf-5143-5012-a0f3-993d4006de47`) |
 
 ## Wordstat routes (full scroll → fullpage)

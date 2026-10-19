@@ -34,20 +34,29 @@ function zhiraf_ufa_tour_image( $tour ) {
 	}
 
 	if ( '' !== $resort ) {
-		if ( false !== mb_strpos( $resort, 'хургад', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'шарм', 0, 'UTF-8' ) ) {
+		if ( false !== mb_strpos( $resort, 'стамбул', 0, 'UTF-8' ) ) {
+			return 'hero-turkey.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'анталь', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'кемер', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'алань', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'сиде', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'белек', 0, 'UTF-8' ) ) {
+			return 'dest-turkey.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'шарм', 0, 'UTF-8' ) ) {
+			return 'hero-egypt.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'хургад', 0, 'UTF-8' ) ) {
 			return 'dest-egypt.jpg';
 		}
-		if ( false !== mb_strpos( $resort, 'нячанг', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'фукуок', 0, 'UTF-8' ) ) {
+		if ( false !== mb_strpos( $resort, 'фукуок', 0, 'UTF-8' ) ) {
+			return 'hero-vietnam.jpg';
+		}
+		if ( false !== mb_strpos( $resort, 'нячанг', 0, 'UTF-8' ) ) {
 			return 'dest-vietnam.jpg';
 		}
 		if ( false !== mb_strpos( $resort, 'пхукет', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'паттай', 0, 'UTF-8' ) ) {
 			return 'dest-thailand.jpg';
 		}
-		if ( false !== mb_strpos( $resort, 'дубай', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'шардж', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'аджман', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'умм', 0, 'UTF-8' ) ) {
+		if ( false !== mb_strpos( $resort, 'дубай', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'шардж', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'аджман', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'умм', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'рас', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'фуджейр', 0, 'UTF-8' ) ) {
 			return 'dest-uae.jpg';
-		}
-		if ( false !== mb_strpos( $resort, 'анталь', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'стамбул', 0, 'UTF-8' ) ) {
-			return 'dest-turkey.jpg';
 		}
 	}
 

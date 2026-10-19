@@ -563,7 +563,7 @@ class Zhiraf_BG_Price_Engine {
 	 * @param int    $max_files Max price files to fetch.
 	 * @return array{ok:bool,code:int,bytes:int,error:string,entries:array,files:int}
 	 */
-	public function fetch_country_entries( $country_id, $max_files = 8 ) {
+	public function fetch_country_entries( $country_id, $max_files = 12 ) {
 		$client = Zhiraf_BG_API_Client::get_instance();
 		$list   = $client->get(
 			sprintf( '%s/yandex?action=files&flt=%s&flt2=%s&xml=11', Zhiraf_BG_API_Client::EXPORT_BASE_URL, rawurlencode( $country_id ), rawurlencode( self::UFA_DEPARTURE_ID ) )
@@ -579,21 +579,40 @@ class Zhiraf_BG_Price_Engine {
 		$seen  = array();
 		$files = array();
 		foreach ( $list['data']['entries'] as $f ) {
-			if ( empty( $f['id_price'] ) || empty( $f['date'] ) || isset( $seen[ $f['id_price'] ] ) ) {
+			if ( empty( $f['id_price'] ) || empty( $f['date'] ) ) {
+				continue;
+			}
+			// A price file is the pair id_price + date (one id_price covers many departure dates).
+			$key = $f['id_price'] . '|' . $f['date'];
+			if ( isset( $seen[ $key ] ) ) {
 				continue;
 			}
 			$ts = strtotime( str_replace( '.', '-', $f['date'] ) );
 			if ( false === $ts || $ts <= $today ) {
 				continue;
 			}
-			$seen[ $f['id_price'] ] = true;
-			$files[]                = $f;
+			$min = (float) str_replace( ',', '.', (string) ( $f['minprice'] ?? '0' ) );
+			if ( $min <= 0 || ( isset( $f['cur'] ) && 'RUR' !== $f['cur'] ) ) {
+				continue; // minprice 0 = unknown; used only to pick files, never shown.
+			}
+			$durs = array_map( 'intval', array_filter( explode( '/', (string) ( $f['duration'] ?? '' ) ) ) );
+			$pref = 0;
+			foreach ( $durs as $dn ) {
+				if ( $dn >= 5 && $dn <= 10 ) {
+					$pref = 1;
+					break;
+				}
+			}
+			$seen[ $key ] = true;
+			$f['_min']    = $min;
+			$f['_pref']   = $pref;
+			$files[]      = $f;
 		}
-		// Prefer price files with the lowest operator minprice (used only for selection, never displayed).
+		// Files offering 5-10 nights first, then lowest operator minprice across all upcoming dates.
 		usort(
 			$files,
 			function ( $a, $b ) {
-				return (float) str_replace( ',', '.', $a['minprice'] ?? 0 ) <=> (float) str_replace( ',', '.', $b['minprice'] ?? 0 );
+				return array( $b['_pref'], $a['_min'] ) <=> array( $a['_pref'], $b['_min'] );
 			}
 		);
 		$files = array_slice( $files, 0, $max_files );
@@ -1223,11 +1242,12 @@ class Zhiraf_BG_Price_Engine {
 				continue;
 			}
 
-			// Deduplicate by hotel name to ensure rich selection.
-			if ( isset( $seen_hotels[ $hotel_name ] ) ) {
+			// One card per hotel: prefer 5-10 nights, then the cheapest real RUR price.
+			$rank = array( ( $nights >= 5 && $nights <= 10 ) ? 0 : 1, $price_rur );
+			if ( isset( $seen_hotels[ $hotel_name ] ) && $seen_hotels[ $hotel_name ] <= $rank ) {
 				continue;
 			}
-			$seen_hotels[ $hotel_name ] = true;
+			$seen_hotels[ $hotel_name ] = $rank;
 
 			$card = array(
 				'hotel_name'      => $hotel_name,
@@ -1241,7 +1261,7 @@ class Zhiraf_BG_Price_Engine {
 				'meal'            => $meal_info['name'],
 				'meal_code'       => $meal_info['code'],
 				'meal_name'       => $meal_info['name'],
-				'tourists'        => '2 взрослых',
+				'tourists'        => 'за 2 взрослых',
 				'price_rur'       => $price_rur,
 				'price_rub'       => $price_rur,
 				'price_formatted' => zhiraf_ufa_format_tour_price( $price_rur ),
@@ -1249,9 +1269,10 @@ class Zhiraf_BG_Price_Engine {
 				'disclaimer'      => $disclaimer,
 			);
 
-			$valid_cards[] = $card;
+			$valid_cards[ $hotel_name ] = $card;
 		}
 
+		$valid_cards = array_values( $valid_cards );
 		// Sort by price ascending.
 		usort(
 			$valid_cards,
@@ -1271,21 +1292,11 @@ class Zhiraf_BG_Price_Engine {
 	 * @return string
 	 */
 	private function parse_hotel_stars( array $entry, $hotel_name ) {
-		if ( ! empty( $entry['stars'] ) ) {
-			$raw = trim( (string) $entry['stars'] );
-			if ( preg_match( '/\b([1-5])\s*\*/', $raw, $m ) ) {
-				return $m[1] . '*';
-			}
-			if ( is_numeric( $raw ) && (int) $raw >= 1 && (int) $raw <= 5 ) {
-				return $raw . '*';
-			}
-			return $raw;
-		}
-
-		if ( preg_match( '/\b([1-5])\s*\*/', $hotel_name, $m ) ) {
+		// Only a real 1-5 star category from BG data; anything else ("-", "Boutique", "Special Class") => card dropped.
+		$raw = trim( (string) ( $entry['stars'] ?? '' ) );
+		if ( preg_match( '/^([1-5])\s*\*?$/', $raw, $m ) ) {
 			return $m[1] . '*';
 		}
-
 		return '';
 	}
 

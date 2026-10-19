@@ -29,6 +29,13 @@ $price_formatted  = ! empty( $tour['price_formatted'] ) ? (string) $tour['price_
 $price_date       = ! empty( $tour['price_date'] ) ? (string) $tour['price_date'] : '18.10.2026';
 $disclaimer       = ! empty( $tour['disclaimer'] ) ? (string) $tour['disclaimer'] : sprintf( __( 'рассчитана по курсу туроператора на %s, итоговая стоимость фиксируется при бронировании', 'zhiraf-ufa' ), $price_date );
 
+// Cards missing any required field are not shown.
+if ( '' === $hotel_name || '' === $stars || '' === $resort || '' === $departure_date || $nights < 3 || '' === $meal_code || $price_rur <= 0 ) {
+	return;
+}
+// Stale = price not refreshed today: show "цена от … на [дата], уточните…" instead of the fresh-price disclaimer.
+$is_stale = ( $price_date !== wp_date( 'd.m.Y' ) );
+
 $image_file       = zhiraf_ufa_tour_image( $tour );
 $nights_formatted = zhiraf_ufa_plural_nights( $nights );
 $country_name     = zhiraf_ufa_tour_country_name( $country_slug );
@@ -95,6 +102,7 @@ $prefill_text     = sprintf(
 					<span class="tour-card__price"><?php echo esc_html( $price_formatted ); ?></span>
 					<span class="tour-card__tourists"><?php echo esc_html( $tourists ); ?></span>
 				</div>
+				<?php if ( $is_stale ) : ?>
 				<p class="tour-card__fallback-note">
 					<span class="tour-card__status-dot" aria-hidden="true"></span>
 					<?php
@@ -106,7 +114,9 @@ $prefill_text     = sprintf(
 					);
 					?>
 				</p>
+				<?php else : ?>
 				<p class="tour-card__disclaimer"><?php echo esc_html( $disclaimer ); ?></p>
+				<?php endif; ?>
 			</div>
 
 			<button

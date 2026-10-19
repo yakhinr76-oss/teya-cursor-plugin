@@ -29,6 +29,16 @@ function zhiraf_ufa_moscow_landing_data() {
 		'uzbekistan' => array( __( 'Узбекистан', 'zhiraf-ufa' ), __( 'Узбекистан', 'zhiraf-ufa' ), __( 'в Узбекистан', 'zhiraf-ufa' ) ),
 		'armeniya'   => array( __( 'Армения', 'zhiraf-ufa' ), __( 'Армения', 'zhiraf-ufa' ), __( 'в Армению', 'zhiraf-ufa' ) ),
 	);
+	$alts = array(
+		'kitaj' => __( 'Китай — статуя Гуаньинь Наньшань в Санье, о. Хайнань', 'zhiraf-ufa' ),
+		'indiya' => __( 'Индия — собор Се в Старом Гоа', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланка — рыбаки на шестах в океане', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Бали — храм Улун Дану Братан на озере Братан', 'zhiraf-ufa' ),
+		'maldivy' => __( 'Мальдивы — Исламский центр в Мале', 'zhiraf-ufa' ),
+		'sejshely' => __( 'Сейшелы — гранитные валуны на пляже Ла-Диг', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Узбекистан — Регистан в Самарканде', 'zhiraf-ufa' ),
+		'armeniya' => __( 'Армения — античный храм Гарни', 'zhiraf-ufa' ),
+	);
 	$out = array();
 	foreach ( $rows as $slug => $r ) {
 		list( $name, $full, $to ) = $r;
@@ -39,8 +49,8 @@ function zhiraf_ufa_moscow_landing_data() {
 			'h1'           => sprintf( __( 'Туры %s с вылетом из Москвы', 'zhiraf-ufa' ), $to ),
 			'title'        => sprintf( __( 'Туры %s из Москвы — цены туроператора | Жираф', 'zhiraf-ufa' ), $to ),
 			'description'  => sprintf( __( '%s: пакетные туры с вылетом из Москвы (перелёт + отель) по ценам туроператора Библио-Глобус. Перелёт Уфа — Москва подберём отдельно.', 'zhiraf-ufa' ), $full ),
-			'image'        => '',
-			'image_alt'    => $full,
+			'image'        => 'country-' . $slug . '.jpg',
+			'image_alt'    => $alts[ $slug ] ?? $full,
 			'hero_lead'    => sprintf( __( 'Направление %s: пакетные туры с перелётом из Москвы и проживанием в отеле по данным туроператора Библио-Глобус. Перелёт из Уфы в Москву в стоимость не входит — менеджер подберёт удобную стыковку.', 'zhiraf-ufa' ), $full ),
 			'quiz_prefill' => sprintf( __( '%s, вылет из Москвы', 'zhiraf-ufa' ), $full ),
 			'faq'          => array(

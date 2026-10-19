@@ -53,19 +53,27 @@ function zhiraf_ufa_tour_image( $tour ) {
 			return 'dest-vietnam.jpg';
 		}
 		if ( false !== mb_strpos( $resort, 'пхукет', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'паттай', 0, 'UTF-8' ) ) {
-			return 'dest-thailand.jpg';
+			return 'country-tailand.jpg';
 		}
 		if ( false !== mb_strpos( $resort, 'дубай', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'шардж', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'аджман', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'умм', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'рас', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'фуджейр', 0, 'UTF-8' ) ) {
-			return 'dest-uae.jpg';
+			return 'country-oae.jpg';
 		}
 	}
 
 	$map = array(
-		'turciya' => 'dest-turkey.jpg',
-		'oae'     => 'dest-uae.jpg',
-		'egipet'  => 'hero-egypt.jpg',
-		'tailand' => 'dest-thailand.jpg',
-		'vietnam' => 'dest-vietnam.jpg',
+		'turciya' => 'country-turciya.jpg',
+		'egipet' => 'country-egipet.jpg',
+		'oae' => 'country-oae.jpg',
+		'tailand' => 'country-tailand.jpg',
+		'vietnam' => 'country-vietnam.jpg',
+		'kitaj' => 'country-kitaj.jpg',
+		'indiya' => 'country-indiya.jpg',
+		'shri-lanka' => 'country-shri-lanka.jpg',
+		'indoneziya' => 'country-indoneziya.jpg',
+		'maldivy' => 'country-maldivy.jpg',
+		'sejshely' => 'country-sejshely.jpg',
+		'uzbekistan' => 'country-uzbekistan.jpg',
+		'armeniya' => 'country-armeniya.jpg',
 	);
 
 	// Countries without a matching library photo get '' => card renders a gradient (never a wrong country's photo).

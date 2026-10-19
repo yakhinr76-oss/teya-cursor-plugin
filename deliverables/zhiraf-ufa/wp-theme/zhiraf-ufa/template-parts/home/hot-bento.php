@@ -15,32 +15,27 @@ $zhiraf_groups = array(
 		'heading' => __( 'Из Уфы', 'zhiraf-ufa' ),
 		'mod'     => 'ufa',
 		'tiles'   => array(
-			array( 'slug' => 'turciya', 'title' => __( 'Турция', 'zhiraf-ufa' ), 'image' => 'country-turciya.jpg', 'label' => 'direct', 'mod' => 'wide' ),
-			array( 'slug' => 'egipet', 'title' => __( 'Египет', 'zhiraf-ufa' ), 'image' => 'country-egipet.jpg', 'label' => 'direct', 'mod' => 'tall' ),
-			array( 'slug' => 'oae', 'title' => __( 'ОАЭ', 'zhiraf-ufa' ), 'image' => 'country-oae.jpg', 'label' => 'direct', 'mod' => 'small' ),
-			array( 'slug' => 'tailand', 'title' => __( 'Таиланд', 'zhiraf-ufa' ), 'image' => 'country-tailand.jpg', 'label' => 'via', 'mod' => 'small' ),
-			array( 'slug' => 'vietnam', 'title' => __( 'Вьетнам', 'zhiraf-ufa' ), 'image' => 'country-vietnam.jpg', 'label' => 'via', 'mod' => 'banner' ),
+			array( 'slug' => 'turciya', 'title' => __( 'Турция', 'zhiraf-ufa' ), 'image' => 'country-turciya.jpg', 'mod' => 'wide' ),
+			array( 'slug' => 'egipet', 'title' => __( 'Египет', 'zhiraf-ufa' ), 'image' => 'country-egipet.jpg', 'mod' => 'tall' ),
+			array( 'slug' => 'oae', 'title' => __( 'ОАЭ', 'zhiraf-ufa' ), 'image' => 'country-oae.jpg', 'mod' => 'small' ),
+			array( 'slug' => 'tailand', 'title' => __( 'Таиланд', 'zhiraf-ufa' ), 'image' => 'country-tailand.jpg', 'mod' => 'small' ),
+			array( 'slug' => 'vietnam', 'title' => __( 'Вьетнам', 'zhiraf-ufa' ), 'image' => 'country-vietnam.jpg', 'mod' => 'banner' ),
 		),
 	),
 	array(
 		'heading' => __( 'Из Москвы', 'zhiraf-ufa' ),
 		'mod'     => 'mow',
 		'tiles'   => array(
-			array( 'slug' => 'maldivy', 'title' => __( 'Мальдивы', 'zhiraf-ufa' ), 'image' => 'country-maldivy.jpg', 'label' => 'mow', 'mod' => 'wide' ),
-			array( 'slug' => 'sejshely', 'title' => __( 'Сейшелы', 'zhiraf-ufa' ), 'image' => 'country-sejshely.jpg', 'label' => 'mow', 'mod' => 'small' ),
-			array( 'slug' => 'shri-lanka', 'title' => __( 'Шри-Ланка', 'zhiraf-ufa' ), 'image' => 'country-shri-lanka.jpg', 'label' => 'mow', 'mod' => 'small' ),
-			array( 'slug' => 'indoneziya', 'title' => __( 'Бали', 'zhiraf-ufa' ), 'kicker' => __( 'Индонезия', 'zhiraf-ufa' ), 'image' => 'country-indoneziya.jpg', 'label' => 'mow', 'mod' => 'small' ),
-			array( 'slug' => 'indiya', 'title' => __( 'Гоа', 'zhiraf-ufa' ), 'kicker' => __( 'Индия', 'zhiraf-ufa' ), 'image' => 'country-indiya.jpg', 'label' => 'mow', 'mod' => 'wide' ),
-			array( 'slug' => 'kitaj', 'title' => __( 'Санья', 'zhiraf-ufa' ), 'kicker' => __( 'Китай, о. Хайнань', 'zhiraf-ufa' ), 'image' => 'country-kitaj.jpg', 'label' => 'mow', 'mod' => 'small' ),
-			array( 'slug' => 'uzbekistan', 'title' => __( 'Узбекистан', 'zhiraf-ufa' ), 'image' => 'country-uzbekistan.jpg', 'label' => 'mow', 'mod' => 'wide' ),
-			array( 'slug' => 'armeniya', 'title' => __( 'Армения', 'zhiraf-ufa' ), 'image' => 'country-armeniya.jpg', 'label' => 'mow', 'mod' => 'wide' ),
+			array( 'slug' => 'maldivy', 'title' => __( 'Мальдивы', 'zhiraf-ufa' ), 'image' => 'country-maldivy.jpg', 'mod' => 'wide' ),
+			array( 'slug' => 'sejshely', 'title' => __( 'Сейшелы', 'zhiraf-ufa' ), 'image' => 'country-sejshely.jpg', 'mod' => 'small' ),
+			array( 'slug' => 'shri-lanka', 'title' => __( 'Шри-Ланка', 'zhiraf-ufa' ), 'image' => 'country-shri-lanka.jpg', 'mod' => 'small' ),
+			array( 'slug' => 'indoneziya', 'title' => __( 'Бали', 'zhiraf-ufa' ), 'kicker' => __( 'Индонезия', 'zhiraf-ufa' ), 'image' => 'country-indoneziya.jpg', 'mod' => 'small' ),
+			array( 'slug' => 'indiya', 'title' => __( 'Гоа', 'zhiraf-ufa' ), 'kicker' => __( 'Индия', 'zhiraf-ufa' ), 'image' => 'country-indiya.jpg', 'mod' => 'wide' ),
+			array( 'slug' => 'kitaj', 'title' => __( 'Санья', 'zhiraf-ufa' ), 'kicker' => __( 'Китай, о. Хайнань', 'zhiraf-ufa' ), 'image' => 'country-kitaj.jpg', 'mod' => 'small' ),
+			array( 'slug' => 'uzbekistan', 'title' => __( 'Узбекистан', 'zhiraf-ufa' ), 'image' => 'country-uzbekistan.jpg', 'mod' => 'wide' ),
+			array( 'slug' => 'armeniya', 'title' => __( 'Армения', 'zhiraf-ufa' ), 'image' => 'country-armeniya.jpg', 'mod' => 'wide' ),
 		),
 	),
-);
-$zhiraf_labels = array(
-	'direct' => array( '✈', __( 'прямой вылет', 'zhiraf-ufa' ) ),
-	'via'    => array( '⇄', __( 'через Москву', 'zhiraf-ufa' ) ),
-	'mow'    => array( '✈', __( 'вылет из Москвы', 'zhiraf-ufa' ) ),
 );
 $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y' );
 ?>
@@ -50,6 +45,8 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 	<?php
 	foreach ( $group['tiles'] as $tile ) :
 		$min   = zhiraf_ufa_get_country_min_tour( $tile['slug'] );
+		// Label comes from the shown min-price tour itself (airline/route), never hardcoded.
+		$flight     = zhiraf_ufa_tour_flight_info( $min, 'mow' === $group['mod'] ? 'Москва' : 'Уфа' );
 		$price_date = $min && ! empty( $min['price_date'] ) ? (string) $min['price_date'] : '';
 		$is_stale   = $min && $price_date !== $zhiraf_today;
 		$price_txt  = $min ? number_format( (int) $min['price_rur'], 0, '.', ' ' ) : '';
@@ -62,8 +59,8 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 			<?php endif; ?>
 			<span class="hot-bento__shade" aria-hidden="true"></span>
 			<span class="hot-bento__label">
-				<span class="hot-bento__icon" aria-hidden="true"><?php echo esc_html( $zhiraf_labels[ $tile['label'] ][0] ); ?></span>
-				<?php echo esc_html( $zhiraf_labels[ $tile['label'] ][1] ); ?>
+				<span class="hot-bento__icon" aria-hidden="true"><?php echo esc_html( $flight['icon'] ); ?></span>
+				<?php echo esc_html( $flight['label'] ); ?>
 			</span>
 			<span class="hot-bento__body">
 				<?php if ( ! empty( $tile['kicker'] ) ) : ?>

@@ -155,3 +155,27 @@ function zhiraf_ufa_tour_country_name( $country_slug ) {
 
 	return isset( $map[ $country_slug ] ) ? $map[ $country_slug ] : '';
 }
+
+/**
+ * Flight info derived ONLY from the tour's own BG data (departure city + airline/route string).
+ * Ufa departure: "(стыковка в Москве)" in the operator's airline field => via Moscow, otherwise direct.
+ *
+ * @param array|null $tour Tour card.
+ * @param string     $fallback_city 'Уфа' or 'Москва' when no tour data.
+ * @return array{key:string,icon:string,label:string,line:string}
+ */
+function zhiraf_ufa_tour_flight_info( $tour, $fallback_city = 'Уфа' ) {
+	$city    = ! empty( $tour['departure_city'] ) ? (string) $tour['departure_city'] : $fallback_city;
+	$airline = ! empty( $tour['airline'] ) ? trim( (string) $tour['airline'] ) : '';
+	$carrier = trim( preg_replace( '/\s*\((без багажа|с багажом|стыковка в Москве|группа Аэрофлот)\)/u', '', $airline ) );
+	if ( 'Москва' === $city ) {
+		return array( 'key' => 'mow', 'icon' => '✈', 'label' => __( 'вылет из Москвы', 'zhiraf-ufa' ), 'line' => $carrier ? sprintf( __( '%s, из Москвы', 'zhiraf-ufa' ), $carrier ) : __( 'из Москвы', 'zhiraf-ufa' ) );
+	}
+	if ( '' === $airline ) {
+		return array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
+	}
+	if ( false !== mb_stripos( $airline, 'стыковка', 0, 'UTF-8' ) ) {
+		return array( 'key' => 'via', 'icon' => '⇄', 'label' => __( 'через Москву', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, стыковка в Москве', 'zhiraf-ufa' ), $carrier ) );
+	}
+	return array( 'key' => 'direct', 'icon' => '✈', 'label' => __( 'прямой рейс', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, прямой рейс из Уфы', 'zhiraf-ufa' ), $carrier ) );
+}

@@ -116,15 +116,15 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 			<div class="dest-flight-logistics reveal" style="margin-top:40px;background:var(--color-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--color-border);">
 				<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
 					<div>
-						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Прямые рейсы из аэропорта «Уфа» (UFA)', 'zhiraf-ufa' ); ?></h3>
+						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Перелёт из Уфы', 'zhiraf-ufa' ); ?></h3>
 						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-							<?php esc_html_e( 'Прямые чартеры: Египет (Хургада, Шарм-эль-Шейх), ОАЭ (Дубай, Шарджа) и Турция (Анталья, Стамбул). Время в пути 4.5–5.5 часов.', 'zhiraf-ufa' ); ?>
+							<?php esc_html_e( 'Турция, Египет, ОАЭ: в зависимости от даты — прямой рейс или стыковка в Москве. Тип перелёта указан на каждой карточке по данным «Библио-Глобус».', 'zhiraf-ufa' ); ?>
 						</p>
 					</div>
 					<div>
 						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Направления со стыковкой через Москву', 'zhiraf-ufa' ); ?></h3>
 						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-							<?php esc_html_e( 'Таиланд (Пхукет, Паттайя) и Вьетнам (Нячанг, Фукуок). Подбираем единый билет с удобной стыковкой в Москве.', 'zhiraf-ufa' ); ?>
+							<?php esc_html_e( 'Таиланд и Вьетнам: в текущей выгрузке «Библио-Глобус» туры из Уфы идут со стыковкой в Москве.', 'zhiraf-ufa' ); ?>
 						</p>
 					</div>
 				</div>
@@ -211,7 +211,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				<ul class="trust-social__facts">
 					<li><strong><?php esc_html_e( 'Официальный статус:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'ООО «Жираф», реестровый номер РТА 0012822.', 'zhiraf-ufa' ); ?></li>
 					<li><strong><?php esc_html_e( 'Защита туристов:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'работа строго по 132-ФЗ и 152-ФЗ.', 'zhiraf-ufa' ); ?></li>
-					<li><strong><?php esc_html_e( 'Прямые шлюзы туроператоров:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'бронирование в системах операторов с фингарантиями.', 'zhiraf-ufa' ); ?></li>
+					<li><strong><?php esc_html_e( 'Туроператор:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'цены и бронирование — «Библио-Глобус».', 'zhiraf-ufa' ); ?></li>
 					<li><strong><?php esc_html_e( 'Оплата и чеки:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'официальный договор, безналичная и эквайринг-оплата с чеком.', 'zhiraf-ufa' ); ?></li>
 					<li><strong><?php esc_html_e( 'Офис в Уфе:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'ул. Юрия Гагарина, 74/1, офис 3.', 'zhiraf-ufa' ); ?></li>
 				</ul>

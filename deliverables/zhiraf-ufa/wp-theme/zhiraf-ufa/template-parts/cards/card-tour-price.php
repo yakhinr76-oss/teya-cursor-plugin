@@ -87,6 +87,13 @@ $prefill_text     = sprintf(
 				<span class="tour-card__meta-label"><?php echo ( 'Москва' === ( $tour['departure_city'] ?? '' ) ) ? esc_html__( 'Вылет из Москвы:', 'zhiraf-ufa' ) : esc_html__( 'Вылет из Уфы:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $departure_date ); ?></strong>
 			</div>
+			<?php $zhiraf_flight = zhiraf_ufa_tour_flight_info( $tour ); ?>
+			<?php if ( '' !== $zhiraf_flight['line'] ) : ?>
+			<div class="tour-card__meta-item">
+				<span class="tour-card__meta-label"><?php esc_html_e( 'Перелёт:', 'zhiraf-ufa' ); ?></span>
+				<strong class="tour-card__meta-value"><?php echo esc_html( $zhiraf_flight['line'] ); ?></strong>
+			</div>
+			<?php endif; ?>
 			<div class="tour-card__meta-item">
 				<span class="tour-card__meta-label"><?php esc_html_e( 'Длительность:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $nights_formatted ); ?></strong>

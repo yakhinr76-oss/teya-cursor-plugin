@@ -508,216 +508,117 @@ class Zhiraf_BG_Price_Engine {
 	);
 
 	/**
-	 * Known hotel catalog mapping for Biblio-Globus hotel IDs.
+	 * Hotel catalog loaded from the live BG API (yandex?action=hotelsJson).
+	 * Names and stars come ONLY from the operator data, never hardcoded.
 	 *
-	 * @var array<string,array{name:string,stars:string,resort:string}>
+	 * @var array<string,array{name:string,stars:string}>|null
 	 */
-	public static $hotel_directory = array(
-		// Turkey
-		'102610117721' => array(
-			'name'   => 'Grand Ant Hotel Istanbul',
-			'stars'  => '3*',
-			'resort' => 'Стамбул (Старый город-Султанахмет)',
-		),
-		'102610117714' => array(
-			'name'   => 'Kaya Hotel Istanbul',
-			'stars'  => '3*',
-			'resort' => 'Стамбул (Старый город-Султанахмет)',
-		),
-		'102610117758' => array(
-			'name'   => 'Grand Washington Hotel Istanbul',
-			'stars'  => '4*',
-			'resort' => 'Стамбул (Старый город-Султанахмет)',
-		),
-		'102610135621' => array(
-			'name'   => 'Klas Hotel Istanbul',
-			'stars'  => '4*',
-			'resort' => 'Стамбул (Лалели)',
-		),
-		'102610122676' => array(
-			'name'   => 'Vicenza Hotel Istanbul',
-			'stars'  => '4*',
-			'resort' => 'Стамбул (Фатих)',
-		),
-		'102616154038' => array(
-			'name'   => 'Antis Hotel Istanbul Sultanahmet',
-			'stars'  => '4*',
-			'resort' => 'Стамбул (Старый город-Султанахмет)',
-		),
-		'102610114708' => array(
-			'name'   => 'Darkhill Hotel Istanbul Laleli',
-			'stars'  => '4*',
-			'resort' => 'Стамбул (Фатих)',
-		),
+	public static $hotel_catalog = null;
 
-		// UAE
-		'102616534618' => array(
-			'name'   => 'Al Seef Hotel Sharjah',
-			'stars'  => '3*',
-			'resort' => 'Шарджа',
-		),
-		'102610305324' => array(
-			'name'   => 'Ramada Hotel & Suites by Wyndham Ajman',
-			'stars'  => '4*',
-			'resort' => 'Аджман',
-		),
-		'102630893783' => array(
-			'name'   => 'Flamingo Beach Resort',
-			'stars'  => '3*',
-			'resort' => 'Умм Аль Кувейн',
-		),
-		'102610129435' => array(
-			'name'   => 'Sharjah Premiere Hotel & Resort',
-			'stars'  => '4*',
-			'resort' => 'Шарджа',
-		),
-		'102610123624' => array(
-			'name'   => 'Golden Tulip Sharjah',
-			'stars'  => '4*',
-			'resort' => 'Шарджа',
-		),
-		'102610214846' => array(
-			'name'   => 'Al Seef Hotel Sharjah',
-			'stars'  => '3*',
-			'resort' => 'Шарджа',
-		),
-		'102610237731' => array(
-			'name'   => 'Ramada Hotel & Suites by Wyndham Ajman',
-			'stars'  => '4*',
-			'resort' => 'Аджман',
-		),
+	/**
+	 * Load hotel catalog (id => name, stars) for our 5 countries from BG API. Cached 24h.
+	 *
+	 * @return array<string,array{name:string,stars:string}>
+	 */
+	public function load_hotel_catalog() {
+		if ( is_array( self::$hotel_catalog ) && ! empty( self::$hotel_catalog ) ) {
+			return self::$hotel_catalog;
+		}
+		$cached = get_transient( 'zhiraf_bg_hotel_catalog' );
+		if ( is_array( $cached ) && ! empty( $cached ) ) {
+			self::$hotel_catalog = $cached;
+			return $cached;
+		}
+		$country_ids = array();
+		foreach ( self::$countries as $c ) {
+			$country_ids[ (string) $c['id'] ] = true;
+		}
+		$res     = Zhiraf_BG_API_Client::get_instance()->get( Zhiraf_BG_API_Client::EXPORT_BASE_URL . '/yandex?action=hotelsJson' );
+		$catalog = array();
+		if ( $res['ok'] && is_array( $res['data'] ) ) {
+			foreach ( $res['data'] as $h ) {
+				if ( ! is_array( $h ) || empty( $h['key'] ) || empty( $h['name'] ) ) {
+					continue;
+				}
+				if ( ! empty( $h['countryKey'] ) && ! isset( $country_ids[ (string) $h['countryKey'] ] ) ) {
+					continue;
+				}
+				$catalog[ (string) $h['key'] ] = array(
+					'name'  => trim( preg_replace( '/\s+/u', ' ', (string) $h['name'] ) ),
+					'stars' => trim( (string) ( $h['stars'] ?? '' ) ),
+				);
+			}
+		}
+		if ( ! empty( $catalog ) ) {
+			set_transient( 'zhiraf_bg_hotel_catalog', $catalog, DAY_IN_SECONDS );
+		}
+		self::$hotel_catalog = $catalog;
+		return $catalog;
+	}
 
-		// Egypt
-		'102632927562' => array(
-			'name'   => 'Minamark Beach Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-		'102675395936' => array(
-			'name'   => 'Bella Vista Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-		'102610201634' => array(
-			'name'   => 'Regency Plaza Aqua Park & Spa',
-			'stars'  => '5*',
-			'resort' => 'Шарм-эль-Шейх',
-		),
-		'102661696060' => array(
-			'name'   => 'Pickalbatros Aqua Park Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-		'102632810444' => array(
-			'name'   => 'Seagull Beach Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-		'102610123547' => array(
-			'name'   => 'Bella Vista Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-		'102610123533' => array(
-			'name'   => 'Regency Plaza Aqua Park & Spa',
-			'stars'  => '5*',
-			'resort' => 'Шарм-эль-Шейх',
-		),
-		'102610123522' => array(
-			'name'   => 'Seagull Beach Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-		'102610228383' => array(
-			'name'   => 'Pickalbatros Aqua Park Resort Hurghada',
-			'stars'  => '4*',
-			'resort' => 'Хургада',
-		),
-
-		// Thailand
-		'102610268222' => array(
-			'name'   => 'Kamala Beach Resort A Sunprime Resort',
-			'stars'  => '4*',
-			'resort' => 'Пхукет, Пляж Камала',
-		),
-		'102610205893' => array(
-			'name'   => 'Sugar Palm Grand Hillside Kata',
-			'stars'  => '4*',
-			'resort' => 'Пхукет, Пляж Ката',
-		),
-		'102610157476' => array(
-			'name'   => 'Splash Beach Resort Maikhao Phuket',
-			'stars'  => '5*',
-			'resort' => 'Пхукет, Пляж Май Хао',
-		),
-		'102670735843' => array(
-			'name'   => 'Sugar Marina Resort ART Karon Beach',
-			'stars'  => '4*',
-			'resort' => 'Пхукет, Пляж Карон',
-		),
-		'102623578045' => array(
-			'name'   => 'The Charm Resort Phuket',
-			'stars'  => '4*',
-			'resort' => 'Пхукет, Пляж Патонг',
-		),
-		'102610230536' => array(
-			'name'   => 'Splash Beach Resort Maikhao Phuket',
-			'stars'  => '5*',
-			'resort' => 'Пхукет, Пляж Май Хао',
-		),
-		'102610245233' => array(
-			'name'   => 'Sugar Marina Resort ART Karon Beach',
-			'stars'  => '4*',
-			'resort' => 'Пхукет, Пляж Карон',
-		),
-		'102610238127' => array(
-			'name'   => 'The Charm Resort Phuket',
-			'stars'  => '4*',
-			'resort' => 'Пхукет, Пляж Патонг',
-		),
-
-		// Vietnam
-		'102610289828' => array(
-			'name'   => 'V Hotel Nha Trang',
-			'stars'  => '4*',
-			'resort' => 'Нячанг',
-		),
-		'102610262501' => array(
-			'name'   => 'Golden Sea Hotel Nha Trang',
-			'stars'  => '3*',
-			'resort' => 'Нячанг',
-		),
-		'102610262485' => array(
-			'name'   => 'Regalia Hotel Nha Trang',
-			'stars'  => '3*',
-			'resort' => 'Нячанг',
-		),
-		'102610279315' => array(
-			'name'   => 'Erica Hotel Nha Trang',
-			'stars'  => '4*',
-			'resort' => 'Нячанг',
-		),
-		'102610262575' => array(
-			'name'   => 'Virgo Hotel Nha Trang',
-			'stars'  => '5*',
-			'resort' => 'Нячанг',
-		),
-		'102610280459' => array(
-			'name'   => 'Erica Hotel Nha Trang',
-			'stars'  => '4*',
-			'resort' => 'Нячанг',
-		),
-		'102610262483' => array(
-			'name'   => 'V Hotel Nha Trang',
-			'stars'  => '4*',
-			'resort' => 'Нячанг',
-		),
-		'102610280461' => array(
-			'name'   => 'Virgo Hotel Nha Trang',
-			'stars'  => '5*',
-			'resort' => 'Нячанг',
-		),
-	);
+	/**
+	 * Fetch detailed price entries for a country: price list (action=files) -> several action=price files.
+	 *
+	 * @param string $country_id BG country id.
+	 * @param int    $max_files Max price files to fetch.
+	 * @return array{ok:bool,code:int,bytes:int,error:string,entries:array,files:int}
+	 */
+	public function fetch_country_entries( $country_id, $max_files = 8 ) {
+		$client = Zhiraf_BG_API_Client::get_instance();
+		$list   = $client->get(
+			sprintf( '%s/yandex?action=files&flt=%s&flt2=%s&xml=11', Zhiraf_BG_API_Client::EXPORT_BASE_URL, rawurlencode( $country_id ), rawurlencode( self::UFA_DEPARTURE_ID ) )
+		);
+		$out = array( 'ok' => false, 'code' => (int) $list['code'], 'bytes' => (int) ( $list['bytes'] ?? 0 ), 'error' => (string) $list['error'], 'entries' => array(), 'files' => 0 );
+		if ( ! $list['ok'] || empty( $list['data']['entries'] ) || ! is_array( $list['data']['entries'] ) ) {
+			if ( '' === $out['error'] ) {
+				$out['error'] = 'Пустой список прайсов (action=files)';
+			}
+			return $out;
+		}
+		$today = strtotime( date( 'Y-m-d' ) );
+		$seen  = array();
+		$files = array();
+		foreach ( $list['data']['entries'] as $f ) {
+			if ( empty( $f['id_price'] ) || empty( $f['date'] ) || isset( $seen[ $f['id_price'] ] ) ) {
+				continue;
+			}
+			$ts = strtotime( str_replace( '.', '-', $f['date'] ) );
+			if ( false === $ts || $ts <= $today ) {
+				continue;
+			}
+			$seen[ $f['id_price'] ] = true;
+			$files[]                = $f;
+		}
+		// Prefer price files with the lowest operator minprice (used only for selection, never displayed).
+		usort(
+			$files,
+			function ( $a, $b ) {
+				return (float) str_replace( ',', '.', $a['minprice'] ?? 0 ) <=> (float) str_replace( ',', '.', $b['minprice'] ?? 0 );
+			}
+		);
+		$files = array_slice( $files, 0, $max_files );
+		foreach ( $files as $f ) {
+			$url = sprintf(
+				'%s/partners?action=price&tid=211&flt=%s&flt2=%s&id_price=%s&data=%s&xml=11',
+				Zhiraf_BG_API_Client::EXPORT_BASE_URL,
+				rawurlencode( $country_id ),
+				rawurlencode( self::UFA_DEPARTURE_ID ),
+				rawurlencode( $f['id_price'] ),
+				rawurlencode( $f['date'] )
+			);
+			$r = $client->get( $url );
+			$out['bytes'] += (int) ( $r['bytes'] ?? 0 );
+			if ( $r['ok'] && ! empty( $r['data']['entries'] ) && is_array( $r['data']['entries'] ) ) {
+				$out['entries'] = array_merge( $out['entries'], $r['data']['entries'] );
+				$out['files']++;
+			}
+		}
+		$out['ok'] = ! empty( $out['entries'] );
+		if ( ! $out['ok'] && '' === $out['error'] ) {
+			$out['error'] = 'Прайсы action=price вернули 0 строк';
+		}
+		return $out;
+	}
 
 	/**
 	 * Country slug aliases map.
@@ -973,19 +874,16 @@ class Zhiraf_BG_Price_Engine {
 			'destinations'      => array(),
 		);
 
+		$this->load_hotel_catalog();
 		$total_fetched = 0;
 		$counts        = array();
 		$errors        = array();
 
 		foreach ( self::$countries as $slug => $c_info ) {
 			$country_id = $c_info['id'];
-			$url        = sprintf(
-				'https://export.bgoperator.ru/partners?action=price&tid=211&flt=%s&flt2=%s&xml=11',
-				rawurlencode( $country_id ),
-				rawurlencode( self::UFA_DEPARTURE_ID )
-			);
-
-			$res = $client->get( $url );
+			$fetch = $this->fetch_country_entries( $country_id );
+			$url   = 'action=files -> action=price x' . $fetch['files'];
+			$res   = array( 'ok' => $fetch['ok'], 'code' => $fetch['code'], 'bytes' => $fetch['bytes'], 'error' => $fetch['error'], 'data' => array( 'entries' => $fetch['entries'] ) );
 
 			$step_log = array(
 				'country'           => $c_info['name_ru'],
@@ -1287,29 +1185,23 @@ class Zhiraf_BG_Price_Engine {
 				$resort = self::$countries[ $country_slug ]['name_ru'] ?? 'Курорт';
 			}
 
-			// 6. Extract hotel name & category (catalog lookup with graceful fallback).
+			// 6. Hotel name & stars strictly from BG data (hotelsJson catalog by id_hotel, or fields of the entry).
 			$hotel_id   = ! empty( $entry['id_hotel'] ) ? trim( (string) $entry['id_hotel'] ) : '';
 			$hotel_name = '';
-			$stars      = '4*';
-
-			if ( ! empty( $hotel_id ) && isset( self::$hotel_directory[ $hotel_id ] ) ) {
-				$hotel_name = self::$hotel_directory[ $hotel_id ]['name'];
-				$stars      = self::$hotel_directory[ $hotel_id ]['stars'];
-				if ( ! empty( self::$hotel_directory[ $hotel_id ]['resort'] ) ) {
-					$resort = self::$hotel_directory[ $hotel_id ]['resort'];
-				}
+			$stars      = '';
+			$catalog    = is_array( self::$hotel_catalog ) ? self::$hotel_catalog : array();
+			if ( '' !== $hotel_id && isset( $catalog[ $hotel_id ] ) ) {
+				$hotel_name = $catalog[ $hotel_id ]['name'];
+				$stars      = $this->parse_hotel_stars( array( 'stars' => $catalog[ $hotel_id ]['stars'] ), $hotel_name );
 			} elseif ( ! empty( $entry['hotel'] ) ) {
 				$hotel_name = trim( (string) $entry['hotel'] );
 				$stars      = $this->parse_hotel_stars( $entry, $hotel_name );
 			} elseif ( ! empty( $entry['hotel_name'] ) ) {
 				$hotel_name = trim( (string) $entry['hotel_name'] );
 				$stars      = $this->parse_hotel_stars( $entry, $hotel_name );
-			} elseif ( ! empty( $entry['tourname'] ) ) {
-				$hotel_name = trim( (string) $entry['tourname'] );
-				$stars      = $this->parse_hotel_stars( $entry, $hotel_name );
-			} elseif ( ! empty( $hotel_id ) ) {
-				$hotel_name = 'Отель ' . $resort . ' #' . $hotel_id;
-				$stars      = $this->parse_hotel_stars( $entry, $hotel_name );
+			}
+			if ( '' === $stars ) {
+				$hotel_name = '';
 			}
 
 			if ( empty( $hotel_name ) ) {
@@ -1320,6 +1212,16 @@ class Zhiraf_BG_Price_Engine {
 
 			// 7. Extract meal.
 			$meal_info = $this->parse_meal_code_and_name( $entry );
+			if ( '' === $meal_info['code'] ) {
+				$stats['filter_reasons']['empty_hotel']++;
+				$stats['filtered_total']++;
+				continue;
+			}
+			$ag = (string) ( $entry['prices'][0]['ag'] ?? '' );
+			if ( '' !== $ag && 2 !== count( array_filter( array_map( 'trim', explode( ',', $ag ) ) ) ) ) {
+				$stats['filtered_total']++;
+				continue;
+			}
 
 			// Deduplicate by hotel name to ensure rich selection.
 			if ( isset( $seen_hotels[ $hotel_name ] ) ) {
@@ -1384,7 +1286,7 @@ class Zhiraf_BG_Price_Engine {
 			return $m[1] . '*';
 		}
 
-		return '4*';
+		return '';
 	}
 
 	/**
@@ -1407,7 +1309,7 @@ class Zhiraf_BG_Price_Engine {
 
 		$upper = strtoupper( $source );
 
-		if ( preg_match( '/\b(UAI|ULTRA ALL INCLUSIVE)\b/', $upper ) ) {
+		if ( preg_match( '/\b(UAI|ULTRA ALL INCLUSIVE|ULTRA ALL)\b/', $upper ) ) {
 			return array(
 				'code' => 'UAI',
 				'name' => 'UAI (Ультра все включено)',
@@ -1445,8 +1347,8 @@ class Zhiraf_BG_Price_Engine {
 		}
 
 		return array(
-			'code' => 'BB',
-			'name' => 'BB (Завтрак включен)',
+			'code' => '',
+			'name' => '',
 		);
 	}
 

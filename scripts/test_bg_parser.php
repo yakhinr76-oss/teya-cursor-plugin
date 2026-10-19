@@ -207,6 +207,8 @@ if ( ! file_exists( $bg_api_file ) ) {
 require_once $bg_api_file;
 
 $samples_dir = dirname( __DIR__ ) . '/teya-memory/bg-api-samples';
+// Hotel catalog subset taken from live yandex?action=hotelsJson (names/stars come only from BG data).
+Zhiraf_BG_Price_Engine::$hotel_catalog = json_decode( (string) file_get_contents( $samples_dir . '/hotels_catalog.json' ), true );
 if ( ! is_dir( $samples_dir ) ) {
 	fwrite( STDERR, "ERROR: Samples dir not found at: {$samples_dir}\n" );
 	exit( 1 );

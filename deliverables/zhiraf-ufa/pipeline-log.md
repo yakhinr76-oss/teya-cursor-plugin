@@ -44,6 +44,7 @@
 | pipeline-log-compiler (§18 log compilation) | `bc-94c818d5-a1a2-51dc-ae0e-c3e6ebacfa4c` | да |
 | release-gate-auditor (§18 edits release gate PASS) | `bc-4ba1d94a-9558-5d3e-b429-aa4fc3e90865` | да |
 | wp-theme-builder (§18 resort photo fix & Paint QA) | `bc-20f11296-03c6-54e8-b357-bc78c3f01028` | да |
+| bg-api-specialist (§19 live engine hotfix & offline parser test) | `bc-188c79dc-8781-500e-bc3b-885d7c2868ac` | да |
 
 ---
 
@@ -462,4 +463,44 @@ AURA **Globe Trekker** blog pack (**1 featured + 5 cards**, serif **H1–H3**, e
 - **Paint QA Report:** [`teya-memory/wp/paint-qa/paint-qa-report.md`](../../teya-memory/wp/paint-qa/paint-qa-report.md)
 - **Paint Evidence:** [`teya-memory/wp/paint-qa/paint-evidence.json`](../../teya-memory/wp/paint-qa/paint-evidence.json)
 - **Release Report:** [`teya-memory/wp/release-gate-report.md`](../../teya-memory/wp/release-gate-report.md)
+
+---
+
+## 19. Роль: bg-api-specialist (§19 Live Engine Hotfix, Gzip Decompression & Offline Parser Test)
+- **Агент:** `bc-188c79dc-8781-500e-bc3b-885d7c2868ac` (2026-10-19)
+- **Контекст бага на боевой:**
+  - При ручной синхронизации в админке отображалось: «Синхронизировано 0 туров … Все направления обновлены успешно».
+  - На главной оставались фикстуры.
+  - Причины: вызовы по незащищенному HTTP (`http://export.bgoperator.ru`), отсутствие распаковки GZIP потока (`\x1f\x8b`) перед парсингом JSON/XML, недостаточный таймаут при больших выгрузках (до 1.1 МБ), отсутствие каталога имен отелей для сопоставления с `id_hotel`, маскировка статуса ошибки как `live_success`.
+- **Выполненные доработки `inc/bg-api.php`:**
+  - Все эндпоинты (`AUTH_ENDPOINT`, `EXPORT_BASE_URL` и динамические запросы) строго переведены на `https://`.
+  - Установлен таймаут `timeout => 60` и заголовок `Accept-Encoding: gzip`.
+  - Реализована безопасная распаковка сжатых данных: проверка магических байтов gzip `\x1f\x8b` перед `gzdecode()` с fallback на исходный body.
+  - Внедрен справочник сопоставления отелей `Zhiraf_BG_Price_Engine::$hotel_directory` для туров из Уфы (Турция, Египет, ОАЭ, Таиланд, Вьетнам).
+  - Реализовано детальное логирование каждого шага (`Zhiraf_BG_Price_Engine::LOG_OPTION_KEY` / `zhiraf_bg_sync_log`): URL запроса (без секретов), HTTP-код, размер в байтах, число найденных строк, число отфильтрованных строк с детальными причинами (`duration_under_3_nights`, `no_rur_price`, `stop_sales`, `invalid_date`, `empty_hotel`).
+  - Лог отображается в блоке диагностики страницы настроек админки (`zhiraf-bg-settings` / `zhiraf-bg-api`).
+  - Исправлен статус синхронизации: при 0 туров выводится явное предупреждение `sync_warning`/`sync_failed` с описанием и рекомендацией, без ложного «Все направления обновлены успешно».
+- **Офлайн-тестирование парсера:**
+  - Создан скрипт `scripts/test_bg_parser.php`, проверяющий все 5 образцов из `teya-memory/bg-api-samples/` (`price_TR.xml`, `price_EG.xml`, `price_AE.xml`, `price_TH.xml`, `price_VN.xml`).
+  - Результат: **PASS (exit code 0)** — для каждой страны отобрано по 10 туров (требовалось >= 5), проверены `hotel_name`, `date`, `duration` >= 3, `meal`, `price_rub` > 0.
+- **Тема синхронизирована:** `deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/` -> `teya-memory/wp/theme/zhiraf-ufa/`.
+- **Проверки и Release Gate:**
+  - `php scripts/test_bg_parser.php` -> PASS (exit 0).
+  - `find deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/ -name "*.php" -exec php -l {} \;` -> PASS (0 синтаксических ошибок).
+  - `bash scripts/zhiraf_copy_lint.sh` -> PASS (0 утечек).
+  - `python3 scripts/teya_release_gate.py --project-root /workspace` -> PASS (exit 0).
+
+### Итог §19
+
+| Gate | Статус |
+|------|--------|
+| BG API HTTPS Enforcement & Gzip Decompression | **PASS** |
+| BG API Step-by-Step Sync Logging & Diagnostics | **PASS** |
+| BG API Status Logic (no false success on 0 tours) | **PASS** |
+| Offline Parser Test Suite (`scripts/test_bg_parser.php`) | **PASS** (exit **0**, 5/5 countries >= 5 tours) |
+| Theme Mirroring (`teya-memory/wp/theme/zhiraf-ufa/`) | **PASS** |
+| Copy Linter (`zhiraf_copy_lint.sh`) | **PASS** (0 leaks) |
+| PHP Linter (`php -l`) | **PASS** (55/55 OK) |
+| `teya_release_gate.py` | **PASS** (exit **0**) |
+| Deploy | **no** |
 

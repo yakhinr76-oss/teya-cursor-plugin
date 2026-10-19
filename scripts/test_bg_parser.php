@@ -327,13 +327,16 @@ foreach ( $test_cases as $slug => $meta ) {
 			$errors[] = "Тур #{$idx}: price_rub <= 0 ({$price})";
 		}
 
+		$hotel_display = function_exists( 'mb_strimwidth' ) ? mb_strimwidth( $hotel, 0, 32, '...' ) : ( strlen( $hotel ) > 32 ? substr( $hotel, 0, 29 ) . '...' : $hotel );
+		$meal_display  = function_exists( 'mb_strimwidth' ) ? mb_strimwidth( $meal, 0, 16, '...' ) : ( strlen( $meal ) > 16 ? substr( $meal, 0, 13 ) . '...' : $meal );
+
 		printf(
 			" %-4d | %-32s | %-12s | %-6d | %-16s | %-10s\n",
 			$idx,
-			mb_strimwidth( $hotel, 0, 32, '...' ),
+			$hotel_display,
 			$date,
 			(int) $duration,
-			mb_strimwidth( $meal, 0, 16, '...' ),
+			$meal_display,
 			number_format( (int) $price, 0, '', ' ' ) . ' ₽'
 		);
 		$idx++;

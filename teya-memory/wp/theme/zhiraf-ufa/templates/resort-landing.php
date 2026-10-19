@@ -32,6 +32,27 @@ $country_url = home_url( '/tour/' . $resort_data['country'] . '/' );
 		</div>
 	</section>
 
+	<?php
+	$zhiraf_cards = ! empty( $resort_data['tours_rx'] ) ? zhiraf_ufa_get_country_top_tours( $resort_data['country'], 3, $resort_data['tours_rx'] ) : array();
+	?>
+	<?php if ( ! empty( $zhiraf_cards ) ) : ?>
+		<section class="section section--dest-tours section--dest-tours-top bg-sand" id="dest-tours">
+			<div class="container">
+				<div class="section-head reveal">
+					<div>
+						<h2 class="section-title"><?php echo esc_html( __( 'Самые выгодные отели курорта', 'zhiraf-ufa' ) ); ?></h2>
+						<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);"><?php echo esc_html( __( 'Цены туроператора Библио-Глобус для 2 взрослых: перелёт и отель, 6–10 ночей (если таких нет — от 5 ночей). Обновление каждые 6 часов.', 'zhiraf-ufa' ) ); ?></p>
+					</div>
+				</div>
+				<div class="tour-price-grid tour-price-grid--dest tour-price-grid--top">
+					<?php foreach ( $zhiraf_cards as $tour_item ) : ?>
+						<?php get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item ) ); ?>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	<?php if ( ! empty( $resort_data['geo_answer'] ) ) : ?>
 		<section class="section geo-answer-block bg-milky">
 			<div class="container container--narrow">

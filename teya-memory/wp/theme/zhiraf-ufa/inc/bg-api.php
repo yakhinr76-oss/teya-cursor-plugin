@@ -481,40 +481,53 @@ class Zhiraf_BG_Price_Engine {
 			'name_ru'  => 'Турция',
 			'code'     => 'TR',
 			'currency' => 'EUR',
+			'resorts'  => '/Анталия|Аланья|Белек|Сиде|Кемер|Кириш|Текирова|Даламан|Фетхие|Мармарис|Бодрум/u',
+			'beach'    => true,
+			'route_exc' => '/Стамбул/u',
 		),
 		'oae'     => array(
 			'id'       => '100410510097',
 			'name_ru'  => 'ОАЭ',
 			'code'     => 'AE',
 			'currency' => 'USD',
+			'resorts'  => '/Дубай|Шарджа|Рас Аль Хайма|Рас-эль-Хайма|Абу-Даби|Абу Даби|Фуджейра|Аджман/u',
+			'beach'    => true,
+			'prefer'   => '/Дубай/u',
 		),
 		'egipet'  => array(
 			'id'       => '100410000047',
 			'name_ru'  => 'Египет',
 			'code'     => 'EG',
 			'currency' => 'USD',
+			'resorts'  => '/Хургада|Шарм|Макади|Сахл|Сома|Эль[ -]?гуна|Марса[ -]?алам/iu',
+			'beach'    => true,
 		),
 		'tailand' => array(
 			'id'       => '100410000051',
 			'name_ru'  => 'Таиланд',
 			'code'     => 'TH',
 			'currency' => 'USD',
+			'resorts'  => '/Пхукет|Паттайя|Самуи|Краби|Као Лак/u',
+			'beach'    => true,
+			'route_exc' => '/Бангкок/u',
 		),
 		'vietnam' => array(
 			'id'       => '100410419078',
 			'name_ru'  => 'Вьетнам',
 			'code'     => 'VN',
 			'currency' => 'USD',
+			'resorts'  => '/Нячанг|Фукуок|Камрань|Фантьет|Муйне|Дананг/u',
+			'beach'    => true,
 		),
-		// Countries priced from Moscow (owner-approved). route_inc / town_inc restrict to the advertised resort.
-		'kitaj'      => array( 'id' => '100410644207', 'name_ru' => 'Китай', 'code' => 'CN', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Хайнань/u', 'town_inc' => '/Санья|Sanya/u', 'max_files' => 6 ),
-		'indiya'     => array( 'id' => '100410839865', 'name_ru' => 'Индия', 'code' => 'IN', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Гоа/u', 'town_inc' => '/Гоа|Goa/u', 'max_files' => 6 ),
-		'shri-lanka' => array( 'id' => '100431114088', 'name_ru' => 'Шри-Ланка', 'code' => 'LK', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
-		'indoneziya' => array( 'id' => '100410504525', 'name_ru' => 'Индонезия', 'code' => 'ID', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Бали/u', 'town_inc' => '/Бали|Bali/u', 'max_files' => 6 ),
-		'maldivy'    => array( 'id' => '100410365967', 'name_ru' => 'Мальдивы', 'code' => 'MV', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
-		'sejshely'   => array( 'id' => '100431114060', 'name_ru' => 'Сейшелы', 'code' => 'SC', 'currency' => 'EUR', 'from' => '100510000863', 'max_files' => 6 ),
-		'uzbekistan' => array( 'id' => '100410423949', 'name_ru' => 'Узбекистан', 'code' => 'UZ', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
-		'armeniya'   => array( 'id' => '100410423961', 'name_ru' => 'Армения', 'code' => 'AM', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
+		// Countries priced from Moscow (owner-approved). route_inc picks price files; 'resorts' whitelists API town names (owner list, 19.10.2026).
+		'kitaj'      => array( 'id' => '100410644207', 'name_ru' => 'Китай', 'code' => 'CN', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Хайнань/u', 'resorts' => '/Санья|Sanya/u', 'beach' => true, 'max_files' => 8 ),
+		'indiya'     => array( 'id' => '100410839865', 'name_ru' => 'Индия', 'code' => 'IN', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Гоа/u', 'resorts' => '/Гоа|Goa/u', 'beach' => true, 'max_files' => 8 ),
+		'shri-lanka' => array( 'id' => '100431114088', 'name_ru' => 'Шри-Ланка', 'code' => 'LK', 'currency' => 'USD', 'from' => '100510000863', 'resorts' => '/Бентота|Хиккадува|Унаватуна|Негомбо|Калутара|Ваддува|Берувел|Коггала|Мирисса|Тангалле|Балапития|Ахангама|Велигама|Матара|Пасикуда|Индурува|Маравила/u', 'beach' => true, 'max_files' => 8 ),
+		'indoneziya' => array( 'id' => '100410504525', 'name_ru' => 'Индонезия', 'code' => 'ID', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Бали/u', 'resorts' => '/Бали|Bali/u', 'beach' => true, 'max_files' => 8 ),
+		'maldivy'    => array( 'id' => '100410365967', 'name_ru' => 'Мальдивы', 'code' => 'MV', 'currency' => 'USD', 'from' => '100510000863', 'resorts' => '', 'beach' => true, 'max_files' => 8 ),
+		'sejshely'   => array( 'id' => '100431114060', 'name_ru' => 'Сейшелы', 'code' => 'SC', 'currency' => 'EUR', 'from' => '100510000863', 'resorts' => '', 'beach' => true, 'max_files' => 8 ),
+		'uzbekistan' => array( 'id' => '100410423949', 'name_ru' => 'Узбекистан', 'code' => 'UZ', 'currency' => 'USD', 'from' => '100510000863', 'resorts' => '/Ташкент|Самарканд|Бухара|Хива/u', 'beach' => false, 'max_files' => 8 ),
+		'armeniya'   => array( 'id' => '100410423961', 'name_ru' => 'Армения', 'code' => 'AM', 'currency' => 'USD', 'from' => '100510000863', 'resorts' => '/Ереван|Цахкадзор|Дилижан/u', 'beach' => false, 'max_files' => 8 ),
 	);
 
 	/**
@@ -573,7 +586,7 @@ class Zhiraf_BG_Price_Engine {
 	 * @param int    $max_files Max price files to fetch.
 	 * @return array{ok:bool,code:int,bytes:int,error:string,entries:array,files:int}
 	 */
-	public function fetch_country_entries( $country_id, $max_files = 12, $from_id = '', $route_inc = '' ) {
+	public function fetch_country_entries( $country_id, $max_files = 12, $from_id = '', $route_inc = '', $route_exc = '' ) {
 		if ( '' === $from_id ) {
 			$from_id = self::UFA_DEPARTURE_ID;
 		}
@@ -606,6 +619,9 @@ class Zhiraf_BG_Price_Engine {
 			if ( self::MOW_DEPARTURE_ID === $from_id && preg_match( '/стыковка в Москве/u', $route_txt ) ) {
 				continue;
 			}
+			if ( '' !== $route_exc && preg_match( $route_exc, $route_txt ) ) {
+				continue; // e.g. Istanbul city breaks, Bangkok combos.
+			}
 			if ( '' !== $route_inc && ! preg_match( $route_inc, $route_txt ) ) {
 				continue;
 			}
@@ -623,24 +639,45 @@ class Zhiraf_BG_Price_Engine {
 			$durs = array_map( 'intval', array_filter( explode( '/', (string) ( $f['duration'] ?? '' ) ) ) );
 			$pref = 0;
 			foreach ( $durs as $dn ) {
-				if ( $dn >= 5 && $dn <= 10 ) {
-					$pref = 1;
+				if ( $dn >= 6 && $dn <= 10 ) {
+					$pref = 2;
 					break;
+				}
+				if ( $dn >= 5 ) {
+					$pref = max( $pref, 1 );
 				}
 			}
 			$seen[ $key ] = true;
 			$f['_min']    = $min;
 			$f['_pref']   = $pref;
+			$f['_group']  = trim( wp_strip_all_tags( preg_replace( '#<b>.*?</b>#su', '', (string) ( $f['route'] ?? '' ) ) ) );
 			$files[]      = $f;
 		}
-		// Files offering 5-10 nights first, then lowest operator minprice across all upcoming dates.
+		// Within each route group (= resort/region): 6-10 nights first, then lowest operator minprice across dates.
 		usort(
 			$files,
 			function ( $a, $b ) {
 				return array( $b['_pref'], $a['_min'] ) <=> array( $a['_pref'], $b['_min'] );
 			}
 		);
-		$files = array_slice( $files, 0, $max_files );
+		// Round-robin over route groups so every resort/region gets files.
+		$groups = array();
+		foreach ( $files as $f ) {
+			$groups[ $f['_group'] ][] = $f;
+		}
+		$picked = array();
+		while ( count( $picked ) < $max_files && ! empty( $groups ) ) {
+			foreach ( array_keys( $groups ) as $g ) {
+				$picked[] = array_shift( $groups[ $g ] );
+				if ( empty( $groups[ $g ] ) ) {
+					unset( $groups[ $g ] );
+				}
+				if ( count( $picked ) >= $max_files ) {
+					break;
+				}
+			}
+		}
+		$files = $picked;
 		foreach ( $files as $f ) {
 			$url = sprintf(
 				'%s/partners?action=price&tid=211&flt=%s&flt2=%s&id_price=%s&data=%s&xml=11',
@@ -843,6 +880,66 @@ class Zhiraf_BG_Price_Engine {
 	 * @param int    $limit Maximum tours to return.
 	 * @return array<int,array<string,mixed>>
 	 */
+	/**
+	 * Top cards for a country: cheapest hotel per resort, different resorts first (preferred resort first if configured).
+	 *
+	 * @param string $country_slug_or_id Slug or id.
+	 * @param int    $limit Cards.
+	 * @param string $resort_rx Optional regex to restrict resorts (resort pages).
+	 * @return array<int,array<string,mixed>>
+	 */
+	public function get_country_top_tours( $country_slug_or_id, $limit = 3, $resort_rx = '' ) {
+		$slug  = self::normalize_country_slug( $country_slug_or_id );
+		$tours = $this->get_country_tours( $slug, 200 );
+		if ( '' !== $resort_rx ) {
+			$tours = array_values( array_filter( $tours, function ( $t ) use ( $resort_rx ) { return preg_match( $resort_rx, (string) ( $t['resort'] ?? '' ) ); } ) );
+		}
+		usort( $tours, function ( $a, $b ) { return (int) $a['price_rur'] <=> (int) $b['price_rur']; } );
+		$prefer = (string) ( self::$countries[ $slug ]['prefer'] ?? '' );
+		$first  = array();
+		$rest   = array();
+		$seen   = array();
+		foreach ( $tours as $t ) {
+			$r = (string) ( $t['resort'] ?? '' );
+			if ( isset( $seen[ $r ] ) ) {
+				$rest[] = $t;
+				continue;
+			}
+			$seen[ $r ] = true;
+			$first[]    = $t;
+		}
+		if ( '' !== $prefer ) {
+			usort( $first, function ( $a, $b ) use ( $prefer ) {
+				$pa = preg_match( $prefer, (string) $a['resort'] ) ? 0 : 1;
+				$pb = preg_match( $prefer, (string) $b['resort'] ) ? 0 : 1;
+				return array( $pa, (int) $a['price_rur'] ) <=> array( $pb, (int) $b['price_rur'] );
+			} );
+		}
+		$pick = array_slice( array_merge( $first, $rest ), 0, max( 1, (int) $limit ) );
+		usort( $pick, function ( $a, $b ) use ( $prefer ) {
+			$pa = ( '' !== $prefer && preg_match( $prefer, (string) $a['resort'] ) ) ? 0 : 1;
+			$pb = ( '' !== $prefer && preg_match( $prefer, (string) $b['resort'] ) ) ? 0 : 1;
+			return array( $pa, (int) $a['price_rur'] ) <=> array( $pb, (int) $b['price_rur'] );
+		} );
+		return $pick;
+	}
+
+	/**
+	 * Cheapest card for a country (homepage tile).
+	 *
+	 * @param string $country_slug_or_id Slug or id.
+	 * @return array<string,mixed>|null
+	 */
+	public function get_country_min_tour( $country_slug_or_id ) {
+		$min = null;
+		foreach ( $this->get_country_tours( $country_slug_or_id, 200 ) as $t ) {
+			if ( ! empty( $t['price_rur'] ) && ( null === $min || (int) $t['price_rur'] < (int) $min['price_rur'] ) ) {
+				$min = $t;
+			}
+		}
+		return $min;
+	}
+
 	public function get_country_tours( $country_slug_or_id, $limit = 5 ) {
 		$slug   = self::normalize_country_slug( $country_slug_or_id );
 		$bundle = $this->get_bundle_data();
@@ -936,7 +1033,7 @@ class Zhiraf_BG_Price_Engine {
 
 		foreach ( self::$countries as $slug => $c_info ) {
 			$country_id = $c_info['id'];
-			$fetch = $this->fetch_country_entries( $country_id, (int) ( $c_info['max_files'] ?? 12 ), (string) ( $c_info['from'] ?? self::UFA_DEPARTURE_ID ), (string) ( $c_info['route_inc'] ?? '' ) );
+			$fetch = $this->fetch_country_entries( $country_id, (int) ( $c_info['max_files'] ?? 12 ), (string) ( $c_info['from'] ?? self::UFA_DEPARTURE_ID ), (string) ( $c_info['route_inc'] ?? '' ), (string) ( $c_info['route_exc'] ?? '' ) );
 			$url   = 'action=files -> action=price x' . $fetch['files'];
 			$res   = array( 'ok' => $fetch['ok'], 'code' => $fetch['code'], 'bytes' => $fetch['bytes'], 'error' => $fetch['error'], 'data' => array( 'entries' => $fetch['entries'] ) );
 
@@ -1156,7 +1253,7 @@ class Zhiraf_BG_Price_Engine {
 		}
 
 		$valid_cards  = array();
-		$seen_hotels  = array();
+		$tiers        = array();
 
 		foreach ( $entries as $entry ) {
 			if ( ! is_array( $entry ) ) {
@@ -1244,7 +1341,7 @@ class Zhiraf_BG_Price_Engine {
 				continue;
 			}
 			$c_cfg = self::$countries[ $country_slug ] ?? array();
-			if ( ! empty( $c_cfg['town_inc'] ) && ! preg_match( $c_cfg['town_inc'], (string) ( $entry['town'] ?? '' ) ) ) {
+			if ( ! empty( $c_cfg['resorts'] ) && ! preg_match( $c_cfg['resorts'], (string) ( $entry['town'] ?? '' ) ) ) {
 				$stats['filter_reasons']['other_resort'] = ( $stats['filter_reasons']['other_resort'] ?? 0 ) + 1;
 				$stats['filtered_total']++;
 				continue;
@@ -1301,12 +1398,17 @@ class Zhiraf_BG_Price_Engine {
 				continue;
 			}
 
-			// One card per hotel: prefer 5-10 nights, then the cheapest real RUR price.
-			$rank = array( ( $nights >= 5 && $nights <= 10 ) ? 0 : 1, $price_rur );
-			if ( isset( $seen_hotels[ $hotel_name ] ) && $seen_hotels[ $hotel_name ] <= $rank ) {
+			// Night tiers: 0 = 6-10 nights (preferred), 1 = 5+ nights, 2 = 3-4 nights (non-beach countries only).
+			$tier = ( $nights >= 6 && $nights <= 10 ) ? 0 : ( $nights >= 5 ? 1 : 2 );
+			if ( 2 === $tier && ! empty( $c_cfg['beach'] ) ) {
+				$stats['filter_reasons']['short_beach_stay'] = ( $stats['filter_reasons']['short_beach_stay'] ?? 0 ) + 1;
+				$stats['filtered_total']++;
 				continue;
 			}
-			$seen_hotels[ $hotel_name ] = $rank;
+			// One card per hotel per tier: the cheapest real RUR price.
+			if ( isset( $tiers[ $resort ][ $tier ][ $hotel_name ] ) && $tiers[ $resort ][ $tier ][ $hotel_name ]['price_rur'] <= $price_rur ) {
+				continue;
+			}
 
 			$card = array(
 				'hotel_name'      => $hotel_name,
@@ -1330,19 +1432,29 @@ class Zhiraf_BG_Price_Engine {
 				'disclaimer'      => $disclaimer,
 			);
 
-			$valid_cards[ $hotel_name ] = $card;
+			$tiers[ $resort ][ $tier ][ $hotel_name ] = $card;
 		}
 
-		$valid_cards = array_values( $valid_cards );
-		// Sort by price ascending.
-		usort(
-			$valid_cards,
-			function ( $a, $b ) {
-				return $a['price_rur'] <=> $b['price_rur'];
-			}
-		);
+		// Per resort: use the best tier that has data (6-10 nights; else 5+; else 3-4 for non-beach).
+		$by_price = function ( $a, $b ) {
+			return $a['price_rur'] <=> $b['price_rur'];
+		};
+		$heads = array();
+		$tails = array();
+		$stats['nights_tier'] = array();
+		foreach ( $tiers as $res_name => $res_tiers ) {
+			ksort( $res_tiers );
+			$stats['nights_tier'][ $res_name ] = key( $res_tiers );
+			$cards = array_values( reset( $res_tiers ) );
+			usort( $cards, $by_price );
+			$heads[] = array_shift( $cards ); // cheapest hotel of every resort is always kept.
+			$tails   = array_merge( $tails, $cards );
+		}
+		usort( $tails, $by_price );
+		$valid_cards = array_merge( $heads, array_slice( $tails, 0, max( 0, 40 - count( $heads ) ) ) );
+		usort( $valid_cards, $by_price );
 
-		return array_slice( $valid_cards, 0, 10 );
+		return $valid_cards;
 	}
 
 	/**
@@ -1954,4 +2066,26 @@ function zhiraf_ufa_format_tour_price( $price ) {
 		return __( 'цена по запросу', 'zhiraf-ufa' );
 	}
 	return sprintf( 'от %s ₽', number_format( $int_val, 0, '.', ' ' ) );
+}
+
+/**
+ * Top cards for country/resort pages: cheapest hotel per resort.
+ *
+ * @param string $country_slug Country slug.
+ * @param int    $limit Cards.
+ * @param string $resort_rx Optional resort regex.
+ * @return array
+ */
+function zhiraf_ufa_get_country_top_tours( $country_slug, $limit = 3, $resort_rx = '' ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_country_top_tours( $country_slug, $limit, $resort_rx );
+}
+
+/**
+ * Cheapest card per country.
+ *
+ * @param string $country_slug Country slug.
+ * @return array|null
+ */
+function zhiraf_ufa_get_country_min_tour( $country_slug ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_country_min_tour( $country_slug );
 }

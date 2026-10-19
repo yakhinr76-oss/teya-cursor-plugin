@@ -9,7 +9,7 @@
  * - Thailand (price_TH.xml)
  * - Vietnam (price_VN.xml)
  *
- * Verifies >= 5 parsed tours per country, correct hotel_name, date, duration, meal, price_rub > 0.
+ * Verifies >= 5 parsed tours per country (whitelisted resorts, beach >= 5 nights), hotel_name, date, duration, meal, price_rub > 0.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -217,19 +217,19 @@ if ( ! is_dir( $samples_dir ) ) {
 $engine = Zhiraf_BG_Price_Engine::get_instance();
 
 $test_cases = array(
-	'turkey'   => array(
+	'turciya'  => array(
 		'country_name' => 'Турция',
 		'sample_file'  => $samples_dir . '/price_TR.xml',
 	),
-	'egypt'    => array(
+	'egipet'   => array(
 		'country_name' => 'Египет',
 		'sample_file'  => $samples_dir . '/price_EG.xml',
 	),
-	'uae'      => array(
+	'oae'      => array(
 		'country_name' => 'ОАЭ',
 		'sample_file'  => $samples_dir . '/price_AE.xml',
 	),
-	'thailand' => array(
+	'tailand'  => array(
 		'country_name' => 'Таиланд',
 		'sample_file'  => $samples_dir . '/price_TH.xml',
 	),
@@ -298,6 +298,19 @@ foreach ( $test_cases as $slug => $meta ) {
 
 	// Validation checks
 	$errors = array();
+	// Resort whitelist + nights rules (owner 19.10.2026): no city breaks, beach countries >= 5 nights.
+	$cfg = Zhiraf_BG_Price_Engine::$countries[ $slug ] ?? array();
+	foreach ( $tours as $t_idx => $t_row ) {
+		if ( ! empty( $cfg['resorts'] ) && ! preg_match( $cfg['resorts'], (string) $t_row['resort'] ) ) {
+			$errors[] = "Тур #{$t_idx}: курорт вне белого списка ({$t_row['resort']})";
+		}
+		if ( ! empty( $cfg['beach'] ) && (int) $t_row['nights'] < 5 ) {
+			$errors[] = "Тур #{$t_idx}: пляжное направление, но {$t_row['nights']} ночей";
+		}
+		if ( preg_match( '/Стамбул/u', (string) $t_row['resort'] ) ) {
+			$errors[] = "Тур #{$t_idx}: Стамбул запрещён в карточках";
+		}
+	}
 	if ( $parsed_count < 5 ) {
 		$errors[] = "Получено менее 5 туров ({$parsed_count} < 5)";
 	}

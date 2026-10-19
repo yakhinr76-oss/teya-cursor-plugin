@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 	if ( empty( $dest_slug ) ) {
 		$dest_slug = get_post_field( 'post_name', get_post() );
 	}
-	$dest_tours = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_tours( $dest_slug, 3 ) : array();
+	$dest_tours = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours( $dest_slug, 3 ) : array();
 	?>
 	<?php if ( ! empty( $dest_tours ) ) : ?>
 		<section class="section section--dest-tours section--dest-tours-top bg-sand" id="dest-tours">
@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 							?>
 						</h2>
 						<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
-							<?php esc_html_e( 'Три самых выгодных отеля по ценам туроператора Библио-Глобус для 2 взрослых. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
+							<?php esc_html_e( 'Самый выгодный отель на каждом из популярных курортов по ценам туроператора Библио-Глобус для 2 взрослых: 6–10 ночей (если таких нет — от 5 ночей). Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
 						</p>
 					</div>
 				</div>

@@ -32,6 +32,7 @@ function zhiraf_ufa_resort_landing_index() {
 function zhiraf_ufa_resort_landing_data() {
 	return array(
 		'turciya/antalya' => array(
+			'tours_rx'      => '/Анталия/u',
 			'country'       => 'turciya',
 			'country_name'  => __( 'Турция', 'zhiraf-ufa' ),
 			'resort'        => 'antalya',
@@ -103,6 +104,7 @@ function zhiraf_ufa_resort_landing_data() {
 			),
 		),
 		'egipet/hurgada'  => array(
+			'tours_rx'      => '/Хургада/u',
 			'country'       => 'egipet',
 			'country_name'  => __( 'Египет', 'zhiraf-ufa' ),
 			'resort'        => 'hurgada',
@@ -175,6 +177,7 @@ function zhiraf_ufa_resort_landing_data() {
 			),
 		),
 		'egipet/sharm-el-sheyh' => array(
+			'tours_rx'      => '/Шарм/iu',
 			'country'       => 'egipet',
 			'country_name'  => __( 'Египет', 'zhiraf-ufa' ),
 			'resort'        => 'sharm-el-sheyh',
@@ -247,6 +250,7 @@ function zhiraf_ufa_resort_landing_data() {
 			),
 		),
 		'vietnam/nyachang' => array(
+			'tours_rx'      => '/Нячанг/u',
 			'country'       => 'vietnam',
 			'country_name'  => __( 'Вьетнам', 'zhiraf-ufa' ),
 			'resort'        => 'nyachang',
@@ -314,6 +318,7 @@ function zhiraf_ufa_resort_landing_data() {
 			),
 		),
 		'vietnam/fukuok'  => array(
+			'tours_rx'      => '/Фукуок/u',
 			'country'       => 'vietnam',
 			'country_name'  => __( 'Вьетнам', 'zhiraf-ufa' ),
 			'resort'        => 'fukuok',

@@ -1,1598 +1,1462 @@
 {
-"102610316289": {
-"name": "TUANA HOTELS THE PHULIN RESORT",
-"stars": "4*"
-},
-"102610978502": {
-"name": "STARLET HOTEL",
-"stars": "3*"
-},
-"102630846993": {
-"name": "AL BUSTAN TOWER HOTEL SUITES",
-"stars": "APARTMENT"
-},
-"102630847003": {
-"name": "ALSEEF HOTEL",
-"stars": "3*"
-},
-"102610393430": {
-"name": "KANTARY BAY HOTEL",
-"stars": "3*"
-},
-"102630830846": {
-"name": "CENTRO BARSHA",
-"stars": "3*"
-},
-"102630941186": {
-"name": "COMFORT INN",
-"stars": "3*"
-},
-"102630854237": {
-"name": "BM BEACH HOTEL (ex. BEACH HOTEL BY BIN MAJID)",
-"stars": "4*"
-},
-"102630941187": {
-"name": "MD HOTEL (ex. CASSELLS AL BARSHA)",
-"stars": "4*"
-},
-"102610001198": {
-"name": "BAAN BOA RESORT",
-"stars": "3*"
-},
-"102631182783": {
-"name": "PALETTE SAN MARINO HOTEL",
-"stars": "2*"
-},
-"102631222047": {
-"name": "MILLENNIUM AIRPORT HOTEL DUBAI",
-"stars": "4*"
-},
-"102631222099": {
-"name": "RIVIERA HOTEL",
-"stars": "4*"
-},
-"102630893783": {
-"name": "FLAMINGO BEACH RESORT",
-"stars": "3*"
-},
-"102632502489": {
-"name": "SUMMER LAND HOTEL",
-"stars": "APARTMENT"
-},
-"102632502503": {
-"name": "SHARJAH PREMIERE HOTEL",
-"stars": "3*"
-},
-"102632502520": {
-"name": "HOTEL HOLIDAY INTERNATIONAL SHARJAH",
-"stars": "4*"
-},
-"102632502531": {
-"name": "MARBELLA RESORT SHARJAH",
-"stars": "4*"
-},
-"102632502562": {
-"name": "NOVA PARK HOTEL",
-"stars": "3*"
-},
-"102632502569": {
-"name": "LOU LOU A BEACH RESORT",
-"stars": "3*"
-},
-"102632502925": {
-"name": "RAMADA HOTEL & SUITES AJMAN",
-"stars": "4*"
-},
-"102632744070": {
-"name": "GOLDEN TULIP -SHARJAH",
-"stars": "APARTMENT"
-},
-"102632767877": {
-"name": "MENAVILLE",
-"stars": "4*"
-},
-"102632767939": {
-"name": "SHAMS SAFAGA",
-"stars": "4*"
-},
-"102632810444": {
-"name": "MIRAGE BAY RESORT & AQUAPARK",
-"stars": "4*"
-},
-"102632819729": {
-"name": "SUNNY DAYS PALMA DE MIRETTE RESORT",
-"stars": "4*"
-},
-"102632819736": {
-"name": "NEW EAGLES DOWN TOWN ZAHABIA RESORT & AQUA PARK",
-"stars": "3*"
-},
-"102632819801": {
-"name": "BELLAGIO BEACH RESORT & SPA",
-"stars": "5*"
-},
-"102632819802": {
-"name": "AMC ROYAL HOTEL & SPA",
-"stars": "5*"
-},
-"102632834193": {
-"name": "DESERT ROSE",
-"stars": "5*"
-},
-"102632842729": {
-"name": "EMPIRE BEACH AQUA PARK",
-"stars": "3*"
-},
-"102632859988": {
-"name": "AJMAN BEACH HOTEL",
-"stars": "3*"
-},
-"102632874518": {
-"name": "BELLA VISTA",
-"stars": "4*"
-},
-"102632879301": {
-"name": "ELYSEES DREAM BEACH",
-"stars": "4*"
-},
-"102610488695": {
-"name": "ASIA PARADISE HOTEL",
-"stars": "3*"
-},
-"102632904926": {
-"name": "LE PACHA RESORT",
-"stars": "4*"
-},
-"102632906286": {
-"name": "MORENO SPA & RESORT",
-"stars": "4*"
-},
-"102632907836": {
-"name": "SEAGULL BEACH RESORT",
-"stars": "4*"
-},
-"102632908985": {
-"name": "SUNNY DAYS EL PALACIO RESORT SPA",
-"stars": "4*"
-},
-"102632921956": {
-"name": "MAGIC BEACH RESORT",
-"stars": "4*"
-},
-"102632924144": {
-"name": "NEW GEISUM BEACH RESORT",
-"stars": "3*"
-},
-"102632927562": {
-"name": "SAND BEACH HOTEL",
-"stars": "3*"
-},
-"102632930483": {
-"name": "SUNNY DAYS MIRETTE FAMILY AQUA PARK RESORT (2nd line)",
-"stars": "3*"
-},
-"102632938480": {
-"name": "CAPTAIN INN",
-"stars": "3*"
-},
-"102632942908": {
-"name": "SUNRISE JUMAN HOTEL (ex. CORAL BEACH RESORT (managed by SUNRISE))",
-"stars": "4*"
-},
-"102640004129": {
-"name": "GIFTUN AZUR",
-"stars": "3*"
-},
-"102640004257": {
-"name": "TURTLES INN",
-"stars": "3*"
-},
-"102640013646": {
-"name": "SIVA GRAND BEACH",
-"stars": "4*"
-},
-"102647535772": {
-"name": "GRAND HOTEL",
-"stars": "4*"
-},
-"102647536435": {
-"name": "GRAND RESORT",
-"stars": "4*"
-},
-"102647946439": {
-"name": "KING TUT AQUA PARK BEACH RESORT",
-"stars": "4*"
-},
-"102647947200": {
-"name": "SPHINX AQUA BEACH",
-"stars": "4*"
-},
-"102648021912": {
-"name": "REGINA RESORT AND AQUA PARK",
-"stars": "4*"
-},
-"102610001262": {
-"name": "ANDAMANTRA RESORT & VILLA PHUKET",
-"stars": "4*"
-},
-"102610001255": {
-"name": "SUNSET BEACH RESORT",
-"stars": "4*"
-},
-"102610001208": {
-"name": "COCONUT VILLAGE RESORT",
-"stars": "4*"
-},
-"102610559042": {
-"name": "IBIS PHUKET KATA",
-"stars": "3*"
-},
-"102610559230": {
-"name": "KATA SEA BREEZE RESORT",
-"stars": "3*"
-},
-"102610619947": {
-"name": "BAAN KARON RESORT",
-"stars": "3*"
-},
-"102610666690": {
-"name": "PATONG LODGE HOTEL",
-"stars": "3*"
-},
-"102610697378": {
-"name": "ANDAKIRA HOTEL",
-"stars": "4*"
-},
-"102610707050": {
-"name": "ASPERY HOTEL",
-"stars": "3*"
-},
-"102611288398": {
-"name": "ANDAMAN SEASIDE RESORT",
-"stars": "3*"
-},
-"102611327286": {
-"name": "AMATA PATONG",
-"stars": "4*"
-},
-"102630340326": {
-"name": "ESTELLA MAI KHAO BEACH RESORT (ex. D VAREE MAI KHAO BEACH)",
-"stars": "4*"
-},
-"102630850571": {
-"name": "SUN SHINE PATONG",
-"stars": "3*"
-},
-"102631182663": {
-"name": "BARAMEE RESORTEL",
-"stars": "3*"
-},
-"102631869260": {
-"name": "NAIYANG BEACH RESORT AND SPA",
-"stars": "4*"
-},
-"102632138919": {
-"name": "BAUMANBURI",
-"stars": "4*"
-},
-"102632832458": {
-"name": "HONEY RESORT",
-"stars": "3*"
-},
-"102632836469": {
-"name": "TUANA HOTELS THE NATURAL RESORT (ex. THE NATURAL RESORT)",
-"stars": "4*"
-},
-"102632837104": {
-"name": "LAE LAY SUITES RESORT",
-"stars": "3*"
-},
-"102632935883": {
-"name": "BEL AIRE RESORT",
-"stars": "3*"
-},
-"102649735492": {
-"name": "AMWAJ BEACH CLUB ABU SOMA",
-"stars": "4*"
-},
-"102632491199": {
-"name": "HOLIDAY INN EXPRESS, DUBAI AIRPORT",
-"stars": "3*"
-},
-"102632491264": {
-"name": "HOLIDAY INN EXPRESS, DUBAI JUMEIRAH",
-"stars": "3*"
-},
-"102632492896": {
-"name": "COPTHORNE HOTEL DUBAI",
-"stars": "4*"
-},
-"102632493141": {
-"name": "FOUR POINTS BY SHERATON BUR DUBAI",
-"stars": "4*"
-},
-"102632494021": {
-"name": "MILLENNIUM PLAZA DOWNTOWN",
-"stars": "5*"
-},
-"102632493855": {
-"name": "MöVENPICK GRAND AL BUSTAN DUBAI (ex. RODA AL BUSTAN HOTEL)",
-"stars": "5*"
-},
-"102632492218": {
-"name": "ARABIAN PARK EDGE BY ROTANA",
-"stars": "3*"
-},
-"102632576379": {
-"name": "THANTHIP BEACH RESORT",
-"stars": "3*"
-},
-"102651610088": {
-"name": "I DEE HOTEL",
-"stars": "3*"
-},
-"102662394959": {
-"name": "THE PALMS KAMALA BEACH",
-"stars": "4*"
-},
-"102663351339": {
-"name": "ASHLEE HUB HOTEL PATONG",
-"stars": "3*"
-},
-"102666410118": {
-"name": "TROPICA BUNGALOW HOTEL",
-"stars": "3*"
-},
-"102667823072": {
-"name": "PATONG BAY RESIDENCE",
-"stars": "3*"
-},
-"102670735843": {
-"name": "KARON LIVING ROOM HOTEL",
-"stars": "2*"
-},
-"102670851709": {
-"name": "SIMPLITEL",
-"stars": "3*"
-},
-"102672176695": {
-"name": "SECRET CLIFF RESORT & RESTAURANT",
-"stars": "3*"
-},
-"102650068989": {
-"name": "MINAMARK RESORT",
-"stars": "4*"
-},
-"102674808085": {
-"name": "THE ASHLEE PLAZA PATONG HOTEL",
-"stars": "3*"
-},
-"102674809305": {
-"name": "THE ASHLEE HEIGHTS PATONG HOTEL & SUITES",
-"stars": "4*"
-},
-"102650645341": {
-"name": "IMPERIAL SHAMS ABOU SOMA",
-"stars": "4*"
-},
-"102652166163": {
-"name": "SEA STAR BEAU RIVAGE",
-"stars": "5*"
-},
-"102661696060": {
-"name": "SUN & SEA HOTEL",
-"stars": "3*"
-},
-"102672201393": {
-"name": "CITYMAX HOTEL SHARJAH",
-"stars": "3*"
-},
-"102672570018": {
-"name": "Atlantis Royal Hotel",
-"stars": "3*"
-},
-"102672570079": {
-"name": "Tayhan Hotel",
-"stars": "3*"
-},
-"102672570196": {
-"name": "Sarnic Hotel",
-"stars": "4*"
-},
-"102672570207": {
-"name": "Stone Hotel Old City Istanbul",
-"stars": "3*"
-},
-"102675059781": {
-"name": "GOLDEN SANDS HOTEL & RESIDENCE",
-"stars": "4*"
-},
-"102675341496": {
-"name": "AL HAMRA HOTEL SHARJAH",
-"stars": "4*"
-},
-"102675395936": {
-"name": "DEXON ROMA HOTEL HURGHADA",
-"stars": "3*"
-},
-"102623456678": {
-"name": "MUST SEA HOTEL",
-"stars": "3*"
-},
-"102675255850": {
-"name": "FIRST CENTRAL HOTEL SUITES",
-"stars": "APARTMENT"
-},
-"102623616362": {
-"name": "AL BUSTAN HOTEL FLATS",
-"stars": "APARTMENT"
-},
-"102623621691": {
-"name": "LAVENDER HOTEL SHARJAH",
-"stars": "4*"
-},
-"102623489483": {
-"name": "GOLDEN SANDS HOTEL APARTMENTS",
-"stars": "APARTMENT"
-},
-"102623578045": {
-"name": "GOOD NICE HOTEL",
-"stars": "3*"
-},
-"102623760853": {
-"name": "GU HOTEL",
-"stars": "3*"
-},
-"102624141585": {
-"name": "NEJOUM AL EMARAT SHARJAH",
-"stars": "3*"
-},
-"102624244377": {
-"name": "AQUA MAYA PHUKET (ex. DI PANTAI BOUTIQUE BEACH RESORT)",
-"stars": "4*"
-},
-"102624988866": {
-"name": "RAMADA BEACH HOTEL AJMAN",
-"stars": "4*"
-},
-"102625154484": {
-"name": "Grand Ons Hotel",
-"stars": "3*"
-},
-"102625330599": {
-"name": "Evsen Hotel",
-"stars": "3*"
-},
-"102625658966": {
-"name": "YOU DEE HOTEL PATONG (ex. MEIR JARR HOTEL)",
-"stars": "3*"
-},
-"102625668097": {
-"name": "Cihangir Palace Hotel",
-"stars": "3*"
-},
-"102625852894": {
-"name": "OCEANIC RESORT & SPA - KHORFAKKAN BEACH",
-"stars": "4*"
-},
-"102625853561": {
-"name": "COPTHORNE HOTEL SHARJAH",
-"stars": "4*"
-},
-"102625874951": {
-"name": "CITYMAX HOTEL - BUR DUBAI",
-"stars": "3*"
-},
-"102625928875": {
-"name": "AL BUSTAN HOTEL SHARJAH",
-"stars": "4*"
-},
-"102625933571": {
-"name": "SLEEPWITHME",
-"stars": "4*"
-},
-"102626021307": {
-"name": "ANDA BEACHSIDE HOTEL",
-"stars": "3*"
-},
-"102626193762": {
-"name": "Tilia Hotel",
-"stars": "4*"
-},
-"102626219601": {
-"name": "Art City",
-"stars": "3*"
-},
-"102616055980": {
-"name": "Istanbul Comfort Hotel",
-"stars": "3*"
-},
-"102616094673": {
-"name": "Vizyon City Hotel",
-"stars": "3*"
-},
-"102616121465": {
-"name": "EL KARMA AQUA BEACH RESORT",
-"stars": "4*"
-},
-"102616122291": {
-"name": "SUGAR MARINA RESORT-SURF-KATA BEACH",
-"stars": "3*"
-},
-"102616150270": {
-"name": "Birbey Hotel",
-"stars": "3*"
-},
-"102616151009": {
-"name": "Sahinler Hotel",
-"stars": "3*"
-},
-"102616154000": {
-"name": "Hali Hotel",
-"stars": "3*"
-},
-"102616154038": {
-"name": "Santa Sophia Hotel",
-"stars": "3*"
-},
-"102616154145": {
-"name": "Dara",
-"stars": "3*"
-},
-"102616154794": {
-"name": "Divas Hotel",
-"stars": "3*"
-},
-"102616310739": {
-"name": "THE ORCHID HOUSE",
-"stars": "2*"
-},
-"102616380459": {
-"name": "MOVENPICK HOTEL & APARTMENTS BUR DUBAI",
-"stars": "5*"
-},
-"102616439148": {
-"name": "GOLDEN LOTUS",
-"stars": "2*"
-},
-"102616445483": {
-"name": "BIDV HOTEL",
-"stars": "3*"
-},
-"102616446305": {
-"name": "RUBY HOTEL",
-"stars": "4*"
-},
-"102616489384": {
-"name": "VICTORIAN NHA TRANG HOTEL",
-"stars": "4*"
-},
-"102616490468": {
-"name": "BLUE BEACH GRAND RESORT AND SPA",
-"stars": "4*"
-},
-"102616491748": {
-"name": "EDELE HOTEL",
-"stars": "3*"
-},
-"102616492065": {
-"name": "LAVENDER",
-"stars": "3*"
-},
-"102616492448": {
-"name": "PRIME NEW HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102616494919": {
-"name": "GOLDEN SAND",
-"stars": "3*"
-},
-"102616517914": {
-"name": "DONG HUNG",
-"stars": "3*"
-},
-"102616526291": {
-"name": "Grand Liza Hotel",
-"stars": "3*"
-},
-"102616534618": {
-"name": "CRYSTAL PLAZA HOTEL",
-"stars": "2*"
-},
-"102616607104": {
-"name": "LEMON & SOUL",
-"stars": "3*"
-},
-"102617304027": {
-"name": "FISHERMEN HARBOUR URBAN RESORT",
-"stars": "5*"
-},
-"102617387105": {
-"name": "BLUE REEF BEACH RESORT MARSA ALAM",
-"stars": "4*"
-},
-"102617906229": {
-"name": "IBIS STYLES HOTEL JUMEIRAH",
-"stars": "3*"
-},
-"102617906279": {
-"name": "DENDRO GOLD",
-"stars": "4*"
-},
-"102617923462": {
-"name": "HAPPY LIGHT",
-"stars": "3*"
-},
-"102618071640": {
-"name": "SUGAR MARINA EXPRESS AVIATOR PHUKET AIRPORT",
-"stars": "3*"
-},
-"102618273848": {
-"name": "DONATELLO HOTEL DUBAI",
-"stars": "4*"
-},
-"102610004068": {
-"name": "MOVENPICK HOTEL AL MAMZAR",
-"stars": "APARTMENT"
-},
-"102610074619": {
-"name": "CHIVATARA RESORT & SPA",
-"stars": "3*"
-},
-"102610075204": {
-"name": "ROVE CITY CENTER HOTEL (ex.ROVE PORT SAEED)",
-"stars": "3*"
-},
-"102610076000": {
-"name": "ON HOTEL",
-"stars": "3*"
-},
-"102610077094": {
-"name": "PROUD PHUKET",
-"stars": "4*"
-},
-"102610004251": {
-"name": "RED CASTLE HOTEL SHARJAH",
-"stars": "4*"
-},
-"102610083435": {
-"name": "ROVE BUR DUBAI – HEALTHCARE CITY",
-"stars": "3*"
-},
-"102610083609": {
-"name": "SIGNATURE 1 HOTEL TECOM (ex. SOMEWHERE HOTEL DUBAI - BARSHA HEIGHTS)",
-"stars": "4*"
-},
-"102610091784": {
-"name": "Delta Hotel",
-"stars": "3*"
-},
-"102610094130": {
-"name": "ROVE TRADE CENTER",
-"stars": "3*"
-},
-"102610096235": {
-"name": "TRYP BY WYNDHAM BARSHA HEIGHTS",
-"stars": "4*"
-},
-"102610102525": {
-"name": "SHARJAH PALACE HOTEL",
-"stars": "4*"
-},
-"102610103169": {
-"name": "NAUMI HOTEL DUBAI (ex. DUSIT D2 KENZ HOTEL DUBAI)",
-"stars": "4*"
-},
-"102610103252": {
-"name": "BALCONY HOTEL",
-"stars": "3*"
-},
-"102610105575": {
-"name": "Matiat Hotel",
-"stars": "4*"
-},
-"102610107214": {
-"name": "Blue Marmaray Hotel",
-"stars": "3*"
-},
-"102610109261": {
-"name": "ROYAL HOTEL",
-"stars": "3*"
-},
-"102610109421": {
-"name": "Naumpasa Konagi",
-"stars": "3*"
-},
-"102610109474": {
-"name": "Kaya Madrid Hotel",
-"stars": "3*"
-},
-"102610112342": {
-"name": "SPARK RESIDENCE DELUXE HOTEL",
-"stars": "APARTMENT"
-},
-"102610114856": {
-"name": "APUS HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610117039": {
-"name": "ROSE PARK HOTEL",
-"stars": "4*"
-},
-"102610119159": {
-"name": "GOSIA HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610120750": {
-"name": "Sureyya Hotel",
-"stars": "Boutique"
-},
-"102610122662": {
-"name": "AOCHALONG RESORT VILLA AND SPA",
-"stars": "4*"
-},
-"102610123624": {
-"name": "QUEEN ELIZABETH 2",
-"stars": "5*"
-},
-"102610124196": {
-"name": "CRYSTAL PLAZA AL MAJAZ HOTEL",
-"stars": "4*"
-},
-"102610124198": {
-"name": "GOLDEN TULIP MEDIA HOTEL",
-"stars": "4*"
-},
-"102610124446": {
-"name": "ONELOFT HOTEL",
-"stars": "3*"
-},
-"102610129435": {
-"name": "FOUR POINTS BY SHERATON SHARJAH",
-"stars": "5*"
-},
-"102610129834": {
-"name": "KAMALA RESOTEL",
-"stars": "3*"
-},
-"102610133243": {
-"name": "CHABANA KAMALA",
-"stars": "3*"
-},
-"102610133310": {
-"name": "CHABANA RESORT",
-"stars": "3*"
-},
-"102610135621": {
-"name": "May Hotel",
-"stars": "Boutique"
-},
-"102610136172": {
-"name": "GOLDEN BEACH RESORT AND AQUA PARK",
-"stars": "4*"
-},
-"102610139186": {
-"name": "STUDIO M ARABIAN PLAZA",
-"stars": "3*"
-},
-"102610143571": {
-"name": "ROVE AT THE PARK",
-"stars": "3*"
-},
-"102610150281": {
-"name": "MILLENNIUM AL BARSHA",
-"stars": "4*"
-},
-"102610153319": {
-"name": "ROYAL FALCON HOTEL",
-"stars": "3*"
-},
-"102610157167": {
-"name": "SUNRISE ALORA AQUA PARK RESORT",
-"stars": "4*"
-},
-"102610157184": {
-"name": "SUNRISE SOLARA AQUA PARK RESORT",
-"stars": "4*"
-},
-"102610157208": {
-"name": "SUNRISE SERANO CLUB (ex. RIVIERA CLUB) MANAGED BY SUNRISE)",
-"stars": "4*"
-},
-"102610157212": {
-"name": "SUNRISE SERANO AQUA PARK RESORT",
-"stars": "4*"
-},
-"102610157233": {
-"name": "SUNRISE AZALEA AQUA PARK RESORT (ex. SUNRISE ASTER)",
-"stars": "4*"
-},
-"102610157476": {
-"name": "MAIKHAO HOTEL",
-"stars": "4*"
-},
-"102610157515": {
-"name": "GRAVITY HOTEL & AQUA PARK",
-"stars": "5*"
-},
-"102610157549": {
-"name": "GRAVITY HOTEL & AQUA PARK SAHL HASHEESH",
-"stars": "5*"
-},
-"102610158488": {
-"name": "NOVOTEL SHARJAH EXPO CENTRE",
-"stars": "4*"
-},
-"102610160933": {
-"name": "ROYAL LAGOONS RESORT & AQUA PARK",
-"stars": "5*"
-},
-"102610161093": {
-"name": "EAGLES PARADISE ABU SOMA RESORT",
-"stars": "4*"
-},
-"102610161103": {
-"name": "CORAL SUN BEACH SAFAGA",
-"stars": "4*"
-},
-"102610163175": {
-"name": "Grand Anatolia",
-"stars": "3*"
-},
-"102610163176": {
-"name": "Beyazit Palace Hotel",
-"stars": "3*"
-},
-"102610163177": {
-"name": "Sim Hotel",
-"stars": "3*"
-},
-"102610168480": {
-"name": "BLUE PEARL HOTEL (ex. RUBY HNATRANG)",
-"stars": "3*"
-},
-"102610169378": {
-"name": "My Assos Hotel",
-"stars": "4*"
-},
-"102610171645": {
-"name": "SUN SEA SAND HOTEL",
-"stars": "3*"
-},
-"102610175777": {
-"name": "SENTIDO CARIBBEAN WORLD RESORT SOMA BAY",
-"stars": "5*"
-},
-"102610088943": {
-"name": "ROSE PLAZA HOTEL",
-"stars": "3*"
-},
-"102610092972": {
-"name": "Elan Hotel",
-"stars": "3*"
-},
-"102610093889": {
-"name": "Skalion Hotel",
-"stars": "4*"
-},
-"102610095021": {
-"name": "Grand Mark Hotel",
-"stars": "3*"
-},
-"102610095535": {
-"name": "Grand Milan Hotel",
-"stars": "3*"
-},
-"102610104005": {
-"name": "Grand Pamir Hotel",
-"stars": "3*"
-},
-"102610105438": {
-"name": "Raimond Hotel",
-"stars": "3*"
-},
-"102610105536": {
-"name": "Constantinopolis Hotel",
-"stars": "3*"
-},
-"102610108959": {
-"name": "Malkoc Hotel",
-"stars": "3*"
-},
-"102610114708": {
-"name": "Sun Comfort Hotel",
-"stars": "3*"
-},
-"102610114789": {
-"name": "Adora Hotel Istanbul",
-"stars": "3*"
-},
-"102610117704": {
-"name": "De Maree Hotel",
-"stars": "2*"
-},
-"102610117707": {
-"name": "Megaron Hotel",
-"stars": "2*"
-},
-"102610117714": {
-"name": "The Laila Hotel",
-"stars": "3*"
-},
-"102610117721": {
-"name": "The Lola Hotel",
-"stars": "2*"
-},
-"102610117758": {
-"name": "Zanadu Hotel",
-"stars": "2*"
-},
-"102610117764": {
-"name": "Miklagord Hotel",
-"stars": "2*"
-},
-"102610122676": {
-"name": "Asitane Life Hotel",
-"stars": "3*"
-},
-"102610142332": {
-"name": "BLEND ELPHISTONE RESORT MARSA ALAM",
-"stars": "4*"
-},
-"102610146713": {
-"name": "VIVA BLUE RESORT & DIVING SPORTS (only adults 12+)",
-"stars": "4*"
-},
-"102610148295": {
-"name": "Galatower Hotel (ex. The Galataport Hotel)",
-"stars": "3*"
-},
-"102610158736": {
-"name": "Carvan Hotel",
-"stars": "3*"
-},
-"102610163269": {
-"name": "CASA MARE RESORT (ex. ROYAL TULIP BEACH RESORT)",
-"stars": "5*"
-},
-"102610178282": {
-"name": "Alpinn Hotel Due",
-"stars": "4*"
-},
-"102610179259": {
-"name": "LAZULI HOTEL MARSA ALAM",
-"stars": "4*"
-},
-"102610180715": {
-"name": "ONATTI BEACH RESORT",
-"stars": "4*"
-},
-"102610181347": {
-"name": "FANTAZIA AQUA PARK BEACH MARSA ALAM",
-"stars": "5*"
-},
-"102610184500": {
-"name": "SWISSOTEL RESORT EL QUSIER (ex. RADISSON BLU QUSIER)",
-"stars": "5*"
-},
-"102610184502": {
-"name": "BLISS NADA BEACH",
-"stars": "4*"
-},
-"102610185141": {
-"name": "ROYAL STAR BEACH RESORT",
-"stars": "4*"
-},
-"102610185347": {
-"name": "THE FIRST COLLECTION JVC (JUMEIRAH VILLAGE CIRCLE)",
-"stars": "4*"
-},
-"102610186347": {
-"name": "RAWAI PRINCESS HOTEL",
-"stars": "3*"
-},
-"102610188649": {
-"name": "MARINA HOUSE MUAYTHAI TA-IAD PHUKET",
-"stars": "3*"
-},
-"102610191391": {
-"name": "ROSE EXECUTIVE HOTEL",
-"stars": "3*"
-},
-"102610193019": {
-"name": "Almina Inn Hotel (ex. Almina Inn Beyazit)",
-"stars": "3*"
-},
-"102610193793": {
-"name": "Berce Hotel Istanbul",
-"stars": "3*"
-},
-"102610196766": {
-"name": "BLEND CLUB AQUA RESORT",
-"stars": "4*"
-},
-"102610199589": {
-"name": "AL HAMRA VILLAGE",
-"stars": "4*"
-},
-"102610199881": {
-"name": "SEVEN SEAS JOLIE BAY ABU SOMA (ex. AQUA MONDO ABU SOMA RESORT)",
-"stars": "5*"
-},
-"102610200239": {
-"name": "Comfort Downtown Istanbul (ex. Comfort Life Hotel)",
-"stars": "3*"
-},
-"102610200424": {
-"name": "Aruna Hotel Istanbul",
-"stars": "-*"
-},
-"102610201377": {
-"name": "Fuat Bey Palace Hotel",
-"stars": "3*"
-},
-"102610201634": {
-"name": "EMPIRE HOTEL AQUA PARK",
-"stars": "3*"
-},
-"102610202084": {
-"name": "REWAYA INN RESORT",
-"stars": "5*"
-},
-"102610203135": {
-"name": "AJIRA BOUTIQUE HURGHADA MARINA HOTEL",
-"stars": "3*"
-},
-"102610203137": {
-"name": "AJIRA BAY HURGHADA MARINA HOTEL",
-"stars": "3*"
-},
-"102610203319": {
-"name": "Alfa Hotel",
-"stars": "3*"
-},
-"102610203464": {
-"name": "Nl Amsterdam Hotel",
-"stars": "3*"
-},
-"102610203522": {
-"name": "Silvana Hotel",
-"stars": "4*"
-},
-"102610203551": {
-"name": "Grand Emir Hotel",
-"stars": "3*"
-},
-"102610203571": {
-"name": "Mevlana Hotel",
-"stars": "3*"
-},
-"102610203605": {
-"name": "Akcinar Hotel",
-"stars": "3*"
-},
-"102610203612": {
-"name": "Grand Esen Hotel",
-"stars": "3*"
-},
-"102610203614": {
-"name": "Ala Sofia Hotel",
-"stars": "3*"
-},
-"102610203620": {
-"name": "HHK Hotel Downtown",
-"stars": "3*"
-},
-"102610204734": {
-"name": "The Reina Hotel",
-"stars": "3*"
-},
-"102610205488": {
-"name": "Akyildiz Hotel",
-"stars": "3*"
-},
-"102610205545": {
-"name": "Grand Vatan Hotel",
-"stars": "3*"
-},
-"102610205893": {
-"name": "MALA HOTEL",
-"stars": "2*"
-},
-"102610206321": {
-"name": "Dempa Hotel",
-"stars": "Boutique"
-},
-"102610206589": {
-"name": "Hotel Milano Istanbul",
-"stars": "3*"
-},
-"102610207477": {
-"name": "Q VICTORY PATONG",
-"stars": "3*"
-},
-"102610209297": {
-"name": "DOUBLETREE BY HILTON FUJAIRAH",
-"stars": "5*"
-},
-"102610211367": {
-"name": "Hamit Hotel Istanbul",
-"stars": "3*"
-},
-"102610212916": {
-"name": "Turkoman Hotel",
-"stars": "3*"
-},
-"102610213395": {
-"name": "AJIRA RESORT SAHL HASHEESH (ex. ZEN RESORT SAHL HASHEESH BOUTIQUE)",
-"stars": "3*"
-},
-"102610213499": {
-"name": "NEW EAGLES AQUA PARK RESORT",
-"stars": "4*"
-},
-"102610221236": {
-"name": "77 PATONG HOTEL & SPA",
-"stars": "3*"
-},
-"102610222211": {
-"name": "THE UPTOWN HOTEL",
-"stars": "APARTMENT"
-},
-"102610223040": {
-"name": "ALFRESCO PHUKET HOTEL",
-"stars": "3*"
-},
-"102610224098": {
-"name": "Ria Suites Hotel",
-"stars": "Boutique"
-},
-"102610225608": {
-"name": "NAIYANG BEACH HOTEL",
-"stars": "3*"
-},
-"102610226109": {
-"name": "Vavien Hotel (only adults 18+)",
-"stars": "Boutique"
-},
-"102610226465": {
-"name": "Sinem Hotel Special Class",
-"stars": "-*"
-},
-"102610230400": {
-"name": "Good Night Hotel",
-"stars": "3*"
-},
-"102610230797": {
-"name": "PROTELS CRYSTAL BEACH RESORT",
-"stars": "4*"
-},
-"102610231035": {
-"name": "ALE NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610231649": {
-"name": "V HOTEL",
-"stars": "4*"
-},
-"102610232435": {
-"name": "ARECA HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610232840": {
-"name": "FLAMENCO BEACH & RESORT El QUSEIR",
-"stars": "4*"
-},
-"102610233377": {
-"name": "CITRUS PATONG HOTEL",
-"stars": "4*"
-},
-"102610233972": {
-"name": "BOSS HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610234489": {
-"name": "HARMONY PATONG HOTEL",
-"stars": "3*"
-},
-"102610236083": {
-"name": "DREAM LAGOON & AQUA PARK RESORT",
-"stars": "4*"
-},
-"102610236972": {
-"name": "Royal Bosphorus Hotel Special Class",
-"stars": "-*"
-},
-"102610237299": {
-"name": "LIBRA",
-"stars": "4*"
-},
-"102610237646": {
-"name": "PROTELS BEACH CLUB & SPA RESORT",
-"stars": "4*"
-},
-"102610242945": {
-"name": "MARINA LODGE PORT GHALIB",
-"stars": "4*"
-},
-"102610242947": {
-"name": "LIFE RESORTS CORAL HILLS BEACH & SPA",
-"stars": "4*"
-},
-"102610245119": {
-"name": "TUANA HOTELS BROOK RESORT & VILLAS (ex. TUANA HOTEL BROOK POOL ACCESS)",
-"stars": "4*"
-},
-"102610245451": {
-"name": "Grand Naki Hotel",
-"stars": "4*"
-},
-"102610245612": {
-"name": "SELINA SERENITY RAWAI PHUKET",
-"stars": "4*"
-},
-"102610245626": {
-"name": "KING TOWN GRAND NHA TRANG",
-"stars": "4*"
-},
-"102610245638": {
-"name": "NALICAS NHA TRANG HOTEL",
-"stars": "4*"
-},
-"102610245639": {
-"name": "LA CASA HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610245651": {
-"name": "SAPHIA HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610245659": {
-"name": "NAVY HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610245660": {
-"name": "GEM HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610245672": {
-"name": "GIBSON HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610245685": {
-"name": "GLORY HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610245698": {
-"name": "GOLDEN HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610245904": {
-"name": "NHA TRANG WONDERLAND HOTEL",
-"stars": "3*"
-},
-"102610245949": {
-"name": "IMPERIAL HOTEL",
-"stars": "4*"
-},
-"102610245976": {
-"name": "PARIS NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610246026": {
-"name": "IVY HOTEL",
-"stars": "4*"
-},
-"102610246241": {
-"name": "SEANA NHA TRANG HOTEL",
-"stars": "4*"
-},
-"102610246248": {
-"name": "ELITE HOTEL",
-"stars": "4*"
-},
-"102610246258": {
-"name": "SEA PEARL HOTEL",
-"stars": "3*"
-},
-"102610246327": {
-"name": "FOR YOU HOTEL",
-"stars": "3*"
-},
-"102610246448": {
-"name": "MOONLIGHT HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610246477": {
-"name": "PRAGUE NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610246527": {
-"name": "SENIA HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610246623": {
-"name": "BONJOUR NHA TRANG",
-"stars": "3*"
-},
-"102610246677": {
-"name": "SMILE HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610246684": {
-"name": "SOCHI HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610246708": {
-"name": "CROWN HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610246724": {
-"name": "DB HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610246849": {
-"name": "ALOHA NHA TRANG",
-"stars": "4*"
-},
-"102610247156": {
-"name": "RIGEL HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610247314": {
-"name": "FLOW SPECTRUM RESORT SAHL HASHEESH",
-"stars": "4*"
-},
-"102610247578": {
-"name": "THE TIME",
-"stars": "3*"
-},
-"102610247613": {
-"name": "VENUE HOTEL",
-"stars": "3*"
-},
-"102610247713": {
-"name": "ZENIA BOUTIQUE HOTEL",
-"stars": "3*"
-},
-"102610248070": {
-"name": "CENTRO ONE PATONG",
-"stars": "3*"
-},
-"102610248428": {
-"name": "CENTRO ONE BANGLA",
-"stars": "3*"
-},
-"102610248588": {
-"name": "KNIGHT CASTLE HOTEL",
-"stars": "5*"
-},
-"102610248590": {
-"name": "KNIGHT ARMOUR HOTEL",
-"stars": "4*"
-},
-"102610248770": {
-"name": "LA GREEN HOTEL & RESIDENCE",
-"stars": "5*"
-},
-"102610250706": {
-"name": "SWISSTOUCH ORIENTAL RESORT & SPA",
-"stars": "4*"
-},
-"102610250839": {
-"name": "SUGAR MARINA RESORT LAGOON VILLAS",
-"stars": "4*"
-},
-"102610250852": {
-"name": "CITY TOWER FUJAIRAH",
-"stars": "4*"
-},
-"102610259839": {
-"name": "ASTICA NHA TRANG",
-"stars": "4*"
-},
-"102610260335": {
-"name": "SEASIDE NAITHON PHUKET",
-"stars": "4*"
-},
-"102610260637": {
-"name": "NANG VANG NHA TRANG",
-"stars": "2*"
-},
-"102610261863": {
-"name": "HOLIDAY INN DUBAI VILLAGE CIRCLE (ex. AVALON HOTEL DUBAI JUMEIRAH VILLAGE CIRCLE)",
-"stars": "3*"
-},
-"102610261865": {
-"name": "LOCAL HOTEL DUBAI AT JUMEIRAH VILLAGE TRIANGLE",
-"stars": "4*"
-},
-"102610262239": {
-"name": "BN BOUTIQUE NHA TRANG BEACH",
-"stars": "4*"
-},
-"102610262277": {
-"name": "HERMES HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610262340": {
-"name": "SENKOTEL NHA TRANG MANAGED BY NEST GROUP",
-"stars": "2*"
-},
-"102610262344": {
-"name": "MERITON HOTEL NHA TRANG",
-"stars": "4*"
-},
-"102610262385": {
-"name": "MAY NGU SAC - IRIDESCENT CLOUDS HOTEL",
-"stars": "-*"
-},
-"102610262408": {
-"name": "REMBRANDT HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610262473": {
-"name": "STARLIGHT NHA TRANG",
-"stars": "3*"
-},
-"102610262485": {
-"name": "SIREN FLOWER HOTEL",
-"stars": "3*"
-},
-"102610262501": {
-"name": "GOLDEN SEA HOTEL",
-"stars": "3*"
-},
-"102610262527": {
-"name": "MARILYN BOUTIQUE HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610262539": {
-"name": "LE SOLEIL NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610262575": {
-"name": "CANARY NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610262577": {
-"name": "CROWN NGUYEN HOANG HOTEL",
-"stars": "3*"
-},
-"102610262821": {
-"name": "Burckin Hotel",
-"stars": "3*"
-},
-"102610263072": {
-"name": "SHONI BAY RESORT MARSA ALAM",
-"stars": "4*"
-},
-"102610264427": {
-"name": "AROMA NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610265001": {
-"name": "TRIS MIRACLE APARTMENT KATA",
-"stars": "2*"
-},
-"102610265841": {
-"name": "ANGELLA",
-"stars": "3*"
-},
-"102610265946": {
-"name": "LANXY",
-"stars": "4*"
-},
-"102610266114": {
-"name": "MAPLE LEAF HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610268222": {
-"name": "THE TREND KAMALA",
-"stars": "3*"
-},
-"102610269342": {
-"name": "REWAYA MAJESTIC RESORT",
-"stars": "5*"
-},
-"102610274986": {
-"name": "W PREMIUM HOTEL",
-"stars": "3*"
-},
-"102610276710": {
-"name": "WYNDHAM PHUKET AIRPORT (ex. WYNDHAM ROYAL LEE PHUKET)",
-"stars": "5*"
-},
-"102610277140": {
-"name": "GLAMOUR HOTEL",
-"stars": "4*"
-},
-"102610277986": {
-"name": "Nova City Hotel",
-"stars": "3*"
-},
-"102610279315": {
-"name": "OLA NHA TRANG HOTEL",
-"stars": "3*"
-},
-"102610281687": {
-"name": "SUNRISE CARDINA RESORT (ex. AURORA)",
-"stars": "4*"
-},
-"102610289443": {
-"name": "GOLDEN RAIN 2",
-"stars": "3*"
-},
-"102610289828": {
-"name": "ART DELUXE HOTEL",
-"stars": "3*"
-},
-"102610289886": {
-"name": "DOUBLETREE BY HILTON DUBAI PORT SAEED",
-"stars": "4*"
-},
-"102610290147": {
-"name": "BEEHIVE BOUTIQUE PHUKET HOTEL",
-"stars": "4*"
-},
-"102610292866": {
-"name": "MEDIA HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610294691": {
-"name": "NEST HOTEL ALJADA",
-"stars": "3*"
-},
-"102610294868": {
-"name": "REWAYA LUXURY RESORT",
-"stars": "5*"
-},
-"102610296439": {
-"name": "MELYNA HOTEL NHA TRANG BEACH",
-"stars": "3*"
-},
-"102610300705": {
-"name": "SUNDAY MANGROVE CORNICHE HOTEL",
-"stars": "4*"
-},
-"102610302430": {
-"name": "Mayer Hotel Istanbul",
-"stars": "Boutique"
-},
-"102610302648": {
-"name": "WYNNE HOTEL",
-"stars": "3*"
-},
-"102610305135": {
-"name": "Gulliver Mansion Hotel Istanbul",
-"stars": "Boutique"
-},
-"102610305324": {
-"name": "THE SAJ HOTEL",
-"stars": "4*"
-},
-"102610306019": {
-"name": "SOLARA HOTEL NHA TRANG",
-"stars": "3*"
-},
-"102610306489": {
-"name": "CITIN ARMONI PATONG",
-"stars": "3*"
-},
-"102610310289": {
-"name": "MELISSA KATA BEACH RESORT",
-"stars": "3*"
-},
-"102610310291": {
-"name": "SEAVALE RESIDENCES PATONG",
-"stars": "4*"
-},
-"102610311645": {
-"name": "B BURI HOTEL",
-"stars": "3*"
-},
-"102610313150": {
-"name": "VOGO GRAND DUBAI ACADEMIC CITY",
-"stars": "4*"
-}
+    "102610316289": {
+        "name": "TUANA HOTELS THE PHULIN RESORT",
+        "stars": "4*"
+    },
+    "102610978502": {
+        "name": "STARLET HOTEL",
+        "stars": "3*"
+    },
+    "102630846993": {
+        "name": "AL BUSTAN TOWER HOTEL SUITES",
+        "stars": "APARTMENT"
+    },
+    "102630847003": {
+        "name": "ALSEEF HOTEL",
+        "stars": "3*"
+    },
+    "102610393430": {
+        "name": "KANTARY BAY HOTEL",
+        "stars": "3*"
+    },
+    "102630830846": {
+        "name": "CENTRO BARSHA",
+        "stars": "3*"
+    },
+    "102630941186": {
+        "name": "COMFORT INN",
+        "stars": "3*"
+    },
+    "102630854237": {
+        "name": "BM BEACH HOTEL (ex. BEACH HOTEL BY BIN MAJID)",
+        "stars": "4*"
+    },
+    "102630941187": {
+        "name": "MD HOTEL (ex. CASSELLS AL BARSHA)",
+        "stars": "4*"
+    },
+    "102610001198": {
+        "name": "BAAN BOA RESORT",
+        "stars": "3*"
+    },
+    "102631182783": {
+        "name": "PALETTE SAN MARINO HOTEL",
+        "stars": "2*"
+    },
+    "102631222047": {
+        "name": "MILLENNIUM AIRPORT HOTEL DUBAI",
+        "stars": "4*"
+    },
+    "102631222099": {
+        "name": "RIVIERA HOTEL",
+        "stars": "4*"
+    },
+    "102630893783": {
+        "name": "FLAMINGO BEACH RESORT",
+        "stars": "3*"
+    },
+    "102632502489": {
+        "name": "SUMMER LAND HOTEL",
+        "stars": "APARTMENT"
+    },
+    "102632502503": {
+        "name": "SHARJAH PREMIERE HOTEL",
+        "stars": "3*"
+    },
+    "102632502520": {
+        "name": "HOTEL HOLIDAY INTERNATIONAL SHARJAH",
+        "stars": "4*"
+    },
+    "102632502531": {
+        "name": "MARBELLA RESORT SHARJAH",
+        "stars": "4*"
+    },
+    "102632502562": {
+        "name": "NOVA PARK HOTEL",
+        "stars": "3*"
+    },
+    "102632502569": {
+        "name": "LOU LOU A BEACH RESORT",
+        "stars": "3*"
+    },
+    "102632502925": {
+        "name": "RAMADA HOTEL & SUITES AJMAN",
+        "stars": "4*"
+    },
+    "102632744070": {
+        "name": "GOLDEN TULIP -SHARJAH",
+        "stars": "APARTMENT"
+    },
+    "102632767877": {
+        "name": "MENAVILLE",
+        "stars": "4*"
+    },
+    "102632767939": {
+        "name": "SHAMS SAFAGA",
+        "stars": "4*"
+    },
+    "102632810444": {
+        "name": "MIRAGE BAY RESORT & AQUAPARK",
+        "stars": "4*"
+    },
+    "102632819729": {
+        "name": "SUNNY DAYS PALMA DE MIRETTE RESORT",
+        "stars": "4*"
+    },
+    "102632819736": {
+        "name": "NEW EAGLES DOWN TOWN ZAHABIA RESORT & AQUA PARK",
+        "stars": "3*"
+    },
+    "102632819801": {
+        "name": "BELLAGIO BEACH RESORT & SPA",
+        "stars": "5*"
+    },
+    "102632819802": {
+        "name": "AMC ROYAL HOTEL & SPA",
+        "stars": "5*"
+    },
+    "102632834193": {
+        "name": "DESERT ROSE",
+        "stars": "5*"
+    },
+    "102632842729": {
+        "name": "EMPIRE BEACH AQUA PARK",
+        "stars": "3*"
+    },
+    "102632859988": {
+        "name": "AJMAN BEACH HOTEL",
+        "stars": "3*"
+    },
+    "102632874518": {
+        "name": "BELLA VISTA",
+        "stars": "4*"
+    },
+    "102632879301": {
+        "name": "ELYSEES DREAM BEACH",
+        "stars": "4*"
+    },
+    "102610488695": {
+        "name": "ASIA PARADISE HOTEL",
+        "stars": "3*"
+    },
+    "102632904926": {
+        "name": "LE PACHA RESORT",
+        "stars": "4*"
+    },
+    "102632906286": {
+        "name": "MORENO SPA & RESORT",
+        "stars": "4*"
+    },
+    "102632907836": {
+        "name": "SEAGULL BEACH RESORT",
+        "stars": "4*"
+    },
+    "102632908985": {
+        "name": "SUNNY DAYS EL PALACIO RESORT SPA",
+        "stars": "4*"
+    },
+    "102632921956": {
+        "name": "MAGIC BEACH RESORT",
+        "stars": "4*"
+    },
+    "102632924144": {
+        "name": "NEW GEISUM BEACH RESORT",
+        "stars": "3*"
+    },
+    "102632927562": {
+        "name": "SAND BEACH HOTEL",
+        "stars": "3*"
+    },
+    "102632930483": {
+        "name": "SUNNY DAYS MIRETTE FAMILY AQUA PARK RESORT (2nd line)",
+        "stars": "3*"
+    },
+    "102632938480": {
+        "name": "CAPTAIN INN",
+        "stars": "3*"
+    },
+    "102632942908": {
+        "name": "SUNRISE JUMAN HOTEL (ex. CORAL BEACH RESORT (managed by SUNRISE))",
+        "stars": "4*"
+    },
+    "102640004129": {
+        "name": "GIFTUN AZUR",
+        "stars": "3*"
+    },
+    "102640004257": {
+        "name": "TURTLES INN",
+        "stars": "3*"
+    },
+    "102640013646": {
+        "name": "SIVA GRAND BEACH",
+        "stars": "4*"
+    },
+    "102647535772": {
+        "name": "GRAND HOTEL",
+        "stars": "4*"
+    },
+    "102647536435": {
+        "name": "GRAND RESORT",
+        "stars": "4*"
+    },
+    "102647946439": {
+        "name": "KING TUT AQUA PARK BEACH RESORT",
+        "stars": "4*"
+    },
+    "102647947200": {
+        "name": "SPHINX AQUA BEACH",
+        "stars": "4*"
+    },
+    "102648021912": {
+        "name": "REGINA RESORT AND AQUA PARK",
+        "stars": "4*"
+    },
+    "102610001262": {
+        "name": "ANDAMANTRA RESORT & VILLA PHUKET",
+        "stars": "4*"
+    },
+    "102610001255": {
+        "name": "SUNSET BEACH RESORT",
+        "stars": "4*"
+    },
+    "102610001208": {
+        "name": "COCONUT VILLAGE RESORT",
+        "stars": "4*"
+    },
+    "102610559042": {
+        "name": "IBIS PHUKET KATA",
+        "stars": "3*"
+    },
+    "102610559230": {
+        "name": "KATA SEA BREEZE RESORT",
+        "stars": "3*"
+    },
+    "102610619947": {
+        "name": "BAAN KARON RESORT",
+        "stars": "3*"
+    },
+    "102610666690": {
+        "name": "PATONG LODGE HOTEL",
+        "stars": "3*"
+    },
+    "102610697378": {
+        "name": "ANDAKIRA HOTEL",
+        "stars": "4*"
+    },
+    "102610707050": {
+        "name": "ASPERY HOTEL",
+        "stars": "3*"
+    },
+    "102611288398": {
+        "name": "ANDAMAN SEASIDE RESORT",
+        "stars": "3*"
+    },
+    "102611327286": {
+        "name": "AMATA PATONG",
+        "stars": "4*"
+    },
+    "102630340326": {
+        "name": "ESTELLA MAI KHAO BEACH RESORT (ex. D VAREE MAI KHAO BEACH)",
+        "stars": "4*"
+    },
+    "102630850571": {
+        "name": "SUN SHINE PATONG",
+        "stars": "3*"
+    },
+    "102631182663": {
+        "name": "BARAMEE RESORTEL",
+        "stars": "3*"
+    },
+    "102631869260": {
+        "name": "NAIYANG BEACH RESORT AND SPA",
+        "stars": "4*"
+    },
+    "102632138919": {
+        "name": "BAUMANBURI",
+        "stars": "4*"
+    },
+    "102632832458": {
+        "name": "HONEY RESORT",
+        "stars": "3*"
+    },
+    "102632836469": {
+        "name": "TUANA HOTELS THE NATURAL RESORT (ex. THE NATURAL RESORT)",
+        "stars": "4*"
+    },
+    "102632837104": {
+        "name": "LAE LAY SUITES RESORT",
+        "stars": "3*"
+    },
+    "102632935883": {
+        "name": "BEL AIRE RESORT",
+        "stars": "3*"
+    },
+    "102649735492": {
+        "name": "AMWAJ BEACH CLUB ABU SOMA",
+        "stars": "4*"
+    },
+    "102632491199": {
+        "name": "HOLIDAY INN EXPRESS, DUBAI AIRPORT",
+        "stars": "3*"
+    },
+    "102632491264": {
+        "name": "HOLIDAY INN EXPRESS, DUBAI JUMEIRAH",
+        "stars": "3*"
+    },
+    "102632492896": {
+        "name": "COPTHORNE HOTEL DUBAI",
+        "stars": "4*"
+    },
+    "102632493141": {
+        "name": "FOUR POINTS BY SHERATON BUR DUBAI",
+        "stars": "4*"
+    },
+    "102632494021": {
+        "name": "MILLENNIUM PLAZA DOWNTOWN",
+        "stars": "5*"
+    },
+    "102632493855": {
+        "name": "MöVENPICK GRAND AL BUSTAN DUBAI (ex. RODA AL BUSTAN HOTEL)",
+        "stars": "5*"
+    },
+    "102632492218": {
+        "name": "ARABIAN PARK EDGE BY ROTANA",
+        "stars": "3*"
+    },
+    "102632576379": {
+        "name": "THANTHIP BEACH RESORT",
+        "stars": "3*"
+    },
+    "102651610088": {
+        "name": "I DEE HOTEL",
+        "stars": "3*"
+    },
+    "102662394959": {
+        "name": "THE PALMS KAMALA BEACH",
+        "stars": "4*"
+    },
+    "102663351339": {
+        "name": "ASHLEE HUB HOTEL PATONG",
+        "stars": "3*"
+    },
+    "102666410118": {
+        "name": "TROPICA BUNGALOW HOTEL",
+        "stars": "3*"
+    },
+    "102667823072": {
+        "name": "PATONG BAY RESIDENCE",
+        "stars": "3*"
+    },
+    "102670735843": {
+        "name": "KARON LIVING ROOM HOTEL",
+        "stars": "2*"
+    },
+    "102670851709": {
+        "name": "SIMPLITEL",
+        "stars": "3*"
+    },
+    "102672176695": {
+        "name": "SECRET CLIFF RESORT & RESTAURANT",
+        "stars": "3*"
+    },
+    "102650068989": {
+        "name": "MINAMARK RESORT",
+        "stars": "4*"
+    },
+    "102674808085": {
+        "name": "THE ASHLEE PLAZA PATONG HOTEL",
+        "stars": "3*"
+    },
+    "102674809305": {
+        "name": "THE ASHLEE HEIGHTS PATONG HOTEL & SUITES",
+        "stars": "4*"
+    },
+    "102650645341": {
+        "name": "IMPERIAL SHAMS ABOU SOMA",
+        "stars": "4*"
+    },
+    "102652166163": {
+        "name": "SEA STAR BEAU RIVAGE",
+        "stars": "5*"
+    },
+    "102661696060": {
+        "name": "SUN & SEA HOTEL",
+        "stars": "3*"
+    },
+    "102672201393": {
+        "name": "CITYMAX HOTEL SHARJAH",
+        "stars": "3*"
+    },
+    "102675059781": {
+        "name": "GOLDEN SANDS HOTEL & RESIDENCE",
+        "stars": "4*"
+    },
+    "102675341496": {
+        "name": "AL HAMRA HOTEL SHARJAH",
+        "stars": "4*"
+    },
+    "102675395936": {
+        "name": "DEXON ROMA HOTEL HURGHADA",
+        "stars": "3*"
+    },
+    "102623456678": {
+        "name": "MUST SEA HOTEL",
+        "stars": "3*"
+    },
+    "102675255850": {
+        "name": "FIRST CENTRAL HOTEL SUITES",
+        "stars": "APARTMENT"
+    },
+    "102623616362": {
+        "name": "AL BUSTAN HOTEL FLATS",
+        "stars": "APARTMENT"
+    },
+    "102623621691": {
+        "name": "LAVENDER HOTEL SHARJAH",
+        "stars": "4*"
+    },
+    "102623489483": {
+        "name": "GOLDEN SANDS HOTEL APARTMENTS",
+        "stars": "APARTMENT"
+    },
+    "102623578045": {
+        "name": "GOOD NICE HOTEL",
+        "stars": "3*"
+    },
+    "102623760853": {
+        "name": "GU HOTEL",
+        "stars": "3*"
+    },
+    "102624141585": {
+        "name": "NEJOUM AL EMARAT SHARJAH",
+        "stars": "3*"
+    },
+    "102624244377": {
+        "name": "AQUA MAYA PHUKET (ex. DI PANTAI BOUTIQUE BEACH RESORT)",
+        "stars": "4*"
+    },
+    "102624988866": {
+        "name": "RAMADA BEACH HOTEL AJMAN",
+        "stars": "4*"
+    },
+    "102625076488": {
+        "name": "Beldibi Beach Hotel",
+        "stars": "4*"
+    },
+    "102625109603": {
+        "name": "Yesiloz",
+        "stars": "4*"
+    },
+    "102625162065": {
+        "name": "Diamore Hotel",
+        "stars": "3*"
+    },
+    "102625177743": {
+        "name": "Viking Nona Beach",
+        "stars": "4*"
+    },
+    "102625222175": {
+        "name": "Grand Barhan",
+        "stars": "4*"
+    },
+    "102625330538": {
+        "name": "Club Hotel Sunbel",
+        "stars": "4*"
+    },
+    "102625446189": {
+        "name": "Side Temple Hotel",
+        "stars": "3*"
+    },
+    "102625564276": {
+        "name": "Kleopatra Beach Hotel",
+        "stars": "4*"
+    },
+    "102625564289": {
+        "name": "Kleopatra Royal Palm Hotel",
+        "stars": "4*"
+    },
+    "102625610244": {
+        "name": "Oba Time Hotel",
+        "stars": "4*"
+    },
+    "102625658966": {
+        "name": "YOU DEE HOTEL PATONG (ex. MEIR JARR HOTEL)",
+        "stars": "3*"
+    },
+    "102625746958": {
+        "name": "Agon Hotel",
+        "stars": "3*"
+    },
+    "102625852894": {
+        "name": "OCEANIC RESORT & SPA - KHORFAKKAN BEACH",
+        "stars": "4*"
+    },
+    "102625853561": {
+        "name": "COPTHORNE HOTEL SHARJAH",
+        "stars": "4*"
+    },
+    "102625874951": {
+        "name": "CITYMAX HOTEL - BUR DUBAI",
+        "stars": "3*"
+    },
+    "102625928875": {
+        "name": "AL BUSTAN HOTEL SHARJAH",
+        "stars": "4*"
+    },
+    "102625933571": {
+        "name": "SLEEPWITHME",
+        "stars": "4*"
+    },
+    "102626021307": {
+        "name": "ANDA BEACHSIDE HOTEL",
+        "stars": "3*"
+    },
+    "102626024911": {
+        "name": "Kleopatra Arsi Hotel",
+        "stars": "4*"
+    },
+    "102626197384": {
+        "name": "Kemer Paradise Hotel",
+        "stars": "3*"
+    },
+    "102626240984": {
+        "name": "Temiz Otel",
+        "stars": "3*"
+    },
+    "102626243919": {
+        "name": "Park Hotel",
+        "stars": "3*"
+    },
+    "102616052412": {
+        "name": "Selenium Hotel",
+        "stars": "4*"
+    },
+    "102616086279": {
+        "name": "Sun City Side Hotel",
+        "stars": "4*"
+    },
+    "102616121465": {
+        "name": "EL KARMA AQUA BEACH RESORT",
+        "stars": "4*"
+    },
+    "102616122291": {
+        "name": "SUGAR MARINA RESORT-SURF-KATA BEACH",
+        "stars": "3*"
+    },
+    "102616310739": {
+        "name": "THE ORCHID HOUSE",
+        "stars": "2*"
+    },
+    "102616380459": {
+        "name": "MOVENPICK HOTEL & APARTMENTS BUR DUBAI",
+        "stars": "5*"
+    },
+    "102616439148": {
+        "name": "GOLDEN LOTUS",
+        "stars": "2*"
+    },
+    "102616445483": {
+        "name": "BIDV HOTEL",
+        "stars": "3*"
+    },
+    "102616446305": {
+        "name": "RUBY HOTEL",
+        "stars": "4*"
+    },
+    "102616489384": {
+        "name": "VICTORIAN NHA TRANG HOTEL",
+        "stars": "4*"
+    },
+    "102616490468": {
+        "name": "BLUE BEACH GRAND RESORT AND SPA",
+        "stars": "4*"
+    },
+    "102616491748": {
+        "name": "EDELE HOTEL",
+        "stars": "3*"
+    },
+    "102616492065": {
+        "name": "LAVENDER",
+        "stars": "3*"
+    },
+    "102616492448": {
+        "name": "PRIME NEW HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102616494919": {
+        "name": "GOLDEN SAND",
+        "stars": "3*"
+    },
+    "102616517914": {
+        "name": "DONG HUNG",
+        "stars": "3*"
+    },
+    "102616534618": {
+        "name": "CRYSTAL PLAZA HOTEL",
+        "stars": "2*"
+    },
+    "102616607104": {
+        "name": "LEMON & SOUL",
+        "stars": "3*"
+    },
+    "102617304027": {
+        "name": "FISHERMEN HARBOUR URBAN RESORT",
+        "stars": "5*"
+    },
+    "102617387105": {
+        "name": "BLUE REEF BEACH RESORT MARSA ALAM",
+        "stars": "4*"
+    },
+    "102617906229": {
+        "name": "IBIS STYLES HOTEL JUMEIRAH",
+        "stars": "3*"
+    },
+    "102617906279": {
+        "name": "DENDRO GOLD",
+        "stars": "4*"
+    },
+    "102617923462": {
+        "name": "HAPPY LIGHT",
+        "stars": "3*"
+    },
+    "102618071640": {
+        "name": "SUGAR MARINA EXPRESS AVIATOR PHUKET AIRPORT",
+        "stars": "3*"
+    },
+    "102618273848": {
+        "name": "DONATELLO HOTEL DUBAI",
+        "stars": "4*"
+    },
+    "102610004068": {
+        "name": "MOVENPICK HOTEL AL MAMZAR",
+        "stars": "APARTMENT"
+    },
+    "102610074619": {
+        "name": "CHIVATARA RESORT & SPA",
+        "stars": "3*"
+    },
+    "102610075204": {
+        "name": "ROVE CITY CENTER HOTEL (ex.ROVE PORT SAEED)",
+        "stars": "3*"
+    },
+    "102610076000": {
+        "name": "ON HOTEL",
+        "stars": "3*"
+    },
+    "102610077094": {
+        "name": "PROUD PHUKET",
+        "stars": "4*"
+    },
+    "102610079254": {
+        "name": "Kleopatra Sahara",
+        "stars": "3*"
+    },
+    "102610004251": {
+        "name": "RED CASTLE HOTEL SHARJAH",
+        "stars": "4*"
+    },
+    "102610083435": {
+        "name": "ROVE BUR DUBAI – HEALTHCARE CITY",
+        "stars": "3*"
+    },
+    "102610083609": {
+        "name": "SIGNATURE 1 HOTEL TECOM (ex. SOMEWHERE HOTEL DUBAI - BARSHA HEIGHTS)",
+        "stars": "4*"
+    },
+    "102610084087": {
+        "name": "Viking Express Hotel (only adults 16+)",
+        "stars": "4*"
+    },
+    "102610088527": {
+        "name": "Grand Nar Hotel (only adults 14+)",
+        "stars": "4*"
+    },
+    "102610088859": {
+        "name": "Meltem Hotel",
+        "stars": "2*"
+    },
+    "102610091029": {
+        "name": "Viking Beach Hotel (only adults 16+)",
+        "stars": "4*"
+    },
+    "102610094130": {
+        "name": "ROVE TRADE CENTER",
+        "stars": "3*"
+    },
+    "102610096186": {
+        "name": "Novis Hotel Cleopatra (ex. Kleopatra Bilkay Hotel)",
+        "stars": "3*"
+    },
+    "102610096235": {
+        "name": "TRYP BY WYNDHAM BARSHA HEIGHTS",
+        "stars": "4*"
+    },
+    "102610102525": {
+        "name": "SHARJAH PALACE HOTEL",
+        "stars": "4*"
+    },
+    "102610103169": {
+        "name": "NAUMI HOTEL DUBAI (ex. DUSIT D2 KENZ HOTEL DUBAI)",
+        "stars": "4*"
+    },
+    "102610103252": {
+        "name": "BALCONY HOTEL",
+        "stars": "3*"
+    },
+    "102610104207": {
+        "name": "Arsi Enfi City Beach Hotel",
+        "stars": "4*"
+    },
+    "102610108009": {
+        "name": "Wasa Hotel",
+        "stars": "3*"
+    },
+    "102610109261": {
+        "name": "ROYAL HOTEL",
+        "stars": "3*"
+    },
+    "102610112342": {
+        "name": "SPARK RESIDENCE DELUXE HOTEL",
+        "stars": "APARTMENT"
+    },
+    "102610114856": {
+        "name": "APUS HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610117039": {
+        "name": "ROSE PARK HOTEL",
+        "stars": "4*"
+    },
+    "102610119159": {
+        "name": "GOSIA HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610122662": {
+        "name": "AOCHALONG RESORT VILLA AND SPA",
+        "stars": "4*"
+    },
+    "102610123624": {
+        "name": "QUEEN ELIZABETH 2",
+        "stars": "5*"
+    },
+    "102610124196": {
+        "name": "CRYSTAL PLAZA AL MAJAZ HOTEL",
+        "stars": "4*"
+    },
+    "102610124198": {
+        "name": "GOLDEN TULIP MEDIA HOTEL",
+        "stars": "4*"
+    },
+    "102610124446": {
+        "name": "ONELOFT HOTEL",
+        "stars": "3*"
+    },
+    "102610125901": {
+        "name": "Kleopatra Sun Light",
+        "stars": "3*"
+    },
+    "102610129435": {
+        "name": "FOUR POINTS BY SHERATON SHARJAH",
+        "stars": "5*"
+    },
+    "102610129834": {
+        "name": "KAMALA RESOTEL",
+        "stars": "3*"
+    },
+    "102610133243": {
+        "name": "CHABANA KAMALA",
+        "stars": "3*"
+    },
+    "102610133310": {
+        "name": "CHABANA RESORT",
+        "stars": "3*"
+    },
+    "102610135771": {
+        "name": "Mysea Hotels Alara",
+        "stars": "4*"
+    },
+    "102610136172": {
+        "name": "GOLDEN BEACH RESORT AND AQUA PARK",
+        "stars": "4*"
+    },
+    "102610136560": {
+        "name": "Kleopatra Alin Hotel",
+        "stars": "3*"
+    },
+    "102610139186": {
+        "name": "STUDIO M ARABIAN PLAZA",
+        "stars": "3*"
+    },
+    "102610143571": {
+        "name": "ROVE AT THE PARK",
+        "stars": "3*"
+    },
+    "102610145602": {
+        "name": "Max Nova Hotel (ex. Bin Billa)",
+        "stars": "3*"
+    },
+    "102610149490": {
+        "name": "Hawaii Suite Beach Hotel",
+        "stars": "3*"
+    },
+    "102610150281": {
+        "name": "MILLENNIUM AL BARSHA",
+        "stars": "4*"
+    },
+    "102610153319": {
+        "name": "ROYAL FALCON HOTEL",
+        "stars": "3*"
+    },
+    "102610156701": {
+        "name": "Kleopatra Aslan Corner Hotel",
+        "stars": "3*"
+    },
+    "102610156983": {
+        "name": "Arsi Blue Beach",
+        "stars": "4*"
+    },
+    "102610157167": {
+        "name": "SUNRISE ALORA AQUA PARK RESORT",
+        "stars": "4*"
+    },
+    "102610157184": {
+        "name": "SUNRISE SOLARA AQUA PARK RESORT",
+        "stars": "4*"
+    },
+    "102610157208": {
+        "name": "SUNRISE SERANO CLUB (ex. RIVIERA CLUB) MANAGED BY SUNRISE)",
+        "stars": "4*"
+    },
+    "102610157212": {
+        "name": "SUNRISE SERANO AQUA PARK RESORT",
+        "stars": "4*"
+    },
+    "102610157233": {
+        "name": "SUNRISE AZALEA AQUA PARK RESORT (ex. SUNRISE ASTER)",
+        "stars": "4*"
+    },
+    "102610157244": {
+        "name": "JASMINE PALACE RESORT & SPA",
+        "stars": "5*"
+    },
+    "102610157476": {
+        "name": "MAIKHAO HOTEL",
+        "stars": "4*"
+    },
+    "102610157515": {
+        "name": "GRAVITY HOTEL & AQUA PARK",
+        "stars": "5*"
+    },
+    "102610157549": {
+        "name": "GRAVITY HOTEL & AQUA PARK SAHL HASHEESH",
+        "stars": "5*"
+    },
+    "102610158488": {
+        "name": "NOVOTEL SHARJAH EXPO CENTRE",
+        "stars": "4*"
+    },
+    "102610160933": {
+        "name": "ROYAL LAGOONS RESORT & AQUA PARK",
+        "stars": "5*"
+    },
+    "102610161093": {
+        "name": "EAGLES PARADISE ABU SOMA RESORT",
+        "stars": "4*"
+    },
+    "102610161103": {
+        "name": "CORAL SUN BEACH SAFAGA",
+        "stars": "4*"
+    },
+    "102610168480": {
+        "name": "BLUE PEARL HOTEL (ex. RUBY HNATRANG)",
+        "stars": "3*"
+    },
+    "102610171645": {
+        "name": "SUN SEA SAND HOTEL",
+        "stars": "3*"
+    },
+    "102610175426": {
+        "name": "Kleopatra Bavyera",
+        "stars": "3*"
+    },
+    "102610175428": {
+        "name": "Kleopatra Bebek",
+        "stars": "3*"
+    },
+    "102610175777": {
+        "name": "SENTIDO CARIBBEAN WORLD RESORT SOMA BAY",
+        "stars": "5*"
+    },
+    "102610088943": {
+        "name": "ROSE PLAZA HOTEL",
+        "stars": "3*"
+    },
+    "102610142332": {
+        "name": "BLEND ELPHISTONE RESORT MARSA ALAM",
+        "stars": "4*"
+    },
+    "102610146713": {
+        "name": "VIVA BLUE RESORT & DIVING SPORTS (only adults 12+)",
+        "stars": "4*"
+    },
+    "102610149698": {
+        "name": "Yaman Life Hotel",
+        "stars": "3*"
+    },
+    "102610154626": {
+        "name": "Kleopatra Smile Hotel",
+        "stars": "3*"
+    },
+    "102610157844": {
+        "name": "Relax Beach Hotel",
+        "stars": "4*"
+    },
+    "102610163269": {
+        "name": "CASA MARE RESORT (ex. ROYAL TULIP BEACH RESORT)",
+        "stars": "5*"
+    },
+    "102610179259": {
+        "name": "LAZULI HOTEL MARSA ALAM",
+        "stars": "4*"
+    },
+    "102610179507": {
+        "name": "Ipek Apart",
+        "stars": "APARTMENT"
+    },
+    "102610179509": {
+        "name": "Elijah Hotel",
+        "stars": "3*"
+    },
+    "102610180715": {
+        "name": "ONATTI BEACH RESORT",
+        "stars": "4*"
+    },
+    "102610183816": {
+        "name": "Prenses Sealine Hotel",
+        "stars": "3*"
+    },
+    "102610184500": {
+        "name": "SWISSOTEL RESORT EL QUSIER (ex. RADISSON BLU QUSIER)",
+        "stars": "5*"
+    },
+    "102610184502": {
+        "name": "BLISS NADA BEACH",
+        "stars": "4*"
+    },
+    "102610185141": {
+        "name": "ROYAL STAR BEACH RESORT",
+        "stars": "4*"
+    },
+    "102610185347": {
+        "name": "THE FIRST COLLECTION JVC (JUMEIRAH VILLAGE CIRCLE)",
+        "stars": "4*"
+    },
+    "102610186347": {
+        "name": "RAWAI PRINCESS HOTEL",
+        "stars": "3*"
+    },
+    "102610188649": {
+        "name": "MARINA HOUSE MUAYTHAI TA-IAD PHUKET",
+        "stars": "3*"
+    },
+    "102610189292": {
+        "name": "Kemer Star Hotel",
+        "stars": "3*"
+    },
+    "102610190657": {
+        "name": "Clover Magic Park Side Hotel",
+        "stars": "3*"
+    },
+    "102610191391": {
+        "name": "ROSE EXECUTIVE HOTEL",
+        "stars": "3*"
+    },
+    "102610196766": {
+        "name": "BLEND CLUB AQUA RESORT",
+        "stars": "4*"
+    },
+    "102610199589": {
+        "name": "AL HAMRA VILLAGE",
+        "stars": "4*"
+    },
+    "102610199881": {
+        "name": "SEVEN SEAS JOLIE BAY ABU SOMA (ex. AQUA MONDO ABU SOMA RESORT)",
+        "stars": "5*"
+    },
+    "102610201634": {
+        "name": "EMPIRE HOTEL AQUA PARK",
+        "stars": "3*"
+    },
+    "102610202084": {
+        "name": "REWAYA INN RESORT",
+        "stars": "5*"
+    },
+    "102610203135": {
+        "name": "AJIRA BOUTIQUE HURGHADA MARINA HOTEL",
+        "stars": "3*"
+    },
+    "102610203137": {
+        "name": "AJIRA BAY HURGHADA MARINA HOTEL",
+        "stars": "3*"
+    },
+    "102610205893": {
+        "name": "MALA HOTEL",
+        "stars": "2*"
+    },
+    "102610207477": {
+        "name": "Q VICTORY PATONG",
+        "stars": "3*"
+    },
+    "102610208986": {
+        "name": "Miss Cleopatra Hotel",
+        "stars": "2*"
+    },
+    "102610209297": {
+        "name": "DOUBLETREE BY HILTON FUJAIRAH",
+        "stars": "5*"
+    },
+    "102610213395": {
+        "name": "AJIRA RESORT SAHL HASHEESH (ex. ZEN RESORT SAHL HASHEESH BOUTIQUE)",
+        "stars": "3*"
+    },
+    "102610213499": {
+        "name": "NEW EAGLES AQUA PARK RESORT",
+        "stars": "4*"
+    },
+    "102610221236": {
+        "name": "77 PATONG HOTEL & SPA",
+        "stars": "3*"
+    },
+    "102610222211": {
+        "name": "THE UPTOWN HOTEL",
+        "stars": "APARTMENT"
+    },
+    "102610223040": {
+        "name": "ALFRESCO PHUKET HOTEL",
+        "stars": "3*"
+    },
+    "102610225171": {
+        "name": "Sun Beach Hill",
+        "stars": "4*"
+    },
+    "102610225608": {
+        "name": "NAIYANG BEACH HOTEL",
+        "stars": "3*"
+    },
+    "102610230797": {
+        "name": "PROTELS CRYSTAL BEACH RESORT",
+        "stars": "4*"
+    },
+    "102610231035": {
+        "name": "ALE NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610231649": {
+        "name": "V HOTEL",
+        "stars": "4*"
+    },
+    "102610232435": {
+        "name": "ARECA HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610232840": {
+        "name": "FLAMENCO BEACH & RESORT El QUSEIR",
+        "stars": "4*"
+    },
+    "102610233377": {
+        "name": "CITRUS PATONG HOTEL",
+        "stars": "4*"
+    },
+    "102610233972": {
+        "name": "BOSS HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610234489": {
+        "name": "HARMONY PATONG HOTEL",
+        "stars": "3*"
+    },
+    "102610236083": {
+        "name": "DREAM LAGOON & AQUA PARK RESORT",
+        "stars": "4*"
+    },
+    "102610237299": {
+        "name": "LIBRA",
+        "stars": "4*"
+    },
+    "102610237646": {
+        "name": "PROTELS BEACH CLUB & SPA RESORT",
+        "stars": "4*"
+    },
+    "102610242945": {
+        "name": "MARINA LODGE PORT GHALIB",
+        "stars": "4*"
+    },
+    "102610242947": {
+        "name": "LIFE RESORTS CORAL HILLS BEACH & SPA",
+        "stars": "4*"
+    },
+    "102610245119": {
+        "name": "TUANA HOTELS BROOK RESORT & VILLAS (ex. TUANA HOTEL BROOK POOL ACCESS)",
+        "stars": "4*"
+    },
+    "102610245612": {
+        "name": "SELINA SERENITY RAWAI PHUKET",
+        "stars": "4*"
+    },
+    "102610245626": {
+        "name": "KING TOWN GRAND NHA TRANG",
+        "stars": "4*"
+    },
+    "102610245638": {
+        "name": "NALICAS NHA TRANG HOTEL",
+        "stars": "4*"
+    },
+    "102610245639": {
+        "name": "LA CASA HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610245651": {
+        "name": "SAPHIA HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610245659": {
+        "name": "NAVY HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610245660": {
+        "name": "GEM HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610245672": {
+        "name": "GIBSON HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610245685": {
+        "name": "GLORY HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610245698": {
+        "name": "GOLDEN HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610245904": {
+        "name": "NHA TRANG WONDERLAND HOTEL",
+        "stars": "3*"
+    },
+    "102610245949": {
+        "name": "IMPERIAL HOTEL",
+        "stars": "4*"
+    },
+    "102610245976": {
+        "name": "PARIS NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610246026": {
+        "name": "IVY HOTEL",
+        "stars": "4*"
+    },
+    "102610246241": {
+        "name": "SEANA NHA TRANG HOTEL",
+        "stars": "4*"
+    },
+    "102610246248": {
+        "name": "ELITE HOTEL",
+        "stars": "4*"
+    },
+    "102610246258": {
+        "name": "SEA PEARL HOTEL",
+        "stars": "3*"
+    },
+    "102610246327": {
+        "name": "FOR YOU HOTEL",
+        "stars": "3*"
+    },
+    "102610246448": {
+        "name": "MOONLIGHT HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610246477": {
+        "name": "PRAGUE NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610246527": {
+        "name": "SENIA HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610246623": {
+        "name": "BONJOUR NHA TRANG",
+        "stars": "3*"
+    },
+    "102610246677": {
+        "name": "SMILE HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610246684": {
+        "name": "SOCHI HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610246708": {
+        "name": "CROWN HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610246724": {
+        "name": "DB HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610246849": {
+        "name": "ALOHA NHA TRANG",
+        "stars": "4*"
+    },
+    "102610247156": {
+        "name": "RIGEL HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610247314": {
+        "name": "FLOW SPECTRUM RESORT SAHL HASHEESH",
+        "stars": "4*"
+    },
+    "102610247578": {
+        "name": "THE TIME",
+        "stars": "3*"
+    },
+    "102610247613": {
+        "name": "VENUE HOTEL",
+        "stars": "3*"
+    },
+    "102610247713": {
+        "name": "ZENIA BOUTIQUE HOTEL",
+        "stars": "3*"
+    },
+    "102610248070": {
+        "name": "CENTRO ONE PATONG",
+        "stars": "3*"
+    },
+    "102610248428": {
+        "name": "CENTRO ONE BANGLA",
+        "stars": "3*"
+    },
+    "102610248588": {
+        "name": "KNIGHT CASTLE HOTEL",
+        "stars": "5*"
+    },
+    "102610248590": {
+        "name": "KNIGHT ARMOUR HOTEL",
+        "stars": "4*"
+    },
+    "102610248770": {
+        "name": "LA GREEN HOTEL & RESIDENCE",
+        "stars": "5*"
+    },
+    "102610249382": {
+        "name": "Days Inn by Wyndham Alanya",
+        "stars": "APARTMENT"
+    },
+    "102610250706": {
+        "name": "SWISSTOUCH ORIENTAL RESORT & SPA",
+        "stars": "4*"
+    },
+    "102610250839": {
+        "name": "SUGAR MARINA RESORT LAGOON VILLAS",
+        "stars": "4*"
+    },
+    "102610250852": {
+        "name": "CITY TOWER FUJAIRAH",
+        "stars": "4*"
+    },
+    "102610259839": {
+        "name": "ASTICA NHA TRANG",
+        "stars": "4*"
+    },
+    "102610260335": {
+        "name": "SEASIDE NAITHON PHUKET",
+        "stars": "4*"
+    },
+    "102610260637": {
+        "name": "NANG VANG NHA TRANG",
+        "stars": "2*"
+    },
+    "102610261863": {
+        "name": "HOLIDAY INN DUBAI VILLAGE CIRCLE (ex. AVALON HOTEL DUBAI JUMEIRAH VILLAGE CIRCLE)",
+        "stars": "3*"
+    },
+    "102610261865": {
+        "name": "LOCAL HOTEL DUBAI AT JUMEIRAH VILLAGE TRIANGLE",
+        "stars": "4*"
+    },
+    "102610262239": {
+        "name": "BN BOUTIQUE NHA TRANG BEACH",
+        "stars": "4*"
+    },
+    "102610262277": {
+        "name": "HERMES HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610262340": {
+        "name": "SENKOTEL NHA TRANG MANAGED BY NEST GROUP",
+        "stars": "2*"
+    },
+    "102610262344": {
+        "name": "MERITON HOTEL NHA TRANG",
+        "stars": "4*"
+    },
+    "102610262385": {
+        "name": "MAY NGU SAC - IRIDESCENT CLOUDS HOTEL",
+        "stars": "-*"
+    },
+    "102610262408": {
+        "name": "REMBRANDT HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610262473": {
+        "name": "STARLIGHT NHA TRANG",
+        "stars": "3*"
+    },
+    "102610262485": {
+        "name": "SIREN FLOWER HOTEL",
+        "stars": "3*"
+    },
+    "102610262501": {
+        "name": "GOLDEN SEA HOTEL",
+        "stars": "3*"
+    },
+    "102610262527": {
+        "name": "MARILYN BOUTIQUE HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610262539": {
+        "name": "LE SOLEIL NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610262575": {
+        "name": "CANARY NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610262577": {
+        "name": "CROWN NGUYEN HOANG HOTEL",
+        "stars": "3*"
+    },
+    "102610263072": {
+        "name": "SHONI BAY RESORT MARSA ALAM",
+        "stars": "4*"
+    },
+    "102610264427": {
+        "name": "AROMA NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610265001": {
+        "name": "TRIS MIRACLE APARTMENT KATA",
+        "stars": "2*"
+    },
+    "102610265841": {
+        "name": "ANGELLA",
+        "stars": "3*"
+    },
+    "102610265946": {
+        "name": "LANXY",
+        "stars": "4*"
+    },
+    "102610266114": {
+        "name": "MAPLE LEAF HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610268222": {
+        "name": "THE TREND KAMALA",
+        "stars": "3*"
+    },
+    "102610269342": {
+        "name": "REWAYA MAJESTIC RESORT",
+        "stars": "5*"
+    },
+    "102610274986": {
+        "name": "W PREMIUM HOTEL",
+        "stars": "3*"
+    },
+    "102610276710": {
+        "name": "WYNDHAM PHUKET AIRPORT (ex. WYNDHAM ROYAL LEE PHUKET)",
+        "stars": "5*"
+    },
+    "102610277140": {
+        "name": "GLAMOUR HOTEL",
+        "stars": "4*"
+    },
+    "102610279315": {
+        "name": "OLA NHA TRANG HOTEL",
+        "stars": "3*"
+    },
+    "102610281687": {
+        "name": "SUNRISE CARDINA RESORT (ex. AURORA)",
+        "stars": "4*"
+    },
+    "102610289443": {
+        "name": "GOLDEN RAIN 2",
+        "stars": "3*"
+    },
+    "102610289828": {
+        "name": "ART DELUXE HOTEL",
+        "stars": "3*"
+    },
+    "102610289886": {
+        "name": "DOUBLETREE BY HILTON DUBAI PORT SAEED",
+        "stars": "4*"
+    },
+    "102610290147": {
+        "name": "BEEHIVE BOUTIQUE PHUKET HOTEL",
+        "stars": "4*"
+    },
+    "102610292866": {
+        "name": "MEDIA HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610294691": {
+        "name": "NEST HOTEL ALJADA",
+        "stars": "3*"
+    },
+    "102610294868": {
+        "name": "REWAYA LUXURY RESORT",
+        "stars": "5*"
+    },
+    "102610296439": {
+        "name": "MELYNA HOTEL NHA TRANG BEACH",
+        "stars": "3*"
+    },
+    "102610300705": {
+        "name": "SUNDAY MANGROVE CORNICHE HOTEL",
+        "stars": "4*"
+    },
+    "102610302648": {
+        "name": "WYNNE HOTEL",
+        "stars": "3*"
+    },
+    "102610305324": {
+        "name": "THE SAJ HOTEL",
+        "stars": "4*"
+    },
+    "102610306019": {
+        "name": "SOLARA HOTEL NHA TRANG",
+        "stars": "3*"
+    },
+    "102610306489": {
+        "name": "CITIN ARMONI PATONG",
+        "stars": "3*"
+    },
+    "102610308709": {
+        "name": "Anitas Beach Hotel",
+        "stars": "4*"
+    },
+    "102610310289": {
+        "name": "MELISSA KATA BEACH RESORT",
+        "stars": "3*"
+    },
+    "102610310291": {
+        "name": "SEAVALE RESIDENCES PATONG",
+        "stars": "4*"
+    },
+    "102610311645": {
+        "name": "B BURI HOTEL",
+        "stars": "3*"
+    },
+    "102610313150": {
+        "name": "VOGO GRAND DUBAI ACADEMIC CITY",
+        "stars": "4*"
+    }
 }

@@ -49,13 +49,7 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 <div class="hot-bento hot-bento--<?php echo esc_attr( $group['mod'] ); ?>">
 	<?php
 	foreach ( $group['tiles'] as $tile ) :
-		$tours = zhiraf_ufa_get_country_tours( $tile['slug'], 10 );
-		$min   = null;
-		foreach ( (array) $tours as $t ) {
-			if ( ! empty( $t['price_rur'] ) && ( null === $min || (int) $t['price_rur'] < (int) $min['price_rur'] ) ) {
-				$min = $t;
-			}
-		}
+		$min   = zhiraf_ufa_get_country_min_tour( $tile['slug'] );
 		$price_date = $min && ! empty( $min['price_date'] ) ? (string) $min['price_date'] : '';
 		$is_stale   = $min && $price_date !== $zhiraf_today;
 		$price_txt  = $min ? number_format( (int) $min['price_rur'], 0, '.', ' ' ) : '';

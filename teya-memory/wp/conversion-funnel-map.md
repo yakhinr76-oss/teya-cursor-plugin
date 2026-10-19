@@ -29,7 +29,7 @@
 | Quiz submit (North Star) | главная конверсия | `quiz_submit` |
 | Phone click (North Star) | второй равный North Star | `phone_click` |
 | Lead form start | mid-page форма | `lead_form_start` |
-| Lead form submit | горячие без квиза | `lead_form_submit` |
+| Lead form submit | горячие без квиза | `lead_form` |
 | Destination card click | intent по стране | `dest_card_click` + param `country` |
 | Audience tab — семья | сегмент | `audience_tab_family` |
 | Audience tab — пара | сегмент | `audience_tab_couple` |

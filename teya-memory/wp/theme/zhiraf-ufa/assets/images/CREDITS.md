@@ -17,3 +17,28 @@
 | country-sejshely.jpg | Сейшелы A (sejshely-a) | mysurrogateband | https://www.pexels.com/photo/scenic-beach-with-granite-boulders-in-seychelles-31421280/ | Stunning view of granite boulders on a beach in La Digue, Seychelles, under clear blue skies. |
 | country-uzbekistan.jpg | Узбекистан A (uzbekistan-a) | Rüveyda Akkaya | https://www.pexels.com/photo/stunning-view-of-samarkand-registan-mosque-35220191/ | Capture of the historic Registan Mosque in Samarkand, Uzbekistan under a clear blue sky. |
 | country-armeniya.jpg | Армения B (armeniya-b) | Doctor Unface | https://www.pexels.com/photo/ancient-garni-temple-under-blue-sky-33403598/ | A scenic view of the ancient Garni Temple in Armenia under a clear blue sky. |
+
+# Фото для карточек отелей (assets/images/resort-*.jpg, alt-*.jpg)
+
+Добавлено 19.10.2026. Источник: Pexels, Pexels License (бесплатное коммерческое использование). Проверено визуально: без вывесок и названий отелей. 1200 px, JPEG ≤ 260 КБ. `resort-*` — фото конкретного курорта, ставится на карточку этого курорта; `alt-*` — дополнительные фото страны для разнообразия карточек. Если для курорта нет проверенного фото, берётся фото страны (alt «Фото направления: …»).
+
+| Файл | Для чего | Автор | Страница Pexels | Что на фото |
+|---|---|---|---|---|
+| resort-phuket.jpg | Таиланд — Пхукет (карточки курортов о.Пхукет) | Phakchira Sukcharearn | https://www.pexels.com/photo/monument-of-buddha-6027591/ | Explore the iconic Big Buddha statue atop Nakkerd Hill in Phuket, Thailand, a serene and spiritual landmark. |
+| resort-abu-dabi.jpg | ОАЭ — Абу-Даби | Daniel Dang | https://www.pexels.com/photo/majestic-exterior-of-sheikh-zayed-grand-mosque-32119558/ | Stunning view of the Sheikh Zayed Grand Mosque in Abu Dhabi with clear blue sky. |
+| resort-sanya-2.jpg | Китай — Санья | 茵 夏 | https://www.pexels.com/photo/bird-eye-view-on-tranquil-sea-and-coastline-18227450/ | Explore the scenic coastal beauty of Sanya, Hainan with its sandy beaches and lush greenery. |
+| resort-sanya-3.jpg | Китай — Санья | Alex Peet | https://www.pexels.com/photo/stunning-coastal-view-of-sanya-hainan-39555096/ | Coastal view of Sanya, Hainan (Dadonghai bay); cropped to exclude a building with a logo |
+| resort-severnyj-goa.jpg | Индия — Северный Гоа | Mohit Hambiria | https://www.pexels.com/photo/scenic-beach-view-from-chapora-india-at-sunset-28518933/ | Beach view from Chapora (North Goa) at sunset |
+| resort-maldivy-atoll-1.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/bird-s-eye-view-photo-of-cabanas-1456293/ | Stunning aerial shot of luxurious overwater villas in the Maldives, showcasing crystal clear turquoise waters. |
+| resort-maldivy-atoll-2.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/beach-huts-on-water-9394274/ | Beach huts on water, Maldives |
+| resort-samarkand.jpg | Узбекистан — Самарканд | Khusen Rustamov | https://www.pexels.com/photo/stunning-architecture-of-registan-square-in-samarkand-39662648/ | Registan Square, Samarkand |
+| alt-indiya-2.jpg | Индия — фото страны (вариант 2) | LiveLoveLife and TRAVEL | https://www.pexels.com/photo/basilica-of-bom-jesus-in-goa-in-india-19940057/ | View of a historical church building in Goa, India, showcasing colonial architecture. |
+| alt-shri-lanka-2.jpg | Шри-Ланка — фото страны (вариант 2) | Malik Cil | https://www.pexels.com/photo/scenic-aerial-view-of-nine-arches-bridge-in-ella-34218649/ | Aerial view of the iconic Nine Arches Bridge surrounded by lush greenery in Ella, Sri Lanka. |
+| alt-shri-lanka-3.jpg | Шри-Ланка — фото страны (вариант 3) | Stephanie Perera | https://www.pexels.com/photo/majestic-view-of-sigiriya-rock-in-sri-lanka-34128251/ | Sigiriya rock, Sri Lanka |
+| alt-indoneziya-2.jpg | Бали — фото страны (вариант 2) | Patrick Gamelkoorn | https://www.pexels.com/photo/temple-by-the-sea-in-indonesia-18144499/ | Breathtaking view of Tanah Lot Temple on the rocky coast of Bali, Indonesia, during sunset. |
+| alt-indoneziya-3.jpg | Бали — фото страны (вариант 3) | Evert jan Hoek | https://www.pexels.com/photo/lush-green-terraced-rice-fields-in-bali-36133244/ | Terraced rice fields, Bali |
+| alt-sejshely-2.jpg | Сейшелы — фото страны (вариант 2) | Logan Hamm | https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/ | Discover the stunning beach with distinctive granite rocks and clear turquoise water in Seychelles. |
+| alt-sejshely-3.jpg | Сейшелы — фото страны (вариант 3) | Holger Wulschlaeger | https://www.pexels.com/photo/brown-rock-formations-on-sea-shore-5044865/ | Granite rocks on the sea shore, Seychelles |
+| alt-uzbekistan-2.jpg | Узбекистан — фото страны (вариант 2, Хива) | AXP Photography | https://www.pexels.com/photo/kaltaminor-minaret-between-the-kuhna-ark-fortress-and-the-mohammed-amin-khan-madrassah-in-uzbekistan-19473625/ | View of the iconic Kalta Minor Minaret in Khiva, showcasing Islamic architecture in summer. |
+| alt-armeniya-2.jpg | Армения — фото страны (вариант 2) | Oleksiy Yeshtokyn,🌻🇺🇦🌻 | https://www.pexels.com/photo/khor-virap-monastery-at-sunset-in-armenia-39152787/ | A stunning view of Khor Virap Monastery set against the Armenian landscape at sunset. |
+| alt-armeniya-3.jpg | Армения — фото страны (вариант 3) | Vladimir Konoplev | https://www.pexels.com/photo/view-of-khor-virap-monastery-from-behind-the-rocks-11885462/ | Khor Virap monastery behind the rocks, Armenia |

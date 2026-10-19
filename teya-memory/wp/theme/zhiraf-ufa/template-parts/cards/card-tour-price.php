@@ -36,7 +36,8 @@ if ( '' === $hotel_name || '' === $stars || '' === $resort || '' === $departure_
 // Stale = price not refreshed today: show "цена от … на [дата], уточните…" instead of the fresh-price disclaimer.
 $is_stale = ( $price_date !== wp_date( 'd.m.Y' ) );
 
-$image_file       = zhiraf_ufa_tour_image( $tour );
+$image_info       = zhiraf_ufa_tour_image_info( $tour );
+$image_file       = $image_info['file'];
 $nights_formatted = zhiraf_ufa_plural_nights( $nights );
 $country_name     = zhiraf_ufa_tour_country_name( $country_slug );
 
@@ -52,7 +53,7 @@ $prefill_text     = sprintf(
 <article class="tour-card reveal" data-dest="<?php echo esc_attr( $country_slug ); ?>">
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
-		<?php zhiraf_ufa_img( $image_file, $resort . ' — ' . $hotel_name, 'tour-card__img', true ); ?>
+		<?php zhiraf_ufa_img( $image_file, $image_info['alt'] ? $image_info['alt'] : $resort, 'tour-card__img', true ); ?>
 		<?php else : ?>
 			<div class="tour-card__img tour-card__img--grad dest-grad dest-grad--<?php echo esc_attr( $country_slug ); ?>" role="img" aria-label="<?php echo esc_attr( $resort ); ?>"></div>
 		<?php endif; ?>

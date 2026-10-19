@@ -206,7 +206,7 @@
 |---------|-------|--------|--------|
 | Primary | Подобрать тур | `#quiz-modal` | `cta_hero_quiz_open`, `cta_header_quiz_open`, `cta_sticky_quiz_open`, `quiz_submit` |
 | Secondary | Позвонить | `tel:+79018105018` | `phone_click` |
-| Lead form | Отправить / Подобрать тур | AJAX lead | `lead_form_start`, `lead_form_submit` |
+| Lead form | Отправить / Подобрать тур | AJAX lead | `lead_form_start`, `lead_form` |
 | Blog | Читать статью | post URL | `blog_teaser_click` |
 
 **North Star:** `quiz_submit` + `phone_click`. Один primary pill above fold; телефон в шапке — не второй primary pill в hero.

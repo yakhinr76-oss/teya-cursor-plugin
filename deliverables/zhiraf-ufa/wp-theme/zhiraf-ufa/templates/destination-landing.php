@@ -79,15 +79,18 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 	<?php endif; ?>
 
 
-	<?php if ( ! empty( $dest['for_who'] ) ) : ?>
-	<section class="section dest-landing-prose bg-milky">
+	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) ) : ?>
+	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
+		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
+			<?php if ( ! empty( $dest['for_who'] ) ) : ?>
 			<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>
 			<p><?php echo esc_html( $dest['for_who'] ); ?></p>
 			<h2><?php esc_html_e( 'Что уточняем при подборе', 'zhiraf-ufa' ); ?></h2>
 			<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
 			<h2><?php esc_html_e( 'Сезон и климат', 'zhiraf-ufa' ); ?></h2>
 			<p><?php echo esc_html( $dest['season'] ); ?></p>
+			<?php endif; ?>
 			<?php if ( ! empty( $dest['extra_sections'] ) ) : ?>
 				<?php foreach ( $dest['extra_sections'] as $section ) : ?>
 					<?php if ( ! empty( $section['h2'] ) ) : ?>

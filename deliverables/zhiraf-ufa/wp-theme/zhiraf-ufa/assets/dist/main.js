@@ -63,6 +63,7 @@
     if (el.closest('#sticky-mobile-cta')) return 'sticky';
     if (el.closest('.trust-social')) return 'trust';
     if (el.closest('.site-footer')) return 'footer';
+    if (el.closest('.site-main--contacts')) return 'contacts';
     return 'other';
   }
 
@@ -128,7 +129,8 @@
   }
 
   document.addEventListener('click', function (e) {
-    var phone = e.target.closest('a[data-track="phone"]');
+    // Any tel: link on the site (header, footer, contacts page, cards) counts as phone_click.
+    var phone = e.target.closest('a[href^="tel:"]');
     if (phone) {
       window.zhirafTrack('phone_click', { placement: phonePlacement(phone) });
       return;
@@ -390,6 +392,7 @@
 
   function trackFormSuccess(form, action) {
     if (action === 'zhiraf_quiz') {
+      // Metrika goal id: quiz_submit (JS event). Fired only after server returned success.
       window.zhirafTrack('quiz_submit', {
         composition: fieldValue(form, 'quiz_composition'),
         month: fieldValue(form, 'quiz_month'),
@@ -399,7 +402,8 @@
     }
     if (action === 'zhiraf_lead') {
       var ctx = form.id || form.getAttribute('data-form-context') || 'lead';
-      window.zhirafTrack('lead_form_submit', { form_context: ctx });
+      // Metrika goal id: lead_form (JS event). Fired only after server returned success.
+      window.zhirafTrack('lead_form', { form_context: ctx });
       return;
     }
     if (action === 'zhiraf_subscribe') {

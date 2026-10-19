@@ -39,7 +39,8 @@ function zhiraf_ufa_moscow_landing_data() {
 		'uzbekistan' => __( 'Узбекистан — Регистан в Самарканде', 'zhiraf-ufa' ),
 		'armeniya' => __( 'Армения — античный храм Гарни', 'zhiraf-ufa' ),
 	);
-	$out = array();
+	$content = function_exists( 'zhiraf_ufa_moscow_content' ) ? zhiraf_ufa_moscow_content() : array();
+	$out     = array();
 	foreach ( $rows as $slug => $r ) {
 		list( $name, $full, $to ) = $r;
 		$out[ $slug ] = array(
@@ -64,6 +65,21 @@ function zhiraf_ufa_moscow_landing_data() {
 				),
 			),
 		);
+		if ( ! empty( $content[ $slug ] ) ) {
+			// ТЕКСТ НА ПРОВЕРКУ: long-form sections + FAQ (inc/destination-landings-moscow-content.php).
+			$c      = $content[ $slug ];
+			$common = zhiraf_ufa_moscow_common_sections( $to, $name );
+			$out[ $slug ]['extra_sections'] = array(
+				array( 'h2' => __( 'Когда ехать', 'zhiraf-ufa' ), 'paragraphs' => $c['season'] ),
+				array( 'h2' => __( 'Курорты в турах', 'zhiraf-ufa' ), 'paragraphs' => $c['resorts'] ),
+				array( 'h2' => __( 'Что входит в цену на сайте', 'zhiraf-ufa' ), 'paragraphs' => $common['price'] ),
+				array( 'h2' => __( 'Въезд для граждан России', 'zhiraf-ufa' ), 'paragraphs' => array_merge( $c['entry'], array( $content['_entry_note'] ) ) ),
+				array( 'h2' => __( 'Перелёт: из Москвы, без участка Уфа — Москва', 'zhiraf-ufa' ), 'paragraphs' => $common['flight'] ),
+				array( 'h2' => __( 'Полезно знать', 'zhiraf-ufa' ), 'paragraphs' => $c['tips'] ),
+				array( 'h2' => __( 'Как забронировать', 'zhiraf-ufa' ), 'paragraphs' => $common['how'] ),
+			);
+			$out[ $slug ]['faq'] = array_merge( $out[ $slug ]['faq'], $c['faq'] );
+		}
 	}
 	return $out;
 }

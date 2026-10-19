@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $zhiraf_bento = array(
 	array( 'slug' => 'turciya', 'title' => __( 'Турция', 'zhiraf-ufa' ), 'image' => 'dest-turkey.jpg', 'direct' => true, 'mod' => 'wide' ),
-	array( 'slug' => 'egipet', 'title' => __( 'Египет', 'zhiraf-ufa' ), 'image' => 'dest-egypt.jpg', 'direct' => true, 'mod' => 'tall' ),
+	array( 'slug' => 'egipet', 'title' => __( 'Египет', 'zhiraf-ufa' ), 'image' => 'hero-egypt.jpg', 'direct' => true, 'mod' => 'tall' ),
 	array( 'slug' => 'oae', 'title' => __( 'ОАЭ', 'zhiraf-ufa' ), 'image' => 'dest-uae.jpg', 'direct' => true, 'mod' => 'small' ),
 	array( 'slug' => 'tailand', 'title' => __( 'Таиланд', 'zhiraf-ufa' ), 'image' => 'dest-thailand.jpg', 'direct' => false, 'mod' => 'small' ),
 	array( 'slug' => 'vietnam', 'title' => __( 'Вьетнам', 'zhiraf-ufa' ), 'image' => 'dest-vietnam.jpg', 'direct' => false, 'mod' => 'banner' ),

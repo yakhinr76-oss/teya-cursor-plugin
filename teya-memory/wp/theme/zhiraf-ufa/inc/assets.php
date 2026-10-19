@@ -116,7 +116,7 @@ function zhiraf_ufa_destinations() {
 		array(
 			'slug'  => 'egipet',
 			'name'  => __( 'Египет', 'zhiraf-ufa' ),
-			'image' => 'dest-egypt.jpg',
+			'image' => 'hero-egypt.jpg',
 			'alt'   => __( 'Египет — курорты Красного моря', 'zhiraf-ufa' ),
 			'url'   => home_url( '/tour/egipet/' ),
 		),

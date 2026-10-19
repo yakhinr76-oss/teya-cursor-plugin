@@ -44,7 +44,7 @@ function zhiraf_ufa_tour_image( $tour ) {
 			return 'hero-egypt.jpg';
 		}
 		if ( false !== mb_strpos( $resort, 'хургад', 0, 'UTF-8' ) ) {
-			return 'dest-egypt.jpg';
+			return 'hero-egypt.jpg';
 		}
 		if ( false !== mb_strpos( $resort, 'фукуок', 0, 'UTF-8' ) ) {
 			return 'hero-vietnam.jpg';
@@ -63,7 +63,7 @@ function zhiraf_ufa_tour_image( $tour ) {
 	$map = array(
 		'turciya' => 'dest-turkey.jpg',
 		'oae'     => 'dest-uae.jpg',
-		'egipet'  => 'dest-egypt.jpg',
+		'egipet'  => 'hero-egypt.jpg',
 		'tailand' => 'dest-thailand.jpg',
 		'vietnam' => 'dest-vietnam.jpg',
 	);

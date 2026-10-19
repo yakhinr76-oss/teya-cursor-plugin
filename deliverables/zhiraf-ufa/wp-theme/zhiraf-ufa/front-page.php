@@ -141,24 +141,9 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 						<?php esc_html_e( 'Цены туроператора Библио-Глобус с прямым вылетом из Уфы и стыковками в Москве. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
 					</p>
 				</div>
-				<div class="section-tabs tour-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Фильтр туров по странам', 'zhiraf-ufa' ); ?>">
-					<button type="button" class="tab-btn is-active" data-tour-filter="all"><?php esc_html_e( 'Все направления', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-tour-filter="turciya"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-tour-filter="oae"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-tour-filter="egipet"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-tour-filter="tailand"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-tour-filter="vietnam"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></button>
-				</div>
 			</div>
 
-			<div class="tour-price-grid tour-price-grid--home">
-				<?php
-				$hot_tours = zhiraf_ufa_get_hot_tours( 8 );
-				foreach ( $hot_tours as $tour_item ) :
-					get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item ) );
-				endforeach;
-				?>
-			</div>
+			<?php get_template_part( 'template-parts/home/hot-bento' ); ?>
 		</div>
 	</section>
 

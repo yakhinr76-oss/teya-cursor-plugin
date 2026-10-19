@@ -41,6 +41,9 @@ function zhiraf_ufa_maybe_legacy_redirect() {
 	$map     = zhiraf_ufa_legacy_redirect_map();
 	foreach ( $map as $from => $to ) {
 		$from_norm = untrailingslashit( $from );
+		if ( untrailingslashit( $to ) === $from_norm ) {
+			continue; // Canonical slash is handled by WordPress; self-redirect caused an infinite 301 loop.
+		}
 		if ( $request === $from_norm || $request . '/' === $from ) {
 			wp_safe_redirect( home_url( $to ), 301 );
 			exit;

@@ -282,11 +282,17 @@
     trackQuizStep(0);
     modal.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('quiz-open');
+    var first = qs('.quiz-step.is-active input, .quiz-step.is-active select', quizForm);
+    if (first) {
+      try { first.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
+    }
   }
   function closeQuiz() {
     if (!modal) return;
     modal.setAttribute('hidden', '');
     document.body.style.overflow = '';
+    document.body.classList.remove('quiz-open');
   }
   qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -402,29 +408,75 @@
   }
 
   /* AJAX forms */
-  function postForm(form, action) {
-    var status = qs('.form-status', form);
-    var submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.setAttribute('aria-busy', 'true');
-    }
+  var PHONE_FALLBACK = 'Не удалось отправить. Позвоните нам: +7 901 810-50-18';
+  function setStatus(status, text, ok) {
+    if (!status) return;
+    status.textContent = text;
+    status.classList.toggle('is-success', ok === true);
+    status.classList.toggle('is-error', ok === false);
+  }
+  function parseResponse(r) {
+    return r.text().then(function (txt) {
+      var data = null;
+      try { data = JSON.parse(txt); } catch (e) { data = null; }
+      if (!data || typeof data !== 'object') {
+        // admin-ajax returns bare "-1" (bad nonce) or "0" (unknown action).
+        data = { success: false, data: { code: txt === '-1' ? 'nonce' : 'bad_response' } };
+      }
+      return data;
+    });
+  }
+  function refreshNonce() {
+    var fd = new FormData();
+    fd.append('action', 'zhiraf_form_nonce');
+    return fetch(cfg.ajaxUrl, { method: 'POST', body: fd, credentials: 'same-origin' })
+      .then(parseResponse)
+      .then(function (d) {
+        if (d && d.success && d.data && d.data.nonce) {
+          cfg.nonce = d.data.nonce;
+          return true;
+        }
+        return false;
+      });
+  }
+  function sendForm(form, action) {
     var fd = new FormData(form);
     fd.append('action', action);
     fd.append('nonce', cfg.nonce || '');
-    fetch(cfg.ajaxUrl, { method: 'POST', body: fd, credentials: 'same-origin' })
-      .then(function (r) { return r.json(); })
+    return fetch(cfg.ajaxUrl, { method: 'POST', body: fd, credentials: 'same-origin' }).then(parseResponse);
+  }
+  function postForm(form, action) {
+    var status = qs('.form-status', form);
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (!cfg.ajaxUrl) {
+      setStatus(status, PHONE_FALLBACK, false);
+      return;
+    }
+    if (submitBtn) {
+      if (submitBtn.disabled) return;
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+    }
+    setStatus(status, 'Отправляем…', null);
+    sendForm(form, action)
       .then(function (data) {
-        if (status) {
-          status.textContent = data.data && data.data.message ? data.data.message : (data.success ? 'OK' : 'Ошибка');
+        if (!data.success && data.data && data.data.code === 'nonce') {
+          return refreshNonce().then(function (ok) {
+            return ok ? sendForm(form, action) : data;
+          });
         }
+        return data;
+      })
+      .then(function (data) {
+        var msg = data.data && data.data.message ? data.data.message : (data.success ? 'Спасибо! Заявка отправлена.' : PHONE_FALLBACK);
+        setStatus(status, msg, !!data.success);
         if (data.success) {
           trackFormSuccess(form, action);
           form.reset();
         }
       })
       .catch(function () {
-        if (status) status.textContent = 'Ошибка сети';
+        setStatus(status, 'Нет связи с сервером. ' + PHONE_FALLBACK, false);
       })
       .finally(function () {
         if (submitBtn) {

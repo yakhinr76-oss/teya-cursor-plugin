@@ -279,8 +279,8 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 						<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Отправить', 'zhiraf-ufa' ); ?></button>
 					</div>
 					<?php zhiraf_ufa_consent_fields( 'home-lead' ); ?>
+					<p class="form-status" role="status" aria-live="polite"></p>
 				</form>
-				<p class="form-status" role="status"></p>
 				<p class="form-premium__alt">
 					<button type="button" class="btn btn--outline btn--sm" data-quiz-open><?php esc_html_e( 'Или пройти квиз', 'zhiraf-ufa' ); ?></button>
 				</p>

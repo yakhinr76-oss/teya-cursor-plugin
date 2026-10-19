@@ -44,7 +44,7 @@ get_header();
 				<label class="form-field"><span><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span><input name="phone" type="tel" required /></label>
 				<?php zhiraf_ufa_consent_fields(); ?>
 				<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Отправить', 'zhiraf-ufa' ); ?></button>
-				<p class="form-status" role="status"></p>
+				<p class="form-status" role="status" aria-live="polite"></p>
 			</form>
 		</div>
 	</section>

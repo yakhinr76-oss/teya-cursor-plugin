@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once __DIR__ . '/legacy-attachments.php';
+
 /**
  * 301 map for old paths (see teya-memory/seo/old-url-map.csv).
  *
@@ -23,6 +25,13 @@ function zhiraf_ufa_legacy_redirect_map() {
 		'/politika-konfidenczialnosti' => '/politika-konfidenczialnosti/',
 		'/tour/tailand/phuket'         => '/tour/tailand/',
 		'/tour/tailand/phuket/'        => '/tour/tailand/',
+		// zhiraf-ufa.ru inventory 19.10.2026 (migration/url_map.csv).
+		'/tour/turkey'                 => '/tour/turciya/',
+		'/tour/uae'                    => '/tour/oae/',
+		'/tour/tur-2'                  => '/tour/',
+		'/tip/plyazhnyj-tur'           => '/tour/',
+		'/tip/ekskursii'               => '/tour/',
+		'/author/admin'                => '/blog/',
 	);
 }
 
@@ -46,6 +55,15 @@ function zhiraf_ufa_maybe_legacy_redirect() {
 		}
 		if ( $request === $from_norm || $request . '/' === $from ) {
 			wp_safe_redirect( home_url( $to ), 301 );
+			exit;
+		}
+	}
+
+	// Old media attachment pages: only when nothing exists at that URL on the new site.
+	if ( is_404() ) {
+		$attachment_id = isset( $_GET['attachment_id'] ) ? absint( $_GET['attachment_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( $attachment_id || in_array( urldecode( $request ), zhiraf_ufa_legacy_attachment_paths(), true ) ) {
+			wp_safe_redirect( home_url( '/' ), 301 );
 			exit;
 		}
 	}

@@ -447,6 +447,7 @@ class Zhiraf_BG_Price_Engine {
 	 * @var string
 	 */
 	const UFA_DEPARTURE_ID = '100510324872';
+	const MOW_DEPARTURE_ID = '100510000863';
 
 	/**
 	 * Transient key for full parsed tours bundle.
@@ -505,6 +506,15 @@ class Zhiraf_BG_Price_Engine {
 			'code'     => 'VN',
 			'currency' => 'USD',
 		),
+		// Countries priced from Moscow (owner-approved). route_inc / town_inc restrict to the advertised resort.
+		'kitaj'      => array( 'id' => '100410644207', 'name_ru' => 'Китай', 'code' => 'CN', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Хайнань/u', 'town_inc' => '/Санья|Sanya/u', 'max_files' => 6 ),
+		'indiya'     => array( 'id' => '100410839865', 'name_ru' => 'Индия', 'code' => 'IN', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Гоа/u', 'town_inc' => '/Гоа|Goa/u', 'max_files' => 6 ),
+		'shri-lanka' => array( 'id' => '100431114088', 'name_ru' => 'Шри-Ланка', 'code' => 'LK', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
+		'indoneziya' => array( 'id' => '100410504525', 'name_ru' => 'Индонезия', 'code' => 'ID', 'currency' => 'USD', 'from' => '100510000863', 'route_inc' => '/Бали/u', 'town_inc' => '/Бали|Bali/u', 'max_files' => 6 ),
+		'maldivy'    => array( 'id' => '100410365967', 'name_ru' => 'Мальдивы', 'code' => 'MV', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
+		'sejshely'   => array( 'id' => '100431114060', 'name_ru' => 'Сейшелы', 'code' => 'SC', 'currency' => 'EUR', 'from' => '100510000863', 'max_files' => 6 ),
+		'uzbekistan' => array( 'id' => '100410423949', 'name_ru' => 'Узбекистан', 'code' => 'UZ', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
+		'armeniya'   => array( 'id' => '100410423961', 'name_ru' => 'Армения', 'code' => 'AM', 'currency' => 'USD', 'from' => '100510000863', 'max_files' => 6 ),
 	);
 
 	/**
@@ -524,7 +534,7 @@ class Zhiraf_BG_Price_Engine {
 		if ( is_array( self::$hotel_catalog ) && ! empty( self::$hotel_catalog ) ) {
 			return self::$hotel_catalog;
 		}
-		$cached = get_transient( 'zhiraf_bg_hotel_catalog' );
+		$cached = get_transient( 'zhiraf_bg_hotel_catalog_v2' );
 		if ( is_array( $cached ) && ! empty( $cached ) ) {
 			self::$hotel_catalog = $cached;
 			return $cached;
@@ -550,7 +560,7 @@ class Zhiraf_BG_Price_Engine {
 			}
 		}
 		if ( ! empty( $catalog ) ) {
-			set_transient( 'zhiraf_bg_hotel_catalog', $catalog, DAY_IN_SECONDS );
+			set_transient( 'zhiraf_bg_hotel_catalog_v2', $catalog, DAY_IN_SECONDS );
 		}
 		self::$hotel_catalog = $catalog;
 		return $catalog;
@@ -563,10 +573,13 @@ class Zhiraf_BG_Price_Engine {
 	 * @param int    $max_files Max price files to fetch.
 	 * @return array{ok:bool,code:int,bytes:int,error:string,entries:array,files:int}
 	 */
-	public function fetch_country_entries( $country_id, $max_files = 12 ) {
+	public function fetch_country_entries( $country_id, $max_files = 12, $from_id = '', $route_inc = '' ) {
+		if ( '' === $from_id ) {
+			$from_id = self::UFA_DEPARTURE_ID;
+		}
 		$client = Zhiraf_BG_API_Client::get_instance();
 		$list   = $client->get(
-			sprintf( '%s/yandex?action=files&flt=%s&flt2=%s&xml=11', Zhiraf_BG_API_Client::EXPORT_BASE_URL, rawurlencode( $country_id ), rawurlencode( self::UFA_DEPARTURE_ID ) )
+			sprintf( '%s/yandex?action=files&flt=%s&flt2=%s&xml=11', Zhiraf_BG_API_Client::EXPORT_BASE_URL, rawurlencode( $country_id ), rawurlencode( $from_id ) )
 		);
 		$out = array( 'ok' => false, 'code' => (int) $list['code'], 'bytes' => (int) ( $list['bytes'] ?? 0 ), 'error' => (string) $list['error'], 'entries' => array(), 'files' => 0 );
 		if ( ! $list['ok'] || empty( $list['data']['entries'] ) || ! is_array( $list['data']['entries'] ) ) {
@@ -584,6 +597,18 @@ class Zhiraf_BG_Price_Engine {
 			}
 			// A price file is the pair id_price + date (one id_price covers many departure dates).
 			$key = $f['id_price'] . '|' . $f['date'];
+			// Only flight+hotel packages at one resort: skip ground-only, hotel-only, excursion and multi-stop tours.
+			$route_txt = wp_strip_all_tags( (string) ( $f['route'] ?? '' ) . ' ' . (string) ( $f['descr'] ?? '' ) );
+			if ( preg_match( '/НАЗЕМНОЕ ОБСЛУЖИВАНИЕ|Проживание в отелях|Экскурсион|\+/u', $route_txt ) ) {
+				continue;
+			}
+			// From Moscow, a file "стыковка в Москве" belongs to regional departures.
+			if ( self::MOW_DEPARTURE_ID === $from_id && preg_match( '/стыковка в Москве/u', $route_txt ) ) {
+				continue;
+			}
+			if ( '' !== $route_inc && ! preg_match( $route_inc, $route_txt ) ) {
+				continue;
+			}
 			if ( isset( $seen[ $key ] ) ) {
 				continue;
 			}
@@ -621,7 +646,7 @@ class Zhiraf_BG_Price_Engine {
 				'%s/partners?action=price&tid=211&flt=%s&flt2=%s&id_price=%s&data=%s&xml=11',
 				Zhiraf_BG_API_Client::EXPORT_BASE_URL,
 				rawurlencode( $country_id ),
-				rawurlencode( self::UFA_DEPARTURE_ID ),
+				rawurlencode( $from_id ),
 				rawurlencode( $f['id_price'] ),
 				rawurlencode( $f['date'] )
 			);
@@ -668,6 +693,14 @@ class Zhiraf_BG_Price_Engine {
 		'vietnam'      => 'vietnam',
 		'vn'           => 'vietnam',
 		'100410419078' => 'vietnam',
+		'kitaj' => 'kitaj',
+		'indiya' => 'indiya',
+		'shri-lanka' => 'shri-lanka',
+		'indoneziya' => 'indoneziya',
+		'maldivy' => 'maldivy',
+		'sejshely' => 'sejshely',
+		'uzbekistan' => 'uzbekistan',
+		'armeniya' => 'armeniya',
 	);
 
 	/**
@@ -840,6 +873,9 @@ class Zhiraf_BG_Price_Engine {
 	 * @return array{ok:bool,message:string,counts:array<string,int>,source:string,status:string,log:array}
 	 */
 	public function sync_all_prices() {
+		if ( function_exists( 'set_time_limit' ) ) {
+			@set_time_limit( 900 ); // 13 countries x several price files.
+		}
 		$client = Zhiraf_BG_API_Client::get_instance();
 
 		$sync_log = array(
@@ -900,7 +936,7 @@ class Zhiraf_BG_Price_Engine {
 
 		foreach ( self::$countries as $slug => $c_info ) {
 			$country_id = $c_info['id'];
-			$fetch = $this->fetch_country_entries( $country_id );
+			$fetch = $this->fetch_country_entries( $country_id, (int) ( $c_info['max_files'] ?? 12 ), (string) ( $c_info['from'] ?? self::UFA_DEPARTURE_ID ), (string) ( $c_info['route_inc'] ?? '' ) );
 			$url   = 'action=files -> action=price x' . $fetch['files'];
 			$res   = array( 'ok' => $fetch['ok'], 'code' => $fetch['code'], 'bytes' => $fetch['bytes'], 'error' => $fetch['error'], 'data' => array( 'entries' => $fetch['entries'] ) );
 
@@ -932,9 +968,13 @@ class Zhiraf_BG_Price_Engine {
 				$step_log['status'] = 'error';
 				$step_log['error']  = $err_desc;
 
-				// Fallback this country from fixtures.
-				$fixtures = $this->get_fixtures_data();
-				$bundle['destinations'][ $slug ] = ! empty( $fixtures['destinations'][ $slug ] ) ? $fixtures['destinations'][ $slug ] : array();
+				$prev = get_option( self::BACKUP_OPTION_KEY, array() );
+				if ( ! empty( $prev['destinations'][ $slug ] ) ) {
+					$bundle['destinations'][ $slug ] = $prev['destinations'][ $slug ]; // keep last real price (shown as stale).
+				} else {
+					$fixtures = $this->get_fixtures_data();
+					$bundle['destinations'][ $slug ] = ! empty( $fixtures['destinations'][ $slug ] ) ? $fixtures['destinations'][ $slug ] : array();
+				}
 				$counts[ $slug ] = count( $bundle['destinations'][ $slug ] );
 
 				$sync_log['steps'][] = $step_log;
@@ -959,9 +999,13 @@ class Zhiraf_BG_Price_Engine {
 				$step_log['error']  = 'Все полученные строки отфильтрованы правилами валидации.';
 				$errors[]           = sprintf( '%s: 0 валидных туров (все строки отсеяны)', $c_info['name_ru'] );
 
-				// Fallback to fixtures if entries were invalid.
-				$fixtures = $this->get_fixtures_data();
-				$bundle['destinations'][ $slug ] = ! empty( $fixtures['destinations'][ $slug ] ) ? $fixtures['destinations'][ $slug ] : array();
+				$prev = get_option( self::BACKUP_OPTION_KEY, array() );
+				if ( ! empty( $prev['destinations'][ $slug ] ) ) {
+					$bundle['destinations'][ $slug ] = $prev['destinations'][ $slug ]; // keep last real price (shown as stale).
+				} else {
+					$fixtures = $this->get_fixtures_data();
+					$bundle['destinations'][ $slug ] = ! empty( $fixtures['destinations'][ $slug ] ) ? $fixtures['destinations'][ $slug ] : array();
+				}
 				$counts[ $slug ]                 = count( $bundle['destinations'][ $slug ] );
 			}
 
@@ -992,7 +1036,7 @@ class Zhiraf_BG_Price_Engine {
 		if ( $total_fetched > 0 && empty( $errors ) ) {
 			$sync_status  = 'live_success';
 			$sync_message = sprintf(
-				'Успешно синхронизировано %d туров из Live BG API на %s. Все 5 направлений обновлены.',
+				'Успешно синхронизировано %d туров из Live BG API на %s. Все направления обновлены.',
 				$total_fetched,
 				$price_date
 			);
@@ -1191,6 +1235,21 @@ class Zhiraf_BG_Price_Engine {
 				continue;
 			}
 
+			// 4b. Flight must be included: airline present, not hotel-only, flight part of availability code not empty.
+			$air = trim( (string) ( $entry['aircompany'] ?? '' ) );
+			$avc = (string) ( $entry['c'] ?? '' );
+			if ( '' === $air || preg_match( '/Проживание|без перел/iu', $air ) || ( '' !== $avc && '00' === substr( $avc, 0, 2 ) ) ) {
+				$stats['filter_reasons']['no_flight'] = ( $stats['filter_reasons']['no_flight'] ?? 0 ) + 1;
+				$stats['filtered_total']++;
+				continue;
+			}
+			$c_cfg = self::$countries[ $country_slug ] ?? array();
+			if ( ! empty( $c_cfg['town_inc'] ) && ! preg_match( $c_cfg['town_inc'], (string) ( $entry['town'] ?? '' ) ) ) {
+				$stats['filter_reasons']['other_resort'] = ( $stats['filter_reasons']['other_resort'] ?? 0 ) + 1;
+				$stats['filtered_total']++;
+				continue;
+			}
+
 			// 5. Extract resort/town.
 			$resort = '';
 			if ( ! empty( $entry['town'] ) ) {
@@ -1262,6 +1321,8 @@ class Zhiraf_BG_Price_Engine {
 				'meal_code'       => $meal_info['code'],
 				'meal_name'       => $meal_info['name'],
 				'tourists'        => 'за 2 взрослых',
+				'departure_city'  => ( self::MOW_DEPARTURE_ID === ( self::$countries[ $country_slug ]['from'] ?? '' ) ) ? 'Москва' : 'Уфа',
+				'airline'         => $air,
 				'price_rur'       => $price_rur,
 				'price_rub'       => $price_rur,
 				'price_formatted' => zhiraf_ufa_format_tour_price( $price_rur ),

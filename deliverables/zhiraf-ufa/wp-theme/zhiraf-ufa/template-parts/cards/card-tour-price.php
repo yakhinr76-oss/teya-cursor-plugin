@@ -51,7 +51,11 @@ $prefill_text     = sprintf(
 ?>
 <article class="tour-card reveal" data-dest="<?php echo esc_attr( $country_slug ); ?>">
 	<div class="tour-card__media">
+		<?php if ( $image_file ) : ?>
 		<?php zhiraf_ufa_img( $image_file, $resort . ' — ' . $hotel_name, 'tour-card__img', true ); ?>
+		<?php else : ?>
+			<div class="tour-card__img tour-card__img--grad dest-grad dest-grad--<?php echo esc_attr( $country_slug ); ?>" role="img" aria-label="<?php echo esc_attr( $resort ); ?>"></div>
+		<?php endif; ?>
 		<div class="tour-card__badges">
 			<?php if ( $country_name ) : ?>
 				<span class="tour-card__badge tour-card__badge--country"><?php echo esc_html( $country_name ); ?></span>
@@ -80,7 +84,7 @@ $prefill_text     = sprintf(
 
 		<div class="tour-card__meta">
 			<div class="tour-card__meta-item">
-				<span class="tour-card__meta-label"><?php esc_html_e( 'Вылет из Уфы:', 'zhiraf-ufa' ); ?></span>
+				<span class="tour-card__meta-label"><?php echo ( 'Москва' === ( $tour['departure_city'] ?? '' ) ) ? esc_html__( 'Вылет из Москвы:', 'zhiraf-ufa' ) : esc_html__( 'Вылет из Уфы:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $departure_date ); ?></strong>
 			</div>
 			<div class="tour-card__meta-item">

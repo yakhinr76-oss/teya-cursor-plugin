@@ -24,7 +24,11 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 				</button>
 			</div>
 			<div class="dest-landing-hero__visual">
-				<?php zhiraf_ufa_img( $dest['image'], $dest['image_alt'], 'dest-landing-hero__img', true ); ?>
+				<?php if ( ! empty( $dest['image'] ) ) : ?>
+					<?php zhiraf_ufa_img( $dest['image'], $dest['image_alt'], 'dest-landing-hero__img', true ); ?>
+				<?php else : ?>
+					<div class="dest-landing-hero__gradient dest-grad dest-grad--<?php echo esc_attr( $dest['slug'] ); ?>" role="img" aria-label="<?php echo esc_attr( $dest['image_alt'] ); ?>"><span><?php echo esc_html( $dest['name'] ); ?></span></div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
@@ -43,15 +47,16 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 					<div>
 						<h2 class="section-title">
 							<?php
-							printf(
+							if ( ! empty( $dest['departure'] ) ) {
+								esc_html_e( 'Самые выгодные отели с вылетом из Москвы', 'zhiraf-ufa' );
+							} else {
 								/* translators: %s: country name in prepositional */
-								esc_html__( 'Актуальные туры %s из Уфы', 'zhiraf-ufa' ),
-								esc_html( zhiraf_ufa_country_prepositional( $dest_slug ) )
-							);
+								printf( esc_html__( 'Актуальные туры %s из Уфы', 'zhiraf-ufa' ), esc_html( zhiraf_ufa_country_prepositional( $dest_slug ) ) );
+							}
 							?>
 						</h2>
 						<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
-							<?php esc_html_e( 'Три самых выгодных отеля по ценам туроператора Библио-Глобус для 2 взрослых с вылетом из Уфы. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
+							<?php esc_html_e( 'Три самых выгодных отеля по ценам туроператора Библио-Глобус для 2 взрослых. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
 						</p>
 					</div>
 				</div>
@@ -74,6 +79,7 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 	<?php endif; ?>
 
 
+	<?php if ( ! empty( $dest['for_who'] ) ) : ?>
 	<section class="section dest-landing-prose bg-milky">
 		<div class="container container--narrow">
 			<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>
@@ -126,6 +132,9 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 		</div>
 	</section>
 
+	<?php endif; ?>
+
+	<?php if ( ! empty( $dest['faq'] ) ) : ?>
 	<section class="section dest-landing-faq">
 		<div class="container container--narrow">
 			<h2 class="section-title"><?php esc_html_e( 'Вопросы по направлению', 'zhiraf-ufa' ); ?></h2>
@@ -145,10 +154,12 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) ) {
 		</div>
 	</section>
 
+	<?php endif; ?>
+
 	<section class="section dest-landing-cta">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
-			<p><?php esc_html_e( 'Оставьте заявку в квизе — менеджер предложит 2–4 проверенных варианта с вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
+			<p><?php echo empty( $dest['departure'] ) ? esc_html__( 'Оставьте заявку в квизе — менеджер предложит 2–4 проверенных варианта с вылетом из Уфы.', 'zhiraf-ufa' ) : esc_html__( 'Оставьте заявку в квизе — менеджер предложит 2–4 проверенных варианта и стыковку из Уфы.', 'zhiraf-ufa' ); ?></p>
 			<button type="button" class="btn btn--primary" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>">
 				<?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?>
 			</button>

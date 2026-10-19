@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string[]
  */
 function zhiraf_ufa_destination_landing_slugs() {
-	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam' );
+	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj', 'indiya', 'shri-lanka', 'indoneziya', 'maldivy', 'sejshely', 'uzbekistan', 'armeniya' );
 }
 
 /**
@@ -24,7 +24,7 @@ function zhiraf_ufa_destination_landing_slugs() {
  * @return array<string,array<string,mixed>>
  */
 function zhiraf_ufa_destination_landing_data() {
-	return array(
+	return array_merge( array(
 		'turciya'  => array(
 			'name'           => __( 'Турция', 'zhiraf-ufa' ),
 			'h1'             => __( 'Туры в Турцию из Уфы', 'zhiraf-ufa' ),
@@ -498,7 +498,7 @@ function zhiraf_ufa_destination_landing_data() {
 				),
 			),
 		),
-	);
+	), zhiraf_ufa_moscow_landing_data() );
 }
 
 /**

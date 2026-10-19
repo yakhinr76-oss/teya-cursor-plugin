@@ -68,7 +68,8 @@ function zhiraf_ufa_tour_image( $tour ) {
 		'vietnam' => 'dest-vietnam.jpg',
 	);
 
-	return isset( $map[ $slug ] ) ? $map[ $slug ] : 'dest-turkey.jpg';
+	// Countries without a matching library photo get '' => card renders a gradient (never a wrong country's photo).
+	return isset( $map[ $slug ] ) ? $map[ $slug ] : '';
 }
 
 /**
@@ -134,6 +135,14 @@ function zhiraf_ufa_tour_country_name( $country_slug ) {
 		'tailand'  => __( 'Таиланд', 'zhiraf-ufa' ),
 		'thailand' => __( 'Таиланд', 'zhiraf-ufa' ),
 		'vietnam'  => __( 'Вьетнам', 'zhiraf-ufa' ),
+		'kitaj'      => __( 'Китай', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Индия', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланка', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Индонезия', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Мальдивы', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Сейшелы', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Узбекистан', 'zhiraf-ufa' ),
+		'armeniya'   => __( 'Армения', 'zhiraf-ufa' ),
 	);
 
 	return isset( $map[ $country_slug ] ) ? $map[ $country_slug ] : '';

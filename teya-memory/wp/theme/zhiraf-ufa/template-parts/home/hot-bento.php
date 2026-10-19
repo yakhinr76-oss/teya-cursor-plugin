@@ -10,18 +10,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$zhiraf_bento = array(
-	array( 'slug' => 'turciya', 'title' => __( 'Турция', 'zhiraf-ufa' ), 'image' => 'dest-turkey.jpg', 'direct' => true, 'mod' => 'wide' ),
-	array( 'slug' => 'egipet', 'title' => __( 'Египет', 'zhiraf-ufa' ), 'image' => 'hero-egypt.jpg', 'direct' => true, 'mod' => 'tall' ),
-	array( 'slug' => 'oae', 'title' => __( 'ОАЭ', 'zhiraf-ufa' ), 'image' => 'dest-uae.jpg', 'direct' => true, 'mod' => 'small' ),
-	array( 'slug' => 'tailand', 'title' => __( 'Таиланд', 'zhiraf-ufa' ), 'image' => 'dest-thailand.jpg', 'direct' => false, 'mod' => 'small' ),
-	array( 'slug' => 'vietnam', 'title' => __( 'Вьетнам', 'zhiraf-ufa' ), 'image' => 'dest-vietnam.jpg', 'direct' => false, 'mod' => 'banner' ),
+$zhiraf_groups = array(
+	array(
+		'heading' => __( 'Из Уфы', 'zhiraf-ufa' ),
+		'mod'     => 'ufa',
+		'tiles'   => array(
+			array( 'slug' => 'turciya', 'title' => __( 'Турция', 'zhiraf-ufa' ), 'image' => 'dest-turkey.jpg', 'label' => 'direct', 'mod' => 'wide' ),
+			array( 'slug' => 'egipet', 'title' => __( 'Египет', 'zhiraf-ufa' ), 'image' => 'hero-egypt.jpg', 'label' => 'direct', 'mod' => 'tall' ),
+			array( 'slug' => 'oae', 'title' => __( 'ОАЭ', 'zhiraf-ufa' ), 'image' => 'dest-uae.jpg', 'label' => 'direct', 'mod' => 'small' ),
+			array( 'slug' => 'tailand', 'title' => __( 'Таиланд', 'zhiraf-ufa' ), 'image' => 'dest-thailand.jpg', 'label' => 'via', 'mod' => 'small' ),
+			array( 'slug' => 'vietnam', 'title' => __( 'Вьетнам', 'zhiraf-ufa' ), 'image' => 'dest-vietnam.jpg', 'label' => 'via', 'mod' => 'banner' ),
+		),
+	),
+	array(
+		'heading' => __( 'Из Москвы', 'zhiraf-ufa' ),
+		'mod'     => 'mow',
+		'tiles'   => array(
+			// No country-matching photos in the theme library: elegant gradient tiles.
+			array( 'slug' => 'maldivy', 'title' => __( 'Мальдивы', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'wide' ),
+			array( 'slug' => 'sejshely', 'title' => __( 'Сейшелы', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'small' ),
+			array( 'slug' => 'shri-lanka', 'title' => __( 'Шри-Ланка', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'small' ),
+			array( 'slug' => 'indoneziya', 'title' => __( 'Бали', 'zhiraf-ufa' ), 'kicker' => __( 'Индонезия', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'small' ),
+			array( 'slug' => 'indiya', 'title' => __( 'Гоа', 'zhiraf-ufa' ), 'kicker' => __( 'Индия', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'wide' ),
+			array( 'slug' => 'kitaj', 'title' => __( 'Санья', 'zhiraf-ufa' ), 'kicker' => __( 'Китай, о. Хайнань', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'small' ),
+			array( 'slug' => 'uzbekistan', 'title' => __( 'Узбекистан', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'wide' ),
+			array( 'slug' => 'armeniya', 'title' => __( 'Армения', 'zhiraf-ufa' ), 'image' => '', 'label' => 'mow', 'mod' => 'wide' ),
+		),
+	),
+);
+$zhiraf_labels = array(
+	'direct' => array( '✈', __( 'прямой вылет', 'zhiraf-ufa' ) ),
+	'via'    => array( '⇄', __( 'через Москву', 'zhiraf-ufa' ) ),
+	'mow'    => array( '✈', __( 'вылет из Москвы', 'zhiraf-ufa' ) ),
 );
 $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y' );
 ?>
-<div class="hot-bento">
+<?php foreach ( $zhiraf_groups as $group ) : ?>
+<h3 class="hot-bento__group"><?php echo esc_html( $group['heading'] ); ?></h3>
+<div class="hot-bento hot-bento--<?php echo esc_attr( $group['mod'] ); ?>">
 	<?php
-	foreach ( $zhiraf_bento as $tile ) :
+	foreach ( $group['tiles'] as $tile ) :
 		$tours = zhiraf_ufa_get_country_tours( $tile['slug'], 10 );
 		$min   = null;
 		foreach ( (array) $tours as $t ) {
@@ -33,14 +61,21 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 		$is_stale   = $min && $price_date !== $zhiraf_today;
 		$price_txt  = $min ? number_format( (int) $min['price_rur'], 0, '.', ' ' ) : '';
 		?>
-		<a class="hot-bento__tile hot-bento__tile--<?php echo esc_attr( $tile['mod'] ); ?>" href="<?php echo esc_url( home_url( '/tour/' . $tile['slug'] . '/' ) ); ?>">
-			<?php zhiraf_ufa_img( $tile['image'], $tile['title'], 'hot-bento__img', true ); ?>
+		<a class="hot-bento__tile hot-bento__tile--<?php echo esc_attr( $tile['mod'] ); ?><?php echo $tile['image'] ? '' : ' hot-bento__tile--grad dest-grad dest-grad--' . esc_attr( $tile['slug'] ); ?>" href="<?php echo esc_url( home_url( '/tour/' . $tile['slug'] . '/' ) ); ?>">
+			<?php if ( $tile['image'] ) : ?>
+				<?php zhiraf_ufa_img( $tile['image'], $tile['title'], 'hot-bento__img', true ); ?>
+			<?php else : ?>
+				<span class="hot-bento__mark" aria-hidden="true"><?php echo esc_html( mb_substr( $tile['title'], 0, 1 ) ); ?></span>
+			<?php endif; ?>
 			<span class="hot-bento__shade" aria-hidden="true"></span>
 			<span class="hot-bento__label">
-				<span class="hot-bento__icon" aria-hidden="true"><?php echo $tile['direct'] ? '✈' : '⇄'; ?></span>
-				<?php echo $tile['direct'] ? esc_html__( 'прямой вылет', 'zhiraf-ufa' ) : esc_html__( 'через Москву', 'zhiraf-ufa' ); ?>
+				<span class="hot-bento__icon" aria-hidden="true"><?php echo esc_html( $zhiraf_labels[ $tile['label'] ][0] ); ?></span>
+				<?php echo esc_html( $zhiraf_labels[ $tile['label'] ][1] ); ?>
 			</span>
 			<span class="hot-bento__body">
+				<?php if ( ! empty( $tile['kicker'] ) ) : ?>
+					<span class="hot-bento__kicker"><?php echo esc_html( $tile['kicker'] ); ?></span>
+				<?php endif; ?>
 				<span class="hot-bento__title"><?php echo esc_html( $tile['title'] ); ?></span>
 				<?php if ( $min ) : ?>
 					<span class="hot-bento__sub">
@@ -71,3 +106,4 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 		</a>
 	<?php endforeach; ?>
 </div>
+<?php endforeach; ?>

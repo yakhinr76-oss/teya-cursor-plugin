@@ -44,6 +44,30 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 
 	// Resort needle (lowercase substring of the BG resort name) => verified photos of that very place.
 	$resort_photos = array(
+		'turciya'    => array(
+			'алань'    => array( 'resort-turciya-alanya-1.jpg', 'resort-turciya-alanya-2.jpg' ),
+			'бельдиби' => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
+			'гёйнюк'   => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
+			'гейнюк'   => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
+			'кемер'    => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
+			'сиде'     => array( 'resort-turciya-side-1.jpg', 'resort-turciya-side-2.jpg' ),
+			'белек'    => array( 'resort-turciya-belek-1.jpg', 'resort-turciya-belek-2.jpg' ),
+			'анталь'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
+			'антали'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
+		),
+		'egipet'     => array(
+			'хургада'  => array( 'resort-egipet-hurghada-1.jpg', 'resort-egipet-hurghada-2.jpg' ),
+			'шарм'     => array( 'resort-egipet-sharm-1.jpg', 'resort-egipet-sharm-2.jpg' ),
+			'марса'    => array( 'resort-egipet-marsa-alam-1.jpg', 'resort-egipet-marsa-alam-2.jpg' ),
+			'гуна'     => array( 'resort-egipet-el-gouna-1.jpg', 'resort-egipet-el-gouna-2.jpg' ),
+		),
+		'vietnam'    => array(
+			'нячанг'   => array( 'resort-vietnam-nha-trang-1.jpg', 'resort-vietnam-nha-trang-2.jpg' ),
+			'фукуок'   => array( 'resort-vietnam-phu-quoc-1.jpg', 'resort-vietnam-phu-quoc-2.jpg' ),
+			'камрань'  => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
+			'фантьет'  => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
+			'муйне'    => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
+		),
 		'oae'        => array( 'абу-даби' => array( 'resort-abu-dabi.jpg' ), 'дубай' => array( 'country-oae.jpg' ) ),
 		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
@@ -96,6 +120,13 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 
 	$country = function_exists( 'zhiraf_ufa_tour_country_name' ) ? zhiraf_ufa_tour_country_name( $slug ) : '';
 	$alt     = $is_resort ? (string) $tour['resort'] : sprintf( __( 'Фото направления: %s', 'zhiraf-ufa' ), $country );
+	// Verified photo library: some files show a nearby landmark, not the resort beach itself.
+	$alt_by_file = array(
+		'resort-turciya-belek-2.jpg' => __( 'Античный театр Аспендос (близ Белека)', 'zhiraf-ufa' ),
+	);
+	if ( isset( $alt_by_file[ $pick ] ) ) {
+		$alt = $alt_by_file[ $pick ];
+	}
 	return array( 'file' => $pick, 'is_resort' => $is_resort, 'alt' => $alt );
 }
 

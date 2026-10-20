@@ -31,28 +31,71 @@ function pluralNights(n) {
   return `${n} ночей`;
 }
 
+const tourImageUsed = {};
+
 function tourImage(tour) {
   if (tour && tour.image) return tour.image;
   const resort = (tour && tour.resort) ? String(tour.resort).toLowerCase() : '';
-  const slug = (tour && tour.country_slug) ? String(tour.country_slug) : 'turciya';
+  let slug = (tour && tour.country_slug) ? String(tour.country_slug) : 'turciya';
+  const legacy = { turkey: 'turciya', uae: 'oae', egypt: 'egipet', thailand: 'tailand' };
+  if (legacy[slug]) slug = legacy[slug];
 
-  if (resort.includes('стамбул')) return 'hero-turkey.jpg';
-  if (resort.includes('анталь') || resort.includes('кемер') || resort.includes('алань') || resort.includes('сиде') || resort.includes('белек')) return 'dest-turkey.jpg';
-  if (resort.includes('шарм')) return 'hero-egypt.jpg';
-  if (resort.includes('хургад')) return 'dest-egypt.jpg';
-  if (resort.includes('фукуок')) return 'hero-vietnam.jpg';
-  if (resort.includes('нячанг')) return 'dest-vietnam.jpg';
-  if (resort.includes('пхукет') || resort.includes('паттай')) return 'dest-thailand.jpg';
-  if (resort.includes('дубай') || resort.includes('шардж') || resort.includes('аджман') || resort.includes('умм') || resort.includes('рас') || resort.includes('фуджейр')) return 'dest-uae.jpg';
-
-  const map = {
-    turciya: 'dest-turkey.jpg',
-    oae: 'dest-uae.jpg',
-    egipet: 'dest-egypt.jpg',
-    tailand: 'dest-thailand.jpg',
-    vietnam: 'dest-vietnam.jpg',
+  const resortPhotos = {
+    turciya: {
+      алань: ['resort-turciya-alanya-1.jpg', 'resort-turciya-alanya-2.jpg'],
+      бельдиби: ['resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg'],
+      гёйнюк: ['resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg'],
+      гейнюк: ['resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg'],
+      кемер: ['resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg'],
+      сиде: ['resort-turciya-side-1.jpg', 'resort-turciya-side-2.jpg'],
+      белек: ['resort-turciya-belek-1.jpg', 'resort-turciya-belek-2.jpg'],
+      анталь: ['resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg'],
+      антали: ['resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg'],
+    },
+    egipet: {
+      хургада: ['resort-egipet-hurghada-1.jpg', 'resort-egipet-hurghada-2.jpg'],
+      шарм: ['resort-egipet-sharm-1.jpg', 'resort-egipet-sharm-2.jpg'],
+      марса: ['resort-egipet-marsa-alam-1.jpg', 'resort-egipet-marsa-alam-2.jpg'],
+      гуна: ['resort-egipet-el-gouna-1.jpg', 'resort-egipet-el-gouna-2.jpg'],
+    },
+    vietnam: {
+      нячанг: ['resort-vietnam-nha-trang-1.jpg', 'resort-vietnam-nha-trang-2.jpg'],
+      фукуок: ['resort-vietnam-phu-quoc-1.jpg', 'resort-vietnam-phu-quoc-2.jpg'],
+      камрань: ['resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg'],
+      фантьет: ['resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg'],
+      муйне: ['resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg'],
+    },
+    oae: { 'абу-даби': ['resort-abu-dabi.jpg'], дубай: ['country-oae.jpg'] },
+    tailand: { пхукет: ['resort-phuket.jpg'], краби: ['country-tailand.jpg'] },
   };
-  return map[slug] || 'dest-turkey.jpg';
+  const countryPhotos = {
+    turciya: ['country-turciya.jpg'],
+    egipet: ['country-egipet.jpg'],
+    oae: ['country-oae.jpg'],
+    tailand: ['country-tailand.jpg'],
+    vietnam: ['country-vietnam.jpg'],
+  };
+
+  let candidates = [];
+  if (resort && resortPhotos[slug]) {
+    for (const [needle, files] of Object.entries(resortPhotos[slug])) {
+      if (resort.includes(needle)) {
+        candidates = files;
+        break;
+      }
+    }
+  }
+  if (!candidates.length) {
+    candidates = countryPhotos[slug] || [];
+  }
+  if (!candidates.length) return '';
+
+  let pick = candidates[0];
+  for (const f of candidates) {
+    if ((tourImageUsed[f] || 0) < (tourImageUsed[pick] || 0)) pick = f;
+  }
+  tourImageUsed[pick] = (tourImageUsed[pick] || 0) + 1;
+  return pick;
 }
 
 function renderTourCard(tour) {

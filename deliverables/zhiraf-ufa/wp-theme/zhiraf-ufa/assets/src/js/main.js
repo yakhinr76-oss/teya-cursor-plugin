@@ -191,7 +191,12 @@
     });
   }
   qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.tab-btn'); });
-  qsa('.chip-filter').forEach(function (bar) { bindDestFilter(bar, '.chip'); });
+  qsa('.chip-filter').forEach(function (bar) {
+    if (bar.classList.contains('chip-filter--offers')) {
+      return;
+    }
+    bindDestFilter(bar, '.chip');
+  });
 
   /* Tour price filter tabs */
   function bindTourFilter(bar) {

@@ -100,41 +100,76 @@ function zhiraf_ufa_offer_hub_links() {
 function zhiraf_ufa_destinations() {
 	return array(
 		array(
-			'slug'  => 'turciya',
-			'name'  => __( 'Турция', 'zhiraf-ufa' ),
-			'image' => 'country-turciya.jpg',
-			'alt'   => __( 'Турция — отдых на море', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/turciya/' ),
+			'slug'    => 'turciya',
+			'name'    => __( 'Турция', 'zhiraf-ufa' ),
+			'image'   => 'country-turciya.jpg',
+			'alt'     => __( 'Турция — отдых на море', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/turciya/' ),
+			'teaser'  => __( 'Анталья и Алания: отели 4–5★, All Inclusive, семейные курорты.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'oae',
-			'name'  => __( 'ОАЭ', 'zhiraf-ufa' ),
-			'image' => 'hero-uae.jpg',
-			'alt'   => __( 'ОАЭ — пляж и Дубай', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/oae/' ),
+			'slug'    => 'oae',
+			'name'    => __( 'ОАЭ', 'zhiraf-ufa' ),
+			'image'   => 'hero-uae.jpg',
+			'alt'     => __( 'ОАЭ — пляж и Дубай', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/oae/' ),
+			'teaser'  => __( 'Дубай, Шарджа, Фуджейра: пляж, шопинг и комфорт круглый год.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'egipet',
-			'name'  => __( 'Египет', 'zhiraf-ufa' ),
-			'image' => 'country-egipet.jpg',
-			'alt'   => __( 'Египет — курорты Красного моря', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/egipet/' ),
+			'slug'    => 'egipet',
+			'name'    => __( 'Египет', 'zhiraf-ufa' ),
+			'image'   => 'country-egipet.jpg',
+			'alt'     => __( 'Египет — курорты Красного моря', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/egipet/' ),
+			'teaser'  => __( 'Хургада и Шарм-эль-Шейх: тёплое море, рифы, отели с аквапарками.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'tailand',
-			'name'  => __( 'Таиланд', 'zhiraf-ufa' ),
-			'image' => 'country-tailand.jpg',
-			'alt'   => __( 'Таиланд — тропический отдых', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/tailand/' ),
+			'slug'    => 'tailand',
+			'name'    => __( 'Таиланд', 'zhiraf-ufa' ),
+			'image'   => 'country-tailand.jpg',
+			'alt'     => __( 'Таиланд — тропический отдых', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/tailand/' ),
+			'teaser'  => __( 'Пхукет и Паттайя: тропики, экскурсии, отдых на двоих и с детьми.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'vietnam',
-			'name'  => __( 'Вьетнам', 'zhiraf-ufa' ),
-			'image' => 'resort-vietnam-phu-quoc-1.jpg',
-			'alt'   => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/vietnam/' ),
+			'slug'    => 'vietnam',
+			'name'    => __( 'Вьетнам', 'zhiraf-ufa' ),
+			'image'   => 'resort-vietnam-phu-quoc-1.jpg',
+			'alt'     => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/vietnam/' ),
+			'teaser'  => __( 'Нячанг и Фукуок: без визы до 45 дней, пляж и SPA-курорты.', 'zhiraf-ufa' ),
+			'catalog' => true,
+		),
+		array(
+			'slug'    => 'kitaj',
+			'name'    => __( 'Китай (Хайнань)', 'zhiraf-ufa' ),
+			'image'   => 'country-kitaj.jpg',
+			'alt'     => __( 'Китай — пляжный отдых на Хайнане', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/kitaj/' ),
+			'teaser'  => __( 'Остров Санья: белый песок, тропики и курорты у Южно-Китайского моря.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 	);
+}
+
+/**
+ * Destinations shown on /tour/ catalog hub (priced cards).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_catalog_hub_destinations() {
+	$items = array();
+	foreach ( zhiraf_ufa_destinations() as $dest ) {
+		if ( empty( $dest['catalog'] ) ) {
+			continue;
+		}
+		$items[] = $dest;
+	}
+	return $items;
 }
 
 /**

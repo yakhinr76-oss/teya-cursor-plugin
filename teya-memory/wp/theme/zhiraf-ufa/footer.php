@@ -1,0 +1,105 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+?>
+<footer class="site-footer">
+	<div class="container site-footer__grid">
+		<div class="site-footer__brand">
+			<?php zhiraf_ufa_render_site_logo( 'footer' ); ?>
+			<p class="footer-desc"><?php esc_html_e( 'Подбор туров с вылетом из Уфы — честно и по-человечески.', 'zhiraf-ufa' ); ?></p>
+			<p class="footer-nap">
+				<?php esc_html_e( 'ул. Юрия Гагарина, 74/1, офис 3, Уфа', 'zhiraf-ufa' ); ?><br>
+				<a href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a><br>
+				<a href="mailto:office@zhiraf-ufa.ru" data-track="email">office@zhiraf-ufa.ru</a>
+			</p>
+			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?></p>
+		</div>
+		<div class="footer-col">
+			<p class="footer-col__title"><?php esc_html_e( 'Навигация', 'zhiraf-ufa' ); ?></p>
+			<ul class="footer-menu">
+				<li><a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Туры', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/o-nas/' ) ); ?>"><?php esc_html_e( 'О нас', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php esc_html_e( 'Блог', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>"><?php esc_html_e( 'Контакты', 'zhiraf-ufa' ); ?></a></li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<p class="footer-col__title"><?php esc_html_e( 'Направления', 'zhiraf-ufa' ); ?></p>
+			<ul class="footer-menu">
+				<li><a href="<?php echo esc_url( home_url( '/tour/turciya/' ) ); ?>"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/oae/' ) ); ?>"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/egipet/' ) ); ?>"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/tailand/' ) ); ?>"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/vietnam/' ) ); ?>"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></a></li>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<p class="footer-col__title"><?php esc_html_e( 'Форматы и курорты', 'zhiraf-ufa' ); ?></p>
+			<ul class="footer-menu">
+				<li><a href="<?php echo esc_url( home_url( '/goryashchie-tury/' ) ); ?>"><?php esc_html_e( 'Горящие туры', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/vse-vklyucheno/' ) ); ?>"><?php esc_html_e( 'Всё включено', 'zhiraf-ufa' ); ?></a></li>
+				<?php foreach ( zhiraf_ufa_resort_hub_links() as $link ) : ?>
+					<li><a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<div class="footer-col">
+			<p class="footer-col__title"><?php esc_html_e( 'Правовая информация', 'zhiraf-ufa' ); ?></p>
+			<ul class="footer-menu">
+				<li><a href="<?php echo esc_url( home_url( '/politika-konfidenczialnosti/' ) ); ?>"><?php esc_html_e( 'Политика конфиденциальности', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/politika-cookies/' ) ); ?>"><?php esc_html_e( 'Политика cookies', 'zhiraf-ufa' ); ?></a></li>
+			</ul>
+			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open><?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?></button>
+		</div>
+	</div>
+	<div class="site-footer__legal">
+		<div class="container">
+			<p><?php echo esc_html( get_theme_mod( 'zhiraf_footer_copyright', '© ' . gmdate( 'Y' ) . ' ООО «Жираф». Туры из Уфы.' ) ); ?></p>
+		</div>
+	</div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="<?php esc_attr_e( 'Уведомление о cookies', 'zhiraf-ufa' ); ?>" hidden>
+	<div class="cookie-banner__inner">
+		<p><?php
+		printf(
+			wp_kses_post( __( 'Cookies для работы сайта. <a href="%1$s">Политика конфиденциальности</a> и <a href="%2$s">политика cookies</a>.', 'zhiraf-ufa' ) ),
+			esc_url( home_url( '/politika-konfidenczialnosti/' ) ),
+			esc_url( home_url( '/politika-cookies/' ) )
+		);
+		?></p>
+		<button type="button" class="btn btn--primary btn--sm" id="cookie-accept"><?php esc_html_e( 'Принять', 'zhiraf-ufa' ); ?></button>
+	</div>
+</div>
+
+<?php get_template_part( 'template-parts/quiz', 'modal' ); ?>
+
+<?php
+$metrika_id = trim( (string) get_theme_mod( 'zhiraf_metrika_id', '45658173' ) );
+?>
+<script>
+(function(){
+	'use strict';
+	var METRIKA_ID = <?php echo $metrika_id !== '' ? wp_json_encode( $metrika_id ) : 'null'; ?>;
+	window.zhirafMetrika = { id: METRIKA_ID, ready: false };
+	function loadMetrika(){
+		if(!METRIKA_ID || window.zhirafMetrika.ready){return;}
+		if(!window.localStorage.getItem('zhiraf_cookie_consent')){return;}
+		window.zhirafMetrika.ready=true;
+		(function(m,e,t,r,i,k,a){
+			m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments);};
+			m[i].l=1*new Date();
+			for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+			k=e.createElement(t);k.async=1;k.defer=1;k.src=r;
+			a=e.getElementsByTagName(t)[0];a.parentNode.insertBefore(k,a);
+		})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+		var counterId=parseInt(METRIKA_ID,10);
+		if(counterId){ym(counterId,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});}
+	}
+	document.addEventListener('zhiraf:cookie-accepted', loadMetrika);
+	if(METRIKA_ID && window.localStorage.getItem('zhiraf_cookie_consent')){loadMetrika();}
+})();
+</script>
+
+<?php wp_footer(); ?>
+</body>
+</html>

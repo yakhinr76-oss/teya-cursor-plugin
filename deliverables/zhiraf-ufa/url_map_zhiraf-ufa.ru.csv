@@ -1,0 +1,186 @@
+old_url,status_code,title,new_url_on_new_site,action,type
+https://zhiraf-ufa.ru/,200,Главная,https://zhiraf-ufa.ru/,keep,pages
+https://zhiraf-ufa.ru/blog/,200,Блог,https://zhiraf-ufa.ru/blog/,keep,pages
+https://zhiraf-ufa.ru/kontacty/,200,Контакты,https://zhiraf-ufa.ru/kontakty/,301,pages
+https://zhiraf-ufa.ru/o-nas/,200,О нас,https://zhiraf-ufa.ru/o-nas/,keep,pages
+https://zhiraf-ufa.ru/politika-konfidenczialnosti/,200,Политика конфиденциальности,https://zhiraf-ufa.ru/politika-konfidenczialnosti/,keep,pages
+https://zhiraf-ufa.ru/rasskazy/,200,Рассказы,https://zhiraf-ufa.ru/blog/,301,posts
+https://zhiraf-ufa.ru/tour/egipet/,200,Отдых в Египте — туры с вылетом из Уфы по доступной цене,https://zhiraf-ufa.ru/tour/egipet/,keep,tour
+https://zhiraf-ufa.ru/tour/tailand/,200,Отдых в Таиланде — лучший выбор для экзотического и насыщенного отпуска,https://zhiraf-ufa.ru/tour/tailand/,keep,tour
+https://zhiraf-ufa.ru/tour/tur-2/,200,Тур 2,https://zhiraf-ufa.ru/tour/,301,tour
+https://zhiraf-ufa.ru/tour/turkey/,200,Отдых в Турции — лучший выбор для яркого и комфортного отпуска,https://zhiraf-ufa.ru/tour/turciya/,301,tour
+https://zhiraf-ufa.ru/tour/uae/,200,Отдых в ОАЭ — лучший выбор для яркого и незабываемого путешествия,https://zhiraf-ufa.ru/tour/oae/,301,tour
+https://zhiraf-ufa.ru/tour/,200,Туры – Туры (Путевки) из Уфы 2025 Доступная Цена,https://zhiraf-ufa.ru/tour/,keep,archive
+https://zhiraf-ufa.ru/category/bez-rubriki/,200,Без рубрики,https://zhiraf-ufa.ru/category/bez-rubriki/,keep,categories
+https://zhiraf-ufa.ru/author/admin/,200,admin – Туры (Путевки) из Уфы 2025 Доступная Цена,https://zhiraf-ufa.ru/blog/,301,sitemap
+https://zhiraf-ufa.ru/tip/ekskursii/,200,Экскурсии – Туры (Путевки) из Уфы 2025 Доступная Цена,https://zhiraf-ufa.ru/tour/,301,sitemap
+https://zhiraf-ufa.ru/tip/plyazhnyj-tur/,200,Пляжный тур – Туры (Путевки) из Уфы 2025 Доступная Цена,https://zhiraf-ufa.ru/tour/,301,sitemap
+https://zhiraf-ufa.ru/17w/,200,17w,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/1920x540-jpg/,200,1920×540.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/3/,200,3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/37w-2/,200,37w,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/37w/,200,37w,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/38w/,200,38w,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/4970427e-1418-4654-b62a-b535842f6bbc/,200,4970427e-1418-4654-b62a-b535842f6bbc,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/98_nft_dash-svg/,200,98_NFT_dash.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/98_nft_piramida-svg/,200,98_NFT_piramida.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/98_nft_wheel-svg/,200,98_NFT_wheel.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1014,200,Elementor-post-screenshot_880_2025-04-13-12-31-08_2bdbe343.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1017,200,Elementor-post-screenshot_922_2025-04-13-12-31-15_795ab385.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1018,200,Elementor-post-screenshot_977_2025-04-13-12-31-17_68085087.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1061,200,Elementor-post-screenshot_569_2025-04-15-10-41-27_3d42f6c1.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1076,200,Elementor-post-screenshot_557_2025-04-16-15-53-03_efe2ba3.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1152,200,Elementor-post-screenshot_892_2025-04-18-09-19-17_474e41cb.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1169,200,Elementor-post-screenshot_1119_2025-04-18-12-28-23_53678c1c.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1951,200,Elementor-post-screenshot_566_2025-05-29-18-55-13_5e70d6a2.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1952,200,Elementor-post-screenshot_913_2025-05-29-18-55-16_23191973.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1955,200,Elementor-post-screenshot_1549_2025-05-29-18-55-26_5e063022.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=1956,200,Elementor-post-screenshot_1593_2025-05-29-18-55-29_380b2785.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=2235,200,Elementor-post-screenshot_1156_2025-08-04-17-07-38_2d6be381.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=864,200,пляж,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=866,200,пляж 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/?attachment_id=867,200,горы 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/about-2-hero-jpg/,200,About-2-Hero.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/article-img_3-13122021-jpg/,200,Article-img_3-13122021.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/at-home-4980360_1920/,200,at-home-4980360_1920,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/benefit_icon-svg/,200,Benefit_Icon.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/cta-gallery1-jpg/,200,cta-gallery1.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/cta-gallery2-jpeg/,200,cta-gallery2.jpeg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/cta-gallery3-jpeg/,200,cta-gallery3.jpeg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/depositphotos_210603634_hd1080/,200,Depositphotos_210603634_hd1080,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/elementor-post-screenshot_1552_2025-04-22-15-14-54_31b03417-png/,200,Elementor-post-screenshot_1552_2025-04-22-15-14-54_31b03417.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/favicon-3/,200,favicon (3),https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/flair-logo-png/,200,Flair-Logo.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/floor-404-svg/,200,floor-404.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/akvapark/,200,аквапарк,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/bereg-43/,200,берег 43,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/brazilskij-serial2/,200,бразильский карнавал,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/broni/,200,брони,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/dubaj-3/,200,дубай 3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/dubaj/,200,дубай,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/dubaj22/,200,дубай22,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/effzrnodhk0rzwzd9lct5/,200,eFFzRNoDhk0RzwZD9lCT5,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/egypt-giza-sphinx-01/,200,Egypt.Giza.Sphinx.01,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/flexy_the_image_shows_a_person_sitting_on_a_rock_holding_a_piece_of_paper_with_the_words_travel_insurance_policy_written_on_it-_the_person_is_wearing_a__efp/,200,страхование тур поездки,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/flexy_the_image_shows_a_person_sitting_on_a_rock_holding_a_piece_of_paper_with_the_words_travel_insurance_policy_written_on_it-_the_person_is_wearing_a__kow/,200,страхование тур поездки,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/gastronomicheskij-tur-3/,200,гастрономический тур 3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/gastronomicheskij-tur/,200,гастрономический тур,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/glavnaya-foto/,200,главная фото,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/gruppovye-tury-22/,200,групповые туры 22,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/gruppovye-tury/,200,групповые туры,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/individualnye-tury/,200,индивидуальные туры,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/individualnyj-tur/,200,индивидуальный тур,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/kair/,200,каир,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/kollazh/,200,коллаж,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/kruiz-2/,200,круиз 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/kruiz-sait/,200,круизы,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/kulturnyj-tur/,200,культурный тур,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/logo_2knq3idg/,200,logo_2KNq3IDG,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/logo_a5xnrepc/,200,logo_A5XNrePC,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/maldivy-2/,200,мальдивы 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/maldivy/,200,мальдивы,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/obrazovatelnye-tury-2/,200,образовательные туры 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/obrazovatelnye-tury-sajt/,200,образовательные туры сайт,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/obrazovatelnyj-tur/,200,образовательный тур,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/ofis-22/,200,офис 22,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/ofis-33/,200,офис 33,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/ofis-zhiraf-4/,200,ОФИС ЖИРАФ 4,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/otzyv-1/,200,отзыв 1,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/otzyv-352/,200,отзыв 352,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/otzyv-36/,200,отзыв 36,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/otzyv-4/,200,отзыв 4,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/otzyv4/,200,отзыв4,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/safari-svjt2/,200,сафари свйт2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/semejnyj-tur-2/,200,семейный тур 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/semejnyj-tur-3/,200,семейный тур 3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/semejnyj-tur-sajt/,200,семейный тур сайт,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/spa-sajt/,200,спа тур,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/stambul-2/,200,стамбул 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/stambul/,200,стамбул,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/strahovka-2/,200,страховка 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/svadebnye-tury-3/,200,свадебные туры 3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/svadebnye-tury-sajt/,200,свадебные туры сайт,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/svadebnye-tury-sajt2/,200,свадебные туры сайт2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_r1ys7nck3/,200,tenweb_media_r1ys7nck3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_ra8fvnj1p/,200,tenweb_media_RA8FVNJ1P,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rdkgpgfz5/,200,tenweb_media_RDKGPGFZ5,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_re1yphzuo/,200,tenweb_media_re1yphzuo,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rhw1m0x3m/,200,tenweb_media_RHW1M0X3M,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rlxd1kras/,200,tenweb_media_rlxd1kras,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rnynxlvl8/,200,tenweb_media_RNYNXLVL8,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rorvdptdb/,200,tenweb_media_rorvdptdb,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rpauhzi4a/,200,tenweb_media_rpauhzi4a,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rr5trss6r/,200,tenweb_media_rr5trss6r,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_ruajl7emi/,200,tenweb_media_ruajl7emi,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rvolb3dg4/,200,tenweb_media_RVOLB3DG4,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_rzztsnefr/,200,tenweb_media_RZZTSNEFR,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_s4wopari4/,200,tenweb_media_s4wopari4,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_sdglq11jc/,200,tenweb_media_sdglq11jc,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_sekjcalud/,200,tenweb_media_SEKJCALUD,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_sh4i3sogs/,200,tenweb_media_sh4i3sogs,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_si20dr3da/,200,tenweb_media_si20dr3da,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_soyf4fzac/,200,tenweb_media_soyf4fzac,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_stuzczfff/,200,tenweb_media_stuzczfff,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/tenweb_media_sxemwby1r/,200,tenweb_media_sxemwby1r,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/thumbnail_female_nnkoawak/,200,thumbnail_female_NNkoawaK,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/thumbnail_female_pvnrswf3/,200,thumbnail_female_pvnRswf3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/thumbnail_female_uq652neg/,200,thumbnail_female_UQ652nEg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/thumbnail_male_m3pcqc6q/,200,thumbnail_male_M3pcQc6q,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/thumbnail_male_vtt9j6df/,200,thumbnail_male_vTt9j6dF,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/thumbnail_male_x7mubevj/,200,thumbnail_male_x7MUbevJ,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/v-aeropotru/,200,в аэропотру,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/vip-tur/,200,vip tur,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/vip/,200,vip-ТУР,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya/vip2/,200,vip-ТУР,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/glavnaya11/,200,главная11,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/icon-services-details-orange-svg/,200,Icon-Services-Details-Orange.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/icon-services-details-pink-svg/,200,Icon-Services-Details-Pink.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/image-contact-1-jpg/,200,Image-Contact-1.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/image-testemonials-1-jpeg/,200,Image-Testemonials-1.jpeg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/image_placeholder-13122021-jpeg/,200,Image_Placeholder-13122021.jpeg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/image_placeholder-13122021-jpg/,200,Image_Placeholder-13122021.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/image_placeholder_hero-3-jpeg/,200,Image_Placeholder_Hero-3.jpeg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/image_placeholder_hero_white-jpg/,200,Image_Placeholder_Hero_white.jpg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/instagram-svg/,200,Instagram.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/instagram_fill-svg-2/,200,Instagram_Fill.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/instagram_fill-svg/,200,Instagram_Fill.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/instr/,200,instr,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/launch_rb_06_01-2/,200,Launch_RB_06_01,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/launch_rb_06_01/,200,Launch_RB_06_01,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/launch_summer_3_june-2/,200,Launch_Summer_3_june,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/launch_summer_3_june-3/,200,Launch_Summer_3_june,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/launch_summer_3_june-4/,200,Launch_Summer_3_june,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/launch_summer_3_june/,200,Launch_Summer_3_june,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo-1-svg-2/,200,logo-1.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo-1-svg/,200,logo-1.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo-1/,200,logo  zhiraf,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo-svg/,200,logo.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo-zhiraf-2/,200,лого zhiraf,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo-zhiraf/,200,лого zhiraf,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/logo4/,200,Жираф Уфа,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/minus-15062021-svg/,200,Minus-15062021.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/moscow1590_400-3/,200,moscow1590_400-3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/ofis-zhiraf-2/,200,ОФИС ЖИРАФ 2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/ofis-zhiraf-3/,200,офис жираф 3,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/ofis-zhiraf/,200,офис жираф,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/phone-svg/,200,Phone.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/photo-2/,200,photo,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/photo/,200,photo,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-1-png-2/,200,placeholder-1.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-1-png/,200,placeholder-1.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-3-png/,200,placeholder-3.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-png-2/,200,placeholder.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-png-3/,200,placeholder.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-png-4/,200,placeholder.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/placeholder-png/,200,placeholder.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/plus-svg/,200,Plus.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/resturant_logo-png/,200,Resturant_Logo.png,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/s1/,200,s1,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/s2/,200,s2,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/sajt-glavnaya-2/,200,сайт главная,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/sajt-glavnaya/,200,сайт главная,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/services_2_icon_2-svg/,200,Services_2_Icon_2.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/strahovka/,200,СТРАХОВКА,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/turagentstvo-zhiraf/,200,турагентство жираф,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/wave_404_x2-svg/,200,wave_404_x2.svg,https://zhiraf-ufa.ru/,301,media
+https://zhiraf-ufa.ru/why-choose-us-jpeg/,200,why-choose-us.jpeg,https://zhiraf-ufa.ru/,301,media

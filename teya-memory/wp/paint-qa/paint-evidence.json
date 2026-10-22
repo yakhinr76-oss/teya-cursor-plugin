@@ -1,0 +1,439 @@
+{
+  "public_site_url": null,
+  "preview_base": "http://127.0.0.1:8765/",
+  "theme_slug": "zhiraf-ufa",
+  "mode": "local-only",
+  "checked_at": "2026-10-19T02:45:54.624Z",
+  "agent_bc_id": "bc-7503b3bf-5143-5012-a0f3-993d4006de47",
+  "page_build_ref": "teya-memory/wp/page-build-report.md",
+  "wordstat_routes": [
+    "/",
+    "/tour/",
+    "/goryashchie-tury/",
+    "/vse-vklyucheno/",
+    "/tour/turciya/",
+    "/tour/oae/",
+    "/tour/egipet/",
+    "/tour/tailand/",
+    "/tour/vietnam/",
+    "/tour/turciya/antalya/",
+    "/tour/egipet/hurgada/",
+    "/tour/egipet/sharm-el-sheyh/",
+    "/tour/vietnam/nyachang/",
+    "/tour/vietnam/fukuok/",
+    "/o-nas/",
+    "/kontakty/",
+    "/blog/",
+    "/politika-konfidenczialnosti/",
+    "/politika-cookies/"
+  ],
+  "screenshots": [
+    {
+      "slug": "home",
+      "path": "/",
+      "file": "home.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-home-1440.png",
+      "paint": "teya-memory/wp/paint-qa/home-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/home-1440-fullpage.png"
+    },
+    {
+      "slug": "home",
+      "path": "/",
+      "file": "home.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-home-390.png",
+      "paint": "teya-memory/wp/paint-qa/home-375-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/home-375-fullpage.png"
+    },
+    {
+      "slug": "tour",
+      "path": "/tour/",
+      "file": "tour.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-1440-fullpage.png"
+    },
+    {
+      "slug": "tour",
+      "path": "/tour/",
+      "file": "tour.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-390-fullpage.png"
+    },
+    {
+      "slug": "goryashchie-tury",
+      "path": "/goryashchie-tury/",
+      "file": "goryashchie-tury.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-goryashchie-tury-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-goryashchie-tury-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-goryashchie-tury-1440-fullpage.png"
+    },
+    {
+      "slug": "goryashchie-tury",
+      "path": "/goryashchie-tury/",
+      "file": "goryashchie-tury.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-goryashchie-tury-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-goryashchie-tury-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-goryashchie-tury-390-fullpage.png"
+    },
+    {
+      "slug": "vse-vklyucheno",
+      "path": "/vse-vklyucheno/",
+      "file": "vse-vklyucheno.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-vse-vklyucheno-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-vse-vklyucheno-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-vse-vklyucheno-1440-fullpage.png"
+    },
+    {
+      "slug": "vse-vklyucheno",
+      "path": "/vse-vklyucheno/",
+      "file": "vse-vklyucheno.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-vse-vklyucheno-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-vse-vklyucheno-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-vse-vklyucheno-390-fullpage.png"
+    },
+    {
+      "slug": "tour-turciya",
+      "path": "/tour/turciya/",
+      "file": "tour-turciya.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-turciya-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-turciya-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-turciya-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-turciya",
+      "path": "/tour/turciya/",
+      "file": "tour-turciya.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-turciya-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-turciya-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-turciya-390-fullpage.png"
+    },
+    {
+      "slug": "tour-oae",
+      "path": "/tour/oae/",
+      "file": "tour-oae.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-oae-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-oae-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-oae-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-oae",
+      "path": "/tour/oae/",
+      "file": "tour-oae.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-oae-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-oae-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-oae-390-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet",
+      "path": "/tour/egipet/",
+      "file": "tour-egipet.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-egipet-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet",
+      "path": "/tour/egipet/",
+      "file": "tour-egipet.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-egipet-390-fullpage.png"
+    },
+    {
+      "slug": "tour-tailand",
+      "path": "/tour/tailand/",
+      "file": "tour-tailand.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-tailand-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-tailand-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-tailand-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-tailand",
+      "path": "/tour/tailand/",
+      "file": "tour-tailand.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-tailand-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-tailand-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-tailand-390-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam",
+      "path": "/tour/vietnam/",
+      "file": "tour-vietnam.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-vietnam-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam",
+      "path": "/tour/vietnam/",
+      "file": "tour-vietnam.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-vietnam-390-fullpage.png"
+    },
+    {
+      "slug": "tour-turciya-antalya",
+      "path": "/tour/turciya/antalya/",
+      "file": "tour-turciya-antalya.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-turciya-antalya-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-turciya-antalya-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-turciya-antalya-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-turciya-antalya",
+      "path": "/tour/turciya/antalya/",
+      "file": "tour-turciya-antalya.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-turciya-antalya-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-turciya-antalya-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-turciya-antalya-390-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet-hurgada",
+      "path": "/tour/egipet/hurgada/",
+      "file": "tour-egipet-hurgada.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-hurgada-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-hurgada-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-egipet-hurgada-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet-hurgada",
+      "path": "/tour/egipet/hurgada/",
+      "file": "tour-egipet-hurgada.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-hurgada-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-hurgada-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-egipet-hurgada-390-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet-sharm-el-sheyh",
+      "path": "/tour/egipet/sharm-el-sheyh/",
+      "file": "tour-egipet-sharm-el-sheyh.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-sharm-el-sheyh-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-sharm-el-sheyh-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-egipet-sharm-el-sheyh-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-egipet-sharm-el-sheyh",
+      "path": "/tour/egipet/sharm-el-sheyh/",
+      "file": "tour-egipet-sharm-el-sheyh.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-egipet-sharm-el-sheyh-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-egipet-sharm-el-sheyh-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-egipet-sharm-el-sheyh-390-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam-nyachang",
+      "path": "/tour/vietnam/nyachang/",
+      "file": "tour-vietnam-nyachang.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-nyachang-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-nyachang-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-vietnam-nyachang-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam-nyachang",
+      "path": "/tour/vietnam/nyachang/",
+      "file": "tour-vietnam-nyachang.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-nyachang-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-nyachang-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-vietnam-nyachang-390-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam-fukuok",
+      "path": "/tour/vietnam/fukuok/",
+      "file": "tour-vietnam-fukuok.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-fukuok-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-fukuok-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-vietnam-fukuok-1440-fullpage.png"
+    },
+    {
+      "slug": "tour-vietnam-fukuok",
+      "path": "/tour/vietnam/fukuok/",
+      "file": "tour-vietnam-fukuok.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-tour-vietnam-fukuok-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-tour-vietnam-fukuok-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-tour-vietnam-fukuok-390-fullpage.png"
+    },
+    {
+      "slug": "o-nas",
+      "path": "/o-nas/",
+      "file": "o-nas.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-o-nas-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-o-nas-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-o-nas-1440-fullpage.png"
+    },
+    {
+      "slug": "o-nas",
+      "path": "/o-nas/",
+      "file": "o-nas.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-o-nas-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-o-nas-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-o-nas-390-fullpage.png"
+    },
+    {
+      "slug": "kontakty",
+      "path": "/kontakty/",
+      "file": "kontakty.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-kontakty-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-kontakty-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-kontakty-1440-fullpage.png"
+    },
+    {
+      "slug": "kontakty",
+      "path": "/kontakty/",
+      "file": "kontakty.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-kontakty-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-kontakty-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-kontakty-390-fullpage.png"
+    },
+    {
+      "slug": "blog",
+      "path": "/blog/",
+      "file": "blog.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-blog-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-blog-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-blog-1440-fullpage.png"
+    },
+    {
+      "slug": "blog",
+      "path": "/blog/",
+      "file": "blog.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-blog-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-blog-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-blog-390-fullpage.png"
+    },
+    {
+      "slug": "politika-konfidenczialnosti",
+      "path": "/politika-konfidenczialnosti/",
+      "file": "politika-konfidenczialnosti.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-konfidenczialnosti-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-konfidenczialnosti-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-politika-konfidenczialnosti-1440-fullpage.png"
+    },
+    {
+      "slug": "politika-konfidenczialnosti",
+      "path": "/politika-konfidenczialnosti/",
+      "file": "politika-konfidenczialnosti.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-konfidenczialnosti-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-konfidenczialnosti-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-politika-konfidenczialnosti-390-fullpage.png"
+    },
+    {
+      "slug": "politika-cookies",
+      "path": "/politika-cookies/",
+      "file": "politika-cookies.html",
+      "viewport": "1440",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-cookies-1440.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-cookies-1440-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-politika-cookies-1440-fullpage.png"
+    },
+    {
+      "slug": "politika-cookies",
+      "path": "/politika-cookies/",
+      "file": "politika-cookies.html",
+      "viewport": "390",
+      "http_status": 200,
+      "artifact": "/opt/cursor/artifacts/zhiraf-politika-cookies-390.png",
+      "paint": "teya-memory/wp/paint-qa/page-politika-cookies-390-fullpage.png",
+      "deliverables_paint": "deliverables/zhiraf-ufa/paint/page-politika-cookies-390-fullpage.png"
+    }
+  ],
+  "pages_captured": [
+    "home",
+    "tour",
+    "goryashchie-tury",
+    "vse-vklyucheno",
+    "tour-turciya",
+    "tour-oae",
+    "tour-egipet",
+    "tour-tailand",
+    "tour-vietnam",
+    "tour-turciya-antalya",
+    "tour-egipet-hurgada",
+    "tour-egipet-sharm-el-sheyh",
+    "tour-vietnam-nyachang",
+    "tour-vietnam-fukuok",
+    "o-nas",
+    "kontakty",
+    "blog",
+    "politika-konfidenczialnosti",
+    "politika-cookies"
+  ],
+  "viewports": [
+    "1440",
+    "390"
+  ],
+  "failed_routes": [],
+  "verdict": "pass"
+}

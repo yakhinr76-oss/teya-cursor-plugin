@@ -1,0 +1,203 @@
+<?php
+/**
+ * Tour price cards helpers and integration.
+ *
+ * @package Zhiraf_Ufa
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Resolve resort/destination image for tour card.
+ *
+ * @param array<string,mixed> $tour Tour data.
+ * @return string Image filename in assets/images/.
+ */
+function zhiraf_ufa_tour_image( $tour ) {
+	$info = zhiraf_ufa_tour_image_info( $tour );
+	return $info['file'];
+}
+
+/**
+ * Photo for a tour card: the resort's own verified photo when the library has one,
+ * otherwise a photo of the country. Within one page request the least-used candidate
+ * is picked, so cards of one country look varied where several verified photos exist.
+ * Sources/credits: assets/images/CREDITS.md (Pexels, no hotel signage, checked visually).
+ *
+ * @param array<string,mixed> $tour Tour data.
+ * @return array{file:string,is_resort:bool,alt:string}
+ */
+function zhiraf_ufa_tour_image_info( $tour ) {
+	static $used = array();
+
+	if ( ! empty( $tour['image'] ) ) {
+		return array( 'file' => (string) $tour['image'], 'is_resort' => true, 'alt' => '' );
+	}
+	$resort = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
+	$slug   = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
+	$legacy = array( 'turkey' => 'turciya', 'uae' => 'oae', 'egypt' => 'egipet', 'thailand' => 'tailand' );
+	if ( isset( $legacy[ $slug ] ) ) {
+		$slug = $legacy[ $slug ];
+	}
+
+	// Resort needle (lowercase substring of the BG resort name) => verified photos of that very place.
+	$resort_photos = array(
+		'oae'        => array( 'абу-даби' => array( 'resort-abu-dabi.jpg' ), 'дубай' => array( 'country-oae.jpg' ) ),
+		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
+		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
+		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
+		'maldivy'    => array( 'мале' => array( 'country-maldivy.jpg' ), 'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ) ),
+		'uzbekistan' => array( 'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ), 'хива' => array( 'alt-uzbekistan-2.jpg' ) ),
+	);
+	// Country-level photos (fallback; never another resort's own photo). Several => varied cards on one page.
+	$country_photos = array(
+		'turciya'    => array( 'country-turciya.jpg' ),
+		'egipet'     => array( 'country-egipet.jpg' ),
+		'oae'        => array( 'country-oae.jpg' ),
+		'tailand'    => array( 'country-tailand.jpg' ),
+		'vietnam'    => array( 'country-vietnam.jpg' ),
+		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
+		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
+		'shri-lanka' => array( 'country-shri-lanka.jpg', 'alt-shri-lanka-2.jpg', 'alt-shri-lanka-3.jpg' ),
+		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-3.jpg' ),
+		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
+		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
+		'uzbekistan' => array( 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg' ),
+		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
+	);
+
+	$candidates = array();
+	$is_resort  = false;
+	if ( '' !== $resort && isset( $resort_photos[ $slug ] ) ) {
+		foreach ( $resort_photos[ $slug ] as $needle => $files ) {
+			if ( false !== mb_strpos( $resort, $needle, 0, 'UTF-8' ) ) {
+				$candidates = $files;
+				$is_resort  = true;
+				break;
+			}
+		}
+	}
+	if ( ! $candidates ) {
+		$candidates = isset( $country_photos[ $slug ] ) ? $country_photos[ $slug ] : array();
+	}
+	if ( ! $candidates ) {
+		// No library photo => gradient (never a wrong country's photo).
+		return array( 'file' => '', 'is_resort' => false, 'alt' => '' );
+	}
+	$pick = $candidates[0];
+	foreach ( $candidates as $f ) {
+		if ( ( $used[ $f ] ?? 0 ) < ( $used[ $pick ] ?? 0 ) ) {
+			$pick = $f;
+		}
+	}
+	$used[ $pick ] = ( $used[ $pick ] ?? 0 ) + 1;
+
+	$country = function_exists( 'zhiraf_ufa_tour_country_name' ) ? zhiraf_ufa_tour_country_name( $slug ) : '';
+	$alt     = $is_resort ? (string) $tour['resort'] : sprintf( __( 'Фото направления: %s', 'zhiraf-ufa' ), $country );
+	return array( 'file' => $pick, 'is_resort' => $is_resort, 'alt' => $alt );
+}
+
+/**
+ * Format Russian plural for nights.
+ *
+ * @param int $nights Number of nights.
+ * @return string
+ */
+function zhiraf_ufa_plural_nights( $nights ) {
+	$n      = (int) $nights;
+	$mod10  = $n % 10;
+	$mod100 = $n % 100;
+
+	if ( $mod100 >= 11 && $mod100 <= 19 ) {
+		return sprintf( /* translators: %d: nights */ _n( '%d ночей', '%d ночей', $n, 'zhiraf-ufa' ), $n );
+	}
+	if ( 1 === $mod10 ) {
+		return sprintf( /* translators: %d: night */ _n( '%d ночь', '%d ночь', $n, 'zhiraf-ufa' ), $n );
+	}
+	if ( $mod10 >= 2 && $mod10 <= 4 ) {
+		return sprintf( /* translators: %d: nights */ _n( '%d ночи', '%d ночи', $n, 'zhiraf-ufa' ), $n );
+	}
+
+	return sprintf( /* translators: %d: nights */ _n( '%d ночей', '%d ночей', $n, 'zhiraf-ufa' ), $n );
+}
+
+/**
+ * Get country label in prepositional/accusative for heading.
+ *
+ * @param string $country_slug Country slug.
+ * @return string
+ */
+function zhiraf_ufa_country_prepositional( $country_slug ) {
+	$map = array(
+		'turciya'  => __( 'в Турцию', 'zhiraf-ufa' ),
+		'turkey'   => __( 'в Турцию', 'zhiraf-ufa' ),
+		'oae'      => __( 'в ОАЭ', 'zhiraf-ufa' ),
+		'uae'      => __( 'в ОАЭ', 'zhiraf-ufa' ),
+		'egipet'   => __( 'в Египет', 'zhiraf-ufa' ),
+		'egypt'    => __( 'в Египет', 'zhiraf-ufa' ),
+		'tailand'  => __( 'в Таиланд', 'zhiraf-ufa' ),
+		'thailand' => __( 'в Таиланд', 'zhiraf-ufa' ),
+		'vietnam'  => __( 'во Вьетнам', 'zhiraf-ufa' ),
+	);
+
+	return isset( $map[ $country_slug ] ) ? $map[ $country_slug ] : __( 'по направлению', 'zhiraf-ufa' );
+}
+
+/**
+ * Get normalized country name.
+ *
+ * @param string $country_slug Country slug.
+ * @return string
+ */
+function zhiraf_ufa_tour_country_name( $country_slug ) {
+	$map = array(
+		'turciya'  => __( 'Турция', 'zhiraf-ufa' ),
+		'turkey'   => __( 'Турция', 'zhiraf-ufa' ),
+		'oae'      => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'uae'      => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'egipet'   => __( 'Египет', 'zhiraf-ufa' ),
+		'egypt'    => __( 'Египет', 'zhiraf-ufa' ),
+		'tailand'  => __( 'Таиланд', 'zhiraf-ufa' ),
+		'thailand' => __( 'Таиланд', 'zhiraf-ufa' ),
+		'vietnam'  => __( 'Вьетнам', 'zhiraf-ufa' ),
+		'kitaj'      => __( 'Китай', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Индия', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланка', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Индонезия', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Мальдивы', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Сейшелы', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Узбекистан', 'zhiraf-ufa' ),
+		'armeniya'   => __( 'Армения', 'zhiraf-ufa' ),
+	);
+
+	return isset( $map[ $country_slug ] ) ? $map[ $country_slug ] : '';
+}
+
+/**
+ * Flight info derived ONLY from the tour's own BG data (departure city + airline/route string).
+ * Ufa departure: "(стыковка в Москве)" in the operator's airline field => via Moscow, otherwise direct.
+ *
+ * @param array|null $tour Tour card.
+ * @param string     $fallback_city 'Уфа' or 'Москва' when no tour data.
+ * @return array{key:string,icon:string,label:string,line:string}
+ */
+function zhiraf_ufa_tour_flight_info( $tour, $fallback_city = 'Уфа' ) {
+	$city    = ! empty( $tour['departure_city'] ) ? (string) $tour['departure_city'] : $fallback_city;
+	$airline = ! empty( $tour['airline'] ) ? trim( (string) $tour['airline'] ) : '';
+	$carrier = trim( preg_replace( '/\s*\((без багажа|с багажом|стыковка в Москве|группа Аэрофлот)\)/u', '', $airline ) );
+	if ( '' !== $carrier && false !== mb_stripos( $airline, 'без багажа', 0, 'UTF-8' ) ) {
+		$carrier .= ', ' . __( 'без багажа', 'zhiraf-ufa' );
+	}
+	if ( 'Москва' === $city ) {
+		return array( 'key' => 'mow', 'icon' => '✈', 'label' => __( 'вылет из Москвы', 'zhiraf-ufa' ), 'line' => $carrier ? sprintf( __( '%s, из Москвы', 'zhiraf-ufa' ), $carrier ) : __( 'из Москвы', 'zhiraf-ufa' ) );
+	}
+	if ( '' === $airline ) {
+		return array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
+	}
+	if ( false !== mb_stripos( $airline, 'стыковка', 0, 'UTF-8' ) ) {
+		return array( 'key' => 'via', 'icon' => '⇄', 'label' => __( 'через Москву', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, стыковка в Москве', 'zhiraf-ufa' ), $carrier ) );
+	}
+	return array( 'key' => 'direct', 'icon' => '✈', 'label' => __( 'прямой рейс', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, прямой рейс из Уфы', 'zhiraf-ufa' ), $carrier ) );
+}

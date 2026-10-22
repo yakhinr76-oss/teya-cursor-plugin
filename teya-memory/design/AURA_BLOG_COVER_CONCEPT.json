@@ -1,0 +1,26 @@
+{
+  "cover_family": "editorial_photo",
+  "cover_family_registry": "teya/shared/blog-cover-family-registry.json",
+  "secondary_cover_families": [],
+  "global_prompt_prefix": "Editorial travel magazine cover, 16:9, warm milky paper tone #FAF8F5 ambient light, terracotta accent #E87A5D subtle color grade 18%, soft natural shadows, no text, no logos, no watermark, professional tourism photography, Ufa Russia departure context, high detail, ",
+  "global_prompt_suffix": ", clean composition with negative space for title overlay, consistent series look, photorealistic, no faces of identifiable celebrities",
+  "global_negative_prompt": "watermark, logo, text, letters, cartoon, neon, cold blue filter, stock photo cliché suitcase on white, fake review stars, emoji",
+  "color_lock": {
+    "background": "#FAF8F5",
+    "accent": "#E87A5D",
+    "text_neutral": "#2B2B2B"
+  },
+  "composition_lock": {
+    "aspect": "16:9",
+    "focal_rule": "subject right third",
+    "grain": "light 3%"
+  },
+  "topic_archetypes": {
+    "how_to": "document on table + passport edge",
+    "comparison": "split scene two climates warm",
+    "family": "family silhouette beach golden hour",
+    "legal_docs": "passport and forms flat lay",
+    "insurance": "travel insurance card metaphor still life",
+    "seasonal": "destination landmark soft focus"
+  }
+}

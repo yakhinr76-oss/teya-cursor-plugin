@@ -1,5 +1,11 @@
 # Runtime memory and project outputs
-teya-memory/
+node_modules/
+teya-memory/*
+!teya-memory/wp/
+!teya-memory/bg-api-samples/
+!teya-memory/semantic-core/
+!teya-memory/design/
+!teya-memory/fragments/
 memory/
 dist/
 build/

@@ -196,22 +196,45 @@
   /* Tour price filter tabs */
   function bindTourFilter(bar) {
     var tabs = qsa('[data-tour-filter]', bar);
-    var section = bar.closest('.section--hot-tours') || bar.parentElement;
+    var section = bar.closest('.section--hot-tours') || bar.closest('.section--dest-tours') || bar.parentElement;
+    var wraps = qsa('.dest-tour-card-wrap', section);
     var cards = qsa('.tour-card', section);
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (c) { c.classList.remove('is-active'); });
         tab.classList.add('is-active');
         var filter = tab.getAttribute('data-tour-filter');
-        cards.forEach(function (card) {
+        function applyFilter(card) {
           var dest = card.getAttribute('data-dest');
-          var show = filter === 'all' || dest === filter;
-          card.classList.toggle('is-hidden', !show);
-        });
+          var region = card.getAttribute('data-tour-region') || '';
+          return filter === 'all' || dest === filter || (region && region === filter);
+        }
+        if (wraps.length) {
+          wraps.forEach(function (wrap) {
+            var card = qs('.tour-card', wrap) || wrap;
+            wrap.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        } else {
+          cards.forEach(function (card) {
+            card.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        }
       });
     });
   }
-  qsa('.tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+  qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+
+  qsa('[data-tour-show-more]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var sel = btn.getAttribute('data-target');
+      var grid = sel ? qs(sel) : null;
+      if (!grid) return;
+      qsa('.dest-tour-card-wrap.is-collapsed', grid).forEach(function (wrap) {
+        wrap.classList.remove('is-collapsed');
+      });
+      btn.hidden = true;
+    });
+  });
 
   /* Audience tabs */
   var audienceRoot = qs('.audience-tabs');
@@ -296,14 +319,76 @@
     document.body.style.overflow = '';
     document.body.classList.remove('quiz-open');
   }
+
+  var vibeQuizMap = {
+    family: { composition: 'Семья с детьми', wishTag: '' },
+    couple: { composition: 'Пара', wishTag: '' },
+    city: { composition: '', wishTag: '[Шопинг и движ]' },
+    party: { composition: 'Компания друзей', wishTag: '[Шопинг и движ]' },
+    active: { composition: '', wishTag: '[Активный отдых / Экскурсии]' },
+  };
+
+  function applyQuizVibeFromButton(btn) {
+    if (!quizForm) return;
+    var vibeField = qs('[name="vibe"]', quizForm);
+    var vibeSlug = btn.getAttribute('data-vibe') || '';
+    var prefill = btn.getAttribute('data-quiz-prefill') || '';
+    var vibeTitle = btn.getAttribute('data-vibe-title') || '';
+    var wishes = qs('[name="quiz_wishes"]', quizForm);
+
+    qsa('[name="quiz_composition"]', quizForm).forEach(function (radio) {
+      radio.checked = false;
+    });
+    if (vibeField) {
+      vibeField.value = vibeSlug;
+    }
+
+    var map = vibeQuizMap[vibeSlug] || null;
+    if (map && map.composition) {
+      var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', quizForm);
+      if (target) {
+        target.checked = true;
+      }
+    }
+
+    if (wishes) {
+      var parts = [];
+      if (prefill) {
+        parts.push(prefill);
+      }
+      if (vibeTitle) {
+        parts.push('Вайб: ' + vibeTitle);
+      }
+      if (map && map.wishTag) {
+        parts.push(map.wishTag);
+      }
+      wishes.value = parts.join('. ').trim();
+    } else if (prefill && wishes) {
+      wishes.value = prefill;
+    }
+  }
+
+  function applyQuizPrefillOnly(btn) {
+    if (!quizForm) return;
+    var vibeField = qs('[name="vibe"]', quizForm);
+    if (vibeField) {
+      vibeField.value = '';
+    }
+    var prefill = btn.getAttribute('data-quiz-prefill');
+    if (prefill) {
+      var wishes = qs('[name="quiz_wishes"]', quizForm);
+      if (wishes) {
+        wishes.value = prefill;
+      }
+    }
+  }
+
   qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var prefill = btn.getAttribute('data-quiz-prefill');
-      if (prefill && quizForm) {
-        var wishes = qs('[name="quiz_wishes"]', quizForm);
-        if (wishes) {
-          wishes.value = prefill;
-        }
+      if (btn.getAttribute('data-vibe')) {
+        applyQuizVibeFromButton(btn);
+      } else {
+        applyQuizPrefillOnly(btn);
       }
       quizOpenGoal(btn);
       openQuiz();

@@ -29,11 +29,17 @@ function zhiraf_ufa_tour_image( $tour ) {
  * @param array<string,mixed> $tour Tour data.
  * @return array{file:string,is_resort:bool,alt:string}
  */
-function zhiraf_ufa_tour_image_info( $tour ) {
+function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	static $used = array();
 
 	if ( ! empty( $tour['image'] ) ) {
 		return array( 'file' => (string) $tour['image'], 'is_resort' => true, 'alt' => '' );
+	}
+	if ( ! empty( $tour['image_url'] ) ) {
+		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
+		if ( '' !== $ext ) {
+			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
+		}
 	}
 	$resort = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
 	$slug   = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
@@ -68,7 +74,13 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 			'фантьет'  => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
 			'муйне'    => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
 		),
-		'oae'        => array( 'абу-даби' => array( 'resort-abu-dabi.jpg' ), 'дубай' => array( 'country-oae.jpg' ) ),
+		'oae'        => array(
+			'дубай'    => array( 'hero-uae.jpg', 'dest-uae-new.jpg' ),
+			'шарджа'   => array( 'dest-uae.jpg', 'dest-uae-new.jpg' ),
+			'рас-эль'  => array( 'dest-uae-new.jpg', 'dest-uae.jpg' ),
+			'абу-даби' => array( 'resort-abu-dabi.jpg', 'dest-uae-new.jpg' ),
+			'фуджей'   => array( 'dest-uae-new.jpg' ),
+		),
 		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
 		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
@@ -79,9 +91,16 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 	$country_photos = array(
 		'turciya'    => array( 'country-turciya.jpg' ),
 		'egipet'     => array( 'country-egipet.jpg' ),
-		'oae'        => array( 'country-oae.jpg' ),
-		'tailand'    => array( 'country-tailand.jpg' ),
-		'vietnam'    => array( 'country-vietnam.jpg' ),
+		'oae'        => array( 'hero-uae.jpg', 'dest-uae-new.jpg', 'dest-uae.jpg', 'resort-abu-dabi.jpg' ),
+		'tailand'    => array( 'resort-phuket.jpg', 'hero-thailand.jpg', 'dest-thailand-new.jpg' ),
+		'vietnam'    => array(
+			'resort-vietnam-phu-quoc-1.jpg',
+			'resort-vietnam-phu-quoc-2.jpg',
+			'resort-vietnam-nha-trang-1.jpg',
+			'resort-vietnam-nha-trang-2.jpg',
+			'resort-vietnam-phan-thiet-1.jpg',
+			'dest-vietnam-new.jpg',
+		),
 		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
 		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
 		'shri-lanka' => array( 'country-shri-lanka.jpg', 'alt-shri-lanka-2.jpg', 'alt-shri-lanka-3.jpg' ),
@@ -110,10 +129,21 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 		// No library photo => gradient (never a wrong country's photo).
 		return array( 'file' => '', 'is_resort' => false, 'alt' => '' );
 	}
-	$pick = $candidates[0];
-	foreach ( $candidates as $f ) {
-		if ( ( $used[ $f ] ?? 0 ) < ( $used[ $pick ] ?? 0 ) ) {
-			$pick = $f;
+	// Never repeat the same fallback on adjacent cards: prefer unused, then rotate by slot index.
+	if ( null !== $card_index && count( $candidates ) > 1 ) {
+		$pick = $candidates[ ( (int) $card_index ) % count( $candidates ) ];
+		foreach ( $candidates as $f ) {
+			if ( 0 === ( $used[ $f ] ?? 0 ) ) {
+				$pick = $f;
+				break;
+			}
+		}
+	} else {
+		$pick = $candidates[0];
+		foreach ( $candidates as $f ) {
+			if ( ( $used[ $f ] ?? 0 ) < ( $used[ $pick ] ?? 0 ) ) {
+				$pick = $f;
+			}
 		}
 	}
 	$used[ $pick ] = ( $used[ $pick ] ?? 0 ) + 1;
@@ -128,6 +158,69 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 		$alt = $alt_by_file[ $pick ];
 	}
 	return array( 'file' => $pick, 'is_resort' => $is_resort, 'alt' => $alt );
+}
+
+/**
+ * Resort region slug for destination tour filters.
+ *
+ * @param string $country_slug Country slug.
+ * @param string $resort       Resort label.
+ * @return string Filter id or empty.
+ */
+function zhiraf_ufa_tour_landing_region( $country_slug, $resort ) {
+	if ( 'oae' === $country_slug ) {
+		return zhiraf_ufa_tour_emirate_region( $resort );
+	}
+	if ( 'vietnam' === $country_slug ) {
+		return zhiraf_ufa_tour_vietnam_region( $resort );
+	}
+	return '';
+}
+
+/**
+ * Vietnam resort slug for filters (Nha Trang / Phu Quoc / Mui Ne).
+ *
+ * @param string $resort Resort label.
+ * @return string nhatrang|phuquoc|muine|other
+ */
+function zhiraf_ufa_tour_vietnam_region( $resort ) {
+	$r = mb_strtolower( (string) $resort, 'UTF-8' );
+	if ( '' === $r ) {
+		return 'other';
+	}
+	if ( false !== mb_strpos( $r, 'фукуок', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'phu quoc', 0, 'UTF-8' ) ) {
+		return 'phuquoc';
+	}
+	if ( false !== mb_strpos( $r, 'нячанг', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'nha trang', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'камran', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'камран', 0, 'UTF-8' ) ) {
+		return 'nhatrang';
+	}
+	if ( false !== mb_strpos( $r, 'муйне', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'фантьет', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'phan thiet', 0, 'UTF-8' ) ) {
+		return 'muine';
+	}
+	return 'other';
+}
+
+function zhiraf_ufa_tour_emirate_region( $resort ) {
+	$r = mb_strtolower( (string) $resort, 'UTF-8' );
+	if ( '' === $r ) {
+		return 'other';
+	}
+	if ( false !== mb_strpos( $r, 'шарджа', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'sharjah', 0, 'UTF-8' ) ) {
+		return 'sharjah';
+	}
+	if ( false !== mb_strpos( $r, 'рас-эль', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'rak', 0, 'UTF-8' ) ) {
+		return 'rak';
+	}
+	if ( false !== mb_strpos( $r, 'абу-даби', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'abu dhabi', 0, 'UTF-8' ) ) {
+		return 'abudhabi';
+	}
+	if ( false !== mb_strpos( $r, 'фуджей', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'fujairah', 0, 'UTF-8' ) ) {
+		return 'fujairah';
+	}
+	if ( false !== mb_strpos( $r, 'дубай', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'dubai', 0, 'UTF-8' ) ) {
+		return 'dubai';
+	}
+	return 'other';
 }
 
 /**
@@ -272,4 +365,63 @@ function zhiraf_ufa_bento_package_summary( $tour ) {
 		$parts[] = $meal_name;
 	}
 	return implode( ' · ', $parts );
+}
+
+/**
+ * Map operator hotel image URL to a cached local file (future: BG hotelsJson photo field).
+ *
+ * @param string $url Remote image URL.
+ */
+function zhiraf_ufa_tour_operator_image_file( $url ) {
+	$url = trim( (string) $url );
+	if ( '' === $url ) {
+		return '';
+	}
+	/**
+	 * Filter: return theme image basename when operator URL was synced to assets/images.
+	 *
+	 * @param string $file Empty until wired.
+	 * @param string $url  Operator URL.
+	 */
+	return (string) apply_filters( 'zhiraf_ufa_tour_operator_image_file', '', $url );
+}
+
+/**
+ * One-line hotel spec for cards: stars · nights · meal · beach line.
+ *
+ * @param array<string,mixed> $tour Tour row.
+ */
+function zhiraf_ufa_tour_card_spec_line( $tour ) {
+	$parts = array();
+	$stars = ! empty( $tour['stars'] ) ? trim( (string) $tour['stars'] ) : '';
+	if ( '' !== $stars ) {
+		$parts[] = '★ ' . $stars;
+	}
+	$nights = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;
+	if ( $nights >= 3 ) {
+		$parts[] = zhiraf_ufa_plural_nights( $nights );
+	}
+	$meal_code = ! empty( $tour['meal_code'] ) ? strtoupper( trim( (string) $tour['meal_code'] ) ) : '';
+	if ( '' !== $meal_code ) {
+		$parts[] = $meal_code;
+	}
+	$beach = ! empty( $tour['beach_line'] ) ? (string) $tour['beach_line'] : zhiraf_ufa_tour_beach_line_guess( $tour );
+	if ( '' !== $beach ) {
+		$parts[] = $beach;
+	}
+	return implode( ' • ', $parts );
+}
+
+/**
+ * @param array<string,mixed> $tour Tour row.
+ */
+function zhiraf_ufa_tour_beach_line_guess( $tour ) {
+	if ( ! empty( $tour['beach_line'] ) ) {
+		return (string) $tour['beach_line'];
+	}
+	$resort = mb_strtolower( (string) ( $tour['resort'] ?? '' ), 'UTF-8' );
+	if ( false !== mb_strpos( $resort, '1-я', 0, 'UTF-8' ) || false !== mb_strpos( $resort, 'первая', 0, 'UTF-8' ) ) {
+		return __( '1-я линия', 'zhiraf-ufa' );
+	}
+	return __( 'линия моря — уточняем', 'zhiraf-ufa' );
 }

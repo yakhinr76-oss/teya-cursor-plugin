@@ -172,6 +172,14 @@
   margin-left: 4px;
 }
 
+.tour-card__spec-line {
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
 .tour-card__resort {
   display: flex;
   align-items: center;
@@ -180,6 +188,41 @@
   color: var(--color-muted);
   margin: 0;
   line-height: 1.4;
+}
+
+.tour-price-grid--dest {
+  .tour-card__hotel {
+    font-size: 1.3125rem;
+  }
+  .tour-card__resort {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .tour-card__disclaimer,
+  .tour-card__fallback-note {
+    font-size: 0.8125rem;
+  }
+}
+
+.tour-card--flight-focus .tour-card__meta-item--flight-prominent {
+  grid-column: 1 / -1;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(250, 248, 245, 0.95);
+  border: 1px solid var(--color-border);
+  .tour-card__meta-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .tour-card__meta-value {
+    font-size: 0.9375rem;
+    font-weight: 800;
+    color: var(--color-text);
+  }
 }
 
 .tour-card__icon-pin {

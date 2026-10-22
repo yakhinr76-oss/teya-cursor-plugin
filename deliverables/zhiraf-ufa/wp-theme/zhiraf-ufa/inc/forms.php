@@ -355,9 +355,17 @@ function zhiraf_ufa_ajax_quiz() {
 			'quiz_month'       => 'Месяц',
 			'quiz_budget'      => 'Бюджет на человека',
 			'quiz_wishes'      => 'Пожелания',
+			'vibe'             => 'Вайб (slug)',
 		)
 	);
-	$res = zhiraf_ufa_store_and_mail_lead( 'quiz', 'Квиз: подбор тура', $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
+	if ( ! empty( $values['Вайб (slug)'] ) && function_exists( 'zhiraf_ufa_vibe_slug_label' ) ) {
+		$values['Вайб'] = zhiraf_ufa_vibe_slug_label( sanitize_key( $values['Вайб (slug)'] ) );
+	}
+	$subject = 'Квиз: подбор тура';
+	if ( ! empty( $values['Вайб'] ) ) {
+		$subject .= ' — ' . $values['Вайб'];
+	}
+	$res = zhiraf_ufa_store_and_mail_lead( 'quiz', $subject, $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
 	zhiraf_ufa_form_respond( $res, __( 'Заявка отправлена! Мы подберём варианты и перезвоним.', 'zhiraf-ufa' ) );
 }
 add_action( 'wp_ajax_zhiraf_quiz', 'zhiraf_ufa_ajax_quiz' );

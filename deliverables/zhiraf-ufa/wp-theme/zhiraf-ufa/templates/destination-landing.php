@@ -113,6 +113,20 @@ $emphasize_flight    = ! empty( $dest['emphasize_flight'] );
 		</section>
 	<?php endif; ?>
 
+	<?php
+	$vibe_section = zhiraf_ufa_get_vibe_section( $dest_slug, $dest );
+	if ( $vibe_section ) {
+		get_template_part(
+			'template-parts/destination/vibe-cards',
+			null,
+			array(
+				'section'      => $vibe_section,
+				'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+			)
+		);
+	}
+	?>
+
 	<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
 		<section class="section geo-answer-block bg-milky">
 			<div class="container container--narrow">

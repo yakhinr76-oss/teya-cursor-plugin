@@ -182,6 +182,21 @@
   line-height: 1.4;
 }
 
+.tour-price-grid--dest {
+  .tour-card__hotel {
+    font-size: 1.3125rem;
+  }
+  .tour-card__resort {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .tour-card__disclaimer,
+  .tour-card__fallback-note {
+    font-size: 0.8125rem;
+  }
+}
+
 .tour-card__icon-pin {
   flex-shrink: 0;
   color: var(--color-primary);

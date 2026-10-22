@@ -305,11 +305,12 @@ function zhiraf_ufa_ajax_lead() {
 	}
 	$values = zhiraf_ufa_collect_fields(
 		array(
-			'name'    => 'Имя',
-			'phone'   => 'Телефон',
-			'email'   => 'Email',
-			'message' => 'Сообщение',
-			'tour'    => 'Тур',
+			'name'             => 'Имя',
+			'phone'            => 'Телефон',
+			'email'            => 'Email',
+			'message'          => 'Сообщение',
+			'tour'             => 'Тур',
+			'contact_channel'  => 'Куда отправить подборку',
 		)
 	);
 	$res = zhiraf_ufa_store_and_mail_lead( 'lead', 'Заявка на подбор тура', $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );

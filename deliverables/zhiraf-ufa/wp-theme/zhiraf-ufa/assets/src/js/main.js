@@ -196,22 +196,45 @@
   /* Tour price filter tabs */
   function bindTourFilter(bar) {
     var tabs = qsa('[data-tour-filter]', bar);
-    var section = bar.closest('.section--hot-tours') || bar.parentElement;
+    var section = bar.closest('.section--hot-tours') || bar.closest('.section--dest-tours') || bar.parentElement;
+    var wraps = qsa('.dest-tour-card-wrap', section);
     var cards = qsa('.tour-card', section);
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (c) { c.classList.remove('is-active'); });
         tab.classList.add('is-active');
         var filter = tab.getAttribute('data-tour-filter');
-        cards.forEach(function (card) {
+        function applyFilter(card) {
           var dest = card.getAttribute('data-dest');
-          var show = filter === 'all' || dest === filter;
-          card.classList.toggle('is-hidden', !show);
-        });
+          var region = card.getAttribute('data-tour-region') || '';
+          return filter === 'all' || dest === filter || (region && region === filter);
+        }
+        if (wraps.length) {
+          wraps.forEach(function (wrap) {
+            var card = qs('.tour-card', wrap) || wrap;
+            wrap.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        } else {
+          cards.forEach(function (card) {
+            card.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        }
       });
     });
   }
-  qsa('.tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+  qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+
+  qsa('[data-tour-show-more]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var sel = btn.getAttribute('data-target');
+      var grid = sel ? qs(sel) : null;
+      if (!grid) return;
+      qsa('.dest-tour-card-wrap.is-collapsed', grid).forEach(function (wrap) {
+        wrap.classList.remove('is-collapsed');
+      });
+      btn.hidden = true;
+    });
+  });
 
   /* Audience tabs */
   var audienceRoot = qs('.audience-tabs');

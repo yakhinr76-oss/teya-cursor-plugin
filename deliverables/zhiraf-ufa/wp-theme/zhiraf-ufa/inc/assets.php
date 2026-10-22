@@ -109,8 +109,8 @@ function zhiraf_ufa_destinations() {
 		array(
 			'slug'  => 'oae',
 			'name'  => __( 'ОАЭ', 'zhiraf-ufa' ),
-			'image' => 'country-oae.jpg',
-			'alt'   => __( 'ОАЭ — город и пляж', 'zhiraf-ufa' ),
+			'image' => 'hero-uae.jpg',
+			'alt'   => __( 'ОАЭ — пляж и Дубай', 'zhiraf-ufa' ),
 			'url'   => home_url( '/tour/oae/' ),
 		),
 		array(

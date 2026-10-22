@@ -68,7 +68,13 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 			'фантьет'  => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
 			'муйне'    => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
 		),
-		'oae'        => array( 'абу-даби' => array( 'resort-abu-dabi.jpg' ), 'дубай' => array( 'country-oae.jpg' ) ),
+		'oae'        => array(
+			'дубай'    => array( 'hero-uae.jpg', 'dest-uae-new.jpg' ),
+			'шарджа'   => array( 'dest-uae.jpg', 'dest-uae-new.jpg' ),
+			'рас-эль'  => array( 'dest-uae-new.jpg', 'dest-uae.jpg' ),
+			'абу-даби' => array( 'resort-abu-dabi.jpg', 'dest-uae-new.jpg' ),
+			'фуджей'   => array( 'dest-uae-new.jpg' ),
+		),
 		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
 		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
@@ -79,7 +85,7 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 	$country_photos = array(
 		'turciya'    => array( 'country-turciya.jpg' ),
 		'egipet'     => array( 'country-egipet.jpg' ),
-		'oae'        => array( 'country-oae.jpg' ),
+		'oae'        => array( 'hero-uae.jpg', 'dest-uae-new.jpg', 'dest-uae.jpg', 'resort-abu-dabi.jpg' ),
 		'tailand'    => array( 'country-tailand.jpg' ),
 		'vietnam'    => array( 'country-vietnam.jpg' ),
 		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
@@ -128,6 +134,35 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 		$alt = $alt_by_file[ $pick ];
 	}
 	return array( 'file' => $pick, 'is_resort' => $is_resort, 'alt' => $alt );
+}
+
+/**
+ * UAE emirate slug for destination tour filters (resort name substring match).
+ *
+ * @param string $resort Resort label from tour operator.
+ * @return string dubai|sharjah|rak|abudhabi|fujairah|other
+ */
+function zhiraf_ufa_tour_emirate_region( $resort ) {
+	$r = mb_strtolower( (string) $resort, 'UTF-8' );
+	if ( '' === $r ) {
+		return 'other';
+	}
+	if ( false !== mb_strpos( $r, 'шарджа', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'sharjah', 0, 'UTF-8' ) ) {
+		return 'sharjah';
+	}
+	if ( false !== mb_strpos( $r, 'рас-эль', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'rak', 0, 'UTF-8' ) ) {
+		return 'rak';
+	}
+	if ( false !== mb_strpos( $r, 'абу-даби', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'abu dhabi', 0, 'UTF-8' ) ) {
+		return 'abudhabi';
+	}
+	if ( false !== mb_strpos( $r, 'фуджей', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'fujairah', 0, 'UTF-8' ) ) {
+		return 'fujairah';
+	}
+	if ( false !== mb_strpos( $r, 'дубай', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'dubai', 0, 'UTF-8' ) ) {
+		return 'dubai';
+	}
+	return 'other';
 }
 
 /**

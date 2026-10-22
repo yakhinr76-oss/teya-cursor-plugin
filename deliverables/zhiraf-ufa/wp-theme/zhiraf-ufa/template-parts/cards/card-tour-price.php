@@ -50,7 +50,12 @@ $prefill_text     = sprintf(
 	$nights_formatted
 );
 ?>
-<article class="tour-card reveal" data-dest="<?php echo esc_attr( $country_slug ); ?>">
+<?php
+$zhiraf_region = ( 'oae' === $country_slug && function_exists( 'zhiraf_ufa_tour_emirate_region' ) )
+	? zhiraf_ufa_tour_emirate_region( $resort )
+	: '';
+?>
+<article class="tour-card reveal" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
 		<?php zhiraf_ufa_img( $image_file, $image_info['alt'] ? $image_info['alt'] : $resort, 'tour-card__img', true ); ?>

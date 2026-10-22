@@ -86,5 +86,39 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 			'type'    => 'text',
 		)
 	);
+
+	$wp_customize->add_setting(
+		'zhiraf_whatsapp_url',
+		array(
+			'default'           => 'https://wa.me/79018105018',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_whatsapp_url',
+		array(
+			'label'       => __( 'Ссылка WhatsApp', 'zhiraf-ufa' ),
+			'description' => __( 'Пустое значение скрывает кнопку в шапке и hero.', 'zhiraf-ufa' ),
+			'section'     => 'zhiraf_ufa_brand',
+			'type'        => 'url',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zhiraf_telegram_url',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_telegram_url',
+		array(
+			'label'       => __( 'Ссылка Telegram', 'zhiraf-ufa' ),
+			'description' => __( 'Необязательно. Пустое значение скрывает кнопку.', 'zhiraf-ufa' ),
+			'section'     => 'zhiraf_ufa_brand',
+			'type'        => 'url',
+		)
+	);
 }
 add_action( 'customize_register', 'zhiraf_ufa_customize_register' );

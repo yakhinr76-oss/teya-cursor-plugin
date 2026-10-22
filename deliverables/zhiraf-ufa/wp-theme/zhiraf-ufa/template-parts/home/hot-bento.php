@@ -41,17 +41,19 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 ?>
 <?php foreach ( $zhiraf_groups as $group ) : ?>
 <h3 class="hot-bento__group"><?php echo esc_html( $group['heading'] ); ?></h3>
+<?php if ( 'mow' === $group['mod'] ) : ?>
+	<p class="hot-bento__group-note"><?php esc_html_e( 'Цены указаны за прямой вылет из Москвы. Поможем состыковать с удобным рейсом из аэропорта «Уфа» и посчитаем полную смету до договора.', 'zhiraf-ufa' ); ?></p>
+<?php endif; ?>
 <div class="hot-bento hot-bento--<?php echo esc_attr( $group['mod'] ); ?>">
 	<?php
 	foreach ( $group['tiles'] as $tile ) :
-		$min   = zhiraf_ufa_get_country_min_tour( $tile['slug'] );
-		// Label comes from the shown min-price tour itself (airline/route), never hardcoded.
-		$flight     = zhiraf_ufa_tour_flight_info( $min, 'mow' === $group['mod'] ? 'Москва' : 'Уфа' );
-		$price_date = $min && ! empty( $min['price_date'] ) ? (string) $min['price_date'] : '';
-		$is_stale   = $min && $price_date !== $zhiraf_today;
-		$price_txt  = $min ? number_format( (int) $min['price_rur'], 0, '.', ' ' ) : '';
+		$min          = zhiraf_ufa_get_country_min_tour( $tile['slug'] );
+		$flight       = zhiraf_ufa_tour_flight_info( $min, 'mow' === $group['mod'] ? 'Москва' : 'Уфа' );
+		$price_txt    = $min ? number_format( (int) $min['price_rur'], 0, '.', ' ' ) : '';
+		$package_line = zhiraf_ufa_bento_package_summary( $min );
+		$tour_url     = home_url( '/tour/' . $tile['slug'] . '/' );
 		?>
-		<a class="hot-bento__tile hot-bento__tile--<?php echo esc_attr( $tile['mod'] ); ?><?php echo $tile['image'] ? '' : ' hot-bento__tile--grad dest-grad dest-grad--' . esc_attr( $tile['slug'] ); ?>" href="<?php echo esc_url( home_url( '/tour/' . $tile['slug'] . '/' ) ); ?>">
+		<article class="hot-bento__tile hot-bento__tile--<?php echo esc_attr( $tile['mod'] ); ?><?php echo $tile['image'] ? '' : ' hot-bento__tile--grad dest-grad dest-grad--' . esc_attr( $tile['slug'] ); ?>">
 			<?php if ( $tile['image'] ) : ?>
 				<?php zhiraf_ufa_img( $tile['image'], $tile['title'], 'hot-bento__img', true ); ?>
 			<?php else : ?>
@@ -62,38 +64,32 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 				<span class="hot-bento__icon" aria-hidden="true"><?php echo esc_html( $flight['icon'] ); ?></span>
 				<?php echo esc_html( $flight['label'] ); ?>
 			</span>
-			<span class="hot-bento__body">
+			<div class="hot-bento__body">
 				<?php if ( ! empty( $tile['kicker'] ) ) : ?>
 					<span class="hot-bento__kicker"><?php echo esc_html( $tile['kicker'] ); ?></span>
 				<?php endif; ?>
-				<span class="hot-bento__title"><?php echo esc_html( $tile['title'] ); ?></span>
-				<?php if ( $min ) : ?>
-					<span class="hot-bento__sub">
-						<?php
-						/* translators: %s: price */
-						printf( esc_html__( 'от %s ₽ за 2 взрослых', 'zhiraf-ufa' ), esc_html( $price_txt ) );
-						?>
-					</span>
-					<?php if ( $is_stale ) : ?>
-						<span class="hot-bento__note">
-							<?php
-							/* translators: 1: price, 2: date */
-							printf( esc_html__( 'цена от %1$s ₽ на %2$s, уточните актуальную стоимость у менеджера', 'zhiraf-ufa' ), esc_html( $price_txt ), esc_html( $price_date ) );
-							?>
-						</span>
-					<?php else : ?>
-						<span class="hot-bento__note">
-							<?php
-							/* translators: %s: date */
-							printf( esc_html__( 'цена на %1$s; рассчитана по курсу туроператора на %1$s, итоговая стоимость фиксируется при бронировании', 'zhiraf-ufa' ), esc_html( $price_date ) );
-							?>
-						</span>
-					<?php endif; ?>
-				<?php else : ?>
-					<span class="hot-bento__sub"><?php esc_html_e( 'уточните актуальную стоимость у менеджера', 'zhiraf-ufa' ); ?></span>
+				<h3 class="hot-bento__title"><?php echo esc_html( $tile['title'] ); ?></h3>
+				<?php if ( '' !== $package_line ) : ?>
+					<p class="hot-bento__meta"><?php echo esc_html( $package_line ); ?></p>
 				<?php endif; ?>
-			</span>
-		</a>
+				<?php if ( $min ) : ?>
+					<p class="hot-bento__sub">
+						<?php
+						printf(
+							esc_html__( 'от %s ₽ за 2 взрослых', 'zhiraf-ufa' ),
+							esc_html( $price_txt )
+						);
+						?>
+					</p>
+				<?php else : ?>
+					<p class="hot-bento__sub"><?php esc_html_e( 'уточните актуальную стоимость у менеджера', 'zhiraf-ufa' ); ?></p>
+				<?php endif; ?>
+				<a class="btn btn--primary btn--sm hot-bento__cta" href="<?php echo esc_url( $tour_url ); ?>">
+					<?php esc_html_e( 'Смотреть туры', 'zhiraf-ufa' ); ?>
+					<span aria-hidden="true"> →</span>
+				</a>
+			</div>
+		</article>
 	<?php endforeach; ?>
 </div>
 <?php endforeach; ?>

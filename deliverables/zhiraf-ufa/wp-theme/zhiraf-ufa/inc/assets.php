@@ -606,19 +606,47 @@ function zhiraf_ufa_audience_segments() {
 			'items' => array(
 				__( 'Пошагово объясним документы и сроки оформления', 'zhiraf-ufa' ),
 				__( 'Оформление договора в офисе на Гагарина, 74/1', 'zhiraf-ufa' ),
-				__( 'Не давим звонками — связь только по заявке', 'zhiraf-ufa' ),
+				__( 'Связь только по вашей заявке — без лишних обзвонов', 'zhiraf-ufa' ),
 			),
 		),
 		array(
 			'id'    => 'experienced',
 			'label' => __( 'Опытные путешественники', 'zhiraf-ufa' ),
-			'cta'   => __( 'Описать пожелания в квизе', 'zhiraf-ufa' ),
+			'cta'   => __( 'Рассчитать сложный маршрут', 'zhiraf-ufa' ),
 			'link'  => home_url( '/o-nas/' ),
 			'items' => array(
 				__( 'Учтём нестандартные маршруты и пожелания по отелю', 'zhiraf-ufa' ),
 				__( 'Работаем с проверенными туроператорами', 'zhiraf-ufa' ),
 				__( 'Команда в Уфе с 2011 года — детали обсудим лично', 'zhiraf-ufa' ),
 			),
+		),
+	);
+}
+
+/**
+ * Homepage team teaser (2–3 experts).
+ *
+ * @return array<int,array{name:string,role:string,desc:string,image:string}>
+ */
+function zhiraf_ufa_home_team_teaser() {
+	return array(
+		array(
+			'name'  => __( 'Зульфия', 'zhiraf-ufa' ),
+			'role'  => __( 'Основатель, заместитель директора', 'zhiraf-ufa' ),
+			'desc'  => __( 'С 2011 года. Сложные маршруты, Турция и ОАЭ, семейный отдых.', 'zhiraf-ufa' ),
+			'image' => 'office-ufa.jpg',
+		),
+		array(
+			'name'  => __( 'Альфия', 'zhiraf-ufa' ),
+			'role'  => __( 'Ведущий менеджер', 'zhiraf-ufa' ),
+			'desc'  => __( 'Турция и Египет, All Inclusive, туры с детьми.', 'zhiraf-ufa' ),
+			'image' => 'team-travel.jpg',
+		),
+		array(
+			'name'  => __( 'Гульнара', 'zhiraf-ufa' ),
+			'role'  => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'desc'  => __( 'Таиланд, Вьетнам, ОАЭ, стыковочные перелёты.', 'zhiraf-ufa' ),
+			'image' => 'travel-passport.jpg',
 		),
 	);
 }
@@ -646,7 +674,7 @@ function zhiraf_ufa_home_faq_items() {
 		),
 		array(
 			'q' => __( 'Как организован перелёт в Таиланд и Вьетнам из Уфы?', 'zhiraf-ufa' ),
-			'a' => __( 'На Пхукет, в Паттайю, Нячанг и на Фукуок в текущей выгрузке «Библио-Глобус» туры из Уфы идут со стыковкой в Москве. Перелёт входит в пакетный тур.', 'zhiraf-ufa' ),
+			'a' => __( 'Сейчас туроператор «Библио-Глобус» формирует маршруты на Пхукет, в Паттайю, Нячанг и на Фукуок с комфортной пересадкой в Москве. Перелёт входит в пакетный тур — поможем подобрать рейсы с удобным временем стыковки.', 'zhiraf-ufa' ),
 			'link' => home_url( '/tour/tailand/' ),
 		),
 		array(

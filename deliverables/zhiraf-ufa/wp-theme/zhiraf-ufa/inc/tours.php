@@ -232,3 +232,44 @@ function zhiraf_ufa_tour_flight_info( $tour, $fallback_city = 'Уфа' ) {
 	}
 	return array( 'key' => 'direct', 'icon' => '✈', 'label' => __( 'прямой рейс', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, прямой рейс из Уфы', 'zhiraf-ufa' ), $carrier ) );
 }
+
+/**
+ * Short package line for homepage bento (nights · stars · meal).
+ *
+ * @param array<string,mixed>|null $tour Min-price tour row.
+ * @return string Empty if not enough data.
+ */
+function zhiraf_ufa_bento_package_summary( $tour ) {
+	if ( ! is_array( $tour ) || empty( $tour ) ) {
+		return '';
+	}
+	$parts = array();
+	$nights = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;
+	if ( $nights >= 3 ) {
+		$parts[] = zhiraf_ufa_plural_nights( $nights );
+	}
+	$stars = ! empty( $tour['stars'] ) ? trim( (string) $tour['stars'] ) : '';
+	if ( '' !== $stars ) {
+		$parts[] = sprintf(
+			/* translators: %s: hotel star category e.g. 4* */
+			__( 'отель %s', 'zhiraf-ufa' ),
+			$stars
+		);
+	}
+	$meal_name = ! empty( $tour['meal_name'] ) ? trim( (string) $tour['meal_name'] ) : '';
+	$meal_code = ! empty( $tour['meal_code'] ) ? strtoupper( trim( (string) $tour['meal_code'] ) ) : '';
+	if ( '' === $meal_name && '' !== $meal_code ) {
+		$meal_map = array(
+			'AI'  => __( 'Всё включено', 'zhiraf-ufa' ),
+			'UAI' => __( 'Ultra All Inclusive', 'zhiraf-ufa' ),
+			'BB'  => __( 'Завтраки', 'zhiraf-ufa' ),
+			'HB'  => __( 'Завтрак и ужин', 'zhiraf-ufa' ),
+			'FB'  => __( 'Полный пансион', 'zhiraf-ufa' ),
+		);
+		$meal_name = isset( $meal_map[ $meal_code ] ) ? $meal_map[ $meal_code ] : $meal_code;
+	}
+	if ( '' !== $meal_name ) {
+		$parts[] = $meal_name;
+	}
+	return implode( ' · ', $parts );
+}

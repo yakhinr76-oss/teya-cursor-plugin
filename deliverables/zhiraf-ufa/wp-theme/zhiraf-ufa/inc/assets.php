@@ -629,27 +629,24 @@ function zhiraf_ufa_audience_segments() {
  * @return array<int,array{name:string,role:string,desc:string,image:string}>
  */
 function zhiraf_ufa_home_team_teaser() {
-	/**
-	 * Без имён и фото владельца — только роли. Замените через фильтр `zhiraf_ufa_home_team_teaser`.
-	 */
 	$members = array(
 		array(
-			'name'  => '',
-			'role'  => __( 'Менеджер: сложные маршруты', 'zhiraf-ufa' ),
-			'desc'  => __( 'Турция, ОАЭ, индивидуальные программы — с 2011 года в агентстве.', 'zhiraf-ufa' ),
-			'image' => '',
+			'name'  => __( 'Рафаэль', 'zhiraf-ufa' ),
+			'role'  => __( 'Директор', 'zhiraf-ufa' ),
+			'desc'  => __( 'Контроль качества сервиса, договоры и партнёрство с туроператорами.', 'zhiraf-ufa' ),
+			'image' => 'office-ufa.jpg',
 		),
 		array(
-			'name'  => '',
-			'role'  => __( 'Менеджер: семейный отдых', 'zhiraf-ufa' ),
-			'desc'  => __( 'Турция и Египет, All Inclusive, отели с детской инфраструктурой.', 'zhiraf-ufa' ),
-			'image' => '',
+			'name'  => __( 'Лиана', 'zhiraf-ufa' ),
+			'role'  => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'desc'  => __( 'Турция и Египет, All Inclusive, семейный отдых с детьми.', 'zhiraf-ufa' ),
+			'image' => 'team-travel.jpg',
 		),
 		array(
-			'name'  => '',
-			'role'  => __( 'Менеджер: Азия и стыковки', 'zhiraf-ufa' ),
-			'desc'  => __( 'Таиланд, Вьетнам, пересадки через Москву, визовые нюансы.', 'zhiraf-ufa' ),
-			'image' => '',
+			'name'  => __( 'Алина', 'zhiraf-ufa' ),
+			'role'  => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'desc'  => __( 'Таиланд, Вьетнам, ОАЭ, стыковочные перелёты и визовые правила.', 'zhiraf-ufa' ),
+			'image' => 'travel-passport.jpg',
 		),
 	);
 

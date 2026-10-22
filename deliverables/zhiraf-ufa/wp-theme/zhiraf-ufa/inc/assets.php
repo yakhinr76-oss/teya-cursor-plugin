@@ -630,10 +630,28 @@ function zhiraf_ufa_audience_segments() {
  */
 function zhiraf_ufa_home_team_teaser() {
 	/**
-	 * Пустой массив — блок на главной не выводится, пока владелец не заполнит данные
-	 * (фильтр `zhiraf_ufa_home_team_teaser` или правка массива после получения фото/имён).
+	 * Без имён и фото владельца — только роли. Замените через фильтр `zhiraf_ufa_home_team_teaser`.
 	 */
-	$members = array();
+	$members = array(
+		array(
+			'name'  => '',
+			'role'  => __( 'Менеджер: сложные маршруты', 'zhiraf-ufa' ),
+			'desc'  => __( 'Турция, ОАЭ, индивидуальные программы — с 2011 года в агентстве.', 'zhiraf-ufa' ),
+			'image' => '',
+		),
+		array(
+			'name'  => '',
+			'role'  => __( 'Менеджер: семейный отдых', 'zhiraf-ufa' ),
+			'desc'  => __( 'Турция и Египет, All Inclusive, отели с детской инфраструктурой.', 'zhiraf-ufa' ),
+			'image' => '',
+		),
+		array(
+			'name'  => '',
+			'role'  => __( 'Менеджер: Азия и стыковки', 'zhiraf-ufa' ),
+			'desc'  => __( 'Таиланд, Вьетнам, пересадки через Москву, визовые нюансы.', 'zhiraf-ufa' ),
+			'image' => '',
+		),
+	);
 
 	return apply_filters( 'zhiraf_ufa_home_team_teaser', $members );
 }

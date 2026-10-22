@@ -37,9 +37,11 @@ if ( empty( $members ) || ! is_array( $members ) ) {
 					<div class="home-team-card__body">
 						<?php if ( ! empty( $member['name'] ) ) : ?>
 							<h3 class="home-team-card__name"><?php echo esc_html( $member['name'] ); ?></h3>
-						<?php endif; ?>
-						<?php if ( ! empty( $member['role'] ) ) : ?>
-							<p class="home-team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
+							<?php if ( ! empty( $member['role'] ) ) : ?>
+								<p class="home-team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
+							<?php endif; ?>
+						<?php elseif ( ! empty( $member['role'] ) ) : ?>
+							<h3 class="home-team-card__name"><?php echo esc_html( $member['role'] ); ?></h3>
 						<?php endif; ?>
 						<?php if ( ! empty( $member['desc'] ) ) : ?>
 							<p class="home-team-card__desc"><?php echo esc_html( $member['desc'] ); ?></p>

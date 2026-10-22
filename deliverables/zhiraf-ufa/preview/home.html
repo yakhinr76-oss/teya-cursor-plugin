@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Жираф Уфа — preview главной (P0 funnel)</title>
+  <title>Жираф Уфа — preview главной</title>
   <link rel="stylesheet" href="../wp-theme/zhiraf-ufa/assets/dist/style.css" />
   <style>
     @font-face{font-family:'Manrope';src:url('../wp-theme/zhiraf-ufa/assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap;}
@@ -20,15 +20,15 @@
     </div>
     <nav class="site-nav" aria-label="Главная навигация">
       <ul class="primary-menu" style="display:flex;gap:32px">
-        <li><a href="#">Туры</a></li>
-        <li><a href="#">О нас</a></li>
-        <li><a href="#">Блог</a></li>
-        <li><a href="#">Контакты</a></li>
+        <li><a href="tour.html">Туры</a></li>
+        <li><a href="o-nas.html">О нас</a></li>
+        <li><a href="blog.html">Блог</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
       </ul>
     </nav>
     <div class="site-header__actions">
       <a class="header-phone" href="tel:+79018105018">+7 901 810-50-18</a>
-      <button type="button" class="btn btn--outline btn--sm">Подобрать тур</button>
+      <button type="button" class="btn btn--outline btn--sm" data-quiz-open>Подобрать тур</button>
     </div>
   </div>
 </header>
@@ -39,9 +39,14 @@
     <div class="container hero-premium__inner">
       <div class="hero-premium__content reveal">
         <h1 class="hero-premium__title">Туры с вылетом из Уфы — подбор без давления</h1>
-        <p class="hero-premium__subtitle">Устали от безликого поиска и скрытых доплат? Подберём 2–4 варианта с вылетом из Уфы — честно, без впаривания. Офис на Гагарина, 74/1.</p>
+        <p class="hero-premium__subtitle">Подберём 2–4 проверенных варианта с вылетом из Уфы — с фиксацией цены в договоре и сопровождением до возвращения. Офис на Гагарина, 74/1.</p>
+        <ul class="hero-trust-strip" aria-label="Гарантии агентства">
+          <li>РТА 0012822</li>
+          <li>С 2011 года</li>
+          <li>Договор и чек</li>
+        </ul>
         <div class="hero-premium__actions">
-          <button type="button" class="btn btn--primary btn--lg">Подобрать тур</button>
+          <button type="button" class="btn btn--primary btn--lg" data-quiz-open>Подобрать тур</button>
         </div>
       </div>
       <div class="hero-premium__collage reveal reveal-delay-1" data-three-canvas="hero-ambient">
@@ -81,9 +86,88 @@
             <li>Менеджер на связи до вылета и в поездке</li>
           </ul>
           <div class="audience-tabs__actions">
-            <button type="button" class="btn btn--primary">Подобрать семейный тур</button>
-            <a class="audience-tabs__link" href="#">Подробнее</a>
+            <button type="button" class="btn btn--primary" data-quiz-open>Подобрать семейный тур</button>
+            <a class="audience-tabs__link" href="tour.html">Подробнее</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--how-it-works">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="section-title">Как мы подбираем тур: пошаговый процесс</h2>
+        <p class="lead">От заявки и пожеланий до контроля вылета и сопровождения 24/7.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step-card reveal"><div class="step-number">01</div><h3>Заявка и пожелания</h3><p>Оставляете заявку или проходите квиз. Уточняем состав семьи, даты, бюджет и пожелания.</p></div>
+        <div class="step-card reveal reveal-delay-1"><div class="step-number">02</div><h3>Экспертный подбор</h3><p>Сравниваем операторов и готовим 2–4 проверенных варианта с вылетом из Уфы.</p></div>
+        <div class="step-card reveal reveal-delay-2"><div class="step-number">03</div><h3>Договор и оплата</h3><p>Официальный договор онлайн или в офисе на Гагарина, 74/1. Оплата по безналу или эквайрингу с чеком.</p></div>
+        <div class="step-card reveal reveal-delay-3"><div class="step-number">04</div><h3>Контроль вылета 24/7</h3><p>Выдаём ваучеры, отслеживаем рейс из аэропорта «Уфа» и остаёмся на связи до возвращения.</p></div>
+      </div>
+      <p class="steps-cta reveal"><button type="button" class="btn btn--outline" data-quiz-open>Подобрать тур</button></p>
+    </div>
+  </section>
+
+  <section class="section section--home-team bg-milky" id="home-team">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="section-title">Кто подберёт ваш тур</h2>
+        <p class="lead">Семейное агентство в Уфе с 2011 года — живые менеджеры, а не безликий поиск.</p>
+      </div>
+      <div class="home-team-grid">
+        <article class="home-team-card reveal">
+          <div class="home-team-card__photo"><img class="home-team-card__img" src="../wp-theme/zhiraf-ufa/assets/images/office-ufa.jpg" alt="Рафаэль" loading="lazy" /></div>
+          <div class="home-team-card__body"><h3 class="home-team-card__name">Рафаэль</h3><p class="home-team-card__role">Директор</p><p class="home-team-card__desc">Контроль качества сервиса, договоры и партнёрство с туроператорами.</p></div>
+        </article>
+        <article class="home-team-card reveal">
+          <div class="home-team-card__photo"><img class="home-team-card__img" src="../wp-theme/zhiraf-ufa/assets/images/team-travel.jpg" alt="Лиана" loading="lazy" /></div>
+          <div class="home-team-card__body"><h3 class="home-team-card__name">Лиана</h3><p class="home-team-card__role">Менеджер по туризму</p><p class="home-team-card__desc">Турция и Египет, All Inclusive, семейный отдых с детьми.</p></div>
+        </article>
+        <article class="home-team-card reveal">
+          <div class="home-team-card__photo"><img class="home-team-card__img" src="../wp-theme/zhiraf-ufa/assets/images/travel-passport.jpg" alt="Алина" loading="lazy" /></div>
+          <div class="home-team-card__body"><h3 class="home-team-card__name">Алина</h3><p class="home-team-card__role">Менеджер по туризму</p><p class="home-team-card__desc">Таиланд, Вьетнам, ОАЭ, стыковочные перелёты и визовые правила.</p></div>
+        </article>
+      </div>
+      <p class="text-center reveal" style="margin-top:24px;"><a class="btn btn--outline" href="o-nas.html">Вся команда</a></p>
+    </div>
+  </section>
+
+  <section class="section section--trust trust-social">
+    <div class="container trust-social__grid">
+      <div class="trust-social__content reveal">
+        <h2 class="section-title">Гарантии и работа агентства «Жираф»</h2>
+        <p class="lead" style="margin-top:12px;margin-bottom:16px;">Турагентство «Жираф» — семейная компания в Уфе с апреля 2011 года. Работаем открыто и строго по закону.</p>
+        <ul class="trust-social__facts">
+          <li><strong>Официальный статус:</strong> ООО «Жираф», реестровый номер РТА 0012822.</li>
+          <li><strong>Защита туристов:</strong> работа строго по 132-ФЗ и 152-ФЗ.</li>
+          <li><strong>Туроператор:</strong> цены и бронирование — «Библио-Глобус».</li>
+          <li><strong>Оплата и чеки:</strong> официальный договор, безналичная и эквайринг-оплата с чеком.</li>
+          <li><strong>Офис в Уфе:</strong> ул. Юрия Гагарина, 74/1, офис 3.</li>
+        </ul>
+        <div class="trust-social__links">
+          <a href="tel:+79018105018">+7 901 810-50-18</a>
+          <a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank">Мы ВКонтакте</a>
+          <a href="kontakty.html">Контакты и карта</a>
+        </div>
+      </div>
+      <div class="trust-social__visual reveal reveal-delay-1">
+        <img class="trust-social__img" src="../wp-theme/zhiraf-ufa/assets/images/office-ufa.jpg" alt="Офис турагентства Жираф в Уфе" loading="lazy" />
+        <img class="trust-social__img" src="../wp-theme/zhiraf-ufa/assets/images/team-travel.jpg" alt="Команда турагентства «Жираф»" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
+    <div class="container reveal">
+      <div class="reviews-placeholder-card" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px;text-align:center;max-width:860px;margin:0 auto;">
+        <h2 class="section-title" style="font-size:2rem;margin-bottom:12px;">Отзывы туристов из Уфы</h2>
+        <p style="color:var(--color-muted);font-size:1.0625rem;line-height:1.6;margin-bottom:24px;">Мы не публикуем заказные отзывы на сайте. Реальные оценки туристов из Уфы и отзывы с рейтингом доступны на Яндекс.Картах, в 2ГИС и ВКонтакте.</p>
+        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+          <a href="https://yandex.ru/maps" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm">Рейтинг Яндекс.Карт</a>
+          <a href="https://2gis.ru/ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm">Рейтинг 2ГИС</a>
+          <a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm">ВКонтакте</a>
         </div>
       </div>
     </div>
@@ -92,7 +176,7 @@
   <section class="section section--destinations bg-milky">
     <div class="container destinations">
       <div class="section-head reveal">
-        <h2 class="section-title">Направления</h2>
+        <h2 class="section-title">Направления и вылеты из Уфы</h2>
         <div class="section-tabs dest-tabs">
           <button type="button" class="tab-btn is-active" data-filter="all">Популярные</button>
           <button type="button" class="tab-btn" data-filter="oae">ОАЭ</button>
@@ -103,42 +187,16 @@
         </div>
       </div>
       <div class="dest-premium-row">
-        <a href="#" class="dest-premium-card dest-card" data-dest="turciya">
-          <div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-turkey.jpg" alt="Турция" loading="lazy" /></div>
-          <div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Турция</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div>
-        </a>
-        <a href="#" class="dest-premium-card dest-card" data-dest="oae">
-          <div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-uae.jpg" alt="ОАЭ" loading="lazy" /></div>
-          <div class="dest-premium-card__content"><h3 class="dest-premium-card__title">ОАЭ</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div>
-        </a>
-        <a href="#" class="dest-premium-card dest-card" data-dest="egipet">
-          <div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-egypt.jpg" alt="Египет" loading="lazy" /></div>
-          <div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Египет</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div>
-        </a>
-        <a href="#" class="dest-premium-card dest-card" data-dest="tailand">
-          <div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-thailand.jpg" alt="Таиланд" loading="lazy" /></div>
-          <div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Таиланд</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div>
-        </a>
-        <a href="#" class="dest-premium-card dest-card" data-dest="vietnam">
-          <div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-vietnam.jpg" alt="Вьетнам" loading="lazy" /></div>
-          <div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Вьетнам</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div>
-        </a>
+        <a href="tour-turciya.html" class="dest-premium-card dest-card" data-dest="turciya"><div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-turkey.jpg" alt="Турция" loading="lazy" /></div><div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Турция</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div></a>
+        <a href="tour-oae.html" class="dest-premium-card dest-card" data-dest="oae"><div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-uae.jpg" alt="ОАЭ" loading="lazy" /></div><div class="dest-premium-card__content"><h3 class="dest-premium-card__title">ОАЭ</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div></a>
+        <a href="tour-egipet.html" class="dest-premium-card dest-card" data-dest="egipet"><div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-egypt.jpg" alt="Египет" loading="lazy" /></div><div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Египет</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div></a>
+        <a href="tour-tailand.html" class="dest-premium-card dest-card" data-dest="tailand"><div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-thailand.jpg" alt="Таиланд" loading="lazy" /></div><div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Таиланд</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div></a>
+        <a href="tour-vietnam.html" class="dest-premium-card dest-card" data-dest="vietnam"><div class="dest-premium-card__bg"><img class="dest-premium-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-vietnam.jpg" alt="Вьетнам" loading="lazy" /></div><div class="dest-premium-card__content"><h3 class="dest-premium-card__title">Вьетнам</h3><p class="dest-premium-card__subtitle">Туры из Уфы</p></div></a>
       </div>
-
       <div class="dest-flight-logistics reveal" style="margin-top:40px;background:var(--color-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--color-border);">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
-          <div>
-            <h3 style="font-size:1.25rem;margin-bottom:8px;">Прямые рейсы из аэропорта «Уфа» (UFA)</h3>
-            <p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-              Прямые чартеры: Египет (Хургада, Шарм-эль-Шейх), ОАЭ (Дубай, Шарджа) и Турция (Анталья, Стамбул). Время в пути 4.5–5.5 часов.
-            </p>
-          </div>
-          <div>
-            <h3 style="font-size:1.25rem;margin-bottom:8px;">Направления со стыковкой через Москву</h3>
-            <p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-              Таиланд (Пхукет, Паттайя) и Вьетнам (Нячанг, Фукуок). Подбираем единый билет с удобной стыковкой в Москве.
-            </p>
-          </div>
+          <div><h3 style="font-size:1.25rem;margin-bottom:8px;">Перелёт из Уфы</h3><p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">Турция, Египет, ОАЭ: в зависимости от даты — прямой рейс или стыковка в Москве. Тип перелёта указан на каждой карточке по данным «Библио-Глобус».</p></div>
+          <div><h3 style="font-size:1.25rem;margin-bottom:8px;">Направления со стыковкой через Москву</h3><p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">Таиланд и Вьетнам: сейчас туроператор «Библио-Глобус» предлагает маршруты из Уфы с пересадкой в Москве. Поможем подобрать удобные стыковки.</p></div>
         </div>
       </div>
     </div>
@@ -148,454 +206,185 @@
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <h2 class="section-title">Горящие туры из Уфы</h2>
-          <p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
-            Цены туроператора Библио-Глобус с прямым вылетом из Уфы и стыковками в Москве. Обновление каждые 6 часов.
-          </p>
-        </div>
-        <div class="section-tabs tour-tabs" role="tablist" aria-label="Фильтр туров по странам">
-          <button type="button" class="tab-btn is-active" data-tour-filter="all">Все направления</button>
-          <button type="button" class="tab-btn" data-tour-filter="turciya">Турция</button>
-          <button type="button" class="tab-btn" data-tour-filter="oae">ОАЭ</button>
-          <button type="button" class="tab-btn" data-tour-filter="egipet">Египет</button>
-          <button type="button" class="tab-btn" data-tour-filter="tailand">Таиланд</button>
-          <button type="button" class="tab-btn" data-tour-filter="vietnam">Вьетнам</button>
+          <h2 class="section-title">Горящие туры из Уфы и Москвы</h2>
+          <p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">Минимальные цены туроператора «Библио-Глобус» за пакет на 2 взрослых (перелёт и отель). На карточке — состав тура по самому доступному предложению на сегодня. Обновление каждые 6 часов.</p>
         </div>
       </div>
-
-      <div class="tour-price-grid tour-price-grid--home">
-        <article class="tour-card reveal" data-dest="turciya">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/hero-turkey.jpg" alt="Стамбул (Старый город-Султанахмет) — Grand Ant Hotel Istanbul" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">Турция</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 3*"><span class="star-icon" aria-hidden="true">★</span>3*</span>
-            </div>
-          </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                Grand Ant Hotel Istanbul
-                <span class="tour-card__hotel-stars">3*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Стамбул (Старый город-Султанахмет)</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">24.11.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">3 ночи</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="AO (Без питания)">
-                  <span class="tour-card__meal-code">AO</span>
-                  <span class="tour-card__meal-desc">AO (Без питания)</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 89 851 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 89 851 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="Grand Ant Hotel Istanbul 3*, Стамбул (Старый город-Султанахмет), вылет 24.11.2026, 3 ночи"
-                data-tour-hotel="Grand Ant Hotel Istanbul"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+      <p class="hot-bento-disclaimer reveal">Цены «от» — ориентир туроператора на 22.10.2026. Итоговую стоимость с учётом дат, отеля и перелёта фиксируем в договоре перед оплатой.</p>
+      
+      <h3 class="hot-bento__group">Из Уфы</h3>
+      <div class="hot-bento hot-bento--ufa">
+        
+        <article class="hot-bento__tile hot-bento__tile--wide">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-turciya.jpg" alt="Турция" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Прямой из Уфы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Турция</h3>
+            <p class="hot-bento__meta">7 ночей · Grand Ant Hotel 3* · AO</p>
+            <p class="hot-bento__sub">от 89 851 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour-turciya.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
-        <article class="tour-card reveal" data-dest="oae">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-uae.jpg" alt="Шарджа — Al Seef Hotel Sharjah" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">ОАЭ</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 3*"><span class="star-icon" aria-hidden="true">★</span>3*</span>
-            </div>
-          </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                Al Seef Hotel Sharjah
-                <span class="tour-card__hotel-stars">3*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Шарджа</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">06.12.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">5 ночей</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="BB (Завтрак включен)">
-                  <span class="tour-card__meal-code">BB</span>
-                  <span class="tour-card__meal-desc">BB (Завтрак включен)</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 99 760 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 99 760 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="Al Seef Hotel Sharjah 3*, Шарджа, вылет 06.12.2026, 5 ночей"
-                data-tour-hotel="Al Seef Hotel Sharjah"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+        
+        <article class="hot-bento__tile hot-bento__tile--tall">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-egipet.jpg" alt="Египет" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Прямой из Уфы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Египет</h3>
+            <p class="hot-bento__meta">6 ночей · Minamark Beach 4* · AI</p>
+            <p class="hot-bento__sub">от 112 400 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour-egipet.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
-        <article class="tour-card reveal" data-dest="egipet">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-egypt.jpg" alt="Хургада — Minamark Beach Resort Hurghada" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">Египет</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 4*"><span class="star-icon" aria-hidden="true">★</span>4*</span>
-            </div>
-          </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                Minamark Beach Resort Hurghada
-                <span class="tour-card__hotel-stars">4*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Хургада</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">15.12.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">6 ночей</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="HB (Завтрак и ужин (полупансион))">
-                  <span class="tour-card__meal-code">HB</span>
-                  <span class="tour-card__meal-desc">HB (Завтрак и ужин (полупансион))</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 95 018 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 95 018 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="Minamark Beach Resort Hurghada 4*, Хургада, вылет 15.12.2026, 6 ночей"
-                data-tour-hotel="Minamark Beach Resort Hurghada"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+        
+        <article class="hot-bento__tile hot-bento__tile--small">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-oae.jpg" alt="ОАЭ" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Прямой из Уфы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">ОАЭ</h3>
+            <p class="hot-bento__meta">5 ночей · Al Seef 3* · BB</p>
+            <p class="hot-bento__sub">от 99 760 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour-oae.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
-        <article class="tour-card reveal" data-dest="tailand">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-thailand.jpg" alt="Пхукет, Пляж Камала — Kamala Beach Resort A Sunprime Resort" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">Таиланд</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 4*"><span class="star-icon" aria-hidden="true">★</span>4*</span>
-            </div>
-          </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                Kamala Beach Resort A Sunprime Resort
-                <span class="tour-card__hotel-stars">4*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Пхукет, Пляж Камала</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">10.11.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">6 ночей</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="BB (Завтрак включен)">
-                  <span class="tour-card__meal-code">BB</span>
-                  <span class="tour-card__meal-desc">BB (Завтрак включен)</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 153 084 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 153 084 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="Kamala Beach Resort A Sunprime Resort 4*, Пхукет, Пляж Камала, вылет 10.11.2026, 6 ночей"
-                data-tour-hotel="Kamala Beach Resort A Sunprime Resort"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+        
+        <article class="hot-bento__tile hot-bento__tile--small">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-tailand.jpg" alt="Таиланд" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">↔</span>Со стыковкой в Москве</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Таиланд</h3>
+            <p class="hot-bento__meta">10 ночей · 4* · AI</p>
+            <p class="hot-bento__sub">от 156 200 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour-tailand.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
-        <article class="tour-card reveal" data-dest="vietnam">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-vietnam.jpg" alt="Нячанг — V Hotel Nha Trang" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">Вьетнам</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 4*"><span class="star-icon" aria-hidden="true">★</span>4*</span>
-            </div>
-          </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                V Hotel Nha Trang
-                <span class="tour-card__hotel-stars">4*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Нячанг</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">25.10.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">7 ночей</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="AO (Без питания)">
-                  <span class="tour-card__meal-code">AO</span>
-                  <span class="tour-card__meal-desc">AO (Без питания)</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 161 225 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 161 225 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="V Hotel Nha Trang 4*, Нячанг, вылет 25.10.2026, 7 ночей"
-                data-tour-hotel="V Hotel Nha Trang"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+        
+        <article class="hot-bento__tile hot-bento__tile--banner">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-vietnam.jpg" alt="Вьетнам" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">↔</span>Со стыковкой в Москве</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Вьетнам</h3>
+            <p class="hot-bento__meta">11 ночей · 4* · BB</p>
+            <p class="hot-bento__sub">от 148 900 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour-vietnam.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
-        <article class="tour-card reveal" data-dest="oae">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-uae.jpg" alt="Умм Аль Кувейн — Flamingo Beach Resort" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">ОАЭ</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 3*"><span class="star-icon" aria-hidden="true">★</span>3*</span>
-            </div>
-          </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                Flamingo Beach Resort
-                <span class="tour-card__hotel-stars">3*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Умм Аль Кувейн</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">06.12.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">5 ночей</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="BB (Завтрак включен)">
-                  <span class="tour-card__meal-code">BB</span>
-                  <span class="tour-card__meal-desc">BB (Завтрак включен)</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 100 296 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 100 296 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="Flamingo Beach Resort 3*, Умм Аль Кувейн, вылет 06.12.2026, 5 ночей"
-                data-tour-hotel="Flamingo Beach Resort"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+      </div>
+      <h3 class="hot-bento__group">Из Москвы</h3>
+      <p class="hot-bento__group-note">Цены указаны за прямой вылет из Москвы. Поможем состыковать с удобным рейсом из аэропорта «Уфа» и посчитаем полную смету до договора.</p>
+      <div class="hot-bento hot-bento--mow">
+        
+        <article class="hot-bento__tile hot-bento__tile--wide">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-maldivy.jpg" alt="Мальдивы" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Мальдивы</h3>
+            <p class="hot-bento__meta">7 ночей · 5* · AI</p>
+            <p class="hot-bento__sub">от 312 000 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
-        <article class="tour-card reveal" data-dest="egipet">
-          <div class="tour-card__media">
-            <img class="tour-card__img" src="../wp-theme/zhiraf-ufa/assets/images/dest-egypt.jpg" alt="Хургада — Bella Vista Resort Hurghada" loading="lazy" />
-            <div class="tour-card__badges">
-              <span class="tour-card__badge tour-card__badge--country">Египет</span>
-              <span class="tour-card__badge tour-card__badge--stars" aria-label="Категория отеля: 4*"><span class="star-icon" aria-hidden="true">★</span>4*</span>
-            </div>
+        
+        <article class="hot-bento__tile hot-bento__tile--small">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-sejshely.jpg" alt="Сейшелы" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Сейшелы</h3>
+            <p class="hot-bento__meta">9 ночей · 4* · BB</p>
+            <p class="hot-bento__sub">от 285 500 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
-          <div class="tour-card__body">
-            <div class="tour-card__header">
-              <h3 class="tour-card__hotel">
-                Bella Vista Resort Hurghada
-                <span class="tour-card__hotel-stars">4*</span>
-              </h3>
-              <p class="tour-card__resort">
-                <svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>Хургада</span>
-              </p>
-            </div>
-            <div class="tour-card__meta">
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Вылет из Уфы:</span>
-                <strong class="tour-card__meta-value">15.12.2026</strong>
-              </div>
-              <div class="tour-card__meta-item">
-                <span class="tour-card__meta-label">Длительность:</span>
-                <strong class="tour-card__meta-value">6 ночей</strong>
-              </div>
-              <div class="tour-card__meta-item tour-card__meta-item--meal">
-                <span class="tour-card__meta-label">Питание:</span>
-                <span class="tour-card__meal-badge" title="HB (Завтрак и ужин (полупансион))">
-                  <span class="tour-card__meal-code">HB</span>
-                  <span class="tour-card__meal-desc">HB (Завтрак и ужин (полупансион))</span>
-                </span>
-              </div>
-            </div>
-            <div class="tour-card__footer">
-              <div class="tour-card__price-wrap">
-                <div class="tour-card__price-row">
-                  <span class="tour-card__price">от 97 881 ₽</span>
-                  <span class="tour-card__tourists">2 взрослых</span>
-                </div>
-                <p class="tour-card__fallback-note">
-                  <span class="tour-card__status-dot" aria-hidden="true"></span>
-                  цена от 97 881 ₽ на 18.10.2026, уточните актуальную стоимость у менеджера
-                </p>
-                <p class="tour-card__disclaimer">рассчитана по курсу туроператора на 18.10.2026, итоговая стоимость фиксируется при бронировании</p>
-              </div>
-              <button
-                type="button"
-                class="btn btn--primary tour-card__cta"
-                data-modal-open="quiz"
-                data-quiz-open
-                data-quiz-prefill="Bella Vista Resort Hurghada 4*, Хургада, вылет 15.12.2026, 6 ночей"
-                data-tour-hotel="Bella Vista Resort Hurghada"
-                data-cta-context="tour_card_quiz_open"
-              >
-                Подобрать тур
-              </button>
-            </div>
+        </article>
+        
+        <article class="hot-bento__tile hot-bento__tile--small">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-shri-lanka.jpg" alt="Шри-Ланка" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Шри-Ланка</h3>
+            <p class="hot-bento__meta">10 ночей · 4* · HB</p>
+            <p class="hot-bento__sub">от 198 400 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+        
+        <article class="hot-bento__tile hot-bento__tile--small">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-indoneziya.jpg" alt="Бали" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            <span class="hot-bento__kicker">Индонезия</span>
+            <h3 class="hot-bento__title">Бали</h3>
+            <p class="hot-bento__meta">12 ночей · 4* · BB</p>
+            <p class="hot-bento__sub">от 176 800 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+        
+        <article class="hot-bento__tile hot-bento__tile--wide">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-indiya.jpg" alt="Гоа" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            <span class="hot-bento__kicker">Индия</span>
+            <h3 class="hot-bento__title">Гоа</h3>
+            <p class="hot-bento__meta">9 ночей · 3* · HB</p>
+            <p class="hot-bento__sub">от 142 300 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+        
+        <article class="hot-bento__tile hot-bento__tile--small">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-kitaj.jpg" alt="Санья" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            <span class="hot-bento__kicker">Китай, о. Хайнань</span>
+            <h3 class="hot-bento__title">Санья</h3>
+            <p class="hot-bento__meta">8 ночей · 4* · BB</p>
+            <p class="hot-bento__sub">от 165 900 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+        
+        <article class="hot-bento__tile hot-bento__tile--wide">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-uzbekistan.jpg" alt="Узбекистан" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Узбекистан</h3>
+            <p class="hot-bento__meta">6 ночей · 4* · BB</p>
+            <p class="hot-bento__sub">от 98 200 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+        
+        <article class="hot-bento__tile hot-bento__tile--wide">
+          <img class="hot-bento__img" src="../wp-theme/zhiraf-ufa/assets/images/country-armeniya.jpg" alt="Армения" loading="lazy" />
+          <span class="hot-bento__shade" aria-hidden="true"></span>
+          <span class="hot-bento__label"><span class="hot-bento__icon" aria-hidden="true">✈</span>Из Москвы</span>
+          <div class="hot-bento__body">
+            
+            <h3 class="hot-bento__title">Армения</h3>
+            <p class="hot-bento__meta">5 ночей · 3* · BB</p>
+            <p class="hot-bento__sub">от 72 500 ₽ за 2 взрослых</p>
+            <a class="btn btn--primary btn--sm hot-bento__cta" href="tour.html">Смотреть туры<span aria-hidden="true"> →</span></a>
           </div>
         </article>
       </div>
@@ -613,149 +402,18 @@
         <a class="chip chip--link" href="vse-vklyucheno.html">Всё включено</a>
         <a class="chip chip--link" href="tour.html">Каталог направлений</a>
       </div>
-      <p class="text-center reveal">
-        <button type="button" class="btn btn--primary" data-quiz-open>Подобрать тур</button>
-      </p>
-    </div>
-  </section>
-
-  <section class="section section--how-it-works">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2 class="section-title">Как мы подбираем тур: пошаговый процесс</h2>
-        <p class="lead">От заявки и пожеланий до контроля вылета и сопровождения 24/7.</p>
-      </div>
-      <div class="steps-row">
-        <div class="step-card reveal">
-          <div class="step-number">01</div>
-          <h3>Заявка и пожелания</h3>
-          <p>Оставляете заявку или проходите квиз. Уточняем состав семьи, даты, бюджет и пожелания.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-1">
-          <div class="step-number">02</div>
-          <h3>Экспертный подбор</h3>
-          <p>Сравниваем операторов и готовим 2–4 проверенных варианта с вылетом из Уфы без спама.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-2">
-          <div class="step-number">03</div>
-          <h3>Договор и оплата</h3>
-          <p>Официальный договор онлайн или в офисе на Гагарина, 74/1. Оплата по безналу или эквайрингу с чеком.</p>
-        </div>
-        <div class="step-card reveal reveal-delay-3">
-          <div class="step-number">04</div>
-          <h3>Контроль вылета 24/7</h3>
-          <p>Выдаём ваучеры, отслеживаем рейс из аэропорта «Уфа» и остаёмся на связи до возвращения.</p>
-        </div>
-      </div>
-      <p class="steps-cta reveal">
-        <button type="button" class="btn btn--outline" data-quiz-open>Подобрать тур</button>
-      </p>
-    </div>
-  </section>
-
-  <section class="section section--trust trust-social">
-    <div class="container trust-social__grid">
-      <div class="trust-social__content reveal">
-        <h2 class="section-title">Гарантии и работа агентства «Жираф»</h2>
-        <p class="lead" style="margin-top:12px;margin-bottom:16px;">
-          Турагентство «Жираф» — семейная компания в Уфе с апреля 2011 года. Работаем открыто и строго по закону.
-        </p>
-        <ul class="trust-social__facts">
-          <li><strong>Официальный статус:</strong> ООО «Жираф», реестровый номер РТА 0012822.</li>
-          <li><strong>Защита туристов:</strong> работа строго по 132-ФЗ и 152-ФЗ.</li>
-          <li><strong>Прямые шлюзы туроператоров:</strong> бронирование в системах операторов с фингарантиями.</li>
-          <li><strong>Оплата и чеки:</strong> официальный договор, безналичная и эквайринг-оплата с чеком.</li>
-          <li><strong>Офис в Уфе:</strong> ул. Юрия Гагарина, 74/1, офис 3.</li>
-        </ul>
-        <div class="trust-social__links">
-          <a href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a>
-          <a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" data-track="messenger" data-channel="vk">Мы ВКонтакте</a>
-          <a href="kontakty.html">Контакты и карта</a>
-        </div>
-      </div>
-      <div class="trust-social__visual reveal reveal-delay-1">
-        <img class="trust-social__img" src="../wp-theme/zhiraf-ufa/assets/images/office-ufa.jpg" alt="Офис турагентства Жираф в Уфе" loading="lazy" />
-        <img class="trust-social__img" src="../wp-theme/zhiraf-ufa/assets/images/team-travel.jpg" alt="Команда турагентства «Жираф»" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
-    <div class="container reveal">
-      <div class="reviews-placeholder-card" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px;text-align:center;max-width:860px;margin:0 auto;">
-        <h2 class="section-title" style="font-size:2rem;margin-bottom:12px;">Отзывы туристов из Уфы</h2>
-        <p style="color:var(--color-muted);font-size:1.0625rem;line-height:1.6;margin-bottom:24px;">
-          Мы не публикуем заказные отзывы на сайте. Реальные оценки туристов из Уфы и отзывы с рейтингом доступны на Яндекс.Картах, в 2ГИС и ВКонтакте.
-        </p>
-        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-          <a href="https://yandex.ru/maps" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm">Рейтинг Яндекс.Карт</a>
-          <a href="https://2gis.ru/ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm">Рейтинг 2ГИС</a>
-          <a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm">ВКонтакте</a>
-        </div>
-      </div>
+      <p class="text-center reveal"><button type="button" class="btn btn--primary" data-quiz-open>Подобрать тур</button></p>
     </div>
   </section>
 
   <section class="section section--faq faq-home bg-milky" id="faq-home">
     <div class="container">
-      <div class="section-head reveal">
-        <h2 class="section-title">Частые вопросы</h2>
-      </div>
+      <div class="section-head reveal"><h2 class="section-title">Частые вопросы</h2></div>
       <div class="faq-home__list">
-        <details class="faq-home__item reveal" open>
-          <summary class="faq-home__question">Как заказать подбор тура в агентстве «Жираф» в Уфе?</summary>
-          <div class="faq-home__answer">
-            <p>Пройдите короткий 4-шаговый квиз на сайте или оставьте телефон. Менеджер уточнит состав семьи, предпочтения по перелёту и курорту и подготовит 2–4 проверенных варианта с актуальными ценами.</p>
-            <p><a href="blog.html">Читать в блоге</a></p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Почему у вас нет фиктивных цен «от 15 000 ₽» на сайте?</summary>
-          <div class="faq-home__answer">
-            <p>Тарифы на рейсы из Уфы и номера меняются в реальном времени. Мы не используем завлекающие цены «от» — вы получаете точный расчёт с окончательной стоимостью по официальному договору.</p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Куда можно улететь прямым рейсом из аэропорта «Уфа» (UFA)?</summary>
-          <div class="faq-home__answer">
-            <p>Из международного аэропорта «Уфа» выполняются прямые рейсы в Турцию (Анталья, Стамбул), ОАЭ (Дубай, Шарджа) и Египет (Хургада, Шарм-эль-Шейх). Перелёт занимает от 4.5 до 5.5 часов.</p>
-            <p><a href="tour.html">Читать в каталоге</a></p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Как организован перелёт в Таиланд и Вьетнам из Уфы?</summary>
-          <div class="faq-home__answer">
-            <p>На Пхукет, в Паттайю, Нячанг и на Фукуок подбираем единый маршрутный билет с удобной стыковкой в Москве, что гарантирует перегруз багажа и защиту при задержке рейса.</p>
-            <p><a href="tour-tailand.html">Смотреть Таиланд</a></p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Что входит в классический тур «всё включено»?</summary>
-          <div class="faq-home__answer">
-            <p>Пакетный тур включает авиаперелёт из Уфы с багажом, групповой трансфер, проживание, питание по системе AI/UAI и медицинскую страховку.</p>
-            <p><a href="blog.html">Читать в блоге</a></p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Как оформляется официальный договор и оплата тура?</summary>
-          <div class="faq-home__answer">
-            <p>Заключаем официальный договор по 132-ФЗ в офисе на ул. Гагарина, 74/1 или онлайн. Оплата принимается по безналичному расчёту или эквайрингу с выдачей фискального чека.</p>
-            <p><a href="kontakty.html">Контакты</a></p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Какие документы требуются для выезда за границу из Уфы?</summary>
-          <div class="faq-home__answer">
-            <p>Действующий загранпаспорт (от 120 дней для Турции и от 6 месяцев для ОАЭ, Египта, Таиланда и Вьетнама). Для детей до 18 лет нужен свой загранпаспорт и свидетельство о рождении.</p>
-            <p><a href="blog.html">Читать в блоге</a></p>
-          </div>
-        </details>
-        <details class="faq-home__item reveal">
-          <summary class="faq-home__question">Будут ли мне звонить с навязчивой рекламой после заявки?</summary>
-          <div class="faq-home__answer">
-            <p>Нет. Мы связываемся только по вашей заявке. Строго соблюдаем законы 152-ФЗ и 38-ФЗ — никаких спам-рассылок и навязчивых предложений.</p>
-          </div>
-        </details>
+        <details class="faq-home__item reveal"><summary class="faq-home__question">Как заказать подбор тура в агентстве «Жираф» в Уфе?</summary><div class="faq-home__answer"><p>Пройдите короткий 4-шаговый квиз на сайте или оставьте телефон. Менеджер уточнит состав семьи, предпочтения по перелёту и курорту и подготовит 2–4 проверенных варианта с актуальными ценами.</p></div></details>
+        <details class="faq-home__item reveal"><summary class="faq-home__question">Откуда на сайте цены «от»?</summary><div class="faq-home__answer"><p>Это минимальные цены туроператора «Библио-Глобус» за 2 взрослых на дату, указанную рядом с ценой. Тарифы и места меняются в реальном времени, поэтому окончательную стоимость фиксируем в официальном договоре.</p></div></details>
+        <details class="faq-home__item reveal"><summary class="faq-home__question">Есть ли прямые рейсы из Уфы?</summary><div class="faq-home__answer"><p>По данным туроператора «Библио-Глобус», в Турцию, Египет и ОАЭ в зависимости от даты есть туры как с прямым рейсом, так и со стыковкой в Москве. Тип перелёта указан на каждой карточке тура.</p></div></details>
+        <details class="faq-home__item reveal"><summary class="faq-home__question">Как организован перелёт в Таиланд и Вьетнам из Уфы?</summary><div class="faq-home__answer"><p>Сейчас туроператор «Библио-Глобус» формирует маршруты на Пхукет, в Паттайю, Нячанг и на Фукуок с комфортной пересадкой в Москве. Перелёт входит в пакетный тур — поможем подобрать рейсы с удобным временем стыковки.</p></div></details>
       </div>
     </div>
   </section>
@@ -763,17 +421,8 @@
   <section class="section section--form lead-action" id="lead-action">
     <div class="container reveal">
       <div class="form-premium">
-        <div class="form-premium__text">
-          <h2 class="section-title">Оставьте заявку на подбор</h2>
-          <p>Перезвоним в рабочее время и уточним детали поездки.</p>
-        </div>
-        <form class="zhiraf-form">
-          <div class="form-premium__fields">
-            <input type="text" class="form-input" placeholder="Ваше имя" required />
-            <input type="tel" class="form-input" placeholder="Телефон" required />
-            <button type="submit" class="btn btn--primary">Отправить</button>
-          </div>
-        </form>
+        <div class="form-premium__text"><h2 class="section-title">Оставьте заявку на подбор</h2><p>Перезвоним в рабочее время и уточним детали поездки.</p></div>
+        <form class="zhiraf-form"><div class="form-premium__fields"><input type="text" class="form-input" placeholder="Ваше имя" required /><input type="tel" class="form-input" placeholder="Телефон" required /><button type="submit" class="btn btn--primary">Отправить</button></div></form>
       </div>
     </div>
   </section>
@@ -782,83 +431,25 @@
     <div class="container">
       <div class="section-head reveal">
         <h2 class="section-title">Полезные статьи</h2>
-        <a href="#" class="btn btn--outline btn--sm">Все статьи</a>
+        <a href="blog.html" class="btn btn--outline btn--sm">Все статьи</a>
       </div>
-      <div class="editorial-globe reveal">
+      <div class="editorial-globe reveal is-visible reveal--visible">
         <div class="editorial-globe__featured">
           <a href="blog.html" class="editorial-globe__featured-link editorial-main__link">
-            <div class="editorial-main__img-wrap">
-              <img class="editorial-main__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg" alt="Как купить тур в Уфе" loading="eager" fetchpriority="high" />
-            </div>
-            <div class="editorial-main__content">
-              <p class="blog-meta-row"><span class="blog-meta__rubrika">Гид</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">6 мин чтения</span></p>
-              <h3 class="editorial-main__title">Как купить тур в Уфе — пошаговая инструкция</h3>
-              <p class="editorial-main__excerpt">Разбираем этапы: консультация, выбор тура, договор и оплата. Турагентство «Жираф», вылет из Уфы.</p>
-            </div>
+            <div class="editorial-main__img-wrap"><img class="editorial-main__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-01.jpg" alt="Как купить тур в Уфе" loading="eager" /></div>
+            <div class="editorial-main__content"><h3 class="editorial-main__title">Как купить тур в Уфе — пошаговая инструкция</h3></div>
           </a>
         </div>
         <div class="editorial-globe__stack editorial-globe-stack">
-          <a href="blog.html" class="editorial-globe-stack__link">
-            <div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-02.jpg" alt="" loading="lazy" /></div>
-            <div class="editorial-globe-stack__body">
-              <p class="blog-meta-row blog-meta-row--compact"><span class="blog-meta__rubrika">Питание</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">5 мин чтения</span></p>
-              <h3 class="editorial-globe-stack__title">Что входит в «всё включено» в туре</h3>
-            </div>
-          </a>
-          <a href="blog.html" class="editorial-globe-stack__link">
-            <div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-03.jpg" alt="" loading="lazy" /></div>
-            <div class="editorial-globe-stack__body">
-              <p class="blog-meta-row blog-meta-row--compact"><span class="blog-meta__rubrika">Документы</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
-              <h3 class="editorial-globe-stack__title">Документы для заграницы — чек-лист</h3>
-            </div>
-          </a>
-          <a href="blog.html" class="editorial-globe-stack__link">
-            <div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-04.jpg" alt="" loading="lazy" /></div>
-            <div class="editorial-globe-stack__body">
-              <p class="blog-meta-row blog-meta-row--compact"><span class="blog-meta__rubrika">Семья</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
-              <h3 class="editorial-globe-stack__title">Туры с детьми из Уфы — советы по отелю</h3>
-            </div>
-          </a>
+          <a href="blog.html" class="editorial-globe-stack__link"><div class="editorial-globe-stack__thumb"><img class="editorial-globe-stack__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-02.jpg" alt="" loading="lazy" /></div><div class="editorial-globe-stack__body"><h3 class="editorial-globe-stack__title">Что входит в «всё включено» в туре</h3></div></a>
         </div>
-        <div class="editorial-globe__row2">
-          <article class="editorial-globe-card">
-            <a href="blog.html" class="editorial-globe-card__link">
-              <div class="editorial-globe-card__img-wrap"><img class="editorial-globe-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-05.jpg" alt="" loading="lazy" /></div>
-              <p class="blog-meta-row"><span class="blog-meta__rubrika">Страхование</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
-              <h3 class="editorial-globe-card__title">Страховка и рассрочка на тур</h3>
-            </a>
-          </article>
-          <article class="editorial-globe-card">
-            <a href="blog.html" class="editorial-globe-card__link">
-              <div class="editorial-globe-card__img-wrap"><img class="editorial-globe-card__img" src="../wp-theme/zhiraf-ufa/assets/images/blog-cover-06.jpg" alt="" loading="lazy" /></div>
-              <p class="blog-meta-row"><span class="blog-meta__rubrika">Направления</span><span class="blog-meta__sep">·</span><span class="blog-meta__country">Турция · Египет</span><span class="blog-meta__sep">·</span><span class="blog-meta__read-time">4 мин чтения</span></p>
-              <h3 class="editorial-globe-card__title">Турция или Египет из Уфы — сравнение</h3>
-            </a>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--subscribe section--subscribe-hold">
-    <div class="subscribe-premium__bg">
-      <img class="subscribe-premium__img" src="../wp-theme/zhiraf-ufa/assets/images/subscribe-bg.jpg" alt="" loading="lazy" />
-      <div class="subscribe-premium__overlay"></div>
-    </div>
-    <div class="container reveal">
-      <div class="subscribe-premium__content">
-        <h2>Подборки туров и советы — на почту</h2>
-        <p class="subscribe-premium__hold">Рассылка готовится — оставьте заявку через квиз или позвоните.</p>
-        <p><button type="button" class="btn btn--primary">Подобрать тур</button></p>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="container"><p class="footer-rta">ООО «Жираф» · РТА 0012822 · Preview static</p></div>
-</footer>
+<footer class="site-footer"><div class="container"><p class="footer-rta">ООО «Жираф» · РТА 0012822 · Preview static</p></div></footer>
 <script src="../wp-theme/zhiraf-ufa/assets/dist/main.js" defer></script>
 </body>
 </html>

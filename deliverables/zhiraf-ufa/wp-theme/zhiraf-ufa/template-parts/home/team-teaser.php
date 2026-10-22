@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $members = zhiraf_ufa_home_team_teaser();
-if ( empty( $members ) ) {
+if ( empty( $members ) || ! is_array( $members ) ) {
 	return;
 }
 ?>
@@ -23,13 +23,27 @@ if ( empty( $members ) ) {
 		<div class="home-team-grid">
 			<?php foreach ( $members as $member ) : ?>
 				<article class="home-team-card reveal">
+					<?php
+					$photo = ! empty( $member['image'] ) ? (string) $member['image'] : '';
+					$label = ! empty( $member['name'] ) ? (string) $member['name'] : ( ! empty( $member['role'] ) ? (string) $member['role'] : __( 'Менеджер', 'zhiraf-ufa' ) );
+					?>
 					<div class="home-team-card__photo">
-						<?php zhiraf_ufa_img( $member['image'], $member['name'], 'home-team-card__img', true ); ?>
+						<?php if ( '' !== $photo ) : ?>
+							<?php zhiraf_ufa_img( $photo, $label, 'home-team-card__img', true ); ?>
+						<?php else : ?>
+							<div class="home-team-card__placeholder" aria-hidden="true"></div>
+						<?php endif; ?>
 					</div>
 					<div class="home-team-card__body">
-						<h3 class="home-team-card__name"><?php echo esc_html( $member['name'] ); ?></h3>
-						<p class="home-team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
-						<p class="home-team-card__desc"><?php echo esc_html( $member['desc'] ); ?></p>
+						<?php if ( ! empty( $member['name'] ) ) : ?>
+							<h3 class="home-team-card__name"><?php echo esc_html( $member['name'] ); ?></h3>
+						<?php endif; ?>
+						<?php if ( ! empty( $member['role'] ) ) : ?>
+							<p class="home-team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $member['desc'] ) ) : ?>
+							<p class="home-team-card__desc"><?php echo esc_html( $member['desc'] ); ?></p>
+						<?php endif; ?>
 					</div>
 				</article>
 			<?php endforeach; ?>

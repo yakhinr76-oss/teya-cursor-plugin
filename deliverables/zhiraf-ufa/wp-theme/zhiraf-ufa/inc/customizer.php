@@ -90,7 +90,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'zhiraf_whatsapp_url',
 		array(
-			'default'           => 'https://wa.me/79018105018',
+			'default'           => '',
 			'sanitize_callback' => 'esc_url_raw',
 		)
 	);

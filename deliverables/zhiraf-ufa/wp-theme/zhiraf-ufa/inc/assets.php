@@ -629,26 +629,13 @@ function zhiraf_ufa_audience_segments() {
  * @return array<int,array{name:string,role:string,desc:string,image:string}>
  */
 function zhiraf_ufa_home_team_teaser() {
-	return array(
-		array(
-			'name'  => __( 'Зульфия', 'zhiraf-ufa' ),
-			'role'  => __( 'Основатель, заместитель директора', 'zhiraf-ufa' ),
-			'desc'  => __( 'С 2011 года. Сложные маршруты, Турция и ОАЭ, семейный отдых.', 'zhiraf-ufa' ),
-			'image' => 'office-ufa.jpg',
-		),
-		array(
-			'name'  => __( 'Альфия', 'zhiraf-ufa' ),
-			'role'  => __( 'Ведущий менеджер', 'zhiraf-ufa' ),
-			'desc'  => __( 'Турция и Египет, All Inclusive, туры с детьми.', 'zhiraf-ufa' ),
-			'image' => 'team-travel.jpg',
-		),
-		array(
-			'name'  => __( 'Гульнара', 'zhiraf-ufa' ),
-			'role'  => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
-			'desc'  => __( 'Таиланд, Вьетнам, ОАЭ, стыковочные перелёты.', 'zhiraf-ufa' ),
-			'image' => 'travel-passport.jpg',
-		),
-	);
+	/**
+	 * Пустой массив — блок на главной не выводится, пока владелец не заполнит данные
+	 * (фильтр `zhiraf_ufa_home_team_teaser` или правка массива после получения фото/имён).
+	 */
+	$members = array();
+
+	return apply_filters( 'zhiraf_ufa_home_team_teaser', $members );
 }
 
 /**

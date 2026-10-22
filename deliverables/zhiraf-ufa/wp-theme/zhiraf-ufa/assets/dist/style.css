@@ -271,6 +271,53 @@ h1, h2, h3, h4 {
   text-decoration: underline;
 }
 
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.team-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.team-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.06);
+}
+
+.team-card h3 {
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  margin: 0 0 6px;
+}
+
+.team-card__role {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.team-card__desc {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.55;
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 900px) {
+  .team-grid--three {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
 .home-team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

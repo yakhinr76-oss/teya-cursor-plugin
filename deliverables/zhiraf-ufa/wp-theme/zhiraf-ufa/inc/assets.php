@@ -624,33 +624,55 @@ function zhiraf_ufa_audience_segments() {
 }
 
 /**
+ * Team roster (homepage teaser + «О нас»).
+ *
+ * @return array<int,array{name:string,role:string,desc:string,desc_teaser:string,image:string}>
+ */
+function zhiraf_ufa_team_roster() {
+	$members = array(
+		array(
+			'name'         => __( 'Рафаэль', 'zhiraf-ufa' ),
+			'role'         => __( 'Директор', 'zhiraf-ufa' ),
+			'desc_teaser'  => __( 'Контроль качества сервиса, договоры и партнёрство с туроператорами.', 'zhiraf-ufa' ),
+			'desc'         => __( 'Организация работы агентства, контроль качества сервиса, юридическое сопровождение договоров и стратегическое партнёрство с туроператорами.', 'zhiraf-ufa' ),
+			'image'        => 'office-ufa.jpg',
+		),
+		array(
+			'name'         => __( 'Лиана', 'zhiraf-ufa' ),
+			'role'         => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'desc_teaser'  => __( 'Турция и Египет, All Inclusive, семейный отдых с детьми.', 'zhiraf-ufa' ),
+			'desc'         => __( 'Специализируется на пляжных направлениях Средиземного и Красного морей (Турция, Египет), подборе отелей All Inclusive и турах для семей с детьми.', 'zhiraf-ufa' ),
+			'image'        => 'team-travel.jpg',
+		),
+		array(
+			'name'         => __( 'Алина', 'zhiraf-ufa' ),
+			'role'         => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'desc_teaser'  => __( 'Таиланд, Вьетнам, ОАЭ, стыковочные перелёты и визовые правила.', 'zhiraf-ufa' ),
+			'desc'         => __( 'Эксперт по направлениям Азии и Ближнего Востока (Таиланд, Вьетнам, ОАЭ), визовым правилам, стыковочным авиаперелётам и экскурсионным турам.', 'zhiraf-ufa' ),
+			'image'        => 'travel-passport.jpg',
+		),
+	);
+
+	return apply_filters( 'zhiraf_ufa_team_roster', $members );
+}
+
+/**
  * Homepage team teaser (2–3 experts).
  *
  * @return array<int,array{name:string,role:string,desc:string,image:string}>
  */
 function zhiraf_ufa_home_team_teaser() {
-	$members = array(
-		array(
-			'name'  => __( 'Рафаэль', 'zhiraf-ufa' ),
-			'role'  => __( 'Директор', 'zhiraf-ufa' ),
-			'desc'  => __( 'Контроль качества сервиса, договоры и партнёрство с туроператорами.', 'zhiraf-ufa' ),
-			'image' => 'office-ufa.jpg',
-		),
-		array(
-			'name'  => __( 'Лиана', 'zhiraf-ufa' ),
-			'role'  => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
-			'desc'  => __( 'Турция и Египет, All Inclusive, семейный отдых с детьми.', 'zhiraf-ufa' ),
-			'image' => 'team-travel.jpg',
-		),
-		array(
-			'name'  => __( 'Алина', 'zhiraf-ufa' ),
-			'role'  => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
-			'desc'  => __( 'Таиланд, Вьетнам, ОАЭ, стыковочные перелёты и визовые правила.', 'zhiraf-ufa' ),
-			'image' => 'travel-passport.jpg',
-		),
-	);
+	$teaser = array();
+	foreach ( zhiraf_ufa_team_roster() as $member ) {
+		$teaser[] = array(
+			'name'  => $member['name'],
+			'role'  => $member['role'],
+			'desc'  => $member['desc_teaser'],
+			'image' => $member['image'],
+		);
+	}
 
-	return apply_filters( 'zhiraf_ufa_home_team_teaser', $members );
+	return apply_filters( 'zhiraf_ufa_home_team_teaser', $teaser );
 }
 
 /**

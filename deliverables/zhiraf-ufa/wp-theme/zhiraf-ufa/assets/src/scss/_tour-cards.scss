@@ -197,6 +197,26 @@
   }
 }
 
+.tour-card--flight-focus .tour-card__meta-item--flight-prominent {
+  grid-column: 1 / -1;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(250, 248, 245, 0.95);
+  border: 1px solid var(--color-border);
+  .tour-card__meta-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .tour-card__meta-value {
+    font-size: 0.9375rem;
+    font-weight: 800;
+    color: var(--color-text);
+  }
+}
+
 .tour-card__icon-pin {
   flex-shrink: 0;
   color: var(--color-primary);

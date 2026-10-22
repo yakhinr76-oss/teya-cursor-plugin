@@ -87,7 +87,14 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 		'egipet'     => array( 'country-egipet.jpg' ),
 		'oae'        => array( 'hero-uae.jpg', 'dest-uae-new.jpg', 'dest-uae.jpg', 'resort-abu-dabi.jpg' ),
 		'tailand'    => array( 'country-tailand.jpg' ),
-		'vietnam'    => array( 'country-vietnam.jpg' ),
+		'vietnam'    => array(
+			'resort-vietnam-phu-quoc-1.jpg',
+			'resort-vietnam-phu-quoc-2.jpg',
+			'resort-vietnam-nha-trang-1.jpg',
+			'resort-vietnam-nha-trang-2.jpg',
+			'resort-vietnam-phan-thiet-1.jpg',
+			'dest-vietnam-new.jpg',
+		),
 		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
 		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
 		'shri-lanka' => array( 'country-shri-lanka.jpg', 'alt-shri-lanka-2.jpg', 'alt-shri-lanka-3.jpg' ),
@@ -137,11 +144,45 @@ function zhiraf_ufa_tour_image_info( $tour ) {
 }
 
 /**
- * UAE emirate slug for destination tour filters (resort name substring match).
+ * Resort region slug for destination tour filters.
  *
- * @param string $resort Resort label from tour operator.
- * @return string dubai|sharjah|rak|abudhabi|fujairah|other
+ * @param string $country_slug Country slug.
+ * @param string $resort       Resort label.
+ * @return string Filter id or empty.
  */
+function zhiraf_ufa_tour_landing_region( $country_slug, $resort ) {
+	if ( 'oae' === $country_slug ) {
+		return zhiraf_ufa_tour_emirate_region( $resort );
+	}
+	if ( 'vietnam' === $country_slug ) {
+		return zhiraf_ufa_tour_vietnam_region( $resort );
+	}
+	return '';
+}
+
+/**
+ * Vietnam resort slug for filters (Nha Trang / Phu Quoc / Mui Ne).
+ *
+ * @param string $resort Resort label.
+ * @return string nhatrang|phuquoc|muine|other
+ */
+function zhiraf_ufa_tour_vietnam_region( $resort ) {
+	$r = mb_strtolower( (string) $resort, 'UTF-8' );
+	if ( '' === $r ) {
+		return 'other';
+	}
+	if ( false !== mb_strpos( $r, 'фукуок', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'phu quoc', 0, 'UTF-8' ) ) {
+		return 'phuquoc';
+	}
+	if ( false !== mb_strpos( $r, 'нячанг', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'nha trang', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'камran', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'камран', 0, 'UTF-8' ) ) {
+		return 'nhatrang';
+	}
+	if ( false !== mb_strpos( $r, 'муйне', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'фантьет', 0, 'UTF-8' ) || false !== mb_strpos( $r, 'phan thiet', 0, 'UTF-8' ) ) {
+		return 'muine';
+	}
+	return 'other';
+}
+
 function zhiraf_ufa_tour_emirate_region( $resort ) {
 	$r = mb_strtolower( (string) $resort, 'UTF-8' );
 	if ( '' === $r ) {

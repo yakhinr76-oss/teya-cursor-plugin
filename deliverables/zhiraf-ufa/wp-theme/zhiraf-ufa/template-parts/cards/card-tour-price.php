@@ -51,11 +51,12 @@ $prefill_text     = sprintf(
 );
 ?>
 <?php
-$zhiraf_region = ( 'oae' === $country_slug && function_exists( 'zhiraf_ufa_tour_emirate_region' ) )
-	? zhiraf_ufa_tour_emirate_region( $resort )
+$zhiraf_region = function_exists( 'zhiraf_ufa_tour_landing_region' )
+	? zhiraf_ufa_tour_landing_region( $country_slug, $resort )
 	: '';
+$zhiraf_emphasize_flight = ! empty( $args['emphasize_flight'] );
 ?>
-<article class="tour-card reveal" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
+<article class="tour-card reveal<?php echo $zhiraf_emphasize_flight ? ' tour-card--flight-focus' : ''; ?>" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
 		<?php zhiraf_ufa_img( $image_file, $image_info['alt'] ? $image_info['alt'] : $resort, 'tour-card__img', true ); ?>
@@ -95,9 +96,14 @@ $zhiraf_region = ( 'oae' === $country_slug && function_exists( 'zhiraf_ufa_tour_
 			</div>
 			<?php $zhiraf_flight = zhiraf_ufa_tour_flight_info( $tour ); ?>
 			<?php if ( '' !== $zhiraf_flight['line'] ) : ?>
-			<div class="tour-card__meta-item">
+			<div class="tour-card__meta-item<?php echo $zhiraf_emphasize_flight ? ' tour-card__meta-item--flight-prominent' : ''; ?>">
 				<span class="tour-card__meta-label"><?php esc_html_e( 'Перелёт:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $zhiraf_flight['line'] ); ?></strong>
+			</div>
+			<?php elseif ( $zhiraf_emphasize_flight && ! empty( $zhiraf_flight['label'] ) ) : ?>
+			<div class="tour-card__meta-item tour-card__meta-item--flight-prominent">
+				<span class="tour-card__meta-label"><?php esc_html_e( 'Перелёт:', 'zhiraf-ufa' ); ?></span>
+				<strong class="tour-card__meta-value"><?php echo esc_html( $zhiraf_flight['label'] ); ?></strong>
 			</div>
 			<?php endif; ?>
 			<div class="tour-card__meta-item">

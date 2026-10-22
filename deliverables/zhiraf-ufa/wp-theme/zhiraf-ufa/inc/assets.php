@@ -130,8 +130,8 @@ function zhiraf_ufa_destinations() {
 		array(
 			'slug'  => 'vietnam',
 			'name'  => __( 'Вьетнам', 'zhiraf-ufa' ),
-			'image' => 'country-vietnam.jpg',
-			'alt'   => __( 'Вьетнам — пляжи и природа', 'zhiraf-ufa' ),
+			'image' => 'resort-vietnam-phu-quoc-1.jpg',
+			'alt'   => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
 			'url'   => home_url( '/tour/vietnam/' ),
 		),
 	);

@@ -17,6 +17,7 @@ if ( empty( $dest_slug ) ) {
 $tour_limit          = ! empty( $dest['tour_card_limit'] ) ? (int) $dest['tour_card_limit'] : 3;
 $tour_collapsed_after = ! empty( $dest['tour_collapsed_after'] ) ? (int) $dest['tour_collapsed_after'] : 0;
 $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours( $dest_slug, $tour_limit ) : array();
+$emphasize_flight    = ! empty( $dest['emphasize_flight'] );
 ?>
 <main id="primary" class="site-main site-main--destination">
 	<section class="dest-landing-hero">
@@ -27,6 +28,18 @@ $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours(
 				</p>
 				<h1><?php echo esc_html( $dest['h1'] ); ?></h1>
 				<p class="lead dest-landing-hero__lead"><?php echo esc_html( $dest['hero_lead'] ); ?></p>
+				<?php if ( ! empty( $dest['hero_badges'] ) && is_array( $dest['hero_badges'] ) ) : ?>
+					<ul class="dest-landing-hero__badges" aria-label="<?php esc_attr_e( 'Ключевые условия поездки', 'zhiraf-ufa' ); ?>">
+						<?php foreach ( $dest['hero_badges'] as $badge ) : ?>
+							<li class="dest-landing-hero__badge">
+								<?php if ( ! empty( $badge['icon'] ) ) : ?>
+									<span class="dest-landing-hero__badge-icon" aria-hidden="true"><?php echo esc_html( $badge['icon'] ); ?></span>
+								<?php endif; ?>
+								<span><?php echo esc_html( $badge['text'] ); ?></span>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 				<div class="dest-landing-hero__actions">
 					<button type="button" class="btn btn--primary btn--lg" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>">
 						<?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?>
@@ -85,7 +98,7 @@ $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours(
 						$collapsed_class = ( $tour_collapsed_after > 0 && $i >= $tour_collapsed_after ) ? ' is-collapsed' : '';
 						?>
 						<div class="dest-tour-card-wrap<?php echo esc_attr( $collapsed_class ); ?>">
-							<?php get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item ) ); ?>
+							<?php get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item, 'emphasize_flight' => $emphasize_flight ) ); ?>
 						</div>
 					<?php endforeach; ?>
 				</div>
@@ -108,7 +121,7 @@ $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours(
 		</section>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) ) : ?>
+	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || ! empty( $dest['resort_compare'] ) ) : ?>
 	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
 		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
@@ -143,8 +156,37 @@ $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours(
 				<p><?php echo esc_html( $dest['season'] ); ?></p>
 			<?php endif; ?>
 
+			<?php if ( ! empty( $dest['resort_compare'] ) && is_array( $dest['resort_compare'] ) ) : ?>
+				<h2><?php echo esc_html( ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : __( 'Нячанг или Фукуок: что выбрать', 'zhiraf-ufa' ) ); ?></h2>
+				<div class="dest-resort-compare">
+					<?php foreach ( $dest['resort_compare'] as $col ) : ?>
+						<article class="dest-resort-compare__col">
+							<?php if ( ! empty( $col['image'] ) ) : ?>
+								<?php zhiraf_ufa_img( $col['image'], $col['title'], 'dest-resort-compare__img', true ); ?>
+							<?php endif; ?>
+							<div class="dest-resort-compare__body">
+								<?php if ( ! empty( $col['tag'] ) ) : ?>
+									<p class="dest-resort-compare__tag"><?php echo esc_html( $col['tag'] ); ?></p>
+								<?php endif; ?>
+								<h3 class="dest-resort-compare__title"><?php echo esc_html( $col['title'] ); ?></h3>
+								<?php if ( ! empty( $col['rows'] ) && is_array( $col['rows'] ) ) : ?>
+									<dl class="dest-resort-compare__rows">
+										<?php foreach ( $col['rows'] as $row ) : ?>
+											<div>
+												<dt><?php echo esc_html( $row['label'] ); ?></dt>
+												<dd><?php echo esc_html( $row['value'] ); ?></dd>
+											</div>
+										<?php endforeach; ?>
+									</dl>
+								<?php endif; ?>
+							</div>
+						</article>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
+
 			<?php if ( ! empty( $dest['emirate_cards'] ) && is_array( $dest['emirate_cards'] ) ) : ?>
-				<h2><?php esc_html_e( 'Какой эмират выбрать для отдыха из Уфы', 'zhiraf-ufa' ); ?></h2>
+				<h2><?php echo esc_html( ! empty( $dest['emirate_cards_title'] ) ? $dest['emirate_cards_title'] : __( 'Какой эмират выбрать для отдыха из Уфы', 'zhiraf-ufa' ) ); ?></h2>
 				<div class="dest-emirate-grid">
 					<?php foreach ( $dest['emirate_cards'] as $card ) : ?>
 						<article class="dest-emirate-card">
@@ -237,11 +279,14 @@ $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours(
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
-			<p><?php esc_html_e( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ); ?></p>
+			<p><?php echo esc_html( ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ) ); ?></p>
 			<form class="zhiraf-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="dest-<?php echo esc_attr( $dest_slug ); ?>">
 				<div class="dest-landing-lead-form__fields">
 					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
 					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />
+					<?php if ( ! empty( $dest['cta_message_placeholder'] ) ) : ?>
+						<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php echo esc_attr( $dest['cta_message_placeholder'] ); ?>"></textarea>
+					<?php endif; ?>
 					<label class="form-label dest-landing-lead-form__channel-label">
 						<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить подборку', 'zhiraf-ufa' ); ?></span>
 						<select name="contact_channel" class="form-input">

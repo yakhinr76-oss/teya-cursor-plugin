@@ -191,6 +191,28 @@
     });
   }
   qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.tab-btn'); });
+  qsa('.ai-meal-tabs').forEach(function (bar) {
+    var tabs = qsa('.tab-btn', bar);
+    var section = bar.closest('.section') || bar.parentElement;
+    var cards = qsa('.tour-card', section);
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (c) { c.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        var filter = tab.getAttribute('data-filter');
+        cards.forEach(function (card) {
+          var dest = card.getAttribute('data-dest') || '';
+          var show = filter === 'all';
+          if (!show && filter === 'islands') {
+            show = dest === 'tailand' || dest === 'vietnam';
+          } else if (!show) {
+            show = dest === filter;
+          }
+          card.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+  });
   qsa('.chip-filter').forEach(function (bar) {
     if (bar.classList.contains('chip-filter--offers')) {
       return;
@@ -543,6 +565,16 @@
       if (budget) parts.push('Бюджет: ' + budget);
       if (parts.length) {
         msgField.value = parts.join('. ');
+      }
+    }
+    if (msgField && form.classList.contains('ai-lead-form')) {
+      var travelers = fieldValue(form, 'ai_travelers');
+      var month = fieldValue(form, 'ai_month');
+      var aiParts = [];
+      if (travelers) aiParts.push('Состав: ' + travelers);
+      if (month) aiParts.push('Месяц: ' + month);
+      if (aiParts.length) {
+        msgField.value = aiParts.join('. ');
       }
     }
     var fd = new FormData(form);

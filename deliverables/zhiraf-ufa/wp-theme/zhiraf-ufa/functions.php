@@ -26,6 +26,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/tour-routing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/resort-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/offer-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/hot-tours-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/all-inclusive-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/seo.php';
 require_once ZHIRAF_UFA_DIR . '/inc/customizer.php';
 require_once ZHIRAF_UFA_DIR . '/inc/breadcrumbs.php';

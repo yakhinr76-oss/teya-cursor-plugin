@@ -1,0 +1,173 @@
+.offer-landing-hero--ai .dest-landing-hero__lead {
+  max-width: 36rem;
+}
+
+.ai-hero-price {
+  margin: 12px 0 0;
+  font-weight: 800;
+  font-size: 1.0625rem;
+  color: var(--color-primary);
+}
+
+.ai-tours-intro {
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: var(--color-muted);
+}
+
+.tour-price-grid--ai {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ai-meal-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 28px;
+}
+
+.ai-meal-highlight {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.ai-meal-highlight__icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ai-meal-highlight h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.ai-meal-highlight p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.ai-meal-table-wrap {
+  overflow-x: auto;
+}
+
+.ai-meal-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.ai-meal-table th,
+.ai-meal-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ai-meal-table thead th {
+  background: #f8fafc;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ai-meal-table tbody th {
+  font-weight: 600;
+}
+
+.ai-meal-table td {
+  text-align: center;
+  font-weight: 700;
+  color: #047857;
+}
+
+.ai-dest-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ai-dest-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ai-dest-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+}
+
+.ai-dest-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.ai-dest-card__body {
+  padding: 16px;
+}
+
+.ai-dest-card__tag {
+  margin: 0 0 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.ai-dest-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+}
+
+.ai-dest-card__price {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.ai-dest-card__cta {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.ai-lead-form__fields {
+  text-align: left;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+@media (max-width: 1024px) {
+  .tour-price-grid--ai,
+  .ai-meal-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ai-dest-cards__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .tour-price-grid--ai,
+  .ai-meal-highlights,
+  .ai-dest-cards__grid {
+    grid-template-columns: 1fr;
+  }
+}

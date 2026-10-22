@@ -25,9 +25,58 @@ except ImportError:
 
 IGNORE = {".git", "node_modules", ".DS_Store", "assets/src"}
 
+THEME_SLUG = "zhiraf-ufa"
+REMOTE_CANDIDATES = [
+    f"wp-content/themes/{THEME_SLUG}",
+    f"public_html/wp-content/themes/{THEME_SLUG}",
+    f"www/b2b-tour.ru/wp-content/themes/{THEME_SLUG}",
+    f"data/www/b2b-tour.ru/wp-content/themes/{THEME_SLUG}",
+    f"domains/b2b-tour.ru/public_html/wp-content/themes/{THEME_SLUG}",
+    f"home/b2b-tour.ru/public_html/wp-content/themes/{THEME_SLUG}",
+]
+
 
 def env(name: str, default: str = "") -> str:
     return os.environ.get(name, default).strip()
+
+
+def env_any(names: tuple[str, ...]) -> str:
+    for name in names:
+        value = env(name)
+        if value:
+            return value
+    return ""
+
+
+def resolve_remote_theme_path(sftp: paramiko.SFTPClient, configured: str) -> str:
+    if configured:
+        try:
+            sftp.stat(f"{configured.rstrip('/')}/style.css")
+            return configured.rstrip("/")
+        except OSError:
+            print(f"WARN: configured path missing style.css: {configured}", file=sys.stderr)
+
+    home = sftp.normalize(".")
+    roots = [home, "/"]
+    seen: set[str] = set()
+    for root in roots:
+        for rel in REMOTE_CANDIDATES:
+            remote = f"{root.rstrip('/')}/{rel}".replace("//", "/")
+            if remote in seen:
+                continue
+            seen.add(remote)
+            try:
+                sftp.stat(f"{remote}/style.css")
+                print(f"Resolved theme path: {remote}")
+                return remote
+            except OSError:
+                continue
+
+    print(
+        "BLOCKER: could not find wp-content/themes/zhiraf-ufa — set B2B_TOUR_SSH_THEME_PATH",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
 
 def should_skip(rel: str) -> bool:
@@ -41,11 +90,13 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    host = env("B2B_TOUR_SSH_HOST")
-    user = env("B2B_TOUR_SSH_USER")
-    password = env("B2B_TOUR_SSH_PASS")
-    key_path = env("B2B_TOUR_SSH_KEY_PATH")
-    port = int(env("B2B_TOUR_SSH_PORT", "22") or "22")
+    host = env_any(("B2B_TOUR_SSH_HOST", "SSH_HOST", "SFTP_HOST", "FTP_HOST"))
+    user = env_any(("B2B_TOUR_SSH_USER", "SSH_USER", "SFTP_USER", "FTP_USER"))
+    password = env_any(("B2B_TOUR_SSH_PASS", "SSH_PASS", "SFTP_PASS", "FTP_PASS"))
+    key_path = env_any(("B2B_TOUR_SSH_KEY_PATH", "SSH_KEY_PATH"))
+    port = int(
+        env_any(("B2B_TOUR_SSH_PORT", "SSH_PORT", "SFTP_PORT", "FTP_PORT")) or "22"
+    )
     remote_base = env("B2B_TOUR_SSH_THEME_PATH").rstrip("/")
 
     if not all([host, user, remote_base]):
@@ -87,6 +138,7 @@ def main() -> int:
         else:
             transport.connect(username=user, password=password)
         sftp = paramiko.SFTPClient.from_transport(transport)
+        remote_base = resolve_remote_theme_path(sftp, remote_base)
 
         def ensure_dir(remote_dir: str) -> None:
             parts = remote_dir.strip("/").split("/")

@@ -311,9 +311,37 @@ function zhiraf_ufa_ajax_lead() {
 			'message'          => 'Сообщение',
 			'tour'             => 'Тур',
 			'contact_channel'  => 'Куда отправить подборку',
+			'hot_destination'  => 'Направление (горящие)',
+			'hot_budget'       => 'Бюджет (горящие)',
 		)
 	);
-	$res = zhiraf_ufa_store_and_mail_lead( 'lead', 'Заявка на подбор тура', $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
+	if ( ! empty( $values['Направление (горящие)'] ) || ! empty( $values['Бюджет (горящие)'] ) ) {
+		$parts = array_filter(
+			array(
+				! empty( $values['Направление (горящие)'] ) ? sprintf(
+					/* translators: %s: destination */
+					__( 'Куда: %s', 'zhiraf-ufa' ),
+					$values['Направление (горящие)']
+				) : '',
+				! empty( $values['Бюджет (горящие)'] ) ? sprintf(
+					/* translators: %s: budget */
+					__( 'Бюджет: %s', 'zhiraf-ufa' ),
+					$values['Бюджет (горящие)']
+				) : '',
+			)
+		);
+		$extra = implode( '. ', $parts );
+		if ( ! empty( $values['Сообщение'] ) ) {
+			$values['Сообщение'] = trim( $values['Сообщение'] . '. ' . $extra );
+		} else {
+			$values['Сообщение'] = $extra;
+		}
+	}
+	$subject = 'Заявка на подбор тура';
+	if ( ! empty( $values['Тур'] ) && false !== mb_stripos( (string) $values['Тур'], 'горящ', 0, 'UTF-8' ) ) {
+		$subject = 'Горящий тур: мониторинг / заявка';
+	}
+	$res = zhiraf_ufa_store_and_mail_lead( 'lead', $subject, $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
 	if ( $res['id'] && class_exists( 'Zhiraf_UON_CRM' ) ) {
 		$crm = new Zhiraf_UON_CRM();
 		$crm->send_lead( $values );

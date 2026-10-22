@@ -55,8 +55,9 @@ $zhiraf_region = function_exists( 'zhiraf_ufa_tour_landing_region' )
 	? zhiraf_ufa_tour_landing_region( $country_slug, $resort )
 	: '';
 $zhiraf_emphasize_flight = ! empty( $args['emphasize_flight'] );
+$zhiraf_hot_departure    = ! empty( $args['emphasize_hot_departure'] );
 ?>
-<article class="tour-card reveal<?php echo $zhiraf_emphasize_flight ? ' tour-card--flight-focus' : ''; ?>" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
+<article class="tour-card reveal<?php echo $zhiraf_emphasize_flight ? ' tour-card--flight-focus' : ''; ?><?php echo $zhiraf_hot_departure ? ' tour-card--hot' : ''; ?>" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
 		<?php zhiraf_ufa_img( $image_file, $image_info['alt'] ? $image_info['alt'] : $resort, 'tour-card__img', true ); ?>
@@ -64,6 +65,9 @@ $zhiraf_emphasize_flight = ! empty( $args['emphasize_flight'] );
 			<div class="tour-card__img tour-card__img--grad dest-grad dest-grad--<?php echo esc_attr( $country_slug ); ?>" role="img" aria-label="<?php echo esc_attr( $resort ); ?>"></div>
 		<?php endif; ?>
 		<div class="tour-card__badges">
+			<?php if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_urgency_text' ) ) : ?>
+				<span class="tour-card__badge tour-card__badge--hot"><?php echo esc_html( zhiraf_ufa_departure_urgency_text( $departure_date ) ); ?></span>
+			<?php endif; ?>
 			<?php if ( $country_name ) : ?>
 				<span class="tour-card__badge tour-card__badge--country"><?php echo esc_html( $country_name ); ?></span>
 			<?php endif; ?>

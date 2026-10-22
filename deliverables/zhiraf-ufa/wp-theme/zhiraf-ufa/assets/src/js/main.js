@@ -534,6 +534,17 @@
       });
   }
   function sendForm(form, action) {
+    var msgField = form.querySelector('[name="message"]');
+    if (msgField && form.classList.contains('hot-lead-form')) {
+      var dest = fieldValue(form, 'hot_destination');
+      var budget = fieldValue(form, 'hot_budget');
+      var parts = [];
+      if (dest) parts.push('Куда: ' + dest);
+      if (budget) parts.push('Бюджет: ' + budget);
+      if (parts.length) {
+        msgField.value = parts.join('. ');
+      }
+    }
     var fd = new FormData(form);
     fd.append('action', action);
     fd.append('nonce', cfg.nonce || '');

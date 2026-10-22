@@ -24,14 +24,16 @@ if ( empty( $members ) || ! is_array( $members ) ) {
 			<?php foreach ( $members as $member ) : ?>
 				<article class="home-team-card reveal">
 					<?php
-					$photo = ! empty( $member['image'] ) ? (string) $member['image'] : '';
+					$photo = zhiraf_ufa_team_member_portrait( $member );
 					$label = ! empty( $member['name'] ) ? (string) $member['name'] : ( ! empty( $member['role'] ) ? (string) $member['role'] : __( 'Менеджер', 'zhiraf-ufa' ) );
 					?>
 					<div class="home-team-card__photo">
 						<?php if ( '' !== $photo ) : ?>
 							<?php zhiraf_ufa_img( $photo, $label, 'home-team-card__img', true ); ?>
 						<?php else : ?>
-							<div class="home-team-card__placeholder" aria-hidden="true"></div>
+							<div class="home-team-card__placeholder" aria-hidden="true">
+								<span class="home-team-card__initial"><?php echo esc_html( zhiraf_ufa_team_member_initials( $label ) ); ?></span>
+							</div>
 						<?php endif; ?>
 					</div>
 					<div class="home-team-card__body">

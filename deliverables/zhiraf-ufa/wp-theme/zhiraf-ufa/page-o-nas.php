@@ -10,6 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$zh_map_url = zhiraf_ufa_office_map_url();
+$zh_wa      = trim( (string) get_theme_mod( 'zhiraf_whatsapp_url', '' ) );
+$zh_wa_dir  = zhiraf_ufa_whatsapp_url_with_text(
+	$zh_wa,
+	__( 'Здравствуйте! Хочу задать вопрос руководителю турагентства «Жираф».', 'zhiraf-ufa' )
+);
+
 get_header();
 ?>
 <main id="primary" class="site-main site-main--about">
@@ -20,47 +27,95 @@ get_header();
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="container about-grid">
-			<div class="prose">
-				<h2><?php esc_html_e( 'Наша история и развитие', 'zhiraf-ufa' ); ?></h2>
-				<p><?php esc_html_e( 'Турагентство «Жираф» работает в Уфе с апреля 2011 года. С первых дней главным ориентиром остаётся бережное и честное отношение к путешественникам: подбирать поездку так, как мы выбираем отдых для своих семей. Сегодня вас консультируют директор Рафаэль и менеджеры Лиана и Алина.', 'zhiraf-ufa' ); ?></p>
-				<p><?php esc_html_e( 'За годы работы агентство ООО «Жираф» (реестровый номер в Едином федеральном реестре турагентств — РТА 0012822, ИНН 0278177191, ОГРН 1110280012457) выстроило прямые надёжные партнёрские отношения с ведущими туроператорами России. Мы непрерывно инспектируем курорты и отели Турции, ОАЭ, Египта, Таиланда и Вьетнама, чтобы предоставлять проверенную и объективную информацию о каждом объекте размещения.', 'zhiraf-ufa' ); ?></p>
-
-				<h2><?php esc_html_e( 'Ключевые принципы работы', 'zhiraf-ufa' ); ?></h2>
-				<ul>
-					<li><strong><?php esc_html_e( 'Честность и прозрачность:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'мы открыто озвучиваем полную и окончательную стоимость тура, детализируем концепции питания (AI/UAI), информируем о возможных отельных депозитах, налогах и сборах до заключения договора.', 'zhiraf-ufa' ); ?></li>
-					<li><strong><?php esc_html_e( 'Экспертный фокус и уважение к времени:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'вместо бесконечных списков из десятков случайных отелей мы готовим персональную подборку из 2–4 наиболее подходящих вариантов, чётко сравнивая их плюсы и минусы.', 'zhiraf-ufa' ); ?></li>
-					<li><strong><?php esc_html_e( 'Локальное присутствие и живой контакт:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'наш физический офис расположен в Уфе на ул. Юрия Гагарина, 74/1 (офис 3). Вы всегда можете встретиться с менеджером лично, выпить кофе и спокойно обсудить детали будущей поездки.', 'zhiraf-ufa' ); ?></li>
-					<li><strong><?php esc_html_e( 'Сопровождение на всех этапах:', 'zhiraf-ufa' ); ?></strong> <?php esc_html_e( 'мы остаёмся на связи от момента первого обращения и подготовки документов до вылета из Уфы, заселения в отель и благополучного возвращения домой.', 'zhiraf-ufa' ); ?></li>
-				</ul>
-
-				<p>
-					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>" class="btn btn--outline btn--sm"><?php esc_html_e( 'Контакты и реквизиты', 'zhiraf-ufa' ); ?></a>
-					<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>" class="btn btn--outline btn--sm"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
-				</p>
+	<section class="section section--about-trust" aria-label="<?php esc_attr_e( 'Показатели надёжности', 'zhiraf-ufa' ); ?>">
+		<div class="container">
+			<div class="about-trust-metrics reveal">
+				<?php foreach ( zhiraf_ufa_about_trust_metrics() as $metric ) : ?>
+					<div class="about-trust-metric">
+						<span class="about-trust-metric__value"><?php echo esc_html( $metric['value'] ); ?></span>
+						<span class="about-trust-metric__label"><?php echo esc_html( $metric['label'] ); ?></span>
+						<?php if ( ! empty( $metric['detail'] ) ) : ?>
+							<p class="about-trust-metric__detail"><?php echo esc_html( $metric['detail'] ); ?></p>
+						<?php endif; ?>
+					</div>
+				<?php endforeach; ?>
 			</div>
-			<div class="about-visual">
-				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда турагентства «Жираф» за работой', 'zhiraf-ufa' ), 'about-img', true ); ?>
-				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства «Жираф» в Уфе на улице Гагарина', 'zhiraf-ufa' ), 'about-img', true ); ?>
+
+			<div class="about-office-gallery reveal">
+				<?php foreach ( zhiraf_ufa_about_office_gallery() as $slot ) : ?>
+					<?php
+					$file    = ! empty( $slot['file'] ) ? (string) $slot['file'] : '';
+					$caption = ! empty( $slot['caption'] ) ? (string) $slot['caption'] : '';
+					$has_img = '' !== $file && zhiraf_ufa_theme_image_exists( $file );
+					?>
+					<figure class="about-office-slot">
+						<div class="about-office-slot__media">
+							<?php if ( $has_img ) : ?>
+								<?php zhiraf_ufa_img( $file, $caption, 'about-office-slot__img', true ); ?>
+							<?php else : ?>
+								<div class="about-office-slot__placeholder">
+									<strong><?php esc_html_e( 'Живое фото офиса на Гагарина, 74/1', 'zhiraf-ufa' ); ?></strong>
+									<p><?php echo esc_html( $caption ); ?></p>
+									<a class="btn btn--outline btn--sm" href="<?php echo esc_url( $zh_map_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Маршрут в Яндекс Картах', 'zhiraf-ufa' ); ?></a>
+								</div>
+							<?php endif; ?>
+						</div>
+						<?php if ( '' !== $caption ) : ?>
+							<figcaption class="about-office-slot__caption"><?php echo esc_html( $caption ); ?></figcaption>
+						<?php endif; ?>
+					</figure>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
 
-	<section class="section section--sand">
+	<section class="section section--sand" id="about-team">
 		<div class="container">
 			<div class="section-head reveal">
 				<h2 class="section-title"><?php esc_html_e( 'Команда агентства «Жираф»', 'zhiraf-ufa' ); ?></h2>
-				<p class="lead"><?php esc_html_e( 'Специалисты с многолетним опытом работы в туризме, знающие специфику курортов и отельную базу.', 'zhiraf-ufa' ); ?></p>
+				<p class="lead"><?php esc_html_e( 'Живые менеджеры в Уфе — с именем, специализацией и прямой связью в мессенджере.', 'zhiraf-ufa' ); ?></p>
 			</div>
-			<div class="team-grid team-grid--three">
-				<?php foreach ( zhiraf_ufa_team_roster() as $member ) : ?>
-					<div class="team-card">
-						<h3><?php echo esc_html( $member['name'] ); ?></h3>
-						<p class="team-card__role"><?php echo esc_html( $member['role'] ); ?></p>
-						<p class="team-card__desc"><?php echo esc_html( $member['desc'] ); ?></p>
-					</div>
-				<?php endforeach; ?>
+			<div class="about-team-grid">
+				<?php
+				foreach ( zhiraf_ufa_team_roster() as $member ) {
+					get_template_part( 'template-parts/about/team', 'card', array( 'member' => $member ) );
+				}
+				?>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container about-story-grid">
+			<div class="prose reveal">
+				<h2><?php esc_html_e( 'Наша история и развитие', 'zhiraf-ufa' ); ?></h2>
+				<p><?php esc_html_e( 'Турагентство «Жираф» работает в Уфе с апреля 2011 года. С первых дней главным ориентиром остаётся бережное и честное отношение к путешественникам: подбирать поездку так, как мы выбираем отдых для своих семей. Сегодня вас консультируют директор Рафаэль и менеджеры Лиана и Алина.', 'zhiraf-ufa' ); ?></p>
+				<p><?php esc_html_e( 'За годы работы агентство ООО «Жираф» (реестровый номер в Едином федеральном реестре турагентств — РТА 0012822, ИНН 0278177191, ОГРН 1110280012457) выстроило прямые надёжные партнёрские отношения с ведущими туроператорами России. Мы непрерывно инспектируем курорты и отели Турции, ОАЭ, Египта, Таиланда и Вьетнама, чтобы предоставлять проверенную и объективную информацию о каждом объекте размещения.', 'zhiraf-ufa' ); ?></p>
+			</div>
+			<div class="reveal reveal-delay-1">
+				<h2 class="section-title" style="font-size:1.75rem;margin-bottom:16px;"><?php esc_html_e( 'Ключевые принципы работы', 'zhiraf-ufa' ); ?></h2>
+				<ul class="about-principles">
+					<li>
+						<strong><?php esc_html_e( 'Честность и прозрачность', 'zhiraf-ufa' ); ?></strong>
+						<?php esc_html_e( 'Озвучиваем полную стоимость тура, питание AI/UAI и возможные депозиты до подписания договора.', 'zhiraf-ufa' ); ?>
+					</li>
+					<li>
+						<strong><?php esc_html_e( 'Экспертный фокус', 'zhiraf-ufa' ); ?></strong>
+						<?php esc_html_e( '2–4 проверенных варианта вместо бесконечного списка — с честным сравнением плюсов и минусов.', 'zhiraf-ufa' ); ?>
+					</li>
+					<li>
+						<strong><?php esc_html_e( 'Офис на Гагарина', 'zhiraf-ufa' ); ?></strong>
+						<?php esc_html_e( 'ул. Юрия Гагарина, 74/1, офис 3 — можно приехать на кофе и обсудить поездку лично.', 'zhiraf-ufa' ); ?>
+					</li>
+					<li>
+						<strong><?php esc_html_e( 'Сопровождение до дома', 'zhiraf-ufa' ); ?></strong>
+						<?php esc_html_e( 'На связи от заявки и документов до вылета, отеля и возвращения в Уфу.', 'zhiraf-ufa' ); ?>
+					</li>
+				</ul>
+				<p>
+					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>" class="btn btn--outline btn--sm"><?php esc_html_e( 'Контакты и реквизиты', 'zhiraf-ufa' ); ?></a>
+					<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>" class="btn btn--outline btn--sm"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
+				</p>
 			</div>
 		</div>
 	</section>
@@ -87,11 +142,14 @@ get_header();
 		<div class="container cta-strip__inner">
 			<div class="cta-strip__content">
 				<h2><?php esc_html_e( 'Готовы доверить организацию отпуска профессионалам?', 'zhiraf-ufa' ); ?></h2>
-				<p><?php esc_html_e( 'Пройдите короткий квиз или оставьте заявку — менеджер свяжется с вами и подготовит 2–4 проверенных варианта с прямым вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
+				<p><?php esc_html_e( 'Подберём 2–4 проверенных варианта с вылетом из Уфы — или ответим на вопросы лично, в мессенджере или в офисе на Гагарина.', 'zhiraf-ufa' ); ?></p>
 			</div>
-			<div class="cta-strip__actions">
+			<div class="cta-strip__actions cta-strip__actions--about">
 				<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
-				<a href="tel:+79018105018" class="btn btn--outline btn--lg" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
+				<?php if ( '' !== $zh_wa_dir ) : ?>
+					<a href="<?php echo esc_url( $zh_wa_dir ); ?>" class="btn btn--outline btn--lg" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php esc_html_e( 'Вопрос руководителю в WhatsApp', 'zhiraf-ufa' ); ?></a>
+				<?php endif; ?>
+				<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>" class="btn btn--outline btn--lg"><?php esc_html_e( 'Приехать в офис на Гагарина', 'zhiraf-ufa' ); ?></a>
 			</div>
 		</div>
 	</section>

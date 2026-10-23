@@ -36,8 +36,10 @@ if ( '' === $hotel_name || '' === $stars || '' === $resort || '' === $departure_
 // Stale = price not refreshed today: show "цена от … на [дата], уточните…" instead of the fresh-price disclaimer.
 $is_stale = ( $price_date !== wp_date( 'd.m.Y' ) );
 
-$image_info       = zhiraf_ufa_tour_image_info( $tour );
+$card_index       = isset( $args['card_index'] ) ? (int) $args['card_index'] : null;
+$image_info       = zhiraf_ufa_tour_image_info( $tour, $card_index );
 $image_file       = $image_info['file'];
+$spec_line        = zhiraf_ufa_tour_card_spec_line( $tour );
 $nights_formatted = zhiraf_ufa_plural_nights( $nights );
 $country_name     = zhiraf_ufa_tour_country_name( $country_slug );
 
@@ -50,7 +52,14 @@ $prefill_text     = sprintf(
 	$nights_formatted
 );
 ?>
-<article class="tour-card reveal" data-dest="<?php echo esc_attr( $country_slug ); ?>">
+<?php
+$zhiraf_region = function_exists( 'zhiraf_ufa_tour_landing_region' )
+	? zhiraf_ufa_tour_landing_region( $country_slug, $resort )
+	: '';
+$zhiraf_emphasize_flight = ! empty( $args['emphasize_flight'] );
+$zhiraf_hot_departure    = ! empty( $args['emphasize_hot_departure'] );
+?>
+<article class="tour-card reveal<?php echo $zhiraf_emphasize_flight ? ' tour-card--flight-focus' : ''; ?><?php echo $zhiraf_hot_departure ? ' tour-card--hot' : ''; ?>" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
 		<?php zhiraf_ufa_img( $image_file, $image_info['alt'] ? $image_info['alt'] : $resort, 'tour-card__img', true ); ?>
@@ -58,6 +67,9 @@ $prefill_text     = sprintf(
 			<div class="tour-card__img tour-card__img--grad dest-grad dest-grad--<?php echo esc_attr( $country_slug ); ?>" role="img" aria-label="<?php echo esc_attr( $resort ); ?>"></div>
 		<?php endif; ?>
 		<div class="tour-card__badges">
+			<?php if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_urgency_text' ) ) : ?>
+				<span class="tour-card__badge tour-card__badge--hot"><?php echo esc_html( zhiraf_ufa_departure_urgency_text( $departure_date ) ); ?></span>
+			<?php endif; ?>
 			<?php if ( $country_name ) : ?>
 				<span class="tour-card__badge tour-card__badge--country"><?php echo esc_html( $country_name ); ?></span>
 			<?php endif; ?>
@@ -81,6 +93,9 @@ $prefill_text     = sprintf(
 				<svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 				<span><?php echo esc_html( $resort ); ?></span>
 			</p>
+			<?php if ( '' !== $spec_line ) : ?>
+				<p class="tour-card__spec-line"><?php echo esc_html( $spec_line ); ?></p>
+			<?php endif; ?>
 		</div>
 
 		<div class="tour-card__meta">
@@ -90,9 +105,14 @@ $prefill_text     = sprintf(
 			</div>
 			<?php $zhiraf_flight = zhiraf_ufa_tour_flight_info( $tour ); ?>
 			<?php if ( '' !== $zhiraf_flight['line'] ) : ?>
-			<div class="tour-card__meta-item">
+			<div class="tour-card__meta-item<?php echo $zhiraf_emphasize_flight ? ' tour-card__meta-item--flight-prominent' : ''; ?>">
 				<span class="tour-card__meta-label"><?php esc_html_e( 'Перелёт:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $zhiraf_flight['line'] ); ?></strong>
+			</div>
+			<?php elseif ( $zhiraf_emphasize_flight && ! empty( $zhiraf_flight['label'] ) ) : ?>
+			<div class="tour-card__meta-item tour-card__meta-item--flight-prominent">
+				<span class="tour-card__meta-label"><?php esc_html_e( 'Перелёт:', 'zhiraf-ufa' ); ?></span>
+				<strong class="tour-card__meta-value"><?php echo esc_html( $zhiraf_flight['label'] ); ?></strong>
 			</div>
 			<?php endif; ?>
 			<div class="tour-card__meta-item">

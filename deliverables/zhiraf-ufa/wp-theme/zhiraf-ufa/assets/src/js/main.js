@@ -191,27 +191,77 @@
     });
   }
   qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.tab-btn'); });
-  qsa('.chip-filter').forEach(function (bar) { bindDestFilter(bar, '.chip'); });
+  qsa('.ai-meal-tabs').forEach(function (bar) {
+    var tabs = qsa('.tab-btn', bar);
+    var section = bar.closest('.section') || bar.parentElement;
+    var cards = qsa('.tour-card', section);
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (c) { c.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        var filter = tab.getAttribute('data-filter');
+        cards.forEach(function (card) {
+          var dest = card.getAttribute('data-dest') || '';
+          var show = filter === 'all';
+          if (!show && filter === 'islands') {
+            show = dest === 'tailand' || dest === 'vietnam';
+          } else if (!show) {
+            show = dest === filter;
+          }
+          card.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+  });
+  qsa('.chip-filter').forEach(function (bar) {
+    if (bar.classList.contains('chip-filter--offers')) {
+      return;
+    }
+    bindDestFilter(bar, '.chip');
+  });
 
   /* Tour price filter tabs */
   function bindTourFilter(bar) {
     var tabs = qsa('[data-tour-filter]', bar);
-    var section = bar.closest('.section--hot-tours') || bar.parentElement;
+    var section = bar.closest('.section--hot-tours') || bar.closest('.section--dest-tours') || bar.parentElement;
+    var wraps = qsa('.dest-tour-card-wrap', section);
     var cards = qsa('.tour-card', section);
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (c) { c.classList.remove('is-active'); });
         tab.classList.add('is-active');
         var filter = tab.getAttribute('data-tour-filter');
-        cards.forEach(function (card) {
+        function applyFilter(card) {
           var dest = card.getAttribute('data-dest');
-          var show = filter === 'all' || dest === filter;
-          card.classList.toggle('is-hidden', !show);
-        });
+          var region = card.getAttribute('data-tour-region') || '';
+          return filter === 'all' || dest === filter || (region && region === filter);
+        }
+        if (wraps.length) {
+          wraps.forEach(function (wrap) {
+            var card = qs('.tour-card', wrap) || wrap;
+            wrap.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        } else {
+          cards.forEach(function (card) {
+            card.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        }
       });
     });
   }
-  qsa('.tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+  qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+
+  qsa('[data-tour-show-more]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var sel = btn.getAttribute('data-target');
+      var grid = sel ? qs(sel) : null;
+      if (!grid) return;
+      qsa('.dest-tour-card-wrap.is-collapsed', grid).forEach(function (wrap) {
+        wrap.classList.remove('is-collapsed');
+      });
+      btn.hidden = true;
+    });
+  });
 
   /* Audience tabs */
   var audienceRoot = qs('.audience-tabs');
@@ -296,14 +346,76 @@
     document.body.style.overflow = '';
     document.body.classList.remove('quiz-open');
   }
+
+  var vibeQuizMap = {
+    family: { composition: 'Семья с детьми', wishTag: '' },
+    couple: { composition: 'Пара', wishTag: '' },
+    city: { composition: '', wishTag: '[Шопинг и движ]' },
+    party: { composition: 'Компания друзей', wishTag: '[Шопинг и движ]' },
+    active: { composition: '', wishTag: '[Активный отдых / Экскурсии]' },
+  };
+
+  function applyQuizVibeFromButton(btn) {
+    if (!quizForm) return;
+    var vibeField = qs('[name="vibe"]', quizForm);
+    var vibeSlug = btn.getAttribute('data-vibe') || '';
+    var prefill = btn.getAttribute('data-quiz-prefill') || '';
+    var vibeTitle = btn.getAttribute('data-vibe-title') || '';
+    var wishes = qs('[name="quiz_wishes"]', quizForm);
+
+    qsa('[name="quiz_composition"]', quizForm).forEach(function (radio) {
+      radio.checked = false;
+    });
+    if (vibeField) {
+      vibeField.value = vibeSlug;
+    }
+
+    var map = vibeQuizMap[vibeSlug] || null;
+    if (map && map.composition) {
+      var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', quizForm);
+      if (target) {
+        target.checked = true;
+      }
+    }
+
+    if (wishes) {
+      var parts = [];
+      if (prefill) {
+        parts.push(prefill);
+      }
+      if (vibeTitle) {
+        parts.push('Вайб: ' + vibeTitle);
+      }
+      if (map && map.wishTag) {
+        parts.push(map.wishTag);
+      }
+      wishes.value = parts.join('. ').trim();
+    } else if (prefill && wishes) {
+      wishes.value = prefill;
+    }
+  }
+
+  function applyQuizPrefillOnly(btn) {
+    if (!quizForm) return;
+    var vibeField = qs('[name="vibe"]', quizForm);
+    if (vibeField) {
+      vibeField.value = '';
+    }
+    var prefill = btn.getAttribute('data-quiz-prefill');
+    if (prefill) {
+      var wishes = qs('[name="quiz_wishes"]', quizForm);
+      if (wishes) {
+        wishes.value = prefill;
+      }
+    }
+  }
+
   qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var prefill = btn.getAttribute('data-quiz-prefill');
-      if (prefill && quizForm) {
-        var wishes = qs('[name="quiz_wishes"]', quizForm);
-        if (wishes) {
-          wishes.value = prefill;
-        }
+      if (btn.getAttribute('data-vibe')) {
+        applyQuizVibeFromButton(btn);
+      } else {
+        applyQuizPrefillOnly(btn);
       }
       quizOpenGoal(btn);
       openQuiz();
@@ -444,6 +556,27 @@
       });
   }
   function sendForm(form, action) {
+    var msgField = form.querySelector('[name="message"]');
+    if (msgField && form.classList.contains('hot-lead-form')) {
+      var dest = fieldValue(form, 'hot_destination');
+      var budget = fieldValue(form, 'hot_budget');
+      var parts = [];
+      if (dest) parts.push('Куда: ' + dest);
+      if (budget) parts.push('Бюджет: ' + budget);
+      if (parts.length) {
+        msgField.value = parts.join('. ');
+      }
+    }
+    if (msgField && form.classList.contains('ai-lead-form')) {
+      var travelers = fieldValue(form, 'ai_travelers');
+      var month = fieldValue(form, 'ai_month');
+      var aiParts = [];
+      if (travelers) aiParts.push('Состав: ' + travelers);
+      if (month) aiParts.push('Месяц: ' + month);
+      if (aiParts.length) {
+        msgField.value = aiParts.join('. ');
+      }
+    }
     var fd = new FormData(form);
     fd.append('action', action);
     fd.append('nonce', cfg.nonce || '');

@@ -29,7 +29,7 @@ function zhiraf_ufa_destination_module_types() {
  */
 function zhiraf_ufa_destination_default_module_map() {
 	return array(
-		'turciya'    => 'vibe',
+		'turciya'    => 'battle',
 		'oae'        => 'vibe',
 		'egipet'     => 'battle',
 		'tailand'    => 'battle',
@@ -55,8 +55,8 @@ function zhiraf_ufa_destination_default_module_map() {
 function zhiraf_ufa_destination_hero_image_standards() {
 	return array(
 		'turciya'    => array(
-			'image' => 'hero-turkey.jpg',
-			'alt'   => __( 'Турция — пляж и море, курорт Средиземноморья', 'zhiraf-ufa' ),
+			'image' => 'resort-turciya-kemer-2.jpg',
+			'alt'   => __( 'Турция — Средиземное море, курорт Кемер', 'zhiraf-ufa' ),
 		),
 		'egipet'     => array(
 			'image' => 'hero-egypt.jpg',
@@ -212,6 +212,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 			),
 		),
+		'turciya' => array(
+			'title'   => __( 'Кемер или Сиде и Аланья: где лучше море и отели', 'zhiraf-ufa' ),
+			'lead'    => __( 'Главная дилемма турецкого отдыха: живописные горы с галькой или песчаный берег для детей.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Кемер и посёлки', 'zhiraf-ufa' ),
+					'tag'       => __( '🌲 Горы и прохлада', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Для ценителей природы и молодёжного отдыха', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: ~50 мин', 'zhiraf-ufa' ),
+					'image'     => 'resort-turciya-kemer-2.jpg',
+					'cta_label' => __( 'Искать отели в Кемере', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Пляж и море', 'zhiraf-ufa' ), 'value' => __( 'Галька — вода прозрачная даже в пик сезона', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Климат', 'zhiraf-ufa' ), 'value' => __( 'Сосны и горы Тавр, прохладнее, чем на равнине', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Клубные комплексы в Текирове, Бельдиби, Гёйнюке', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Сиде и Аланья', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Песок и аквапарки', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Для семей с малышами и долгого купания', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: 1–2,5 ч', 'zhiraf-ufa' ),
+					'image'     => 'resort-turciya-alanya-2.jpg',
+					'cta_label' => __( 'Искать отели в Сиде / Аланье', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Пляж и море', 'zhiraf-ufa' ), 'value' => __( 'Песок и пологий заход — удобно с детьми', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'Море дольше тёплое — часто до ноября', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Семейные резорты с аквапарками и детскими клубами', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
 		'egipet'  => array(
 			'title'   => __( 'Хургада или Шарм-эль-Шейх', 'zhiraf-ufa' ),
 			'columns' => array(
@@ -271,26 +305,45 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 	$module = zhiraf_ufa_destination_landing_module( $slug, $dest );
 	switch ( $module ) {
 		case 'battle':
-			$title   = ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : '';
-			$columns = ! empty( $dest['resort_compare'] ) ? $dest['resort_compare'] : array();
-			if ( empty( $columns ) ) {
-				$defaults = zhiraf_ufa_default_resort_battle( $slug );
-				if ( $defaults ) {
-					$title   = $defaults['title'];
-					$columns = $defaults['columns'];
-				}
+			$title       = ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : '';
+			$columns     = ! empty( $dest['resort_compare'] ) ? $dest['resort_compare'] : array();
+			$battle_pack = zhiraf_ufa_default_resort_battle( $slug );
+			if ( empty( $columns ) && $battle_pack ) {
+				$title   = $battle_pack['title'];
+				$columns = $battle_pack['columns'];
 			}
 			if ( empty( $columns ) ) {
 				break;
+			}
+			if ( '' === $title && $battle_pack && ! empty( $battle_pack['title'] ) ) {
+				$title = $battle_pack['title'];
+			}
+			$battle_lead = ! empty( $dest['resort_compare_lead'] ) ? (string) $dest['resort_compare_lead'] : '';
+			if ( '' === $battle_lead && $battle_pack && ! empty( $battle_pack['lead'] ) ) {
+				$battle_lead = (string) $battle_pack['lead'];
 			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',
 				null,
 				array(
 					'title'   => $title,
+					'lead'    => $battle_lead,
 					'columns' => $columns,
 				)
 			);
+			if ( ! empty( $dest['vibes_after_central'] ) && function_exists( 'zhiraf_ufa_get_vibe_section' ) ) {
+				$vibe_section = zhiraf_ufa_get_vibe_section( $slug, $dest );
+				if ( $vibe_section ) {
+					get_template_part(
+						'template-parts/destination/vibe-cards',
+						null,
+						array(
+							'section'      => $vibe_section,
+							'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+						)
+					);
+				}
+			}
 			break;
 		case 'season':
 			$seasons = ! empty( $dest['climate_seasons'] ) ? $dest['climate_seasons'] : array();

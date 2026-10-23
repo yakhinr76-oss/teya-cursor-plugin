@@ -69,6 +69,45 @@ function zhiraf_ufa_moscow_landing_data() {
 			// ТЕКСТ НА ПРОВЕРКУ: long-form sections + FAQ (inc/destination-landings-moscow-content.php).
 			$c      = $content[ $slug ];
 			$common = zhiraf_ufa_moscow_common_sections( $to, $name );
+			if ( 'armeniya' === $slug ) {
+				$out[ $slug ]['landing_module'] = 'battle';
+				$out[ $slug ]['vibe_section']   = false;
+				$out[ $slug ]['faq_title']      = __( 'Частые вопросы об Армении', 'zhiraf-ufa' );
+				$out[ $slug ]['image']          = 'country-armeniya.jpg';
+				$out[ $slug ]['image_alt']      = __( 'Армения — храм Гарни в горах', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_lead']      = __( 'Ереван, Арарат и Шелковый путь Кавказа с вылетом из Москвы. Поможем состыковать перелёт из Уфы и выбрать между столицей и отдыхом на Севане / в Дилижане.', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_badges']    = array(
+					array( 'icon' => '🛂', 'text' => __( 'Безвизово • загранпаспорт', 'zhiraf-ufa' ) ),
+					array( 'icon' => '✈', 'text' => __( 'Вылет из Москвы • стыковка из Уфы', 'zhiraf-ufa' ) ),
+					array( 'icon' => '🏛', 'text' => __( 'Ереван • Севан • экскурсии', 'zhiraf-ufa' ) ),
+				);
+				$out[ $slug ]['faq']            = array(
+					array(
+						'q' => __( 'Входит ли в цену перелёт из Уфы?', 'zhiraf-ufa' ),
+						'a' => __( 'Нет. Цены на карточках — для вылета из Москвы. Перелёт Уфа — Москва подбираем отдельно, помогаем состыковать рейсы.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Нужен ли загранпаспорт или достаточно паспорта РФ?', 'zhiraf-ufa' ),
+						'a' => __( 'Въезд безвизовый для граждан России. Долгое время допускался и внутренний паспорт, но правила обсуждались — надёжнее действующий загранпаспорт; уточняйте актуальные требования перед поездкой.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Работают ли карты «Мир» в Армении?', 'zhiraf-ufa' ),
+						'a' => __( 'Карты «Мир» часто принимают через местную систему ArCa и банки-партнёры (в т.ч. ВТБ Армения). Visa и Mastercard российских банков за рубежом, как правило, не работают — имейте запас наличных в драмах.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Когда лучше ехать в Армению?', 'zhiraf-ufa' ),
+						'a' => $c['season'][0],
+					),
+					array(
+						'q' => __( 'Ереван или Севан и Дилижан — что выбрать?', 'zhiraf-ufa' ),
+						'a' => __( 'Ереван — кафе, музеи и радиальные выезды на один день. Севан и Дилижан — озеро, леса и тишина. Сравнение — в блоке выше; в каталоге сейчас в основном отели Еревана.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Входят ли экскурсии в цену тура?', 'zhiraf-ufa' ),
+						'a' => __( 'Нет. На сайте — перелёт из Москвы и проживание. Экскурсии в Гарни, Гегард, на Севан и в другие точки подбираем отдельно.', 'zhiraf-ufa' ),
+					),
+				);
+			} else {
 			$out[ $slug ]['extra_sections'] = array(
 				array( 'h2' => __( 'Когда ехать', 'zhiraf-ufa' ), 'paragraphs' => $c['season'] ),
 				array( 'h2' => __( 'Курорты в турах', 'zhiraf-ufa' ), 'paragraphs' => $c['resorts'] ),
@@ -79,6 +118,7 @@ function zhiraf_ufa_moscow_landing_data() {
 				array( 'h2' => __( 'Как забронировать', 'zhiraf-ufa' ), 'paragraphs' => $common['how'] ),
 			);
 			$out[ $slug ]['faq'] = array_merge( $out[ $slug ]['faq'], $c['faq'] );
+			}
 		}
 	}
 	return $out;

@@ -41,7 +41,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'maldivy'    => 'vibe',
 		'sejshely'   => 'vibe',
 		'uzbekistan' => 'vibe',
-		'armeniya'   => 'vibe',
+		'armeniya'   => 'battle',
 		'rossiya'    => 'vibe',
 		'abkhaziya'  => 'battle',
 	);
@@ -77,6 +77,10 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'indiya'     => array(
 			'image' => 'resort-severnyj-goa.jpg',
 			'alt'   => __( 'Индия — пляж Северного Гоа', 'zhiraf-ufa' ),
+		),
+		'armeniya'   => array(
+			'image' => 'country-armeniya.jpg',
+			'alt'   => __( 'Армения — храм Гарни в горах', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -263,6 +267,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'image' => 'resort-egipet-sharm-1.jpg',
 					'rows'  => array(
 						array( 'label' => __( 'Пляж', 'zhiraf-ufa' ), 'value' => __( 'Понтоны, снорклинг у рифа', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'armeniya'  => array(
+			'title'   => __( 'Ереван или Севан и Дилижан?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Винные улицы и джаз в столице — или горный воздух, озеро Севан и леса Дилижана.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Ереван', 'zhiraf-ufa' ),
+					'tag'       => __( '🍷 Городской ритм', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Сарьяна, Каскад, Вернисаж', 'zhiraf-ufa' ),
+					'meta'      => __( '20 мин от аэропорта Звартноц', 'zhiraf-ufa' ),
+					'image'     => 'alt-armeniya-yerevan.jpg',
+					'cta_label' => __( 'Искать отели в Ереване', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Гастрономия', 'zhiraf-ufa' ), 'value' => __( 'Винные рестораны Сарьяна, джаз-клубы и террасы с видом на Каскад', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Хаб', 'zhiraf-ufa' ), 'value' => __( 'Удобная база для выездов в Гарни, Гегард и Хор Вирап', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Город', 'zhiraf-ufa' ), 'value' => __( 'Площадь Республики, розовый туф и рынок «Вернисаж»', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Дилижан и Севан', 'zhiraf-ufa' ),
+					'tag'       => __( '🌲 Горы и озеро', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Природа и перезагрузка', 'zhiraf-ufa' ),
+					'meta'      => __( 'Выезд из Еревана на 1–2 часа', 'zhiraf-ufa' ),
+					'image'     => 'alt-armeniya-sevan.jpg',
+					'cta_label' => __( 'Искать отдых на Севане и в Дилижане', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Дилижан', 'zhiraf-ufa' ), 'value' => __( 'Буковые леса нацпарка и тихий горный воздух', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Севан', 'zhiraf-ufa' ), 'value' => __( 'Высокогорное озеро, Севанаванк и севанский ишхан', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отдых', 'zhiraf-ufa' ), 'value' => __( 'Эко-резорты и SPA с панорамными видами', 'zhiraf-ufa' ) ),
 					),
 				),
 			),

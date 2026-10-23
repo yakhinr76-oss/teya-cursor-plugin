@@ -189,6 +189,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'alt-armeniya-3.jpg',
 			'active' => 'travel-passport.jpg',
 		),
+		'armeniya' => array(
+			'family' => 'alt-armeniya-sevan.jpg',
+			'couple' => 'alt-armeniya-yerevan.jpg',
+			'city'   => 'alt-armeniya-2.jpg',
+			'active' => 'country-armeniya.jpg',
+		),
 		'kitaj'   => array(
 			'family' => 'country-kitaj.jpg',
 			'couple' => 'resort-sanya-2.jpg',

@@ -40,6 +40,8 @@
 | alt-sejshely-2.jpg | Сейшелы — фото страны (вариант 2) | Logan Hamm | https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/ | Discover the stunning beach with distinctive granite rocks and clear turquoise water in Seychelles. |
 | alt-sejshely-3.jpg | Сейшелы — фото страны (вариант 3) | Holger Wulschlaeger | https://www.pexels.com/photo/brown-rock-formations-on-sea-shore-5044865/ | Granite rocks on the sea shore, Seychelles |
 | alt-uzbekistan-2.jpg | Узбекистан — фото страны (вариант 2, Хива) | AXP Photography | https://www.pexels.com/photo/kaltaminor-minaret-between-the-kuhna-ark-fortress-and-the-mohammed-amin-khan-madrassah-in-uzbekistan-19473625/ | View of the iconic Kalta Minor Minaret in Khiva, showcasing Islamic architecture in summer. |
+| alt-armeniya-yerevan.jpg | Армения — Ереван | Asad Photo Maldives | https://www.pexels.com/photo/city-buildings-near-body-of-water-during-daytime-2901209/ | Cityscape, Yerevan |
+| alt-armeniya-sevan.jpg | Армения — озеро Севан | Asad Photo Maldives | https://www.pexels.com/photo/green-trees-near-body-of-water-under-blue-sky-3601422/ | Lake and mountains, Armenia |
 | alt-armeniya-2.jpg | Армения — фото страны (вариант 2) | Oleksiy Yeshtokyn,🌻🇺🇦🌻 | https://www.pexels.com/photo/khor-virap-monastery-at-sunset-in-armenia-39152787/ | A stunning view of Khor Virap Monastery set against the Armenian landscape at sunset. |
 | alt-armeniya-3.jpg | Армения — фото страны (вариант 3) | Vladimir Konoplev | https://www.pexels.com/photo/view-of-khor-virap-monastery-from-behind-the-rocks-11885462/ | Khor Virap monastery behind the rocks, Armenia |
 

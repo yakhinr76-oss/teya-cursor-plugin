@@ -48,6 +48,16 @@ h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 800; line-height: 1
 .section { padding: 80px 0; }
 .section-title { font-size: 2.5rem; margin-bottom: 0; }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
+.section-head--center {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 42rem;
+}
+.section-head--center .section-title { margin-bottom: 0; }
+.section-head--center .lead { margin-top: 12px; }
 
 /* Buttons */
 .btn {
@@ -911,6 +921,8 @@ details[open] > .faq-home__question::after {
 .dest-landing-prose__intro { font-size: 1.0625rem; line-height: 1.6; margin-bottom: 24px; }
 .dest-landing-lead-form { max-width: 520px; margin: 24px auto 0; text-align: left; }
 .dest-landing-lead-form__fields { display: flex; flex-direction: column; gap: 12px; }
+.dest-landing-lead-form__field { display: flex; flex-direction: column; gap: 6px; margin: 0; }
+.dest-landing-lead-form__field-text { font-size: 0.875rem; font-weight: 700; color: var(--color-text); }
 .dest-landing-lead-form__channel-label { display: flex; flex-direction: column; gap: 6px; margin: 0; }
 .dest-landing-lead-form__channel-text { font-size: 0.875rem; font-weight: 700; color: var(--color-text); }
 .dest-landing-cta__alt { margin-top: 16px; }

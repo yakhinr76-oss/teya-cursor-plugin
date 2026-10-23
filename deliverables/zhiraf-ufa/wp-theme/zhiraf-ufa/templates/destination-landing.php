@@ -346,8 +346,14 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 			<p><?php echo esc_html( ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ) ); ?></p>
 			<form class="zhiraf-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="dest-<?php echo esc_attr( $dest_slug ); ?>">
 				<div class="dest-landing-lead-form__fields">
-					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
-					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />
+					<label class="form-label dest-landing-lead-form__field">
+						<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Ваше имя', 'zhiraf-ufa' ); ?></span>
+						<input type="text" name="name" placeholder="<?php esc_attr_e( 'Как к вам обращаться', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
+					</label>
+					<label class="form-label dest-landing-lead-form__field">
+						<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
+						<input type="tel" name="phone" placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
+					</label>
 					<?php if ( ! empty( $dest['cta_message_placeholder'] ) ) : ?>
 						<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php echo esc_attr( $dest['cta_message_placeholder'] ); ?>"></textarea>
 					<?php endif; ?>
@@ -360,7 +366,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						</select>
 					</label>
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest['name'] ); ?>" />
+					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_slug ); ?>" />
 					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>

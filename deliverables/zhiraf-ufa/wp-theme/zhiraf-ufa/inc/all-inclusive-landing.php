@@ -15,6 +15,33 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param array<string,mixed> $tour Tour row.
  * @return bool
  */
+/**
+ * Whether a tour row has enough data for card-tour-price.php.
+ *
+ * @param array<string,mixed> $tour Tour row.
+ * @return bool
+ */
+function zhiraf_ufa_tour_valid_for_price_card( $tour ) {
+	if ( ! is_array( $tour ) ) {
+		return false;
+	}
+	$hotel_name     = ! empty( $tour['hotel_name'] ) ? (string) $tour['hotel_name'] : '';
+	$stars          = ! empty( $tour['stars'] ) ? (string) $tour['stars'] : '';
+	$resort         = ! empty( $tour['resort'] ) ? (string) $tour['resort'] : '';
+	$departure_date = ! empty( $tour['departure_date'] ) ? (string) $tour['departure_date'] : '';
+	$nights         = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;
+	$meal_code      = ! empty( $tour['meal_code'] ) ? (string) $tour['meal_code'] : '';
+	$price_rur      = ! empty( $tour['price_rur'] ) ? (int) $tour['price_rur'] : 0;
+
+	return '' !== $hotel_name
+		&& '' !== $stars
+		&& '' !== $resort
+		&& '' !== $departure_date
+		&& $nights >= 3
+		&& '' !== $meal_code
+		&& $price_rur > 0;
+}
+
 function zhiraf_ufa_tour_is_all_inclusive( $tour ) {
 	if ( ! is_array( $tour ) ) {
 		return false;
@@ -30,62 +57,99 @@ function zhiraf_ufa_tour_is_all_inclusive( $tour ) {
  * @param string $country_slug  Optional filter slug.
  * @return array<int,array<string,mixed>>
  */
-function zhiraf_ufa_get_all_inclusive_showcase_tours( $limit = 9, $country_slug = '' ) {
+function zhiraf_ufa_get_all_inclusive_showcase_tours( $limit = 6, $country_slug = '' ) {
 	if ( ! class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
 		return array();
 	}
 	$engine = Zhiraf_BG_Price_Engine::get_instance();
-	$slugs  = array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam' );
+	$slugs  = array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj' );
 	if ( '' !== $country_slug ) {
 		$slugs = array( sanitize_key( $country_slug ) );
 	}
-	$limit   = max( 1, (int) $limit );
-	$per     = '' !== $country_slug ? $limit : max( 2, (int) ceil( $limit / count( $slugs ) ) );
-	$cards   = array();
-	$seen_h  = array();
+	$limit  = max( 1, (int) $limit );
+	$pool   = array();
+	$seen_h = array();
 
 	foreach ( $slugs as $slug ) {
-		$tours = $engine->get_country_tours( $slug, 200 );
-		$ai    = array_values(
-			array_filter(
-				$tours,
-				function ( $t ) use ( &$seen_h, $slug ) {
-					if ( ! zhiraf_ufa_tour_is_all_inclusive( $t ) ) {
-						return false;
-					}
-					$key = $slug . '|' . mb_strtolower( (string) ( $t['hotel_name'] ?? '' ), 'UTF-8' );
-					if ( isset( $seen_h[ $key ] ) ) {
-						return false;
-					}
-					return true;
-				}
-			)
-		);
-		usort(
-			$ai,
-			function ( $a, $b ) {
-				$ua = ( 'UAI' === strtoupper( (string) ( $a['meal_code'] ?? '' ) ) ) ? 0 : 1;
-				$ub = ( 'UAI' === strtoupper( (string) ( $b['meal_code'] ?? '' ) ) ) ? 0 : 1;
-				if ( $ua !== $ub ) {
-					return $ua <=> $ub;
-				}
-				return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 );
+		$tours = $engine->get_country_tours( $slug, 300 );
+		foreach ( $tours as $t ) {
+			if ( ! zhiraf_ufa_tour_is_all_inclusive( $t ) || ! zhiraf_ufa_tour_valid_for_price_card( $t ) ) {
+				continue;
 			}
-		);
-		$slice = array_slice( $ai, 0, $per );
-		foreach ( $slice as $t ) {
 			$key = $slug . '|' . mb_strtolower( (string) ( $t['hotel_name'] ?? '' ), 'UTF-8' );
+			if ( isset( $seen_h[ $key ] ) ) {
+				continue;
+			}
 			$seen_h[ $key ] = true;
-			$cards[]        = $t;
+			$pool[]         = $t;
 		}
 	}
+
 	usort(
-		$cards,
+		$pool,
 		function ( $a, $b ) {
+			$ua = ( 'UAI' === strtoupper( (string) ( $a['meal_code'] ?? '' ) ) ) ? 0 : 1;
+			$ub = ( 'UAI' === strtoupper( (string) ( $b['meal_code'] ?? '' ) ) ) ? 0 : 1;
+			if ( $ua !== $ub ) {
+				return $ua <=> $ub;
+			}
 			return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 );
 		}
 	);
-	return array_slice( $cards, 0, $limit );
+
+	if ( '' === $country_slug && count( $slugs ) > 1 ) {
+		$by_country = array();
+		foreach ( $pool as $t ) {
+			$cslug = ! empty( $t['country_slug'] ) ? (string) $t['country_slug'] : '';
+			if ( '' === $cslug ) {
+				continue;
+			}
+			if ( ! isset( $by_country[ $cslug ] ) ) {
+				$by_country[ $cslug ] = array();
+			}
+			$by_country[ $cslug ][] = $t;
+		}
+		$cards = array();
+		$round = 0;
+		while ( count( $cards ) < $limit ) {
+			$added = false;
+			foreach ( $slugs as $slug ) {
+				if ( empty( $by_country[ $slug ][ $round ] ) ) {
+					continue;
+				}
+				$cards[] = $by_country[ $slug ][ $round ];
+				$added   = true;
+				if ( count( $cards ) >= $limit ) {
+					break 2;
+				}
+			}
+			if ( ! $added ) {
+				break;
+			}
+			++$round;
+		}
+		if ( count( $cards ) < $limit ) {
+			foreach ( $pool as $t ) {
+				if ( count( $cards ) >= $limit ) {
+					break;
+				}
+				$dup = false;
+				foreach ( $cards as $picked ) {
+					if ( ( $picked['hotel_name'] ?? '' ) === ( $t['hotel_name'] ?? '' )
+						&& ( $picked['country_slug'] ?? '' ) === ( $t['country_slug'] ?? '' ) ) {
+						$dup = true;
+						break;
+					}
+				}
+				if ( ! $dup ) {
+					$cards[] = $t;
+				}
+			}
+		}
+		return array_slice( $cards, 0, $limit );
+	}
+
+	return array_slice( $pool, 0, $limit );
 }
 
 /**

@@ -10,12 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$lead       = ! empty( $args['lead'] ) ? (string) $args['lead'] : '';
 $highlights = ! empty( $args['highlights'] ) && is_array( $args['highlights'] ) ? $args['highlights'] : array();
 $rows       = ! empty( $args['rows'] ) && is_array( $args['rows'] ) ? $args['rows'] : array();
 ?>
 <section class="section ai-meal-compare bg-milky">
 	<div class="container">
 		<h2 class="section-title"><?php esc_html_e( 'AI и Ultra AI — в чём разница', 'zhiraf-ufa' ); ?></h2>
+		<?php if ( '' !== $lead ) : ?>
+			<p class="lead ai-meal-compare__lead"><?php echo esc_html( $lead ); ?></p>
+		<?php endif; ?>
 		<?php if ( ! empty( $highlights ) ) : ?>
 			<div class="ai-meal-highlights">
 				<?php foreach ( $highlights as $item ) : ?>

@@ -3322,6 +3322,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.ai-meal-compare__lead {
+  max-width: 42rem;
+  margin: 8px 0 0;
+  color: var(--color-muted);
+}
+
 .ai-meal-highlights {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

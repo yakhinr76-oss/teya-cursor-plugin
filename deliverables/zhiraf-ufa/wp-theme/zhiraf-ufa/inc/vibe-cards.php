@@ -177,8 +177,66 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'dest-thailand-new.jpg',
 			'active' => 'hero-collage-3.jpg',
 		),
+		'rossiya' => array(
+			'family' => 'hero-collage-1.jpg',
+			'couple' => 'hero-collage-2.jpg',
+			'city'   => 'dest-uae-new.jpg',
+			'active' => 'travel-passport.jpg',
+		),
+		'abkhaziya' => array(
+			'family' => 'alt-armeniya-2.jpg',
+			'couple' => 'country-armeniya.jpg',
+			'city'   => 'alt-armeniya-3.jpg',
+			'active' => 'travel-passport.jpg',
+		),
+		'kitaj'   => array(
+			'family' => 'country-kitaj.jpg',
+			'couple' => 'resort-sanya-2.jpg',
+			'city'   => 'resort-sanya-3.jpg',
+			'active' => 'travel-passport.jpg',
+		),
 	);
 	return isset( $maps[ $slug ] ) ? $maps[ $slug ] : array();
+}
+
+/**
+ * Ensure vibe cards always have a theme image (fixes empty admin meta → pink placeholders).
+ *
+ * @param array<string,mixed> $section Sanitized section.
+ * @param string              $slug    Destination slug.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_enrich_vibe_section_images( $section, $slug ) {
+	if ( empty( $section['cards'] ) || ! is_array( $section['cards'] ) ) {
+		return $section;
+	}
+	$map        = zhiraf_ufa_vibe_image_map_for_slug( $slug );
+	$blueprints = array();
+	foreach ( zhiraf_ufa_vibe_card_blueprint() as $bp ) {
+		if ( ! empty( $bp['vibe_slug'] ) ) {
+			$blueprints[ $bp['vibe_slug'] ] = $bp;
+		}
+	}
+	foreach ( $section['cards'] as $i => $card ) {
+		if ( ! is_array( $card ) ) {
+			continue;
+		}
+		if ( ! empty( $card['vibe_image_id'] ) ) {
+			continue;
+		}
+		$vibe_slug = ! empty( $card['vibe_slug'] ) ? (string) $card['vibe_slug'] : '';
+		$file      = ! empty( $card['vibe_image'] ) ? (string) $card['vibe_image'] : '';
+		$path      = $file ? ZHIRAF_UFA_DIR . '/assets/images/' . ltrim( $file, '/' ) : '';
+		if ( $file && is_readable( $path ) ) {
+			continue;
+		}
+		if ( $vibe_slug && ! empty( $map[ $vibe_slug ] ) ) {
+			$section['cards'][ $i ]['vibe_image'] = $map[ $vibe_slug ];
+		} elseif ( $vibe_slug && ! empty( $blueprints[ $vibe_slug ]['vibe_image'] ) ) {
+			$section['cards'][ $i ]['vibe_image'] = $blueprints[ $vibe_slug ]['vibe_image'];
+		}
+	}
+	return $section;
 }
 
 /**
@@ -249,6 +307,7 @@ function zhiraf_ufa_get_vibe_section( $slug, $dest, $page_id = 0 ) {
 	 * @param array<string,mixed> $dest    Landing config.
 	 */
 	$section = apply_filters( 'zhiraf_ufa_vibe_section', $section, $slug, $dest );
+	$section = zhiraf_ufa_enrich_vibe_section_images( $section, $slug );
 	if ( empty( $section['cards'] ) ) {
 		return null;
 	}

@@ -158,8 +158,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				</div>
 			</div>
 			<div class="trust-social__visual reveal reveal-delay-1">
-				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства Жираф в Уфе', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
-				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда турагентства «Жираф»', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
+				<?php get_template_part( 'template-parts/home/trust-visual' ); ?>
 			</div>
 		</div>
 	</section>

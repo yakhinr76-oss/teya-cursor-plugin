@@ -63,8 +63,8 @@ function zhiraf_ufa_destination_hero_image_standards() {
 			'alt'   => __( 'Египет — Красное море и пляжный отель', 'zhiraf-ufa' ),
 		),
 		'tailand'    => array(
-			'image' => 'resort-phuket.jpg',
-			'alt'   => __( 'Таиланд — пляж с пальмами, Пхукет', 'zhiraf-ufa' ),
+			'image' => 'country-tailand.jpg',
+			'alt'   => __( 'Таиланд — лазурное море и пляж', 'zhiraf-ufa' ),
 		),
 		'vietnam'    => array(
 			'image' => 'resort-vietnam-phu-quoc-2.jpg',
@@ -190,24 +190,33 @@ function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
 function zhiraf_ufa_default_resort_battle( $slug ) {
 	$battles = array(
 		'tailand' => array(
-			'title'   => __( 'Пхукет или Паттайя: что выбрать', 'zhiraf-ufa' ),
+			'title'   => __( 'Пхукет или Паттайя: что выбрать?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Лазурное Андаманское море и островной релакс или движ, экскурсии и Ко Лан — главный выбор первой поездки в Таиланд.', 'zhiraf-ufa' ),
 			'columns' => array(
 				array(
-					'title' => __( 'Пхукет', 'zhiraf-ufa' ),
-					'tag'   => __( 'Остров и пляжи', 'zhiraf-ufa' ),
-					'image' => 'resort-phuket.jpg',
-					'rows'  => array(
-						array( 'label' => __( 'Формат', 'zhiraf-ufa' ), 'value' => __( 'Карон, Ката, закаты, островные экскурсии', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'ноябрь — апрель — штиль', 'zhiraf-ufa' ) ),
+					'title'     => __( 'Пхукет', 'zhiraf-ufa' ),
+					'tag'       => __( '🏝 Лазурное море и островной релакс', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Пляжи Карон, Ката, Банг Тао и островные экскурсии', 'zhiraf-ufa' ),
+					'image'     => 'dest-thailand.jpg',
+					'cta_label' => __( 'Смотреть отели на Пхукете', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Море и пляжи', 'zhiraf-ufa' ), 'value' => __( 'Чистое Андаманское море, белый песок — Карон, Ката, Банг Тао', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Резорты с садами, виллы и первая линия у моря', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Природа', 'zhiraf-ufa' ), 'value' => __( 'Пхи-Пхи, Симиланы, смотровые площадки и джунгли', 'zhiraf-ufa' ) ),
 					),
 				),
 				array(
-					'title' => __( 'Паттайя', 'zhiraf-ufa' ),
-					'tag'   => __( 'Город и движ', 'zhiraf-ufa' ),
-					'image' => 'dest-thailand-new.jpg',
-					'rows'  => array(
-						array( 'label' => __( 'Формат', 'zhiraf-ufa' ), 'value' => __( 'Шопинг, вечерняя жизнь, Ко Лан за 20 мин', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'море спокойнее летом, чем на западе Пхукета', 'zhiraf-ufa' ) ),
+					'title'     => __( 'Паттайя', 'zhiraf-ufa' ),
+					'tag'       => __( '🌆 Движ, экономия и экскурсии', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Бангкок рядом, Ко Лан за 15–20 минут на пароме', 'zhiraf-ufa' ),
+					'image'     => 'dest-thailand-new.jpg',
+					'cta_label' => __( 'Смотреть отели в Паттайе', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Туры и кафе часто на 20–30% доступнее, чем на Пхукете', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Экскурсии', 'zhiraf-ufa' ), 'value' => __( 'Бангкок за 2 часа, Квай, Нонг Нуч, зоопарки', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Море', 'zhiraf-ufa' ), 'value' => __( 'За лазурной водой — паром на остров Ко Лан', 'zhiraf-ufa' ) ),
 					),
 				),
 			),
@@ -357,7 +366,7 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				$has_rich_battle = false;
 				if ( ! empty( $columns ) ) {
 					foreach ( $columns as $col ) {
-						if ( ! empty( $col['cta_label'] ) || ( ! empty( $col['rows'] ) && count( $col['rows'] ) >= 2 ) ) {
+						if ( ! empty( $col['cta_label'] ) || ( ! empty( $col['rows'] ) && count( $col['rows'] ) >= 3 ) ) {
 							$has_rich_battle = true;
 							break;
 						}
@@ -387,6 +396,8 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать курорт в ОАЭ', 'zhiraf-ufa' );
 			} elseif ( 'egipet' === $slug ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Хургадой и Шармом', 'zhiraf-ufa' );
+			} elseif ( 'tailand' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между Пхукетом и Паттайей', 'zhiraf-ufa' );
 			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',

@@ -172,10 +172,10 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'active' => 'resort-egipet-marsa-alam-2.jpg',
 		),
 		'tailand' => array(
-			'family' => 'resort-phuket.jpg',
-			'couple' => 'hero-thailand.jpg',
+			'family' => 'country-tailand.jpg',
+			'couple' => 'dest-thailand.jpg',
 			'city'   => 'dest-thailand-new.jpg',
-			'active' => 'hero-collage-3.jpg',
+			'active' => 'hero-thailand.jpg',
 		),
 		'rossiya' => array(
 			'family' => 'hero-collage-1.jpg',

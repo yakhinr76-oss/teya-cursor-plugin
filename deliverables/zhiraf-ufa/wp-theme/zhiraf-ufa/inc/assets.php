@@ -739,7 +739,7 @@ function zhiraf_ufa_team_roster() {
 			'desc'              => __( 'Специализируется на пляжных направлениях Средиземного и Красного морей (Турция, Египет), подборе отелей All Inclusive и турах для семей с детьми.', 'zhiraf-ufa' ),
 			'image'             => 'team-liana.jpg',
 			'whatsapp_prefill'  => __( 'Здравствуйте! Хочу подобрать тур с Лианой (Турция / Египет).', 'zhiraf-ufa' ),
-			'messenger_label'   => __( 'Написать Лиане в WhatsApp', 'zhiraf-ufa' ),
+			'messenger_label'   => __( 'Написать в WhatsApp', 'zhiraf-ufa' ),
 			'hide_telegram'     => true,
 		),
 		array(
@@ -750,7 +750,7 @@ function zhiraf_ufa_team_roster() {
 			'desc'              => __( 'Эксперт по направлениям Азии и Ближнего Востока (Таиланд, Вьетнам, ОАЭ), визовым правилам, стыковочным авиаперелётам и экскурсионным турам.', 'zhiraf-ufa' ),
 			'image'             => 'team-alina.jpg',
 			'whatsapp_prefill'  => __( 'Здравствуйте! Хочу подобрать тур с Алиной (ОАЭ / Азия).', 'zhiraf-ufa' ),
-			'messenger_label'   => __( 'Написать Алине в WhatsApp', 'zhiraf-ufa' ),
+			'messenger_label'   => __( 'Написать в WhatsApp', 'zhiraf-ufa' ),
 			'hide_telegram'     => true,
 		),
 	);

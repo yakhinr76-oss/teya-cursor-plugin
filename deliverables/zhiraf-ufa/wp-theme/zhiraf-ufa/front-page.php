@@ -27,7 +27,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				<div class="hero-premium__actions">
 					<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
 					<?php
-					$zhiraf_wa = trim( (string) get_theme_mod( 'zhiraf_whatsapp_url', '' ) );
+					$zhiraf_wa = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : '';
 					$zhiraf_tg = trim( (string) get_theme_mod( 'zhiraf_telegram_url', '' ) );
 					if ( '' !== $zhiraf_wa ) :
 						?>

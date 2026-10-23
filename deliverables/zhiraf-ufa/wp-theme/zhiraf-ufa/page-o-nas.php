@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $zh_map_url = zhiraf_ufa_office_map_url();
-$zh_wa      = trim( (string) get_theme_mod( 'zhiraf_whatsapp_url', '' ) );
+$zh_wa      = zhiraf_ufa_brand_whatsapp_url();
 $zh_wa_dir  = zhiraf_ufa_whatsapp_url_with_text(
 	$zh_wa,
 	__( 'Здравствуйте! Хочу задать вопрос руководителю турагентства «Жираф».', 'zhiraf-ufa' )
@@ -46,6 +46,7 @@ get_header();
 					<?php
 					$file    = ! empty( $slot['file'] ) ? (string) $slot['file'] : '';
 					$caption = ! empty( $slot['caption'] ) ? (string) $slot['caption'] : '';
+					$placeholder_title = ! empty( $slot['placeholder_title'] ) ? (string) $slot['placeholder_title'] : __( 'Офис турагентства «Жираф» в Уфе', 'zhiraf-ufa' );
 					$has_img = '' !== $file && zhiraf_ufa_theme_image_exists( $file );
 					?>
 					<figure class="about-office-slot">
@@ -54,13 +55,13 @@ get_header();
 								<?php zhiraf_ufa_img( $file, $caption, 'about-office-slot__img', true ); ?>
 							<?php else : ?>
 								<div class="about-office-slot__placeholder">
-									<strong><?php esc_html_e( 'Живое фото офиса на Гагарина, 74/1', 'zhiraf-ufa' ); ?></strong>
+									<strong><?php echo esc_html( $placeholder_title ); ?></strong>
 									<p><?php echo esc_html( $caption ); ?></p>
 									<a class="btn btn--outline btn--sm" href="<?php echo esc_url( $zh_map_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Маршрут в Яндекс Картах', 'zhiraf-ufa' ); ?></a>
 								</div>
 							<?php endif; ?>
 						</div>
-						<?php if ( '' !== $caption ) : ?>
+						<?php if ( $has_img && '' !== $caption ) : ?>
 							<figcaption class="about-office-slot__caption"><?php echo esc_html( $caption ); ?></figcaption>
 						<?php endif; ?>
 					</figure>
@@ -146,6 +147,7 @@ get_header();
 			</div>
 			<div class="cta-strip__actions cta-strip__actions--about">
 				<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+				<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>" class="btn btn--outline btn--lg"><?php esc_html_e( 'Выбрать направление', 'zhiraf-ufa' ); ?></a>
 				<?php if ( '' !== $zh_wa_dir ) : ?>
 					<a href="<?php echo esc_url( $zh_wa_dir ); ?>" class="btn btn--outline btn--lg" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php esc_html_e( 'Вопрос руководителю в WhatsApp', 'zhiraf-ufa' ); ?></a>
 				<?php endif; ?>

@@ -4720,10 +4720,18 @@ a.contacts-card__value:hover {
   margin-top: auto;
 }
 
+.about-team-card__wa,
 .about-team-card__tg {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.about-team-card__wa:hover,
+.about-team-card__tg:hover {
+  color: var(--color-text);
 }
 
 .cta-strip__actions--about {

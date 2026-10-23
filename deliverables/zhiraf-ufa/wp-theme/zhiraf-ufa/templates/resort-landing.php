@@ -22,7 +22,19 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 					<a href="<?php echo esc_url( $country_url ); ?>"><?php echo esc_html( $resort_data['country_name'] ); ?></a>
 				</p>
 				<h1><?php echo esc_html( $resort_data['h1'] ); ?></h1>
-				<p class="lead"><?php echo esc_html( $resort_data['hero_lead'] ); ?></p>
+				<p class="lead dest-landing-hero__lead"><?php echo esc_html( $resort_data['hero_lead'] ); ?></p>
+				<?php if ( ! empty( $resort_data['hero_badges'] ) && is_array( $resort_data['hero_badges'] ) ) : ?>
+					<ul class="dest-landing-hero__badges" aria-label="<?php esc_attr_e( 'Ключевые условия поездки', 'zhiraf-ufa' ); ?>">
+						<?php foreach ( $resort_data['hero_badges'] as $badge ) : ?>
+							<li class="dest-landing-hero__badge">
+								<?php if ( ! empty( $badge['icon'] ) ) : ?>
+									<span class="dest-landing-hero__badge-icon" aria-hidden="true"><?php echo esc_html( $badge['icon'] ); ?></span>
+								<?php endif; ?>
+								<span><?php echo esc_html( $badge['text'] ?? '' ); ?></span>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 				<button type="button" class="btn btn--primary btn--lg" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $resort_data['quiz_prefill'] ); ?>">
 					<?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?>
 				</button>

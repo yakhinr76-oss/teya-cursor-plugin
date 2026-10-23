@@ -246,45 +246,89 @@ function zhiraf_ufa_resort_landing_data() {
 			),
 		),
 		'egipet/sharm-el-sheyh' => array(
-			'tours_rx'      => '/Шарм/iu',
+			'tours_rx'          => '/Шарм|Sharm/iu',
+			'tours_meal_prefer' => 'AI',
+			'landing_module'    => 'battle',
 			'country'       => 'egipet',
 			'country_name'  => __( 'Египет', 'zhiraf-ufa' ),
 			'resort'        => 'sharm-el-sheyh',
 			'h1'            => __( 'Туры в Шарм-эль-Шейх из Уфы', 'zhiraf-ufa' ),
 			'title'         => __( 'Шарм-эль-Шейх из Уфы — туры на море «всё включено» | Жираф', 'zhiraf-ufa' ),
 			'description'   => __( 'Подбор туров в Шарм-эль-Шейх с вылетом из Уфы: коралловые рифы заповедника Рас-Мохаммед, безветренные бухты Наама-Бей и Шарм-эль-Майя, отели All Inclusive.', 'zhiraf-ufa' ),
-			'image'         => 'hero-egypt.jpg',
-			'image_alt'     => __( 'Шарм-эль-Шейх — коралловые рифы Синайского полуострова и отдых на Красном море', 'zhiraf-ufa' ),
+			'image'         => 'resort-egipet-sharm-2.jpg',
+			'image_alt'     => __( 'Шарм-эль-Шейх — лодки у скалистого берега Красного моря', 'zhiraf-ufa' ),
+			'hero_badges'   => array(
+				array(
+					'icon' => '🛂',
+					'text' => __( 'Sinai Only: до 15 дней без визы, если не выезжаете за пределы Синая', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => '🤿',
+					'text' => __( 'Рифы и понтоны у отелей — снорклинг прямо с пляжа', 'zhiraf-ufa' ),
+				),
+			),
 			'hero_lead'      => __( 'Туры в Шарм-эль-Шейх с вылетом из Уфы: фантастический подводный мир Красного моря, отели в безветренных бухтах для зимнего отдыха и система «всё включено».', 'zhiraf-ufa' ),
 			'hero_lead_extended' => __( 'Шарм-эль-Шейх — знаменитый курорт на юге Синайского полуострова, признанная мировая столица снорклинга и дайвинга. Живые коралловые сады начинаются прямо у отельных пляжей, а закрытые бухты защищают туристов от ветров в зимний период. Турагентство «Жираф» в Уфе подбирает туры в Шарм-эль-Шейх с учётом особенностей бухт, глубины рифа и инфраструктуры отелей.', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Шарм-эль-Шейх, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Кому подходит Шарм-эль-Шейх из Уфы? Перелёт длится около 5.5–6 часов. Курорт привлекает любителей подводного плавания, пары и семьи. При поездках на срок до 15 дней гражданам РФ бесплатно ставится Синайский штамп (Sinai Only). Мы помогаем выбрать отель с подогреваемым бассейном и живым рифом.', 'zhiraf-ufa' ),
-			'sections'      => array(
+			'cta_lead'      => __( 'Оставьте контакты — подберём отели в Наама Бей или у рифов Рас-Умм-Сид под ваш бюджет и даты.', 'zhiraf-ufa' ),
+			'cta_message_placeholder' => __( 'Бухта (Наама / Рас-Умм-Сид), даты, дети, питание AI', 'zhiraf-ufa' ),
+			'resort_compare_title' => __( 'Наама Бей (песок, движ и променад) vs Хадаба и Рас-Умм-Сид (рифы, кораллы и снорклинг)', 'zhiraf-ufa' ),
+			'resort_compare_lead'  => __( 'Песчаный заход с набережной или стеновые рифы у понтона — два главных формата отдыха в Шарме.', 'zhiraf-ufa' ),
+			'resort_compare'       => array(
 				array(
-					'h2'   => __( 'Бухты Шарм-эль-Шейха: где лучше отдыхать', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Наама-Бей — сердце курорта с очищенным от кораллов песчаным заходом в море, пешеходным променадом, кафе, магазинами и клубами. Бухта отлично защищена от зимних ветров.', 'zhiraf-ufa' ),
-						__( 'Шарм-эль-Майя и Рас-Умм-Сид — самые безветренные и тёплые бухты курорта, окружённые высокими скалами. Здесь пологий песчаный вход сочетается с красивейшим коралловым рифом неподалёку.', 'zhiraf-ufa' ),
-						__( 'Бухты Шаркс-Бей и Рас-Насрани славятся одними из лучших живых рифов Красного моря. Вход в воду осуществляется с понтонов, открывая панораму подводного сада.', 'zhiraf-ufa' ),
-						__( 'Район Набк отличается широкой мелководной полосой и длинными понтонами. Летом здесь комфортно благодаря свежему бризу, а для кайтсерферов это идеальное место.', 'zhiraf-ufa' ),
-					),
-				),
-				array(
-					'h2'   => __( 'Безвизовый въезд: штамп Sinai Only', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Туристы, прилетающие в аэропорт Шарм-эль-Шейха на срок до 15 дней и не планирующие выезд за пределы Синайского полуострова, имеют право на бесплатный въездной штамп Sinai Only. Платная виза $25 требуется только при выезде на экскурсии в Каир или Александрию.', 'zhiraf-ufa' ),
-					),
-				),
-				array(
-					'h2'   => __( 'Подводный мир и экскурсии', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Главная гордость курорта — национальный морской заповедник Рас-Мохаммед и остров Тиран. Здесь можно увидеть сотни видов кораллов, тропических рыб, скатов и черепах. На суше популярны экскурсии на гору Моисея и в древний монастырь Святой Екатерины.', 'zhiraf-ufa' ),
-						sprintf(
-							__( 'Сравнить Шарм-эль-Шейх с материковой частью страны можно на странице %1$s и в статье %2$s.', 'zhiraf-ufa' ),
-							'<a href="' . esc_url( home_url( '/tour/egipet/' ) ) . '">' . esc_html__( 'туров в Египет из Уфы', 'zhiraf-ufa' ) . '</a>',
-							'<a href="' . esc_url( home_url( '/blog/turciya-ili-egipet-iz-ufy/' ) ) . '">' . esc_html__( 'сравнения Турции и Египта', 'zhiraf-ufa' ) . '</a>'
+					'title'     => __( 'Наама Бей и Шарм-эль-Майя', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Песчаный вход, без ветра и променад', 'zhiraf-ufa' ),
+					'meta'      => __( 'Защищённые бухты', 'zhiraf-ufa' ),
+					'image'     => 'resort-egipet-sharm-1.jpg',
+					'cta_label' => __( 'Искать отели в Наама Бей', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array(
+							'label' => __( 'Пляж', 'zhiraf-ufa' ),
+							'value' => __( 'Редкие для Шарма участки с песчаным дном — можно заходить в море без аквашузов.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Зима', 'zhiraf-ufa' ),
+							'value' => __( 'Бухты в скалах: вода теплее и спокойнее даже в январе–феврале.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Променад', 'zhiraf-ufa' ),
+							'value' => __( 'Рестораны, кальянные, магазины фиксированных цен и клубы у отелей.', 'zhiraf-ufa' ),
 						),
 					),
+				),
+				array(
+					'title'     => __( 'Хадаба и Рас-Умм-Сид', 'zhiraf-ufa' ),
+					'tag'       => __( '🤿 Стеновые рифы и Farsha Cafe', 'zhiraf-ufa' ),
+					'meta'      => __( 'Снорклинг у понтона', 'zhiraf-ufa' ),
+					'image'     => 'resort-egipet-sharm-2.jpg',
+					'cta_label' => __( 'Искать отели в Рас-Умм-Сид', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array(
+							'label' => __( 'Риф', 'zhiraf-ufa' ),
+							'value' => __( 'Отвесные коралловые стены с тысячами рыб прямо у кромки понтона.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Farsha Cafe', 'zhiraf-ufa' ),
+							'value' => __( 'Кафе на скале с коврами, фонарями и панорамой закатного залива.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Город', 'zhiraf-ufa' ),
+							'value' => __( 'Недалеко мечеть Аль-Сахаба и рынок морепродуктов — 5 минут на такси.', 'zhiraf-ufa' ),
+						),
+					),
+				),
+			),
+			'details_sections' => array(
+				array(
+					'q' => __( 'Штамп Sinai Only: когда виза не нужна', 'zhiraf-ufa' ),
+					'a' => __( 'При вылете в аэропорт Шарм-эль-Шейха на срок до 15 дней без выезда за пределы Синая в паспорт ставится бесплатный штамп Sinai Only. Платная виза ($25) нужна, если едете на материк — в Каир, Луксор или Александрию.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Подводный мир и экскурсии', 'zhiraf-ufa' ),
+					'a' => __( 'Заповедник Рас-Мохаммед, остров Тиран, снорклинг с понтонов. На суше — гора Моисея и монастырь Святой Екатерины. Сравнить с Хургадой можно на странице курорта или в каталоге Египта.', 'zhiraf-ufa' ),
 				),
 			),
 			'faq'           => array(
@@ -471,47 +515,79 @@ function zhiraf_ufa_get_resort_landing( $country, $resort ) {
 }
 
 /**
- * Top tour cards for a resort landing (regex filter + optional AI preference).
+ * All tours for a country that match a resort regex (full feed, not the 200-card API slice).
  *
- * @param array<string,mixed> $resort_data Resort config.
- * @param int                 $limit       Cards.
+ * @param string $country_slug Country slug.
+ * @param string $resort_rx    PCRE for resort label.
  * @return array<int,array<string,mixed>>
  */
+function zhiraf_ufa_resort_tours_source_pool( $country_slug, $resort_rx ) {
+	if ( ! class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
+		return array();
+	}
+	$engine = Zhiraf_BG_Price_Engine::get_instance();
+	$bundle = $engine->get_bundle_data();
+	$slug   = (string) $country_slug;
+	$tours  = array();
+	if ( ! empty( $bundle['destinations'][ $slug ] ) && is_array( $bundle['destinations'][ $slug ] ) ) {
+		$tours = $bundle['destinations'][ $slug ];
+	}
+	if ( empty( $tours ) ) {
+		$fixtures = $engine->get_fixtures_data();
+		if ( ! empty( $fixtures['destinations'][ $slug ] ) && is_array( $fixtures['destinations'][ $slug ] ) ) {
+			$tours = $fixtures['destinations'][ $slug ];
+		}
+	}
+	return array_values(
+		array_filter(
+			$tours,
+			function ( $t ) use ( $resort_rx ) {
+				return preg_match( $resort_rx, (string) ( $t['resort'] ?? '' ) );
+			}
+		)
+	);
+}
+
+/**
+ * Pick up to N cheapest tours with unique hotel names (resort pages show several hotels in one bay).
+ *
+ * @param array<int,array<string,mixed>> $tours Matched tours.
+ * @param int                            $limit Cards.
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_pick_resort_showcase_tours( array $tours, $limit = 3 ) {
+	usort(
+		$tours,
+		function ( $a, $b ) {
+			return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 );
+		}
+	);
+	$pick = array();
+	$seen = array();
+	foreach ( $tours as $t ) {
+		$key = mb_strtolower( (string) ( $t['hotel_name'] ?? '' ), 'UTF-8' );
+		if ( '' === $key || isset( $seen[ $key ] ) ) {
+			continue;
+		}
+		$seen[ $key ] = true;
+		$pick[]       = $t;
+		if ( count( $pick ) >= $limit ) {
+			break;
+		}
+	}
+	return $pick;
+}
+
 function zhiraf_ufa_get_resort_top_tours( array $resort_data, $limit = 3 ) {
 	if ( empty( $resort_data['country'] ) || empty( $resort_data['tours_rx'] ) ) {
 		return array();
 	}
 	$rx    = (string) $resort_data['tours_rx'];
-	$cards = zhiraf_ufa_get_country_top_tours( (string) $resort_data['country'], (int) $limit, $rx );
-	if ( count( $cards ) < $limit && class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
-		$fixtures = Zhiraf_BG_Price_Engine::get_instance()->get_fixtures_data();
-		$slug     = (string) $resort_data['country'];
-		if ( ! empty( $fixtures['destinations'][ $slug ] ) && is_array( $fixtures['destinations'][ $slug ] ) ) {
-			$extra = array_values(
-				array_filter(
-					$fixtures['destinations'][ $slug ],
-					function ( $t ) use ( $rx ) {
-						return preg_match( $rx, (string) ( $t['resort'] ?? '' ) );
-					}
-				)
-			);
-			usort( $extra, function ( $a, $b ) { return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 ); } );
-			$seen = array();
-			foreach ( $cards as $t ) {
-				$seen[ (string) ( $t['resort'] ?? '' ) ] = true;
-			}
-			foreach ( $extra as $t ) {
-				$r = (string) ( $t['resort'] ?? '' );
-				if ( isset( $seen[ $r ] ) ) {
-					continue;
-				}
-				$seen[ $r ] = true;
-				$cards[]    = $t;
-				if ( count( $cards ) >= $limit ) {
-					break;
-				}
-			}
-		}
+	$pool  = zhiraf_ufa_resort_tours_source_pool( (string) $resort_data['country'], $rx );
+	$cards = zhiraf_ufa_pick_resort_showcase_tours( $pool, (int) $limit );
+	if ( count( $cards ) < $limit ) {
+		$api_cards = zhiraf_ufa_get_country_top_tours( (string) $resort_data['country'], (int) $limit, $rx );
+		$cards     = zhiraf_ufa_pick_resort_showcase_tours( array_merge( $cards, $api_cards ), (int) $limit );
 	}
 	if ( empty( $resort_data['tours_meal_prefer'] ) || 'AI' !== $resort_data['tours_meal_prefer'] || count( $cards ) < 2 ) {
 		return array_slice( $cards, 0, $limit );

@@ -17,14 +17,21 @@ if ( empty( $dest['slug'] ) ) {
 }
 
 $min     = function_exists( 'zhiraf_ufa_get_country_min_tour' ) ? zhiraf_ufa_get_country_min_tour( $dest['slug'] ) : null;
-$flight  = function_exists( 'zhiraf_ufa_tour_flight_info' ) ? zhiraf_ufa_tour_flight_info( $min, 'Уфа' ) : array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
+$flight = function_exists( 'zhiraf_ufa_tour_flight_info' )
+	? zhiraf_ufa_tour_flight_info( $min, 'Уфа' )
+	: array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
+$flight_tone = ( 'direct' === $flight['key'] ) ? 'direct' : 'connection';
+if ( 'mow' === $flight['key'] ) {
+	$flight['icon']  = '⇄';
+	$flight['label'] = __( 'через Москву', 'zhiraf-ufa' );
+}
 $package = function_exists( 'zhiraf_ufa_bento_package_summary' ) ? zhiraf_ufa_bento_package_summary( $min ) : '';
 $teaser  = ! empty( $dest['teaser'] ) ? $dest['teaser'] : __( 'Пакетные туры с перелётом и отелем — подберём под ваши даты.', 'zhiraf-ufa' );
 ?>
 <article class="catalog-dest-card dest-card" data-dest="<?php echo esc_attr( $dest['slug'] ); ?>">
 	<a class="catalog-dest-card__media" href="<?php echo esc_url( $dest['url'] ); ?>">
 		<?php zhiraf_ufa_img( $dest['image'], $dest['alt'], 'catalog-dest-card__img dest-card__img', true ); ?>
-		<span class="catalog-dest-card__flight catalog-dest-card__flight--<?php echo esc_attr( $flight['key'] ); ?>">
+		<span class="catalog-dest-card__flight catalog-dest-card__flight--<?php echo esc_attr( $flight_tone ); ?>">
 			<span aria-hidden="true"><?php echo esc_html( $flight['icon'] ); ?></span>
 			<?php echo esc_html( $flight['label'] ); ?>
 		</span>

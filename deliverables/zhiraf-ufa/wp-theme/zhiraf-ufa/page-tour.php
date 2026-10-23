@@ -81,15 +81,6 @@ get_header();
 				</ul>
 			</div>
 
-			<p class="catalog-price-note">
-				<?php
-				printf(
-					esc_html__( 'Цены «от» — минимум туроператора на %1$s за пакет на 2 взрослых (перелёт + отель). Итог фиксируем в договоре.', 'zhiraf-ufa' ),
-					esc_html( function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : gmdate( 'd.m.Y' ) )
-				);
-				?>
-			</p>
-
 			<div class="dest-grid dest-grid--catalog">
 				<?php foreach ( $catalog_dests as $dest ) : ?>
 					<?php
@@ -101,6 +92,15 @@ get_header();
 					?>
 				<?php endforeach; ?>
 			</div>
+
+			<p class="catalog-price-note catalog-price-note--after-grid">
+				<?php
+				printf(
+					esc_html__( 'Цены «от» — минимум туроператора на %1$s за пакет на 2 взрослых (перелёт + отель). Итог фиксируем в договоре.', 'zhiraf-ufa' ),
+					esc_html( function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : gmdate( 'd.m.Y' ) )
+				);
+				?>
+			</p>
 		</div>
 	</section>
 

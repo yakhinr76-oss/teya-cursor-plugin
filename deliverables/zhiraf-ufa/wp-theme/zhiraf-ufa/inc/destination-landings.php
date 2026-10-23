@@ -465,8 +465,8 @@ function zhiraf_ufa_destination_landing_data() {
 			'h1'             => __( 'Туры во Вьетнам из Уфы', 'zhiraf-ufa' ),
 			'title'          => __( 'Вьетнам из Уфы — туры в Нячанг и на Фукуок | Жираф', 'zhiraf-ufa' ),
 			'description'    => __( 'Подбор туров во Вьетнам с вылетом из Уфы: курорты Нячанг, остров Фукуок и Фантьет. Пляжный отдых, тёплое море, безвизовый въезд до 45 дней, консультации турагентства «Жираф».', 'zhiraf-ufa' ),
-			'image'          => 'resort-vietnam-phu-quoc-1.jpg',
-			'image_alt'      => __( 'Вьетнам — пляж Фукуок с пальмами', 'zhiraf-ufa' ),
+			'image'          => 'resort-vietnam-phu-quoc-2.jpg',
+			'image_alt'      => __( 'Вьетнам — побережье острова Фукуок', 'zhiraf-ufa' ),
 			'hero_lead'      => __( 'Нячанг и Фукуок с вылетом из Уфы через Москву. Подберём курорт под ваш месяц отпуска — чтобы не попасть в сезон штормов.', 'zhiraf-ufa' ),
 			'hero_cta_hint'  => __( 'Сравним отели и перелёт — ответим в WhatsApp, Telegram или перезвоним.', 'zhiraf-ufa' ),
 			'hero_badges'    => array(
@@ -494,7 +494,7 @@ function zhiraf_ufa_destination_landing_data() {
 				array(
 					'title' => __( 'Нячанг', 'zhiraf-ufa' ),
 					'tag'   => __( 'Город и море', 'zhiraf-ufa' ),
-					'image' => 'resort-vietnam-nha-trang-1.jpg',
+					'image' => 'resort-vietnam-nha-trang-2.jpg',
 					'rows'  => array(
 						array(
 							'label' => __( 'Атмосфера', 'zhiraf-ufa' ),
@@ -513,11 +513,19 @@ function zhiraf_ufa_destination_landing_data() {
 				array(
 					'title' => __( 'Фукуок', 'zhiraf-ufa' ),
 					'tag'   => __( 'Остров-релакс', 'zhiraf-ufa' ),
-					'image' => 'resort-vietnam-phu-quoc-1.jpg',
+					'image' => 'resort-vietnam-phu-quoc-2.jpg',
 					'rows'  => array(
 						array(
+							'label' => __( 'Запад (Лонг Бич)', 'zhiraf-ufa' ),
+							'value' => __( 'Закаты, ночной рынок Зыонгдонг, кафе — отели часто через дорогу от пляжа', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Юг и восток (Бай Сао)', 'zhiraf-ufa' ),
+							'value' => __( 'Белый «мальдивский» песок, лазурная вода, закрытые резорты вдали от города', 'zhiraf-ufa' ),
+						),
+						array(
 							'label' => __( 'Атмосфера', 'zhiraf-ufa' ),
-							'value' => __( 'Белый песок, закаты, резорты, Vinpearl Safari', 'zhiraf-ufa' ),
+							'value' => __( 'Островной релакс, Vinpearl Safari, канатная дорога Хон Тхом', 'zhiraf-ufa' ),
 						),
 						array(
 							'label' => __( 'Лучший сезон', 'zhiraf-ufa' ),
@@ -582,7 +590,7 @@ function zhiraf_ufa_destination_landing_data() {
 				),
 				array(
 					'label' => __( 'Туры на Фукуок из Уфы', 'zhiraf-ufa' ),
-					'url'   => home_url( '/tour/vietnam/fukuok/' ),
+					'url'   => home_url( '/tour/vietnam/#dest-module' ),
 					'desc'  => __( 'Тропический остров в Сиамском заливе, белоснежные пляжи, спокойное лазурное море и релакс.', 'zhiraf-ufa' ),
 				),
 			),

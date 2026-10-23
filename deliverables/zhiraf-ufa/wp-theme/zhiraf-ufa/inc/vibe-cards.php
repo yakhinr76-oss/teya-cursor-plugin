@@ -225,6 +225,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'country-shri-lanka.jpg',
 			'active' => 'alt-shri-lanka-3.jpg',
 		),
+		'uzbekistan' => array(
+			'family' => 'resort-samarkand.jpg',
+			'couple' => 'country-uzbekistan.jpg',
+			'city'   => 'alt-uzbekistan-3.jpg',
+			'active' => 'alt-uzbekistan-2.jpg',
+		),
 		'vse-vklyucheno' => array(
 			'family' => 'resort-turciya-alanya-2.jpg',
 			'couple' => 'resort-egipet-sharm-1.jpg',

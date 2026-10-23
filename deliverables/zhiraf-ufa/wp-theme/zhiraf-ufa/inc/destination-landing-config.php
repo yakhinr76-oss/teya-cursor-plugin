@@ -40,7 +40,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'indoneziya' => 'battle',
 		'maldivy'    => 'battle',
 		'sejshely'   => 'battle',
-		'uzbekistan' => 'vibe',
+		'uzbekistan' => 'battle',
 		'armeniya'   => 'vibe',
 		'rossiya'    => 'battle',
 		'abkhaziya'  => 'battle',
@@ -101,6 +101,10 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'shri-lanka' => array(
 			'image' => 'country-shri-lanka.jpg',
 			'alt'   => __( 'Шри-Ланка — рыбаки на шестах в океане', 'zhiraf-ufa' ),
+		),
+		'uzbekistan' => array(
+			'image' => 'resort-samarkand.jpg',
+			'alt'   => __( 'Узбекистан — площадь Регистан в Самарканде', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -575,6 +579,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 						array( 'label' => __( 'Пляжи', 'zhiraf-ufa' ), 'value' => __( 'Светлый песок, пологий вход — Маджорда, Варка, Кавелоссим', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Taj Exotica, The Leela, Alila Diwa — большие зелёные территории', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Для кого', 'zhiraf-ufa' ), 'value' => __( 'Тишина без шумных толп — семьи с детьми и романтический отдых', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'uzbekistan' => array(
+			'title'   => __( 'Самарканд или Бухара?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Имперский масштаб Регистана и поезда «Афросиаб» — или средневековый город-музей с куполами базаров.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Самарканд', 'zhiraf-ufa' ),
+					'tag'       => __( '🕌 Масштаб Тамерлана', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Регистан, Гур-Эмир, Биби-Ханым', 'zhiraf-ufa' ),
+					'meta'      => __( 'Аэропорт • «Афросиаб»', 'zhiraf-ufa' ),
+					'image'     => 'resort-samarkand.jpg',
+					'cta_label' => __( 'Искать туры в Самарканд', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Архитектура', 'zhiraf-ufa' ), 'value' => __( 'Регистан, Гур-Эмир и Биби-Ханым — бирюзовые купола и монументальный масштаб', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Логистика', 'zhiraf-ufa' ), 'value' => __( 'Международный аэропорт, скоростной поезд «Афросиаб» до Ташкента и Бухары', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Комфорт', 'zhiraf-ufa' ), 'value' => __( 'Курортный комплекс Silk Road Samarkand с отелями 5★', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Бухара', 'zhiraf-ufa' ),
+					'tag'       => __( '🏺 Восточная сказка', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Калян, Арк, Ляби-Хауз', 'zhiraf-ufa' ),
+					'meta'      => __( 'Исторический центр пешком', 'zhiraf-ufa' ),
+					'image'     => 'alt-uzbekistan-3.jpg',
+					'cta_label' => __( 'Искать туры в Бухару', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Город-музей', 'zhiraf-ufa' ), 'value' => __( 'Калян, Арк и Ляби-Хауз — всё в пешей доступности', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Ремёсла', 'zhiraf-ufa' ), 'value' => __( 'Торговые купола с керамикой, коврами и специями', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Проживание', 'zhiraf-ufa' ), 'value' => __( 'Бутик-отели в домах XIX века с айванами и резными дворами', 'zhiraf-ufa' ) ),
 					),
 				),
 			),

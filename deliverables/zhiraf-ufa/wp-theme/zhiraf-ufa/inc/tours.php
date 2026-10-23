@@ -119,7 +119,12 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
 			'маафуш'    => array( 'resort-maldivy-atoll-2.jpg', 'resort-maldivy-atoll-1.jpg' ),
 		),
-		'uzbekistan' => array( 'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ), 'хива' => array( 'alt-uzbekistan-2.jpg' ) ),
+		'uzbekistan' => array(
+			'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ),
+			'бухара'    => array( 'alt-uzbekistan-3.jpg', 'country-uzbekistan.jpg' ),
+			'ташкент'   => array( 'country-uzbekistan.jpg', 'resort-samarkand.jpg' ),
+			'хива'      => array( 'alt-uzbekistan-2.jpg', 'alt-uzbekistan-3.jpg' ),
+		),
 		'shri-lanka' => array(
 			'унаватун' => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' ),
 			'хиккадув' => array( 'alt-shri-lanka-beach-2.jpg', 'alt-shri-lanka-beach-1.jpg' ),
@@ -191,7 +196,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
 		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
 		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
-		'uzbekistan' => array( 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg' ),
+		'uzbekistan' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg', 'alt-uzbekistan-3.jpg' ),
 		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
 		'rossiya'    => array( 'hero-collage-1.jpg', 'hero-collage-2.jpg', 'hero-collage-3.jpg' ),
 		'abkhaziya'  => array( 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg', 'country-armeniya.jpg' ),

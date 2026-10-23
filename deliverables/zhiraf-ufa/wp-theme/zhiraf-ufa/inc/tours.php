@@ -96,11 +96,14 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'муйне'    => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
 		),
 		'oae'        => array(
-			'дубай'    => array( 'hero-uae.jpg', 'dest-uae-new.jpg' ),
-			'шарджа'   => array( 'dest-uae.jpg', 'dest-uae-new.jpg' ),
-			'рас-эль'  => array( 'dest-uae-new.jpg', 'dest-uae.jpg' ),
-			'абу-даби' => array( 'resort-abu-dabi.jpg', 'dest-uae-new.jpg' ),
-			'фуджей'   => array( 'dest-uae-new.jpg' ),
+			'дубай'    => array( 'hero-uae.jpg', 'dest-uae.jpg', 'country-oae.jpg' ),
+			'шарджа'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'рас-эль'  => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'рас аль'  => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'абу-даби' => array( 'resort-abu-dabi.jpg', 'hero-uae.jpg' ),
+			'абу даби' => array( 'resort-abu-dabi.jpg', 'hero-uae.jpg' ),
+			'фуджей'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'аджман'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
 		),
 		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
@@ -121,11 +124,19 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'egipet'     => array(
 			'resort-egipet-hurghada-2.jpg',
 			'resort-egipet-hurghada-1.jpg',
-			'resort-egipet-el-gouna-1.jpg',
+			'resort-egipet-sharm-2.jpg',
 			'resort-egipet-marsa-alam-2.jpg',
+			'hero-egypt.jpg',
+			'resort-egipet-el-gouna-1.jpg',
 			'resort-egipet-sharm-1.jpg',
 		),
-		'oae'        => array( 'hero-uae.jpg', 'dest-uae-new.jpg', 'dest-uae.jpg', 'resort-abu-dabi.jpg' ),
+		'oae'        => array(
+			'hero-uae.jpg',
+			'dest-uae.jpg',
+			'dest-uae-new.jpg',
+			'resort-abu-dabi.jpg',
+			'country-oae.jpg',
+		),
 		'tailand'    => array( 'resort-phuket.jpg', 'hero-thailand.jpg', 'dest-thailand-new.jpg' ),
 		'vietnam'    => array(
 			'resort-vietnam-nha-trang-2.jpg',
@@ -172,15 +183,14 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		// No library photo => gradient (never a wrong country's photo).
 		return array( 'file' => '', 'is_resort' => false, 'alt' => '' );
 	}
-	// Never repeat the same fallback on adjacent cards: prefer unused, then rotate by slot index.
-	if ( null !== $card_index && count( $candidates ) > 1 ) {
+	// Listing grids: when the resort pool is tiny (often one skyline stock), rotate the country pool by card slot.
+	if ( null !== $card_index && isset( $country_photos[ $slug ] ) && count( $country_photos[ $slug ] ) > count( $candidates ) ) {
+		$candidates = $country_photos[ $slug ];
+		$is_resort  = false;
+	}
+	// Never repeat the same fallback on adjacent cards: strict slot rotation on grids, least-used elsewhere.
+	if ( null !== $card_index && count( $candidates ) > 0 ) {
 		$pick = $candidates[ ( (int) $card_index ) % count( $candidates ) ];
-		foreach ( $candidates as $f ) {
-			if ( 0 === ( $used[ $f ] ?? 0 ) ) {
-				$pick = $f;
-				break;
-			}
-		}
 	} else {
 		$pick = $candidates[0];
 		foreach ( $candidates as $f ) {

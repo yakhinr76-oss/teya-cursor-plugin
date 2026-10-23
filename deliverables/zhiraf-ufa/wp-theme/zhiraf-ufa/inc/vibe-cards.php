@@ -166,10 +166,10 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'active' => 'resort-turciya-antalya-2.jpg',
 		),
 		'egipet'  => array(
-			'family' => 'resort-egipet-hurghada-1.jpg',
-			'couple' => 'resort-egipet-sharm-1.jpg',
+			'family' => 'resort-egipet-hurghada-2.jpg',
+			'couple' => 'resort-egipet-sharm-2.jpg',
 			'city'   => 'resort-egipet-el-gouna-1.jpg',
-			'active' => 'resort-egipet-marsa-alam-1.jpg',
+			'active' => 'resort-egipet-marsa-alam-2.jpg',
 		),
 		'tailand' => array(
 			'family' => 'resort-phuket.jpg',

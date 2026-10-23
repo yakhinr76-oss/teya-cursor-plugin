@@ -474,10 +474,14 @@ function zhiraf_ufa_destination_landing_data() {
 		),
 		'vietnam'  => array(
 			'name'           => __( 'Вьетнам', 'zhiraf-ufa' ),
+			'vibes_after_central' => true,
+			'hide_geo_block'      => true,
+			'seo_prose_accordions' => true,
+			'prose_accordion_title' => __( 'Подробнее о сезоне, визе и питании во Вьетнаме', 'zhiraf-ufa' ),
 			'h1'             => __( 'Туры во Вьетнам из Уфы', 'zhiraf-ufa' ),
 			'title'          => __( 'Вьетнам из Уфы — туры в Нячанг и на Фукуок | Жираф', 'zhiraf-ufa' ),
 			'description'    => __( 'Подбор туров во Вьетнам с вылетом из Уфы: курорты Нячанг, остров Фукуок и Фантьет. Пляжный отдых, тёплое море, безвизовый въезд до 45 дней, консультации турагентства «Жираф».', 'zhiraf-ufa' ),
-			'image'          => 'resort-vietnam-phu-quoc-1.jpg',
+			'image'          => 'resort-vietnam-phu-quoc-2.jpg',
 			'image_alt'      => __( 'Вьетнам — пляж Фукуок с пальмами', 'zhiraf-ufa' ),
 			'hero_lead'      => __( 'Нячанг и Фукуок с вылетом из Уфы через Москву. Подберём курорт под ваш месяц отпуска — чтобы не попасть в сезон штормов.', 'zhiraf-ufa' ),
 			'hero_cta_hint'  => __( 'Сравним отели и перелёт — ответим в WhatsApp, Telegram или перезвоним.', 'zhiraf-ufa' ),
@@ -501,44 +505,16 @@ function zhiraf_ufa_destination_landing_data() {
 				array( 'id' => 'phuquoc', 'label' => __( 'Фукуок', 'zhiraf-ufa' ) ),
 				array( 'id' => 'muine', 'label' => __( 'Фантьет / Муйне', 'zhiraf-ufa' ) ),
 			),
-			'resort_compare_title' => __( 'Нячанг или Фукуок: быстрое сравнение', 'zhiraf-ufa' ),
-			'resort_compare' => array(
-				array(
-					'title' => __( 'Нячанг', 'zhiraf-ufa' ),
-					'tag'   => __( 'Город и море', 'zhiraf-ufa' ),
-					'image' => 'resort-vietnam-nha-trang-1.jpg',
-					'rows'  => array(
-						array(
-							'label' => __( 'Атмосфера', 'zhiraf-ufa' ),
-							'value' => __( 'Набережная, морепродукты, VinWonders, экскурсии', 'zhiraf-ufa' ),
-						),
-						array(
-							'label' => __( 'Лучший сезон', 'zhiraf-ufa' ),
-							'value' => __( 'февраль — август (штиль, +27…+29°C в воде)', 'zhiraf-ufa' ),
-						),
-						array(
-							'label' => __( 'Осторожно', 'zhiraf-ufa' ),
-							'value' => __( 'осень — волны и дожди, море неспокойное', 'zhiraf-ufa' ),
-						),
+			'season_at_a_glance' => array(
+				'title' => __( 'Когда куда лететь', 'zhiraf-ufa' ),
+				'rows'  => array(
+					array(
+						'resort' => __( 'Нячанг', 'zhiraf-ufa' ),
+						'when'   => __( 'март — сентябрь', 'zhiraf-ufa' ),
 					),
-				),
-				array(
-					'title' => __( 'Фукуок', 'zhiraf-ufa' ),
-					'tag'   => __( 'Остров-релакс', 'zhiraf-ufa' ),
-					'image' => 'resort-vietnam-phu-quoc-1.jpg',
-					'rows'  => array(
-						array(
-							'label' => __( 'Атмосфера', 'zhiraf-ufa' ),
-							'value' => __( 'Белый песок, закаты, резорты, Vinpearl Safari', 'zhiraf-ufa' ),
-						),
-						array(
-							'label' => __( 'Лучший сезон', 'zhiraf-ufa' ),
-							'value' => __( 'ноябрь — апрель (идеальный штиль)', 'zhiraf-ufa' ),
-						),
-						array(
-							'label' => __( 'Осторожно', 'zhiraf-ufa' ),
-							'value' => __( 'летом — дожди и высокая влажность', 'zhiraf-ufa' ),
-						),
+					array(
+						'resort' => __( 'Фукуок', 'zhiraf-ufa' ),
+						'when'   => __( 'ноябрь — апрель', 'zhiraf-ufa' ),
 					),
 				),
 			),
@@ -570,15 +546,6 @@ function zhiraf_ufa_destination_landing_data() {
 					'air'    => '+30°C+',
 					'water'  => '+29°C',
 					'tip'    => __( 'Дожди — выгодные цены, но планируйте запас по погоде', 'zhiraf-ufa' ),
-				),
-			),
-			'emirate_cards_title' => __( 'Фантьет и Муйне — когда смотреть', 'zhiraf-ufa' ),
-			'emirate_cards'  => array(
-				array(
-					'title' => __( 'Фантьет и Муйне', 'zhiraf-ufa' ),
-					'tag'   => __( 'Дюны и виндсёрф', 'zhiraf-ufa' ),
-					'image' => 'resort-vietnam-phan-thiet-1.jpg',
-					'text'  => __( 'Широкие пляжи, красные и белые дюны, бунгало-отели — альтернатива, если даты не совпали с сезоном Нячанга или Фукуока.', 'zhiraf-ufa' ),
 				),
 			),
 			'cta_lead'       => __( 'Не знаете, что выбрать — Нячанг или Фукуок? Напишите, в каком месяце планируете отпуск, и мы пришлём сравнение отелей и перелёта.', 'zhiraf-ufa' ),

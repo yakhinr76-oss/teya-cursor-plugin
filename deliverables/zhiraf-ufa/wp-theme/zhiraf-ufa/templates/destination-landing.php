@@ -19,6 +19,7 @@ $tour_collapsed_after = ! empty( $dest['tour_collapsed_after'] ) ? (int) $dest['
 $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours( $dest_slug, $tour_limit ) : array();
 $emphasize_flight    = ! empty( $dest['emphasize_flight'] );
 $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' ) ? zhiraf_ufa_destination_landing_module( $dest_slug, $dest ) : 'vibe';
+$dest_show_resort_compare_in_prose = ( 'battle' !== $central_module && ! empty( $dest['resort_compare'] ) );
 ?>
 <main id="primary" class="site-main site-main--destination">
 	<section class="dest-landing-hero">
@@ -151,10 +152,29 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 		</section>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || ! empty( $dest['resort_compare'] ) || ! empty( $dest['seo_prose_accordions'] ) ) : ?>
+	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) ) : ?>
 	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
 		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
+			<?php if ( ! empty( $dest['season_at_a_glance'] ) && is_array( $dest['season_at_a_glance'] ) && ! empty( $dest['season_at_a_glance']['rows'] ) ) : ?>
+				<h2 class="section-title dest-season-glance__title"><?php echo esc_html( ! empty( $dest['season_at_a_glance']['title'] ) ? $dest['season_at_a_glance']['title'] : __( 'Когда куда лететь', 'zhiraf-ufa' ) ); ?></h2>
+				<table class="dest-season-glance">
+					<thead>
+						<tr>
+							<th scope="col"><?php esc_html_e( 'Курорт', 'zhiraf-ufa' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Лучший сезон для купания', 'zhiraf-ufa' ); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ( $dest['season_at_a_glance']['rows'] as $row ) : ?>
+							<tr>
+								<td><?php echo esc_html( $row['resort'] ?? '' ); ?></td>
+								<td><?php echo esc_html( $row['when'] ?? '' ); ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php endif; ?>
 			<?php if ( ! empty( $dest['seo_prose_accordions'] ) ) : ?>
 				<details class="dest-prose-accordion dest-prose-accordion--seo">
 					<summary class="dest-prose-accordion__summary">
@@ -237,7 +257,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 				<p><?php echo esc_html( $dest['season'] ); ?></p>
 			<?php endif; ?>
 
-			<?php if ( 'battle' !== $central_module && ! empty( $dest['resort_compare'] ) && is_array( $dest['resort_compare'] ) ) : ?>
+			<?php if ( $dest_show_resort_compare_in_prose && is_array( $dest['resort_compare'] ) ) : ?>
 				<h2><?php echo esc_html( ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : __( 'Нячанг или Фукуок: что выбрать', 'zhiraf-ufa' ) ); ?></h2>
 				<div class="dest-resort-compare">
 					<?php foreach ( $dest['resort_compare'] as $col ) : ?>

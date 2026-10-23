@@ -67,8 +67,8 @@ function zhiraf_ufa_destination_hero_image_standards() {
 			'alt'   => __( 'Таиланд — лазурное море и пляж', 'zhiraf-ufa' ),
 		),
 		'vietnam'    => array(
-			'image' => 'resort-vietnam-phu-quoc-1.jpg',
-			'alt'   => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
+			'image' => 'resort-vietnam-phu-quoc-2.jpg',
+			'alt'   => __( 'Вьетнам — пляж и море Фукуок', 'zhiraf-ufa' ),
 		),
 		'kitaj'      => array(
 			'image' => 'resort-sanya-2.jpg',
@@ -221,6 +221,38 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 			),
 		),
+		'vietnam' => array(
+			'title'   => __( 'Нячанг или Фукуок: быстрое сравнение', 'zhiraf-ufa' ),
+			'lead'    => __( 'Сезоны здесь не совпадают: в один месяц на Фукуоке штиль, а в Нячанге — волны. Выберите курорт под даты вылета из Уфы.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Нячанг', 'zhiraf-ufa' ),
+					'tag'       => __( '🏙 Городской пляж, движ и бюджет', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Лучшее море с марта по сентябрь', 'zhiraf-ufa' ),
+					'image'     => 'resort-vietnam-nha-trang-2.jpg',
+					'cta_label' => __( 'Выбрать туры в Нячанг', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Сезон без волн', 'zhiraf-ufa' ), 'value' => __( 'Идеальное купание март — сентябрь: сухой штиль и тёплая вода', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'Морепродукты, кофейни, ночные рынки и парки', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Развлечения', 'zhiraf-ufa' ), 'value' => __( 'VinWonders с канатной дорогой над морем', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Остров Фукуок', 'zhiraf-ufa' ),
+					'tag'       => __( '🏝 Тропический релакс и прозрачное море', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Зимний высокий сезон — ноябрь — апрель', 'zhiraf-ufa' ),
+					'image'     => 'resort-vietnam-phu-quoc-2.jpg',
+					'cta_label' => __( 'Выбрать туры на Фукуок', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Зимний сезон', 'zhiraf-ufa' ), 'value' => __( 'Ноябрь — апрель: штиль, когда в России зима', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Пляжи', 'zhiraf-ufa' ), 'value' => __( 'Белый песок, бирюзовая вода — Бай Сао, Кхем', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Резорты на первой линии, бунгало в пальмах', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
 		'oae'     => array(
 			'title'   => __( 'Дубай или Рас-эль-Хайма: какой эмират выбрать?', 'zhiraf-ufa' ),
 			'lead'    => __( 'Энергия небоскрёбов и шопинга или беззаботный курортный All Inclusive на первой линии.', 'zhiraf-ufa' ),
@@ -366,7 +398,7 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				$has_rich_battle = false;
 				if ( ! empty( $columns ) ) {
 					foreach ( $columns as $col ) {
-						if ( ! empty( $col['cta_label'] ) || ( ! empty( $col['rows'] ) && count( $col['rows'] ) >= 3 ) ) {
+						if ( ! empty( $col['cta_label'] ) && ! empty( $col['rows'] ) && count( $col['rows'] ) >= 2 ) {
 							$has_rich_battle = true;
 							break;
 						}
@@ -398,6 +430,8 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Хургадой и Шармом', 'zhiraf-ufa' );
 			} elseif ( 'tailand' === $slug ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Пхукетом и Паттайей', 'zhiraf-ufa' );
+			} elseif ( 'vietnam' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между Нячангом и Фукуоком', 'zhiraf-ufa' );
 			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',

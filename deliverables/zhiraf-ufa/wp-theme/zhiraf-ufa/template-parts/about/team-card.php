@@ -53,7 +53,7 @@ $tg_url   = ! empty( $member['telegram_url'] ) ? (string) $member['telegram_url'
 		<?php if ( '' !== $wa_url || '' !== $tg_url ) : ?>
 			<div class="about-team-card__actions">
 				<?php if ( '' !== $wa_url ) : ?>
-					<a class="btn btn--outline btn--sm" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php echo esc_html( $wa_label ); ?></a>
+					<a class="about-team-card__wa" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php echo esc_html( $wa_label ); ?></a>
 				<?php endif; ?>
 				<?php if ( '' !== $tg_url && empty( $member['hide_telegram'] ) ) : ?>
 					<a class="about-team-card__tg" href="<?php echo esc_url( $tg_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="telegram"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>

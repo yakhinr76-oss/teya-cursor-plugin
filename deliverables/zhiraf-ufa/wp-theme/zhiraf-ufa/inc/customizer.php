@@ -98,7 +98,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 		'zhiraf_whatsapp_url',
 		array(
 			'label'       => __( 'Ссылка WhatsApp', 'zhiraf-ufa' ),
-			'description' => __( 'Пустое значение скрывает кнопку в шапке и hero.', 'zhiraf-ufa' ),
+			'description' => __( 'Пустое значение — используется wa.me на +7 901 810-50-18 (офис).', 'zhiraf-ufa' ),
 			'section'     => 'zhiraf_ufa_brand',
 			'type'        => 'url',
 		)

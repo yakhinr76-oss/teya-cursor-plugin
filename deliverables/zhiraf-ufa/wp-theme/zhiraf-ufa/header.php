@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 		<div class="site-header__actions">
 			<a class="header-phone" href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a>
 			<?php
-			$zhiraf_wa = trim( (string) get_theme_mod( 'zhiraf_whatsapp_url', '' ) );
+			$zhiraf_wa = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : '';
 			$zhiraf_tg = trim( (string) get_theme_mod( 'zhiraf_telegram_url', '' ) );
 			if ( '' !== $zhiraf_wa ) :
 				?>

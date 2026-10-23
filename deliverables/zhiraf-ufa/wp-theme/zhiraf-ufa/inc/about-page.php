@@ -120,17 +120,31 @@ function zhiraf_ufa_about_office_gallery() {
 		'zhiraf_ufa_about_office_gallery',
 		array(
 			array(
-				'file'    => 'about-office-gagarin.jpg',
-				'caption' => __( 'Вход или переговорная: ул. Гагарина, 74/1, офис 3', 'zhiraf-ufa' ),
-				'slot'    => 'primary',
+				'file'              => 'about-office-gagarin.jpg',
+				'placeholder_title' => __( 'Офис на ул. Гагарина, 74/1', 'zhiraf-ufa' ),
+				'caption'           => __( 'Офис 3 — можно приехать лично: покажем договор, реестр РТА и подберём тур за чашкой кофе.', 'zhiraf-ufa' ),
+				'slot'              => 'primary',
 			),
 			array(
-				'file'    => 'about-office-desk.jpg',
-				'caption' => __( 'Рабочий стол, кофе, открытки от туристов — без стока', 'zhiraf-ufa' ),
-				'slot'    => 'secondary',
+				'file'              => 'about-office-desk.jpg',
+				'placeholder_title' => __( 'Живая команда в Уфе', 'zhiraf-ufa' ),
+				'caption'           => __( 'Менеджеры на связи по телефону и в мессенджере — без анонимного колл-центра.', 'zhiraf-ufa' ),
+				'slot'              => 'secondary',
 			),
 		)
 	);
+}
+
+/**
+ * Brand WhatsApp URL (Customizer or default office line).
+ */
+function zhiraf_ufa_brand_whatsapp_url() {
+	$url = trim( (string) get_theme_mod( 'zhiraf_whatsapp_url', '' ) );
+	if ( '' !== $url ) {
+		return $url;
+	}
+
+	return apply_filters( 'zhiraf_ufa_default_whatsapp_url', 'https://wa.me/79018105018' );
 }
 
 /**
@@ -163,7 +177,7 @@ function zhiraf_ufa_team_member_whatsapp_url( $member ) {
 	if ( ! empty( $member['whatsapp_url'] ) ) {
 		return (string) $member['whatsapp_url'];
 	}
-	$base = trim( (string) get_theme_mod( 'zhiraf_whatsapp_url', '' ) );
+	$base = zhiraf_ufa_brand_whatsapp_url();
 	if ( '' === $base ) {
 		return '';
 	}

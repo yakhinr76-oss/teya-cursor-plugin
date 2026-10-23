@@ -154,10 +154,10 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'active' => 'travel-passport.jpg',
 		),
 		'vietnam' => array(
-			'family' => 'resort-vietnam-nha-trang-1.jpg',
-			'couple' => 'resort-vietnam-phu-quoc-1.jpg',
-			'city'   => 'resort-vietnam-cam-ranh-1.jpg',
-			'active' => 'resort-vietnam-phan-thiet-1.jpg',
+			'family' => 'resort-vietnam-nha-trang-2.jpg',
+			'couple' => 'resort-vietnam-phu-quoc-2.jpg',
+			'city'   => 'resort-vietnam-cam-ranh-2.jpg',
+			'active' => 'resort-vietnam-phan-thiet-2.jpg',
 		),
 		'turciya' => array(
 			'family' => 'resort-turciya-alanya-2.jpg',

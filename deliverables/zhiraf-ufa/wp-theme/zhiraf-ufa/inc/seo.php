@@ -170,6 +170,37 @@ function zhiraf_ufa_current_landing_seo() {
 }
 
 /**
+ * Open Graph image URL for the current request.
+ *
+ * @return string
+ */
+function zhiraf_ufa_og_image_url() {
+	$default = ZHIRAF_UFA_URI . '/assets/images/hero-turkey.jpg';
+
+	$ctx = zhiraf_ufa_current_resort_context();
+	if ( $ctx ) {
+		$resort = zhiraf_ufa_get_resort_landing( $ctx['country'], $ctx['resort'] );
+		if ( $resort && ! empty( $resort['image'] ) ) {
+			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $resort['image'], '/' );
+		}
+	}
+
+	if ( is_page() ) {
+		$slug  = get_post_field( 'post_name', get_queried_object_id() );
+		$offer = zhiraf_ufa_get_offer_landing( $slug );
+		if ( $offer && ! empty( $offer['image'] ) ) {
+			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $offer['image'], '/' );
+		}
+		$dest = zhiraf_ufa_get_destination_landing( $slug );
+		if ( $dest && ! empty( $dest['image'] ) ) {
+			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $dest['image'], '/' );
+		}
+	}
+
+	return $default;
+}
+
+/**
  * Document title filter.
  *
  * @param string $title Title.
@@ -261,7 +292,7 @@ function zhiraf_ufa_head_meta() {
 	}
 
 	$og_title = wp_get_document_title();
-	$og_image = ZHIRAF_UFA_URI . '/assets/images/hero-turkey.jpg';
+	$og_image = zhiraf_ufa_og_image_url();
 	?>
 	<meta property="og:type" content="<?php echo is_singular( 'post' ) ? 'article' : 'website'; ?>" />
 	<meta property="og:title" content="<?php echo esc_attr( $og_title ); ?>" />

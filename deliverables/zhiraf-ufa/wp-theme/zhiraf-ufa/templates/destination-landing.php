@@ -360,7 +360,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						</select>
 					</label>
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest['name'] ); ?>" />
+					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_slug ); ?>" />
 					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>

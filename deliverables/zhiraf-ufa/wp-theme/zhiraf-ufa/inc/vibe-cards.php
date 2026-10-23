@@ -195,6 +195,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'resort-sanya-3.jpg',
 			'active' => 'travel-passport.jpg',
 		),
+		'vse-vklyucheno' => array(
+			'family' => 'resort-turciya-alanya-2.jpg',
+			'couple' => 'resort-egipet-sharm-1.jpg',
+			'city'   => 'hero-thailand.jpg',
+			'active' => 'resort-phuket.jpg',
+		),
 	);
 	return isset( $maps[ $slug ] ) ? $maps[ $slug ] : array();
 }
@@ -248,8 +254,14 @@ function zhiraf_ufa_enrich_vibe_section_images( $section, $slug ) {
  */
 function zhiraf_ufa_default_vibe_section( $slug, $dest ) {
 	$name = ! empty( $dest['name'] ) ? $dest['name'] : $slug;
-	/* translators: %s: country name */
-	$title = sprintf( __( 'Какой отдых в %s подходит именно вам?', 'zhiraf-ufa' ), $name );
+	if ( 'vse-vklyucheno' === $slug ) {
+		$title    = __( 'Какой отдых All Inclusive подходит именно вам?', 'zhiraf-ufa' );
+		$subtitle = __( 'Выберите сценарий — подберём отели с AI/UAI под ваш состав', 'zhiraf-ufa' );
+	} else {
+		/* translators: %s: country name */
+		$title    = sprintf( __( 'Какой отдых в %s подходит именно вам?', 'zhiraf-ufa' ), $name );
+		$subtitle = __( 'Выберите сценарий — подберём проверенные отели под ваш ритм', 'zhiraf-ufa' );
+	}
 
 	$images = zhiraf_ufa_vibe_image_map_for_slug( $slug );
 	$cards  = array();
@@ -261,9 +273,15 @@ function zhiraf_ufa_default_vibe_section( $slug, $dest ) {
 		$cards[] = $row;
 	}
 
+	if ( 'vse-vklyucheno' === $slug && ! empty( $cards[3] ) ) {
+		$cards[3]['vibe_title']    = __( 'Релакс у бассейна', 'zhiraf-ufa' );
+		$cards[3]['vibe_subtitle'] = __( 'Шезлонги у моря, спа, тихие зоны и формат «всё включено» без суеты.', 'zhiraf-ufa' );
+		$cards[3]['vibe_tag']      = __( 'Spa & пляж', 'zhiraf-ufa' );
+	}
+
 	return array(
 		'title'    => $title,
-		'subtitle' => __( 'Выберите сценарий — подберём проверенные отели под ваш ритм', 'zhiraf-ufa' ),
+		'subtitle' => $subtitle,
 		'cards'    => $cards,
 	);
 }

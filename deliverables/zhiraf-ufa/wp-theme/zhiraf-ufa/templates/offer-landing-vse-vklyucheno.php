@@ -10,19 +10,15 @@ if ( ! defined( 'ABSPATH' ) || empty( $offer ) ) {
 	return;
 }
 
-$ai_tours   = function_exists( 'zhiraf_ufa_get_all_inclusive_showcase_tours' ) ? zhiraf_ufa_get_all_inclusive_showcase_tours( 9 ) : array();
+$ai_tours   = function_exists( 'zhiraf_ufa_get_all_inclusive_showcase_tours' ) ? zhiraf_ufa_get_all_inclusive_showcase_tours( 6 ) : array();
 $min_price  = function_exists( 'zhiraf_ufa_all_inclusive_min_price' ) ? zhiraf_ufa_all_inclusive_min_price() : null;
 $ai_tabs    = function_exists( 'zhiraf_ufa_all_inclusive_destination_tabs' ) ? zhiraf_ufa_all_inclusive_destination_tabs() : array();
 $dest_stub  = array(
 	'slug'         => 'vse-vklyucheno',
 	'name'         => __( 'All Inclusive', 'zhiraf-ufa' ),
 	'quiz_prefill' => ! empty( $offer['quiz_prefill'] ) ? $offer['quiz_prefill'] : '',
-	'vibe_section' => array(
-		'title'    => __( 'Какой формат «всё включено» вам ближе?', 'zhiraf-ufa' ),
-		'subtitle' => __( 'Выберите сценарий — подберём отели с AI/UAI под ваш состав', 'zhiraf-ufa' ),
-	),
 );
-$vibe_section = function_exists( 'zhiraf_ufa_get_vibe_section' ) ? zhiraf_ufa_get_vibe_section( 'turciya', $dest_stub ) : null;
+$vibe_section = function_exists( 'zhiraf_ufa_get_vibe_section' ) ? zhiraf_ufa_get_vibe_section( 'vse-vklyucheno', $dest_stub ) : null;
 ?>
 <main id="primary" class="site-main site-main--offer site-main--all-inclusive">
 	<section class="dest-landing-hero offer-landing-hero offer-landing-hero--ai">
@@ -104,19 +100,12 @@ $vibe_section = function_exists( 'zhiraf_ufa_get_vibe_section' ) ? zhiraf_ufa_ge
 		</section>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $offer['geo_answer'] ) ) : ?>
-		<section class="section geo-answer-block bg-milky">
-			<div class="container container--narrow">
-				<p class="geo-answer-block__text"><?php echo esc_html( $offer['geo_answer'] ); ?></p>
-			</div>
-		</section>
-	<?php endif; ?>
-
 	<?php
 	get_template_part(
 		'template-parts/offer/meal-ai-compare',
 		null,
 		array(
+			'lead'       => ! empty( $offer['meal_compare_lead'] ) ? $offer['meal_compare_lead'] : '',
 			'highlights' => ! empty( $offer['meal_highlights'] ) ? $offer['meal_highlights'] : array(),
 			'rows'       => ! empty( $offer['meal_compare'] ) ? $offer['meal_compare'] : array(),
 		)

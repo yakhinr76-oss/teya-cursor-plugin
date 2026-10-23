@@ -44,15 +44,16 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		|| false !== mb_strpos( $hotel_lc, 'water park', 0, 'UTF-8' )
 		|| false !== mb_strpos( $hotel_lc, 'aquapark', 0, 'UTF-8' )
 	);
-	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) ) {
+	$legacy = array( 'turkey' => 'turciya', 'uae' => 'oae', 'egypt' => 'egipet', 'thailand' => 'tailand' );
+	if ( isset( $legacy[ $slug ] ) ) {
+		$slug = $legacy[ $slug ];
+	}
+	$skip_operator_image_slugs = array( 'maldivy', 'sejshely', 'shri-lanka', 'indoneziya', 'indiya' );
+	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && ! in_array( $slug, $skip_operator_image_slugs, true ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
 			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
 		}
-	}
-	$legacy = array( 'turkey' => 'turciya', 'uae' => 'oae', 'egypt' => 'egipet', 'thailand' => 'tailand' );
-	if ( isset( $legacy[ $slug ] ) ) {
-		$slug = $legacy[ $slug ];
 	}
 
 	// Resort needle (lowercase substring of the BG resort name) => verified photos of that very place.
@@ -90,58 +91,120 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'камран'   => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg', 'resort-vietnam-nha-trang-2.jpg' ),
 			'зоклет'   => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
 			'док лет'  => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
-			'фукуок'   => array( 'resort-vietnam-phu-quoc-2.jpg', 'hero-vietnam.jpg', 'dest-vietnam.jpg' ),
-			'камрань'  => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
-			'фантьет'  => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
-			'муйне'    => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
+			'фукуок'   => array( 'resort-vietnam-phu-quoc-2.jpg', 'country-vietnam.jpg', 'dest-vietnam-new.jpg' ),
+			'камрань'  => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg', 'resort-vietnam-nha-trang-2.jpg' ),
+			'фантьет'  => array( 'resort-vietnam-phan-thiet-2.jpg', 'resort-vietnam-phan-thiet-1.jpg' ),
+			'муйне'    => array( 'resort-vietnam-phan-thiet-2.jpg', 'resort-vietnam-phan-thiet-1.jpg' ),
 		),
 		'oae'        => array(
-			'дубай'    => array( 'hero-uae.jpg', 'dest-uae-new.jpg' ),
-			'шарджа'   => array( 'dest-uae.jpg', 'dest-uae-new.jpg' ),
-			'рас-эль'  => array( 'dest-uae-new.jpg', 'dest-uae.jpg' ),
-			'абу-даби' => array( 'resort-abu-dabi.jpg', 'dest-uae-new.jpg' ),
-			'фуджей'   => array( 'dest-uae-new.jpg' ),
+			'дубай'    => array( 'hero-uae.jpg', 'dest-uae.jpg', 'country-oae.jpg' ),
+			'шарджа'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'рас-эль'  => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'рас аль'  => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'абу-даби' => array( 'resort-abu-dabi.jpg', 'hero-uae.jpg' ),
+			'абу даби' => array( 'resort-abu-dabi.jpg', 'hero-uae.jpg' ),
+			'фуджей'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
+			'аджман'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
 		),
-		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
+		'tailand'    => array(
+			'пхукет'  => array( 'dest-thailand.jpg', 'country-tailand.jpg', 'hero-thailand.jpg' ),
+			'паттай'  => array( 'dest-thailand-new.jpg', 'dest-thailand.jpg', 'hero-thailand.jpg' ),
+			'самуи'   => array( 'hero-thailand.jpg', 'country-tailand.jpg' ),
+			'краби'   => array( 'country-tailand.jpg', 'dest-thailand.jpg' ),
+		),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
 		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
-		'maldivy'    => array( 'мале' => array( 'country-maldivy.jpg' ), 'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ) ),
-		'uzbekistan' => array( 'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ), 'хива' => array( 'alt-uzbekistan-2.jpg' ) ),
+		'maldivy'    => array(
+			'мале'      => array( 'resort-maldivy-atoll-2.jpg', 'resort-maldivy-atoll-1.jpg' ),
+			'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
+			'маафуш'    => array( 'resort-maldivy-atoll-2.jpg', 'resort-maldivy-atoll-1.jpg' ),
+		),
+		'uzbekistan' => array(
+			'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ),
+			'бухара'    => array( 'alt-uzbekistan-3.jpg', 'country-uzbekistan.jpg' ),
+			'ташкент'   => array( 'country-uzbekistan.jpg', 'resort-samarkand.jpg' ),
+			'хива'      => array( 'alt-uzbekistan-2.jpg', 'alt-uzbekistan-3.jpg' ),
+		),
+		'shri-lanka' => array(
+			'унаватун' => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' ),
+			'хиккадув' => array( 'alt-shri-lanka-beach-2.jpg', 'alt-shri-lanka-beach-1.jpg' ),
+			'бентота'  => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' ),
+			'ваддува'  => array( 'alt-shri-lanka-beach-2.jpg', 'alt-shri-lanka-beach-1.jpg' ),
+			'калутара' => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' ),
+			'негомбо'  => array( 'alt-shri-lanka-beach-2.jpg', 'alt-shri-lanka-beach-1.jpg' ),
+		),
+		'indoneziya' => array(
+			'убуд'       => array( 'alt-indoneziya-3.jpg', 'country-indoneziya.jpg' ),
+			'нуса'       => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+			'дуа'        => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+			'джимбаран'  => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-2.jpg' ),
+			'семиньяк'   => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-beach-1.jpg' ),
+			'кут'        => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-beach-1.jpg' ),
+			'легиан'     => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-beach-1.jpg' ),
+			'санур'      => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-2.jpg' ),
+			'танджунг'   => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+			'беноа'      => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+		),
+		'armeniya'   => array(
+			'ереван'   => array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-2.jpg' ),
+			'севан'    => array( 'alt-armeniya-sevan.jpg', 'alt-armeniya-3.jpg' ),
+			'дилижан'  => array( 'alt-armeniya-sevan.jpg', 'alt-armeniya-2.jpg' ),
+		),
 	);
 	// Country-level photos (fallback; never another resort's own photo). Several => varied cards on one page.
 	$country_photos = array(
 		'turciya'    => array(
 			'resort-turciya-belek-1.jpg',
-			'resort-turciya-belek-2.jpg',
+			'resort-turciya-kemer-1.jpg',
 			'resort-turciya-kemer-2.jpg',
+			'resort-turciya-alanya-1.jpg',
 			'resort-turciya-alanya-2.jpg',
+			'resort-turciya-antalya-2.jpg',
 		),
 		'egipet'     => array(
 			'resort-egipet-hurghada-2.jpg',
 			'resort-egipet-hurghada-1.jpg',
-			'resort-egipet-el-gouna-1.jpg',
+			'resort-egipet-sharm-2.jpg',
 			'resort-egipet-marsa-alam-2.jpg',
+			'hero-egypt.jpg',
+			'resort-egipet-el-gouna-1.jpg',
 			'resort-egipet-sharm-1.jpg',
 		),
-		'oae'        => array( 'hero-uae.jpg', 'dest-uae-new.jpg', 'dest-uae.jpg', 'resort-abu-dabi.jpg' ),
-		'tailand'    => array( 'resort-phuket.jpg', 'hero-thailand.jpg', 'dest-thailand-new.jpg' ),
+		'oae'        => array(
+			'hero-uae.jpg',
+			'dest-uae.jpg',
+			'dest-uae-new.jpg',
+			'resort-abu-dabi.jpg',
+			'country-oae.jpg',
+		),
+		'tailand'    => array(
+			'country-tailand.jpg',
+			'dest-thailand.jpg',
+			'hero-thailand.jpg',
+			'dest-thailand-new.jpg',
+			'hero-collage-3.jpg',
+		),
 		'vietnam'    => array(
 			'resort-vietnam-nha-trang-2.jpg',
 			'resort-vietnam-cam-ranh-1.jpg',
 			'resort-vietnam-cam-ranh-2.jpg',
 			'resort-vietnam-phu-quoc-2.jpg',
-			'hero-vietnam.jpg',
+			'resort-vietnam-phan-thiet-2.jpg',
 			'resort-vietnam-phan-thiet-1.jpg',
+			'hero-vietnam.jpg',
 			'dest-vietnam-new.jpg',
+			'country-vietnam.jpg',
 		),
 		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
 		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
-		'shri-lanka' => array( 'country-shri-lanka.jpg', 'alt-shri-lanka-2.jpg', 'alt-shri-lanka-3.jpg' ),
-		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-3.jpg' ),
+		'shri-lanka' => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg', 'country-shri-lanka.jpg' ),
+		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
 		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
 		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
-		'uzbekistan' => array( 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg' ),
-		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
+		'uzbekistan' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg', 'alt-uzbekistan-3.jpg' ),
+		'armeniya'   => array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-sevan.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
+		'rossiya'    => array( 'hero-collage-1.jpg', 'hero-collage-2.jpg', 'hero-collage-3.jpg' ),
+		'abkhaziya'  => array( 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg', 'country-armeniya.jpg' ),
 	);
 
 	$candidates = array();
@@ -165,20 +228,36 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'resort-egipet-el-gouna-2.jpg',
 		);
 		$is_resort  = true;
+	} elseif ( 'shri-lanka' === $slug ) {
+		$hotel = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+		if ( false !== mb_strpos( $hotel, 'beach', 0, 'UTF-8' ) ) {
+			$candidates = array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' );
+		}
+	} elseif ( 'indoneziya' === $slug ) {
+		$hotel   = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+		$is_ubud = false !== mb_strpos( $resort, 'убуд', 0, 'UTF-8' )
+			|| false !== mb_strpos( $hotel, 'ubud', 0, 'UTF-8' )
+			|| false !== mb_strpos( $hotel, 'убуд', 0, 'UTF-8' );
+		if ( $is_ubud ) {
+			$candidates = array( 'alt-indoneziya-3.jpg', 'country-indoneziya.jpg' );
+		} else {
+			$candidates = array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-2.jpg' );
+		}
+	} elseif ( 'armeniya' === $slug && false !== mb_strpos( $resort, 'ереван', 0, 'UTF-8' ) ) {
+		$candidates = array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' );
 	}
 	if ( ! $candidates ) {
 		// No library photo => gradient (never a wrong country's photo).
 		return array( 'file' => '', 'is_resort' => false, 'alt' => '' );
 	}
-	// Never repeat the same fallback on adjacent cards: prefer unused, then rotate by slot index.
-	if ( null !== $card_index && count( $candidates ) > 1 ) {
+	// Listing grids: when the resort pool is tiny (often one skyline stock), rotate the country pool by card slot.
+	if ( null !== $card_index && isset( $country_photos[ $slug ] ) && count( $country_photos[ $slug ] ) > count( $candidates ) ) {
+		$candidates = $country_photos[ $slug ];
+		$is_resort  = false;
+	}
+	// Never repeat the same fallback on adjacent cards: strict slot rotation on grids, least-used elsewhere.
+	if ( null !== $card_index && count( $candidates ) > 0 ) {
 		$pick = $candidates[ ( (int) $card_index ) % count( $candidates ) ];
-		foreach ( $candidates as $f ) {
-			if ( 0 === ( $used[ $f ] ?? 0 ) ) {
-				$pick = $f;
-				break;
-			}
-		}
 	} else {
 		$pick = $candidates[0];
 		foreach ( $candidates as $f ) {

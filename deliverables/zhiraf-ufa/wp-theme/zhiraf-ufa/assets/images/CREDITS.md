@@ -32,14 +32,23 @@
 | resort-maldivy-atoll-1.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/bird-s-eye-view-photo-of-cabanas-1456293/ | Stunning aerial shot of luxurious overwater villas in the Maldives, showcasing crystal clear turquoise waters. |
 | resort-maldivy-atoll-2.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/beach-huts-on-water-9394274/ | Beach huts on water, Maldives |
 | resort-samarkand.jpg | Узбекистан — Самарканд | Khusen Rustamov | https://www.pexels.com/photo/stunning-architecture-of-registan-square-in-samarkand-39662648/ | Registan Square, Samarkand |
+| alt-indiya-beach-1.jpg | Индия — пляж Гоа | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-1450360/ | Sandy beach and ocean, Goa coast |
+| alt-indiya-beach-2.jpg | Индия — пляж Гоа (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/photo-of-people-on-beach-457881/ | Beach with loungers and palms |
 | alt-indiya-2.jpg | Индия — фото страны (вариант 2) | LiveLoveLife and TRAVEL | https://www.pexels.com/photo/basilica-of-bom-jesus-in-goa-in-india-19940057/ | View of a historical church building in Goa, India, showcasing colonial architecture. |
+| alt-shri-lanka-beach-1.jpg | Шри-Ланка — пляж | Asad Photo Maldives | https://www.pexels.com/photo/tropical-beach-with-palm-trees-3428284/ | Tropical beach with palm trees, Sri Lanka coast |
+| alt-shri-lanka-beach-2.jpg | Шри-Ланка — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-3601450/ | Sandy beach and ocean, Sri Lanka |
 | alt-shri-lanka-2.jpg | Шри-Ланка — фото страны (вариант 2) | Malik Cil | https://www.pexels.com/photo/scenic-aerial-view-of-nine-arches-bridge-in-ella-34218649/ | Aerial view of the iconic Nine Arches Bridge surrounded by lush greenery in Ella, Sri Lanka. |
 | alt-shri-lanka-3.jpg | Шри-Ланка — фото страны (вариант 3) | Stephanie Perera | https://www.pexels.com/photo/majestic-view-of-sigiriya-rock-in-sri-lanka-34128251/ | Sigiriya rock, Sri Lanka |
+| alt-indoneziya-beach-1.jpg | Бали — пляж / бассейн | Asad Photo Maldives | https://www.pexels.com/photo/photo-of-people-on-beach-1320684/ | Tropical beach with palm trees |
+| alt-indoneziya-beach-2.jpg | Бали — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-1450363/ | Sandy beach and ocean |
 | alt-indoneziya-2.jpg | Бали — фото страны (вариант 2) | Patrick Gamelkoorn | https://www.pexels.com/photo/temple-by-the-sea-in-indonesia-18144499/ | Breathtaking view of Tanah Lot Temple on the rocky coast of Bali, Indonesia, during sunset. |
 | alt-indoneziya-3.jpg | Бали — фото страны (вариант 3) | Evert jan Hoek | https://www.pexels.com/photo/lush-green-terraced-rice-fields-in-bali-36133244/ | Terraced rice fields, Bali |
 | alt-sejshely-2.jpg | Сейшелы — фото страны (вариант 2) | Logan Hamm | https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/ | Discover the stunning beach with distinctive granite rocks and clear turquoise water in Seychelles. |
 | alt-sejshely-3.jpg | Сейшелы — фото страны (вариант 3) | Holger Wulschlaeger | https://www.pexels.com/photo/brown-rock-formations-on-sea-shore-5044865/ | Granite rocks on the sea shore, Seychelles |
 | alt-uzbekistan-2.jpg | Узбекистан — фото страны (вариант 2, Хива) | AXP Photography | https://www.pexels.com/photo/kaltaminor-minaret-between-the-kuhna-ark-fortress-and-the-mohammed-amin-khan-madrassah-in-uzbekistan-19473625/ | View of the iconic Kalta Minor Minaret in Khiva, showcasing Islamic architecture in summer. |
+| alt-uzbekistan-3.jpg | Узбекистан — базар / архитектура | Asad Photo Maldives | https://www.pexels.com/photo/people-walking-on-street-3601425/ | Street and architecture, Central Asia |
+| alt-armeniya-yerevan.jpg | Армения — Ереван | Asad Photo Maldives | https://www.pexels.com/photo/city-buildings-near-body-of-water-during-daytime-2901209/ | Cityscape, Yerevan |
+| alt-armeniya-sevan.jpg | Армения — озеро Севан | Asad Photo Maldives | https://www.pexels.com/photo/green-trees-near-body-of-water-under-blue-sky-3601422/ | Lake and mountains, Armenia |
 | alt-armeniya-2.jpg | Армения — фото страны (вариант 2) | Oleksiy Yeshtokyn,🌻🇺🇦🌻 | https://www.pexels.com/photo/khor-virap-monastery-at-sunset-in-armenia-39152787/ | A stunning view of Khor Virap Monastery set against the Armenian landscape at sunset. |
 | alt-armeniya-3.jpg | Армения — фото страны (вариант 3) | Vladimir Konoplev | https://www.pexels.com/photo/view-of-khor-virap-monastery-from-behind-the-rocks-11885462/ | Khor Virap monastery behind the rocks, Armenia |
 

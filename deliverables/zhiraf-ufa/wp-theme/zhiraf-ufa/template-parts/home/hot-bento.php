@@ -26,7 +26,7 @@ $zhiraf_groups = array(
 		'heading' => __( 'Из Москвы', 'zhiraf-ufa' ),
 		'mod'     => 'mow',
 		'tiles'   => array(
-			array( 'slug' => 'maldivy', 'title' => __( 'Мальдивы', 'zhiraf-ufa' ), 'image' => 'country-maldivy.jpg', 'mod' => 'wide' ),
+			array( 'slug' => 'maldivy', 'title' => __( 'Мальдивы', 'zhiraf-ufa' ), 'image' => 'resort-maldivy-atoll-1.jpg', 'mod' => 'wide' ),
 			array( 'slug' => 'sejshely', 'title' => __( 'Сейшелы', 'zhiraf-ufa' ), 'image' => 'country-sejshely.jpg', 'mod' => 'small' ),
 			array( 'slug' => 'shri-lanka', 'title' => __( 'Шри-Ланка', 'zhiraf-ufa' ), 'image' => 'country-shri-lanka.jpg', 'mod' => 'small' ),
 			array( 'slug' => 'indoneziya', 'title' => __( 'Бали', 'zhiraf-ufa' ), 'kicker' => __( 'Индонезия', 'zhiraf-ufa' ), 'image' => 'country-indoneziya.jpg', 'mod' => 'small' ),

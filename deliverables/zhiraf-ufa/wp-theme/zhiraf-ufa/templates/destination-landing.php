@@ -19,6 +19,7 @@ $tour_collapsed_after = ! empty( $dest['tour_collapsed_after'] ) ? (int) $dest['
 $dest_tours          = ! empty( $dest_slug ) ? zhiraf_ufa_get_country_top_tours( $dest_slug, $tour_limit ) : array();
 $emphasize_flight    = ! empty( $dest['emphasize_flight'] );
 $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' ) ? zhiraf_ufa_destination_landing_module( $dest_slug, $dest ) : 'vibe';
+$dest_show_resort_compare_in_prose = ( 'battle' !== $central_module && ! empty( $dest['resort_compare'] ) );
 ?>
 <main id="primary" class="site-main site-main--destination">
 	<section class="dest-landing-hero">
@@ -151,10 +152,29 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 		</section>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || ! empty( $dest['resort_compare'] ) || ! empty( $dest['seo_prose_accordions'] ) ) : ?>
+	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) ) : ?>
 	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
 		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
+			<?php if ( ! empty( $dest['season_at_a_glance'] ) && is_array( $dest['season_at_a_glance'] ) && ! empty( $dest['season_at_a_glance']['rows'] ) ) : ?>
+				<h2 class="section-title dest-season-glance__title"><?php echo esc_html( ! empty( $dest['season_at_a_glance']['title'] ) ? $dest['season_at_a_glance']['title'] : __( 'Когда куда лететь', 'zhiraf-ufa' ) ); ?></h2>
+				<table class="dest-season-glance">
+					<thead>
+						<tr>
+							<th scope="col"><?php esc_html_e( 'Курорт', 'zhiraf-ufa' ); ?></th>
+							<th scope="col"><?php esc_html_e( 'Лучший сезон для купания', 'zhiraf-ufa' ); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ( $dest['season_at_a_glance']['rows'] as $row ) : ?>
+							<tr>
+								<td><?php echo esc_html( $row['resort'] ?? '' ); ?></td>
+								<td><?php echo esc_html( $row['when'] ?? '' ); ?></td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php endif; ?>
 			<?php if ( ! empty( $dest['seo_prose_accordions'] ) ) : ?>
 				<details class="dest-prose-accordion dest-prose-accordion--seo">
 					<summary class="dest-prose-accordion__summary">
@@ -184,6 +204,23 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						<?php if ( ! empty( $dest['season'] ) ) : ?>
 							<h3><?php esc_html_e( 'Пляжный сезон', 'zhiraf-ufa' ); ?></h3>
 							<p><?php echo esc_html( $dest['season'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $dest['climate_seasons'] ) && is_array( $dest['climate_seasons'] ) ) : ?>
+							<h3><?php esc_html_e( 'Сезон и климат по месяцам', 'zhiraf-ufa' ); ?></h3>
+							<div class="dest-climate-grid dest-climate-grid--accordion">
+								<?php foreach ( $dest['climate_seasons'] as $season_row ) : ?>
+									<article class="dest-climate-card">
+										<p class="dest-climate-card__label"><?php echo esc_html( $season_row['label'] ); ?> <span class="dest-climate-card__months"><?php echo esc_html( $season_row['months'] ); ?></span></p>
+										<dl class="dest-climate-card__stats">
+											<div><dt><?php esc_html_e( 'Воздух', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['air'] ); ?></dd></div>
+											<div><dt><?php esc_html_e( 'Вода', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['water'] ); ?></dd></div>
+										</dl>
+										<?php if ( ! empty( $season_row['tip'] ) ) : ?>
+											<p class="dest-climate-card__tip"><?php echo esc_html( $season_row['tip'] ); ?></p>
+										<?php endif; ?>
+									</article>
+								<?php endforeach; ?>
+							</div>
 						<?php endif; ?>
 					</div>
 				</details>
@@ -220,7 +257,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 				<p><?php echo esc_html( $dest['season'] ); ?></p>
 			<?php endif; ?>
 
-			<?php if ( 'battle' !== $central_module && ! empty( $dest['resort_compare'] ) && is_array( $dest['resort_compare'] ) ) : ?>
+			<?php if ( $dest_show_resort_compare_in_prose && is_array( $dest['resort_compare'] ) ) : ?>
 				<h2><?php echo esc_html( ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : __( 'Нячанг или Фукуок: что выбрать', 'zhiraf-ufa' ) ); ?></h2>
 				<div class="dest-resort-compare">
 					<?php foreach ( $dest['resort_compare'] as $col ) : ?>
@@ -249,7 +286,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 				</div>
 			<?php endif; ?>
 
-			<?php if ( 'vibe' !== $central_module && ! empty( $dest['emirate_cards'] ) && is_array( $dest['emirate_cards'] ) ) : ?>
+			<?php if ( ! in_array( $central_module, array( 'vibe', 'battle' ), true ) && ! empty( $dest['emirate_cards'] ) && is_array( $dest['emirate_cards'] ) ) : ?>
 				<h2><?php echo esc_html( ! empty( $dest['emirate_cards_title'] ) ? $dest['emirate_cards_title'] : __( 'Какой эмират выбрать для отдыха из Уфы', 'zhiraf-ufa' ) ); ?></h2>
 				<div class="dest-emirate-grid">
 					<?php foreach ( $dest['emirate_cards'] as $card ) : ?>
@@ -321,7 +358,15 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 	<?php if ( ! empty( $dest['faq'] ) ) : ?>
 	<section class="section dest-landing-faq">
 		<div class="container container--narrow">
-			<h2 class="section-title"><?php esc_html_e( 'Вопросы по направлению', 'zhiraf-ufa' ); ?></h2>
+			<h2 class="section-title">
+				<?php
+				echo esc_html(
+					! empty( $dest['faq_title'] )
+						? $dest['faq_title']
+						: __( 'Вопросы по направлению', 'zhiraf-ufa' )
+				);
+				?>
+			</h2>
 			<div class="faq-home__list">
 				<?php foreach ( $dest['faq'] as $item ) : ?>
 					<details class="faq-home__item">
@@ -346,8 +391,14 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 			<p><?php echo esc_html( ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ) ); ?></p>
 			<form class="zhiraf-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="dest-<?php echo esc_attr( $dest_slug ); ?>">
 				<div class="dest-landing-lead-form__fields">
-					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
-					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />
+					<label class="form-label dest-landing-lead-form__field">
+						<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Ваше имя', 'zhiraf-ufa' ); ?></span>
+						<input type="text" name="name" placeholder="<?php esc_attr_e( 'Как к вам обращаться', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
+					</label>
+					<label class="form-label dest-landing-lead-form__field">
+						<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
+						<input type="tel" name="phone" placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
+					</label>
 					<?php if ( ! empty( $dest['cta_message_placeholder'] ) ) : ?>
 						<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php echo esc_attr( $dest['cta_message_placeholder'] ); ?>"></textarea>
 					<?php endif; ?>
@@ -360,7 +411,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						</select>
 					</label>
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest['name'] ); ?>" />
+					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_slug ); ?>" />
 					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>

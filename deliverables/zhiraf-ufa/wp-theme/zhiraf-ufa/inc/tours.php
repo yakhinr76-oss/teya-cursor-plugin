@@ -48,7 +48,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	if ( isset( $legacy[ $slug ] ) ) {
 		$slug = $legacy[ $slug ];
 	}
-	$skip_operator_image_slugs = array( 'maldivy', 'sejshely', 'shri-lanka', 'indoneziya' );
+	$skip_operator_image_slugs = array( 'maldivy', 'sejshely', 'shri-lanka', 'indoneziya', 'indiya' );
 	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && ! in_array( $slug, $skip_operator_image_slugs, true ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {

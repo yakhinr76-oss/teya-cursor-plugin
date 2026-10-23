@@ -32,6 +32,8 @@
 | resort-maldivy-atoll-1.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/bird-s-eye-view-photo-of-cabanas-1456293/ | Stunning aerial shot of luxurious overwater villas in the Maldives, showcasing crystal clear turquoise waters. |
 | resort-maldivy-atoll-2.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/beach-huts-on-water-9394274/ | Beach huts on water, Maldives |
 | resort-samarkand.jpg | Узбекистан — Самарканд | Khusen Rustamov | https://www.pexels.com/photo/stunning-architecture-of-registan-square-in-samarkand-39662648/ | Registan Square, Samarkand |
+| alt-indiya-beach-1.jpg | Индия — пляж Гоа | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-1450360/ | Sandy beach and ocean, Goa coast |
+| alt-indiya-beach-2.jpg | Индия — пляж Гоа (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/photo-of-people-on-beach-457881/ | Beach with loungers and palms |
 | alt-indiya-2.jpg | Индия — фото страны (вариант 2) | LiveLoveLife and TRAVEL | https://www.pexels.com/photo/basilica-of-bom-jesus-in-goa-in-india-19940057/ | View of a historical church building in Goa, India, showcasing colonial architecture. |
 | alt-shri-lanka-beach-1.jpg | Шри-Ланка — пляж | Asad Photo Maldives | https://www.pexels.com/photo/tropical-beach-with-palm-trees-3428284/ | Tropical beach with palm trees, Sri Lanka coast |
 | alt-shri-lanka-beach-2.jpg | Шри-Ланка — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-3601450/ | Sandy beach and ocean, Sri Lanka |

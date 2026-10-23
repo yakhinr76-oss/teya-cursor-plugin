@@ -195,6 +195,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'resort-sanya-3.jpg',
 			'active' => 'travel-passport.jpg',
 		),
+		'indiya'  => array(
+			'family' => 'alt-indiya-beach-1.jpg',
+			'couple' => 'alt-indiya-beach-2.jpg',
+			'city'   => 'resort-severnyj-goa.jpg',
+			'active' => 'country-indiya.jpg',
+		),
 		'indoneziya' => array(
 			'family' => 'alt-indoneziya-beach-1.jpg',
 			'couple' => 'alt-indoneziya-beach-2.jpg',

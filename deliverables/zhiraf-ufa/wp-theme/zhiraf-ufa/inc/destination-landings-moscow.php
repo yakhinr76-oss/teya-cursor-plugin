@@ -69,7 +69,49 @@ function zhiraf_ufa_moscow_landing_data() {
 			// ТЕКСТ НА ПРОВЕРКУ: long-form sections + FAQ (inc/destination-landings-moscow-content.php).
 			$c      = $content[ $slug ];
 			$common = zhiraf_ufa_moscow_common_sections( $to, $name );
-			if ( 'kitaj' === $slug ) {
+			if ( 'indiya' === $slug ) {
+				$out[ $slug ]['landing_module'] = 'battle';
+				$out[ $slug ]['vibe_section']   = false;
+				$out[ $slug ]['faq_title']      = __( 'Частые вопросы о Гоа', 'zhiraf-ufa' );
+				$out[ $slug ]['image']          = 'resort-severnyj-goa.jpg';
+				$out[ $slug ]['image_alt']      = __( 'Индия — закат на пляже Гоа', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_lead']      = __( 'Аравийское море и пляжи Гоа с вылетом из Москвы. Поможем состыковать перелёт из Уфы и выбрать между тусовочным Севером и спокойным Югом.', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_badges']    = array(
+					array( 'icon' => '🛂', 'text' => __( 'e-Visa онлайн до вылета', 'zhiraf-ufa' ) ),
+					array( 'icon' => '✈', 'text' => __( 'Вылет из Москвы • стыковка из Уфы', 'zhiraf-ufa' ) ),
+					array( 'icon' => '🏖', 'text' => __( 'Сезон: ноябрь — апрель', 'zhiraf-ufa' ) ),
+				);
+				$out[ $slug ]['faq']            = array(
+					array(
+						'q' => __( 'Входит ли в цену перелёт из Уфы?', 'zhiraf-ufa' ),
+						'a' => __( 'Нет. Цены на карточках — для вылета из Москвы (часто через Шереметьево). Перелёт Уфа — Москва подбираем отдельно.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Нужна ли виза в Индию и как оформить e-Visa?', 'zhiraf-ufa' ),
+						'a' => $c['entry'][0],
+					),
+					array(
+						'q' => __( 'Когда сезон в Гоа без волн?', 'zhiraf-ufa' ),
+						'a' => $c['season'][0],
+					),
+					array(
+						'q' => __( 'Северный или Южный Гоа — что выбрать?', 'zhiraf-ufa' ),
+						'a' => __( 'Север — кафе, рынки и вечерняя жизнь (Арамболь, Бага, Вагатор). Юг — длинные пляжи и тишина (Кавелоссим, Варка, Бенаулим). Сравнение — в блоке выше; район указан на карточке отеля.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Сколько длится перелёт из Москвы в Гоа?', 'zhiraf-ufa' ),
+						'a' => __( 'Обычно около 7–9 часов в одну сторону (прямой или стыковочный рейс) — точное время смотрите на карточке тура.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Какое питание в отелях Гоа?', 'zhiraf-ufa' ),
+						'a' => __( 'На карточке указан тип: чаще завтраки (BB) или проживание без питания (AO). Многие ужинают в шеках у пляжа.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Какая валюта и как платить на месте?', 'zhiraf-ufa' ),
+						'a' => __( 'Местная валюта — индийская рупия. Российские карты Visa и Mastercard за рубежом не работают — заранее продумайте наличные.', 'zhiraf-ufa' ),
+					),
+				);
+			} elseif ( 'kitaj' === $slug ) {
 				$out[ $slug ]['landing_module'] = 'battle';
 				$out[ $slug ]['hero_lead']      = __( 'Прямой рейс из Москвы (а/к «Аэрофлот»). Поможем состыковать удобный перелёт из Уфы без смены терминала в Шереметьево.', 'zhiraf-ufa' );
 				$out[ $slug ]['hero_badges']    = array(

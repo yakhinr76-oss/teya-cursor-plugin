@@ -39,7 +39,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'shri-lanka' => 'season',
 		'indoneziya' => 'season',
 		'maldivy'    => 'battle',
-		'sejshely'   => 'vibe',
+		'sejshely'   => 'battle',
 		'uzbekistan' => 'vibe',
 		'armeniya'   => 'vibe',
 		'rossiya'    => 'vibe',
@@ -81,6 +81,10 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'maldivy'    => array(
 			'image' => 'resort-maldivy-atoll-1.jpg',
 			'alt'   => __( 'Мальдивы — виллы над лагуной и бирюзовое море', 'zhiraf-ufa' ),
+		),
+		'sejshely'   => array(
+			'image' => 'country-sejshely.jpg',
+			'alt'   => __( 'Сейшелы — гранитные валуны и лазурная вода, Ла-Диг', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -271,6 +275,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 			),
 		),
+		'sejshely'  => array(
+			'title'   => __( 'Остров Маэ или Праслин и Ла-Диг?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Удобная логистика и пляж Бо-Валлон на главном острове — или открыточные валуны и велосипеды на соседних.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Остров Маэ', 'zhiraf-ufa' ),
+					'tag'       => __( '🏝 Комфорт и Бо-Валлон', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Аэропорт, инфраструктура и аренда авто', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: 20–30 мин от аэропорта', 'zhiraf-ufa' ),
+					'image'     => 'alt-sejshely-3.jpg',
+					'cta_label' => __( 'Искать отели на Маэ', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Логистика', 'zhiraf-ufa' ), 'value' => __( 'Международный аэропорт — трансфер в отель на авто без паромов', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Пляж Бо-Валлон', 'zhiraf-ufa' ), 'value' => __( 'Широкая полоса, спокойное купание без сильных отливов', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'Виктория, креольская кухня, рынки и аренда авто', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Праслин и Ла-Диг', 'zhiraf-ufa' ),
+					'tag'       => __( '🐢 Валуны и природа', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Анс Сурс д’Аржан и пальмы Коко-де-Мер', 'zhiraf-ufa' ),
+					'meta'      => __( 'Добраться: паром или внутренний рейс', 'zhiraf-ufa' ),
+					'image'     => 'country-sejshely.jpg',
+					'cta_label' => __( 'Искать отели на Праслине и Ла-Диге', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Пляжи', 'zhiraf-ufa' ), 'value' => __( 'Анс Сурс д’Аржан и Анс Лацио — гранитные валуны и бирюза', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Ритм', 'zhiraf-ufa' ), 'value' => __( 'На Ла-Диге почти нет машин — велосипеды среди пальм', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Природа', 'zhiraf-ufa' ), 'value' => __( 'Валле-де-Мэ, Коко-де-Мер и гигантские черепахи', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
 		'maldivy'   => array(
 			'title'   => __( 'Остров-резорт или местный остров?', 'zhiraf-ufa' ),
 			'lead'    => __( 'Премиальный «1 остров = 1 отель» с виллами над водой или бюджетный гестхаус на Маафуши / Тодду — два разных формата одной страны.', 'zhiraf-ufa' ),
@@ -363,6 +401,8 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 			$wa_text = __( 'Здравствуйте! Помогите выбрать курорт', 'zhiraf-ufa' );
 			if ( 'maldivy' === $slug ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между резорт-островом и Маафуши', 'zhiraf-ufa' );
+			} elseif ( 'sejshely' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между Маэ и Праслином / Ла-Дигом', 'zhiraf-ufa' );
 			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',

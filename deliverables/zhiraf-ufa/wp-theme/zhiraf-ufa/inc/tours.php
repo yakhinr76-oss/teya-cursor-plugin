@@ -37,7 +37,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	}
 	$resort = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
 	$slug   = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
-	if ( ! empty( $tour['image_url'] ) && 'maldivy' !== $slug ) {
+	if ( ! empty( $tour['image_url'] ) && ! in_array( $slug, array( 'maldivy', 'sejshely' ), true ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
 			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );

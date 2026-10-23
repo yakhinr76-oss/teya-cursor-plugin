@@ -321,7 +321,15 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 	<?php if ( ! empty( $dest['faq'] ) ) : ?>
 	<section class="section dest-landing-faq">
 		<div class="container container--narrow">
-			<h2 class="section-title"><?php esc_html_e( 'Вопросы по направлению', 'zhiraf-ufa' ); ?></h2>
+			<h2 class="section-title">
+				<?php
+				echo esc_html(
+					! empty( $dest['faq_title'] )
+						? $dest['faq_title']
+						: __( 'Вопросы по направлению', 'zhiraf-ufa' )
+				);
+				?>
+			</h2>
 			<div class="faq-home__list">
 				<?php foreach ( $dest['faq'] as $item ) : ?>
 					<details class="faq-home__item">

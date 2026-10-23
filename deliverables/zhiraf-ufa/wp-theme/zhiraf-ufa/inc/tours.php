@@ -84,7 +84,12 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'фуджей'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
 			'аджман'   => array( 'dest-uae.jpg', 'hero-uae.jpg' ),
 		),
-		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
+		'tailand'    => array(
+			'пхукет'  => array( 'dest-thailand.jpg', 'country-tailand.jpg', 'hero-thailand.jpg' ),
+			'паттай'  => array( 'dest-thailand-new.jpg', 'dest-thailand.jpg', 'hero-thailand.jpg' ),
+			'самуи'   => array( 'hero-thailand.jpg', 'country-tailand.jpg' ),
+			'краби'   => array( 'country-tailand.jpg', 'dest-thailand.jpg' ),
+		),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
 		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
 		'maldivy'    => array( 'мале' => array( 'country-maldivy.jpg' ), 'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ) ),
@@ -112,7 +117,13 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'resort-abu-dabi.jpg',
 			'country-oae.jpg',
 		),
-		'tailand'    => array( 'resort-phuket.jpg', 'hero-thailand.jpg', 'dest-thailand-new.jpg' ),
+		'tailand'    => array(
+			'country-tailand.jpg',
+			'dest-thailand.jpg',
+			'hero-thailand.jpg',
+			'dest-thailand-new.jpg',
+			'hero-collage-3.jpg',
+		),
 		'vietnam'    => array(
 			'resort-vietnam-phu-quoc-1.jpg',
 			'resort-vietnam-phu-quoc-2.jpg',

@@ -36,7 +36,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'vietnam'    => 'battle',
 		'kitaj'      => 'season',
 		'indiya'     => 'season',
-		'shri-lanka' => 'season',
+		'shri-lanka' => 'battle',
 		'indoneziya' => 'season',
 		'maldivy'    => 'vibe',
 		'sejshely'   => 'vibe',
@@ -77,6 +77,10 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'indiya'     => array(
 			'image' => 'resort-severnyj-goa.jpg',
 			'alt'   => __( 'Индия — пляж Северного Гоа', 'zhiraf-ufa' ),
+		),
+		'shri-lanka' => array(
+			'image' => 'country-shri-lanka.jpg',
+			'alt'   => __( 'Шри-Ланка — рыбаки на шестах в океане', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -263,6 +267,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'image' => 'resort-egipet-sharm-1.jpg',
 					'rows'  => array(
 						array( 'label' => __( 'Пляж', 'zhiraf-ufa' ), 'value' => __( 'Понтоны, снорклинг у рифа', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'shri-lanka' => array(
+			'title'   => __( 'Унаватуна или Хиккадува?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Спокойная бухта с рифом для семей или серф, черепахи и вечерняя жизнь на юго-западном побережье.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Унаватуна', 'zhiraf-ufa' ),
+					'tag'       => __( '🐢 Без волн', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Спокойный океан и семьи с детьми', 'zhiraf-ufa' ),
+					'meta'      => __( 'Юго-запад • лучший сезон: ноябрь–апрель', 'zhiraf-ufa' ),
+					'image'     => 'alt-shri-lanka-beach-1.jpg',
+					'cta_label' => __( 'Искать туры в Унаватуну', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Купание', 'zhiraf-ufa' ), 'value' => __( 'Коралловый риф закрывает бухту от больших волн — комфортно даже малышам', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'Кафе со свежими креветками и рыбой прямо на песке', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Рядом', 'zhiraf-ufa' ), 'value' => __( '15 минут на тук-туке до форта Галле (ЮНЕСКО)', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Хиккадува', 'zhiraf-ufa' ),
+					'tag'       => __( '🏄 Серф и черепахи', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Спорт, природа и вечерняя атмосфера', 'zhiraf-ufa' ),
+					'meta'      => __( 'Юго-запад • волны и тусовка', 'zhiraf-ufa' ),
+					'image'     => 'alt-shri-lanka-beach-2.jpg',
+					'cta_label' => __( 'Искать туры в Хиккадуву', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Черепахи', 'zhiraf-ufa' ), 'value' => __( 'У Hikka Tranz морские черепахи часто подплывают к берегу', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Серфинг', 'zhiraf-ufa' ), 'value' => __( 'Споты для начинающих и продвинутых, школы с русскоязычными инструкторами', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Вечер', 'zhiraf-ufa' ), 'value' => __( 'Бары с живой музыкой, вечеринки на берегу и фруктовый рынок', 'zhiraf-ufa' ) ),
 					),
 				),
 			),

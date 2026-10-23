@@ -60,6 +60,9 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'белек'    => array( 'resort-turciya-belek-1.jpg' ),
 			'анталь'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
 			'антали'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
+			'лара'     => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-belek-1.jpg' ),
+			'кунду'    => array( 'resort-turciya-belek-1.jpg', 'resort-turciya-antalya-1.jpg' ),
+			'коньяалт' => array( 'resort-turciya-antalya-2.jpg', 'resort-turciya-kemer-2.jpg' ),
 		),
 		'egipet'     => array(
 			'хургада'  => array( 'resort-egipet-hurghada-1.jpg', 'resort-egipet-hurghada-2.jpg' ),

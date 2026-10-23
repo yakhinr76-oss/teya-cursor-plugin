@@ -32,44 +32,79 @@ function zhiraf_ufa_resort_landing_index() {
 function zhiraf_ufa_resort_landing_data() {
 	return array(
 		'turciya/antalya' => array(
-			'tours_rx'      => '/Анталия/u',
+			'tours_rx'           => '/Лара|Кунду|Коньяалты|Анталия/ui',
+			'tours_meal_prefer'  => 'AI',
+			'landing_module'     => 'battle',
 			'country'       => 'turciya',
 			'country_name'  => __( 'Турция', 'zhiraf-ufa' ),
 			'resort'        => 'antalya',
 			'h1'            => __( 'Туры в Анталью из Уфы', 'zhiraf-ufa' ),
 			'title'         => __( 'Анталья из Уфы — туры на Средиземное море | Жираф', 'zhiraf-ufa' ),
 			'description'   => __( 'Подбор туров в Анталью с вылетом из Уфы: отели Лары и Коньяалты, All Inclusive и Ultra All Inclusive, быстрый трансфер из аэропорта за 20–30 минут.', 'zhiraf-ufa' ),
-			'image'         => 'dest-turkey.jpg',
+			'image'         => 'resort-turciya-antalya-1.jpg',
 			'image_alt'     => __( 'Анталья — пляжи Средиземного моря и исторический центр Калеичи', 'zhiraf-ufa' ),
 			'hero_lead'      => __( 'Подбираем туры в Анталью с вылетом из Уфы: песчаные пляжи Лары, галечная набережная Коньяалты, первоклассные семейные отели и короткий трансфер от аэропорта.', 'zhiraf-ufa' ),
 			'hero_lead_extended' => __( 'Анталья — главный курортный центр Турецкой Ривьеры, сочетающий великолепные пляжи Средиземного моря, развитую городскую среду и близость к международному аэропорту. Турагентство «Жираф» в Уфе подбирает пакетные туры в Анталью по данным туроператора «Библио-Глобус»: мы оцениваем отели по расположению, качеству питания и чистоте пляжей.', 'zhiraf-ufa' ),
 			'quiz_prefill'  => __( 'Анталья, вылет из Уфы', 'zhiraf-ufa' ),
 			'geo_answer'    => __( 'Почему туристы из Уфы выбирают Анталью? Трансфер от аэропорта Антальи до отелей Лары и Кунду занимает рекордные 15–30 минут, что неоценимо при поездках с детьми. Пакетный тур включает перелёт (прямой рейс или стыковка в Москве — указано на карточке), трансфер, проживание, питание по выбранному тарифу и страховку.', 'zhiraf-ufa' ),
-			'sections'      => array(
+			'cta_lead'      => __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта в Ларе, Коньяалты или Кунду под ваш бюджет.', 'zhiraf-ufa' ),
+			'cta_message_placeholder' => __( 'Район (Лара / Коньяалты), даты, дети (возраст), питание AI/UAI', 'zhiraf-ufa' ),
+			'resort_compare_title' => __( 'Лара или Коньяалты: песчаный All Inclusive или европейская набережная с видом на горы?', 'zhiraf-ufa' ),
+			'resort_compare_lead'  => __( 'Главная дилемма Антальи — выбираете широкий песчаный берег с гигантскими резортами или галечную набережную у подножия Тавра.', 'zhiraf-ufa' ),
+			'resort_compare'       => array(
 				array(
-					'h2'   => __( 'Районы Антальи: Лара, Коньяалты и центр Калеичи', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Район Лара и прилегающая зона Кунду — центр престижного семейного отдыха. Здесь расположены отели 5* известных мировых сетей с огромными аквапарками, спа-центрами и широкими песчаными пляжами. Вход в море пологий и безопасный для малышей.', 'zhiraf-ufa' ),
-						__( 'Район Коньяалты протянулся вдоль величественных Таврских гор. Местная галечная набережная отмечена Голубым флагом за безупречную чистоту воды. Здесь приятно гулять по современному променаду, посещать кафе и океанариум Antalya Aquarium.', 'zhiraf-ufa' ),
-						__( 'Исторический квартал Калеичи с узкими мощёными улочками, османскими особняками, римскими воротами Адриана и старой гаванью находится в 15 минутах езды от пляжей.', 'zhiraf-ufa' ),
-					),
-				),
-				array(
-					'h2'   => __( 'Сезонность и климат в Анталье', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Купальный сезон открывается в мае, когда температура воздуха достигает +25...+27°C, а вода прогревается до +21...+23°C. Июль и август — время максимального тепла (+34...+38°C, вода +28°C). Сентябрь и октябрь — идеальный бархатный сезон с мягким солнцем (+28°C) и спокойным тёплым морем (+26°C). С ноября по апрель отели принимают гостей по программам спа-релакса с подогреваемыми бассейнами.', 'zhiraf-ufa' ),
-					),
-				),
-				array(
-					'h2'   => __( 'Концепция отдыха и питания', 'zhiraf-ufa' ),
-					'paragraphs' => array(
-						__( 'Большинство отелей Антальи работают по системе All Inclusive и Ultra All Inclusive. Это означает неограниченный доступ к шведскому столу, ресторанам a la carte, детскому меню, мороженому, напиткам и анимации.', 'zhiraf-ufa' ),
-						sprintf(
-							__( 'Сравнить Анталью с другими курортами побережья можно на общей странице %1$s, а детали питания узнать в обзоре %2$s.', 'zhiraf-ufa' ),
-							'<a href="' . esc_url( home_url( '/tour/turciya/' ) ) . '">' . esc_html__( 'туров в Турцию из Уфы', 'zhiraf-ufa' ) . '</a>',
-							'<a href="' . esc_url( home_url( '/vse-vklyucheno/' ) ) . '">' . esc_html__( 'туров всё включено', 'zhiraf-ufa' ) . '</a>'
+					'title'     => __( 'Лара и Кунду', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Песчаные пляжи и резорты All Inclusive', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: ~15 мин от аэропорта', 'zhiraf-ufa' ),
+					'image'     => 'resort-turciya-antalya-1.jpg',
+					'cta_label' => __( 'Искать отели в Ларе', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array(
+							'label' => __( 'Пляж', 'zhiraf-ufa' ),
+							'value' => __( 'Песчаный вход: мягкий золотистый песок и пологий берег без камней — безопасно для купания маленьких детей.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Отели', 'zhiraf-ufa' ),
+							'value' => __( 'Пятизвёздочные комплексы с огромными бассейнами, аквапарками и развитой анимацией прямо на первой линии.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Трансфер', 'zhiraf-ufa' ),
+							'value' => __( 'Самый близкий район к аэропорту Антальи — дорога до отеля занимает минимум времени после посадки.', 'zhiraf-ufa' ),
 						),
 					),
+				),
+				array(
+					'title'     => __( 'Коньяалты', 'zhiraf-ufa' ),
+					'tag'       => __( '🏔 Галька, набережная и горы', 'zhiraf-ufa' ),
+					'meta'      => __( '10 мин на трамвае до Калеичи', 'zhiraf-ufa' ),
+					'image'     => 'resort-turciya-antalya-2.jpg',
+					'cta_label' => __( 'Искать отели в Коньяалты', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array(
+							'label' => __( 'Море', 'zhiraf-ufa' ),
+							'value' => __( 'Кристальная вода: мелкая галька даёт прозрачное бирюзовое море без песчаной мути в любую погоду.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Набережная', 'zhiraf-ufa' ),
+							'value' => __( 'Длинный европейский променад с велодорожками, кофейнями, скверами и видом на Таврские горы.', 'zhiraf-ufa' ),
+						),
+						array(
+							'label' => __( 'Город', 'zhiraf-ufa' ),
+							'value' => __( 'Рядом с центром: ретро-трамвай до узких улочек Калеичи, порта и музеев.', 'zhiraf-ufa' ),
+						),
+					),
+				),
+			),
+			'details_sections' => array(
+				array(
+					'q' => __( 'Сезонность и климат в Анталье', 'zhiraf-ufa' ),
+					'a' => __( 'Купальный сезон с мая (+25…+27°C, вода +21…+23°C). Июль–август — пик (+34…+38°C, вода +28°C). Сентябрь и октябрь — бархатный сезон (+28°C, море +26°C). Зимой отели работают на SPA-программах с подогреваемыми бассейнами.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Концепции отдыха и питание', 'zhiraf-ufa' ),
+					'a' => __( 'В Ларе и Кунду преобладают All Inclusive и Ultra All Inclusive: шведский стол, a la carte, детское меню и анимация. В Коньяалты чаще встречаются отели с завтраками и полупансионом — удобно совмещать пляж с ужинами в городе.', 'zhiraf-ufa' ),
 				),
 			),
 			'faq'           => array(
@@ -399,6 +434,78 @@ function zhiraf_ufa_get_resort_landing( $country, $resort ) {
 	$key     = $country . '/' . $resort;
 	$data    = zhiraf_ufa_resort_landing_data();
 	return isset( $data[ $key ] ) ? $data[ $key ] : null;
+}
+
+/**
+ * Top tour cards for a resort landing (regex filter + optional AI preference).
+ *
+ * @param array<string,mixed> $resort_data Resort config.
+ * @param int                 $limit       Cards.
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_get_resort_top_tours( array $resort_data, $limit = 3 ) {
+	if ( empty( $resort_data['country'] ) || empty( $resort_data['tours_rx'] ) ) {
+		return array();
+	}
+	$rx    = (string) $resort_data['tours_rx'];
+	$cards = zhiraf_ufa_get_country_top_tours( (string) $resort_data['country'], (int) $limit, $rx );
+	if ( count( $cards ) < $limit && class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
+		$fixtures = Zhiraf_BG_Price_Engine::get_instance()->get_fixtures_data();
+		$slug     = (string) $resort_data['country'];
+		if ( ! empty( $fixtures['destinations'][ $slug ] ) && is_array( $fixtures['destinations'][ $slug ] ) ) {
+			$extra = array_values(
+				array_filter(
+					$fixtures['destinations'][ $slug ],
+					function ( $t ) use ( $rx ) {
+						return preg_match( $rx, (string) ( $t['resort'] ?? '' ) );
+					}
+				)
+			);
+			usort( $extra, function ( $a, $b ) { return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 ); } );
+			$seen = array();
+			foreach ( $cards as $t ) {
+				$seen[ (string) ( $t['resort'] ?? '' ) ] = true;
+			}
+			foreach ( $extra as $t ) {
+				$r = (string) ( $t['resort'] ?? '' );
+				if ( isset( $seen[ $r ] ) ) {
+					continue;
+				}
+				$seen[ $r ] = true;
+				$cards[]    = $t;
+				if ( count( $cards ) >= $limit ) {
+					break;
+				}
+			}
+		}
+	}
+	if ( empty( $resort_data['tours_meal_prefer'] ) || 'AI' !== $resort_data['tours_meal_prefer'] || count( $cards ) < 2 ) {
+		return array_slice( $cards, 0, $limit );
+	}
+	usort(
+		$cards,
+		function ( $a, $b ) {
+			$meal_a = (string) ( $a['meal_code'] ?? '' );
+			$meal_b = (string) ( $b['meal_code'] ?? '' );
+			$ai_a   = ( 'AI' === $meal_a || 'UAI' === $meal_a ) ? 0 : 1;
+			$ai_b   = ( 'AI' === $meal_b || 'UAI' === $meal_b ) ? 0 : 1;
+			return array( $ai_a, (int) ( $a['price_rur'] ?? 0 ) ) <=> array( $ai_b, (int) ( $b['price_rur'] ?? 0 ) );
+		}
+	);
+	return array_slice( $cards, 0, $limit );
+}
+
+/**
+ * Lead-form destination token for resort pages.
+ *
+ * @param array<string,mixed> $resort_data Resort config.
+ * @return string
+ */
+function zhiraf_ufa_resort_lead_destination( array $resort_data ) {
+	if ( ! empty( $resort_data['country'] ) && ! empty( $resort_data['resort'] ) ) {
+		return sanitize_title( (string) $resort_data['country'] ) . '/' . sanitize_title( (string) $resort_data['resort'] );
+	}
+	return '';
 }
 
 /**

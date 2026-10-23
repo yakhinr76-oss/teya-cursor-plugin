@@ -195,6 +195,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'resort-sanya-3.jpg',
 			'active' => 'travel-passport.jpg',
 		),
+		'maldivy' => array(
+			'family' => 'resort-maldivy-atoll-1.jpg',
+			'couple' => 'resort-maldivy-atoll-2.jpg',
+			'city'   => 'resort-maldivy-atoll-1.jpg',
+			'active' => 'resort-maldivy-atoll-2.jpg',
+		),
 		'vse-vklyucheno' => array(
 			'family' => 'resort-turciya-alanya-2.jpg',
 			'couple' => 'resort-egipet-sharm-1.jpg',

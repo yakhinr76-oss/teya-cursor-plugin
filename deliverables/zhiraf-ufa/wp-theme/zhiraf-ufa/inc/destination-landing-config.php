@@ -38,7 +38,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'indiya'     => 'season',
 		'shri-lanka' => 'season',
 		'indoneziya' => 'season',
-		'maldivy'    => 'vibe',
+		'maldivy'    => 'battle',
 		'sejshely'   => 'vibe',
 		'uzbekistan' => 'vibe',
 		'armeniya'   => 'vibe',
@@ -85,6 +85,10 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'abkhaziya'  => array(
 			'image' => 'alt-armeniya-2.jpg',
 			'alt'   => __( 'Абхазия — сосны и бирюзовое море у Пицунды', 'zhiraf-ufa' ),
+		),
+		'maldivy'    => array(
+			'image' => 'resort-maldivy-atoll-1.jpg',
+			'alt'   => __( 'Мальдивы — виллы над лагуной и бирюзовое море', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -393,6 +397,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 			),
 		),
+		'maldivy'   => array(
+			'title'   => __( 'Остров-резорт или местный остров?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Премиальный «1 остров = 1 отель» с виллами над водой или бюджетный гестхаус на Маафуши / Тодду — два разных формата одной страны.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Остров-резорт', 'zhiraf-ufa' ),
+					'tag'       => __( '🏝 1 остров = 1 отель', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Виллы над лагуной и All Inclusive', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: гидросамолёт / катер', 'zhiraf-ufa' ),
+					'image'     => 'resort-maldivy-atoll-1.jpg',
+					'cta_label' => __( 'Подобрать резорт-остров', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Формат', 'zhiraf-ufa' ), 'value' => __( 'Отдельный остров с пляжем, ресторанами и спа — без соседей с материка', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Проживание', 'zhiraf-ufa' ), 'value' => __( 'Водные и пляжные виллы, инфинити-бассейны, питание в отеле', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Для кого', 'zhiraf-ufa' ), 'value' => __( 'Пары, медовый месяц и семьи с бюджетом от 200 000 ₽ за двоих', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Маафуши / Тодду', 'zhiraf-ufa' ),
+					'tag'       => __( '🏘 Местный остров', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Гестхаусы и экскурсии с местными', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: скоростной катер', 'zhiraf-ufa' ),
+					'image'     => 'resort-maldivy-atoll-2.jpg',
+					'cta_label' => __( 'Подобрать гестхаус', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Дешевле резорта: гестхаусы, кафе, экскурсии на соседние пляжи', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Жизнь местных, магазины — не закрытый курорт', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Важно', 'zhiraf-ufa' ), 'value' => __( 'На общественных пляжах — закрытая одежда, алкоголь только в отеле', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
 		'abkhaziya' => array(
 			'title'   => __( 'Гагра или Пицунда: какой курорт выбрать?', 'zhiraf-ufa' ),
 			'lead'    => __( 'Энергия курортной набережной с ресторанами или целебный сосновый микроклимат и спокойное море.', 'zhiraf-ufa' ),
@@ -525,6 +563,8 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Сириусом и Красной Поляной', 'zhiraf-ufa' );
 			} elseif ( 'kitaj' === $slug ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Дадунхаем и Ялонг Бэй', 'zhiraf-ufa' );
+			} elseif ( 'maldivy' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между резорт-островом и Маафуши', 'zhiraf-ufa' );
 			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',

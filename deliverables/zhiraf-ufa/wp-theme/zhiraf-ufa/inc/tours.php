@@ -44,7 +44,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		|| false !== mb_strpos( $hotel_lc, 'water park', 0, 'UTF-8' )
 		|| false !== mb_strpos( $hotel_lc, 'aquapark', 0, 'UTF-8' )
 	);
-	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) ) {
+	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && 'maldivy' !== $slug ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
 			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
@@ -113,7 +113,11 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
 		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
-		'maldivy'    => array( 'мале' => array( 'country-maldivy.jpg' ), 'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ) ),
+		'maldivy'    => array(
+			'мале'      => array( 'resort-maldivy-atoll-2.jpg', 'resort-maldivy-atoll-1.jpg' ),
+			'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
+			'маафуш'    => array( 'resort-maldivy-atoll-2.jpg', 'resort-maldivy-atoll-1.jpg' ),
+		),
 		'uzbekistan' => array( 'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ), 'хива' => array( 'alt-uzbekistan-2.jpg' ) ),
 	);
 	// Country-level photos (fallback; never another resort's own photo). Several => varied cards on one page.
@@ -164,7 +168,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
 		'shri-lanka' => array( 'country-shri-lanka.jpg', 'alt-shri-lanka-2.jpg', 'alt-shri-lanka-3.jpg' ),
 		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-3.jpg' ),
-		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
+		'maldivy'    => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
 		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
 		'uzbekistan' => array( 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg' ),
 		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),

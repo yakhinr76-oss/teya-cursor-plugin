@@ -168,6 +168,8 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
 		'uzbekistan' => array( 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg' ),
 		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
+		'rossiya'    => array( 'hero-collage-1.jpg', 'hero-collage-2.jpg', 'hero-collage-3.jpg' ),
+		'abkhaziya'  => array( 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg', 'country-armeniya.jpg' ),
 	);
 
 	$candidates = array();

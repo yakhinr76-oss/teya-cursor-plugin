@@ -2,7 +2,7 @@
 """Upload zhiraf-ufa theme to b2b-tour.ru staging via SFTP.
 
 Environment (Cloud Agent secrets):
-  B2B_TOUR_SSH_HOST          — hostname
+  B2B_TOUR_SSH_HOST          — hostname or ISPmanager URL (https://host:1500/)
   B2B_TOUR_SSH_PORT          — optional, default 22
   B2B_TOUR_SSH_USER          — username
   B2B_TOUR_SSH_PASS          — password (or B2B_TOUR_SSH_KEY_PATH for key)
@@ -16,6 +16,7 @@ import argparse
 import os
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 try:
     import paramiko
@@ -46,6 +47,26 @@ def env_any(names: tuple[str, ...]) -> str:
         if value:
             return value
     return ""
+
+
+def normalize_ssh_endpoint(raw_host: str, configured_port: int) -> tuple[str, int]:
+    """Accept hostname or panel URL (https://host:1500/) from Cloud Agent secrets."""
+    raw = raw_host.strip()
+    if not raw:
+        return "", configured_port
+    if "://" not in raw and not raw.startswith("//"):
+        if "/" in raw and ":" in raw.split("/")[0]:
+            raw = f"ssh://{raw}"
+        elif "/" in raw:
+            raw = f"ssh://{raw.lstrip('/')}"
+    if "://" in raw or raw.startswith("//"):
+        parsed = urlparse(raw if "://" in raw else f"ssh:{raw}")
+        host = (parsed.hostname or "").strip()
+        if parsed.scheme in ("http", "https"):
+            return host, configured_port
+        port = parsed.port or configured_port
+        return host, port
+    return raw.split("/")[0].strip(), configured_port
 
 
 def resolve_remote_theme_path(sftp: paramiko.SFTPClient, configured: str) -> str:
@@ -90,13 +111,14 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    host = env_any(("B2B_TOUR_SSH_HOST", "SSH_HOST", "SFTP_HOST", "FTP_HOST"))
+    raw_host = env_any(("B2B_TOUR_SSH_HOST", "SSH_HOST", "SFTP_HOST", "FTP_HOST"))
     user = env_any(("B2B_TOUR_SSH_USER", "SSH_USER", "SFTP_USER", "FTP_USER"))
     password = env_any(("B2B_TOUR_SSH_PASS", "SSH_PASS", "SFTP_PASS", "FTP_PASS"))
     key_path = env_any(("B2B_TOUR_SSH_KEY_PATH", "SSH_KEY_PATH"))
     port = int(
         env_any(("B2B_TOUR_SSH_PORT", "SSH_PORT", "SFTP_PORT", "FTP_PORT")) or "22"
     )
+    host, port = normalize_ssh_endpoint(raw_host, port)
     remote_base = env("B2B_TOUR_SSH_THEME_PATH").rstrip("/")
 
     if not host or not user:

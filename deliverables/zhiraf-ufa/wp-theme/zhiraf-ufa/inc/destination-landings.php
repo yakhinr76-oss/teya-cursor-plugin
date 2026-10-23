@@ -130,6 +130,10 @@ function zhiraf_ufa_destination_landing_data() {
 		),
 		'oae'      => array(
 			'name'           => __( 'ОАЭ', 'zhiraf-ufa' ),
+			'vibes_after_central' => true,
+			'hide_geo_block'      => true,
+			'seo_prose_accordions' => true,
+			'prose_accordion_title' => __( 'Подробнее о сезоне, визе и питании в ОАЭ', 'zhiraf-ufa' ),
 			'h1'             => __( 'Туры в ОАЭ из Уфы', 'zhiraf-ufa' ),
 			'title'          => __( 'ОАЭ из Уфы — туры и отдых в Дубае | Жираф', 'zhiraf-ufa' ),
 			'description'    => __( 'Подбор туров в ОАЭ с вылетом из Уфы: Дубай, Шарджа, Рас-эль-Хайма, Абу-Даби и Фуджейра. Безвизовый въезд, отели у пляжа и в центре города.', 'zhiraf-ufa' ),

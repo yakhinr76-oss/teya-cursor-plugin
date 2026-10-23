@@ -30,7 +30,7 @@ function zhiraf_ufa_destination_module_types() {
 function zhiraf_ufa_destination_default_module_map() {
 	return array(
 		'turciya'    => 'battle',
-		'oae'        => 'vibe',
+		'oae'        => 'battle',
 		'egipet'     => 'battle',
 		'tailand'    => 'battle',
 		'vietnam'    => 'battle',
@@ -212,6 +212,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 			),
 		),
+		'oae'     => array(
+			'title'   => __( 'Дубай или Рас-эль-Хайма: какой эмират выбрать?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Энергия небоскрёбов и шопинга или беззаботный курортный All Inclusive на первой линии.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Дубай', 'zhiraf-ufa' ),
+					'tag'       => __( '🏙 Драйв и шопинг', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Для активных туристов, пар и любителей впечатлений', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: ~20 мин', 'zhiraf-ufa' ),
+					'image'     => 'dest-uae-new.jpg',
+					'cta_label' => __( 'Искать туры в Дубай', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Формат отдыха', 'zhiraf-ufa' ), 'value' => __( 'Шопинг, рестораны, смотровые площадки, динамичная городская среда', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Питание', 'zhiraf-ufa' ), 'value' => __( 'Чаще завтраки (BB) или полупансион — обеды и ужины в городе', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Пляжи', 'zhiraf-ufa' ), 'value' => __( 'Городские пляжи JBR, La Mer или бич-клабы на Пальме', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Рас-эль-Хайма', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 All Inclusive и релакс', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Идеально для семей с детьми и спокойного отдыха у моря', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: ~60 мин', 'zhiraf-ufa' ),
+					'image'     => 'dest-uae.jpg',
+					'cta_label' => __( 'Искать туры в Рас-эль-Хайму', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Формат отдыха', 'zhiraf-ufa' ), 'value' => __( 'Спокойный пляжный релакс, большие территории, отдых «в тапочках»', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Питание', 'zhiraf-ufa' ), 'value' => __( 'Классический All Inclusive / Ultra AI в отеле', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Пляжи', 'zhiraf-ufa' ), 'value' => __( 'Собственные песчаные пляжи отелей на первой линии', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
 		'turciya' => array(
 			'title'   => __( 'Кемер или Сиде и Аланья: где лучше море и отели', 'zhiraf-ufa' ),
 			'lead'    => __( 'Главная дилемма турецкого отдыха: живописные горы с галькой или песчаный берег для детей.', 'zhiraf-ufa' ),
@@ -322,6 +356,12 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 			if ( '' === $battle_lead && $battle_pack && ! empty( $battle_pack['lead'] ) ) {
 				$battle_lead = (string) $battle_pack['lead'];
 			}
+			$wa_text = __( 'Здравствуйте! Помогите выбрать курорт', 'zhiraf-ufa' );
+			if ( 'turciya' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать курорт в Турции', 'zhiraf-ufa' );
+			} elseif ( 'oae' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать курорт в ОАЭ', 'zhiraf-ufa' );
+			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',
 				null,
@@ -329,6 +369,7 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 					'title'   => $title,
 					'lead'    => $battle_lead,
 					'columns' => $columns,
+					'wa_text' => $wa_text,
 				)
 			);
 			if ( ! empty( $dest['vibes_after_central'] ) && function_exists( 'zhiraf_ufa_get_vibe_section' ) ) {

@@ -15,6 +15,7 @@ if ( ! isset( $args ) || ! is_array( $args ) ) {
 $title   = ! empty( $args['title'] ) ? (string) $args['title'] : __( 'Сравнение курортов', 'zhiraf-ufa' );
 $lead    = ! empty( $args['lead'] ) ? (string) $args['lead'] : __( 'Два главных формата отдыха — выберите свой, мы подберём отели под критерии.', 'zhiraf-ufa' );
 $columns = ! empty( $args['columns'] ) && is_array( $args['columns'] ) ? $args['columns'] : array();
+$wa_text = ! empty( $args['wa_text'] ) ? (string) $args['wa_text'] : __( 'Здравствуйте! Помогите выбрать курорт', 'zhiraf-ufa' );
 if ( count( $columns ) < 2 ) {
 	return;
 }
@@ -71,7 +72,7 @@ if ( count( $columns ) < 2 ) {
 			<?php
 			printf(
 				wp_kses_post( __( 'Сомневаетесь? <a href="%1$s" data-track="messenger">Напишите в WhatsApp</a> — подскажем отели с проверенным питанием и пляжем.', 'zhiraf-ufa' ) ),
-				esc_url( 'https://wa.me/79018105018?text=' . rawurlencode( __( 'Здравствуйте! Помогите выбрать курорт в Турции', 'zhiraf-ufa' ) ) )
+				esc_url( 'https://wa.me/79018105018?text=' . rawurlencode( $wa_text ) )
 			);
 			?>
 		</p>

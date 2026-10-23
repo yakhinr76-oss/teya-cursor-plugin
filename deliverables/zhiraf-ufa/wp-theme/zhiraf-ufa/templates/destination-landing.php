@@ -185,6 +185,23 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 							<h3><?php esc_html_e( 'Пляжный сезон', 'zhiraf-ufa' ); ?></h3>
 							<p><?php echo esc_html( $dest['season'] ); ?></p>
 						<?php endif; ?>
+						<?php if ( ! empty( $dest['climate_seasons'] ) && is_array( $dest['climate_seasons'] ) ) : ?>
+							<h3><?php esc_html_e( 'Сезон и климат по месяцам', 'zhiraf-ufa' ); ?></h3>
+							<div class="dest-climate-grid dest-climate-grid--accordion">
+								<?php foreach ( $dest['climate_seasons'] as $season_row ) : ?>
+									<article class="dest-climate-card">
+										<p class="dest-climate-card__label"><?php echo esc_html( $season_row['label'] ); ?> <span class="dest-climate-card__months"><?php echo esc_html( $season_row['months'] ); ?></span></p>
+										<dl class="dest-climate-card__stats">
+											<div><dt><?php esc_html_e( 'Воздух', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['air'] ); ?></dd></div>
+											<div><dt><?php esc_html_e( 'Вода', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['water'] ); ?></dd></div>
+										</dl>
+										<?php if ( ! empty( $season_row['tip'] ) ) : ?>
+											<p class="dest-climate-card__tip"><?php echo esc_html( $season_row['tip'] ); ?></p>
+										<?php endif; ?>
+									</article>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
 					</div>
 				</details>
 			<?php else : ?>
@@ -249,7 +266,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 				</div>
 			<?php endif; ?>
 
-			<?php if ( 'vibe' !== $central_module && ! empty( $dest['emirate_cards'] ) && is_array( $dest['emirate_cards'] ) ) : ?>
+			<?php if ( ! in_array( $central_module, array( 'vibe', 'battle' ), true ) && ! empty( $dest['emirate_cards'] ) && is_array( $dest['emirate_cards'] ) ) : ?>
 				<h2><?php echo esc_html( ! empty( $dest['emirate_cards_title'] ) ? $dest['emirate_cards_title'] : __( 'Какой эмират выбрать для отдыха из Уфы', 'zhiraf-ufa' ) ); ?></h2>
 				<div class="dest-emirate-grid">
 					<?php foreach ( $dest['emirate_cards'] as $card ) : ?>
@@ -360,7 +377,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						</select>
 					</label>
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest['name'] ); ?>" />
+					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_slug ); ?>" />
 					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>

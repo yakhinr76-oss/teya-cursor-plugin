@@ -42,7 +42,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'sejshely'   => 'vibe',
 		'uzbekistan' => 'vibe',
 		'armeniya'   => 'vibe',
-		'rossiya'    => 'vibe',
+		'rossiya'    => 'battle',
 		'abkhaziya'  => 'battle',
 	);
 }
@@ -77,6 +77,14 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'indiya'     => array(
 			'image' => 'resort-severnyj-goa.jpg',
 			'alt'   => __( 'Индия — пляж Северного Гоа', 'zhiraf-ufa' ),
+		),
+		'rossiya'    => array(
+			'image' => 'hero-collage-1.jpg',
+			'alt'   => __( 'Сочи — Имеретинская набережная и море', 'zhiraf-ufa' ),
+		),
+		'abkhaziya'  => array(
+			'image' => 'alt-armeniya-2.jpg',
+			'alt'   => __( 'Абхазия — сосны и бирюзовое море у Пицунды', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -268,22 +276,69 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			),
 		),
 		'abkhaziya' => array(
-			'title'   => __( 'Гагра или Пицунда', 'zhiraf-ufa' ),
+			'title'   => __( 'Гагра или Пицунда: какой курорт выбрать?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Энергия курортной набережной с ресторанами или целебный сосновый микроклимат и спокойное море.', 'zhiraf-ufa' ),
 			'columns' => array(
 				array(
-					'title' => __( 'Гагра', 'zhiraf-ufa' ),
-					'tag'   => __( 'Вечерний движ', 'zhiraf-ufa' ),
-					'image' => 'country-armeniya.jpg',
-					'rows'  => array(
-						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Набережная, рестораны, парки', 'zhiraf-ufa' ) ),
+					'title'     => __( 'Гагра (Новая и Старая)', 'zhiraf-ufa' ),
+					'tag'       => __( '🌴 Движ и набережная', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Для молодёжи, пар и любителей вечерних прогулок', 'zhiraf-ufa' ),
+					'meta'      => __( 'От границы: ~25 мин', 'zhiraf-ufa' ),
+					'image'     => 'alt-armeniya-3.jpg',
+					'cta_label' => __( 'Искать отели в Гагре', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'Приморский парк, ресторан «Гагрипш», кафе и аквапарк', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Ближе к границе', 'zhiraf-ufa' ), 'value' => __( 'Самый быстрый трансфер от аэропорта Адлер без длинного серпантина', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Горные панорамы', 'zhiraf-ufa' ), 'value' => __( 'Кавказские горы вплотную к морю — живописные виды', 'zhiraf-ufa' ) ),
 					),
 				),
 				array(
-					'title' => __( 'Пицунда', 'zhiraf-ufa' ),
-					'tag'   => __( 'Спокойное море', 'zhiraf-ufa' ),
-					'image' => 'alt-armeniya-2.jpg',
-					'rows'  => array(
-						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Сосновые рощи, тихие пляжи без волн', 'zhiraf-ufa' ) ),
+					'title'     => __( 'Пицунда и Лдзаа', 'zhiraf-ufa' ),
+					'tag'       => __( '🌲 Сосны и штиль', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Идеально для семей с детьми и оздоровления', 'zhiraf-ufa' ),
+					'meta'      => __( 'От границы: ~50 мин', 'zhiraf-ufa' ),
+					'image'     => 'alt-armeniya-2.jpg',
+					'cta_label' => __( 'Искать отели в Пицунде', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Спокойное море', 'zhiraf-ufa' ), 'value' => __( 'Мыс закрывает бухту от ветров — волн почти не бывает, вода прозрачная', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Сосновая роща', 'zhiraf-ufa' ), 'value' => __( 'Целебный хвойный воздух прямо на берегу моря', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Песчаные участки', 'zhiraf-ufa' ), 'value' => __( 'У Рыбзавода (Лдзаа) — редкий для Абхазии песчаный вход в море', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'rossiya'   => array(
+			'title'   => __( 'Имеретинка (Сириус) или Красная Поляна?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Широкая морская набережная без ж/д путей или чистый горный воздух и премиальные курорты.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Сириус (Имеретинская бухта)', 'zhiraf-ufa' ),
+					'tag'       => __( '🌊 Море и самокаты', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Для семей, прогулок у моря и активного отдыха', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: ~15 мин', 'zhiraf-ufa' ),
+					'image'     => 'hero-collage-1.jpg',
+					'cta_label' => __( 'Искать отели в Сириусе', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Без ж/д у пляжа', 'zhiraf-ufa' ), 'value' => __( 'Единственный район Сочи, где над пляжем не грохочут поезда', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Набережная 7 км', 'zhiraf-ufa' ), 'value' => __( 'Велодорожки, фонтаны, Сочи Парк, отели «Сириус», «Богатырь», Radisson', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Короткий путь', 'zhiraf-ufa' ), 'value' => __( '10–15 минут от трапа самолёта до дверей отеля', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Красная Поляна и Роза Хутор', 'zhiraf-ufa' ),
+					'tag'       => __( '🏔 Горы и сервис 5★', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Для ценителей высокого сервиса, SPA и природы', 'zhiraf-ufa' ),
+					'meta'      => __( 'Трансфер: ~40 мин', 'zhiraf-ufa' ),
+					'image'     => 'hero-collage-2.jpg',
+					'cta_label' => __( 'Искать отели в Поляне', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Уровень сервиса', 'zhiraf-ufa' ), 'value' => __( 'Отели мировых брендов, подогреваемые бассейны с видом на горы', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Круглый год', 'zhiraf-ufa' ), 'value' => __( 'Зимой — лыжи, летом — треккинг и трансферы отелей на пляжи у моря', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Вечер', 'zhiraf-ufa' ), 'value' => __( 'Гастрономия региона и развлекательная программа', 'zhiraf-ufa' ) ),
 					),
 				),
 			),
@@ -322,6 +377,12 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 			if ( '' === $battle_lead && $battle_pack && ! empty( $battle_pack['lead'] ) ) {
 				$battle_lead = (string) $battle_pack['lead'];
 			}
+			$wa_text = __( 'Здравствуйте! Помогите выбрать курорт', 'zhiraf-ufa' );
+			if ( 'abkhaziya' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между Гагрой и Пицундой', 'zhiraf-ufa' );
+			} elseif ( 'rossiya' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между Сириусом и Красной Поляной', 'zhiraf-ufa' );
+			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',
 				null,
@@ -329,6 +390,7 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 					'title'   => $title,
 					'lead'    => $battle_lead,
 					'columns' => $columns,
+					'wa_text' => $wa_text,
 				)
 			);
 			if ( ! empty( $dest['vibes_after_central'] ) && function_exists( 'zhiraf_ufa_get_vibe_section' ) ) {

@@ -1659,6 +1659,18 @@ details[open] > .faq-home__question::after {
   gap: 20px;
 }
 
+.section-head--center {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.section-head--center .section-title,
+.section-head--center .lead {
+  width: 100%;
+}
+
 .dest-battle__eyebrow {
   margin: 0 0 8px;
   font-size: 0.6875rem;
@@ -4866,5 +4878,3 @@ a.contacts-card__value:hover {
     grid-template-columns: 1fr;
   }
 }
-
-/*# sourceMappingURL=style.css.map */

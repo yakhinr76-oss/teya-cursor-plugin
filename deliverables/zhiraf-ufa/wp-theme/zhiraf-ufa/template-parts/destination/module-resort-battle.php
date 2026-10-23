@@ -22,7 +22,7 @@ if ( count( $columns ) < 2 ) {
 ?>
 <section class="section section--dest-module section--dest-battle bg-milky" id="dest-module">
 	<div class="container">
-		<div class="section-head reveal">
+		<div class="section-head section-head--center reveal">
 			<p class="dest-battle__eyebrow"><?php esc_html_e( 'Гид турагентства «Жираф»', 'zhiraf-ufa' ); ?></p>
 			<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>
 			<?php if ( '' !== $lead ) : ?>

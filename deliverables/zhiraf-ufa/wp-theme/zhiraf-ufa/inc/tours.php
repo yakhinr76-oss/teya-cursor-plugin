@@ -62,8 +62,8 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'антали'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
 		),
 		'egipet'     => array(
-			'хургада'  => array( 'resort-egipet-hurghada-1.jpg', 'resort-egipet-hurghada-2.jpg' ),
-			'шарм'     => array( 'resort-egipet-sharm-1.jpg', 'resort-egipet-sharm-2.jpg' ),
+			'хургада'  => array( 'resort-egipet-hurghada-2.jpg', 'resort-egipet-marsa-alam-2.jpg' ),
+			'шарм'     => array( 'resort-egipet-sharm-2.jpg', 'resort-egipet-marsa-alam-2.jpg' ),
 			'марса'    => array( 'resort-egipet-marsa-alam-1.jpg', 'resort-egipet-marsa-alam-2.jpg' ),
 			'гуна'     => array( 'resort-egipet-el-gouna-1.jpg', 'resort-egipet-el-gouna-2.jpg' ),
 		),
@@ -99,8 +99,10 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'resort-turciya-alanya-2.jpg',
 		),
 		'egipet'     => array(
-			'resort-egipet-hurghada-1.jpg',
-			'resort-egipet-sharm-1.jpg',
+			'resort-egipet-hurghada-2.jpg',
+			'resort-egipet-sharm-2.jpg',
+			'resort-egipet-marsa-alam-2.jpg',
+			'hero-egypt.jpg',
 			'resort-egipet-el-gouna-1.jpg',
 		),
 		'oae'        => array(

@@ -112,9 +112,11 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	$country_photos = array(
 		'turciya'    => array(
 			'resort-turciya-belek-1.jpg',
-			'resort-turciya-belek-2.jpg',
+			'resort-turciya-kemer-1.jpg',
 			'resort-turciya-kemer-2.jpg',
+			'resort-turciya-alanya-1.jpg',
 			'resort-turciya-alanya-2.jpg',
+			'resort-turciya-antalya-2.jpg',
 		),
 		'egipet'     => array(
 			'resort-egipet-hurghada-2.jpg',

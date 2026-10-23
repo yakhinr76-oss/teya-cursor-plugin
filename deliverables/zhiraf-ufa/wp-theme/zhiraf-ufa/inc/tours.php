@@ -35,17 +35,17 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	if ( ! empty( $tour['image'] ) ) {
 		return array( 'file' => (string) $tour['image'], 'is_resort' => true, 'alt' => '' );
 	}
-	if ( ! empty( $tour['image_url'] ) ) {
-		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
-		if ( '' !== $ext ) {
-			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
-		}
-	}
 	$resort = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
 	$slug   = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
 	$legacy = array( 'turkey' => 'turciya', 'uae' => 'oae', 'egypt' => 'egipet', 'thailand' => 'tailand' );
 	if ( isset( $legacy[ $slug ] ) ) {
 		$slug = $legacy[ $slug ];
+	}
+	if ( ! empty( $tour['image_url'] ) && 'indiya' !== $slug ) {
+		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
+		if ( '' !== $ext ) {
+			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
+		}
 	}
 
 	// Resort needle (lowercase substring of the BG resort name) => verified photos of that very place.
@@ -83,7 +83,18 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		),
 		'tailand'    => array( 'пхукет' => array( 'resort-phuket.jpg' ), 'краби' => array( 'country-tailand.jpg' ) ),
 		'kitaj'      => array( 'санья' => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ) ),
-		'indiya'     => array( 'северный гоа' => array( 'resort-severnyj-goa.jpg' ) ),
+		'indiya'     => array(
+			'северный гоа' => array( 'resort-severnyj-goa.jpg', 'alt-indiya-beach-2.jpg' ),
+			'южный гоа'    => array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
+			'арамболь'    => array( 'resort-severnyj-goa.jpg', 'alt-indiya-beach-2.jpg' ),
+			'вагатор'      => array( 'resort-severnyj-goa.jpg', 'alt-indiya-beach-2.jpg' ),
+			'бага'         => array( 'resort-severnyj-goa.jpg', 'alt-indiya-beach-2.jpg' ),
+			'кавелоссим'   => array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
+			'варка'        => array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
+			'бенаулим'     => array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
+			'мобор'        => array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
+			'колва'        => array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
+		),
 		'maldivy'    => array( 'мале' => array( 'country-maldivy.jpg' ), 'архипелаг' => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ) ),
 		'uzbekistan' => array( 'самарканд' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg' ), 'хива' => array( 'alt-uzbekistan-2.jpg' ) ),
 	);
@@ -111,7 +122,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'dest-vietnam-new.jpg',
 		),
 		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
-		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
+		'indiya'     => array( 'resort-severnyj-goa.jpg', 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' ),
 		'shri-lanka' => array( 'country-shri-lanka.jpg', 'alt-shri-lanka-2.jpg', 'alt-shri-lanka-3.jpg' ),
 		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-3.jpg' ),
 		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
@@ -133,6 +144,15 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	}
 	if ( ! $candidates ) {
 		$candidates = isset( $country_photos[ $slug ] ) ? $country_photos[ $slug ] : array();
+	}
+	if ( 'indiya' === $slug ) {
+		$hotel = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+		if ( false !== mb_strpos( $hotel, 'beach', 0, 'UTF-8' ) || false !== mb_strpos( $hotel, 'resort', 0, 'UTF-8' ) ) {
+			$candidates = array( 'resort-severnyj-goa.jpg', 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' );
+			if ( false !== mb_strpos( $resort, 'южный', 0, 'UTF-8' ) ) {
+				$candidates = array( 'alt-indiya-beach-1.jpg', 'alt-indiya-beach-2.jpg' );
+			}
+		}
 	}
 	if ( ! $candidates ) {
 		// No library photo => gradient (never a wrong country's photo).

@@ -69,16 +69,61 @@ function zhiraf_ufa_moscow_landing_data() {
 			// ТЕКСТ НА ПРОВЕРКУ: long-form sections + FAQ (inc/destination-landings-moscow-content.php).
 			$c      = $content[ $slug ];
 			$common = zhiraf_ufa_moscow_common_sections( $to, $name );
-			$out[ $slug ]['extra_sections'] = array(
-				array( 'h2' => __( 'Когда ехать', 'zhiraf-ufa' ), 'paragraphs' => $c['season'] ),
-				array( 'h2' => __( 'Курорты в турах', 'zhiraf-ufa' ), 'paragraphs' => $c['resorts'] ),
-				array( 'h2' => __( 'Что входит в цену на сайте', 'zhiraf-ufa' ), 'paragraphs' => $common['price'] ),
-				array( 'h2' => __( 'Въезд для граждан России', 'zhiraf-ufa' ), 'paragraphs' => array_merge( $c['entry'], array( $content['_entry_note'] ) ) ),
-				array( 'h2' => __( 'Перелёт: из Москвы, без участка Уфа — Москва', 'zhiraf-ufa' ), 'paragraphs' => $common['flight'] ),
-				array( 'h2' => __( 'Полезно знать', 'zhiraf-ufa' ), 'paragraphs' => $c['tips'] ),
-				array( 'h2' => __( 'Как забронировать', 'zhiraf-ufa' ), 'paragraphs' => $common['how'] ),
-			);
-			$out[ $slug ]['faq'] = array_merge( $out[ $slug ]['faq'], $c['faq'] );
+			if ( 'kitaj' === $slug ) {
+				$out[ $slug ]['landing_module'] = 'battle';
+				$out[ $slug ]['hero_lead']      = __( 'Прямой рейс из Москвы (а/к «Аэрофлот»). Поможем состыковать удобный перелёт из Уфы без смены терминала в Шереметьево.', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_badges']    = array(
+					array(
+						'icon' => '🛂',
+						'text' => __( 'Без визы по спискам туроператора', 'zhiraf-ufa' ),
+					),
+					array(
+						'icon' => '✈',
+						'text' => __( 'Вылет из Москвы • стыковка из Уфы', 'zhiraf-ufa' ),
+					),
+				);
+				$out[ $slug ]['faq']            = array(
+					array(
+						'q' => __( 'Нужна ли виза в Китай для поездки в Санью?', 'zhiraf-ufa' ),
+						'a' => __( 'Для граждан России действовали безвизовые режимы (включая программу для Хайнаня), а на прямых рейсах туроператора часто действуют списки безвизового въезда. Условия меняются — уточняем по вашему туру перед бронированием.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Когда лучше ехать в Санью на море?', 'zhiraf-ufa' ),
+						'a' => $c['season'][0],
+					),
+					array(
+						'q' => __( 'Дадунхай или Ялонг Бэй — что выбрать?', 'zhiraf-ufa' ),
+						'a' => __( 'Дадунхай — городской пляж, рестораны, рынки и бюджетные отели рядом с морем. Ялонг Бэй — премиальные резорты, чистый песок и спокойное море, но ужины чаще в отеле или на такси. Сравнение выше на странице — менеджер подберёт отель в нужной бухте.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Входит ли в цену перелёт из Уфы?', 'zhiraf-ufa' ),
+						'a' => __( 'Нет. Цены на карточках — для вылета из Москвы. Перелёт Уфа — Москва — Уфа подбираем и оплачиваем отдельно, помогаем состыковать рейсы без смены терминала в Шереметьево.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Что входит в указанную цену тура?', 'zhiraf-ufa' ),
+						'a' => $common['price'][0],
+					),
+					array(
+						'q' => __( 'Какие курорты Китая есть в турах?', 'zhiraf-ufa' ),
+						'a' => $c['resorts'][0],
+					),
+					array(
+						'q' => __( 'Как забронировать тур в Санью в «Жираф»?', 'zhiraf-ufa' ),
+						'a' => $common['how'][0],
+					),
+				);
+			} else {
+				$out[ $slug ]['extra_sections'] = array(
+					array( 'h2' => __( 'Когда ехать', 'zhiraf-ufa' ), 'paragraphs' => $c['season'] ),
+					array( 'h2' => __( 'Курорты в турах', 'zhiraf-ufa' ), 'paragraphs' => $c['resorts'] ),
+					array( 'h2' => __( 'Что входит в цену на сайте', 'zhiraf-ufa' ), 'paragraphs' => $common['price'] ),
+					array( 'h2' => __( 'Въезд для граждан России', 'zhiraf-ufa' ), 'paragraphs' => array_merge( $c['entry'], array( $content['_entry_note'] ) ) ),
+					array( 'h2' => __( 'Перелёт: из Москвы, без участка Уфа — Москва', 'zhiraf-ufa' ), 'paragraphs' => $common['flight'] ),
+					array( 'h2' => __( 'Полезно знать', 'zhiraf-ufa' ), 'paragraphs' => $c['tips'] ),
+					array( 'h2' => __( 'Как забронировать', 'zhiraf-ufa' ), 'paragraphs' => $common['how'] ),
+				);
+				$out[ $slug ]['faq'] = array_merge( $out[ $slug ]['faq'], $c['faq'] );
+			}
 		}
 	}
 	return $out;

@@ -34,7 +34,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'egipet'     => 'battle',
 		'tailand'    => 'battle',
 		'vietnam'    => 'battle',
-		'kitaj'      => 'season',
+		'kitaj'      => 'battle',
 		'indiya'     => 'season',
 		'shri-lanka' => 'season',
 		'indoneziya' => 'season',
@@ -197,6 +197,38 @@ function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
  */
 function zhiraf_ufa_default_resort_battle( $slug ) {
 	$battles = array(
+		'kitaj'   => array(
+			'title'   => __( 'Дадунхай или Ялонг Бэй: где остановиться на Хайнане?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Две главные бухты Саньи — городской пляж с инфраструктурой или премиальный резорт с чистым морем. Подберём отель под ваш формат отдыха.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Бухта Дадунхай', 'zhiraf-ufa' ),
+					'tag'       => __( '🍍 Движ, инфраструктура и экономия', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Русский квартал и вечерняя набережная', 'zhiraf-ufa' ),
+					'image'     => 'resort-sanya-2.jpg',
+					'cta_label' => __( 'Отели в Дадунхае', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-tours',
+					'rows'      => array(
+						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'ТЦ «Ананас», русские и китайские рестораны, массаж, рынки', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Много городских отелей 4–5★ и доступный стритфуд', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Логистика', 'zhiraf-ufa' ), 'value' => __( '10 минут до центра Саньи на автобусе или такси', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Бухта Ялонг Бэй', 'zhiraf-ufa' ),
+					'tag'       => __( '🌊 Элитный релакс и чистое море', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Резорты мировых сетей на первой линии', 'zhiraf-ufa' ),
+					'image'     => 'resort-sanya-3.jpg',
+					'cta_label' => __( 'Отели в Ялонг Бэй', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-tours',
+					'rows'      => array(
+						array( 'label' => __( 'Пляж', 'zhiraf-ufa' ), 'value' => __( 'Белый песок, широкая полоса, бирюзовая вода без катеров', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Премиум-отели', 'zhiraf-ufa' ), 'value' => __( 'Hilton, Marriott, Sheraton — парки и первая линия', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Тишина', 'zhiraf-ufa' ), 'value' => __( 'Мало трасс и толп — для пар и спокойного семейного отдыха', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
 		'tailand' => array(
 			'title'   => __( 'Пхукет или Паттайя: что выбрать?', 'zhiraf-ufa' ),
 			'lead'    => __( 'Лазурное Андаманское море и островной релакс или движ, экскурсии и Ко Лан — главный выбор первой поездки в Таиланд.', 'zhiraf-ufa' ),
@@ -491,6 +523,8 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Гагрой и Пицундой', 'zhiraf-ufa' );
 			} elseif ( 'rossiya' === $slug ) {
 				$wa_text = __( 'Здравствуйте! Помогите выбрать между Сириусом и Красной Поляной', 'zhiraf-ufa' );
+			} elseif ( 'kitaj' === $slug ) {
+				$wa_text = __( 'Здравствуйте! Помогите выбрать между Дадунхаем и Ялонг Бэй', 'zhiraf-ufa' );
 			}
 			get_template_part(
 				'template-parts/destination/module-resort-battle',

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string[]
  */
 function zhiraf_ufa_destination_landing_slugs() {
-	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj', 'indiya', 'shri-lanka', 'indoneziya', 'maldivy', 'sejshely', 'uzbekistan', 'armeniya' );
+	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj', 'indiya', 'shri-lanka', 'indoneziya', 'maldivy', 'sejshely', 'uzbekistan', 'armeniya', 'rossiya', 'abkhaziya' );
 }
 
 /**
@@ -645,6 +645,62 @@ function zhiraf_ufa_destination_landing_data() {
 				),
 			),
 		),
+		'rossiya'  => array(
+			'name'             => __( 'Россия', 'zhiraf-ufa' ),
+			'h1'               => __( 'Отдых в России из Уфы', 'zhiraf-ufa' ),
+			'title'            => __( 'Россия — Сочи, Кавминводы, Калининград | Жираф', 'zhiraf-ufa' ),
+			'description'      => __( 'Пакетные туры с перелётом или бронирование только отеля: Сочи, Красная Поляна, Кавминводы, Калининград. Без загранпаспорта.', 'zhiraf-ufa' ),
+			'image'            => 'hero-collage-1.jpg',
+			'image_alt'        => __( 'Россия — горы и море, курортный отдых', 'zhiraf-ufa' ),
+			'domestic'         => true,
+			'landing_module'   => 'vibe',
+			'booking_modes'    => array(
+				__( 'Пакетный тур с перелётом из Уфы', 'zhiraf-ufa' ),
+				__( 'Только проживание в отеле (блочные тарифы)', 'zhiraf-ufa' ),
+			),
+			'hero_lead'        => __( 'Сочи, Красная Поляна, санатории Кавминвод или Калининград — оформим пакет с перелётом или закроем отель, если билеты уже есть.', 'zhiraf-ufa' ),
+			'hero_lead_extended' => __( 'Многие уфимцы летают на поезде, самолёте за мили или на машине — мы помогаем с закрытыми тарифами в отели «Сириус», «Богатырь», санатории и апарт-отели.', 'zhiraf-ufa' ),
+			'geo_answer'       => __( 'Из Уфы доступны прямые и стыковочные рейсы в Сочи, Минеральные Воды, Калининград. Можно забронировать только отель с трансфером или полный пакет — уточним в подборке.', 'zhiraf-ufa' ),
+			'for_who'          => __( 'Семьям — пляж Сириуса и Имеретинки; зимой — Красная Поляна; лечебный отдых — Кавминводы; короткие поездки — Калининград.', 'zhiraf-ufa' ),
+			'we_clarify'       => __( 'Нужен ли перелёт, категория номера, питание, трансфер от аэропорта или ж/д, даты и состав.', 'zhiraf-ufa' ),
+			'season'           => __( 'Чёрное море — с мая по октябрь; горы Красной Поляны — зима для лыж, лето для прогулок; Кавминводы — круглый год.', 'zhiraf-ufa' ),
+			'quiz_prefill'     => __( 'Россия, отдых из Уфы', 'zhiraf-ufa' ),
+			'skip_passport_faq'=> true,
+			'faq'              => array(
+				array(
+					'q' => __( 'Можно ли купить только отель без перелёта?', 'zhiraf-ufa' ),
+					'a' => __( 'Да. Если билеты уже есть, бронируем проживание по блочным тарифам партнёров и оформляем договор на услуги размещения.', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		'abkhaziya' => array(
+			'name'             => __( 'Абхазия', 'zhiraf-ufa' ),
+			'h1'               => __( 'Отдых в Абхазии из Уфы', 'zhiraf-ufa' ),
+			'title'            => __( 'Абхазия — Гагра, Пицунда | трансфер из Адлера | Жираф', 'zhiraf-ufa' ),
+			'description'      => __( 'Туры в Абхазию: въезд по паспорту РФ, рубли, трансфер из аэропорта Адлер до отеля. Гагра и Пицунда.', 'zhiraf-ufa' ),
+			'image'            => 'alt-armeniya-3.jpg',
+			'image_alt'        => __( 'Абхазия — море и сосновые рощи', 'zhiraf-ufa' ),
+			'domestic'         => true,
+			'landing_module'   => 'battle',
+			'hero_lead'        => __( 'Море, горы и реликтовые сосны — без загранпаспорта. Организуем трансфер из аэропорта Адлер прямо до отеля.', 'zhiraf-ufa' ),
+			'hero_lead_extended' => __( 'Оплата в рублях, въезд по внутреннему паспорту РФ. Поможем выбрать между динамичной Гагрой и спокойной Пицундой.', 'zhiraf-ufa' ),
+			'geo_answer'       => __( 'Обычный маршрут: перелёт Уфа — Сочи/Адлер, далее трансфер 1–2 часа до Гагры или Пицунды. Все детали трансфера согласуем до оплаты.', 'zhiraf-ufa' ),
+			'for_who'          => __( 'Семьям — пологие пляжи Пицунды; компаниям — вечерняя набережная Гагры; любителям природы — озеро Рица (экскурсия).', 'zhiraf-ufa' ),
+			'we_clarify'       => __( 'Курорт, линия моря, питание, трансфер из Адлера, даты.', 'zhiraf-ufa' ),
+			'season'           => __( 'Купальный сезон — с июня по сентябрь; весна и осень — для прогулок и экскурсий.', 'zhiraf-ufa' ),
+			'quiz_prefill'     => __( 'Абхазия, трансфер из Адлера', 'zhiraf-ufa' ),
+			'skip_passport_faq'=> true,
+			'faq'              => array(
+				array(
+					'q' => __( 'Нужен ли загранпаспорт в Абхазию?', 'zhiraf-ufa' ),
+					'a' => __( 'Нет, для граждан РФ достаточно действующего паспорта РФ. Валюта — рубль.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Как добраться до отеля?', 'zhiraf-ufa' ),
+					'a' => __( 'Закладываем трансфер из аэропорта Адлер (Сочи) до отеля в Гагре, Пицунде или Новом Афоне.', 'zhiraf-ufa' ),
+				),
+			),
+		),
 	), zhiraf_ufa_moscow_landing_data() );
 }
 
@@ -659,7 +715,10 @@ function zhiraf_ufa_get_destination_landing( $slug ) {
 	if ( isset( $data[ $slug ] ) ) {
 		$row         = $data[ $slug ];
 		$row['slug'] = $slug;
-		return $row;
+		if ( function_exists( 'zhiraf_ufa_apply_destination_presentation' ) ) {
+			$row = zhiraf_ufa_apply_destination_presentation( $row, $slug );
+		}
+		return apply_filters( 'zhiraf_ufa_destination_landing', $row, $slug );
 	}
 	return null;
 }

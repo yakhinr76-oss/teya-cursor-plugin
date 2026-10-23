@@ -172,6 +172,14 @@
   margin-left: 4px;
 }
 
+.tour-card__spec-line {
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
 .tour-card__resort {
   display: flex;
   align-items: center;

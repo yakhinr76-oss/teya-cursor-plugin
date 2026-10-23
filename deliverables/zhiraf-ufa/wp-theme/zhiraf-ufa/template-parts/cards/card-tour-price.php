@@ -36,8 +36,10 @@ if ( '' === $hotel_name || '' === $stars || '' === $resort || '' === $departure_
 // Stale = price not refreshed today: show "цена от … на [дата], уточните…" instead of the fresh-price disclaimer.
 $is_stale = ( $price_date !== wp_date( 'd.m.Y' ) );
 
-$image_info       = zhiraf_ufa_tour_image_info( $tour );
+$card_index       = isset( $args['card_index'] ) ? (int) $args['card_index'] : null;
+$image_info       = zhiraf_ufa_tour_image_info( $tour, $card_index );
 $image_file       = $image_info['file'];
+$spec_line        = zhiraf_ufa_tour_card_spec_line( $tour );
 $nights_formatted = zhiraf_ufa_plural_nights( $nights );
 $country_name     = zhiraf_ufa_tour_country_name( $country_slug );
 
@@ -91,6 +93,9 @@ $zhiraf_hot_departure    = ! empty( $args['emphasize_hot_departure'] );
 				<svg class="tour-card__icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
 				<span><?php echo esc_html( $resort ); ?></span>
 			</p>
+			<?php if ( '' !== $spec_line ) : ?>
+				<p class="tour-card__spec-line"><?php echo esc_html( $spec_line ); ?></p>
+			<?php endif; ?>
 		</div>
 
 		<div class="tour-card__meta">

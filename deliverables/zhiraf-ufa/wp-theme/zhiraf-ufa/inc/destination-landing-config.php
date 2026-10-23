@@ -1,0 +1,425 @@
+<?php
+/**
+ * Destination landing presentation: hero standards, central module switcher, admin override.
+ *
+ * @package Zhiraf_Ufa
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Central interactive module types (one per landing page).
+ *
+ * @return array<string,string> slug => label
+ */
+function zhiraf_ufa_destination_module_types() {
+	return array(
+		'battle' => __( 'Батл курортов (VS)', 'zhiraf-ufa' ),
+		'vibe'   => __( 'Выбор по вайбу', 'zhiraf-ufa' ),
+		'season' => __( 'Сезонность и климат', 'zhiraf-ufa' ),
+	);
+}
+
+/**
+ * Default module per destination slug.
+ *
+ * @return array<string,string>
+ */
+function zhiraf_ufa_destination_default_module_map() {
+	return array(
+		'turciya'    => 'vibe',
+		'oae'        => 'vibe',
+		'egipet'     => 'battle',
+		'tailand'    => 'battle',
+		'vietnam'    => 'battle',
+		'kitaj'      => 'season',
+		'indiya'     => 'season',
+		'shri-lanka' => 'season',
+		'indoneziya' => 'season',
+		'maldivy'    => 'vibe',
+		'sejshely'   => 'vibe',
+		'uzbekistan' => 'vibe',
+		'armeniya'   => 'vibe',
+		'rossiya'    => 'vibe',
+		'abkhaziya'  => 'battle',
+	);
+}
+
+/**
+ * Hero image + alt standards (resort emotion, not landmarks/construction).
+ *
+ * @return array<string,array{image:string,alt:string}>
+ */
+function zhiraf_ufa_destination_hero_image_standards() {
+	return array(
+		'turciya'    => array(
+			'image' => 'hero-turkey.jpg',
+			'alt'   => __( 'Турция — пляж и море, курорт Средиземноморья', 'zhiraf-ufa' ),
+		),
+		'egipet'     => array(
+			'image' => 'hero-egypt.jpg',
+			'alt'   => __( 'Египет — Красное море и пляжный отель', 'zhiraf-ufa' ),
+		),
+		'tailand'    => array(
+			'image' => 'resort-phuket.jpg',
+			'alt'   => __( 'Таиланд — пляж с пальмами, Пхукет', 'zhiraf-ufa' ),
+		),
+		'vietnam'    => array(
+			'image' => 'resort-vietnam-phu-quoc-1.jpg',
+			'alt'   => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
+		),
+		'kitaj'      => array(
+			'image' => 'resort-sanya-2.jpg',
+			'alt'   => __( 'Китай — курорт Санья, Хайнань', 'zhiraf-ufa' ),
+		),
+		'indiya'     => array(
+			'image' => 'resort-severnyj-goa.jpg',
+			'alt'   => __( 'Индия — пляж Северного Гоа', 'zhiraf-ufa' ),
+		),
+	);
+}
+
+/**
+ * Default logistics badges when not set in landing pack.
+ *
+ * @param string $slug Destination slug.
+ * @return array<int,array{icon?:string,text:string}>
+ */
+function zhiraf_ufa_destination_default_hero_badges( $slug ) {
+	$map = array(
+		'turciya'   => array(
+			array( 'icon' => '✈', 'text' => __( 'Прямой рейс или стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 90 дней', 'zhiraf-ufa' ) ),
+		),
+		'oae'       => array(
+			array( 'icon' => '✈', 'text' => __( 'Прямой рейс из Уфы ~4,5–5 ч', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Без визы • 90 дней', 'zhiraf-ufa' ) ),
+		),
+		'egipet'    => array(
+			array( 'icon' => '✈', 'text' => __( 'Вылет из Уфы в Хургаду / Шарм', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Виза по прилёту / e-visa', 'zhiraf-ufa' ) ),
+		),
+		'tailand'   => array(
+			array( 'icon' => '✈', 'text' => __( 'Стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 30/45/90 дней', 'zhiraf-ufa' ) ),
+		),
+		'vietnam'   => array(
+			array( 'icon' => '✈', 'text' => __( 'Стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 45 дней', 'zhiraf-ufa' ) ),
+		),
+		'abkhaziya' => array(
+			array( 'icon' => '🚐', 'text' => __( 'Трансфер из аэропорта Адлер (Сочи) до отеля', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Паспорт РФ • оплата в рублях', 'zhiraf-ufa' ) ),
+		),
+		'rossiya'   => array(
+			array( 'icon' => '🏨', 'text' => __( 'Пакет с перелётом или только проживание', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Без загранпаспорта', 'zhiraf-ufa' ) ),
+		),
+	);
+
+	return isset( $map[ $slug ] ) ? $map[ $slug ] : array();
+}
+
+/**
+ * Resolve active central module for a landing.
+ *
+ * @param string              $slug Destination slug.
+ * @param array<string,mixed> $dest Landing row.
+ * @param int                 $page_id Page ID.
+ */
+function zhiraf_ufa_destination_landing_module( $slug, $dest, $page_id = 0 ) {
+	if ( ! empty( $dest['landing_module'] ) && array_key_exists( $dest['landing_module'], zhiraf_ufa_destination_module_types() ) ) {
+		return (string) $dest['landing_module'];
+	}
+	if ( ! $page_id ) {
+		$page_id = get_queried_object_id();
+	}
+	if ( $page_id ) {
+		$meta = get_post_meta( $page_id, '_zhiraf_landing_module', true );
+		if ( is_string( $meta ) && array_key_exists( $meta, zhiraf_ufa_destination_module_types() ) ) {
+			return $meta;
+		}
+	}
+	$defaults = zhiraf_ufa_destination_default_module_map();
+	if ( isset( $defaults[ $slug ] ) ) {
+		return $defaults[ $slug ];
+	}
+	return 'vibe';
+}
+
+/**
+ * Apply hero standards and defaults to landing config.
+ *
+ * @param array<string,mixed> $dest Landing row.
+ * @param string              $slug Slug.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
+	$standards = zhiraf_ufa_destination_hero_image_standards();
+	if ( isset( $standards[ $slug ] ) && empty( $dest['hero_image_override'] ) ) {
+		$dest['image']     = $standards[ $slug ]['image'];
+		$dest['image_alt'] = $standards[ $slug ]['alt'];
+	}
+	if ( empty( $dest['hero_badges'] ) ) {
+		$badges = zhiraf_ufa_destination_default_hero_badges( $slug );
+		if ( $badges ) {
+			$dest['hero_badges'] = $badges;
+		}
+	}
+	if ( empty( $dest['cta_lead'] ) && ! empty( $dest['name'] ) ) {
+		/* translators: %s: country name */
+		$dest['cta_lead'] = sprintf(
+			__( 'Не уверены, какой отель выбрать в %s? Напишите бюджет и состав семьи — эксперт пришлёт подборку из 3 отелей в WhatsApp за 15 минут.', 'zhiraf-ufa' ),
+			$dest['name']
+		);
+	}
+	if ( empty( $dest['cta_message_placeholder'] ) ) {
+		$dest['cta_message_placeholder'] = __( 'Бюджет, даты, дети (возраст), пожелания по курорту', 'zhiraf-ufa' );
+	}
+	return $dest;
+}
+
+/**
+ * Default resort battle blocks when not in landing pack.
+ *
+ * @param string $slug Destination slug.
+ * @return array{title:string,columns:array}|null
+ */
+function zhiraf_ufa_default_resort_battle( $slug ) {
+	$battles = array(
+		'tailand' => array(
+			'title'   => __( 'Пхукет или Паттайя: что выбрать', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title' => __( 'Пхукет', 'zhiraf-ufa' ),
+					'tag'   => __( 'Остров и пляжи', 'zhiraf-ufa' ),
+					'image' => 'resort-phuket.jpg',
+					'rows'  => array(
+						array( 'label' => __( 'Формат', 'zhiraf-ufa' ), 'value' => __( 'Карон, Ката, закаты, островные экскурсии', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'ноябрь — апрель — штиль', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title' => __( 'Паттайя', 'zhiraf-ufa' ),
+					'tag'   => __( 'Город и движ', 'zhiraf-ufa' ),
+					'image' => 'dest-thailand-new.jpg',
+					'rows'  => array(
+						array( 'label' => __( 'Формат', 'zhiraf-ufa' ), 'value' => __( 'Шопинг, вечерняя жизнь, Ко Лан за 20 мин', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'море спокойнее летом, чем на западе Пхукета', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'egipet'  => array(
+			'title'   => __( 'Хургада или Шарм-эль-Шейх', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title' => __( 'Хургада', 'zhiraf-ufa' ),
+					'tag'   => __( 'Семьи', 'zhiraf-ufa' ),
+					'image' => 'resort-egipet-hurghada-1.jpg',
+					'rows'  => array(
+						array( 'label' => __( 'Пляж', 'zhiraf-ufa' ), 'value' => __( 'Песок, пологий заход', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title' => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ),
+					'tag'   => __( 'Рифы', 'zhiraf-ufa' ),
+					'image' => 'resort-egipet-sharm-1.jpg',
+					'rows'  => array(
+						array( 'label' => __( 'Пляж', 'zhiraf-ufa' ), 'value' => __( 'Понтоны, снорклинг у рифа', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'abkhaziya' => array(
+			'title'   => __( 'Гагра или Пицунда', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title' => __( 'Гагра', 'zhiraf-ufa' ),
+					'tag'   => __( 'Вечерний движ', 'zhiraf-ufa' ),
+					'image' => 'country-armeniya.jpg',
+					'rows'  => array(
+						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Набережная, рестораны, парки', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title' => __( 'Пицунда', 'zhiraf-ufa' ),
+					'tag'   => __( 'Спокойное море', 'zhiraf-ufa' ),
+					'image' => 'alt-armeniya-2.jpg',
+					'rows'  => array(
+						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Сосновые рощи, тихие пляжи без волн', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+	);
+	if ( ! isset( $battles[ $slug ] ) ) {
+		return null;
+	}
+	return $battles[ $slug ];
+}
+
+/**
+ * Render the single central module for a destination landing.
+ *
+ * @param string              $slug Slug.
+ * @param array<string,mixed> $dest Landing config (enriched).
+ */
+function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
+	$module = zhiraf_ufa_destination_landing_module( $slug, $dest );
+	switch ( $module ) {
+		case 'battle':
+			$title   = ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : '';
+			$columns = ! empty( $dest['resort_compare'] ) ? $dest['resort_compare'] : array();
+			if ( empty( $columns ) ) {
+				$defaults = zhiraf_ufa_default_resort_battle( $slug );
+				if ( $defaults ) {
+					$title   = $defaults['title'];
+					$columns = $defaults['columns'];
+				}
+			}
+			if ( empty( $columns ) ) {
+				break;
+			}
+			get_template_part(
+				'template-parts/destination/module-resort-battle',
+				null,
+				array(
+					'title'   => $title,
+					'columns' => $columns,
+				)
+			);
+			break;
+		case 'season':
+			$seasons = ! empty( $dest['climate_seasons'] ) ? $dest['climate_seasons'] : array();
+			if ( empty( $seasons ) && ! empty( $dest['season'] ) ) {
+				$seasons = array(
+					array(
+						'label'  => __( 'Обзор', 'zhiraf-ufa' ),
+						'months' => '',
+						'air'    => '',
+						'water'  => '',
+						'tip'    => (string) $dest['season'],
+					),
+				);
+			}
+			if ( empty( $seasons ) ) {
+				break;
+			}
+			get_template_part(
+				'template-parts/destination/module-season',
+				null,
+				array(
+					'seasons'      => $seasons,
+					'title'        => ! empty( $dest['climate_module_title'] ) ? $dest['climate_module_title'] : __( 'Сезонность и климат', 'zhiraf-ufa' ),
+					'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+					'country_name' => ! empty( $dest['name'] ) ? $dest['name'] : '',
+				)
+			);
+			break;
+		case 'vibe':
+		default:
+			if ( ! function_exists( 'zhiraf_ufa_get_vibe_section' ) ) {
+				break;
+			}
+			$vibe_section = zhiraf_ufa_get_vibe_section( $slug, $dest );
+			if ( $vibe_section ) {
+				get_template_part(
+					'template-parts/destination/vibe-cards',
+					null,
+					array(
+						'section'      => $vibe_section,
+						'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+					)
+				);
+			}
+			break;
+	}
+}
+
+/**
+ * Admin meta: pick central module on destination WP pages.
+ */
+function zhiraf_ufa_destination_module_meta_box() {
+	$post = get_post();
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+	$slug = $post->post_name;
+	if ( ! in_array( $slug, zhiraf_ufa_destination_landing_slugs(), true ) ) {
+		return;
+	}
+	add_meta_box(
+		'zhiraf-landing-module',
+		__( 'Интерактивный блок посадочной', 'zhiraf-ufa' ),
+		'zhiraf_ufa_destination_module_meta_box_render',
+		'page',
+		'side',
+		'default'
+	);
+}
+add_action( 'add_meta_boxes_page', 'zhiraf_ufa_destination_module_meta_box' );
+
+/**
+ * @param WP_Post $post Post.
+ */
+function zhiraf_ufa_destination_module_meta_box_render( $post ) {
+	wp_nonce_field( 'zhiraf_landing_module', 'zhiraf_landing_module_nonce' );
+	$current = get_post_meta( $post->ID, '_zhiraf_landing_module', true );
+	$types   = zhiraf_ufa_destination_module_types();
+	$defaults = zhiraf_ufa_destination_default_module_map();
+	$slug    = $post->post_name;
+	echo '<p><label for="zhiraf_landing_module">' . esc_html__( 'Тип блока под каталогом туров', 'zhiraf-ufa' ) . '</label></p>';
+	echo '<select name="zhiraf_landing_module" id="zhiraf_landing_module" class="widefat">';
+	echo '<option value="">' . esc_html__( '— по умолчанию для направления —', 'zhiraf-ufa' ) . '</option>';
+	foreach ( $types as $key => $label ) {
+		printf(
+			'<option value="%s"%s>%s</option>',
+			esc_attr( $key ),
+			selected( $current, $key, false ),
+			esc_html( $label )
+		);
+	}
+	echo '</select>';
+	if ( isset( $defaults[ $slug ] ) ) {
+		printf(
+			'<p class="description">%s</p>',
+			esc_html(
+				sprintf(
+					/* translators: %s: module label */
+					__( 'По умолчанию для «%1$s»: %2$s', 'zhiraf-ufa' ),
+					$slug,
+					$types[ $defaults[ $slug ] ] ?? $defaults[ $slug ]
+				)
+			)
+		);
+	}
+}
+
+/**
+ * Save module meta.
+ *
+ * @param int $post_id Post ID.
+ */
+function zhiraf_ufa_save_destination_module_meta( $post_id ) {
+	if ( ! isset( $_POST['zhiraf_landing_module_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['zhiraf_landing_module_nonce'] ) ), 'zhiraf_landing_module' ) ) {
+		return;
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	if ( ! current_user_can( 'edit_page', $post_id ) ) {
+		return;
+	}
+	$val = isset( $_POST['zhiraf_landing_module'] ) ? sanitize_key( wp_unslash( $_POST['zhiraf_landing_module'] ) ) : '';
+	if ( '' === $val ) {
+		delete_post_meta( $post_id, '_zhiraf_landing_module' );
+		return;
+	}
+	if ( array_key_exists( $val, zhiraf_ufa_destination_module_types() ) ) {
+		update_post_meta( $post_id, '_zhiraf_landing_module', $val );
+	}
+}
+add_action( 'save_post_page', 'zhiraf_ufa_save_destination_module_meta' );

@@ -21,6 +21,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/destination-landings-moscow-content.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landings-moscow.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/vibe-cards.php';
+require_once ZHIRAF_UFA_DIR . '/inc/destination-landing-config.php';
 require_once ZHIRAF_UFA_DIR . '/inc/activation.php';
 require_once ZHIRAF_UFA_DIR . '/inc/tour-routing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/resort-landings.php';

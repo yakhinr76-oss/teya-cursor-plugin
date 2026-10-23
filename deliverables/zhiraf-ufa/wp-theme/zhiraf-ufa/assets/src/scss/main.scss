@@ -726,6 +726,18 @@ details[open] > .faq-home__question::after {
 .dest-climate-card__stats dt { color: var(--color-muted); font-weight: 600; }
 .dest-climate-card__stats dd { margin: 0; font-weight: 800; }
 .dest-climate-card__tip { margin: 0; font-size: 0.875rem; color: var(--color-muted); line-height: 1.45; }
+.dest-resort-compare--module { margin-top: 0; }
+.dest-climate-grid--module .dest-climate-card.is-active {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(232, 122, 93, 0.15);
+}
+.dest-domestic-modes {
+  margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 12px;
+}
+.dest-domestic-modes li {
+  padding: 14px 18px; border-radius: var(--radius-md); background: var(--color-white);
+  border: 1px solid var(--color-border); font-weight: 700;
+}
 .dest-emirate-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

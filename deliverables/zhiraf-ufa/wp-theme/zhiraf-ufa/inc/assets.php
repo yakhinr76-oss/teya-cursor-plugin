@@ -138,7 +138,7 @@ function zhiraf_ufa_destinations() {
 		array(
 			'slug'    => 'vietnam',
 			'name'    => __( 'Вьетнам', 'zhiraf-ufa' ),
-			'image'   => 'resort-vietnam-phu-quoc-1.jpg',
+			'image'   => 'resort-vietnam-phu-quoc-2.jpg',
 			'alt'     => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/vietnam/' ),
 			'teaser'  => __( 'Нячанг и Фукуок: без визы до 45 дней, пляж и SPA-курорты.', 'zhiraf-ufa' ),

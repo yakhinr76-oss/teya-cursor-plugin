@@ -35,14 +35,21 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	if ( ! empty( $tour['image'] ) ) {
 		return array( 'file' => (string) $tour['image'], 'is_resort' => true, 'alt' => '' );
 	}
-	if ( ! empty( $tour['image_url'] ) ) {
+	$resort   = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
+	$slug     = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
+	$hotel_lc = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+	$aqua_hotel = '' !== $hotel_lc && (
+		false !== mb_strpos( $hotel_lc, 'aqua', 0, 'UTF-8' )
+		|| false !== mb_strpos( $hotel_lc, 'аква', 0, 'UTF-8' )
+		|| false !== mb_strpos( $hotel_lc, 'water park', 0, 'UTF-8' )
+		|| false !== mb_strpos( $hotel_lc, 'aquapark', 0, 'UTF-8' )
+	);
+	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
 			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
 		}
 	}
-	$resort = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
-	$slug   = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
 	$legacy = array( 'turkey' => 'turciya', 'uae' => 'oae', 'egypt' => 'egipet', 'thailand' => 'tailand' );
 	if ( isset( $legacy[ $slug ] ) ) {
 		$slug = $legacy[ $slug ];
@@ -60,16 +67,30 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'белек'    => array( 'resort-turciya-belek-1.jpg' ),
 			'анталь'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
 			'антали'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
+			'лара'     => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-belek-1.jpg' ),
+			'кунду'    => array( 'resort-turciya-belek-1.jpg', 'resort-turciya-antalya-1.jpg' ),
+			'коньяалт' => array( 'resort-turciya-antalya-2.jpg', 'resort-turciya-kemer-2.jpg' ),
 		),
 		'egipet'     => array(
-			'хургада'  => array( 'resort-egipet-hurghada-1.jpg', 'resort-egipet-hurghada-2.jpg' ),
+			'хургада'  => array(
+				'resort-egipet-hurghada-2.jpg',
+				'resort-egipet-hurghada-1.jpg',
+				'resort-egipet-el-gouna-1.jpg',
+				'resort-egipet-marsa-alam-2.jpg',
+			),
+			'макади'   => array( 'resort-egipet-el-gouna-1.jpg', 'resort-egipet-marsa-alam-2.jpg', 'resort-egipet-hurghada-2.jpg' ),
+			'сахл'     => array( 'resort-egipet-el-gouna-2.jpg', 'resort-egipet-marsa-alam-2.jpg', 'resort-egipet-hurghada-2.jpg' ),
+			'сома'     => array( 'resort-egipet-marsa-alam-2.jpg', 'resort-egipet-el-gouna-1.jpg' ),
 			'шарм'     => array( 'resort-egipet-sharm-1.jpg', 'resort-egipet-sharm-2.jpg' ),
 			'марса'    => array( 'resort-egipet-marsa-alam-1.jpg', 'resort-egipet-marsa-alam-2.jpg' ),
 			'гуна'     => array( 'resort-egipet-el-gouna-1.jpg', 'resort-egipet-el-gouna-2.jpg' ),
 		),
 		'vietnam'    => array(
-			'нячанг'   => array( 'resort-vietnam-nha-trang-1.jpg', 'resort-vietnam-nha-trang-2.jpg' ),
-			'фукуок'   => array( 'resort-vietnam-phu-quoc-1.jpg', 'resort-vietnam-phu-quoc-2.jpg' ),
+			'нячанг'   => array( 'resort-vietnam-nha-trang-2.jpg', 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
+			'камран'   => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg', 'resort-vietnam-nha-trang-2.jpg' ),
+			'зоклет'   => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
+			'док лет'  => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
+			'фукуок'   => array( 'resort-vietnam-phu-quoc-2.jpg', 'hero-vietnam.jpg', 'dest-vietnam.jpg' ),
 			'камрань'  => array( 'resort-vietnam-cam-ranh-1.jpg', 'resort-vietnam-cam-ranh-2.jpg' ),
 			'фантьет'  => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
 			'муйне'    => array( 'resort-vietnam-phan-thiet-1.jpg', 'resort-vietnam-phan-thiet-2.jpg' ),
@@ -96,17 +117,20 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'resort-turciya-alanya-2.jpg',
 		),
 		'egipet'     => array(
+			'resort-egipet-hurghada-2.jpg',
 			'resort-egipet-hurghada-1.jpg',
-			'resort-egipet-sharm-1.jpg',
 			'resort-egipet-el-gouna-1.jpg',
+			'resort-egipet-marsa-alam-2.jpg',
+			'resort-egipet-sharm-1.jpg',
 		),
 		'oae'        => array( 'hero-uae.jpg', 'dest-uae-new.jpg', 'dest-uae.jpg', 'resort-abu-dabi.jpg' ),
 		'tailand'    => array( 'resort-phuket.jpg', 'hero-thailand.jpg', 'dest-thailand-new.jpg' ),
 		'vietnam'    => array(
-			'resort-vietnam-phu-quoc-1.jpg',
-			'resort-vietnam-phu-quoc-2.jpg',
-			'resort-vietnam-nha-trang-1.jpg',
 			'resort-vietnam-nha-trang-2.jpg',
+			'resort-vietnam-cam-ranh-1.jpg',
+			'resort-vietnam-cam-ranh-2.jpg',
+			'resort-vietnam-phu-quoc-2.jpg',
+			'hero-vietnam.jpg',
 			'resort-vietnam-phan-thiet-1.jpg',
 			'dest-vietnam-new.jpg',
 		),
@@ -133,6 +157,14 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	}
 	if ( ! $candidates ) {
 		$candidates = isset( $country_photos[ $slug ] ) ? $country_photos[ $slug ] : array();
+	}
+	if ( 'egipet' === $slug && $aqua_hotel ) {
+		$candidates = array(
+			'resort-egipet-marsa-alam-2.jpg',
+			'resort-egipet-hurghada-2.jpg',
+			'resort-egipet-el-gouna-2.jpg',
+		);
+		$is_resort  = true;
 	}
 	if ( ! $candidates ) {
 		// No library photo => gradient (never a wrong country's photo).

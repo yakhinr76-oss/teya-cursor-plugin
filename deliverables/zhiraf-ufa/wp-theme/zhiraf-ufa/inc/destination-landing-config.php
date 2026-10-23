@@ -67,7 +67,7 @@ function zhiraf_ufa_destination_hero_image_standards() {
 			'alt'   => __( 'Таиланд — пляж с пальмами, Пхукет', 'zhiraf-ufa' ),
 		),
 		'vietnam'    => array(
-			'image' => 'resort-vietnam-phu-quoc-1.jpg',
+			'image' => 'resort-vietnam-phu-quoc-2.jpg',
 			'alt'   => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
 		),
 		'kitaj'      => array(

@@ -69,6 +69,49 @@ function zhiraf_ufa_moscow_landing_data() {
 			// ТЕКСТ НА ПРОВЕРКУ: long-form sections + FAQ (inc/destination-landings-moscow-content.php).
 			$c      = $content[ $slug ];
 			$common = zhiraf_ufa_moscow_common_sections( $to, $name );
+			if ( 'uzbekistan' === $slug ) {
+				$out[ $slug ]['landing_module'] = 'battle';
+				$out[ $slug ]['vibe_section']   = false;
+				$out[ $slug ]['faq_title']      = __( 'Частые вопросы об Узбекистане', 'zhiraf-ufa' );
+				$out[ $slug ]['image']          = 'resort-samarkand.jpg';
+				$out[ $slug ]['image_alt']      = __( 'Узбекистан — площадь Регистан в Самарканде', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_lead']      = __( 'Самарканд, Бухара и Шелковый путь с вылетом из Москвы. Поможем состыковать перелёт из Уфы и выбрать город для первого знакомства со страной.', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_badges']    = array(
+					array( 'icon' => '🛂', 'text' => __( 'Безвизово • загранпаспорт', 'zhiraf-ufa' ) ),
+					array( 'icon' => '✈', 'text' => __( 'Вылет из Москвы • стыковка из Уфы', 'zhiraf-ufa' ) ),
+					array( 'icon' => '🚄', 'text' => __( 'Поезд «Афросиаб» между городами', 'zhiraf-ufa' ) ),
+				);
+				$out[ $slug ]['faq']            = array(
+					array(
+						'q' => __( 'Входит ли в цену перелёт из Уфы?', 'zhiraf-ufa' ),
+						'a' => __( 'Нет. Цены на карточках — для вылета из Москвы. Перелёт Уфа — Москва подбираем отдельно, помогаем состыковать рейсы.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Нужна ли виза в Узбекистан?', 'zhiraf-ufa' ),
+						'a' => $c['entry'][0],
+					),
+					array(
+						'q' => __( 'Когда лучше ехать в Узбекистан?', 'zhiraf-ufa' ),
+						'a' => $c['season'][0],
+					),
+					array(
+						'q' => __( 'Самарканд или Бухара — с чего начать?', 'zhiraf-ufa' ),
+						'a' => __( 'Самарканд — монументальный Регистан и современная зона Silk Road Samarkand. Бухара — компактный старый город с базарами и медресе. Сравнение — в блоке выше; на карточке указан город тура.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Как добраться между городами?', 'zhiraf-ufa' ),
+						'a' => __( 'Между Ташкентом, Самаркандом и Бухарой ходит скоростной поезд «Афросиаб» и внутренние рейсы. Билеты на поезд лучше бронировать заранее; в цену тура на сайте переезд обычно не входит.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Можно ли объединить несколько городов в одном туре?', 'zhiraf-ufa' ),
+						'a' => __( 'Цены на сайте — за тур в один город (Ташкент, Самарканд или Бухара). Маршрут по нескольким городам менеджер рассчитает по запросу.', 'zhiraf-ufa' ),
+					),
+					array(
+						'q' => __( 'Какая валюта и как платить?', 'zhiraf-ufa' ),
+						'a' => __( 'Местная валюта — сум. Российские карты Visa и Mastercard за рубежом не работают — заранее продумайте наличные; на базарах принято торговаться.', 'zhiraf-ufa' ),
+					),
+				);
+			} else {
 			$out[ $slug ]['extra_sections'] = array(
 				array( 'h2' => __( 'Когда ехать', 'zhiraf-ufa' ), 'paragraphs' => $c['season'] ),
 				array( 'h2' => __( 'Курорты в турах', 'zhiraf-ufa' ), 'paragraphs' => $c['resorts'] ),
@@ -79,6 +122,7 @@ function zhiraf_ufa_moscow_landing_data() {
 				array( 'h2' => __( 'Как забронировать', 'zhiraf-ufa' ), 'paragraphs' => $common['how'] ),
 			);
 			$out[ $slug ]['faq'] = array_merge( $out[ $slug ]['faq'], $c['faq'] );
+			}
 		}
 	}
 	return $out;

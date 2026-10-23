@@ -1,0 +1,1627 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Biblio-Globus Tour Operator JSON price list API</title>
+  <link rel="stylesheet" href="/v2/css/page-api.css">
+</head>
+<body>
+<article>
+  <h1>Biblio-Globus Tour Operator JSON price list API</h1>
+  <div class="Contents">
+    <div class="ull">
+      <a href="#name1"><span class="list-num">1. </span>API access</a>
+      <a class="tab-style" href="#name11"><span class="list-num">1.1. </span>Getting login and password for authorization</a>
+      <a class="tab-style" href="#name12"><span class="list-num">1.2. </span>Authorization with services</a>
+      <a class="tab-style" href="#name13"><span class="list-num">1.3. </span>Data compression</a>
+      <a href="#name2"><span class="list-num">2. </span>Request and synchronization of references</a>
+      <a class="tab-style" href="#name21"><span class="list-num">2.1. </span>Currency rates to rubles requests</a>
+      <a href="#name3"><span class="list-num">3. </span>Available price list requests in JSON</a>
+      <a class="tab-style" href="#name31"><span class="list-num">3.1. </span>Price lists request</a>
+      <a class="tab-style" href="#name32"><span class="list-num">3.2. </span>Price lists and cities(resorts) dependency request</a>
+      <a class="tab-style" href="#name33"><span class="list-num">3.3. </span>Departure cities and tour destination countries request</a>
+      <a class="tab-style" href="#name34"><span class="list-num">3.4. </span>Flight transfers and stop sale request</a>
+      <a href="#name4"><span class="list-num">4. </span>Single price list request from Biblio-Globus system</a>
+      <a class="tab-style" href="#name41"><span class="list-num">4.1. </span>Detailed parameters and filters for price list request</a>
+      <a class="tab-style" href="#name42"><span class="list-num">4.2. </span>Detailed information for price list request</a>
+      <a class="tab-style-double" href="#name421"><span class="list-num">4.2.1. </span>Information for flight transfers</a>
+      <a class="tab-style-double" href="#name422"><span class="list-num">4.2.2. </span>Information for transfers</a>
+      <a class="tab-style-double" href="#name423"><span class="list-num">4.2.3. </span>Information for excursions and extras</a>
+      <a href="#name5"><span class="list-num">5. </span>Special offers request in Biblio-Globus system</a>
+      <a href="#name6"><span class="list-num">6. </span>Special offers request in Biblio-Globus system: instant confirmation</a>
+      <a href="#name7"><span class="list-num">7. </span>Charter flights prices search request</a>
+      <a href="#name8"><span class="list-num">8. </span>Regular flights price search request</a>
+    </div>
+  </div>
+  <!-- ****** dont remove ****** -->
+  <div class="clearfix"></div>
+  <!-- ****** dont remove ****** -->
+  <p class="warnings-and-extra">
+    <span>
+    </span>
+  </p>
+  <!-- ****** template block ****** -->
+  <h2 id="name1"><span class="list-num">1. </span>API access</h2>
+  <h2 id="name11"><span class="list-num">1.1. </span>Getting login and password for authorisation</h2>
+  <div class="paragraph-block">
+    <p>
+      If you don't have your login and password to access our Biblio-Globus Tour Operator system, you should contact our Agency Relations Department:
+      <br>
+      <a href="tel:+74951092500">+7 (495) 109-2500</a>
+      <br>
+      Alexander Lyubimov - 1448 internal phone number
+    </p>
+  </div>
+
+  <h2 id="name12"><span class="list-num">1.2. </span>Authorization with services</h2>
+  <div class="paragraph-block">
+    <p>Authorization process: if on each API request shows up 401 error, you should ask for fresh COOKIEs with names
+      <code>A1</code>, <code>Z1</code>, <code>L</code> by sending POST request to
+      <a href="https://login.bgoperator.ru/auth">https://login.bgoperator.ru/auth</a> with POST parameters
+      <code>login</code> and <code>pwd</code>.
+      Use COOKIE <code>A1</code>, <code>Z1</code>, <code>L</code> values in future service requests.
+      COOKIE
+      <code>Z1</code> value changes/refreshes on each next service request - accept and indicate it into next request.
+    </p>
+  </div>
+
+  <h2 id="name13"><span class="list-num">1.3. </span>Data compression</h2>
+  <div class="paragraph-block">
+    <p>Into each request provide Accept-Encoding header:
+      <code>gzip</code>, otherwise 406 error will be shown on response.</p>
+  </div>
+  <h2 id="name2"><span class="list-num">2. </span>Request and synchronization of references</h2>
+  <div class="paragraph-block">
+    <p>To be able to do request to price list, other additional filters and parameters extensions, at first, you should request country lists, city and resort lists, hotel lists and accommodation types lists.</p>
+  </div>
+  <table class="api-table">
+    <thead>
+    <caption>
+      <h3>
+        To request lists follow these URLs:
+      </h3>
+    </caption>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <a href="http://export.bgoperator.ru/yandex?action=countries">http://export.bgoperator.ru/yandex?action=countries</a>
+      </td>
+      <td>
+        Country list
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://export.bgoperator.ru/auto/jsonResorts.json">http://export.bgoperator.ru/auto/jsonResorts.json</a>
+      </td>
+      <td>
+        City and resort lists
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://export.bgoperator.ru/yandex?action=hotelsJson">http://export.bgoperator.ru/yandex?action=hotelsJson</a>
+      </td>
+      <td>
+        Hotel lists
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="http://export.bgoperator.ru/yandex?action=vr">http://export.bgoperator.ru/yandex?action=vr</a>
+      </td>
+      <td>
+        Accommodation types lists
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+  </table>
+
+  <h3>Example response to country lists, city and resort lists, hotel lists and accommodation types lists request:</h3>
+  <div class="border-bg">
+	<pre>
+		<code>
+[
+    {
+        "id":"100410000051",
+        "title_ru":"Таиланд",
+        "title_en":"Thailand",
+        "code":"TH",
+        "town_from":"100510000826#100510397223#100510015827#100510397359#100510397310#100574750001#<br>
+      100510397178#100568421754#100510397261#100510397299#100510397348",
+        "alpha3":"THA",
+        "tours":"Да"
+    }, ...
+] </code>
+	</pre>
+  </div>
+
+  <div class="paragraph-block">
+    <h3>Where:</h3>
+    <p><code>id</code> - object identifier in Biblio-Globus system</p>
+  </div>
+  <table class="api-table">
+    <thead>
+    <caption>
+      <h3>
+        Get request attributes:
+      </h3>
+    </caption>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        For countries
+      </td>
+      <td>
+        <code>title_ru</code> – country name in Russian
+        <br>  <code>title_en</code>
+        – country name in English
+        <br>   <code>code</code>
+        – country code                <br> <code>town_from</code>
+        - id list of departure cities in selected country (divided by #)               <br>  <code>alpha3</code>
+        - three-letter country code           <br>      <code>tours</code>
+        - is a attribute, which means that there are available tours to this country (in this case parameter’s value is “Да”)         <br>
+        <code>site_cur</code>
+        - country currency in Biblio-Globus system
+      </td>
+    </tr>
+    <tr>
+      <td>
+        For cities and resorts
+      </td>
+      <td>
+
+        <code>title_ru</code> – city name in Russian <br><code>title_en</code>
+        – city name in English <br><code>country</code>
+        – country id of this city <br><code>airports</code>
+        – this attribute sets when there is an airport in selected city <br><code>ap_name</code>
+        – airport name in English <br><code>code</code>
+        – iata airport code
+      </td>
+    </tr>
+    <tr>
+      <td>
+        For accommodation types
+      </td>
+      <td>
+
+        <code>name</code> – accommodation type name<br><code>name_full</code>
+        – full accommodation type name<br><code>AD_number</code>
+        – amount of adults in room<br><code>CHD_number</code>
+        – amount of children in room<br><code>infnum</code>
+        – amount of infants in room
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+  </table>
+
+  <h3>Example response of hotel lists:</h3>
+  <div class="border-bg">
+	<pre>
+		<code>
+[
+&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;"key" : <span class="attr">"102631286815"</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;"name" : <span class="attr">"HOLIDAY INN DUBAI AL BARSHA"</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;"stars" : <span class="attr">"4"</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;"raiting" : <span class="attr">"2"</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;"countryKey" : <span class="attr">"100410510097"</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;"cityKey" : <span class="attr">"100510535941"</span>
+&nbsp;&nbsp;},
+&nbsp;&nbsp;...
+]
+        </code>
+	</pre>
+  </div>
+  <div class="paragraph-block">
+    <h3>Where:</h3>
+    <p><code>key</code>
+      — hotel object identifier   <br><code>name</code>
+      — hotel name   <br><code>stars</code>
+      — hotel star rating   <br><code>raiting</code>
+      — hotel popularity. This attribute is only exported if it is filled in.   <br><code>countryKey</code>
+      — hotel country id   <br><code>cityKey</code>
+      — hotel city id   <br><code>inPr</code>
+      - attribute that shows available hotel prices (prices value <code>0</code> - no,
+      <code>1</code> - yes). This attribute is specified only at GET parameter request by
+      <code>&id=&lt;</code><u> id of a hotel </u></code><code>&gt;</code>.
+      If there is no id specified, return only hotels, which have <code>inPr</code> value = <code>1</code>.</p>
+      <h3>Displayed only for hotels in the country Russia:</h3>
+    <p><code>stFGIS</code> — Status in the FGIS system<br>
+      <code>idFGIS</code> — Unique identifier in the FGIS system<br>
+      To obtain a link to the property on the Rosaccreditation website <code>https://tourism.fsa.gov.ru/ru/resorts/hotels/</code>&lt;idFGIS&gt;<code>/about-resort</code><br>
+      <code>sertFGIS</code> — Hotel certificate number in the FGIS system</p>
+  </div>
+
+  <h2 id="name21"><span class="list-num">2.1. </span>Currency rates to rubles requests</h2>
+  <div class="paragraph-block">
+    <table class="api-table">
+      <thead>
+      <caption>
+        <h3>
+          To request data, go to one of these URLs:
+        </h3>
+      </caption>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <a href="http://export.bgoperator.ru/auto/auto-kurs.xml">http://export.bgoperator.ru/auto/auto-kurs.xml</a>
+        </td>
+        <td>
+          XML format
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="http://export.bgoperator.ru/auto/auto-kurs.json">http://export.bgoperator.ru/auto/auto-kurs.json</a>
+        </td>
+        <td>
+          JSON format
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </p>
+  </div>
+  <h3>Example response XML format:</h3>
+  <div class="border-bg">
+	<pre>
+		<code>
+&lt;currencies&gt;
+    &lt;date>20.01.2020&lt;/date>
+    &lt;rate code="EUR" value="46.81" /&gt;
+    &lt;rate code="USD" value="34.54" /&gt;
+    &lt;BYR&gt;
+        &lt;rate code="EUR" value="13958"/&gt;
+        &lt;rate code="USD" value="10231"/&gt;
+        &lt;rate code="RUR" value="285"  /&gt;
+    &lt;/BYR&gt;
+    &lt;UAH&gt;
+        &lt;rate code="EUR" value="16.52" /&gt;
+        &lt;rate code="USD" value="12.18" /&gt;
+    &lt;/UAH&gt;
+&lt;/currencies&gt;</code>
+	</pre>
+  </div>
+  <div class="paragraph-block">
+    <p>Elements within blocks <code>&lt;BYR&gt;</code> and
+      <code>&lt;UAH&gt;</code> contain currency rates from Russian ruble to Belarusian ruble and from Russian ruble to Ukrainian hryvnia. Other elements show other currencies to ruble.
+    </p>
+  </div>
+
+  <h3>Example response JSON format:</h3>
+  <div class="border-bg">
+    <pre>
+		<code>
+{
+  "currencies" : {
+  "date" : "20.01.2020",
+  "RUR" :  [
+    {
+      "code" : "EUR",
+      "value" : "46.81"
+    },
+    {
+      "code" : "USD",
+      "value" : "34.54"
+    }
+  ],
+  "BYN" :  [
+    {
+      "code" : "EUR",
+      "value" : "13958"
+    },
+    {
+      "code" : "USD",
+      "value" : "10231"
+    },
+    {
+      "code" : "RUR",
+      "value" : "285"
+    }
+  ],
+  "UAH" :  [
+    {
+      "code" : "EUR",
+      "value" : "16.52"
+    },
+    {
+      "code" : "USD",
+      "value" : "12.18"
+    }
+  ]
+}}
+        </code>
+    </pre>
+  </div>
+
+  <h2 id="name3"><span class="list-num">3. </span>Available price list requests in JSON</h2>
+  <h2 id="name31"><span class="list-num">3.1. </span>Price lists request</h2>
+  <div class="paragraph-block">
+    <p>Main Biblio-Globus tours price lists id divided to smaller price lists. Each price list has route, departure city, available duration dates and departure date attributes. JSON request price list can have fixed destinations (countries) and departure cities.</p>
+  </div>
+  <div class="paragraph-block">
+    <h3>Example request URL:</h3>
+
+    <p>
+      <a href="http://export.bgoperator.ru/yandex?action=files&flt=100410000049&flt2=100510000863&xml=11">http://export.bgoperator.ru/yandex?action=files&flt=100410000049&flt2=100510000863&xml=11</a>
+    </p>
+  </div>
+
+  <div class="paragraph-block">
+    <h3>Where:</h3>
+    <p>
+      <code>100410000049</code> — Cyprus identifier from countries list
+      <br><code>100510000863</code>
+      — Moscow identifier from cities list
+
+    </p>
+  </div>
+  <h3>Example JSON response:</h3>
+  <div class="border-bg">
+	<pre>
+		<code>
+{
+    "entries":[
+        {
+            "date":"23.08.2014",
+            "route":"Туры на Кипр &lt;b&gt;Трансаэро (аэропорт Пафос \/ Ларнака)&lt;\b&gt;",
+            "duration":"/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17/18/19/20/21/22/23/24/25/26/27/28",
+            "url":"http://export.bgoperator.ru/partners?action=price&tid=211&flt=100410000049&ТУРЫ НА КИПРflt2=100510000863&id_price=121132934133&data=23.08.2014&xml=11",
+            "id_price":"121132934133",
+            "minprice":"281",
+            "minindex":"1.35",
+            "imp":"1",
+            "cur":"EUR"
+        }, ...
+    ]
+}</code>
+	</pre>
+  </div>
+
+  <div class="paragraph-block">
+    <h3>Where:</h3>
+    <p>
+      <code>date</code> — departure date <br><code>route</code>
+      — price list route and airline name <br><code>duration</code>
+      — tour duration in price lists <br><code>url</code>
+      — a link to JSON request <br><code>stop</code>
+      — presence of this element meat that this tour is in stop-list стоп-листе.
+      <br>
+      <code>minprice</code> — minimal non-zero price from price list for one person with accommodation type "2 взрослых"("2 AD") 2 adults
+      <br>
+      <code>minindex</code> — equation of min_price of current price list to minimal min_price from all price list from the request <br>
+      <code>cur</code>
+      — price list currency <br><code>imp</code>
+      — a flag (<code>1/0</code>); with value <code>1</code> are marked prior Biblio-Globus price lists
+
+    </p>
+  </div>
+  <h2 id="name32"><span class="list-num">3.2. </span>Price lists and cities(resorts) dependency request</h2>
+  <div class="paragraph-block">
+    <p>You need to form this URL to request a price list: <br>
+      <a href="http://export.bgoperator.ru/partners?action=price&tid=211&flt=100410000049&flt2=100510000863&id_price=121120015746&data=10.03.2011&xml=11">http://export.bgoperator.ru/partners?action=price&tid=211&flt=100410000049&flt2=100510000863&id_price=121120015746&data=10.03.2011&xml=11</a>
+    </p>
+
+    <p>The link contains a parameter
+      <code>id_price</code> - price list. To get dependencies request between cities(resorts) and
+      <code>id_price</code> pull the request link: <br>
+      <a href="http://export.bgoperator.ru/yandex?action=jsonpriceresorts&data=10.10.2014&flt2=100510000863">http://export.bgoperator.ru/yandex?action=jsonpriceresorts&data=10.10.2014&flt2=100510000863</a>
+    </p>
+  </div>
+
+  <div class="paragraph-block">
+    <h3>Where the required parameters are:</h3>
+    <p>
+      <code>data</code> — refers to the date for the dependency request
+      <br><code>flt2</code>
+      — departure city(resort)
+    </p>
+  </div>
+  <div class="paragraph-block">
+    <p></p>
+  </div>
+
+  <div class="paragraph-block">
+    <p>For proper work with this API service, please, follow these three steps:
+    <ol>
+      <li>For each departure city(resort) and date save dependencies caches daily.</li>
+      <li>To find dependencies for each hotel, first step - refer to the hotel’s city from the reference lists, second step - fetch the price lists for each city by pulling a request or find it from saved cache.</li>
+      <li>Empty the saved caches daily.</li>
+    </ol>
+    </p>
+  </div>
+
+  <h3>Successful JSON response example:</h3>
+  <div class="border-bg">
+	<pre>
+		<code>
+{
+  "id_price":
+    [ 
+      {"id":"121174225779", "imp":"Нет", "res": ["100574180976"]},  
+      {"id":"121174217697", "imp":"Нет", "res": ["100574180976"]}, 
+  ]
+}
+		</code>
+	</pre>
+  </div>
+
+  <div class="paragraph-block">
+    <h3>Where:</h3>
+    <p>
+      <code>id</code> — object price list identifier
+      <br><code>imp</code> — boolean mark Yes(Да)/No(Нет). Yes(Да) is for priority Biblio-Globus price lists
+      <br><code>res</code> — an array of cities(resorts) identifiers, found in this price list
+      <br><code>t</code> — price list description. Is shown when a parameter is specified in your request URL
+      <br><code>a</code> — price list airline. Is shown when a parameter is specified in your request URL
+    </p>
+  </div>
+
+  <h2 id="name33"><span class="list-num">3.3. </span>Departure cities and tour destination countries request</h2>
+
+  <div class="paragraph-block">
+    <p>Get the list of all possible departure cities with available tours by following the link below
+      <br>
+      <a href="http://export.bgoperator.ru/auto/homepage-124331253701.js">http://export.bgoperator.ru/auto/homepage-124331253701.js</a>
+    </p>
+  </div>
+
+  <div class="paragraph-block">
+    <p>It this JavaScript file you will find these parameters:<br><br>
+
+      <code>BG_FLTX</code> — is initialized by its inherited object. It contains parameters:
+      <br><code>flt2</code> — departure city
+      <br><code>flt</code> — tour’s country
+
+      <br><br><code>flt</code> — is an array of countries elements
+      <code>[100420695633, {"n":"Абхазия"}]</code>, which are country
+      <code>id</code> (<code>100420695633</code>), and country name (<code>Абхазия</code>)
+      <br><code>flt2</code> — is an array of cities elements
+      <code>[100510000863, {"n":Москва", "f" : 0, "t" : [1,3,1,...,1,1]}]</code>, where
+      <code>t</code> equals to the size of <code>id</code>s array (equals to the amount of
+      <code>flt</code> array size). Index of an element in the <code>t</code> array equals to country
+      <code>id</code> from <code>flt</code> array.
+      <br>If indicator in <code>t</code> array equals
+      <code>1</code>, then there are only tours without transfers for this country, else means tours have transfers (ex. flight, railway, bus).
+
+    </p>
+  </div>
+
+  <div class="paragraph-block">
+
+    <h2 id="name34"><span class="list-num">3.4. </span>Flight transfers and stop sale request</h2>
+    <div class="paragraph-block">
+      <p>To get a list of stopped sales for flights and accommodation, make a request for stopped sales:</p>
+      <table class="api-table">
+        <tbody>
+        <tr>
+          <td>
+            http://export.bgoperator.ru/yandex?action=flights_stops
+          </td>
+          <td>
+            Flights stopped sales in xml
+          </td>
+        </tr>
+        <tr>
+          <td>
+            http://export.bgoperator.ru/yandex?action=flights_stops&json=true
+          </td>
+          <td>
+            Flights stopped sales in json
+          </td>
+        </tr>
+        <tr>
+          <td>
+            http://export.bgoperator.ru/yandex?action=hotels_stops
+          </td>
+          <td>
+            Accommodation stopped sales in xml
+          </td>
+        </tr>
+        <tr>
+          <td>
+            http://export.bgoperator.ru/yandex?action=hotels_stops&json=true
+          </td>
+          <td>
+            Accommodation stopped sales in json
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Successful response example for flights stopped sales:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+&lt;stopsales&gt;
+  &lt;item flight="103119663447" date="2013-10-05" class="E" nights="9"/&gt;  
+  &lt;item flight="103119663447" date="2013-10-05" class="E" nights="6"/&gt; 
+  &lt;item flight="103119663447" date="2013-10-05" class="E" nights="5"/&gt;
+  …
+&lt;/stopsales&gt;
+		</code>
+	</pre>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+
+        <code>flight</code> — flight identifier in Biblio-Globus system
+        <br><code>date</code> — flight departure date
+        <br><code>class</code> — flight seat class
+        <br><code>nights</code> — amount of tour nights.<br>
+        If an attribute <code>nights</code> is empty, then for this flight has been set a stopped sale for the picked flight departure date.
+        If an attribute <code>nights</code> is not empty, then for this flight has been set a stopped sale for return flights on equal amount of tour nights
+
+      </p>
+    </div>
+
+    <h3>Successful response example for accommodation stopped sales:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+&lt;stopsales&gt;
+  &lt;item hotel="102640059661" datebeg="2013-10-06" dateend="2013-10-25" ns="104630536730"/&gt;
+  &lt;item hotel="102640059661" datebeg="2013-10-06" dateend="2013-10-25" ns="104640059686"/&gt;
+  &lt;item hotel="102630316562" datebeg="2013-12-29" dateend="2014-01-02"/&gt;
+  …
+&lt;/stopsales&gt;
+		</code>
+	</pre>
+    </div>
+
+    <div class="paragraph-block">
+      <p>Accomodation stopped sale happens for those hotels, which have intersection on date ranges from <code>datebeg</code> to <code>dateend</code> including. If <code>ns</code> is indicated, then stopped sales are only for specific accommodation types (room type, board basis, view).</p>
+      <h3>Where:</h3>
+      <p>
+
+        <code>hotel</code> — hotel identifier in Biblio-Globus system
+        <br><code>datebeg</code> — start of stop date
+        <br><code>dateend</code> — end of stop date (incl.)
+        <br><code>ns</code> — accommodation type (room type, board basis, view)
+
+      </p>
+    </div>
+
+    <h2 id="name4"><span class="list-num">4. </span>Single price list request from Biblio-Globus system</h2>
+    <div class="paragraph-block">
+    <p>To get price list data in JSON go to <a href="#name31">3.1.</a></p>
+      <p>Change the last parameter of query string <code>&xml=11</code> to <code>&xml=21</code> to get the references of filters and for additional information
+  If you add a new parameter <code>&entr=-1</code> at the end of the query string, you will only get filters </p>
+
+    </div>
+    <h3>JSON response example:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+{   
+  "href0":
+  "http://export.bgoperator.ru/tozaya?prx=104499999900000025&idt=&cntr=100410000049&repl=0&ins=0-30000-EUR",   
+  "cur": "EUR",   
+  "prx": "104499999900000025",   
+  "entries": [     
+    {       
+      "tour_date": "27.07.2014",       
+      "aircompany": "Аэрофлот",       
+      "town": "Ayia Napa",       
+      "room": "STANDARD Inland View HB",       
+      "dt": "27.07.2014",       
+      "href1": "&templ=121120516103&otn=104610790295&dt=27.07.2014&kol=2&sr=43UpM9e04HAuj08YLk204HAu+08YLkN-CF8yGA&c=YY00000000",       
+      "id_hotel": "102610001486",       
+      "id_ns": "104610790295",       
+      "duration": "2",       
+      "o_duration": "2",       
+      "quota": "9",       
+      "id_price": "121120516103",       
+      "sr": "43UpM9e04HAuj08YLk204HAu+08YLkN-CF8yGAj2d1f78aeef81c9d7aeeccc8bdfdf93ff",       
+      "prices": [         
+        {           
+          "amount": "1473",           
+          "RUR": "71205",           
+          "concr": "3250",           
+          "href2": "&otv=102510005340&p=0250819780.0250819780#",           
+          "ag": "[14-99][14-99]"         
+        } ]     
+    }     
+  ...   
+] }
+		</code>
+	</pre>
+    </div>
+    <div class="paragraph-block">
+      <p>Elements (entries) of the array have price-list description information like: hotel prices, accommodation, board basis, duration for each room type and board basises.</p>
+    </div>
+    <div class="paragraph-block">
+    <h3>Where:</h3>
+    <p>
+
+      <code>cur</code> — tour currency
+      <br><code>prx</code> — a required parameter to create new bookings for tours via API.
+      <br><code>tour_date</code> — tour beginning date
+      <br><code>aircompany</code> — airlines
+      <br><code>town</code> — hotel's city
+      <br><code>hotel</code> — booked hotel and its category
+      <br><code>room</code> — room type and board basis
+      <br><code>dt</code> — the begiining date of the main tour accommodation (optional parameter)
+      <br><code>flights</code> — flight informationin HTML, is the same as on our main website. This parameter shows up only when a query parameter <code>novirt</code> is added.<br>
+      <br><code>duration</code> — full nights accommodation duration<br>
+
+      <br><code>o_duration</code> — full nights duration of main accommodation (optional parameter)
+      <br><code>b_duration</code> — full nights duration before the main accommodation (optional parameter)<br>
+      <br><code>ab_duration</code> — second full nights duration before the main accommodation (optional parameter)
+      <br><code>ba_duration</code> — second full nights duration after the main accommodation (optional parameter)<br>
+      <br><code>a_duration</code> — full nights duration after the main accommodation (optional parameter)<br>
+
+      <br><code>id_hotel</code> — hotel identifier in Biblio-Globus system
+      <br><code>isstop</code> — array describes tour's stopped sales. Possible parameters are <code>avia_to</code> — flight departure stops, <code>avia_from</code> — return flight stops, <code>hotel</code> — hotel stops.<br>
+
+      <br><code>id_ns</code> — room / board basis types identifier in Biblio-Globus system(*)<br>
+      <br><code>b_id_ns</code> — room / board basis types identifier(*) before the beginning of the main accommodation (optional parameter)
+      <br><code>b_id_h</code> — its hotel identifier (optional parameter)<br>
+      <br><code>ab_id_ns</code> — room / board basis types second identifier(*) before the beginning of the main accommodation (optional parameter)
+      <br><code>ab_id_h</code> — its hotel identifier (optional parameter)<br>
+      <br><code>ba_id_ns</code> — room / board basis types second identifier(*) after the end of the main accommodation (optional parameter)
+      <br><code>ba_id_h</code> — its hotel identifier (optional parameter)<br>
+      <br><code>a_id_ns</code> — room / board basis types identifier(*) after the end of the main accommodation (optional parameter)
+      <br><code>a_id_h</code> — its hotel identifier (optional parameter)<br>
+
+      <br><code>quota</code> — quota of available suites for booking for selected hotel from this tour
+      <br><code>ic, id_price, sr</code> — service parameters for tour creation via Biblio-Globus API (are optional parameters)
+      <br><code>flt2_ret</code> — return city destination identifier. Only appears when return city is different from derarture city
+      <br><code>prices</code> — array describes tour's prices. Possible parameters are <code>prices / amount</code> — cost in tour's country currency, <code>prices / RUR</code> — cost in rubles, if tour's country currency is not in rubles, <code>prices / concr</code> — cost specifying the flight in rubles
+      <br><b><font color="red">Attention!</font></b> This information is for reference and is included in the total price of the tour for the price list generated with the parameter <b>novirt=0</b><br>
+      <br><code>href0 + href1 + (prices / href2)</code> — tour creation URL, that opens an HTML form for tour creation.
+    </p>
+  </div>
+    <h3>Example of stopped sales for both departure and return tickets: </h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+  prices / isstop=["avia_to", "avia_from"]
+		</code>
+	</pre>
+    </div>
+
+    <h3>Examples of tourists age ranges in price list response:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+prices / ag="2-11,12+"
+prices / ag="12+,12+"
+		</code>
+	</pre>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>prices / ag</code> — tourists' age parameters. Age scopes are included in ranges. List of tourists' age ranges are separated by commas.
+        <br><code>2-11,12+</code> — one child, one adult
+        <br><code>12+,12+</code> — two adults
+
+      </p>
+    </div>
+
+    <div class="paragraph-block">
+      <p>
+        If parameter <code>prices / amount</code> is empty, then there are no available prices for current combination.<br>
+        To request available prices for ground handling, specify a <code>id_price=-1</code> parameter in your request URL with selected tour destination and tour dates.</p>
+    </div>
+    <div class="paragraph-block">
+      <h3>Example request URL:</h3>
+      <p>
+        <a href="http://export.bgoperator.ru/partners?action=price&tid=211&id_price=-1&flt=100410000049&data=29.06.2013&xml=11">http://export.bgoperator.ru/partners?action=price&tid=211&id_price=-1&flt=100410000049&data=29.06.2013&xml=11</a></p></div>
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>100410000049</code> - Cyprus identifier from countries list
+        <br><code>data=29.06.2013</code> - accommodation beginning date. Date format is <code>DD.MM.YYYY</code>
+      </p>
+      <p>
+        The response is identical to price list's.
+      </p>
+    </div>
+
+    <h2 id="name41"><span class="list-num">4.1. </span>Detailed parameters and filters for price list request</h2>
+
+    <div class="paragraph-block">
+      <p>By default, any JSON price list response is cut after the first 60 array entries. To get more of array entries, add <code>entr</code> parameter to the request URL.</p>
+      <p>Value of <code>entr</code> starts from zero index of elements of the array. If you need to show 4 hotel entries at a page, substract from 4 - 1 to get the desirable amount of entries. <br>Example: For 4 hotel entries, enter the value equal to 3 <code>entr = 3</code>.</p>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Additional request parameters that help to filter out the elements of the price list:</h3>
+      <p>
+
+        <code>f1</code> - cities ids in the country, which can be added multiple times to the request URL in a row.<br> Example: <code>&f1=100510001069</code> - shows the prices only for hotels in Limassol.
+        <br><code>f3</code> - hotel category, which can be added multiple times to the request URL in a row.<br> Example: <code>&f3=3*&f3=4*</code> - adds filters only for 3* and 4* hotels.
+        <br><code>F4</code> - hotel identifier, which can be added multiple times to the request URL in a row.<br> Example: <code>&F4=102610001472&F4=102610001641</code> - shows the prices only for AKTEA BEACH VILLAGE 4* и ALMYRA 4* hotels.
+        <br><code>f7</code> - booking duration (nights), which can be added multiple times to the request URL in a row.<br> Example: <code>&f7=7&f7=9</code> - shows the prices only for 7 and 9 nights. Maximum value is 28 nights.
+        <br><code>f8</code> - board basis types, which can be added multiple times to the request URL in a row.<br> Example: <code>&f8=BB&f8=HB</code> - shows the prices only for BB and HB.
+        <br><code>novirt=0</code> - a parameter that allows to filter and pick a certain flight
+
+        <br><code>stop=0</code> - a parameter that shows tours from stopped sales
+        <br><code>p</code> - description of age groups and tourist ages. Each tourist has its symbol group  <code>0DDMMYYYYS.</code>. Groups are divided by dots <code>"."</code>.
+        Where: <code>DDMMYYYY</code> - is tourist's date of birth.
+        <br><code>s</code> - is a string of non-recurring digits from <code>0</code> to <code>4</code>.<br> Example: <code>0010119600.0010119600</code> - group 0, two adults<br> Example: <code>02103196001.01612195023.00704200802</code> - 4 groups.<br>
+        group 0 - 1 adult + 1 child<br>
+        group 1 - 1 adult<br>
+        group 2 - 1 adult + 1 child<br>
+        group 3 - 1 adult<br>
+      </p>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>ATTENTION!</h3>
+      <p>
+        <ul>
+          <li><code>m</code> parameter is no longer available.</li>
+          <li>According to Biblio-Globus tour offer agreement, if a tour was purchased without picking a certain flight, a tourist has a right to change departure airport, airlines and time. Even if at the moment of booking there was only one flight option available.</li>
+          <li>Picking a certain flight charges additional fee.</li>
+          <li>To pick a certain flight at booking creation via XML API, get value of <code>&lt;sr&gt;</code> only from request with the <code>novirt=0</code> parameter.</li>
+    </ul>
+      </p>
+    </div>
+
+    <table class="api-table">
+      <thead>
+      <caption>
+        <h3>
+List of hotel categories
+        </h3>
+      </caption>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          5*
+        </td>
+        <td>
+          4* (Superior)
+        </td>
+        <td>
+          3*plus
+        </td>
+        <td>
+          2*
+        </td>
+        <td>
+          DE LUX
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          5*sup (Grand Deluxe)
+        </td>
+        <td>
+          4*plus
+        </td>
+        <td>
+          3*
+        </td>
+        <td>
+          2* (Tourist)
+        </td>
+        <td>
+          CLASS A
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          5* (Cat. Deluxe)
+        </td>
+        <td>
+          4* (Cat. A)
+        </td>
+        <td>
+          3* (Cat. B)
+        </td>
+        <td>
+          2* (Cat. B)
+        </td>
+        <td>
+          CLASS B
+        </td>
+      </tr>
+      <tr>
+        <td>
+          5* (Deluxe)
+        </td>
+        <td>
+          4*
+        </td>
+        <td>
+          3* (Cat. A)
+        </td>
+        <td>
+          2* (Cat. C)
+        </td>
+        <td>
+          CLASS C
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+          3* (First)
+        </td>
+        <td>
+          1*
+        </td>
+        <td>
+          APARTMENT
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+
+      </tfoot>
+    </table>
+
+    <table class="api-table">
+      <thead>
+      <caption>
+        <h3>
+Board basis types
+        </h3>
+      </caption>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          BB
+        </td>
+        <td>
+          Bed and Breakfast: breakfast
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          HB
+        </td>
+        <td>
+          Half Board: breakfast and evening meal
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          FB
+        </td>
+        <td>
+          Full Board: breakfast, lunch and evening meal
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          AI
+        </td>
+        <td>
+          All Inclusive
+        </td>
+      </tr>
+      <tr>
+        <td>
+          UAI, ULTRA ALL
+        </td>
+        <td>
+          Ultra All Inclusive
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          AO
+        </td>
+        <td>
+          Accommodation only: no meals
+        </td>
+      </tr>
+
+      </tbody>
+      <tfoot>
+
+      </tfoot>
+    </table>
+    <h2 id="name42"><span class="list-num">4.2. </span>Detailed information for price list request</h2>
+    <div class="paragraph-block">
+      <p>To get detailed information at price list JSON request, add <code>&xml=31</code> parameter to you request URL</p>
+    </div>
+    <h3>Example response:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+"tourComposition": [
+  {
+    "type": "flight",
+    "id": "103151365832;103173777714;",
+    "data": "26.03.2016",
+    "id2": "103123196731;",
+    "dl": "4",
+    "d2": "30.03.2016",
+    "n": "0",
+    "q": "00"
+  },
+  {
+    "type": "transfer",
+    "title": "Трансфер26.03.2016DEGAULLE-PARIS(airport)-Paris(hotel)/group/bus",
+    "id": "103875523965",
+    "data": "26.03.2016"
+  },
+  {
+    "type": "accomodation",
+    "title": "Проживание: с26.03.2016по30.03.2016(4ночи)",
+    "id": "104618112854",
+    "n": "2",
+    "q": "0"
+  },
+  {
+    "type": "transfer",
+    "title": "Трансфер30.03.2016Paris(hotel)-DEGAULLE-PARIS(airport)/group/bus",
+    "id": "103875523957",
+    "data": "30.03.2016"
+  },
+  {
+    "type": "flight",
+    "id": "103123196731;",
+    "data": "30.03.2016",
+    "id2": "103151365832;103173777714;",
+    "dl": "4",
+    "d2": "26.03.2016",
+    "n": "1",
+    "q": "00"
+  },
+  {
+    "type": "medins",
+    "title": "ECONOM-CLASS30000EUR"
+  },
+  {
+    "type": "excursion",
+    "id": "103625040753",
+    "data": "26.03.2016"
+  }
+  {
+    "type": "extra",
+    "id": "105827587196"
+  }
+]
+		</code>
+	</pre>
+    </div>
+
+    <h2 id="name421"><span class="list-num">4.2.1. </span>Information for flight transfers</h2>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>flight</code> — flight description
+        <br><code>id</code> — flight identifier in Biblio-Globus system
+        <br><code>data</code> — flight date
+        <br><code>id2</code> — flight identifier which is a part of forward flight id
+        <br><code>data2</code> — date of forward flight
+        <br><code>q</code> — indicator of available seats on this flight. Its value can be <code>0</code> then econom seats have to be requested for. If its value is two-symbols, for example <code>a4</code>, then the first symbol stands for economy class, and the second symbol stands for business class. Each symbol is either a digit, which is not equal to 0, which is equal to available free seats left for this class.<br>
+          <span style="padding-left: 18px; font-size: 16px;"><code>a</code> - there are many available seats</span><br>
+          <span style="padding-left: 18px; font-size: 16px;"><code>c</code> - no seats available at all</span><br>
+          <span style="padding-left: 18px; font-size: 16px;"><code>r</code> - regular Aeroflot flight with up-to-date prices and number of seats</span><br>
+          <span style="padding-left: 18px; font-size: 16px;"><code>cc</code> - indicates a combination of flights that is not available for sale.</span>
+      </p>
+      <p>To get more detailed information about flight by its <code>data</code> and <code>id</code> parameters, follow the request URL below:<br>
+        <a href="http://export.bgoperator.ru/yandex?action=flightdetails&id=103139130550&data=10.10.2014" target="_blank">http://export.bgoperator.ru/yandex?action=flightdetails&id=103139130550&data=10.10.2014</a>
+      </p>
+    </div>
+
+    <h2 id="name422"><span class="list-num">4.2.2. </span>Information for transfers</h2>
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>transfer</code> — transfer description
+        <br><code>title</code> — transfer header
+        <br><code>data</code> — transfer date
+        <br><code>id</code> — transfer identifier in Biblio-Globus system
+      </p>
+    </div>
+    <div class="paragraph-block">
+      <p>To get alternate for current transfer request, follow the request URL below:<br>
+      <a href="http://export.bgoperator.ru/partners?action=title&id=103820000045&data=12.12.2015&id_valut=EUR&xml=11" target="_blank">http://export.bgoperator.ru/partners?action=title&id=103820000045&data=12.12.2015&id_valut=EUR&xml=11</a><br>
+      Change this URL's parameters <code>id</code>, <code>data</code> from current transfer and <code>id_valut</code> - currency parameter from price list's upper section.<br>
+        In the output JSON response you will get all transfer alternatives. Alternate transfers can be <a href="https://www.bgoperator.ru/texts/api/tour-api.html#transfers" target="_blank">attached</a> to booking on its creation via API.</p>
+    </div>
+
+
+    <h2 id="name423"><span class="list-num">4.2.3. </span>Information for excursions and extras</h2>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>excursion</code> — excursion description
+        <br><code>data</code> — excursion date
+        <br><code>id</code> — excursion identifier in Biblio-Globus system
+      </p>
+    </div>
+    <div class="paragraph-block">
+      <p>To get the full list of available excursions, follow the request URL below:<br>
+        <a href="http://export.bgoperator.ru/partners?xml=11&action=title&id=300010000000&flt=100410000049&data=31.03.2016&n=2&id_price=121120516103" target="_blank">http://export.bgoperator.ru/partners?xml=11&action=title&id=300010000000&flt=100410000049&data=31.03.2016&n=2&id_price=121120516103</a><br>
+        Change this URL's parameters <code>flt</code> - for country id, <code>data</code> - for date, <code>n</code> - number of tourists and <code>id_price</code> - price list <code>id</code> for all available excursions for.<br>
+        In the output JSON response you will get all available excursions.</p>
+    </div>
+
+    <h3>Example response:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+"103618102053": {
+  "1005": [
+    "100510001070",
+    "100510001067"
+    ],
+  "2005": [
+    "Protaras",
+    "AyiaNapa"
+    ],
+  "name": "Accompaniment around Cyprus HALF DAY STANDARD CAR / Индивидуальная экскурсия по Кипру на полдня по эксклюзивно разработанному маршруту от 1 до 4 человек на стандартной машине",
+  "ps": 230,
+  "dates": [
+    "31.03.2016"
+  ]
+}
+		</code>
+	</pre>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>1005</code> — list of cities ids, where are these excursions are available
+        <br><code>2005</code> — list of cities names, matching the list of cities ids (<code>1005</code>)
+        <br><code>name</code> — excursion name
+        <br><code>ps</code> — excursion price, matching the list of cities ids (<code>1005</code>). Its format can be a number or an array of the following parameters: <code>adt</code> - adult, <code>chd</code> - child and <code>inf</code> - infant. Each parameter has its own price.
+        <br><code>data</code> — excursion date, matching the list of cities ids (<code>1005</code>)
+      </p>
+    </div>
+
+    <div class="paragraph-block">
+      <p>In addition to excursions list, there can also be available other extras:</p>
+      <p>
+        <code>300110000000</code> — id of extra services
+      <br><code>300210000000</code> — id of car rental services
+      <br><code>300310000000</code> — id of books and city guides
+      <br><code>300410000000</code> — id of tickets for sale
+      </p>
+      <p>To get extras information, change the excursion id to the id from the list above to your request URL.</p>
+    </div>
+
+    <h2 id="name5"><span class="list-num">5. </span>Special offers request in Biblio-Globus system</h2>
+    <div class="paragraph-block">
+      <p>To get a list of hot special offers, request an XML file for selected departure city</p>
+    </div>
+    <h3>Example link:</h3>
+    <div class="paragraph-block">
+      <p>
+        <a href="http://export.bgoperator.ru/yandex?action=minprice&cityId=100510000863">http://export.bgoperator.ru/yandex?action=minprice&cityId=100510000863</a>
+      </p>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>100510000863</code> – is an identifier of Moscow city from city list
+
+      </p>
+    </div>
+    <h3>Example response:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+&lt;root&gt;
+    &lt;entry&gt;
+        &lt;country&gt;
+            &lt;id&gt;100410000049&lt;/id&gt;
+            &lt;name&gt;КИПР&lt;/name&gt;
+        &lt;/country&gt;
+        &lt;city&gt;100510000863&lt;/city&gt;
+        &lt;aircompany&gt;Трансаэро&lt;/aircompany&gt;
+        &lt;cost&gt;
+            &lt;amount&gt;295&lt;/amount&gt;
+            &lt;valute&gt;EUR&lt;/valute&gt;
+        &lt;/cost&gt;
+        &lt;duration&gt;3&lt;/duration&gt;
+        &lt;date&gt;30.09.2012&lt;/date&gt;
+        &lt;tourname&gt;ТУРЫ НА КИПР&lt;/tourname&gt;
+        &lt;url&gt;
+            http://www.bgoperator.ru/main5.shtml?action=price&tid=211&flt=100410000049&flt2=100510000863&id_price=121175915306&data=30.09.2012&f3=3*
+        &lt;/url&gt;
+  &lt;/entry&gt; ...
+&lt;/root&gt;</code>
+	</pre>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>country / id</code> — country identifier
+        <br><code>country / name</code> — country name
+        <br><code>city</code> — departure city identifier
+        <br><code>aircompany</code> — airline name
+        <br><code>cost / amount</code> — cost in currency
+        <br><code>cost / valute</code> — currency code
+        <br><code>duration</code> — tour duration
+        <br><code>date</code> — flight departure date
+        <br><code>tourname</code> — price list route name
+        <br><code>url</code> — URL to price list
+      </p>
+    </div>
+
+    <h2 id="name6"><span class="list-num">6. </span>Special offers request in Biblio-Globus system: instant confirmation</h2>
+
+    <div class="paragraph-block">
+      <p>Special offers list are stored in auto generated files. They are available from the link below:<br>
+        <a href="http://export.bgoperator.ru/auto/auto-spo-{flt2}-124331253701.js">http://export.bgoperator.ru/auto/auto-spo-{flt2}-124331253701.js</a>
+      </p>
+    </div>
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>flt2</code> – departure city/resort identifier in Biblio-Globus system
+      </p>
+    </div>
+    <h3>Example request:</h3>
+    <div class="paragraph-block">
+      <p>
+        <a href="http://export.bgoperator.ru/auto/auto-spo-100510000863v2-124331253701.js">http://export.bgoperator.ru/auto/auto-spo-100510000863v2-124331253701.js</a>
+      </p>
+    </div>
+
+    <h3>Example response:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+[
+    {
+        "data" : "09.07.2014",
+        "URL" : "http://www.bgoperator.ru/price.shtml?action=price&idt=&tid=211&id_price=121125221707&flt2=100510000863&flt=100411293179&data=09.07.2014&f7=2&f7=4&f7=6&f7=7&F4=102625929987&p=0070619780.0070619780&otn=104625930011&otv=102510005340&f8=BB&ok=0",
+        "hotelTown" : "Мармарис",
+        "hotelPic" : "http://www.bgoperator.ru/pr_img/sm1240100354/20140405/2803980246/5091069817120126.png",
+        "cntryName" : "Турция",
+        "hotelURL" : "http://www.bgoperator.ru/price.shtml?flt=100411293179&tid=26&code=102625929987&action=shw",
+        "hotelId" : "102625929987",
+        "hotelName" : "Gold Kaya Hotel 3*",
+        "meal" : "BB",
+        "dur" : "2, 4, 6, 7",
+        "amount" : "173",
+        "val" : "USD",
+        "RUR" : "6124"
+    }, ...
+]</code>
+	</pre>
+    </div>
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>data</code> — departure date
+        <br><code>URL</code> — search URL, where you can find special offers. it includes selected
+        <br><code>hotelTown</code> — resort name
+        <br><code>hotelPic</code> — a link to a hotel picture
+        <br><code>cntryName</code> — tour country name
+        <br><code>hotelURL</code> — an URL to the hotel
+        <br><code>hotelId</code> — hotel identifier in Biblio-Globus system
+        <br><code>hotelName</code> — hotel name
+        <br><code>meal</code> — meal type in hotel
+        <br><code>dur</code> — duration lists, divided by comma (,)
+        <br><code>amount</code> — lowest cost in currency for least duration
+        <br><code>val</code> — tour currency
+        <br><code>RUR</code> — lowest cost in rubles for least duration
+        <br><code>ok</code> — (<b>IMPORTANT VALUE</b>) if this field appears and has value
+        <code>0</code>, then this special offer has instant confirmation
+      </p>
+    </div>
+
+    <h2 id="name7"><span class="list-num">7. </span>Charter flights price search request</h2>
+    <div class="paragraph-block">
+      <p>A search request returns charter flights price for indicated persons amount and their ages.</p>
+    </div>
+
+    <h3>Example request url:</h3>
+    <div class="paragraph-block">
+      <p>
+        <a href="https://export.bgoperator.ru/site?action=biletblock&vr0=1&vr1=1&vr2=1&idfrom=MOW&idto=DXB&datefrom=2026-02-13&dateto=2026-02-14&class=Y&cur=RUB">https://export.bgoperator.ru/site?action=biletblock&vr0=1&vr1=1&vr2=1&idfrom=MOW&idto=DXB&datefrom=2026-02-13&dateto=2026-02-14&class=Y&cur=RUB</a>
+      </p>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>vr0</code>
+        — amount of adults        <br><code>vr1</code>
+        — amount of kids        <br><code>vr2</code>
+        — amount of infants        <br><code>idfrom</code>
+        — departure city id in Biblio-Globus system or an departure airport IATA code        <br><code>idto</code>
+        — arrival city id or an arrival airport IATA code        <br><code>datefrom</code>
+        — departure date YYYY-MM-DD        <br><code>dateto</code>
+        — arrival date YYYY-MM-DD. If there is a one way flight, this field is missed        <br><code>class</code>
+        — flight class. <code>Y</code> - economy class, <code>C</code> - business class        <br><code>cur</code>
+        — currency. Is an optional parameter. By default are <code>RUB</code> (rubles). All possible currencies are
+        <code>RUB</code>, <code>EUR</code>, <code>USD</code>.
+
+      </p>
+    </div>
+
+    <h3>Example response:</h3>
+    <div class="border-bg">
+	<pre>
+		<code>
+{
+    "prx": "104499999900000006",
+    "offers": [
+        {
+            "price": 40625,
+            "priceonead": 22413,
+            "priceonechd": 11207,
+            "priceoneinf": 7005,
+            "nodes": [
+                "SU53820260213",
+                "SU53920260214"
+            ],
+            "adt": [
+                {
+                    "bag": [
+                        {
+                            "bagtype": "carryon",
+                            "bagdesc": [
+                                "1 место 8K"
+                            ]
+                        },
+                        {
+                            "bagtype": "checked",
+                            "bagdesc": [
+                                "30KG"
+                            ]
+                        }
+                    ],
+                    "nodes": [
+                        "SU53820260213"
+                    ]
+                },
+                {
+                    "bag": [
+                        {
+                            "bagtype": "carryon",
+                            "bagdesc": [
+                                "2шт до 5K"
+                            ]
+                        },
+                        {
+                            "bagtype": "checked",
+                            "bagdesc": [
+                                "1PC до 20K"
+                            ]
+                        }
+                    ],
+                    "brandname": "Бизнес",
+                    "nodes": [
+                        "SU53920260214"
+                    ]
+                }
+            ],
+            "cnn": [
+                {
+                    "bag": [
+                        {
+                            "bagtype": "carryon",
+                            "bagdesc": [
+                                "1 место 8K"
+                            ]
+                        },
+                        {
+                            "bagtype": "checked",
+                            "bagdesc": [
+                                "30KG"
+                            ]
+                        }
+                    ],
+                    "nodes": [
+                        "SU53820260213"
+                    ]
+                },
+                {
+                    "bag": [
+                        {
+                            "bagtype": "carryon",
+                            "bagdesc": [
+                                "2шт до 5K"
+                            ]
+                        },
+                        {
+                            "bagtype": "checked",
+                            "bagdesc": [
+                                "1PC до 20K"
+                            ]
+                        }
+                    ],
+                    "brandname": "Бизнес",
+                    "nodes": [
+                        "SU53920260214"
+                    ]
+                }
+            ],
+            "inf": [
+                {
+                    "bag": [
+                        {
+                            "bagtype": "checked",
+                            "bagdesc": [
+                                "10kg"
+                            ]
+                        }
+                    ],
+                    "nodes": [
+                        "SU53820260213",
+                        "SU53920260214"
+                    ]
+                }
+            ]
+        }
+    ],
+    "nodes": {
+        "SU53920260214": {
+            "ac": "SU",
+            "fn": "539",
+            "dep": {
+                "d": "14.02.2026",
+                "t": "09:00:00",
+                "n": "AUH"
+            },
+            "arr": {
+                "d": "14.02.2026",
+                "t": "13:00:00",
+                "n": "DME"
+            }
+        },
+        "SU53820260213": {
+            "ac": "SU",
+            "fn": "538",
+            "dep": {
+                "d": "13.02.2026",
+                "t": "09:00:00",
+                "n": "DME"
+            },
+            "arr": {
+                "d": "13.02.2026",
+                "t": "13:00:00",
+                "n": "AUH"
+            }
+        }
+    }
+}
+    </code>
+	</pre>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+
+        <code>prx</code> — session identifier<br>
+        <code>nodes</code> — flight descriptions, that are included in price. Each node has unique name, which is been used to describe price<br>
+        <code>ac</code> — airline code<br>
+        <code>fn</code> — flight number<br>
+        <code>dep</code> — departure point description<br>
+        <code>d</code> — departure date DD.MM.YYYY<br>
+        <code>t</code> — departure time HH:MM:SS или HH:MM<br>
+        <code>n</code> — airport IATA code<br>
+        <code>arr</code> — arrival point description. structure is the same as in "<code>dep</code>"<br>
+        <code>offers</code> — price list for flight combination<br>
+        <code>price</code> — responded price same as set in the request. Integer number variable<br>
+        <code>priceonead</code>, <code>priceonechd</code>, <code>priceoneinf</code> — price per one passenger of corresponding category in requested currency, integer<br>
+        <code>adt</code>, <code>cnn</code>, <code>inf</code> — baggage description block for corresponding passenger category<br>
+        <code>nodes</code> — flights list, which have prices. node names are taken from "<code>nodes</code>"<br>
+        <code>bag</code> — baggage description block<br>
+        <code>bagtype</code> — baggage type (carryon, checked)<br>
+        <code>bagdesc</code> — baggage description<br>
+        <code>brandname</code> — tariff name<br>
+        <code>nodes</code> — flights list which bag relates to. Node names from "nodes" structure
+
+      </p>
+    </div>
+
+    <h2 id="name8"><span class="list-num">8. </span>Regular flights price search request</h2>
+    <div class="paragraph-block">
+      <p>A search request returns regular flights price for indicated persons amount and their ages.</p>
+    </div>
+
+    <h3>Example request url:</h3>
+    <div class="paragraph-block">
+      <p>
+        <a href="https://export.bgoperator.ru/site?action=biletapi&vr0=1&vr1=1&vr2=0&idfrom=100510000863&idto=100510001068&datefrom=2017-01-20&dateto=2017-01-27&class=Y&cur=EUR">https://export.bgoperator.ru/site?action=biletapi&vr0=1&vr1=1&vr2=0&idfrom=100510000863&idto=100510001068&datefrom=2017-01-20&dateto=2017-01-27&class=Y&cur=EUR</a>
+      </p>
+      <p>Example request with airline restriction:</p>
+      <p>
+        <a href="https://export.bgoperator.ru/site?action=biletapi&vr0=1&vr1=1&vr2=0&idfrom=100510000863&idto=100510001068&datefrom=2017-01-20&dateto=2017-01-27&class=Y&cur=EUR&airline=SU,S7,DP">https://export.bgoperator.ru/site?action=biletapi&vr0=1&vr1=1&vr2=0&idfrom=100510000863&idto=100510001068&datefrom=2017-01-20&dateto=2017-01-27&class=Y&cur=EUR&airline=SU,S7,DP</a>
+      </p>
+      <p>Example request with single airline restriction:</p>
+      <p>
+        <a href="https://export.bgoperator.ru/site?action=biletapi&vr0=1&vr1=1&vr2=0&idfrom=100510000863&idto=100510001068&datefrom=2017-01-20&dateto=2017-01-27&class=Y&cur=EUR&airline=SU">https://export.bgoperator.ru/site?action=biletapi&vr0=1&vr1=1&vr2=0&idfrom=100510000863&idto=100510001068&datefrom=2017-01-20&dateto=2017-01-27&class=Y&cur=EUR&airline=SU</a>
+      </p>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>vr0</code> — amount of adults<br>
+        <code>vr1</code> — amount of children<br>
+        <code>vr2</code> — amount of infants<br>
+        <code>idfrom</code> — departure city id in Biblio-Globus system or departure airport IATA code<br>
+        <code>idto</code> — arrival city id in Biblio-Globus system or arrival airport IATA code<br>
+        <code>datefrom</code> — departure date YYYY-MM-DD<br>
+        <code>dateto</code> — return date YYYY-MM-DD. For one-way flights this parameter should be omitted<br>
+        <code>class</code> — flight class. <code>Y</code> - economy class, <code>C</code> - business class<br>
+        <code>cur</code> — response currency. Optional parameter. Default is <code>RUB</code>. Possible values: <code>RUB</code>, <code>EUR</code>, <code>USD</code><br>
+        <code>airline</code> — optional parameter. Airline code(s) for search restriction.<br>
+        Multiple values are comma-separated (e.g., <code>SU,S7,DP</code>).<br>
+        If this parameter is omitted, search is performed for all available carriers.
+      </p>
+    </div>
+
+    <h3>Example response:</h3>
+    <div class="border-bg">
+  <pre>
+    <code>
+{
+    "prx": "104499999900000038",
+    "offers": [
+        {
+            "offerID": "1.25387.AFL.MA.12(ORSU1150.24121111102412111505.SVO.AER~ORSU1141.24121321202412140045.AER.SVO)(MTEwMjE3MzA1MjU2MzI5NTg1MjZfMzQ0XjI1MTQ3LjAwCgkJCQkJXjExMDIxNzMwNTI1NjMyOTU4NTI2OjFeQURUXjEzNzAwLjB-Ml5DSEReMTE0NDcuMH4zXklORl4wLjA)(I1_1_EL_RFMSLR/IN00_1PC_MA~2_EL_RFMSLR/IN00_1PC_MA)(A1_1_EL_RFMSLR_2PC_MA~2_EL_RFMSLR_2PC_MA)(C1_1_EL_RFMSLR/CH15_2PC_MA~2_EL_RFMSLR/CH15_2PC_MA)#sc=bf8e205cdb1f7aae9f216aeb2486612f",
+            "price": 25387,
+            "nodes": [
+                "SU115020241211",
+                "SU114120241213"
+            ],
+            "directions": [
+                [
+                    0
+                ],
+                [
+                    1
+                ]
+            ],
+            "adt": [
+                {
+                    "bag": "2PC",
+                    "brand": "EL",
+                    "brandname": "Economy Flex",
+                    "fbc": "RFMSLR"
+                },
+                {
+                    "bag": "2PC",
+                    "brand": "EL",
+                    "brandname": "Economy Flex",
+                    "fbc": "RFMSLR"
+                }
+            ],
+            "chd": [
+                {
+                    "bag": "2PC",
+                    "brand": "EL",
+                    "brandname": "Economy Flex",
+                    "fbc": "RFMSLR/CH15"
+                },
+                {
+                    "bag": "2PC",
+                    "brand": "EL",
+                    "brandname": "Economy Flex",
+                    "fbc": "RFMSLR/CH15"
+                }
+            ],
+            "inf": [
+                {
+                    "bag": "1PC",
+                    "brand": "EL",
+                    "brandname": "Economy Flex",
+                    "fbc": "RFMSLR/IN00"
+                },
+                {
+                    "bag": "1PC",
+                    "brand": "EL",
+                    "brandname": "Economy Flex",
+                    "fbc": "RFMSLR/IN00"
+                }
+            ]
+        }
+    ],
+    "nodes": {
+        "SU114120241213": {
+            "ac": "SU",
+            "fn": "1141",
+            "dep": {
+                "d": "13.12.2024",
+                "t": "21:20:00",
+                "n": "AER"
+            },
+            "arr": {
+                "d": "14.12.2024",
+                "t": "00:45:00",
+                "n": "SVO"
+            }
+        },
+        "SU115020241211": {
+            "ac": "SU",
+            "fn": "1150",
+            "dep": {
+                "d": "11.12.2024",
+                "t": "11:10:00",
+                "n": "SVO"
+            },
+            "arr": {
+                "d": "11.12.2024",
+                "t": "15:05:00",
+                "n": "AER"
+            }
+        }
+    }
+}
+    </code>
+  </pre>
+    </div>
+
+    <div class="paragraph-block">
+      <h3>Where:</h3>
+      <p>
+        <code>prx</code> — session identifier<br>
+        <code>nodes</code> — flight descriptions included in prices. Each node has a unique name used for price description<br>
+        <code>ac</code> — airline code<br>
+        <code>fn</code> — flight number<br>
+        <code>dep</code> — departure point description<br>
+        <code>d</code> — departure date. Format: DD.MM.YYYY<br>
+        <code>t</code> — departure time. Format: HH:MM:SS or HH:MM<br>
+        <code>n</code> — airport IATA code<br>
+        <code>arr</code> — arrival point description. Structure is equivalent to "<code>dep</code>"<br>
+        <code>offers</code> — list of prices for flight and fare combinations<br>
+        <code>offerID</code> — booking identifier, must be passed to the booking request<br>
+        <code>price</code> — price in the requested currency, integer<br>
+        <code>nodes</code> — list of flights to which the price applies. Node names from the "<code>nodes</code>" structure<br>
+        <code>directions</code> — flight distribution by directions according to the route specified in the request<br>
+        <code>adt</code>, <code>chd</code>, <code>inf</code> — fare description block for the corresponding passenger category, output segmentally. Output order corresponds to the order of flights (nodes in offer)<br>
+        <code>bag</code> — baggage allowance<br>
+        <code>brand</code> — fare type<br>
+        <code>brandname</code> — fare name<br>
+        <code>fbc</code> — fare basis code
+      </p>
+    </div>
+
+    <h3>Error codes:</h3>
+    <div class="paragraph-block">
+      <p>
+        <code>SR001</code> — unauthorized, authentication required<br>
+        <code>SR002</code> — airline code not found, please check your request<br>
+        <code>SR003</code> — access denied to requested airlines or insufficient permissions<br>
+        <code>SR004</code> — number of infants cannot exceed number of adults<br>
+        <code>SR005</code> — at least one adult is required for booking<br>
+        <code>SR006</code> — invalid parametr<br>
+
+      </p>
+    </div>
+ 
+</article>
+</body>
+</html>

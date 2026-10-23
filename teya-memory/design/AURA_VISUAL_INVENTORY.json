@@ -1,0 +1,175 @@
+{
+  "minimum_homepage_visual_assets": 14,
+  "minimum_meaningful_image_assets_homepage": 12,
+  "asset_instance_count_homepage": 14,
+  "pages": [
+    {
+      "slug": "/",
+      "minimum_meaningful_image_assets": 12,
+      "asset_instance_count": 14
+    },
+    {
+      "slug": "/tour/",
+      "minimum_meaningful_image_assets": 6,
+      "asset_instance_count": 6
+    },
+    {
+      "slug": "/o-nas/",
+      "minimum_meaningful_image_assets": 2,
+      "asset_instance_count": 2
+    },
+    {
+      "slug": "/kontakty/",
+      "minimum_meaningful_image_assets": 1,
+      "asset_instance_count": 1
+    },
+    {
+      "slug": "/blog/",
+      "minimum_meaningful_image_assets": 4,
+      "asset_instance_count": 6
+    }
+  ],
+  "zones": [
+    {
+      "asset_instance_id": "hero-collage-1",
+      "section": "front-page:hero",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "hero-uae",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "hero-collage-2",
+      "section": "front-page:hero",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "hero-turkey",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "hero-collage-3",
+      "section": "front-page:hero",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "hero-egypt",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "dest-card-turkey",
+      "section": "front-page:destinations",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "dest-turkey",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "dest-card-uae",
+      "section": "front-page:destinations",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "dest-uae",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "dest-card-egypt",
+      "section": "front-page:destinations",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "dest-egypt",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "dest-card-thailand",
+      "section": "front-page:destinations",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "dest-thailand",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "dest-card-vietnam",
+      "section": "front-page:destinations",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "dest-vietnam",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "editorial-feature",
+      "section": "front-page:editorial",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "article-main",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "editorial-thumb-1",
+      "section": "front-page:editorial",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": null,
+      "reuse_reason": "per-post thumbnail or article-fallback",
+      "ready": false,
+      "blocker": "wp_post_thumbnail_or_mcp_blog_cover"
+    },
+    {
+      "asset_instance_id": "editorial-thumb-2",
+      "section": "front-page:editorial",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": null,
+      "reuse_reason": "per-post thumbnail or article-fallback",
+      "ready": false,
+      "blocker": "wp_post_thumbnail_or_mcp_blog_cover"
+    },
+    {
+      "asset_instance_id": "editorial-thumb-3",
+      "section": "front-page:editorial",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": null,
+      "reuse_reason": "per-post thumbnail or article-fallback",
+      "ready": false,
+      "blocker": "wp_post_thumbnail_or_mcp_blog_cover"
+    },
+    {
+      "asset_instance_id": "trust-visual",
+      "section": "front-page:trust-social",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "office-ufa",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    },
+    {
+      "asset_instance_id": "subscribe-bg",
+      "section": "front-page:subscribe",
+      "source_has_image": true,
+      "counts_as_meaningful_image": true,
+      "can_reuse_asset_id": "subscribe-bg",
+      "reuse_reason": "existing_theme_file",
+      "ready": true,
+      "blocker": null
+    }
+  ],
+  "gap_notes": "front-page.php пока без секции trust-social (highlights); Aurora должна добавить по blueprint trust-social без фейковых отзывов"
+}

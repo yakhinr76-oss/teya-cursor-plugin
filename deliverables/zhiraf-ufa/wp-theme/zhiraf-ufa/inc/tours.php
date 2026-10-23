@@ -56,7 +56,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'гёйнюк'   => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
 			'гейнюк'   => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
 			'кемер'    => array( 'resort-turciya-kemer-1.jpg', 'resort-turciya-kemer-2.jpg' ),
-			'сиде'     => array( 'resort-turciya-side-1.jpg', 'resort-turciya-side-2.jpg' ),
+			'сиде'     => array( 'resort-turciya-alanya-2.jpg', 'resort-turciya-belek-1.jpg' ),
 			'белек'    => array( 'resort-turciya-belek-1.jpg' ),
 			'анталь'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
 			'антали'   => array( 'resort-turciya-antalya-1.jpg', 'resort-turciya-antalya-2.jpg' ),
@@ -90,10 +90,10 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	// Country-level photos (fallback; never another resort's own photo). Several => varied cards on one page.
 	$country_photos = array(
 		'turciya'    => array(
-			'resort-turciya-antalya-1.jpg',
-			'resort-turciya-alanya-1.jpg',
 			'resort-turciya-belek-1.jpg',
-			'resort-turciya-side-1.jpg',
+			'resort-turciya-belek-2.jpg',
+			'resort-turciya-kemer-2.jpg',
+			'resort-turciya-alanya-2.jpg',
 		),
 		'egipet'     => array(
 			'resort-egipet-hurghada-1.jpg',

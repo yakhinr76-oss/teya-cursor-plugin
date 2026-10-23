@@ -160,10 +160,10 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'active' => 'resort-vietnam-phan-thiet-1.jpg',
 		),
 		'turciya' => array(
-			'family' => 'resort-turciya-belek-1.jpg',
-			'couple' => 'resort-turciya-side-1.jpg',
-			'city'   => 'resort-turciya-antalya-1.jpg',
-			'active' => 'resort-turciya-kemer-1.jpg',
+			'family' => 'resort-turciya-alanya-2.jpg',
+			'couple' => 'resort-turciya-belek-1.jpg',
+			'city'   => 'resort-turciya-kemer-2.jpg',
+			'active' => 'resort-turciya-antalya-2.jpg',
 		),
 		'egipet'  => array(
 			'family' => 'resort-egipet-hurghada-1.jpg',

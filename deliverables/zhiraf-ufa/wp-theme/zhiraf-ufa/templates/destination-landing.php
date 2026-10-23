@@ -143,7 +143,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 	}
 	?>
 
-	<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
+	<?php if ( ! empty( $dest['geo_answer'] ) && empty( $dest['hide_geo_block'] ) ) : ?>
 		<section class="section geo-answer-block bg-milky">
 			<div class="container container--narrow">
 				<p class="geo-answer-block__text"><?php echo esc_html( $dest['geo_answer'] ); ?></p>
@@ -151,21 +151,55 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 		</section>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || ! empty( $dest['resort_compare'] ) ) : ?>
+	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || ! empty( $dest['resort_compare'] ) || ! empty( $dest['seo_prose_accordions'] ) ) : ?>
 	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
 		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
-			<?php if ( ! empty( $dest['hero_lead_extended'] ) ) : ?>
-				<p class="dest-landing-prose__intro"><?php echo esc_html( $dest['hero_lead_extended'] ); ?></p>
-			<?php endif; ?>
-			<?php if ( ! empty( $dest['for_who'] ) ) : ?>
-				<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>
-				<p><?php echo esc_html( $dest['for_who'] ); ?></p>
-				<h2><?php esc_html_e( 'Что уточняем при подборе', 'zhiraf-ufa' ); ?></h2>
-				<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
+			<?php if ( ! empty( $dest['seo_prose_accordions'] ) ) : ?>
+				<details class="dest-prose-accordion dest-prose-accordion--seo">
+					<summary class="dest-prose-accordion__summary">
+						<?php
+						echo esc_html(
+							! empty( $dest['prose_accordion_title'] )
+								? $dest['prose_accordion_title']
+								: __( 'Подробнее о регионах, сезоне и пакете', 'zhiraf-ufa' )
+						);
+						?>
+					</summary>
+					<div class="dest-prose-accordion__body">
+						<?php if ( ! empty( $dest['hero_lead_extended'] ) ) : ?>
+							<p><?php echo esc_html( $dest['hero_lead_extended'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
+							<p><?php echo esc_html( $dest['geo_answer'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $dest['for_who'] ) ) : ?>
+							<h3><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h3>
+							<p><?php echo esc_html( $dest['for_who'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $dest['we_clarify'] ) ) : ?>
+							<h3><?php esc_html_e( 'Что уточняем при подборе', 'zhiraf-ufa' ); ?></h3>
+							<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $dest['season'] ) ) : ?>
+							<h3><?php esc_html_e( 'Пляжный сезон', 'zhiraf-ufa' ); ?></h3>
+							<p><?php echo esc_html( $dest['season'] ); ?></p>
+						<?php endif; ?>
+					</div>
+				</details>
+			<?php else : ?>
+				<?php if ( ! empty( $dest['hero_lead_extended'] ) ) : ?>
+					<p class="dest-landing-prose__intro"><?php echo esc_html( $dest['hero_lead_extended'] ); ?></p>
+				<?php endif; ?>
+				<?php if ( ! empty( $dest['for_who'] ) ) : ?>
+					<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>
+					<p><?php echo esc_html( $dest['for_who'] ); ?></p>
+					<h2><?php esc_html_e( 'Что уточняем при подборе', 'zhiraf-ufa' ); ?></h2>
+					<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
+				<?php endif; ?>
 			<?php endif; ?>
 
-			<?php if ( 'season' !== $central_module && ! empty( $dest['climate_seasons'] ) && is_array( $dest['climate_seasons'] ) ) : ?>
+			<?php if ( empty( $dest['seo_prose_accordions'] ) && 'season' !== $central_module && ! empty( $dest['climate_seasons'] ) && is_array( $dest['climate_seasons'] ) ) : ?>
 				<h2><?php esc_html_e( 'Сезон и климат', 'zhiraf-ufa' ); ?></h2>
 				<div class="dest-climate-grid">
 					<?php foreach ( $dest['climate_seasons'] as $season_row ) : ?>
@@ -181,7 +215,7 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						</article>
 					<?php endforeach; ?>
 				</div>
-			<?php elseif ( ! empty( $dest['season'] ) ) : ?>
+			<?php elseif ( empty( $dest['seo_prose_accordions'] ) && ! empty( $dest['season'] ) ) : ?>
 				<h2><?php esc_html_e( 'Сезон и климат', 'zhiraf-ufa' ); ?></h2>
 				<p><?php echo esc_html( $dest['season'] ); ?></p>
 			<?php endif; ?>
@@ -326,9 +360,10 @@ $central_module      = function_exists( 'zhiraf_ufa_destination_landing_module' 
 						</select>
 					</label>
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" />
+					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest['name'] ); ?>" />
+					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>
-				<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 				<p class="form-status" role="status" aria-live="polite"></p>
 			</form>
 			<p class="dest-landing-cta__alt">

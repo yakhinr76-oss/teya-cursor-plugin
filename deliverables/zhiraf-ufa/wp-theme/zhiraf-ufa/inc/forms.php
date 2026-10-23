@@ -310,6 +310,7 @@ function zhiraf_ufa_ajax_lead() {
 			'email'            => 'Email',
 			'message'          => 'Сообщение',
 			'tour'             => 'Тур',
+			'destination'      => 'Направление',
 			'contact_channel'  => 'Куда отправить подборку',
 			'hot_destination'  => 'Направление (горящие)',
 			'hot_budget'       => 'Бюджет (горящие)',

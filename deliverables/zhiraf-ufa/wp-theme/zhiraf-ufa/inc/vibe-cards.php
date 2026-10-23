@@ -207,6 +207,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'alt-sejshely-3.jpg',
 			'active' => 'alt-sejshely-2.jpg',
 		),
+		'shri-lanka' => array(
+			'family' => 'alt-shri-lanka-beach-1.jpg',
+			'couple' => 'alt-shri-lanka-beach-2.jpg',
+			'city'   => 'country-shri-lanka.jpg',
+			'active' => 'alt-shri-lanka-3.jpg',
+		),
 		'vse-vklyucheno' => array(
 			'family' => 'resort-turciya-alanya-2.jpg',
 			'couple' => 'resort-egipet-sharm-1.jpg',

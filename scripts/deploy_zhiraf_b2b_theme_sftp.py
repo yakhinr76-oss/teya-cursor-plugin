@@ -99,9 +99,9 @@ def main() -> int:
     )
     remote_base = env("B2B_TOUR_SSH_THEME_PATH").rstrip("/")
 
-    if not all([host, user, remote_base]):
+    if not host or not user:
         print(
-            "BLOCKER: set B2B_TOUR_SSH_HOST, B2B_TOUR_SSH_USER, B2B_TOUR_SSH_THEME_PATH",
+            "BLOCKER: set B2B_TOUR_SSH_HOST and B2B_TOUR_SSH_USER",
             file=sys.stderr,
         )
         return 1
@@ -122,7 +122,8 @@ def main() -> int:
                 continue
             files.append((path, rel))
 
-    print(f"Upload {len(files)} files → {host}:{remote_base}")
+    dest = remote_base or "(auto-detect)"
+    print(f"Upload {len(files)} files → {host}:{dest}")
     if args.dry_run:
         for _, rel in files[:20]:
             print(" ", rel)

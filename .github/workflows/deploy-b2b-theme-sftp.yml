@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
+      - cursor/zhiraf-b2b-site-a2bf
       - cursor/staging-b2b-deploy-8d02
 
 jobs:
@@ -21,7 +22,7 @@ jobs:
           B2B_TOUR_SSH_USER: ${{ secrets.B2B_TOUR_SSH_USER }}
           B2B_TOUR_SSH_PASS: ${{ secrets.B2B_TOUR_SSH_PASS }}
           B2B_TOUR_SSH_PORT: ${{ secrets.B2B_TOUR_SSH_PORT }}
-          B2B_TOUR_SSH_THEME_PATH: ${{ secrets.B2B_TOUR_SSH_THEME_PATH }}
+          B2B_TOUR_SSH_THEME_PATH: ${{ secrets.B2B_TOUR_SSH_THEME_PATH || '' }}
         run: python3 scripts/deploy_zhiraf_b2b_theme_sftp.py
 
       - name: Verify theme version on site

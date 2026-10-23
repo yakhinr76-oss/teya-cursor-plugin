@@ -37,7 +37,7 @@ function zhiraf_ufa_destination_default_module_map() {
 		'kitaj'      => 'season',
 		'indiya'     => 'season',
 		'shri-lanka' => 'season',
-		'indoneziya' => 'season',
+		'indoneziya' => 'battle',
 		'maldivy'    => 'vibe',
 		'sejshely'   => 'vibe',
 		'uzbekistan' => 'vibe',
@@ -77,6 +77,10 @@ function zhiraf_ufa_destination_hero_image_standards() {
 		'indiya'     => array(
 			'image' => 'resort-severnyj-goa.jpg',
 			'alt'   => __( 'Индия — пляж Северного Гоа', 'zhiraf-ufa' ),
+		),
+		'indoneziya' => array(
+			'image' => 'country-indoneziya.jpg',
+			'alt'   => __( 'Бали — храм Улун Дану Братан на озере', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -263,6 +267,40 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'image' => 'resort-egipet-sharm-1.jpg',
 					'rows'  => array(
 						array( 'label' => __( 'Пляж', 'zhiraf-ufa' ), 'value' => __( 'Понтоны, снорклинг у рифа', 'zhiraf-ufa' ) ),
+					),
+				),
+			),
+		),
+		'indoneziya' => array(
+			'title'   => __( 'Нуса-Дуа или Чангу / Семиньяк?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Спокойное купание и отели 5★ на юго-востоке — или серф, бич-клабы и виллы на западном побережье.', 'zhiraf-ufa' ),
+			'columns' => array(
+				array(
+					'title'     => __( 'Нуса-Дуа', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Купание и 5★', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Спокойный океан и курортная зона', 'zhiraf-ufa' ),
+					'meta'      => __( 'Юго-восток • охраняемая территория', 'zhiraf-ufa' ),
+					'image'     => 'alt-indoneziya-beach-1.jpg',
+					'cta_label' => __( 'Искать отели в Нуса-Дуа', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Купание', 'zhiraf-ufa' ), 'value' => __( 'Риф гасит волны открытого океана — комфортный заход в воду даже детям', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Территория', 'zhiraf-ufa' ), 'value' => __( 'Закрытая зелёная зона с прогулочными дорожками и полями для гольфа', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Мировые сети The Mulia, Grand Hyatt, Meliá на первой линии', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Чангу и Семиньяк', 'zhiraf-ufa' ),
+					'tag'       => __( '🏄 Серф и бич-клабы', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Лайфстайл, закаты и волны', 'zhiraf-ufa' ),
+					'meta'      => __( 'Западное побережье • тусовка', 'zhiraf-ufa' ),
+					'image'     => 'alt-indoneziya-beach-2.jpg',
+					'cta_label' => __( 'Искать туры в Чангу / Семиньяк', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-lead',
+					'rows'      => array(
+						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Finns, Atlas Beach Fest, дизайнерские рестораны и закатные бары', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Серфинг', 'zhiraf-ufa' ), 'value' => __( 'Волны круглый год, серф-кемпы и русскоязычные инструкторы', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Проживание', 'zhiraf-ufa' ), 'value' => __( 'Стильные виллы с бассейнами среди рисовых полей', 'zhiraf-ufa' ) ),
 					),
 				),
 			),

@@ -195,6 +195,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'resort-sanya-3.jpg',
 			'active' => 'travel-passport.jpg',
 		),
+		'indoneziya' => array(
+			'family' => 'alt-indoneziya-beach-1.jpg',
+			'couple' => 'alt-indoneziya-beach-2.jpg',
+			'city'   => 'alt-indoneziya-2.jpg',
+			'active' => 'alt-indoneziya-3.jpg',
+		),
 		'vse-vklyucheno' => array(
 			'family' => 'resort-turciya-alanya-2.jpg',
 			'couple' => 'resort-egipet-sharm-1.jpg',

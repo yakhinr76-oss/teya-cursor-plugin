@@ -30,6 +30,42 @@ function zhiraf_ufa_departure_to_timestamp( $date_str ) {
 }
 
 /**
+ * Russian plural phrase for days until departure.
+ *
+ * @param int $days Days count.
+ * @return string
+ */
+function zhiraf_ufa_plural_days_until( $days ) {
+	$n      = (int) $days;
+	$mod10  = $n % 10;
+	$mod100 = $n % 100;
+	if ( $mod100 >= 11 && $mod100 <= 19 ) {
+		return sprintf( __( '%d дней', 'zhiraf-ufa' ), $n );
+	}
+	if ( 1 === $mod10 ) {
+		return sprintf( __( '%d день', 'zhiraf-ufa' ), $n );
+	}
+	if ( $mod10 >= 2 && $mod10 <= 4 ) {
+		return sprintf( __( '%d дня', 'zhiraf-ufa' ), $n );
+	}
+	return sprintf( __( '%d дней', 'zhiraf-ufa' ), $n );
+}
+
+/**
+ * Short human date for hot cards (e.g. «25 октября»).
+ *
+ * @param string $date_str d.m.Y.
+ * @return string
+ */
+function zhiraf_ufa_departure_human_date( $date_str ) {
+	$ts = zhiraf_ufa_departure_to_timestamp( $date_str );
+	if ( ! $ts ) {
+		return trim( (string) $date_str );
+	}
+	return function_exists( 'wp_date' ) ? wp_date( 'j F', $ts ) : gmdate( 'j F', $ts );
+}
+
+/**
  * Human label for hot-tour urgency on cards.
  *
  * @param string $date_str Departure d.m.Y.
@@ -37,7 +73,7 @@ function zhiraf_ufa_departure_to_timestamp( $date_str ) {
  */
 function zhiraf_ufa_departure_urgency_text( $date_str ) {
 	$ts    = zhiraf_ufa_departure_to_timestamp( $date_str );
-	$label = $date_str;
+	$label = zhiraf_ufa_departure_human_date( $date_str );
 	if ( ! $ts ) {
 		return sprintf(
 			/* translators: %s: date */
@@ -47,19 +83,26 @@ function zhiraf_ufa_departure_urgency_text( $date_str ) {
 	}
 	$today = ( new DateTime( 'today', wp_timezone() ) )->getTimestamp();
 	$days  = (int) floor( ( $ts - $today ) / DAY_IN_SECONDS );
-	if ( $days <= 1 ) {
+	if ( $days <= 0 ) {
 		return sprintf(
 			/* translators: %s: date */
-			__( 'Горит: вылет %s (1–2 дня)', 'zhiraf-ufa' ),
+			__( 'Вылет сегодня (%s)', 'zhiraf-ufa' ),
 			$label
 		);
 	}
-	if ( $days <= 7 ) {
+	if ( 1 === $days ) {
 		return sprintf(
-			/* translators: 1: date, 2: days count */
-			__( 'Вылет %1$s · через %2$d дн.', 'zhiraf-ufa' ),
-			$label,
-			$days
+			/* translators: %s: date */
+			__( 'Вылет завтра (%s)', 'zhiraf-ufa' ),
+			$label
+		);
+	}
+	if ( $days <= 14 ) {
+		return sprintf(
+			/* translators: 1: days phrase, 2: date */
+			__( 'Вылет через %1$s (%2$s)', 'zhiraf-ufa' ),
+			zhiraf_ufa_plural_days_until( $days ),
+			$label
 		);
 	}
 	return sprintf(

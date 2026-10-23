@@ -313,6 +313,7 @@ function zhiraf_ufa_ajax_lead() {
 			'contact_channel'  => 'Куда отправить подборку',
 			'hot_destination'  => 'Направление (горящие)',
 			'hot_budget'       => 'Бюджет (горящие)',
+			'hot_dates'        => 'Даты вылета (горящие)',
 			'ai_travelers'     => 'Состав (AI)',
 			'ai_month'         => 'Месяц (AI)',
 		)
@@ -331,13 +332,18 @@ function zhiraf_ufa_ajax_lead() {
 			$values['Сообщение'] = $extra;
 		}
 	}
-	if ( ! empty( $values['Направление (горящие)'] ) || ! empty( $values['Бюджет (горящие)'] ) ) {
+	if ( ! empty( $values['Направление (горящие)'] ) || ! empty( $values['Бюджет (горящие)'] ) || ! empty( $values['Даты вылета (горящие)'] ) ) {
 		$parts = array_filter(
 			array(
 				! empty( $values['Направление (горящие)'] ) ? sprintf(
 					/* translators: %s: destination */
 					__( 'Куда: %s', 'zhiraf-ufa' ),
 					$values['Направление (горящие)']
+				) : '',
+				! empty( $values['Даты вылета (горящие)'] ) ? sprintf(
+					/* translators: %s: dates */
+					__( 'Даты: %s', 'zhiraf-ufa' ),
+					$values['Даты вылета (горящие)']
 				) : '',
 				! empty( $values['Бюджет (горящие)'] ) ? sprintf(
 					/* translators: %s: budget */

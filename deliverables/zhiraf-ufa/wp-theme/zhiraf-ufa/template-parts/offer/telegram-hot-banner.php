@@ -19,7 +19,7 @@ if ( empty( $banner ) ) {
 ?>
 <aside class="hot-telegram-banner tour-price-grid__banner" aria-labelledby="hot-telegram-banner-title">
 	<div class="hot-telegram-banner__inner">
-		<p class="hot-telegram-banner__kicker"><?php esc_html_e( 'Лид-магнит', 'zhiraf-ufa' ); ?> · Telegram</p>
+		<p class="hot-telegram-banner__kicker"><?php esc_html_e( 'Telegram · горящие из Уфы', 'zhiraf-ufa' ); ?></p>
 		<h3 class="hot-telegram-banner__title" id="hot-telegram-banner-title">
 			<?php echo esc_html( ! empty( $banner['title'] ) ? $banner['title'] : __( 'Горящие из Уфы в Telegram', 'zhiraf-ufa' ) ); ?>
 		</h3>

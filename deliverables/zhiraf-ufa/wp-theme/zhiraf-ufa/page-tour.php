@@ -28,15 +28,19 @@ get_header();
 			</div>
 			<div class="catalog-hero__visual" aria-hidden="false">
 				<div class="catalog-hero__collage">
-					<div class="catalog-hero__collage-item catalog-hero__collage-item--1">
-						<?php zhiraf_ufa_img( 'hero-uae.jpg', __( 'ОАЭ — пляжный отдых', 'zhiraf-ufa' ), '', true ); ?>
-					</div>
-					<div class="catalog-hero__collage-item catalog-hero__collage-item--2">
-						<?php zhiraf_ufa_img( 'hero-turkey.jpg', __( 'Турция — море и All Inclusive', 'zhiraf-ufa' ), '', true ); ?>
-					</div>
-					<div class="catalog-hero__collage-item catalog-hero__collage-item--3">
-						<?php zhiraf_ufa_img( 'hero-thailand.jpg', __( 'Таиланд — тропики', 'zhiraf-ufa' ), '', true ); ?>
-					</div>
+					<?php foreach ( zhiraf_ufa_catalog_hero_collage_items() as $tile ) : ?>
+						<div class="catalog-hero__collage-item catalog-hero__collage-item<?php echo esc_attr( $tile['modifier'] ); ?>">
+							<?php zhiraf_ufa_img( $tile['image'], $tile['alt'], '', true ); ?>
+							<div class="catalog-hero__badges" aria-hidden="false">
+								<?php if ( ! empty( $tile['price_badge'] ) ) : ?>
+									<span class="catalog-hero__badge catalog-hero__badge--price"><?php echo esc_html( $tile['price_badge'] ); ?></span>
+								<?php endif; ?>
+								<?php if ( ! empty( $tile['flight_badge'] ) ) : ?>
+									<span class="catalog-hero__badge catalog-hero__badge--flight"><?php echo esc_html( $tile['flight_badge'] ); ?></span>
+								<?php endif; ?>
+							</div>
+						</div>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>

@@ -173,6 +173,62 @@ function zhiraf_ufa_catalog_hub_destinations() {
 }
 
 /**
+ * Hero collage tiles on /tour/ with sell badges (price + flight).
+ *
+ * @return array<int,array{slug:string,image:string,alt:string,price_badge:string,flight_badge:string}>
+ */
+function zhiraf_ufa_catalog_hero_collage_items() {
+	$slugs = array( 'oae', 'turciya', 'tailand' );
+	$by_slug = array();
+	foreach ( zhiraf_ufa_destinations() as $dest ) {
+		$by_slug[ $dest['slug'] ] = $dest;
+	}
+	$image_map = array(
+		'oae'     => array( 'hero-uae.jpg', __( 'ОАЭ — пляжный отдых', 'zhiraf-ufa' ) ),
+		'turciya' => array( 'hero-turkey.jpg', __( 'Турция — море и All Inclusive', 'zhiraf-ufa' ) ),
+		'tailand' => array( 'hero-thailand.jpg', __( 'Таиланд — тропики', 'zhiraf-ufa' ) ),
+	);
+	$items     = array();
+	$modifiers = array( '--1', '--2', '--3' );
+	foreach ( $slugs as $i => $slug ) {
+		if ( empty( $image_map[ $slug ] ) ) {
+			continue;
+		}
+		$dest_row = isset( $by_slug[ $slug ] ) ? $by_slug[ $slug ] : array( 'name' => $slug );
+		$name     = ! empty( $dest_row['name'] ) ? (string) $dest_row['name'] : $slug;
+		$min      = function_exists( 'zhiraf_ufa_get_country_min_tour' ) ? zhiraf_ufa_get_country_min_tour( $slug ) : null;
+		$flight   = function_exists( 'zhiraf_ufa_tour_flight_info' )
+			? zhiraf_ufa_tour_flight_info( $min, 'Уфа' )
+			: array( 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ) );
+		$price_badge = '';
+		if ( $min && ! empty( $min['price_rur'] ) ) {
+			$thousands = (int) round( (int) $min['price_rur'] / 1000 );
+			$price_badge = sprintf(
+				/* translators: 1: country name, 2: price in thousands */
+				__( '%1$s от %2$s т.р.', 'zhiraf-ufa' ),
+				$name,
+				number_format( $thousands, 0, '', ' ' )
+			);
+		}
+		$flight_badge = ! empty( $flight['label'] ) ? (string) $flight['label'] : __( 'Прямой рейс из Уфы', 'zhiraf-ufa' );
+		if ( false === mb_stripos( $flight_badge, 'уф', 0, 'UTF-8' ) ) {
+			$flight_badge = __( 'Прямой рейс из Уфы', 'zhiraf-ufa' );
+		} elseif ( 'вылет из Уфы' === $flight_badge ) {
+			$flight_badge = __( 'Прямой рейс из Уфы', 'zhiraf-ufa' );
+		}
+		$items[] = array(
+			'slug'          => $slug,
+			'image'         => $image_map[ $slug ][0],
+			'alt'           => $image_map[ $slug ][1],
+			'price_badge'   => $price_badge,
+			'flight_badge'  => $flight_badge,
+			'modifier'      => isset( $modifiers[ $i ] ) ? $modifiers[ $i ] : '',
+		);
+	}
+	return $items;
+}
+
+/**
  * Reading time for posts.
  *
  * @param int|null $post_id Post ID.

@@ -145,6 +145,11 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'танджунг'   => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
 			'беноа'      => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
 		),
+		'armeniya'   => array(
+			'ереван'   => array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-2.jpg' ),
+			'севан'    => array( 'alt-armeniya-sevan.jpg', 'alt-armeniya-3.jpg' ),
+			'дилижан'  => array( 'alt-armeniya-sevan.jpg', 'alt-armeniya-2.jpg' ),
+		),
 	);
 	// Country-level photos (fallback; never another resort's own photo). Several => varied cards on one page.
 	$country_photos = array(
@@ -197,7 +202,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
 		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
 		'uzbekistan' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg', 'alt-uzbekistan-3.jpg' ),
-		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
+		'armeniya'   => array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-sevan.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
 		'rossiya'    => array( 'hero-collage-1.jpg', 'hero-collage-2.jpg', 'hero-collage-3.jpg' ),
 		'abkhaziya'  => array( 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg', 'country-armeniya.jpg' ),
 	);
@@ -238,6 +243,8 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		} else {
 			$candidates = array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-2.jpg' );
 		}
+	} elseif ( 'armeniya' === $slug && false !== mb_strpos( $resort, 'ереван', 0, 'UTF-8' ) ) {
+		$candidates = array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' );
 	}
 	if ( ! $candidates ) {
 		// No library photo => gradient (never a wrong country's photo).

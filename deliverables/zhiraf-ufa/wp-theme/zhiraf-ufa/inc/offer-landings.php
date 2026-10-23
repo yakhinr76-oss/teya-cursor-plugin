@@ -50,8 +50,8 @@ function zhiraf_ufa_offer_landing_data() {
 			),
 			'pros_cons'     => array(
 				'title'      => __( 'Плюсы и риски горящего тура', 'zhiraf-ufa' ),
-				'pros_title' => __( 'Плюс', 'zhiraf-ufa' ),
-				'cons_title' => __( 'Риск', 'zhiraf-ufa' ),
+				'pros_title' => __( 'Плюсы', 'zhiraf-ufa' ),
+				'cons_title' => __( 'Риски с честным разбором', 'zhiraf-ufa' ),
 				'pros'       => array(
 					__( 'Экономия до 30–50% от базового тарифа на те же перелёт, отель и питание.', 'zhiraf-ufa' ),
 					__( 'Можно улететь спонтанно, если загранпаспорта готовы.', 'zhiraf-ufa' ),
@@ -64,8 +64,8 @@ function zhiraf_ufa_offer_landing_data() {
 				),
 			),
 			'telegram_banner' => array(
-				'title'    => __( 'Горящие в Telegram быстрее, чем на сайте', 'zhiraf-ufa' ),
-				'text'     => __( 'Не успеваете обновлять страницу? Подпишитесь на канал «Жираф» — выкладываем отказные места и падения цен, пока их не раскупили.', 'zhiraf-ufa' ),
+				'title'    => __( 'Не успеваете следить за сайтом?', 'zhiraf-ufa' ),
+				'text'     => __( 'Подпишитесь на закрытый канал горящих путёвок из Уфы — публикуем падения цен за 10 минут до выгрузки в агрегаторы.', 'zhiraf-ufa' ),
 				'cta'      => __( 'Подписаться на Telegram', 'zhiraf-ufa' ),
 				'fallback' => __( 'Напишите менеджеру в мессенджер — добавим в рассылку горящих', 'zhiraf-ufa' ),
 			),
@@ -262,8 +262,20 @@ function zhiraf_ufa_render_offer_landing( $slug ) {
 	if ( ! $offer ) {
 		return;
 	}
-	$specific = ZHIRAF_UFA_DIR . '/templates/offer-landing-' . $slug . '.php';
-	$template = is_readable( $specific ) ? $specific : ZHIRAF_UFA_DIR . '/templates/offer-landing.php';
+	$candidates = array(
+		ZHIRAF_UFA_DIR . '/templates/offer-landing-' . $slug . '.php',
+	);
+	if ( false !== strpos( $slug, '-' ) ) {
+		$short      = strstr( $slug, '-', true );
+		$candidates[] = ZHIRAF_UFA_DIR . '/templates/offer-landing-' . $short . '.php';
+	}
+	$template = ZHIRAF_UFA_DIR . '/templates/offer-landing.php';
+	foreach ( $candidates as $path ) {
+		if ( is_readable( $path ) ) {
+			$template = $path;
+			break;
+		}
+	}
 	if ( is_readable( $template ) ) {
 		include $template;
 	}

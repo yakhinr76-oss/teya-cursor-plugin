@@ -153,8 +153,8 @@ $dest_options   = function_exists( 'zhiraf_ufa_catalog_hub_destinations' ) ? zhi
 
 	<section class="section dest-landing-cta hot-lead-section" id="hot-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
-			<h2><?php esc_html_e( 'Поймать горящий тур под ваши даты', 'zhiraf-ufa' ); ?></h2>
-			<p><?php esc_html_e( 'Оставьте контакты — поставим на мониторинг вылетов из Уфы и пришлём варианты, как только появится спеццена.', 'zhiraf-ufa' ); ?></p>
+			<h2><?php esc_html_e( 'Не нашли нужное направление?', 'zhiraf-ufa' ); ?></h2>
+			<p><?php esc_html_e( 'Оставьте телефон и желаемые даты — поставим на мониторинг вылетов из Уфы и пришлём горящие варианты в мессенджер.', 'zhiraf-ufa' ); ?></p>
 			<form class="zhiraf-form hot-lead-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="hot-tours">
 				<div class="dest-landing-lead-form__fields hot-lead-form__fields">
 					<label class="form-label">
@@ -176,6 +176,10 @@ $dest_options   = function_exists( 'zhiraf_ufa_catalog_hub_destinations' ) ? zhi
 							<option value="<?php esc_attr_e( '150 000 – 200 000 ₽', 'zhiraf-ufa' ); ?>"><?php esc_html_e( '150 000 – 200 000 ₽', 'zhiraf-ufa' ); ?></option>
 							<option value="<?php esc_attr_e( 'выше 200 000 ₽', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'выше 200 000 ₽', 'zhiraf-ufa' ); ?></option>
 						</select>
+					</label>
+					<label class="form-label">
+						<span><?php esc_html_e( 'Желаемые даты вылета', 'zhiraf-ufa' ); ?></span>
+						<input type="text" name="hot_dates" class="form-input" placeholder="<?php esc_attr_e( 'Например: 25–30 октября или «гибко в ноябре»', 'zhiraf-ufa' ); ?>" required />
 					</label>
 					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
 					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон / WhatsApp', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />

@@ -201,6 +201,12 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'city'   => 'resort-maldivy-atoll-1.jpg',
 			'active' => 'resort-maldivy-atoll-2.jpg',
 		),
+		'sejshely' => array(
+			'family' => 'alt-sejshely-2.jpg',
+			'couple' => 'country-sejshely.jpg',
+			'city'   => 'alt-sejshely-3.jpg',
+			'active' => 'alt-sejshely-2.jpg',
+		),
 		'vse-vklyucheno' => array(
 			'family' => 'resort-turciya-alanya-2.jpg',
 			'couple' => 'resort-egipet-sharm-1.jpg',

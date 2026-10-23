@@ -44,7 +44,8 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		|| false !== mb_strpos( $hotel_lc, 'water park', 0, 'UTF-8' )
 		|| false !== mb_strpos( $hotel_lc, 'aquapark', 0, 'UTF-8' )
 	);
-	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && 'maldivy' !== $slug ) {
+	$skip_operator_image_slugs = array( 'maldivy', 'sejshely' );
+	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && ! in_array( $slug, $skip_operator_image_slugs, true ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
 			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );

@@ -48,8 +48,17 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 					</div>
 				</div>
 				<div class="tour-price-grid tour-price-grid--dest tour-price-grid--top">
-					<?php foreach ( $zhiraf_cards as $tour_item ) : ?>
-						<?php get_template_part( 'template-parts/cards/card-tour-price', null, array( 'tour' => $tour_item ) ); ?>
+					<?php foreach ( $zhiraf_cards as $i => $tour_item ) : ?>
+						<?php
+						get_template_part(
+							'template-parts/cards/card-tour-price',
+							null,
+							array(
+								'tour'       => $tour_item,
+								'card_index' => $i,
+							)
+						);
+						?>
 					<?php endforeach; ?>
 				</div>
 			</div>

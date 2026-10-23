@@ -48,7 +48,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	if ( isset( $legacy[ $slug ] ) ) {
 		$slug = $legacy[ $slug ];
 	}
-	$skip_operator_image_slugs = array( 'maldivy', 'sejshely', 'shri-lanka' );
+	$skip_operator_image_slugs = array( 'maldivy', 'sejshely', 'shri-lanka', 'indoneziya' );
 	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && ! in_array( $slug, $skip_operator_image_slugs, true ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
@@ -128,6 +128,18 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 			'калутара' => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' ),
 			'негомбо'  => array( 'alt-shri-lanka-beach-2.jpg', 'alt-shri-lanka-beach-1.jpg' ),
 		),
+		'indoneziya' => array(
+			'убуд'       => array( 'alt-indoneziya-3.jpg', 'country-indoneziya.jpg' ),
+			'нуса'       => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+			'дуа'        => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+			'джимбаран'  => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-2.jpg' ),
+			'семиньяк'   => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-beach-1.jpg' ),
+			'кут'        => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-beach-1.jpg' ),
+			'легиан'     => array( 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-beach-1.jpg' ),
+			'санур'      => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-2.jpg' ),
+			'танджунг'   => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+			'беноа'      => array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+		),
 	);
 	// Country-level photos (fallback; never another resort's own photo). Several => varied cards on one page.
 	$country_photos = array(
@@ -176,8 +188,8 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'kitaj'      => array( 'country-kitaj.jpg', 'resort-sanya-2.jpg', 'resort-sanya-3.jpg' ),
 		'indiya'     => array( 'country-indiya.jpg', 'alt-indiya-2.jpg' ),
 		'shri-lanka' => array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg', 'country-shri-lanka.jpg' ),
-		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-3.jpg' ),
-		'maldivy'    => array( 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
+		'indoneziya' => array( 'country-indoneziya.jpg', 'alt-indoneziya-2.jpg', 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg' ),
+		'maldivy'    => array( 'country-maldivy.jpg', 'resort-maldivy-atoll-1.jpg', 'resort-maldivy-atoll-2.jpg' ),
 		'sejshely'   => array( 'country-sejshely.jpg', 'alt-sejshely-2.jpg', 'alt-sejshely-3.jpg' ),
 		'uzbekistan' => array( 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg' ),
 		'armeniya'   => array( 'country-armeniya.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
@@ -210,6 +222,16 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		$hotel = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
 		if ( false !== mb_strpos( $hotel, 'beach', 0, 'UTF-8' ) ) {
 			$candidates = array( 'alt-shri-lanka-beach-1.jpg', 'alt-shri-lanka-beach-2.jpg' );
+		}
+	} elseif ( 'indoneziya' === $slug ) {
+		$hotel   = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+		$is_ubud = false !== mb_strpos( $resort, 'убуд', 0, 'UTF-8' )
+			|| false !== mb_strpos( $hotel, 'ubud', 0, 'UTF-8' )
+			|| false !== mb_strpos( $hotel, 'убуд', 0, 'UTF-8' );
+		if ( $is_ubud ) {
+			$candidates = array( 'alt-indoneziya-3.jpg', 'country-indoneziya.jpg' );
+		} else {
+			$candidates = array( 'alt-indoneziya-beach-1.jpg', 'alt-indoneziya-beach-2.jpg', 'alt-indoneziya-2.jpg' );
 		}
 	}
 	if ( ! $candidates ) {

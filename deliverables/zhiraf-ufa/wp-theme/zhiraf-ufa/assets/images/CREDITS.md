@@ -37,6 +37,8 @@
 | alt-shri-lanka-beach-2.jpg | Шри-Ланка — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-3601450/ | Sandy beach and ocean, Sri Lanka |
 | alt-shri-lanka-2.jpg | Шри-Ланка — фото страны (вариант 2) | Malik Cil | https://www.pexels.com/photo/scenic-aerial-view-of-nine-arches-bridge-in-ella-34218649/ | Aerial view of the iconic Nine Arches Bridge surrounded by lush greenery in Ella, Sri Lanka. |
 | alt-shri-lanka-3.jpg | Шри-Ланка — фото страны (вариант 3) | Stephanie Perera | https://www.pexels.com/photo/majestic-view-of-sigiriya-rock-in-sri-lanka-34128251/ | Sigiriya rock, Sri Lanka |
+| alt-indoneziya-beach-1.jpg | Бали — пляж / бассейн | Asad Photo Maldives | https://www.pexels.com/photo/photo-of-people-on-beach-1320684/ | Tropical beach with palm trees |
+| alt-indoneziya-beach-2.jpg | Бали — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-1450363/ | Sandy beach and ocean |
 | alt-indoneziya-2.jpg | Бали — фото страны (вариант 2) | Patrick Gamelkoorn | https://www.pexels.com/photo/temple-by-the-sea-in-indonesia-18144499/ | Breathtaking view of Tanah Lot Temple on the rocky coast of Bali, Indonesia, during sunset. |
 | alt-indoneziya-3.jpg | Бали — фото страны (вариант 3) | Evert jan Hoek | https://www.pexels.com/photo/lush-green-terraced-rice-fields-in-bali-36133244/ | Terraced rice fields, Bali |
 | alt-sejshely-2.jpg | Сейшелы — фото страны (вариант 2) | Logan Hamm | https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/ | Discover the stunning beach with distinctive granite rocks and clear turquoise water in Seychelles. |

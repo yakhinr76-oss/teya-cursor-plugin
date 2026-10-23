@@ -119,10 +119,15 @@
 }
 
 .catalog-price-note {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
   color: var(--color-muted);
-  margin: 0 0 24px;
+  margin: 0;
   max-width: 42rem;
+}
+
+.catalog-price-note--after-grid {
+  margin-top: 20px;
 }
 
 .dest-grid--catalog {
@@ -166,8 +171,12 @@
   color: #0f766e;
 }
 
-.catalog-dest-card__flight--via {
+.catalog-dest-card__flight--connection,
+.catalog-dest-card__flight--via,
+.catalog-dest-card__flight--mow,
+.catalog-dest-card__flight--ufa {
   color: #3730a3;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .catalog-dest-card__price {

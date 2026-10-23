@@ -333,6 +333,7 @@
     goStep(0);
     trackQuizStep(0);
     modal.removeAttribute('hidden');
+    modal.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
     document.body.classList.add('quiz-open');
     var first = qs('.quiz-step.is-active input, .quiz-step.is-active select', quizForm);
@@ -343,6 +344,7 @@
   function closeQuiz() {
     if (!modal) return;
     modal.setAttribute('hidden', '');
+    modal.setAttribute('inert', '');
     document.body.style.overflow = '';
     document.body.classList.remove('quiz-open');
   }

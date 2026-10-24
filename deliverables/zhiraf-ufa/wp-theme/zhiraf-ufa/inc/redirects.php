@@ -25,6 +25,9 @@ function zhiraf_ufa_legacy_redirect_map() {
 		'/politika-konfidenczialnosti' => '/politika-konfidenczialnosti/',
 		'/tour/tailand/phuket'         => '/tour/tailand/',
 		'/tour/tailand/phuket/'        => '/tour/tailand/',
+		// English misspelling → canonical resort slug.
+		'/tour/egipet/hurghada'        => '/tour/egipet/hurgada/',
+		'/tour/egipet/hurghada/'       => '/tour/egipet/hurgada/',
 		// zhiraf-ufa.ru inventory 19.10.2026 (migration/url_map.csv).
 		'/tour/turkey'                 => '/tour/turciya/',
 		'/tour/uae'                    => '/tour/oae/',

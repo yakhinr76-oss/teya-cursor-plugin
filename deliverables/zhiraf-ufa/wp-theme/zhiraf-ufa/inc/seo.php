@@ -225,12 +225,12 @@ function zhiraf_ufa_document_title( $title ) {
 	if ( is_page( 'politika-cookies' ) ) {
 		return 'Политика cookies | «Жираф»';
 	}
-	if ( is_home() && ! is_front_page() ) {
-		return 'Блог о путешествиях из Уфы | «Жираф»';
-	}
 	$landing_seo = zhiraf_ufa_current_landing_seo();
 	if ( $landing_seo && ! empty( $landing_seo['title'] ) ) {
 		return $landing_seo['title'];
+	}
+	if ( is_home() && ! is_front_page() ) {
+		return 'Блог о путешествиях из Уфы | «Жираф»';
 	}
 	return $title;
 }

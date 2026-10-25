@@ -120,5 +120,21 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 			'type'        => 'url',
 		)
 	);
+
+	$wp_customize->add_setting(
+		'zhiraf_vk_url',
+		array(
+			'default'           => 'https://vk.com/zhiraf_ufa',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_vk_url',
+		array(
+			'label'   => __( 'Ссылка ВКонтакте', 'zhiraf-ufa' ),
+			'section' => 'zhiraf_ufa_brand',
+			'type'    => 'url',
+		)
+	);
 }
 add_action( 'customize_register', 'zhiraf_ufa_customize_register' );

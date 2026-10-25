@@ -60,10 +60,10 @@ get_header();
 						<div><dt><?php esc_html_e( 'Сб', 'zhiraf-ufa' ); ?></dt><dd>11:00–15:00</dd></div>
 					</dl>
 				</article>
-				<article class="contacts-card contacts-card--wide">
-					<span class="contacts-card__icon" aria-hidden="true">VK</span>
-					<h2 class="contacts-card__label"><?php esc_html_e( 'ВКонтакте', 'zhiraf-ufa' ); ?></h2>
-					<a class="contacts-card__link" href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" data-track="messenger" data-channel="vk"><?php esc_html_e( 'Сообщество «Жираф» ВКонтакте →', 'zhiraf-ufa' ); ?></a>
+				<article class="contacts-card contacts-card--wide contacts-card--social">
+					<h2 class="contacts-card__label"><?php esc_html_e( 'Мессенджеры и соцсети', 'zhiraf-ufa' ); ?></h2>
+					<p class="contacts-card__note"><?php esc_html_e( 'Напишите в WhatsApp или Telegram — или загляните в наше сообщество ВКонтакте.', 'zhiraf-ufa' ); ?></p>
+					<?php zhiraf_ufa_render_social_links( array( 'variant' => 'pill', 'class' => 'contacts-social' ) ); ?>
 				</article>
 			</div>
 

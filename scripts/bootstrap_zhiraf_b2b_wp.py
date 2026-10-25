@@ -105,6 +105,17 @@ def publish_excalibur_post(project_root: Path, slug: str = "kak-kupit-tur-v-ufe"
     return request("POST", "/wp-json/wp/v2/posts", payload)
 
 
+def trash_default_hello_post() -> None:
+    """Remove WP default «Привет, мир!» / hello-world if still present."""
+    for slug in ("hello-world", "privet-mir"):
+        existing = request("GET", f"/wp-json/wp/v2/posts?slug={slug}&status=any&per_page=1")
+        if not existing:
+            continue
+        post = existing[0]
+        request("DELETE", f"/wp-json/wp/v2/posts/{post['id']}?force=true")
+        print(f"Trashed default post: {slug} (id={post['id']})")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--project-root", type=Path, default=Path.cwd())

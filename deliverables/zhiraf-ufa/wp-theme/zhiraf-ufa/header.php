@@ -35,16 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 		</nav>
 		<div class="site-header__actions">
 			<a class="header-phone" href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a>
-			<?php
-			$zhiraf_wa = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : '';
-			$zhiraf_tg = trim( (string) get_theme_mod( 'zhiraf_telegram_url', '' ) );
-			if ( '' !== $zhiraf_wa ) :
-				?>
-				<a class="header-messenger header-messenger--wa" href="<?php echo esc_url( $zhiraf_wa ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></a>
-			<?php endif; ?>
-			<?php if ( '' !== $zhiraf_tg ) : ?>
-				<a class="header-messenger header-messenger--tg" href="<?php echo esc_url( $zhiraf_tg ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="telegram"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
-			<?php endif; ?>
+			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'context' => 'header' ) ); ?>
 			<button type="button" class="btn btn--outline btn--sm" data-quiz-open>
 				<?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?>
 			</button>

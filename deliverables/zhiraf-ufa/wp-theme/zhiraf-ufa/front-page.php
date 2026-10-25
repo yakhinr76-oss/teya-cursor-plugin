@@ -26,16 +26,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				</ul>
 				<div class="hero-premium__actions">
 					<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
-					<?php
-					$zhiraf_wa = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : '';
-					$zhiraf_tg = trim( (string) get_theme_mod( 'zhiraf_telegram_url', '' ) );
-					if ( '' !== $zhiraf_wa ) :
-						?>
-						<a class="btn btn--outline btn--lg" href="<?php echo esc_url( $zhiraf_wa ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></a>
-					<?php endif; ?>
-					<?php if ( '' !== $zhiraf_tg ) : ?>
-						<a class="btn btn--outline btn--lg" href="<?php echo esc_url( $zhiraf_tg ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="telegram"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
-					<?php endif; ?>
+					<?php zhiraf_ufa_render_social_links( array( 'variant' => 'pill', 'class' => 'hero-social' ) ); ?>
 				</div>
 			</div>
 
@@ -153,9 +144,9 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				</ul>
 				<div class="trust-social__links">
 					<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
-					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" data-track="messenger" data-channel="vk"><?php esc_html_e( 'Мы ВКонтакте', 'zhiraf-ufa' ); ?></a>
 					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>"><?php esc_html_e( 'Контакты и карта', 'zhiraf-ufa' ); ?></a>
 				</div>
+				<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'class' => 'trust-social__messengers' ) ); ?>
 			</div>
 			<div class="trust-social__visual reveal reveal-delay-1">
 				<?php get_template_part( 'template-parts/home/trust-visual' ); ?>

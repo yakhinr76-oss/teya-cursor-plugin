@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<a href="mailto:office@zhiraf-ufa.ru" data-track="email">office@zhiraf-ufa.ru</a>
 			</p>
 			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?></p>
+			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'class' => 'footer-social' ) ); ?>
 		</div>
 		<div class="footer-col">
 			<p class="footer-col__title"><?php esc_html_e( 'Навигация', 'zhiraf-ufa' ); ?></p>

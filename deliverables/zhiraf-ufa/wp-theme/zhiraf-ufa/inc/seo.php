@@ -349,7 +349,7 @@ function zhiraf_ufa_json_ld() {
 						'closes'    => '15:00',
 					),
 				),
-				'sameAs' => array( 'https://vk.com/zhiraf_ufa' ),
+				'sameAs' => array( zhiraf_ufa_brand_vk_url() ),
 			),
 			array(
 				'@type' => 'WebSite',

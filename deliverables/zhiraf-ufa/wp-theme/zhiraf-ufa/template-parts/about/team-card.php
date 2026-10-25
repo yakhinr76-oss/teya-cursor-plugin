@@ -52,11 +52,30 @@ $tg_url   = ! empty( $member['telegram_url'] ) ? (string) $member['telegram_url'
 		<?php endif; ?>
 		<?php if ( '' !== $wa_url || '' !== $tg_url ) : ?>
 			<div class="about-team-card__actions">
+				<?php
+				$allowed_svg = array(
+					'svg'  => array(
+						'class'       => true,
+						'width'       => true,
+						'height'      => true,
+						'viewbox'     => true,
+						'aria-hidden' => true,
+						'focusable'   => true,
+					),
+					'path' => array( 'fill' => true, 'd' => true ),
+				);
+				?>
 				<?php if ( '' !== $wa_url ) : ?>
-					<a class="about-team-card__wa" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp"><?php echo esc_html( $wa_label ); ?></a>
+					<a class="about-team-card__wa zh-social-link zh-social-link--whatsapp" href="<?php echo esc_url( $wa_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp">
+						<span class="zh-social-link__icon"><?php echo wp_kses( zhiraf_ufa_social_icon_svg( 'whatsapp', 18 ), $allowed_svg ); ?></span>
+						<span class="zh-social-link__label"><?php echo esc_html( $wa_label ); ?></span>
+					</a>
 				<?php endif; ?>
 				<?php if ( '' !== $tg_url && empty( $member['hide_telegram'] ) ) : ?>
-					<a class="about-team-card__tg" href="<?php echo esc_url( $tg_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="telegram"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
+					<a class="about-team-card__tg zh-social-link zh-social-link--telegram" href="<?php echo esc_url( $tg_url ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="telegram">
+						<span class="zh-social-link__icon"><?php echo wp_kses( zhiraf_ufa_social_icon_svg( 'telegram', 18 ), $allowed_svg ); ?></span>
+						<span class="zh-social-link__label"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></span>
+					</a>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

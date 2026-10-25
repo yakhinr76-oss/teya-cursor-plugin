@@ -126,7 +126,11 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/home/team-teaser' ); ?>
+	<?php
+	if ( function_exists( 'zhiraf_ufa_show_home_team_teaser' ) && zhiraf_ufa_show_home_team_teaser() ) {
+		get_template_part( 'template-parts/home/team-teaser' );
+	}
+	?>
 
 	<section class="section section--trust trust-social">
 		<div class="container trust-social__grid">

@@ -45,6 +45,16 @@ function zhiraf_ufa_theme_image_exists( $filename ) {
  *
  * @param array<string,mixed> $member Team member row.
  */
+/**
+ * Show «Кто подберёт ваш тур» block on the homepage.
+ * Off by default until all team portraits are ready; full roster stays on /o-nas/.
+ *
+ * @return bool
+ */
+function zhiraf_ufa_show_home_team_teaser() {
+	return (bool) apply_filters( 'zhiraf_ufa_show_home_team_teaser', false );
+}
+
 function zhiraf_ufa_team_member_portrait( $member ) {
 	$file = ! empty( $member['image'] ) ? (string) $member['image'] : '';
 	if ( '' === $file ) {

@@ -703,6 +703,15 @@
     }
   }
 
+  qsa('[data-tier-prefill]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var tag = link.getAttribute('data-tier-prefill') || '';
+      var leadForm = qs('#dest-lead .zhiraf-form');
+      var tourInput = leadForm ? qs('[data-lead-tour]', leadForm) : null;
+      if (tourInput && tag) tourInput.value = tag;
+    });
+  });
+
   var stickyDest = qs('#sticky-mobile-dest');
   var destHero = qs('.site-main--destination .dest-landing-hero, .site-main--resort .dest-landing-hero');
   if (stickyDest && destHero && window.matchMedia('(max-width: 768px)').matches) {

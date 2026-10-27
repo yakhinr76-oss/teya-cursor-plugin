@@ -1,1 +1,702 @@
-(()=>{(function(){"use strict";var m=window.zhirafUfa||{},b="zhiraf_cookie_consent",A=[];function n(e,t){return(t||document).querySelector(e)}function c(e,t){return Array.prototype.slice.call((t||document).querySelectorAll(e))}function L(){var e=window.zhirafMetrika||{};if(!e.id)return null;var t=parseInt(e.id,10);return t||null}function I(){if(!(!L()||typeof window.ym!="function"))for(;A.length;){var e=A.shift();try{window.ym(L(),"reachGoal",e.name,e.params||{})}catch{}}}window.zhirafTrack=function(t,i){i=i||{};var a=L();if(a&&typeof window.ym=="function")try{window.ym(a,"reachGoal",t,i)}catch{}else a&&localStorage.getItem(b)&&A.push({name:t,params:i});if(typeof window.gtag=="function")try{window.gtag("event",t,i)}catch{}},document.addEventListener("zhiraf:cookie-accepted",function(){setTimeout(I,1500)}),localStorage.getItem(b)&&setInterval(function(){window.zhirafMetrika&&window.zhirafMetrika.ready&&I()},500);function $(e){return e.closest(".site-header")||e.classList.contains("header-phone")?"header":e.closest("#sticky-mobile-cta")?"sticky":e.closest(".trust-social")?"trust":e.closest(".site-footer")?"footer":e.closest(".site-main--contacts")?"contacts":"other"}function ee(e){var t=e.getAttribute("data-cta-context");if(t){window.zhirafTrack(t,{hotel:e.getAttribute("data-tour-hotel")||"",context:t});return}if(e.closest(".site-header")){window.zhirafTrack("cta_header_quiz_open");return}if(e.closest(".hero-premium")){window.zhirafTrack("cta_hero_quiz_open");return}if(e.closest("#sticky-mobile-cta")){window.zhirafTrack("cta_sticky_quiz_open");return}if(e.closest(".site-footer")){window.zhirafTrack("cta_footer_quiz_open");return}var i=e.closest(".audience-tabs__panel");if(i){window.zhirafTrack("cta_audience_quiz_open",{segment:i.getAttribute("data-audience-panel")||"unknown"});return}if(e.closest("#lead-action")){window.zhirafTrack("cta_lead_section_quiz_open");return}if(e.closest(".how-it-works")){window.zhirafTrack("cta_section_quiz_open",{section:"how-it-works"});return}if(document.body.classList.contains("page-template-page-tour")||e.closest(".tour-hub")){window.zhirafTrack("cta_tour_hub_quiz_open");return}if(document.body.classList.contains("page-template-page-o-nas")){window.zhirafTrack("cta_about_quiz_open");return}window.zhirafTrack("cta_section_quiz_open",{section:"other"})}function te(e){var t=e.getAttribute("data-channel");if(t)return t;var i=(e.getAttribute("href")||"").toLowerCase();return i.indexOf("vk.com")!==-1?"vk":i.indexOf("t.me")!==-1||i.indexOf("telegram")!==-1?"telegram":i.indexOf("wa.me")!==-1||i.indexOf("whatsapp")!==-1?"whatsapp":"unknown"}document.addEventListener("click",function(e){var t=e.target.closest('a[href^="tel:"]');if(t){window.zhirafTrack("phone_click",{placement:$(t)});return}var i=e.target.closest('a[data-track="email"]');if(i){window.zhirafTrack("email_click",{placement:i.closest(".site-footer")?"footer":"other"});return}var a=e.target.closest('a[data-track="blog_teaser"]');if(a){window.zhirafTrack("blog_teaser_click");return}var r=e.target.closest('a[data-track="messenger"]');if(!r){var o=e.target.closest('a[href*="vk.com"], a[href*="t.me"], a[href*="wa.me"], a[href*="whatsapp"]');o&&!o.getAttribute("data-track")&&(r=o)}r&&window.zhirafTrack("messenger_click",{channel:te(r)})}),c(".dest-premium-card, .dest-card").forEach(function(e){e.addEventListener("click",function(){var t=e.getAttribute("data-dest")||"unknown";window.zhirafTrack("dest_card_click",{country:t})})});var q=n(".nav-toggle"),C=n("#primary-menu-wrap");q&&C&&q.addEventListener("click",function(){var e=C.classList.toggle("is-open");q.setAttribute("aria-expanded",e?"true":"false")});function V(e,t){var i=c(t,e),a=e.closest(".destinations")||e.parentElement,r=c(".dest-card, .dest-premium-card",a);i.forEach(function(o){o.addEventListener("click",function(){i.forEach(function(d){d.classList.remove("is-active")}),o.classList.add("is-active");var u=o.getAttribute("data-filter");r.forEach(function(d){var s=d.getAttribute("data-dest"),h=u==="all"||s===u;d.classList.toggle("is-hidden",!h)})})})}c(".dest-tabs").forEach(function(e){V(e,".tab-btn")}),c(".ai-meal-tabs").forEach(function(e){var t=c(".tab-btn",e),i=e.closest(".section")||e.parentElement,a=c(".tour-card",i);t.forEach(function(r){r.addEventListener("click",function(){t.forEach(function(u){u.classList.remove("is-active")}),r.classList.add("is-active");var o=r.getAttribute("data-filter");a.forEach(function(u){var d=u.getAttribute("data-dest")||"",s=o==="all";!s&&o==="islands"?s=d==="tailand"||d==="vietnam":s||(s=d===o),u.classList.toggle("is-hidden",!s)})})})}),c(".chip-filter").forEach(function(e){e.classList.contains("chip-filter--offers")||V(e,".chip")});function ie(e){var t=c("[data-tour-filter]",e),i=e.closest(".section--hot-tours")||e.closest(".section--dest-tours")||e.parentElement,a=c(".dest-tour-card-wrap",i),r=c(".tour-card",i);t.forEach(function(o){o.addEventListener("click",function(){t.forEach(function(s){s.classList.remove("is-active")}),o.classList.add("is-active");var u=o.getAttribute("data-tour-filter");function d(s){var h=s.getAttribute("data-dest"),Z=s.getAttribute("data-tour-region")||"";return u==="all"||h===u||Z&&Z===u}a.length?a.forEach(function(s){var h=n(".tour-card",s)||s;s.classList.toggle("is-hidden",!d(h))}):r.forEach(function(s){s.classList.toggle("is-hidden",!d(s))})})})}c(".tour-tabs, .dest-tour-tabs").forEach(function(e){ie(e)}),c("[data-tour-show-more]").forEach(function(e){e.addEventListener("click",function(){var t=e.getAttribute("data-target"),i=t?n(t):null;i&&(c(".dest-tour-card-wrap.is-collapsed",i).forEach(function(a){a.classList.remove("is-collapsed")}),e.hidden=!0)})});var x=n(".audience-tabs");if(x){var j=c(".audience-tabs__tab",x),ae=c(".audience-tabs__panel",x);j.forEach(function(e){e.addEventListener("click",function(){var t=e.getAttribute("data-audience");j.forEach(function(i){var a=i===e;i.classList.toggle("is-active",a),i.setAttribute("aria-selected",a?"true":"false")}),ae.forEach(function(i){var a=i.getAttribute("data-audience-panel")===t;i.classList.toggle("is-active",a),i.hidden=!a}),t&&window.zhirafTrack("audience_tab_"+t)})})}var D=n(".trust-social"),T=n("#sticky-mobile-cta");if(D&&T&&window.matchMedia("(max-width: 768px)").matches){var re=new IntersectionObserver(function(e){e.forEach(function(t){!t.isIntersecting&&t.boundingClientRect.top<0?T.removeAttribute("hidden"):T.setAttribute("hidden","")})},{threshold:0});re.observe(D)}var k=n("#cookie-banner"),Q=n("#cookie-accept");function ne(){k&&(localStorage.getItem(b)||k.removeAttribute("hidden"))}Q&&Q.addEventListener("click",function(){localStorage.setItem(b,"1"),k&&k.setAttribute("hidden",""),document.dispatchEvent(new CustomEvent("zhiraf:cookie-accepted"))}),ne();var g=n("#quiz-modal"),f=n("#quiz-form");function M(e){window.zhirafTrack("quiz_step_"+(e+1),{step:e+1})}function oe(){if(!(!g||!f)){S(0),M(0),g.removeAttribute("hidden"),g.removeAttribute("inert"),document.body.style.overflow="hidden",document.body.classList.add("quiz-open");var e=n(".quiz-step.is-active input, .quiz-step.is-active select",f);if(e)try{e.focus({preventScroll:!0})}catch{}}}function R(){g&&(g.setAttribute("hidden",""),g.setAttribute("inert",""),document.body.style.overflow="",document.body.classList.remove("quiz-open"))}var ce={family:{composition:"\u0421\u0435\u043C\u044C\u044F \u0441 \u0434\u0435\u0442\u044C\u043C\u0438",wishTag:""},couple:{composition:"\u041F\u0430\u0440\u0430",wishTag:""},city:{composition:"",wishTag:"[\u0428\u043E\u043F\u0438\u043D\u0433 \u0438 \u0434\u0432\u0438\u0436]"},party:{composition:"\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u0440\u0443\u0437\u0435\u0439",wishTag:"[\u0428\u043E\u043F\u0438\u043D\u0433 \u0438 \u0434\u0432\u0438\u0436]"},active:{composition:"",wishTag:"[\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439 \u043E\u0442\u0434\u044B\u0445 / \u042D\u043A\u0441\u043A\u0443\u0440\u0441\u0438\u0438]"}};function se(e){if(f){var t=n('[name="vibe"]',f),i=e.getAttribute("data-vibe")||"",a=e.getAttribute("data-quiz-prefill")||"",r=e.getAttribute("data-vibe-title")||"",o=n('[name="quiz_wishes"]',f);c('[name="quiz_composition"]',f).forEach(function(h){h.checked=!1}),t&&(t.value=i);var u=ce[i]||null;if(u&&u.composition){var d=n('[name="quiz_composition"][value="'+u.composition+'"]',f);d&&(d.checked=!0)}if(o){var s=[];a&&s.push(a),r&&s.push("\u0412\u0430\u0439\u0431: "+r),u&&u.wishTag&&s.push(u.wishTag),o.value=s.join(". ").trim()}else a&&o&&(o.value=a)}}function ue(e){if(f){var t=n('[name="vibe"]',f);t&&(t.value="");var i=e.getAttribute("data-quiz-prefill");if(i){var a=n('[name="quiz_wishes"]',f);a&&(a.value=i)}}}c('[data-quiz-open], [data-modal-open="quiz"]').forEach(function(e){e.addEventListener("click",function(){e.getAttribute("data-vibe")?se(e):ue(e),ee(e),oe()})}),c("[data-quiz-close]").forEach(function(e){e.addEventListener("click",R)}),document.addEventListener("keydown",function(e){e.key==="Escape"&&R()});var _=c(".quiz-step",f),v=0;function fe(e){if(!e)return!1;var t=c("input, select, textarea",e).filter(function(a){return a.type!=="hidden"&&!a.classList.contains("zhiraf-hp")}),i=!0;return t.forEach(function(a){a.checkValidity()||(i=!1,a.reportValidity())}),i}function S(e){_.forEach(function(i,a){var r=a===e;i.classList.toggle("is-active",r),i.hidden=!r}),v=e;var t=n(".quiz-next",_[e]);t&&(t.disabled=!1,t.removeAttribute("aria-busy"))}c(".quiz-next",f).forEach(function(e){e.addEventListener("click",function(t){t.preventDefault(),t.stopPropagation(),e.disabled=!1,e.removeAttribute("aria-busy"),fe(_[v])&&v<_.length-1&&(S(v+1),M(v))})}),c(".quiz-prev",f).forEach(function(e){e.addEventListener("click",function(){v>0&&S(v-1)})});var G={};c(".zhiraf-form").forEach(function(e){var t=e.getAttribute("data-action");if(t==="zhiraf_lead"){var i=e.id||e.getAttribute("data-form-context")||"lead";c("input, textarea, select",e).forEach(function(a){a.addEventListener("focus",function(){G[i]||(G[i]=!0,window.zhirafTrack("lead_form_start",{form_context:i}))})})}});function p(e,t){var i=e.querySelector('[name="'+t+'"]');if(!i)return"";if(i.type==="radio"){var a=e.querySelector('[name="'+t+'"]:checked');return a?a.value:""}return i.value||""}function de(e,t){if(t==="zhiraf_quiz"){window.zhirafTrack("quiz_submit",{composition:p(e,"quiz_composition"),month:p(e,"quiz_month"),budget:p(e,"quiz_budget")});return}if(t==="zhiraf_lead"){var i=e.id||e.getAttribute("data-form-context")||"lead";window.zhirafTrack("lead_form",{form_context:i});return}t==="zhiraf_subscribe"&&window.zhirafTrack("subscribe_submit")}var F="\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C. \u041F\u043E\u0437\u0432\u043E\u043D\u0438\u0442\u0435 \u043D\u0430\u043C: +7 901 810-50-18";function E(e,t,i){e&&(e.textContent=t,e.classList.toggle("is-success",i===!0),e.classList.toggle("is-error",i===!1))}function P(e){return e.text().then(function(t){var i=null;try{i=JSON.parse(t)}catch{i=null}return(!i||typeof i!="object")&&(i={success:!1,data:{code:t==="-1"?"nonce":"bad_response"}}),i})}function le(){var e=new FormData;return e.append("action","zhiraf_form_nonce"),fetch(m.ajaxUrl,{method:"POST",body:e,credentials:"same-origin"}).then(P).then(function(t){return t&&t.success&&t.data&&t.data.nonce?(m.nonce=t.data.nonce,!0):!1})}function U(e,t){var i=e.querySelector('[name="message"]');if(i&&e.classList.contains("hot-lead-form")){var a=p(e,"hot_destination"),r=p(e,"hot_budget"),o=[];a&&o.push("\u041A\u0443\u0434\u0430: "+a),r&&o.push("\u0411\u044E\u0434\u0436\u0435\u0442: "+r),o.length&&(i.value=o.join(". "))}if(i&&e.classList.contains("ai-lead-form")){var u=p(e,"ai_travelers"),d=p(e,"ai_month"),s=[];u&&s.push("\u0421\u043E\u0441\u0442\u0430\u0432: "+u),d&&s.push("\u041C\u0435\u0441\u044F\u0446: "+d),s.length&&(i.value=s.join(". "))}var h=new FormData(e);return h.append("action",t),h.append("nonce",m.nonce||""),fetch(m.ajaxUrl,{method:"POST",body:h,credentials:"same-origin"}).then(P)}function B(e,t){var i=n(".form-status",e),a=e.querySelector('button[type="submit"]');if(!m.ajaxUrl){E(i,F,!1);return}if(a){if(a.disabled)return;a.disabled=!0,a.setAttribute("aria-busy","true")}E(i,"\u041E\u0442\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u043C\u2026",null),U(e,t).then(function(r){return!r.success&&r.data&&r.data.code==="nonce"?le().then(function(o){return o?U(e,t):r}):r}).then(function(r){var o=r.data&&r.data.message?r.data.message:r.success?"\u0421\u043F\u0430\u0441\u0438\u0431\u043E! \u0417\u0430\u044F\u0432\u043A\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430.":F;E(i,o,!!r.success),r.success&&(de(e,t),e.reset())}).catch(function(){E(i,"\u041D\u0435\u0442 \u0441\u0432\u044F\u0437\u0438 \u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u043E\u043C. "+F,!1)}).finally(function(){a&&(a.disabled=!1,a.removeAttribute("aria-busy"))})}c(".zhiraf-form").forEach(function(e){e.addEventListener("submit",function(t){t.preventDefault();var i=e.getAttribute("data-action");if(i){if(!e.checkValidity()){e.reportValidity();return}B(e,i)}})}),f&&f.addEventListener("submit",function(e){if(e.preventDefault(),!f.checkValidity()){f.reportValidity();return}B(f,"zhiraf_quiz")});var l=n("[data-express-picker]");if(l){let e=function(){if(!(!z||!y||!w[z]||!w[z][y])){var t=w[z][y];H&&(H.textContent=t.area||""),J&&(J.textContent=t.concept||""),N&&N.removeAttribute("hidden");var i="\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435! \u042D\u043A\u0441\u043F\u0440\u0435\u0441\u0441-\u043F\u043E\u0434\u0431\u043E\u0440: "+(t.prefill||"")+". "+(t.area||"")+" \u2014 "+(t.concept||"");K&&K.setAttribute("href","https://wa.me/79018105018?text="+encodeURIComponent(i)),l.dataset.expressPrefill=t.prefill||""}};var he=l.getAttribute("data-matrix"),w={};try{w=JSON.parse(he||"{}")}catch{w={}}var z="",y="",N=n("[data-express-result]",l),H=n("[data-express-area]",l),J=n("[data-express-concept]",l),K=n("[data-express-wa]",l),W=n("[data-express-to-form]",l),Y=(n("#dest-express-prefill-base")||{}).value||"";c("[data-express-who]",l).forEach(function(t){t.addEventListener("click",function(){z=t.getAttribute("data-express-who")||"",c("[data-express-who]",l).forEach(function(i){i.classList.toggle("is-active",i===t)}),e()})}),c("[data-express-prio]",l).forEach(function(t){t.addEventListener("click",function(){y=t.getAttribute("data-express-prio")||"",c("[data-express-prio]",l).forEach(function(i){i.classList.toggle("is-active",i===t)}),e()})}),W&&W.addEventListener("click",function(){var t=n("#dest-lead .zhiraf-form"),i=t?n("[data-lead-tour]",t):null,a=t?n("[data-lead-express]",t):null,r=l.dataset.expressPrefill||"";i&&r&&(i.value=(Y?Y+" \xB7 ":"")+r),a&&(a.value=r);var o=n("#dest-lead");o&&o.scrollIntoView({behavior:"smooth",block:"start"})})}var O=n("#sticky-mobile-dest"),X=n(".site-main--destination .dest-landing-hero, .site-main--resort .dest-landing-hero");if(O&&X&&window.matchMedia("(max-width: 768px)").matches){var ve=new IntersectionObserver(function(e){e.forEach(function(t){!t.isIntersecting&&t.boundingClientRect.top<0?O.removeAttribute("hidden"):O.setAttribute("hidden","")})},{threshold:0});ve.observe(X)}})();})();
+(() => {
+  // assets/src/js/main.js
+  (function() {
+    "use strict";
+    var cfg = window.zhirafUfa || {};
+    var CONSENT_KEY = "zhiraf_cookie_consent";
+    var pendingGoals = [];
+    function qs(sel, ctx) {
+      return (ctx || document).querySelector(sel);
+    }
+    function qsa(sel, ctx) {
+      return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
+    }
+    function metrikaId() {
+      var meta = window.zhirafMetrika || {};
+      if (!meta.id) return null;
+      var n = parseInt(meta.id, 10);
+      return n ? n : null;
+    }
+    function flushPendingGoals() {
+      if (!metrikaId() || typeof window.ym !== "function") return;
+      while (pendingGoals.length) {
+        var item = pendingGoals.shift();
+        try {
+          window.ym(metrikaId(), "reachGoal", item.name, item.params || {});
+        } catch (e) {
+        }
+      }
+    }
+    window.zhirafTrack = function zhirafTrack(eventName, params) {
+      params = params || {};
+      var id = metrikaId();
+      if (id && typeof window.ym === "function") {
+        try {
+          window.ym(id, "reachGoal", eventName, params);
+        } catch (e) {
+        }
+      } else if (id && localStorage.getItem(CONSENT_KEY)) {
+        pendingGoals.push({ name: eventName, params });
+      }
+      if (typeof window.gtag === "function") {
+        try {
+          window.gtag("event", eventName, params);
+        } catch (e) {
+        }
+      }
+    };
+    document.addEventListener("zhiraf:cookie-accepted", function() {
+      setTimeout(flushPendingGoals, 1500);
+    });
+    if (localStorage.getItem(CONSENT_KEY)) {
+      setInterval(function() {
+        if (window.zhirafMetrika && window.zhirafMetrika.ready) {
+          flushPendingGoals();
+        }
+      }, 500);
+    }
+    function phonePlacement(el) {
+      if (el.closest(".site-header") || el.classList.contains("header-phone")) return "header";
+      if (el.closest("#sticky-mobile-cta")) return "sticky";
+      if (el.closest(".trust-social")) return "trust";
+      if (el.closest(".site-footer")) return "footer";
+      if (el.closest(".site-main--contacts")) return "contacts";
+      return "other";
+    }
+    function quizOpenGoal(btn) {
+      var ctx = btn.getAttribute("data-cta-context");
+      if (ctx) {
+        window.zhirafTrack(ctx, {
+          hotel: btn.getAttribute("data-tour-hotel") || "",
+          context: ctx
+        });
+        return;
+      }
+      if (btn.closest(".site-header")) {
+        window.zhirafTrack("cta_header_quiz_open");
+        return;
+      }
+      if (btn.closest(".hero-premium")) {
+        window.zhirafTrack("cta_hero_quiz_open");
+        return;
+      }
+      if (btn.closest("#sticky-mobile-cta")) {
+        window.zhirafTrack("cta_sticky_quiz_open");
+        return;
+      }
+      if (btn.closest(".site-footer")) {
+        window.zhirafTrack("cta_footer_quiz_open");
+        return;
+      }
+      var panel = btn.closest(".audience-tabs__panel");
+      if (panel) {
+        window.zhirafTrack("cta_audience_quiz_open", {
+          segment: panel.getAttribute("data-audience-panel") || "unknown"
+        });
+        return;
+      }
+      if (btn.closest("#lead-action")) {
+        window.zhirafTrack("cta_lead_section_quiz_open");
+        return;
+      }
+      if (btn.closest(".how-it-works")) {
+        window.zhirafTrack("cta_section_quiz_open", { section: "how-it-works" });
+        return;
+      }
+      if (document.body.classList.contains("page-template-page-tour") || btn.closest(".tour-hub")) {
+        window.zhirafTrack("cta_tour_hub_quiz_open");
+        return;
+      }
+      if (document.body.classList.contains("page-template-page-o-nas")) {
+        window.zhirafTrack("cta_about_quiz_open");
+        return;
+      }
+      window.zhirafTrack("cta_section_quiz_open", { section: "other" });
+    }
+    function messengerChannel(el) {
+      var ch = el.getAttribute("data-channel");
+      if (ch) return ch;
+      var href = (el.getAttribute("href") || "").toLowerCase();
+      if (href.indexOf("vk.com") !== -1) return "vk";
+      if (href.indexOf("t.me") !== -1 || href.indexOf("telegram") !== -1) return "telegram";
+      if (href.indexOf("wa.me") !== -1 || href.indexOf("whatsapp") !== -1) return "whatsapp";
+      return "unknown";
+    }
+    document.addEventListener("click", function(e) {
+      var phone = e.target.closest('a[href^="tel:"]');
+      if (phone) {
+        window.zhirafTrack("phone_click", { placement: phonePlacement(phone) });
+        return;
+      }
+      var email = e.target.closest('a[data-track="email"]');
+      if (email) {
+        window.zhirafTrack("email_click", { placement: email.closest(".site-footer") ? "footer" : "other" });
+        return;
+      }
+      var blog = e.target.closest('a[data-track="blog_teaser"]');
+      if (blog) {
+        window.zhirafTrack("blog_teaser_click");
+        return;
+      }
+      var messenger = e.target.closest('a[data-track="messenger"]');
+      if (!messenger) {
+        var maybe = e.target.closest('a[href*="vk.com"], a[href*="t.me"], a[href*="wa.me"], a[href*="whatsapp"]');
+        if (maybe && !maybe.getAttribute("data-track")) messenger = maybe;
+      }
+      if (messenger) {
+        window.zhirafTrack("messenger_click", { channel: messengerChannel(messenger) });
+      }
+    });
+    qsa(".dest-premium-card, .dest-card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        var country = card.getAttribute("data-dest") || "unknown";
+        window.zhirafTrack("dest_card_click", { country });
+      });
+    });
+    var toggle = qs(".nav-toggle");
+    var menuWrap = qs("#primary-menu-wrap");
+    if (toggle && menuWrap) {
+      toggle.addEventListener("click", function() {
+        var open = menuWrap.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+    function bindDestFilter(bar, tabSelector) {
+      var tabs = qsa(tabSelector, bar);
+      var section = bar.closest(".destinations") || bar.parentElement;
+      var cards = qsa(".dest-card, .dest-premium-card", section);
+      tabs.forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          tabs.forEach(function(c) {
+            c.classList.remove("is-active");
+          });
+          tab.classList.add("is-active");
+          var filter = tab.getAttribute("data-filter");
+          cards.forEach(function(card) {
+            var dest = card.getAttribute("data-dest");
+            var show = filter === "all" || dest === filter;
+            card.classList.toggle("is-hidden", !show);
+          });
+        });
+      });
+    }
+    qsa(".dest-tabs").forEach(function(bar) {
+      bindDestFilter(bar, ".tab-btn");
+    });
+    qsa(".ai-meal-tabs").forEach(function(bar) {
+      var tabs = qsa(".tab-btn", bar);
+      var section = bar.closest(".section") || bar.parentElement;
+      var cards = qsa(".tour-card", section);
+      tabs.forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          tabs.forEach(function(c) {
+            c.classList.remove("is-active");
+          });
+          tab.classList.add("is-active");
+          var filter = tab.getAttribute("data-filter");
+          cards.forEach(function(card) {
+            var dest = card.getAttribute("data-dest") || "";
+            var show = filter === "all";
+            if (!show && filter === "islands") {
+              show = dest === "tailand" || dest === "vietnam";
+            } else if (!show) {
+              show = dest === filter;
+            }
+            card.classList.toggle("is-hidden", !show);
+          });
+        });
+      });
+    });
+    qsa(".chip-filter").forEach(function(bar) {
+      if (bar.classList.contains("chip-filter--offers")) {
+        return;
+      }
+      bindDestFilter(bar, ".chip");
+    });
+    function bindTourFilter(bar) {
+      var tabs = qsa("[data-tour-filter]", bar);
+      var section = bar.closest(".section--hot-tours") || bar.closest(".section--dest-tours") || bar.parentElement;
+      var wraps = qsa(".dest-tour-card-wrap", section);
+      var cards = qsa(".tour-card", section);
+      tabs.forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          tabs.forEach(function(c) {
+            c.classList.remove("is-active");
+          });
+          tab.classList.add("is-active");
+          var filter = tab.getAttribute("data-tour-filter");
+          function applyFilter(card) {
+            var dest = card.getAttribute("data-dest");
+            var region = card.getAttribute("data-tour-region") || "";
+            return filter === "all" || dest === filter || region && region === filter;
+          }
+          if (wraps.length) {
+            wraps.forEach(function(wrap) {
+              var card = qs(".tour-card", wrap) || wrap;
+              wrap.classList.toggle("is-hidden", !applyFilter(card));
+            });
+          } else {
+            cards.forEach(function(card) {
+              card.classList.toggle("is-hidden", !applyFilter(card));
+            });
+          }
+        });
+      });
+    }
+    qsa(".tour-tabs, .dest-tour-tabs").forEach(function(bar) {
+      bindTourFilter(bar);
+    });
+    qsa("[data-tour-show-more]").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var sel = btn.getAttribute("data-target");
+        var grid = sel ? qs(sel) : null;
+        if (!grid) return;
+        qsa(".dest-tour-card-wrap.is-collapsed", grid).forEach(function(wrap) {
+          wrap.classList.remove("is-collapsed");
+        });
+        btn.hidden = true;
+      });
+    });
+    var audienceRoot = qs(".audience-tabs");
+    if (audienceRoot) {
+      var aTabs = qsa(".audience-tabs__tab", audienceRoot);
+      var aPanels = qsa(".audience-tabs__panel", audienceRoot);
+      aTabs.forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          var id = tab.getAttribute("data-audience");
+          aTabs.forEach(function(t) {
+            var on = t === tab;
+            t.classList.toggle("is-active", on);
+            t.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          aPanels.forEach(function(panel) {
+            var show = panel.getAttribute("data-audience-panel") === id;
+            panel.classList.toggle("is-active", show);
+            panel.hidden = !show;
+          });
+          if (id) {
+            window.zhirafTrack("audience_tab_" + id);
+          }
+        });
+      });
+    }
+    var trustBlock = qs(".trust-social");
+    var stickyCta = qs("#sticky-mobile-cta");
+    if (trustBlock && stickyCta && window.matchMedia("(max-width: 768px)").matches) {
+      var stickyObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            stickyCta.removeAttribute("hidden");
+          } else {
+            stickyCta.setAttribute("hidden", "");
+          }
+        });
+      }, { threshold: 0 });
+      stickyObs.observe(trustBlock);
+    }
+    var banner = qs("#cookie-banner");
+    var accept = qs("#cookie-accept");
+    function showBanner() {
+      if (!banner) return;
+      if (!localStorage.getItem(CONSENT_KEY)) {
+        banner.removeAttribute("hidden");
+      }
+    }
+    if (accept) {
+      accept.addEventListener("click", function() {
+        localStorage.setItem(CONSENT_KEY, "1");
+        if (banner) banner.setAttribute("hidden", "");
+        document.dispatchEvent(new CustomEvent("zhiraf:cookie-accepted"));
+      });
+    }
+    showBanner();
+    var modal = qs("#quiz-modal");
+    var quizForm = qs("#quiz-form");
+    function trackQuizStep(stepIndex) {
+      window.zhirafTrack("quiz_step_" + (stepIndex + 1), { step: stepIndex + 1 });
+    }
+    function openQuiz() {
+      if (!modal || !quizForm) return;
+      goStep(0);
+      trackQuizStep(0);
+      modal.removeAttribute("hidden");
+      modal.removeAttribute("inert");
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("quiz-open");
+      var first = qs(".quiz-step.is-active input, .quiz-step.is-active select", quizForm);
+      if (first) {
+        try {
+          first.focus({ preventScroll: true });
+        } catch (e) {
+        }
+      }
+    }
+    function closeQuiz() {
+      if (!modal) return;
+      modal.setAttribute("hidden", "");
+      modal.setAttribute("inert", "");
+      document.body.style.overflow = "";
+      document.body.classList.remove("quiz-open");
+    }
+    var vibeQuizMap = {
+      family: { composition: "\u0421\u0435\u043C\u044C\u044F \u0441 \u0434\u0435\u0442\u044C\u043C\u0438", wishTag: "" },
+      couple: { composition: "\u041F\u0430\u0440\u0430", wishTag: "" },
+      city: { composition: "", wishTag: "[\u0428\u043E\u043F\u0438\u043D\u0433 \u0438 \u0434\u0432\u0438\u0436]" },
+      party: { composition: "\u041A\u043E\u043C\u043F\u0430\u043D\u0438\u044F \u0434\u0440\u0443\u0437\u0435\u0439", wishTag: "[\u0428\u043E\u043F\u0438\u043D\u0433 \u0438 \u0434\u0432\u0438\u0436]" },
+      active: { composition: "", wishTag: "[\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439 \u043E\u0442\u0434\u044B\u0445 / \u042D\u043A\u0441\u043A\u0443\u0440\u0441\u0438\u0438]" }
+    };
+    function applyQuizVibeFromButton(btn) {
+      if (!quizForm) return;
+      var vibeField = qs('[name="vibe"]', quizForm);
+      var vibeSlug = btn.getAttribute("data-vibe") || "";
+      var prefill = btn.getAttribute("data-quiz-prefill") || "";
+      var vibeTitle = btn.getAttribute("data-vibe-title") || "";
+      var wishes = qs('[name="quiz_wishes"]', quizForm);
+      qsa('[name="quiz_composition"]', quizForm).forEach(function(radio) {
+        radio.checked = false;
+      });
+      if (vibeField) {
+        vibeField.value = vibeSlug;
+      }
+      var map = vibeQuizMap[vibeSlug] || null;
+      if (map && map.composition) {
+        var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', quizForm);
+        if (target) {
+          target.checked = true;
+        }
+      }
+      if (wishes) {
+        var parts = [];
+        if (prefill) {
+          parts.push(prefill);
+        }
+        if (vibeTitle) {
+          parts.push("\u0412\u0430\u0439\u0431: " + vibeTitle);
+        }
+        if (map && map.wishTag) {
+          parts.push(map.wishTag);
+        }
+        wishes.value = parts.join(". ").trim();
+      } else if (prefill && wishes) {
+        wishes.value = prefill;
+      }
+    }
+    function applyQuizPrefillOnly(btn) {
+      if (!quizForm) return;
+      var vibeField = qs('[name="vibe"]', quizForm);
+      if (vibeField) {
+        vibeField.value = "";
+      }
+      var prefill = btn.getAttribute("data-quiz-prefill");
+      if (prefill) {
+        var wishes = qs('[name="quiz_wishes"]', quizForm);
+        if (wishes) {
+          wishes.value = prefill;
+        }
+      }
+    }
+    qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        if (btn.getAttribute("data-vibe")) {
+          applyQuizVibeFromButton(btn);
+        } else {
+          applyQuizPrefillOnly(btn);
+        }
+        quizOpenGoal(btn);
+        openQuiz();
+      });
+    });
+    qsa("[data-quiz-close]").forEach(function(btn) {
+      btn.addEventListener("click", closeQuiz);
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeQuiz();
+    });
+    var steps = qsa(".quiz-step", quizForm);
+    var current = 0;
+    function validateQuizStep(stepEl) {
+      if (!stepEl) return false;
+      var fields = qsa("input, select, textarea", stepEl).filter(function(f) {
+        return f.type !== "hidden" && !f.classList.contains("zhiraf-hp");
+      });
+      var ok = true;
+      fields.forEach(function(field) {
+        if (!field.checkValidity()) {
+          ok = false;
+          field.reportValidity();
+        }
+      });
+      return ok;
+    }
+    function goStep(n) {
+      steps.forEach(function(step, i) {
+        var active = i === n;
+        step.classList.toggle("is-active", active);
+        step.hidden = !active;
+      });
+      current = n;
+      var activeBtn = qs(".quiz-next", steps[n]);
+      if (activeBtn) {
+        activeBtn.disabled = false;
+        activeBtn.removeAttribute("aria-busy");
+      }
+    }
+    qsa(".quiz-next", quizForm).forEach(function(btn) {
+      btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        btn.disabled = false;
+        btn.removeAttribute("aria-busy");
+        if (!validateQuizStep(steps[current])) {
+          return;
+        }
+        if (current < steps.length - 1) {
+          goStep(current + 1);
+          trackQuizStep(current);
+        }
+      });
+    });
+    qsa(".quiz-prev", quizForm).forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        if (current > 0) goStep(current - 1);
+      });
+    });
+    var leadFormStarted = {};
+    qsa(".zhiraf-form").forEach(function(form) {
+      var action = form.getAttribute("data-action");
+      if (action !== "zhiraf_lead") return;
+      var ctx = form.id || form.getAttribute("data-form-context") || "lead";
+      qsa("input, textarea, select", form).forEach(function(field) {
+        field.addEventListener("focus", function() {
+          if (leadFormStarted[ctx]) return;
+          leadFormStarted[ctx] = true;
+          window.zhirafTrack("lead_form_start", { form_context: ctx });
+        });
+      });
+    });
+    function fieldValue(form, name) {
+      var el = form.querySelector('[name="' + name + '"]');
+      if (!el) return "";
+      if (el.type === "radio") {
+        var checked = form.querySelector('[name="' + name + '"]:checked');
+        return checked ? checked.value : "";
+      }
+      return el.value || "";
+    }
+    function trackFormSuccess(form, action) {
+      if (action === "zhiraf_quiz") {
+        window.zhirafTrack("quiz_submit", {
+          composition: fieldValue(form, "quiz_composition"),
+          month: fieldValue(form, "quiz_month"),
+          budget: fieldValue(form, "quiz_budget")
+        });
+        return;
+      }
+      if (action === "zhiraf_lead") {
+        var ctx = form.id || form.getAttribute("data-form-context") || "lead";
+        window.zhirafTrack("lead_form", { form_context: ctx });
+        return;
+      }
+      if (action === "zhiraf_subscribe") {
+        window.zhirafTrack("subscribe_submit");
+      }
+    }
+    var PHONE_FALLBACK = "\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C. \u041F\u043E\u0437\u0432\u043E\u043D\u0438\u0442\u0435 \u043D\u0430\u043C: +7 901 810-50-18";
+    function setStatus(status, text, ok) {
+      if (!status) return;
+      status.textContent = text;
+      status.classList.toggle("is-success", ok === true);
+      status.classList.toggle("is-error", ok === false);
+    }
+    function parseResponse(r) {
+      return r.text().then(function(txt) {
+        var data = null;
+        try {
+          data = JSON.parse(txt);
+        } catch (e) {
+          data = null;
+        }
+        if (!data || typeof data !== "object") {
+          data = { success: false, data: { code: txt === "-1" ? "nonce" : "bad_response" } };
+        }
+        return data;
+      });
+    }
+    function refreshNonce() {
+      var fd = new FormData();
+      fd.append("action", "zhiraf_form_nonce");
+      return fetch(cfg.ajaxUrl, { method: "POST", body: fd, credentials: "same-origin" }).then(parseResponse).then(function(d) {
+        if (d && d.success && d.data && d.data.nonce) {
+          cfg.nonce = d.data.nonce;
+          return true;
+        }
+        return false;
+      });
+    }
+    function sendForm(form, action) {
+      var msgField = form.querySelector('[name="message"]');
+      if (msgField && form.classList.contains("hot-lead-form")) {
+        var dest = fieldValue(form, "hot_destination");
+        var budget = fieldValue(form, "hot_budget");
+        var parts = [];
+        if (dest) parts.push("\u041A\u0443\u0434\u0430: " + dest);
+        if (budget) parts.push("\u0411\u044E\u0434\u0436\u0435\u0442: " + budget);
+        if (parts.length) {
+          msgField.value = parts.join(". ");
+        }
+      }
+      if (msgField && form.classList.contains("ai-lead-form")) {
+        var travelers = fieldValue(form, "ai_travelers");
+        var month = fieldValue(form, "ai_month");
+        var aiParts = [];
+        if (travelers) aiParts.push("\u0421\u043E\u0441\u0442\u0430\u0432: " + travelers);
+        if (month) aiParts.push("\u041C\u0435\u0441\u044F\u0446: " + month);
+        if (aiParts.length) {
+          msgField.value = aiParts.join(". ");
+        }
+      }
+      var fd = new FormData(form);
+      fd.append("action", action);
+      fd.append("nonce", cfg.nonce || "");
+      return fetch(cfg.ajaxUrl, { method: "POST", body: fd, credentials: "same-origin" }).then(parseResponse);
+    }
+    function postForm(form, action) {
+      var status = qs(".form-status", form);
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (!cfg.ajaxUrl) {
+        setStatus(status, PHONE_FALLBACK, false);
+        return;
+      }
+      if (submitBtn) {
+        if (submitBtn.disabled) return;
+        submitBtn.disabled = true;
+        submitBtn.setAttribute("aria-busy", "true");
+      }
+      setStatus(status, "\u041E\u0442\u043F\u0440\u0430\u0432\u043B\u044F\u0435\u043C\u2026", null);
+      sendForm(form, action).then(function(data) {
+        if (!data.success && data.data && data.data.code === "nonce") {
+          return refreshNonce().then(function(ok) {
+            return ok ? sendForm(form, action) : data;
+          });
+        }
+        return data;
+      }).then(function(data) {
+        var msg = data.data && data.data.message ? data.data.message : data.success ? "\u0421\u043F\u0430\u0441\u0438\u0431\u043E! \u0417\u0430\u044F\u0432\u043A\u0430 \u043E\u0442\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430." : PHONE_FALLBACK;
+        setStatus(status, msg, !!data.success);
+        if (data.success) {
+          trackFormSuccess(form, action);
+          form.reset();
+        }
+      }).catch(function() {
+        setStatus(status, "\u041D\u0435\u0442 \u0441\u0432\u044F\u0437\u0438 \u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u043E\u043C. " + PHONE_FALLBACK, false);
+      }).finally(function() {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.removeAttribute("aria-busy");
+        }
+      });
+    }
+    qsa(".zhiraf-form").forEach(function(form) {
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        var action = form.getAttribute("data-action");
+        if (!action) return;
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        postForm(form, action);
+      });
+    });
+    if (quizForm) {
+      quizForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        if (!quizForm.checkValidity()) {
+          quizForm.reportValidity();
+          return;
+        }
+        postForm(quizForm, "zhiraf_quiz");
+      });
+    }
+    var expressRoot = qs("[data-express-picker]");
+    if (expressRoot) {
+      let renderExpress = function() {
+        if (!who || !prio || !matrix[who] || !matrix[who][prio]) return;
+        var row = matrix[who][prio];
+        if (areaEl) areaEl.textContent = row.area || "";
+        if (conceptEl) conceptEl.textContent = row.concept || "";
+        if (resultBox) resultBox.removeAttribute("hidden");
+        var msg = "\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435! \u042D\u043A\u0441\u043F\u0440\u0435\u0441\u0441-\u043F\u043E\u0434\u0431\u043E\u0440: " + (row.prefill || "") + ". " + (row.area || "") + " \u2014 " + (row.concept || "");
+        if (waLink) waLink.setAttribute("href", "https://wa.me/79018105018?text=" + encodeURIComponent(msg));
+        expressRoot.dataset.expressPrefill = row.prefill || "";
+      };
+      var matrixRaw = expressRoot.getAttribute("data-matrix");
+      var matrix = {};
+      try {
+        matrix = JSON.parse(matrixRaw || "{}");
+      } catch (e) {
+        matrix = {};
+      }
+      var who = "";
+      var prio = "";
+      var resultBox = qs("[data-express-result]", expressRoot);
+      var areaEl = qs("[data-express-area]", expressRoot);
+      var conceptEl = qs("[data-express-concept]", expressRoot);
+      var waLink = qs("[data-express-wa]", expressRoot);
+      var toFormBtn = qs("[data-express-to-form]", expressRoot);
+      var basePrefill = (qs("#dest-express-prefill-base") || {}).value || "";
+      qsa("[data-express-who]", expressRoot).forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          who = btn.getAttribute("data-express-who") || "";
+          qsa("[data-express-who]", expressRoot).forEach(function(b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+          renderExpress();
+        });
+      });
+      qsa("[data-express-prio]", expressRoot).forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          prio = btn.getAttribute("data-express-prio") || "";
+          qsa("[data-express-prio]", expressRoot).forEach(function(b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+          renderExpress();
+        });
+      });
+      if (toFormBtn) {
+        toFormBtn.addEventListener("click", function() {
+          var leadForm = qs("#dest-lead .zhiraf-form");
+          var tourInput = leadForm ? qs("[data-lead-tour]", leadForm) : null;
+          var expressInput = leadForm ? qs("[data-lead-express]", leadForm) : null;
+          var pre = expressRoot.dataset.expressPrefill || "";
+          if (tourInput && pre) tourInput.value = (basePrefill ? basePrefill + " \xB7 " : "") + pre;
+          if (expressInput) expressInput.value = pre;
+          var lead = qs("#dest-lead");
+          if (lead) lead.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+    }
+    qsa("[data-tier-prefill]").forEach(function(link) {
+      link.addEventListener("click", function() {
+        var tag = link.getAttribute("data-tier-prefill") || "";
+        var leadForm = qs("#dest-lead .zhiraf-form");
+        var tourInput = leadForm ? qs("[data-lead-tour]", leadForm) : null;
+        if (tourInput && tag) tourInput.value = tag;
+      });
+    });
+    var stickyDest = qs("#sticky-mobile-dest");
+    var destHero = qs(".site-main--destination .dest-landing-hero, .site-main--resort .dest-landing-hero");
+    if (stickyDest && destHero && window.matchMedia("(max-width: 768px)").matches) {
+      var destStickyObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            stickyDest.removeAttribute("hidden");
+          } else {
+            stickyDest.setAttribute("hidden", "");
+          }
+        });
+      }, { threshold: 0 });
+      destStickyObs.observe(destHero);
+    }
+  })();
+})();

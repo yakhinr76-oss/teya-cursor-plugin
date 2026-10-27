@@ -78,7 +78,11 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	}
 	?>
 
-	<?php if ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) ) : ?>
+	<?php
+	$dest_show_prose_block = empty( $dest['hide_landing_prose'] )
+		&& ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) );
+	?>
+	<?php if ( $dest_show_prose_block ) : ?>
 	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
 		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
@@ -336,9 +340,12 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
 						</select>
 					</label>
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" data-lead-tour />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_slug ); ?>" />
-					<input type="hidden" name="express_pick" value="" data-lead-express />
+					<div class="zhiraf-hp" aria-hidden="true">
+						<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" data-lead-tour />
+						<input type="hidden" name="destination" value="<?php echo esc_attr( ! empty( $dest['name'] ) ? $dest['name'] : $dest_slug ); ?>" />
+						<input type="hidden" name="destination_slug" value="<?php echo esc_attr( $dest_slug ); ?>" />
+						<input type="hidden" name="express_pick" value="" data-lead-express />
+					</div>
 					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>

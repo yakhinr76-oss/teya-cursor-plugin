@@ -55,8 +55,8 @@ function zhiraf_ufa_destination_default_module_map() {
 function zhiraf_ufa_destination_hero_image_standards() {
 	return array(
 		'turciya'    => array(
-			'image' => 'resort-turciya-kemer-2.jpg',
-			'alt'   => __( 'Турция — Средиземное море, курорт Кемер', 'zhiraf-ufa' ),
+			'image' => 'hero-turkey.jpg',
+			'alt'   => __( 'Турция — пляж, пальмы и отели на первой линии', 'zhiraf-ufa' ),
 		),
 		'egipet'     => array(
 			'image' => 'hero-egypt.jpg',
@@ -200,18 +200,24 @@ function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
 			$dest['hero_badges'] = $badges;
 		}
 	}
-	if ( empty( $dest['cta_lead'] ) && ! empty( $dest['name'] ) ) {
-		/* translators: %s: country name */
-		$dest['cta_lead'] = sprintf(
-			__( 'Не уверены, какой отель выбрать в %s? Напишите бюджет и состав семьи — эксперт пришлёт подборку из 3 отелей в WhatsApp за 15 минут.', 'zhiraf-ufa' ),
-			$dest['name']
-		);
-	}
 	if ( empty( $dest['cta_message_placeholder'] ) ) {
 		$dest['cta_message_placeholder'] = __( 'Бюджет, даты, дети (возраст), пожелания по курорту', 'zhiraf-ufa' );
 	}
 	if ( ! isset( $dest['seo_prose_accordions'] ) ) {
 		$dest['seo_prose_accordions'] = true;
+	}
+	if ( ! isset( $dest['hide_landing_prose'] ) ) {
+		$dest['hide_landing_prose'] = true;
+	}
+	if ( ! empty( $dest['name'] ) && empty( $dest['name_in'] ) ) {
+		$dest['name_in'] = (string) $dest['name'];
+	}
+	if ( empty( $dest['cta_lead'] ) && ! empty( $dest['name_in'] ) ) {
+		/* translators: %s: country name in prepositional case, e.g. «Турции» */
+		$dest['cta_lead'] = sprintf(
+			__( 'Не уверены, какой отель выбрать в %s? Напишите бюджет и состав семьи — эксперт пришлёт подборку из 3 отелей в WhatsApp за 15 минут.', 'zhiraf-ufa' ),
+			$dest['name_in']
+		);
 	}
 	return $dest;
 }
@@ -364,8 +370,8 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'subtitle'  => __( 'Для ценителей природы и молодёжного отдыха', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~50 мин', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-kemer-2.jpg',
-					'cta_label' => __( 'Искать отели в Кемере', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
+					'cta_label' => __( 'Узнать цены на Кемер', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
 					'rows'      => array(
 						array( 'label' => __( 'Пляж и море', 'zhiraf-ufa' ), 'value' => __( 'Галька — вода прозрачная даже в пик сезона', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Климат', 'zhiraf-ufa' ), 'value' => __( 'Сосны и горы Тавр, прохладнее, чем на равнине', 'zhiraf-ufa' ) ),
@@ -378,8 +384,8 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'subtitle'  => __( 'Для семей с малышами и долгого купания', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: 1–2,5 ч', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-alanya-2.jpg',
-					'cta_label' => __( 'Искать отели в Сиде / Аланье', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
+					'cta_label' => __( 'Узнать цены на Сиде и Аланью', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
 					'rows'      => array(
 						array( 'label' => __( 'Пляж и море', 'zhiraf-ufa' ), 'value' => __( 'Песок и пологий заход — удобно с детьми', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'Море дольше тёплое — часто до ноября', 'zhiraf-ufa' ) ),

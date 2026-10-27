@@ -68,6 +68,117 @@ function zhiraf_ufa_landing_baseline_price_rur( $slug, $ctx ) {
 }
 
 /**
+ * @param int $amount RUB.
+ */
+function zhiraf_ufa_price_tier_format_amount( $amount ) {
+	return sprintf(
+		/* translators: %s: formatted price */
+		__( 'от %s ₽', 'zhiraf-ufa' ),
+		number_format( max( (int) $amount, 0 ), 0, '.', ' ' )
+	);
+}
+
+/**
+ * Country slug from landing context slug.
+ *
+ * @param string $slug Context slug.
+ */
+function zhiraf_ufa_landing_country_slug( $slug ) {
+	if ( str_contains( $slug, '/' ) ) {
+		$parts = explode( '/', $slug, 2 );
+		return $parts[0];
+	}
+	return $slug;
+}
+
+/**
+ * Default tier photos per country.
+ *
+ * @param string $country Country slug.
+ * @return array{comfort:string,family:string,premium:string}
+ */
+function zhiraf_ufa_landing_price_tier_images( $country ) {
+	$map = array(
+		'turciya' => array( 'resort-turciya-side-1.jpg', 'resort-turciya-belek-1.jpg', 'resort-turciya-belek-2.jpg' ),
+		'egipet'  => array( 'hero-egypt.jpg', 'dest-egypt.jpg', 'dest-egypt-new.jpg' ),
+		'tailand' => array( 'country-tailand.jpg', 'resort-phuket.jpg', 'country-tailand.jpg' ),
+		'vietnam' => array( 'resort-vietnam-phu-quoc-2.jpg', 'resort-vietnam-nha-trang-1.jpg', 'resort-vietnam-phu-quoc-1.jpg' ),
+		'oae'     => array( 'hero-uae.jpg', 'dest-uae.jpg', 'dest-uae-new.jpg' ),
+	);
+	$fallback = array( 'hero-collage-1.jpg', 'hero-collage-2.jpg', 'hero-collage-3.jpg' );
+	$pick     = isset( $map[ $country ] ) ? $map[ $country ] : $fallback;
+	return array(
+		'comfort' => $pick[0],
+		'family'  => $pick[1],
+		'premium' => $pick[2],
+	);
+}
+
+/**
+ * Fixed Turkey tier pack (marketing anchors).
+ *
+ * @param string $prefill Quiz prefill base.
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_turciya_price_tiers( $prefill ) {
+	$images = zhiraf_ufa_landing_price_tier_images( 'turciya' );
+	return array(
+		array(
+			'id'           => 'comfort',
+			'badge'        => __( 'Базовый комфорт', 'zhiraf-ufa' ),
+			'title'        => __( 'Отели 3–4★', 'zhiraf-ufa' ),
+			'price_amount' => 85000,
+			'price_suffix' => __( 'на двоих под ключ', 'zhiraf-ufa' ),
+			'image'        => $images['comfort'],
+			'image_alt'    => __( 'Отели 3–4 звезды в Турции', 'zhiraf-ufa' ),
+			'bullets'      => array(
+				__( '2-я линия или городской отель у набережной', 'zhiraf-ufa' ),
+				__( 'Питание: завтраки или базовый All Inclusive', 'zhiraf-ufa' ),
+				__( 'Для моря, прогулок и экскурсий без переплаты', 'zhiraf-ufa' ),
+			),
+			'cta_label'    => __( 'Смотреть отели 3–4★', 'zhiraf-ufa' ),
+			'prefill_tag'  => $prefill . ' · 3–4★',
+			'featured'     => false,
+		),
+		array(
+			'id'           => 'family',
+			'badge'        => __( 'Всё включено', 'zhiraf-ufa' ),
+			'title'        => __( 'Первая линия 4–5★', 'zhiraf-ufa' ),
+			'price_amount' => 140000,
+			'price_suffix' => __( 'на двоих под ключ', 'zhiraf-ufa' ),
+			'image'        => $images['family'],
+			'image_alt'    => __( 'Семейные отели все включено в Турции', 'zhiraf-ufa' ),
+			'bullets'      => array(
+				__( 'Собственный пляж прямо у отеля (песок / мелкая галька)', 'zhiraf-ufa' ),
+				__( 'Водные горки, детские клубы и анимация', 'zhiraf-ufa' ),
+				__( 'Полноценный All Inclusive без скрытых доплат', 'zhiraf-ufa' ),
+			),
+			'cta_label'    => __( 'Смотреть отели 1 линии', 'zhiraf-ufa' ),
+			'prefill_tag'  => $prefill . ' · 1 линия AI',
+			'featured'     => true,
+			'hit_label'    => __( 'Хит сезона', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'           => 'premium',
+			'badge'        => __( 'Ultra VIP', 'zhiraf-ufa' ),
+			'title'        => __( 'Премиум 5★ / Ultra All', 'zhiraf-ufa' ),
+			'price_amount' => 210000,
+			'price_suffix' => __( 'на двоих под ключ', 'zhiraf-ufa' ),
+			'image'        => $images['premium'],
+			'image_alt'    => __( 'Премиум отели 5 звезд Ultra All Inclusive в Турции', 'zhiraf-ufa' ),
+			'bullets'      => array(
+				__( 'Огромные зелёные территории, виллы и спа-комплексы', 'zhiraf-ufa' ),
+				__( 'Импортный алкоголь, рестораны a la carte', 'zhiraf-ufa' ),
+				__( 'Безупречный сервис и приватные зоны отдыха', 'zhiraf-ufa' ),
+			),
+			'cta_label'    => __( 'Смотреть премиум 5★', 'zhiraf-ufa' ),
+			'prefill_tag'  => $prefill . ' · premium 5★',
+			'featured'     => false,
+		),
+	);
+}
+
+/**
  * Three price-orientation cards (not hotel catalog).
  *
  * @param string              $slug Context slug.
@@ -75,60 +186,76 @@ function zhiraf_ufa_landing_baseline_price_rur( $slug, $ctx ) {
  * @return array<int,array<string,mixed>>
  */
 function zhiraf_ufa_landing_price_tiers( $slug, $ctx ) {
-	$base     = zhiraf_ufa_landing_baseline_price_rur( $slug, $ctx );
-	$comfort  = (int) round( $base * 0.92 / 5000 ) * 5000;
-	$family   = (int) round( $base * 1.28 / 5000 ) * 5000;
-	$premium  = (int) round( $base * 1.75 / 5000 ) * 5000;
-	$name     = ! empty( $ctx['name'] ) ? (string) $ctx['name'] : __( 'направление', 'zhiraf-ufa' );
-	$prefill  = ! empty( $ctx['quiz_prefill'] ) ? (string) $ctx['quiz_prefill'] : $name;
+	$country = zhiraf_ufa_landing_country_slug( $slug );
+	$name    = ! empty( $ctx['name'] ) ? (string) $ctx['name'] : __( 'направление', 'zhiraf-ufa' );
+	$prefill = ! empty( $ctx['quiz_prefill'] ) ? (string) $ctx['quiz_prefill'] : $name;
+
+	if ( 'turciya' === $country ) {
+		return zhiraf_ufa_turciya_price_tiers( $prefill );
+	}
+
+	$base    = zhiraf_ufa_landing_baseline_price_rur( $slug, $ctx );
+	$comfort = (int) round( $base * 0.92 / 5000 ) * 5000;
+	$family  = (int) round( $base * 1.28 / 5000 ) * 5000;
+	$premium = (int) round( $base * 1.75 / 5000 ) * 5000;
+	$imgs    = zhiraf_ufa_landing_price_tier_images( $country );
 
 	return array(
 		array(
-			'id'          => 'comfort',
-			'title'       => __( 'Уютный комфорт 3–4★', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Оптимальный баланс цены и сервиса', 'zhiraf-ufa' ),
-			'price_hint'  => sprintf(
-				/* translators: %s: formatted price */
-				__( 'от %s ₽ на двоих', 'zhiraf-ufa' ),
-				number_format( max( $comfort, 50000 ), 0, '.', ' ' )
+			'id'           => 'comfort',
+			'badge'        => __( 'Комфорт', 'zhiraf-ufa' ),
+			'title'        => __( 'Уютный комфорт 3–4★', 'zhiraf-ufa' ),
+			'price_amount' => max( $comfort, 50000 ),
+			'price_suffix' => __( 'на двоих под ключ', 'zhiraf-ufa' ),
+			'image'        => $imgs['comfort'],
+			'image_alt'    => sprintf(
+				/* translators: %s: destination name */
+				__( 'Отели 3–4★ — %s', 'zhiraf-ufa' ),
+				$name
 			),
-			'wa_message'  => sprintf(
-				/* translators: 1: destination, 2: tier */
-				__( 'Здравствуйте! Нужна подборка уровня «Комфорт 3–4★» в %1$s. Бюджет ориентир %2$s ₽ на двоих.', 'zhiraf-ufa' ),
-				$name,
-				number_format( max( $comfort, 50000 ), 0, '.', ' ' )
+			'bullets'      => array(
+				__( 'Оптимальный баланс цены и сервиса', 'zhiraf-ufa' ),
+				__( 'Завтраки или базовое питание', 'zhiraf-ufa' ),
+				__( 'Подходит для первой поездки', 'zhiraf-ufa' ),
 			),
-			'prefill_tag' => $prefill . ' · comfort',
+			'cta_label'    => __( 'Запросить подборку', 'zhiraf-ufa' ),
+			'prefill_tag'  => $prefill . ' · comfort',
+			'featured'     => false,
 		),
 		array(
-			'id'          => 'family',
-			'title'       => __( 'Семейный All Inclusive / 1-я линия', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Пляж, детские зоны и питание «всё включено»', 'zhiraf-ufa' ),
-			'price_hint'  => sprintf(
-				__( 'от %s ₽ на двоих', 'zhiraf-ufa' ),
-				number_format( $family, 0, '.', ' ' )
+			'id'           => 'family',
+			'badge'        => __( 'Семейный', 'zhiraf-ufa' ),
+			'title'        => __( 'All Inclusive / 1-я линия', 'zhiraf-ufa' ),
+			'price_amount' => $family,
+			'price_suffix' => __( 'на двоих под ключ', 'zhiraf-ufa' ),
+			'image'        => $imgs['family'],
+			'image_alt'    => sprintf( __( 'Семейные отели — %s', 'zhiraf-ufa' ), $name ),
+			'bullets'      => array(
+				__( 'Пляж, детские зоны и питание «всё включено»', 'zhiraf-ufa' ),
+				__( 'Проверенные отели для семьи', 'zhiraf-ufa' ),
+				__( 'Популярный выбор из Уфы', 'zhiraf-ufa' ),
 			),
-			'wa_message'  => sprintf(
-				__( 'Здравствуйте! Нужна семейная подборка All Inclusive / первая линия в %1$s. Ориентир %2$s ₽ на двоих.', 'zhiraf-ufa' ),
-				$name,
-				number_format( $family, 0, '.', ' ' )
-			),
-			'prefill_tag' => $prefill . ' · family-ai',
+			'cta_label'    => __( 'Запросить подборку', 'zhiraf-ufa' ),
+			'prefill_tag'  => $prefill . ' · family-ai',
+			'featured'     => true,
+			'hit_label'    => __( 'Хит выбора', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'          => 'premium',
-			'title'       => __( 'Премиум 5★ / виллы', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Максимум сервиса и приватности', 'zhiraf-ufa' ),
-			'price_hint'  => sprintf(
-				__( 'от %s ₽ на двоих', 'zhiraf-ufa' ),
-				number_format( $premium, 0, '.', ' ' )
+			'id'           => 'premium',
+			'badge'        => __( 'Премиум', 'zhiraf-ufa' ),
+			'title'        => __( 'Премиум 5★ / виллы', 'zhiraf-ufa' ),
+			'price_amount' => $premium,
+			'price_suffix' => __( 'на двоих под ключ', 'zhiraf-ufa' ),
+			'image'        => $imgs['premium'],
+			'image_alt'    => sprintf( __( 'Премиум отели — %s', 'zhiraf-ufa' ), $name ),
+			'bullets'      => array(
+				__( 'Максимум сервиса и приватности', 'zhiraf-ufa' ),
+				__( 'Ultra / VIP концепции', 'zhiraf-ufa' ),
+				__( 'SPA, a la carte, импортные напитки', 'zhiraf-ufa' ),
 			),
-			'wa_message'  => sprintf(
-				__( 'Здравствуйте! Нужна премиум-подборка (5★ / виллы) в %1$s. Ориентир от %2$s ₽ на двоих.', 'zhiraf-ufa' ),
-				$name,
-				number_format( $premium, 0, '.', ' ' )
-			),
-			'prefill_tag' => $prefill . ' · premium',
+			'cta_label'    => __( 'Запросить подборку', 'zhiraf-ufa' ),
+			'prefill_tag'  => $prefill . ' · premium',
+			'featured'     => false,
 		),
 	);
 }
@@ -320,6 +447,8 @@ function zhiraf_ufa_render_landing_conversion_stack( $slug, $ctx, $kind = 'desti
 		'template-parts/destination/module-price-tiers',
 		null,
 		array(
+			'slug'  => $slug,
+			'ctx'   => $ctx,
 			'tiers' => zhiraf_ufa_landing_price_tiers( $slug, $ctx ),
 		)
 	);

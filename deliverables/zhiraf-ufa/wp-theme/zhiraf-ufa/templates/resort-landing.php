@@ -11,6 +11,13 @@ if ( ! defined( 'ABSPATH' ) || empty( $resort_data ) ) {
 }
 $country_url    = home_url( '/tour/' . $resort_data['country'] . '/' );
 $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
+$resort_ctx_slug = sanitize_title( (string) $resort_data['country'] ) . '/' . sanitize_title( (string) $resort_data['resort'] );
+$resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
+	? zhiraf_ufa_merge_faq_lists(
+		! empty( $resort_data['faq'] ) ? $resort_data['faq'] : array(),
+		! empty( $resort_data['details_sections'] ) ? $resort_data['details_sections'] : array()
+	)
+	: ( ! empty( $resort_data['faq'] ) ? $resort_data['faq'] : array() );
 ?>
 <main id="primary" class="site-main site-main--resort">
 	<section class="dest-landing-hero">
@@ -35,9 +42,7 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>
-				<button type="button" class="btn btn--primary btn--lg" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $resort_data['quiz_prefill'] ); ?>">
-					<?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?>
-				</button>
+				<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
 			</div>
 			<div class="dest-landing-hero__visual">
 				<?php zhiraf_ufa_img( $resort_data['image'], $resort_data['image_alt'], 'dest-landing-hero__img', true ); ?>
@@ -46,100 +51,42 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 	</section>
 
 	<?php
-	$zhiraf_cards = function_exists( 'zhiraf_ufa_get_resort_top_tours' )
-		? zhiraf_ufa_get_resort_top_tours( $resort_data, 3 )
-		: ( ! empty( $resort_data['tours_rx'] ) ? zhiraf_ufa_get_country_top_tours( $resort_data['country'], 3, $resort_data['tours_rx'] ) : array() );
+	if ( function_exists( 'zhiraf_ufa_render_landing_conversion_stack' ) ) {
+		zhiraf_ufa_render_landing_conversion_stack( $resort_ctx_slug, $resort_data, 'resort' );
+	}
 	?>
-	<?php if ( ! empty( $zhiraf_cards ) ) : ?>
-		<section class="section section--dest-tours section--dest-tours-top bg-sand" id="dest-tours">
-			<div class="container">
-				<div class="section-head reveal">
-					<div>
-						<h2 class="section-title"><?php echo esc_html( __( 'Самые выгодные отели курорта', 'zhiraf-ufa' ) ); ?></h2>
-						<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);"><?php echo esc_html( __( 'Цены туроператора Библио-Глобус для 2 взрослых: перелёт и отель, 6–10 ночей (если таких нет — от 5 ночей). Обновление каждые 6 часов.', 'zhiraf-ufa' ) ); ?></p>
-					</div>
-				</div>
-				<div class="tour-price-grid tour-price-grid--dest tour-price-grid--top">
-					<?php foreach ( $zhiraf_cards as $i => $tour_item ) : ?>
-						<?php
-						get_template_part(
-							'template-parts/cards/card-tour-price',
-							null,
-							array(
-								'tour'       => $tour_item,
-								'card_index' => $i,
-							)
-						);
-						?>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php if ( ! empty( $resort_data['geo_answer'] ) ) : ?>
-		<section class="section geo-answer-block bg-milky">
-			<div class="container container--narrow">
-				<p class="geo-answer-block__text"><?php echo esc_html( $resort_data['geo_answer'] ); ?></p>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php
-	$show_battle = ( ! empty( $resort_data['landing_module'] ) && 'battle' === $resort_data['landing_module'] )
-		|| ! empty( $resort_data['resort_compare'] );
-	if ( $show_battle && ! empty( $resort_data['resort_compare'] ) && count( $resort_data['resort_compare'] ) >= 2 ) :
-		get_template_part(
-			'template-parts/destination/module-resort-battle',
-			null,
-			array(
-				'title'   => ! empty( $resort_data['resort_compare_title'] ) ? (string) $resort_data['resort_compare_title'] : '',
-				'lead'    => ! empty( $resort_data['resort_compare_lead'] ) ? (string) $resort_data['resort_compare_lead'] : '',
-				'columns' => $resort_data['resort_compare'],
-			)
-		);
-	endif;
-	?>
-
-	<?php if ( ! empty( $resort_data['details_sections'] ) ) : ?>
-		<section class="section dest-landing-faq dest-landing-faq--compact">
-			<div class="container container--narrow">
-				<div class="faq-home__list">
-					<?php foreach ( $resort_data['details_sections'] as $item ) : ?>
-						<details class="faq-home__item">
-							<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
-							<div class="faq-home__answer">
-								<p><?php echo esc_html( $item['a'] ); ?></p>
-							</div>
-						</details>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
 
 	<?php if ( ! empty( $resort_data['sections'] ) ) : ?>
-		<section class="section dest-landing-prose">
+		<section class="section dest-landing-prose bg-milky">
 			<div class="container container--narrow">
-				<?php foreach ( $resort_data['sections'] as $section ) : ?>
-					<?php if ( ! empty( $section['h2'] ) ) : ?>
-						<h2><?php echo esc_html( $section['h2'] ); ?></h2>
-					<?php endif; ?>
-					<?php if ( ! empty( $section['paragraphs'] ) ) : ?>
-						<?php foreach ( $section['paragraphs'] as $para ) : ?>
-							<p><?php echo wp_kses_post( $para ); ?></p>
+				<details class="dest-prose-accordion dest-prose-accordion--seo">
+					<summary class="dest-prose-accordion__summary"><?php esc_html_e( 'Подробнее о курорте', 'zhiraf-ufa' ); ?></summary>
+					<div class="dest-prose-accordion__body">
+						<?php if ( ! empty( $resort_data['geo_answer'] ) ) : ?>
+							<p><?php echo esc_html( $resort_data['geo_answer'] ); ?></p>
+						<?php endif; ?>
+						<?php foreach ( $resort_data['sections'] as $section ) : ?>
+							<?php if ( ! empty( $section['h2'] ) ) : ?>
+								<h3><?php echo esc_html( $section['h2'] ); ?></h3>
+							<?php endif; ?>
+							<?php if ( ! empty( $section['paragraphs'] ) ) : ?>
+								<?php foreach ( $section['paragraphs'] as $para ) : ?>
+									<p><?php echo wp_kses_post( $para ); ?></p>
+								<?php endforeach; ?>
+							<?php endif; ?>
 						<?php endforeach; ?>
-					<?php endif; ?>
-				<?php endforeach; ?>
+					</div>
+				</details>
 			</div>
 		</section>
 	<?php endif; ?>
 
+	<?php if ( ! empty( $resort_faq_items ) ) : ?>
 	<section class="section dest-landing-faq">
 		<div class="container container--narrow">
 			<h2 class="section-title"><?php esc_html_e( 'Вопросы по курорту', 'zhiraf-ufa' ); ?></h2>
 			<div class="faq-home__list">
-				<?php foreach ( $resort_data['faq'] as $item ) : ?>
+				<?php foreach ( $resort_faq_items as $item ) : ?>
 					<details class="faq-home__item">
 						<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
 						<div class="faq-home__answer">
@@ -153,6 +100,7 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 			</div>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
@@ -179,10 +127,11 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
 						</select>
 					</label>
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $resort_data['quiz_prefill'] ); ?>" />
+					<input type="hidden" name="tour" value="<?php echo esc_attr( $resort_data['quiz_prefill'] ); ?>" data-lead-tour />
 					<?php if ( '' !== $resort_lead_id ) : ?>
 						<input type="hidden" name="destination" value="<?php echo esc_attr( $resort_lead_id ); ?>" />
 					<?php endif; ?>
+					<input type="hidden" name="express_pick" value="" data-lead-express />
 					<?php zhiraf_ufa_consent_fields( 'resort-lead-' . $resort_lead_id ); ?>
 					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
 				</div>
@@ -203,3 +152,13 @@ $resort_lead_id = zhiraf_ufa_resort_lead_destination( $resort_data );
 		</div>
 	</section>
 </main>
+<?php
+get_template_part(
+	'template-parts/destination/sticky-mobile-bar',
+	null,
+	array(
+		'wa_text'      => sprintf( __( 'Здравствуйте! Нужен подбор: %s', 'zhiraf-ufa' ), $resort_data['quiz_prefill'] ?? '' ),
+		'quiz_prefill' => ! empty( $resort_data['quiz_prefill'] ) ? $resort_data['quiz_prefill'] : '',
+	)
+);
+?>

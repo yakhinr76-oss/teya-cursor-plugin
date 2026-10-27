@@ -311,6 +311,8 @@ function zhiraf_ufa_ajax_lead() {
 			'message'          => 'Сообщение',
 			'tour'             => 'Тур',
 			'destination'      => 'Направление',
+			'destination_slug'   => 'Slug направления',
+			'express_pick'       => 'Экспресс-подбор',
 			'contact_channel'  => 'Куда отправить подборку',
 			'hot_destination'  => 'Направление (горящие)',
 			'hot_budget'       => 'Бюджет (горящие)',

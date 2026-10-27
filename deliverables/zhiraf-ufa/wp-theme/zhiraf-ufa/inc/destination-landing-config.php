@@ -210,6 +210,9 @@ function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
 	if ( empty( $dest['cta_message_placeholder'] ) ) {
 		$dest['cta_message_placeholder'] = __( 'Бюджет, даты, дети (возраст), пожелания по курорту', 'zhiraf-ufa' );
 	}
+	if ( ! isset( $dest['seo_prose_accordions'] ) ) {
+		$dest['seo_prose_accordions'] = true;
+	}
 	return $dest;
 }
 
@@ -336,8 +339,8 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					),
 				),
 				array(
-					'title'     => __( 'Рас-эль-Хайма', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 All Inclusive и релакс', 'zhiraf-ufa' ),
+					'title'     => __( 'Рас-эль-Хайма / Фуджейра', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Спокойный All Inclusive на 1-й линии', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Идеально для семей с детьми и спокойного отдыха у моря', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~60 мин', 'zhiraf-ufa' ),
 					'image'     => 'dest-uae.jpg',
@@ -386,33 +389,33 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			),
 		),
 		'egipet'  => array(
-			'title'   => __( 'Хургада или Шарм-эль-Шейх: что выбрать?', 'zhiraf-ufa' ),
-			'lead'    => __( 'Песчаный заход для семьи или кораллы и безветренные бухты на зиму — главная дилемма Красного моря.', 'zhiraf-ufa' ),
+			'title'   => __( 'Шарм-эль-Шейх или Хургада: что выбрать?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Кораллы и безветренные бухты на зиму или песчаный заход для семьи — главная дилемма Красного моря.', 'zhiraf-ufa' ),
 			'columns' => array(
-				array(
-					'title'     => __( 'Хургада', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Песок и семейный отдых', 'zhiraf-ufa' ),
-					'subtitle'  => __( 'Пологий заход, аквапарки и экскурсии к Луксору', 'zhiraf-ufa' ),
-					'image'     => 'resort-egipet-hurghada-2.jpg',
-					'cta_label' => __( 'Искать отели в Хургаде', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
-					'rows'      => array(
-						array( 'label' => __( 'Вход в море', 'zhiraf-ufa' ), 'value' => __( 'Пологий песок — комфортно детям и пожилым без аквашузов', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Крупные комплексы с аквапарками и широкими пляжами', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Экскурсии', 'zhiraf-ufa' ), 'value' => __( 'Удобнее добираться до Луксора и Каира, чем из Шарма', 'zhiraf-ufa' ) ),
-					),
-				),
 				array(
 					'title'     => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ),
 					'tag'       => __( '🤿 Кораллы и безветренные бухты', 'zhiraf-ufa' ),
-					'subtitle'  => __( 'Рифы у понтона и защищённые бухты зимой', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Стеновые рифы, снорклинг, бухты без ветра', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-sharm-2.jpg',
-					'cta_label' => __( 'Искать отели в Шарме', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
+					'cta_label' => __( 'Подбор по Шарму', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
 					'rows'      => array(
 						array( 'label' => __( 'Подводный мир', 'zhiraf-ufa' ), 'value' => __( 'Коралловые рифы у берега, снорклинг и дайвинг с понтона', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Зимний комфорт', 'zhiraf-ufa' ), 'value' => __( 'Бухты Наама-Бей, Шарм-эль-Майя, Рас-Умм-Сид, Хадаба', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Вечерний движ', 'zhiraf-ufa' ), 'value' => __( 'Старый город, променад Наама-Бей и кафе Farsha', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Хургада', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Песок и семейный отдых', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Естественные песчаные пляжи, пологий заход, променад Марина', 'zhiraf-ufa' ),
+					'image'     => 'resort-egipet-hurghada-2.jpg',
+					'cta_label' => __( 'Подбор по Хургаде', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
+					'rows'      => array(
+						array( 'label' => __( 'Вход в море', 'zhiraf-ufa' ), 'value' => __( 'Пологий песок — комфортно детям и пожилым без аквашузов', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Крупные комплексы с аквапарками и широкими пляжами', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Экскурсии', 'zhiraf-ufa' ), 'value' => __( 'Удобнее добираться до Луксора и Каира, чем из Шарма', 'zhiraf-ufa' ) ),
 					),
 				),
 			),

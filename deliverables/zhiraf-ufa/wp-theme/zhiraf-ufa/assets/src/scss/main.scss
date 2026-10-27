@@ -913,6 +913,75 @@ details[open] > .faq-home__question::after {
   font-size: 0.8125rem;
   color: var(--color-muted);
 }
+.express-pick { display: grid; gap: 20px; }
+.express-pick__label { margin: 0 0 10px; font-weight: 800; font-size: 0.875rem; }
+.express-pick__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.express-pick__chip {
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.express-pick__chip.is-active {
+  border-color: var(--color-primary);
+  background: rgba(232, 122, 93, 0.12);
+  color: var(--color-primary-dark, #c45a3a);
+}
+.express-pick__result {
+  margin-top: 8px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+.express-pick__result-kicker { margin: 0 0 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary); }
+.express-pick__result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.price-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.price-tier-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100%;
+}
+.price-tier-card__title { margin: 0; font-family: var(--font-head); font-size: 1.25rem; }
+.price-tier-card__subtitle { margin: 0; color: var(--color-muted); font-size: 0.9375rem; }
+.price-tier-card__price { margin: 4px 0 0; font-weight: 800; font-size: 1.125rem; }
+.price-tier-card__cta { margin-top: auto; width: 100%; text-align: center; }
+.agency-guarantee-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.agency-guarantee-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+.agency-guarantee-card__icon { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+.agency-guarantee-card__title { margin: 0 0 6px; font-size: 1rem; font-weight: 800; }
+.agency-guarantee-card__text { margin: 0; color: var(--color-muted); font-size: 0.875rem; line-height: 1.45; }
+.sticky-mobile-cta--dest { z-index: 120; }
+@media (max-width: 900px) {
+  .price-tier-grid { grid-template-columns: 1fr; }
+  .agency-guarantee-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .agency-guarantee-grid { grid-template-columns: 1fr; }
+}
 .dest-prose-accordion--seo { margin-bottom: 12px; }
 @media (min-width: 768px) {
   .dest-resort-compare--battle .dest-battle__vs { display: flex; }

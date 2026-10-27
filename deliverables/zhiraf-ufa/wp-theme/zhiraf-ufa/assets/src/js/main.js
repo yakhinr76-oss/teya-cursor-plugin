@@ -648,4 +648,73 @@
       postForm(quizForm, 'zhiraf_quiz');
     });
   }
+
+  /* Destination express picker */
+  var expressRoot = qs('[data-express-picker]');
+  if (expressRoot) {
+    var matrixRaw = expressRoot.getAttribute('data-matrix');
+    var matrix = {};
+    try { matrix = JSON.parse(matrixRaw || '{}'); } catch (e) { matrix = {}; }
+    var who = '';
+    var prio = '';
+    var resultBox = qs('[data-express-result]', expressRoot);
+    var areaEl = qs('[data-express-area]', expressRoot);
+    var conceptEl = qs('[data-express-concept]', expressRoot);
+    var waLink = qs('[data-express-wa]', expressRoot);
+    var toFormBtn = qs('[data-express-to-form]', expressRoot);
+    var basePrefill = (qs('#dest-express-prefill-base') || {}).value || '';
+
+    function renderExpress() {
+      if (!who || !prio || !matrix[who] || !matrix[who][prio]) return;
+      var row = matrix[who][prio];
+      if (areaEl) areaEl.textContent = row.area || '';
+      if (conceptEl) conceptEl.textContent = row.concept || '';
+      if (resultBox) resultBox.removeAttribute('hidden');
+      var msg = 'Здравствуйте! Экспресс-подбор: ' + (row.prefill || '') + '. ' + (row.area || '') + ' — ' + (row.concept || '');
+      if (waLink) waLink.setAttribute('href', 'https://wa.me/79018105018?text=' + encodeURIComponent(msg));
+      expressRoot.dataset.expressPrefill = row.prefill || '';
+    }
+
+    qsa('[data-express-who]', expressRoot).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        who = btn.getAttribute('data-express-who') || '';
+        qsa('[data-express-who]', expressRoot).forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+        renderExpress();
+      });
+    });
+    qsa('[data-express-prio]', expressRoot).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        prio = btn.getAttribute('data-express-prio') || '';
+        qsa('[data-express-prio]', expressRoot).forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+        renderExpress();
+      });
+    });
+    if (toFormBtn) {
+      toFormBtn.addEventListener('click', function () {
+        var leadForm = qs('#dest-lead .zhiraf-form');
+        var tourInput = leadForm ? qs('[data-lead-tour]', leadForm) : null;
+        var expressInput = leadForm ? qs('[data-lead-express]', leadForm) : null;
+        var pre = expressRoot.dataset.expressPrefill || '';
+        if (tourInput && pre) tourInput.value = (basePrefill ? basePrefill + ' · ' : '') + pre;
+        if (expressInput) expressInput.value = pre;
+        var lead = qs('#dest-lead');
+        if (lead) lead.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }
+
+  var stickyDest = qs('#sticky-mobile-dest');
+  var destHero = qs('.site-main--destination .dest-landing-hero, .site-main--resort .dest-landing-hero');
+  if (stickyDest && destHero && window.matchMedia('(max-width: 768px)').matches) {
+    var destStickyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyDest.removeAttribute('hidden');
+        } else {
+          stickyDest.setAttribute('hidden', '');
+        }
+      });
+    }, { threshold: 0 });
+    destStickyObs.observe(destHero);
+  }
 })();

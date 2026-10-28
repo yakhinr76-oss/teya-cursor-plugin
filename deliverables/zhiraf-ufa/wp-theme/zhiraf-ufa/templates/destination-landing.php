@@ -78,6 +78,10 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	}
 	?>
 
+	<?php if ( 'turciya' === $dest_slug ) : ?>
+		<?php get_template_part( 'template-parts/hotel/section-turkey-showcase' ); ?>
+	<?php endif; ?>
+
 	<?php
 	$dest_show_prose_block = empty( $dest['hide_landing_prose'] )
 		&& ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) );

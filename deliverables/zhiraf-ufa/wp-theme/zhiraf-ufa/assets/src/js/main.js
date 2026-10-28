@@ -712,6 +712,137 @@
     });
   });
 
+  /* Turkey hotels showcase — data from local WP REST only */
+  var hotelsRoot = qs('[data-hotels-showcase]');
+  if (hotelsRoot && window.zhirafUfa && zhirafUfa.hotelsRest) {
+    var grid = qs('[data-hotels-grid]', hotelsRoot);
+    var filtersWrap = qs('[data-hotels-filters]', hotelsRoot);
+    var modal = qs('[data-hotel-modal]');
+    var modalBody = modal ? qs('[data-hotel-modal-body]', modal) : null;
+    var country = hotelsRoot.getAttribute('data-hotels-country') || 'turkey';
+    var catalog = { hotels: [], categories: {} };
+    var activeFilter = '';
+
+    function esc(s) {
+      var d = document.createElement('div');
+      d.textContent = s == null ? '' : String(s);
+      return d.innerHTML;
+    }
+
+    function renderCards() {
+      if (!grid) return;
+      var list = catalog.hotels.filter(function (h) {
+        return !activeFilter || h.category_slug === activeFilter;
+      });
+      if (!list.length) {
+        grid.innerHTML = '<p class="hotels-showcase__empty">Пока нет опубликованных отелей в этой категории.</p>';
+        return;
+      }
+      grid.innerHTML = list.map(function (h) {
+        var photo = h.photos && h.photos[0] ? h.photos[0].url : '';
+        var ta = h.ta_property_url ? '<a class="hotels-card__ta" href="' + esc(h.ta_property_url) + '" target="_blank" rel="noopener noreferrer">Tripadvisor</a>' : '';
+        return (
+          '<article class="hotels-card reveal" data-hotel-id="' + h.id + '">' +
+            (photo ? '<div class="hotels-card__media"><img src="' + esc(photo) + '" alt="' + esc(h.hotel_name) + '" loading="lazy" width="640" height="400" /></div>' : '') +
+            '<div class="hotels-card__body">' +
+              '<p class="hotels-card__tag">' + esc(h.category_name) + '</p>' +
+              '<h3 class="hotels-card__title">' + esc(h.hotel_name) + '</h3>' +
+              '<p class="hotels-card__resort">' + esc(h.resort) + '</p>' +
+              '<p class="hotels-card__rating">★ ' + esc(h.rating) + '</p>' +
+              '<p class="hotels-card__usp">' + esc(h.usp) + '</p>' +
+              '<div class="hotels-card__actions">' +
+                '<button type="button" class="btn btn--outline btn--sm" data-hotel-open="' + h.id + '">Читать выводы</button>' +
+                ta +
+              '</div>' +
+            '</div>' +
+          '</article>'
+        );
+      }).join('');
+    }
+
+    function renderFilters() {
+      if (!filtersWrap) return;
+      var keys = Object.keys(catalog.categories || {});
+      keys.forEach(function (slug) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hotels-showcase__filter';
+        btn.setAttribute('data-hotels-filter', slug);
+        btn.setAttribute('role', 'tab');
+        btn.textContent = catalog.categories[slug];
+        filtersWrap.appendChild(btn);
+      });
+      filtersWrap.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-hotels-filter]');
+        if (!btn) return;
+        activeFilter = btn.getAttribute('data-hotels-filter') || '';
+        qsa('.hotels-showcase__filter', filtersWrap).forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        renderCards();
+      });
+    }
+
+    function openModal(hotel) {
+      if (!modal || !modalBody) return;
+      var pros = (hotel.pros || []).map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('');
+      var photos = (hotel.photos || []).map(function (ph) {
+        return '<img src="' + esc(ph.url) + '" alt="" loading="lazy" class="hotel-modal__photo" />';
+      }).join('');
+      var taLink = hotel.ta_property_url
+        ? '<p class="hotel-modal__ta"><a href="' + esc(hotel.ta_property_url) + '" target="_blank" rel="noopener noreferrer">Полные отзывы на Tripadvisor →</a></p>'
+        : '';
+      modalBody.innerHTML =
+        '<h2 id="hotel-modal-title" class="hotel-modal__title">' + esc(hotel.hotel_name) + '</h2>' +
+        '<p class="hotel-modal__meta">' + esc(hotel.resort) + ' · ★ ' + esc(hotel.rating) + '</p>' +
+        (photos ? '<div class="hotel-modal__gallery">' + photos + '</div>' : '') +
+        '<p class="hotel-modal__usp">' + esc(hotel.usp) + '</p>' +
+        (pros ? '<ul class="hotel-modal__pros">' + pros + '</ul>' : '') +
+        (hotel.caveat ? '<p class="hotel-modal__caveat"><strong>На что обратить внимание:</strong> ' + esc(hotel.caveat) + '</p>' : '') +
+        (hotel.reviews_summary ? '<div class="hotel-modal__summary"><h3>Вывод по отзывам</h3><p>' + esc(hotel.reviews_summary) + '</p></div>' : '') +
+        taLink +
+        '<p class="hotel-modal__cta"><a class="btn btn--primary btn--sm" href="#dest-lead">Запросить цену на этот уровень</a></p>';
+      modal.removeAttribute('hidden');
+      document.body.classList.add('hotel-modal-open');
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.setAttribute('hidden', '');
+      document.body.classList.remove('hotel-modal-open');
+    }
+
+    if (modal) {
+      qsa('[data-hotel-modal-close]', modal).forEach(function (el) {
+        el.addEventListener('click', closeModal);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeModal();
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-hotel-open]');
+      if (!btn) return;
+      var id = parseInt(btn.getAttribute('data-hotel-open'), 10);
+      var hotel = catalog.hotels.find(function (h) { return h.id === id; });
+      if (hotel) openModal(hotel);
+    });
+
+    fetch(zhirafUfa.hotelsRest + '?country=' + encodeURIComponent(country), { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        catalog.hotels = data.hotels || [];
+        catalog.categories = data.categories || {};
+        renderFilters();
+        renderCards();
+      })
+      .catch(function () {
+        if (grid) grid.innerHTML = '<p class="hotels-showcase__empty">Не удалось загрузить подборку отелей.</p>';
+      });
+  }
+
   var stickyDest = qs('#sticky-mobile-dest');
   var destHero = qs('.site-main--destination .dest-landing-hero, .site-main--resort .dest-landing-hero');
   if (stickyDest && destHero && window.matchMedia('(max-width: 768px)').matches) {

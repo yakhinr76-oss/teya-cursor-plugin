@@ -1,0 +1,336 @@
+<?php
+/**
+ * CPT hotels — curated Turkey showcase (local content only on frontend).
+ *
+ * @package Zhiraf_Ufa
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Register hotels post type.
+ */
+function zhiraf_ufa_register_hotels_cpt() {
+	register_post_type(
+		'hotels',
+		array(
+			'labels'              => array(
+				'name'          => __( 'Отели (витрина)', 'zhiraf-ufa' ),
+				'singular_name' => __( 'Отель', 'zhiraf-ufa' ),
+				'add_new_item'  => __( 'Добавить отель', 'zhiraf-ufa' ),
+				'edit_item'     => __( 'Редактировать отель', 'zhiraf-ufa' ),
+			),
+			'public'              => false,
+			'publicly_queryable'  => false,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_rest'        => false,
+			'menu_position'       => 22,
+			'menu_icon'           => 'dashicons-building',
+			'supports'            => array( 'title', 'thumbnail' ),
+			'capability_type'     => 'post',
+			'has_archive'         => false,
+			'rewrite'             => false,
+		)
+	);
+}
+add_action( 'init', 'zhiraf_ufa_register_hotels_cpt' );
+
+/**
+ * Meta keys used by hotels CPT.
+ *
+ * @return array<string,string>
+ */
+function zhiraf_ufa_hotel_meta_keys() {
+	return array(
+		'hotel_country'         => 'string',
+		'hotel_resort'          => 'string',
+		'hotel_rating'          => 'float',
+		'hotel_usp'             => 'string',
+		'hotel_pros'            => 'json',
+		'hotel_caveat'          => 'string',
+		'hotel_reviews_summary' => 'string',
+		'hotel_category_slug'   => 'string',
+		'hotel_category_name'   => 'string',
+		'hotel_source_id'       => 'int',
+		'hotel_ta_location_id'  => 'int',
+		'hotel_ta_property_url' => 'string',
+		'hotel_gallery_ids'     => 'json',
+	);
+}
+
+/**
+ * @param int $post_id Post ID.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_hotel_get_meta( $post_id ) {
+	$out = array();
+	foreach ( zhiraf_ufa_hotel_meta_keys() as $key => $type ) {
+		$val = get_post_meta( $post_id, '_' . $key, true );
+		if ( 'json' === $type && is_string( $val ) ) {
+			$decoded = json_decode( $val, true );
+			$val     = is_array( $decoded ) ? $decoded : array();
+		} elseif ( 'float' === $type ) {
+			$val = (float) $val;
+		} elseif ( 'int' === $type ) {
+			$val = (int) $val;
+		} else {
+			$val = (string) $val;
+		}
+		$out[ $key ] = $val;
+	}
+	return $out;
+}
+
+/**
+ * Serialize hotel for REST / frontend.
+ *
+ * @param WP_Post $post Post.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_hotel_to_public_row( $post ) {
+	$meta = zhiraf_ufa_hotel_get_meta( $post->ID );
+	$gallery_ids = ! empty( $meta['hotel_gallery_ids'] ) && is_array( $meta['hotel_gallery_ids'] )
+		? array_map( 'intval', $meta['hotel_gallery_ids'] )
+		: array();
+	$photos = array();
+	foreach ( $gallery_ids as $aid ) {
+		$src = wp_get_attachment_image_url( $aid, 'large' );
+		if ( $src ) {
+			$photos[] = array(
+				'id'  => $aid,
+				'url' => $src,
+				'alt' => (string) get_post_meta( $aid, '_wp_attachment_image_alt', true ),
+			);
+		}
+	}
+	if ( empty( $photos ) && has_post_thumbnail( $post->ID ) ) {
+		$photos[] = array(
+			'id'  => (int) get_post_thumbnail_id( $post->ID ),
+			'url' => (string) get_the_post_thumbnail_url( $post->ID, 'large' ),
+			'alt' => $post->post_title,
+		);
+	}
+	return array(
+		'id'              => (int) $post->ID,
+		'source_id'       => (int) ( $meta['hotel_source_id'] ?? 0 ),
+		'hotel_name'      => $post->post_title,
+		'country'         => (string) ( $meta['hotel_country'] ?? '' ),
+		'resort'          => (string) ( $meta['hotel_resort'] ?? '' ),
+		'rating'          => (float) ( $meta['hotel_rating'] ?? 0 ),
+		'usp'             => (string) ( $meta['hotel_usp'] ?? '' ),
+		'pros'            => ! empty( $meta['hotel_pros'] ) && is_array( $meta['hotel_pros'] ) ? $meta['hotel_pros'] : array(),
+		'caveat'          => (string) ( $meta['hotel_caveat'] ?? '' ),
+		'reviews_summary' => (string) ( $meta['hotel_reviews_summary'] ?? '' ),
+		'category_slug'   => (string) ( $meta['hotel_category_slug'] ?? '' ),
+		'category_name'   => (string) ( $meta['hotel_category_name'] ?? '' ),
+		'ta_property_url' => (string) ( $meta['hotel_ta_property_url'] ?? '' ),
+		'photos'          => $photos,
+	);
+}
+
+/**
+ * REST: local hotel catalog (no Tripadvisor calls).
+ */
+function zhiraf_ufa_register_hotels_rest_routes() {
+	register_rest_route(
+		'zhiraf/v1',
+		'/hotels',
+		array(
+			'methods'             => 'GET',
+			'permission_callback' => '__return_true',
+			'callback'            => function ( WP_REST_Request $req ) {
+				$country  = sanitize_key( (string) $req->get_param( 'country' ) );
+				$category = sanitize_key( (string) $req->get_param( 'category' ) );
+				$args     = array(
+					'post_type'      => 'hotels',
+					'post_status'    => 'publish',
+					'posts_per_page' => 100,
+					'orderby'        => 'meta_value_num',
+					'meta_key'       => '_hotel_source_id',
+					'order'          => 'ASC',
+				);
+				$meta_query = array( 'relation' => 'AND' );
+				if ( $country ) {
+					$meta_query[] = array(
+						'key'   => '_hotel_country',
+						'value' => $country,
+					);
+				}
+				if ( $category ) {
+					$meta_query[] = array(
+						'key'   => '_hotel_category_slug',
+						'value' => $category,
+					);
+				}
+				if ( count( $meta_query ) > 1 ) {
+					$args['meta_query'] = $meta_query;
+				}
+				$q     = new WP_Query( $args );
+				$items = array();
+				foreach ( $q->posts as $post ) {
+					$items[] = zhiraf_ufa_hotel_to_public_row( $post );
+				}
+				$categories = array();
+				foreach ( $items as $row ) {
+					$slug = $row['category_slug'];
+					if ( $slug && ! isset( $categories[ $slug ] ) ) {
+						$categories[ $slug ] = $row['category_name'];
+					}
+				}
+				return rest_ensure_response(
+					array(
+						'hotels'     => $items,
+						'categories' => $categories,
+					)
+				);
+			},
+		)
+	);
+
+	register_rest_route(
+		'zhiraf/v1',
+		'/hotels/(?P<id>\d+)',
+		array(
+			'methods'             => 'GET',
+			'permission_callback' => '__return_true',
+			'callback'            => function ( WP_REST_Request $req ) {
+				$post = get_post( (int) $req['id'] );
+				if ( ! $post || 'hotels' !== $post->post_type || 'publish' !== $post->post_status ) {
+					return new WP_Error( 'not_found', __( 'Отель не найден', 'zhiraf-ufa' ), array( 'status' => 404 ) );
+				}
+				return rest_ensure_response( zhiraf_ufa_hotel_to_public_row( $post ) );
+			},
+		)
+	);
+}
+add_action( 'rest_api_init', 'zhiraf_ufa_register_hotels_rest_routes' );
+
+/**
+ * Admin columns.
+ *
+ * @param array<string,string> $cols Columns.
+ * @return array<string,string>
+ */
+function zhiraf_ufa_hotels_columns( $cols ) {
+	return array(
+		'cb'       => $cols['cb'] ?? '',
+		'title'    => __( 'Отель', 'zhiraf-ufa' ),
+		'category' => __( 'Категория', 'zhiraf-ufa' ),
+		'resort'   => __( 'Курорт', 'zhiraf-ufa' ),
+		'rating'   => __( 'Рейтинг', 'zhiraf-ufa' ),
+		'date'     => $cols['date'] ?? __( 'Дата', 'zhiraf-ufa' ),
+	);
+}
+add_filter( 'manage_hotels_posts_columns', 'zhiraf_ufa_hotels_columns' );
+
+/**
+ * @param string $col Column.
+ * @param int    $post_id ID.
+ */
+function zhiraf_ufa_hotels_column_render( $col, $post_id ) {
+	if ( 'category' === $col ) {
+		echo esc_html( (string) get_post_meta( $post_id, '_hotel_category_name', true ) );
+	} elseif ( 'resort' === $col ) {
+		echo esc_html( (string) get_post_meta( $post_id, '_hotel_resort', true ) );
+	} elseif ( 'rating' === $col ) {
+		echo esc_html( (string) get_post_meta( $post_id, '_hotel_rating', true ) );
+	}
+}
+add_action( 'manage_hotels_posts_custom_column', 'zhiraf_ufa_hotels_column_render', 10, 2 );
+
+/**
+ * Find existing hotel by source id + country.
+ *
+ * @param int    $source_id JSON id.
+ * @param string $country   Country slug.
+ * @return int Post ID or 0.
+ */
+function zhiraf_ufa_hotel_find_by_source( $source_id, $country ) {
+	$q = new WP_Query(
+		array(
+			'post_type'      => 'hotels',
+			'post_status'    => array( 'publish', 'draft' ),
+			'posts_per_page' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => '_hotel_source_id',
+					'value' => (int) $source_id,
+				),
+				array(
+					'key'   => '_hotel_country',
+					'value' => $country,
+				),
+			),
+			'fields'         => 'ids',
+		)
+	);
+	return ! empty( $q->posts[0] ) ? (int) $q->posts[0] : 0;
+}
+
+/**
+ * Upsert hotel from JSON row + attachment ids.
+ *
+ * @param array<string,mixed> $row JSON hotel.
+ * @param array<int,int>      $gallery_ids Attachment IDs in order.
+ * @return int Post ID.
+ */
+function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = array() ) {
+	$source_id = (int) ( $row['id'] ?? 0 );
+	$country   = sanitize_key( (string) ( $row['country'] ?? 'turkey' ) );
+	$post_id   = zhiraf_ufa_hotel_find_by_source( $source_id, $country );
+	$title     = sanitize_text_field( (string) ( $row['hotel_name'] ?? '' ) );
+
+	$postarr = array(
+		'post_type'   => 'hotels',
+		'post_title'  => $title,
+		'post_status' => 'publish',
+	);
+	if ( $post_id ) {
+		$postarr['ID'] = $post_id;
+		wp_update_post( $postarr );
+	} else {
+		$post_id = (int) wp_insert_post( $postarr, true );
+	}
+	if ( is_wp_error( $post_id ) || $post_id <= 0 ) {
+		return 0;
+	}
+
+	$pros = ! empty( $row['pros'] ) && is_array( $row['pros'] ) ? $row['pros'] : array();
+
+	update_post_meta( $post_id, '_hotel_country', $country );
+	update_post_meta( $post_id, '_hotel_resort', sanitize_text_field( (string) ( $row['resort'] ?? '' ) ) );
+	update_post_meta( $post_id, '_hotel_rating', (float) ( $row['rating'] ?? 0 ) );
+	update_post_meta( $post_id, '_hotel_usp', sanitize_textarea_field( (string) ( $row['usp'] ?? '' ) ) );
+	update_post_meta( $post_id, '_hotel_pros', wp_json_encode( array_values( array_map( 'sanitize_text_field', $pros ) ), JSON_UNESCAPED_UNICODE ) );
+	update_post_meta( $post_id, '_hotel_caveat', sanitize_textarea_field( (string) ( $row['caveat'] ?? '' ) ) );
+	update_post_meta( $post_id, '_hotel_reviews_summary', sanitize_textarea_field( (string) ( $row['reviews_summary'] ?? '' ) ) );
+	update_post_meta( $post_id, '_hotel_category_slug', sanitize_key( (string) ( $row['category_slug'] ?? '' ) ) );
+	update_post_meta( $post_id, '_hotel_category_name', sanitize_text_field( (string) ( $row['category_name'] ?? '' ) ) );
+	update_post_meta( $post_id, '_hotel_source_id', $source_id );
+	update_post_meta( $post_id, '_hotel_gallery_ids', wp_json_encode( array_values( array_map( 'intval', $gallery_ids ) ) ) );
+
+	if ( ! empty( $row['ta_location_id'] ) ) {
+		update_post_meta( $post_id, '_hotel_ta_location_id', (int) $row['ta_location_id'] );
+	}
+	if ( ! empty( $row['ta_property_url'] ) ) {
+		update_post_meta( $post_id, '_hotel_ta_property_url', esc_url_raw( (string) $row['ta_property_url'] ) );
+	}
+
+	if ( ! empty( $gallery_ids[0] ) ) {
+		set_post_thumbnail( $post_id, (int) $gallery_ids[0] );
+	}
+
+	return $post_id;
+}
+
+/**
+ * Path to turkey hotels JSON in theme.
+ *
+ * @return string
+ */
+function zhiraf_ufa_turkey_hotels_json_path() {
+	return ZHIRAF_UFA_DIR . '/data/turkey_hotels_25.json';
+}

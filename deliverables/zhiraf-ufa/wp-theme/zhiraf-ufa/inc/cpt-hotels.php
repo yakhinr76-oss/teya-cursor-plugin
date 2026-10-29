@@ -332,5 +332,59 @@ function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = arra
  * @return string
  */
 function zhiraf_ufa_turkey_hotels_json_path() {
-	return ZHIRAF_UFA_DIR . '/data/turkey_hotels_25.json';
+	return zhiraf_ufa_hotels_json_path( 'turkey' );
+}
+
+/**
+ * Path to curated hotels JSON by country code (turkey, egypt, …).
+ *
+ * @param string $country Country slug from JSON.
+ * @return string
+ */
+function zhiraf_ufa_hotels_json_path( $country ) {
+	$country = sanitize_key( (string) $country );
+	$map     = array(
+		'turkey' => 'turkey_hotels_25.json',
+		'egypt'  => 'egypt_hotels_25.json',
+	);
+	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
+	return ZHIRAF_UFA_DIR . '/data/' . $file;
+}
+
+/**
+ * Landing slug → hotels REST country filter + copy for showcase block.
+ *
+ * @return array<string,array{country:string,title:string}>
+ */
+function zhiraf_ufa_hotels_showcase_for_destinations() {
+	return array(
+		'turciya' => array(
+			'country' => 'turkey',
+			'title'   => __( '25 эталонных отелей Турции', 'zhiraf-ufa' ),
+		),
+		'egipet'  => array(
+			'country' => 'egypt',
+			'title'   => __( '25 эталонных отелей Египта', 'zhiraf-ufa' ),
+		),
+	);
+}
+
+/**
+ * Modal shell for hotel cards (once per page).
+ */
+function zhiraf_ufa_render_hotel_modal_shell() {
+	static $rendered = false;
+	if ( $rendered ) {
+		return;
+	}
+	$rendered = true;
+	?>
+	<div class="hotel-modal" id="hotel-modal" data-hotel-modal hidden>
+		<div class="hotel-modal__backdrop" data-hotel-modal-close tabindex="-1"></div>
+		<div class="hotel-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="hotel-modal-title">
+			<button type="button" class="hotel-modal__close" data-hotel-modal-close aria-label="<?php esc_attr_e( 'Закрыть', 'zhiraf-ufa' ); ?>">×</button>
+			<div class="hotel-modal__body" data-hotel-modal-body></div>
+		</div>
+	</div>
+	<?php
 }

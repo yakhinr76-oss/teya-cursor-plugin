@@ -78,9 +78,22 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	}
 	?>
 
-	<?php if ( 'turciya' === $dest_slug ) : ?>
-		<?php get_template_part( 'template-parts/hotel/section-turkey-showcase' ); ?>
-	<?php endif; ?>
+	<?php
+	$hotels_showcases = function_exists( 'zhiraf_ufa_hotels_showcase_for_destinations' )
+		? zhiraf_ufa_hotels_showcase_for_destinations()
+		: array();
+	if ( ! empty( $hotels_showcases[ $dest_slug ] ) ) :
+		$showcase = $hotels_showcases[ $dest_slug ];
+		get_template_part(
+			'template-parts/hotel/section-hotels-showcase',
+			null,
+			array(
+				'country' => $showcase['country'],
+				'title'   => $showcase['title'],
+			)
+		);
+	endif;
+	?>
 
 	<?php
 	$dest_show_prose_block = empty( $dest['hide_landing_prose'] )

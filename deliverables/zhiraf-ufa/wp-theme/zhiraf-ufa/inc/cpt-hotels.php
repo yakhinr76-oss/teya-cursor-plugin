@@ -377,6 +377,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 		'egypt'  => 'egypt_hotels_25.json',
 		'uae'      => 'uae_hotels_25.json',
 		'thailand' => 'thailand_hotels_25.json',
+		'vietnam'  => 'vietnam_hotels_25.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -406,6 +407,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 			'country' => 'thailand',
 			'title'   => __( '25 эталонных отелей Таиланда', 'zhiraf-ufa' ),
 			'lead'    => __( 'Пхукет, Паттайя, Као-Лак и Самуи: семьи, пары, первая линия Паттайи и разумный баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'vietnam' => array(
+			'country' => 'vietnam',
+			'title'   => __( '25 эталонных отелей Вьетнама', 'zhiraf-ufa' ),
+			'lead'    => __( 'Камрань, Фукуок, Муйне, Дананг и Хойан, Нячанг: семьи, пары, загородные резорты, город у моря и баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

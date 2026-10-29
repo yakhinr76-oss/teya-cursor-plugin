@@ -47,6 +47,7 @@ function zhiraf_ufa_hotel_meta_keys() {
 	return array(
 		'hotel_country'         => 'string',
 		'hotel_region'          => 'string',
+		'hotel_atoll'           => 'string',
 		'hotel_emirate'         => 'string',
 		'hotel_resort'          => 'string',
 		'hotel_rating'          => 'float',
@@ -121,6 +122,7 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 		'hotel_name'      => $post->post_title,
 		'country'         => (string) ( $meta['hotel_country'] ?? '' ),
 		'region'          => (string) ( $meta['hotel_region'] ?? '' ),
+		'atoll'           => (string) ( $meta['hotel_atoll'] ?? '' ),
 		'emirate'         => (string) ( $meta['hotel_emirate'] ?? '' ),
 		'resort'          => (string) ( $meta['hotel_resort'] ?? '' ),
 		'rating'          => (float) ( $meta['hotel_rating'] ?? 0 ),
@@ -148,6 +150,7 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 			'callback'            => function ( WP_REST_Request $req ) {
 				$country  = sanitize_key( (string) $req->get_param( 'country' ) );
 				$region   = sanitize_key( (string) $req->get_param( 'region' ) );
+				$atoll    = sanitize_key( (string) $req->get_param( 'atoll' ) );
 				$emirate  = sanitize_key( (string) $req->get_param( 'emirate' ) );
 				$category = sanitize_key( (string) $req->get_param( 'category' ) );
 				$args     = array(
@@ -169,6 +172,12 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 					$meta_query[] = array(
 						'key'   => '_hotel_region',
 						'value' => $region,
+					);
+				}
+				if ( $atoll ) {
+					$meta_query[] = array(
+						'key'   => '_hotel_atoll',
+						'value' => $atoll,
 					);
 				}
 				if ( $emirate ) {
@@ -327,6 +336,11 @@ function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = arra
 	if ( ! empty( $row['region'] ) ) {
 		update_post_meta( $post_id, '_hotel_region', sanitize_key( (string) $row['region'] ) );
 	}
+	if ( ! empty( $row['atoll'] ) ) {
+		$atoll_key = sanitize_key( (string) $row['atoll'] );
+		update_post_meta( $post_id, '_hotel_atoll', $atoll_key );
+		update_post_meta( $post_id, '_hotel_region', $atoll_key );
+	}
 	if ( ! empty( $row['emirate'] ) ) {
 		update_post_meta( $post_id, '_hotel_emirate', sanitize_key( (string) $row['emirate'] ) );
 	}
@@ -380,6 +394,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 		'vietnam'  => 'vietnam_hotels_25.json',
 		'china'    => 'china_hotels_25.json',
 		'india'    => 'india_hotels_25.json',
+		'maldives' => 'maldives_hotels_25.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -424,6 +439,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 			'country' => 'india',
 			'title'   => __( '25 эталонных отелей Индии', 'zhiraf-ufa' ),
 			'lead'    => __( 'Южный и Северный Гоа: семьи, пары, активный север, южная классика и разумный баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'maldivy' => array(
+			'country' => 'maldives',
+			'title'   => __( '25 эталонных отелей Мальдив', 'zhiraf-ufa' ),
+			'lead'    => __( 'Семьи, снорклинг и домашний риф, пары Adults Only, катер от Мале и разумный All Inclusive — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

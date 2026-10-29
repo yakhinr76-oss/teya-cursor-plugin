@@ -49,6 +49,7 @@ function zhiraf_ufa_hotel_meta_keys() {
 		'hotel_region'          => 'string',
 		'hotel_atoll'           => 'string',
 		'hotel_island'          => 'string',
+		'hotel_city'            => 'string',
 		'hotel_emirate'         => 'string',
 		'hotel_resort'          => 'string',
 		'hotel_rating'          => 'float',
@@ -125,6 +126,7 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 		'region'          => (string) ( $meta['hotel_region'] ?? '' ),
 		'atoll'           => (string) ( $meta['hotel_atoll'] ?? '' ),
 		'island'          => (string) ( $meta['hotel_island'] ?? '' ),
+		'city'            => (string) ( $meta['hotel_city'] ?? '' ),
 		'emirate'         => (string) ( $meta['hotel_emirate'] ?? '' ),
 		'resort'          => (string) ( $meta['hotel_resort'] ?? '' ),
 		'rating'          => (float) ( $meta['hotel_rating'] ?? 0 ),
@@ -154,6 +156,7 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 				$region   = sanitize_key( (string) $req->get_param( 'region' ) );
 				$atoll    = sanitize_key( (string) $req->get_param( 'atoll' ) );
 				$island   = sanitize_key( (string) $req->get_param( 'island' ) );
+				$city     = sanitize_key( (string) $req->get_param( 'city' ) );
 				$emirate  = sanitize_key( (string) $req->get_param( 'emirate' ) );
 				$category = sanitize_key( (string) $req->get_param( 'category' ) );
 				$args     = array(
@@ -187,6 +190,12 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 					$meta_query[] = array(
 						'key'   => '_hotel_island',
 						'value' => $island,
+					);
+				}
+				if ( $city ) {
+					$meta_query[] = array(
+						'key'   => '_hotel_city',
+						'value' => $city,
 					);
 				}
 				if ( $emirate ) {
@@ -355,6 +364,11 @@ function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = arra
 		update_post_meta( $post_id, '_hotel_island', $island_key );
 		update_post_meta( $post_id, '_hotel_region', $island_key );
 	}
+	if ( ! empty( $row['city'] ) ) {
+		$city_key = sanitize_key( (string) $row['city'] );
+		update_post_meta( $post_id, '_hotel_city', $city_key );
+		update_post_meta( $post_id, '_hotel_region', $city_key );
+	}
 	if ( ! empty( $row['emirate'] ) ) {
 		update_post_meta( $post_id, '_hotel_emirate', sanitize_key( (string) $row['emirate'] ) );
 	}
@@ -412,6 +426,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 		'seychelles' => 'seychelles_hotels_25.json',
 		'sri_lanka'  => 'sri_lanka_hotels_25.json',
 		'indonesia'  => 'indonesia_hotels_25.json',
+		'uzbekistan' => 'uzbekistan_hotels_25.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -476,6 +491,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 			'country' => 'indonesia',
 			'title'   => __( '25 эталонных отелей Индонезии (Бали)', 'zhiraf-ufa' ),
 			'lead'    => __( 'Нуса-Дуа, Убуд, Семиньяк и Чангу, Санур и Джимбаран: семьи, джунгли, бич-клабы и баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'uzbekistan' => array(
+			'country' => 'uzbekistan',
+			'title'   => __( '25 эталонных отелей Узбекистана', 'zhiraf-ufa' ),
+			'lead'    => __( 'Хива, Бухара, Самарканд и Ташкент: Ичан-Кала, Ляби-Хауз, Регистан, метро и баланс Шелкового пути — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

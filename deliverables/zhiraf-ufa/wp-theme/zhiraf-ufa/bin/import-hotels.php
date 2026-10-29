@@ -23,6 +23,9 @@
  *   php bin/import-hotels.php --country=egypt --skip-photos
  *   php bin/import-hotels.php --dry-run --country=turkey
  *
+ * Optional JSON photo URLs (Content API enrichment):
+ *   python3 bin/fetch-hotel-photos-content-api.py --dry-run
+ *
  * @package Zhiraf_Ufa
  */
 
@@ -103,34 +106,60 @@ foreach ( $rows as $row ) {
 	$gallery_ids = array();
 	$photo_names = ! empty( $row['photos'] ) && is_array( $row['photos'] ) ? $row['photos'] : array();
 	$ta_url      = '';
-	$ta_id       = 0;
-
-	if ( ! $skip_photos && $ta_ok ) {
-		$resort = (string) ( $row['resort'] ?? '' );
-		$loc    = zhiraf_ufa_ta_find_location( $name, $resort );
-		if ( $loc ) {
-			$ta_id  = (int) $loc['id'];
-			$ta_url = (string) $loc['url'];
-			echo "  TA location {$ta_id}\n";
-			$urls = zhiraf_ufa_ta_location_photo_urls( $ta_id, max( 3, count( $photo_names ) ) );
-			$urls = array_values( $urls );
-			foreach ( $photo_names as $i => $filename ) {
-				if ( empty( $urls[ $i ] ) ) {
-					echo "  skip photo {$filename} (no URL)\n";
-					continue;
-				}
-				$aid = zhiraf_ufa_ta_sideload_image( $urls[ $i ], $filename, 0 );
-				if ( $aid ) {
-					$gallery_ids[] = $aid;
-					echo "  attached {$filename} (#{$aid})\n";
-				} else {
-					echo "  FAIL sideload {$filename}\n";
-				}
-				usleep( 250000 );
-			}
-		} else {
-			echo "  TA location not found\n";
+	$ta_id       = (int) ( $row['ta_location_id'] ?? 0 );
+	$has_remote  = false;
+	foreach ( $photo_names as $entry ) {
+		if ( is_string( $entry ) && preg_match( '#^https?://#i', $entry ) ) {
+			$has_remote = true;
+			break;
 		}
+	}
+
+	if ( ! $skip_photos && ( $ta_ok || $has_remote ) ) {
+		$resort = (string) ( $row['resort'] ?? '' );
+		if ( $ta_ok && $ta_id <= 0 ) {
+			$loc = zhiraf_ufa_ta_find_location( $name, $resort );
+			if ( $loc ) {
+				$ta_id  = (int) $loc['id'];
+				$ta_url = (string) $loc['url'];
+				echo "  TA location {$ta_id}\n";
+			}
+		} elseif ( $ta_id > 0 ) {
+			echo "  TA location {$ta_id} (from JSON)\n";
+		} else {
+			echo "  sideload from JSON photo URLs\n";
+		}
+
+		$urls = array();
+		if ( $ta_ok && $ta_id > 0 ) {
+			$urls = array_values( zhiraf_ufa_ta_location_photo_urls( $ta_id, max( 3, count( $photo_names ) ) ) );
+		}
+		foreach ( $photo_names as $i => $filename ) {
+			$download_url = '';
+			$basename     = (string) $filename;
+			if ( preg_match( '#^https?://#i', $basename ) ) {
+				$download_url = $basename;
+				$path         = wp_parse_url( $download_url, PHP_URL_PATH );
+				$parsed       = is_string( $path ) ? basename( $path ) : '';
+				$basename     = $parsed ? sanitize_file_name( $parsed ) : sanitize_file_name( 'hotel_' . (int) ( $row['id'] ?? 0 ) . '_' . ( $i + 1 ) . '.jpg' );
+			} elseif ( ! empty( $urls[ $i ] ) ) {
+				$download_url = (string) $urls[ $i ];
+			}
+			if ( '' === $download_url ) {
+				echo "  skip photo {$filename} (no URL)\n";
+				continue;
+			}
+			$aid = zhiraf_ufa_ta_sideload_image( $download_url, $basename, 0 );
+			if ( $aid ) {
+				$gallery_ids[] = $aid;
+				echo "  attached {$basename} (#{$aid})\n";
+			} else {
+				echo "  FAIL sideload {$basename}\n";
+			}
+			usleep( 250000 );
+		}
+	} elseif ( ! $skip_photos && ! $ta_ok && ! $has_remote ) {
+		echo "  WARN: no TA key and no http photos — use --skip-photos or enrich JSON\n";
 	}
 
 	$row['ta_location_id']  = $ta_id;

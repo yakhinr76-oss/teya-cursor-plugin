@@ -411,6 +411,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 		'maldives'   => 'maldives_hotels_25.json',
 		'seychelles' => 'seychelles_hotels_25.json',
 		'sri_lanka'  => 'sri_lanka_hotels_25.json',
+		'indonesia'  => 'indonesia_hotels_25.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -470,6 +471,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 			'country' => 'sri_lanka',
 			'title'   => __( '25 эталонных отелей Шри-Ланки', 'zhiraf-ufa' ),
 			'lead'    => __( 'Юго-Запад, восток и запад: семьи, пары и серф, Бентота и Берувела, черепахи и разумный баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'indoneziya' => array(
+			'country' => 'indonesia',
+			'title'   => __( '25 эталонных отелей Индонезии (Бали)', 'zhiraf-ufa' ),
+			'lead'    => __( 'Нуса-Дуа, Убуд, Семиньяк и Чангу, Санур и Джимбаран: семьи, джунгли, бич-клабы и баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

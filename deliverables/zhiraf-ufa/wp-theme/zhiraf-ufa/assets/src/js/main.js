@@ -723,6 +723,7 @@
     var filtersWrap = qs('[data-hotels-filters]', hotelsRoot);
     var country = hotelsRoot.getAttribute('data-hotels-country') || 'turkey';
     var region = hotelsRoot.getAttribute('data-hotels-region') || '';
+    var emirate = hotelsRoot.getAttribute('data-hotels-emirate') || '';
     var catalog = { hotels: [], categories: {} };
     var activeFilter = '';
 
@@ -789,6 +790,7 @@
 
     var restUrl = zhirafUfa.hotelsRest + '?country=' + encodeURIComponent(country);
     if (region) restUrl += '&region=' + encodeURIComponent(region);
+    if (emirate) restUrl += '&emirate=' + encodeURIComponent(emirate);
 
     fetch(restUrl, { credentials: 'same-origin' })
       .then(function (r) { return r.json(); })

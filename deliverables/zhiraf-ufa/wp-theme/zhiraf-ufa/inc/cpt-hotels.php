@@ -47,6 +47,7 @@ function zhiraf_ufa_hotel_meta_keys() {
 	return array(
 		'hotel_country'         => 'string',
 		'hotel_region'          => 'string',
+		'hotel_emirate'         => 'string',
 		'hotel_resort'          => 'string',
 		'hotel_rating'          => 'float',
 		'hotel_usp'             => 'string',
@@ -120,6 +121,7 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 		'hotel_name'      => $post->post_title,
 		'country'         => (string) ( $meta['hotel_country'] ?? '' ),
 		'region'          => (string) ( $meta['hotel_region'] ?? '' ),
+		'emirate'         => (string) ( $meta['hotel_emirate'] ?? '' ),
 		'resort'          => (string) ( $meta['hotel_resort'] ?? '' ),
 		'rating'          => (float) ( $meta['hotel_rating'] ?? 0 ),
 		'usp'             => (string) ( $meta['hotel_usp'] ?? '' ),
@@ -146,6 +148,7 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 			'callback'            => function ( WP_REST_Request $req ) {
 				$country  = sanitize_key( (string) $req->get_param( 'country' ) );
 				$region   = sanitize_key( (string) $req->get_param( 'region' ) );
+				$emirate  = sanitize_key( (string) $req->get_param( 'emirate' ) );
 				$category = sanitize_key( (string) $req->get_param( 'category' ) );
 				$args     = array(
 					'post_type'      => 'hotels',
@@ -166,6 +169,12 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 					$meta_query[] = array(
 						'key'   => '_hotel_region',
 						'value' => $region,
+					);
+				}
+				if ( $emirate ) {
+					$meta_query[] = array(
+						'key'   => '_hotel_emirate',
+						'value' => $emirate,
 					);
 				}
 				if ( $category ) {
@@ -244,7 +253,9 @@ function zhiraf_ufa_hotels_column_render( $col, $post_id ) {
 	if ( 'category' === $col ) {
 		echo esc_html( (string) get_post_meta( $post_id, '_hotel_category_name', true ) );
 	} elseif ( 'region' === $col ) {
-		echo esc_html( (string) get_post_meta( $post_id, '_hotel_region', true ) );
+		$em = (string) get_post_meta( $post_id, '_hotel_emirate', true );
+		$rg = (string) get_post_meta( $post_id, '_hotel_region', true );
+		echo esc_html( $em ? $em : $rg );
 	} elseif ( 'resort' === $col ) {
 		echo esc_html( (string) get_post_meta( $post_id, '_hotel_resort', true ) );
 	} elseif ( 'rating' === $col ) {
@@ -316,6 +327,9 @@ function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = arra
 	if ( ! empty( $row['region'] ) ) {
 		update_post_meta( $post_id, '_hotel_region', sanitize_key( (string) $row['region'] ) );
 	}
+	if ( ! empty( $row['emirate'] ) ) {
+		update_post_meta( $post_id, '_hotel_emirate', sanitize_key( (string) $row['emirate'] ) );
+	}
 	update_post_meta( $post_id, '_hotel_resort', sanitize_text_field( (string) ( $row['resort'] ?? '' ) ) );
 	update_post_meta( $post_id, '_hotel_rating', (float) ( $row['rating'] ?? 0 ) );
 	update_post_meta( $post_id, '_hotel_usp', sanitize_textarea_field( (string) ( $row['usp'] ?? '' ) ) );
@@ -361,6 +375,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 	$map     = array(
 		'turkey' => 'turkey_hotels_25.json',
 		'egypt'  => 'egypt_hotels_25.json',
+		'uae'    => 'uae_hotels_25.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -380,6 +395,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 		'egipet'  => array(
 			'country' => 'egypt',
 			'title'   => __( '25 эталонных отелей Египта', 'zhiraf-ufa' ),
+		),
+		'oae'     => array(
+			'country' => 'uae',
+			'title'   => __( '25 эталонных отелей ОАЭ', 'zhiraf-ufa' ),
+			'lead'    => __( 'Дубай, Рас-эль-Хайма, Абу-Даби, Шарджа и Аджман: семейный пляж, город, пары и апартаменты — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

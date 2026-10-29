@@ -2,7 +2,7 @@
 /**
  * Curated hotels showcase (local REST only on frontend).
  *
- * Args: country (turkey|egypt), title, lead, region (sharm|hurghada, optional).
+ * Args: country, title, lead, region (egypt), emirate (uae), optional filters.
  *
  * @package Zhiraf_Ufa
  */
@@ -13,12 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $country = ! empty( $args['country'] ) ? sanitize_key( (string) $args['country'] ) : 'turkey';
 $region  = ! empty( $args['region'] ) ? sanitize_key( (string) $args['region'] ) : '';
+$emirate = ! empty( $args['emirate'] ) ? sanitize_key( (string) $args['emirate'] ) : '';
+$section_id_suffix = $country . ( $region ? '-' . $region : '' ) . ( $emirate ? '-' . $emirate : '' );
 $title   = ! empty( $args['title'] ) ? (string) $args['title'] : __( '25 эталонных отелей', 'zhiraf-ufa' );
 $lead    = ! empty( $args['lead'] )
 	? (string) $args['lead']
 	: __( 'Подборка «Жираф» по формату отдыха: фото и выводы по отзывам — на нашем сервере. Цены на туры — из Библио‑Глобус при заявке.', 'zhiraf-ufa' );
 ?>
-<section class="section section--hotels-showcase bg-sand" id="dest-hotels-showcase-<?php echo esc_attr( $country . ( $region ? '-' . $region : '' ) ); ?>" data-hotels-showcase data-hotels-country="<?php echo esc_attr( $country ); ?>"<?php echo $region ? ' data-hotels-region="' . esc_attr( $region ) . '"' : ''; ?>>
+<section class="section section--hotels-showcase bg-sand" id="dest-hotels-showcase-<?php echo esc_attr( $section_id_suffix ); ?>" data-hotels-showcase data-hotels-country="<?php echo esc_attr( $country ); ?>"<?php echo $region ? ' data-hotels-region="' . esc_attr( $region ) . '"' : ''; ?><?php echo $emirate ? ' data-hotels-emirate="' . esc_attr( $emirate ) . '"' : ''; ?>>
 	<div class="container">
 		<div class="section-head section-head--center reveal">
 			<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>

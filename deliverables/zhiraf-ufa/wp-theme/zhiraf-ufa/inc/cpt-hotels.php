@@ -428,6 +428,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 		'indonesia'  => 'indonesia_hotels_25.json',
 		'uzbekistan' => 'uzbekistan_hotels_25.json',
 		'armenia'    => 'armenia_hotels_25.json',
+		'russia'     => 'russia_hotels_50.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -502,6 +503,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 			'country' => 'armenia',
 			'title'   => __( '25 эталонных отелей Армении', 'zhiraf-ufa' ),
 			'lead'    => __( 'Ереван, Дилижан, Цахкадзор, озеро Севан и Джермук: центр столицы, лесные шале, горы и спа, вода и минеральные источники — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'rossiya' => array(
+			'country' => 'russia',
+			'title'   => __( '50 эталонных отелей России', 'zhiraf-ufa' ),
+			'lead'    => __( 'Сочи и Сириус, Красная Поляна, Анапа, КавМинВоды, Петербург и Москва, Калининград и Балтика, Байкал, Алтай и Карелия — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

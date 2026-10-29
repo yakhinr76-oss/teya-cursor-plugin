@@ -16,6 +16,7 @@
  *   php bin/import-hotels.php --country=sri_lanka
  *   php bin/import-hotels.php --country=indonesia
  *   php bin/import-hotels.php --country=uzbekistan
+ *   php bin/import-hotels.php --country=armenia
  *   php bin/import-hotels.php --json=/path/to/hotels.json
  *   php bin/import-hotels.php --country=egypt --skip-photos
  *   php bin/import-hotels.php --dry-run --country=turkey
@@ -60,7 +61,7 @@ require_once $theme_dir . '/inc/cpt-hotels.php';
 $opts = getopt( '', array( 'json:', 'country:', 'skip-photos', 'dry-run', 'help' ) );
 if ( isset( $opts['help'] ) ) {
 	echo "Import hotels JSON into CPT hotels.\n";
-	echo "  --country=turkey|egypt|uae|thailand|vietnam|china|india|maldives|seychelles|sri_lanka|indonesia|uzbekistan  default JSON in theme/data/\n";
+	echo "  --country=turkey|egypt|uae|thailand|vietnam|china|india|maldives|seychelles|sri_lanka|indonesia|uzbekistan|armenia  default JSON in theme/data/\n";
 	echo "  --json=path             explicit JSON file\n";
 	exit( 0 );
 }

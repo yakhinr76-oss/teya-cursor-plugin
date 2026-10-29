@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """
-Optional: enrich hotel JSON in data/ with Tripadvisor Content API photo URLs.
+Optional: enrich hotel JSON in data/ with Tripadvisor photo URLs (Terra or legacy Content API).
 
 The WordPress import (import-hotels.php) sideloads images into the media library.
 It accepts either placeholder basenames in photos[] or direct https:// URLs (see
-import-hotels.php). Server-side import can also pull photos via Terra API when
-ZHIRAF_TA_API_KEY is set — this script is for Content API credentials only.
+import-hotels.php). Server-side import can also pull photos via Terra when
+ZHIRAF_TA_API_KEY is set in wp-config.php.
 
 Usage (from theme root):
-  export TRIPADVISOR_API_KEY='...'
-  export TRIPADVISOR_REFERER='https://yourdomain.ru'
+  export ZHIRAF_TA_API_KEY='...'   # Terra Discover (preferred)
+  # or: export TRIPADVISOR_API_KEY='...'  # legacy Content API
   python3 bin/fetch-hotel-photos-content-api.py --dry-run
-  python3 bin/fetch-hotel-photos-content-api.py --file turkey_hotels_25.json
+  python3 bin/fetch-hotel-photos-content-api.py --file abkhazia_hotels_25.json
+  python3 bin/fetch-hotel-photos-content-api.py --backend terra
+
+Also loads (if present, gitignored): teya-memory/teya.env.local,
+.tripadvisor.env.local in theme root or repo root.
 
 Requires: pip install requests
 """
@@ -54,15 +58,51 @@ DEFAULT_JSON_FILES = (
     "abkhazia_hotels_25.json",
 )
 
-SEARCH_URL = "https://api.content.tripadvisor.com/api/v1/location/search"
-PHOTOS_URL_TEMPLATE = "https://api.content.tripadvisor.com/api/v1/location/{location_id}/photos"
+CONTENT_SEARCH_URL = "https://api.content.tripadvisor.com/api/v1/location/search"
+CONTENT_PHOTOS_URL_TEMPLATE = "https://api.content.tripadvisor.com/api/v1/location/{location_id}/photos"
+TERRA_BASE = "https://terra.tripadvisor.com"
 
 STAR_RE = re.compile(r"\s*\d[+★].*$")
 
+ENV_FILE_CANDIDATES = (
+    THEME_ROOT / ".tripadvisor.env.local",
+    THEME_ROOT.parents[3] / "teya-memory" / "teya.env.local",
+    THEME_ROOT.parents[4] / "teya-memory" / "teya.env.local",
+    Path("/workspace/teya-memory/teya.env.local"),
+    Path("/workspace/.tripadvisor.env.local"),
+)
+
+
+def load_local_env_files() -> None:
+    """Populate os.environ from teya.env.local / .tripadvisor.env.local (no overwrite)."""
+    for path in ENV_FILE_CANDIDATES:
+        if not path.is_file():
+            continue
+        try:
+            for line in path.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, value = line.partition("=")
+                key = key.strip()
+                value = value.strip().strip("'\"")
+                if key and key not in os.environ:
+                    os.environ[key] = value
+        except OSError as exc:
+            print(f"WARN: could not read {path}: {exc}", file=sys.stderr)
+
 
 def api_key() -> str:
-    key = os.environ.get("TRIPADVISOR_API_KEY") or os.environ.get("TRIPADVISOR_CONTENT_API_KEY", "")
-    return key.strip()
+    load_local_env_files()
+    for name in (
+        "ZHIRAF_TA_API_KEY",
+        "TRIPADVISOR_API_KEY",
+        "TRIPADVISOR_CONTENT_API_KEY",
+    ):
+        val = os.environ.get(name, "").strip()
+        if val:
+            return val
+    return ""
 
 
 def referer() -> str:
@@ -92,7 +132,14 @@ def photos_already_remote(photos: list[Any]) -> bool:
     return isinstance(first, str) and first.lower().startswith(("http://", "https://"))
 
 
-def search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
+def terra_headers(key: str) -> dict[str, str]:
+    return {
+        "accept": "application/json",
+        "X-API-Key": key,
+    }
+
+
+def content_search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
     query = f"{clean_hotel_name(hotel_name)} {resort}".strip()
     params = {
         "key": key,
@@ -101,7 +148,7 @@ def search_location_id(session: requests.Session, hotel_name: str, resort: str, 
         "language": "ru",
     }
     try:
-        response = session.get(SEARCH_URL, headers=headers(), params=params, timeout=15)
+        response = session.get(CONTENT_SEARCH_URL, headers=headers(), params=params, timeout=15)
         if response.status_code != 200:
             return None
         data = response.json()
@@ -113,8 +160,44 @@ def search_location_id(session: requests.Session, hotel_name: str, resort: str, 
     return None
 
 
-def fetch_photo_urls(session: requests.Session, location_id: str, key: str, limit: int) -> list[str]:
-    url = PHOTOS_URL_TEMPLATE.format(location_id=location_id)
+def terra_search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
+    clean = clean_hotel_name(hotel_name)
+    geo = resort.split(",")[0].strip() if resort else ""
+    params = {"version": 1, "query": clean, "geo_name": geo}
+    try:
+        response = session.get(
+            f"{TERRA_BASE}/api/catalog/locations/search",
+            headers=terra_headers(key),
+            params=params,
+            timeout=20,
+        )
+        if response.status_code != 200:
+            return None
+        data = response.json()
+        items = data.get("data") or []
+        if not items:
+            return None
+        row = items[0]
+        loc_id = row.get("location_id") or row.get("id")
+        return str(loc_id) if loc_id else None
+    except requests.RequestException as exc:
+        print(f"  terra search error: {exc}")
+    return None
+
+
+def search_location_id(
+    session: requests.Session, hotel_name: str, resort: str, key: str, backend: str
+) -> str | None:
+    if backend == "terra":
+        return terra_search_location_id(session, hotel_name, resort, key)
+    if backend == "content":
+        return content_search_location_id(session, hotel_name, resort, key)
+    loc = terra_search_location_id(session, hotel_name, resort, key)
+    return loc or content_search_location_id(session, hotel_name, resort, key)
+
+
+def content_fetch_photo_urls(session: requests.Session, location_id: str, key: str, limit: int) -> list[str]:
+    url = CONTENT_PHOTOS_URL_TEMPLATE.format(location_id=location_id)
     params = {"key": key, "language": "ru", "limit": limit}
     urls: list[str] = []
     try:
@@ -137,6 +220,50 @@ def fetch_photo_urls(session: requests.Session, location_id: str, key: str, limi
     return urls
 
 
+def terra_fetch_photo_urls(session: requests.Session, location_id: str, key: str, limit: int) -> list[str]:
+    urls: list[str] = []
+    try:
+        response = session.get(
+            f"{TERRA_BASE}/api/locations/{location_id}/photos",
+            headers=terra_headers(key),
+            params={"version": 1},
+            timeout=20,
+        )
+        if response.status_code != 200:
+            return urls
+        data = response.json()
+        for item in data.get("data") or []:
+            images = item.get("images") or {}
+            u = ""
+            for size in ("large", "original", "medium"):
+                block = images.get(size) or {}
+                u = block.get("url") or ""
+                if u:
+                    break
+            if not u and item.get("url"):
+                u = str(item["url"])
+            if u:
+                urls.append(u)
+            if len(urls) >= limit:
+                break
+    except requests.RequestException as exc:
+        print(f"  terra photos error: {exc}")
+    return urls[:limit]
+
+
+def fetch_photo_urls(
+    session: requests.Session, location_id: str, key: str, limit: int, backend: str
+) -> list[str]:
+    if backend == "terra":
+        return terra_fetch_photo_urls(session, location_id, key, limit)
+    if backend == "content":
+        return content_fetch_photo_urls(session, location_id, key, limit)
+    urls = terra_fetch_photo_urls(session, location_id, key, limit)
+    if urls:
+        return urls
+    return content_fetch_photo_urls(session, location_id, key, limit)
+
+
 def process_file(
     path: Path,
     session: requests.Session,
@@ -146,6 +273,7 @@ def process_file(
     limit: int,
     sleep_s: float,
     force: bool,
+    backend: str,
 ) -> int:
     print(f"\n--- {path.name} ---")
     with path.open(encoding="utf-8") as fh:
@@ -165,13 +293,14 @@ def process_file(
             continue
 
         print(f"  {name} ({resort})")
-        loc_id = search_location_id(session, name, resort, key)
+        existing_id = hotel.get("ta_location_id")
+        loc_id = str(existing_id) if existing_id else search_location_id(session, name, resort, key, backend)
         if not loc_id:
             print("    location not found")
             time.sleep(sleep_s)
             continue
 
-        photo_urls = fetch_photo_urls(session, loc_id, key, limit)
+        photo_urls = fetch_photo_urls(session, loc_id, key, limit, backend)
         if not photo_urls:
             print(f"    no photos for location {loc_id}")
             time.sleep(sleep_s)
@@ -196,18 +325,25 @@ def process_file(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Fetch Tripadvisor Content API photo URLs into data/*.json")
+    parser = argparse.ArgumentParser(description="Fetch Tripadvisor photo URLs into data/*.json")
     parser.add_argument("--file", action="append", dest="files", help="Process one data file (repeatable)")
     parser.add_argument("--dry-run", action="store_true", help="Do not write JSON files")
     parser.add_argument("--force", action="store_true", help="Replace photos even if URLs already present")
     parser.add_argument("--limit", type=int, default=3, help="Max photos per hotel (default 3)")
     parser.add_argument("--sleep", type=float, default=0.3, help="Delay between API calls in seconds")
+    parser.add_argument(
+        "--backend",
+        choices=("auto", "terra", "content"),
+        default="auto",
+        help="Terra API (X-API-Key), legacy Content API, or auto (default)",
+    )
     args = parser.parse_args()
 
     key = api_key()
     if not key:
         print(
-            "Set TRIPADVISOR_API_KEY or TRIPADVISOR_CONTENT_API_KEY in the environment.",
+            "Set ZHIRAF_TA_API_KEY, TRIPADVISOR_API_KEY, or TRIPADVISOR_CONTENT_API_KEY "
+            "(Cloud Agent secrets or teya-memory/teya.env.local).",
             file=sys.stderr,
         )
         return 1
@@ -229,6 +365,7 @@ def main() -> int:
             limit=max(1, args.limit),
             sleep_s=max(0.0, args.sleep),
             force=args.force,
+            backend=args.backend,
         )
 
     print(f"\nDone. Hotels updated: {total}")

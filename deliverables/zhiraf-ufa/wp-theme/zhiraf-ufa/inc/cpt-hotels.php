@@ -46,6 +46,7 @@ add_action( 'init', 'zhiraf_ufa_register_hotels_cpt' );
 function zhiraf_ufa_hotel_meta_keys() {
 	return array(
 		'hotel_country'         => 'string',
+		'hotel_region'          => 'string',
 		'hotel_resort'          => 'string',
 		'hotel_rating'          => 'float',
 		'hotel_usp'             => 'string',
@@ -118,6 +119,7 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 		'source_id'       => (int) ( $meta['hotel_source_id'] ?? 0 ),
 		'hotel_name'      => $post->post_title,
 		'country'         => (string) ( $meta['hotel_country'] ?? '' ),
+		'region'          => (string) ( $meta['hotel_region'] ?? '' ),
 		'resort'          => (string) ( $meta['hotel_resort'] ?? '' ),
 		'rating'          => (float) ( $meta['hotel_rating'] ?? 0 ),
 		'usp'             => (string) ( $meta['hotel_usp'] ?? '' ),
@@ -143,6 +145,7 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 			'permission_callback' => '__return_true',
 			'callback'            => function ( WP_REST_Request $req ) {
 				$country  = sanitize_key( (string) $req->get_param( 'country' ) );
+				$region   = sanitize_key( (string) $req->get_param( 'region' ) );
 				$category = sanitize_key( (string) $req->get_param( 'category' ) );
 				$args     = array(
 					'post_type'      => 'hotels',
@@ -157,6 +160,12 @@ function zhiraf_ufa_register_hotels_rest_routes() {
 					$meta_query[] = array(
 						'key'   => '_hotel_country',
 						'value' => $country,
+					);
+				}
+				if ( $region ) {
+					$meta_query[] = array(
+						'key'   => '_hotel_region',
+						'value' => $region,
 					);
 				}
 				if ( $category ) {
@@ -219,6 +228,7 @@ function zhiraf_ufa_hotels_columns( $cols ) {
 		'cb'       => $cols['cb'] ?? '',
 		'title'    => __( 'Отель', 'zhiraf-ufa' ),
 		'category' => __( 'Категория', 'zhiraf-ufa' ),
+		'region'   => __( 'Регион', 'zhiraf-ufa' ),
 		'resort'   => __( 'Курорт', 'zhiraf-ufa' ),
 		'rating'   => __( 'Рейтинг', 'zhiraf-ufa' ),
 		'date'     => $cols['date'] ?? __( 'Дата', 'zhiraf-ufa' ),
@@ -233,6 +243,8 @@ add_filter( 'manage_hotels_posts_columns', 'zhiraf_ufa_hotels_columns' );
 function zhiraf_ufa_hotels_column_render( $col, $post_id ) {
 	if ( 'category' === $col ) {
 		echo esc_html( (string) get_post_meta( $post_id, '_hotel_category_name', true ) );
+	} elseif ( 'region' === $col ) {
+		echo esc_html( (string) get_post_meta( $post_id, '_hotel_region', true ) );
 	} elseif ( 'resort' === $col ) {
 		echo esc_html( (string) get_post_meta( $post_id, '_hotel_resort', true ) );
 	} elseif ( 'rating' === $col ) {
@@ -301,6 +313,9 @@ function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = arra
 	$pros = ! empty( $row['pros'] ) && is_array( $row['pros'] ) ? $row['pros'] : array();
 
 	update_post_meta( $post_id, '_hotel_country', $country );
+	if ( ! empty( $row['region'] ) ) {
+		update_post_meta( $post_id, '_hotel_region', sanitize_key( (string) $row['region'] ) );
+	}
 	update_post_meta( $post_id, '_hotel_resort', sanitize_text_field( (string) ( $row['resort'] ?? '' ) ) );
 	update_post_meta( $post_id, '_hotel_rating', (float) ( $row['rating'] ?? 0 ) );
 	update_post_meta( $post_id, '_hotel_usp', sanitize_textarea_field( (string) ( $row['usp'] ?? '' ) ) );
@@ -332,5 +347,81 @@ function zhiraf_ufa_hotel_upsert_from_row( array $row, array $gallery_ids = arra
  * @return string
  */
 function zhiraf_ufa_turkey_hotels_json_path() {
-	return ZHIRAF_UFA_DIR . '/data/turkey_hotels_25.json';
+	return zhiraf_ufa_hotels_json_path( 'turkey' );
+}
+
+/**
+ * Path to curated hotels JSON by country code (turkey, egypt, …).
+ *
+ * @param string $country Country slug from JSON.
+ * @return string
+ */
+function zhiraf_ufa_hotels_json_path( $country ) {
+	$country = sanitize_key( (string) $country );
+	$map     = array(
+		'turkey' => 'turkey_hotels_25.json',
+		'egypt'  => 'egypt_hotels_25.json',
+	);
+	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
+	return ZHIRAF_UFA_DIR . '/data/' . $file;
+}
+
+/**
+ * Landing slug → hotels REST country filter + copy for showcase block.
+ *
+ * @return array<string,array{country:string,title:string,region?:string,lead?:string}>
+ */
+function zhiraf_ufa_hotels_showcase_for_destinations() {
+	return array(
+		'turciya' => array(
+			'country' => 'turkey',
+			'title'   => __( '25 эталонных отелей Турции', 'zhiraf-ufa' ),
+		),
+		'egipet'  => array(
+			'country' => 'egypt',
+			'title'   => __( '25 эталонных отелей Египта', 'zhiraf-ufa' ),
+		),
+	);
+}
+
+/**
+ * Resort landing slug → hotels showcase (country + optional region filter).
+ *
+ * @return array<string,array{country:string,title:string,region?:string,lead?:string}>
+ */
+function zhiraf_ufa_hotels_showcase_for_resorts() {
+	return array(
+		'egipet/hurgada'        => array(
+			'country' => 'egypt',
+			'region'  => 'hurghada',
+			'title'   => __( 'Эталонные отели Хургады и Макади', 'zhiraf-ufa' ),
+			'lead'    => __( 'Подборка по формату отдыха на побережье Хургады: тексты и фото — на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'egipet/sharm-el-sheyh' => array(
+			'country' => 'egypt',
+			'region'  => 'sharm',
+			'title'   => __( 'Эталонные отели Шарм-эль-Шейха', 'zhiraf-ufa' ),
+			'lead'    => __( 'Рифы, пляжи и формат отдыха: редакционные выводы и локальные фото без внешних API.', 'zhiraf-ufa' ),
+		),
+	);
+}
+
+/**
+ * Modal shell for hotel cards (once per page).
+ */
+function zhiraf_ufa_render_hotel_modal_shell() {
+	static $rendered = false;
+	if ( $rendered ) {
+		return;
+	}
+	$rendered = true;
+	?>
+	<div class="hotel-modal" id="hotel-modal" data-hotel-modal hidden>
+		<div class="hotel-modal__backdrop" data-hotel-modal-close tabindex="-1"></div>
+		<div class="hotel-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="hotel-modal-title">
+			<button type="button" class="hotel-modal__close" data-hotel-modal-close aria-label="<?php esc_attr_e( 'Закрыть', 'zhiraf-ufa' ); ?>">×</button>
+			<div class="hotel-modal__body" data-hotel-modal-body></div>
+		</div>
+	</div>
+	<?php
 }

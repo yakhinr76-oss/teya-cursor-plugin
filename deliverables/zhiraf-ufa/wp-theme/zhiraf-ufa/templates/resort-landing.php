@@ -69,6 +69,7 @@ $resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				'country' => $showcase['country'],
 				'title'   => $showcase['title'],
 				'region'  => $showcase['region'] ?? '',
+				'emirate' => $showcase['emirate'] ?? '',
 				'lead'    => $showcase['lead'] ?? '',
 			)
 		);

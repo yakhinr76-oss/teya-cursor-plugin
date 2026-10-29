@@ -410,6 +410,7 @@ function zhiraf_ufa_hotels_json_path( $country ) {
 		'india'    => 'india_hotels_25.json',
 		'maldives'   => 'maldives_hotels_25.json',
 		'seychelles' => 'seychelles_hotels_25.json',
+		'sri_lanka'  => 'sri_lanka_hotels_25.json',
 	);
 	$file    = ! empty( $map[ $country ] ) ? $map[ $country ] : $country . '_hotels_25.json';
 	return ZHIRAF_UFA_DIR . '/data/' . $file;
@@ -464,6 +465,11 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 			'country' => 'seychelles',
 			'title'   => __( '25 эталонных отелей Сейшел', 'zhiraf-ufa' ),
 			'lead'    => __( 'Маэ, Праслин и Ла-Диг: семьи, пары, вело-остров, Self-Catering и баланс 4–5★ у моря — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+		),
+		'shri-lanka' => array(
+			'country' => 'sri_lanka',
+			'title'   => __( '25 эталонных отелей Шри-Ланки', 'zhiraf-ufa' ),
+			'lead'    => __( 'Юго-Запад, восток и запад: семьи, пары и серф, Бентота и Берувела, черепахи и разумный баланс — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 	);
 }

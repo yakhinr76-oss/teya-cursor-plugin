@@ -28,21 +28,27 @@ function zhiraf_ufa_destination_module_types() {
  * @return array<string,string>
  */
 function zhiraf_ufa_destination_default_module_map() {
+	/*
+	 * Один центральный модуль на лендинг:
+	 * - battle — выбор между двумя курортами (VS);
+	 * - season — климат/месяцы (когда куда лететь);
+	 * - vibe — сценарий отдыха → квиз.
+	 */
 	return array(
 		'turciya'    => 'battle',
-		'oae'        => 'battle',
+		'oae'        => 'season',
 		'egipet'     => 'battle',
 		'tailand'    => 'battle',
-		'vietnam'    => 'battle',
+		'vietnam'    => 'season',
 		'kitaj'      => 'battle',
 		'indiya'     => 'battle',
-		'shri-lanka' => 'battle',
+		'shri-lanka' => 'season',
 		'indoneziya' => 'battle',
 		'maldivy'    => 'battle',
 		'sejshely'   => 'battle',
-		'uzbekistan' => 'battle',
-		'armeniya'   => 'battle',
-		'rossiya'    => 'battle',
+		'uzbekistan' => 'vibe',
+		'armeniya'   => 'vibe',
+		'rossiya'    => 'vibe',
 		'abkhaziya'  => 'battle',
 	);
 }
@@ -830,6 +836,19 @@ function zhiraf_ufa_render_destination_central_module( $slug, $dest ) {
 				);
 			}
 			if ( empty( $seasons ) ) {
+				if ( function_exists( 'zhiraf_ufa_get_vibe_section' ) ) {
+					$vibe_section = zhiraf_ufa_get_vibe_section( $slug, $dest );
+					if ( $vibe_section ) {
+						get_template_part(
+							'template-parts/destination/vibe-cards',
+							null,
+							array(
+								'section'      => $vibe_section,
+								'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+							)
+						);
+					}
+				}
 				break;
 			}
 			get_template_part(

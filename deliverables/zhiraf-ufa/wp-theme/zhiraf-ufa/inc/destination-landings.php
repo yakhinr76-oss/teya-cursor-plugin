@@ -33,6 +33,7 @@ function zhiraf_ufa_destination_landing_data() {
 			'image'          => 'resort-turciya-kemer-2.jpg',
 			'image_alt'      => __( 'Турция — Средиземное море, курорт Кемер', 'zhiraf-ufa' ),
 			'hero_lead'      => __( 'Подбираем туры в Турцию с вылетом из Уфы: семейные отели с аквапарками, спокойные резорты для пар и премиальные комплексы Ultra All Inclusive. Честно разбираем варианты без фиктивных цен и скрытых доплат.', 'zhiraf-ufa' ),
+			'landing_module'      => 'battle',
 			'vibes_after_central' => true,
 			'hide_geo_block'      => true,
 			'seo_prose_accordions' => true,
@@ -129,6 +130,8 @@ function zhiraf_ufa_destination_landing_data() {
 			),
 		),
 		'oae'      => array(
+			'landing_module'      => 'season',
+			'climate_module_title' => __( 'Когда ехать в ОАЭ: климат по сезонам', 'zhiraf-ufa' ),
 			'name'           => __( 'ОАЭ', 'zhiraf-ufa' ),
 			'h1'             => __( 'Туры в ОАЭ из Уфы', 'zhiraf-ufa' ),
 			'title'          => __( 'ОАЭ из Уфы — туры и отдых в Дубае | Жираф', 'zhiraf-ufa' ),
@@ -461,6 +464,8 @@ function zhiraf_ufa_destination_landing_data() {
 			),
 		),
 		'vietnam'  => array(
+			'landing_module'       => 'season',
+			'climate_module_title' => __( 'Вьетнам: сезоны Нячанга, Фукуока и побережья', 'zhiraf-ufa' ),
 			'name'           => __( 'Вьетнам', 'zhiraf-ufa' ),
 			'h1'             => __( 'Туры во Вьетнам из Уфы', 'zhiraf-ufa' ),
 			'title'          => __( 'Вьетнам из Уфы — туры в Нячанг и на Фукуок | Жираф', 'zhiraf-ufa' ),

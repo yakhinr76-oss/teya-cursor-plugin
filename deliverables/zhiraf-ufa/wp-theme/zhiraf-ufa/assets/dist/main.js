@@ -648,4 +648,44 @@
       postForm(quizForm, 'zhiraf_quiz');
     });
   }
+
+  qsa('[data-dest-season-module]').forEach(function (root) {
+    var tabs = qsa('[data-season-tab]', root);
+    var cards = qsa('[data-season-card]', root);
+    if (!tabs.length || !cards.length) {
+      return;
+    }
+    function activate(index) {
+      tabs.forEach(function (tab, i) {
+        var on = i === index;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      cards.forEach(function (card, i) {
+        var on = i === index;
+        card.classList.toggle('is-active', on);
+        if (on) {
+          card.removeAttribute('hidden');
+        } else {
+          card.setAttribute('hidden', '');
+        }
+      });
+    }
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var idx = parseInt(tab.getAttribute('data-season-index') || '0', 10);
+        if (!isNaN(idx)) {
+          activate(idx);
+        }
+      });
+    });
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var idx = parseInt(card.getAttribute('data-season-index') || '0', 10);
+        if (!isNaN(idx)) {
+          activate(idx);
+        }
+      });
+    });
+  });
 })();

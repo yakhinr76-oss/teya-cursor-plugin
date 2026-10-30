@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 
-$dest_all   = zhiraf_ufa_destinations();
 $audience   = zhiraf_ufa_audience_segments();
 $faq_items  = zhiraf_ufa_home_faq_items();
 ?>
@@ -174,75 +173,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--destinations bg-milky">
-		<div class="container destinations">
-			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Направления и вылеты из Уфы', 'zhiraf-ufa' ); ?></h2>
-				<div class="section-tabs dest-tabs" role="tablist">
-					<button type="button" class="tab-btn is-active" data-filter="all"><?php esc_html_e( 'Популярные', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="oae"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="turciya"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="egipet"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="tailand"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="vietnam"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></button>
-				</div>
-			</div>
-			<div class="dest-premium-row">
-				<?php foreach ( $dest_all as $dest ) : ?>
-					<a href="<?php echo esc_url( $dest['url'] ); ?>" class="dest-premium-card dest-card" data-dest="<?php echo esc_attr( $dest['slug'] ); ?>">
-						<div class="dest-premium-card__bg">
-							<?php zhiraf_ufa_img( $dest['image'], $dest['alt'], 'dest-premium-card__img', true ); ?>
-						</div>
-						<div class="dest-premium-card__content">
-							<h3 class="dest-premium-card__title"><?php echo esc_html( $dest['name'] ); ?></h3>
-							<p class="dest-premium-card__subtitle"><?php esc_html_e( 'Туры из Уфы', 'zhiraf-ufa' ); ?></p>
-						</div>
-					</a>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="dest-flight-logistics reveal" style="margin-top:40px;background:var(--color-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--color-border);">
-				<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
-					<div>
-						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Перелёт из Уфы', 'zhiraf-ufa' ); ?></h3>
-						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-							<?php esc_html_e( 'Турция, Египет, ОАЭ: в зависимости от даты — прямой рейс или стыковка в Москве. Тип перелёта указан на каждой карточке по данным «Библио-Глобус».', 'zhiraf-ufa' ); ?>
-						</p>
-					</div>
-					<div>
-						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Направления со стыковкой через Москву', 'zhiraf-ufa' ); ?></h3>
-						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-							<?php esc_html_e( 'Таиланд и Вьетнам: сейчас туроператор «Библио-Глобус» предлагает маршруты из Уфы с пересадкой в Москве. Поможем подобрать удобные стыковки.', 'zhiraf-ufa' ); ?>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section section--hot-tours bg-sand" id="hot-tours">
-		<div class="container">
-			<div class="section-head reveal">
-				<div>
-					<h2 class="section-title"><?php esc_html_e( 'Горящие туры из Уфы и Москвы', 'zhiraf-ufa' ); ?></h2>
-					<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
-						<?php esc_html_e( 'Минимальные цены туроператора «Библио-Глобус» за пакет на 2 взрослых (перелёт и отель). На карточке — состав тура по самому доступному предложению на сегодня. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
-					</p>
-				</div>
-			</div>
-
-			<p class="hot-bento-disclaimer reveal">
-				<?php
-				printf(
-					esc_html__( 'Цены «от» — ориентир туроператора на %1$s. Итоговую стоимость с учётом дат, отеля и перелёта фиксируем в договоре перед оплатой.', 'zhiraf-ufa' ),
-					esc_html( function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : gmdate( 'd.m.Y' ) )
-				);
-				?>
-			</p>
-
-			<?php get_template_part( 'template-parts/home/hot-bento' ); ?>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
 
 	<section class="section section--offers-wordstat bg-milky">
 		<div class="container">

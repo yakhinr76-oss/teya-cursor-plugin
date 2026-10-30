@@ -223,31 +223,45 @@
   /* Tour price filter tabs */
   function bindTourFilter(bar) {
     var tabs = qsa('[data-tour-filter]', bar);
-    var section = bar.closest('.section--hot-tours') || bar.closest('.section--dest-tours') || bar.parentElement;
+    var section = bar.closest('.section--unified-catalog') || bar.closest('.section--hot-tours') || bar.closest('.section--dest-tours') || bar.parentElement;
     var wraps = qsa('.dest-tour-card-wrap', section);
     var cards = qsa('.tour-card', section);
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
-        tabs.forEach(function (c) { c.classList.remove('is-active'); });
+        tabs.forEach(function (c) {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-selected', 'false');
+        });
         tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
         var filter = tab.getAttribute('data-tour-filter');
         function applyFilter(card) {
-          var dest = card.getAttribute('data-dest');
+          var dest = card.getAttribute('data-dest') || '';
+          if (filter === 'all') {
+            return card.getAttribute('data-catalog-all') === '1';
+          }
+          if (filter === 'rossiya-domestic') {
+            return dest === 'rossiya' || dest === 'abkhaziya';
+          }
           var region = card.getAttribute('data-tour-region') || '';
-          return filter === 'all' || dest === filter || (region && region === filter);
+          return dest === filter || (region && region === filter);
         }
         if (wraps.length) {
           wraps.forEach(function (wrap) {
             var card = qs('.tour-card', wrap) || wrap;
             wrap.classList.toggle('is-hidden', !applyFilter(card));
           });
-        } else {
+		} else {
           cards.forEach(function (card) {
             card.classList.toggle('is-hidden', !applyFilter(card));
           });
         }
       });
     });
+    var activeTab = tabs.filter(function (t) { return t.classList.contains('is-active'); })[0] || tabs[0];
+    if (activeTab) {
+      activeTab.click();
+    }
   }
   qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
 

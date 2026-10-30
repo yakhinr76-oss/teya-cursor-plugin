@@ -23,6 +23,11 @@ def main() -> int:
     loc = sub.add_parser("location", help="GET /locations/{id}")
     loc.add_argument("location_id", type=int)
 
+    photos = sub.add_parser("photos", help="GET /locations/{id}/photos (CDN URLs)")
+    photos.add_argument("location_id", type=int)
+    photos.add_argument("--size", type=int, default=5)
+    photos.add_argument("--page", type=int, default=1)
+
     args = parser.parse_args()
     try:
         api_key, source = resolve_api_key(root=args.project_root)
@@ -37,6 +42,12 @@ def main() -> int:
         if args.category:
             params["category"] = args.category
         status, body = terra_get("/locations/search", api_key=api_key, params=params)
+    elif args.cmd == "photos":
+        status, body = terra_get(
+            f"/locations/{args.location_id}/photos",
+            api_key=api_key,
+            params={"page": max(1, args.page), "size": max(1, min(args.size, 100))},
+        )
     else:
         status, body = terra_get(
             f"/locations/{args.location_id}",

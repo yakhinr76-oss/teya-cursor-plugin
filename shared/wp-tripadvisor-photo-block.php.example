@@ -1,0 +1,85 @@
+<?php
+/**
+ * Tripadvisor hotel photo block — CDN embed + link out (no re-host).
+ * Copy to theme inc/ta-hotel-photos.php and require from functions.php.
+ *
+ * Expects post meta (from ta-hotel-photos.json import):
+ *   _teya_ta_url          — Tripadvisor property URL
+ *   _teya_ta_lead_photo   — dynamic-media.tacdn.com URL
+ *   _teya_ta_photo_json   — optional JSON array of {cdn_url, source}
+ */
+
+declare(strict_types=1);
+
+function teya_ta_photo_placeholder_uri(): string {
+	return get_template_directory_uri() . '/assets/images/ta-photo-placeholder.svg';
+}
+
+/**
+ * @param array{tripadvisor_url?:string,lead_photo_url?:string,photos?:array<int,array<string,mixed>>} $hotel
+ */
+function teya_render_ta_hotel_photo_block( array $hotel, array $attrs = array() ): string {
+	$ta_url = esc_url( $hotel['tripadvisor_url'] ?? '' );
+	if ( $ta_url === '' ) {
+		return '';
+	}
+
+	$cdn = esc_url( $hotel['lead_photo_url'] ?? '' );
+	if ( $cdn === '' && ! empty( $hotel['photos'][0]['cdn_url'] ) ) {
+		$cdn = esc_url( (string) $hotel['photos'][0]['cdn_url'] );
+	}
+
+	$class = isset( $attrs['class'] ) ? esc_attr( (string) $attrs['class'] ) : 'ta-hotel-photo';
+	$placeholder = esc_url( teya_ta_photo_placeholder_uri() );
+	$alt = isset( $attrs['alt'] ) ? esc_attr( (string) $attrs['alt'] ) : esc_attr__( 'Фото отеля на Tripadvisor', 'teya' );
+
+	$img = '';
+	if ( $cdn !== '' ) {
+		$img = sprintf(
+			'<img class="%1$s__img" src="%2$s" alt="%3$s" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'%4$s\';" />',
+			esc_attr( $class ),
+			$cdn,
+			$alt,
+			$placeholder
+		);
+	}
+
+	$see_all = sprintf(
+		'<a class="%1$s__link-all" href="%2$s" rel="noopener noreferrer" target="_blank">%3$s</a>',
+		esc_attr( $class ),
+		$ta_url,
+		esc_html__( 'Все фото на Tripadvisor', 'teya' )
+	);
+
+	$inner = $img !== ''
+		? sprintf( '<a class="%1$s__link" href="%2$s" rel="noopener noreferrer" target="_blank">%3$s</a>', esc_attr( $class ), $ta_url, $img )
+		: '';
+
+	return sprintf(
+		'<figure class="%1$s" data-source="tripadvisor">%2$s<p class="%1$s__attrib">%3$s <span class="%1$s__brand">Tripadvisor</span></p></figure>',
+		esc_attr( $class ),
+		$inner,
+		$see_all
+	);
+}
+
+function teya_ta_hotel_photo_block_for_post( int $post_id ): string {
+	$ta_url = (string) get_post_meta( $post_id, '_teya_ta_url', true );
+	$lead   = (string) get_post_meta( $post_id, '_teya_ta_lead_photo', true );
+	$raw    = (string) get_post_meta( $post_id, '_teya_ta_photo_json', true );
+	$photos = array();
+	if ( $raw !== '' ) {
+		$decoded = json_decode( $raw, true );
+		if ( is_array( $decoded ) ) {
+			$photos = $decoded;
+		}
+	}
+
+	return teya_render_ta_hotel_photo_block(
+		array(
+			'tripadvisor_url' => $ta_url,
+			'lead_photo_url'  => $lead,
+			'photos'          => $photos,
+		)
+	);
+}

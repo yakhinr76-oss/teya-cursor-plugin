@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 
-$audience   = zhiraf_ufa_audience_segments();
 $faq_items  = zhiraf_ufa_home_faq_items();
 ?>
 <main id="primary" class="site-main site-main--home">
@@ -48,48 +47,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--audience bg-milky" id="audience-tabs">
-		<div class="container">
-			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Кому подойдёт наш подбор', 'zhiraf-ufa' ); ?></h2>
-			</div>
-			<div class="audience-tabs">
-				<div class="audience-tabs__nav" role="tablist" aria-label="<?php esc_attr_e( 'Сегменты аудитории', 'zhiraf-ufa' ); ?>">
-					<?php foreach ( $audience as $i => $seg ) : ?>
-						<button
-							type="button"
-							class="audience-tabs__tab<?php echo 0 === $i ? ' is-active' : ''; ?>"
-							role="tab"
-							id="audience-tab-<?php echo esc_attr( $seg['id'] ); ?>"
-							aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"
-							aria-controls="audience-panel-<?php echo esc_attr( $seg['id'] ); ?>"
-							data-audience="<?php echo esc_attr( $seg['id'] ); ?>"
-						><?php echo esc_html( $seg['label'] ); ?></button>
-					<?php endforeach; ?>
-				</div>
-				<?php foreach ( $audience as $i => $seg ) : ?>
-					<div
-						class="audience-tabs__panel reveal<?php echo 0 === $i ? ' is-active' : ''; ?>"
-						role="tabpanel"
-						id="audience-panel-<?php echo esc_attr( $seg['id'] ); ?>"
-						aria-labelledby="audience-tab-<?php echo esc_attr( $seg['id'] ); ?>"
-						data-audience-panel="<?php echo esc_attr( $seg['id'] ); ?>"
-						<?php echo $i > 0 ? 'hidden' : ''; ?>
-					>
-						<ul class="audience-tabs__list">
-							<?php foreach ( $seg['items'] as $item ) : ?>
-								<li><?php echo esc_html( $item ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-						<div class="audience-tabs__actions">
-							<button type="button" class="btn btn--primary" data-quiz-open><?php echo esc_html( $seg['cta'] ); ?></button>
-							<a class="audience-tabs__link" href="<?php echo esc_url( $seg['link'] ); ?>"><?php esc_html_e( 'Подробнее', 'zhiraf-ufa' ); ?></a>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/home-quiz-inline' ); ?>
 
 	<section class="section section--how-it-works">
 		<div class="container">
@@ -216,28 +174,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--form lead-action" id="lead-action">
-		<div class="container reveal">
-			<div class="form-premium">
-				<div class="form-premium__text">
-					<h2 class="section-title"><?php esc_html_e( 'Оставьте заявку на подбор', 'zhiraf-ufa' ); ?></h2>
-					<p><?php esc_html_e( 'Перезвоним в рабочее время и уточним детали поездки.', 'zhiraf-ufa' ); ?></p>
-				</div>
-				<form class="zhiraf-form" data-action="zhiraf_lead">
-					<div class="form-premium__fields">
-						<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" />
-						<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" />
-						<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Отправить', 'zhiraf-ufa' ); ?></button>
-					</div>
-					<?php zhiraf_ufa_consent_fields( 'home-lead' ); ?>
-					<p class="form-status" role="status" aria-live="polite"></p>
-				</form>
-				<p class="form-premium__alt">
-					<button type="button" class="btn btn--outline btn--sm" data-quiz-open><?php esc_html_e( 'Или пройти квиз', 'zhiraf-ufa' ); ?></button>
-				</p>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/lead-magnet' ); ?>
 
 	<section class="section section--editorial editorial-blog-teaser bg-milky">
 		<div class="container">

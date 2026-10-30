@@ -418,25 +418,158 @@
   }
   showBanner();
 
-  /* Quiz modal */
+  /* Quiz wizard (inline #home-quiz + modal #quiz-form) */
   var modal = qs('#quiz-modal');
   var quizForm = qs('#quiz-form');
+  var homeQuizSection = qs('#quiz') || qs('#home-quiz');
+
   function trackQuizStep(stepIndex) {
     window.zhirafTrack('quiz_step_' + (stepIndex + 1), { step: stepIndex + 1 });
   }
+
+  function fieldValue(form, name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    if (!el) return '';
+    if (el.type === 'radio') {
+      var checked = form.querySelector('[name="' + name + '"]:checked');
+      return checked ? checked.value : '';
+    }
+    return el.value || '';
+  }
+
+  function syncQuizWishes(form) {
+    var wishes = qs('[name="quiz_wishes"]', form);
+    if (!wishes) return;
+    var parts = [
+      fieldValue(form, 'quiz_destination') ? 'Куда: ' + fieldValue(form, 'quiz_destination') : '',
+      fieldValue(form, 'quiz_composition') ? 'Состав: ' + fieldValue(form, 'quiz_composition') : '',
+      fieldValue(form, 'quiz_child_age') ? 'Ребёнок: ' + fieldValue(form, 'quiz_child_age') : '',
+      fieldValue(form, 'quiz_timing') ? 'Срок: ' + fieldValue(form, 'quiz_timing') : '',
+      fieldValue(form, 'quiz_duration') ? 'Ночей: ' + fieldValue(form, 'quiz_duration') : '',
+      fieldValue(form, 'quiz_channel') ? 'Связь: ' + fieldValue(form, 'quiz_channel') : '',
+    ].filter(Boolean);
+    wishes.value = parts.join('. ');
+    var month = qs('[name="quiz_month"]', form);
+    if (month && fieldValue(form, 'quiz_timing')) {
+      month.value = fieldValue(form, 'quiz_timing');
+    }
+  }
+
+  function updateQuizSubmitLabel(form) {
+    var btn = qs('[data-quiz-submit-label]', form);
+    var channel = fieldValue(form, 'quiz_channel') || 'WhatsApp';
+    if (!btn) return;
+    if (channel === 'Telegram') {
+      btn.textContent = 'Получить расчёт туров в Telegram →';
+    } else {
+      btn.textContent = 'Получить расчёт туров в мессенджер →';
+    }
+  }
+
+  function initQuizWizard(form) {
+    if (!form) return;
+    if (form.dataset.quizWizardInit === '1') {
+      return;
+    }
+    form.dataset.quizWizardInit = '1';
+    var steps = qsa('.quiz-step', form);
+    if (!steps.length) return;
+    var current = 0;
+    var progressBar = qs('.quiz-wizard__progress-bar', form);
+    var progressLabel = qs('[data-quiz-progress-label]', form);
+
+    var progressPercent = qs('[data-quiz-progress-percent]', form);
+    var stepTitles = [
+      'Шаг 1 из 4: Куда планируете полететь?',
+      'Шаг 2 из 4: В каком составе летите?',
+      'Шаг 3 из 4: Даты вылета и длительность',
+      'Финальный шаг: Получение подборки',
+    ];
+    var stepPercents = ['25%', '50%', '75%', '100%'];
+
+    function updateProgress(n) {
+      if (progressBar) {
+        progressBar.style.width = stepPercents[n] || '25%';
+      }
+      if (progressPercent) {
+        progressPercent.textContent = stepPercents[n] || '25%';
+      }
+      if (progressLabel) {
+        progressLabel.textContent = stepTitles[n] || stepTitles[0];
+      }
+    }
+
+    function validateQuizStep(stepEl) {
+      if (!stepEl) return false;
+      var radioGroups = {};
+      qsa('input[type="radio"]', stepEl).forEach(function (field) {
+        if (field.required || field.hasAttribute('required')) {
+          radioGroups[field.name] = true;
+        }
+      });
+      var ok = true;
+      Object.keys(radioGroups).forEach(function (name) {
+        if (!form.querySelector('[name="' + name + '"]:checked')) {
+          ok = false;
+        }
+      });
+      qsa('input[type="tel"], select, textarea', stepEl).forEach(function (field) {
+        if (field.required && !field.checkValidity()) {
+          ok = false;
+          field.reportValidity();
+        }
+      });
+      return ok;
+    }
+
+    function goStep(stepNumber) {
+      var n = stepNumber - 1;
+      if (n < 0 || n >= steps.length) return;
+      steps.forEach(function (step) {
+        var num = parseInt(step.getAttribute('data-step') || '0', 10);
+        var active = num === stepNumber;
+        step.classList.toggle('is-active', active);
+        step.hidden = !active;
+      });
+      current = n;
+      updateProgress(n);
+      trackQuizStep(n);
+    }
+
+    qsa('[data-quiz-go]', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = parseInt(btn.getAttribute('data-quiz-go') || '1', 10);
+        if (target > current + 1 && !validateQuizStep(steps[current])) {
+          return;
+        }
+        goStep(target);
+      });
+    });
+
+    qsa('input[name="quiz_channel"]', form).forEach(function (input) {
+      input.addEventListener('change', function () {
+        updateQuizSubmitLabel(form);
+      });
+    });
+
+    form.addEventListener('submit', function () {
+      syncQuizWishes(form);
+    });
+
+    goStep(1);
+    updateQuizSubmitLabel(form);
+  }
+
+  qsa('.js-quiz-wizard').forEach(initQuizWizard);
+
   function openQuiz() {
     if (!modal || !quizForm) return;
-    goStep(0);
-    trackQuizStep(0);
     modal.removeAttribute('hidden');
     modal.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
     document.body.classList.add('quiz-open');
-    var first = qs('.quiz-step.is-active input, .quiz-step.is-active select', quizForm);
-    if (first) {
-      try { first.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
-    }
   }
+
   function closeQuiz() {
     if (!modal) return;
     modal.setAttribute('hidden', '');
@@ -453,69 +586,33 @@
     active: { composition: '', wishTag: '[Активный отдых / Экскурсии]' },
   };
 
-  function applyQuizVibeFromButton(btn) {
-    if (!quizForm) return;
-    var vibeField = qs('[name="vibe"]', quizForm);
+  function applyQuizPrefillToForm(form, btn) {
+    if (!form) return;
+    var vibeField = qs('[name="vibe"]', form);
     var vibeSlug = btn.getAttribute('data-vibe') || '';
     var prefill = btn.getAttribute('data-quiz-prefill') || '';
-    var vibeTitle = btn.getAttribute('data-vibe-title') || '';
-    var wishes = qs('[name="quiz_wishes"]', quizForm);
-
-    qsa('[name="quiz_composition"]', quizForm).forEach(function (radio) {
-      radio.checked = false;
-    });
-    if (vibeField) {
-      vibeField.value = vibeSlug;
+    if (vibeField) vibeField.value = vibeSlug;
+    if (prefill) {
+      var wishes = qs('[name="quiz_wishes"]', form);
+      if (wishes) wishes.value = prefill;
     }
-
     var map = vibeQuizMap[vibeSlug] || null;
     if (map && map.composition) {
-      var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', quizForm);
-      if (target) {
-        target.checked = true;
-      }
-    }
-
-    if (wishes) {
-      var parts = [];
-      if (prefill) {
-        parts.push(prefill);
-      }
-      if (vibeTitle) {
-        parts.push('Вайб: ' + vibeTitle);
-      }
-      if (map && map.wishTag) {
-        parts.push(map.wishTag);
-      }
-      wishes.value = parts.join('. ').trim();
-    } else if (prefill && wishes) {
-      wishes.value = prefill;
-    }
-  }
-
-  function applyQuizPrefillOnly(btn) {
-    if (!quizForm) return;
-    var vibeField = qs('[name="vibe"]', quizForm);
-    if (vibeField) {
-      vibeField.value = '';
-    }
-    var prefill = btn.getAttribute('data-quiz-prefill');
-    if (prefill) {
-      var wishes = qs('[name="quiz_wishes"]', quizForm);
-      if (wishes) {
-        wishes.value = prefill;
-      }
+      var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', form);
+      if (target) target.checked = true;
     }
   }
 
   qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      if (btn.getAttribute('data-vibe')) {
-        applyQuizVibeFromButton(btn);
-      } else {
-        applyQuizPrefillOnly(btn);
-      }
       quizOpenGoal(btn);
+      if (homeQuizSection && btn.getAttribute('data-quiz-modal-only') !== '1') {
+        var homeForm = qs('#home-quiz-form');
+        applyQuizPrefillToForm(homeForm, btn);
+        homeQuizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      applyQuizPrefillToForm(quizForm, btn);
       openQuiz();
     });
   });
@@ -526,55 +623,50 @@
     if (e.key === 'Escape') closeQuiz();
   });
 
-  var steps = qsa('.quiz-step', quizForm);
-  var current = 0;
-  function validateQuizStep(stepEl) {
-    if (!stepEl) return false;
-    var fields = qsa('input, select, textarea', stepEl).filter(function (f) {
-      return f.type !== 'hidden' && !f.classList.contains('zhiraf-hp');
+  qsa('[data-lead-channel]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var form = btn.closest('form');
+      if (!form) return;
+      var ch = qs('[name="contact_channel"]', form);
+      if (ch) ch.value = btn.getAttribute('data-lead-channel') || '';
     });
-    var ok = true;
-    fields.forEach(function (field) {
-      if (!field.checkValidity()) {
-        ok = false;
-        field.reportValidity();
-      }
-    });
-    return ok;
-  }
-  function goStep(n) {
-    steps.forEach(function (step, i) {
-      var active = i === n;
-      step.classList.toggle('is-active', active);
-      step.hidden = !active;
-    });
-    current = n;
-    var activeBtn = qs('.quiz-next', steps[n]);
-    if (activeBtn) {
-      activeBtn.disabled = false;
-      activeBtn.removeAttribute('aria-busy');
-    }
-  }
-  qsa('.quiz-next', quizForm).forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      btn.disabled = false;
-      btn.removeAttribute('aria-busy');
-      if (!validateQuizStep(steps[current])) {
+  });
+
+  function bindRuPhoneMask(input) {
+    if (!input || input.dataset.phoneMaskBound === '1') return;
+    input.dataset.phoneMaskBound = '1';
+    input.addEventListener('input', function (e) {
+      var val = e.target.value.replace(/\D/g, '');
+      if (val.charAt(0) === '8') val = '7' + val.slice(1);
+      if (val.charAt(0) !== '7') val = '7' + val;
+      val = val.slice(0, 11);
+      var parts = val.match(/^(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+      if (!parts) return;
+      if (!parts[2]) {
+        e.target.value = parts[1] ? '+7 (' : '';
         return;
       }
-      if (current < steps.length - 1) {
-        goStep(current + 1);
-        trackQuizStep(current);
+      e.target.value = '+7 (' + parts[2] + (parts[3] ? ') ' + parts[3] : '') + (parts[4] ? '-' + parts[4] : '') + (parts[5] ? '-' + parts[5] : '');
+    });
+  }
+
+  qsa('[data-phone-mask]').forEach(bindRuPhoneMask);
+
+  var leadMagnetForm = qs('#lead-magnet-form');
+  if (leadMagnetForm) {
+    leadMagnetForm.addEventListener('submit', function () {
+      var picked = leadMagnetForm.querySelector('[name="lead_messenger"]:checked');
+      var channel = qs('[name="contact_channel"]', leadMagnetForm);
+      if (picked && channel) {
+        channel.value = picked.value;
+      }
+      var dest = qs('[name="destination"]', leadMagnetForm);
+      var msg = qs('[name="message"]', leadMagnetForm);
+      if (dest && msg && dest.value.trim()) {
+        msg.value = msg.value + '. ' + dest.value.trim();
       }
     });
-  });
-  qsa('.quiz-prev', quizForm).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (current > 0) goStep(current - 1);
-    });
-  });
+  }
 
   var leadFormStarted = {};
   qsa('.zhiraf-form').forEach(function (form) {
@@ -589,16 +681,6 @@
       });
     });
   });
-
-  function fieldValue(form, name) {
-    var el = form.querySelector('[name="' + name + '"]');
-    if (!el) return '';
-    if (el.type === 'radio') {
-      var checked = form.querySelector('[name="' + name + '"]:checked');
-      return checked ? checked.value : '';
-    }
-    return el.value || '';
-  }
 
   function trackFormSuccess(form, action) {
     if (action === 'zhiraf_quiz') {
@@ -733,17 +815,6 @@
       postForm(form, action);
     });
   });
-
-  if (quizForm) {
-    quizForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!quizForm.checkValidity()) {
-        quizForm.reportValidity();
-        return;
-      }
-      postForm(quizForm, 'zhiraf_quiz');
-    });
-  }
 
   qsa('[data-dest-season-module]').forEach(function (root) {
     var tabs = qsa('[data-season-tab]', root);

@@ -244,7 +244,106 @@ function zhiraf_ufa_vibe_image_map_for_slug( $slug ) {
 			'active' => 'resort-phuket.jpg',
 		),
 	);
-	return isset( $maps[ $slug ] ) ? $maps[ $slug ] : array();
+	return isset( $map[ $slug ] ) ? $map[ $slug ] : array();
+}
+
+/**
+ * Vibe section for non-beach / excursion destinations (Узбекистан, Армения).
+ *
+ * @param string $slug Destination slug.
+ * @param string $name Localized country name.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_cultural_vibe_section( $slug, $name ) {
+	if ( 'uzbekistan' === $slug ) {
+		return array(
+			'title'    => sprintf(
+				/* translators: %s: country name */
+				__( 'Какой формат поездки %s вам ближе?', 'zhiraf-ufa' ),
+				$name
+			),
+			'subtitle' => __( 'Выберите сценарий — подберём маршрут и отели по данным туроператора', 'zhiraf-ufa' ),
+			'cards'    => array(
+				array(
+					'vibe_title'    => __( 'Семья с детьми', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Самарканд, площадь Регистан, короткие переезды и отели с бассейном.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Самарканд', 'zhiraf-ufa' ),
+					'vibe_color'    => 'teal',
+					'vibe_slug'     => 'family',
+					'vibe_image'    => 'resort-samarkand.jpg',
+				),
+				array(
+					'vibe_title'    => __( 'Романтика и атмосфера', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Бухара на закате, восточные базары, уютные бутик-отели.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Бухара', 'zhiraf-ufa' ),
+					'vibe_color'    => 'coral',
+					'vibe_slug'     => 'couple',
+					'vibe_image'    => 'country-uzbekistan.jpg',
+				),
+				array(
+					'vibe_title'    => __( 'Город и базары', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Ташкент, метро, современные отели — удобная стартовая точка маршрута.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Ташкент', 'zhiraf-ufa' ),
+					'vibe_color'    => 'indigo',
+					'vibe_slug'     => 'city',
+					'vibe_image'    => 'alt-uzbekistan-3.jpg',
+				),
+				array(
+					'vibe_title'    => __( 'Истории и крепости', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Хива, медресе, минареты — максимум экскурсий за поездку.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Хива', 'zhiraf-ufa' ),
+					'vibe_color'    => 'amber',
+					'vibe_slug'     => 'active',
+					'vibe_image'    => 'alt-uzbekistan-2.jpg',
+				),
+			),
+		);
+	}
+	if ( 'armeniya' === $slug ) {
+		return array(
+			'title'    => sprintf(
+				/* translators: %s: country name */
+				__( 'Какой отдых %s вам ближе?', 'zhiraf-ufa' ),
+				$name
+			),
+			'subtitle' => __( 'Выберите сценарий — подберём отель и маршрут из Уфы через Москву', 'zhiraf-ufa' ),
+			'cards'    => array(
+				array(
+					'vibe_title'    => __( 'Семья у озера', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Севан, пляж, рыба, короткие выезды к монастырям.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Севан', 'zhiraf-ufa' ),
+					'vibe_color'    => 'teal',
+					'vibe_slug'     => 'family',
+					'vibe_image'    => 'alt-armeniya-sevan.jpg',
+				),
+				array(
+					'vibe_title'    => __( 'Пара в городе', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Ереван, кафе, винные рестораны, вид на Арарат с террасы.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Ереван', 'zhiraf-ufa' ),
+					'vibe_color'    => 'coral',
+					'vibe_slug'     => 'couple',
+					'vibe_image'    => 'alt-armeniya-yerevan.jpg',
+				),
+				array(
+					'vibe_title'    => __( 'Культура и музеи', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Центр Еревана, галереи, гастрономические туры.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Центр', 'zhiraf-ufa' ),
+					'vibe_color'    => 'indigo',
+					'vibe_slug'     => 'city',
+					'vibe_image'    => 'alt-armeniya-2.jpg',
+				),
+				array(
+					'vibe_title'    => __( 'Горы и храмы', 'zhiraf-ufa' ),
+					'vibe_subtitle' => __( 'Гарни и Гехард, канатная дорога — активные выезды из отеля.', 'zhiraf-ufa' ),
+					'vibe_tag'      => __( 'Экскурсии', 'zhiraf-ufa' ),
+					'vibe_color'    => 'amber',
+					'vibe_slug'     => 'active',
+					'vibe_image'    => 'country-armeniya.jpg',
+				),
+			),
+		);
+	}
+	return array();
 }
 
 /**
@@ -352,6 +451,12 @@ function zhiraf_ufa_get_vibe_section( $slug, $dest, $page_id = 0 ) {
 	}
 	if ( empty( $section ) && ! empty( $dest['vibe_section'] ) && is_array( $dest['vibe_section'] ) ) {
 		$section = zhiraf_ufa_sanitize_vibe_section( $dest['vibe_section'] );
+	}
+	if ( empty( $section ) && function_exists( 'zhiraf_ufa_cultural_vibe_section' ) ) {
+		$cultural = zhiraf_ufa_cultural_vibe_section( $slug, ! empty( $dest['name'] ) ? (string) $dest['name'] : $slug );
+		if ( ! empty( $cultural ) ) {
+			$section = zhiraf_ufa_sanitize_vibe_section( $cultural );
+		}
 	}
 	if ( empty( $section ) ) {
 		$section = zhiraf_ufa_sanitize_vibe_section( zhiraf_ufa_default_vibe_section( $slug, $dest ) );

@@ -244,8 +244,31 @@ function zhiraf_ufa_moscow_landing_data() {
 					),
 				);
 			} elseif ( 'shri-lanka' === $slug ) {
-				$out[ $slug ]['landing_module'] = 'battle';
-				$out[ $slug ]['vibe_section']   = false;
+				$out[ $slug ]['landing_module']       = 'season';
+				$out[ $slug ]['climate_module_title'] = __( 'Шри-Ланка: сезоны побережий', 'zhiraf-ufa' );
+				$out[ $slug ]['climate_seasons']      = array(
+					array(
+						'label'  => __( 'Юго-запад и юг', 'zhiraf-ufa' ),
+						'months' => __( 'дек–апр', 'zhiraf-ufa' ),
+						'air'    => '+28…+32°C',
+						'water'  => '+27…+29°C',
+						'tip'    => __( 'Спокойное море — Унаватуна, Бентота, Мирисса', 'zhiraf-ufa' ),
+					),
+					array(
+						'label'  => __( 'Юго-запад (муссон)', 'zhiraf-ufa' ),
+						'months' => __( 'май–ноя', 'zhiraf-ufa' ),
+						'air'    => '+26…+28°C',
+						'water'  => __( 'волны', 'zhiraf-ufa' ),
+						'tip'    => __( 'Дожди и волнение — смотрим восток или переносим даты', 'zhiraf-ufa' ),
+					),
+					array(
+						'label'  => __( 'Восток (Пасикуда)', 'zhiraf-ufa' ),
+						'months' => __( 'май–сен', 'zhiraf-ufa' ),
+						'air'    => '+28…+31°C',
+						'water'  => '+27…+29°C',
+						'tip'    => __( 'Альтернатива, когда на западе муссон', 'zhiraf-ufa' ),
+					),
+				);
 				$out[ $slug ]['faq_title']      = __( 'Частые вопросы о Шри-Ланке', 'zhiraf-ufa' );
 				$out[ $slug ]['hero_lead']      = __( 'Пляжи юго-запада и чайные холмы с вылетом из Москвы. Поможем состыковать перелёт из Уфы и выбрать между спокойной Унаватуной и динамичной Хиккадувой.', 'zhiraf-ufa' );
 				$out[ $slug ]['hero_badges']    = array(
@@ -279,6 +302,18 @@ function zhiraf_ufa_moscow_landing_data() {
 						'a' => __( 'Местная валюта — шри-ланкийская рупия. Российские карты Visa и Mastercard за рубежом не работают — заранее продумайте наличные или альтернативные способы оплаты.', 'zhiraf-ufa' ),
 					),
 				);
+			} elseif ( 'uzbekistan' === $slug ) {
+				$out[ $slug ]['landing_module'] = 'vibe';
+				if ( function_exists( 'zhiraf_ufa_cultural_vibe_section' ) ) {
+					$out[ $slug ]['vibe_section'] = zhiraf_ufa_cultural_vibe_section( $slug, $name );
+				}
+				$out[ $slug ]['hero_lead'] = __( 'Самарканд, Бухара и Хива с вылетом из Москвы. Поможем состыковать перелёт из Уфы и собрать маршрут под ваш темп.', 'zhiraf-ufa' );
+			} elseif ( 'armeniya' === $slug ) {
+				$out[ $slug ]['landing_module'] = 'vibe';
+				if ( function_exists( 'zhiraf_ufa_cultural_vibe_section' ) ) {
+					$out[ $slug ]['vibe_section'] = zhiraf_ufa_cultural_vibe_section( $slug, $name );
+				}
+				$out[ $slug ]['hero_lead'] = __( 'Ереван, Севан и горные монастыри с вылетом из Москвы. Состыкуем перелёт из Уфы и подберём отель под ваш сценарий.', 'zhiraf-ufa' );
 			} else {
 				$out[ $slug ]['extra_sections'] = array(
 					array( 'h2' => __( 'Когда ехать', 'zhiraf-ufa' ), 'paragraphs' => $c['season'] ),

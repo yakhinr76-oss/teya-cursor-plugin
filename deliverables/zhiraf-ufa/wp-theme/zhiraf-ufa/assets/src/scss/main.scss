@@ -924,6 +924,43 @@ details[open] > .faq-home__question::after {
   border-color: var(--color-primary);
   box-shadow: 0 8px 24px rgba(232, 122, 93, 0.15);
 }
+.dest-season-module { margin-top: 8px; }
+.dest-season-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+.dest-season-tab {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.dest-season-tab.is-active,
+.dest-season-tab[aria-selected="true"] {
+  border-color: var(--color-primary);
+  background: rgba(232, 122, 93, 0.08);
+  color: var(--color-primary);
+}
+.dest-climate-grid--module {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+}
+.dest-climate-grid--module .dest-climate-card {
+  cursor: default;
+}
+.dest-season-module__cta-wrap {
+  margin: 20px 0 0;
+  text-align: center;
+}
 .dest-domestic-modes {
   margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 12px;
 }
@@ -1023,6 +1060,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 @import 'hot-landing';
 @import 'all-inclusive';
 @import 'hot-bento';
+@import 'unified-catalog';
+@import 'home-quiz';
+@import 'lead-magnet';
 @import 'forms';
 @import 'contacts';
 @import 'about-page';

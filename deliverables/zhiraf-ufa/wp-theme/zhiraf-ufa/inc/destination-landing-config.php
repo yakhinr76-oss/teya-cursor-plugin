@@ -55,8 +55,8 @@ function zhiraf_ufa_destination_default_module_map() {
 function zhiraf_ufa_destination_hero_image_standards() {
 	return array(
 		'turciya'    => array(
-			'image' => 'resort-turciya-kemer-2.jpg',
-			'alt'   => __( 'Турция — Средиземное море, курорт Кемер', 'zhiraf-ufa' ),
+			'image' => 'hero-turkey.jpg',
+			'alt'   => __( 'Турция — пляж, пальмы и отели на первой линии', 'zhiraf-ufa' ),
 		),
 		'egipet'     => array(
 			'image' => 'hero-egypt.jpg',
@@ -200,15 +200,24 @@ function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
 			$dest['hero_badges'] = $badges;
 		}
 	}
-	if ( empty( $dest['cta_lead'] ) && ! empty( $dest['name'] ) ) {
-		/* translators: %s: country name */
-		$dest['cta_lead'] = sprintf(
-			__( 'Не уверены, какой отель выбрать в %s? Напишите бюджет и состав семьи — эксперт пришлёт подборку из 3 отелей в WhatsApp за 15 минут.', 'zhiraf-ufa' ),
-			$dest['name']
-		);
-	}
 	if ( empty( $dest['cta_message_placeholder'] ) ) {
 		$dest['cta_message_placeholder'] = __( 'Бюджет, даты, дети (возраст), пожелания по курорту', 'zhiraf-ufa' );
+	}
+	if ( ! isset( $dest['seo_prose_accordions'] ) ) {
+		$dest['seo_prose_accordions'] = true;
+	}
+	if ( ! isset( $dest['hide_landing_prose'] ) ) {
+		$dest['hide_landing_prose'] = true;
+	}
+	if ( ! empty( $dest['name'] ) && empty( $dest['name_in'] ) ) {
+		$dest['name_in'] = (string) $dest['name'];
+	}
+	if ( empty( $dest['cta_lead'] ) && ! empty( $dest['name_in'] ) ) {
+		/* translators: %s: country name in prepositional case, e.g. «Турции» */
+		$dest['cta_lead'] = sprintf(
+			__( 'Не уверены, какой отель выбрать в %s? Напишите бюджет и состав семьи — эксперт пришлёт подборку из 3 отелей в WhatsApp за 15 минут.', 'zhiraf-ufa' ),
+			$dest['name_in']
+		);
 	}
 	return $dest;
 }
@@ -336,8 +345,8 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					),
 				),
 				array(
-					'title'     => __( 'Рас-эль-Хайма', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 All Inclusive и релакс', 'zhiraf-ufa' ),
+					'title'     => __( 'Рас-эль-Хайма / Фуджейра', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Спокойный All Inclusive на 1-й линии', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Идеально для семей с детьми и спокойного отдыха у моря', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~60 мин', 'zhiraf-ufa' ),
 					'image'     => 'dest-uae.jpg',
@@ -361,8 +370,8 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'subtitle'  => __( 'Для ценителей природы и молодёжного отдыха', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~50 мин', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-kemer-2.jpg',
-					'cta_label' => __( 'Искать отели в Кемере', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
+					'cta_label' => __( 'Узнать цены на Кемер', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
 					'rows'      => array(
 						array( 'label' => __( 'Пляж и море', 'zhiraf-ufa' ), 'value' => __( 'Галька — вода прозрачная даже в пик сезона', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Климат', 'zhiraf-ufa' ), 'value' => __( 'Сосны и горы Тавр, прохладнее, чем на равнине', 'zhiraf-ufa' ) ),
@@ -375,8 +384,8 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'subtitle'  => __( 'Для семей с малышами и долгого купания', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: 1–2,5 ч', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-alanya-2.jpg',
-					'cta_label' => __( 'Искать отели в Сиде / Аланье', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
+					'cta_label' => __( 'Узнать цены на Сиде и Аланью', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
 					'rows'      => array(
 						array( 'label' => __( 'Пляж и море', 'zhiraf-ufa' ), 'value' => __( 'Песок и пологий заход — удобно с детьми', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Сезон', 'zhiraf-ufa' ), 'value' => __( 'Море дольше тёплое — часто до ноября', 'zhiraf-ufa' ) ),
@@ -386,33 +395,33 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			),
 		),
 		'egipet'  => array(
-			'title'   => __( 'Хургада или Шарм-эль-Шейх: что выбрать?', 'zhiraf-ufa' ),
-			'lead'    => __( 'Песчаный заход для семьи или кораллы и безветренные бухты на зиму — главная дилемма Красного моря.', 'zhiraf-ufa' ),
+			'title'   => __( 'Шарм-эль-Шейх или Хургада: что выбрать?', 'zhiraf-ufa' ),
+			'lead'    => __( 'Кораллы и безветренные бухты на зиму или песчаный заход для семьи — главная дилемма Красного моря.', 'zhiraf-ufa' ),
 			'columns' => array(
-				array(
-					'title'     => __( 'Хургада', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Песок и семейный отдых', 'zhiraf-ufa' ),
-					'subtitle'  => __( 'Пологий заход, аквапарки и экскурсии к Луксору', 'zhiraf-ufa' ),
-					'image'     => 'resort-egipet-hurghada-2.jpg',
-					'cta_label' => __( 'Искать отели в Хургаде', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
-					'rows'      => array(
-						array( 'label' => __( 'Вход в море', 'zhiraf-ufa' ), 'value' => __( 'Пологий песок — комфортно детям и пожилым без аквашузов', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Крупные комплексы с аквапарками и широкими пляжами', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Экскурсии', 'zhiraf-ufa' ), 'value' => __( 'Удобнее добираться до Луксора и Каира, чем из Шарма', 'zhiraf-ufa' ) ),
-					),
-				),
 				array(
 					'title'     => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ),
 					'tag'       => __( '🤿 Кораллы и безветренные бухты', 'zhiraf-ufa' ),
-					'subtitle'  => __( 'Рифы у понтона и защищённые бухты зимой', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Стеновые рифы, снорклинг, бухты без ветра', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-sharm-2.jpg',
-					'cta_label' => __( 'Искать отели в Шарме', 'zhiraf-ufa' ),
-					'cta_href'  => '#dest-lead',
+					'cta_label' => __( 'Подбор по Шарму', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
 					'rows'      => array(
 						array( 'label' => __( 'Подводный мир', 'zhiraf-ufa' ), 'value' => __( 'Коралловые рифы у берега, снорклинг и дайвинг с понтона', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Зимний комфорт', 'zhiraf-ufa' ), 'value' => __( 'Бухты Наама-Бей, Шарм-эль-Майя, Рас-Умм-Сид, Хадаба', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Вечерний движ', 'zhiraf-ufa' ), 'value' => __( 'Старый город, променад Наама-Бей и кафе Farsha', 'zhiraf-ufa' ) ),
+					),
+				),
+				array(
+					'title'     => __( 'Хургада', 'zhiraf-ufa' ),
+					'tag'       => __( '🏖 Песок и семейный отдых', 'zhiraf-ufa' ),
+					'subtitle'  => __( 'Естественные песчаные пляжи, пологий заход, променад Марина', 'zhiraf-ufa' ),
+					'image'     => 'resort-egipet-hurghada-2.jpg',
+					'cta_label' => __( 'Подбор по Хургаде', 'zhiraf-ufa' ),
+					'cta_href'  => '#dest-express-pick',
+					'rows'      => array(
+						array( 'label' => __( 'Вход в море', 'zhiraf-ufa' ), 'value' => __( 'Пологий песок — комфортно детям и пожилым без аквашузов', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Отели', 'zhiraf-ufa' ), 'value' => __( 'Крупные комплексы с аквапарками и широкими пляжами', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Экскурсии', 'zhiraf-ufa' ), 'value' => __( 'Удобнее добираться до Луксора и Каира, чем из Шарма', 'zhiraf-ufa' ) ),
 					),
 				),
 			),

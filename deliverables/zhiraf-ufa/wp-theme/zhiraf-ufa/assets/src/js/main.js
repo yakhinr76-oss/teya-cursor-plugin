@@ -648,4 +648,226 @@
       postForm(quizForm, 'zhiraf_quiz');
     });
   }
+
+  /* Destination express picker */
+  var expressRoot = qs('[data-express-picker]');
+  if (expressRoot) {
+    var matrixRaw = expressRoot.getAttribute('data-matrix');
+    var matrix = {};
+    try { matrix = JSON.parse(matrixRaw || '{}'); } catch (e) { matrix = {}; }
+    var who = '';
+    var prio = '';
+    var resultBox = qs('[data-express-result]', expressRoot);
+    var areaEl = qs('[data-express-area]', expressRoot);
+    var conceptEl = qs('[data-express-concept]', expressRoot);
+    var waLink = qs('[data-express-wa]', expressRoot);
+    var toFormBtn = qs('[data-express-to-form]', expressRoot);
+    var basePrefill = (qs('#dest-express-prefill-base') || {}).value || '';
+
+    function renderExpress() {
+      if (!who || !prio || !matrix[who] || !matrix[who][prio]) return;
+      var row = matrix[who][prio];
+      if (areaEl) areaEl.textContent = row.area || '';
+      if (conceptEl) conceptEl.textContent = row.concept || '';
+      if (resultBox) resultBox.removeAttribute('hidden');
+      var msg = 'Здравствуйте! Экспресс-подбор: ' + (row.prefill || '') + '. ' + (row.area || '') + ' — ' + (row.concept || '');
+      if (waLink) waLink.setAttribute('href', 'https://wa.me/79018105018?text=' + encodeURIComponent(msg));
+      expressRoot.dataset.expressPrefill = row.prefill || '';
+    }
+
+    qsa('[data-express-who]', expressRoot).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        who = btn.getAttribute('data-express-who') || '';
+        qsa('[data-express-who]', expressRoot).forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+        renderExpress();
+      });
+    });
+    qsa('[data-express-prio]', expressRoot).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        prio = btn.getAttribute('data-express-prio') || '';
+        qsa('[data-express-prio]', expressRoot).forEach(function (b) { b.classList.toggle('is-active', b === btn); });
+        renderExpress();
+      });
+    });
+    if (toFormBtn) {
+      toFormBtn.addEventListener('click', function () {
+        var leadForm = qs('#dest-lead .zhiraf-form');
+        var tourInput = leadForm ? qs('[data-lead-tour]', leadForm) : null;
+        var expressInput = leadForm ? qs('[data-lead-express]', leadForm) : null;
+        var pre = expressRoot.dataset.expressPrefill || '';
+        if (tourInput && pre) tourInput.value = (basePrefill ? basePrefill + ' · ' : '') + pre;
+        if (expressInput) expressInput.value = pre;
+        var lead = qs('#dest-lead');
+        if (lead) lead.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }
+
+  qsa('[data-tier-prefill]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var tag = link.getAttribute('data-tier-prefill') || '';
+      var leadForm = qs('#dest-lead .zhiraf-form');
+      var tourInput = leadForm ? qs('[data-lead-tour]', leadForm) : null;
+      if (tourInput && tag) tourInput.value = tag;
+    });
+  });
+
+  /* Hotels showcase — data from local WP REST only */
+  var modal = qs('[data-hotel-modal]');
+  var modalBody = modal ? qs('[data-hotel-modal-body]', modal) : null;
+  var hotelsCatalogByPostId = {};
+
+  function initHotelsShowcase(hotelsRoot) {
+    if (!hotelsRoot || !window.zhirafUfa || !zhirafUfa.hotelsRest) return;
+    var grid = qs('[data-hotels-grid]', hotelsRoot);
+    var filtersWrap = qs('[data-hotels-filters]', hotelsRoot);
+    var country = hotelsRoot.getAttribute('data-hotels-country') || 'turkey';
+    var region = hotelsRoot.getAttribute('data-hotels-region') || '';
+    var emirate = hotelsRoot.getAttribute('data-hotels-emirate') || '';
+    var catalog = { hotels: [], categories: {} };
+    var activeFilter = '';
+
+    function esc(s) {
+      var d = document.createElement('div');
+      d.textContent = s == null ? '' : String(s);
+      return d.innerHTML;
+    }
+
+    function renderCards() {
+      if (!grid) return;
+      var list = catalog.hotels.filter(function (h) {
+        return !activeFilter || h.category_slug === activeFilter;
+      });
+      if (!list.length) {
+        grid.innerHTML = '<p class="hotels-showcase__empty">Пока нет опубликованных отелей в этой категории.</p>';
+        return;
+      }
+      grid.innerHTML = list.map(function (h) {
+        var photo = h.photos && h.photos[0] ? h.photos[0].url : '';
+        var ta = h.ta_property_url ? '<a class="hotels-card__ta" href="' + esc(h.ta_property_url) + '" target="_blank" rel="noopener noreferrer">Tripadvisor</a>' : '';
+        return (
+          '<article class="hotels-card reveal" data-hotel-id="' + h.id + '">' +
+            (photo ? '<div class="hotels-card__media"><img src="' + esc(photo) + '" alt="' + esc(h.hotel_name) + '" loading="lazy" width="640" height="400" /></div>' : '') +
+            '<div class="hotels-card__body">' +
+              '<p class="hotels-card__tag">' + esc(h.category_name) + '</p>' +
+              '<h3 class="hotels-card__title">' + esc(h.hotel_name) + '</h3>' +
+              '<p class="hotels-card__resort">' + esc(h.resort) + '</p>' +
+              '<p class="hotels-card__rating">★ ' + esc(h.rating) + '</p>' +
+              '<p class="hotels-card__usp">' + esc(h.usp) + '</p>' +
+              '<div class="hotels-card__actions">' +
+                '<button type="button" class="btn btn--outline btn--sm" data-hotel-open="' + h.id + '">Читать выводы</button>' +
+                ta +
+              '</div>' +
+            '</div>' +
+          '</article>'
+        );
+      }).join('');
+    }
+
+    function renderFilters() {
+      if (!filtersWrap) return;
+      var keys = Object.keys(catalog.categories || {});
+      keys.forEach(function (slug) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'hotels-showcase__filter';
+        btn.setAttribute('data-hotels-filter', slug);
+        btn.setAttribute('role', 'tab');
+        btn.textContent = catalog.categories[slug];
+        filtersWrap.appendChild(btn);
+      });
+      filtersWrap.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-hotels-filter]');
+        if (!btn) return;
+        activeFilter = btn.getAttribute('data-hotels-filter') || '';
+        qsa('.hotels-showcase__filter', filtersWrap).forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        renderCards();
+      });
+    }
+
+    var restUrl = zhirafUfa.hotelsRest + '?country=' + encodeURIComponent(country);
+    if (region) restUrl += '&region=' + encodeURIComponent(region);
+    if (emirate) restUrl += '&emirate=' + encodeURIComponent(emirate);
+
+    fetch(restUrl, { credentials: 'same-origin' })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        catalog.hotels = data.hotels || [];
+        catalog.categories = data.categories || {};
+        catalog.hotels.forEach(function (h) { hotelsCatalogByPostId[h.id] = h; });
+        renderFilters();
+        renderCards();
+      })
+      .catch(function () {
+        if (grid) grid.innerHTML = '<p class="hotels-showcase__empty">Не удалось загрузить подборку отелей.</p>';
+      });
+  }
+
+  if (modal) {
+    qsa('[data-hotel-modal-close]', modal).forEach(function (el) {
+      el.addEventListener('click', function () {
+        modal.setAttribute('hidden', '');
+        document.body.classList.remove('hotel-modal-open');
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+        modal.setAttribute('hidden', '');
+        document.body.classList.remove('hotel-modal-open');
+      }
+    });
+  }
+
+  function escHotel(s) {
+    var d = document.createElement('div');
+    d.textContent = s == null ? '' : String(s);
+    return d.innerHTML;
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-hotel-open]');
+    if (!btn || !modal || !modalBody) return;
+    var id = parseInt(btn.getAttribute('data-hotel-open'), 10);
+    var hotel = hotelsCatalogByPostId[id];
+    if (!hotel) return;
+    var pros = (hotel.pros || []).map(function (p) { return '<li>' + escHotel(p) + '</li>'; }).join('');
+    var photos = (hotel.photos || []).map(function (ph) {
+      return '<img src="' + escHotel(ph.url) + '" alt="" loading="lazy" class="hotel-modal__photo" />';
+    }).join('');
+    var taLink = hotel.ta_property_url
+      ? '<p class="hotel-modal__ta"><a href="' + escHotel(hotel.ta_property_url) + '" target="_blank" rel="noopener noreferrer">Полные отзывы на Tripadvisor →</a></p>'
+      : '';
+    modalBody.innerHTML =
+      '<h2 id="hotel-modal-title" class="hotel-modal__title">' + escHotel(hotel.hotel_name) + '</h2>' +
+      '<p class="hotel-modal__meta">' + escHotel(hotel.resort) + ' · ★ ' + escHotel(hotel.rating) + '</p>' +
+      (photos ? '<div class="hotel-modal__gallery">' + photos + '</div>' : '') +
+      '<p class="hotel-modal__usp">' + escHotel(hotel.usp) + '</p>' +
+      (pros ? '<ul class="hotel-modal__pros">' + pros + '</ul>' : '') +
+      (hotel.caveat ? '<p class="hotel-modal__caveat"><strong>На что обратить внимание:</strong> ' + escHotel(hotel.caveat) + '</p>' : '') +
+      (hotel.reviews_summary ? '<div class="hotel-modal__summary"><h3>Вывод по отзывам</h3><p>' + escHotel(hotel.reviews_summary) + '</p></div>' : '') +
+      taLink +
+      '<p class="hotel-modal__cta"><a class="btn btn--primary btn--sm" href="#dest-lead">Запросить цену на этот уровень</a></p>';
+    modal.removeAttribute('hidden');
+    document.body.classList.add('hotel-modal-open');
+  });
+
+  qsa('[data-hotels-showcase]').forEach(initHotelsShowcase);
+
+  var stickyDest = qs('#sticky-mobile-dest');
+  var destHero = qs('.site-main--destination .dest-landing-hero, .site-main--resort .dest-landing-hero');
+  if (stickyDest && destHero && window.matchMedia('(max-width: 768px)').matches) {
+    var destStickyObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyDest.removeAttribute('hidden');
+        } else {
+          stickyDest.setAttribute('hidden', '');
+        }
+      });
+    }, { threshold: 0 });
+    destStickyObs.observe(destHero);
+  }
 })();

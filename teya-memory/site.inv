@@ -1,0 +1,60 @@
+# site.inv — Жираф Уфа (Teya inventory)
+
+```yaml
+project:
+  name: "Жираф"
+  public_site_url: "https://zhiraf-ufa.ru"
+  domain_target: "zhiraf-ufa.ru"
+  domain_staging: "b2b-tour.ru"
+  region: "Уфа"
+  language: "ru"
+  primary_goal: "conversion_first"
+
+content:
+  niche: "розничное турагентство, пакетные туры"
+  services:
+    - "подбор пакетного тура"
+    - "консультация в офисе"
+    - "бронирование через туроператоров"
+  products:
+    - "туры с вылетом из Уфы"
+  destinations_p0:
+    - "turciya"
+    - "oae"
+    - "egipet"
+    - "tailand"
+    - "vietnam"
+  target_audience: "семьи, пары, первая заграница, Уфа и РБ"
+  competitors:
+    - "coral travel уфа"
+    - "pegas touristik"
+    - "эль-вояж уфа"
+    - "viasun уфа"
+    - "travelata"
+  exclude_topics:
+    - "фиксированные цены без даты"
+    - "фейковые отзывы"
+    - "гарантия визы"
+
+seo:
+  wordstat_region: "Уфа"
+  wordstat_region_id: "172"
+  priority_search: "туры из уфы, направления, покупка тура, блог чек-листы"
+
+conversion:
+  primary_cta: "Подобрать тур"
+  phone: "+79018105018"
+  quiz_steps: 4
+
+paths_existing:
+  - "/"
+  - "/o-nas/"
+  - "/kontakty/"
+  - "/tour/"
+  - "/blog/"
+  - "/tour/turciya/"
+  - "/tour/oae/"
+  - "/tour/egipet/"
+  - "/tour/tailand/"
+  - "/tour/vietnam/"
+```

@@ -1,0 +1,51 @@
+{
+  "schema_version": "teya-site-spec-1",
+  "generated_at": "2026-10-18T13:41:51+00:00",
+  "generated_by": "aurora-team-report-compiler",
+  "agent_bc_id": "bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e",
+  "project": {
+    "site_name": "Жираф",
+    "theme_slug": "zhiraf-ufa",
+    "public_site_url": "",
+    "staging_url": "https://b2b-tour.ru/",
+    "canonical_target": "https://zhiraf-ufa.ru",
+    "status": "local_test_build",
+    "mode": "CONVERSION-FIRST"
+  },
+  "theme_path": "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/",
+  "pages_selected": [
+    "/",
+    "/tour/",
+    "/o-nas/",
+    "/kontakty/",
+    "/blog/"
+  ],
+  "pages_backlog": [
+    "/tour/turciya/",
+    "/tour/oae/",
+    "/tour/egipet/",
+    "/tour/tailand/",
+    "/tour/vietnam/"
+  ],
+  "visual_inventory_status": "partial",
+  "required_visual_zones_count": 14,
+  "ready_visual_zones_count": 11,
+  "meaningful_image_count": 12,
+  "minimum_meaningful_image_assets_homepage": 12,
+  "meaningful_image_gap": 0,
+  "paint_evidence_status": "verified_home_only",
+  "local_asset_files_status": "pass",
+  "missing_local_asset_files": [],
+  "browser_subresources_status": "pass_preview",
+  "unstyled_live_paint_status": "not_applicable_no_deploy",
+  "wp_media_import_status": "theme_local_assets_only",
+  "animation_motion_status": "implemented",
+  "animation_dependency_status": "pass",
+  "reduced_motion_status": "implemented",
+  "threejs_scene_status": "implemented",
+  "asset_registry_status": "ready",
+  "section_transitions_status": "documented",
+  "visual_budget_status": "documented",
+  "section_blueprints_status": "documented",
+  "style_match_scorecard_status": "documented"
+}

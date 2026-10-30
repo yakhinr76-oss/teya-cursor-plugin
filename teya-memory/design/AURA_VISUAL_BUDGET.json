@@ -1,0 +1,73 @@
+{
+  "pages": [
+    {
+      "slug": "/",
+      "template": "front-page.php",
+      "minimum_colored_sections": 3,
+      "minimum_meaningful_image_assets": 12,
+      "minimum_decorative_motifs": 6,
+      "minimum_overlap_compositions": 2,
+      "minimum_custom_cards": 10,
+      "minimum_non_rectangular_transitions": 1,
+      "forbidden_simplifications": [
+        "one hero image only",
+        "fake testimonials",
+        "logo watermark",
+        "generic white longscroll"
+      ]
+    },
+    {
+      "slug": "/tour/",
+      "template": "page-tour.php",
+      "minimum_colored_sections": 2,
+      "minimum_meaningful_image_assets": 6,
+      "minimum_decorative_motifs": 4,
+      "minimum_overlap_compositions": 0,
+      "minimum_custom_cards": 5,
+      "minimum_non_rectangular_transitions": 0,
+      "forbidden_simplifications": [
+        "plain page.php",
+        "price board"
+      ]
+    },
+    {
+      "slug": "/o-nas/",
+      "template": "page-o-nas.php",
+      "minimum_colored_sections": 2,
+      "minimum_meaningful_image_assets": 2,
+      "minimum_decorative_motifs": 3,
+      "minimum_overlap_compositions": 0,
+      "minimum_custom_cards": 4,
+      "minimum_non_rectangular_transitions": 0,
+      "forbidden_simplifications": [
+        "text-only about"
+      ]
+    },
+    {
+      "slug": "/kontakty/",
+      "template": "page-kontakty.php",
+      "minimum_colored_sections": 1,
+      "minimum_meaningful_image_assets": 1,
+      "minimum_decorative_motifs": 2,
+      "minimum_overlap_compositions": 0,
+      "minimum_custom_cards": 2,
+      "minimum_non_rectangular_transitions": 0,
+      "forbidden_simplifications": [
+        "bare form only"
+      ]
+    },
+    {
+      "slug": "/blog/",
+      "template": "home.php",
+      "minimum_colored_sections": 1,
+      "minimum_meaningful_image_assets": 4,
+      "minimum_decorative_motifs": 2,
+      "minimum_overlap_compositions": 0,
+      "minimum_custom_cards": 4,
+      "minimum_non_rectangular_transitions": 0,
+      "forbidden_simplifications": [
+        "unstyled post list"
+      ]
+    }
+  ]
+}

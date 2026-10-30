@@ -56,6 +56,26 @@ $resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	}
 	?>
 
+	<?php
+	$resort_hotels = function_exists( 'zhiraf_ufa_hotels_showcase_for_resorts' )
+		? zhiraf_ufa_hotels_showcase_for_resorts()
+		: array();
+	if ( ! empty( $resort_hotels[ $resort_ctx_slug ] ) ) :
+		$showcase = $resort_hotels[ $resort_ctx_slug ];
+		get_template_part(
+			'template-parts/hotel/section-hotels-showcase',
+			null,
+			array(
+				'country' => $showcase['country'],
+				'title'   => $showcase['title'],
+				'region'  => $showcase['region'] ?? '',
+				'emirate' => $showcase['emirate'] ?? '',
+				'lead'    => $showcase['lead'] ?? '',
+			)
+		);
+	endif;
+	?>
+
 	<?php if ( ! empty( $resort_data['sections'] ) ) : ?>
 		<section class="section dest-landing-prose bg-milky">
 			<div class="container container--narrow">

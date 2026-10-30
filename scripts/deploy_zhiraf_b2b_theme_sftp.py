@@ -13,8 +13,11 @@ Local theme: deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/
 from __future__ import annotations
 
 import argparse
+import io
 import os
+import shlex
 import sys
+import tarfile
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -100,6 +103,97 @@ def resolve_remote_theme_path(sftp: paramiko.SFTPClient, configured: str) -> str
     sys.exit(1)
 
 
+def collect_files(theme_local: Path) -> list[tuple[Path, str]]:
+    files: list[tuple[Path, str]] = []
+    for path in theme_local.rglob("*"):
+        if path.is_file():
+            rel = path.relative_to(theme_local).as_posix()
+            if should_skip(rel):
+                continue
+            files.append((path, rel))
+    return files
+
+
+def connect_transport(
+    host: str, port: int, user: str, password: str, key_path: str
+) -> paramiko.Transport:
+    transport = paramiko.Transport((host, port))
+    transport.banner_timeout = 30
+    transport.set_keepalive(15)
+    if key_path:
+        pkey = paramiko.RSAKey.from_private_key_file(key_path)
+        transport.connect(username=user, pkey=pkey)
+    else:
+        transport.connect(username=user, password=password)
+    return transport
+
+
+def upload_tar_stream(
+    host: str,
+    port: int,
+    user: str,
+    password: str,
+    key_path: str,
+    remote_base: str,
+    files: list[tuple[Path, str]],
+) -> None:
+    buf = io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w|") as tar:
+        for local, rel in files:
+            tar.add(local, arcname=rel)
+    payload = buf.getvalue()
+    print(f"  tar payload: {len(payload) / 1024 / 1024:.1f} MiB", flush=True)
+
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    connect_kwargs: dict = {
+        "hostname": host,
+        "port": port,
+        "username": user,
+        "banner_timeout": 30,
+        "allow_agent": False,
+        "look_for_keys": False,
+    }
+    if key_path:
+        connect_kwargs["pkey"] = paramiko.RSAKey.from_private_key_file(key_path)
+    else:
+        connect_kwargs["password"] = password
+    client.connect(**connect_kwargs)
+    cmd = f"mkdir -p {shlex.quote(remote_base)} && tar xf - -C {shlex.quote(remote_base)}"
+    stdin, stdout, stderr = client.exec_command(cmd, timeout=600)
+    stdin.channel.sendall(payload)
+    stdin.channel.shutdown_write()
+    err = stderr.read().decode("utf-8", errors="replace").strip()
+    code = stdout.channel.recv_exit_status()
+    client.close()
+    if code != 0:
+        raise RuntimeError(f"remote tar failed ({code}): {err or 'unknown error'}")
+
+
+def upload_sftp_files(
+    sftp: paramiko.SFTPClient,
+    remote_base: str,
+    files: list[tuple[Path, str]],
+) -> None:
+    def ensure_dir(remote_dir: str) -> None:
+        parts = remote_dir.strip("/").split("/")
+        cur = ""
+        for part in parts:
+            cur += "/" + part
+            try:
+                sftp.stat(cur)
+            except OSError:
+                sftp.mkdir(cur)
+
+    total = len(files)
+    for i, (local, rel) in enumerate(files, start=1):
+        remote = f"{remote_base}/{rel}"
+        ensure_dir(str(Path(remote).parent).replace("\\", "/"))
+        sftp.put(str(local), remote)
+        if i == 1 or i == total or i % 25 == 0:
+            print(f"  {i}/{total} {rel}", flush=True)
+
+
 def should_skip(rel: str) -> bool:
     parts = Path(rel).parts
     return any(p in IGNORE for p in parts)
@@ -109,6 +203,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--project-root", default="/workspace")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--method",
+        choices=("tar", "sftp"),
+        default="tar",
+        help="tar: single stream (default); sftp: file-by-file",
+    )
     args = parser.parse_args()
 
     raw_host = env_any(("B2B_TOUR_SSH_HOST", "SSH_HOST", "SFTP_HOST", "FTP_HOST"))
@@ -136,16 +236,9 @@ def main() -> int:
         print(f"BLOCKER: theme missing: {theme_local}", file=sys.stderr)
         return 1
 
-    files = []
-    for path in theme_local.rglob("*"):
-        if path.is_file():
-            rel = path.relative_to(theme_local).as_posix()
-            if should_skip(rel):
-                continue
-            files.append((path, rel))
-
+    files = collect_files(theme_local)
     dest = remote_base or "(auto-detect)"
-    print(f"Upload {len(files)} files → {host}:{dest}")
+    print(f"Upload {len(files)} files via {args.method} → {host}:{dest}")
     if args.dry_run:
         for _, rel in files[:20]:
             print(" ", rel)
@@ -153,31 +246,19 @@ def main() -> int:
             print(f"  ... and {len(files) - 20} more")
         return 0
 
-    transport = paramiko.Transport((host, port))
+    transport = connect_transport(host, port, user, password, key_path)
     try:
-        if key_path:
-            pkey = paramiko.RSAKey.from_private_key_file(key_path)
-            transport.connect(username=user, pkey=pkey)
-        else:
-            transport.connect(username=user, password=password)
         sftp = paramiko.SFTPClient.from_transport(transport)
         remote_base = resolve_remote_theme_path(sftp, remote_base)
-
-        def ensure_dir(remote_dir: str) -> None:
-            parts = remote_dir.strip("/").split("/")
-            cur = ""
-            for part in parts:
-                cur += "/" + part
-                try:
-                    sftp.stat(cur)
-                except OSError:
-                    sftp.mkdir(cur)
-
-        for local, rel in files:
-            remote = f"{remote_base}/{rel}"
-            ensure_dir(str(Path(remote).parent).replace("\\", "/"))
-            sftp.put(str(local), remote)
         sftp.close()
+
+        if args.method == "tar":
+            print("Streaming tar to remote…", flush=True)
+            upload_tar_stream(host, port, user, password, key_path, remote_base, files)
+        else:
+            sftp = paramiko.SFTPClient.from_transport(transport)
+            upload_sftp_files(sftp, remote_base, files)
+            sftp.close()
     finally:
         transport.close()
 

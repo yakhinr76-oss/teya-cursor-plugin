@@ -29,4 +29,4 @@ jobs:
         run: |
           ver=$(curl -fsSL 'https://b2b-tour.ru/wp-content/themes/zhiraf-ufa/style.css' | grep -m1 '^Version:' || true)
           echo "Live: $ver"
-          echo "$ver" | grep -q '1.0.7-staging' || (echo 'Expected Version 1.0.7-staging' >&2; exit 1)
+          echo "$ver" | grep -q '1.0.24-staging' || (echo 'Expected Version 1.0.24-staging' >&2; exit 1)

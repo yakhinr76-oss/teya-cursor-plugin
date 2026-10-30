@@ -21,26 +21,44 @@ function zhiraf_ufa_home_unified_catalog_tabs() {
 			'label' => __( 'Все направления', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'turciya',
+			'id'    => 'turkey',
 			'label' => __( 'Турция', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'oae',
+			'id'    => 'uae',
 			'label' => __( 'ОАЭ', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'egipet',
+			'id'    => 'egypt',
 			'label' => __( 'Египет', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'tailand',
+			'id'    => 'thailand',
 			'label' => __( 'Таиланд', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'rossiya-domestic',
+			'id'    => 'russia',
 			'label' => __( 'Россия и Абхазия', 'zhiraf-ufa' ),
 		),
 	);
+}
+
+/**
+ * data-category slug for unified catalog filters (maps BG country slugs).
+ *
+ * @param string $country_slug Theme country slug.
+ */
+function zhiraf_ufa_home_catalog_category( $country_slug ) {
+	$map = array(
+		'turciya'   => 'turkey',
+		'oae'       => 'uae',
+		'egipet'    => 'egypt',
+		'tailand'   => 'thailand',
+		'rossiya'   => 'russia',
+		'abkhaziya' => 'russia',
+	);
+	$slug = (string) $country_slug;
+	return isset( $map[ $slug ] ) ? $map[ $slug ] : $slug;
 }
 
 /**

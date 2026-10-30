@@ -4239,6 +4239,11 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   gap: 1.5rem;
   margin-top: 0;
 }
+.tour-price-grid--catalog .tour-card--catalog {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
 @media (min-width: 768px) {
   .tour-price-grid--catalog {
     grid-template-columns: repeat(2, minmax(0, 1fr));

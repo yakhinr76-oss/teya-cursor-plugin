@@ -26,6 +26,9 @@ $meal_code       = ! empty( $tour['meal_code'] ) ? (string) $tour['meal_code'] :
 $price_rur       = ! empty( $tour['price_rur'] ) ? (int) $tour['price_rur'] : 0;
 $price_formatted = ! empty( $tour['price_formatted'] ) ? (string) $tour['price_formatted'] : zhiraf_ufa_format_tour_price( $price_rur );
 $catalog_in_all  = ! empty( $tour['catalog_in_all'] );
+$catalog_category = function_exists( 'zhiraf_ufa_home_catalog_category' )
+	? zhiraf_ufa_home_catalog_category( $country_slug )
+	: $country_slug;
 
 if ( '' === $hotel_name || '' === $stars || '' === $resort || '' === $departure_date || $nights < 3 || $price_rur <= 0 ) {
 	return;
@@ -63,6 +66,7 @@ $prefill_text = sprintf(
 <article
 	class="tour-card tour-card--catalog reveal"
 	data-dest="<?php echo esc_attr( $country_slug ); ?>"
+	data-category="<?php echo esc_attr( $catalog_category ); ?>"
 	data-catalog-all="<?php echo $catalog_in_all ? '1' : '0'; ?>"
 >
 	<div class="tour-card__media">

@@ -31,7 +31,8 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 		</header>
 
 		<div
-			class="catalog-pills tour-tabs unified-catalog__tabs reveal"
+			id="tour-tabs"
+			class="catalog-pills unified-catalog__tabs reveal"
 			role="tablist"
 			aria-label="<?php esc_attr_e( 'Фильтр направлений', 'zhiraf-ufa' ); ?>"
 		>
@@ -40,14 +41,14 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 					type="button"
 					class="catalog-pills__btn tab-btn<?php echo 0 === $i ? ' is-active' : ''; ?>"
 					role="tab"
-					data-tour-filter="<?php echo esc_attr( $tab['id'] ); ?>"
+					data-filter="<?php echo esc_attr( $tab['id'] ); ?>"
 					aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"
 				><?php echo esc_html( $tab['label'] ); ?></button>
 			<?php endforeach; ?>
 		</div>
 
 		<?php if ( ! empty( $tours ) ) : ?>
-			<div class="tour-price-grid tour-price-grid--catalog unified-catalog__grid">
+			<div id="tours-grid" class="tour-price-grid tour-price-grid--catalog unified-catalog__grid">
 				<?php
 				foreach ( $tours as $i => $tour_item ) {
 					get_template_part(

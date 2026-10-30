@@ -263,7 +263,89 @@
       activeTab.click();
     }
   }
-  qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+  qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) {
+    if (bar.id === 'tour-tabs') {
+      return;
+    }
+    bindTourFilter(bar);
+  });
+
+  /* Homepage unified catalog: #tour-tabs + #tours-grid (data-filter / data-category) */
+  function initHomeUnifiedCatalog() {
+    var tabsContainer = document.getElementById('tour-tabs');
+    var grid = document.getElementById('tours-grid');
+    if (!tabsContainer || !grid) {
+      return;
+    }
+    var cards = qsa('.tour-card', grid);
+    if (!cards.length) {
+      return;
+    }
+    var fadeMs = 200;
+
+    function setActiveTab(activeBtn) {
+      qsa('.tab-btn', tabsContainer).forEach(function (btn) {
+        var on = btn === activeBtn;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    function cardMatches(card, filter) {
+      if (filter === 'all') {
+        return card.getAttribute('data-catalog-all') === '1';
+      }
+      return card.getAttribute('data-category') === filter;
+    }
+
+    function showCard(card) {
+      card.style.display = '';
+      requestAnimationFrame(function () {
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+      });
+    }
+
+    function hideCard(card) {
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.97)';
+      window.setTimeout(function () {
+        if (card.style.opacity === '0') {
+          card.style.display = 'none';
+        }
+      }, fadeMs);
+    }
+
+    function filterCards(filter) {
+      cards.forEach(function (card) {
+        if (cardMatches(card, filter)) {
+          showCard(card);
+        } else {
+          hideCard(card);
+        }
+      });
+    }
+
+    tabsContainer.addEventListener('click', function (e) {
+      var clickedBtn = e.target.closest('.tab-btn');
+      if (!clickedBtn || !tabsContainer.contains(clickedBtn)) {
+        return;
+      }
+      var filterValue = clickedBtn.getAttribute('data-filter');
+      if (!filterValue) {
+        return;
+      }
+      setActiveTab(clickedBtn);
+      filterCards(filterValue);
+    });
+
+    var defaultActive = qs('.tab-btn.is-active', tabsContainer) || qs('.tab-btn', tabsContainer);
+    if (defaultActive) {
+      setActiveTab(defaultActive);
+      filterCards(defaultActive.getAttribute('data-filter') || 'all');
+    }
+  }
+  initHomeUnifiedCatalog();
 
   qsa('[data-tour-show-more]').forEach(function (btn) {
     btn.addEventListener('click', function () {

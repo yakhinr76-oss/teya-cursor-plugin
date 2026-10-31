@@ -4579,6 +4579,16 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   padding: 3rem 1rem;
 }
 
+.unified-catalog__tab-empty {
+  text-align: center;
+  color: var(--catalog-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
 .unified-catalog__footer {
   display: flex;
   flex-direction: column;

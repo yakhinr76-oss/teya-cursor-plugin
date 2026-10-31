@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tabs  = zhiraf_ufa_home_unified_catalog_tabs();
 $tours = zhiraf_ufa_home_unified_catalog_tours();
+$tabs  = zhiraf_ufa_home_unified_catalog_tabs_for_tours( $tours );
 $tabs_json = wp_json_encode(
 	array_map(
 		function ( $tab ) {
@@ -66,7 +66,7 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 				class="tour-price-grid tour-price-grid--catalog unified-catalog__grid"
 				data-visible-limit="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_VISIBLE; ?>"
 				data-more-step="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_MORE_STEP; ?>"
-				data-max-visible="9"
+				data-max-visible="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB; ?>"
 				data-tab-links="<?php echo esc_attr( $tabs_json ); ?>"
 			>
 				<?php
@@ -82,6 +82,9 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 				}
 				?>
 			</div>
+			<p class="unified-catalog__tab-empty reveal" id="catalog-tab-empty" hidden>
+				<?php esc_html_e( 'По этому направлению сейчас нет актуальных туров с прямым вылетом из UFA в ленте — откройте полную подборку на странице страны или напишите нам.', 'zhiraf-ufa' ); ?>
+			</p>
 			<div class="unified-catalog__footer reveal">
 				<button
 					type="button"

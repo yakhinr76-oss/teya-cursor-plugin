@@ -286,6 +286,7 @@
     var maxVisible = parseInt(grid.getAttribute('data-max-visible') || '9', 10);
     var visibleLimit = baseLimit;
     var showMoreBtn = document.getElementById('catalog-show-more');
+    var emptyHint = document.getElementById('catalog-tab-empty');
     var countryLink = document.getElementById('catalog-country-link');
     var countryLinkText = document.getElementById('catalog-country-link-text');
     var tabLinks = [];
@@ -365,6 +366,12 @@
       });
       if (showMoreBtn) {
         showMoreBtn.hidden = matched.length <= visibleLimit || visibleLimit >= maxVisible;
+      }
+      if (emptyHint) {
+        emptyHint.hidden = matched.length > 0;
+      }
+      if (grid) {
+        grid.toggleAttribute('hidden', matched.length === 0);
       }
       updateCountryLink(filter);
     }
@@ -503,6 +510,7 @@
       fieldValue(form, 'quiz_child_age') ? 'Ребёнок: ' + fieldValue(form, 'quiz_child_age') : '',
       fieldValue(form, 'quiz_timing') ? 'Срок: ' + fieldValue(form, 'quiz_timing') : '',
       fieldValue(form, 'quiz_duration') ? 'Ночей: ' + fieldValue(form, 'quiz_duration') : '',
+      fieldValue(form, 'quiz_flight_pref') ? 'Перелёт: ' + fieldValue(form, 'quiz_flight_pref') : '',
       fieldValue(form, 'quiz_channel') ? 'Связь: ' + fieldValue(form, 'quiz_channel') : '',
     ].filter(Boolean);
     wishes.value = parts.join('. ');

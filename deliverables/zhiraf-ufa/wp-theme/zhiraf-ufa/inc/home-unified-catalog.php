@@ -12,11 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Visible tour cards on first paint (per active tab). */
 define( 'ZHIRAF_UFA_HOME_CATALOG_VISIBLE', 6 );
 
-/** Extra cards revealed per «Показать ещё» click. */
-define( 'ZHIRAF_UFA_HOME_CATALOG_MORE_STEP', 3 );
+/** Extra cards revealed per «Показать ещё» click (same as pool cap on homepage). */
+define( 'ZHIRAF_UFA_HOME_CATALOG_MORE_STEP', 6 );
 
-/** Max cards kept in DOM per filter category (6 visible + до 3 по «Показать ещё»). */
-define( 'ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB', 9 );
+/** Max cards kept in DOM per filter category. */
+define( 'ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB', 6 );
 
 /**
  * Season mode: auto | summer | winter (theme mod for manual override).
@@ -183,9 +183,7 @@ function zhiraf_ufa_home_catalog_category( $country_slug ) {
 }
 
 /**
- * Homepage catalog: packages sold from Ufa for core charter directions.
- * BG API often labels these «стыковка в Москве» in airline text while the
- * storefront offer is still «из Уфы» — exclude only real Moscow departures.
+ * Homepage catalog: only packages that are direct from Ufa in operator data.
  *
  * @param array<string,mixed> $tour Tour row.
  */
@@ -204,14 +202,7 @@ function zhiraf_ufa_home_catalog_tour_is_direct_ufa( $tour ) {
 	}
 
 	$flight = zhiraf_ufa_tour_flight_info( $tour );
-	if ( in_array( $flight['key'], array( 'direct', 'ufa' ), true ) ) {
-		return true;
-	}
-
-	$slug            = (string) ( $tour['country_slug'] ?? '' );
-	$ufa_charter_slugs = array( 'turciya', 'oae', 'egipet', 'tailand', 'rossiya', 'abkhaziya' );
-
-	return 'Уфа' === $city && in_array( $slug, $ufa_charter_slugs, true );
+	return in_array( $flight['key'], array( 'direct', 'ufa' ), true );
 }
 
 /**
@@ -305,6 +296,29 @@ function zhiraf_ufa_home_unified_catalog_tours() {
 	zhiraf_ufa_home_mark_catalog_all_teasers( $out );
 
 	return $out;
+}
+
+/**
+ * Tabs that actually have tour cards (avoid empty filters like «Россия» with no API rows).
+ *
+ * @param array<int,array<string,mixed>> $tours Tour grid data.
+ * @return array<int,array{id:string,label:string}>
+ */
+function zhiraf_ufa_home_unified_catalog_tabs_for_tours( array $tours ) {
+	$available = array();
+	foreach ( $tours as $tour ) {
+		$cat = zhiraf_ufa_home_catalog_category( (string) ( $tour['country_slug'] ?? '' ) );
+		$available[ $cat ] = true;
+	}
+
+	$filtered = array();
+	foreach ( zhiraf_ufa_home_unified_catalog_tabs() as $tab ) {
+		if ( 'all' === $tab['id'] || ! empty( $available[ $tab['id'] ] ) ) {
+			$filtered[] = $tab;
+		}
+	}
+
+	return ! empty( $filtered ) ? $filtered : zhiraf_ufa_home_unified_catalog_tabs();
 }
 
 /**

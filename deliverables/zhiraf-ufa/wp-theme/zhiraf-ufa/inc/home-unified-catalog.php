@@ -154,12 +154,12 @@ function zhiraf_ufa_home_catalog_tab_landing_url( $tab_id ) {
  */
 function zhiraf_ufa_home_catalog_tab_landing_label( $tab_id ) {
 	$labels = array(
-		'all'      => __( 'Открыть полный каталог направлений', 'zhiraf-ufa' ),
-		'turkey'   => __( 'Все проверенные отели в Турции с вылетом из Уфы', 'zhiraf-ufa' ),
-		'uae'      => __( 'Все туры в ОАЭ с вылетом из Уфы', 'zhiraf-ufa' ),
-		'egypt'    => __( 'Все туры в Египет с прямым вылетом из UFA', 'zhiraf-ufa' ),
-		'thailand' => __( 'Все туры в Таиланд из аэропорта Уфа', 'zhiraf-ufa' ),
-		'russia'   => __( 'Сочи, Сириус, Абхазия и КМВ — полная подборка', 'zhiraf-ufa' ),
+		'all'      => __( 'Посмотреть все направления с вылетом из Уфы', 'zhiraf-ufa' ),
+		'turkey'   => __( 'Посмотреть все отели по направлению', 'zhiraf-ufa' ),
+		'uae'      => __( 'Посмотреть все отели по направлению', 'zhiraf-ufa' ),
+		'egypt'    => __( 'Посмотреть все отели по направлению', 'zhiraf-ufa' ),
+		'thailand' => __( 'Посмотреть все отели по направлению', 'zhiraf-ufa' ),
+		'russia'   => __( 'Посмотреть все отели по направлению', 'zhiraf-ufa' ),
 	);
 	return isset( $labels[ $tab_id ] ) ? $labels[ $tab_id ] : $labels['all'];
 }
@@ -183,7 +183,9 @@ function zhiraf_ufa_home_catalog_category( $country_slug ) {
 }
 
 /**
- * Homepage catalog only shows UFA-direct packages (keeps Hero promise honest).
+ * Homepage catalog: packages sold from Ufa for core charter directions.
+ * BG API often labels these «стыковка в Москве» in airline text while the
+ * storefront offer is still «из Уфы» — exclude only real Moscow departures.
  *
  * @param array<string,mixed> $tour Tour row.
  */
@@ -191,11 +193,25 @@ function zhiraf_ufa_home_catalog_tour_is_direct_ufa( $tour ) {
 	if ( ! is_array( $tour ) || empty( $tour ) ) {
 		return false;
 	}
+
+	$city = (string) ( $tour['departure_city'] ?? 'Уфа' );
+	if ( 'Москва' === $city ) {
+		return false;
+	}
+
 	if ( ! function_exists( 'zhiraf_ufa_tour_flight_info' ) ) {
+		return 'Уфа' === $city;
+	}
+
+	$flight = zhiraf_ufa_tour_flight_info( $tour );
+	if ( in_array( $flight['key'], array( 'direct', 'ufa' ), true ) ) {
 		return true;
 	}
-	$flight = zhiraf_ufa_tour_flight_info( $tour );
-	return in_array( $flight['key'], array( 'direct', 'ufa' ), true );
+
+	$slug            = (string) ( $tour['country_slug'] ?? '' );
+	$ufa_charter_slugs = array( 'turciya', 'oae', 'egipet', 'tailand', 'rossiya', 'abkhaziya' );
+
+	return 'Уфа' === $city && in_array( $slug, $ufa_charter_slugs, true );
 }
 
 /**
@@ -266,19 +282,10 @@ function zhiraf_ufa_home_unified_catalog_tours() {
 		$by_category[ $category ] = $rows;
 	}
 
-	$all_pick_keys = array();
-	foreach ( $by_category as $category => $rows ) {
-		if ( empty( $rows ) ) {
-			continue;
-		}
-		$all_pick_keys[ $category ] = zhiraf_ufa_home_unified_tour_key( $rows[0] );
-	}
-
 	$out = array();
 	foreach ( $by_category as $category => $rows ) {
 		foreach ( $rows as $tour ) {
-			$key = zhiraf_ufa_home_unified_tour_key( $tour );
-			$tour['catalog_in_all'] = isset( $all_pick_keys[ $category ] ) && $all_pick_keys[ $category ] === $key;
+			$tour['catalog_in_all'] = false;
 			$out[]                  = $tour;
 		}
 	}
@@ -295,5 +302,59 @@ function zhiraf_ufa_home_unified_catalog_tours() {
 		}
 	);
 
+	zhiraf_ufa_home_mark_catalog_all_teasers( $out );
+
 	return $out;
+}
+
+/**
+ * Mark up to 6 tours for the «Все направления» tab (round-robin by category).
+ *
+ * @param array<int,array<string,mixed>> $tours Tour list (by reference).
+ */
+function zhiraf_ufa_home_mark_catalog_all_teasers( array &$tours ) {
+	$max = (int) ZHIRAF_UFA_HOME_CATALOG_VISIBLE;
+	if ( $max < 1 || empty( $tours ) ) {
+		return;
+	}
+
+	foreach ( $tours as $i => $tour ) {
+		$tours[ $i ]['catalog_in_all'] = false;
+	}
+
+	$indices_by_category = array();
+	foreach ( $tours as $i => $tour ) {
+		$cat = zhiraf_ufa_home_catalog_category( (string) ( $tour['country_slug'] ?? '' ) );
+		if ( ! isset( $indices_by_category[ $cat ] ) ) {
+			$indices_by_category[ $cat ] = array();
+		}
+		$indices_by_category[ $cat ][] = $i;
+	}
+
+	$category_order = array_keys( zhiraf_ufa_home_catalog_category_priorities() );
+	$marked         = 0;
+	$round          = 0;
+
+	while ( $marked < $max ) {
+		$progress = false;
+		foreach ( $category_order as $cat ) {
+			if ( $marked >= $max ) {
+				break;
+			}
+			if ( empty( $indices_by_category[ $cat ][ $round ] ) ) {
+				continue;
+			}
+			$idx = $indices_by_category[ $cat ][ $round ];
+			if ( ! empty( $tours[ $idx ]['catalog_in_all'] ) ) {
+				continue;
+			}
+			$tours[ $idx ]['catalog_in_all'] = true;
+			++$marked;
+			$progress = true;
+		}
+		if ( ! $progress ) {
+			break;
+		}
+		++$round;
+	}
 }

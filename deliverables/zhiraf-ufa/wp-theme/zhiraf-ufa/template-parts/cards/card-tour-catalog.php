@@ -51,7 +51,9 @@ $image_info   = zhiraf_ufa_tour_image_info( $tour, $card_index );
 $image_file   = $image_info['file'];
 $country_name = zhiraf_ufa_tour_country_name( $country_slug );
 $flight       = zhiraf_ufa_tour_flight_info( $tour );
-$show_direct  = 'direct' === $flight['key'] || ( 'ufa' === $flight['key'] && 'Уфа' === ( $tour['departure_city'] ?? 'Уфа' ) );
+$show_direct  = function_exists( 'zhiraf_ufa_home_catalog_tour_is_direct_ufa' )
+	? zhiraf_ufa_home_catalog_tour_is_direct_ufa( $tour )
+	: ( 'direct' === $flight['key'] || ( 'ufa' === $flight['key'] && 'Уфа' === ( $tour['departure_city'] ?? 'Уфа' ) ) );
 $beach_line   = ! empty( $tour['beach_line'] ) ? (string) $tour['beach_line'] : __( '1-я линия • Песок', 'zhiraf-ufa' );
 $spec_line    = function_exists( 'zhiraf_ufa_tour_card_spec_line' ) ? zhiraf_ufa_tour_card_spec_line( $tour ) : '';
 

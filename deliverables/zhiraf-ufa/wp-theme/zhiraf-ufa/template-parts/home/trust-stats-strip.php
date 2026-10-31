@@ -18,13 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</li>
 			<li class="trust-stats-strip__sep" aria-hidden="true">•</li>
 			<li class="trust-stats-strip__item">
-				<span class="trust-stats-strip__value"><?php esc_html_e( '12 000+ туристов', 'zhiraf-ufa' ); ?></span>
-				<span class="trust-stats-strip__hint"><?php esc_html_e( 'из Башкирии', 'zhiraf-ufa' ); ?></span>
+				<span class="trust-stats-strip__value"><?php esc_html_e( 'РТА 0012822', 'zhiraf-ufa' ); ?></span>
+				<span class="trust-stats-strip__hint"><?php esc_html_e( 'официальный реестр', 'zhiraf-ufa' ); ?></span>
 			</li>
 			<li class="trust-stats-strip__sep" aria-hidden="true">•</li>
 			<li class="trust-stats-strip__item">
-				<span class="trust-stats-strip__value"><?php esc_html_e( '0 скрытых комиссий', 'zhiraf-ufa' ); ?></span>
-				<span class="trust-stats-strip__hint"><?php esc_html_e( 'цены операторов + договор', 'zhiraf-ufa' ); ?></span>
+				<span class="trust-stats-strip__value"><?php esc_html_e( '12 000+ туристов', 'zhiraf-ufa' ); ?></span>
+				<span class="trust-stats-strip__hint"><?php esc_html_e( 'из Башкирии', 'zhiraf-ufa' ); ?></span>
 			</li>
 		</ul>
 		<p class="trust-stats-strip__reviews reveal">

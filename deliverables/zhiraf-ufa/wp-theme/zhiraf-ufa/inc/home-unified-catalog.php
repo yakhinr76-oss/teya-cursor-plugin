@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'ZHIRAF_UFA_HOME_CATALOG_VISIBLE', 6 );
 
 /** Extra cards revealed per «Показать ещё» click. */
-define( 'ZHIRAF_UFA_HOME_CATALOG_MORE_STEP', 6 );
+define( 'ZHIRAF_UFA_HOME_CATALOG_MORE_STEP', 3 );
 
-/** Max cards kept in DOM per country category. */
-define( 'ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB', 12 );
+/** Max cards kept in DOM per filter category (6 visible + до 3 по «Показать ещё»). */
+define( 'ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB', 9 );
 
 /**
  * Season mode: auto | summer | winter (theme mod for manual override).
@@ -226,15 +226,20 @@ function zhiraf_ufa_home_unified_catalog_tours() {
 
 	foreach ( $slugs as $slug ) {
 		$category = zhiraf_ufa_home_catalog_category( $slug );
-		$limit    = in_array( $slug, array( 'rossiya', 'abkhaziya' ), true )
-			? min( 6, ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB )
-			: ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB;
+		$limit    = ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB;
 
 		if ( ! isset( $by_category[ $category ] ) ) {
 			$by_category[ $category ] = array();
 		}
 
+		if ( count( $by_category[ $category ] ) >= ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB ) {
+			continue;
+		}
+
 		foreach ( zhiraf_ufa_get_country_top_tours( $slug, $limit ) as $tour ) {
+			if ( count( $by_category[ $category ] ) >= ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB ) {
+				break;
+			}
 			if ( ! is_array( $tour ) || empty( $tour ) ) {
 				continue;
 			}

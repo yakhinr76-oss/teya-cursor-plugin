@@ -63,13 +63,20 @@ $prefill_text = sprintf(
 	$departure_date,
 	zhiraf_ufa_plural_nights( $nights )
 );
+
+$show_on_load = $catalog_in_all;
+$card_classes = 'tour-card tour-card--catalog';
+if ( $show_on_load ) {
+	$card_classes .= ' is-catalog-shown';
+}
 ?>
 <article
-	class="tour-card tour-card--catalog reveal"
+	class="<?php echo esc_attr( $card_classes ); ?>"
 	data-dest="<?php echo esc_attr( $country_slug ); ?>"
 	data-category="<?php echo esc_attr( $catalog_category ); ?>"
 	data-catalog-all="<?php echo $catalog_in_all ? '1' : '0'; ?>"
 	data-priority="<?php echo esc_attr( (string) $catalog_priority ); ?>"
+	<?php echo $show_on_load ? '' : ' hidden'; ?>
 >
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>

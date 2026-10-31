@@ -66,6 +66,7 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 				class="tour-price-grid tour-price-grid--catalog unified-catalog__grid"
 				data-visible-limit="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_VISIBLE; ?>"
 				data-more-step="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_MORE_STEP; ?>"
+				data-max-visible="9"
 				data-tab-links="<?php echo esc_attr( $tabs_json ); ?>"
 			>
 				<?php

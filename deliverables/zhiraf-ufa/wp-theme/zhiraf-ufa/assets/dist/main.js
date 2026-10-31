@@ -281,9 +281,9 @@
     if (!cards.length) {
       return;
     }
-    var fadeMs = 200;
     var baseLimit = parseInt(grid.getAttribute('data-visible-limit') || '6', 10);
-    var moreStep = parseInt(grid.getAttribute('data-more-step') || '6', 10);
+    var moreStep = parseInt(grid.getAttribute('data-more-step') || '3', 10);
+    var maxVisible = parseInt(grid.getAttribute('data-max-visible') || '9', 10);
     var visibleLimit = baseLimit;
     var showMoreBtn = document.getElementById('catalog-show-more');
     var countryLink = document.getElementById('catalog-country-link');
@@ -326,21 +326,13 @@
     }
 
     function showCard(card) {
-      card.style.display = '';
-      requestAnimationFrame(function () {
-        card.style.opacity = '1';
-        card.style.transform = 'scale(1)';
-      });
+      card.classList.add('is-catalog-shown');
+      card.removeAttribute('hidden');
     }
 
     function hideCard(card) {
-      card.style.opacity = '0';
-      card.style.transform = 'scale(0.97)';
-      window.setTimeout(function () {
-        if (card.style.opacity === '0') {
-          card.style.display = 'none';
-        }
-      }, fadeMs);
+      card.classList.remove('is-catalog-shown');
+      card.setAttribute('hidden', '');
     }
 
     function updateCountryLink(filter) {
@@ -372,7 +364,7 @@
         }
       });
       if (showMoreBtn) {
-        showMoreBtn.hidden = matched.length <= visibleLimit;
+        showMoreBtn.hidden = matched.length <= visibleLimit || visibleLimit >= maxVisible;
       }
       updateCountryLink(filter);
     }
@@ -399,7 +391,7 @@
       showMoreBtn.addEventListener('click', function () {
         var active = qs('.tab-btn.is-active', tabsContainer);
         var filterValue = active ? active.getAttribute('data-filter') || 'all' : 'all';
-        visibleLimit += moreStep;
+        visibleLimit = Math.min(visibleLimit + moreStep, maxVisible);
         refreshCatalogView(filterValue);
       });
     }

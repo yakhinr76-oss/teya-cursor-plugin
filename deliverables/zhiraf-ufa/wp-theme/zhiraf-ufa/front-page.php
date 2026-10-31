@@ -12,7 +12,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — подбираем как для своей семьи', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — честный подбор по ценам туроператоров', 'zhiraf-ufa' ); ?>
 				</h1>
 				<p class="hero-premium__subtitle">
 					<?php esc_html_e( 'Подберём 2–4 проверенных варианта с вылетом из Уфы — с фиксацией цены в договоре и сопровождением до возвращения. Офис на Гагарина, 74/1.', 'zhiraf-ufa' ); ?>

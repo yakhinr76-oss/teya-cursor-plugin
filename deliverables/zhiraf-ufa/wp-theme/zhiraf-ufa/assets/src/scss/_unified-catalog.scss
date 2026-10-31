@@ -105,9 +105,14 @@
   margin-top: 0;
 
   .tour-card--catalog {
+    display: none;
     opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: none;
+  }
+
+  .tour-card--catalog.is-catalog-shown {
+    display: flex;
+    flex-direction: column;
   }
 
   @media (min-width: 768px) {

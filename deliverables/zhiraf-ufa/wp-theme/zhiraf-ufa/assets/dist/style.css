@@ -683,6 +683,67 @@ h1, h2, h3, h4 {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
 
+.trust-social__img--office {
+  filter: brightness(1.08) contrast(0.96) saturate(1.06);
+  object-position: center 35%;
+}
+
+.section--trust-stats {
+  padding: 1.25rem 0 1.75rem;
+  background: var(--color-sand);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.trust-stats-strip {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--color-border);
+}
+
+.trust-stats-strip__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 7.5rem;
+}
+
+.trust-stats-strip__value {
+  font-weight: 800;
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+  color: var(--color-text);
+}
+
+.trust-stats-strip__hint {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.trust-stats-strip__sep {
+  color: rgba(102, 102, 102, 0.45);
+  font-weight: 700;
+  user-select: none;
+}
+
+.trust-stats-strip__reviews {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.trust-stats-strip__reviews a {
+  font-weight: 700;
+}
+
 .trust-rta-plaque {
   border-radius: var(--radius-lg);
   padding: 20px 22px;
@@ -2909,7 +2970,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 /* Responsive Breakpoints */
 @media (max-width: 1100px) {
-  .tour-price-grid {
+  .tour-price-grid:not(.tour-price-grid--catalog) {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
@@ -2926,7 +2987,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .tour-price-grid {
+  .tour-price-grid:not(.tour-price-grid--catalog) {
     grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 24px;
@@ -4235,24 +4296,33 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .tour-price-grid--catalog {
+  display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 0;
 }
 .tour-price-grid--catalog .tour-card--catalog {
+  display: none;
   opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: none;
 }
-@media (min-width: 768px) {
+.tour-price-grid--catalog .tour-card--catalog.is-catalog-shown {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 640px) {
   .tour-price-grid--catalog {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    gap: 1.75rem;
   }
 }
-@media (min-width: 1024px) {
+.tour-price-grid--catalog {
+  /* Homepage catalog: 3-up from tablet landscape (overrides _tour-cards.scss max-width: 1100px → 2 cols) */
+}
+@media (min-width: 900px) {
   .tour-price-grid--catalog {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
 
@@ -4299,6 +4369,16 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .tour-card__badge--ufa-direct.tour-card__badge--muted {
   background: rgba(34, 31, 30, 0.72);
+}
+
+.tour-card__badge--transit {
+  background: rgba(59, 89, 122, 0.92);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .tour-card__badge--stars-catalog {
@@ -4497,6 +4577,44 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   text-align: center;
   color: var(--catalog-muted);
   padding: 3rem 1rem;
+}
+
+.unified-catalog__tab-empty {
+  text-align: center;
+  color: var(--catalog-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.unified-catalog__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.unified-catalog__more {
+  min-width: min(100%, 280px);
+}
+
+.unified-catalog__country-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--catalog-terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.unified-catalog__country-link:hover {
+  color: var(--catalog-terracotta-hover);
+  border-bottom-color: rgba(200, 90, 50, 0.35);
 }
 
 /* Homepage inline quiz (Globe Trekker) */
@@ -4715,6 +4833,20 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .quiz-chips--thirds {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quiz-chips--flight {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .quiz-chips--flight {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.quiz-chip--wide {
+  text-align: left;
+  line-height: 1.35;
 }
 
 .quiz-chip {

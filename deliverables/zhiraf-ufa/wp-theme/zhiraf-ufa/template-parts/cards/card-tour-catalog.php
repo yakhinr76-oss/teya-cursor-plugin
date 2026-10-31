@@ -26,6 +26,7 @@ $meal_code       = ! empty( $tour['meal_code'] ) ? (string) $tour['meal_code'] :
 $price_rur       = ! empty( $tour['price_rur'] ) ? (int) $tour['price_rur'] : 0;
 $price_formatted = ! empty( $tour['price_formatted'] ) ? (string) $tour['price_formatted'] : zhiraf_ufa_format_tour_price( $price_rur );
 $catalog_in_all  = ! empty( $tour['catalog_in_all'] );
+$catalog_priority = isset( $tour['catalog_priority'] ) ? (int) $tour['catalog_priority'] : 50;
 $catalog_category = function_exists( 'zhiraf_ufa_home_catalog_category' )
 	? zhiraf_ufa_home_catalog_category( $country_slug )
 	: $country_slug;
@@ -50,7 +51,9 @@ $image_info   = zhiraf_ufa_tour_image_info( $tour, $card_index );
 $image_file   = $image_info['file'];
 $country_name = zhiraf_ufa_tour_country_name( $country_slug );
 $flight       = zhiraf_ufa_tour_flight_info( $tour );
-$show_direct  = 'direct' === $flight['key'] || ( 'ufa' === $flight['key'] && 'Уфа' === ( $tour['departure_city'] ?? 'Уфа' ) );
+$show_direct  = function_exists( 'zhiraf_ufa_home_catalog_tour_is_direct_ufa' )
+	? zhiraf_ufa_home_catalog_tour_is_direct_ufa( $tour )
+	: ( 'direct' === $flight['key'] || ( 'ufa' === $flight['key'] && 'Уфа' === ( $tour['departure_city'] ?? 'Уфа' ) ) );
 $beach_line   = ! empty( $tour['beach_line'] ) ? (string) $tour['beach_line'] : __( '1-я линия • Песок', 'zhiraf-ufa' );
 $spec_line    = function_exists( 'zhiraf_ufa_tour_card_spec_line' ) ? zhiraf_ufa_tour_card_spec_line( $tour ) : '';
 
@@ -62,12 +65,20 @@ $prefill_text = sprintf(
 	$departure_date,
 	zhiraf_ufa_plural_nights( $nights )
 );
+
+$show_on_load = $catalog_in_all;
+$card_classes = 'tour-card tour-card--catalog';
+if ( $show_on_load ) {
+	$card_classes .= ' is-catalog-shown';
+}
 ?>
 <article
-	class="tour-card tour-card--catalog reveal"
+	class="<?php echo esc_attr( $card_classes ); ?>"
 	data-dest="<?php echo esc_attr( $country_slug ); ?>"
 	data-category="<?php echo esc_attr( $catalog_category ); ?>"
 	data-catalog-all="<?php echo $catalog_in_all ? '1' : '0'; ?>"
+	data-priority="<?php echo esc_attr( (string) $catalog_priority ); ?>"
+	<?php echo $show_on_load ? '' : ' hidden'; ?>
 >
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
@@ -79,7 +90,7 @@ $prefill_text = sprintf(
 			<?php if ( $show_direct ) : ?>
 				<span class="tour-card__badge tour-card__badge--ufa-direct"><?php esc_html_e( 'Прямой вылет из UFA', 'zhiraf-ufa' ); ?></span>
 			<?php elseif ( '' !== $flight['label'] ) : ?>
-				<span class="tour-card__badge tour-card__badge--ufa-direct tour-card__badge--muted"><?php echo esc_html( $flight['label'] ); ?></span>
+				<span class="tour-card__badge tour-card__badge--transit"><?php echo esc_html( $flight['label'] ); ?></span>
 			<?php endif; ?>
 			<?php if ( $stars ) : ?>
 				<span class="tour-card__badge tour-card__badge--stars-catalog" aria-label="<?php echo esc_attr( sprintf( __( 'Категория отеля: %s', 'zhiraf-ufa' ), $stars ) ); ?>">

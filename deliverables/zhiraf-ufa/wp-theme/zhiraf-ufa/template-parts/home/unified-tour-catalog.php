@@ -9,8 +9,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tabs  = zhiraf_ufa_home_unified_catalog_tabs();
 $tours = zhiraf_ufa_home_unified_catalog_tours();
+$tabs  = zhiraf_ufa_home_unified_catalog_tabs_for_tours( $tours );
+$tabs_json = wp_json_encode(
+	array_map(
+		function ( $tab ) {
+			return array(
+				'id'    => $tab['id'],
+				'label' => $tab['label'],
+				'url'   => zhiraf_ufa_home_catalog_tab_landing_url( $tab['id'] ),
+				'cta'   => zhiraf_ufa_home_catalog_tab_landing_label( $tab['id'] ),
+			);
+		},
+		$tabs
+	)
+);
 $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 	? zhiraf_ufa_whatsapp_url_with_text(
 		zhiraf_ufa_brand_whatsapp_url(),
@@ -48,7 +61,14 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 		</div>
 
 		<?php if ( ! empty( $tours ) ) : ?>
-			<div id="tours-grid" class="tour-price-grid tour-price-grid--catalog unified-catalog__grid">
+			<div
+				id="tours-grid"
+				class="tour-price-grid tour-price-grid--catalog unified-catalog__grid"
+				data-visible-limit="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_VISIBLE; ?>"
+				data-more-step="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_MORE_STEP; ?>"
+				data-max-visible="<?php echo (int) ZHIRAF_UFA_HOME_CATALOG_POOL_PER_TAB; ?>"
+				data-tab-links="<?php echo esc_attr( $tabs_json ); ?>"
+			>
 				<?php
 				foreach ( $tours as $i => $tour_item ) {
 					get_template_part(
@@ -61,6 +81,33 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 					);
 				}
 				?>
+			</div>
+			<p class="unified-catalog__tab-empty reveal" id="catalog-tab-empty" hidden>
+				<?php esc_html_e( 'По этому направлению сейчас нет актуальных туров с прямым вылетом из UFA в ленте — откройте полную подборку на странице страны или напишите нам.', 'zhiraf-ufa' ); ?>
+			</p>
+			<div class="unified-catalog__footer reveal">
+				<button
+					type="button"
+					class="btn btn--outline unified-catalog__more"
+					id="catalog-show-more"
+					hidden
+				>
+					<?php
+					printf(
+						/* translators: %d: number of cards */
+						esc_html__( 'Показать ещё %d отелей', 'zhiraf-ufa' ),
+						(int) ZHIRAF_UFA_HOME_CATALOG_MORE_STEP
+					);
+					?>
+				</button>
+				<a
+					class="unified-catalog__country-link"
+					id="catalog-country-link"
+					href="<?php echo esc_url( zhiraf_ufa_home_catalog_tab_landing_url( 'all' ) ); ?>"
+				>
+					<span id="catalog-country-link-text"><?php echo esc_html( zhiraf_ufa_home_catalog_tab_landing_label( 'all' ) ); ?></span>
+					<span aria-hidden="true">→</span>
+				</a>
 			</div>
 		<?php else : ?>
 			<p class="unified-catalog__empty reveal"><?php esc_html_e( 'Сейчас обновляем цены — напишите нам, подберём актуальные варианты из базы операторов.', 'zhiraf-ufa' ); ?></p>

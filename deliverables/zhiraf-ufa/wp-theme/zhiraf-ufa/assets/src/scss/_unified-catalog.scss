@@ -100,23 +100,31 @@
 }
 
 .tour-price-grid--catalog {
+  display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 0;
 
   .tour-card--catalog {
+    display: none;
     opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: none;
   }
 
-  @media (min-width: 768px) {
+  .tour-card--catalog.is-catalog-shown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    gap: 1.75rem;
   }
 
-  @media (min-width: 1024px) {
+  /* Homepage catalog: 3-up from tablet landscape (overrides _tour-cards.scss max-width: 1100px → 2 cols) */
+  @media (min-width: 900px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
 }
 
@@ -167,6 +175,16 @@
 
 .tour-card__badge--ufa-direct.tour-card__badge--muted {
   background: rgba(34, 31, 30, 0.72);
+}
+
+.tour-card__badge--transit {
+  background: rgba(59, 89, 122, 0.92);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .tour-card__badge--stars-catalog {
@@ -364,4 +382,43 @@
   text-align: center;
   color: var(--catalog-muted);
   padding: 3rem 1rem;
+}
+
+.unified-catalog__tab-empty {
+  text-align: center;
+  color: var(--catalog-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.unified-catalog__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.unified-catalog__more {
+  min-width: min(100%, 280px);
+}
+
+.unified-catalog__country-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--catalog-terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    color: var(--catalog-terracotta-hover);
+    border-bottom-color: rgba(200, 90, 50, 0.35);
+  }
 }

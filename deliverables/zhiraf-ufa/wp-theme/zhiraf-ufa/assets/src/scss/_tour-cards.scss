@@ -366,7 +366,7 @@
 
 /* Responsive Breakpoints */
 @media (max-width: 1100px) {
-  .tour-price-grid {
+  .tour-price-grid:not(.tour-price-grid--catalog) {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
@@ -386,7 +386,7 @@
     }
   }
 
-  .tour-price-grid {
+  .tour-price-grid:not(.tour-price-grid--catalog) {
     grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 24px;

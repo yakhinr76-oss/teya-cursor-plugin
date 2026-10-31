@@ -282,6 +282,18 @@
       return;
     }
     var fadeMs = 200;
+    var baseLimit = parseInt(grid.getAttribute('data-visible-limit') || '6', 10);
+    var moreStep = parseInt(grid.getAttribute('data-more-step') || '6', 10);
+    var visibleLimit = baseLimit;
+    var showMoreBtn = document.getElementById('catalog-show-more');
+    var countryLink = document.getElementById('catalog-country-link');
+    var countryLinkText = document.getElementById('catalog-country-link-text');
+    var tabLinks = [];
+    try {
+      tabLinks = JSON.parse(grid.getAttribute('data-tab-links') || '[]');
+    } catch (e) {
+      tabLinks = [];
+    }
 
     function setActiveTab(activeBtn) {
       qsa('.tab-btn', tabsContainer).forEach(function (btn) {
@@ -296,6 +308,21 @@
         return card.getAttribute('data-catalog-all') === '1';
       }
       return card.getAttribute('data-category') === filter;
+    }
+
+    function matchingCards(filter) {
+      return cards
+        .filter(function (card) {
+          return cardMatches(card, filter);
+        })
+        .sort(function (a, b) {
+          var pa = parseInt(a.getAttribute('data-priority') || '99', 10);
+          var pb = parseInt(b.getAttribute('data-priority') || '99', 10);
+          if (pa !== pb) {
+            return pa - pb;
+          }
+          return 0;
+        });
     }
 
     function showCard(card) {
@@ -316,14 +343,43 @@
       }, fadeMs);
     }
 
-    function filterCards(filter) {
-      cards.forEach(function (card) {
-        if (cardMatches(card, filter)) {
+    function updateCountryLink(filter) {
+      if (!countryLink || !countryLinkText) {
+        return;
+      }
+      var meta = tabLinks.filter(function (t) {
+        return t.id === filter;
+      })[0];
+      if (!meta) {
+        return;
+      }
+      countryLink.href = meta.url || countryLink.href;
+      countryLinkText.textContent = meta.cta || countryLinkText.textContent;
+    }
+
+    function refreshCatalogView(filter) {
+      var matched = matchingCards(filter);
+      matched.forEach(function (card, idx) {
+        if (idx < visibleLimit) {
           showCard(card);
         } else {
           hideCard(card);
         }
       });
+      cards.forEach(function (card) {
+        if (matched.indexOf(card) === -1) {
+          hideCard(card);
+        }
+      });
+      if (showMoreBtn) {
+        showMoreBtn.hidden = matched.length <= visibleLimit;
+      }
+      updateCountryLink(filter);
+    }
+
+    function filterCards(filter) {
+      visibleLimit = baseLimit;
+      refreshCatalogView(filter);
     }
 
     tabsContainer.addEventListener('click', function (e) {
@@ -338,6 +394,15 @@
       setActiveTab(clickedBtn);
       filterCards(filterValue);
     });
+
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener('click', function () {
+        var active = qs('.tab-btn.is-active', tabsContainer);
+        var filterValue = active ? active.getAttribute('data-filter') || 'all' : 'all';
+        visibleLimit += moreStep;
+        refreshCatalogView(filterValue);
+      });
+    }
 
     var defaultActive = qs('.tab-btn.is-active', tabsContainer) || qs('.tab-btn', tabsContainer);
     if (defaultActive) {

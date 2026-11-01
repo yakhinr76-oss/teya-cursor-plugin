@@ -9,14 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tabs  = zhiraf_ufa_home_unified_catalog_tabs();
-$tours = zhiraf_ufa_home_unified_catalog_tours();
-$wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
-	? zhiraf_ufa_whatsapp_url_with_text(
-		zhiraf_ufa_brand_whatsapp_url(),
-		__( 'Здравствуйте! Нужен подбор тура из Уфы — напишите параметры, пожалуйста, 3 варианта под наш бюджет.', 'zhiraf-ufa' )
-	)
-	: 'https://wa.me/79018105018';
+$tabs        = zhiraf_ufa_home_unified_catalog_tabs();
+$tours       = zhiraf_ufa_home_unified_catalog_tours();
+$display_max = 7;
+$grid_tours  = array_slice( $tours, 0, $display_max );
 ?>
 <section class="section section--unified-catalog" id="tour-catalog">
 	<div class="container unified-catalog">
@@ -47,10 +43,10 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 			<?php endforeach; ?>
 		</div>
 
-		<?php if ( ! empty( $tours ) ) : ?>
+		<?php if ( ! empty( $grid_tours ) ) : ?>
 			<div id="tours-grid" class="tour-price-grid tour-price-grid--catalog unified-catalog__grid">
 				<?php
-				foreach ( $tours as $i => $tour_item ) {
+				foreach ( $grid_tours as $i => $tour_item ) {
 					get_template_part(
 						'template-parts/cards/card-tour-catalog',
 						null,
@@ -60,27 +56,11 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 						)
 					);
 				}
+				get_template_part( 'template-parts/home/catalog-capture-card' );
 				?>
 			</div>
 		<?php else : ?>
 			<p class="unified-catalog__empty reveal"><?php esc_html_e( 'Сейчас обновляем цены — напишите нам, подберём актуальные варианты из базы операторов.', 'zhiraf-ufa' ); ?></p>
 		<?php endif; ?>
-
-		<div class="catalog-rescue reveal">
-			<div class="catalog-rescue__copy">
-				<h3 class="catalog-rescue__title"><?php esc_html_e( 'Не нашли подходящий отель или нужны другие даты?', 'zhiraf-ufa' ); ?></h3>
-				<p class="catalog-rescue__text">
-					<?php esc_html_e( 'В базе более 3 500 вариантов из Уфы. Напишите нам параметры — отберём 3 отеля под ваш бюджет за 20 минут.', 'zhiraf-ufa' ); ?>
-				</p>
-			</div>
-			<div class="catalog-rescue__actions">
-				<a class="btn btn--whatsapp catalog-rescue__wa" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp">
-					<?php esc_html_e( 'Написать в WhatsApp', 'zhiraf-ufa' ); ?>
-				</a>
-				<a class="btn btn--outline catalog-rescue__catalog" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>" data-cta-context="home_catalog_rescue_hub">
-					<?php esc_html_e( 'Все направления с вылетом из Уфы →', 'zhiraf-ufa' ); ?>
-				</a>
-			</div>
-		</div>
 	</div>
 </section>

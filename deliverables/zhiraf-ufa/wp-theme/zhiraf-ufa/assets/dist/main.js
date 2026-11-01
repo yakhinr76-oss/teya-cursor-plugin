@@ -324,6 +324,12 @@
           hideCard(card);
         }
       });
+      var capture = qs('[data-catalog-capture]', grid);
+      if (capture) {
+        capture.style.display = '';
+        capture.style.opacity = '1';
+        capture.style.transform = 'scale(1)';
+      }
     }
 
     tabsContainer.addEventListener('click', function (e) {
@@ -346,6 +352,38 @@
     }
   }
   initHomeUnifiedCatalog();
+
+  function initExpressVacationFilter() {
+    qsa('[data-express-vacation]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-express-vacation');
+        var ctx = btn.getAttribute('data-cta-context');
+        if (ctx) {
+          window.zhirafTrack(ctx, { filter: filter || '' });
+        } else {
+          window.zhirafTrack('express_vacation_filter', { filter: filter || '' });
+        }
+        var catalog = document.getElementById('tour-catalog');
+        if (catalog) {
+          catalog.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (!filter) {
+          return;
+        }
+        window.setTimeout(function () {
+          var tab = qs('#tour-tabs .tab-btn[data-filter="' + filter + '"]');
+          if (tab) {
+            tab.click();
+            tab.classList.add('catalog-pills__btn--pulse');
+            window.setTimeout(function () {
+              tab.classList.remove('catalog-pills__btn--pulse');
+            }, 1200);
+          }
+        }, 450);
+      });
+    });
+  }
+  initExpressVacationFilter();
 
   qsa('[data-tour-show-more]').forEach(function (btn) {
     btn.addEventListener('click', function () {

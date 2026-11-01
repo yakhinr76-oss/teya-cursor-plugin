@@ -50,7 +50,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/home/audience-segments' ); ?>
+	<?php get_template_part( 'template-parts/home/express-vacation-filter' ); ?>
 
 	<section class="section section--how-it-works">
 		<div class="container">
@@ -120,6 +120,8 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 		</div>
 	</section>
 
+	<?php get_template_part( 'template-parts/home/home-guarantees-bar' ); ?>
+
 	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
 
 	<section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
@@ -138,22 +140,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 		</div>
 	</section>
 
-	<section class="section section--offers-wordstat bg-milky">
-		<div class="container">
-			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Популярные форматы отдыха из Уфы', 'zhiraf-ufa' ); ?></h2>
-				<p class="lead"><?php esc_html_e( 'Подбираем проверенные туры под ваш формат поездки: от срочных горящих предложений до спокойного семейного отдыха «всё включено».', 'zhiraf-ufa' ); ?></p>
-			</div>
-			<div class="chip-filter chip-filter--offers">
-				<?php foreach ( zhiraf_ufa_offer_hub_links() as $offer ) : ?>
-					<a class="chip chip--link" href="<?php echo esc_url( $offer['url'] ); ?>">
-						<?php echo esc_html( $offer['label'] ); ?>
-					</a>
-				<?php endforeach; ?>
-				<a class="chip chip--link" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/life-scenarios' ); ?>
 
 	<section class="section section--faq faq-home bg-milky" id="faq-home">
 		<div class="container">

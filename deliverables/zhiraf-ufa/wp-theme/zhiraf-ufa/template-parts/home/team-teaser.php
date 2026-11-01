@@ -18,7 +18,7 @@ if ( empty( $members ) || ! is_array( $members ) ) {
 	<div class="container">
 		<div class="section-head reveal">
 			<h2 class="section-title"><?php esc_html_e( 'Кто подберёт ваш тур', 'zhiraf-ufa' ); ?></h2>
-			<p class="lead"><?php esc_html_e( 'Семейное агентство в Уфе с 2011 года — живые менеджеры, а не безликий поиск.', 'zhiraf-ufa' ); ?></p>
+			<p class="lead"><?php esc_html_e( 'Живые менеджеры по направлениям — напишите в мессенджер или зайдите в офис на Гагарина.', 'zhiraf-ufa' ); ?></p>
 		</div>
 		<div class="home-team-grid">
 			<?php foreach ( $members as $member ) : ?>

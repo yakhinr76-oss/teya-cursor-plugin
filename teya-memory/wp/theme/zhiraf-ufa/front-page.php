@@ -4,9 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 
-$dest_all   = zhiraf_ufa_destinations();
-$audience   = zhiraf_ufa_audience_segments();
-$faq_items  = zhiraf_ufa_home_faq_items();
+$faq_items = zhiraf_ufa_home_faq_items();
+$quiz_cta  = zhiraf_ufa_quiz_cta_label();
 ?>
 <main id="primary" class="site-main site-main--home">
 
@@ -14,13 +13,21 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					<?php esc_html_e( 'Туры с вылетом из Уфы — подбор без давления', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — честный подбор по ценам туроператоров', 'zhiraf-ufa' ); ?>
 				</h1>
 				<p class="hero-premium__subtitle">
-					<?php esc_html_e( 'Устали от безликого поиска и скрытых доплат? Подберём 2–4 варианта с вылетом из Уфы — честно, без впаривания. Офис на Гагарина, 74/1.', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Подберём 2–4 проверенных варианта с вылетом из Уфы — с фиксацией цены в договоре и сопровождением до возвращения. Офис на Гагарина, 74/1.', 'zhiraf-ufa' ); ?>
 				</p>
+				<ul class="hero-trust-strip" aria-label="<?php esc_attr_e( 'Гарантии агентства', 'zhiraf-ufa' ); ?>">
+					<li><?php esc_html_e( 'РТА 0012822', 'zhiraf-ufa' ); ?></li>
+					<li><?php esc_html_e( 'С 2011 года', 'zhiraf-ufa' ); ?></li>
+					<li><?php esc_html_e( 'Договор и чек', 'zhiraf-ufa' ); ?></li>
+				</ul>
 				<div class="hero-premium__actions">
-					<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="btn btn--primary btn--lg" data-quiz-open data-cta-context="cta_hero_quiz_open">
+						<?php echo esc_html( $quiz_cta ); ?>
+					</button>
+					<?php zhiraf_ufa_render_social_links( array( 'variant' => 'pill', 'class' => 'hero-social' ) ); ?>
 				</div>
 			</div>
 
@@ -43,129 +50,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--audience bg-milky" id="audience-tabs">
-		<div class="container">
-			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Кому подойдёт наш подбор', 'zhiraf-ufa' ); ?></h2>
-			</div>
-			<div class="audience-tabs">
-				<div class="audience-tabs__nav" role="tablist" aria-label="<?php esc_attr_e( 'Сегменты аудитории', 'zhiraf-ufa' ); ?>">
-					<?php foreach ( $audience as $i => $seg ) : ?>
-						<button
-							type="button"
-							class="audience-tabs__tab<?php echo 0 === $i ? ' is-active' : ''; ?>"
-							role="tab"
-							id="audience-tab-<?php echo esc_attr( $seg['id'] ); ?>"
-							aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"
-							aria-controls="audience-panel-<?php echo esc_attr( $seg['id'] ); ?>"
-							data-audience="<?php echo esc_attr( $seg['id'] ); ?>"
-						><?php echo esc_html( $seg['label'] ); ?></button>
-					<?php endforeach; ?>
-				</div>
-				<?php foreach ( $audience as $i => $seg ) : ?>
-					<div
-						class="audience-tabs__panel reveal<?php echo 0 === $i ? ' is-active' : ''; ?>"
-						role="tabpanel"
-						id="audience-panel-<?php echo esc_attr( $seg['id'] ); ?>"
-						aria-labelledby="audience-tab-<?php echo esc_attr( $seg['id'] ); ?>"
-						data-audience-panel="<?php echo esc_attr( $seg['id'] ); ?>"
-						<?php echo $i > 0 ? 'hidden' : ''; ?>
-					>
-						<ul class="audience-tabs__list">
-							<?php foreach ( $seg['items'] as $item ) : ?>
-								<li><?php echo esc_html( $item ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-						<div class="audience-tabs__actions">
-							<button type="button" class="btn btn--primary" data-quiz-open><?php echo esc_html( $seg['cta'] ); ?></button>
-							<a class="audience-tabs__link" href="<?php echo esc_url( $seg['link'] ); ?>"><?php esc_html_e( 'Подробнее', 'zhiraf-ufa' ); ?></a>
-						</div>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
-	</section>
-
-	<section class="section section--destinations bg-milky">
-		<div class="container destinations">
-			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Направления и вылеты из Уфы', 'zhiraf-ufa' ); ?></h2>
-				<div class="section-tabs dest-tabs" role="tablist">
-					<button type="button" class="tab-btn is-active" data-filter="all"><?php esc_html_e( 'Популярные', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="oae"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="turciya"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="egipet"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="tailand"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="tab-btn" data-filter="vietnam"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></button>
-				</div>
-			</div>
-			<div class="dest-premium-row">
-				<?php foreach ( $dest_all as $dest ) : ?>
-					<a href="<?php echo esc_url( $dest['url'] ); ?>" class="dest-premium-card dest-card" data-dest="<?php echo esc_attr( $dest['slug'] ); ?>">
-						<div class="dest-premium-card__bg">
-							<?php zhiraf_ufa_img( $dest['image'], $dest['alt'], 'dest-premium-card__img', true ); ?>
-						</div>
-						<div class="dest-premium-card__content">
-							<h3 class="dest-premium-card__title"><?php echo esc_html( $dest['name'] ); ?></h3>
-							<p class="dest-premium-card__subtitle"><?php esc_html_e( 'Туры из Уфы', 'zhiraf-ufa' ); ?></p>
-						</div>
-					</a>
-				<?php endforeach; ?>
-			</div>
-
-			<div class="dest-flight-logistics reveal" style="margin-top:40px;background:var(--color-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--color-border);">
-				<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
-					<div>
-						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Перелёт из Уфы', 'zhiraf-ufa' ); ?></h3>
-						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-							<?php esc_html_e( 'Турция, Египет, ОАЭ: в зависимости от даты — прямой рейс или стыковка в Москве. Тип перелёта указан на каждой карточке по данным «Библио-Глобус».', 'zhiraf-ufa' ); ?>
-						</p>
-					</div>
-					<div>
-						<h3 style="font-size:1.25rem;margin-bottom:8px;"><?php esc_html_e( 'Направления со стыковкой через Москву', 'zhiraf-ufa' ); ?></h3>
-						<p style="color:var(--color-muted);margin:0;font-size:0.9375rem;">
-							<?php esc_html_e( 'Таиланд и Вьетнам: в текущей выгрузке «Библио-Глобус» туры из Уфы идут со стыковкой в Москве.', 'zhiraf-ufa' ); ?>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section section--hot-tours bg-sand" id="hot-tours">
-		<div class="container">
-			<div class="section-head reveal">
-				<div>
-					<h2 class="section-title"><?php esc_html_e( 'Горящие туры из Уфы и Москвы', 'zhiraf-ufa' ); ?></h2>
-					<p class="lead" style="margin-top:8px;margin-bottom:0;color:var(--color-muted);">
-						<?php esc_html_e( 'Минимальные цены туроператора Библио-Глобус за тур на 2 взрослых (перелёт и отель). Из Уфы — 5 направлений, ещё 8 — с вылетом из Москвы: перелёт Уфа — Москва в эти цены не входит. Обновление каждые 6 часов.', 'zhiraf-ufa' ); ?>
-					</p>
-				</div>
-			</div>
-
-			<?php get_template_part( 'template-parts/home/hot-bento' ); ?>
-		</div>
-	</section>
-
-	<section class="section section--offers-wordstat bg-milky">
-		<div class="container">
-			<div class="section-head reveal">
-				<h2 class="section-title"><?php esc_html_e( 'Популярные форматы отдыха из Уфы', 'zhiraf-ufa' ); ?></h2>
-				<p class="lead"><?php esc_html_e( 'Подбираем проверенные туры под ваш формат поездки: от срочных горящих предложений до спокойного семейного отдыха «всё включено».', 'zhiraf-ufa' ); ?></p>
-			</div>
-			<div class="chip-filter chip-filter--offers">
-				<?php foreach ( zhiraf_ufa_offer_hub_links() as $offer ) : ?>
-					<a class="chip chip--link" href="<?php echo esc_url( $offer['url'] ); ?>">
-						<?php echo esc_html( $offer['label'] ); ?>
-					</a>
-				<?php endforeach; ?>
-				<a class="chip chip--link" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
-			</div>
-			<p class="text-center reveal">
-				<button type="button" class="btn btn--primary" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
-			</p>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/audience-segments' ); ?>
 
 	<section class="section section--how-it-works">
 		<div class="container">
@@ -177,12 +62,12 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				<div class="step-card reveal">
 					<div class="step-number">01</div>
 					<h3><?php esc_html_e( 'Заявка и пожелания', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Оставляете заявку или проходите квиз. Уточняем состав семьи, даты, бюджет и пожелания.', 'zhiraf-ufa' ); ?></p>
+					<p><?php esc_html_e( 'Пишете в мессенджер или проходите короткий квиз — уточняем состав, даты, бюджет и пожелания.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-1">
 					<div class="step-number">02</div>
 					<h3><?php esc_html_e( 'Экспертный подбор', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Сравниваем операторов и готовим 2–4 проверенных варианта с вылетом из Уфы без спама.', 'zhiraf-ufa' ); ?></p>
+					<p><?php esc_html_e( 'Сравниваем операторов и готовим 2–4 проверенных варианта с вылетом из Уфы.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-2">
 					<div class="step-number">03</div>
@@ -196,10 +81,18 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				</div>
 			</div>
 			<p class="steps-cta reveal">
-				<button type="button" class="btn btn--outline" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+				<a class="audience-tabs__link" href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>">
+					<?php esc_html_e( 'Задать вопрос эксперту в офисе на Гагарина →', 'zhiraf-ufa' ); ?>
+				</a>
 			</p>
 		</div>
 	</section>
+
+	<?php
+	if ( function_exists( 'zhiraf_ufa_show_home_team_teaser' ) && zhiraf_ufa_show_home_team_teaser() ) {
+		get_template_part( 'template-parts/home/team-teaser' );
+	}
+	?>
 
 	<section class="section section--trust trust-social">
 		<div class="container trust-social__grid">
@@ -217,16 +110,17 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				</ul>
 				<div class="trust-social__links">
 					<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
-					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" data-track="messenger" data-channel="vk"><?php esc_html_e( 'Мы ВКонтакте', 'zhiraf-ufa' ); ?></a>
 					<a href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>"><?php esc_html_e( 'Контакты и карта', 'zhiraf-ufa' ); ?></a>
 				</div>
+				<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'class' => 'trust-social__messengers' ) ); ?>
 			</div>
 			<div class="trust-social__visual reveal reveal-delay-1">
-				<?php zhiraf_ufa_img( 'office-ufa.jpg', __( 'Офис турагентства Жираф в Уфе', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
-				<?php zhiraf_ufa_img( 'team-travel.jpg', __( 'Команда турагентства «Жираф»', 'zhiraf-ufa' ), 'trust-social__img', true ); ?>
+				<?php get_template_part( 'template-parts/home/trust-visual' ); ?>
 			</div>
 		</div>
 	</section>
+
+	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
 
 	<section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
 		<div class="container reveal">
@@ -240,6 +134,23 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 					<a href="https://2gis.ru/ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'Рейтинг 2ГИС', 'zhiraf-ufa' ); ?></a>
 					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'ВКонтакте', 'zhiraf-ufa' ); ?></a>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--offers-wordstat bg-milky">
+		<div class="container">
+			<div class="section-head reveal">
+				<h2 class="section-title"><?php esc_html_e( 'Популярные форматы отдыха из Уфы', 'zhiraf-ufa' ); ?></h2>
+				<p class="lead"><?php esc_html_e( 'Подбираем проверенные туры под ваш формат поездки: от срочных горящих предложений до спокойного семейного отдыха «всё включено».', 'zhiraf-ufa' ); ?></p>
+			</div>
+			<div class="chip-filter chip-filter--offers">
+				<?php foreach ( zhiraf_ufa_offer_hub_links() as $offer ) : ?>
+					<a class="chip chip--link" href="<?php echo esc_url( $offer['url'] ); ?>">
+						<?php echo esc_html( $offer['label'] ); ?>
+					</a>
+				<?php endforeach; ?>
+				<a class="chip chip--link" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
 			</div>
 		</div>
 	</section>
@@ -265,28 +176,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--form lead-action" id="lead-action">
-		<div class="container reveal">
-			<div class="form-premium">
-				<div class="form-premium__text">
-					<h2 class="section-title"><?php esc_html_e( 'Оставьте заявку на подбор', 'zhiraf-ufa' ); ?></h2>
-					<p><?php esc_html_e( 'Перезвоним в рабочее время и уточним детали поездки.', 'zhiraf-ufa' ); ?></p>
-				</div>
-				<form class="zhiraf-form" data-action="zhiraf_lead">
-					<div class="form-premium__fields">
-						<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" />
-						<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" />
-						<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Отправить', 'zhiraf-ufa' ); ?></button>
-					</div>
-					<?php zhiraf_ufa_consent_fields( 'home-lead' ); ?>
-					<p class="form-status" role="status" aria-live="polite"></p>
-				</form>
-				<p class="form-premium__alt">
-					<button type="button" class="btn btn--outline btn--sm" data-quiz-open><?php esc_html_e( 'Или пройти квиз', 'zhiraf-ufa' ); ?></button>
-				</p>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/lead-magnet' ); ?>
 
 	<section class="section section--editorial editorial-blog-teaser bg-milky">
 		<div class="container">
@@ -298,25 +188,11 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--subscribe section--subscribe-hold" aria-label="<?php esc_attr_e( 'Подписка на рассылку', 'zhiraf-ufa' ); ?>">
-		<div class="subscribe-premium__bg">
-			<?php zhiraf_ufa_img( 'subscribe-bg.jpg', __( 'Подписка на подборки туров', 'zhiraf-ufa' ), 'subscribe-premium__img', false, true ); ?>
-			<div class="subscribe-premium__overlay"></div>
-		</div>
-		<div class="container reveal">
-			<div class="subscribe-premium__content">
-				<h2><?php esc_html_e( 'Подборки туров и советы — на почту', 'zhiraf-ufa' ); ?></h2>
-				<p class="subscribe-premium__hold"><?php esc_html_e( 'Рассылка готовится — оставьте заявку через квиз или позвоните, пока подключаем email-канал.', 'zhiraf-ufa' ); ?></p>
-				<p><button type="button" class="btn btn--primary" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button></p>
-			</div>
-		</div>
-	</section>
-
 </main>
 
 <div class="sticky-mobile-cta" id="sticky-mobile-cta" hidden>
 	<a href="tel:+79018105018" class="btn btn--outline btn--sm" data-track="phone"><?php esc_html_e( 'Позвонить', 'zhiraf-ufa' ); ?></a>
-	<button type="button" class="btn btn--primary btn--sm" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+	<button type="button" class="btn btn--primary btn--sm" data-quiz-open data-cta-context="cta_sticky_quiz_open"><?php echo esc_html( $quiz_cta ); ?></button>
 </div>
 <?php
 get_footer();

@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<li><a href="<?php echo esc_url( home_url( '/politika-konfidenczialnosti/' ) ); ?>"><?php esc_html_e( 'Политика конфиденциальности', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/politika-cookies/' ) ); ?>"><?php esc_html_e( 'Политика cookies', 'zhiraf-ufa' ); ?></a></li>
 			</ul>
-			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open><?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?></button>
+			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open data-cta-context="cta_footer_quiz_open"><?php echo esc_html( zhiraf_ufa_quiz_cta_label() ); ?></button>
 		</div>
 	</div>
 	<div class="site-footer__legal">

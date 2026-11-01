@@ -665,6 +665,18 @@ function zhiraf_ufa_blog_teaser_bt01() {
  *
  * @return array<int,array<string,mixed>>
  */
+/**
+ * Primary label for quiz modal triggers (hero, header, sticky).
+ *
+ * @return string
+ */
+function zhiraf_ufa_quiz_cta_label() {
+	return apply_filters(
+		'zhiraf_ufa_quiz_cta_label',
+		get_theme_mod( 'zhiraf_cta_text', __( 'Рассчитать тур за 1 мин', 'zhiraf-ufa' ) )
+	);
+}
+
 function zhiraf_ufa_audience_segments() {
 	return array(
 		array(

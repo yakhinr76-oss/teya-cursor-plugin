@@ -4,7 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 
-$faq_items  = zhiraf_ufa_home_faq_items();
+$faq_items = zhiraf_ufa_home_faq_items();
+$quiz_cta  = zhiraf_ufa_quiz_cta_label();
 ?>
 <main id="primary" class="site-main site-main--home">
 
@@ -12,7 +13,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					<?php esc_html_e( 'Туры с вылетом из Уфы — подбор без давления', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — честный подбор по ценам туроператоров', 'zhiraf-ufa' ); ?>
 				</h1>
 				<p class="hero-premium__subtitle">
 					<?php esc_html_e( 'Подберём 2–4 проверенных варианта с вылетом из Уфы — с фиксацией цены в договоре и сопровождением до возвращения. Офис на Гагарина, 74/1.', 'zhiraf-ufa' ); ?>
@@ -23,7 +24,9 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 					<li><?php esc_html_e( 'Договор и чек', 'zhiraf-ufa' ); ?></li>
 				</ul>
 				<div class="hero-premium__actions">
-					<button type="button" class="btn btn--primary btn--lg" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="btn btn--primary btn--lg" data-quiz-open data-cta-context="cta_hero_quiz_open">
+						<?php echo esc_html( $quiz_cta ); ?>
+					</button>
 					<?php zhiraf_ufa_render_social_links( array( 'variant' => 'pill', 'class' => 'hero-social' ) ); ?>
 				</div>
 			</div>
@@ -47,7 +50,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/home/home-quiz-inline' ); ?>
+	<?php get_template_part( 'template-parts/home/audience-segments' ); ?>
 
 	<section class="section section--how-it-works">
 		<div class="container">
@@ -59,7 +62,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				<div class="step-card reveal">
 					<div class="step-number">01</div>
 					<h3><?php esc_html_e( 'Заявка и пожелания', 'zhiraf-ufa' ); ?></h3>
-					<p><?php esc_html_e( 'Оставляете заявку или проходите квиз. Уточняем состав семьи, даты, бюджет и пожелания.', 'zhiraf-ufa' ); ?></p>
+					<p><?php esc_html_e( 'Пишете в мессенджер или проходите короткий квиз — уточняем состав, даты, бюджет и пожелания.', 'zhiraf-ufa' ); ?></p>
 				</div>
 				<div class="step-card reveal reveal-delay-1">
 					<div class="step-number">02</div>
@@ -78,7 +81,9 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				</div>
 			</div>
 			<p class="steps-cta reveal">
-				<button type="button" class="btn btn--outline" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+				<a class="audience-tabs__link" href="<?php echo esc_url( home_url( '/kontakty/' ) ); ?>">
+					<?php esc_html_e( 'Задать вопрос эксперту в офисе на Гагарина →', 'zhiraf-ufa' ); ?>
+				</a>
 			</p>
 		</div>
 	</section>
@@ -115,6 +120,8 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
+	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
+
 	<section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
 		<div class="container reveal">
 			<div class="reviews-placeholder-card" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px;text-align:center;max-width:860px;margin:0 auto;">
@@ -131,8 +138,6 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
-
 	<section class="section section--offers-wordstat bg-milky">
 		<div class="container">
 			<div class="section-head reveal">
@@ -147,9 +152,6 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 				<?php endforeach; ?>
 				<a class="chip chip--link" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
 			</div>
-			<p class="text-center reveal">
-				<button type="button" class="btn btn--primary" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
-			</p>
 		</div>
 	</section>
 
@@ -190,7 +192,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 
 <div class="sticky-mobile-cta" id="sticky-mobile-cta" hidden>
 	<a href="tel:+79018105018" class="btn btn--outline btn--sm" data-track="phone"><?php esc_html_e( 'Позвонить', 'zhiraf-ufa' ); ?></a>
-	<button type="button" class="btn btn--primary btn--sm" data-quiz-open><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
+	<button type="button" class="btn btn--primary btn--sm" data-quiz-open data-cta-context="cta_sticky_quiz_open"><?php echo esc_html( $quiz_cta ); ?></button>
 </div>
 <?php
 get_footer();

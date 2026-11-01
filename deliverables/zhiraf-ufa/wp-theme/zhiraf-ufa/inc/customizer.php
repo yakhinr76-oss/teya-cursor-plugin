@@ -74,7 +74,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'zhiraf_cta_text',
 		array(
-			'default'           => 'Подобрать тур',
+			'default'           => 'Рассчитать тур за 1 мин',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);

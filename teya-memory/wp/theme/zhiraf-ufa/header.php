@@ -35,8 +35,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 		</nav>
 		<div class="site-header__actions">
 			<a class="header-phone" href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a>
-			<button type="button" class="btn btn--outline btn--sm" data-quiz-open>
-				<?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?>
+			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'context' => 'header' ) ); ?>
+			<button type="button" class="btn btn--outline btn--sm" data-quiz-open data-cta-context="cta_header_quiz_open">
+				<?php echo esc_html( zhiraf_ufa_quiz_cta_label() ); ?>
 			</button>
 		</div>
 	</div>

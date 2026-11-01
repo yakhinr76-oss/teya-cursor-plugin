@@ -147,7 +147,7 @@ $prefill_text = sprintf(
 				data-quiz-open
 				data-quiz-prefill="<?php echo esc_attr( $prefill_text ); ?>"
 				data-tour-hotel="<?php echo esc_attr( $hotel_name ); ?>"
-				data-cta-context="home_catalog_quiz"
+				data-cta-context="home_catalog_check_dates"
 			>
 				<?php esc_html_e( 'Проверить даты', 'zhiraf-ufa' ); ?>
 			</button>

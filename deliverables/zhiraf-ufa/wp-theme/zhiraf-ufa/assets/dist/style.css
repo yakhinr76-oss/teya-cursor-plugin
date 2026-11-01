@@ -4553,6 +4553,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   color: var(--quiz-muted);
 }
 
+.home-quiz__lead--modal {
+  margin-bottom: 1.25rem;
+}
+
+.home-quiz__eyebrow--modal {
+  margin-bottom: 0.5rem;
+}
+
 .home-quiz-card {
   background: #fff;
   border: 1px solid var(--quiz-border);
@@ -6052,3 +6060,5 @@ a.contacts-card__value:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/*# sourceMappingURL=style.css.map */

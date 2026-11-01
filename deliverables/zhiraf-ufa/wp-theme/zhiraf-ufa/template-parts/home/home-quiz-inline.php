@@ -1,6 +1,7 @@
 <?php
 /**
- * Homepage inline quiz (block 2).
+ * @deprecated Inline homepage quiz removed — use template-parts/quiz-modal.php only.
+ * Kept for reference / static export tooling.
  *
  * @package Zhiraf_Ufa
  */

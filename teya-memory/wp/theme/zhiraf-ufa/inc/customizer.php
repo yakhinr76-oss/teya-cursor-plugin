@@ -74,7 +74,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'zhiraf_cta_text',
 		array(
-			'default'           => 'Подобрать тур',
+			'default'           => 'Рассчитать тур за 1 мин',
 			'sanitize_callback' => 'sanitize_text_field',
 		)
 	);
@@ -84,6 +84,56 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 			'label'   => __( 'Текст CTA', 'zhiraf-ufa' ),
 			'section' => 'zhiraf_ufa_brand',
 			'type'    => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zhiraf_whatsapp_url',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_whatsapp_url',
+		array(
+			'label'       => __( 'Ссылка WhatsApp', 'zhiraf-ufa' ),
+			'description' => __( 'Пустое значение — используется wa.me на +7 901 810-50-18 (офис).', 'zhiraf-ufa' ),
+			'section'     => 'zhiraf_ufa_brand',
+			'type'        => 'url',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zhiraf_telegram_url',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_telegram_url',
+		array(
+			'label'       => __( 'Ссылка Telegram', 'zhiraf-ufa' ),
+			'description' => __( 'Необязательно. Пустое значение скрывает кнопку.', 'zhiraf-ufa' ),
+			'section'     => 'zhiraf_ufa_brand',
+			'type'        => 'url',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'zhiraf_vk_url',
+		array(
+			'default'           => 'https://vk.com/zhiraf_ufa',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_vk_url',
+		array(
+			'label'   => __( 'Ссылка ВКонтакте', 'zhiraf-ufa' ),
+			'section' => 'zhiraf_ufa_brand',
+			'type'    => 'url',
 		)
 	);
 }

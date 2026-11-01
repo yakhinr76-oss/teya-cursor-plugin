@@ -77,9 +77,9 @@ $wa    = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 				<a class="btn btn--whatsapp catalog-rescue__wa" href="<?php echo esc_url( $wa ); ?>" target="_blank" rel="noopener noreferrer" data-track="messenger" data-channel="whatsapp">
 					<?php esc_html_e( 'Написать в WhatsApp', 'zhiraf-ufa' ); ?>
 				</a>
-				<button type="button" class="btn btn--primary catalog-rescue__quiz" data-quiz-open data-cta-context="home_catalog_rescue_quiz">
-					<?php esc_html_e( 'Подобрать в квизе', 'zhiraf-ufa' ); ?>
-				</button>
+				<a class="btn btn--outline catalog-rescue__catalog" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>" data-cta-context="home_catalog_rescue_hub">
+					<?php esc_html_e( 'Все направления с вылетом из Уфы →', 'zhiraf-ufa' ); ?>
+				</a>
 			</div>
 		</div>
 	</div>

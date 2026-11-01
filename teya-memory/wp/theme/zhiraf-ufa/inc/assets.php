@@ -100,41 +100,132 @@ function zhiraf_ufa_offer_hub_links() {
 function zhiraf_ufa_destinations() {
 	return array(
 		array(
-			'slug'  => 'turciya',
-			'name'  => __( 'Турция', 'zhiraf-ufa' ),
-			'image' => 'country-turciya.jpg',
-			'alt'   => __( 'Турция — отдых на море', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/turciya/' ),
+			'slug'    => 'turciya',
+			'name'    => __( 'Турция', 'zhiraf-ufa' ),
+			'image'   => 'country-turciya.jpg',
+			'alt'     => __( 'Турция — отдых на море', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/turciya/' ),
+			'teaser'  => __( 'Анталья и Алания: отели 4–5★, All Inclusive, семейные курорты.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'oae',
-			'name'  => __( 'ОАЭ', 'zhiraf-ufa' ),
-			'image' => 'country-oae.jpg',
-			'alt'   => __( 'ОАЭ — город и пляж', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/oae/' ),
+			'slug'    => 'oae',
+			'name'    => __( 'ОАЭ', 'zhiraf-ufa' ),
+			'image'   => 'hero-uae.jpg',
+			'alt'     => __( 'ОАЭ — пляж и Дубай', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/oae/' ),
+			'teaser'  => __( 'Дубай, Шарджа, Фуджейра: пляж, шопинг и комфорт круглый год.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'egipet',
-			'name'  => __( 'Египет', 'zhiraf-ufa' ),
-			'image' => 'country-egipet.jpg',
-			'alt'   => __( 'Египет — курорты Красного моря', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/egipet/' ),
+			'slug'    => 'egipet',
+			'name'    => __( 'Египет', 'zhiraf-ufa' ),
+			'image'   => 'country-egipet.jpg',
+			'alt'     => __( 'Египет — курорты Красного моря', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/egipet/' ),
+			'teaser'  => __( 'Хургада и Шарм-эль-Шейх: тёплое море, рифы, отели с аквапарками.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'tailand',
-			'name'  => __( 'Таиланд', 'zhiraf-ufa' ),
-			'image' => 'country-tailand.jpg',
-			'alt'   => __( 'Таиланд — тропический отдых', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/tailand/' ),
+			'slug'    => 'tailand',
+			'name'    => __( 'Таиланд', 'zhiraf-ufa' ),
+			'image'   => 'country-tailand.jpg',
+			'alt'     => __( 'Таиланд — тропический отдых', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/tailand/' ),
+			'teaser'  => __( 'Пхукет и Паттайя: тропики, экскурсии, отдых на двоих и с детьми.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 		array(
-			'slug'  => 'vietnam',
-			'name'  => __( 'Вьетнам', 'zhiraf-ufa' ),
-			'image' => 'country-vietnam.jpg',
-			'alt'   => __( 'Вьетнам — пляжи и природа', 'zhiraf-ufa' ),
-			'url'   => home_url( '/tour/vietnam/' ),
+			'slug'    => 'vietnam',
+			'name'    => __( 'Вьетнам', 'zhiraf-ufa' ),
+			'image'   => 'resort-vietnam-phu-quoc-2.jpg',
+			'alt'     => __( 'Вьетнам — пляж Фукуок', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/vietnam/' ),
+			'teaser'  => __( 'Нячанг и Фукуок: без визы до 45 дней, пляж и SPA-курорты.', 'zhiraf-ufa' ),
+			'catalog' => true,
+		),
+		array(
+			'slug'    => 'kitaj',
+			'name'    => __( 'Китай (Хайнань)', 'zhiraf-ufa' ),
+			'image'   => 'country-kitaj.jpg',
+			'alt'     => __( 'Китай — пляжный отдых на Хайнане', 'zhiraf-ufa' ),
+			'url'     => home_url( '/tour/kitaj/' ),
+			'teaser'  => __( 'Остров Санья: белый песок, тропики и курорты у Южно-Китайского моря.', 'zhiraf-ufa' ),
+			'catalog' => true,
 		),
 	);
+}
+
+/**
+ * Destinations shown on /tour/ catalog hub (priced cards).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_catalog_hub_destinations() {
+	$items = array();
+	foreach ( zhiraf_ufa_destinations() as $dest ) {
+		if ( empty( $dest['catalog'] ) ) {
+			continue;
+		}
+		$items[] = $dest;
+	}
+	return $items;
+}
+
+/**
+ * Hero collage tiles on /tour/ with sell badges (price + flight).
+ *
+ * @return array<int,array{slug:string,image:string,alt:string,price_badge:string,flight_badge:string}>
+ */
+function zhiraf_ufa_catalog_hero_collage_items() {
+	$slugs = array( 'oae', 'turciya', 'tailand' );
+	$by_slug = array();
+	foreach ( zhiraf_ufa_destinations() as $dest ) {
+		$by_slug[ $dest['slug'] ] = $dest;
+	}
+	$image_map = array(
+		'oae'     => array( 'hero-uae.jpg', __( 'ОАЭ — пляжный отдых', 'zhiraf-ufa' ) ),
+		'turciya' => array( 'hero-turkey.jpg', __( 'Турция — море и All Inclusive', 'zhiraf-ufa' ) ),
+		'tailand' => array( 'hero-thailand.jpg', __( 'Таиланд — тропики', 'zhiraf-ufa' ) ),
+	);
+	$items     = array();
+	$modifiers = array( '--1', '--2', '--3' );
+	foreach ( $slugs as $i => $slug ) {
+		if ( empty( $image_map[ $slug ] ) ) {
+			continue;
+		}
+		$dest_row = isset( $by_slug[ $slug ] ) ? $by_slug[ $slug ] : array( 'name' => $slug );
+		$name     = ! empty( $dest_row['name'] ) ? (string) $dest_row['name'] : $slug;
+		$min      = function_exists( 'zhiraf_ufa_get_country_min_tour' ) ? zhiraf_ufa_get_country_min_tour( $slug ) : null;
+		$flight   = function_exists( 'zhiraf_ufa_tour_flight_info' )
+			? zhiraf_ufa_tour_flight_info( $min, 'Уфа' )
+			: array( 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ) );
+		$price_badge = '';
+		if ( $min && ! empty( $min['price_rur'] ) ) {
+			$thousands = (int) round( (int) $min['price_rur'] / 1000 );
+			$price_badge = sprintf(
+				/* translators: 1: country name, 2: price in thousands */
+				__( '%1$s от %2$s т.р.', 'zhiraf-ufa' ),
+				$name,
+				number_format( $thousands, 0, '', ' ' )
+			);
+		}
+		$flight_badge = ! empty( $flight['label'] ) ? (string) $flight['label'] : __( 'Прямой рейс из Уфы', 'zhiraf-ufa' );
+		if ( false === mb_stripos( $flight_badge, 'уф', 0, 'UTF-8' ) ) {
+			$flight_badge = __( 'Прямой рейс из Уфы', 'zhiraf-ufa' );
+		} elseif ( 'вылет из Уфы' === $flight_badge ) {
+			$flight_badge = __( 'Прямой рейс из Уфы', 'zhiraf-ufa' );
+		}
+		$items[] = array(
+			'slug'          => $slug,
+			'image'         => $image_map[ $slug ][0],
+			'alt'           => $image_map[ $slug ][1],
+			'price_badge'   => $price_badge,
+			'flight_badge'  => $flight_badge,
+			'modifier'      => isset( $modifiers[ $i ] ) ? $modifiers[ $i ] : '',
+		);
+	}
+	return $items;
 }
 
 /**
@@ -574,6 +665,18 @@ function zhiraf_ufa_blog_teaser_bt01() {
  *
  * @return array<int,array<string,mixed>>
  */
+/**
+ * Primary label for quiz modal triggers (hero, header, sticky).
+ *
+ * @return string
+ */
+function zhiraf_ufa_quiz_cta_label() {
+	return apply_filters(
+		'zhiraf_ufa_quiz_cta_label',
+		get_theme_mod( 'zhiraf_cta_text', __( 'Рассчитать тур за 1 мин', 'zhiraf-ufa' ) )
+	);
+}
+
 function zhiraf_ufa_audience_segments() {
 	return array(
 		array(
@@ -606,13 +709,13 @@ function zhiraf_ufa_audience_segments() {
 			'items' => array(
 				__( 'Пошагово объясним документы и сроки оформления', 'zhiraf-ufa' ),
 				__( 'Оформление договора в офисе на Гагарина, 74/1', 'zhiraf-ufa' ),
-				__( 'Не давим звонками — связь только по заявке', 'zhiraf-ufa' ),
+				__( 'Связь только по вашей заявке — без лишних обзвонов', 'zhiraf-ufa' ),
 			),
 		),
 		array(
 			'id'    => 'experienced',
 			'label' => __( 'Опытные путешественники', 'zhiraf-ufa' ),
-			'cta'   => __( 'Описать пожелания в квизе', 'zhiraf-ufa' ),
+			'cta'   => __( 'Рассчитать сложный маршрут', 'zhiraf-ufa' ),
 			'link'  => home_url( '/o-nas/' ),
 			'items' => array(
 				__( 'Учтём нестандартные маршруты и пожелания по отелю', 'zhiraf-ufa' ),
@@ -621,6 +724,69 @@ function zhiraf_ufa_audience_segments() {
 			),
 		),
 	);
+}
+
+/**
+ * Team roster (homepage teaser + «О нас»).
+ *
+ * @return array<int,array{name:string,role:string,specialty:string,desc:string,desc_teaser:string,image:string,whatsapp_prefill?:string,messenger_label?:string,telegram_url?:string}>
+ */
+function zhiraf_ufa_team_roster() {
+	$members = array(
+		array(
+			'name'              => __( 'Рафаэль', 'zhiraf-ufa' ),
+			'role'              => __( 'Директор', 'zhiraf-ufa' ),
+			'specialty'         => __( 'Договоры по 132-ФЗ, партнёры-туроператоры, личный контроль сервиса', 'zhiraf-ufa' ),
+			'desc_teaser'       => __( 'Контроль качества сервиса, договоры и партнёрство с туроператорами.', 'zhiraf-ufa' ),
+			'desc'              => __( 'Организация работы агентства, контроль качества сервиса, юридическое сопровождение договоров и стратегическое партнёрство с туроператорами.', 'zhiraf-ufa' ),
+			'image'             => 'team-rafael.jpg',
+			'whatsapp_prefill'  => __( 'Здравствуйте! Хочу задать вопрос руководителю турагентства «Жираф».', 'zhiraf-ufa' ),
+			'messenger_label'   => __( 'WhatsApp руководителю', 'zhiraf-ufa' ),
+		),
+		array(
+			'name'              => __( 'Лиана', 'zhiraf-ufa' ),
+			'role'              => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'specialty'         => __( 'Турция и Египет, All Inclusive, семейный отдых с детьми', 'zhiraf-ufa' ),
+			'desc_teaser'       => __( 'Турция и Египет, All Inclusive, семейный отдых с детьми.', 'zhiraf-ufa' ),
+			'desc'              => __( 'Специализируется на пляжных направлениях Средиземного и Красного морей (Турция, Египет), подборе отелей All Inclusive и турах для семей с детьми.', 'zhiraf-ufa' ),
+			'image'             => 'team-liana.jpg',
+			'whatsapp_prefill'  => __( 'Здравствуйте! Хочу подобрать тур с Лианой (Турция / Египет).', 'zhiraf-ufa' ),
+			'messenger_label'   => __( 'Написать в WhatsApp', 'zhiraf-ufa' ),
+			'hide_telegram'     => true,
+		),
+		array(
+			'name'              => __( 'Алина', 'zhiraf-ufa' ),
+			'role'              => __( 'Менеджер по туризму', 'zhiraf-ufa' ),
+			'specialty'         => __( 'ОАЭ, Таиланд и Вьетнам — стыковки из Уфы, визы, инспекции отелей', 'zhiraf-ufa' ),
+			'desc_teaser'       => __( 'Таиланд, Вьетнам, ОАЭ, стыковочные перелёты и визовые правила.', 'zhiraf-ufa' ),
+			'desc'              => __( 'Эксперт по направлениям Азии и Ближнего Востока (Таиланд, Вьетнам, ОАЭ), визовым правилам, стыковочным авиаперелётам и экскурсионным турам.', 'zhiraf-ufa' ),
+			'image'             => 'team-alina.jpg',
+			'whatsapp_prefill'  => __( 'Здравствуйте! Хочу подобрать тур с Алиной (ОАЭ / Азия).', 'zhiraf-ufa' ),
+			'messenger_label'   => __( 'Написать в WhatsApp', 'zhiraf-ufa' ),
+			'hide_telegram'     => true,
+		),
+	);
+
+	return apply_filters( 'zhiraf_ufa_team_roster', $members );
+}
+
+/**
+ * Homepage team teaser (2–3 experts).
+ *
+ * @return array<int,array{name:string,role:string,desc:string,image:string}>
+ */
+function zhiraf_ufa_home_team_teaser() {
+	$teaser = array();
+	foreach ( zhiraf_ufa_team_roster() as $member ) {
+		$teaser[] = array(
+			'name'  => $member['name'],
+			'role'  => $member['role'],
+			'desc'  => $member['desc_teaser'],
+			'image' => $member['image'],
+		);
+	}
+
+	return apply_filters( 'zhiraf_ufa_home_team_teaser', $teaser );
 }
 
 /**
@@ -646,7 +812,7 @@ function zhiraf_ufa_home_faq_items() {
 		),
 		array(
 			'q' => __( 'Как организован перелёт в Таиланд и Вьетнам из Уфы?', 'zhiraf-ufa' ),
-			'a' => __( 'На Пхукет, в Паттайю, Нячанг и на Фукуок в текущей выгрузке «Библио-Глобус» туры из Уфы идут со стыковкой в Москве. Перелёт входит в пакетный тур.', 'zhiraf-ufa' ),
+			'a' => __( 'Сейчас туроператор «Библио-Глобус» формирует маршруты на Пхукет, в Паттайю, Нячанг и на Фукуок с комфортной пересадкой в Москве. Перелёт входит в пакетный тур — поможем подобрать рейсы с удобным временем стыковки.', 'zhiraf-ufa' ),
 			'link' => home_url( '/tour/tailand/' ),
 		),
 		array(
@@ -679,8 +845,16 @@ function zhiraf_ufa_home_faq_items() {
 function zhiraf_ufa_about_faq_items() {
 	return array(
 		array(
+			'q' => __( 'Где находится офис «Жираф» в Уфе?', 'zhiraf-ufa' ),
+			'a' => __( 'Мы в офисе 3 по адресу ул. Юрия Гагарина, 74/1 (450068). Можно заранее договориться о визите — обсудим тур за чашкой кофе или оформим договор на месте.', 'zhiraf-ufa' ),
+		),
+		array(
 			'q' => __( 'Как давно работает турагентство «Жираф» в Уфе?', 'zhiraf-ufa' ),
 			'a' => __( 'ООО «Жираф» непрерывно работает на туристическом рынке Уфы с апреля 2011 года. Наше агентство внесено в Единый федеральный реестр турагентств под номером РТА 0012822.', 'zhiraf-ufa' ),
+		),
+		array(
+			'q' => __( 'Безопасна ли онлайн-оплата тура?', 'zhiraf-ufa' ),
+			'a' => __( 'Да. Сначала заключаем официальный договор по 132-ФЗ, затем оплата по защищённой банковской ссылке или в офисе с выдачей фискального чека. Никаких переводов «на карту физлица» без документов.', 'zhiraf-ufa' ),
 		),
 		array(
 			'q' => __( 'Чем покупка в «Жираф» отличается от самостоятельного поиска на агрегаторах?', 'zhiraf-ufa' ),

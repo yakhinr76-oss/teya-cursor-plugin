@@ -191,27 +191,173 @@
     });
   }
   qsa('.dest-tabs').forEach(function (bar) { bindDestFilter(bar, '.tab-btn'); });
-  qsa('.chip-filter').forEach(function (bar) { bindDestFilter(bar, '.chip'); });
-
-  /* Tour price filter tabs */
-  function bindTourFilter(bar) {
-    var tabs = qsa('[data-tour-filter]', bar);
-    var section = bar.closest('.section--hot-tours') || bar.parentElement;
+  qsa('.ai-meal-tabs').forEach(function (bar) {
+    var tabs = qsa('.tab-btn', bar);
+    var section = bar.closest('.section') || bar.parentElement;
     var cards = qsa('.tour-card', section);
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (c) { c.classList.remove('is-active'); });
         tab.classList.add('is-active');
-        var filter = tab.getAttribute('data-tour-filter');
+        var filter = tab.getAttribute('data-filter');
         cards.forEach(function (card) {
-          var dest = card.getAttribute('data-dest');
-          var show = filter === 'all' || dest === filter;
+          var dest = card.getAttribute('data-dest') || '';
+          var show = filter === 'all';
+          if (!show && filter === 'islands') {
+            show = dest === 'tailand' || dest === 'vietnam';
+          } else if (!show) {
+            show = dest === filter;
+          }
           card.classList.toggle('is-hidden', !show);
         });
       });
     });
+  });
+  qsa('.chip-filter').forEach(function (bar) {
+    if (bar.classList.contains('chip-filter--offers')) {
+      return;
+    }
+    bindDestFilter(bar, '.chip');
+  });
+
+  /* Tour price filter tabs */
+  function bindTourFilter(bar) {
+    var tabs = qsa('[data-tour-filter]', bar);
+    var section = bar.closest('.section--unified-catalog') || bar.closest('.section--hot-tours') || bar.closest('.section--dest-tours') || bar.parentElement;
+    var wraps = qsa('.dest-tour-card-wrap', section);
+    var cards = qsa('.tour-card', section);
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (c) {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        var filter = tab.getAttribute('data-tour-filter');
+        function applyFilter(card) {
+          var dest = card.getAttribute('data-dest') || '';
+          if (filter === 'all') {
+            return card.getAttribute('data-catalog-all') === '1';
+          }
+          if (filter === 'rossiya-domestic') {
+            return dest === 'rossiya' || dest === 'abkhaziya';
+          }
+          var region = card.getAttribute('data-tour-region') || '';
+          return dest === filter || (region && region === filter);
+        }
+        if (wraps.length) {
+          wraps.forEach(function (wrap) {
+            var card = qs('.tour-card', wrap) || wrap;
+            wrap.classList.toggle('is-hidden', !applyFilter(card));
+          });
+		} else {
+          cards.forEach(function (card) {
+            card.classList.toggle('is-hidden', !applyFilter(card));
+          });
+        }
+      });
+    });
+    var activeTab = tabs.filter(function (t) { return t.classList.contains('is-active'); })[0] || tabs[0];
+    if (activeTab) {
+      activeTab.click();
+    }
   }
-  qsa('.tour-tabs').forEach(function (bar) { bindTourFilter(bar); });
+  qsa('.tour-tabs, .dest-tour-tabs').forEach(function (bar) {
+    if (bar.id === 'tour-tabs') {
+      return;
+    }
+    bindTourFilter(bar);
+  });
+
+  /* Homepage unified catalog: #tour-tabs + #tours-grid (data-filter / data-category) */
+  function initHomeUnifiedCatalog() {
+    var tabsContainer = document.getElementById('tour-tabs');
+    var grid = document.getElementById('tours-grid');
+    if (!tabsContainer || !grid) {
+      return;
+    }
+    var cards = qsa('.tour-card', grid);
+    if (!cards.length) {
+      return;
+    }
+    var fadeMs = 200;
+
+    function setActiveTab(activeBtn) {
+      qsa('.tab-btn', tabsContainer).forEach(function (btn) {
+        var on = btn === activeBtn;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    function cardMatches(card, filter) {
+      if (filter === 'all') {
+        return card.getAttribute('data-catalog-all') === '1';
+      }
+      return card.getAttribute('data-category') === filter;
+    }
+
+    function showCard(card) {
+      card.style.display = '';
+      requestAnimationFrame(function () {
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+      });
+    }
+
+    function hideCard(card) {
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.97)';
+      window.setTimeout(function () {
+        if (card.style.opacity === '0') {
+          card.style.display = 'none';
+        }
+      }, fadeMs);
+    }
+
+    function filterCards(filter) {
+      cards.forEach(function (card) {
+        if (cardMatches(card, filter)) {
+          showCard(card);
+        } else {
+          hideCard(card);
+        }
+      });
+    }
+
+    tabsContainer.addEventListener('click', function (e) {
+      var clickedBtn = e.target.closest('.tab-btn');
+      if (!clickedBtn || !tabsContainer.contains(clickedBtn)) {
+        return;
+      }
+      var filterValue = clickedBtn.getAttribute('data-filter');
+      if (!filterValue) {
+        return;
+      }
+      setActiveTab(clickedBtn);
+      filterCards(filterValue);
+    });
+
+    var defaultActive = qs('.tab-btn.is-active', tabsContainer) || qs('.tab-btn', tabsContainer);
+    if (defaultActive) {
+      setActiveTab(defaultActive);
+      filterCards(defaultActive.getAttribute('data-filter') || 'all');
+    }
+  }
+  initHomeUnifiedCatalog();
+
+  qsa('[data-tour-show-more]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var sel = btn.getAttribute('data-target');
+      var grid = sel ? qs(sel) : null;
+      if (!grid) return;
+      qsa('.dest-tour-card-wrap.is-collapsed', grid).forEach(function (wrap) {
+        wrap.classList.remove('is-collapsed');
+      });
+      btn.hidden = true;
+    });
+  });
 
   /* Audience tabs */
   var audienceRoot = qs('.audience-tabs');
@@ -272,40 +418,194 @@
   }
   showBanner();
 
-  /* Quiz modal */
+  /* Quiz wizard (modal #quiz-form only) */
   var modal = qs('#quiz-modal');
   var quizForm = qs('#quiz-form');
+
   function trackQuizStep(stepIndex) {
     window.zhirafTrack('quiz_step_' + (stepIndex + 1), { step: stepIndex + 1 });
   }
-  function openQuiz() {
-    if (!modal || !quizForm) return;
-    goStep(0);
-    trackQuizStep(0);
-    modal.removeAttribute('hidden');
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('quiz-open');
-    var first = qs('.quiz-step.is-active input, .quiz-step.is-active select', quizForm);
-    if (first) {
-      try { first.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
+
+  function fieldValue(form, name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    if (!el) return '';
+    if (el.type === 'radio') {
+      var checked = form.querySelector('[name="' + name + '"]:checked');
+      return checked ? checked.value : '';
+    }
+    return el.value || '';
+  }
+
+  function syncQuizWishes(form) {
+    var wishes = qs('[name="quiz_wishes"]', form);
+    if (!wishes) return;
+    var parts = [
+      fieldValue(form, 'quiz_destination') ? 'Куда: ' + fieldValue(form, 'quiz_destination') : '',
+      fieldValue(form, 'quiz_composition') ? 'Состав: ' + fieldValue(form, 'quiz_composition') : '',
+      fieldValue(form, 'quiz_child_age') ? 'Ребёнок: ' + fieldValue(form, 'quiz_child_age') : '',
+      fieldValue(form, 'quiz_timing') ? 'Срок: ' + fieldValue(form, 'quiz_timing') : '',
+      fieldValue(form, 'quiz_duration') ? 'Ночей: ' + fieldValue(form, 'quiz_duration') : '',
+      fieldValue(form, 'quiz_channel') ? 'Связь: ' + fieldValue(form, 'quiz_channel') : '',
+    ].filter(Boolean);
+    wishes.value = parts.join('. ');
+    var month = qs('[name="quiz_month"]', form);
+    if (month && fieldValue(form, 'quiz_timing')) {
+      month.value = fieldValue(form, 'quiz_timing');
     }
   }
+
+  function updateQuizSubmitLabel(form) {
+    var btn = qs('[data-quiz-submit-label]', form);
+    var channel = fieldValue(form, 'quiz_channel') || 'WhatsApp';
+    if (!btn) return;
+    if (channel === 'Telegram') {
+      btn.textContent = 'Получить расчёт туров в Telegram →';
+    } else {
+      btn.textContent = 'Получить расчёт туров в мессенджер →';
+    }
+  }
+
+  function initQuizWizard(form) {
+    if (!form) return;
+    if (form.dataset.quizWizardInit === '1') {
+      return;
+    }
+    form.dataset.quizWizardInit = '1';
+    var steps = qsa('.quiz-step', form);
+    if (!steps.length) return;
+    var current = 0;
+    var progressBar = qs('.quiz-wizard__progress-bar', form);
+    var progressLabel = qs('[data-quiz-progress-label]', form);
+
+    var progressPercent = qs('[data-quiz-progress-percent]', form);
+    var stepTitles = [
+      'Шаг 1 из 4: Куда планируете полететь?',
+      'Шаг 2 из 4: В каком составе летите?',
+      'Шаг 3 из 4: Даты вылета и длительность',
+      'Финальный шаг: Получение подборки',
+    ];
+    var stepPercents = ['25%', '50%', '75%', '100%'];
+
+    function updateProgress(n) {
+      if (progressBar) {
+        progressBar.style.width = stepPercents[n] || '25%';
+      }
+      if (progressPercent) {
+        progressPercent.textContent = stepPercents[n] || '25%';
+      }
+      if (progressLabel) {
+        progressLabel.textContent = stepTitles[n] || stepTitles[0];
+      }
+    }
+
+    function validateQuizStep(stepEl) {
+      if (!stepEl) return false;
+      var radioGroups = {};
+      qsa('input[type="radio"]', stepEl).forEach(function (field) {
+        if (field.required || field.hasAttribute('required')) {
+          radioGroups[field.name] = true;
+        }
+      });
+      var ok = true;
+      Object.keys(radioGroups).forEach(function (name) {
+        if (!form.querySelector('[name="' + name + '"]:checked')) {
+          ok = false;
+        }
+      });
+      qsa('input[type="tel"], select, textarea', stepEl).forEach(function (field) {
+        if (field.required && !field.checkValidity()) {
+          ok = false;
+          field.reportValidity();
+        }
+      });
+      return ok;
+    }
+
+    function goStep(stepNumber) {
+      var n = stepNumber - 1;
+      if (n < 0 || n >= steps.length) return;
+      steps.forEach(function (step) {
+        var num = parseInt(step.getAttribute('data-step') || '0', 10);
+        var active = num === stepNumber;
+        step.classList.toggle('is-active', active);
+        step.hidden = !active;
+      });
+      current = n;
+      updateProgress(n);
+      trackQuizStep(n);
+    }
+
+    qsa('[data-quiz-go]', form).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = parseInt(btn.getAttribute('data-quiz-go') || '1', 10);
+        if (target > current + 1 && !validateQuizStep(steps[current])) {
+          return;
+        }
+        goStep(target);
+      });
+    });
+
+    qsa('input[name="quiz_channel"]', form).forEach(function (input) {
+      input.addEventListener('change', function () {
+        updateQuizSubmitLabel(form);
+      });
+    });
+
+    form.addEventListener('submit', function () {
+      syncQuizWishes(form);
+    });
+
+    goStep(1);
+    updateQuizSubmitLabel(form);
+  }
+
+  qsa('.js-quiz-wizard').forEach(initQuizWizard);
+
+  function openQuiz() {
+    if (!modal || !quizForm) return;
+    modal.removeAttribute('hidden');
+    modal.removeAttribute('inert');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('quiz-open');
+  }
+
   function closeQuiz() {
     if (!modal) return;
     modal.setAttribute('hidden', '');
+    modal.setAttribute('inert', '');
     document.body.style.overflow = '';
     document.body.classList.remove('quiz-open');
   }
+
+  var vibeQuizMap = {
+    family: { composition: 'Семья с детьми', wishTag: '' },
+    couple: { composition: 'Пара', wishTag: '' },
+    city: { composition: '', wishTag: '[Шопинг и движ]' },
+    party: { composition: 'Компания друзей', wishTag: '[Шопинг и движ]' },
+    active: { composition: '', wishTag: '[Активный отдых / Экскурсии]' },
+  };
+
+  function applyQuizPrefillToForm(form, btn) {
+    if (!form) return;
+    var vibeField = qs('[name="vibe"]', form);
+    var vibeSlug = btn.getAttribute('data-vibe') || '';
+    var prefill = btn.getAttribute('data-quiz-prefill') || '';
+    if (vibeField) vibeField.value = vibeSlug;
+    if (prefill) {
+      var wishes = qs('[name="quiz_wishes"]', form);
+      if (wishes) wishes.value = prefill;
+    }
+    var map = vibeQuizMap[vibeSlug] || null;
+    if (map && map.composition) {
+      var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', form);
+      if (target) target.checked = true;
+    }
+  }
+
   qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var prefill = btn.getAttribute('data-quiz-prefill');
-      if (prefill && quizForm) {
-        var wishes = qs('[name="quiz_wishes"]', quizForm);
-        if (wishes) {
-          wishes.value = prefill;
-        }
-      }
       quizOpenGoal(btn);
+      applyQuizPrefillToForm(quizForm, btn);
       openQuiz();
     });
   });
@@ -316,55 +616,50 @@
     if (e.key === 'Escape') closeQuiz();
   });
 
-  var steps = qsa('.quiz-step', quizForm);
-  var current = 0;
-  function validateQuizStep(stepEl) {
-    if (!stepEl) return false;
-    var fields = qsa('input, select, textarea', stepEl).filter(function (f) {
-      return f.type !== 'hidden' && !f.classList.contains('zhiraf-hp');
+  qsa('[data-lead-channel]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var form = btn.closest('form');
+      if (!form) return;
+      var ch = qs('[name="contact_channel"]', form);
+      if (ch) ch.value = btn.getAttribute('data-lead-channel') || '';
     });
-    var ok = true;
-    fields.forEach(function (field) {
-      if (!field.checkValidity()) {
-        ok = false;
-        field.reportValidity();
-      }
-    });
-    return ok;
-  }
-  function goStep(n) {
-    steps.forEach(function (step, i) {
-      var active = i === n;
-      step.classList.toggle('is-active', active);
-      step.hidden = !active;
-    });
-    current = n;
-    var activeBtn = qs('.quiz-next', steps[n]);
-    if (activeBtn) {
-      activeBtn.disabled = false;
-      activeBtn.removeAttribute('aria-busy');
-    }
-  }
-  qsa('.quiz-next', quizForm).forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      btn.disabled = false;
-      btn.removeAttribute('aria-busy');
-      if (!validateQuizStep(steps[current])) {
+  });
+
+  function bindRuPhoneMask(input) {
+    if (!input || input.dataset.phoneMaskBound === '1') return;
+    input.dataset.phoneMaskBound = '1';
+    input.addEventListener('input', function (e) {
+      var val = e.target.value.replace(/\D/g, '');
+      if (val.charAt(0) === '8') val = '7' + val.slice(1);
+      if (val.charAt(0) !== '7') val = '7' + val;
+      val = val.slice(0, 11);
+      var parts = val.match(/^(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+      if (!parts) return;
+      if (!parts[2]) {
+        e.target.value = parts[1] ? '+7 (' : '';
         return;
       }
-      if (current < steps.length - 1) {
-        goStep(current + 1);
-        trackQuizStep(current);
+      e.target.value = '+7 (' + parts[2] + (parts[3] ? ') ' + parts[3] : '') + (parts[4] ? '-' + parts[4] : '') + (parts[5] ? '-' + parts[5] : '');
+    });
+  }
+
+  qsa('[data-phone-mask]').forEach(bindRuPhoneMask);
+
+  var leadMagnetForm = qs('#lead-magnet-form');
+  if (leadMagnetForm) {
+    leadMagnetForm.addEventListener('submit', function () {
+      var picked = leadMagnetForm.querySelector('[name="lead_messenger"]:checked');
+      var channel = qs('[name="contact_channel"]', leadMagnetForm);
+      if (picked && channel) {
+        channel.value = picked.value;
+      }
+      var dest = qs('[name="destination"]', leadMagnetForm);
+      var msg = qs('[name="message"]', leadMagnetForm);
+      if (dest && msg && dest.value.trim()) {
+        msg.value = msg.value + '. ' + dest.value.trim();
       }
     });
-  });
-  qsa('.quiz-prev', quizForm).forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (current > 0) goStep(current - 1);
-    });
-  });
+  }
 
   var leadFormStarted = {};
   qsa('.zhiraf-form').forEach(function (form) {
@@ -379,16 +674,6 @@
       });
     });
   });
-
-  function fieldValue(form, name) {
-    var el = form.querySelector('[name="' + name + '"]');
-    if (!el) return '';
-    if (el.type === 'radio') {
-      var checked = form.querySelector('[name="' + name + '"]:checked');
-      return checked ? checked.value : '';
-    }
-    return el.value || '';
-  }
 
   function trackFormSuccess(form, action) {
     if (action === 'zhiraf_quiz') {
@@ -444,6 +729,27 @@
       });
   }
   function sendForm(form, action) {
+    var msgField = form.querySelector('[name="message"]');
+    if (msgField && form.classList.contains('hot-lead-form')) {
+      var dest = fieldValue(form, 'hot_destination');
+      var budget = fieldValue(form, 'hot_budget');
+      var parts = [];
+      if (dest) parts.push('Куда: ' + dest);
+      if (budget) parts.push('Бюджет: ' + budget);
+      if (parts.length) {
+        msgField.value = parts.join('. ');
+      }
+    }
+    if (msgField && form.classList.contains('ai-lead-form')) {
+      var travelers = fieldValue(form, 'ai_travelers');
+      var month = fieldValue(form, 'ai_month');
+      var aiParts = [];
+      if (travelers) aiParts.push('Состав: ' + travelers);
+      if (month) aiParts.push('Месяц: ' + month);
+      if (aiParts.length) {
+        msgField.value = aiParts.join('. ');
+      }
+    }
     var fd = new FormData(form);
     fd.append('action', action);
     fd.append('nonce', cfg.nonce || '');
@@ -503,14 +809,43 @@
     });
   });
 
-  if (quizForm) {
-    quizForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!quizForm.checkValidity()) {
-        quizForm.reportValidity();
-        return;
-      }
-      postForm(quizForm, 'zhiraf_quiz');
+  qsa('[data-dest-season-module]').forEach(function (root) {
+    var tabs = qsa('[data-season-tab]', root);
+    var cards = qsa('[data-season-card]', root);
+    if (!tabs.length || !cards.length) {
+      return;
+    }
+    function activate(index) {
+      tabs.forEach(function (tab, i) {
+        var on = i === index;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      cards.forEach(function (card, i) {
+        var on = i === index;
+        card.classList.toggle('is-active', on);
+        if (on) {
+          card.removeAttribute('hidden');
+        } else {
+          card.setAttribute('hidden', '');
+        }
+      });
+    }
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var idx = parseInt(tab.getAttribute('data-season-index') || '0', 10);
+        if (!isNaN(idx)) {
+          activate(idx);
+        }
+      });
     });
-  }
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var idx = parseInt(card.getAttribute('data-season-index') || '0', 10);
+        if (!isNaN(idx)) {
+          activate(idx);
+        }
+      });
+    });
+  });
 })();

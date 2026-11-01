@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<a href="mailto:office@zhiraf-ufa.ru" data-track="email">office@zhiraf-ufa.ru</a>
 			</p>
 			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?></p>
+			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'class' => 'footer-social' ) ); ?>
 		</div>
 		<div class="footer-col">
 			<p class="footer-col__title"><?php esc_html_e( 'Навигация', 'zhiraf-ufa' ); ?></p>
@@ -48,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<li><a href="<?php echo esc_url( home_url( '/politika-konfidenczialnosti/' ) ); ?>"><?php esc_html_e( 'Политика конфиденциальности', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/politika-cookies/' ) ); ?>"><?php esc_html_e( 'Политика cookies', 'zhiraf-ufa' ); ?></a></li>
 			</ul>
-			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open><?php echo esc_html( get_theme_mod( 'zhiraf_cta_text', 'Подобрать тур' ) ); ?></button>
+			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open data-cta-context="cta_footer_quiz_open"><?php echo esc_html( zhiraf_ufa_quiz_cta_label() ); ?></button>
 		</div>
 	</div>
 	<div class="site-footer__legal">

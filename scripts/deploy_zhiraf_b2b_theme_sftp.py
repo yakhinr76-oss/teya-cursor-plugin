@@ -70,18 +70,35 @@ def normalize_ssh_endpoint(raw_host: str, configured_port: int) -> tuple[str, in
 
 
 def resolve_remote_theme_path(sftp: paramiko.SFTPClient, configured: str) -> str:
+    """Resolve **staging only**: wp-content/themes/zhiraf-ufa under b2b-tour.ru."""
+    staging_marker = "b2b-tour.ru"
+    prod_marker = "zhiraf-ufa.ru"
+
     if configured:
-        try:
-            sftp.stat(f"{configured.rstrip('/')}/style.css")
-            return configured.rstrip("/")
-        except OSError:
-            print(f"WARN: configured path missing style.css: {configured}", file=sys.stderr)
+        if prod_marker in configured and staging_marker not in configured:
+            print(
+                f"WARN: B2B_TOUR_SSH_THEME_PATH points at production ({prod_marker}); "
+                f"ignoring — this script uploads staging ({staging_marker}) only.",
+                file=sys.stderr,
+            )
+            configured = ""
+        elif staging_marker in configured:
+            try:
+                sftp.stat(f"{configured.rstrip('/')}/style.css")
+                print(f"Resolved theme path: {configured.rstrip('/')}")
+                return configured.rstrip("/")
+            except OSError:
+                print(
+                    f"WARN: configured staging path missing style.css: {configured}",
+                    file=sys.stderr,
+                )
 
     home = sftp.normalize(".")
     roots = [home, "/"]
     seen: set[str] = set()
+    b2b_candidates = [c for c in REMOTE_CANDIDATES if staging_marker in c]
     for root in roots:
-        for rel in REMOTE_CANDIDATES:
+        for rel in b2b_candidates:
             remote = f"{root.rstrip('/')}/{rel}".replace("//", "/")
             if remote in seen:
                 continue
@@ -94,7 +111,8 @@ def resolve_remote_theme_path(sftp: paramiko.SFTPClient, configured: str) -> str
                 continue
 
     print(
-        "BLOCKER: could not find wp-content/themes/zhiraf-ufa — set B2B_TOUR_SSH_THEME_PATH",
+        "BLOCKER: could not find b2b-tour.ru wp-content/themes/zhiraf-ufa — "
+        "set B2B_TOUR_SSH_THEME_PATH to the staging theme directory",
         file=sys.stderr,
     )
     sys.exit(1)

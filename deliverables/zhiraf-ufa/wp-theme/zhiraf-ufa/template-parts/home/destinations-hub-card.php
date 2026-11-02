@@ -15,7 +15,10 @@ if ( empty( $card['url'] ) ) {
 	return;
 }
 
-$title = trim( (string) ( $card['flag'] ?? '' ) . ' ' . (string) ( $card['title'] ?? '' ) );
+$country_name = (string) ( $card['title'] ?? '' );
+$flag_emoji   = (string) ( $card['flag'] ?? '' );
+$title        = trim( $flag_emoji . ' ' . $country_name );
+$flag_url     = ! empty( $card['flag_url'] ) ? (string) $card['flag_url'] : '';
 ?>
 <a
 	class="dest-hub-card reveal"
@@ -40,7 +43,20 @@ $title = trim( (string) ( $card['flag'] ?? '' ) . ' ' . (string) ( $card['title'
 	</span>
 	<span class="dest-hub-card__bottom">
 		<span class="dest-hub-card__copy">
-			<span class="dest-hub-card__country"><?php echo esc_html( $title ); ?></span>
+			<span class="dest-hub-card__country">
+				<?php if ( $flag_url ) : ?>
+					<img
+						class="dest-hub-card__flag"
+						src="<?php echo esc_url( $flag_url ); ?>"
+						alt=""
+						width="28"
+						height="19"
+						decoding="async"
+						aria-hidden="true"
+					/>
+				<?php endif; ?>
+				<span class="dest-hub-card__country-text"><?php echo esc_html( $title ); ?></span>
+			</span>
 			<?php if ( ! empty( $card['teaser'] ) ) : ?>
 				<span class="dest-hub-card__teaser"><?php echo esc_html( $card['teaser'] ); ?></span>
 			<?php endif; ?>

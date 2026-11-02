@@ -59,7 +59,8 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'abkhaziya',
-				'flag'        => '🇬🇪',
+				'flag'        => '',
+				'flag_image'  => 'flags/abkhazia.svg',
 				'title'       => __( 'Абхазия', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Гагра, Пицунда • Море и горы', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Трансфер из Сочи', 'zhiraf-ufa' ),
@@ -225,6 +226,10 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 			);
 		}
 		$img = zhiraf_ufa_theme_image( (string) $row['image'], (string) $row['title'] );
+		$flag_img = array( 'url' => '', 'alt' => '' );
+		if ( ! empty( $row['flag_image'] ) ) {
+			$flag_img = zhiraf_ufa_theme_image( (string) $row['flag_image'], (string) $row['title'] );
+		}
 		$out[] = array_merge(
 			$row,
 			array(
@@ -232,6 +237,7 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 				'price_label' => $price_label,
 				'photo_url'   => ! empty( $img['url'] ) ? (string) $img['url'] : '',
 				'photo_alt'   => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
+				'flag_url'    => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',
 			)
 		);
 	}

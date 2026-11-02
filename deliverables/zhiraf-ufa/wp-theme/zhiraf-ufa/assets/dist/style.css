@@ -6654,9 +6654,22 @@ a.contacts-card__value:hover {
   min-width: 0;
 }
 .dest-hub-card__country {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   font-weight: 900;
   line-height: 1.15;
+}
+.dest-hub-card__flag {
+  width: 1.75rem;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+.dest-hub-card__country-text {
+  min-width: 0;
 }
 .dest-hub-card__teaser {
   font-size: 0.75rem;

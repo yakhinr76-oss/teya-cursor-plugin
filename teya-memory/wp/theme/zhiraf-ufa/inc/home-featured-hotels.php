@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Default WhatsApp deep link for the agency.
  */
+if ( ! function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ) :
 function zhiraf_ufa_brand_whatsapp_url() {
 	$url = get_theme_mod( 'zhiraf_whatsapp_url', '' );
 	if ( is_string( $url ) && '' !== trim( $url ) ) {
@@ -20,6 +21,7 @@ function zhiraf_ufa_brand_whatsapp_url() {
 
 	return apply_filters( 'zhiraf_ufa_default_whatsapp_url', 'https://wa.me/79018105018' );
 }
+endif;
 
 /**
  * Append URL-encoded prefill text to a WhatsApp deep link.
@@ -27,6 +29,7 @@ function zhiraf_ufa_brand_whatsapp_url() {
  * @param string $base_url Theme mod or wa.me URL.
  * @param string $text     Prefill message.
  */
+if ( ! function_exists( 'zhiraf_ufa_whatsapp_url_with_text' ) ) :
 function zhiraf_ufa_whatsapp_url_with_text( $base_url, $text ) {
 	$base_url = trim( (string) $base_url );
 	$text     = trim( (string) $text );
@@ -41,6 +44,7 @@ function zhiraf_ufa_whatsapp_url_with_text( $base_url, $text ) {
 
 	return $base_url . $sep . 'text=' . rawurlencode( $text );
 }
+endif;
 
 /**
  * WhatsApp URL for catalog capture card.

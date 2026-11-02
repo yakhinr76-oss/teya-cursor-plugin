@@ -24,7 +24,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 					<li><?php esc_html_e( 'Договор и чек', 'zhiraf-ufa' ); ?></li>
 				</ul>
 				<div class="hero-premium__actions">
-					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('tour-catalog') && document.getElementById('tour-catalog').scrollIntoView({behavior: 'smooth'})">
+					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('catalog-tours') && document.getElementById('catalog-tours').scrollIntoView({behavior: 'smooth'})">
 						<?php esc_html_e( 'Смотреть туры', 'zhiraf-ufa' ); ?>
 					</button>
 					<a href="<?php echo esc_url( zhiraf_ufa_whatsapp_url_with_text( zhiraf_ufa_brand_whatsapp_url(), 'Здравствуйте! Хочу подобрать тур из Уфы.' ) ); ?>" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--lg" data-track="messenger" data-channel="whatsapp">

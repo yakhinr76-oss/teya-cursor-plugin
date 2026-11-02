@@ -47,15 +47,6 @@ function zhiraf_ufa_whatsapp_url_with_text( $base_url, $text ) {
 endif;
 
 /**
- * WhatsApp URL for catalog capture card.
- */
-function zhiraf_ufa_home_catalog_capture_wa_url() {
-	$text = __( 'Здравствуйте! Не нашёл подходящий отель на сайте. Помогите подобрать тур из Уфы под мои даты и бюджет — нужны 3 персональных варианта.', 'zhiraf-ufa' );
-
-	return zhiraf_ufa_whatsapp_url_with_text( zhiraf_ufa_brand_whatsapp_url(), $text );
-}
-
-/**
  * WhatsApp URL for a featured hotel card CTA.
  *
  * @param string $wa_query Hotel name fragment for the message.

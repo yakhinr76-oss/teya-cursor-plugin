@@ -54,6 +54,8 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 
 	<?php get_template_part( 'template-parts/home/express-vacation-filter' ); ?>
 
+	<?php get_template_part( 'template-parts/home/destinations-hub' ); ?>
+
 	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
 
 	<?php get_template_part( 'template-parts/home/life-scenarios' ); ?>

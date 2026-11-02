@@ -104,6 +104,34 @@ function zhiraf_ufa_enqueue_assets() {
 				)
 			);
 		}
+		$featured_js = ZHIRAF_UFA_DIR . '/assets/js/home-featured-hotels.js';
+		wp_enqueue_script(
+			'zhiraf-featured-hotels',
+			ZHIRAF_UFA_URI . '/assets/js/home-featured-hotels.js',
+			array(),
+			file_exists( $featured_js ) ? (string) filemtime( $featured_js ) : ZHIRAF_UFA_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
+		wp_localize_script(
+			'zhiraf-featured-hotels',
+			'zhirafFeaturedHotels',
+			zhiraf_ufa_home_featured_hotels_script_data()
+		);
+
+		$dest_hub_js = ZHIRAF_UFA_DIR . '/assets/js/home-destinations-hub.js';
+		wp_enqueue_script(
+			'zhiraf-destinations-hub',
+			ZHIRAF_UFA_URI . '/assets/js/home-destinations-hub.js',
+			array(),
+			file_exists( $dest_hub_js ) ? (string) filemtime( $dest_hub_js ) : ZHIRAF_UFA_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zhiraf_ufa_enqueue_assets' );

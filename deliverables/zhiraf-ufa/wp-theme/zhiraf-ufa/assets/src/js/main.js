@@ -61,7 +61,7 @@
   function phonePlacement(el) {
     if (el.closest('.site-header') || el.classList.contains('header-phone')) return 'header';
     if (el.closest('#sticky-mobile-cta')) return 'sticky';
-    if (el.closest('.trust-social')) return 'trust';
+    if (el.closest('#home-guarantees-bar')) return 'trust';
     if (el.closest('.site-footer')) return 'footer';
     if (el.closest('.site-main--contacts')) return 'contacts';
     return 'other';
@@ -422,10 +422,10 @@
     });
   }
 
-  /* Sticky mobile CTA after trust block */
-  var trustBlock = qs('.trust-social');
+  /* Sticky mobile CTA after catalog block */
+  var catalogBlock = qs('#tour-catalog');
   var stickyCta = qs('#sticky-mobile-cta');
-  if (trustBlock && stickyCta && window.matchMedia('(max-width: 768px)').matches) {
+  if (catalogBlock && stickyCta && window.matchMedia('(max-width: 768px)').matches) {
     var stickyObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
@@ -435,7 +435,7 @@
         }
       });
     }, { threshold: 0 });
-    stickyObs.observe(trustBlock);
+    stickyObs.observe(catalogBlock);
   }
 
   /* Cookie banner */

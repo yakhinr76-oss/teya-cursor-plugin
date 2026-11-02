@@ -149,7 +149,6 @@
 }
 
 .catalog-capture-card {
-  grid-column: 1 / -1;
   min-height: 100%;
   border-radius: 1rem;
   background: linear-gradient(135deg, #c85a32 0%, #b04b26 100%);
@@ -157,10 +156,6 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 12px 32px rgba(200, 90, 50, 0.25);
-
-  @media (min-width: 1024px) {
-    grid-column: span 2;
-  }
 }
 
 .catalog-capture-card__glow {

@@ -19,7 +19,7 @@ $wa_url = zhiraf_ufa_home_catalog_capture_wa_url();
 			<?php esc_html_e( 'Не нашли свой отель среди этих вариантов?', 'zhiraf-ufa' ); ?>
 		</h3>
 		<p class="catalog-capture-card__text">
-			<?php esc_html_e( 'В рабочей базе с вылетом из Уфы более 1 200 отелей. Напишите даты и бюджет — эксперт проверит номера и пришлёт 3 персональных варианта в WhatsApp за 15 минут.', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'В нашей базе с вылетом из Уфы прямо сейчас более 1 200 отелей. Напишите желаемые даты и бюджет — тревел-эксперт пришлет 3 персональных варианта в WhatsApp за 15 минут.', 'zhiraf-ufa' ); ?>
 		</p>
 		<div class="catalog-capture-card__actions">
 			<a
@@ -31,7 +31,7 @@ $wa_url = zhiraf_ufa_home_catalog_capture_wa_url();
 				data-channel="whatsapp"
 				data-cta-context="home_catalog_capture_card"
 			>
-				<?php esc_html_e( 'Спросить в WhatsApp', 'zhiraf-ufa' ); ?>
+				<?php esc_html_e( 'Подобрать в WhatsApp', 'zhiraf-ufa' ); ?>
 			</a>
 			<p class="catalog-capture-card__note">
 				<?php esc_html_e( 'Отвечаем с 09:00 до 21:00 · без спама', 'zhiraf-ufa' ); ?>

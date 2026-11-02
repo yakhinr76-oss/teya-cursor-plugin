@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $tabs        = zhiraf_ufa_home_unified_catalog_tabs();
 $tours       = zhiraf_ufa_home_unified_catalog_tours();
-$display_max = 7;
+$display_max = 6;
 $grid_tours  = array_slice( $tours, 0, $display_max );
 ?>
 <section class="section section--unified-catalog" id="tour-catalog">
@@ -20,7 +20,7 @@ $grid_tours  = array_slice( $tours, 0, $display_max );
 			<p class="catalog-eyebrow">
 				<?php esc_html_e( 'Прямые рейсы из аэропорта Уфа (UFA)', 'zhiraf-ufa' ); ?>
 			</p>
-			<h2 class="unified-catalog__title"><?php esc_html_e( 'Популярные туры с прямым вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
+			<h2 class="unified-catalog__title"><?php esc_html_e( 'Популярные направления с вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
 			<p class="unified-catalog__lead">
 				<?php esc_html_e( 'Стоимость указана на двоих взрослых с перелётом, трансфером, страховкой и проживанием. Данные синхронизируются напрямую с туроператорами.', 'zhiraf-ufa' ); ?>
 			</p>
@@ -56,8 +56,10 @@ $grid_tours  = array_slice( $tours, 0, $display_max );
 						)
 					);
 				}
-				get_template_part( 'template-parts/home/catalog-capture-card' );
 				?>
+			</div>
+			<div class="unified-catalog__capture" style="margin-top: 3rem;">
+				<?php get_template_part( 'template-parts/home/catalog-capture-card' ); ?>
 			</div>
 		<?php else : ?>
 			<p class="unified-catalog__empty reveal"><?php esc_html_e( 'Сейчас обновляем цены — напишите нам, подберём актуальные варианты из базы операторов.', 'zhiraf-ufa' ); ?></p>

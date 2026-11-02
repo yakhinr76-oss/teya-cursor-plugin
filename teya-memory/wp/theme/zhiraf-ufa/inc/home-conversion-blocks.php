@@ -49,68 +49,73 @@ function zhiraf_ufa_home_express_vacation_chips() {
 }
 
 /**
- * Hard guarantees bar (3 columns).
+ * Hard guarantees bar (4 columns).
  *
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_home_guarantee_pillars() {
 	return array(
 		array(
-			'icon'  => '🏛️',
-			'title' => __( 'РТА 0012822', 'zhiraf-ufa' ),
-			'text'  => __( 'Номер в Едином федеральном реестре турагентств РФ, официальный договор и чек.', 'zhiraf-ufa' ),
+			'icon'  => '🏷️',
+			'title' => __( 'Реальные цены туроператоров', 'zhiraf-ufa' ),
+			'text'  => __( 'Без скрытых комиссий агентства и внезапных доплат.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '📍',
-			'title' => __( 'Офис в Уфе с 2011 года', 'zhiraf-ufa' ),
-			'text'  => __( 'ул. Гагарина, 74/1 (Сипайлово). Личный прием и консультации.', 'zhiraf-ufa' ),
+			'icon'  => '🏨',
+			'title' => __( 'Отели без прикрас', 'zhiraf-ufa' ),
+			'text'  => __( 'Честно предупреждаем о нюансах захода в море, шумных трассах и ремонте.', 'zhiraf-ufa' ),
 		),
 		array(
 			'icon'  => '💳',
-			'title' => __( 'Честная смета', 'zhiraf-ufa' ),
-			'text'  => __( 'Окончательная цена фиксируется в договоре в рублях до оплаты. Без скрытых наценок.', 'zhiraf-ufa' ),
+			'title' => __( 'Фиксация сметы в договоре', 'zhiraf-ufa' ),
+			'text'  => __( 'Окончательная цена с топливными сборами и трансфером прописывается до оплаты.', 'zhiraf-ufa' ),
+		),
+		array(
+			'icon'  => '🤝',
+			'title' => __( 'Поддержка 24/7', 'zhiraf-ufa' ),
+			'text'  => __( 'Сопровождение туриста от регистрации в аэропорту Уфы до возвращения.', 'zhiraf-ufa' ),
 		),
 	);
 }
 
 /**
- * Life situation cards → WhatsApp with prefill.
+ * Life situation cards → Quiz with prefill.
  *
- * @return array<int,array{emoji:string,title:string,text:string,prefill:string,track:string}>
+ * @return array<int,array{emoji:string,title:string,text:string,quiz_step_1:string,track:string}>
  */
 function zhiraf_ufa_home_life_scenarios() {
 	return array(
 		array(
-			'emoji'   => '👶',
-			'title'   => __( 'Первый выезд с малышом', 'zhiraf-ufa' ),
-			'text'    => __( 'Отели с плавным заходом в море, блендерами в ресторане, прокатом колясок и тихими номерами вдали от дискотек.', 'zhiraf-ufa' ),
-			'prefill' => __( 'Здравствуйте! Ищу тур для первого выезда с малышом из Уфы. Подскажите проверенные отели с песчаным пляжем и детским столом.', 'zhiraf-ufa' ),
-			'cta'     => __( 'Смотреть отели →', 'zhiraf-ufa' ),
-			'track'   => 'scenario_baby',
+			'emoji'       => '👨‍👩‍👧‍👦',
+			'title'       => __( 'Семья с детьми', 'zhiraf-ufa' ),
+			'text'        => __( 'Песчаные пологие пляжи, подогреваемые бассейны, детская анимация и меню.', 'zhiraf-ufa' ),
+			'quiz_step_1' => 'Семья с детьми',
+			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
+			'track'       => 'scenario_family',
 		),
 		array(
-			'emoji'   => '💍',
-			'title'   => __( 'Медовый месяц и пары', 'zhiraf-ufa' ),
-			'text'    => __( 'Отели 16+ только для взрослых, уединенные виллы, панорамные спа-комплексы, винные бары и идеальные закаты.', 'zhiraf-ufa' ),
-			'prefill' => __( 'Здравствуйте! Нужен тур на двоих из Уфы в романтический отель (желательно Adults Only 16+).', 'zhiraf-ufa' ),
-			'cta'     => __( 'Смотреть отели →', 'zhiraf-ufa' ),
-			'track'   => 'scenario_couple',
+			'emoji'       => '🥂',
+			'title'       => __( 'Для пар и релакса (16+ / 18+)', 'zhiraf-ufa' ),
+			'text'        => __( 'Отели только для взрослых, спа-комплексы, тишина без детского шума.', 'zhiraf-ufa' ),
+			'quiz_step_1' => 'Для пар / Релакс',
+			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
+			'track'       => 'scenario_couple',
 		),
 		array(
-			'emoji'   => '🌿',
-			'title'   => __( 'Спокойный отдых родителям', 'zhiraf-ufa' ),
-			'text'    => __( 'Зеленые ровные территории без крутых лестниц, санаторные зоны, минеральные воды и русскоязычный персонал.', 'zhiraf-ufa' ),
-			'prefill' => __( 'Здравствуйте! Подбираем комфортный и спокойный отдых для родителей с вылетом из Уфы. Важна территория без горок и забота.', 'zhiraf-ufa' ),
-			'cta'     => __( 'Смотреть отели →', 'zhiraf-ufa' ),
-			'track'   => 'scenario_parents',
+			'emoji'       => '⭐',
+			'title'       => __( 'Хит «Цена / Качество»', 'zhiraf-ufa' ),
+			'text'        => __( 'Проверенные «пятерки» и «четверки» с максимальным рейтингом в среднем бюджете.', 'zhiraf-ufa' ),
+			'quiz_step_1' => 'Хит Цена/Качество',
+			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
+			'track'       => 'scenario_value',
 		),
 		array(
-			'emoji'   => '⚡',
-			'title'   => __( 'Сорваться на выходные', 'zhiraf-ufa' ),
-			'text'    => __( 'Короткие экспресс-туры на 3–5 ночей: Сочи, ОАЭ, Дагестан или экскурсионный Стамбул с быстрым прямым перелетом.', 'zhiraf-ufa' ),
-			'prefill' => __( 'Здравствуйте! Хотим сорваться на 3–5 дней из Уфы в ближайшие даты. Что есть горящего и проверенного?', 'zhiraf-ufa' ),
-			'cta'     => __( 'Смотреть варианты →', 'zhiraf-ufa' ),
-			'track'   => 'scenario_weekend',
+			'emoji'       => '🏙️',
+			'title'       => __( 'Городской отдых и шопинг', 'zhiraf-ufa' ),
+			'text'        => __( 'Отели в пешей доступности от набережных, моллов и достопримечательностей.', 'zhiraf-ufa' ),
+			'quiz_step_1' => 'Город и шопинг',
+			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
+			'track'       => 'scenario_city',
 		),
 	);
 }

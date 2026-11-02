@@ -1,8 +1,9 @@
 @charset "UTF-8";
 :root {
   --color-bg: #FAF8F5;
-  --color-primary: #E87A5D;
-  --color-primary-hover: #d4684f;
+  --color-primary: #C85A32;
+  --color-primary-hover: #b04b25;
+  --color-accent: #F59E0B;
   --color-text: #2b2b2b;
   --color-muted: #666666;
   --color-white: #ffffff;
@@ -6161,7 +6162,7 @@ a.contacts-card__value:hover {
 }
 @media (min-width: 900px) {
   .guarantees-bar {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1.25rem;
   }
 }
@@ -6490,7 +6491,68 @@ a.contacts-card__value:hover {
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* Homepage: destinations hub (Ufa / Moscow tabs) */
+.section--office-guarantees {
+  padding-block: 4rem;
+  background: #fff;
+}
+.office-guarantees {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 900px) {
+  .office-guarantees {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+.office-guarantees__title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+.office-guarantees__address {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #1c1917;
+}
+.office-guarantees__address p {
+  margin: 0 0 0.5rem;
+}
+.office-guarantees__shields {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.office-guarantees__shields li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #44403c;
+}
+.shield-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 90, 50, 0.08);
+  border-radius: 0.5rem;
+}
+.office-guarantees__map {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
 .section--destinations-hub {
   padding-block: 3rem;
 }
@@ -6680,15 +6742,17 @@ a.contacts-card__value:hover {
   flex-shrink: 0;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
-  background: #c85a32;
+  background: var(--color-accent);
   font-size: 0.875rem;
   font-weight: 800;
+  color: #fff;
   white-space: nowrap;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-  transition: background 0.15s ease;
+  transition: filter 0.15s ease;
 }
 .dest-hub-card:hover .dest-hub-card__price {
-  background: #b04b25;
+  filter: brightness(0.95);
+  background: var(--color-accent);
 }
 .dest-hub-card__price--muted {
   background: rgba(255, 255, 255, 0.15);

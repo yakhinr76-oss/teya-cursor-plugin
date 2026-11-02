@@ -13,7 +13,7 @@ $scenarios = zhiraf_ufa_home_life_scenarios();
 ?>
 <section class="section section--life-scenarios bg-milky" id="life-scenarios">
 	<div class="container">
-		<div class="section-head reveal">
+		<div class="section-head section-head--center reveal">
 			<p class="life-scenarios__eyebrow"><?php esc_html_e( 'Точный выбор', 'zhiraf-ufa' ); ?></p>
 			<h2 class="section-title"><?php esc_html_e( 'Готовые подборки под вашу ситуацию', 'zhiraf-ufa' ); ?></h2>
 			<p class="lead">
@@ -40,7 +40,7 @@ $scenarios = zhiraf_ufa_home_life_scenarios();
 					<span class="life-scenarios__emoji" aria-hidden="true"><?php echo esc_html( $scenario['emoji'] ); ?></span>
 					<h3 class="life-scenarios__title"><?php echo esc_html( $scenario['title'] ); ?></h3>
 					<p class="life-scenarios__text"><?php echo esc_html( $scenario['text'] ); ?></p>
-					<span class="life-scenarios__cta"><?php esc_html_e( 'Написать в WhatsApp →', 'zhiraf-ufa' ); ?></span>
+					<span class="life-scenarios__cta"><?php echo esc_html( ! empty( $scenario['cta'] ) ? $scenario['cta'] : __( 'Написать в WhatsApp →', 'zhiraf-ufa' ) ); ?></span>
 				</a>
 			<?php endforeach; ?>
 		</div>

@@ -4501,6 +4501,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 /* Homepage inline quiz (Globe Trekker) */
+.quiz-modal,
 .section--home-quiz {
   --quiz-terracotta: #c85a32;
   --quiz-ivory: #faf7f2;
@@ -4508,7 +4509,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   --quiz-graphite: #221f1e;
   --quiz-muted: #524c48;
   --quiz-olive: #5b7065;
+}
+
+.section--home-quiz {
   background: var(--quiz-ivory);
+  color: var(--quiz-graphite);
+}
+
+.quiz-modal {
   color: var(--quiz-graphite);
 }
 
@@ -4747,6 +4755,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   border-color: var(--quiz-terracotta);
   background: var(--quiz-ivory);
   color: var(--quiz-terracotta);
+}
+
+.quiz-tile:has(input:checked) .quiz-tile__inner {
+  border-color: var(--quiz-terracotta);
+  background: var(--quiz-ivory);
+  box-shadow: 0 1px 3px rgba(200, 90, 50, 0.12);
 }
 
 .quiz-step__nav {

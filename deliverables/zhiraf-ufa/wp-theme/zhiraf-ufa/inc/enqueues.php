@@ -132,6 +132,18 @@ function zhiraf_ufa_enqueue_assets() {
 				'in_footer' => true,
 			)
 		);
+
+		$quiz_triggers_js = ZHIRAF_UFA_DIR . '/assets/js/home-quiz-triggers.js';
+		wp_enqueue_script(
+			'zhiraf-home-quiz-triggers',
+			ZHIRAF_UFA_URI . '/assets/js/home-quiz-triggers.js',
+			array( 'zhiraf-ufa-main' ),
+			file_exists( $quiz_triggers_js ) ? (string) filemtime( $quiz_triggers_js ) : ZHIRAF_UFA_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zhiraf_ufa_enqueue_assets' );

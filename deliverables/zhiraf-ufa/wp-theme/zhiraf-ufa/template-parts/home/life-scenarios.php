@@ -25,6 +25,7 @@ $scenarios = zhiraf_ufa_home_life_scenarios();
 				<button
 					type="button"
 					class="life-scenarios__card reveal"
+					data-quiz-open
 					data-quiz-trigger="scenario"
 					data-quiz-step-1="<?php echo esc_attr( $scenario['quiz_step_1'] ); ?>"
 					data-cta-context="<?php echo esc_attr( $scenario['track'] ); ?>"

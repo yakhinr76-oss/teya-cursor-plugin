@@ -22,7 +22,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('destinations-hub') && document.getElementById('destinations-hub').scrollIntoView({behavior: 'smooth'})">
 						<?php esc_html_e( 'Выбрать направление отдыха', 'zhiraf-ufa' ); ?>
 					</button>
-					<button type="button" class="btn btn--outline btn--lg" data-quiz-trigger="hero">
+					<button type="button" class="btn btn--outline btn--lg" data-quiz-open data-quiz-trigger="hero">
 						<?php esc_html_e( 'Подобрать тур через квиз (1 мин)', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>

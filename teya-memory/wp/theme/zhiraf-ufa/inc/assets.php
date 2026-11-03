@@ -272,35 +272,8 @@ function zhiraf_ufa_excalibur_articles_base() {
  */
 function zhiraf_ufa_excalibur_article_static_catalog() {
 	return array(
-		'sezonnoe-raspisanie-vyletov-iz-ufy' => array(
-			'topic_id'   => 'BT-01',
-			'category'   => __( 'Гид', 'zhiraf-ufa' ),
-			'country'    => '',
-			'char_count' => 8925,
-			'title'      => __( 'Сезонное расписание прямых вылетов из Уфы', 'zhiraf-ufa' ),
-			'excerpt'    => __( 'Актуальный график чартерных и регулярных рейсов из аэропорта Уфы на популярные курорты.', 'zhiraf-ufa' ),
-			'image'      => 'blog-cover-01.jpg',
-		),
-		'razbor-rajonov-phuketa' => array(
-			'topic_id'   => 'BT-02',
-			'category'   => __( 'Курорты', 'zhiraf-ufa' ),
-			'country'    => 'Таиланд',
-			'char_count' => 6033,
-			'title'      => __( 'Разбор районов Пхукета: Ката, Карон или Патонг?', 'zhiraf-ufa' ),
-			'excerpt'    => __( 'Сравниваем главные пляжи Пхукета: где лучше отдыхать с детьми, а где искать ночную жизнь.', 'zhiraf-ufa' ),
-			'image'      => 'blog-cover-02.jpg',
-		),
-		'osobennosti-otdyha-v-oae' => array(
-			'topic_id'   => 'BT-03',
-			'category'   => __( 'Сезоны', 'zhiraf-ufa' ),
-			'country'    => 'ОАЭ',
-			'char_count' => 7500,
-			'title'      => __( 'Особенности отдыха в ОАЭ в зимний и весенний период', 'zhiraf-ufa' ),
-			'excerpt'    => __( 'Когда лучше лететь в Дубай: погода, температура воды и сезонные распродажи.', 'zhiraf-ufa' ),
-			'image'      => 'blog-cover-03.jpg',
-		),
 		'kak-kupit-tur-v-ufe'              => array(
-			'topic_id'   => 'BT-04',
+			'topic_id'   => 'BT-01',
 			'category'   => __( 'Гид', 'zhiraf-ufa' ),
 			'country'    => '',
 			'char_count' => 8925,
@@ -309,7 +282,7 @@ function zhiraf_ufa_excalibur_article_static_catalog() {
 			'image'      => 'blog-cover-01.jpg',
 		),
 		'chto-vhodit-v-tur-vse-vklyucheno' => array(
-			'topic_id'   => 'BT-05',
+			'topic_id'   => 'BT-02',
 			'category'   => __( 'Питание', 'zhiraf-ufa' ),
 			'country'    => '',
 			'char_count' => 6033,

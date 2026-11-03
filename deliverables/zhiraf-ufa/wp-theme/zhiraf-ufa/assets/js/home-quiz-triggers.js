@@ -53,14 +53,42 @@
     }
   }
 
+  function refreshQuizSelectionHighlight(form) {
+    if (!form) {
+      return;
+    }
+    qsa('.quiz-tile, .quiz-chip, .quiz-channel', form).forEach(function (el) {
+      el.classList.remove('is-quiz-selected');
+    });
+    qsa('input[type="radio"]:checked', form).forEach(function (input) {
+      var wrap = input.closest('.quiz-tile, .quiz-chip, .quiz-channel');
+      if (wrap) {
+        wrap.classList.add('is-quiz-selected');
+      }
+    });
+  }
+
+  function bindQuizSelectionHighlight(form) {
+    if (!form || form.dataset.quizHighlightBound === '1') {
+      return;
+    }
+    form.dataset.quizHighlightBound = '1';
+    form.addEventListener('change', function () {
+      refreshQuizSelectionHighlight(form);
+    });
+    refreshQuizSelectionHighlight(form);
+  }
+
   function openQuizFromTrigger(btn) {
     var modal = qs('#quiz-modal');
     var form = qs('#quiz-form');
     if (!modal || !form) {
       return;
     }
+    bindQuizSelectionHighlight(form);
     var fromScenario = applyScenarioPrefill(form, btn);
     setQuizStep(form, fromScenario ? 2 : 1);
+    refreshQuizSelectionHighlight(form);
     modal.removeAttribute('hidden');
     modal.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
@@ -68,6 +96,8 @@
   }
 
   function init() {
+    bindQuizSelectionHighlight(qs('#quiz-form'));
+
     qsa('[data-quiz-trigger]').forEach(function (btn) {
       if (btn.dataset.quizTriggerBound === '1') {
         return;
@@ -76,6 +106,15 @@
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         openQuizFromTrigger(btn);
+      });
+    });
+
+    qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        window.setTimeout(function () {
+          bindQuizSelectionHighlight(qs('#quiz-form'));
+          refreshQuizSelectionHighlight(qs('#quiz-form'));
+        }, 0);
       });
     });
   }

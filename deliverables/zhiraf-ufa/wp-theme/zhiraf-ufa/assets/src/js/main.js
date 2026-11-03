@@ -103,6 +103,10 @@
       window.zhirafTrack('cta_lead_section_quiz_open');
       return;
     }
+    if (btn.closest('#life-scenarios')) {
+      window.zhirafTrack(btn.getAttribute('data-cta-context') || 'scenario_quiz_open');
+      return;
+    }
     if (btn.closest('.how-it-works')) {
       window.zhirafTrack('cta_section_quiz_open', { section: 'how-it-works' });
       return;
@@ -573,6 +577,8 @@
       trackQuizStep(n);
     }
 
+    form._zhirafQuizGoStep = goStep;
+
     qsa('[data-quiz-go]', form).forEach(function (btn) {
       btn.addEventListener('click', function () {
         var target = parseInt(btn.getAttribute('data-quiz-go') || '1', 10);
@@ -640,11 +646,37 @@
     }
   }
 
-  qsa('[data-quiz-open], [data-modal-open="quiz"]').forEach(function (btn) {
+  function applyQuizScenarioPrefill(form, btn) {
+    if (!form || !btn) return;
+    var step1 = btn.getAttribute('data-quiz-step-1') || '';
+    if (!step1) return;
+    var compositionMap = {
+      'Семья с детьми': 'Семья с детьми',
+      'Для пар / Релакс': 'Пара',
+    };
+    var comp = compositionMap[step1];
+    if (comp) {
+      var compInput = qs('[name="quiz_composition"][value="' + comp + '"]', form);
+      if (compInput) compInput.checked = true;
+    }
+    var wishes = qs('[name="quiz_wishes"]', form);
+    if (wishes) wishes.value = 'Сценарий: ' + step1;
+  }
+
+  function openQuizFromButton(btn) {
+    if (!modal || !quizForm) return;
+    quizOpenGoal(btn);
+    applyQuizPrefillToForm(quizForm, btn);
+    applyQuizScenarioPrefill(quizForm, btn);
+    if (typeof quizForm._zhirafQuizGoStep === 'function') {
+      quizForm._zhirafQuizGoStep(btn.getAttribute('data-quiz-step-1') ? 2 : 1);
+    }
+    openQuiz();
+  }
+
+  qsa('[data-quiz-open], [data-modal-open="quiz"], [data-quiz-trigger]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      quizOpenGoal(btn);
-      applyQuizPrefillToForm(quizForm, btn);
-      openQuiz();
+      openQuizFromButton(btn);
     });
   });
   qsa('[data-quiz-close]').forEach(function (btn) {

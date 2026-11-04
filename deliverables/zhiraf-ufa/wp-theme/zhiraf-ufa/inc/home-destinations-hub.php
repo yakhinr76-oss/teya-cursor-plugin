@@ -218,13 +218,54 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		$slug = (string) $row['slug'];
 		$min  = zhiraf_ufa_home_hub_min_tour( $slug, $key );
 		$price_label = '';
+		$min_int     = null;
 		if ( $min && ! empty( $min['price_rur'] ) ) {
+			$min_int     = (int) $min['price_rur'];
 			$price_label = sprintf(
 				/* translators: %s: formatted price */
 				__( 'от %s ₽', 'zhiraf-ufa' ),
-				number_format( (int) $min['price_rur'], 0, '.', ' ' )
+				number_format( $min_int, 0, '.', ' ' )
 			);
 		}
+
+		$departure_slug = 'mow' === $key ? 'via_moscow' : 'direct_ufa';
+		$stats          = function_exists( 'get_hub_destination_stats' )
+			? get_hub_destination_stats( $slug, $departure_slug )
+			: array( 'count' => 0, 'min_price' => '—', 'min_price_int' => $min_int );
+		if ( null === $min_int && ! empty( $stats['min_price_int'] ) ) {
+			$min_int = (int) $stats['min_price_int'];
+			$price_label = sprintf(
+				__( 'от %s ₽', 'zhiraf-ufa' ),
+				$stats['min_price']
+			);
+		}
+
+		$hotel_count = (int) ( $stats['count'] ?? 0 );
+		$count_label = $hotel_count > 0
+			? sprintf(
+				/* translators: %d: hotel count */
+				_n( '%d отель в базе', '%d отеля в базе', $hotel_count, 'zhiraf-ufa' ),
+				$hotel_count
+			)
+			: __( 'База обновляется', 'zhiraf-ufa' );
+
+		$logistics_class = 'mow' === $key ? 'dest-hub-card__badge--via-mow' : 'dest-hub-card__badge--direct-ufa';
+		$logistics_line  = (string) ( $row['flight_badge'] ?? '' );
+		if ( 'mow' === $key ) {
+			$logistics_line = __( '✈️ Через Москву • Гарантированная стыковка', 'zhiraf-ufa' );
+		} elseif ( '' === $logistics_line ) {
+			$logistics_line = __( '✈️ Прямой рейс из UFA', 'zhiraf-ufa' );
+		} elseif ( false === mb_stripos( $logistics_line, '✈', 0, 'UTF-8' ) ) {
+			$logistics_line = '✈️ ' . $logistics_line;
+		}
+
+		$country_name = (string) ( $row['title'] ?? '' );
+		$verb_label   = sprintf(
+			/* translators: %s: country name in genitive-ish label */
+			__( 'Смотреть отели %s →', 'zhiraf-ufa' ),
+			$country_name
+		);
+
 		$img = zhiraf_ufa_theme_image( (string) $row['image'], (string) $row['title'] );
 		$flag_img = array( 'url' => '', 'alt' => '' );
 		if ( ! empty( $row['flag_image'] ) ) {
@@ -233,11 +274,19 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		$out[] = array_merge(
 			$row,
 			array(
-				'url'         => zhiraf_ufa_home_hub_destination_url( $slug ),
-				'price_label' => $price_label,
-				'photo_url'   => ! empty( $img['url'] ) ? (string) $img['url'] : '',
-				'photo_alt'   => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
-				'flag_url'    => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',
+				'url'              => zhiraf_ufa_home_hub_destination_url( $slug ),
+				'price_label'      => $price_label,
+				'photo_url'        => ! empty( $img['url'] ) ? (string) $img['url'] : '',
+				'photo_alt'        => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
+				'flag_url'         => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',
+				'hotel_count'      => $hotel_count,
+				'count_label'      => $count_label,
+				'logistics_class'  => $logistics_class,
+				'logistics_line'   => $logistics_line,
+				'season_label'     => ! empty( $row['season_label'] ) ? (string) $row['season_label'] : __( 'сезон открыт', 'zhiraf-ufa' ),
+				'verb_label'       => $verb_label,
+				'verb_price'       => $price_label ? $price_label : __( 'цена по запросу', 'zhiraf-ufa' ),
+				'departure_tab'    => $key,
 			)
 		);
 	}

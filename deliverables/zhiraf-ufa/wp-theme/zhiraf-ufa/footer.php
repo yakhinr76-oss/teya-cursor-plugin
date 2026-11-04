@@ -53,6 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 			<button type="button" class="btn btn--primary btn--sm" style="margin-top:24px" data-quiz-open data-cta-context="cta_footer_quiz_open"><?php echo esc_html( zhiraf_ufa_quiz_cta_label() ); ?></button>
 		</div>
 	</div>
+	<?php get_template_part( 'template-parts/footer/seo', 'taxonomy-cloud' ); ?>
 	<div class="site-footer__legal">
 		<div class="container">
 			<p><?php echo esc_html( get_theme_mod( 'zhiraf_footer_copyright', '© ' . gmdate( 'Y' ) . ' ООО «Жираф». Туры из Уфы.' ) ); ?></p>

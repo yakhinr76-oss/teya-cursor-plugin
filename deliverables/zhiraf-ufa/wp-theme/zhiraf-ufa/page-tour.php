@@ -19,7 +19,7 @@ get_header();
 		<div class="container catalog-hero">
 			<div class="catalog-hero__copy">
 				<h1><?php esc_html_e( 'Направления отдыха с вылетом из Уфы', 'zhiraf-ufa' ); ?></h1>
-				<p class="lead catalog-hero__lead"><?php esc_html_e( 'Турция, ОАЭ, Египет, Таиланд, Вьетнам и Хайнань — подберём пакет с перелётом из аэропорта «Уфа» и проверенным отелем.', 'zhiraf-ufa' ); ?></p>
+				<p class="lead catalog-hero__lead"><?php esc_html_e( 'Зарубежные направления с вылетом из Уфы плюс Россия и Абхазия без загранпаспорта — подберём пакет или только отель.', 'zhiraf-ufa' ); ?></p>
 				<ul class="catalog-hero__highlights">
 					<li><?php esc_html_e( 'Цены «от» по данным «Библио-Глобус» за 2 взрослых', 'zhiraf-ufa' ); ?></li>
 					<li><?php esc_html_e( 'Прямые рейсы и стыковки — видно на карточке', 'zhiraf-ufa' ); ?></li>

@@ -21,7 +21,12 @@ $flight = function_exists( 'zhiraf_ufa_tour_flight_info' )
 	? zhiraf_ufa_tour_flight_info( $min, 'Уфа' )
 	: array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
 $flight_tone = ( 'direct' === $flight['key'] ) ? 'direct' : 'connection';
-if ( 'mow' === $flight['key'] ) {
+if ( ! empty( $dest['domestic'] ) && ! empty( $dest['flight_label'] ) ) {
+	$flight['key']   = 'domestic';
+	$flight['icon']  = '🛂';
+	$flight['label'] = (string) $dest['flight_label'];
+	$flight_tone     = 'connection';
+} elseif ( 'mow' === $flight['key'] ) {
 	$flight['icon']  = '⇄';
 	$flight['label'] = __( 'через Москву', 'zhiraf-ufa' );
 }

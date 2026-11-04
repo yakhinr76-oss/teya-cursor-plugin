@@ -157,6 +157,50 @@ function zhiraf_ufa_destinations() {
 }
 
 /**
+ * Russia & Abkhazia — domestic directions (no BG «from» price on hub card).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_domestic_catalog_destinations() {
+	if ( ! function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+		return array();
+	}
+	$rows = array(
+		array(
+			'slug'         => 'rossiya',
+			'image'        => 'hero-collage-1.jpg',
+			'teaser'       => __( 'Сочи, Красная Поляна, Кавминводы и Калининград — пакет с перелётом или только отель.', 'zhiraf-ufa' ),
+			'flight_label' => __( 'паспорт РФ', 'zhiraf-ufa' ),
+		),
+		array(
+			'slug'         => 'abkhaziya',
+			'image'        => 'alt-armeniya-3.jpg',
+			'teaser'       => __( 'Гагра и Пицунда: рубли, въезд по паспорту РФ, трансфер из аэропорта Адлер.', 'zhiraf-ufa' ),
+			'flight_label' => __( 'трансфер из Адлера', 'zhiraf-ufa' ),
+		),
+	);
+	$out = array();
+	foreach ( $rows as $row ) {
+		$landing = zhiraf_ufa_get_destination_landing( $row['slug'] );
+		if ( ! $landing ) {
+			continue;
+		}
+		$out[] = array(
+			'slug'         => $row['slug'],
+			'name'         => ! empty( $landing['name'] ) ? $landing['name'] : $row['slug'],
+			'image'        => $row['image'],
+			'alt'          => ! empty( $landing['image_alt'] ) ? $landing['image_alt'] : ( ! empty( $landing['name'] ) ? $landing['name'] : $row['slug'] ),
+			'url'          => home_url( '/tour/' . $row['slug'] . '/' ),
+			'teaser'       => $row['teaser'],
+			'catalog'      => true,
+			'domestic'     => true,
+			'flight_label' => $row['flight_label'],
+		);
+	}
+	return $out;
+}
+
+/**
  * Destinations shown on /tour/ catalog hub (priced cards).
  *
  * @return array<int,array<string,mixed>>
@@ -169,7 +213,7 @@ function zhiraf_ufa_catalog_hub_destinations() {
 		}
 		$items[] = $dest;
 	}
-	return $items;
+	return array_merge( $items, zhiraf_ufa_domestic_catalog_destinations() );
 }
 
 /**

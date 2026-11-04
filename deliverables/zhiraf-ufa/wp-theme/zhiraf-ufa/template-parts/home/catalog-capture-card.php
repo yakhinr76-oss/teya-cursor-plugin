@@ -1,6 +1,6 @@
 <?php
 /**
- * Catalog grid capture card (spans 2 columns on desktop).
+ * Terracotta capture banner under featured hotel grid.
  *
  * @package Zhiraf_Ufa
  */
@@ -19,7 +19,7 @@ $wa_url = zhiraf_ufa_home_catalog_capture_wa_url();
 			<?php esc_html_e( 'Не нашли свой отель среди этих вариантов?', 'zhiraf-ufa' ); ?>
 		</h3>
 		<p class="catalog-capture-card__text">
-			<?php esc_html_e( 'В нашей базе с вылетом из Уфы прямо сейчас более 1 200 отелей. Напишите желаемые даты и бюджет — тревел-эксперт пришлет 3 персональных варианта в WhatsApp за 15 минут.', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'В нашей базе с вылетом из Уфы прямо сейчас более 1 200 отелей. Напишите желаемые даты и бюджет — тревел-эксперт пришлёт 3 персональных варианта в WhatsApp за 15 минут.', 'zhiraf-ufa' ); ?>
 		</p>
 		<div class="catalog-capture-card__actions">
 			<a

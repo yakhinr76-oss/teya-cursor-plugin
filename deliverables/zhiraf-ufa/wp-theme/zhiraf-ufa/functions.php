@@ -42,3 +42,5 @@ require_once ZHIRAF_UFA_DIR . '/inc/tours.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-unified-catalog.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-conversion-blocks.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-quiz-config.php';
+require_once ZHIRAF_UFA_DIR . '/inc/home-featured-hotels.php';
+require_once ZHIRAF_UFA_DIR . '/inc/home-destinations-hub.php';

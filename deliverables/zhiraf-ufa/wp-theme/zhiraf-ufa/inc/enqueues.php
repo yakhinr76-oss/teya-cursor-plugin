@@ -104,6 +104,49 @@ function zhiraf_ufa_enqueue_assets() {
 				)
 			);
 		}
+		$featured_js = ZHIRAF_UFA_DIR . '/assets/js/home-featured-hotels.js';
+		wp_enqueue_script(
+			'zhiraf-featured-hotels',
+			ZHIRAF_UFA_URI . '/assets/js/home-featured-hotels.js',
+			array(),
+			file_exists( $featured_js ) ? (string) filemtime( $featured_js ) : ZHIRAF_UFA_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
+		wp_localize_script(
+			'zhiraf-featured-hotels',
+			'zhirafFeaturedHotels',
+			zhiraf_ufa_home_featured_hotels_script_data()
+		);
+
+		$dest_hub_js = ZHIRAF_UFA_DIR . '/assets/js/home-destinations-hub.js';
+		wp_enqueue_script(
+			'zhiraf-destinations-hub',
+			ZHIRAF_UFA_URI . '/assets/js/home-destinations-hub.js',
+			array(),
+			file_exists( $dest_hub_js ) ? (string) filemtime( $dest_hub_js ) : ZHIRAF_UFA_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
+
+	}
+
+	$quiz_triggers_js = ZHIRAF_UFA_DIR . '/assets/js/home-quiz-triggers.js';
+	if ( file_exists( $quiz_triggers_js ) ) {
+		wp_enqueue_script(
+			'zhiraf-home-quiz-triggers',
+			ZHIRAF_UFA_URI . '/assets/js/home-quiz-triggers.js',
+			array( 'zhiraf-ufa-main' ),
+			(string) filemtime( $quiz_triggers_js ),
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zhiraf_ufa_enqueue_assets' );
@@ -122,3 +165,19 @@ function zhiraf_ufa_font_faces() {
 	wp_add_inline_style( 'zhiraf-ufa-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'zhiraf_ufa_font_faces', 20 );
+
+/**
+ * Quiz modal selection highlight — CSS vars live only on removed inline section; modal is in footer.
+ */
+function zhiraf_ufa_quiz_modal_selection_styles() {
+	$css = '
+#quiz-modal{--quiz-terracotta:#c85a32;--quiz-ivory:#faf7f2;--quiz-border:#eae4dc;--quiz-muted:#524c48;color:#221f1e}
+#quiz-modal .quiz-tile input:checked+.quiz-tile__inner,#quiz-modal .quiz-tile.is-quiz-selected .quiz-tile__inner,#quiz-modal .quiz-tile:has(input:checked) .quiz-tile__inner{border-color:#c85a32;background:#faf7f2;box-shadow:0 1px 3px rgba(200,90,50,.12)}
+#quiz-modal .quiz-chip.is-quiz-selected,#quiz-modal .quiz-chip:has(input:checked){border-color:#c85a32;background:#faf7f2;color:#c85a32}
+#quiz-modal .quiz-channel.is-quiz-selected,#quiz-modal .quiz-channel:has(input:checked){border-color:#c85a32;background:#faf7f2;color:#c85a32}
+#quiz-modal .quiz-channel--wa.is-quiz-selected,#quiz-modal .quiz-channel--wa:has(input:checked){border-color:#25d366;background:rgba(37,211,102,.08);color:#128c7e}
+#quiz-modal .quiz-channel--tg.is-quiz-selected,#quiz-modal .quiz-channel--tg:has(input:checked){border-color:#229ed9;background:rgba(34,158,217,.08);color:#229ed9}
+';
+	wp_add_inline_style( 'zhiraf-ufa-style', $css );
+}
+add_action( 'wp_enqueue_scripts', 'zhiraf_ufa_quiz_modal_selection_styles', 21 );

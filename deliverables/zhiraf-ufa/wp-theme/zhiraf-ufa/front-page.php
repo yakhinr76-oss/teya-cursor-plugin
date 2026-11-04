@@ -16,20 +16,15 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — честный подбор по ценам туроператоров', 'zhiraf-ufa' ); ?>
 				</h1>
 				<p class="hero-premium__subtitle">
-					<?php esc_html_e( 'Подбираем отдых как для своих с 2011 года. Без скрытых доплат и навязанных услуг.', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Показываем реальную стоимость туроператоров без скрытых доплат. Проверенная база 400 отелей с честным разбором плюсов и нюансов.', 'zhiraf-ufa' ); ?>
 				</p>
-				<ul class="hero-trust-strip" aria-label="<?php esc_attr_e( 'Гарантии агентства', 'zhiraf-ufa' ); ?>">
-					<li><?php esc_html_e( 'РТА 0012822', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'С 2011 года', 'zhiraf-ufa' ); ?></li>
-					<li><?php esc_html_e( 'Договор и чек', 'zhiraf-ufa' ); ?></li>
-				</ul>
 				<div class="hero-premium__actions">
-					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('tour-catalog') && document.getElementById('tour-catalog').scrollIntoView({behavior: 'smooth'})">
-						<?php esc_html_e( 'Смотреть туры', 'zhiraf-ufa' ); ?>
+					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('destinations-hub') && document.getElementById('destinations-hub').scrollIntoView({behavior: 'smooth'})">
+						<?php esc_html_e( 'Выбрать направление отдыха', 'zhiraf-ufa' ); ?>
 					</button>
-					<a href="<?php echo esc_url( zhiraf_ufa_whatsapp_url_with_text( zhiraf_ufa_brand_whatsapp_url(), 'Здравствуйте! Хочу подобрать тур из Уфы.' ) ); ?>" target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--lg" data-track="messenger" data-channel="whatsapp">
-						<?php esc_html_e( 'Написать в WhatsApp', 'zhiraf-ufa' ); ?>
-					</a>
+					<button type="button" class="btn btn--outline btn--lg" data-quiz-open data-quiz-trigger="hero">
+						<?php esc_html_e( 'Подобрать тур через квиз (1 мин)', 'zhiraf-ufa' ); ?>
+					</button>
 				</div>
 			</div>
 
@@ -52,13 +47,13 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/home/express-vacation-filter' ); ?>
+	<?php get_template_part( 'template-parts/home/home-guarantees-bar' ); ?>
 
-	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
+	<?php get_template_part( 'template-parts/home/destinations-hub' ); ?>
 
 	<?php get_template_part( 'template-parts/home/life-scenarios' ); ?>
 
-	<?php get_template_part( 'template-parts/home/home-guarantees-bar' ); ?>
+	<?php get_template_part( 'template-parts/home/home-office-guarantees' ); ?>
 
 	<section class="section section--faq faq-home bg-milky" id="faq-home">
 		<div class="container">

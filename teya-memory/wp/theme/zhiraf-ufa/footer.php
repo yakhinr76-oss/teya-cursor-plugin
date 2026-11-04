@@ -11,7 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<a href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a><br>
 				<a href="mailto:office@zhiraf-ufa.ru" data-track="email">office@zhiraf-ufa.ru</a>
 			</p>
-			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?></p>
+			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?><br>
+			<?php esc_html_e( 'ИНН 0276132049 · ОГРН 1110280016007', 'zhiraf-ufa' ); ?></p>
 			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'class' => 'footer-social' ) ); ?>
 		</div>
 		<div class="footer-col">

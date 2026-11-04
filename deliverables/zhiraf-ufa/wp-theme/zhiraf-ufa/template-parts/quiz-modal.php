@@ -11,6 +11,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $quiz_form_id = 'quiz-form';
 ?>
+<style id="quiz-modal-selection-styles">
+#quiz-modal {
+	--quiz-terracotta: #c85a32;
+	--quiz-ivory: #faf7f2;
+	--quiz-border: #eae4dc;
+	--quiz-muted: #524c48;
+	color: #221f1e;
+}
+#quiz-modal .quiz-tile input:checked + .quiz-tile__inner,
+#quiz-modal .quiz-tile.is-quiz-selected .quiz-tile__inner,
+#quiz-modal .quiz-tile:has(input:checked) .quiz-tile__inner {
+	border-color: var(--quiz-terracotta);
+	background: var(--quiz-ivory);
+	box-shadow: 0 1px 3px rgba(200, 90, 50, 0.12);
+}
+#quiz-modal .quiz-chip.is-quiz-selected,
+#quiz-modal .quiz-chip:has(input:checked) {
+	border-color: var(--quiz-terracotta);
+	background: var(--quiz-ivory);
+	color: var(--quiz-terracotta);
+}
+#quiz-modal .quiz-channel.is-quiz-selected,
+#quiz-modal .quiz-channel:has(input:checked) {
+	border-color: var(--quiz-terracotta);
+	background: var(--quiz-ivory);
+	color: var(--quiz-terracotta);
+}
+#quiz-modal .quiz-channel--wa.is-quiz-selected,
+#quiz-modal .quiz-channel--wa:has(input:checked) {
+	border-color: #25d366;
+	background: rgba(37, 211, 102, 0.08);
+	color: #128c7e;
+}
+#quiz-modal .quiz-channel--tg.is-quiz-selected,
+#quiz-modal .quiz-channel--tg:has(input:checked) {
+	border-color: #229ed9;
+	background: rgba(34, 158, 217, 0.08);
+	color: #229ed9;
+}
+</style>
 <div id="quiz-modal" class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden inert>
 	<div class="quiz-modal__backdrop" data-quiz-close tabindex="-1"></div>
 	<div class="quiz-modal__panel home-quiz-card home-quiz-card--modal">

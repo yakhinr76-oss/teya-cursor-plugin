@@ -44,6 +44,7 @@ function zhiraf_ufa_enqueue_assets() {
 			'nonce'      => wp_create_nonce( 'zhiraf_ufa_forms' ),
 			'privacyUrl' => home_url( '/politika-konfidenczialnosti/' ),
 			'cookiesUrl' => home_url( '/politika-cookies/' ),
+			'hotelsRest' => rest_url( 'zhiraf/v1/hotels' ),
 		)
 	);
 

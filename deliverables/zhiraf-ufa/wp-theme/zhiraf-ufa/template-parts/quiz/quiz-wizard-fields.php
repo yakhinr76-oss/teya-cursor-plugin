@@ -122,6 +122,17 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 			<label class="quiz-chip"><input type="radio" name="quiz_duration" value="<?php esc_attr_e( '10–12 ночей', 'zhiraf-ufa' ); ?>" /> <?php esc_html_e( '10–12 ночей', 'zhiraf-ufa' ); ?></label>
 			<label class="quiz-chip"><input type="radio" name="quiz_duration" value="<?php esc_attr_e( '14+ ночей', 'zhiraf-ufa' ); ?>" /> <?php esc_html_e( '14+ ночей', 'zhiraf-ufa' ); ?></label>
 		</div>
+		<p class="quiz-step__hint"><?php esc_html_e( 'Как вам комфортнее лететь:', 'zhiraf-ufa' ); ?></p>
+		<div class="quiz-chips quiz-chips--flight">
+			<label class="quiz-chip quiz-chip--wide">
+				<input type="radio" name="quiz_flight_pref" value="<?php esc_attr_e( 'Только прямой рейс из UFA', 'zhiraf-ufa' ); ?>" required />
+				<?php esc_html_e( 'Только прямой рейс из аэропорта Уфа', 'zhiraf-ufa' ); ?>
+			</label>
+			<label class="quiz-chip quiz-chip--wide">
+				<input type="radio" name="quiz_flight_pref" value="<?php esc_attr_e( 'Готовы к пересадке через Москву', 'zhiraf-ufa' ); ?>" />
+				<?php esc_html_e( 'Рассмотрю выгодную стыковку через Москву', 'zhiraf-ufa' ); ?>
+			</label>
+		</div>
 		<div class="quiz-step__nav">
 			<button type="button" class="btn btn--ghost quiz-step__back" data-quiz-go="2"><?php esc_html_e( '← Назад', 'zhiraf-ufa' ); ?></button>
 			<button type="button" class="btn btn--primary quiz-step__next" data-quiz-go="4"><?php esc_html_e( 'Далее →', 'zhiraf-ufa' ); ?></button>

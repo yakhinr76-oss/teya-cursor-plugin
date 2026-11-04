@@ -12,7 +12,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					<?php esc_html_e( 'Туры с вылетом из Уфы — подбор без давления', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — честный подбор по ценам туроператоров', 'zhiraf-ufa' ); ?>
 				</h1>
 				<p class="hero-premium__subtitle">
 					<?php esc_html_e( 'Подберём 2–4 проверенных варианта с вылетом из Уфы — с фиксацией цены в договоре и сопровождением до возвращения. Офис на Гагарина, 74/1.', 'zhiraf-ufa' ); ?>
@@ -115,21 +115,7 @@ $faq_items  = zhiraf_ufa_home_faq_items();
 		</div>
 	</section>
 
-	<section class="section section--reviews-placeholder bg-sand" id="reviews-placeholder">
-		<div class="container reveal">
-			<div class="reviews-placeholder-card" style="background:var(--color-white);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:40px;text-align:center;max-width:860px;margin:0 auto;">
-				<h2 class="section-title" style="font-size:2rem;margin-bottom:12px;"><?php esc_html_e( 'Отзывы туристов из Уфы', 'zhiraf-ufa' ); ?></h2>
-				<p style="color:var(--color-muted);font-size:1.0625rem;line-height:1.6;margin-bottom:24px;">
-					<?php esc_html_e( 'Мы не публикуем заказные отзывы на сайте. Реальные оценки туристов из Уфы и отзывы с рейтингом доступны на Яндекс.Картах, в 2ГИС и ВКонтакте.', 'zhiraf-ufa' ); ?>
-				</p>
-				<div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-					<a href="https://yandex.ru/maps" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'Рейтинг Яндекс.Карт', 'zhiraf-ufa' ); ?></a>
-					<a href="https://2gis.ru/ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'Рейтинг 2ГИС', 'zhiraf-ufa' ); ?></a>
-					<a href="https://vk.com/zhiraf_ufa" rel="noopener noreferrer" target="_blank" class="btn btn--outline btn--sm"><?php esc_html_e( 'ВКонтакте', 'zhiraf-ufa' ); ?></a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part( 'template-parts/home/trust-stats-strip' ); ?>
 
 	<?php get_template_part( 'template-parts/home/unified-tour-catalog' ); ?>
 

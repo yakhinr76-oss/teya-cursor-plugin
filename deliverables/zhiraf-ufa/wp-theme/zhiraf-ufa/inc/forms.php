@@ -411,6 +411,7 @@ function zhiraf_ufa_ajax_quiz() {
 			'quiz_child_age'    => 'Возраст ребёнка',
 			'quiz_timing'       => 'Срок вылета',
 			'quiz_duration'     => 'Длительность',
+			'quiz_flight_pref'  => 'Перелёт',
 			'quiz_channel'      => 'Канал связи',
 			'quiz_month'        => 'Месяц',
 			'quiz_budget'       => 'Бюджет на человека',

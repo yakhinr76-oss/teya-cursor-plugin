@@ -1,0 +1,187 @@
+{
+  "reference": {
+    "primary": "Globe Trekker travel editorial (user brief)",
+    "image_path_requested": "teya/reference-globe-trekker.jpg",
+    "image_path_status": "missing_in_workspace",
+    "fallback_sources": [
+      "deliverables/zhiraf-ufa/GLOBE-TREKKER-REDESIGN.md",
+      "deliverables/zhiraf-ufa/preview/home.html",
+      "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/front-page.php",
+      "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/src/scss/main.scss"
+    ]
+  },
+  "overall_vibe": "warm editorial travel magazine — milky paper background, terracotta accent, photo collage hero, vertical destination cards, asymmetric editorial blog grid, full-bleed subscribe photo",
+  "global_motifs": [
+    "milky #FAF8F5 sections alternating with white",
+    "terracotta pill CTA #E87A5D",
+    "rounded photo tiles 16–24px radius",
+    "soft drop shadow on collage tiles",
+    "dashed flight path SVG terracotta",
+    "vertical 3:4 destination cards with bottom gradient scrim",
+    "editorial category pills uppercase terracotta",
+    "light footer columns"
+  ],
+  "sections": [
+    {
+      "source_section": "header",
+      "target_section": "global:header",
+      "background": "milky sticky blur",
+      "layout": "logo left, nav center, phone + pill CTA right",
+      "visual_objects": [
+        "logo-zhiraf-client.png"
+      ],
+      "must_match": [
+        "single primary CTA",
+        "no watermark logo on content"
+      ],
+      "must_not": [
+        "dark header",
+        "dual competing CTAs"
+      ]
+    },
+    {
+      "source_section": "hero",
+      "target_section": "front-page:hero-premium",
+      "background": "milky",
+      "layout": "50/50 grid: H1 left, 3-photo collage + dashed path right",
+      "visual_objects": [
+        "3 destination photos",
+        "SVG dashed arc + plane marker"
+      ],
+      "cards_or_panels": [],
+      "section_transition": "flat to bg-milky destinations (subtle tone shift)",
+      "must_match": [
+        "accent word in H1",
+        "one terracotta pill",
+        "collage overlap z-index"
+      ],
+      "must_not": [
+        "full-bleed single hero only",
+        "Playfair serif",
+        "logo watermark"
+      ]
+    },
+    {
+      "source_section": "destinations",
+      "target_section": "front-page:destinations",
+      "background": "bg-milky",
+      "layout": "title + horizontal tabs; row of 4–5 vertical cards",
+      "visual_objects": [
+        "per-card destination photo"
+      ],
+      "cards_or_panels": [
+        "dest-premium-card 3:4"
+      ],
+      "section_transition": "white how-it-works",
+      "must_match": [
+        "tab filter UI",
+        "gradient caption on photo"
+      ],
+      "must_not": [
+        "horizontal 16:9 only cards",
+        "price tags"
+      ]
+    },
+    {
+      "source_section": "how-it-works",
+      "target_section": "front-page:steps",
+      "background": "white",
+      "layout": "4 step cards with large numerals",
+      "visual_objects": [],
+      "cards_or_panels": [
+        "step-card x4"
+      ],
+      "section_transition": "milky editorial",
+      "must_match": [
+        "01–04 numerals terracotta/outline"
+      ],
+      "must_not": [
+        "stock icon grid only"
+      ]
+    },
+    {
+      "source_section": "editorial-blog",
+      "target_section": "front-page:editorial",
+      "background": "bg-milky",
+      "layout": "1.5fr featured + list of 3 thumbs",
+      "visual_objects": [
+        "large 16:9 feature",
+        "3 square thumbs"
+      ],
+      "must_match": [
+        "category label",
+        "reading time"
+      ],
+      "must_not": [
+        "uniform 3-column blog grid"
+      ]
+    },
+    {
+      "source_section": "highlights-trust",
+      "target_section": "front-page:trust-social",
+      "background": "white or soft sand",
+      "layout": "Globe Trekker testimonials zone reinterpreted: 2–3 highlight cards + CTA row (VK, phone, office)",
+      "visual_objects": [
+        "optional office or team photo — reuse existing"
+      ],
+      "cards_or_panels": [
+        "highlight-stat or value card",
+        "no fake quotes"
+      ],
+      "section_transition": "into form strip",
+      "must_match": [
+        "social proof without fabricated reviews",
+        "link vk.com/zhiraf_ufa"
+      ],
+      "must_not": [
+        "lorem testimonials",
+        "star ratings",
+        "AggregateRating schema"
+      ]
+    },
+    {
+      "source_section": "lead-form",
+      "target_section": "front-page:form-premium",
+      "background": "white",
+      "layout": "inline name/phone + primary button",
+      "visual_objects": [],
+      "must_match": [
+        "152-ФЗ checkbox"
+      ],
+      "must_not": []
+    },
+    {
+      "source_section": "subscribe",
+      "target_section": "front-page:subscribe",
+      "background": "full-bleed photo + dark overlay",
+      "layout": "centered email pill form",
+      "visual_objects": [
+        "subscribe-bg.jpg"
+      ],
+      "section_transition": "into light footer",
+      "must_match": [
+        "rounded email field",
+        "overlay 50%"
+      ],
+      "must_not": [
+        "flat color block without photo"
+      ]
+    },
+    {
+      "source_section": "footer",
+      "target_section": "global:footer",
+      "background": "white",
+      "layout": "4 columns + legal strip",
+      "visual_objects": [
+        "logo"
+      ],
+      "must_match": [
+        "РТА 0012822",
+        "NAP"
+      ],
+      "must_not": [
+        "dark footer"
+      ]
+    }
+  ]
+}

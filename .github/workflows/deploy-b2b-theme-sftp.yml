@@ -1,0 +1,32 @@
+name: Deploy zhiraf-ufa theme to b2b-tour.ru
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/zhiraf-b2b-site-a2bf
+      - cursor/staging-b2b-deploy-8d02
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install paramiko
+        run: pip install paramiko
+
+      - name: Upload theme via SFTP
+        env:
+          B2B_TOUR_SSH_HOST: ${{ secrets.B2B_TOUR_SSH_HOST }}
+          B2B_TOUR_SSH_USER: ${{ secrets.B2B_TOUR_SSH_USER }}
+          B2B_TOUR_SSH_PASS: ${{ secrets.B2B_TOUR_SSH_PASS }}
+          B2B_TOUR_SSH_PORT: ${{ secrets.B2B_TOUR_SSH_PORT }}
+          B2B_TOUR_SSH_THEME_PATH: ${{ secrets.B2B_TOUR_SSH_THEME_PATH || '' }}
+        run: python3 scripts/deploy_zhiraf_b2b_theme_sftp.py
+
+      - name: Verify theme version on site
+        run: |
+          ver=$(curl -fsSL 'https://b2b-tour.ru/wp-content/themes/zhiraf-ufa/style.css' | grep -m1 '^Version:' || true)
+          echo "Live: $ver"
+          echo "$ver" | grep -q '1.0.6-staging' || (echo 'Expected Version 1.0.6-staging' >&2; exit 1)

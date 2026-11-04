@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "tool": "impeccable",
+  "theme_slug": "zhiraf-ufa",
+  "scanned_paths": [
+    "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/"
+  ],
+  "finding_count": 0,
+  "findings": [],
+  "exit_code": 0,
+  "skipped_reason": null,
+  "audit_mode": "TASTE RECOVERY",
+  "generated_at": "2026-10-18T07:35:00+00:00"
+}

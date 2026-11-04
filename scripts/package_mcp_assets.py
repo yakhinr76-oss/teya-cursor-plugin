@@ -66,14 +66,22 @@ def pick_remote_url(item: dict[str, Any]) -> str:
 
 
 def pick_source_path(root: Path, item: dict[str, Any]) -> Path | None:
-    for key in ("local_source_path", "source_local_path"):
+    for key in ("local_source_path", "source_local_path", "workspace_path"):
         raw = str(item.get(key) or "").replace("\\", "/").strip()
-        if raw.startswith("teya-memory/"):
+        if raw.startswith("/"):
+            candidate = Path(raw)
+            if candidate.is_file():
+                return candidate
+        if raw.startswith(("teya-memory/", "deliverables/")):
             candidate = root / raw
             if candidate.is_file():
                 return candidate
     local_path = str(item.get("local_path") or "").replace("\\", "/").strip()
-    if local_path.startswith("teya-memory/"):
+    if local_path.startswith("/"):
+        candidate = Path(local_path)
+        if candidate.is_file():
+            return candidate
+    if local_path.startswith(("teya-memory/", "deliverables/")):
         candidate = root / local_path
         if candidate.is_file():
             return candidate
@@ -123,6 +131,9 @@ def pick_target_path(theme_dir: Path, item: dict[str, Any]) -> Path:
         return theme_dir / planned
     if raw.startswith("teya-memory/"):
         return root_candidate if (root_candidate := Path(raw)) else Path(raw)
+    if raw.startswith("deliverables/"):
+        basename = Path(raw).name
+        return theme_dir / "assets" / "images" / basename
     if raw.startswith("assets/"):
         return theme_dir / raw
     return theme_dir / "assets" / "images" / raw

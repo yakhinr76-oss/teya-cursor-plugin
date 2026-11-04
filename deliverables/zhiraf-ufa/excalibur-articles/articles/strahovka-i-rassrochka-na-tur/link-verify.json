@@ -1,0 +1,38 @@
+{
+  "source": "deliverables/zhiraf-ufa/excalibur-articles/articles/strahovka-i-rassrochka-na-tur/article.html",
+  "total_links": 3,
+  "failed_count": 0,
+  "verdict": "pass",
+  "links": [
+    {
+      "url": "https://b2b-tour.ru/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/"
+    },
+    {
+      "url": "https://b2b-tour.ru/tour/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/tour/"
+    },
+    {
+      "url": "https://b2b-tour.ru/kontakty/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/kontakty/"
+    }
+  ]
+}

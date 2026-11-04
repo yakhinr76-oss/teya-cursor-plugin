@@ -1,0 +1,11 @@
+{
+  "api_calls_successful": 45,
+  "api_test_http_status": 200,
+  "key_configured": true,
+  "region_id": 172,
+  "raw_rows": 3043,
+  "clean_unique": 2482,
+  "included": 1754,
+  "new_urls_count": 7,
+  "date": "2026-10-18"
+}

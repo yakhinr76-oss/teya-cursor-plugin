@@ -1,0 +1,24 @@
+{
+  "article": "deliverables/zhiraf-ufa/excalibur-articles/articles/chto-vhodit-v-tur-vse-vklyucheno/article.html",
+  "fact_bank_source": "teya-memory/research/fact-bank.md",
+  "verdict": "pass",
+  "total_extracted_facts": 2,
+  "verified_facts_count": 0,
+  "unverified_facts_count": 2,
+  "facts": [
+    {
+      "fact": "0012822",
+      "kind": "large_number",
+      "context": "няет перелёт и размещение. ООО «Жираф» (реестр ТА 0012822 ) подбирает пакеты с вылетом из Уфы и помогает св",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "7 901 810",
+      "kind": "large_number",
+      "context": "Оставить заявку можно на главной или по телефону +7 901 810-50-18 . Офис: ул. Юрия Гагарина, 74/1, офис 3 (Пн",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    }
+  ]
+}

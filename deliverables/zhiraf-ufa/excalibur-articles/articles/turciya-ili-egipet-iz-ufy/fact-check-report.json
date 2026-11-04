@@ -1,0 +1,38 @@
+{
+  "article": "deliverables/zhiraf-ufa/excalibur-articles/articles/turciya-ili-egipet-iz-ufy/article.html",
+  "fact_bank_source": "teya-memory/research/fact-bank.md",
+  "verdict": "pass",
+  "total_extracted_facts": 4,
+  "verified_facts_count": 0,
+  "unverified_facts_count": 4,
+  "facts": [
+    {
+      "fact": "2011 года",
+      "kind": "date_or_year",
+      "context": "ул. Гагарина, 74/1) работает с вылетами из Уфы с 2011 года; приоритетные пляжные направления в brief включаю",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "0012822",
+      "kind": "large_number",
+      "context": "даты, бюджет и состав семьи. ООО «Жираф» (реестр 0012822 , офис ул. Гагарина, 74/1) работает с вылетами из",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "2011",
+      "kind": "large_number",
+      "context": "ул. Гагарина, 74/1) работает с вылетами из Уфы с 2011 года; приоритетные пляжные направления в brief вкл",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "7 901 810",
+      "kind": "large_number",
+      "context": "разными курортами. Заявка — на главной , телефон +7 901 810-50-18 , офис Пн–Пт 10:00–19:00, Сб 11:00–15:00. Х",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    }
+  ]
+}

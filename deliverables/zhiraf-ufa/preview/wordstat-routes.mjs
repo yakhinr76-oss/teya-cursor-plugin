@@ -1,0 +1,22 @@
+/** Wordstat URL path → flat preview HTML filename */
+export const routeMap = {
+  '/': 'home.html',
+  '/tour/': 'tour.html',
+  '/goryashchie-tury/': 'goryashchie-tury.html',
+  '/vse-vklyucheno/': 'vse-vklyucheno.html',
+  '/tour/turciya/': 'tour-turciya.html',
+  '/tour/oae/': 'tour-oae.html',
+  '/tour/egipet/': 'tour-egipet.html',
+  '/tour/tailand/': 'tour-tailand.html',
+  '/tour/vietnam/': 'tour-vietnam.html',
+  '/tour/turciya/antalya/': 'tour-turciya-antalya.html',
+  '/tour/egipet/hurgada/': 'tour-egipet-hurgada.html',
+  '/tour/egipet/sharm-el-sheyh/': 'tour-egipet-sharm-el-sheyh.html',
+  '/tour/vietnam/nyachang/': 'tour-vietnam-nyachang.html',
+  '/tour/vietnam/fukuok/': 'tour-vietnam-fukuok.html',
+  '/o-nas/': 'o-nas.html',
+  '/kontakty/': 'kontakty.html',
+  '/blog/': 'blog.html',
+  '/politika-konfidenczialnosti/': 'politika-konfidenczialnosti.html',
+  '/politika-cookies/': 'politika-cookies.html',
+};

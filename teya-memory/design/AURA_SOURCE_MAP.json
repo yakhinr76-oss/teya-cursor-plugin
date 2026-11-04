@@ -1,0 +1,34 @@
+{
+  "reference_to_theme": [
+    {
+      "reference_block": "Hero collage",
+      "theme": "hero-premium + hero-collage__img--1..3",
+      "status": "implemented"
+    },
+    {
+      "reference_block": "Destination tabs + vertical cards",
+      "theme": "section--destinations",
+      "status": "implemented"
+    },
+    {
+      "reference_block": "Editorial blog",
+      "theme": "section--editorial",
+      "status": "implemented"
+    },
+    {
+      "reference_block": "Testimonials",
+      "theme": "trust-social CTA (planned)",
+      "status": "gap"
+    },
+    {
+      "reference_block": "Subscribe photo",
+      "theme": "section--subscribe",
+      "status": "implemented"
+    },
+    {
+      "reference_block": "Highlights strip",
+      "theme": "step-card / trust highlight",
+      "status": "partial"
+    }
+  ]
+}

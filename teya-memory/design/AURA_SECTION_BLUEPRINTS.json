@@ -1,0 +1,193 @@
+{
+  "sections": [
+    {
+      "id": "global:header",
+      "page": "*",
+      "required_background": "#FAF8F5 90% + blur",
+      "required_visuals": [
+        "logo-zhiraf-client.png header only — not watermark"
+      ],
+      "required_cards": 0,
+      "required_motion": "sticky",
+      "transition_in": null,
+      "transition_out": "hero",
+      "blockers": []
+    },
+    {
+      "id": "front-page:hero-premium",
+      "page": "/",
+      "required_background": "milky #FAF8F5",
+      "required_visuals": [
+        "hero-uae.jpg",
+        "hero-turkey.jpg",
+        "hero-egypt.jpg",
+        "SVG flight path"
+      ],
+      "required_cards": 0,
+      "required_cta": [
+        "single btn--primary pill Подобрать тур"
+      ],
+      "required_motion": "reveal on scroll optional",
+      "transition_in": "from header",
+      "transition_out": "destinations milky",
+      "responsive": {
+        "375": "collage height 360px; H1 2.25rem"
+      },
+      "blockers": []
+    },
+    {
+      "id": "front-page:destinations",
+      "page": "/",
+      "required_background": "bg-milky",
+      "required_visuals": [
+        "5x dest-*-new.jpg vertical"
+      ],
+      "required_cards": 5,
+      "required_motion": "tab filter JS",
+      "transition_in": "flat",
+      "transition_out": "white steps",
+      "blockers": []
+    },
+    {
+      "id": "front-page:steps",
+      "page": "/",
+      "required_background": "#ffffff",
+      "required_visuals": [],
+      "required_cards": 4,
+      "required_motion": "stagger reveal-delay",
+      "blockers": []
+    },
+    {
+      "id": "front-page:editorial-globe",
+      "page": "/",
+      "blueprint_ref": "AURA_BLOG_SECTION_BLUEPRINT.json#surfaces.home_blog_teaser",
+      "required_background": "#FAF8F5 bg-milky",
+      "required_visuals": [
+        "1 featured 16:9",
+        "5 card thumbs 16:9 or 1:1 stack"
+      ],
+      "required_cards": 6,
+      "required_typography": "Cormorant Garamond H3 titles; Manrope body/meta UI",
+      "required_meta": "blog-meta-row: rubrika, optional country, read_time",
+      "required_motion": "reveal stagger; image hover scale",
+      "transition_in": "flat from steps",
+      "transition_out": "subscribe full-bleed",
+      "wireframe": "AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md#1",
+      "blockers": [
+        "PHP: front-page only featured — implement editorial-globe 1+5",
+        "per-post thumbnails for stack cards",
+        "local cormorant woff2 in theme assets"
+      ]
+    },
+    {
+      "id": "page-blog:archive",
+      "page": "/blog/",
+      "blueprint_ref": "AURA_BLOG_SECTION_BLUEPRINT.json#surfaces.blog_archive",
+      "required_background": "#FAF8F5 hero + white or milky grid section",
+      "required_visuals": [
+        "optional first-page featured 16:9",
+        "post-grid 16:9 cards"
+      ],
+      "required_cards": "3+ per page grid",
+      "required_typography": "H1 archive + card titles serif; body Manrope",
+      "required_meta": "blog-meta-row on each card",
+      "wireframe": "AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md#2",
+      "blockers": [
+        "home.php generic post-grid — add globe classes and featured slot"
+      ]
+    },
+    {
+      "id": "page-blog:single",
+      "page": "/blog/{slug}/",
+      "blueprint_ref": "AURA_BLOG_SECTION_BLUEPRINT.json#surfaces.single_post",
+      "required_background": "#FAF8F5",
+      "required_visuals": [
+        "entry hero 16:9 when thumbnail"
+      ],
+      "required_typography": "H1 + content H2/H3 serif; prose body Manrope",
+      "required_meta": "blog-meta-row under title",
+      "wireframe": "AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md#3",
+      "blockers": []
+    },
+    {
+      "id": "front-page:trust-social",
+      "page": "/",
+      "required_background": "#F5F2ED surface or white",
+      "required_visuals": [
+        "office-ufa.jpg OR team-travel.jpg"
+      ],
+      "required_cards": 3,
+      "required_cta": [
+        "VK vk.com/zhiraf_ufa",
+        "tel +79018105018",
+        "kontakty"
+      ],
+      "copy_rules": [
+        "no fake quotes",
+        "no star ratings"
+      ],
+      "blockers": [
+        "section not in front-page.php — Aurora implementation required"
+      ]
+    },
+    {
+      "id": "front-page:form-premium",
+      "page": "/",
+      "required_background": "white",
+      "required_visuals": [],
+      "required_cards": 1,
+      "blockers": []
+    },
+    {
+      "id": "front-page:subscribe",
+      "page": "/",
+      "required_background": "subscribe-bg.jpg full bleed",
+      "required_visuals": [
+        "subscribe-bg.jpg"
+      ],
+      "required_cards": 0,
+      "blockers": []
+    },
+    {
+      "id": "page-tour:hero",
+      "page": "/tour/",
+      "required_background": "catalog hero",
+      "required_visuals": [
+        "catalog-hub.jpg"
+      ],
+      "required_cards": 0,
+      "blockers": []
+    },
+    {
+      "id": "page-tour:grid",
+      "page": "/tour/",
+      "required_background": "white",
+      "required_visuals": [
+        "dest images large grid"
+      ],
+      "required_cards": 5,
+      "blockers": []
+    },
+    {
+      "id": "page-about:visual",
+      "page": "/o-nas/",
+      "required_background": "white",
+      "required_visuals": [
+        "team-travel.jpg",
+        "office-ufa.jpg"
+      ],
+      "required_cards": 4,
+      "blockers": []
+    },
+    {
+      "id": "global:footer",
+      "page": "*",
+      "required_background": "white",
+      "required_visuals": [
+        "logo footer"
+      ],
+      "required_cards": 0,
+      "blockers": []
+    }
+  ]
+}

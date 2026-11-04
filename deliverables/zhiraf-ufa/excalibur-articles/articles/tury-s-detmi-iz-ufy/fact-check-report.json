@@ -1,0 +1,45 @@
+{
+  "article": "deliverables/zhiraf-ufa/excalibur-articles/articles/tury-s-detmi-iz-ufy/article.html",
+  "fact_bank_source": "teya-memory/research/fact-bank.md",
+  "verdict": "pass",
+  "total_extracted_facts": 5,
+  "verified_facts_count": 0,
+  "unverified_facts_count": 5,
+  "facts": [
+    {
+      "fact": "3 лет",
+      "kind": "metric_or_duration",
+      "context": "у. Рекомендация: для первого вылета с ребёнком до 3 лет заложите запас по времени в аэропорту Уфы и возьм",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "2 лет",
+      "kind": "metric_or_duration",
+      "context": "й клуб по возрастам, часы работы Ожидать клуб для 2 лет в отеле «только для взрослых» Номер Family room,",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "12 лет",
+      "kind": "metric_or_duration",
+      "context": "овые фото. Итоговый вердикт: для активных детей 7–12 лет чаще ищут отель с детским клубом и мягким заходом",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "7 901 810",
+      "kind": "large_number",
+      "context": "составом семьи В форме на сайте или по телефону +7 901 810-50-18 укажите: число взрослых и возраст каждого р",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    },
+    {
+      "fact": "0012822",
+      "kind": "large_number",
+      "context": "ул. Юрия Гагарина, 74/1, офис 3. Реестр агентства 0012822 . Документы для детей и согласия на выезд — в чек",
+      "verified": false,
+      "reason": "Fact-bank is empty or missing"
+    }
+  ]
+}

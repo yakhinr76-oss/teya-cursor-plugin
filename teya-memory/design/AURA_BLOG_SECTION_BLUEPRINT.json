@@ -1,0 +1,257 @@
+{
+  "schema": "aura-blog-section-blueprint",
+  "version": "1.0.0",
+  "updated": "2026-10-18",
+  "reference": {
+    "label": "Globe Trekker editorial blog",
+    "doc": "deliverables/zhiraf-ufa/GLOBE-TREKKER-REDESIGN.md",
+    "colors": {
+      "background": "#FAF8F5",
+      "surface": "#FFFFFF",
+      "primary": "#E87A5D",
+      "text": "#2B2B2B",
+      "muted": "#666666",
+      "outline": "#E8E3DC"
+    },
+    "watermark_logo": "FORBIDDEN"
+  },
+  "typography": {
+    "body_ui": {
+      "family": "Manrope",
+      "weights": [400, 500, 600, 700],
+      "scope": "body, buttons, nav, cards excerpt, meta sans labels, form, footer"
+    },
+    "blog_display_serif": {
+      "family": "Cormorant Garamond",
+      "weights": [600, 700],
+      "scope": "blog and article H1–H3 only",
+      "selectors": [
+        ".editorial-blog-teaser .editorial-main__title",
+        ".editorial-blog-teaser .editorial-card__title",
+        ".site-main--blog .page-hero h1",
+        ".site-main--blog .post-card__title",
+        ".site-main--blog .blog-featured__title",
+        ".entry--single .entry-title",
+        ".entry--single .entry-content h2",
+        ".entry--single .entry-content h3"
+      ],
+      "letter_spacing": "-0.01em",
+      "line_height_heading": "1.15"
+    },
+    "site_headings_remain_sans": {
+      "family": "Manrope",
+      "weight": 800,
+      "scope": "homepage section-title, hero H1, tour/catalog — unchanged Globe Trekker lock"
+    },
+    "theme_font_files": {
+      "manrope": {
+        "preferred": "local_variable",
+        "paths": [
+          "assets/fonts/manrope/Manrope-Cyrillic-Variable.woff2"
+        ],
+        "css_var": "--font-sans",
+        "enqueue": "inc/enqueues.php — prefer @font-face over Google CDN when file present"
+      },
+      "cormorant_garamond": {
+        "delivery": "local_only_no_cdn",
+        "paths": [
+          "assets/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2",
+          "assets/fonts/cormorant-garamond/CormorantGaramond-Bold.woff2"
+        ],
+        "css_var": "--font-blog-display",
+        "font_face_template": "@font-face { font-family: 'Cormorant Garamond'; src: url('../fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }"
+      }
+    }
+  },
+  "meta_row": {
+    "component": "blog-meta-row",
+    "layout": "flex wrap, gap 12px, align center",
+    "typography": "Manrope 12px/700 uppercase tracking 0.05em for rubric; Manrope 14px/500 muted for read time",
+    "fields": [
+      {
+        "id": "rubrika",
+        "label_ru": "Рубрика",
+        "class": "blog-meta__rubrika",
+        "color": "#E87A5D",
+        "source": "category name or zhiraf_ufa_blog_teaser category key"
+      },
+      {
+        "id": "country",
+        "label_ru": "Страна / направление",
+        "class": "blog-meta__country",
+        "optional": true,
+        "color": "#666666",
+        "source": "post meta destination tag or omit on generic guides"
+      },
+      {
+        "id": "read_time",
+        "label_ru": "Время чтения",
+        "class": "blog-meta__read-time",
+        "format": "{n} мин чтения",
+        "source": "zhiraf_ufa_reading_time()"
+      }
+    ],
+    "separator": "middot · between country and read_time when both present"
+  },
+  "surfaces": {
+    "home_blog_teaser": {
+      "id": "front-page:editorial-globe",
+      "page": "/",
+      "section_class": "section section--editorial editorial-blog-teaser bg-milky",
+      "background": "#FAF8F5",
+      "padding_y": "80px",
+      "composition": "1 featured + 5 cards (Globe Trekker asymmetric editorial)",
+      "grid": {
+        "desktop_min": 1024,
+        "template": "editorial-globe-grid",
+        "columns": "minmax(0, 1.35fr) minmax(0, 1fr)",
+        "gap": "32px 40px",
+        "areas": "featured featured | featured stack | row2 row2",
+        "notes": "Left: featured 16:9 + title block. Right: vertical stack of 3 compact cards. Below featured column: 2 equal cards in 2-col subgrid spanning full width of left+gap or full 6-col row — implement as .editorial-globe__row2 with grid 1fr 1fr under featured only (left column width)"
+      },
+      "featured": {
+        "aspect_ratio": "16/9",
+        "radius": "24px",
+        "image_size": "large / full width of cell",
+        "title_level": "h3",
+        "title_font": "blog_display_serif",
+        "title_size": "clamp(1.75rem, 3vw, 2.25rem)",
+        "excerpt_lines": 2,
+        "excerpt_font": "Manrope 17px muted",
+        "meta": "meta_row full"
+      },
+      "stack_cards": {
+        "count": 3,
+        "layout": "horizontal thumb + text",
+        "thumb_aspect": "1/1",
+        "thumb_width_px": 112,
+        "thumb_radius": "16px",
+        "title_level": "h3",
+        "title_font": "blog_display_serif",
+        "title_size": "1.125rem",
+        "meta": "meta_row compact (rubrika + read time only)",
+        "gap": "24px"
+      },
+      "row2_cards": {
+        "count": 2,
+        "layout": "vertical card",
+        "aspect_ratio": "16/9",
+        "thumb_radius": "16px",
+        "title_font": "blog_display_serif",
+        "meta": "meta_row"
+      },
+      "section_head": {
+        "title": "Полезные статьи",
+        "title_font": "Manrope 800 section-title",
+        "cta": "btn btn--outline btn--sm → /blog/"
+      },
+      "data_contract": {
+        "featured": "latest post or BT-01 teaser",
+        "cards_5": "next 5 posts by date excluding featured",
+        "fallback": "zhiraf_ufa_blog_teaser_bt01 + sidebar array — extend PHP to 5 items"
+      },
+      "motion": "reveal stagger 0.08s; image hover scale 1.02–1.05",
+      "transition_in": "flat from steps white",
+      "transition_out": "subscribe full-bleed"
+    },
+    "blog_archive": {
+      "id": "page-blog:archive",
+      "page": "/blog/",
+      "main_class": "site-main site-main--blog",
+      "hero": {
+        "class": "page-hero page-hero--blog",
+        "background": "#FAF8F5",
+        "padding": "48px 0 32px",
+        "h1_font": "blog_display_serif",
+        "h1_size": "clamp(2.25rem, 4vw, 3rem)",
+        "subtitle_font": "Manrope 17px muted max-width 640px"
+      },
+      "featured_first_page": {
+        "enabled": true,
+        "only_when": "have_posts && paged === 1",
+        "layout": "full container width featured card 16:9",
+        "title_font": "blog_display_serif",
+        "meta": "meta_row",
+        "margin_bottom": "48px"
+      },
+      "grid": {
+        "class": "post-grid post-grid--globe",
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "gap": "32px 24px",
+        "card_component": "post-card post-card--globe",
+        "card_image_aspect": "16/9",
+        "card_radius": "16px",
+        "title_level": "h2",
+        "title_font": "blog_display_serif",
+        "title_size": "1.375rem",
+        "excerpt_lines": 3,
+        "meta": "meta_row below title",
+        "hover": "image scale 1.03, no heavy shadow"
+      },
+      "pagination": "the_posts_pagination — Manrope, primary accent on current",
+      "empty_state": "story-grid topics — no lorem; serif only on h3 topic titles if shown"
+    },
+    "single_post": {
+      "id": "page-blog:single",
+      "page": "/blog/{slug}/",
+      "main_class": "site-main site-main--single",
+      "background": "#FAF8F5",
+      "article_class": "entry entry--single entry--globe",
+      "max_width_content_px": 720,
+      "header": {
+        "meta_above_title": false,
+        "h1_font": "blog_display_serif",
+        "h1_size": "clamp(2rem, 4vw, 2.75rem)",
+        "meta_row_below_title": true,
+        "meta": "rubrika · optional country · read time · date optional muted"
+      },
+      "hero_image": {
+        "aspect": "16/9",
+        "radius": "24px",
+        "margin": "32px 0",
+        "class": "entry-figure entry-figure--globe"
+      },
+      "prose": {
+        "body_font": "Manrope 17px/1.65",
+        "h2_h3_font": "blog_display_serif",
+        "h2_size": "1.75rem",
+        "h3_size": "1.375rem",
+        "link_color": "#E87A5D",
+        "blockquote_border": "4px solid #E87A5D"
+      },
+      "footer_cta": "entry-footer Manrope — links to /tour/ and /kontakty/"
+    }
+  },
+  "spacing_scale": {
+    "base": "8px",
+    "section_y_home": "80px",
+    "section_y_archive": "64px",
+    "container_max": "1240px",
+    "gutter": "20px",
+    "card_padding": "0",
+    "meta_margin_top": "12px"
+  },
+  "aspect_ratios_lock": {
+    "featured_hero": "16/9",
+    "archive_card": "16/9",
+    "home_stack_thumb": "1/1",
+    "dest_cards_unrelated": "3/4"
+  },
+  "builder_hooks": {
+    "scss_partial": "assets/src/scss/_blog-globe.scss",
+    "php_templates": [
+      "front-page.php — editorial-globe markup",
+      "home.php — featured + grid",
+      "single.php — entry--globe classes",
+      "template-parts/content/content-card.php — meta row"
+    ],
+    "wireframe_doc": "teya-memory/design/AURA_BLOG_WIREFRAMES_WP-THEME-BUILDER.md"
+  },
+  "blockers": [
+    "front-page.php currently renders featured only — needs 5-card data + grid markup",
+    "cormorant woff2 files not in theme yet — builder must add fonts or run download script",
+    "editorial thumbs per-post for stack cards"
+  ]
+}

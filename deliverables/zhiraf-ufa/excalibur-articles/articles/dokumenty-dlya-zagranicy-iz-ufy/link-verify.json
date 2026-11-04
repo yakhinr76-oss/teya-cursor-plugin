@@ -1,0 +1,48 @@
+{
+  "source": "deliverables/zhiraf-ufa/excalibur-articles/articles/dokumenty-dlya-zagranicy-iz-ufy/article.html",
+  "total_links": 4,
+  "failed_count": 0,
+  "verdict": "pass",
+  "links": [
+    {
+      "url": "https://b2b-tour.ru/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/"
+    },
+    {
+      "url": "https://b2b-tour.ru/tour/turciya/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/tour/turciya/"
+    },
+    {
+      "url": "https://b2b-tour.ru/blog/kak-kupit-tur-v-ufe/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/blog/kak-kupit-tur-v-ufe/"
+    },
+    {
+      "url": "https://b2b-tour.ru/kontakty/",
+      "status": 200,
+      "ok": true,
+      "method": "HEAD",
+      "error": null,
+      "kind": "internal_relative",
+      "skipped": false,
+      "checked_url": "https://b2b-tour.ru/kontakty/"
+    }
+  ]
+}

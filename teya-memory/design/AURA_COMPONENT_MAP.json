@@ -1,0 +1,46 @@
+{
+  "components": [
+    {
+      "id": "btn-primary",
+      "maps_to": ".btn--primary",
+      "tokens": [
+        "colors.primary",
+        "rounded.full"
+      ]
+    },
+    {
+      "id": "btn-outline",
+      "maps_to": ".btn--outline",
+      "tokens": [
+        "colors.outline"
+      ]
+    },
+    {
+      "id": "dest-premium-card",
+      "maps_to": ".dest-premium-card",
+      "states": [
+        "hover scale image"
+      ]
+    },
+    {
+      "id": "tab-btn",
+      "maps_to": ".tab-btn",
+      "states": [
+        "active underline"
+      ]
+    },
+    {
+      "id": "editorial-main",
+      "maps_to": ".editorial-main"
+    },
+    {
+      "id": "subscribe-premium",
+      "maps_to": ".section--subscribe"
+    },
+    {
+      "id": "trust-social-cta",
+      "maps_to": "planned .section--trust",
+      "status": "not_in_php_yet"
+    }
+  ]
+}

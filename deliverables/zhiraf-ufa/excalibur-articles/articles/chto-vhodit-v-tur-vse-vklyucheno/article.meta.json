@@ -1,0 +1,42 @@
+{
+  "topic_id": "BT-02",
+  "slug": "chto-vhodit-v-tur-vse-vklyucheno",
+  "primary_query": "что входит в тур все включено",
+  "secondary_queries": [
+    "ai и uai разница",
+    "что входит в путевку турция"
+  ],
+  "char_count": 6033,
+  "article_mode": "B",
+  "author_id": "elena-kovaleva",
+  "anchor_variants": [
+    "что входит в тур все включено из Уфы",
+    "разница AI и UAI в пакетном туре",
+    "состав пакетного тура перелёт отель питание"
+  ],
+  "meta_ab": {
+    "title_seo": "Что входит в «всё включено» в туре | Блог «Жираф»",
+    "title_ctr": "Что входит в «всё включено» в туре — Блог «Жираф»",
+    "title_aeo": "Что входит в тур «всё включено»: простыми словами?",
+    "description_seo": "Питание, перелёт, трансфер и отель — что обычно входит в пакетный тур из Уфы и на что смотреть при выборе.",
+    "description_ctr": "Разбираем пакетный тур с вылетом из Уфы: перелёт, отель, трансфер и коды питания AI, UAI, BB. Что часто не входит в цену и как сравнить варианты с менеджером «Ж",
+    "description_aeo": "Питание, перелёт, трансфер и отель — что обычно входит в пакетный тур из Уфы и на что смотреть при выборе."
+  },
+  "geo_qa": {
+    "score": 85,
+    "verdict": "PASS",
+    "date": "2026-10-18",
+    "html_linter": "PASS",
+    "slop_score": "PASS",
+    "cannibalization": "PASS",
+    "link_verify": "pass"
+  },
+  "cover_family": "brand_collage",
+  "linked_landings": [
+    "/tour/turciya/",
+    "/tour/egipet/"
+  ],
+  "internal_links_planned": [
+    "BT-04"
+  ]
+}

@@ -1,0 +1,130 @@
+/* ===== Hot tours bento (homepage) ===== */
+.hot-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 250px;
+  gap: 16px;
+  margin-top: 32px;
+}
+.hot-bento__tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--color-white);
+  color: #fff;
+  isolation: isolate;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 30px rgba(20, 22, 28, .08);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.hot-bento__tile:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(20, 22, 28, .16); }
+.hot-bento__tile--wide { grid-column: span 2; }
+.hot-bento__tile--tall { grid-row: span 2; }
+.hot-bento__tile--banner { grid-column: span 3; }
+.hot-bento__img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2; transition: transform .6s ease;
+}
+.hot-bento__tile:hover .hot-bento__img { transform: scale(1.05); }
+.hot-bento__shade {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(12,14,20,.05) 0%, rgba(12,14,20,.2) 40%, rgba(12,14,20,.72) 78%, rgba(12,14,20,.92) 100%);
+}
+.hot-bento__label {
+  position: absolute; top: 18px; left: 20px; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.92);
+}
+.hot-bento__icon {
+  display: inline-grid; place-items: center; width: 26px; height: 26px;
+  border-radius: 8px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px);
+  font-size: 13px; letter-spacing: 0;
+}
+.hot-bento__body {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 6px; padding: 0 20px 18px;
+}
+.hot-bento__title { font-family: var(--font-head); font-size: 30px; font-weight: 800; line-height: 1.1; margin: 0; }
+.hot-bento__meta {
+  margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
+}
+.hot-bento__sub { margin: 0; font-size: 16px; font-weight: 700; color: #fff; }
+.hot-bento__cta {
+  align-self: flex-start; margin-top: 8px;
+  box-shadow: 0 6px 18px rgba(232, 122, 93, .35);
+}
+.hot-bento__cta:hover { color: #fff; }
+.hot-bento-disclaimer {
+  margin: 16px 0 0; font-size: .875rem; line-height: 1.5; color: var(--color-muted); max-width: 720px;
+}
+.hot-bento__group-note {
+  margin: 8px 0 0; font-size: .9375rem; line-height: 1.5; color: var(--color-muted); max-width: 820px;
+}
+.hot-bento__tile--tall .hot-bento__title, .hot-bento__tile--wide .hot-bento__title, .hot-bento__tile--banner .hot-bento__title { font-size: 36px; }
+@media (max-width: 900px) {
+  .hot-bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+  .hot-bento__tile--banner, .hot-bento__tile--wide { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .hot-bento { grid-template-columns: 1fr; grid-auto-rows: 210px; gap: 12px; }
+  .hot-bento__tile--wide, .hot-bento__tile--banner { grid-column: auto; }
+  .hot-bento__tile--tall { grid-row: auto; }
+  .hot-bento__title, .hot-bento__tile--tall .hot-bento__title, .hot-bento__tile--wide .hot-bento__title, .hot-bento__tile--banner .hot-bento__title { font-size: 28px; }
+}
+
+/* ===== Country page: top-3 hotel cards ===== */
+.section--dest-tours-top { padding-top: 48px; }
+.tour-price-grid--top { gap: 24px; }
+.tour-price-grid--top .tour-card { border: 0; box-shadow: 0 12px 34px rgba(30, 28, 24, .10); transition: transform .3s ease, box-shadow .3s ease; }
+.tour-price-grid--top .tour-card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(30, 28, 24, .16); }
+.tour-price-grid--top .tour-card__media { aspect-ratio: 16 / 10; }
+.tour-price-grid--top .tour-card__price { font-size: 26px; }
+@media (max-width: 768px) { .tour-price-grid--top { grid-template-columns: 1fr; } }
+
+/* ===== Bento v3: groups Уфа / Москва, gradient tiles ===== */
+.hot-bento__group {
+  margin: 36px 0 0; font-family: var(--font-head); font-size: 15px; font-weight: 800;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--color-muted);
+  display: flex; align-items: center; gap: 12px;
+}
+.hot-bento__group::after { content: ""; flex: 1; height: 1px; background: var(--color-border); }
+.hot-bento__group + .hot-bento { margin-top: 16px; }
+.hot-bento--mow { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; }
+.hot-bento--mow .hot-bento__tile--wide { grid-column: span 2; }
+.hot-bento__kicker { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+.hot-bento__tile--grad .hot-bento__shade { background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%); }
+.hot-bento__mark {
+  position: absolute; right: -10px; bottom: -40px; z-index: -1;
+  font-family: var(--font-head); font-weight: 800; font-size: 220px; line-height: 1;
+  color: rgba(255,255,255,.10); pointer-events: none;
+}
+.dest-grad { background-size: 160% 160%; background-position: 0% 50%; transition: background-position .8s ease; }
+.hot-bento__tile--grad:hover { background-position: 100% 50%; }
+.dest-grad--maldivy    { background-image: radial-gradient(120% 90% at 85% 10%, rgba(255,255,255,.28), transparent 55%), linear-gradient(135deg, #0aa6b8 0%, #0b7fa8 45%, #0b3d6e 100%); }
+.dest-grad--sejshely   { background-image: radial-gradient(120% 90% at 80% 15%, rgba(255,255,255,.25), transparent 55%), linear-gradient(135deg, #1fb79a 0%, #0f8f86 50%, #0c4f5c 100%); }
+.dest-grad--shri-lanka { background-image: radial-gradient(120% 90% at 85% 10%, rgba(255,230,160,.35), transparent 55%), linear-gradient(135deg, #e3a23b 0%, #c8622e 50%, #6e2a2a 100%); }
+.dest-grad--indoneziya { background-image: radial-gradient(120% 90% at 80% 10%, rgba(255,255,255,.22), transparent 55%), linear-gradient(135deg, #4caf6e 0%, #1f7a5a 50%, #123f3a 100%); }
+.dest-grad--indiya     { background-image: radial-gradient(120% 90% at 85% 15%, rgba(255,220,150,.35), transparent 55%), linear-gradient(135deg, #f08a3c 0%, #d9475a 50%, #6b2350 100%); }
+.dest-grad--kitaj      { background-image: radial-gradient(120% 90% at 80% 10%, rgba(255,200,170,.3), transparent 55%), linear-gradient(135deg, #ef5b4c 0%, #b8323f 50%, #561d36 100%); }
+.dest-grad--uzbekistan { background-image: radial-gradient(120% 90% at 85% 10%, rgba(180,230,255,.3), transparent 55%), linear-gradient(135deg, #2f8fd8 0%, #2a5bb8 50%, #1e2b6e 100%); }
+.dest-grad--armeniya   { background-image: radial-gradient(120% 90% at 80% 15%, rgba(255,210,160,.3), transparent 55%), linear-gradient(135deg, #d9824a 0%, #a24a3a 50%, #4e2433 100%); }
+.dest-landing-hero__gradient {
+  position: relative; overflow: hidden; width: 100%; aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg); display: flex; align-items: flex-end; padding: 28px;
+}
+.dest-landing-hero__gradient span { font-family: var(--font-head); font-weight: 800; font-size: 44px; color: #fff; }
+@media (max-width: 900px) {
+  .hot-bento--mow { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 190px; }
+}
+@media (max-width: 600px) {
+  .hot-bento--mow { grid-template-columns: 1fr; grid-auto-rows: 190px; }
+  .hot-bento--mow .hot-bento__tile--wide { grid-column: auto; }
+  .hot-bento__mark { font-size: 170px; }
+}
+.tour-card__img--grad { width: 100%; height: 100%; }

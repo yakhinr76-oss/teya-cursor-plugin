@@ -1,0 +1,51 @@
+{
+  "transitions": [
+    {
+      "id": "hero-to-destinations",
+      "from_section": "hero-premium",
+      "to_section": "section--destinations",
+      "type": "gradient-fade",
+      "geometry": "padding-bottom 100px hero; next section bg-milky same hue — subtle section padding only",
+      "implementation": "css",
+      "must_replicate": false,
+      "source_reference": "Globe Trekker flat editorial"
+    },
+    {
+      "id": "collage-overlap-internal",
+      "from_section": "hero-premium",
+      "to_section": "hero-premium",
+      "type": "object-overlap",
+      "geometry": "3 tiles absolute positioned z-index 1-3; flight SVG z-index 4",
+      "implementation": "css-positioning",
+      "must_replicate": true
+    },
+    {
+      "id": "dest-card-scrim",
+      "from_section": "dest-premium-card",
+      "to_section": "dest-premium-card",
+      "type": "gradient-fade",
+      "geometry": "linear-gradient to top rgba(0,0,0,0.7) 0% transparent 60%",
+      "implementation": "pseudo-element",
+      "must_replicate": true
+    },
+    {
+      "id": "subscribe-overlay",
+      "from_section": "section--subscribe",
+      "to_section": "section--subscribe",
+      "type": "gradient-fade",
+      "geometry": "full-bleed image + rgba(0,0,0,0.5) overlay",
+      "implementation": "css",
+      "must_replicate": true
+    },
+    {
+      "id": "editorial-to-trust",
+      "from_section": "section--editorial",
+      "to_section": "trust-social",
+      "type": "custom-svg",
+      "geometry": "optional soft wave height 24px #fff to sand — only if reference wave present; default flat acceptable",
+      "implementation": "inline-svg",
+      "must_replicate": false,
+      "blocker": "reference image missing — wave not confirmed"
+    }
+  ]
+}

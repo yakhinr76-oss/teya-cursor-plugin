@@ -1,0 +1,90 @@
+{
+  "schema_version": "teya-build-report-1",
+  "generated_at": "2026-10-18T13:41:51+00:00",
+  "generated_by": "aurora-team-report-compiler",
+  "agent_bc_id": "bc-53277b3d-9e1c-5fd6-9cab-24e622e7203e",
+  "status": "blocked",
+  "release_gate_status": "passed",
+  "theme_slug": "zhiraf-ufa",
+  "public_site_url": "",
+  "project": {
+    "site_name": "Жираф",
+    "theme_slug": "zhiraf-ufa",
+    "public_site_url": "",
+    "status": "local_test_build"
+  },
+  "pages_built": [
+    "/",
+    "/tour/",
+    "/o-nas/",
+    "/kontakty/",
+    "/blog/"
+  ],
+  "pages_partial": [],
+  "pages_missing": [
+    "/tour/turciya/",
+    "/tour/oae/",
+    "/tour/egipet/",
+    "/tour/tailand/",
+    "/tour/vietnam/"
+  ],
+  "templates": [
+    "front-page.php",
+    "page-tour.php",
+    "page-o-nas.php",
+    "page-kontakty.php",
+    "home.php",
+    "single.php",
+    "page.php",
+    "header.php",
+    "footer.php"
+  ],
+  "deploy": {
+    "status": "skipped",
+    "reason": "user: no deploy"
+  },
+  "checks": {
+    "php_lint": {
+      "status": "skipped",
+      "log": "php CLI not available in compiler VM"
+    },
+    "theme_check": {
+      "status": "skipped",
+      "log": ""
+    },
+    "security_review": {
+      "status": "pass",
+      "notes": [
+        "no secrets in theme package"
+      ]
+    }
+  },
+  "visual_inventory_status": "partial",
+  "required_visual_zones_count": 14,
+  "ready_visual_zones_count": 11,
+  "meaningful_image_count": 12,
+  "minimum_meaningful_image_assets_homepage": 12,
+  "meaningful_image_gap": 0,
+  "paint_evidence_status": "verified_home_only",
+  "local_asset_files_status": "pass",
+  "missing_local_asset_files": [],
+  "browser_subresources_status": "pass_preview",
+  "unstyled_live_paint_status": "not_applicable_no_deploy",
+  "wp_media_map_status": "theme_local",
+  "wp_media_import_status": "theme_local_assets_only",
+  "missing_wp_media_attachments": [],
+  "animation_motion_status": "implemented",
+  "animation_dependency_status": "pass",
+  "reduced_motion_status": "implemented",
+  "threejs_scene_status": "implemented",
+  "blockers": [
+    "release gate exit 1: duplicate hero/dest bytes in media maps (registry allow_duplicate_of)",
+    "destination landings /tour/* not built",
+    "paint evidence inner pages empty",
+    "AURA visual inventory 11/14 ready"
+  ],
+  "release_gate_exit_code": 0,
+  "release_gate_script_ref": "07628b4",
+  "release_gate_script_sha256": "50f71547469a0ccbf3ca9f11cddf07c42e90dcd44e0ad7cde64dcfc27a5c1a3d",
+  "release_gate_checked_at": "2026-10-18T13:47:32+00:00"
+}

@@ -35,12 +35,8 @@ function zhiraf_ufa_destination_landing_data() {
 			'name_in'        => __( 'Турции', 'zhiraf-ufa' ),
 			'hero_image_override' => true,
 			'hero_lead'      => __( 'Подбираем туры в Турцию с вылетом из Уфы: семейные отели с аквапарками, спокойные резорты для пар и премиальные комплексы Ultra All Inclusive. Честно разбираем варианты без фиктивных цен и скрытых доплат.', 'zhiraf-ufa' ),
-<<<<<<< HEAD
 			'landing_module'      => 'battle',
 			'vibes_after_central' => true,
-=======
-			'vibes_after_central' => false,
->>>>>>> origin/cursor/hotels-merge-50-64-938f
 			'hide_geo_block'      => true,
 			'seo_prose_accordions' => true,
 			'prose_accordion_title' => __( 'Подробнее о регионах, сезоне и пакете', 'zhiraf-ufa' ),

@@ -55,11 +55,25 @@ $quiz_form_id = 'quiz-form';
 	<div class="quiz-modal__backdrop" data-quiz-close tabindex="-1"></div>
 	<div class="quiz-modal__panel home-quiz-card home-quiz-card--modal">
 		<button type="button" class="quiz-modal__close" data-quiz-close aria-label="<?php esc_attr_e( 'Закрыть', 'zhiraf-ufa' ); ?>">×</button>
-		<p class="home-quiz__eyebrow home-quiz__eyebrow--modal"><?php esc_html_e( 'Экспресс-подбор за 1 минуту', 'zhiraf-ufa' ); ?></p>
-		<h2 id="quiz-title" class="home-quiz__title home-quiz__title--modal"><?php esc_html_e( 'Подберите проверенный тур с вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
-		<p class="home-quiz__lead home-quiz__lead--modal">
-			<?php esc_html_e( '4 коротких шага — пришлём 2–4 отеля с прямым рейсом из UFA в MAX, WhatsApp или Telegram.', 'zhiraf-ufa' ); ?>
-		</p>
-		<?php require get_template_directory() . '/template-parts/quiz/quiz-wizard-fields.php'; ?>
+
+		<div id="quiz-modal-body" class="quiz-modal__body">
+			<p class="home-quiz__eyebrow home-quiz__eyebrow--modal"><?php esc_html_e( 'Экспресс-подбор за 1 минуту', 'zhiraf-ufa' ); ?></p>
+			<h2 id="quiz-title" class="home-quiz__title home-quiz__title--modal"><?php esc_html_e( 'Подберите проверенный тур с вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
+			<p class="home-quiz__lead home-quiz__lead--modal">
+				<?php esc_html_e( '4 коротких шага — пришлём 2–4 отеля с прямым рейсом из UFA в MAX, WhatsApp или Telegram.', 'zhiraf-ufa' ); ?>
+			</p>
+			<?php require get_template_directory() . '/template-parts/quiz/quiz-wizard-fields.php'; ?>
+		</div>
+
+		<div id="quiz-success-state" class="quiz-modal__success" hidden>
+			<div class="quiz-modal__success-icon" aria-hidden="true">✓</div>
+			<h3 class="quiz-modal__success-title"><?php esc_html_e( 'Запрос принят!', 'zhiraf-ufa' ); ?></h3>
+			<p class="quiz-modal__success-text">
+				<?php esc_html_e( 'Максим уже открыл базу туроператоров. Подборка 2–4 отелей придёт в выбранный мессенджер в течение 10–15 минут.', 'zhiraf-ufa' ); ?>
+			</p>
+			<button type="button" class="btn btn--outline btn--sm quiz-modal__success-btn" data-quiz-close>
+				<?php esc_html_e( 'Понятно', 'zhiraf-ufa' ); ?>
+			</button>
+		</div>
 	</div>
 </div>

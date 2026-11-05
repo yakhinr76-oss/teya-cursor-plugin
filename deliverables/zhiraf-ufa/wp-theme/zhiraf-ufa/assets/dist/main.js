@@ -463,7 +463,85 @@
   /* Quiz wizard (modal #quiz-form only) */
   var modal = qs('#quiz-modal');
   var quizForm = qs('#quiz-form');
+  var quizAutoCloseTimer = null;
 
+  function isModalQuizForm(form) {
+    return !!(form && form.id === 'quiz-form' && modal && modal.contains(form));
+  }
+
+  function resetQuizModalState() {
+    if (!modal || !quizForm) {
+      return;
+    }
+    var body = qs('#quiz-modal-body', modal);
+    var success = qs('#quiz-success-state', modal);
+    if (body) {
+      body.hidden = false;
+      body.classList.remove('quiz-modal__body--hiding');
+    }
+    if (success) {
+      success.hidden = true;
+      success.classList.remove('quiz-modal__success--visible');
+    }
+    if (quizAutoCloseTimer) {
+      clearTimeout(quizAutoCloseTimer);
+      quizAutoCloseTimer = null;
+    }
+    quizForm.reset();
+    if (typeof quizForm._zhirafQuizGoStep === 'function') {
+      quizForm._zhirafQuizGoStep(1);
+    }
+    updateQuizSubmitLabel(quizForm);
+    var submitBtn = quizForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+    }
+    var status = qs('.form-status', quizForm);
+    if (status) {
+      status.textContent = '';
+      status.classList.remove('is-success', 'is-error');
+    }
+  }
+
+  function showQuizModalSuccess() {
+    if (!modal) {
+      return;
+    }
+    var body = qs('#quiz-modal-body', modal);
+    var success = qs('#quiz-success-state', modal);
+    if (!body || !success) {
+      return;
+    }
+    body.classList.add('quiz-modal__body--hiding');
+    window.setTimeout(function () {
+      body.hidden = true;
+      body.classList.remove('quiz-modal__body--hiding');
+      success.hidden = false;
+      window.requestAnimationFrame(function () {
+        success.classList.add('quiz-modal__success--visible');
+      });
+    }, 220);
+    if (quizAutoCloseTimer) {
+      clearTimeout(quizAutoCloseTimer);
+    }
+    quizAutoCloseTimer = window.setTimeout(function () {
+      closeQuiz();
+    }, 3000);
+  }
+
+  function closeQuiz() {
+    if (!modal) return;
+    modal.classList.add('quiz-modal--closing');
+    window.setTimeout(function () {
+      modal.classList.remove('quiz-modal--closing');
+      resetQuizModalState();
+      modal.setAttribute('hidden', '');
+      modal.setAttribute('inert', '');
+      document.body.style.overflow = '';
+      document.body.classList.remove('quiz-open');
+    }, 280);
+  }
   function trackQuizStep(stepIndex) {
     window.zhirafTrack('quiz_step_' + (stepIndex + 1), { step: stepIndex + 1 });
   }
@@ -655,18 +733,11 @@
 
   function openQuiz() {
     if (!modal || !quizForm) return;
+    modal.classList.remove('quiz-modal--closing');
     modal.removeAttribute('hidden');
     modal.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
     document.body.classList.add('quiz-open');
-  }
-
-  function closeQuiz() {
-    if (!modal) return;
-    modal.setAttribute('hidden', '');
-    modal.setAttribute('inert', '');
-    document.body.style.overflow = '';
-    document.body.classList.remove('quiz-open');
   }
 
   var vibeQuizMap = {
@@ -765,6 +836,7 @@
 
   var leadMagnetForm = qs('#lead-magnet-form');
   if (leadMagnetForm) {
+    initMessengerPicker(leadMagnetForm);
     leadMagnetForm.addEventListener('submit', function () {
       var picked = leadMagnetForm.querySelector('[name="lead_messenger"]:checked');
       var channel = qs('[name="contact_channel"]', leadMagnetForm);
@@ -876,6 +948,8 @@
   function postForm(form, action) {
     var status = qs('.form-status', form);
     var submitBtn = form.querySelector('button[type="submit"]');
+    var isModalQuiz = isModalQuizForm(form);
+    var quizSuccessShown = false;
     if (!cfg.ajaxUrl) {
       setStatus(status, PHONE_FALLBACK, false);
       return;
@@ -884,8 +958,13 @@
       if (submitBtn.disabled) return;
       submitBtn.disabled = true;
       submitBtn.setAttribute('aria-busy', 'true');
+      if (isModalQuiz) {
+        submitBtn.textContent = 'Отправляем...';
+      }
     }
-    setStatus(status, 'Отправляем…', null);
+    if (!isModalQuiz) {
+      setStatus(status, 'Отправляем…', null);
+    }
     sendForm(form, action)
       .then(function (data) {
         if (!data.success && data.data && data.data.code === 'nonce') {
@@ -896,6 +975,12 @@
         return data;
       })
       .then(function (data) {
+        if (data.success && isModalQuiz) {
+          trackFormSuccess(form, action);
+          quizSuccessShown = true;
+          showQuizModalSuccess();
+          return;
+        }
         var msg = data.data && data.data.message ? data.data.message : (data.success ? 'Спасибо! Заявка отправлена.' : PHONE_FALLBACK);
         setStatus(status, msg, !!data.success);
         if (data.success) {
@@ -907,9 +992,12 @@
         setStatus(status, 'Нет связи с сервером. ' + PHONE_FALLBACK, false);
       })
       .finally(function () {
-        if (submitBtn) {
+        if (submitBtn && !quizSuccessShown) {
           submitBtn.disabled = false;
           submitBtn.removeAttribute('aria-busy');
+          if (isModalQuiz) {
+            updateQuizSubmitLabel(form);
+          }
         }
       });
   }

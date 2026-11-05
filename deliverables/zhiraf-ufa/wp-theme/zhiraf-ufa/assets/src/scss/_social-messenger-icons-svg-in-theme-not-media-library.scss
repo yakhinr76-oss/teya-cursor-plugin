@@ -41,6 +41,27 @@
   border-color: rgba(34, 158, 217, 0.45);
 }
 
+.zh-social-link--max:hover {
+  border-color: rgba(91, 75, 255, 0.45);
+}
+
+.zh-social-icon__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.zh-social-links--icon .zh-social-link__icon .zh-social-icon__img {
+  width: 22px;
+  height: 22px;
+}
+
+.zh-social-links--pill .zh-social-link__icon .zh-social-icon__img {
+  width: 20px;
+  height: 20px;
+}
+
 .zh-social-link--vk:hover {
   color: #0077ff;
   border-color: rgba(0, 119, 255, 0.4);

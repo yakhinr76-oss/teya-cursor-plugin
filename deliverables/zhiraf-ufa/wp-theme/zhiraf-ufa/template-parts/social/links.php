@@ -30,17 +30,7 @@ if ( '' !== $class ) {
 	$wrapper_class .= ' ' . esc_attr( $class );
 }
 
-$allowed_svg = array(
-	'svg'  => array(
-		'class'           => true,
-		'width'           => true,
-		'height'          => true,
-		'viewbox'         => true,
-		'aria-hidden'     => true,
-		'focusable'       => true,
-	),
-	'path' => array( 'fill' => true, 'd' => true ),
-);
+$allowed_svg = zhiraf_ufa_social_icon_allowed_html();
 ?>
 <nav class="<?php echo esc_attr( $wrapper_class ); ?>" aria-label="<?php esc_attr_e( 'Соцсети и мессенджеры', 'zhiraf-ufa' ); ?>">
 	<?php foreach ( $channels as $channel ) : ?>

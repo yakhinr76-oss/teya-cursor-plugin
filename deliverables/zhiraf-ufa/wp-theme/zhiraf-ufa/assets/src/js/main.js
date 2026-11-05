@@ -502,6 +502,8 @@
     if (!btn) return;
     if (channel === 'Telegram') {
       btn.textContent = 'Получить расчёт туров в Telegram →';
+    } else if (channel === 'MAX') {
+      btn.textContent = 'Получить расчёт туров в MAX →';
     } else {
       btn.textContent = 'Получить расчёт туров в мессенджер →';
     }

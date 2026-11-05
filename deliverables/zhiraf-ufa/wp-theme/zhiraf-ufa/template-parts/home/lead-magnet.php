@@ -80,6 +80,13 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 								<input type="radio" name="lead_messenger" value="Telegram" />
 								<span class="lead-messenger__inner"><?php esc_html_e( 'В Telegram', 'zhiraf-ufa' ); ?></span>
 							</label>
+							<label class="lead-messenger lead-messenger--max">
+								<input type="radio" name="lead_messenger" value="MAX" />
+								<span class="lead-messenger__inner">
+									<?php echo wp_kses( zhiraf_ufa_social_icon_svg( 'max', 18 ), zhiraf_ufa_social_icon_allowed_html() ); ?>
+									<?php esc_html_e( 'В MAX', 'zhiraf-ufa' ); ?>
+								</span>
+							</label>
 						</div>
 
 						<label class="form-field lead-magnet__field" for="lead-destination">

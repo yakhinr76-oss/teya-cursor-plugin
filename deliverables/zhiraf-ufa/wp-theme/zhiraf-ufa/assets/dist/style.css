@@ -302,7 +302,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
   .hero-premium__collage--orbit .hero-collage__img--3 {
-    display: block;
+    display: none;
   }
 }
 /* Social / messenger icons (SVG in theme, not media library) */
@@ -538,15 +538,16 @@ h1, h2, h3, h4 {
 
 .hero-collage__img {
   position: absolute;
-  border-radius: var(--radius-lg);
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
 }
 
 .hero-collage__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .hero-collage__img--1 {
@@ -1376,10 +1377,7 @@ details[open] > .faq-home__question::after {
     top: 100px;
   }
   .hero-collage__img--3 {
-    width: 180px;
-    height: 220px;
-    right: 10%;
-    top: 50px;
+    display: none;
   }
   .hero-collage__flight-path {
     display: none;

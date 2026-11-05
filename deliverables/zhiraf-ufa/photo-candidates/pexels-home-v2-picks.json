@@ -1,0 +1,402 @@
+{
+  "cards": [
+    {
+      "block": "destinations",
+      "tab": "ufa",
+      "title": "Турция",
+      "query_used": "oludeniz blue lagoon",
+      "queries": [
+        "oludeniz blue lagoon",
+        "antalya turquoise beach sunny"
+      ],
+      "score": 14,
+      "id": 38225845,
+      "page": "https://www.pexels.com/photo/aerial-view-of-blue-lagoon-oludeniz-in-mugla-turkey-38225845/",
+      "original": "https://images.pexels.com/photos/38225845/pexels-photo-38225845.jpeg",
+      "large2x": "https://images.pexels.com/photos/38225845/pexels-photo-38225845.jpeg",
+      "thumb": "https://images.pexels.com/photos/38225845/pexels-photo-38225845.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 8000,
+      "height": 5632,
+      "author": "Ali",
+      "alt": "Stunning aerial view of the Blue Lagoon in Ölüdeniz, showcasing the turquoise waters and surrounding mountains in Muğla, Turkey.",
+      "avg_color": "#506B76"
+    },
+    {
+      "block": "destinations",
+      "tab": "ufa",
+      "title": "ОАЭ",
+      "query_used": "dubai jbr beach sunny",
+      "queries": [
+        "dubai jbr beach sunny",
+        "dubai burj khalifa luxury night"
+      ],
+      "score": 20,
+      "id": 36094164,
+      "page": "https://www.pexels.com/photo/stunning-dubai-beach-view-with-burj-khalifa-36094164/",
+      "original": "https://images.pexels.com/photos/36094164/pexels-photo-36094164.jpeg",
+      "large2x": "https://images.pexels.com/photos/36094164/pexels-photo-36094164.jpeg",
+      "thumb": "https://images.pexels.com/photos/36094164/pexels-photo-36094164.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6016,
+      "height": 4000,
+      "author": "Vika Glitter",
+      "alt": "Vibrant beach scene in Dubai with Burj Khalifa backdrop, palm trees, and clear waters.",
+      "avg_color": "#85A695"
+    },
+    {
+      "block": "destinations",
+      "tab": "ufa",
+      "title": "Египет",
+      "query_used": "sharm el sheikh resort palm trees sunny pool",
+      "queries": [
+        "sharm el sheikh resort palm trees sunny pool",
+        "red sea coral reef snorkeling underwater turquoise"
+      ],
+      "score": 16,
+      "id": 8861427,
+      "page": "https://www.pexels.com/photo/a-bridge-across-the-swimming-pool-8861427/",
+      "original": "https://images.pexels.com/photos/8861427/pexels-photo-8861427.jpeg",
+      "large2x": "https://images.pexels.com/photos/8861427/pexels-photo-8861427.jpeg",
+      "thumb": "https://images.pexels.com/photos/8861427/pexels-photo-8861427.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7952,
+      "height": 5304,
+      "author": "Jasurbek Ruzmat",
+      "alt": "Scenic view of a resort pool with a footbridge and palm trees under a clear sky.",
+      "avg_color": "#4AB9CA"
+    },
+    {
+      "block": "destinations",
+      "tab": "ufa",
+      "title": "Таиланд",
+      "query_used": "thailand longtail boat phi phi turquoise water",
+      "queries": [
+        "thailand longtail boat phi phi turquoise water",
+        "phi phi longtail boat"
+      ],
+      "score": 12,
+      "id": 18304883,
+      "page": "https://www.pexels.com/photo/a-boat-on-sea-18304883/",
+      "original": "https://images.pexels.com/photos/18304883/pexels-photo-18304883.jpeg",
+      "large2x": "https://images.pexels.com/photos/18304883/pexels-photo-18304883.jpeg",
+      "thumb": "https://images.pexels.com/photos/18304883/pexels-photo-18304883.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7712,
+      "height": 5141,
+      "author": "Kirandeep Singh Walia",
+      "alt": "A longtail boat navigating the stunning limestone cliffs of Phuket, Thailand's vibrant ocean landscape.",
+      "avg_color": "#778179"
+    },
+    {
+      "block": "destinations",
+      "tab": "ufa",
+      "title": "Россия (Сочи)",
+      "query_used": "sochi sea palm trees sunny",
+      "queries": [
+        "sochi sea palm trees sunny",
+        "sochi beach promenade sunny"
+      ],
+      "score": 16,
+      "id": 14786125,
+      "page": "https://www.pexels.com/photo/view-of-palm-trees-in-a-park-in-sochi-russia-14786125/",
+      "original": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg",
+      "large2x": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg",
+      "thumb": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6240,
+      "height": 4160,
+      "author": "Serg Alesenko",
+      "alt": "Palm trees and pathways in a sunny Sochi resort park, perfect for a summer stroll.",
+      "avg_color": "#94927D"
+    },
+    {
+      "block": "destinations",
+      "tab": "ufa",
+      "title": "Абхазия",
+      "query_used": "lake ritsa abkhazia sunny mountains",
+      "queries": [
+        "lake ritsa abkhazia sunny mountains",
+        "ritsa lake abkhazia landscape"
+      ],
+      "score": 14,
+      "id": 28220605,
+      "page": "https://www.pexels.com/photo/a-lake-with-boats-and-mountains-in-the-background-28220605/",
+      "original": "https://images.pexels.com/photos/28220605/pexels-photo-28220605.jpeg",
+      "large2x": "https://images.pexels.com/photos/28220605/pexels-photo-28220605.jpeg",
+      "thumb": "https://images.pexels.com/photos/28220605/pexels-photo-28220605.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6949,
+      "height": 4572,
+      "author": "Siarhei Nester",
+      "alt": "Tranquil scene of boats on Lake Ritsa surrounded by lush green mountains under a blue sky.",
+      "avg_color": "#3A6A81"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Мальдивы",
+      "query_used": "maldives overwater villa aerial turquoise",
+      "queries": [
+        "maldives overwater villa aerial turquoise"
+      ],
+      "score": 16,
+      "id": 3293192,
+      "page": "https://www.pexels.com/photo/cottage-houses-on-the-beach-3293192/",
+      "original": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg",
+      "large2x": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg",
+      "thumb": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7360,
+      "height": 4912,
+      "author": "Asad Photo Maldives",
+      "alt": "Splendid overwater villas in Maldives offering a serene and luxurious vacation experience.",
+      "avg_color": "#71A6B3"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Шри-Ланка",
+      "query_used": "mirissa palm tree hill coconut",
+      "queries": [
+        "mirissa palm tree hill coconut",
+        "coconut tree hill mirissa sri lanka"
+      ],
+      "score": 16,
+      "id": 38450217,
+      "page": "https://www.pexels.com/photo/palm-trees-along-mirissa-coastline-sri-lanka-38450217/",
+      "original": "https://images.pexels.com/photos/38450217/pexels-photo-38450217.jpeg",
+      "large2x": "https://images.pexels.com/photos/38450217/pexels-photo-38450217.jpeg",
+      "thumb": "https://images.pexels.com/photos/38450217/pexels-photo-38450217.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 8160,
+      "height": 4590,
+      "author": "Mohamed Shafraz",
+      "alt": "Palm trees sway along the stunning coastline of Mirissa, Sri Lanka, offering a serene ocean view.",
+      "avg_color": "#8D9888"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Вьетнам",
+      "query_used": "ha long bay sunny boat turquoise",
+      "queries": [
+        "ha long bay sunny boat turquoise",
+        "ha long bay limestone sunny"
+      ],
+      "score": 16,
+      "id": 6871160,
+      "page": "https://www.pexels.com/photo/people-sailing-in-ha-long-bay-in-vietnam-6871160/",
+      "original": "https://images.pexels.com/photos/6871160/pexels-photo-6871160.jpeg",
+      "large2x": "https://images.pexels.com/photos/6871160/pexels-photo-6871160.jpeg",
+      "thumb": "https://images.pexels.com/photos/6871160/pexels-photo-6871160.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6000,
+      "height": 4000,
+      "author": "Quang Nguyen Vinh",
+      "alt": "Explore the stunning limestone landscape and boat rides in Ha Long Bay, Vietnam.",
+      "avg_color": "#77817F"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Китай (Хайнань)",
+      "query_used": "sanya hainan turquoise beach sunny palm",
+      "queries": [
+        "sanya hainan turquoise beach sunny palm",
+        "sanya beach resort pool palm"
+      ],
+      "score": 16,
+      "id": 11528778,
+      "page": "https://www.pexels.com/photo/ocean-view-from-the-beach-resort-11528778/",
+      "original": "https://images.pexels.com/photos/11528778/pexels-photo-11528778.jpeg",
+      "large2x": "https://images.pexels.com/photos/11528778/pexels-photo-11528778.jpeg",
+      "thumb": "https://images.pexels.com/photos/11528778/pexels-photo-11528778.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7952,
+      "height": 5304,
+      "author": "Kent Zhong",
+      "alt": "Vibrant ocean view with palm trees and infinity pool, perfect for a tropical getaway.",
+      "avg_color": "#7CB0AE"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Индия (Гоа)",
+      "query_used": "goa palolem beach palm sunny turquoise",
+      "queries": [
+        "goa palolem beach palm sunny turquoise",
+        "palolem beach goa aerial"
+      ],
+      "score": 16,
+      "id": 4428274,
+      "page": "https://www.pexels.com/photo/aerial-view-of-green-trees-and-body-of-water-4428274/",
+      "original": "https://images.pexels.com/photos/4428274/pexels-photo-4428274.jpeg",
+      "large2x": "https://images.pexels.com/photos/4428274/pexels-photo-4428274.jpeg",
+      "thumb": "https://images.pexels.com/photos/4428274/pexels-photo-4428274.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6000,
+      "height": 4000,
+      "author": "cottonbro studio",
+      "alt": "Breathtaking view of Goa's coastline with palm trees and a serene beach under the summer sun.",
+      "avg_color": "#B1B4B0"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Индонезия (Бали)",
+      "query_used": "bali nusa penida kelingking sunny",
+      "queries": [
+        "bali nusa penida kelingking sunny",
+        "kelingking beach nusa penida"
+      ],
+      "score": 12,
+      "id": 33630933,
+      "page": "https://www.pexels.com/photo/aerial-view-of-kelingking-beach-bali-s-iconic-cliffside-33630933/",
+      "original": "https://images.pexels.com/photos/33630933/pexels-photo-33630933.jpeg",
+      "large2x": "https://images.pexels.com/photos/33630933/pexels-photo-33630933.jpeg",
+      "thumb": "https://images.pexels.com/photos/33630933/pexels-photo-33630933.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 15000,
+      "height": 9000,
+      "author": "Dennise Anorico",
+      "alt": "Discover the breathtaking beauty of Kelingking Beach, Bali, with crystal-clear waters and lush cliffs.",
+      "avg_color": "#7A7D6C"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Сейшелы",
+      "query_used": "seychelles anse lazio turquoise sunny granite",
+      "queries": [
+        "seychelles anse lazio turquoise sunny granite",
+        "seychelles granite beach turquoise"
+      ],
+      "score": 16,
+      "id": 24713347,
+      "page": "https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/",
+      "original": "https://images.pexels.com/photos/24713347/pexels-photo-24713347.jpeg",
+      "large2x": "https://images.pexels.com/photos/24713347/pexels-photo-24713347.jpeg",
+      "thumb": "https://images.pexels.com/photos/24713347/pexels-photo-24713347.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6000,
+      "height": 4000,
+      "author": "Logan Hamm",
+      "alt": "Discover the stunning beach with distinctive granite rocks and clear turquoise water in Seychelles.",
+      "avg_color": "#9A9995"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Узбекистан",
+      "query_used": "registan samarkand sunny blue",
+      "queries": [
+        "registan samarkand sunny blue",
+        "samarkand registan square sunny"
+      ],
+      "score": 12,
+      "id": 16386337,
+      "page": "https://www.pexels.com/photo/registan-square-in-samarkand-16386337/",
+      "original": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg",
+      "large2x": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg",
+      "thumb": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6000,
+      "height": 4000,
+      "author": "AXP Photography",
+      "alt": "Discover the ornate tilework and Islamic architecture of Registan Square, Samarkand, Uzbekistan.",
+      "avg_color": "#70777F"
+    },
+    {
+      "block": "destinations",
+      "tab": "mow",
+      "title": "Армения",
+      "query_used": "lake sevan armenia sunny blue",
+      "queries": [
+        "lake sevan armenia sunny blue monastery",
+        "sevanavank lake sevan sunny"
+      ],
+      "score": 16,
+      "id": 17550020,
+      "page": "https://www.pexels.com/photo/breathtaking-view-of-lake-sevan-17550020/",
+      "original": "https://images.pexels.com/photos/17550020/pexels-photo-17550020.jpeg",
+      "large2x": "https://images.pexels.com/photos/17550020/pexels-photo-17550020.jpeg",
+      "thumb": "https://images.pexels.com/photos/17550020/pexels-photo-17550020.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6048,
+      "height": 4024,
+      "author": "Vera Emilie",
+      "alt": "Breathtaking view of Lake Sevan with surrounding hills, greenery, and clear blue sky in Armenia.",
+      "avg_color": "#7C9196"
+    },
+    {
+      "block": "scenarios",
+      "tab": null,
+      "title": "Семья с детьми",
+      "query_used": "child playing sea water splashing joyful",
+      "queries": [
+        "child playing sea water splashing joyful",
+        "happy family child beach sunny smiling"
+      ],
+      "score": 10,
+      "id": 26672205,
+      "page": "https://www.pexels.com/photo/child-playing-in-sea-26672205/",
+      "original": "https://images.pexels.com/photos/26672205/pexels-photo-26672205.jpeg",
+      "large2x": "https://images.pexels.com/photos/26672205/pexels-photo-26672205.jpeg",
+      "thumb": "https://images.pexels.com/photos/26672205/pexels-photo-26672205.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7364,
+      "height": 4909,
+      "author": "Suki Lee",
+      "alt": "A happy child playing and splashing in the waves at the beach on a sunny day.",
+      "avg_color": "#8B856F"
+    },
+    {
+      "block": "scenarios",
+      "tab": null,
+      "title": "Для пар и релакса",
+      "query_used": "couple sunset beach romantic holding hands",
+      "queries": [
+        "couple sunset beach romantic holding hands",
+        "couple infinity pool luxury sunset"
+      ],
+      "score": 22,
+      "id": 6563621,
+      "page": "https://www.pexels.com/photo/silhouette-of-people-standing-on-beach-during-sunset-6563621/",
+      "original": "https://images.pexels.com/photos/6563621/pexels-photo-6563621.jpeg",
+      "large2x": "https://images.pexels.com/photos/6563621/pexels-photo-6563621.jpeg",
+      "thumb": "https://images.pexels.com/photos/6563621/pexels-photo-6563621.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 6109,
+      "height": 4073,
+      "author": "José Luis Photographer",
+      "alt": "Romantic silhouette of a couple holding hands on a serene beach at sunset, with vibrant skies and gentle waves.",
+      "avg_color": "#817878"
+    },
+    {
+      "block": "scenarios",
+      "tab": null,
+      "title": "Хит «Цена / Качество»",
+      "query_used": "water park slide splash summer cheerful",
+      "queries": [
+        "water park slide splash summer cheerful",
+        "woman relaxing sunbed tropical resort ocean"
+      ],
+      "score": 14,
+      "id": 13760398,
+      "page": "https://www.pexels.com/photo/hills-near-swimming-pool-in-water-park-13760398/",
+      "original": "https://images.pexels.com/photos/13760398/pexels-photo-13760398.jpeg",
+      "large2x": "https://images.pexels.com/photos/13760398/pexels-photo-13760398.jpeg",
+      "thumb": "https://images.pexels.com/photos/13760398/pexels-photo-13760398.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7952,
+      "height": 5304,
+      "author": "Quang Nguyen Vinh",
+      "alt": "Colorful water slides and a serene pool at a summer water park for relaxation and fun.",
+      "avg_color": "#7693A3"
+    },
+    {
+      "block": "scenarios",
+      "tab": null,
+      "title": "Город и шопинг",
+      "query_used": "traveler backpack historic old town sunny",
+      "queries": [
+        "traveler backpack historic old town sunny",
+        "dubai marina walk shopping sunny"
+      ],
+      "score": 10,
+      "id": 39810430,
+      "page": "https://www.pexels.com/photo/tourists-walking-through-medieval-archway-in-europe-39810430/",
+      "original": "https://images.pexels.com/photos/39810430/pexels-photo-39810430.jpeg",
+      "large2x": "https://images.pexels.com/photos/39810430/pexels-photo-39810430.jpeg",
+      "thumb": "https://images.pexels.com/photos/39810430/pexels-photo-39810430.jpeg?auto=compress&cs=tinysrgb&w=720&h=450&fit=crop",
+      "width": 7008,
+      "height": 4672,
+      "author": "Kader Azra Namuslu",
+      "alt": "A bustling street scene with tourists under a historical stone archway in a sunny European town.",
+      "avg_color": "#654723"
+    }
+  ]
+}

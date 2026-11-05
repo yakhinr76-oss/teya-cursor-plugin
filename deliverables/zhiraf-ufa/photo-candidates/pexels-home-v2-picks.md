@@ -1,0 +1,23 @@
+# Pexels v2 picks
+
+| Блок | Карточка | ID | Pexels | Original | Запрос |
+|---|---|---:|---|---|---|
+| ufa | Турция | 38225845 | [open](https://www.pexels.com/photo/aerial-view-of-blue-lagoon-oludeniz-in-mugla-turkey-38225845/) | [jpg](https://images.pexels.com/photos/38225845/pexels-photo-38225845.jpeg) | `oludeniz blue lagoon` |
+| ufa | ОАЭ | 36094164 | [open](https://www.pexels.com/photo/stunning-dubai-beach-view-with-burj-khalifa-36094164/) | [jpg](https://images.pexels.com/photos/36094164/pexels-photo-36094164.jpeg) | `dubai jbr beach sunny` |
+| ufa | Египет | 8861427 | [open](https://www.pexels.com/photo/a-bridge-across-the-swimming-pool-8861427/) | [jpg](https://images.pexels.com/photos/8861427/pexels-photo-8861427.jpeg) | `sharm el sheikh resort palm trees sunny pool` |
+| ufa | Таиланд | 18304883 | [open](https://www.pexels.com/photo/a-boat-on-sea-18304883/) | [jpg](https://images.pexels.com/photos/18304883/pexels-photo-18304883.jpeg) | `thailand longtail boat phi phi turquoise water` |
+| ufa | Россия (Сочи) | 14786125 | [open](https://www.pexels.com/photo/view-of-palm-trees-in-a-park-in-sochi-russia-14786125/) | [jpg](https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg) | `sochi sea palm trees sunny` |
+| ufa | Абхазия | 28220605 | [open](https://www.pexels.com/photo/a-lake-with-boats-and-mountains-in-the-background-28220605/) | [jpg](https://images.pexels.com/photos/28220605/pexels-photo-28220605.jpeg) | `lake ritsa abkhazia sunny mountains` |
+| mow | Мальдивы | 3293192 | [open](https://www.pexels.com/photo/cottage-houses-on-the-beach-3293192/) | [jpg](https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg) | `maldives overwater villa aerial turquoise` |
+| mow | Шри-Ланка | 38450217 | [open](https://www.pexels.com/photo/palm-trees-along-mirissa-coastline-sri-lanka-38450217/) | [jpg](https://images.pexels.com/photos/38450217/pexels-photo-38450217.jpeg) | `mirissa palm tree hill coconut` |
+| mow | Вьетнам | 6871160 | [open](https://www.pexels.com/photo/people-sailing-in-ha-long-bay-in-vietnam-6871160/) | [jpg](https://images.pexels.com/photos/6871160/pexels-photo-6871160.jpeg) | `ha long bay sunny boat turquoise` |
+| mow | Китай (Хайнань) | 11528778 | [open](https://www.pexels.com/photo/ocean-view-from-the-beach-resort-11528778/) | [jpg](https://images.pexels.com/photos/11528778/pexels-photo-11528778.jpeg) | `sanya hainan turquoise beach sunny palm` |
+| mow | Индия (Гоа) | 4428274 | [open](https://www.pexels.com/photo/aerial-view-of-green-trees-and-body-of-water-4428274/) | [jpg](https://images.pexels.com/photos/4428274/pexels-photo-4428274.jpeg) | `goa palolem beach palm sunny turquoise` |
+| mow | Индонезия (Бали) | 33630933 | [open](https://www.pexels.com/photo/aerial-view-of-kelingking-beach-bali-s-iconic-cliffside-33630933/) | [jpg](https://images.pexels.com/photos/33630933/pexels-photo-33630933.jpeg) | `bali nusa penida kelingking sunny` |
+| mow | Сейшелы | 24713347 | [open](https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/) | [jpg](https://images.pexels.com/photos/24713347/pexels-photo-24713347.jpeg) | `seychelles anse lazio turquoise sunny granite` |
+| mow | Узбекистан | 16386337 | [open](https://www.pexels.com/photo/registan-square-in-samarkand-16386337/) | [jpg](https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg) | `registan samarkand sunny blue` |
+| mow | Армения | 17550020 | [open](https://www.pexels.com/photo/breathtaking-view-of-lake-sevan-17550020/) | [jpg](https://images.pexels.com/photos/17550020/pexels-photo-17550020.jpeg) | `lake sevan armenia sunny blue` |
+| подборки | Семья с детьми | 26672205 | [open](https://www.pexels.com/photo/child-playing-in-sea-26672205/) | [jpg](https://images.pexels.com/photos/26672205/pexels-photo-26672205.jpeg) | `child playing sea water splashing joyful` |
+| подборки | Для пар и релакса | 6563621 | [open](https://www.pexels.com/photo/silhouette-of-people-standing-on-beach-during-sunset-6563621/) | [jpg](https://images.pexels.com/photos/6563621/pexels-photo-6563621.jpeg) | `couple sunset beach romantic holding hands` |
+| подборки | Хит «Цена / Качество» | 13760398 | [open](https://www.pexels.com/photo/hills-near-swimming-pool-in-water-park-13760398/) | [jpg](https://images.pexels.com/photos/13760398/pexels-photo-13760398.jpeg) | `water park slide splash summer cheerful` |
+| подборки | Город и шопинг | 39810430 | [open](https://www.pexels.com/photo/tourists-walking-through-medieval-archway-in-europe-39810430/) | [jpg](https://images.pexels.com/photos/39810430/pexels-photo-39810430.jpeg) | `traveler backpack historic old town sunny` |

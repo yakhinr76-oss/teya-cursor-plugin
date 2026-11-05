@@ -75,6 +75,63 @@ function zhiraf_ufa_img( $filename, $alt, $class = '', $lazy = true, $priority =
 }
 
 /**
+ * Hero collage image with WebP srcset (LCP-safe, no lazy load).
+ *
+ * @param string $basename Base filename without extension, e.g. hero-collage-uae.
+ * @param string $alt      Alt text.
+ * @param string $class    CSS class on img.
+ * @param bool   $priority fetchpriority=high for primary LCP candidate.
+ */
+function zhiraf_ufa_hero_collage_img( $basename, $alt, $class = '', $priority = false ) {
+	$dir = ZHIRAF_UFA_DIR . '/assets/images/';
+	$uri = ZHIRAF_UFA_URI . '/assets/images/';
+	$jpg_1x  = $basename . '.jpg';
+	$jpg_2x  = $basename . '@2x.jpg';
+	$webp_1x = $basename . '.webp';
+	$webp_2x = $basename . '@2x.webp';
+
+	if ( ! is_readable( $dir . $jpg_1x ) ) {
+		zhiraf_ufa_img( $jpg_1x, $alt, $class, false, $priority );
+		return;
+	}
+
+	$size = @getimagesize( $dir . $jpg_1x );
+	$width  = is_array( $size ) ? (int) $size[0] : 500;
+	$height = is_array( $size ) ? (int) $size[1] : 625;
+
+	$webp_srcset = esc_attr( $uri . $webp_1x . ' 1x, ' . $uri . $webp_2x . ' 2x' );
+	$jpg_srcset  = esc_attr( $uri . $jpg_1x . ' 1x, ' . $uri . $jpg_2x . ' 2x' );
+
+	$img_attrs = array(
+		'src'         => $uri . $jpg_1x,
+		'srcset'      => $jpg_srcset,
+		'alt'         => $alt,
+		'width'       => $width,
+		'height'      => $height,
+		'class'       => $class,
+		'loading'     => 'eager',
+		'decoding'    => 'async',
+		'fetchpriority' => $priority ? 'high' : 'auto',
+	);
+
+	echo '<picture>';
+	if ( is_readable( $dir . $webp_1x ) && is_readable( $dir . $webp_2x ) ) {
+		printf(
+			'<source type="image/webp" srcset="%s" />',
+			$webp_srcset // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		);
+	}
+	echo '<img';
+	foreach ( $img_attrs as $k => $v ) {
+		if ( '' === $v && 'class' === $k ) {
+			continue;
+		}
+		printf( ' %s="%s"', esc_attr( $k ), esc_attr( (string) $v ) );
+	}
+	echo ' /></picture>';
+}
+
+/**
  * Destination cards data.
  *
  * @return array<int,array<string,string>>

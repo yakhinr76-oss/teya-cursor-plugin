@@ -278,12 +278,17 @@ h1, h2, h3, h4 {
 }
 
 /* Hero: three photos on elliptical orbit (cards stay upright) */
+.hero-premium__collage--orbit.is-orbit-active {
+  overflow: visible;
+}
+
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img {
+  position: absolute;
   top: auto;
   left: auto;
   right: auto;
-  width: clamp(180px, 22vw, 240px);
-  height: clamp(240px, 30vw, 320px);
+  width: clamp(140px, 20vw, 240px);
+  height: clamp(186px, 27vw, 320px);
   will-change: left, top, transform;
 }
 
@@ -542,15 +547,16 @@ h1, h2, h3, h4 {
 
 .hero-collage__img {
   position: absolute;
-  border-radius: var(--radius-lg);
+  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
 }
 
 .hero-collage__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .hero-collage__img--1 {
@@ -1384,10 +1390,7 @@ details[open] > .faq-home__question::after {
     top: 100px;
   }
   .hero-collage__img--3 {
-    width: 180px;
-    height: 220px;
-    right: 10%;
-    top: 50px;
+    display: none;
   }
   .hero-collage__flight-path {
     display: none;

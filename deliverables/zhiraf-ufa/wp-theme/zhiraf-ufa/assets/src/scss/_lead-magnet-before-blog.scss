@@ -161,7 +161,7 @@
 
 .lead-magnet__messengers {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
@@ -198,6 +198,24 @@
   border-color: #0088cc;
   background: rgba(0, 136, 204, 0.1);
   color: #0088cc;
+}
+
+.lead-messenger--max:has(input:checked) .lead-messenger__inner {
+  border-color: #5b4bff;
+  background: rgba(91, 75, 255, 0.1);
+  color: #3d33cc;
+}
+
+.lead-messenger__inner .zh-social-icon__img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .lead-magnet__messengers {
+    grid-template-columns: 1fr;
+  }
 }
 
 .lead-magnet__field {

@@ -50,6 +50,12 @@ $quiz_form_id = 'quiz-form';
 	background: rgba(34, 158, 217, 0.08);
 	color: #229ed9;
 }
+#quiz-modal .quiz-channel--max.is-quiz-selected,
+#quiz-modal .quiz-channel--max:has(input:checked) {
+	border-color: #5b4bff;
+	background: rgba(91, 75, 255, 0.08);
+	color: #3d33cc;
+}
 </style>
 <div id="quiz-modal" class="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden inert>
 	<div class="quiz-modal__backdrop" data-quiz-close tabindex="-1"></div>

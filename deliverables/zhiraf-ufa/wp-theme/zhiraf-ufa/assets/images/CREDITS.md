@@ -81,4 +81,8 @@
 | resort-vietnam-cam-ranh-1.jpg | Вьетнам — Камрань | Dương Nhân | https://www.pexels.com/photo/a-sandy-beach-with-mountains-in-the-background-27606028/ | Idyllic beach scene with lush mountains in Cam Ranh, Vietnam, captured during a sunny day. |
 | resort-vietnam-cam-ranh-2.jpg | Вьетнам — Камрань | Bắp Studio | https://www.pexels.com/photo/motorboat-on-wavy-sea-coast-16762198/ | A picturesque view of a traditional fishing boat sailing through the vibrant waters of Cam Ranh Bay, Vietnam. |
 | resort-vietnam-phan-thiet-1.jpg | Вьетнам — Фантьет / Муйне | Margo Evardson | https://www.pexels.com/photo/majestic-red-sand-dunes-in-mui-ne-vietnam-37331388/ | Explore the stunning red sand dunes of Mui Ne, Vietnam under a vibrant blue sky. |
-| resort-vietnam-phan-thiet-2.jpg | Вьетнам — Фантьет / Муйне | Pew Nguyen | https://www.pexels.com/photo/people-sitting-in-a-basket-fishing-boat-on-the-shore-and-looking-at-other-boats-on-the-sea-26173831/ | Fishermen in traditional basket boats work on the coast of Phan Thiet, Vietnam. |
+# Логотип MAX (мессенджер)
+
+| Файл | Назначение | Источник |
+|---|---|---|
+| max-messenger-sign-logo.svg | Иконка канала MAX в шапке, подвале, формах | https://logo-teka.com/wp-content/uploads/2025/07/max-messenger-sign-logo.svg |

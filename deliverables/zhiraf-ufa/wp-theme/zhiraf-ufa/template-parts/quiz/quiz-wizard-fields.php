@@ -149,6 +149,7 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 		<div class="quiz-channels">
 			<label class="quiz-channel quiz-channel--wa"><input type="radio" name="quiz_channel" value="WhatsApp" checked required /> WhatsApp</label>
 			<label class="quiz-channel quiz-channel--tg"><input type="radio" name="quiz_channel" value="Telegram" /> Telegram</label>
+			<label class="quiz-channel quiz-channel--max"><input type="radio" name="quiz_channel" value="MAX" /> <?php echo wp_kses( zhiraf_ufa_social_icon_svg( 'max', 18 ), zhiraf_ufa_social_icon_allowed_html() ); ?> MAX</label>
 		</div>
 		<label class="form-field quiz-phone-field" for="<?php echo esc_attr( $quiz_form_id ); ?>-phone">
 			<span><?php esc_html_e( 'Номер телефона:', 'zhiraf-ufa' ); ?></span>

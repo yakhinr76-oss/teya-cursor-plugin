@@ -40,6 +40,15 @@ $allowed_svg = array(
 		'focusable'       => true,
 	),
 	'path' => array( 'fill' => true, 'd' => true ),
+	'img'  => array(
+		'class'       => true,
+		'src'         => true,
+		'width'       => true,
+		'height'      => true,
+		'alt'         => true,
+		'decoding'    => true,
+		'aria-hidden' => true,
+	),
 );
 ?>
 <nav class="<?php echo esc_attr( $wrapper_class ); ?>" aria-label="<?php esc_attr_e( 'Соцсети и мессенджеры', 'zhiraf-ufa' ); ?>">

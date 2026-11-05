@@ -1,0 +1,117 @@
+/* MAX / WhatsApp / Telegram — 3-column picker (lead magnet + quiz) */
+
+.messenger-picker {
+  margin-bottom: 1rem;
+}
+
+.messenger-picker__label {
+  margin: 0 0 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #57534e;
+}
+
+.messenger-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+.messenger-picker__option {
+  cursor: pointer;
+  margin: 0;
+}
+
+.messenger-picker__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.messenger-picker__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-height: 3.25rem;
+  padding: 0.625rem 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e7e5e4;
+  background: #fff;
+  color: #44403c;
+  font-size: clamp(0.6875rem, 2vw, 0.8125rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+@media (min-width: 480px) {
+  .messenger-picker__inner {
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+  }
+}
+
+.messenger-picker__option:hover .messenger-picker__inner {
+  border-color: #d6d3d1;
+}
+
+.messenger-picker__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.messenger-picker__icon--max {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.messenger-picker__icon--max .zh-social-icon__img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.messenger-picker__icon--wa {
+  color: #25d366;
+}
+
+.messenger-picker__icon--tg {
+  color: #229ed9;
+}
+
+.messenger-picker__text {
+  min-width: 0;
+}
+
+.messenger-picker__option--max:has(input:checked) .messenger-picker__inner {
+  border-width: 2px;
+  border-color: #c85a32;
+  background: rgba(200, 90, 50, 0.1);
+  color: #1c1917;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.messenger-picker__option--wa:has(input:checked) .messenger-picker__inner {
+  border-width: 2px;
+  border-color: #25d366;
+  background: rgba(37, 211, 102, 0.1);
+  color: #1c1917;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.messenger-picker__option--tg:has(input:checked) .messenger-picker__inner {
+  border-width: 2px;
+  border-color: #229ed9;
+  background: rgba(34, 158, 217, 0.1);
+  color: #1c1917;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}

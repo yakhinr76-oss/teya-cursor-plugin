@@ -68,19 +68,16 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 
 						<div class="lead-magnet__form-head">
 							<h3><?php esc_html_e( 'Куда прислать подборку?', 'zhiraf-ufa' ); ?></h3>
-							<p><?php esc_html_e( 'Выберите удобный канал связи:', 'zhiraf-ufa' ); ?></p>
 						</div>
 
-						<div class="lead-magnet__messengers" role="radiogroup" aria-label="<?php esc_attr_e( 'Мессенджер', 'zhiraf-ufa' ); ?>">
-							<label class="lead-messenger lead-messenger--wa">
-								<input type="radio" name="lead_messenger" value="WhatsApp" checked />
-								<span class="lead-messenger__inner"><?php esc_html_e( 'В WhatsApp', 'zhiraf-ufa' ); ?></span>
-							</label>
-							<label class="lead-messenger lead-messenger--tg">
-								<input type="radio" name="lead_messenger" value="Telegram" />
-								<span class="lead-messenger__inner"><?php esc_html_e( 'В Telegram', 'zhiraf-ufa' ); ?></span>
-							</label>
-						</div>
+						<?php
+						zhiraf_ufa_render_messenger_picker(
+							array(
+								'name'    => 'lead_messenger',
+								'default' => 'WhatsApp',
+							)
+						);
+						?>
 
 						<label class="form-field lead-magnet__field" for="lead-destination">
 							<span><?php esc_html_e( 'Куда или на какой бюджет ориентируетесь?', 'zhiraf-ufa' ); ?></span>
@@ -109,8 +106,8 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 							/>
 						</label>
 
-						<button type="submit" class="btn btn--primary btn--lg btn--block lead-magnet__submit">
-							<?php esc_html_e( 'Получить подборку отелей →', 'zhiraf-ufa' ); ?>
+						<button type="submit" class="btn btn--primary btn--lg btn--block lead-magnet__submit" data-messenger-submit-label>
+							<?php esc_html_e( 'Получить подборку отелей в WhatsApp →', 'zhiraf-ufa' ); ?>
 						</button>
 
 						<p class="lead-magnet__legal">

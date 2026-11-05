@@ -81,6 +81,18 @@ function zhiraf_ufa_enqueue_assets() {
 			)
 		);
 
+		$orbit = ZHIRAF_UFA_DIR . '/assets/js/hero-orbit-carousel.js';
+		wp_enqueue_script(
+			'zhiraf-hero-orbit',
+			ZHIRAF_UFA_URI . '/assets/js/hero-orbit-carousel.js',
+			array(),
+			file_exists( $orbit ) ? (string) filemtime( $orbit ) : ZHIRAF_UFA_VERSION,
+			array(
+				'strategy'  => 'defer',
+				'in_footer' => true,
+			)
+		);
+
 		$three_path = ZHIRAF_UFA_DIR . '/assets/vendor/three/three.min.js';
 		if ( file_exists( $three_path ) ) {
 			wp_enqueue_script(

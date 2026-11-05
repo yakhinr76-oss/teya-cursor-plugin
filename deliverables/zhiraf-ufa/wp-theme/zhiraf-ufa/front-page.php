@@ -28,7 +28,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 				</div>
 			</div>
 
-			<div class="hero-premium__collage reveal reveal-delay-1" data-three-canvas="hero-ambient">
+			<div class="hero-premium__collage hero-premium__collage--orbit reveal reveal-delay-1" data-three-canvas="hero-ambient" data-hero-orbit>
 				<div class="hero-ambient-canvas" aria-hidden="true"></div>
 				<div class="hero-collage__img hero-collage__img--1 collage-tile">
 					<?php zhiraf_ufa_img( 'hero-uae.jpg', 'ОАЭ', '', false, true ); ?>

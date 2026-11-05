@@ -145,17 +145,20 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 			<h3 class="quiz-step__title"><?php esc_html_e( 'Параметры приняты! Куда прислать расчёт?', 'zhiraf-ufa' ); ?></h3>
 			<p class="quiz-final-head__lead"><?php esc_html_e( 'Подготовим 2–4 проверенных отеля с прямым рейсом из UFA, честными ценами и фото пляжей.', 'zhiraf-ufa' ); ?></p>
 		</div>
-		<p class="quiz-step__hint"><?php esc_html_e( 'Где вам удобнее получить подборку:', 'zhiraf-ufa' ); ?></p>
-		<div class="quiz-channels">
-			<label class="quiz-channel quiz-channel--wa"><input type="radio" name="quiz_channel" value="WhatsApp" checked required /> WhatsApp</label>
-			<label class="quiz-channel quiz-channel--tg"><input type="radio" name="quiz_channel" value="Telegram" /> Telegram</label>
-		</div>
+		<?php
+		zhiraf_ufa_render_messenger_picker(
+			array(
+				'name'    => 'quiz_channel',
+				'default' => 'WhatsApp',
+			)
+		);
+		?>
 		<label class="form-field quiz-phone-field" for="<?php echo esc_attr( $quiz_form_id ); ?>-phone">
 			<span><?php esc_html_e( 'Номер телефона:', 'zhiraf-ufa' ); ?></span>
 			<input type="tel" id="<?php echo esc_attr( $quiz_form_id ); ?>-phone" name="phone" class="quiz-phone-input" placeholder="+7 (___) ___-__-__" required autocomplete="tel" inputmode="tel" />
 		</label>
-		<button type="submit" class="btn btn--primary btn--lg btn--block quiz-submit-btn" data-quiz-submit-label>
-			<?php esc_html_e( 'Получить расчёт туров в мессенджер →', 'zhiraf-ufa' ); ?>
+		<button type="submit" class="btn btn--primary btn--lg btn--block quiz-submit-btn" data-quiz-submit-label data-messenger-submit-label>
+			<?php esc_html_e( 'Получить расчёт туров в WhatsApp →', 'zhiraf-ufa' ); ?>
 		</button>
 		<p class="quiz-trust"><?php esc_html_e( 'Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в соответствии с 152-ФЗ. Без спама и навязчивых звонков.', 'zhiraf-ufa' ); ?></p>
 		<?php zhiraf_ufa_consent_fields( 'quiz-' . $quiz_form_id ); ?>

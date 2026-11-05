@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var ORBIT_DURATION_MS = 12000;
+  var ORBIT_DURATION_MS = 14000;
   var CARD_COUNT = 3;
 
   function prefersReducedMotion() {
@@ -9,10 +9,7 @@
   }
 
   function shouldRunOrbit() {
-    if (prefersReducedMotion()) {
-      return false;
-    }
-    return window.matchMedia('(min-width: 769px)').matches;
+    return !prefersReducedMotion();
   }
 
   function initHeroOrbit(collage) {
@@ -33,9 +30,9 @@
     function resize() {
       var w = collage.clientWidth;
       var h = collage.clientHeight;
-      var scale = Math.min(w / 420, h / 320, 1.15);
-      state.rx = 115 * scale;
-      state.ry = 75 * scale;
+      var scale = Math.min(w / 360, h / 280, 1.25);
+      state.rx = 130 * scale;
+      state.ry = 88 * scale;
     }
 
     function frame(now) {
@@ -87,7 +84,7 @@
     return state;
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function bootHeroOrbit() {
     var collage = document.querySelector('[data-hero-orbit]');
     if (!collage) {
       return;
@@ -110,14 +107,28 @@
       }
     }
 
-    sync();
+    function startWhenSized() {
+      if (collage.clientWidth < 40 || collage.clientHeight < 40) {
+        window.requestAnimationFrame(startWhenSized);
+        return;
+      }
+      sync();
+    }
+
+    startWhenSized();
     window.addEventListener('resize', sync, { passive: true });
 
     var mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var mqWidth = window.matchMedia('(min-width: 769px)');
     if (mqMotion.addEventListener) {
       mqMotion.addEventListener('change', sync);
-      mqWidth.addEventListener('change', sync);
+    } else if (mqMotion.addListener) {
+      mqMotion.addListener(sync);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootHeroOrbit);
+  } else {
+    bootHeroOrbit();
+  }
 })();

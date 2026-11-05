@@ -278,12 +278,17 @@ h1, h2, h3, h4 {
 }
 
 /* Hero: three photos on elliptical orbit (cards stay upright) */
+.hero-premium__collage--orbit.is-orbit-active {
+  overflow: visible;
+}
+
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img {
+  position: absolute;
   top: auto;
   left: auto;
   right: auto;
-  width: clamp(180px, 22vw, 240px);
-  height: clamp(240px, 30vw, 320px);
+  width: clamp(140px, 20vw, 240px);
+  height: clamp(186px, 27vw, 320px);
   will-change: left, top, transform;
 }
 

@@ -9,6 +9,12 @@
   will-change: left, top, transform;
 }
 
+.hero-premium__collage--orbit.is-orbit-active .hero-collage__img--2 {
+  width: clamp(210px, 26vw, 288px);
+  height: clamp(273px, 34vw, 374px);
+  z-index: 5;
+}
+
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img--1,
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img--2,
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img--3 {
@@ -19,6 +25,6 @@
 
 @media (max-width: 768px) {
   .hero-premium__collage--orbit .hero-collage__img--3 {
-    display: block;
+    display: none;
   }
 }

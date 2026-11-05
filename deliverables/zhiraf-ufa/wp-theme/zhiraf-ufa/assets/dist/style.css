@@ -227,13 +227,13 @@ h1, h2, h3, h4 {
 
 .hero-premium__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+  gap: 48px;
   align-items: center;
 }
 
 .hero-premium__title {
-  font-size: 4rem;
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
   margin-bottom: 24px;
 }
 
@@ -243,10 +243,10 @@ h1, h2, h3, h4 {
 }
 
 .hero-premium__subtitle {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   color: var(--color-muted);
   margin-bottom: 20px;
-  max-width: 520px;
+  max-width: 460px;
 }
 
 .hero-trust-strip {
@@ -287,6 +287,12 @@ h1, h2, h3, h4 {
   will-change: left, top, transform;
 }
 
+.hero-premium__collage--orbit.is-orbit-active .hero-collage__img--2 {
+  width: clamp(210px, 26vw, 288px);
+  height: clamp(273px, 34vw, 374px);
+  z-index: 5;
+}
+
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img--1,
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img--2,
 .hero-premium__collage--orbit.is-orbit-active .hero-collage__img--3 {
@@ -297,7 +303,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
   .hero-premium__collage--orbit .hero-collage__img--3 {
-    display: block;
+    display: none;
   }
 }
 /* Social / messenger icons (SVG in theme, not media library) */
@@ -529,6 +535,9 @@ h1, h2, h3, h4 {
 .hero-premium__collage {
   position: relative;
   height: 500px;
+  width: 100%;
+  max-width: 560px;
+  margin-left: auto;
 }
 
 .hero-collage__img {
@@ -553,11 +562,15 @@ h1, h2, h3, h4 {
 }
 
 .hero-collage__img--2 {
-  width: 200px;
-  height: 260px;
-  top: 200px;
-  left: 200px;
-  z-index: 3;
+  width: 240px;
+  height: 312px;
+  top: 188px;
+  left: 188px;
+  z-index: 5;
+}
+
+.hero-collage__img--2 img {
+  object-position: center 35%;
 }
 
 .hero-collage__img--3 {

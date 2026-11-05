@@ -228,6 +228,9 @@
 .hero-premium__collage {
   position: relative;
   height: 500px;
+  width: 100%;
+  max-width: 560px;
+  margin-left: auto;
 }
 
 .hero-collage__img {
@@ -252,11 +255,15 @@
 }
 
 .hero-collage__img--2 {
-  width: 200px;
-  height: 260px;
-  top: 200px;
-  left: 200px;
-  z-index: 3;
+  width: 240px;
+  height: 312px;
+  top: 188px;
+  left: 188px;
+  z-index: 5;
+}
+
+.hero-collage__img--2 img {
+  object-position: center 35%;
 }
 
 .hero-collage__img--3 {

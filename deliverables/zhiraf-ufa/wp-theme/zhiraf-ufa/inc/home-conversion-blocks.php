@@ -79,45 +79,65 @@ function zhiraf_ufa_home_guarantee_pillars() {
 }
 
 /**
- * Life situation cards → Quiz with prefill.
+ * Life situation cards → taxonomy filter landing (/tours/?vibe=).
  *
- * @return array<int,array{emoji:string,title:string,text:string,quiz_step_1:string,track:string}>
+ * @return array<int,array<string,mixed>>
  */
 function zhiraf_ufa_home_life_scenarios() {
-	return array(
+	$defs = array(
 		array(
-			'emoji'       => '👨‍👩‍👧‍👦',
-			'title'       => __( 'Семья с детьми', 'zhiraf-ufa' ),
-			'text'        => __( 'Песчаные пологие пляжи, подогреваемые бассейны, детская анимация и меню.', 'zhiraf-ufa' ),
-			'quiz_step_1' => 'Семья с детьми',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
-			'track'       => 'scenario_family',
+			'emoji'  => '👶',
+			'title'  => __( 'Первый раз с малышом', 'zhiraf-ufa' ),
+			'text'   => __( 'Песчаный вход, горки, детское меню — только проверенные семейные отели.', 'zhiraf-ufa' ),
+			'vibe'   => 'family',
+			'track'  => 'scenario_family',
 		),
 		array(
-			'emoji'       => '🥂',
-			'title'       => __( 'Для пар и релакса (16+ / 18+)', 'zhiraf-ufa' ),
-			'text'        => __( 'Отели только для взрослых, спа-комплексы, тишина без детского шума.', 'zhiraf-ufa' ),
-			'quiz_step_1' => 'Для пар / Релакс',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
-			'track'       => 'scenario_couple',
+			'emoji'  => '🥂',
+			'title'  => __( 'Медовый месяц и пары', 'zhiraf-ufa' ),
+			'text'   => __( 'Adults Only 16+, спа и тишина без детского шума.', 'zhiraf-ufa' ),
+			'vibe'   => 'couples',
+			'track'  => 'scenario_couple',
 		),
 		array(
-			'emoji'       => '⭐',
-			'title'       => __( 'Хит «Цена / Качество»', 'zhiraf-ufa' ),
-			'text'        => __( 'Проверенные «пятерки» и «четверки» с максимальным рейтингом в среднем бюджете.', 'zhiraf-ufa' ),
-			'quiz_step_1' => 'Хит Цена/Качество',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
-			'track'       => 'scenario_value',
+			'emoji'  => '⭐',
+			'title'  => __( 'Хит цена / качество', 'zhiraf-ufa' ),
+			'text'   => __( 'Рейтинг 4.7+ и честная смета без переплат за «раскрученное» имя.', 'zhiraf-ufa' ),
+			'vibe'   => 'balance',
+			'track'  => 'scenario_value',
 		),
 		array(
-			'emoji'       => '🏙️',
-			'title'       => __( 'Городской отдых и шопинг', 'zhiraf-ufa' ),
-			'text'        => __( 'Отели в пешей доступности от набережных, моллов и достопримечательностей.', 'zhiraf-ufa' ),
-			'quiz_step_1' => 'Город и шопинг',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
-			'track'       => 'scenario_city',
+			'emoji'  => '🏙️',
+			'title'  => __( 'Городской отдых и шопинг', 'zhiraf-ufa' ),
+			'text'   => __( 'Отели у набережных, моллов и транспортных узлов.', 'zhiraf-ufa' ),
+			'vibe'   => 'city',
+			'track'  => 'scenario_city',
 		),
 	);
+	$out = array();
+	foreach ( $defs as $def ) {
+		$count = function_exists( 'zhiraf_ufa_hub_vibe_hotel_count' )
+			? zhiraf_ufa_hub_vibe_hotel_count( $def['vibe'] )
+			: 0;
+		$out[] = array_merge(
+			$def,
+			array(
+				'url'          => function_exists( 'zhiraf_ufa_tours_filter_url' )
+					? zhiraf_ufa_tours_filter_url( array( 'vibe' => $def['vibe'] ) )
+					: home_url( '/tours/?vibe=' . rawurlencode( $def['vibe'] ) ),
+				'count'        => $count,
+				'count_badge'  => $count > 0
+					? sprintf(
+						/* translators: %d: hotel count */
+						_n( '%d отель', '%d отелей', $count, 'zhiraf-ufa' ),
+						$count
+					)
+					: __( 'Подборка', 'zhiraf-ufa' ),
+				'cta'          => __( 'Смотреть отели →', 'zhiraf-ufa' ),
+			)
+		);
+	}
+	return $out;
 }
 
 /**

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.26-staging' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.24-staging' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -46,5 +46,4 @@ require_once ZHIRAF_UFA_DIR . '/inc/home-unified-catalog.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-conversion-blocks.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-quiz-config.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-featured-hotels.php';
-require_once ZHIRAF_UFA_DIR . '/inc/tour-hub-architecture.php';
 require_once ZHIRAF_UFA_DIR . '/inc/home-destinations-hub.php';

@@ -1,7 +1,73 @@
+/* Single post */
+
+.site-main--single {
+  background: var(--color-bg);
+  padding: 48px 0 80px;
+}
+
+.entry--globe {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.entry--globe .entry-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: 16px;
+}
+
+.entry-figure--globe {
+  margin: 32px 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.entry-figure--globe .entry-hero-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.entry--globe .entry-content.prose {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.entry--globe .entry-content.prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.entry--globe .entry-content.prose blockquote {
+  border-left: 4px solid var(--color-primary);
+  margin: 24px 0;
+  padding-left: 20px;
+  color: var(--color-muted);
+}
+
+.single-post-cta {
+  margin-top: 48px;
+  padding: 28px 24px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.single-post-cta p {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.entry--globe .entry-footer {
+  margin-top: 32px;
+  font-size: 15px;
+  color: var(--color-muted);
+}
+
 /* ==========================================================================
    Globe Trekker Tour Price Cards & Grid
    ========================================================================== */
-
 .section--hot-tours,
 .section--dest-tours {
   background-color: var(--color-sand);
@@ -14,32 +80,29 @@
   gap: 12px;
   align-items: center;
   flex-wrap: wrap;
-
-  .tab-btn {
-    background: none;
-    border: none;
-    font-family: var(--font-sans);
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--color-muted);
-    cursor: pointer;
-    padding: 8px 14px;
-    border-radius: 50px;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
-
-    &:hover {
-      color: var(--color-text);
-      background: rgba(255, 255, 255, 0.6);
-    }
-
-    &.is-active {
-      color: var(--color-primary);
-      background: var(--color-white);
-      border-color: var(--color-border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-  }
+}
+.tour-tabs .tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.tour-tabs .tab-btn:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.6);
+}
+.tour-tabs .tab-btn.is-active {
+  color: var(--color-primary);
+  background: var(--color-white);
+  border-color: var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .tour-price-grid {
@@ -47,14 +110,12 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-top: 36px;
-
-  &--home {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  &--dest {
-    grid-template-columns: repeat(3, 1fr);
-  }
+}
+.tour-price-grid--home {
+  grid-template-columns: repeat(3, 1fr);
+}
+.tour-price-grid--dest {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .tour-card {
@@ -65,24 +126,20 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.2s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(232, 122, 93, 0.45);
-  }
-
-  &.is-hidden {
-    display: none !important;
-  }
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+.tour-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  border-color: rgba(232, 122, 93, 0.45);
+}
+.tour-card.is-hidden {
+  display: none !important;
 }
 
 .tour-card__media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16/10;
   overflow: hidden;
   background: var(--color-sand);
 }
@@ -92,10 +149,9 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-  .tour-card:hover & {
-    transform: scale(1.05);
-  }
+}
+.tour-card:hover .tour-card__img {
+  transform: scale(1.05);
 }
 
 .tour-card__badges {
@@ -135,12 +191,11 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
-  .star-icon {
-    color: var(--color-primary);
-    font-size: 0.875rem;
-    margin-right: 2px;
-  }
+}
+.tour-card__badge--stars .star-icon {
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  margin-right: 2px;
 }
 
 .tour-card__body {
@@ -180,6 +235,7 @@
   letter-spacing: 0.01em;
   line-height: 1.4;
 }
+
 .tour-card__resort {
   display: flex;
   align-items: center;
@@ -190,39 +246,37 @@
   line-height: 1.4;
 }
 
-.tour-price-grid--dest {
-  .tour-card__hotel {
-    font-size: 1.3125rem;
-  }
-  .tour-card__resort {
-    font-size: 0.9375rem;
-    color: var(--color-text);
-    font-weight: 600;
-  }
-  .tour-card__disclaimer,
-  .tour-card__fallback-note {
-    font-size: 0.8125rem;
-  }
+.tour-price-grid--dest .tour-card__hotel {
+  font-size: 1.3125rem;
+}
+.tour-price-grid--dest .tour-card__resort {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+.tour-price-grid--dest .tour-card__disclaimer,
+.tour-price-grid--dest .tour-card__fallback-note {
+  font-size: 0.8125rem;
 }
 
 .tour-card--flight-focus .tour-card__meta-item--flight-prominent {
-  grid-column: 1 / -1;
+  grid-column: 1/-1;
   padding: 10px 12px;
   border-radius: var(--radius-md);
   background: rgba(250, 248, 245, 0.95);
   border: 1px solid var(--color-border);
-  .tour-card__meta-label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 4px;
-  }
-  .tour-card__meta-value {
-    font-size: 0.9375rem;
-    font-weight: 800;
-    color: var(--color-text);
-  }
+}
+.tour-card--flight-focus .tour-card__meta-item--flight-prominent .tour-card__meta-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.tour-card--flight-focus .tour-card__meta-item--flight-prominent .tour-card__meta-value {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--color-text);
 }
 
 .tour-card__icon-pin {
@@ -362,65 +416,4 @@
   justify-content: center;
   font-size: 15px;
   padding: 12px 20px;
-}
-
-/* Responsive Breakpoints */
-@media (max-width: 1100px) {
-  .tour-price-grid:not(.tour-price-grid--catalog) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .tour-tabs {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 8px;
-    width: 100%;
-    -webkit-overflow-scrolling: touch;
-
-    .tab-btn {
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-  }
-
-  .tour-price-grid:not(.tour-price-grid--catalog) {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 24px;
-  }
-
-  .tour-card__body {
-    padding: 20px;
-  }
-
-  .tour-card__hotel {
-    font-size: 1.125rem;
-  }
-
-  .tour-card__price {
-    font-size: 1.375rem;
-  }
-}
-
-@media (max-width: 390px) {
-  .tour-card__body {
-    padding: 16px;
-  }
-
-  .tour-card__meta {
-    padding: 10px 12px;
-    font-size: 0.8125rem;
-  }
-
-  .tour-card__price {
-    font-size: 1.25rem;
-  }
-
-  .tour-card__cta {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
 }

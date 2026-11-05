@@ -264,7 +264,7 @@
 }
 
 .hero-collage__img--2 img {
-  object-position: center center;
+  object-position: center 46%;
 }
 
 .hero-collage__img--3 {
@@ -273,6 +273,10 @@
   top: 40px;
   right: 0;
   z-index: 1;
+}
+
+.hero-collage__img--3 img {
+  object-position: center 38%;
 }
 
 .hero-ambient-canvas {

@@ -71,12 +71,13 @@
 .messenger-picker__icon--max {
   width: 1.5rem;
   height: 1.5rem;
-  border-radius: 0.5rem;
-  background: #c85a32;
-  color: #fff;
-  font-size: 0.625rem;
-  font-weight: 900;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.messenger-picker__icon--max .zh-social-icon__img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
 }
 
 .messenger-picker__icon--wa {

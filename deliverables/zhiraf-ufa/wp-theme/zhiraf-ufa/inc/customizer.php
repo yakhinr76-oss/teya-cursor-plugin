@@ -122,6 +122,23 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
+		'zhiraf_max_url',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+	$wp_customize->add_control(
+		'zhiraf_max_url',
+		array(
+			'label'       => __( 'Ссылка MAX', 'zhiraf-ufa' ),
+			'description' => __( 'Необязательно. Пустое значение скрывает кнопку с логотипом MAX.', 'zhiraf-ufa' ),
+			'section'     => 'zhiraf_ufa_brand',
+			'type'        => 'url',
+		)
+	);
+
+	$wp_customize->add_setting(
 		'zhiraf_vk_url',
 		array(
 			'default'           => 'https://vk.com/zhiraf_ufa',

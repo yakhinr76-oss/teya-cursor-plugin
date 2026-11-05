@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function zhiraf_ufa_messenger_picker_icon( $channel ) {
 	switch ( sanitize_key( $channel ) ) {
 		case 'max':
-			return '<span class="messenger-picker__icon messenger-picker__icon--max" aria-hidden="true">M</span>';
+			return '<span class="messenger-picker__icon messenger-picker__icon--max" aria-hidden="true">' . zhiraf_ufa_social_icon_svg( 'max', 20 ) . '</span>';
 		case 'whatsapp':
 			return '<span class="messenger-picker__icon messenger-picker__icon--wa" aria-hidden="true">' . zhiraf_ufa_social_icon_svg( 'whatsapp', 20 ) . '</span>';
 		case 'telegram':

@@ -496,15 +496,62 @@
     }
   }
 
+  function messengerSubmitLabelText(channel, variant) {
+    variant = variant || 'quiz';
+    if (channel === 'MAX') {
+      return variant === 'lead'
+        ? 'Получить подборку отелей в MAX →'
+        : 'Получить расчёт туров в MAX →';
+    }
+    if (channel === 'Telegram') {
+      return variant === 'lead'
+        ? 'Получить подборку отелей в Telegram →'
+        : 'Получить расчёт туров в Telegram →';
+    }
+    return variant === 'lead'
+      ? 'Получить подборку отелей в WhatsApp →'
+      : 'Получить расчёт туров в WhatsApp →';
+  }
+
+  function initMessengerPicker(form) {
+    if (!form || form.dataset.messengerPickerInit === '1') {
+      return;
+    }
+    var picker = qs('[data-messenger-picker]', form);
+    if (!picker) {
+      return;
+    }
+    form.dataset.messengerPickerInit = '1';
+    var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
+    var submit = qs('[data-messenger-submit-label]', form);
+    var radios = qsa('input[type="radio"]', picker);
+    if (!radios.length) {
+      return;
+    }
+    var radioName = radios[0].name;
+
+    function sync() {
+      var channel = fieldValue(form, radioName) || 'WhatsApp';
+      if (submit) {
+        submit.textContent = messengerSubmitLabelText(channel, variant);
+      }
+      var hidden = qs('[name="contact_channel"]', form);
+      if (hidden) {
+        hidden.value = channel;
+      }
+    }
+
+    radios.forEach(function (input) {
+      input.addEventListener('change', sync);
+    });
+    sync();
+  }
+
   function updateQuizSubmitLabel(form) {
     var btn = qs('[data-quiz-submit-label]', form);
     var channel = fieldValue(form, 'quiz_channel') || 'WhatsApp';
     if (!btn) return;
-    if (channel === 'Telegram') {
-      btn.textContent = 'Получить расчёт туров в Telegram →';
-    } else {
-      btn.textContent = 'Получить расчёт туров в мессенджер →';
-    }
+    btn.textContent = messengerSubmitLabelText(channel, 'quiz');
   }
 
   function initQuizWizard(form) {
@@ -604,6 +651,7 @@
   }
 
   qsa('.js-quiz-wizard').forEach(initQuizWizard);
+  qsa('.js-quiz-wizard').forEach(initMessengerPicker);
 
   function openQuiz() {
     if (!modal || !quizForm) return;
@@ -717,6 +765,7 @@
 
   var leadMagnetForm = qs('#lead-magnet-form');
   if (leadMagnetForm) {
+    initMessengerPicker(leadMagnetForm);
     leadMagnetForm.addEventListener('submit', function () {
       var picked = leadMagnetForm.querySelector('[name="lead_messenger"]:checked');
       var channel = qs('[name="contact_channel"]', leadMagnetForm);

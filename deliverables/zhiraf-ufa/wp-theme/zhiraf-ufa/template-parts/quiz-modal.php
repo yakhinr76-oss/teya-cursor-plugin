@@ -58,7 +58,7 @@ $quiz_form_id = 'quiz-form';
 		<p class="home-quiz__eyebrow home-quiz__eyebrow--modal"><?php esc_html_e( 'Экспресс-подбор за 1 минуту', 'zhiraf-ufa' ); ?></p>
 		<h2 id="quiz-title" class="home-quiz__title home-quiz__title--modal"><?php esc_html_e( 'Подберите проверенный тур с вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
 		<p class="home-quiz__lead home-quiz__lead--modal">
-			<?php esc_html_e( '4 коротких шага — пришлём 2–4 отеля с прямым рейсом из UFA в WhatsApp или Telegram.', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( '4 коротких шага — пришлём 2–4 отеля с прямым рейсом из UFA в MAX, WhatsApp или Telegram.', 'zhiraf-ufa' ); ?>
 		</p>
 		<?php require get_template_directory() . '/template-parts/quiz/quiz-wizard-fields.php'; ?>
 	</div>

@@ -746,6 +746,7 @@
     city: { composition: '', wishTag: '[Шопинг и движ]' },
     party: { composition: 'Компания друзей', wishTag: '[Шопинг и движ]' },
     active: { composition: '', wishTag: '[Активный отдых / Экскурсии]' },
+    balance: { composition: '', wishTag: '[Хит цена/качество · рейтинг 4.7+]' },
   };
 
   function applyQuizPrefillToForm(form, btn) {
@@ -763,6 +764,10 @@
       var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', form);
       if (target) target.checked = true;
     }
+    if (map && map.wishTag) {
+      var wishField = qs('[name="quiz_wishes"]', form);
+      if (wishField && !wishField.value) wishField.value = map.wishTag;
+    }
   }
 
   function applyQuizScenarioPrefill(form, btn) {
@@ -779,7 +784,15 @@
       if (compInput) compInput.checked = true;
     }
     var wishes = qs('[name="quiz_wishes"]', form);
-    if (wishes) wishes.value = 'Сценарий: ' + step1;
+    if (wishes) {
+      var extra = '';
+      if (step1 === 'Хит Цена/Качество') {
+        extra = ' [Хит цена/качество · рейтинг 4.7+]';
+      } else if (step1 === 'Город и шопинг') {
+        extra = ' [Шопинг и движ]';
+      }
+      wishes.value = 'Сценарий: ' + step1 + extra;
+    }
   }
 
   function openQuizFromButton(btn) {

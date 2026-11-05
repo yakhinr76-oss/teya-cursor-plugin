@@ -81,40 +81,80 @@ function zhiraf_ufa_home_guarantee_pillars() {
 /**
  * Life situation cards → Quiz with prefill.
  *
- * @return array<int,array{emoji:string,title:string,text:string,quiz_step_1:string,track:string}>
+ * @return array<int,array<string,mixed>>
  */
 function zhiraf_ufa_home_life_scenarios() {
 	return array(
 		array(
-			'emoji'       => '👨‍👩‍👧‍👦',
+			'image'       => 'team-travel.jpg',
 			'title'       => __( 'Семья с детьми', 'zhiraf-ufa' ),
-			'text'        => __( 'Песчаные пологие пляжи, подогреваемые бассейны, детская анимация и меню.', 'zhiraf-ufa' ),
+			'text'        => __( 'Пологий песчаный вход, тёплые детские бассейны, анимация и меню без специй.', 'zhiraf-ufa' ),
+			'tags'        => array(
+				__( 'Пологий песок', 'zhiraf-ufa' ),
+				__( 'Детские бассейны', 'zhiraf-ufa' ),
+			),
+			'overlay'     => __( '👨‍👩‍👧 Пляжи без камней', 'zhiraf-ufa' ),
+			'badge'       => array(
+				'type'  => 'count',
+				'label' => __( '38 отелей', 'zhiraf-ufa' ),
+			),
+			'cta'         => __( 'Подобрать для детей (38 отелей)', 'zhiraf-ufa' ),
+			'vibe'        => 'family',
 			'quiz_step_1' => 'Семья с детьми',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
 			'track'       => 'scenario_family',
 		),
 		array(
-			'emoji'       => '🥂',
-			'title'       => __( 'Для пар и релакса (16+ / 18+)', 'zhiraf-ufa' ),
-			'text'        => __( 'Отели только для взрослых, спа-комплексы, тишина без детского шума.', 'zhiraf-ufa' ),
+			'image'       => 'hero-collage-2.jpg',
+			'title'       => __( 'Для пар и релакса', 'zhiraf-ufa' ),
+			'text'        => __( 'Отели 16+ / 18+, приватные бунгало, тишина у бассейна, спа-комплексы и романтика.', 'zhiraf-ufa' ),
+			'tags'        => array(
+				__( 'Без шума 16+', 'zhiraf-ufa' ),
+				__( 'Спа и релакс', 'zhiraf-ufa' ),
+			),
+			'overlay'     => __( '🥂 Только для взрослых', 'zhiraf-ufa' ),
+			'badge'       => array(
+				'type'  => 'count',
+				'label' => __( '24 отеля', 'zhiraf-ufa' ),
+			),
+			'cta'         => __( 'Смотреть отели 16+ (24 отеля)', 'zhiraf-ufa' ),
+			'vibe'        => 'couple',
 			'quiz_step_1' => 'Для пар / Релакс',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
 			'track'       => 'scenario_couple',
 		),
 		array(
-			'emoji'       => '⭐',
+			'image'       => 'resort-turciya-belek-1.jpg',
 			'title'       => __( 'Хит «Цена / Качество»', 'zhiraf-ufa' ),
-			'text'        => __( 'Проверенные «пятерки» и «четверки» с максимальным рейтингом в среднем бюджете.', 'zhiraf-ufa' ),
+			'text'        => __( 'Проверенные 4* и 5* с отличным питанием и сервисом без переплаты за люксовый бренд.', 'zhiraf-ufa' ),
+			'tags'        => array(
+				__( 'Рейтинг 4.8+', 'zhiraf-ufa' ),
+				__( 'Честный All Inclusive', 'zhiraf-ufa' ),
+			),
+			'overlay'     => __( '⚖️ Честный рейтинг 4.7+', 'zhiraf-ufa' ),
+			'badge'       => array(
+				'type'  => 'featured',
+				'label' => __( '★ Топ выбор', 'zhiraf-ufa' ),
+			),
+			'cta'         => __( 'Найти отели с высоким рейтингом', 'zhiraf-ufa' ),
+			'vibe'        => 'balance',
 			'quiz_step_1' => 'Хит Цена/Качество',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
 			'track'       => 'scenario_value',
 		),
 		array(
-			'emoji'       => '🏙️',
-			'title'       => __( 'Городской отдых и шопинг', 'zhiraf-ufa' ),
-			'text'        => __( 'Отели в пешей доступности от набережных, моллов и достопримечательностей.', 'zhiraf-ufa' ),
+			'image'       => 'dest-uae-new.jpg',
+			'title'       => __( 'Город и шопинг', 'zhiraf-ufa' ),
+			'text'        => __( 'В пешей доступности от набережных, торговых моллов, метро и ресторанных улиц.', 'zhiraf-ufa' ),
+			'tags'        => array(
+				__( 'Центр города', 'zhiraf-ufa' ),
+				__( 'Шопинг рядом', 'zhiraf-ufa' ),
+			),
+			'overlay'     => __( '🛍️ В центре событий', 'zhiraf-ufa' ),
+			'badge'       => array(
+				'type'  => 'count',
+				'label' => __( '19 отелей', 'zhiraf-ufa' ),
+			),
+			'cta'         => __( 'Выбрать отель в центре города', 'zhiraf-ufa' ),
+			'vibe'        => 'city',
 			'quiz_step_1' => 'Город и шопинг',
-			'cta'         => __( 'Пройти квиз →', 'zhiraf-ufa' ),
 			'track'       => 'scenario_city',
 		),
 	);

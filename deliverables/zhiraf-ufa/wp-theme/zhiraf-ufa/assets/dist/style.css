@@ -5664,6 +5664,78 @@ body.quiz-open .sticky-mobile-cta {
   display: none !important;
 }
 
+.quiz-modal {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.quiz-modal--closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quiz-modal__body {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.quiz-modal__body--hiding {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+.quiz-modal__success {
+  text-align: center;
+  padding: 1.5rem 0.5rem 0.75rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s;
+}
+
+.quiz-modal__success:not([hidden]) {
+  display: block;
+}
+
+.quiz-modal__success--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quiz-modal__success-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  border-radius: 999px;
+  background: #d1fae5;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.quiz-modal__success-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.375rem, 4vw, 1.625rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #1c1917;
+}
+
+.quiz-modal__success-text {
+  margin: 0 auto 1.25rem;
+  max-width: 20rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #57534e;
+}
+
+.quiz-modal__success-btn {
+  min-width: 9rem;
+}
+
 @media (max-width: 768px) {
   .form-premium__fields {
     grid-template-columns: 1fr;
@@ -6548,7 +6620,7 @@ a.contacts-card__value:hover {
 
 .life-scenarios__grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 640px) {
@@ -6566,54 +6638,165 @@ a.contacts-card__value:hover {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100%;
-  padding: 1.25rem;
+  padding: 0;
   border-radius: var(--radius-lg);
-  border: 1px solid #eae4dc;
+  border: 1px solid rgba(234, 228, 220, 0.85);
   background: var(--color-white);
-  text-decoration: none;
+  text-align: left;
   color: inherit;
-  box-shadow: 0 4px 16px rgba(34, 31, 30, 0.04);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(34, 31, 30, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .life-scenarios__card:hover,
 .life-scenarios__card:focus-visible {
-  border-color: #c85a32;
-  box-shadow: 0 10px 28px rgba(200, 90, 50, 0.12);
-  transform: translateY(-2px);
+  border-color: rgba(200, 90, 50, 0.35);
+  box-shadow: 0 16px 40px rgba(34, 31, 30, 0.12);
+  transform: translateY(-6px);
   outline: none;
 }
 
-.life-scenarios__emoji {
-  font-size: 1.75rem;
+.life-scenarios__card-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.life-scenarios__media {
+  position: relative;
+  height: 11rem;
+  overflow: hidden;
+  background: var(--color-sand);
+}
+
+.life-scenarios__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  margin-bottom: 0.5rem;
+  transition: transform 0.5s ease;
+}
+
+.life-scenarios__card:hover .life-scenarios__img,
+.life-scenarios__card:focus-visible .life-scenarios__img {
+  transform: scale(1.05);
+}
+
+.life-scenarios__media-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 55%, transparent);
+  pointer-events: none;
+}
+
+.life-scenarios__badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  line-height: 1.3;
+  box-shadow: 0 2px 8px rgba(34, 31, 30, 0.08);
+}
+
+.life-scenarios__badge--count {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+  backdrop-filter: blur(8px);
+}
+
+.life-scenarios__badge--featured {
+  background: #fbbf24;
+  color: var(--color-text);
+}
+
+.life-scenarios__overlay {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.life-scenarios__body {
+  padding: 1.25rem 1.25rem 0.75rem;
 }
 
 .life-scenarios__title {
   margin: 0 0 0.5rem;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 800;
+  transition: color 0.2s ease;
+}
+
+.life-scenarios__card:hover .life-scenarios__title,
+.life-scenarios__card:focus-visible .life-scenarios__title {
+  color: #c85a32;
+}
+
+.life-scenarios__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.65rem;
+  padding: 0;
+  list-style: none;
+}
+
+.life-scenarios__tag {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-sand);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  line-height: 1.4;
 }
 
 .life-scenarios__text {
   margin: 0;
   font-size: 0.75rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--color-muted);
-  flex: 1;
 }
 
-.life-scenarios__cta {
-  margin-top: 1rem;
+.life-scenarios__action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 1.25rem 1.25rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-sand);
   font-size: 0.75rem;
   font-weight: 800;
-  color: #c85a32;
+  color: var(--color-text);
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-.life-scenarios__card:hover .life-scenarios__cta {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.life-scenarios__action-label {
+  text-align: left;
+  line-height: 1.35;
+}
+
+.life-scenarios__action-arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.life-scenarios__card:hover .life-scenarios__action,
+.life-scenarios__card:focus-visible .life-scenarios__action {
+  background: #c85a32;
+  color: #fff;
 }
 
 /* Homepage featured hotels (3 cards per country tab) + capture banner */

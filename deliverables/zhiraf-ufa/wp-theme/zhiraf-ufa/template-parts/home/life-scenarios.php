@@ -1,6 +1,6 @@
 <?php
 /**
- * Life situation scenario cards → WhatsApp.
+ * Life situation scenario cards → quiz with prefill.
  *
  * @package Zhiraf_Ufa
  */
@@ -22,18 +22,53 @@ $scenarios = zhiraf_ufa_home_life_scenarios();
 		</div>
 		<div class="life-scenarios__grid">
 			<?php foreach ( $scenarios as $scenario ) : ?>
+				<?php
+				$badge = ! empty( $scenario['badge'] ) && is_array( $scenario['badge'] ) ? $scenario['badge'] : array();
+				$tags  = ! empty( $scenario['tags'] ) && is_array( $scenario['tags'] ) ? $scenario['tags'] : array();
+				$vibe  = ! empty( $scenario['vibe'] ) ? (string) $scenario['vibe'] : '';
+				?>
 				<button
 					type="button"
 					class="life-scenarios__card reveal"
 					data-quiz-open
 					data-quiz-trigger="scenario"
+					data-vibe="<?php echo esc_attr( $vibe ); ?>"
 					data-quiz-step-1="<?php echo esc_attr( $scenario['quiz_step_1'] ); ?>"
 					data-cta-context="<?php echo esc_attr( $scenario['track'] ); ?>"
 				>
-					<span class="life-scenarios__emoji" aria-hidden="true"><?php echo esc_html( $scenario['emoji'] ); ?></span>
-					<h3 class="life-scenarios__title"><?php echo esc_html( $scenario['title'] ); ?></h3>
-					<p class="life-scenarios__text"><?php echo esc_html( $scenario['text'] ); ?></p>
-					<span class="life-scenarios__cta"><?php echo esc_html( ! empty( $scenario['cta'] ) ? $scenario['cta'] : __( 'Пройти квиз →', 'zhiraf-ufa' ) ); ?></span>
+					<div class="life-scenarios__card-main">
+						<div class="life-scenarios__media">
+							<?php
+							if ( ! empty( $scenario['image'] ) ) {
+								zhiraf_ufa_img( $scenario['image'], $scenario['title'], 'life-scenarios__img', true );
+							}
+							?>
+							<span class="life-scenarios__media-gradient" aria-hidden="true"></span>
+							<?php if ( ! empty( $badge['label'] ) ) : ?>
+								<span class="life-scenarios__badge life-scenarios__badge--<?php echo esc_attr( ! empty( $badge['type'] ) ? $badge['type'] : 'count' ); ?>">
+									<?php echo esc_html( $badge['label'] ); ?>
+								</span>
+							<?php endif; ?>
+							<?php if ( ! empty( $scenario['overlay'] ) ) : ?>
+								<span class="life-scenarios__overlay"><?php echo esc_html( $scenario['overlay'] ); ?></span>
+							<?php endif; ?>
+						</div>
+						<div class="life-scenarios__body">
+							<h3 class="life-scenarios__title"><?php echo esc_html( $scenario['title'] ); ?></h3>
+							<?php if ( $tags ) : ?>
+								<ul class="life-scenarios__tags" aria-label="<?php esc_attr_e( 'Маркеры подборки', 'zhiraf-ufa' ); ?>">
+									<?php foreach ( $tags as $tag ) : ?>
+										<li class="life-scenarios__tag"><?php echo esc_html( $tag ); ?></li>
+									<?php endforeach; ?>
+								</ul>
+							<?php endif; ?>
+							<p class="life-scenarios__text"><?php echo esc_html( $scenario['text'] ); ?></p>
+						</div>
+					</div>
+					<span class="life-scenarios__action">
+						<span class="life-scenarios__action-label"><?php echo esc_html( $scenario['cta'] ); ?></span>
+						<span class="life-scenarios__action-arrow" aria-hidden="true">→</span>
+					</span>
 				</button>
 			<?php endforeach; ?>
 		</div>

@@ -1,0 +1,52 @@
+/* Blog display serif (H1–H3 in blog zones only) */
+
+.editorial-blog-teaser .editorial-main__title,
+.editorial-blog-teaser .editorial-globe-card__title,
+.editorial-blog-teaser .editorial-globe-stack__title,
+.site-main--blog .page-hero h1,
+.site-main--blog .post-card__title,
+.site-main--blog .blog-featured__title,
+.entry--single .entry-title,
+.entry--single .entry-content h2,
+.entry--single .entry-content h3 {
+  font-family: var(--font-blog-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.blog-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin: 12px 0 0;
+  font-family: var(--font-sans);
+}
+
+.blog-meta-row--compact {
+  gap: 4px 10px;
+  margin-top: 8px;
+}
+
+.blog-meta__rubrika {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+}
+
+.blog-meta__country,
+.blog-meta__read-time,
+.blog-meta__date {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.blog-meta__sep {
+  color: var(--color-muted);
+  font-size: 14px;
+  user-select: none;
+}

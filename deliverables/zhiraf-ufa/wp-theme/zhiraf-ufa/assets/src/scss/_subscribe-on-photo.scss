@@ -1,0 +1,70 @@
+/* Subscribe on Photo */
+
+.section--subscribe {
+  position: relative;
+  padding: 100px 0;
+  color: #fff;
+  overflow: hidden;
+}
+
+.subscribe-premium__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.subscribe-premium__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.subscribe-premium__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.subscribe-premium__content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subscribe-premium__content h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 32px;
+}
+
+.subscribe-premium__form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.subscribe-input {
+  flex: 1;
+  padding: 16px 24px;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  outline: none;
+}
+
+.subscribe-premium__note {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.subscribe-agree input {
+  margin-right: 4px;
+}
+
+.subscribe-agree a {
+  color: #fff;
+  text-decoration: underline;
+}

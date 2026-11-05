@@ -23,12 +23,14 @@
   border-radius: 1.5rem;
   box-shadow: 0 10px 35px rgba(34, 31, 30, 0.05);
   padding: 2rem;
-
-  @media (min-width: 640px) {
+}
+@media (min-width: 640px) {
+  .lead-magnet-banner {
     padding: 3rem;
   }
-
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .lead-magnet-banner {
     padding: 3.5rem;
   }
 }
@@ -50,8 +52,9 @@
   display: grid;
   gap: 2rem;
   align-items: center;
-
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .lead-magnet-banner__grid {
     grid-template-columns: 7fr 5fr;
     gap: 3rem;
   }
@@ -90,11 +93,10 @@
   line-height: 1.6;
   color: var(--lm-muted);
   margin: 0 0 1.5rem;
-
-  strong {
-    color: var(--lm-graphite);
-    font-weight: 600;
-  }
+}
+.lead-magnet__text strong {
+  color: var(--lm-graphite);
+  font-weight: 600;
 }
 
 .lead-magnet__bullets {
@@ -105,19 +107,17 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-
-  li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    font-size: clamp(0.75rem, 2vw, 0.875rem);
-    color: var(--lm-muted);
-
-    strong {
-      color: var(--lm-graphite);
-      font-weight: 500;
-    }
-  }
+}
+.lead-magnet__bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  color: var(--lm-muted);
+}
+.lead-magnet__bullets li strong {
+  color: var(--lm-graphite);
+  font-weight: 500;
 }
 
 .lead-magnet__check {
@@ -132,8 +132,9 @@
   border: 1px solid var(--lm-border);
   border-radius: 1rem;
   padding: 1.5rem;
-
-  @media (min-width: 640px) {
+}
+@media (min-width: 640px) {
+  .lead-magnet__form-panel {
     padding: 1.75rem;
   }
 }
@@ -141,22 +142,21 @@
 .lead-magnet__form-head {
   text-align: center;
   margin-bottom: 1rem;
-
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .lead-magnet__form-head {
     text-align: left;
   }
-
-  h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.75rem;
-    color: var(--lm-muted);
-  }
+}
+.lead-magnet__form-head h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.lead-magnet__form-head p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--lm-muted);
 }
 
 .lead-magnet__messengers {
@@ -168,11 +168,10 @@
 
 .lead-messenger {
   cursor: pointer;
-
-  input {
-    position: absolute;
-    opacity: 0;
-  }
+}
+.lead-messenger input {
+  position: absolute;
+  opacity: 0;
 }
 
 .lead-messenger__inner {
@@ -203,12 +202,11 @@
 
 .lead-magnet__field {
   margin-bottom: 1rem;
-
-  span {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--lm-muted);
-  }
+}
+.lead-magnet__field span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--lm-muted);
 }
 
 .lead-magnet__required {
@@ -225,23 +223,21 @@
   font: inherit;
   font-size: 0.875rem;
   color: var(--lm-graphite);
-
-  &:focus {
-    outline: none;
-    border-color: var(--lm-terracotta);
-    box-shadow: 0 0 0 3px rgba(200, 90, 50, 0.1);
-  }
+}
+.lead-magnet__input:focus {
+  outline: none;
+  border-color: var(--lm-terracotta);
+  box-shadow: 0 0 0 3px rgba(200, 90, 50, 0.1);
 }
 
 .lead-magnet__submit {
   background: var(--lm-terracotta);
   border-color: var(--lm-terracotta);
   box-shadow: 0 4px 14px rgba(200, 90, 50, 0.25);
-
-  &:hover {
-    background: #d0653b;
-    border-color: #d0653b;
-  }
+}
+.lead-magnet__submit:hover {
+  background: #d0653b;
+  border-color: #d0653b;
 }
 
 .lead-magnet__form .form-consents {
@@ -251,4 +247,127 @@
 
 .lead-magnet__legal a {
   color: var(--lm-terracotta);
+}
+
+/* ==========================================================================
+   Forms, consents, honeypot, quiz modal
+   (restored after the Globe Trekker redesign dropped them: without these rules
+   the quiz rendered unstyled under the footer and the honeypot field was visible)
+   ========================================================================== */
+.zhiraf-hp {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.form-consents {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.form-check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.form-check input[type=checkbox] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-check a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.form-status {
+  min-height: 1.4em;
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.form-status.is-success {
+  color: #2e7d32;
+}
+
+.form-status.is-error {
+  color: #b3261e;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea,
+.quiz-form select,
+.mini-form input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  font: inherit;
+  font-size: 16px;
+  color: var(--color-text);
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus,
+.quiz-form select:focus {
+  border-color: var(--color-primary);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+
+.mini-form {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  max-width: 560px;
+}
+
+.mini-form h2 {
+  margin-top: 0;
+}
+
+.mini-form .btn {
+  margin-top: 12px;
+}
+
+.form-premium .form-consents,
+.form-premium .form-status {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
 }

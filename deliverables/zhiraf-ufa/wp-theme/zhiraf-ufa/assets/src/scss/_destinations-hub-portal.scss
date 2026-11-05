@@ -1,4 +1,4 @@
-/* Navigation portal hub: hero chips, destination cards, SEO cloud */
+/* Portal hub extras (hero chips, scenarios badge, SEO cloud) — base hub in _destinations-hub.scss */
 
 .hero-quick-chips {
   margin-top: 1.5rem;
@@ -22,10 +22,10 @@
   padding-bottom: 0.5rem;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-}
 
-.hero-quick-chips__track::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .hero-quick-chips__chip {
@@ -42,87 +42,14 @@
   color: #44403c;
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
 
-.hero-quick-chips__chip:hover,
-.hero-quick-chips__chip:focus-visible {
-  background: #c85a32;
-  border-color: #c85a32;
-  color: #fff;
-  outline: none;
-}
-
-.dest-hub-card--portal {
-  min-height: 20rem;
-}
-
-.dest-hub-card__badge--direct-ufa {
-  background: rgba(6, 46, 34, 0.82);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #a7f3d0;
-}
-
-.dest-hub-card__badge--via-mow {
-  background: rgba(69, 26, 3, 0.82);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  color: #fde68a;
-}
-
-.dest-hub-card__count {
-  padding: 0.25rem 0.625rem;
-  border-radius: 0.375rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: #fff;
-  white-space: nowrap;
-}
-
-.dest-hub-card__bottom--portal {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.5rem;
-}
-
-.dest-hub-card__headline {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.dest-hub-card__season {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #fcd34d;
-}
-
-.dest-hub-card__verb {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.625rem 1rem;
-  border-radius: 0.75rem;
-  background: #c85a32;
-  font-size: clamp(0.6875rem, 2vw, 0.875rem);
-  font-weight: 800;
-  color: #fff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-  transition: background 0.2s ease;
-}
-
-.dest-hub-card:hover .dest-hub-card__verb {
-  background: #b04b25;
-}
-
-.dest-hub-card__verb-price {
-  color: #fde68a;
-  font-size: clamp(0.8125rem, 2.2vw, 1rem);
-  font-weight: 800;
-  white-space: nowrap;
+  &:hover,
+  &:focus-visible {
+    background: #c85a32;
+    border-color: #c85a32;
+    color: #fff;
+    outline: none;
+  }
 }
 
 .life-scenarios__card--link {
@@ -164,13 +91,13 @@
   gap: 0.5rem 1.5rem;
   font-size: 0.75rem;
   color: #78716c;
-}
 
-.footer-seo-cloud__links a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
+  a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 
-.footer-seo-cloud__links a:hover {
-  color: #c85a32;
+    &:hover {
+      color: #c85a32;
+    }
+  }
 }

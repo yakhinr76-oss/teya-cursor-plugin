@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "images_per_query": 2,
+  "countries": {
+    "Турция": {
+      "tab": "ufa",
+      "themes": {
+        "пляж": [
+          "oludeniz blue lagoon aerial",
+          "antalya turquoise beach sunshine",
+          "kas kaputas beach coastal cliffs",
+          "turkey mediterranean beach sun loungers",
+          "turkish riviera yacht crystal clear sea"
+        ],
+        "атмосфера": [
+          "cappadocia hot air balloons sunrise",
+          "goreme cave hotel rooftop breakfast",
+          "cappadocia fairy chimneys golden hour",
+          "turkish tea terrace scenic view",
+          "cappadocia valley horseback riding"
+        ]
+      }
+    }
+  }
+}

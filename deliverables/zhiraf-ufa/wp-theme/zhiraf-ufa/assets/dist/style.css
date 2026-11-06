@@ -311,6 +311,65 @@ h1, h2, h3, h4 {
     display: none;
   }
 }
+/* Homepage: two Pexels mood reference images */
+.section--home-pexels-moodboard {
+  padding-block: 3rem;
+}
+
+.home-pexels-moodboard__lead {
+  max-width: 42rem;
+  margin-top: 0.5rem;
+}
+
+.home-pexels-moodboard__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 720px) {
+  .home-pexels-moodboard__grid {
+    grid-template-columns: 1fr;
+  }
+}
+.home-pexels-moodboard__card {
+  margin: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.home-pexels-moodboard__img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+.home-pexels-moodboard__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px 16px;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.home-pexels-moodboard__label {
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+
+.home-pexels-moodboard__credit a {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-left: 0.15em;
+}
+
 /* Social / messenger icons (SVG in theme, not media library) */
 .zh-social-links {
   display: flex;

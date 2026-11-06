@@ -47,6 +47,8 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 		</div>
 	</section>
 
+	<?php get_template_part( 'template-parts/home/home-pexels-moodboard' ); ?>
+
 	<?php get_template_part( 'template-parts/home/home-guarantees-bar' ); ?>
 
 	<?php get_template_part( 'template-parts/home/destinations-hub' ); ?>

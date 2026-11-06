@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """Fetch 2 Pexels photos per query; landscape + size=large.
 
-Writes pexels-home-v4-picks.json and (after a full run) syncs embedded
-const DATA= in index.html + pexels-home-gallery.html.
+Flow (выбор до публикации в превью):
 
-To rebuild HTML from the JSON only (no API calls): python3 fetch_pexels_v4.py --sync-only
+1. `PEXELS_API_KEY=… python3 fetch_pexels_v4.py` — только пишет/обновляет
+   **pexels-home-v4-picks.json** (кандидаты для ревью).
+2. Вручную выбери/подправь JSON (или отредактируй `photos` / id) — это и есть «включить».
+3. `python3 fetch_pexels_v4.py --sync-only` — вшивает утверждённый JSON в
+   **index.html** и **pexels-home-gallery.html** (`const DATA=…`).
+
+Полный fetch **не** трогает HTML, чтобы сырой прогон не подменял уже выбранное в превью.
 """
 from __future__ import annotations
 
@@ -604,7 +609,7 @@ def main() -> None:
     out_path = os.path.join(here, "pexels-home-v4-picks.json")
     json.dump(out, open(out_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print("written", out_path, "cards", len(cards_out))
-    sync_embedded_data(here, out)
+    print("review/edit JSON, then: python3 fetch_pexels_v4.py --sync-only")
 
 
 if __name__ == "__main__":

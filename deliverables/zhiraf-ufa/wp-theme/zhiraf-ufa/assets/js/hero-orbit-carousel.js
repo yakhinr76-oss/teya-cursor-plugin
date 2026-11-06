@@ -3,6 +3,7 @@
 
   var ORBIT_DURATION_MS = 12000;
   var CARD_COUNT = 3;
+  var booted = false;
 
   function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -13,6 +14,16 @@
       return false;
     }
     return window.matchMedia('(min-width: 769px)').matches;
+  }
+
+  function clearTileMotionStyles(tiles) {
+    if (typeof window.gsap !== 'undefined') {
+      window.gsap.set(tiles, { clearProps: 'transform,x,y,scale,opacity' });
+    }
+    tiles.forEach(function (tile) {
+      tile.style.removeProperty('transform');
+      tile.style.removeProperty('opacity');
+    });
   }
 
   function initHeroOrbit(collage) {
@@ -26,19 +37,25 @@
       tiles: Array.prototype.slice.call(tiles),
       rafId: 0,
       start: performance.now(),
-      rx: 115,
-      ry: 75,
+      rx: 165,
+      ry: 110,
     };
 
     function resize() {
       var w = collage.clientWidth;
       var h = collage.clientHeight;
-      var scale = Math.min(w / 420, h / 320, 1.15);
-      state.rx = 115 * scale;
-      state.ry = 75 * scale;
+      if (w < 1 || h < 1) {
+        return false;
+      }
+      state.rx = Math.max(120, w * 0.34);
+      state.ry = Math.max(72, h * 0.22);
+      return true;
     }
 
-    function frame(now) {
+    function applyFrame(now) {
+      if (!resize()) {
+        return;
+      }
       var elapsed = (now - state.start) % ORBIT_DURATION_MS;
       var progress = elapsed / ORBIT_DURATION_MS;
       var centerX = collage.clientWidth / 2;
@@ -56,22 +73,33 @@
         tile.style.transform = 'translate(-50%, -50%)';
         tile.style.zIndex = String(Math.round(y + 200));
       });
+    }
 
+    function frame(now) {
+      applyFrame(now);
       state.rafId = window.requestAnimationFrame(frame);
     }
 
     function start() {
-      resize();
+      if (!shouldRunOrbit()) {
+        return;
+      }
+      stop(false);
+      clearTileMotionStyles(state.tiles);
       collage.classList.add('is-orbit-active');
+      state.start = performance.now();
+      applyFrame(performance.now());
       state.rafId = window.requestAnimationFrame(frame);
     }
 
-    function stop() {
+    function stop(clearClass) {
       if (state.rafId) {
         window.cancelAnimationFrame(state.rafId);
         state.rafId = 0;
       }
-      collage.classList.remove('is-orbit-active');
+      if (clearClass !== false) {
+        collage.classList.remove('is-orbit-active');
+      }
       state.tiles.forEach(function (tile) {
         tile.style.left = '';
         tile.style.top = '';
@@ -81,13 +109,17 @@
     }
 
     state.startLoop = start;
-    state.stopLoop = stop;
-    state.onResize = resize;
+    state.stopLoop = function () {
+      stop(true);
+    };
 
     return state;
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function boot() {
+    if (booted) {
+      return;
+    }
     var collage = document.querySelector('[data-hero-orbit]');
     if (!collage) {
       return;
@@ -97,20 +129,23 @@
     if (!orbit) {
       return;
     }
+    booted = true;
 
     function sync() {
-      if (shouldRunOrbit()) {
-        if (!orbit.rafId) {
-          orbit.startLoop();
-        } else {
-          orbit.onResize();
-        }
+      if (shouldRunOrbit() && collage.clientWidth > 0) {
+        orbit.startLoop();
       } else {
         orbit.stopLoop();
       }
     }
 
-    sync();
+    if (typeof window.ResizeObserver !== 'undefined') {
+      var ro = new window.ResizeObserver(function () {
+        sync();
+      });
+      ro.observe(collage);
+    }
+
     window.addEventListener('resize', sync, { passive: true });
 
     var mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -119,5 +154,16 @@
       mqMotion.addEventListener('change', sync);
       mqWidth.addEventListener('change', sync);
     }
-  });
+
+    window.addEventListener('zhiraf:hero-intro-done', sync);
+    window.setTimeout(sync, 900);
+    sync();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+  window.addEventListener('load', boot);
 })();

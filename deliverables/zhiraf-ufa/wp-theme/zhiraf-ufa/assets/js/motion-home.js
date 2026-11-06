@@ -56,6 +56,9 @@
         gsap.set(flightPath, { strokeDasharray: len, strokeDashoffset: len });
         heroTl.to(flightPath, { strokeDashoffset: 0, duration: 0.8 }, 0.25);
       }
+      heroTl.eventCallback('onComplete', function () {
+        window.dispatchEvent(new CustomEvent('zhiraf:hero-intro-done'));
+      });
     }
 
     gsap.utils.toArray('.reveal').forEach(function (el) {

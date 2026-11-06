@@ -28,22 +28,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 				</div>
 			</div>
 
-			<div class="hero-premium__collage hero-premium__collage--orbit reveal reveal-delay-1" data-three-canvas="hero-ambient" data-hero-orbit>
-				<div class="hero-ambient-canvas" aria-hidden="true"></div>
-				<div class="hero-collage__img hero-collage__img--1 collage-tile">
-					<?php zhiraf_ufa_img( 'hero-uae.jpg', 'ОАЭ', '', false, true ); ?>
-				</div>
-				<div class="hero-collage__img hero-collage__img--2 collage-tile">
-					<?php zhiraf_ufa_img( 'hero-turkey.jpg', 'Турция', '', false, true ); ?>
-				</div>
-				<div class="hero-collage__img hero-collage__img--3 collage-tile">
-					<?php zhiraf_ufa_img( 'hero-egypt.jpg', 'Египет', '', false, true ); ?>
-				</div>
-				<svg class="hero-collage__flight-path" data-motion="flight-path" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-					<path d="M10,180 Q100,50 380,80" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="6,6" fill="none"/>
-					<path d="M370,75 L385,81 L370,87 Z" fill="var(--color-primary)" />
-				</svg>
-			</div>
+			<?php get_template_part( 'template-parts/home/hero-collage' ); ?>
 		</div>
 	</section>
 

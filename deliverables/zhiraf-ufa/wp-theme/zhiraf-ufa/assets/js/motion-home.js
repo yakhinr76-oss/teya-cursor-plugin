@@ -38,16 +38,17 @@
       var heroCopy = hero.querySelector('.hero-premium__content');
       var tiles = hero.querySelectorAll('.collage-tile, .hero-collage__img');
       var orbitCollage = hero.querySelector('[data-hero-orbit]');
+      var remotionCollage = hero.querySelector('.hero-premium__collage--remotion');
       if (heroCopy) {
         heroTl.from(heroCopy, { opacity: 0, y: 24, duration: 0.7 }, 0);
       }
-      if (tiles.length && !orbitCollage) {
+      if (tiles.length && !orbitCollage && !remotionCollage) {
         heroTl.from(
           tiles,
           { opacity: 0, y: 24, scale: 0.97, duration: 0.7, stagger: 0.12 },
           0.15
         );
-      } else if (orbitCollage && tiles.length) {
+      } else if ((orbitCollage || remotionCollage) && tiles.length) {
         heroTl.from(tiles, { opacity: 0, duration: 0.8, stagger: 0.1 }, 0.2);
       }
       var flightPath = hero.querySelector('[data-motion="flight-path"] path');

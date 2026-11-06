@@ -57,10 +57,14 @@ def main() -> None:
             )
         sections.append({"title": label, "slug": slug, "resorts": resorts_out})
 
-    payload = json.dumps({"sections": sections}, ensure_ascii=False)
+    payload_obj = {"sections": sections}
+    # JSON inside <script type="application/json"> must not contain the literal </script>
+    json_for_html = json.dumps(payload_obj, ensure_ascii=False).replace("</", "<\\/")
 
-    # Single-file HTML: DATA embedded as JSON.parse for safe Unicode.
-    data_js = "const DATA = " + payload + ";\n"
+    # Load DATA from a separate script block so raw.githubusercontent.com and file:// stay valid.
+    json_block = f'<script id="resorts-data" type="application/json">\n{json_for_html}\n</script>\n'
+    boot_js = """const DATA = JSON.parse(document.getElementById('resorts-data').textContent);
+"""
 
     page = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -104,8 +108,8 @@ main{{max-width:1400px;margin:0 auto;padding:12px 8px 48px}}
 </header>
 <main id="app"></main>
 <div id="lb"><button type="button" onclick="document.getElementById('lb').classList.remove('open')">Закрыть</button><img id="lb-img" alt=""/><div id="lb-txt"></div></div>
-<script>
-{data_js}
+{json_block}<script>
+{boot_js}
 const nav = document.getElementById('nav');
 const app = document.getElementById('app');
 const lb = document.getElementById('lb');

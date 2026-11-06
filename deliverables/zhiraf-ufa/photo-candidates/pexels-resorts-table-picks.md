@@ -3,7 +3,7 @@
 Всего курортов: **74**, слотов снимков: **148**, уникальных ID: **124**.
 Пересечение с `pexels-home-v4-picks-FULL-LIST.md` (280): **23** уникальных ID; дубликаты только внутри этого набора: **24** слотов.
 
-Превью всех снимков: откройте [`pexels-resorts-table-gallery.html`](pexels-resorts-table-gallery.html) в браузере (или пересоберите: `python3 build_pexels_resorts_gallery.py`).
+Превью всех снимков: откройте [`pexels-resorts-table-gallery.html`](pexels-resorts-table-gallery.html) **с диска** (двойной клик) или через локальный сервер (`python3 -m http.server` в этой папке). Ссылку **raw.githubusercontent.com** в браузере открывать не стоит — там файл не выполняется как страница. Пересборка: `python3 build_pexels_resorts_gallery.py`.
 
 ## Турция
 

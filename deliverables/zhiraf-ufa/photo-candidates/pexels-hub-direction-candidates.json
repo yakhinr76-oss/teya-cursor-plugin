@@ -1,0 +1,634 @@
+{
+  "version": 1,
+  "description": "2 Pexels candidates per homepage hub direction (before replacing dest-hub card photos)",
+  "source": "pexels-resorts-table-picks.json",
+  "tabs": [
+    {
+      "tab": "ufa",
+      "tab_label": "Вылет из Уфы",
+      "cards": [
+        {
+          "hub_slug": "turciya",
+          "title_ru": "Турция",
+          "current_wp_image": "dest-turkey-new.jpg",
+          "direction_slug": "turkey",
+          "resort_keys_used": [
+            "antalya",
+            "alanya"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 2880483,
+              "page": "https://www.pexels.com/photo/people-relaxing-on-the-beach-2880483/",
+              "original": "https://images.pexels.com/photos/2880483/pexels-photo-2880483.jpeg",
+              "thumb": "https://images.pexels.com/photos/2880483/pexels-photo-2880483.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/2880483/pexels-photo-2880483.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/2880483/pexels-photo-2880483.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Engin Akyurt",
+              "alt": "Relaxing on wooden platforms by the beach in Antalya, Turkey.",
+              "resort_key": "antalya",
+              "resort_label_ru": "Анталья",
+              "direction_label": "Турция"
+            },
+            {
+              "variant": 2,
+              "id": 11116337,
+              "page": "https://www.pexels.com/photo/alanya-castle-on-the-seashore-in-turkey-11116337/",
+              "original": "https://images.pexels.com/photos/11116337/pexels-photo-11116337.jpeg",
+              "thumb": "https://images.pexels.com/photos/11116337/pexels-photo-11116337.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/11116337/pexels-photo-11116337.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/11116337/pexels-photo-11116337.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Kamp Ve Enduro",
+              "alt": "Scenic view of Alanya Castle with serene seashore and hillside dwellings in Turkey.",
+              "resort_key": "alanya",
+              "resort_label_ru": "Аланья",
+              "direction_label": "Турция"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "oae",
+          "title_ru": "ОАЭ",
+          "current_wp_image": "dest-uae-new.jpg",
+          "direction_slug": "uae",
+          "resort_keys_used": [
+            "dubai",
+            "ras_al_khaimah"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 31692133,
+              "page": "https://www.pexels.com/photo/stunning-view-of-dubai-marina-with-luxurious-yachts-31692133/",
+              "original": "https://images.pexels.com/photos/31692133/pexels-photo-31692133.jpeg",
+              "thumb": "https://images.pexels.com/photos/31692133/pexels-photo-31692133.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/31692133/pexels-photo-31692133.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/31692133/pexels-photo-31692133.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Subbu Rayan",
+              "alt": "Explore the breathtaking skyline of Dubai Marina with luxury yachts in the foreground, capturing the essence of Dubai's opulence.",
+              "resort_key": "dubai",
+              "resort_label_ru": "Дубай",
+              "direction_label": "ОАЭ"
+            },
+            {
+              "variant": 2,
+              "id": 39401173,
+              "page": "https://www.pexels.com/photo/man-relaxing-on-ras-al-khaimah-beach-39401173/",
+              "original": "https://images.pexels.com/photos/39401173/pexels-photo-39401173.jpeg",
+              "thumb": "https://images.pexels.com/photos/39401173/pexels-photo-39401173.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/39401173/pexels-photo-39401173.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/39401173/pexels-photo-39401173.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Siarhei Nester",
+              "alt": "A man standing on a serene beach in Ras Al Khaimah, surrounded by palm trees under a clear sky.",
+              "resort_key": "ras_al_khaimah",
+              "resort_label_ru": "Рас-эль-Хайма",
+              "direction_label": "ОАЭ"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "egipet",
+          "title_ru": "Египет",
+          "current_wp_image": "dest-egypt-new.jpg",
+          "direction_slug": "egypt",
+          "resort_keys_used": [
+            "sharm_el_sheikh",
+            "hurghada"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 15276400,
+              "page": "https://www.pexels.com/photo/clouds-over-sea-shore-with-beach-umbrellas-15276400/",
+              "original": "https://images.pexels.com/photos/15276400/pexels-photo-15276400.jpeg",
+              "thumb": "https://images.pexels.com/photos/15276400/pexels-photo-15276400.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/15276400/pexels-photo-15276400.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/15276400/pexels-photo-15276400.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Anastasiia Popova",
+              "alt": "Stunning aerial view of Sharm El Sheikh's beach and sea during sunset with boats and parasols.",
+              "resort_key": "sharm_el_sheikh",
+              "resort_label_ru": "Шарм-эль-Шейх",
+              "direction_label": "Египет"
+            },
+            {
+              "variant": 2,
+              "id": 24913567,
+              "page": "https://www.pexels.com/photo/sea-star-beau-rivage-hotel-in-egypt-24913567/",
+              "original": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg",
+              "thumb": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Valera Rychman",
+              "alt": "Elegant hotel with palm trees and poolside in Hurghada, Egypt during a sunny day.",
+              "resort_key": "hurghada",
+              "resort_label_ru": "Хургада",
+              "direction_label": "Египет"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "tailand",
+          "title_ru": "Таиланд",
+          "current_wp_image": "dest-thailand-new.jpg",
+          "direction_slug": "thailand",
+          "resort_keys_used": [
+            "phuket",
+            "krabi"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 4679438,
+              "page": "https://www.pexels.com/photo/beautiful-beach-with-calm-blue-waters-4679438/",
+              "original": "https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg",
+              "thumb": "https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Image Studio",
+              "alt": "Serene tropical beach view with palm trees and turquoise waters in Phuket, Thailand.",
+              "resort_key": "phuket",
+              "resort_label_ru": "Пхукет",
+              "direction_label": "Таиланд"
+            },
+            {
+              "variant": 2,
+              "id": 35126792,
+              "page": "https://www.pexels.com/photo/stunning-beach-paradise-in-krabi-thailand-35126792/",
+              "original": "https://images.pexels.com/photos/35126792/pexels-photo-35126792.jpeg",
+              "thumb": "https://images.pexels.com/photos/35126792/pexels-photo-35126792.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/35126792/pexels-photo-35126792.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/35126792/pexels-photo-35126792.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Siarhei Nester",
+              "alt": "Turquoise waters and limestone cliffs in Krabi, Thailand offer a breathtaking beach view.",
+              "resort_key": "krabi",
+              "resort_label_ru": "Краби",
+              "direction_label": "Таиланд"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "rossiya",
+          "title_ru": "Россия (Сочи)",
+          "current_wp_image": "hero-collage-1.jpg",
+          "direction_slug": "russia",
+          "resort_keys_used": [
+            "sochi",
+            "krasnaya_polyana"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 14786125,
+              "page": "https://www.pexels.com/photo/view-of-palm-trees-in-a-park-in-sochi-russia-14786125/",
+              "original": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg",
+              "thumb": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Serg Alesenko",
+              "alt": "Palm trees and pathways in a sunny Sochi resort park, perfect for a summer stroll.",
+              "resort_key": "sochi",
+              "resort_label_ru": "Сочи",
+              "direction_label": "Россия"
+            },
+            {
+              "variant": 2,
+              "id": 9006735,
+              "page": "https://www.pexels.com/photo/a-person-with-backpack-standing-on-a-mountain-rock-with-snow-9006735/",
+              "original": "https://images.pexels.com/photos/9006735/pexels-photo-9006735.jpeg",
+              "thumb": "https://images.pexels.com/photos/9006735/pexels-photo-9006735.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/9006735/pexels-photo-9006735.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/9006735/pexels-photo-9006735.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Nikita Parev",
+              "alt": "A lone hiker enjoys the stunning mountain views of Krasnaya Polyana, Russia.",
+              "resort_key": "krasnaya_polyana",
+              "resort_label_ru": "Красная Поляна",
+              "direction_label": "Россия"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "abkhaziya",
+          "title_ru": "Абхазия",
+          "current_wp_image": "alt-armeniya-3.jpg",
+          "direction_slug": "abkhazia",
+          "resort_keys_used": [
+            "gagra",
+            "pitsunda"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 28573272,
+              "page": "https://www.pexels.com/photo/scenic-view-of-gagra-s-mountain-landscape-and-art-installation-28573272/",
+              "original": "https://images.pexels.com/photos/28573272/pexels-photo-28573272.jpeg",
+              "thumb": "https://images.pexels.com/photos/28573272/pexels-photo-28573272.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/28573272/pexels-photo-28573272.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/28573272/pexels-photo-28573272.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Siarhei Nester",
+              "alt": "Explore the tranquil mountain landscape and artistic structure in Gagra, Abkhazia. Perfect for travel inspiration.",
+              "resort_key": "gagra",
+              "resort_label_ru": "Гагра",
+              "direction_label": "Абхазия"
+            },
+            {
+              "variant": 2,
+              "id": 28608660,
+              "page": "https://www.pexels.com/photo/elegant-woman-strolling-on-pebble-beach-at-sunset-28608660/",
+              "original": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg",
+              "thumb": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Siarhei Nester",
+              "alt": "A woman in a black dress walking on a serene pebble beach in Gagra during sunset, with scenic mountain views.",
+              "resort_key": "pitsunda",
+              "resort_label_ru": "Пицунда",
+              "direction_label": "Абхазия"
+            }
+          ],
+          "ready_for_swap": true
+        }
+      ]
+    },
+    {
+      "tab": "mow",
+      "tab_label": "Вылет из Москвы",
+      "cards": [
+        {
+          "hub_slug": "maldivy",
+          "title_ru": "Мальдивы",
+          "current_wp_image": "resort-maldivy-atoll-1.jpg",
+          "direction_slug": "maldives",
+          "resort_keys_used": [
+            "ari_atoll",
+            "maafushi"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 3293192,
+              "page": "https://www.pexels.com/photo/cottage-houses-on-the-beach-3293192/",
+              "original": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg",
+              "thumb": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Asad Photo Maldives",
+              "alt": "Splendid overwater villas in Maldives offering a serene and luxurious vacation experience.",
+              "resort_key": "ari_atoll",
+              "resort_label_ru": "Ари",
+              "direction_label": "Мальдивы"
+            },
+            {
+              "variant": 2,
+              "id": 39466653,
+              "page": "https://www.pexels.com/photo/romantic-couple-and-horse-on-maafushi-beach-39466653/",
+              "original": "https://images.pexels.com/photos/39466653/pexels-photo-39466653.jpeg",
+              "thumb": "https://images.pexels.com/photos/39466653/pexels-photo-39466653.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/39466653/pexels-photo-39466653.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/39466653/pexels-photo-39466653.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Zihat  Bepari",
+              "alt": "A couple embraces by the sea with a horse on Maafushi beach, Maldives.",
+              "resort_key": "maafushi",
+              "resort_label_ru": "Маафуши",
+              "direction_label": "Мальдивы"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "shri-lanka",
+          "title_ru": "Шри-Ланка",
+          "current_wp_image": "country-shri-lanka.jpg",
+          "direction_slug": "sri_lanka",
+          "resort_keys_used": [
+            "mirissa",
+            "unawatuna"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 5675024,
+              "page": "https://www.pexels.com/photo/beachside-during-daytime-5675024/",
+              "original": "https://images.pexels.com/photos/5675024/pexels-photo-5675024.jpeg",
+              "thumb": "https://images.pexels.com/photos/5675024/pexels-photo-5675024.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/5675024/pexels-photo-5675024.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/5675024/pexels-photo-5675024.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Charith Kodagoda",
+              "alt": "Footprints in the sand on a tranquil beach in Mirissa, Sri Lanka at sunrise.",
+              "resort_key": "mirissa",
+              "resort_label_ru": "Мирисса",
+              "direction_label": "Шри-Ланка"
+            },
+            {
+              "variant": 2,
+              "id": 11398739,
+              "page": "https://www.pexels.com/photo/buildings-near-a-beach-shore-with-palm-trees-11398739/",
+              "original": "https://images.pexels.com/photos/11398739/pexels-photo-11398739.jpeg",
+              "thumb": "https://images.pexels.com/photos/11398739/pexels-photo-11398739.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/11398739/pexels-photo-11398739.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/11398739/pexels-photo-11398739.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Atlantic Ambience",
+              "alt": "Stunning sunset at Unawatuna Beach, Sri Lanka, with palm trees and ocean waves.",
+              "resort_key": "unawatuna",
+              "resort_label_ru": "Унаватуна",
+              "direction_label": "Шри-Ланка"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "vietnam",
+          "title_ru": "Вьетнам",
+          "current_wp_image": "dest-vietnam-new.jpg",
+          "direction_slug": "vietnam",
+          "resort_keys_used": [
+            "phu_quoc",
+            "nha_trang"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 5993070,
+              "page": "https://www.pexels.com/photo/green-tree-near-body-of-water-5993070/",
+              "original": "https://images.pexels.com/photos/5993070/pexels-photo-5993070.jpeg",
+              "thumb": "https://images.pexels.com/photos/5993070/pexels-photo-5993070.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/5993070/pexels-photo-5993070.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/5993070/pexels-photo-5993070.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Alesia  Kozik",
+              "alt": "Serene beach with lush greenery and rocky shore in Phu Quoc, Vietnam.",
+              "resort_key": "phu_quoc",
+              "resort_label_ru": "Фукуок",
+              "direction_label": "Вьетнам"
+            },
+            {
+              "variant": 2,
+              "id": 31154725,
+              "page": "https://www.pexels.com/photo/coastal-urban-landscape-in-nha-trang-vietnam-31154725/",
+              "original": "https://images.pexels.com/photos/31154725/pexels-photo-31154725.jpeg",
+              "thumb": "https://images.pexels.com/photos/31154725/pexels-photo-31154725.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/31154725/pexels-photo-31154725.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/31154725/pexels-photo-31154725.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "DUONG QUÁCH",
+              "alt": "Dramatic coastal cityscape featuring rocky shoreline in Nha Trang, Vietnam.",
+              "resort_key": "nha_trang",
+              "resort_label_ru": "Нячанг",
+              "direction_label": "Вьетнам"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "kitaj",
+          "title_ru": "Китай (Хайнань)",
+          "current_wp_image": "resort-sanya-2.jpg",
+          "direction_slug": "china_hainan",
+          "resort_keys_used": [
+            "sanya",
+            "yalong_bay"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 4242876,
+              "page": "https://www.pexels.com/photo/sea-beach-trees-and-buildings-4242876/",
+              "original": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg",
+              "thumb": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "光曦 刘",
+              "alt": "Aerial view of Sanya's beachfront with city skyline, palm trees, and clear water.",
+              "resort_key": "sanya",
+              "resort_label_ru": "Санья",
+              "direction_label": "Китай (Хайнань)"
+            },
+            {
+              "variant": 2,
+              "id": 5118136,
+              "page": "https://www.pexels.com/photo/beach-table-with-chairs-on-exotic-seashore-5118136/",
+              "original": "https://images.pexels.com/photos/5118136/pexels-photo-5118136.jpeg",
+              "thumb": "https://images.pexels.com/photos/5118136/pexels-photo-5118136.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/5118136/pexels-photo-5118136.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/5118136/pexels-photo-5118136.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Quang Nguyen Vinh",
+              "alt": "Beach table and chairs under straw umbrella amidst lush tropical palms located on sunny seacoast in exotic resort",
+              "resort_key": "yalong_bay",
+              "resort_label_ru": "Ялунвань",
+              "direction_label": "Китай (Хайнань)"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "indiya",
+          "title_ru": "Индия (Гоа)",
+          "current_wp_image": "country-indiya.jpg",
+          "direction_slug": "india_goa",
+          "resort_keys_used": [
+            "palolem",
+            "calangute"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 39182453,
+              "page": "https://www.pexels.com/photo/serene-beach-with-palm-tree-silhouette-at-sunset-39182453/",
+              "original": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg",
+              "thumb": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Abdullah Ahmad",
+              "alt": "A tranquil beach scene in Goa, India with a palm tree silhouette and parasailing in the distance during sunset.",
+              "resort_key": "palolem",
+              "resort_label_ru": "Палолем",
+              "direction_label": "Индия (Гоа)"
+            },
+            {
+              "variant": 2,
+              "id": 28688386,
+              "page": "https://www.pexels.com/photo/bustling-evening-street-scene-in-calangute-india-28688386/",
+              "original": "https://images.pexels.com/photos/28688386/pexels-photo-28688386.jpeg",
+              "thumb": "https://images.pexels.com/photos/28688386/pexels-photo-28688386.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/28688386/pexels-photo-28688386.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/28688386/pexels-photo-28688386.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Roman Saienko",
+              "alt": "Street scene at sunset in Calangute, India with palm trees and local shops.",
+              "resort_key": "calangute",
+              "resort_label_ru": "Калангут",
+              "direction_label": "Индия (Гоа)"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "indoneziya",
+          "title_ru": "Индонезия (Бали)",
+          "current_wp_image": "alt-indoneziya-beach-1.jpg",
+          "direction_slug": "indonesia_bali",
+          "resort_keys_used": [
+            "seminyak",
+            "nusa_dua"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 36184005,
+              "page": "https://www.pexels.com/photo/sunset-on-seminyak-beach-in-bali-36184005/",
+              "original": "https://images.pexels.com/photos/36184005/pexels-photo-36184005.jpeg",
+              "thumb": "https://images.pexels.com/photos/36184005/pexels-photo-36184005.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/36184005/pexels-photo-36184005.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/36184005/pexels-photo-36184005.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Tom Fisk",
+              "alt": "Beautiful sunset on Seminyak Beach, Bali with people enjoying the view and golden sands.",
+              "resort_key": "seminyak",
+              "resort_label_ru": "Семиньяк",
+              "direction_label": "Индонезия (Бали)"
+            },
+            {
+              "variant": 2,
+              "id": 38422897,
+              "page": "https://www.pexels.com/photo/tropical-beachfront-resort-with-palm-trees-38422897/",
+              "original": "https://images.pexels.com/photos/38422897/pexels-photo-38422897.jpeg",
+              "thumb": "https://images.pexels.com/photos/38422897/pexels-photo-38422897.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/38422897/pexels-photo-38422897.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/38422897/pexels-photo-38422897.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Holger  Raukamp",
+              "alt": "A stunning aerial view of a tropical beachfront resort with palm trees and ocean views in Bali.",
+              "resort_key": "nusa_dua",
+              "resort_label_ru": "Нуса-Дуа",
+              "direction_label": "Индонезия (Бали)"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "sejshely",
+          "title_ru": "Сейшелы",
+          "current_wp_image": "country-sejshely.jpg",
+          "direction_slug": "seychelles",
+          "resort_keys_used": [
+            "praslin",
+            "mahe"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 32544311,
+              "page": "https://www.pexels.com/photo/sunny-beach-day-at-anse-source-d-argent-32544311/",
+              "original": "https://images.pexels.com/photos/32544311/pexels-photo-32544311.jpeg",
+              "thumb": "https://images.pexels.com/photos/32544311/pexels-photo-32544311.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/32544311/pexels-photo-32544311.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/32544311/pexels-photo-32544311.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Vika Glitter",
+              "alt": "Man standing in the turquoise waters of Anse Source d'Argent, Seychelles, under clear summer skies.",
+              "resort_key": "praslin",
+              "resort_label_ru": "Праслин",
+              "direction_label": "Сейшелы"
+            },
+            {
+              "variant": 2,
+              "id": 39360577,
+              "page": "https://www.pexels.com/photo/idyllic-beach-scene-with-boats-and-palm-trees-in-seychelles-39360577/",
+              "original": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg",
+              "thumb": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Luca Cavallin",
+              "alt": "Serene tropical beach in Seychelles with clear waters, boats, and lush palm trees.",
+              "resort_key": "mahe",
+              "resort_label_ru": "Маэ",
+              "direction_label": "Сейшелы"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "uzbekistan",
+          "title_ru": "Узбекистан",
+          "current_wp_image": "resort-samarkand.jpg",
+          "direction_slug": "uzbekistan",
+          "resort_keys_used": [
+            "samarkand",
+            "bukhara"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 16386337,
+              "page": "https://www.pexels.com/photo/registan-square-in-samarkand-16386337/",
+              "original": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg",
+              "thumb": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "AXP Photography",
+              "alt": "Discover the ornate tilework and Islamic architecture of Registan Square, Samarkand, Uzbekistan.",
+              "resort_key": "samarkand",
+              "resort_label_ru": "Самарканд",
+              "direction_label": "Узбекистан"
+            },
+            {
+              "variant": 2,
+              "id": 36748305,
+              "page": "https://www.pexels.com/photo/historic-architecture-of-bukhara-at-dusk-36748305/",
+              "original": "https://images.pexels.com/photos/36748305/pexels-photo-36748305.jpeg",
+              "thumb": "https://images.pexels.com/photos/36748305/pexels-photo-36748305.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/36748305/pexels-photo-36748305.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/36748305/pexels-photo-36748305.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Talha Kılıç",
+              "alt": "Beautiful view of Bukhara, Uzbekistan's ancient domes and minaret at sunset.",
+              "resort_key": "bukhara",
+              "resort_label_ru": "Бухара",
+              "direction_label": "Узбекистан"
+            }
+          ],
+          "ready_for_swap": true
+        },
+        {
+          "hub_slug": "armeniya",
+          "title_ru": "Армения",
+          "current_wp_image": "alt-armeniya-yerevan.jpg",
+          "direction_slug": "armenia",
+          "resort_keys_used": [
+            "sevan",
+            "yerevan"
+          ],
+          "photos": [
+            {
+              "variant": 1,
+              "id": 17550070,
+              "page": "https://www.pexels.com/photo/sevanavank-monastery-in-armenia-17550070/",
+              "original": "https://images.pexels.com/photos/17550070/pexels-photo-17550070.jpeg",
+              "thumb": "https://images.pexels.com/photos/17550070/pexels-photo-17550070.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/17550070/pexels-photo-17550070.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/17550070/pexels-photo-17550070.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Vera Emilie",
+              "alt": "Historic Sevanavank Monastery with stone architecture under a clear sky in Armenia.",
+              "resort_key": "sevan",
+              "resort_label_ru": "Севан",
+              "direction_label": "Армения"
+            },
+            {
+              "variant": 2,
+              "id": 34235028,
+              "page": "https://www.pexels.com/photo/stunning-view-of-yerevan-from-the-cascade-complex-34235028/",
+              "original": "https://images.pexels.com/photos/34235028/pexels-photo-34235028.jpeg",
+              "thumb": "https://images.pexels.com/photos/34235028/pexels-photo-34235028.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "preview": "https://images.pexels.com/photos/34235028/pexels-photo-34235028.jpeg?auto=compress&cs=tinysrgb&w=960&h=600&fit=crop",
+              "large": "https://images.pexels.com/photos/34235028/pexels-photo-34235028.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "author": "Gabriele Niek",
+              "alt": "Panoramic view of Yerevan, Armenia from the Cascade Complex during late summer",
+              "resort_key": "yerevan",
+              "resort_label_ru": "Ереван",
+              "direction_label": "Армения"
+            }
+          ],
+          "ready_for_swap": true
+        }
+      ]
+    }
+  ]
+}

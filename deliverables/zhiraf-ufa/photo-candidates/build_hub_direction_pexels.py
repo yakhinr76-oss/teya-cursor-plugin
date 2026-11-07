@@ -56,13 +56,16 @@ def load_resorts_by_key(data: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 def photo_card(p: dict[str, Any], resort: dict[str, Any], variant: int) -> dict[str, Any]:
     orig = p.get("original") or ""
-    large = orig + ("&" if "?" in orig else "?") + "auto=compress&cs=tinysrgb&w=1400"
+    q = "&" if "?" in orig else "?"
+    large = f"{orig}{q}auto=compress&cs=tinysrgb&w=1400"
+    preview = f"{orig}{q}auto=compress&cs=tinysrgb&w=960&h=600&fit=crop"
     return {
         "variant": variant,
         "id": p.get("id"),
         "page": p.get("page"),
         "original": orig,
         "thumb": p.get("thumb") or orig,
+        "preview": preview,
         "large": large,
         "author": p.get("author"),
         "alt": p.get("alt"),
@@ -174,93 +177,113 @@ def main() -> None:
     md_path = os.path.join(HERE, "pexels-hub-direction-candidates.md")
     open(md_path, "w", encoding="utf-8").write("\n".join(md_lines))
 
-    payload = json.dumps({"tabs": tabs_out}, ensure_ascii=False).replace("</", "<\\/")
-    json_block = f'<script id="hub-data" type="application/json">\n{payload}\n</script>\n'
-    page = f"""<!DOCTYPE html>
+    page = render_static_hub_html(tabs_out)
+    for name in (
+        "pexels-hub-direction-candidates.html",
+        "СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html",
+    ):
+        open(os.path.join(HERE, name), "w", encoding="utf-8").write(page)
+
+    index_html = """<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="refresh" content="0;url=СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Кандидаты хаба направлений</title>
+</head>
+<body>
+  <p><a href="СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html">Открыть все кандидаты (Уфа + Москва) одной страницей</a></p>
+</body>
+</html>
+"""
+    open(os.path.join(HERE, "index.html"), "w", encoding="utf-8").write(index_html)
+    print("written", json_path, md_path, "pexels-hub-direction-candidates.html", "СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html", "index.html")
+
+
+def render_static_hub_html(tabs_out: list[dict[str, Any]]) -> str:
+    nav: list[str] = []
+    body: list[str] = []
+    for tab in tabs_out:
+        tid = html.escape(tab["tab"])
+        label = html.escape(tab["tab_label"])
+        nav.append(f'<a href="#tab-{tid}">{label}</a>')
+        body.append(f'<section class="tab" id="tab-{tid}"><h2>{label}</h2>')
+        for card in tab["cards"]:
+            title = html.escape(card["title_ru"])
+            wp = html.escape(card["current_wp_image"])
+            warn = ""
+            if len(card.get("photos") or []) < 2:
+                warn = ' <span class="warn">— меньше 2 кандидатов в базе</span>'
+            body.append(
+                f'<article class="card"><h3>{title}</h3>'
+                f'<p class="meta">Сейчас в теме: <code>{wp}</code>{warn}</p>'
+                f'<div class="grid">'
+            )
+            for p in card.get("photos") or []:
+                alt = html.escape(p.get("alt") or title)
+                src = html.escape(p.get("preview") or p.get("thumb") or "")
+                page_url = html.escape(p.get("page") or "")
+                resort = html.escape(p.get("resort_label_ru") or "")
+                vid = int(p.get("variant") or 0)
+                pid = html.escape(str(p.get("id") or ""))
+                body.append(
+                    f'<figure class="variant">'
+                    f'<div class="badge">Вариант {vid}</div>'
+                    f'<a href="{page_url}" target="_blank" rel="noopener">'
+                    f'<img src="{src}" alt="{alt}" width="960" height="600" loading="lazy" decoding="async"/>'
+                    f"</a>"
+                    f'<figcaption><strong>{resort}</strong> · ID {pid}'
+                    f' · <a href="{page_url}" target="_blank" rel="noopener">Pexels</a></figcaption>'
+                    f"</figure>"
+                )
+            body.append("</div></article>")
+        body.append("</section>")
+
+    return f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Хаб направлений — 2 фото на замену (кандидаты)</title>
+<title>Все кандидаты — хаб направлений (2 на карточку)</title>
 <style>
-:root{{--bg:#0a0e14;--panel:#141c26;--text:#e8eef4;--muted:#8fa3b8;--accent:#ff8c42;--ok:#5ec8ff;--border:#243041}}
+:root{{--bg:#0a0e14;--panel:#141c26;--text:#e8eef4;--muted:#8fa3b8;--accent:#ff8c42;--border:#243041}}
 *{{box-sizing:border-box}}
-body{{margin:0;font:14px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--text)}}
-header{{padding:16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,14,20,.95);z-index:5}}
-h1{{margin:0 0 6px;font-size:1.05rem}}
-p{{margin:0;color:var(--muted);font-size:.8rem}}
-main{{max-width:1100px;margin:0 auto;padding:16px 12px 48px}}
-.tab{{margin-bottom:28px}}
-.tab>h2{{font-size:.95rem;color:var(--accent);margin:0 0 12px}}
-.card{{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px}}
-.card h3{{margin:0 0 4px;font-size:1rem}}
-.meta{{font-size:.72rem;color:var(--muted);margin-bottom:10px}}
-.grid{{display:grid;grid-template-columns:1fr 1fr;gap:10px}}
-@media(max-width:640px){{.grid{{grid-template-columns:1fr}}}}
-.variant{{border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#000}}
-.variant.is-focus{{border-color:var(--accent)}}
-.variant img{{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}}
-.cap{{padding:8px 10px;font-size:.72rem;color:var(--muted)}}
-.cap strong{{color:var(--text)}}
-#lb{{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:20;align-items:center;justify-content:center;flex-direction:column;padding:16px}}
-#lb.open{{display:flex}}
-#lb img{{max-width:96vw;max-height:78vh;object-fit:contain}}
-#lb p{{color:var(--muted);font-size:.8rem;max-width:560px;text-align:center}}
-#lb button{{position:absolute;top:12px;right:12px}}
+body{{margin:0;font:15px/1.45 system-ui,sans-serif;background:var(--bg);color:var(--text)}}
+header{{padding:14px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,14,20,.97);z-index:5}}
+header h1{{margin:0 0 8px;font-size:1.1rem}}
+header p{{margin:0 0 10px;color:var(--muted);font-size:.82rem;max-width:52rem}}
+nav{{display:flex;flex-wrap:wrap;gap:8px}}
+nav a{{color:var(--accent);text-decoration:none;border:1px solid var(--border);padding:4px 12px;border-radius:999px;font-size:.8rem}}
+main{{max-width:1200px;margin:0 auto;padding:18px 14px 56px}}
+.tab{{margin-bottom:36px;scroll-margin-top:88px}}
+.tab>h2{{font-size:1.05rem;color:var(--accent);margin:0 0 16px}}
+.card{{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:18px}}
+.card h3{{margin:0 0 6px;font-size:1.05rem}}
+.meta{{font-size:.78rem;color:var(--muted);margin:0 0 14px}}
+.grid{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+@media(max-width:720px){{.grid{{grid-template-columns:1fr}}}}
+.variant{{margin:0;position:relative;background:#000;border-radius:10px;overflow:hidden;border:1px solid #2a3544}}
+.badge{{position:absolute;top:10px;left:10px;z-index:2;background:rgba(0,0,0,.72);color:#fff;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:6px}}
+.variant img{{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}}
+.variant a{{display:block;line-height:0}}
+figcaption{{padding:10px 12px;font-size:.78rem;color:var(--muted)}}
+figcaption a{{color:#5ec8ff}}
 .warn{{color:#f5a623}}
 </style>
 </head>
 <body>
 <header>
-<h1>Кандидаты для карточек «Актуальные предложения»</h1>
-<p>По 2 снимка из базы курортов на направление. Клик — крупно. Это <strong>не</strong> сайт: только согласование перед заменой `dest-*-new.jpg` в теме.</p>
+<h1>Кандидаты для «Актуальные предложения» — всё на одной странице</h1>
+<p>Прокрутите вниз: у каждого направления сразу видны <strong>вариант 1</strong> и <strong>вариант 2</strong> (крупные превью). Ничего не нужно открывать по отдельности. После выбора пишите в чат: «Турция — 2, ОАЭ — 1» и т.д.</p>
+<nav>{"".join(nav)}</nav>
 </header>
-<main id="app"></main>
-<div id="lb"><button type="button" onclick="document.getElementById('lb').classList.remove('open')">Закрыть</button><img id="lb-img" alt=""/><p id="lb-txt"></p></div>
-{json_block}
-<script>
-const DATA = JSON.parse(document.getElementById('hub-data').textContent);
-const app = document.getElementById('app');
-const lb = document.getElementById('lb');
-const lbImg = document.getElementById('lb-img');
-const lbTxt = document.getElementById('lb-txt');
-function openLb(p, title, variant) {{
-  lbImg.src = p.large || p.original;
-  lbTxt.innerHTML = '<strong>' + title + '</strong> · вариант ' + variant + '<br>ID ' + p.id + ' · ' + (p.resort_label_ru||'') + '<br>' + (p.alt||'') + '<br><a style="color:#5ec8ff" href="' + p.page + '" target="_blank" rel="noopener">Pexels</a>';
-  lb.classList.add('open');
-}}
-for (const tab of DATA.tabs) {{
-  const sec = document.createElement('section');
-  sec.className = 'tab';
-  sec.innerHTML = '<h2>' + tab.tab_label + '</h2>';
-  for (const c of tab.cards) {{
-    const card = document.createElement('div');
-    card.className = 'card';
-    const ready = c.photos && c.photos.length >= 2;
-    card.innerHTML = '<h3>' + c.title_ru + '</h3><div class="meta">Сейчас: <code>' + c.current_wp_image + '</code>'
-      + (ready ? '' : ' · <span class="warn">меньше 2 кандидатов в базе</span>') + '</div>';
-    const gr = document.createElement('div');
-    gr.className = 'grid';
-    (c.photos||[]).forEach(p => {{
-      const v = document.createElement('div');
-      v.className = 'variant';
-      v.innerHTML = '<img loading="lazy" src="' + p.thumb + '" alt=""/><div class="cap"><strong>Вариант ' + p.variant + '</strong> · ' + (p.resort_label_ru||'') + ' · ID ' + p.id + '</div>';
-      v.onclick = () => openLb(p, c.title_ru, p.variant);
-      gr.appendChild(v);
-    }});
-    card.appendChild(gr);
-    sec.appendChild(card);
-  }}
-  app.appendChild(sec);
-}}
-lb.onclick = (e) => {{ if (e.target === lb) lb.classList.remove('open'); }};
-</script>
+<main>
+{"".join(body)}
+</main>
 </body>
 </html>
 """
-    html_path = os.path.join(HERE, "pexels-hub-direction-candidates.html")
-    open(html_path, "w", encoding="utf-8").write(page)
-    print("written", json_path, md_path, html_path)
 
 
 if __name__ == "__main__":

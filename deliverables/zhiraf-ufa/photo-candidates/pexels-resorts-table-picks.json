@@ -1,0 +1,2576 @@
+{
+  "version": 1,
+  "description": "2 Pexels photos per resort (hub geography table)",
+  "photos_per_resort_target": 2,
+  "total_resorts": 74,
+  "total_photos": 148,
+  "directions": [
+    {
+      "slug": "turkey",
+      "label": "Турция",
+      "resorts": [
+        {
+          "key": "antalya",
+          "label_ru": "Анталья",
+          "queries": [
+            "antalya turkey mediterranean beach resort sunny"
+          ],
+          "photos": [
+            {
+              "id": 2880483,
+              "page": "https://www.pexels.com/photo/people-relaxing-on-the-beach-2880483/",
+              "original": "https://images.pexels.com/photos/2880483/pexels-photo-2880483.jpeg",
+              "thumb": "https://images.pexels.com/photos/2880483/pexels-photo-2880483.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7952,
+              "height": 5304,
+              "author": "Engin Akyurt",
+              "alt": "Relaxing on wooden platforms by the beach in Antalya, Turkey.",
+              "avg_color": "#616F72",
+              "query_used": "antalya turkey mediterranean beach resort sunny"
+            },
+            {
+              "id": 20771467,
+              "page": "https://www.pexels.com/photo/scenic-beachfront-with-visitors-enjoying-the-clear-blue-waters-20771467/",
+              "original": "https://images.pexels.com/photos/20771467/pexels-photo-20771467.jpeg",
+              "thumb": "https://images.pexels.com/photos/20771467/pexels-photo-20771467.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6203,
+              "height": 4135,
+              "author": "Çağrı KANMAZ",
+              "alt": "People enjoying a sunny day at a Mediterranean beach with clear blue waters and beachfront hotels.",
+              "avg_color": "#7BA4B6",
+              "query_used": "antalya turkey mediterranean beach resort sunny"
+            }
+          ]
+        },
+        {
+          "key": "kemer",
+          "label_ru": "Кемер",
+          "queries": [
+            "kemer turkey beach mountains resort sunny"
+          ],
+          "photos": [
+            {
+              "id": 12955620,
+              "page": "https://www.pexels.com/photo/family-walking-along-ocean-12955620/",
+              "original": "https://images.pexels.com/photos/12955620/pexels-photo-12955620.jpeg",
+              "thumb": "https://images.pexels.com/photos/12955620/pexels-photo-12955620.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Atlantic Ambience",
+              "alt": "Family enjoying a sunny day at Kemer beach with mountains in the background.",
+              "avg_color": "#788399",
+              "query_used": "kemer turkey beach mountains resort sunny"
+            },
+            {
+              "id": 32977129,
+              "page": "https://www.pexels.com/photo/sunny-mediterranean-beachfront-promenade-scene-32977129/",
+              "original": "https://images.pexels.com/photos/32977129/pexels-photo-32977129.jpeg",
+              "thumb": "https://images.pexels.com/photos/32977129/pexels-photo-32977129.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6192,
+              "height": 4128,
+              "author": "İbrahim  Bozkurt",
+              "alt": "Palm-lined promenade along a sunny Mediterranean beach with mountains.",
+              "avg_color": "#757A73",
+              "query_used": "kemer turkey beach mountains resort sunny"
+            }
+          ]
+        },
+        {
+          "key": "side",
+          "label_ru": "Сиде",
+          "queries": [
+            "side turkey ancient ruins beach resort sunny"
+          ],
+          "photos": [
+            {
+              "id": 19045470,
+              "page": "https://www.pexels.com/photo/ancient-arch-over-road-19045470/",
+              "original": "https://images.pexels.com/photos/19045470/pexels-photo-19045470.jpeg",
+              "thumb": "https://images.pexels.com/photos/19045470/pexels-photo-19045470.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8688,
+              "height": 5792,
+              "author": "Max Renard",
+              "alt": "Explore the ancient Roman arch in Side, Turkey, showcasing historical ruins under a sunny sky.",
+              "avg_color": "#877B6B",
+              "query_used": "side turkey ancient ruins beach resort sunny"
+            },
+            {
+              "id": 38330939,
+              "page": "https://www.pexels.com/photo/ancient-ruins-at-side-for-iconic-travel-experience-38330939/",
+              "original": "https://images.pexels.com/photos/38330939/pexels-photo-38330939.jpeg",
+              "thumb": "https://images.pexels.com/photos/38330939/pexels-photo-38330939.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6123,
+              "height": 4082,
+              "author": "tahsin can önalp",
+              "alt": "Travelers enjoy the ancient ruins by the sea in Side, Turkey, under a clear blue sky.",
+              "avg_color": "#969EA9",
+              "query_used": "side turkey ancient ruins beach resort sunny"
+            }
+          ]
+        },
+        {
+          "key": "belek",
+          "label_ru": "Белек",
+          "queries": [
+            "belek turkey golf resort beach palm sunny"
+          ],
+          "photos": [
+            {
+              "id": 34980246,
+              "page": "https://www.pexels.com/photo/tropical-beach-landscape-with-palm-trees-and-umbrellas-34980246/",
+              "original": "https://images.pexels.com/photos/34980246/pexels-photo-34980246.jpeg",
+              "thumb": "https://images.pexels.com/photos/34980246/pexels-photo-34980246.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6192,
+              "height": 4128,
+              "author": "Vasyl D",
+              "alt": "Scenic view of tropical palm trees and umbrellas on a sunny beach resort.",
+              "avg_color": "#788071",
+              "query_used": "belek turkey golf resort beach palm sunny"
+            },
+            {
+              "id": 12932754,
+              "page": "https://www.pexels.com/photo/palm-tree-growing-on-the-beach-by-the-sea-12932754/",
+              "original": "https://images.pexels.com/photos/12932754/pexels-photo-12932754.jpeg",
+              "thumb": "https://images.pexels.com/photos/12932754/pexels-photo-12932754.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Atlantic Ambience",
+              "alt": "Idyllic beach view in Alanya, Turkey featuring a lone palm tree and mountainous coastline.",
+              "avg_color": "#799FA0",
+              "query_used": "belek turkey golf resort beach palm sunny"
+            }
+          ]
+        },
+        {
+          "key": "alanya",
+          "label_ru": "Аланья",
+          "queries": [
+            "alanya turkey kleopatra beach castle sunny"
+          ],
+          "photos": [
+            {
+              "id": 11116337,
+              "page": "https://www.pexels.com/photo/alanya-castle-on-the-seashore-in-turkey-11116337/",
+              "original": "https://images.pexels.com/photos/11116337/pexels-photo-11116337.jpeg",
+              "thumb": "https://images.pexels.com/photos/11116337/pexels-photo-11116337.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Kamp Ve Enduro",
+              "alt": "Scenic view of Alanya Castle with serene seashore and hillside dwellings in Turkey.",
+              "avg_color": "#7F8D96",
+              "query_used": "alanya turkey kleopatra beach castle sunny"
+            },
+            {
+              "id": 19072409,
+              "page": "https://www.pexels.com/photo/medieval-alanya-castle-overlooking-sea-19072409/",
+              "original": "https://images.pexels.com/photos/19072409/pexels-photo-19072409.jpeg",
+              "thumb": "https://images.pexels.com/photos/19072409/pexels-photo-19072409.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Emre  Simsek",
+              "alt": "A stunning view of Alanya Castle with the sea and mountains in the background, Turkey.",
+              "avg_color": "#929FA5",
+              "query_used": "alanya turkey kleopatra beach castle sunny"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "uae",
+      "label": "ОАЭ",
+      "resorts": [
+        {
+          "key": "dubai",
+          "label_ru": "Дубай",
+          "queries": [
+            "dubai marina skyline beach luxury sunny"
+          ],
+          "photos": [
+            {
+              "id": 31692133,
+              "page": "https://www.pexels.com/photo/stunning-view-of-dubai-marina-with-luxurious-yachts-31692133/",
+              "original": "https://images.pexels.com/photos/31692133/pexels-photo-31692133.jpeg",
+              "thumb": "https://images.pexels.com/photos/31692133/pexels-photo-31692133.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Subbu Rayan",
+              "alt": "Explore the breathtaking skyline of Dubai Marina with luxury yachts in the foreground, capturing the essence of Dubai's opulence.",
+              "avg_color": "#7F8585",
+              "query_used": "dubai marina skyline beach luxury sunny"
+            },
+            {
+              "id": 28350360,
+              "page": "https://www.pexels.com/photo/dubai-marina-dubai-uae-28350360/",
+              "original": "https://images.pexels.com/photos/28350360/pexels-photo-28350360.jpeg",
+              "thumb": "https://images.pexels.com/photos/28350360/pexels-photo-28350360.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Denys Gromov",
+              "alt": "Explore the breathtaking skyline of Dubai Marina with iconic skyscrapers and luxury yachts.",
+              "avg_color": "#5E686A",
+              "query_used": "dubai marina skyline beach luxury sunny"
+            }
+          ]
+        },
+        {
+          "key": "sharjah",
+          "label_ru": "Шарджа",
+          "queries": [
+            "sharjah uae corniche mosque waterfront sunny"
+          ],
+          "photos": [
+            {
+              "id": 35471383,
+              "page": "https://www.pexels.com/photo/sharjah-corniche-view-with-elegant-staircase-35471383/",
+              "original": "https://images.pexels.com/photos/35471383/pexels-photo-35471383.jpeg",
+              "thumb": "https://images.pexels.com/photos/35471383/pexels-photo-35471383.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Plastic Lines",
+              "alt": "Elegant corniche view in Sharjah with steps leading to waterfront skyline.",
+              "avg_color": "#6D8492",
+              "query_used": "sharjah uae corniche mosque waterfront sunny"
+            },
+            {
+              "id": 36879667,
+              "page": "https://www.pexels.com/photo/sharjah-skyline-with-mosque-by-waterfront-36879667/",
+              "original": "https://images.pexels.com/photos/36879667/pexels-photo-36879667.jpeg",
+              "thumb": "https://images.pexels.com/photos/36879667/pexels-photo-36879667.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Siarhei Nester",
+              "alt": "Captivating view of Sharjah's skyline with a prominent mosque by the waterfront under a clear blue sky.",
+              "avg_color": "#628696",
+              "query_used": "sharjah uae corniche mosque waterfront sunny"
+            }
+          ]
+        },
+        {
+          "key": "ras_al_khaimah",
+          "label_ru": "Рас-эль-Хайма",
+          "queries": [
+            "ras al khaimah uae beach hotel waterfront sunny",
+            "al hamra beach ras al khaimah uae"
+          ],
+          "photos": [
+            {
+              "id": 39401173,
+              "page": "https://www.pexels.com/photo/man-relaxing-on-ras-al-khaimah-beach-39401173/",
+              "original": "https://images.pexels.com/photos/39401173/pexels-photo-39401173.jpeg",
+              "thumb": "https://images.pexels.com/photos/39401173/pexels-photo-39401173.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6774,
+              "height": 4492,
+              "author": "Siarhei Nester",
+              "alt": "A man standing on a serene beach in Ras Al Khaimah, surrounded by palm trees under a clear sky.",
+              "avg_color": "#B1AEA7",
+              "query_used": "ras al khaimah uae beach hotel waterfront sunny"
+            },
+            {
+              "id": 12309388,
+              "page": "https://www.pexels.com/photo/a-footbridge-leading-to-a-residence-12309388/",
+              "original": "https://images.pexels.com/photos/12309388/pexels-photo-12309388.jpeg",
+              "thumb": "https://images.pexels.com/photos/12309388/pexels-photo-12309388.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Denys Gromov",
+              "alt": "Elegant residential villa in Ras Al Khaimah, United Arab Emirates, with a scenic archway and footbridge.",
+              "avg_color": "#5E6254",
+              "query_used": "ras al khaimah uae beach hotel waterfront sunny"
+            }
+          ]
+        },
+        {
+          "key": "fujairah",
+          "label_ru": "Фуджейра",
+          "queries": [
+            "fujairah uae beach corniche gulf of oman",
+            "al aqah beach fujairah uae"
+          ],
+          "photos": [
+            {
+              "id": 34900978,
+              "page": "https://www.pexels.com/photo/aerial-view-of-fujairah-beach-with-cars-and-ocean-34900978/",
+              "original": "https://images.pexels.com/photos/34900978/pexels-photo-34900978.jpeg",
+              "thumb": "https://images.pexels.com/photos/34900978/pexels-photo-34900978.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8064,
+              "height": 4536,
+              "author": "Eslam Mohammed Abdelmaksoud",
+              "alt": "A stunning aerial view of Fujairah beach with cars parked along the shoreline and people enjoying the ocean waves.",
+              "avg_color": "#607A7B",
+              "query_used": "al aqah beach fujairah uae"
+            },
+            {
+              "id": 34900979,
+              "page": "https://www.pexels.com/photo/aerial-view-of-fujairah-beach-with-cars-and-waves-34900979/",
+              "original": "https://images.pexels.com/photos/34900979/pexels-photo-34900979.jpeg",
+              "thumb": "https://images.pexels.com/photos/34900979/pexels-photo-34900979.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8064,
+              "height": 4536,
+              "author": "Eslam Mohammed Abdelmaksoud",
+              "alt": "Breathtaking aerial view of Fujairah beach showing parked cars, ocean waves, and beachgoers enjoying the scenery.",
+              "avg_color": "#607576",
+              "query_used": "al aqah beach fujairah uae"
+            }
+          ]
+        },
+        {
+          "key": "ajman",
+          "label_ru": "Аджман",
+          "queries": [
+            "ajman corniche beach united arab emirates",
+            "ajman city beach uae skyline",
+            "al nuaimiya beach ajman uae",
+            "ajman uae fishing harbour waterfront"
+          ],
+          "photos": [
+            {
+              "id": 38920439,
+              "page": "https://www.pexels.com/photo/scenic-beach-and-architectural-landmark-view-38920439/",
+              "original": "https://images.pexels.com/photos/38920439/pexels-photo-38920439.jpeg",
+              "thumb": "https://images.pexels.com/photos/38920439/pexels-photo-38920439.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5461,
+              "author": "Tayssir Kadamany",
+              "alt": "A beautiful beach with a unique architectural structure under a sunny sky.",
+              "avg_color": "#AAA9A5",
+              "query_used": "ajman corniche beach united arab emirates"
+            },
+            {
+              "id": 12309389,
+              "page": "https://www.pexels.com/photo/boardwalk-on-summer-resort-12309389/",
+              "original": "https://images.pexels.com/photos/12309389/pexels-photo-12309389.jpeg",
+              "thumb": "https://images.pexels.com/photos/12309389/pexels-photo-12309389.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Denys Gromov",
+              "alt": "A picturesque boardwalk leading to a tropical beach resort with palm trees and clear blue skies.",
+              "avg_color": "#666759",
+              "query_used": "al nuaimiya beach ajman uae"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "egypt",
+      "label": "Египет",
+      "resorts": [
+        {
+          "key": "sharm_el_sheikh",
+          "label_ru": "Шарм-эль-Шейх",
+          "queries": [
+            "sharm el sheikh red sea resort coral beach sunny"
+          ],
+          "photos": [
+            {
+              "id": 15276400,
+              "page": "https://www.pexels.com/photo/clouds-over-sea-shore-with-beach-umbrellas-15276400/",
+              "original": "https://images.pexels.com/photos/15276400/pexels-photo-15276400.jpeg",
+              "thumb": "https://images.pexels.com/photos/15276400/pexels-photo-15276400.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Anastasiia Popova",
+              "alt": "Stunning aerial view of Sharm El Sheikh's beach and sea during sunset with boats and parasols.",
+              "avg_color": "#8F9297",
+              "query_used": "sharm el sheikh red sea resort coral beach sunny"
+            },
+            {
+              "id": 34939771,
+              "page": "https://www.pexels.com/photo/scenic-coastal-view-of-sharm-el-sheikh-at-sunset-34939771/",
+              "original": "https://images.pexels.com/photos/34939771/pexels-photo-34939771.jpeg",
+              "thumb": "https://images.pexels.com/photos/34939771/pexels-photo-34939771.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Agung Pandit Wiguna",
+              "alt": "Breathtaking view of Sharm El Sheikh coastline at sunset with calm sea and resort buildings.",
+              "avg_color": "#BDB199",
+              "query_used": "sharm el sheikh red sea resort coral beach sunny"
+            }
+          ]
+        },
+        {
+          "key": "hurghada",
+          "label_ru": "Хургада",
+          "queries": [
+            "hurghada egypt red sea resort beach palm"
+          ],
+          "photos": [
+            {
+              "id": 24913567,
+              "page": "https://www.pexels.com/photo/sea-star-beau-rivage-hotel-in-egypt-24913567/",
+              "original": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg",
+              "thumb": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7680,
+              "height": 5132,
+              "author": "Valera Rychman",
+              "alt": "Elegant hotel with palm trees and poolside in Hurghada, Egypt during a sunny day.",
+              "avg_color": "#6E7273",
+              "query_used": "hurghada egypt red sea resort beach palm"
+            },
+            {
+              "id": 28376565,
+              "page": "https://www.pexels.com/photo/egipt-hurghada-28376565/",
+              "original": "https://images.pexels.com/photos/28376565/pexels-photo-28376565.jpeg",
+              "thumb": "https://images.pexels.com/photos/28376565/pexels-photo-28376565.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 9504,
+              "height": 6336,
+              "author": "Ditmar Tabacaru",
+              "alt": "A serene view of straw sun umbrellas on the sandy beach of Hurghada, Egypt.",
+              "avg_color": "#B8AAA1",
+              "query_used": "hurghada egypt red sea resort beach palm"
+            }
+          ]
+        },
+        {
+          "key": "makadi_bay",
+          "label_ru": "Макади-Бей",
+          "queries": [
+            "makadi bay egypt red sea resort beach"
+          ],
+          "photos": [
+            {
+              "id": 31166900,
+              "page": "https://www.pexels.com/photo/sunny-beach-day-at-coastal-resort-31166900/",
+              "original": "https://images.pexels.com/photos/31166900/pexels-photo-31166900.jpeg",
+              "thumb": "https://images.pexels.com/photos/31166900/pexels-photo-31166900.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4000,
+              "author": "Vika Glitter",
+              "alt": "Aerial view of vibrant beach resort with umbrellas and blue sea.",
+              "avg_color": "#91A0A3",
+              "query_used": "makadi bay egypt red sea resort beach"
+            },
+            {
+              "id": 8158121,
+              "page": "https://www.pexels.com/photo/green-palm-trees-near-swimming-pool-8158121/",
+              "original": "https://images.pexels.com/photos/8158121/pexels-photo-8158121.jpeg",
+              "thumb": "https://images.pexels.com/photos/8158121/pexels-photo-8158121.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Tarek El Ansary Ansary",
+              "alt": "Stunning seaside resort with palm trees and a swimming pool in Taba, Egypt.",
+              "avg_color": "#B1B5B4",
+              "query_used": "makadi bay egypt red sea resort beach"
+            }
+          ]
+        },
+        {
+          "key": "marsa_alam",
+          "label_ru": "Марса-Алам",
+          "queries": [
+            "marsa alam egypt red sea diving coral beach"
+          ],
+          "photos": [
+            {
+              "id": 21554937,
+              "page": "https://www.pexels.com/photo/sand-on-the-beach-in-the-sunlight-21554937/",
+              "original": "https://images.pexels.com/photos/21554937/pexels-photo-21554937.jpeg",
+              "thumb": "https://images.pexels.com/photos/21554937/pexels-photo-21554937.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Fuka jaz",
+              "alt": "Detailed view of coral fragments casting shadows on sandy beach under sunlight.",
+              "avg_color": "#A38F84",
+              "query_used": "marsa alam egypt red sea diving coral beach"
+            },
+            {
+              "id": 16897980,
+              "page": "https://www.pexels.com/photo/a-red-textured-piece-of-reef-on-the-beach-16897980/",
+              "original": "https://images.pexels.com/photos/16897980/pexels-photo-16897980.jpeg",
+              "thumb": "https://images.pexels.com/photos/16897980/pexels-photo-16897980.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Francesco Ungaro",
+              "alt": "Close-up of a vivid red coral piece on a sandy beach, showcasing natural textures.",
+              "avg_color": "#6C665A",
+              "query_used": "marsa alam egypt red sea diving coral beach"
+            }
+          ]
+        },
+        {
+          "key": "sahl_hasheesh",
+          "label_ru": "Сахл-Хашиш",
+          "queries": [
+            "sahl hasheesh hurghada egypt luxury resort"
+          ],
+          "photos": [
+            {
+              "id": 24913567,
+              "page": "https://www.pexels.com/photo/sea-star-beau-rivage-hotel-in-egypt-24913567/",
+              "original": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg",
+              "thumb": "https://images.pexels.com/photos/24913567/pexels-photo-24913567.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7680,
+              "height": 5132,
+              "author": "Valera Rychman",
+              "alt": "Elegant hotel with palm trees and poolside in Hurghada, Egypt during a sunny day.",
+              "avg_color": "#6E7273",
+              "query_used": "sahl hasheesh hurghada egypt luxury resort"
+            },
+            {
+              "id": 28376565,
+              "page": "https://www.pexels.com/photo/egipt-hurghada-28376565/",
+              "original": "https://images.pexels.com/photos/28376565/pexels-photo-28376565.jpeg",
+              "thumb": "https://images.pexels.com/photos/28376565/pexels-photo-28376565.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 9504,
+              "height": 6336,
+              "author": "Ditmar Tabacaru",
+              "alt": "A serene view of straw sun umbrellas on the sandy beach of Hurghada, Egypt.",
+              "avg_color": "#B8AAA1",
+              "query_used": "sahl hasheesh hurghada egypt luxury resort"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "thailand",
+      "label": "Таиланд",
+      "resorts": [
+        {
+          "key": "phuket",
+          "label_ru": "Пхукет",
+          "queries": [
+            "phuket thailand tropical beach palm turquoise"
+          ],
+          "photos": [
+            {
+              "id": 4679438,
+              "page": "https://www.pexels.com/photo/beautiful-beach-with-calm-blue-waters-4679438/",
+              "original": "https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg",
+              "thumb": "https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6600,
+              "height": 4400,
+              "author": "Image Studio",
+              "alt": "Serene tropical beach view with palm trees and turquoise waters in Phuket, Thailand.",
+              "avg_color": "#6C7881",
+              "query_used": "phuket thailand tropical beach palm turquoise"
+            },
+            {
+              "id": 31029734,
+              "page": "https://www.pexels.com/photo/scenic-sunset-over-phuket-beach-with-palm-31029734/",
+              "original": "https://images.pexels.com/photos/31029734/pexels-photo-31029734.jpeg",
+              "thumb": "https://images.pexels.com/photos/31029734/pexels-photo-31029734.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5464,
+              "author": "Ali Kazal",
+              "alt": "Stunning sunset view over a calm beach in Phuket, Thailand, with silhouetted palm tree and vibrant sky.",
+              "avg_color": "#676654",
+              "query_used": "phuket thailand tropical beach palm turquoise"
+            }
+          ]
+        },
+        {
+          "key": "pattaya",
+          "label_ru": "Паттайя",
+          "queries": [
+            "pattaya thailand beach waterfront city sunset"
+          ],
+          "photos": [
+            {
+              "id": 36708121,
+              "page": "https://www.pexels.com/photo/sunset-silhouette-at-rayong-beach-thailand-36708121/",
+              "original": "https://images.pexels.com/photos/36708121/pexels-photo-36708121.jpeg",
+              "thumb": "https://images.pexels.com/photos/36708121/pexels-photo-36708121.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 9300,
+              "height": 6328,
+              "author": "Gatsby Yang",
+              "alt": "Silhouette of a person celebrating under a vibrant sunset sky on Rayong Beach, Thailand.",
+              "avg_color": "#835B5C",
+              "query_used": "pattaya thailand beach waterfront city sunset"
+            },
+            {
+              "id": 37649370,
+              "page": "https://www.pexels.com/photo/stunning-city-skyline-at-sunset-on-beach-37649370/",
+              "original": "https://images.pexels.com/photos/37649370/pexels-photo-37649370.jpeg",
+              "thumb": "https://images.pexels.com/photos/37649370/pexels-photo-37649370.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Ec lipse",
+              "alt": "A breathtaking city skyline at sunset with reflections in the beach sands. Peaceful and dramatic scene.",
+              "avg_color": "#695F5D",
+              "query_used": "pattaya thailand beach waterfront city sunset"
+            }
+          ]
+        },
+        {
+          "key": "samui",
+          "label_ru": "Самуи",
+          "queries": [
+            "koh samui thailand chaweng beach palm",
+            "lamai beach koh samui thailand"
+          ],
+          "photos": [
+            {
+              "id": 5567082,
+              "page": "https://www.pexels.com/photo/beautiful-natural-landscape-near-body-of-water-5567082/",
+              "original": "https://images.pexels.com/photos/5567082/pexels-photo-5567082.jpeg",
+              "thumb": "https://images.pexels.com/photos/5567082/pexels-photo-5567082.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 9334,
+              "height": 6223,
+              "author": "Mike To",
+              "alt": "Breathtaking view of Koh Samui's tropical coastline with lush greenery and azure sea.",
+              "avg_color": "#495D6E",
+              "query_used": "koh samui thailand chaweng beach palm"
+            },
+            {
+              "id": 10046457,
+              "page": "https://www.pexels.com/photo/sunset-at-the-beach-area-10046457/",
+              "original": "https://images.pexels.com/photos/10046457/pexels-photo-10046457.jpeg",
+              "thumb": "https://images.pexels.com/photos/10046457/pexels-photo-10046457.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6720,
+              "height": 4480,
+              "author": "Max Mishin",
+              "alt": "A stunning sunset over the ocean in Samui, Thailand, framed by palm leaves.",
+              "avg_color": "#4E240C",
+              "query_used": "koh samui thailand chaweng beach palm"
+            }
+          ]
+        },
+        {
+          "key": "khao_lak",
+          "label_ru": "Као Лак",
+          "queries": [
+            "khao lak thailand beach national park"
+          ],
+          "photos": [
+            {
+              "id": 31833467,
+              "page": "https://www.pexels.com/photo/serene-beachscape-at-ban-tai-thailand-31833467/",
+              "original": "https://images.pexels.com/photos/31833467/pexels-photo-31833467.jpeg",
+              "thumb": "https://images.pexels.com/photos/31833467/pexels-photo-31833467.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Tom Lorber",
+              "alt": "Explore the tranquil beach at Ban Tai, Thailand, with lush greenery and golden sands.",
+              "avg_color": "#9CAA9B",
+              "query_used": "khao lak thailand beach national park"
+            },
+            {
+              "id": 31029377,
+              "page": "https://www.pexels.com/photo/tropical-beach-scene-in-phuket-thailand-31029377/",
+              "original": "https://images.pexels.com/photos/31029377/pexels-photo-31029377.jpeg",
+              "thumb": "https://images.pexels.com/photos/31029377/pexels-photo-31029377.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7982,
+              "height": 5324,
+              "author": "Ali Kazal",
+              "alt": "Scenic view of a tranquil beach in Phuket, Thailand with boats and mountains in the background.",
+              "avg_color": "#ACAFA6",
+              "query_used": "khao lak thailand beach national park"
+            }
+          ]
+        },
+        {
+          "key": "krabi",
+          "label_ru": "Краби",
+          "queries": [
+            "krabi thailand railay phi phi limestone turquoise"
+          ],
+          "photos": [
+            {
+              "id": 35126792,
+              "page": "https://www.pexels.com/photo/stunning-beach-paradise-in-krabi-thailand-35126792/",
+              "original": "https://images.pexels.com/photos/35126792/pexels-photo-35126792.jpeg",
+              "thumb": "https://images.pexels.com/photos/35126792/pexels-photo-35126792.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Siarhei Nester",
+              "alt": "Turquoise waters and limestone cliffs in Krabi, Thailand offer a breathtaking beach view.",
+              "avg_color": "#7F8A82",
+              "query_used": "krabi thailand railay phi phi limestone turquoise"
+            },
+            {
+              "id": 35126790,
+              "page": "https://www.pexels.com/photo/idyllic-beach-at-maya-bay-in-krabi-thailand-35126790/",
+              "original": "https://images.pexels.com/photos/35126790/pexels-photo-35126790.jpeg",
+              "thumb": "https://images.pexels.com/photos/35126790/pexels-photo-35126790.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Siarhei Nester",
+              "alt": "Stunning view of Maya Bay's turquoise waters and limestone cliffs in Krabi, Thailand.",
+              "avg_color": "#808B87",
+              "query_used": "krabi thailand railay phi phi limestone turquoise"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "russia",
+      "label": "Россия",
+      "resorts": [
+        {
+          "key": "sochi",
+          "label_ru": "Сочи",
+          "queries": [
+            "sochi russia black sea palm promenade sunny"
+          ],
+          "photos": [
+            {
+              "id": 14786125,
+              "page": "https://www.pexels.com/photo/view-of-palm-trees-in-a-park-in-sochi-russia-14786125/",
+              "original": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg",
+              "thumb": "https://images.pexels.com/photos/14786125/pexels-photo-14786125.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Serg Alesenko",
+              "alt": "Palm trees and pathways in a sunny Sochi resort park, perfect for a summer stroll.",
+              "avg_color": "#94927D",
+              "query_used": "sochi russia black sea palm promenade sunny"
+            },
+            {
+              "id": 32977132,
+              "page": "https://www.pexels.com/photo/beachfront-promenade-with-palm-trees-and-scooter-32977132/",
+              "original": "https://images.pexels.com/photos/32977132/pexels-photo-32977132.jpeg",
+              "thumb": "https://images.pexels.com/photos/32977132/pexels-photo-32977132.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6192,
+              "height": 4128,
+              "author": "İbrahim  Bozkurt",
+              "alt": "Sunny day at a coastal promenade featuring palm trees, a scooter, and strolling people.",
+              "avg_color": "#6E7F79",
+              "query_used": "sochi russia black sea palm promenade sunny"
+            }
+          ]
+        },
+        {
+          "key": "adler",
+          "label_ru": "Адлер",
+          "queries": [
+            "adler sochi russia beach olympic park sea"
+          ],
+          "photos": [
+            {
+              "id": 8708807,
+              "page": "https://www.pexels.com/photo/people-on-the-beach-8708807/",
+              "original": "https://images.pexels.com/photos/8708807/pexels-photo-8708807.jpeg",
+              "thumb": "https://images.pexels.com/photos/8708807/pexels-photo-8708807.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Наталья Маркина",
+              "alt": "A lively summer day at Sochi beach with people enjoying the sea under a stormy sky.",
+              "avg_color": "#66707C",
+              "query_used": "adler sochi russia beach olympic park sea"
+            },
+            {
+              "id": 3077818,
+              "page": "https://www.pexels.com/photo/brown-and-white-shed-3077818/",
+              "original": "https://images.pexels.com/photos/3077818/pexels-photo-3077818.jpeg",
+              "thumb": "https://images.pexels.com/photos/3077818/pexels-photo-3077818.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Igor Starkov",
+              "alt": "Vibrant outdoor stadium structure under clear blue sky in Sochi, Russia.",
+              "avg_color": "#779DB0",
+              "query_used": "adler sochi russia beach olympic park sea"
+            }
+          ]
+        },
+        {
+          "key": "imeretinka",
+          "label_ru": "Имеретинка",
+          "queries": [
+            "imeretinsky sochi russia olympic park coast"
+          ],
+          "photos": [
+            {
+              "id": 9134454,
+              "page": "https://www.pexels.com/photo/an-aerial-shot-of-a-forest-by-the-ocean-9134454/",
+              "original": "https://images.pexels.com/photos/9134454/pexels-photo-9134454.jpeg",
+              "thumb": "https://images.pexels.com/photos/9134454/pexels-photo-9134454.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8256,
+              "height": 5504,
+              "author": "Илья Бунин",
+              "alt": "Marvelous sunset view over lush forests and the Black Sea coast in Sochi, Russia.",
+              "avg_color": "#674B40",
+              "query_used": "imeretinsky sochi russia olympic park coast"
+            },
+            {
+              "id": 12011769,
+              "page": "https://www.pexels.com/photo/view-of-mountains-12011769/",
+              "original": "https://images.pexels.com/photos/12011769/pexels-photo-12011769.jpeg",
+              "thumb": "https://images.pexels.com/photos/12011769/pexels-photo-12011769.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Dmitry Mashkin",
+              "alt": "Breathtaking landscape of mountains in Sochi, Russia, showcasing natural beauty and tranquility.",
+              "avg_color": "#919AA1",
+              "query_used": "imeretinsky sochi russia olympic park coast"
+            }
+          ]
+        },
+        {
+          "key": "krasnaya_polyana",
+          "label_ru": "Красная Поляна",
+          "queries": [
+            "krasnaya polyana sochi mountains cable car summer"
+          ],
+          "photos": [
+            {
+              "id": 9006735,
+              "page": "https://www.pexels.com/photo/a-person-with-backpack-standing-on-a-mountain-rock-with-snow-9006735/",
+              "original": "https://images.pexels.com/photos/9006735/pexels-photo-9006735.jpeg",
+              "thumb": "https://images.pexels.com/photos/9006735/pexels-photo-9006735.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Nikita Parev",
+              "alt": "A lone hiker enjoys the stunning mountain views of Krasnaya Polyana, Russia.",
+              "avg_color": "#617868",
+              "query_used": "krasnaya polyana sochi mountains cable car summer"
+            },
+            {
+              "id": 24375925,
+              "page": "https://www.pexels.com/photo/cable-car-in-mountain-in-russia-24375925/",
+              "original": "https://images.pexels.com/photos/24375925/pexels-photo-24375925.png",
+              "thumb": "https://images.pexels.com/photos/24375925/pexels-photo-24375925.png?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Anna Romanova",
+              "alt": "Cable car station in Sochi, Russia, ascending to the snowy mountain top.",
+              "avg_color": "#9E8465",
+              "query_used": "krasnaya polyana sochi mountains cable car summer"
+            }
+          ]
+        },
+        {
+          "key": "lazarevskoye",
+          "label_ru": "Лазаревское",
+          "queries": [
+            "lazarevskoye sochi russia black sea beach"
+          ],
+          "photos": [
+            {
+              "id": 8834702,
+              "page": "https://www.pexels.com/photo/woman-wearing-a-dress-walking-in-the-shore-8834702/",
+              "original": "https://images.pexels.com/photos/8834702/pexels-photo-8834702.jpeg",
+              "thumb": "https://images.pexels.com/photos/8834702/pexels-photo-8834702.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Euvgene PH",
+              "alt": "A woman walks along the shoreline of Sochi, Russia, enjoying the waves and blue waters of the Black Sea.",
+              "avg_color": "#6F949A",
+              "query_used": "lazarevskoye sochi russia black sea beach"
+            },
+            {
+              "id": 8708807,
+              "page": "https://www.pexels.com/photo/people-on-the-beach-8708807/",
+              "original": "https://images.pexels.com/photos/8708807/pexels-photo-8708807.jpeg",
+              "thumb": "https://images.pexels.com/photos/8708807/pexels-photo-8708807.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Наталья Маркина",
+              "alt": "A lively summer day at Sochi beach with people enjoying the sea under a stormy sky.",
+              "avg_color": "#66707C",
+              "query_used": "lazarevskoye sochi russia black sea beach"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "abkhazia",
+      "label": "Абхазия",
+      "resorts": [
+        {
+          "key": "gagra",
+          "label_ru": "Гагра",
+          "queries": [
+            "gagra abkhazia seaside colonnade palm"
+          ],
+          "photos": [
+            {
+              "id": 28573272,
+              "page": "https://www.pexels.com/photo/scenic-view-of-gagra-s-mountain-landscape-and-art-installation-28573272/",
+              "original": "https://images.pexels.com/photos/28573272/pexels-photo-28573272.jpeg",
+              "thumb": "https://images.pexels.com/photos/28573272/pexels-photo-28573272.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4016,
+              "author": "Siarhei Nester",
+              "alt": "Explore the tranquil mountain landscape and artistic structure in Gagra, Abkhazia. Perfect for travel inspiration.",
+              "avg_color": "#808C82",
+              "query_used": "gagra abkhazia seaside colonnade palm"
+            },
+            {
+              "id": 28573402,
+              "page": "https://www.pexels.com/photo/scenic-view-of-s-lush-mountain-landscape-28573402/",
+              "original": "https://images.pexels.com/photos/28573402/pexels-photo-28573402.jpeg",
+              "thumb": "https://images.pexels.com/photos/28573402/pexels-photo-28573402.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4016,
+              "author": "Siarhei Nester",
+              "alt": "Lush greenery and mountains in Гагра create a tranquil landscape with palm trees and natural beauty.",
+              "avg_color": "#868D7B",
+              "query_used": "gagra abkhazia seaside colonnade palm"
+            }
+          ]
+        },
+        {
+          "key": "pitsunda",
+          "label_ru": "Пицунда",
+          "queries": [
+            "pitsunda abkhazia pine beach black sea"
+          ],
+          "photos": [
+            {
+              "id": 28608660,
+              "page": "https://www.pexels.com/photo/elegant-woman-strolling-on-pebble-beach-at-sunset-28608660/",
+              "original": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg",
+              "thumb": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6580,
+              "height": 4467,
+              "author": "Siarhei Nester",
+              "alt": "A woman in a black dress walking on a serene pebble beach in Gagra during sunset, with scenic mountain views.",
+              "avg_color": "#879595",
+              "query_used": "pitsunda abkhazia pine beach black sea"
+            },
+            {
+              "id": 28608456,
+              "page": "https://www.pexels.com/photo/elegant-woman-strolling-on-beach-at-sunset-28608456/",
+              "original": "https://images.pexels.com/photos/28608456/pexels-photo-28608456.jpeg",
+              "thumb": "https://images.pexels.com/photos/28608456/pexels-photo-28608456.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6891,
+              "height": 4414,
+              "author": "Siarhei Nester",
+              "alt": "A woman in a black dress walks along a pebble beach in Гагра, with mountains in the background at sunset.",
+              "avg_color": "#899591",
+              "query_used": "pitsunda abkhazia pine beach black sea"
+            }
+          ]
+        },
+        {
+          "key": "gudauta",
+          "label_ru": "Гудаута",
+          "queries": [
+            "gudauta abkhazia black sea coast mountains"
+          ],
+          "photos": [
+            {
+              "id": 28608456,
+              "page": "https://www.pexels.com/photo/elegant-woman-strolling-on-beach-at-sunset-28608456/",
+              "original": "https://images.pexels.com/photos/28608456/pexels-photo-28608456.jpeg",
+              "thumb": "https://images.pexels.com/photos/28608456/pexels-photo-28608456.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6891,
+              "height": 4414,
+              "author": "Siarhei Nester",
+              "alt": "A woman in a black dress walks along a pebble beach in Гагра, with mountains in the background at sunset.",
+              "avg_color": "#899591",
+              "query_used": "gudauta abkhazia black sea coast mountains"
+            },
+            {
+              "id": 28608660,
+              "page": "https://www.pexels.com/photo/elegant-woman-strolling-on-pebble-beach-at-sunset-28608660/",
+              "original": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg",
+              "thumb": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6580,
+              "height": 4467,
+              "author": "Siarhei Nester",
+              "alt": "A woman in a black dress walking on a serene pebble beach in Gagra during sunset, with scenic mountain views.",
+              "avg_color": "#879595",
+              "query_used": "gudauta abkhazia black sea coast mountains"
+            }
+          ]
+        },
+        {
+          "key": "new_afon",
+          "label_ru": "Новый Афон",
+          "queries": [
+            "new athos monastery abkhazia coast"
+          ],
+          "photos": [
+            {
+              "id": 40012917,
+              "page": "https://www.pexels.com/photo/stavronikita-monastery-on-mount-athos-landscape-40012917/",
+              "original": "https://images.pexels.com/photos/40012917/pexels-photo-40012917.jpeg",
+              "thumb": "https://images.pexels.com/photos/40012917/pexels-photo-40012917.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "BAB2056",
+              "alt": "View of Stavronikita Monastery perched on Mount Athos, Greece surrounded by lush greenery under a clear blue sky.",
+              "avg_color": "#4F5555",
+              "query_used": "new athos monastery abkhazia coast"
+            },
+            {
+              "id": 28270433,
+              "page": "https://www.pexels.com/photo/a-view-of-the-ocean-and-a-castle-28270433/",
+              "original": "https://images.pexels.com/photos/28270433/pexels-photo-28270433.jpeg",
+              "thumb": "https://images.pexels.com/photos/28270433/pexels-photo-28270433.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Siarhei Nester",
+              "alt": "A stunning view of the Гагра coastline with a blend of historic architecture and serene sea views.",
+              "avg_color": "#7B919E",
+              "query_used": "new athos monastery abkhazia coast"
+            }
+          ]
+        },
+        {
+          "key": "sukhum",
+          "label_ru": "Сухум",
+          "queries": [
+            "sukhumi abkhazia seaside boulevard black sea"
+          ],
+          "photos": [
+            {
+              "id": 28643403,
+              "page": "https://www.pexels.com/photo/elegant-woman-standing-by-gagra-seaside-28643403/",
+              "original": "https://images.pexels.com/photos/28643403/pexels-photo-28643403.jpeg",
+              "thumb": "https://images.pexels.com/photos/28643403/pexels-photo-28643403.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Siarhei Nester",
+              "alt": "Young woman in black dress by the Gagra shoreline during sunset.",
+              "avg_color": "#858A83",
+              "query_used": "sukhumi abkhazia seaside boulevard black sea"
+            },
+            {
+              "id": 28608660,
+              "page": "https://www.pexels.com/photo/elegant-woman-strolling-on-pebble-beach-at-sunset-28608660/",
+              "original": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg",
+              "thumb": "https://images.pexels.com/photos/28608660/pexels-photo-28608660.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6580,
+              "height": 4467,
+              "author": "Siarhei Nester",
+              "alt": "A woman in a black dress walking on a serene pebble beach in Gagra during sunset, with scenic mountain views.",
+              "avg_color": "#879595",
+              "query_used": "sukhumi abkhazia seaside boulevard black sea"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "maldives",
+      "label": "Мальдивы",
+      "resorts": [
+        {
+          "key": "ari_atoll",
+          "label_ru": "Ари",
+          "queries": [
+            "maldives ari atoll overwater villa turquoise"
+          ],
+          "photos": [
+            {
+              "id": 3293192,
+              "page": "https://www.pexels.com/photo/cottage-houses-on-the-beach-3293192/",
+              "original": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg",
+              "thumb": "https://images.pexels.com/photos/3293192/pexels-photo-3293192.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7360,
+              "height": 4912,
+              "author": "Asad Photo Maldives",
+              "alt": "Splendid overwater villas in Maldives offering a serene and luxurious vacation experience.",
+              "avg_color": "#71A6B3",
+              "query_used": "maldives ari atoll overwater villa turquoise"
+            },
+            {
+              "id": 28843974,
+              "page": "https://www.pexels.com/photo/luxurious-overwater-villas-in-maldives-paradise-28843974/",
+              "original": "https://images.pexels.com/photos/28843974/pexels-photo-28843974.jpeg",
+              "thumb": "https://images.pexels.com/photos/28843974/pexels-photo-28843974.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Asad Photo Maldives",
+              "alt": "Stunning overwater villas with deck in Maldives, perfect for a relaxing tropical getaway.",
+              "avg_color": "#6A9EB4",
+              "query_used": "maldives ari atoll overwater villa turquoise"
+            }
+          ]
+        },
+        {
+          "key": "baa_atoll",
+          "label_ru": "Баа",
+          "queries": [
+            "maldives baa atoll hanifaru lagoon aerial"
+          ],
+          "photos": [
+            {
+              "id": 9080953,
+              "page": "https://www.pexels.com/photo/an-aerial-shot-of-maldives-9080953/",
+              "original": "https://images.pexels.com/photos/9080953/pexels-photo-9080953.jpeg",
+              "thumb": "https://images.pexels.com/photos/9080953/pexels-photo-9080953.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 10157,
+              "height": 6558,
+              "author": "Asad Photo Maldives",
+              "alt": "Stunning aerial view of a tropical island surrounded by turquoise waters in the Maldives.",
+              "avg_color": "#3E7EA4",
+              "query_used": "maldives baa atoll hanifaru lagoon aerial"
+            },
+            {
+              "id": 1456292,
+              "page": "https://www.pexels.com/photo/bird-s-eye-view-of-island-1456292/",
+              "original": "https://images.pexels.com/photos/1456292/pexels-photo-1456292.jpeg",
+              "thumb": "https://images.pexels.com/photos/1456292/pexels-photo-1456292.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7360,
+              "height": 4912,
+              "author": "Asad Photo Maldives",
+              "alt": "Stunning aerial view of a secluded sandbank surrounded by turquoise waters in the Maldives.",
+              "avg_color": "#91AA89",
+              "query_used": "maldives baa atoll hanifaru lagoon aerial"
+            }
+          ]
+        },
+        {
+          "key": "north_male",
+          "label_ru": "Северный Мале",
+          "queries": [
+            "north male atoll maldives resort aerial"
+          ],
+          "photos": [
+            {
+              "id": 27099929,
+              "page": "https://www.pexels.com/photo/pier-on-a-sea-beach-27099929/",
+              "original": "https://images.pexels.com/photos/27099929/pexels-photo-27099929.jpeg",
+              "thumb": "https://images.pexels.com/photos/27099929/pexels-photo-27099929.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8064,
+              "height": 4536,
+              "author": "Asad Photo Maldives",
+              "alt": "Tranquil beachside resort with a pier in Kaafu Atoll, Maldives, under clear skies.",
+              "avg_color": "#708B96",
+              "query_used": "north male atoll maldives resort aerial"
+            },
+            {
+              "id": 9080953,
+              "page": "https://www.pexels.com/photo/an-aerial-shot-of-maldives-9080953/",
+              "original": "https://images.pexels.com/photos/9080953/pexels-photo-9080953.jpeg",
+              "thumb": "https://images.pexels.com/photos/9080953/pexels-photo-9080953.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 10157,
+              "height": 6558,
+              "author": "Asad Photo Maldives",
+              "alt": "Stunning aerial view of a tropical island surrounded by turquoise waters in the Maldives.",
+              "avg_color": "#3E7EA4",
+              "query_used": "north male atoll maldives resort aerial"
+            }
+          ]
+        },
+        {
+          "key": "south_male",
+          "label_ru": "Южный Мале",
+          "queries": [
+            "south male atoll maldives island lagoon"
+          ],
+          "photos": [
+            {
+              "id": 9080953,
+              "page": "https://www.pexels.com/photo/an-aerial-shot-of-maldives-9080953/",
+              "original": "https://images.pexels.com/photos/9080953/pexels-photo-9080953.jpeg",
+              "thumb": "https://images.pexels.com/photos/9080953/pexels-photo-9080953.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 10157,
+              "height": 6558,
+              "author": "Asad Photo Maldives",
+              "alt": "Stunning aerial view of a tropical island surrounded by turquoise waters in the Maldives.",
+              "avg_color": "#3E7EA4",
+              "query_used": "south male atoll maldives island lagoon"
+            },
+            {
+              "id": 35220304,
+              "page": "https://www.pexels.com/photo/tropical-beach-paradise-in-gaafu-dhaalu-atoll-35220304/",
+              "original": "https://images.pexels.com/photos/35220304/pexels-photo-35220304.jpeg",
+              "thumb": "https://images.pexels.com/photos/35220304/pexels-photo-35220304.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Hussain Naushad",
+              "alt": "Sunny tropical beach with palm trees in Gaafu Dhaalu Atoll, Maldives.",
+              "avg_color": "#8096AD",
+              "query_used": "south male atoll maldives island lagoon"
+            }
+          ]
+        },
+        {
+          "key": "maafushi",
+          "label_ru": "Маафуши",
+          "queries": [
+            "maafushi maldives local island beach guesthouse"
+          ],
+          "photos": [
+            {
+              "id": 39466653,
+              "page": "https://www.pexels.com/photo/romantic-couple-and-horse-on-maafushi-beach-39466653/",
+              "original": "https://images.pexels.com/photos/39466653/pexels-photo-39466653.jpeg",
+              "thumb": "https://images.pexels.com/photos/39466653/pexels-photo-39466653.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Zihat  Bepari",
+              "alt": "A couple embraces by the sea with a horse on Maafushi beach, Maldives.",
+              "avg_color": "#828A9F",
+              "query_used": "maafushi maldives local island beach guesthouse"
+            },
+            {
+              "id": 39466654,
+              "page": "https://www.pexels.com/photo/romantic-couple-with-horse-under-rainbow-in-maldives-39466654/",
+              "original": "https://images.pexels.com/photos/39466654/pexels-photo-39466654.jpeg",
+              "thumb": "https://images.pexels.com/photos/39466654/pexels-photo-39466654.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Zihat  Bepari",
+              "alt": "Couple embracing by the beach with a horse under a rainbow in Maafushi, Maldives.",
+              "avg_color": "#878FA4",
+              "query_used": "maafushi maldives local island beach guesthouse"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sri_lanka",
+      "label": "Шри-Ланка",
+      "resorts": [
+        {
+          "key": "bentota",
+          "label_ru": "Бентота",
+          "queries": [
+            "bentota sri lanka beach river palm"
+          ],
+          "photos": [
+            {
+              "id": 15689753,
+              "page": "https://www.pexels.com/photo/beach-and-sea-waves-15689753/",
+              "original": "https://images.pexels.com/photos/15689753/pexels-photo-15689753.jpeg",
+              "thumb": "https://images.pexels.com/photos/15689753/pexels-photo-15689753.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5464,
+              "author": "Mohan Nannapaneni",
+              "alt": "Beautiful sandy beach with palm trees and waves in Bentota, Sri Lanka.",
+              "avg_color": "#8B969C",
+              "query_used": "bentota sri lanka beach river palm"
+            },
+            {
+              "id": 15689754,
+              "page": "https://www.pexels.com/photo/view-of-the-ahungalla-beach-with-a-house-and-palm-trees-in-distance-sri-lanka-15689754/",
+              "original": "https://images.pexels.com/photos/15689754/pexels-photo-15689754.jpeg",
+              "thumb": "https://images.pexels.com/photos/15689754/pexels-photo-15689754.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5464,
+              "author": "Mohan Nannapaneni",
+              "alt": "Tranquil Bentota Beach scene with palm trees, sandy shore, and gentle waves in Sri Lanka.",
+              "avg_color": "#92979D",
+              "query_used": "bentota sri lanka beach river palm"
+            }
+          ]
+        },
+        {
+          "key": "hikkaduwa",
+          "label_ru": "Хиккадува",
+          "queries": [
+            "hikkaduwa sri lanka coral beach snorkeling"
+          ],
+          "photos": [
+            {
+              "id": 12548554,
+              "page": "https://www.pexels.com/photo/person-at-the-beach-12548554/",
+              "original": "https://images.pexels.com/photos/12548554/pexels-photo-12548554.jpeg",
+              "thumb": "https://images.pexels.com/photos/12548554/pexels-photo-12548554.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7360,
+              "height": 4912,
+              "author": "Atlantic Ambience",
+              "alt": "A child plays in the ocean waves at a serene tropical beach in Sri Lanka.",
+              "avg_color": "#B0B3AA",
+              "query_used": "hikkaduwa sri lanka coral beach snorkeling"
+            },
+            {
+              "id": 34861072,
+              "page": "https://www.pexels.com/photo/scenic-tropical-beach-with-ocean-waves-in-sri-lanka-34861072/",
+              "original": "https://images.pexels.com/photos/34861072/pexels-photo-34861072.jpeg",
+              "thumb": "https://images.pexels.com/photos/34861072/pexels-photo-34861072.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Thilina Alagiyawanna",
+              "alt": "A picturesque view of waves crashing on a rocky shore at a tropical beach in Sri Lanka under a cloudy sky.",
+              "avg_color": "#968470",
+              "query_used": "hikkaduwa sri lanka coral beach snorkeling"
+            }
+          ]
+        },
+        {
+          "key": "unawatuna",
+          "label_ru": "Унаватуна",
+          "queries": [
+            "unawatuna sri lanka beach palm golden sand"
+          ],
+          "photos": [
+            {
+              "id": 11398739,
+              "page": "https://www.pexels.com/photo/buildings-near-a-beach-shore-with-palm-trees-11398739/",
+              "original": "https://images.pexels.com/photos/11398739/pexels-photo-11398739.jpeg",
+              "thumb": "https://images.pexels.com/photos/11398739/pexels-photo-11398739.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Atlantic Ambience",
+              "alt": "Stunning sunset at Unawatuna Beach, Sri Lanka, with palm trees and ocean waves.",
+              "avg_color": "#907C73",
+              "query_used": "unawatuna sri lanka beach palm golden sand"
+            },
+            {
+              "id": 15689753,
+              "page": "https://www.pexels.com/photo/beach-and-sea-waves-15689753/",
+              "original": "https://images.pexels.com/photos/15689753/pexels-photo-15689753.jpeg",
+              "thumb": "https://images.pexels.com/photos/15689753/pexels-photo-15689753.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5464,
+              "author": "Mohan Nannapaneni",
+              "alt": "Beautiful sandy beach with palm trees and waves in Bentota, Sri Lanka.",
+              "avg_color": "#8B969C",
+              "query_used": "unawatuna sri lanka beach palm golden sand"
+            }
+          ]
+        },
+        {
+          "key": "wadduwa",
+          "label_ru": "Ваддува",
+          "queries": [
+            "wadduwa sri lanka beach coast palm"
+          ],
+          "photos": [
+            {
+              "id": 18510130,
+              "page": "https://www.pexels.com/photo/tropical-beach-on-sea-shore-18510130/",
+              "original": "https://images.pexels.com/photos/18510130/pexels-photo-18510130.jpeg",
+              "thumb": "https://images.pexels.com/photos/18510130/pexels-photo-18510130.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Costa Karabelas",
+              "alt": "Tranquil beach scene in Colombo, Sri Lanka with palm trees and a rustic hut along a sandy shore.",
+              "avg_color": "#979FA2",
+              "query_used": "wadduwa sri lanka beach coast palm"
+            },
+            {
+              "id": 15589614,
+              "page": "https://www.pexels.com/photo/beach-at-sunset-15589614/",
+              "original": "https://images.pexels.com/photos/15589614/pexels-photo-15589614.jpeg",
+              "thumb": "https://images.pexels.com/photos/15589614/pexels-photo-15589614.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5464,
+              "author": "Mohan Nannapaneni",
+              "alt": "Serene sunset view over Bentota Beach and coastline in Sri Lanka, featuring golden skies and calm waves.",
+              "avg_color": "#917359",
+              "query_used": "wadduwa sri lanka beach coast palm"
+            }
+          ]
+        },
+        {
+          "key": "mirissa",
+          "label_ru": "Мирисса",
+          "queries": [
+            "mirissa sri lanka coconut tree hill beach"
+          ],
+          "photos": [
+            {
+              "id": 5675024,
+              "page": "https://www.pexels.com/photo/beachside-during-daytime-5675024/",
+              "original": "https://images.pexels.com/photos/5675024/pexels-photo-5675024.jpeg",
+              "thumb": "https://images.pexels.com/photos/5675024/pexels-photo-5675024.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Charith Kodagoda",
+              "alt": "Footprints in the sand on a tranquil beach in Mirissa, Sri Lanka at sunrise.",
+              "avg_color": "#C0BFB3",
+              "query_used": "mirissa sri lanka coconut tree hill beach"
+            },
+            {
+              "id": 18552403,
+              "page": "https://www.pexels.com/photo/palm-trees-against-cloudy-sky-18552403/",
+              "original": "https://images.pexels.com/photos/18552403/pexels-photo-18552403.jpeg",
+              "thumb": "https://images.pexels.com/photos/18552403/pexels-photo-18552403.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Costa Karabelas",
+              "alt": "Lush palm trees reaching towards a cloudy sky in Mirissa, Sri Lanka.",
+              "avg_color": "#8AA0B5",
+              "query_used": "mirissa sri lanka coconut tree hill beach"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "vietnam",
+      "label": "Вьетнам",
+      "resorts": [
+        {
+          "key": "nha_trang",
+          "label_ru": "Нячанг",
+          "queries": [
+            "nha trang vietnam beach bay city sunny"
+          ],
+          "photos": [
+            {
+              "id": 31154725,
+              "page": "https://www.pexels.com/photo/coastal-urban-landscape-in-nha-trang-vietnam-31154725/",
+              "original": "https://images.pexels.com/photos/31154725/pexels-photo-31154725.jpeg",
+              "thumb": "https://images.pexels.com/photos/31154725/pexels-photo-31154725.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4016,
+              "author": "DUONG QUÁCH",
+              "alt": "Dramatic coastal cityscape featuring rocky shoreline in Nha Trang, Vietnam.",
+              "avg_color": "#858178",
+              "query_used": "nha trang vietnam beach bay city sunny"
+            },
+            {
+              "id": 32856473,
+              "page": "https://www.pexels.com/photo/crowded-beach-scene-with-sunbathers-in-nha-trang-32856473/",
+              "original": "https://images.pexels.com/photos/32856473/pexels-photo-32856473.jpeg",
+              "thumb": "https://images.pexels.com/photos/32856473/pexels-photo-32856473.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Pham Huynh  Tuan Vy",
+              "alt": "A bustling beach in Nha Trang with people sunbathing and enjoying a sunny day by the sea.",
+              "avg_color": "#A09B7B",
+              "query_used": "nha trang vietnam beach bay city sunny"
+            }
+          ]
+        },
+        {
+          "key": "phu_quoc",
+          "label_ru": "Фукуок",
+          "queries": [
+            "phu quoc vietnam white sand beach turquoise"
+          ],
+          "photos": [
+            {
+              "id": 5993070,
+              "page": "https://www.pexels.com/photo/green-tree-near-body-of-water-5993070/",
+              "original": "https://images.pexels.com/photos/5993070/pexels-photo-5993070.jpeg",
+              "thumb": "https://images.pexels.com/photos/5993070/pexels-photo-5993070.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6883,
+              "height": 4594,
+              "author": "Alesia  Kozik",
+              "alt": "Serene beach with lush greenery and rocky shore in Phu Quoc, Vietnam.",
+              "avg_color": "#76786E",
+              "query_used": "phu quoc vietnam white sand beach turquoise"
+            },
+            {
+              "id": 37996445,
+              "page": "https://www.pexels.com/photo/serene-beach-in-phu-yen-vietnam-at-daytime-37996445/",
+              "original": "https://images.pexels.com/photos/37996445/pexels-photo-37996445.jpeg",
+              "thumb": "https://images.pexels.com/photos/37996445/pexels-photo-37996445.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Hooman Beings",
+              "alt": "Tranquil sandy beach at Phu Yen, Vietnam with clear blue skies and calm waves.",
+              "avg_color": "#989B94",
+              "query_used": "phu quoc vietnam white sand beach turquoise"
+            }
+          ]
+        },
+        {
+          "key": "mui_ne",
+          "label_ru": "Муйне",
+          "queries": [
+            "mui ne vietnam sand dunes beach"
+          ],
+          "photos": [
+            {
+              "id": 37854027,
+              "page": "https://www.pexels.com/photo/exploring-the-stunning-sand-dunes-of-mui-ne-37854027/",
+              "original": "https://images.pexels.com/photos/37854027/pexels-photo-37854027.jpeg",
+              "thumb": "https://images.pexels.com/photos/37854027/pexels-photo-37854027.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Ngoc Nguyen",
+              "alt": "A scenic view of the vast sand dunes in Mui Ne, Vietnam under a bright sky.",
+              "avg_color": "#8A854D",
+              "query_used": "mui ne vietnam sand dunes beach"
+            },
+            {
+              "id": 40019149,
+              "page": "https://www.pexels.com/photo/women-walking-on-vietnamese-beach-at-daytime-40019149/",
+              "original": "https://images.pexels.com/photos/40019149/pexels-photo-40019149.jpeg",
+              "thumb": "https://images.pexels.com/photos/40019149/pexels-photo-40019149.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6960,
+              "height": 4640,
+              "author": "Serg Alesenko",
+              "alt": "Two women stroll along a sandy beach in Vietnam under daylight skies.",
+              "avg_color": "#C4C4C4",
+              "query_used": "mui ne vietnam sand dunes beach"
+            }
+          ]
+        },
+        {
+          "key": "phan_thiet",
+          "label_ru": "Фантьет",
+          "queries": [
+            "phan thiet vietnam fishing village beach"
+          ],
+          "photos": [
+            {
+              "id": 39524033,
+              "page": "https://www.pexels.com/photo/colorful-concrete-tetrapods-on-phan-thiet-beach-39524033/",
+              "original": "https://images.pexels.com/photos/39524033/pexels-photo-39524033.jpeg",
+              "thumb": "https://images.pexels.com/photos/39524033/pexels-photo-39524033.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 9036,
+              "height": 6024,
+              "author": "Flint Huynh",
+              "alt": "Vibrant tetrapods and fishing boat at Phan Thiet beach, Vietnam.",
+              "avg_color": "#9898A0",
+              "query_used": "phan thiet vietnam fishing village beach"
+            },
+            {
+              "id": 38403984,
+              "page": "https://www.pexels.com/photo/resort-beachfront-with-palm-trees-in-vietnam-38403984/",
+              "original": "https://images.pexels.com/photos/38403984/pexels-photo-38403984.jpeg",
+              "thumb": "https://images.pexels.com/photos/38403984/pexels-photo-38403984.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Nguyen Truong Khang",
+              "alt": "Beautiful beachfront resort with coconut palms in Phan Thiet, Vietnam.",
+              "avg_color": "#988D79",
+              "query_used": "phan thiet vietnam fishing village beach"
+            }
+          ]
+        },
+        {
+          "key": "da_nang",
+          "label_ru": "Дананг",
+          "queries": [
+            "da nang vietnam my khe beach skyline"
+          ],
+          "photos": [
+            {
+              "id": 40475943,
+              "page": "https://www.pexels.com/photo/sunny-beach-day-at-my-khe-beach-in-da-nang-40475943/",
+              "original": "https://images.pexels.com/photos/40475943/pexels-photo-40475943.jpeg",
+              "thumb": "https://images.pexels.com/photos/40475943/pexels-photo-40475943.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7728,
+              "height": 5152,
+              "author": "Tom Shutkin",
+              "alt": "People enjoying a sunny day at My Khe Beach, Da Nang, Vietnam, with city skyline views.",
+              "avg_color": "#6E7678",
+              "query_used": "da nang vietnam my khe beach skyline"
+            },
+            {
+              "id": 38704838,
+              "page": "https://www.pexels.com/photo/skyscrapers-along-da-nang-beach-front-38704838/",
+              "original": "https://images.pexels.com/photos/38704838/pexels-photo-38704838.jpeg",
+              "thumb": "https://images.pexels.com/photos/38704838/pexels-photo-38704838.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Vuong",
+              "alt": "Urban skyline of Da Nang, Vietnam with high-rise buildings along the beachfront, showcasing modern architecture.",
+              "avg_color": "#576B6A",
+              "query_used": "da nang vietnam my khe beach skyline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "china_hainan",
+      "label": "Китай (Хайнань)",
+      "resorts": [
+        {
+          "key": "sanya",
+          "label_ru": "Санья",
+          "queries": [
+            "sanya hainan china tropical beach palm"
+          ],
+          "photos": [
+            {
+              "id": 4242876,
+              "page": "https://www.pexels.com/photo/sea-beach-trees-and-buildings-4242876/",
+              "original": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg",
+              "thumb": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8000,
+              "height": 6000,
+              "author": "光曦 刘",
+              "alt": "Aerial view of Sanya's beachfront with city skyline, palm trees, and clear water.",
+              "avg_color": "#597172",
+              "query_used": "sanya hainan china tropical beach palm"
+            },
+            {
+              "id": 14012620,
+              "page": "https://www.pexels.com/photo/palm-treen-on-beach-sand-14012620/",
+              "original": "https://images.pexels.com/photos/14012620/pexels-photo-14012620.jpeg",
+              "thumb": "https://images.pexels.com/photos/14012620/pexels-photo-14012620.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7952,
+              "height": 5304,
+              "author": "Quang Nguyen Vinh",
+              "alt": "Idyllic sandy beach lined with palm trees, perfect tropical escape.",
+              "avg_color": "#87825A",
+              "query_used": "sanya hainan china tropical beach palm"
+            }
+          ]
+        },
+        {
+          "key": "dadunhai",
+          "label_ru": "Дадунхай",
+          "queries": [
+            "dadonghai sanya hainan beach bay"
+          ],
+          "photos": [
+            {
+              "id": 4242876,
+              "page": "https://www.pexels.com/photo/sea-beach-trees-and-buildings-4242876/",
+              "original": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg",
+              "thumb": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8000,
+              "height": 6000,
+              "author": "光曦 刘",
+              "alt": "Aerial view of Sanya's beachfront with city skyline, palm trees, and clear water.",
+              "avg_color": "#597172",
+              "query_used": "dadonghai sanya hainan beach bay"
+            },
+            {
+              "id": 30346983,
+              "page": "https://www.pexels.com/photo/modern-skyscrapers-and-cruise-ship-in-sanya-china-30346983/",
+              "original": "https://images.pexels.com/photos/30346983/pexels-photo-30346983.jpeg",
+              "thumb": "https://images.pexels.com/photos/30346983/pexels-photo-30346983.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Michael Wang",
+              "alt": "View of Phoenix Island's modern skyscrapers and cruise ship in Sanya, Hainan, China.",
+              "avg_color": "#6790A4",
+              "query_used": "dadonghai sanya hainan beach bay"
+            }
+          ]
+        },
+        {
+          "key": "yalong_bay",
+          "label_ru": "Ялунвань",
+          "queries": [
+            "yalong bay sanya hainan resort beach"
+          ],
+          "photos": [
+            {
+              "id": 4242876,
+              "page": "https://www.pexels.com/photo/sea-beach-trees-and-buildings-4242876/",
+              "original": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg",
+              "thumb": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8000,
+              "height": 6000,
+              "author": "光曦 刘",
+              "alt": "Aerial view of Sanya's beachfront with city skyline, palm trees, and clear water.",
+              "avg_color": "#597172",
+              "query_used": "yalong bay sanya hainan resort beach"
+            },
+            {
+              "id": 5118136,
+              "page": "https://www.pexels.com/photo/beach-table-with-chairs-on-exotic-seashore-5118136/",
+              "original": "https://images.pexels.com/photos/5118136/pexels-photo-5118136.jpeg",
+              "thumb": "https://images.pexels.com/photos/5118136/pexels-photo-5118136.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8660,
+              "height": 5773,
+              "author": "Quang Nguyen Vinh",
+              "alt": "Beach table and chairs under straw umbrella amidst lush tropical palms located on sunny seacoast in exotic resort",
+              "avg_color": "#8B9486",
+              "query_used": "yalong bay sanya hainan resort beach"
+            }
+          ]
+        },
+        {
+          "key": "sanya_bay",
+          "label_ru": "Санья-Бэй",
+          "queries": [
+            "sanya bay hainan beach city coast"
+          ],
+          "photos": [
+            {
+              "id": 4242876,
+              "page": "https://www.pexels.com/photo/sea-beach-trees-and-buildings-4242876/",
+              "original": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg",
+              "thumb": "https://images.pexels.com/photos/4242876/pexels-photo-4242876.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8000,
+              "height": 6000,
+              "author": "光曦 刘",
+              "alt": "Aerial view of Sanya's beachfront with city skyline, palm trees, and clear water.",
+              "avg_color": "#597172",
+              "query_used": "sanya bay hainan beach city coast"
+            },
+            {
+              "id": 30346983,
+              "page": "https://www.pexels.com/photo/modern-skyscrapers-and-cruise-ship-in-sanya-china-30346983/",
+              "original": "https://images.pexels.com/photos/30346983/pexels-photo-30346983.jpeg",
+              "thumb": "https://images.pexels.com/photos/30346983/pexels-photo-30346983.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Michael Wang",
+              "alt": "View of Phoenix Island's modern skyscrapers and cruise ship in Sanya, Hainan, China.",
+              "avg_color": "#6790A4",
+              "query_used": "sanya bay hainan beach city coast"
+            }
+          ]
+        },
+        {
+          "key": "haitang_bay",
+          "label_ru": "Хайтанвань",
+          "queries": [
+            "haitang bay sanya hainan luxury resort"
+          ],
+          "photos": [
+            {
+              "id": 30346983,
+              "page": "https://www.pexels.com/photo/modern-skyscrapers-and-cruise-ship-in-sanya-china-30346983/",
+              "original": "https://images.pexels.com/photos/30346983/pexels-photo-30346983.jpeg",
+              "thumb": "https://images.pexels.com/photos/30346983/pexels-photo-30346983.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Michael Wang",
+              "alt": "View of Phoenix Island's modern skyscrapers and cruise ship in Sanya, Hainan, China.",
+              "avg_color": "#6790A4",
+              "query_used": "haitang bay sanya hainan luxury resort"
+            },
+            {
+              "id": 12387909,
+              "page": "https://www.pexels.com/photo/resort-in-a-hotel-12387909/",
+              "original": "https://images.pexels.com/photos/12387909/pexels-photo-12387909.jpeg",
+              "thumb": "https://images.pexels.com/photos/12387909/pexels-photo-12387909.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7786,
+              "height": 5193,
+              "author": "Quang Nguyen Vinh",
+              "alt": "Explore this serene resort poolside, surrounded by lush palm trees and luxury amenities.",
+              "avg_color": "#95A19D",
+              "query_used": "haitang bay sanya hainan luxury resort"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "india_goa",
+      "label": "Индия (Гоа)",
+      "resorts": [
+        {
+          "key": "calangute",
+          "label_ru": "Калангут",
+          "queries": [
+            "calangute goa india beach palm"
+          ],
+          "photos": [
+            {
+              "id": 28688386,
+              "page": "https://www.pexels.com/photo/bustling-evening-street-scene-in-calangute-india-28688386/",
+              "original": "https://images.pexels.com/photos/28688386/pexels-photo-28688386.jpeg",
+              "thumb": "https://images.pexels.com/photos/28688386/pexels-photo-28688386.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8086,
+              "height": 5480,
+              "author": "Roman Saienko",
+              "alt": "Street scene at sunset in Calangute, India with palm trees and local shops.",
+              "avg_color": "#746B64",
+              "query_used": "calangute goa india beach palm"
+            },
+            {
+              "id": 39182453,
+              "page": "https://www.pexels.com/photo/serene-beach-with-palm-tree-silhouette-at-sunset-39182453/",
+              "original": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg",
+              "thumb": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8091,
+              "height": 4551,
+              "author": "Abdullah Ahmad",
+              "alt": "A tranquil beach scene in Goa, India with a palm tree silhouette and parasailing in the distance during sunset.",
+              "avg_color": "#9F9C89",
+              "query_used": "calangute goa india beach palm"
+            }
+          ]
+        },
+        {
+          "key": "candolim",
+          "label_ru": "Кандолим",
+          "queries": [
+            "candolim goa india beach sunset"
+          ],
+          "photos": [
+            {
+              "id": 39182453,
+              "page": "https://www.pexels.com/photo/serene-beach-with-palm-tree-silhouette-at-sunset-39182453/",
+              "original": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg",
+              "thumb": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8091,
+              "height": 4551,
+              "author": "Abdullah Ahmad",
+              "alt": "A tranquil beach scene in Goa, India with a palm tree silhouette and parasailing in the distance during sunset.",
+              "avg_color": "#9F9C89",
+              "query_used": "candolim goa india beach sunset"
+            },
+            {
+              "id": 6059807,
+              "page": "https://www.pexels.com/photo/silhouette-of-trees-during-sunset-6059807/",
+              "original": "https://images.pexels.com/photos/6059807/pexels-photo-6059807.jpeg",
+              "thumb": "https://images.pexels.com/photos/6059807/pexels-photo-6059807.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Sohani Kamat",
+              "alt": "Silhouetted palm trees against a vibrant sunset at Maravanthe Beach, India.",
+              "avg_color": "#7A5E46",
+              "query_used": "candolim goa india beach sunset"
+            }
+          ]
+        },
+        {
+          "key": "morjim",
+          "label_ru": "Морджим",
+          "queries": [
+            "morjim goa india beach palm quiet"
+          ],
+          "photos": [
+            {
+              "id": 39234302,
+              "page": "https://www.pexels.com/photo/black-and-white-beach-scene-at-morjim-india-39234302/",
+              "original": "https://images.pexels.com/photos/39234302/pexels-photo-39234302.jpeg",
+              "thumb": "https://images.pexels.com/photos/39234302/pexels-photo-39234302.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Mayank M",
+              "alt": "Two people walking on a serene beach in Morjim, India, captured in black and white.",
+              "avg_color": "#CBCBCB",
+              "query_used": "morjim goa india beach palm quiet"
+            },
+            {
+              "id": 39182453,
+              "page": "https://www.pexels.com/photo/serene-beach-with-palm-tree-silhouette-at-sunset-39182453/",
+              "original": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg",
+              "thumb": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8091,
+              "height": 4551,
+              "author": "Abdullah Ahmad",
+              "alt": "A tranquil beach scene in Goa, India with a palm tree silhouette and parasailing in the distance during sunset.",
+              "avg_color": "#9F9C89",
+              "query_used": "morjim goa india beach palm quiet"
+            }
+          ]
+        },
+        {
+          "key": "colva",
+          "label_ru": "Колва",
+          "queries": [
+            "colva goa south india beach palm"
+          ],
+          "photos": [
+            {
+              "id": 39182453,
+              "page": "https://www.pexels.com/photo/serene-beach-with-palm-tree-silhouette-at-sunset-39182453/",
+              "original": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg",
+              "thumb": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8091,
+              "height": 4551,
+              "author": "Abdullah Ahmad",
+              "alt": "A tranquil beach scene in Goa, India with a palm tree silhouette and parasailing in the distance during sunset.",
+              "avg_color": "#9F9C89",
+              "query_used": "colva goa south india beach palm"
+            },
+            {
+              "id": 15230792,
+              "page": "https://www.pexels.com/photo/man-throwing-net-at-coast-15230792/",
+              "original": "https://images.pexels.com/photos/15230792/pexels-photo-15230792.jpeg",
+              "thumb": "https://images.pexels.com/photos/15230792/pexels-photo-15230792.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Ashwin  Kp",
+              "alt": "A fisherman throws his net into the ocean along a palm-lined tropical beach in Kerala, India.",
+              "avg_color": "#7E8186",
+              "query_used": "colva goa south india beach palm"
+            }
+          ]
+        },
+        {
+          "key": "palolem",
+          "label_ru": "Палолем",
+          "queries": [
+            "palolem goa india beach coconut palm"
+          ],
+          "photos": [
+            {
+              "id": 39182453,
+              "page": "https://www.pexels.com/photo/serene-beach-with-palm-tree-silhouette-at-sunset-39182453/",
+              "original": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg",
+              "thumb": "https://images.pexels.com/photos/39182453/pexels-photo-39182453.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8091,
+              "height": 4551,
+              "author": "Abdullah Ahmad",
+              "alt": "A tranquil beach scene in Goa, India with a palm tree silhouette and parasailing in the distance during sunset.",
+              "avg_color": "#9F9C89",
+              "query_used": "palolem goa india beach coconut palm"
+            },
+            {
+              "id": 34187370,
+              "page": "https://www.pexels.com/photo/scenic-coconut-palm-trees-in-honnavar-india-34187370/",
+              "original": "https://images.pexels.com/photos/34187370/pexels-photo-34187370.jpeg",
+              "thumb": "https://images.pexels.com/photos/34187370/pexels-photo-34187370.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Sijo Varghese",
+              "alt": "Lush coconut palm trees overlooking a serene river under a bright blue sky in Honnavar, India.",
+              "avg_color": "#5E6C6C",
+              "query_used": "palolem goa india beach coconut palm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "indonesia_bali",
+      "label": "Индонезия (Бали)",
+      "resorts": [
+        {
+          "key": "nusa_dua",
+          "label_ru": "Нуса-Дуа",
+          "queries": [
+            "nusa dua bali beach luxury resort"
+          ],
+          "photos": [
+            {
+              "id": 38422897,
+              "page": "https://www.pexels.com/photo/tropical-beachfront-resort-with-palm-trees-38422897/",
+              "original": "https://images.pexels.com/photos/38422897/pexels-photo-38422897.jpeg",
+              "thumb": "https://images.pexels.com/photos/38422897/pexels-photo-38422897.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8064,
+              "height": 6048,
+              "author": "Holger  Raukamp",
+              "alt": "A stunning aerial view of a tropical beachfront resort with palm trees and ocean views in Bali.",
+              "avg_color": "#808A8B",
+              "query_used": "nusa dua bali beach luxury resort"
+            },
+            {
+              "id": 36137288,
+              "page": "https://www.pexels.com/photo/aerial-view-of-bali-beachfront-at-sunset-36137288/",
+              "original": "https://images.pexels.com/photos/36137288/pexels-photo-36137288.jpeg",
+              "thumb": "https://images.pexels.com/photos/36137288/pexels-photo-36137288.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Tom Fisk",
+              "alt": "Scenic aerial view of a beachfront resort in Bali, Indonesia at sunset.",
+              "avg_color": "#6D8087",
+              "query_used": "nusa dua bali beach luxury resort"
+            }
+          ]
+        },
+        {
+          "key": "sanur",
+          "label_ru": "Санур",
+          "queries": [
+            "sanur bali sunrise beach calm"
+          ],
+          "photos": [
+            {
+              "id": 6965498,
+              "page": "https://www.pexels.com/photo/a-woman-in-the-ocean-during-the-golden-hour-6965498/",
+              "original": "https://images.pexels.com/photos/6965498/pexels-photo-6965498.jpeg",
+              "thumb": "https://images.pexels.com/photos/6965498/pexels-photo-6965498.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8000,
+              "height": 5333,
+              "author": "Mikhail Nilov",
+              "alt": "A tranquil scene of a silhouette at sunrise near pavilions on a Bali beach.",
+              "avg_color": "#654931",
+              "query_used": "sanur bali sunrise beach calm"
+            },
+            {
+              "id": 37864545,
+              "page": "https://www.pexels.com/photo/serene-bali-sunrise-with-traditional-boat-37864545/",
+              "original": "https://images.pexels.com/photos/37864545/pexels-photo-37864545.jpeg",
+              "thumb": "https://images.pexels.com/photos/37864545/pexels-photo-37864545.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7952,
+              "height": 5304,
+              "author": "Atiek  Arief",
+              "alt": "A tranquil sunrise over Bali's waters, featuring a traditional Indonesian boat and vibrant sky.",
+              "avg_color": "#606666",
+              "query_used": "sanur bali sunrise beach calm"
+            }
+          ]
+        },
+        {
+          "key": "jimbaran",
+          "label_ru": "Джимбаран",
+          "queries": [
+            "jimbaran bali beach seafood sunset"
+          ],
+          "photos": [
+            {
+              "id": 32314301,
+              "page": "https://www.pexels.com/photo/serene-beach-walk-at-sunset-in-bali-indonesia-32314301/",
+              "original": "https://images.pexels.com/photos/32314301/pexels-photo-32314301.jpeg",
+              "thumb": "https://images.pexels.com/photos/32314301/pexels-photo-32314301.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Muhammad Endry",
+              "alt": "Solitary walk on a tranquil Bali beach at sunset, capturing serenity and natural beauty.",
+              "avg_color": "#B0B4BD",
+              "query_used": "jimbaran bali beach seafood sunset"
+            },
+            {
+              "id": 36313551,
+              "page": "https://www.pexels.com/photo/idyllic-sunset-on-kuta-beach-bali-indonesia-36313551/",
+              "original": "https://images.pexels.com/photos/36313551/pexels-photo-36313551.jpeg",
+              "thumb": "https://images.pexels.com/photos/36313551/pexels-photo-36313551.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Tom Fisk",
+              "alt": "People enjoying a vibrant sunset at Kuta Beach, Bali. Perfect for travel and leisure themes.",
+              "avg_color": "#765A42",
+              "query_used": "jimbaran bali beach seafood sunset"
+            }
+          ]
+        },
+        {
+          "key": "seminyak",
+          "label_ru": "Семиньяк",
+          "queries": [
+            "seminyak bali beach club sunset"
+          ],
+          "photos": [
+            {
+              "id": 36184005,
+              "page": "https://www.pexels.com/photo/sunset-on-seminyak-beach-in-bali-36184005/",
+              "original": "https://images.pexels.com/photos/36184005/pexels-photo-36184005.jpeg",
+              "thumb": "https://images.pexels.com/photos/36184005/pexels-photo-36184005.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Tom Fisk",
+              "alt": "Beautiful sunset on Seminyak Beach, Bali with people enjoying the view and golden sands.",
+              "avg_color": "#877253",
+              "query_used": "seminyak bali beach club sunset"
+            },
+            {
+              "id": 36313551,
+              "page": "https://www.pexels.com/photo/idyllic-sunset-on-kuta-beach-bali-indonesia-36313551/",
+              "original": "https://images.pexels.com/photos/36313551/pexels-photo-36313551.jpeg",
+              "thumb": "https://images.pexels.com/photos/36313551/pexels-photo-36313551.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Tom Fisk",
+              "alt": "People enjoying a vibrant sunset at Kuta Beach, Bali. Perfect for travel and leisure themes.",
+              "avg_color": "#765A42",
+              "query_used": "seminyak bali beach club sunset"
+            }
+          ]
+        },
+        {
+          "key": "ubud",
+          "label_ru": "Убуд",
+          "queries": [
+            "ubud bali rice terraces jungle temple"
+          ],
+          "photos": [
+            {
+              "id": 36828569,
+              "page": "https://www.pexels.com/photo/stunning-aerial-view-of-bali-rice-terraces-36828569/",
+              "original": "https://images.pexels.com/photos/36828569/pexels-photo-36828569.jpeg",
+              "thumb": "https://images.pexels.com/photos/36828569/pexels-photo-36828569.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Tom Fisk",
+              "alt": "Lush green rice terraces of Ubud, Bali, showcasing stunning terraced fields.",
+              "avg_color": "#65743D",
+              "query_used": "ubud bali rice terraces jungle temple"
+            },
+            {
+              "id": 36716820,
+              "page": "https://www.pexels.com/photo/aerial-view-of-tegallalang-rice-terraces-bali-36716820/",
+              "original": "https://images.pexels.com/photos/36716820/pexels-photo-36716820.jpeg",
+              "thumb": "https://images.pexels.com/photos/36716820/pexels-photo-36716820.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 6144,
+              "author": "Tom Fisk",
+              "alt": "Stunning aerial view of Tegallalang Rice Terraces in Ubud, Bali, showcasing lush greenery and traditional huts.",
+              "avg_color": "#656A34",
+              "query_used": "ubud bali rice terraces jungle temple"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "seychelles",
+      "label": "Сейшелы",
+      "resorts": [
+        {
+          "key": "mahe",
+          "label_ru": "Маэ",
+          "queries": [
+            "mahe seychelles beach beau vallon tropical"
+          ],
+          "photos": [
+            {
+              "id": 39360577,
+              "page": "https://www.pexels.com/photo/idyllic-beach-scene-with-boats-and-palm-trees-in-seychelles-39360577/",
+              "original": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg",
+              "thumb": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5461,
+              "author": "Luca Cavallin",
+              "alt": "Serene tropical beach in Seychelles with clear waters, boats, and lush palm trees.",
+              "avg_color": "#6E7D82",
+              "query_used": "mahe seychelles beach beau vallon tropical"
+            },
+            {
+              "id": 13549341,
+              "page": "https://www.pexels.com/photo/scenic-view-of-a-beach-in-seychelles-13549341/",
+              "original": "https://images.pexels.com/photos/13549341/pexels-photo-13549341.jpeg",
+              "thumb": "https://images.pexels.com/photos/13549341/pexels-photo-13549341.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Adrien Daurenjou",
+              "alt": "Tropical paradise beach with palm trees and granite rocks in Seychelles under a blue sky.",
+              "avg_color": "#67767D",
+              "query_used": "mahe seychelles beach beau vallon tropical"
+            }
+          ]
+        },
+        {
+          "key": "praslin",
+          "label_ru": "Праслин",
+          "queries": [
+            "praslin seychelles anse lazio beach"
+          ],
+          "photos": [
+            {
+              "id": 32544311,
+              "page": "https://www.pexels.com/photo/sunny-beach-day-at-anse-source-d-argent-32544311/",
+              "original": "https://images.pexels.com/photos/32544311/pexels-photo-32544311.jpeg",
+              "thumb": "https://images.pexels.com/photos/32544311/pexels-photo-32544311.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4000,
+              "author": "Vika Glitter",
+              "alt": "Man standing in the turquoise waters of Anse Source d'Argent, Seychelles, under clear summer skies.",
+              "avg_color": "#5694A1",
+              "query_used": "praslin seychelles anse lazio beach"
+            },
+            {
+              "id": 32974392,
+              "page": "https://www.pexels.com/photo/woman-on-scenic-seychelles-beach-with-boulders-32974392/",
+              "original": "https://images.pexels.com/photos/32974392/pexels-photo-32974392.jpeg",
+              "thumb": "https://images.pexels.com/photos/32974392/pexels-photo-32974392.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4000,
+              "author": "Vika Glitter",
+              "alt": "A woman in a bikini poses against a large rock on a beautiful beach in Seychelles with clear waters and blue sky.",
+              "avg_color": "#8D8B7F",
+              "query_used": "praslin seychelles anse lazio beach"
+            }
+          ]
+        },
+        {
+          "key": "la_digue",
+          "label_ru": "Ла-Диг",
+          "queries": [
+            "la digue seychelles granite beach bicycle"
+          ],
+          "photos": [
+            {
+              "id": 32544178,
+              "page": "https://www.pexels.com/photo/stunning-granite-boulders-on-la-digue-beach-32544178/",
+              "original": "https://images.pexels.com/photos/32544178/pexels-photo-32544178.jpeg",
+              "thumb": "https://images.pexels.com/photos/32544178/pexels-photo-32544178.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4000,
+              "author": "Vika Glitter",
+              "alt": "Explore the breathtaking granite boulders and pristine shores of La Digue, Seychelles.",
+              "avg_color": "#426E87",
+              "query_used": "la digue seychelles granite beach bicycle"
+            },
+            {
+              "id": 33428172,
+              "page": "https://www.pexels.com/photo/fashionable-woman-posing-on-seychelles-beach-33428172/",
+              "original": "https://images.pexels.com/photos/33428172/pexels-photo-33428172.jpeg",
+              "thumb": "https://images.pexels.com/photos/33428172/pexels-photo-33428172.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4000,
+              "author": "Vika Glitter",
+              "alt": "Elegant woman in white posing by large granite rock on a sunny beach in Seychelles.",
+              "avg_color": "#6F797B",
+              "query_used": "la digue seychelles granite beach bicycle"
+            }
+          ]
+        },
+        {
+          "key": "beau_vallon",
+          "label_ru": "Бо-Валлон",
+          "queries": [
+            "beau vallon mahe seychelles beach"
+          ],
+          "photos": [
+            {
+              "id": 32974392,
+              "page": "https://www.pexels.com/photo/woman-on-scenic-seychelles-beach-with-boulders-32974392/",
+              "original": "https://images.pexels.com/photos/32974392/pexels-photo-32974392.jpeg",
+              "thumb": "https://images.pexels.com/photos/32974392/pexels-photo-32974392.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6016,
+              "height": 4000,
+              "author": "Vika Glitter",
+              "alt": "A woman in a bikini poses against a large rock on a beautiful beach in Seychelles with clear waters and blue sky.",
+              "avg_color": "#8D8B7F",
+              "query_used": "beau vallon mahe seychelles beach"
+            },
+            {
+              "id": 39360577,
+              "page": "https://www.pexels.com/photo/idyllic-beach-scene-with-boats-and-palm-trees-in-seychelles-39360577/",
+              "original": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg",
+              "thumb": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5461,
+              "author": "Luca Cavallin",
+              "alt": "Serene tropical beach in Seychelles with clear waters, boats, and lush palm trees.",
+              "avg_color": "#6E7D82",
+              "query_used": "beau vallon mahe seychelles beach"
+            }
+          ]
+        },
+        {
+          "key": "cote_dor",
+          "label_ru": "Кот-д'Ор",
+          "queries": [
+            "cote dor praslin seychelles beach palm"
+          ],
+          "photos": [
+            {
+              "id": 39360577,
+              "page": "https://www.pexels.com/photo/idyllic-beach-scene-with-boats-and-palm-trees-in-seychelles-39360577/",
+              "original": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg",
+              "thumb": "https://images.pexels.com/photos/39360577/pexels-photo-39360577.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 8192,
+              "height": 5461,
+              "author": "Luca Cavallin",
+              "alt": "Serene tropical beach in Seychelles with clear waters, boats, and lush palm trees.",
+              "avg_color": "#6E7D82",
+              "query_used": "cote dor praslin seychelles beach palm"
+            },
+            {
+              "id": 13549341,
+              "page": "https://www.pexels.com/photo/scenic-view-of-a-beach-in-seychelles-13549341/",
+              "original": "https://images.pexels.com/photos/13549341/pexels-photo-13549341.jpeg",
+              "thumb": "https://images.pexels.com/photos/13549341/pexels-photo-13549341.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Adrien Daurenjou",
+              "alt": "Tropical paradise beach with palm trees and granite rocks in Seychelles under a blue sky.",
+              "avg_color": "#67767D",
+              "query_used": "cote dor praslin seychelles beach palm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "uzbekistan",
+      "label": "Узбекистан",
+      "resorts": [
+        {
+          "key": "samarkand",
+          "label_ru": "Самарканд",
+          "queries": [
+            "registan samarkand uzbekistan sunny"
+          ],
+          "photos": [
+            {
+              "id": 16386337,
+              "page": "https://www.pexels.com/photo/registan-square-in-samarkand-16386337/",
+              "original": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg",
+              "thumb": "https://images.pexels.com/photos/16386337/pexels-photo-16386337.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "AXP Photography",
+              "alt": "Discover the ornate tilework and Islamic architecture of Registan Square, Samarkand, Uzbekistan.",
+              "avg_color": "#70777F",
+              "query_used": "registan samarkand uzbekistan sunny"
+            },
+            {
+              "id": 39662647,
+              "page": "https://www.pexels.com/photo/stunning-architecture-of-registan-square-samarkand-39662647/",
+              "original": "https://images.pexels.com/photos/39662647/pexels-photo-39662647.jpeg",
+              "thumb": "https://images.pexels.com/photos/39662647/pexels-photo-39662647.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Khusen Rustamov",
+              "alt": "Capture of the breathtaking ancient architecture at Registan Square in Samarkand, Uzbekistan.",
+              "avg_color": "#748796",
+              "query_used": "registan samarkand uzbekistan sunny"
+            }
+          ]
+        },
+        {
+          "key": "bukhara",
+          "label_ru": "Бухара",
+          "queries": [
+            "bukhara uzbekistan poi kalyan minaret"
+          ],
+          "photos": [
+            {
+              "id": 36748305,
+              "page": "https://www.pexels.com/photo/historic-architecture-of-bukhara-at-dusk-36748305/",
+              "original": "https://images.pexels.com/photos/36748305/pexels-photo-36748305.jpeg",
+              "thumb": "https://images.pexels.com/photos/36748305/pexels-photo-36748305.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Talha Kılıç",
+              "alt": "Beautiful view of Bukhara, Uzbekistan's ancient domes and minaret at sunset.",
+              "avg_color": "#8E8483",
+              "query_used": "bukhara uzbekistan poi kalyan minaret"
+            },
+            {
+              "id": 36771089,
+              "page": "https://www.pexels.com/photo/historic-bukhara-skyline-featuring-kalyan-minaret-36771089/",
+              "original": "https://images.pexels.com/photos/36771089/pexels-photo-36771089.jpeg",
+              "thumb": "https://images.pexels.com/photos/36771089/pexels-photo-36771089.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Talha Kılıç",
+              "alt": "A scenic view of Bukhara's historic Kalyan Minaret and mosque at dusk, highlighting Central Asian architecture.",
+              "avg_color": "#999999",
+              "query_used": "bukhara uzbekistan poi kalyan minaret"
+            }
+          ]
+        },
+        {
+          "key": "khiva",
+          "label_ru": "Хива",
+          "queries": [
+            "khiva uzbekistan itchan kala old town"
+          ],
+          "photos": [
+            {
+              "id": 19473670,
+              "page": "https://www.pexels.com/photo/wall-of-itchan-kala-in-khiva-19473670/",
+              "original": "https://images.pexels.com/photos/19473670/pexels-photo-19473670.jpeg",
+              "thumb": "https://images.pexels.com/photos/19473670/pexels-photo-19473670.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "AXP Photography",
+              "alt": "Stunning view of Ichan Kala's ancient fort walls under a clear blue sky in Khiva, Uzbekistan.",
+              "avg_color": "#898E94",
+              "query_used": "khiva uzbekistan itchan kala old town"
+            },
+            {
+              "id": 19473618,
+              "page": "https://www.pexels.com/photo/illuminated-walls-of-a-citadel-in-the-old-town-of-khiva-uzbekistan-19473618/",
+              "original": "https://images.pexels.com/photos/19473618/pexels-photo-19473618.jpeg",
+              "thumb": "https://images.pexels.com/photos/19473618/pexels-photo-19473618.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "AXP Photography",
+              "alt": "Capture the beauty of ancient illuminated walls at night in Khiva, Uzbekistan's old town.",
+              "avg_color": "#7C5315",
+              "query_used": "khiva uzbekistan itchan kala old town"
+            }
+          ]
+        },
+        {
+          "key": "tashkent",
+          "label_ru": "Ташкент",
+          "queries": [
+            "tashkent uzbekistan independence square metro"
+          ],
+          "photos": [
+            {
+              "id": 39733187,
+              "page": "https://www.pexels.com/photo/dramatic-view-of-tashkent-s-independence-square-fountain-39733187/",
+              "original": "https://images.pexels.com/photos/39733187/pexels-photo-39733187.jpeg",
+              "thumb": "https://images.pexels.com/photos/39733187/pexels-photo-39733187.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6240,
+              "height": 4160,
+              "author": "Anton Lukin",
+              "alt": "A striking image of the Independence Square Fountain in Tashkent, Uzbekistan at dusk.",
+              "avg_color": "#767570",
+              "query_used": "tashkent uzbekistan independence square metro"
+            },
+            {
+              "id": 19227981,
+              "page": "https://www.pexels.com/photo/mustakillik-maydoni-subway-station-in-tashkent-19227981/",
+              "original": "https://images.pexels.com/photos/19227981/pexels-photo-19227981.jpeg",
+              "thumb": "https://images.pexels.com/photos/19227981/pexels-photo-19227981.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "AXP Photography",
+              "alt": "Intricate chandeliers and columns inside a Tashkent metro station, Uzbekistan.",
+              "avg_color": "#67625E",
+              "query_used": "tashkent uzbekistan independence square metro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "armenia",
+      "label": "Армения",
+      "resorts": [
+        {
+          "key": "yerevan",
+          "label_ru": "Ереван",
+          "queries": [
+            "yerevan armenia mount ararat cascade"
+          ],
+          "photos": [
+            {
+              "id": 34235028,
+              "page": "https://www.pexels.com/photo/stunning-view-of-yerevan-from-the-cascade-complex-34235028/",
+              "original": "https://images.pexels.com/photos/34235028/pexels-photo-34235028.jpeg",
+              "thumb": "https://images.pexels.com/photos/34235028/pexels-photo-34235028.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Gabriele Niek",
+              "alt": "Panoramic view of Yerevan, Armenia from the Cascade Complex during late summer",
+              "avg_color": "#9A928F",
+              "query_used": "yerevan armenia mount ararat cascade"
+            },
+            {
+              "id": 34235029,
+              "page": "https://www.pexels.com/photo/armenia-s-cascades-in-yerevan-at-dusk-34235029/",
+              "original": "https://images.pexels.com/photos/34235029/pexels-photo-34235029.jpeg",
+              "thumb": "https://images.pexels.com/photos/34235029/pexels-photo-34235029.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7008,
+              "height": 4672,
+              "author": "Gabriele Niek",
+              "alt": "The Cascades in Yerevan, Armenia, showcasing the Soviet architecture and vibrant local life.",
+              "avg_color": "#928477",
+              "query_used": "yerevan armenia mount ararat cascade"
+            }
+          ]
+        },
+        {
+          "key": "sevan",
+          "label_ru": "Севан",
+          "queries": [
+            "lake sevan armenia sevanavank monastery"
+          ],
+          "photos": [
+            {
+              "id": 17550070,
+              "page": "https://www.pexels.com/photo/sevanavank-monastery-in-armenia-17550070/",
+              "original": "https://images.pexels.com/photos/17550070/pexels-photo-17550070.jpeg",
+              "thumb": "https://images.pexels.com/photos/17550070/pexels-photo-17550070.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6048,
+              "height": 4024,
+              "author": "Vera Emilie",
+              "alt": "Historic Sevanavank Monastery with stone architecture under a clear sky in Armenia.",
+              "avg_color": "#ACB6C2",
+              "query_used": "lake sevan armenia sevanavank monastery"
+            },
+            {
+              "id": 39207267,
+              "page": "https://www.pexels.com/photo/white-horse-by-sevanavank-monastery-in-armenia-39207267/",
+              "original": "https://images.pexels.com/photos/39207267/pexels-photo-39207267.jpeg",
+              "thumb": "https://images.pexels.com/photos/39207267/pexels-photo-39207267.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 7728,
+              "height": 5152,
+              "author": "Vincent Riverson",
+              "alt": "Captivating view of a white horse near Sevanavank Monastery in Sevan, Armenia.",
+              "avg_color": "#93A8A3",
+              "query_used": "lake sevan armenia sevanavank monastery"
+            }
+          ]
+        },
+        {
+          "key": "dilijan",
+          "label_ru": "Дилижан",
+          "queries": [
+            "dilijan armenia forest mountains resort"
+          ],
+          "photos": [
+            {
+              "id": 18500065,
+              "page": "https://www.pexels.com/photo/view-of-the-haghartsin-monastery-complex-in-armenia-18500065/",
+              "original": "https://images.pexels.com/photos/18500065/pexels-photo-18500065.jpeg",
+              "thumb": "https://images.pexels.com/photos/18500065/pexels-photo-18500065.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Ash Haghighi",
+              "alt": "The ancient Haghartsin Monastery nestled in the misty forests of Dilijan, Armenia.",
+              "avg_color": "#797A72",
+              "query_used": "dilijan armenia forest mountains resort"
+            },
+            {
+              "id": 28322682,
+              "page": "https://www.pexels.com/photo/a-truck-parked-in-front-of-a-cabin-28322682/",
+              "original": "https://images.pexels.com/photos/28322682/pexels-photo-28322682.jpeg",
+              "thumb": "https://images.pexels.com/photos/28322682/pexels-photo-28322682.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 9452,
+              "height": 5818,
+              "author": "Duncan Tabone",
+              "alt": "A rustic resort with a white pickup truck, nestled in nature with wooden architecture and lush forests.",
+              "avg_color": "#717366",
+              "query_used": "dilijan armenia forest mountains resort"
+            }
+          ]
+        },
+        {
+          "key": "jermuk",
+          "label_ru": "Джермук",
+          "queries": [
+            "jermuk armenia waterfall mountains spa"
+          ],
+          "photos": [
+            {
+              "id": 32379976,
+              "page": "https://www.pexels.com/photo/expansive-green-hills-of-voghjaberd-armenia-32379976/",
+              "original": "https://images.pexels.com/photos/32379976/pexels-photo-32379976.jpeg",
+              "thumb": "https://images.pexels.com/photos/32379976/pexels-photo-32379976.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 12000,
+              "height": 6752,
+              "author": "Joyston Judah",
+              "alt": "Explore the vibrant landscapes of Voghjaberd, Armenia with lush green hills and distant mountains.",
+              "avg_color": "#719B87",
+              "query_used": "jermuk armenia waterfall mountains spa"
+            },
+            {
+              "id": 33425930,
+              "page": "https://www.pexels.com/photo/mountain-landscape-with-waterfall-and-rock-formations-33425930/",
+              "original": "https://images.pexels.com/photos/33425930/pexels-photo-33425930.jpeg",
+              "thumb": "https://images.pexels.com/photos/33425930/pexels-photo-33425930.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Tahir Xəlfəquliyev",
+              "alt": "Scenic view of rugged mountains and a waterfall surrounded by lush greenery.",
+              "avg_color": "#767B74",
+              "query_used": "jermuk armenia waterfall mountains spa"
+            }
+          ]
+        },
+        {
+          "key": "tsaghkadzor",
+          "label_ru": "Цахкадзор",
+          "queries": [
+            "tsaghkadzor armenia ski resort summer green"
+          ],
+          "photos": [
+            {
+              "id": 32379976,
+              "page": "https://www.pexels.com/photo/expansive-green-hills-of-voghjaberd-armenia-32379976/",
+              "original": "https://images.pexels.com/photos/32379976/pexels-photo-32379976.jpeg",
+              "thumb": "https://images.pexels.com/photos/32379976/pexels-photo-32379976.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 12000,
+              "height": 6752,
+              "author": "Joyston Judah",
+              "alt": "Explore the vibrant landscapes of Voghjaberd, Armenia with lush green hills and distant mountains.",
+              "avg_color": "#719B87",
+              "query_used": "tsaghkadzor armenia ski resort summer green"
+            },
+            {
+              "id": 40729316,
+              "page": "https://www.pexels.com/photo/thrilling-ski-jump-on-a-snowy-mountain-slope-40729316/",
+              "original": "https://images.pexels.com/photos/40729316/pexels-photo-40729316.jpeg",
+              "thumb": "https://images.pexels.com/photos/40729316/pexels-photo-40729316.jpeg?auto=compress&cs=tinysrgb&w=420&h=260&fit=crop",
+              "width": 6000,
+              "height": 4000,
+              "author": "Yunuscan Zeybek",
+              "alt": "A skier in green jacket performs a jump on a snowy mountain under clear blue sky.",
+              "avg_color": "#80A2E4",
+              "query_used": "tsaghkadzor armenia ski resort summer green"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unique_photo_ids": 124,
+  "duplicate_slots_within_this_batch": 24,
+  "full_list_overlap_reference": "pexels-home-v4-picks-FULL-LIST.md",
+  "overlap_with_full_list_count": 23,
+  "overlap_with_full_list_ids": [
+    1456292,
+    3293192,
+    4679438,
+    8158121,
+    8834702,
+    9080953,
+    11398739,
+    13549341,
+    17550070,
+    19473618,
+    19473670,
+    24375925,
+    24913567,
+    28350360,
+    31029734,
+    32379976,
+    32544311,
+    32856473,
+    34939771,
+    36748305,
+    36771089,
+    36828569,
+    40475943
+  ]
+}

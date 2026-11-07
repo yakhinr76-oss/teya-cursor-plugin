@@ -179,26 +179,22 @@ def main() -> None:
 
     page = render_static_hub_html(tabs_out)
     for name in (
+        "index.html",
+        "hub-candidates.html",
         "pexels-hub-direction-candidates.html",
         "СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html",
     ):
         open(os.path.join(HERE, name), "w", encoding="utf-8").write(page)
 
-    index_html = """<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="refresh" content="0;url=СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Кандидаты хаба направлений</title>
-</head>
-<body>
-  <p><a href="СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html">Открыть все кандидаты (Уфа + Москва) одной страницей</a></p>
-</body>
-</html>
-"""
-    open(os.path.join(HERE, "index.html"), "w", encoding="utf-8").write(index_html)
-    print("written", json_path, md_path, "pexels-hub-direction-candidates.html", "СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html", "index.html")
+    print(
+        "written",
+        json_path,
+        md_path,
+        "index.html",
+        "hub-candidates.html",
+        "pexels-hub-direction-candidates.html",
+        "СМОТРЕТЬ_КАНДИДАТЫ_ХАБ.html",
+    )
 
 
 def render_static_hub_html(tabs_out: list[dict[str, Any]]) -> str:

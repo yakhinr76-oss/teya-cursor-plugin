@@ -49,7 +49,7 @@ $mow_cards = zhiraf_ufa_home_destinations_hub_cards( 'mow' );
 				><?php
 				printf(
 					/* translators: %d: number of destination cards */
-					esc_html__( '🧭 Экзотика через Москву (%d)', 'zhiraf-ufa' ),
+					esc_html__( '🧭 Вылет из Москвы (%d)', 'zhiraf-ufa' ),
 					count( $mow_cards )
 				);
 				?></button>

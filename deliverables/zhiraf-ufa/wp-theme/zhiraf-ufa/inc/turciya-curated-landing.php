@@ -83,7 +83,7 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'resort'        => 'alanya',
 			'image'         => 'resort-turciya-alanya-1.jpg',
 			'image_alt'     => __( 'Базовый доступный тур в Турцию, Аланья', 'zhiraf-ufa' ),
-			'badge'         => __( '🔥 Цена с главной', 'zhiraf-ufa' ),
+			'badge'         => __( 'Цена с главной', 'zhiraf-ufa' ),
 			'badge_mod'     => 'home-price',
 			'resort_pill'   => __( 'Аланья • 4★ All Inclusive', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Базовый комфорт', 'zhiraf-ufa' ),
@@ -93,14 +93,14 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'meal'          => __( '4★ All Inclusive', 'zhiraf-ufa' ),
 			'price_rub'     => $base_price,
 			'price_emphasis'=> true,
-			'wa_prefill'    => __( 'Здравствуйте! Интересует Sun Fire Beach Hotel 4★ в Аланье — базовый тур с вылетом из Уфы. Подскажите даты и актуальную цену на двоих.', 'zhiraf-ufa' ),
+			'wa_prefill'    => __( 'Здравствуйте! Интересует тур в Sun Fire Beach Hotel 4★ из Уфы на [даты].', 'zhiraf-ufa' ),
 		),
 		array(
 			'slot'        => 'family',
 			'resort'      => 'side',
 			'image'       => 'resort-turciya-belek-1.jpg',
 			'image_alt'   => __( 'Песчаный пляж и территория семейного отеля', 'zhiraf-ufa' ),
-			'badge'       => __( '👨‍👩‍👧 Идеально детям', 'zhiraf-ufa' ),
+			'badge'       => __( 'Идеально детям', 'zhiraf-ufa' ),
 			'badge_mod'   => 'family',
 			'resort_pill' => __( 'Сиде • Песчаный вход', 'zhiraf-ufa' ),
 			'subtitle'    => __( '5★ Ultra All Inclusive', 'zhiraf-ufa' ),
@@ -109,14 +109,14 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'description' => __( 'Пологий песчаный берег без камней, детский луна-парк, отдельный диетический стол для малышей и водные горки.', 'zhiraf-ufa' ),
 			'meal'        => __( '5★ UAI', 'zhiraf-ufa' ),
 			'price_rub'   => 174000,
-			'wa_prefill'  => __( 'Здравствуйте! Нужен подбор Marvida Family Eco 5★ на Сиде с вылетом из Уфы для семьи с детьми.', 'zhiraf-ufa' ),
+			'wa_prefill'  => __( 'Здравствуйте! Интересует тур в Marvida Family Eco 5★ из Уфы на [даты].', 'zhiraf-ufa' ),
 		),
 		array(
 			'slot'        => 'value',
 			'resort'      => 'alanya',
 			'image'       => 'resort-turciya-alanya-2.jpg',
 			'image_alt'   => __( 'Отель хит цена/качество, Аланья', 'zhiraf-ufa' ),
-			'badge'       => __( '⚖️ Хит цена/качество', 'zhiraf-ufa' ),
+			'badge'       => __( 'Хит цена/качество', 'zhiraf-ufa' ),
 			'badge_mod'   => 'value',
 			'resort_pill' => __( 'Аланья • 1-я линия', 'zhiraf-ufa' ),
 			'subtitle'    => __( '5★ All Inclusive', 'zhiraf-ufa' ),
@@ -125,14 +125,14 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'description' => __( 'Свежие дизайнерские номера, отличный выбор морепродуктов, стильная набережная и ненавязчивая живая музыка.', 'zhiraf-ufa' ),
 			'meal'        => __( '5★ AI', 'zhiraf-ufa' ),
 			'price_rub'   => 152000,
-			'wa_prefill'  => __( 'Здравствуйте! Интересует Quattro Beach Spa 5★ в Аланье с вылетом из Уфы — уточните цену на 7–9 ночей для двоих.', 'zhiraf-ufa' ),
+			'wa_prefill'  => __( 'Здравствуйте! Интересует тур в Quattro Beach Spa Resort 5★ из Уфы на [даты].', 'zhiraf-ufa' ),
 		),
 		array(
 			'slot'        => 'relax',
 			'resort'      => 'side',
 			'image'       => 'resort-turciya-kemer-2.jpg',
 			'image_alt'   => __( 'Спокойный пляж и море — отдых 16+', 'zhiraf-ufa' ),
-			'badge'       => __( '🥂 Только для взрослых', 'zhiraf-ufa' ),
+			'badge'       => __( 'Только для взрослых 16+', 'zhiraf-ufa' ),
 			'badge_mod'   => 'adults',
 			'resort_pill' => __( 'Сиде • 16+', 'zhiraf-ufa' ),
 			'subtitle'    => __( '5★ Ultra All Inclusive', 'zhiraf-ufa' ),
@@ -141,14 +141,14 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'description' => __( 'Тишина у бассейна без детского шума, премиальный импортный бар, спа-центр и широкий приватный пляж.', 'zhiraf-ufa' ),
 			'meal'        => __( '5★ UAI', 'zhiraf-ufa' ),
 			'price_rub'   => 198000,
-			'wa_prefill'  => __( 'Здравствуйте! Ищем тур в Commodore Elite Suites 5★ (16+) с вылетом из Уфы.', 'zhiraf-ufa' ),
+			'wa_prefill'  => __( 'Здравствуйте! Интересует тур в Commodore Elite Suites 5★ из Уфы на [даты].', 'zhiraf-ufa' ),
 		),
 		array(
 			'slot'        => 'kemer',
 			'resort'      => 'kemer',
 			'image'       => 'resort-turciya-kemer-1.jpg',
 			'image_alt'   => __( 'Отель в соснах Кемера', 'zhiraf-ufa' ),
-			'badge'       => __( '🌲 Сосны и горы', 'zhiraf-ufa' ),
+			'badge'       => __( 'Сосны и горы', 'zhiraf-ufa' ),
 			'badge_mod'   => 'nature',
 			'resort_pill' => __( 'Кемер • 1-я линия', 'zhiraf-ufa' ),
 			'subtitle'    => __( '5★ Ultra All Inclusive', 'zhiraf-ufa' ),
@@ -157,14 +157,14 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'description' => __( 'Огромная реликтовая зелёная территория у подножия Таврских гор, кристально чистая вода и целебный хвойный воздух.', 'zhiraf-ufa' ),
 			'meal'        => __( '5★ UAI', 'zhiraf-ufa' ),
 			'price_rub'   => 186000,
-			'wa_prefill'  => __( 'Здравствуйте! Подберите тур в Akka Antedon 5★ (Кемер) с вылетом из Уфы.', 'zhiraf-ufa' ),
+			'wa_prefill'  => __( 'Здравствуйте! Интересует тур в Akka Antedon Hotel 5★ из Уфы на [даты].', 'zhiraf-ufa' ),
 		),
 		array(
 			'slot'        => 'premium',
 			'resort'      => 'belek',
 			'image'       => 'resort-turciya-belek-1.jpg',
 			'image_alt'   => __( 'Премиум отель Белек', 'zhiraf-ufa' ),
-			'badge'       => __( '👑 Премиум сервис', 'zhiraf-ufa' ),
+			'badge'       => __( 'Премиум-сервис', 'zhiraf-ufa' ),
 			'badge_mod'   => 'premium',
 			'resort_pill' => __( 'Белек • High Class', 'zhiraf-ufa' ),
 			'subtitle'    => __( '5★ High Class All Inclusive', 'zhiraf-ufa' ),
@@ -173,7 +173,7 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'description' => __( 'Безупречная гастрономия, ассистент-сервис 24/7, дизайнерские виллы среди сосен и приватная пляжная зона.', 'zhiraf-ufa' ),
 			'meal'        => __( '5★ HCI', 'zhiraf-ufa' ),
 			'price_rub'   => 245000,
-			'wa_prefill'  => __( 'Здравствуйте! Интересует Voyage Belek Golf & Spa 5★ — премиум с вылетом из Уфы.', 'zhiraf-ufa' ),
+			'wa_prefill'  => __( 'Здравствуйте! Интересует тур в Voyage Belek Golf & Spa 5★ из Уфы на [даты].', 'zhiraf-ufa' ),
 		),
 	);
 }
@@ -288,6 +288,130 @@ function zhiraf_ufa_turciya_pool_image_for_region( $region ) {
 }
 
 /**
+ * Need/status badge for pool card (top-left on photo).
+ *
+ * @param string $category_slug JSON category_slug.
+ * @param string $region        Resort region key.
+ * @return array{badge:string,badge_mod:string}
+ */
+function zhiraf_ufa_turciya_pool_need_badge( $category_slug, $region ) {
+	$category_slug = sanitize_key( (string) $category_slug );
+	if ( 'family' === $category_slug ) {
+		return array(
+			'badge'     => __( 'Идеально детям', 'zhiraf-ufa' ),
+			'badge_mod' => 'family',
+		);
+	}
+	if ( 'couples' === $category_slug ) {
+		return array(
+			'badge'     => __( 'Только для взрослых 16+', 'zhiraf-ufa' ),
+			'badge_mod' => 'adults',
+		);
+	}
+	if ( 'premium' === $category_slug ) {
+		return array(
+			'badge'     => __( 'Премиум-сервис', 'zhiraf-ufa' ),
+			'badge_mod' => 'premium',
+		);
+	}
+	if ( 'kemer' === $region && 'balance' !== $category_slug ) {
+		return array(
+			'badge'     => __( 'Сосны и горы', 'zhiraf-ufa' ),
+			'badge_mod' => 'nature',
+		);
+	}
+	return array(
+		'badge'     => __( 'Хит цена/качество', 'zhiraf-ufa' ),
+		'badge_mod' => 'value',
+	);
+}
+
+/**
+ * Logistics pill (bottom-right on photo): курорт • линия / вход.
+ *
+ * @param string              $region        Region key.
+ * @param string              $category_slug Category.
+ * @param string              $resort_raw    JSON resort line.
+ * @param array<string,mixed> $row           Full JSON row.
+ * @return string
+ */
+function zhiraf_ufa_turciya_pool_resort_pill( $region, $category_slug, $resort_raw, $row ) {
+	$resort_raw    = (string) $resort_raw;
+	$category_slug = sanitize_key( (string) $category_slug );
+	$labels        = array(
+		'side'    => __( 'Сиде', 'zhiraf-ufa' ),
+		'kemer'   => __( 'Кемер', 'zhiraf-ufa' ),
+		'alanya'  => __( 'Аланья', 'zhiraf-ufa' ),
+		'belek'   => __( 'Белек', 'zhiraf-ufa' ),
+		'antalya' => __( 'Анталья', 'zhiraf-ufa' ),
+	);
+	$resort_label  = ! empty( $labels[ $region ] ) ? $labels[ $region ] : wp_trim_words( $resort_raw, 3, '…' );
+
+	$haystack = mb_strtolower( $resort_raw . ' ' . wp_json_encode( $row, JSON_UNESCAPED_UNICODE ), 'UTF-8' );
+	if ( 'family' === $category_slug && preg_match( '/песок|песчан|мелк/u', $haystack ) ) {
+		$suffix = __( 'Песчаный вход', 'zhiraf-ufa' );
+	} elseif ( 'premium' === $category_slug || 'belek' === $region ) {
+		$suffix = __( 'High Class', 'zhiraf-ufa' );
+	} elseif ( 'couples' === $category_slug || preg_match( '/16\+|взросл/u', $haystack ) ) {
+		$suffix = __( '16+', 'zhiraf-ufa' );
+	} elseif ( 'urban' === $category_slug || 'antalya' === $region ) {
+		$suffix = __( 'город • пляж', 'zhiraf-ufa' );
+	} else {
+		$suffix = __( '1-я линия', 'zhiraf-ufa' );
+	}
+
+	return $resort_label . ' • ' . $suffix;
+}
+
+/**
+ * Meal / concept line under hotel title.
+ *
+ * @param string $hotel_name    Official name with stars.
+ * @param string $category_slug JSON category.
+ * @return string
+ */
+function zhiraf_ufa_turciya_pool_meal_concept( $hotel_name, $category_slug ) {
+	$hotel_name    = (string) $hotel_name;
+	$category_slug = sanitize_key( (string) $category_slug );
+	if ( preg_match( '/4\s*★/u', $hotel_name ) ) {
+		return __( '4★ All Inclusive', 'zhiraf-ufa' );
+	}
+	if ( 'premium' === $category_slug ) {
+		return __( '5★ High Class All Inclusive', 'zhiraf-ufa' );
+	}
+	if ( in_array( $category_slug, array( 'family', 'couples' ), true ) ) {
+		return __( '5★ Ultra All Inclusive', 'zhiraf-ufa' );
+	}
+
+	return __( '5★ All Inclusive', 'zhiraf-ufa' );
+}
+
+/**
+ * Editorial «суть отеля» — 2–3 строки из USP и фактов.
+ *
+ * @param array<string,mixed> $row JSON row.
+ * @return string
+ */
+function zhiraf_ufa_turciya_pool_card_description( $row ) {
+	$chunks = array();
+	if ( ! empty( $row['usp'] ) ) {
+		$chunks[] = trim( (string) $row['usp'] );
+	}
+	if ( ! empty( $row['pros'] ) && is_array( $row['pros'] ) ) {
+		foreach ( $row['pros'] as $pro ) {
+			$pro = trim( (string) $pro );
+			if ( '' !== $pro ) {
+				$chunks[] = $pro;
+				break;
+			}
+		}
+	}
+	$text = trim( preg_replace( '/\s+/u', ' ', implode( ' ', $chunks ) ) );
+
+	return wp_trim_words( $text, 28, '…' );
+}
+
+/**
  * Editorial price hint for JSON pool hotel.
  *
  * @param array<string,mixed> $row JSON row.
@@ -328,23 +452,15 @@ function zhiraf_ufa_turciya_json_row_to_card( $row ) {
 	}
 	$tags[] = zhiraf_ufa_turciya_need_tag_from_category( ! empty( $row['category_slug'] ) ? (string) $row['category_slug'] : '' );
 
-	$badge_mod = 'default';
-	$badge     = '';
-	$cat       = ! empty( $row['category_slug'] ) ? (string) $row['category_slug'] : '';
-	if ( 'family' === $cat ) {
-		$badge     = __( '👨‍👩‍👧 Семейный выбор', 'zhiraf-ufa' );
-		$badge_mod = 'family';
-	} elseif ( 'couples' === $cat || 'premium' === $cat ) {
-		$badge     = __( '🥂 Для пар', 'zhiraf-ufa' );
-		$badge_mod = 'adults';
-	} elseif ( 'balance' === $cat || 'urban' === $cat ) {
-		$badge     = __( '⚖️ Цена / качество', 'zhiraf-ufa' );
-		$badge_mod = 'value';
-	}
-
-	$resort_pill = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
+	$cat         = ! empty( $row['category_slug'] ) ? (string) $row['category_slug'] : '';
+	$need_badge  = zhiraf_ufa_turciya_pool_need_badge( $cat, $region );
+	$badge       = $need_badge['badge'];
+	$badge_mod   = $need_badge['badge_mod'];
+	$resort_raw  = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
+	$resort_pill = zhiraf_ufa_turciya_pool_resort_pill( $region, $cat, $resort_raw, $row );
 	$pool_id     = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
-	$desc        = ! empty( $row['usp'] ) ? (string) $row['usp'] : '';
+	$desc        = zhiraf_ufa_turciya_pool_card_description( $row );
+	$concept     = zhiraf_ufa_turciya_pool_meal_concept( $name, $cat );
 
 	return array(
 		'pool_id'       => $pool_id,
@@ -360,14 +476,14 @@ function zhiraf_ufa_turciya_json_row_to_card( $row ) {
 		'badge'         => $badge,
 		'badge_mod'     => $badge_mod,
 		'resort_pill'   => $resort_pill,
-		'subtitle'      => ! empty( $row['category_name'] ) ? (string) $row['category_name'] : __( 'Проверенный отель', 'zhiraf-ufa' ),
+		'subtitle'      => $concept,
 		'rating'        => ! empty( $row['rating'] ) ? number_format( (float) $row['rating'], 2, '.', '' ) : '4.50',
 		'name'          => $name,
 		'description'   => $desc,
 		'price_rub'     => zhiraf_ufa_turciya_pool_price_rub( $row ),
 		'wa_prefill'    => sprintf(
 			/* translators: %s: hotel name */
-			__( 'Здравствуйте! Интересует %1$s с вылетом из Уфы — подскажите цену на 7–9 ночей для двоих.', 'zhiraf-ufa' ),
+			__( 'Здравствуйте! Интересует тур в %1$s из Уфы на [даты].', 'zhiraf-ufa' ),
 			$name
 		),
 	);

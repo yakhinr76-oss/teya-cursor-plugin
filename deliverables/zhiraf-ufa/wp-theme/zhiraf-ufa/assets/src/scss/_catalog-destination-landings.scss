@@ -1183,84 +1183,153 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  padding: 4px 10px;
+  z-index: 1;
+  max-width: calc(100% - 5.5rem);
+  padding: 5px 10px;
   border-radius: 999px;
   font-size: 0.6875rem;
   font-weight: 800;
+  line-height: 1.25;
   color: #fff;
   background: var(--color-primary);
+}
+
+.turciya-curated-card__badge--family {
+  background: #047857;
+}
+
+.turciya-curated-card__badge--adults {
+  background: #6d28d9;
+}
+
+.turciya-curated-card__badge--value,
+.turciya-curated-card__badge--home-price {
+  background: #c85a32;
+}
+
+.turciya-curated-card__badge--nature {
+  background: #0f766e;
+}
+
+.turciya-curated-card__badge--premium {
+  background: #1c1917;
 }
 
 .turciya-curated-card__pill {
   position: absolute;
   right: 12px;
   bottom: 12px;
-  padding: 4px 8px;
+  z-index: 1;
+  max-width: calc(100% - 5.5rem);
+  padding: 5px 8px;
   border-radius: 8px;
   font-size: 0.6875rem;
   font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
   color: #fff;
   background: rgba(0, 0, 0, 0.58);
   backdrop-filter: blur(6px);
 }
 
 .turciya-curated-card__body {
-  padding: 18px 20px 0;
-}
-
-.turciya-curated-card__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  margin-bottom: 6px;
-}
-
-.turciya-curated-card__rating {
-  color: #d97706;
-  font-weight: 800;
+  padding: 16px 20px 0;
 }
 
 .turciya-curated-card__title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.0625rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.turciya-curated-card__rating {
+  margin: 6px 0 0;
+  font-size: 0.8125rem;
   font-weight: 800;
-  line-height: 1.3;
+  color: #d97706;
+}
+
+.turciya-curated-card__rating span {
+  margin-right: 2px;
+}
+
+.turciya-curated-card__concept {
+  margin: 4px 0 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
 }
 
 .turciya-curated-card__text {
   margin: 10px 0 0;
   font-size: 0.8125rem;
-  line-height: 1.55;
-  color: var(--color-muted);
+  line-height: 1.5;
+  color: #57534e;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .turciya-curated-card__footer {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
   gap: 12px;
-  padding: 16px 20px 20px;
-  margin-top: 12px;
+  padding: 14px 20px 18px;
+  margin-top: auto;
   border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 480px) {
+  .turciya-curated-card__footer {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.turciya-curated-card__price {
+  flex: 1;
+  min-width: 0;
 }
 
 .turciya-curated-card__price-label,
 .turciya-curated-card__price-note {
   display: block;
   font-size: 0.625rem;
+  line-height: 1.45;
   color: var(--color-muted);
 }
 
 .turciya-curated-card__price-value {
-  font-size: 1rem;
-  font-weight: 800;
+  display: block;
+  margin: 2px 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--color-ink);
 }
 
 .turciya-curated-card__price-value--accent {
-  font-size: 1.125rem;
+  font-size: 1.375rem;
   color: var(--color-primary);
+}
+
+.turciya-curated-card__cta {
+  flex-shrink: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 480px) {
+  .turciya-curated-card__cta {
+    width: auto;
+  }
 }
 
 .turciya-expert-nuances__grid {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Curated hotel card (Turkey landing 2×3 grid).
+ * Curated hotel card — photo badges, title/rating, суть, цена, CTA.
  *
  * @package Zhiraf_Ufa
  * @var array<string,mixed> $args { hotel: array }.
@@ -33,6 +33,7 @@ $wa_url      = function_exists( 'zhiraf_ufa_turciya_curated_wa_url' )
 $price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && ! empty( $hotel['price_rub'] )
 	? zhiraf_ufa_turciya_curated_format_price( (int) $hotel['price_rub'] )
 	: '';
+$concept     = ! empty( $hotel['subtitle'] ) ? (string) $hotel['subtitle'] : '';
 $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $hotel['badge_mod'] ) : 'default';
 $is_starter  = in_array( 'starter', $filter_tags, true );
 $hide_init   = ! empty( $hotel['initial_hidden'] ) || ! $is_starter;
@@ -74,13 +75,16 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			<?php endif; ?>
 		</div>
 		<div class="turciya-curated-card__body">
-			<div class="turciya-curated-card__meta">
-				<span class="turciya-curated-card__meal"><?php echo esc_html( $hotel['subtitle'] ?? '' ); ?></span>
-				<?php if ( ! empty( $hotel['rating'] ) ) : ?>
-					<span class="turciya-curated-card__rating" aria-hidden="true">★ <?php echo esc_html( (string) $hotel['rating'] ); ?></span>
-				<?php endif; ?>
-			</div>
 			<h3 class="turciya-curated-card__title"><?php echo esc_html( (string) $hotel['name'] ); ?></h3>
+			<?php if ( ! empty( $hotel['rating'] ) ) : ?>
+				<p class="turciya-curated-card__rating" aria-label="<?php esc_attr_e( 'Рейтинг по отзывам', 'zhiraf-ufa' ); ?>">
+					<span aria-hidden="true">★</span>
+					<?php echo esc_html( (string) $hotel['rating'] ); ?>
+				</p>
+			<?php endif; ?>
+			<?php if ( '' !== $concept ) : ?>
+				<p class="turciya-curated-card__concept"><?php echo esc_html( $concept ); ?></p>
+			<?php endif; ?>
 			<?php if ( ! empty( $hotel['description'] ) ) : ?>
 				<p class="turciya-curated-card__text"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
 			<?php endif; ?>
@@ -92,7 +96,9 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			<span class="turciya-curated-card__price-value<?php echo ! empty( $hotel['price_emphasis'] ) ? ' turciya-curated-card__price-value--accent' : ''; ?>">
 				<?php echo esc_html( $price_label ); ?>
 			</span>
-			<span class="turciya-curated-card__price-note"><?php esc_html_e( '7–9 ночей, ориентир', 'zhiraf-ufa' ); ?></span>
+			<span class="turciya-curated-card__price-note">
+				<?php esc_html_e( '7–9 ночей, ориентир (включая прямой перелёт из Уфы, трансфер, страховку и питание).', 'zhiraf-ufa' ); ?>
+			</span>
 		</div>
 		<a
 			class="btn <?php echo $is_base ? 'btn--primary' : 'btn--outline'; ?> btn--sm turciya-curated-card__cta"

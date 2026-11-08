@@ -430,8 +430,10 @@
   gap: 0.75rem;
 }
 .dest-hub-card__bottom {
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: stretch;
   margin-top: auto;
+  gap: 0.625rem;
 }
 .dest-hub-card__badge {
   display: inline-block;
@@ -478,27 +480,33 @@
   line-height: 1.4;
   color: #d6d3d1;
 }
+.dest-hub-card__cta,
 .dest-hub-card__price {
-  flex-shrink: 0;
-  padding: 0.5rem 1rem;
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 0.5rem 0.875rem;
   border-radius: 0.75rem;
   background: var(--color-accent);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 800;
+  line-height: 1.3;
   color: #fff;
-  white-space: nowrap;
+  text-align: left;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
   transition: filter 0.15s ease;
 }
+.dest-hub-card:hover .dest-hub-card__cta,
 .dest-hub-card:hover .dest-hub-card__price {
   filter: brightness(0.95);
   background: var(--color-accent);
 }
+.dest-hub-card__cta--muted,
 .dest-hub-card__price--muted {
   background: rgba(255, 255, 255, 0.15);
   font-weight: 600;
   font-size: 0.75rem;
 }
+.dest-hub-card:hover .dest-hub-card__cta--muted,
 .dest-hub-card:hover .dest-hub-card__price--muted {
   background: rgba(255, 255, 255, 0.22);
 }

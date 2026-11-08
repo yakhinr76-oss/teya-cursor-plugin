@@ -145,6 +145,62 @@ function zhiraf_ufa_home_destinations_hub_config() {
 }
 
 /**
+ * Country name in genitive for hub card CTA («Смотреть отели …»).
+ *
+ * @param string $slug Hub slug.
+ * @return string
+ */
+function zhiraf_ufa_home_hub_cta_genitive( $slug ) {
+	$map = array(
+		'turciya'    => __( 'Турции', 'zhiraf-ufa' ),
+		'oae'        => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'egipet'     => __( 'Египта', 'zhiraf-ufa' ),
+		'tailand'    => __( 'Таиланда', 'zhiraf-ufa' ),
+		'rossiya'    => __( 'Сочи', 'zhiraf-ufa' ),
+		'abkhaziya'  => __( 'Абхазии', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Мальдив', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланки', 'zhiraf-ufa' ),
+		'vietnam'    => __( 'Вьетнама', 'zhiraf-ufa' ),
+		'kitaj'      => __( 'Хайнаня', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Гоа', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Бали', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Сейшел', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Узбекистана', 'zhiraf-ufa' ),
+		'armeniya'   => __( 'Армении', 'zhiraf-ufa' ),
+	);
+
+	return isset( $map[ $slug ] ) ? (string) $map[ $slug ] : '';
+}
+
+/**
+ * Hub card button label with price.
+ *
+ * @param string $slug        Country slug.
+ * @param string $price_label e.g. «от 118 400 ₽» or empty.
+ * @return string
+ */
+function zhiraf_ufa_home_hub_card_cta_label( $slug, $price_label ) {
+	$gen = zhiraf_ufa_home_hub_cta_genitive( $slug );
+	if ( '' === $gen ) {
+		return '' !== $price_label ? $price_label : __( 'Смотреть отели →', 'zhiraf-ufa' );
+	}
+	if ( '' === $price_label ) {
+		return sprintf(
+			/* translators: %s: country name (genitive) */
+			__( 'Смотреть отели %s →', 'zhiraf-ufa' ),
+			$gen
+		);
+	}
+
+	return sprintf(
+		/* translators: 1: country (genitive), 2: price line */
+		__( 'Смотреть отели %1$s → %2$s', 'zhiraf-ufa' ),
+		$gen,
+		$price_label
+	);
+}
+
+/**
  * Min tour for hub card: departure city + ~7 nights preference.
  *
  * @param string $country_slug Country slug.
@@ -230,11 +286,14 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		if ( ! empty( $row['flag_image'] ) ) {
 			$flag_img = zhiraf_ufa_theme_image( (string) $row['flag_image'], (string) $row['title'] );
 		}
+		$cta_label = zhiraf_ufa_home_hub_card_cta_label( $slug, $price_label );
+
 		$out[] = array_merge(
 			$row,
 			array(
 				'url'         => zhiraf_ufa_home_hub_destination_url( $slug ),
 				'price_label' => $price_label,
+				'cta_label'   => $cta_label,
 				'photo_url'   => ! empty( $img['url'] ) ? (string) $img['url'] : '',
 				'photo_alt'   => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
 				'flag_url'    => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',

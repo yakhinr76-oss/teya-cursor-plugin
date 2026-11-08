@@ -19,13 +19,13 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 				<div class="lead-magnet__value">
 					<p class="lead-magnet__badge">
 						<span class="lead-magnet__badge-dot" aria-hidden="true"></span>
-						<?php esc_html_e( 'Экспресс-подбор тура на сезон 2026', 'zhiraf-ufa' ); ?>
+						<?php esc_html_e( 'Ответ эксперта из Уфы за 15 минут', 'zhiraf-ufa' ); ?>
 					</p>
-					<h2 class="lead-magnet__title"><?php esc_html_e( 'Не хотите тратить часы на ручной перебор сотен отелей?', 'zhiraf-ufa' ); ?></h2>
+					<h2 class="lead-magnet__title"><?php esc_html_e( '3 лучших отеля под ваш бюджет + чек-лист по сборам в мессенджер', 'zhiraf-ufa' ); ?></h2>
 					<p class="lead-magnet__text">
 						<?php
 						echo wp_kses_post(
-							__( 'Назовите направление или бюджет — тревел-эксперт из Уфы отберёт <strong>2–3 проверенных отеля</strong> с прямым вылетом из UFA, честным входом в море и пришлёт раскладку в мессенджер через 20 минут.', 'zhiraf-ufa' )
+							__( 'Напишите направление и сумму на двоих — тревел-эксперт из Уфы пришлёт <strong>три проверенных отеля</strong> с вылетом из UFA и <strong>готовый список документов и вещей</strong> в WhatsApp, Telegram или MAX. Без долгого перебора агрегаторов.', 'zhiraf-ufa' )
 						);
 						?>
 					</p>
@@ -64,7 +64,7 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 						<input type="hidden" name="phone_only" value="1" />
 						<input type="hidden" name="name" value="<?php esc_attr_e( 'Гость сайта', 'zhiraf-ufa' ); ?>" />
 						<input type="hidden" name="contact_channel" value="WhatsApp" />
-						<input type="hidden" name="message" value="<?php esc_attr_e( 'Экспресс-подбор отелей — блок перед блогом', 'zhiraf-ufa' ); ?>" />
+						<input type="hidden" name="message" value="<?php esc_attr_e( '3 отеля + чек-лист сборов — блок перед блогом', 'zhiraf-ufa' ); ?>" />
 
 						<div class="lead-magnet__form-head">
 							<h3><?php esc_html_e( 'Куда прислать подборку?', 'zhiraf-ufa' ); ?></h3>

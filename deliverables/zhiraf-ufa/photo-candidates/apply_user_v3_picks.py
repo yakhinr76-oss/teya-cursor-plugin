@@ -58,8 +58,7 @@ def main() -> None:
     for row in picks["files"]:
         dest = os.path.join(IMG_DIR, row["file"])
         download(int(row["pexels_id"]), dest, int(row.get("width") or 2000))
-        if row.get("hero"):
-            hero_derivatives(row["file"].removesuffix(".jpg"))
+        # Never auto-touch hero collage / scenario assets unless explicitly flagged (we do not use that flag).
 
     out = os.path.join(HERE, "user-v3-applied-picks.done.json")
     json.dump({"ok": True, "count": len(picks["files"])}, open(out, "w", encoding="utf-8"), indent=2)

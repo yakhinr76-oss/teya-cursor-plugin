@@ -19,10 +19,7 @@
 | country-sejshely.jpg | 1591372 | https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/ |
 | resort-samarkand.jpg | 16386337 | https://www.pexels.com/photo/registan-square-in-samarkand-16386337/ |
 | alt-armeniya-yerevan.jpg | 17550070 | https://www.pexels.com/photo/sevanavank-monastery-in-armenia-17550070/ |
-| team-travel.jpg | 12261095 | https://www.pexels.com/photo/happy-family-sitting-on-poolside-12261095/ |
-| hero-collage-2.jpg | 8907262 | https://www.pexels.com/photo/man-and-woman-in-swimming-pool-8907262/ |
-| resort-turciya-belek-1.jpg | 31817153 | https://www.pexels.com/photo/luxury-hotel-room-with-ocean-view-and-jacuzzi-31817153/ |
-| hero-collage-uae / family / active | 36134146 / 12261095 / 18139273 | hero-коллаж на главной |
+Hero-коллаж и блок «сценарии» **не** входят в эту подборку (откат при ошибочном заливе 08.11.2026).
 
 # Фото направлений (assets/images/country-*.jpg)
 

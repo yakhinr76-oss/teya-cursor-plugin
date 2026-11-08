@@ -34,6 +34,12 @@ $price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && !
 	? zhiraf_ufa_turciya_curated_format_price( (int) $hotel['price_rub'] )
 	: '';
 $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $hotel['badge_mod'] ) : 'default';
+$is_starter  = in_array( 'starter', $filter_tags, true );
+$hide_init   = ! empty( $hotel['initial_hidden'] ) || ! $is_starter;
+if ( $hide_init ) {
+	$card_class .= ' is-hidden';
+}
+$pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hotel['pool_id'] ) : '';
 ?>
 <article
 	class="<?php echo esc_attr( $card_class ); ?>"
@@ -41,6 +47,10 @@ $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $h
 	data-resort="<?php echo esc_attr( $resort ); ?>"
 	data-filter-tags="<?php echo $tags_attr; ?>"
 	data-pool-rank="<?php echo esc_attr( (string) $pool_rank ); ?>"
+	<?php if ( '' !== $pool_id ) : ?>
+		data-pool-id="<?php echo esc_attr( $pool_id ); ?>"
+	<?php endif; ?>
+	<?php echo $hide_init ? ' hidden' : ''; ?>
 >
 	<div class="turciya-curated-card__top">
 		<div class="turciya-curated-card__media">

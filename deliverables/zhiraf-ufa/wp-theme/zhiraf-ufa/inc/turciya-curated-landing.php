@@ -562,7 +562,7 @@ function zhiraf_ufa_turciya_resort_hotel_counts() {
 }
 
 /**
- * Five resort pick cards — «В чём разница за 10 секунд».
+ * Five resort pick cards — H2 «Какой курорт Турции выбрать именно вам?».
  *
  * @return array<int,array<string,mixed>>
  */

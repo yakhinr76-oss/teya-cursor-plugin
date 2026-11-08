@@ -1,6 +1,6 @@
 <?php
 /**
- * Turkey — resort pick cards («В чём разница за 10 секунд»).
+ * Turkey — resort pick cards (SEO H2 + «Разница за 10 секунд» eyebrow).
  *
  * @package Zhiraf_Ufa
  */
@@ -19,12 +19,14 @@ if ( empty( $cards ) ) {
 ?>
 <div class="turciya-resort-pick" id="dest-resort-compare" aria-labelledby="turciya-resort-pick-title">
 	<div class="turciya-resort-pick__head">
-		<p class="turciya-resort-pick__eyebrow"><?php esc_html_e( 'Шпаргалка туриста', 'zhiraf-ufa' ); ?></p>
+		<p class="turciya-resort-pick__eyebrow">
+			<?php esc_html_e( 'Шпаргалка туриста • Разница за 10 секунд', 'zhiraf-ufa' ); ?>
+		</p>
 		<h2 class="section-title turciya-resort-pick__title" id="turciya-resort-pick-title">
-			<?php esc_html_e( 'В чём разница за 10 секунд', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' ); ?>
 		</h2>
 		<p class="turciya-resort-pick__lead">
-			<?php esc_html_e( 'Нажмите на курорт — сразу отфильтруем проверенные отели ниже.', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' ); ?>
 		</p>
 	</div>
 

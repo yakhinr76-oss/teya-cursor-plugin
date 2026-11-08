@@ -822,17 +822,27 @@
 
 .turciya-resort-pick__eyebrow {
   margin: 0;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  color: #c85a32;
+}
+
+.turciya-resort-pick__title {
+  margin: 0.25rem 0 0;
 }
 
 .turciya-resort-pick__lead {
   margin: 0.5rem 0 0;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .turciya-resort-pick__lead {
+    font-size: 0.875rem;
+  }
 }
 
 .turciya-resort-pick__track {

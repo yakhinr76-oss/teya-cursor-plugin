@@ -41,12 +41,33 @@
 .site-header__actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
 }
 
 .header-phone {
   font-weight: 700;
-  font-size: 16px;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-phone:hover {
+  color: var(--color-primary);
+}
+
+.header-actions__divider {
+  display: none;
+  width: 1px;
+  height: 1rem;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .header-actions__divider {
+    display: block;
+  }
 }
 
 .nav-toggle {

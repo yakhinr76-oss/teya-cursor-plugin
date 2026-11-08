@@ -52,6 +52,16 @@ function zhiraf_ufa_brand_vk_url() {
 function zhiraf_ufa_brand_social_channels() {
 	$channels = array();
 
+	$max = zhiraf_ufa_brand_max_url();
+	if ( '' !== $max ) {
+		$channels[] = array(
+			'id'          => 'max',
+			'url'         => $max,
+			'label'       => __( 'Написать в MAX', 'zhiraf-ufa' ),
+			'label_short' => __( 'MAX', 'zhiraf-ufa' ),
+		);
+	}
+
 	$wa = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : '';
 	if ( '' !== $wa ) {
 		$channels[] = array(
@@ -69,16 +79,6 @@ function zhiraf_ufa_brand_social_channels() {
 			'url'         => $tg,
 			'label'       => __( 'Написать в Telegram', 'zhiraf-ufa' ),
 			'label_short' => __( 'Telegram', 'zhiraf-ufa' ),
-		);
-	}
-
-	$max = zhiraf_ufa_brand_max_url();
-	if ( '' !== $max ) {
-		$channels[] = array(
-			'id'          => 'max',
-			'url'         => $max,
-			'label'       => __( 'Написать в MAX', 'zhiraf-ufa' ),
-			'label_short' => __( 'MAX', 'zhiraf-ufa' ),
 		);
 	}
 
@@ -134,6 +134,9 @@ function zhiraf_ufa_social_icon_svg( $channel, $size = 22 ) {
  *   @type string $variant  icon|pill (default icon).
  *   @type string $class    Extra wrapper class.
  *   @type bool   $labels   Show text label (pill always shows).
+ *   @type array  $only     Limit to channel ids (max, telegram, …).
+ *   @type array  $order    Sort order of channel ids.
+ *   @type string $context  header|footer (styling hooks).
  * }
  */
 function zhiraf_ufa_render_social_links( $args = array() ) {
@@ -143,6 +146,9 @@ function zhiraf_ufa_render_social_links( $args = array() ) {
 			'variant' => 'icon',
 			'class'   => '',
 			'labels'  => false,
+			'only'    => array(),
+			'order'   => array(),
+			'context' => '',
 		)
 	);
 	get_template_part( 'template-parts/social/links', null, $args );

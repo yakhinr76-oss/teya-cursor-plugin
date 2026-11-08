@@ -47,23 +47,23 @@ function zhiraf_ufa_turciya_curated_format_price( $amount ) {
 function zhiraf_ufa_turciya_resort_chips() {
 	return array(
 		array(
-			'id'    => 'all',
-			'label' => __( 'Все', 'zhiraf-ufa' ),
+			'id'    => 'starter',
+			'label' => __( 'Топ-6', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'side',
+			'id'    => 'resort-side',
 			'label' => __( 'Сиде — песок', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'kemer',
+			'id'    => 'resort-kemer',
 			'label' => __( 'Кемер — горы', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'alanya',
+			'id'    => 'resort-alanya',
 			'label' => __( 'Аланья — бюджет', 'zhiraf-ufa' ),
 		),
 		array(
-			'id'    => 'belek',
+			'id'    => 'resort-belek',
 			'label' => __( 'Белек — премиум', 'zhiraf-ufa' ),
 		),
 	);
@@ -179,6 +179,330 @@ function zhiraf_ufa_turciya_curated_hotels() {
 }
 
 /**
+ * Normalize hotel name for dedupe against starter showcase.
+ *
+ * @param string $name Hotel title.
+ * @return string
+ */
+function zhiraf_ufa_turciya_hotel_name_key( $name ) {
+	$name = remove_accents( wp_strip_all_tags( (string) $name ) );
+	$name = mb_strtolower( $name, 'UTF-8' );
+	$name = preg_replace( '/[^\p{L}\p{N}]+/u', '', $name );
+
+	return $name;
+}
+
+/**
+ * Resort region key from JSON resort label.
+ *
+ * @param string $resort_label Resort line from JSON.
+ * @return string side|kemer|alanya|belek or empty.
+ */
+function zhiraf_ufa_turciya_resort_region_key( $resort_label ) {
+	$r = mb_strtolower( (string) $resort_label, 'UTF-8' );
+	if ( preg_match( '/сиде|side|кумк|кызылагач|чолак|эврен/u', $r ) ) {
+		return 'side';
+	}
+	if ( preg_match( '/белек|kadri|cullinan|regnum/u', $r ) ) {
+		return 'belek';
+	}
+	if ( preg_match( '/алань|алан|инжек|анталь|лара|мурат|сарай/u', $r ) ) {
+		return 'alanya';
+	}
+	if ( preg_match( '/кемер|кириш|текир|гёню|гёйн|бельд/u', $r ) ) {
+		return 'kemer';
+	}
+
+	return '';
+}
+
+/**
+ * Need tag from JSON category slug.
+ *
+ * @param string $category_slug JSON category.
+ * @return string need-family|need-adults|need-price
+ */
+function zhiraf_ufa_turciya_need_tag_from_category( $category_slug ) {
+	$category_slug = sanitize_key( (string) $category_slug );
+	switch ( $category_slug ) {
+		case 'family':
+			return 'need-family';
+		case 'couples':
+			return 'need-adults';
+		case 'balance':
+		case 'urban':
+			return 'need-price';
+		case 'premium':
+			return 'need-adults';
+		default:
+			return 'need-price';
+	}
+}
+
+/**
+ * Filter tags for the six starter showcase hotels.
+ *
+ * @param array<string,mixed> $hotel Curated row.
+ * @return array<int,string>
+ */
+function zhiraf_ufa_turciya_starter_filter_tags( $hotel ) {
+	$tags = array( 'starter' );
+	$resort = ! empty( $hotel['resort'] ) ? sanitize_key( (string) $hotel['resort'] ) : '';
+	if ( '' !== $resort ) {
+		$tags[] = 'resort-' . $resort;
+	}
+	$slot = ! empty( $hotel['slot'] ) ? (string) $hotel['slot'] : '';
+	switch ( $slot ) {
+		case 'family':
+			$tags[] = 'need-family';
+			break;
+		case 'relax':
+			$tags[] = 'need-adults';
+			break;
+		case 'value':
+		case 'base':
+			$tags[] = 'need-price';
+			break;
+		default:
+			break;
+	}
+
+	return array_values( array_unique( $tags ) );
+}
+
+/**
+ * Hero image by resort region.
+ *
+ * @param string $region Resort key.
+ * @return string Filename.
+ */
+function zhiraf_ufa_turciya_pool_image_for_region( $region ) {
+	$map = array(
+		'side'   => 'resort-turciya-belek-1.jpg',
+		'kemer'  => 'resort-turciya-kemer-2.jpg',
+		'alanya' => 'resort-turciya-alanya-2.jpg',
+		'belek'  => 'resort-turciya-belek-1.jpg',
+	);
+
+	return ! empty( $map[ $region ] ) ? $map[ $region ] : 'resort-turciya-alanya-2.jpg';
+}
+
+/**
+ * Editorial price hint for JSON pool hotel.
+ *
+ * @param array<string,mixed> $row JSON row.
+ * @return int
+ */
+function zhiraf_ufa_turciya_pool_price_rub( $row ) {
+	$cat = ! empty( $row['category_slug'] ) ? sanitize_key( (string) $row['category_slug'] ) : 'balance';
+	switch ( $cat ) {
+		case 'family':
+			return 172000;
+		case 'couples':
+			return 198000;
+		case 'premium':
+			return 248000;
+		case 'urban':
+			return 158000;
+		case 'balance':
+		default:
+			return 162000;
+	}
+}
+
+/**
+ * Map one JSON hotel row to curated card shape.
+ *
+ * @param array<string,mixed> $row JSON.
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_turciya_json_row_to_card( $row ) {
+	if ( empty( $row['hotel_name'] ) ) {
+		return null;
+	}
+	$name = (string) $row['hotel_name'];
+	$region = zhiraf_ufa_turciya_resort_region_key( ! empty( $row['resort'] ) ? (string) $row['resort'] : '' );
+	$tags   = array();
+	if ( '' !== $region ) {
+		$tags[] = 'resort-' . $region;
+	}
+	$tags[] = zhiraf_ufa_turciya_need_tag_from_category( ! empty( $row['category_slug'] ) ? (string) $row['category_slug'] : '' );
+
+	$badge_mod = 'default';
+	$badge     = '';
+	$cat       = ! empty( $row['category_slug'] ) ? (string) $row['category_slug'] : '';
+	if ( 'family' === $cat ) {
+		$badge     = __( '👨‍👩‍👧 Семейный выбор', 'zhiraf-ufa' );
+		$badge_mod = 'family';
+	} elseif ( 'couples' === $cat || 'premium' === $cat ) {
+		$badge     = __( '🥂 Для пар', 'zhiraf-ufa' );
+		$badge_mod = 'adults';
+	} elseif ( 'balance' === $cat || 'urban' === $cat ) {
+		$badge     = __( '⚖️ Цена / качество', 'zhiraf-ufa' );
+		$badge_mod = 'value';
+	}
+
+	$resort_pill = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
+	$pool_id     = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
+	$desc        = ! empty( $row['usp'] ) ? (string) $row['usp'] : '';
+
+	return array(
+		'pool_id'       => $pool_id,
+		'pool_rank'     => 100 + $pool_id,
+		'filter_tags'   => array_values( array_unique( $tags ) ),
+		'resort'        => $region,
+		'image'         => zhiraf_ufa_turciya_pool_image_for_region( $region ),
+		'image_alt'     => sprintf(
+			/* translators: %s: hotel name */
+			__( 'Отель %s', 'zhiraf-ufa' ),
+			$name
+		),
+		'badge'         => $badge,
+		'badge_mod'     => $badge_mod,
+		'resort_pill'   => $resort_pill,
+		'subtitle'      => ! empty( $row['category_name'] ) ? (string) $row['category_name'] : __( 'Проверенный отель', 'zhiraf-ufa' ),
+		'rating'        => ! empty( $row['rating'] ) ? number_format( (float) $row['rating'], 2, '.', '' ) : '4.50',
+		'name'          => $name,
+		'description'   => $desc,
+		'price_rub'     => zhiraf_ufa_turciya_pool_price_rub( $row ),
+		'wa_prefill'    => sprintf(
+			/* translators: %s: hotel name */
+			__( 'Здравствуйте! Интересует %1$s с вылетом из Уфы — подскажите цену на 7–9 ночей для двоих.', 'zhiraf-ufa' ),
+			$name
+		),
+	);
+}
+
+/**
+ * Full on-page pool (25 editorial + starter slots), tagged for catalog filters.
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_turciya_catalog_hotels() {
+	static $cache = null;
+	if ( null !== $cache ) {
+		return $cache;
+	}
+
+	$hotels       = array();
+	$starter_keys = array();
+	$rank         = 1;
+	foreach ( zhiraf_ufa_turciya_curated_hotels() as $row ) {
+		$starter_keys[] = zhiraf_ufa_turciya_hotel_name_key( ! empty( $row['name'] ) ? (string) $row['name'] : '' );
+		$row['pool_id']     = 'starter-' . ( ! empty( $row['slot'] ) ? (string) $row['slot'] : $rank );
+		$row['pool_rank']   = $rank;
+		$row['filter_tags'] = zhiraf_ufa_turciya_starter_filter_tags( $row );
+		$hotels[]           = $row;
+		++$rank;
+	}
+
+	$json_path = function_exists( 'zhiraf_ufa_turkey_hotels_json_path' ) ? zhiraf_ufa_turkey_hotels_json_path() : '';
+	if ( $json_path && is_readable( $json_path ) ) {
+		$decoded = json_decode( (string) file_get_contents( $json_path ), true );
+		if ( is_array( $decoded ) ) {
+			foreach ( $decoded as $json_row ) {
+				if ( ! is_array( $json_row ) ) {
+					continue;
+				}
+				$key = zhiraf_ufa_turciya_hotel_name_key( ! empty( $json_row['hotel_name'] ) ? (string) $json_row['hotel_name'] : '' );
+				if ( '' === $key || in_array( $key, $starter_keys, true ) ) {
+					continue;
+				}
+				$card = zhiraf_ufa_turciya_json_row_to_card( $json_row );
+				if ( $card ) {
+					$hotels[] = $card;
+				}
+			}
+		}
+	}
+
+	$cache = $hotels;
+
+	return $cache;
+}
+
+/**
+ * Unified catalog filter definitions (one active filter at a time).
+ *
+ * @return array<int,array<string,string>>
+ */
+function zhiraf_ufa_turciya_catalog_filters() {
+	return array(
+		array(
+			'id'    => 'starter',
+			'group' => 'default',
+			'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ),
+			'title' => __( 'Туры в Турцию: 6 проверенных вариантов', 'zhiraf-ufa' ),
+			'desc'  => __( 'Базовый тур с главной страницы + 5 отелей под разные сценарии отдыха с прямым рейсом из Уфы.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'resort-side',
+			'group' => 'resort',
+			'label' => __( '🏖️ Сиде', 'zhiraf-ufa' ),
+			'title' => __( 'Отели Сиде (песчаные пляжи)', 'zhiraf-ufa' ),
+			'desc'  => __( 'Отобранные отели Сиде с пологим берегом без плит — до 6 лучших из нашей базы.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'resort-kemer',
+			'group' => 'resort',
+			'label' => __( '🌲 Кемер', 'zhiraf-ufa' ),
+			'title' => __( 'Отели Кемера (горы и сосны)', 'zhiraf-ufa' ),
+			'desc'  => __( 'Проверенные отели среди реликтовых сосен с кристально чистой водой.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'resort-alanya',
+			'group' => 'resort',
+			'label' => __( '☀️ Аланья', 'zhiraf-ufa' ),
+			'title' => __( 'Отели Аланьи (максимальная выгода)', 'zhiraf-ufa' ),
+			'desc'  => __( 'Лучшие предложения по соотношению цены и тёплого моря.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'resort-belek',
+			'group' => 'resort',
+			'label' => __( '👑 Белек', 'zhiraf-ufa' ),
+			'title' => __( 'Отели Белека (High-End 5★)', 'zhiraf-ufa' ),
+			'desc'  => __( 'Флагманские отели с закрытой территорией и сервисом премиум-уровня.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'need-family',
+			'group' => 'need',
+			'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ),
+			'title' => __( 'Отели для отдыха с детьми', 'zhiraf-ufa' ),
+			'desc'  => __( 'Пологий песчаный вход, горки, детское меню и спокойный трансфер.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'need-adults',
+			'group' => 'need',
+			'label' => __( '🥂 Без детей 16+', 'zhiraf-ufa' ),
+			'title' => __( 'Отели только для взрослых (16+ / 18+)', 'zhiraf-ufa' ),
+			'desc'  => __( 'Никакого детского шума, тишина, спа и романтическая атмосфера.', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'need-price',
+			'group' => 'need',
+			'label' => __( '⚖️ Хит цена/качество', 'zhiraf-ufa' ),
+			'title' => __( 'Хиты «Цена / Качество»', 'zhiraf-ufa' ),
+			'desc'  => __( 'Отели, где сервис и питание существенно выше уплаченных денег.', 'zhiraf-ufa' ),
+		),
+	);
+}
+
+/**
+ * Default catalog copy (starter mode).
+ *
+ * @return array{title:string,desc:string,eyebrow:string}
+ */
+function zhiraf_ufa_turciya_catalog_default_copy() {
+	$filters = zhiraf_ufa_turciya_catalog_filters();
+
+	return array(
+		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
+		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : '',
+		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : '',
+	);
+}
+
+/**
  * Count curated hotels per resort (for pick-card footers).
  *
  * @return array<string,int>
@@ -190,10 +514,16 @@ function zhiraf_ufa_turciya_resort_hotel_counts() {
 		'alanya' => 0,
 		'belek'  => 0,
 	);
-	foreach ( zhiraf_ufa_turciya_curated_hotels() as $hotel ) {
-		$resort = ! empty( $hotel['resort'] ) ? (string) $hotel['resort'] : '';
-		if ( isset( $counts[ $resort ] ) ) {
-			++$counts[ $resort ];
+	foreach ( zhiraf_ufa_turciya_catalog_hotels() as $hotel ) {
+		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
+		foreach ( $tags as $tag ) {
+			if ( 0 !== strpos( (string) $tag, 'resort-' ) ) {
+				continue;
+			}
+			$key = substr( (string) $tag, 7 );
+			if ( isset( $counts[ $key ] ) ) {
+				++$counts[ $key ];
+			}
 		}
 	}
 

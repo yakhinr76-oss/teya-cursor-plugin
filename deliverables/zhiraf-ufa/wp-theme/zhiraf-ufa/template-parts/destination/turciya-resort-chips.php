@@ -34,17 +34,17 @@ $wrap_class = 'turciya-resort-chips turciya-resort-chips--' . sanitize_html_clas
 		if ( '' === $id || '' === $label ) {
 			continue;
 		}
-		$active = ( 0 === (int) $i && 'all' === $id );
+		$active = ( 0 === (int) $i && 'starter' === $id );
 		?>
 		<button
 			type="button"
 			class="turciya-resort-chips__btn<?php echo $active ? ' is-active' : ''; ?>"
-			data-resort-filter="<?php echo esc_attr( $id ); ?>"
+			data-turciya-catalog-filter="<?php echo esc_attr( $id ); ?>"
 			role="tab"
 			aria-selected="<?php echo $active ? 'true' : 'false'; ?>"
 		>
 			<?php echo esc_html( $label ); ?>
-			<?php if ( 'all' === $id ) : ?>
+			<?php if ( 'starter' === $id ) : ?>
 				<span class="turciya-resort-chips__count">(6)</span>
 			<?php endif; ?>
 		</button>

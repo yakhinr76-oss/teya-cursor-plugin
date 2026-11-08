@@ -103,9 +103,26 @@
 }
 
 .footer-social .zh-social-link--max {
-  background: var(--color-primary);
-  font-weight: 900;
-  font-size: 0.75rem;
+  background: transparent;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  padding: 0;
+  overflow: hidden;
+}
+
+.footer-social .zh-social-link--max .zh-social-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.footer-social .zh-social-link--max .zh-social-icon__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .footer-social .zh-social-link--whatsapp {
@@ -133,6 +150,13 @@
 .zh-social-links--header.zh-social-links--icon .zh-social-link {
   width: 38px;
   height: 38px;
+  color: var(--color-text);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.zh-social-links--header .zh-social-link--telegram:hover {
+  color: #229ed9;
+  border-color: rgba(34, 158, 217, 0.45);
 }
 
 .zh-social-links--header .zh-social-link--max .zh-social-icon__img {
@@ -140,6 +164,16 @@
   width: 22px;
   height: 22px;
   object-fit: contain;
+  filter: grayscale(1) brightness(0);
+  transition: filter 0.15s ease;
+}
+
+.zh-social-links--header .zh-social-link--max:hover .zh-social-icon__img {
+  filter: none;
+}
+
+.zh-social-links--header .zh-social-link--max:hover {
+  border-color: rgba(91, 75, 230, 0.4);
 }
 
 .contacts-card--social .zh-social-links {

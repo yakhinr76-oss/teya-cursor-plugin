@@ -68,6 +68,8 @@ if ( empty( $channels ) ) {
 $wrapper_class = 'zh-social-links zh-social-links--' . sanitize_html_class( $variant );
 if ( 'header' === $context ) {
 	$wrapper_class .= ' zh-social-links--header';
+} elseif ( 'footer' === $context ) {
+	$wrapper_class .= ' zh-social-links--footer';
 }
 if ( '' !== $class ) {
 	$wrapper_class .= ' ' . esc_attr( $class );
@@ -111,7 +113,15 @@ $allowed_svg = array(
 		if ( '' === $id || '' === $url || '' === $aria_label ) {
 			continue;
 		}
-		$icon_size = 'pill' === $variant ? 20 : ( 'header' === $context ? 20 : 22 );
+		if ( 'pill' === $variant ) {
+			$icon_size = 20;
+		} elseif ( 'header' === $context ) {
+			$icon_size = 20;
+		} elseif ( 'footer' === $context ) {
+			$icon_size = 36;
+		} else {
+			$icon_size = 22;
+		}
 		$icon      = zhiraf_ufa_social_icon_svg( $id, $icon_size );
 		if ( '' === $icon ) {
 			continue;

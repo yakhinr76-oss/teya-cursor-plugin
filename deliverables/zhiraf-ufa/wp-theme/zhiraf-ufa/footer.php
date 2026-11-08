@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				zhiraf_ufa_render_social_links(
 					array(
 						'variant' => 'icon',
+						'context' => 'footer',
 						'class'   => 'footer-social',
 						'order'   => array( 'max', 'whatsapp', 'telegram', 'vk' ),
 					)

@@ -184,14 +184,14 @@ function zhiraf_ufa_hero_mobile_destination_chips() {
 				'label' => __( 'Таиланд', 'zhiraf-ufa' ),
 			),
 			array(
-				'slug'  => 'maldivy',
-				'flag'  => '🏝️',
-				'label' => __( 'Мальдивы', 'zhiraf-ufa' ),
-			),
-			array(
 				'slug'  => 'rossiya',
 				'flag'  => '🇷🇺',
 				'label' => __( 'Сочи', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'vietnam',
+				'flag'  => '🇻🇳',
+				'label' => __( 'Вьетнам', 'zhiraf-ufa' ),
 			),
 		)
 	);

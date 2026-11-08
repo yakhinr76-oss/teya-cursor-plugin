@@ -1,6 +1,6 @@
 <?php
 /**
- * Hero: quick destination chips (all viewports).
+ * Hero: quick destination chips (3×2 grid).
  *
  * @package Zhiraf_Ufa
  */
@@ -28,13 +28,17 @@ if ( empty( $chips ) ) {
 				continue;
 			}
 			$url   = home_url( '/tour/' . rawurlencode( $slug ) . '/' );
-			$label = trim( (string) ( $chip['flag'] ?? '' ) . ' ' . (string) ( $chip['label'] ?? $slug ) );
+			$flag  = (string) ( $chip['flag'] ?? '' );
+			$label = (string) ( $chip['label'] ?? $slug );
 			?>
 			<a
 				class="hero-premium__quick-dest-chip"
 				href="<?php echo esc_url( $url ); ?>"
 				data-track="hero_dest_chip_<?php echo esc_attr( $slug ); ?>"
-			><?php echo esc_html( $label ); ?></a>
+			>
+				<span class="hero-premium__quick-dest-flag" aria-hidden="true"><?php echo esc_html( $flag ); ?></span>
+				<span class="hero-premium__quick-dest-name"><?php echo esc_html( $label ); ?></span>
+			</a>
 		<?php endforeach; ?>
 	</nav>
 </div>

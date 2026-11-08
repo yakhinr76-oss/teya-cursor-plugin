@@ -118,11 +118,15 @@ $allowed_svg = array(
 		} elseif ( 'header' === $context ) {
 			$icon_size = 20;
 		} elseif ( 'footer' === $context ) {
-			$icon_size = 36;
+			$icon_size = 18;
 		} else {
 			$icon_size = 22;
 		}
-		$icon      = zhiraf_ufa_social_icon_svg( $id, $icon_size );
+		$mark = ( 'header' === $context && 'telegram' === $id ) ? 'plane' : 'default';
+		if ( 'footer' === $context && 'max' === $id ) {
+			$icon_size = 36;
+		}
+		$icon      = zhiraf_ufa_social_icon_svg( $id, $icon_size, $mark );
 		if ( '' === $icon ) {
 			continue;
 		}

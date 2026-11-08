@@ -98,18 +98,16 @@
   height: 2.25rem;
   border-radius: 0.75rem;
   border: 0;
+  padding: 0;
   color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-text);
 }
 
-.footer-social .zh-social-link--max {
-  background: transparent;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-  padding: 0;
-  overflow: hidden;
-}
-
-.footer-social .zh-social-link--max .zh-social-link__icon {
+.footer-social.zh-social-links--icon .zh-social-link .zh-social-link__icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,29 +116,48 @@
   line-height: 0;
 }
 
-.footer-social .zh-social-link--max .zh-social-icon__img {
+.footer-social.zh-social-links--icon .zh-social-icon__svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--max {
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--max .zh-social-icon__img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.footer-social .zh-social-link--whatsapp {
+.footer-social.zh-social-links--icon .zh-social-link--whatsapp {
   background: #25d366;
 }
 
-.footer-social .zh-social-link--telegram {
+.footer-social.zh-social-links--icon .zh-social-link--telegram {
   background: #229ed9;
 }
 
-.footer-social .zh-social-link--vk {
+.footer-social.zh-social-links--icon .zh-social-link--vk {
   background: #0077ff;
 }
 
-.footer-social .zh-social-link:hover {
+.footer-social.zh-social-links--icon .zh-social-link:hover {
   transform: translateY(-2px);
-  filter: brightness(0.95);
+  box-shadow: 0 4px 14px rgba(30, 28, 24, 0.14);
   color: #fff;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--whatsapp:hover,
+.footer-social.zh-social-links--icon .zh-social-link--telegram:hover,
+.footer-social.zh-social-links--icon .zh-social-link--vk:hover,
+.footer-social.zh-social-links--icon .zh-social-link--max:hover {
+  border-color: transparent;
 }
 
 .zh-social-links--header {
@@ -159,17 +176,34 @@
   border-color: rgba(34, 158, 217, 0.45);
 }
 
+.zh-social-links--header .zh-social-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.zh-social-links--header .zh-social-icon__svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}
+
 .zh-social-links--header .zh-social-link--max .zh-social-icon__img {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 1.375rem;
+  height: 1.375rem;
   object-fit: contain;
-  filter: grayscale(1) brightness(0);
-  transition: filter 0.15s ease;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.92;
+  transition: filter 0.15s ease, opacity 0.15s ease;
 }
 
 .zh-social-links--header .zh-social-link--max:hover .zh-social-icon__img {
   filter: none;
+  opacity: 1;
 }
 
 .zh-social-links--header .zh-social-link--max:hover {

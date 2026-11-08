@@ -1039,6 +1039,7 @@
       return;
     }
     function applyFilter(resort) {
+      resort = resort || 'all';
       cards.forEach(function (card) {
         var match = resort === 'all' || (card.getAttribute('data-resort') || '') === resort;
         card.classList.toggle('is-hidden', !match);
@@ -1049,14 +1050,30 @@
         }
       });
       chipButtons.forEach(function (btn) {
-        var on = (btn.getAttribute('data-resort-filter') || 'all') === resort;
-        btn.classList.toggle('is-active', on);
-        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+        var filter = btn.getAttribute('data-resort-filter') || 'all';
+        var on = filter === resort;
+        var isChip = btn.classList.contains('turciya-resort-chips__btn');
+        if (isChip) {
+          btn.classList.toggle('is-active', on);
+          btn.setAttribute('aria-selected', on ? 'true' : 'false');
+        }
       });
     }
+    function scrollToShowcase() {
+      if (typeof showcase.scrollIntoView === 'function') {
+        showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    window.filterByResort = function (resort) {
+      applyFilter(resort);
+      scrollToShowcase();
+    };
     chipButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         applyFilter(btn.getAttribute('data-resort-filter') || 'all');
+        if (btn.hasAttribute('data-turciya-goto-showcase')) {
+          scrollToShowcase();
+        }
       });
     });
   }

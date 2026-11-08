@@ -61,8 +61,8 @@ function zhiraf_ufa_destination_default_module_map() {
 function zhiraf_ufa_destination_hero_image_standards() {
 	return array(
 		'turciya'    => array(
-			'image' => 'hero-turkey.jpg',
-			'alt'   => __( 'Турция — пляж, пальмы и отели на первой линии', 'zhiraf-ufa' ),
+			'image' => 'resort-turciya-alanya-2.jpg',
+			'alt'   => __( 'Турция — лазурное побережье Антальи, пляж и море', 'zhiraf-ufa' ),
 		),
 		'egipet'     => array(
 			'image' => 'hero-egypt.jpg',

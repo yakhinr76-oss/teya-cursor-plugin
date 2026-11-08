@@ -98,8 +98,8 @@ function zhiraf_ufa_turciya_curated_hotels() {
 		array(
 			'slot'        => 'family',
 			'resort'      => 'side',
-			'image'       => 'resort-turciya-side-1.jpg',
-			'image_alt'   => __( 'Семейный отель на Сиде', 'zhiraf-ufa' ),
+			'image'       => 'resort-turciya-belek-1.jpg',
+			'image_alt'   => __( 'Песчаный пляж и территория семейного отеля', 'zhiraf-ufa' ),
 			'badge'       => __( '👨‍👩‍👧 Идеально детям', 'zhiraf-ufa' ),
 			'badge_mod'   => 'family',
 			'resort_pill' => __( 'Сиде • Песчаный вход', 'zhiraf-ufa' ),
@@ -130,8 +130,8 @@ function zhiraf_ufa_turciya_curated_hotels() {
 		array(
 			'slot'        => 'relax',
 			'resort'      => 'side',
-			'image'       => 'resort-turciya-belek-2.jpg',
-			'image_alt'   => __( 'Отель для взрослых, Сиде', 'zhiraf-ufa' ),
+			'image'       => 'resort-turciya-kemer-2.jpg',
+			'image_alt'   => __( 'Спокойный пляж и море — отдых 16+', 'zhiraf-ufa' ),
 			'badge'       => __( '🥂 Только для взрослых', 'zhiraf-ufa' ),
 			'badge_mod'   => 'adults',
 			'resort_pill' => __( 'Сиде • 16+', 'zhiraf-ufa' ),
@@ -175,6 +175,128 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'price_rub'   => 245000,
 			'wa_prefill'  => __( 'Здравствуйте! Интересует Voyage Belek Golf & Spa 5★ — премиум с вылетом из Уфы.', 'zhiraf-ufa' ),
 		),
+	);
+}
+
+/**
+ * Four-resort comparison table (Side highlighted).
+ *
+ * @return array{columns:array<int,array<string,string>>,rows:array<int,array<string,mixed>>}
+ */
+function zhiraf_ufa_turciya_resort_compare_table() {
+	$columns = array(
+		array(
+			'id'       => 'side',
+			'name'     => __( 'Сиде', 'zhiraf-ufa' ),
+			'subtitle' => __( 'Песок и история', 'zhiraf-ufa' ),
+			'tag'      => __( 'Детский хит', 'zhiraf-ufa' ),
+			'tag_mod'  => 'family',
+			'featured' => true,
+			'cta'      => __( 'Отели Сиде →', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'       => 'kemer',
+			'name'     => __( 'Кемер', 'zhiraf-ufa' ),
+			'subtitle' => __( 'Сосны и скалы', 'zhiraf-ufa' ),
+			'tag'      => __( 'Природа и горы', 'zhiraf-ufa' ),
+			'tag_mod'  => 'nature',
+			'featured' => false,
+			'cta'      => __( 'Отели Кемера →', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'       => 'alanya',
+			'name'     => __( 'Аланья', 'zhiraf-ufa' ),
+			'subtitle' => __( 'Тепло и бюджетно', 'zhiraf-ufa' ),
+			'tag'      => __( 'Эконом-хит', 'zhiraf-ufa' ),
+			'tag_mod'  => 'value',
+			'featured' => false,
+			'cta'      => __( 'Отели Аланьи →', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'       => 'belek',
+			'name'     => __( 'Белек', 'zhiraf-ufa' ),
+			'subtitle' => __( 'Сервис 5★ Lux', 'zhiraf-ufa' ),
+			'tag'      => __( 'Премиум', 'zhiraf-ufa' ),
+			'tag_mod'  => 'premium',
+			'featured' => false,
+			'cta'      => __( 'Отели Белека →', 'zhiraf-ufa' ),
+		),
+	);
+
+	$rows = array(
+		array(
+			'label' => __( 'Пляж и заход в море', 'zhiraf-ufa' ),
+			'cells' => array(
+				'side'   => array(
+					'text' => __( 'Бархатный песок, очень пологий вход без камней (идеально малышам)', 'zhiraf-ufa' ),
+					'mod'  => 'best',
+				),
+				'kemer'  => __( 'Галька (мелкая/крупная), кристально прозрачная вода, глубина через 3–4 метра', 'zhiraf-ufa' ),
+				'alanya' => __( 'Смесь песка и гальки; на пляже Клеопатры — крупный песок, местами природные плиты', 'zhiraf-ufa' ),
+				'belek'  => __( 'Широкие песчаные пляжи с полосой мелкой гальки у кромки воды', 'zhiraf-ufa' ),
+			),
+		),
+		array(
+			'label' => __( 'Трансфер из аэропорта', 'zhiraf-ufa' ),
+			'cells' => array(
+				'side'   => __( '~1 час 10 мин', 'zhiraf-ufa' ),
+				'kemer'  => __( '~1 час 00 мин', 'zhiraf-ufa' ),
+				'alanya' => array(
+					'text' => __( '~2 – 2.5 часа', 'zhiraf-ufa' ),
+					'mod'  => 'warn',
+				),
+				'belek'  => array(
+					'text' => __( '~30 – 40 мин (быстрее всех)', 'zhiraf-ufa' ),
+					'mod'  => 'fast',
+				),
+			),
+		),
+		array(
+			'label' => __( 'Природа и климат', 'zhiraf-ufa' ),
+			'cells' => array(
+				'side'   => __( 'Равнинная местность, лёгкий бриз, нет духоты', 'zhiraf-ufa' ),
+				'kemer'  => __( 'Таврские горы, реликтовые сосны, хвойный целебный воздух', 'zhiraf-ufa' ),
+				'alanya' => __( 'Самый южный и тёплый курорт (сезон с апреля по ноябрь)', 'zhiraf-ufa' ),
+				'belek'  => __( 'Эвкалиптовые и сосновые рощи, идеальная экология', 'zhiraf-ufa' ),
+			),
+		),
+		array(
+			'label' => __( 'Для кого лучше всего', 'zhiraf-ufa' ),
+			'cells' => array(
+				'side'   => array(
+					'text' => __( 'Семьям с маленькими детьми и колясками', 'zhiraf-ufa' ),
+					'mod'  => 'best',
+				),
+				'kemer'  => __( 'Любителям гор, чистого моря, природы и молодёжи', 'zhiraf-ufa' ),
+				'alanya' => __( 'Туристам с акцентом на экономию и долгий отдых', 'zhiraf-ufa' ),
+				'belek'  => __( 'Ценителям бескомпромиссного комфорта и релакса', 'zhiraf-ufa' ),
+			),
+		),
+	);
+
+	return array(
+		'columns' => $columns,
+		'rows'    => $rows,
+	);
+}
+
+/**
+ * Normalize a resort-compare table cell to text + optional modifier class.
+ *
+ * @param mixed $cell Cell value.
+ * @return array{text:string,mod:string}
+ */
+function zhiraf_ufa_turciya_resort_compare_cell( $cell ) {
+	if ( is_array( $cell ) && isset( $cell['text'] ) ) {
+		return array(
+			'text' => (string) $cell['text'],
+			'mod'  => ! empty( $cell['mod'] ) ? sanitize_html_class( (string) $cell['mod'] ) : '',
+		);
+	}
+
+	return array(
+		'text' => is_string( $cell ) ? $cell : '',
+		'mod'  => '',
 	);
 }
 
@@ -224,5 +346,5 @@ function zhiraf_ufa_turciya_curated_wa_url( $hotel ) {
  * @return string
  */
 function zhiraf_ufa_turciya_resort_compare_wa_text() {
-	return __( 'Здравствуйте! Хочу сравнить Кемер и Сиде под наш бюджет с вылетом из Уфы. Подскажите 2–3 отеля на 7–9 ночей для двоих.', 'zhiraf-ufa' );
+	return __( 'Здравствуйте! Не могу выбрать между Кемером и Сиде. Возраст детей: __. Подскажите 2–3 отеля с вылетом из Уфы на 7–9 ночей под наш бюджет.', 'zhiraf-ufa' );
 }

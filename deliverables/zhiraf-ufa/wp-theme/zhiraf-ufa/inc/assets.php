@@ -155,7 +155,7 @@ function zhiraf_ufa_offer_hub_links() {
 }
 
 /**
- * Quick destination chips for hero (mobile only).
+ * Quick destination chips under hero subtitle.
  *
  * @return array<int,array{slug:string,flag:string,label:string}>
  */
@@ -182,6 +182,11 @@ function zhiraf_ufa_hero_mobile_destination_chips() {
 				'slug'  => 'tailand',
 				'flag'  => '🇹🇭',
 				'label' => __( 'Таиланд', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'maldivy',
+				'flag'  => '🏝️',
+				'label' => __( 'Мальдивы', 'zhiraf-ufa' ),
 			),
 			array(
 				'slug'  => 'rossiya',

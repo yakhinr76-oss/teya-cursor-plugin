@@ -19,13 +19,13 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 				<div class="lead-magnet__value">
 					<p class="lead-magnet__badge">
 						<span class="lead-magnet__badge-dot" aria-hidden="true"></span>
-						<?php esc_html_e( 'Ответ эксперта из Уфы за 15 минут', 'zhiraf-ufa' ); ?>
+						<?php esc_html_e( 'PDF-гид · бесплатно', 'zhiraf-ufa' ); ?>
 					</p>
-					<h2 class="lead-magnet__title"><?php esc_html_e( '3 лучших отеля под ваш бюджет + чек-лист по сборам в мессенджер', 'zhiraf-ufa' ); ?></h2>
+					<h2 class="lead-magnet__title"><?php esc_html_e( 'Скачайте гид туриста из Уфы 2026: сравнение 5 главных стран', 'zhiraf-ufa' ); ?></h2>
 					<p class="lead-magnet__text">
 						<?php
 						echo wp_kses_post(
-							__( 'Напишите направление и сумму на двоих — тревел-эксперт из Уфы пришлёт <strong>три проверенных отеля</strong> с вылетом из UFA и <strong>готовый список документов и вещей</strong> в WhatsApp, Telegram или MAX. Без долгого перебора агрегаторов.', 'zhiraf-ufa' )
+							__( 'Актуальные цены под ключ с прямым вылетом из Уфы, подборка отелей с <strong>пологим песчаным входом для детей</strong> и расписание чартеров без задержек. Пришлём файл в мессенджер <strong>за 1 минуту</strong> — без звонков и спама.', 'zhiraf-ufa' )
 						);
 						?>
 					</p>
@@ -33,22 +33,22 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 						<li>
 							<span class="lead-magnet__check" aria-hidden="true">✓</span>
 							<span>
-								<strong><?php esc_html_e( 'Фиксированная цена:', 'zhiraf-ufa' ); ?></strong>
-								<?php esc_html_e( ' считаем топливные сборы сразу, без сюрпризов в офисе.', 'zhiraf-ufa' ); ?>
+								<strong><?php esc_html_e( '5 стран:', 'zhiraf-ufa' ); ?></strong>
+								<?php esc_html_e( ' Турция, ОАЭ, Египет, Таиланд и Россия (Сочи) — в одном сравнении.', 'zhiraf-ufa' ); ?>
 							</span>
 						</li>
 						<li>
 							<span class="lead-magnet__check" aria-hidden="true">✓</span>
 							<span>
-								<strong><?php esc_html_e( 'Без спама и навязчивых звонков:', 'zhiraf-ufa' ); ?></strong>
-								<?php esc_html_e( ' расчёт приходит прямо в чат выбранного мессенджера.', 'zhiraf-ufa' ); ?>
+								<strong><?php esc_html_e( 'Без навязчивых звонков:', 'zhiraf-ufa' ); ?></strong>
+								<?php esc_html_e( ' гид приходит в чат, который выберете ниже.', 'zhiraf-ufa' ); ?>
 							</span>
 						</li>
 						<li>
 							<span class="lead-magnet__check" aria-hidden="true">✓</span>
 							<span>
-								<strong><?php esc_html_e( 'Личная ответственность:', 'zhiraf-ufa' ); ?></strong>
-								<?php esc_html_e( ' агентство работает в Уфе с 2011 года (РТА 0012822).', 'zhiraf-ufa' ); ?>
+								<strong><?php esc_html_e( 'Агентство в Уфе с 2011 года', 'zhiraf-ufa' ); ?></strong>
+								<?php esc_html_e( ' (РТА 0012822).', 'zhiraf-ufa' ); ?>
 							</span>
 						</li>
 					</ul>
@@ -64,10 +64,10 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 						<input type="hidden" name="phone_only" value="1" />
 						<input type="hidden" name="name" value="<?php esc_attr_e( 'Гость сайта', 'zhiraf-ufa' ); ?>" />
 						<input type="hidden" name="contact_channel" value="WhatsApp" />
-						<input type="hidden" name="message" value="<?php esc_attr_e( '3 отеля + чек-лист сборов — блок перед блогом', 'zhiraf-ufa' ); ?>" />
+						<input type="hidden" name="message" value="<?php esc_attr_e( 'PDF-гид туриста из Уфы 2026', 'zhiraf-ufa' ); ?>" />
 
 						<div class="lead-magnet__form-head">
-							<h3><?php esc_html_e( 'Куда прислать подборку?', 'zhiraf-ufa' ); ?></h3>
+							<h3><?php esc_html_e( 'Куда прислать PDF-гид?', 'zhiraf-ufa' ); ?></h3>
 						</div>
 
 						<?php
@@ -80,12 +80,12 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 						?>
 
 						<label class="form-field lead-magnet__field" for="lead-destination">
-							<span><?php esc_html_e( 'Куда или на какой бюджет ориентируетесь?', 'zhiraf-ufa' ); ?></span>
+							<span><?php esc_html_e( 'На какую страну смотрите в первую очередь? (необязательно)', 'zhiraf-ufa' ); ?></span>
 							<input
 								type="text"
 								id="lead-destination"
 								name="destination"
-								placeholder="<?php esc_attr_e( 'Например: Турция с детьми до 200 000 ₽', 'zhiraf-ufa' ); ?>"
+								placeholder="<?php esc_attr_e( 'Например: Турция с детьми', 'zhiraf-ufa' ); ?>"
 								class="lead-magnet__input"
 								autocomplete="off"
 							/>
@@ -107,7 +107,7 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 						</label>
 
 						<button type="submit" class="btn btn--primary btn--lg btn--block lead-magnet__submit" data-messenger-submit-label>
-							<?php esc_html_e( 'Получить подборку отелей в WhatsApp →', 'zhiraf-ufa' ); ?>
+							<?php esc_html_e( 'Получить PDF-гид в WhatsApp →', 'zhiraf-ufa' ); ?>
 						</button>
 
 						<p class="lead-magnet__legal">

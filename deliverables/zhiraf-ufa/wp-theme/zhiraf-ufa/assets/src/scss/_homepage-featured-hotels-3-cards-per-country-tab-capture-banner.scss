@@ -360,8 +360,8 @@
   color: #1c1917;
 }
 .destinations-hub__tab.is-active {
-  background: #c85a32;
-  color: #fff;
+  background: #fff;
+  color: #1c1917;
   font-weight: 800;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
@@ -480,10 +480,12 @@
   line-height: 1.4;
   color: #d6d3d1;
 }
-.dest-hub-card__cta,
-.dest-hub-card__price {
-  align-self: flex-start;
-  max-width: 100%;
+.dest-hub-card__cta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
   padding: 0.5rem 0.875rem;
   border-radius: 0.75rem;
   background: var(--color-accent);
@@ -491,24 +493,53 @@
   font-weight: 800;
   line-height: 1.3;
   color: #fff;
-  text-align: left;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
   transition: filter 0.15s ease;
 }
-.dest-hub-card:hover .dest-hub-card__cta,
-.dest-hub-card:hover .dest-hub-card__price {
+.dest-hub-card__cta-bar--solo {
+  justify-content: flex-start;
+}
+.dest-hub-card:hover .dest-hub-card__cta-bar {
   filter: brightness(0.95);
-  background: var(--color-accent);
 }
-.dest-hub-card__cta--muted,
-.dest-hub-card__price--muted {
-  background: rgba(255, 255, 255, 0.15);
-  font-weight: 600;
-  font-size: 0.75rem;
+.dest-hub-card__cta-action {
+  min-width: 0;
 }
-.dest-hub-card:hover .dest-hub-card__cta--muted,
-.dest-hub-card:hover .dest-hub-card__price--muted {
-  background: rgba(255, 255, 255, 0.22);
+.dest-hub-card__cta-price {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #fde68a;
+  white-space: nowrap;
+}
+.catalog-capture-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.catalog-capture-card__wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: 1rem;
+  background: #fff;
+  color: #1c1917;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.catalog-capture-card__wa:hover,
+.catalog-capture-card__wa:focus-visible {
+  background: #fafaf9;
+  color: #1c1917;
+  transform: scale(1.02);
+}
+.catalog-capture-card__wa .messenger-picker__icon--wa svg {
+  fill: #25d366;
 }
 
 /*# sourceMappingURL=style.css.map */

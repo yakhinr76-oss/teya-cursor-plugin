@@ -18,6 +18,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 				<p class="hero-premium__subtitle">
 					<?php esc_html_e( 'Показываем реальную стоимость туроператоров без скрытых доплат. Проверенная база 400 отелей с честным разбором плюсов и нюансов.', 'zhiraf-ufa' ); ?>
 				</p>
+				<?php get_template_part( 'template-parts/home/hero-mobile-dest-chips' ); ?>
 				<div class="hero-premium__actions">
 					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('destinations-hub') && document.getElementById('destinations-hub').scrollIntoView({behavior: 'smooth'})">
 						<?php esc_html_e( 'Выбрать направление отдыха', 'zhiraf-ufa' ); ?>
@@ -26,7 +27,6 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 						<?php esc_html_e( 'Подобрать тур через квиз (1 мин)', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>
-				<?php get_template_part( 'template-parts/home/hero-mobile-dest-chips' ); ?>
 			</div>
 
 			<div class="hero-premium__collage hero-premium__collage--orbit reveal reveal-delay-1" data-three-canvas="hero-ambient" data-hero-orbit>

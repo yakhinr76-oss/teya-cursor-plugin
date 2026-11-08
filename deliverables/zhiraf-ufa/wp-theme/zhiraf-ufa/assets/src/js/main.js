@@ -578,16 +578,16 @@
     variant = variant || 'quiz';
     if (channel === 'MAX') {
       return variant === 'lead'
-        ? 'Получить подборку отелей в MAX →'
+        ? 'Получить PDF-гид в MAX →'
         : 'Получить расчёт туров в MAX →';
     }
     if (channel === 'Telegram') {
       return variant === 'lead'
-        ? 'Получить подборку отелей в Telegram →'
+        ? 'Получить PDF-гид в Telegram →'
         : 'Получить расчёт туров в Telegram →';
     }
     return variant === 'lead'
-      ? 'Получить подборку отелей в WhatsApp →'
+      ? 'Получить PDF-гид в WhatsApp →'
       : 'Получить расчёт туров в WhatsApp →';
   }
 

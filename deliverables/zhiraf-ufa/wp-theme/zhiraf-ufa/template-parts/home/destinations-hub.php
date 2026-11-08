@@ -16,8 +16,8 @@ $mow_cards = zhiraf_ufa_home_destinations_hub_cards( 'mow' );
 	<div class="container destinations-hub">
 		<div class="destinations-hub__head reveal">
 			<div class="destinations-hub__intro">
-				<p class="destinations-hub__eyebrow"><?php esc_html_e( 'Актуальные предложения', 'zhiraf-ufa' ); ?></p>
-				<h2 class="destinations-hub__title"><?php esc_html_e( 'Популярные направления с прямым вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
+				<p class="destinations-hub__eyebrow"><?php esc_html_e( 'Без пересадок', 'zhiraf-ufa' ); ?></p>
+				<h2 class="destinations-hub__title"><?php esc_html_e( 'Популярные направления с вылетом из Уфы', 'zhiraf-ufa' ); ?></h2>
 				<p class="destinations-hub__lead">
 					<?php esc_html_e( 'Минимальные цены туроператора на двоих на 7 ночей с перелётом, проживанием и страховкой.', 'zhiraf-ufa' ); ?>
 				</p>
@@ -34,7 +34,7 @@ $mow_cards = zhiraf_ufa_home_destinations_hub_cards( 'mow' );
 				><?php
 				printf(
 					/* translators: %d: number of destination cards */
-					esc_html__( 'Прямые из UFA (%d)', 'zhiraf-ufa' ),
+					esc_html__( '✈️ Прямой рейс из UFA (%d)', 'zhiraf-ufa' ),
 					count( $ufa_cards )
 				);
 				?></button>
@@ -49,7 +49,7 @@ $mow_cards = zhiraf_ufa_home_destinations_hub_cards( 'mow' );
 				><?php
 				printf(
 					/* translators: %d: number of destination cards */
-					esc_html__( 'Стыковка через Москву (%d)', 'zhiraf-ufa' ),
+					esc_html__( '🧭 Экзотика через Москву (%d)', 'zhiraf-ufa' ),
 					count( $mow_cards )
 				);
 				?></button>

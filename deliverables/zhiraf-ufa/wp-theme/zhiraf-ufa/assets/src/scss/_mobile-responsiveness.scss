@@ -114,12 +114,29 @@
     flex-direction: column;
   }
 }
+@media (max-width: 640px) {
+  .hero-premium {
+    padding-bottom: 56px;
+  }
+  .hero-premium__collage {
+    height: 260px;
+  }
+  .hero-collage__img--1 {
+    width: 150px;
+    height: 200px;
+  }
+  .hero-collage__img--2 {
+    width: 130px;
+    height: 170px;
+    top: 70px;
+  }
+}
 @media (max-width: 480px) {
   .hero-premium__title {
     font-size: 2.5rem;
   }
   .hero-premium__collage {
-    height: 320px;
+    height: 208px;
   }
   .hero-collage__img--1 {
     width: 140px;

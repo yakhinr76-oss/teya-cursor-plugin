@@ -73,7 +73,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇲🇻',
 				'title'       => __( 'Мальдивы', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Атоллы, виллы на воде • All Inclusive', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'resort-maldivy-atoll-1.jpg',
 			),
 			array(
@@ -81,64 +81,24 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇱🇰',
 				'title'       => __( 'Шри-Ланка', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Бентота, Хиккадува • Завтраки', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'country-shri-lanka.jpg',
-			),
-			array(
-				'slug'        => 'vietnam',
-				'flag'        => '🇻🇳',
-				'title'       => __( 'Вьетнам', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Нячанг, Фукуок • Пляж и SPA', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
-				'image'       => 'dest-vietnam-new.jpg',
-			),
-			array(
-				'slug'        => 'kitaj',
-				'flag'        => '🇨🇳',
-				'title'       => __( 'Китай (Хайнань)', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Санья • Пляж и тропики', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
-				'image'       => 'resort-sanya-2.jpg',
-			),
-			array(
-				'slug'        => 'indiya',
-				'flag'        => '🇮🇳',
-				'title'       => __( 'Индия (Гоа)', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Северный и Южный Гоа • Завтраки', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
-				'image'       => 'country-indiya.jpg',
-			),
-			array(
-				'slug'        => 'indoneziya',
-				'flag'        => '🇮🇩',
-				'title'       => __( 'Индонезия (Бали)', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Бали • Пляж и завтраки', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
-				'image'       => 'alt-indoneziya-beach-1.jpg',
 			),
 			array(
 				'slug'        => 'sejshely',
 				'flag'        => '🇸🇨',
 				'title'       => __( 'Сейшелы', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Маэ, Праслин • Романтика и пляж', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'country-sejshely.jpg',
 			),
 			array(
-				'slug'        => 'uzbekistan',
-				'flag'        => '🇺🇿',
-				'title'       => __( 'Узбекистан', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Самарканд, Бухара • экскурсии', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Прямой рейс', 'zhiraf-ufa' ),
-				'image'       => 'resort-samarkand.jpg',
-			),
-			array(
-				'slug'        => 'armeniya',
-				'flag'        => '🇦🇲',
-				'title'       => __( 'Армения', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Ереван, озеро Севан • гастрономия', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Прямой рейс', 'zhiraf-ufa' ),
-				'image'       => 'alt-armeniya-yerevan.jpg',
+				'slug'        => 'indoneziya',
+				'flag'        => '🇮🇩',
+				'title'       => __( 'Индонезия (Бали)', 'zhiraf-ufa' ),
+				'teaser'      => __( 'Бали • Пляж и завтраки', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
+				'image'       => 'alt-indoneziya-beach-1.jpg',
 			),
 		),
 	);
@@ -173,31 +133,42 @@ function zhiraf_ufa_home_hub_cta_genitive( $slug ) {
 }
 
 /**
- * Hub card button label with price.
+ * Count distinct hotels in synced tours for hub card CTA.
  *
- * @param string $slug        Country slug.
- * @param string $price_label e.g. «от 118 400 ₽» or empty.
- * @return string
+ * @param string $country_slug Country slug.
+ * @param string $departure    ufa|mow.
+ * @return int
  */
-function zhiraf_ufa_home_hub_card_cta_label( $slug, $price_label ) {
-	$gen = zhiraf_ufa_home_hub_cta_genitive( $slug );
-	if ( '' === $gen ) {
-		return '' !== $price_label ? $price_label : __( 'Смотреть отели →', 'zhiraf-ufa' );
+function zhiraf_ufa_home_hub_offer_count( $country_slug, $departure = 'ufa' ) {
+	if ( ! function_exists( 'zhiraf_ufa_get_country_tours' ) ) {
+		return 0;
 	}
-	if ( '' === $price_label ) {
-		return sprintf(
-			/* translators: %s: country name (genitive) */
-			__( 'Смотреть отели %s →', 'zhiraf-ufa' ),
-			$gen
-		);
+	$departure = 'mow' === $departure ? 'mow' : 'ufa';
+	$hotels    = array();
+	$tour_hits = 0;
+
+	foreach ( zhiraf_ufa_get_country_tours( $country_slug, 500 ) as $t ) {
+		$dep_city = (string) ( $t['departure_city'] ?? '' );
+		if ( 'mow' === $departure ) {
+			if ( false === mb_stripos( $dep_city, 'моск', 0, 'UTF-8' ) ) {
+				continue;
+			}
+		} elseif ( false === mb_stripos( $dep_city, 'уф', 0, 'UTF-8' ) ) {
+			continue;
+		}
+		++$tour_hits;
+		$name = trim( (string) ( $t['hotel_name'] ?? '' ) );
+		if ( '' !== $name ) {
+			$hotels[ mb_strtolower( $name, 'UTF-8' ) ] = true;
+		}
 	}
 
-	return sprintf(
-		/* translators: 1: country (genitive), 2: price line */
-		__( 'Смотреть отели %1$s → %2$s', 'zhiraf-ufa' ),
-		$gen,
-		$price_label
-	);
+	$count = count( $hotels );
+	if ( $count > 0 ) {
+		return $count;
+	}
+
+	return $tour_hits > 0 ? $tour_hits : 0;
 }
 
 /**
@@ -286,14 +257,21 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		if ( ! empty( $row['flag_image'] ) ) {
 			$flag_img = zhiraf_ufa_theme_image( (string) $row['flag_image'], (string) $row['title'] );
 		}
-		$cta_label = zhiraf_ufa_home_hub_card_cta_label( $slug, $price_label );
+		$offer_count = zhiraf_ufa_home_hub_offer_count( $slug, $key );
+		$cta_action  = $offer_count > 0
+			? sprintf(
+				/* translators: %d: number of hotel offers */
+				__( 'Смотреть отели (%d) →', 'zhiraf-ufa' ),
+				$offer_count
+			)
+			: __( 'Смотреть отели →', 'zhiraf-ufa' );
 
 		$out[] = array_merge(
 			$row,
 			array(
 				'url'         => zhiraf_ufa_home_hub_destination_url( $slug ),
 				'price_label' => $price_label,
-				'cta_label'   => $cta_label,
+				'cta_action'  => $cta_action,
 				'photo_url'   => ! empty( $img['url'] ) ? (string) $img['url'] : '',
 				'photo_alt'   => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
 				'flag_url'    => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',

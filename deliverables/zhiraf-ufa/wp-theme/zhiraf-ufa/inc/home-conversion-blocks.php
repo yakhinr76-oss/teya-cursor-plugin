@@ -164,6 +164,6 @@ function zhiraf_ufa_home_life_scenarios() {
  * WhatsApp URL for catalog capture card.
  */
 function zhiraf_ufa_home_catalog_capture_wa_url() {
-	$text = __( 'Здравствуйте! Не нашёл подходящий отель на сайте. Помогите подобрать тур из Уфы под мои даты и бюджет — нужны 3 персональных варианта.', 'zhiraf-ufa' );
+	$text = __( 'Здравствуйте! Ищу тур из Уфы. Мой бюджет примерно _____ на _____ человек. Подскажите, что лучше выбрать?', 'zhiraf-ufa' );
 	return zhiraf_ufa_whatsapp_url_with_text( zhiraf_ufa_brand_whatsapp_url(), $text );
 }

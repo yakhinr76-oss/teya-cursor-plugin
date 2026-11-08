@@ -24,7 +24,7 @@ $max_url = function_exists( 'zhiraf_ufa_brand_max_url' ) ? zhiraf_ufa_brand_max_
 			<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' ); ?>
 		</h2>
 		<p class="turciya-compare-lead__text">
-			<?php esc_html_e( 'Напишите в мессенджер — пришлём 2–3 отеля с пляжами, питанием и актуальной ценой на ваши даты. Без «оставьте номер и ждите».', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Не можете определиться между Кемером и Сиде? Напишите возраст детей — пришлём подборку в WhatsApp / MAX за 15 минут, без «оставьте номер и ждите».', 'zhiraf-ufa' ); ?>
 		</p>
 		<div class="turciya-compare-lead__actions">
 			<a

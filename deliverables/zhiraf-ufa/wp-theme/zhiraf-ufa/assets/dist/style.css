@@ -2788,6 +2788,164 @@ details[open] > .faq-home__question::after {
   justify-content: center;
 }
 
+.turciya-resort-table__head {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+}
+
+.turciya-resort-table__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent, #c85a32);
+}
+
+.turciya-resort-table__lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.turciya-resort-table__scroll {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  box-shadow: 0 4px 16px rgba(30, 28, 24, 0.05);
+}
+
+.turciya-resort-table__grid {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.turciya-resort-table__corner,
+.turciya-resort-table__row-label {
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--color-ink);
+  background: rgba(245, 243, 240, 0.7);
+  vertical-align: top;
+}
+
+.turciya-resort-table__col-head {
+  padding: 1rem 0.75rem;
+  text-align: center;
+  vertical-align: bottom;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(245, 243, 240, 0.5);
+}
+
+.turciya-resort-table__col-head--featured {
+  background: rgba(200, 90, 50, 0.06);
+  border-left: 2px solid rgba(200, 90, 50, 0.2);
+  border-right: 2px solid rgba(200, 90, 50, 0.2);
+}
+
+.turciya-resort-table__tag {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.turciya-resort-table__tag--family {
+  background: #059669;
+}
+
+.turciya-resort-table__tag--nature {
+  background: #0d9488;
+}
+
+.turciya-resort-table__tag--value {
+  background: #d97706;
+}
+
+.turciya-resort-table__tag--premium {
+  background: #1c1917;
+  color: #fcd34d;
+}
+
+.turciya-resort-table__col-name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.turciya-resort-table__col-sub {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.turciya-resort-table__cell {
+  padding: 1rem 0.85rem;
+  text-align: center;
+  vertical-align: top;
+  border-top: 1px solid var(--color-border);
+  color: #44403c;
+}
+
+.turciya-resort-table__cell--featured {
+  background: rgba(200, 90, 50, 0.04);
+  border-left: 2px solid rgba(200, 90, 50, 0.15);
+  border-right: 2px solid rgba(200, 90, 50, 0.15);
+}
+
+.turciya-resort-table__cell--best {
+  font-weight: 600;
+  color: #065f46;
+}
+
+.turciya-resort-table__cell--warn {
+  font-weight: 700;
+  color: #b45309;
+}
+
+.turciya-resort-table__cell--fast {
+  font-weight: 700;
+  color: #047857;
+}
+
+.turciya-resort-table__cell--cta {
+  padding-bottom: 1.25rem;
+}
+
+.turciya-resort-table__filter-btn {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.turciya-resort-table__filter-btn--ghost {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(245, 243, 240, 0.9);
+  color: var(--color-ink);
+  transition: background 0.15s ease;
+}
+
+.turciya-resort-table__filter-btn--ghost:hover {
+  background: rgba(200, 90, 50, 0.12);
+}
+
 @media (max-width: 768px) {
   .catalog-hero, .dest-landing-hero__grid {
     grid-template-columns: 1fr;

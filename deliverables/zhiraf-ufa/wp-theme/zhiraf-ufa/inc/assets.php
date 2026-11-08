@@ -231,7 +231,7 @@ function zhiraf_ufa_domestic_catalog_destinations() {
 		),
 		array(
 			'slug'         => 'abkhaziya',
-			'image'        => 'alt-armeniya-3.jpg',
+			'image'        => 'dest-abkhazia.jpg',
 			'teaser'       => __( 'Гагра и Пицунда: рубли, въезд по паспорту РФ, трансфер из аэропорта Адлер.', 'zhiraf-ufa' ),
 			'flight_label' => __( 'трансфер из Адлера', 'zhiraf-ufa' ),
 		),

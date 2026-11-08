@@ -689,7 +689,7 @@ function zhiraf_ufa_destination_landing_data() {
 			'h1'               => __( 'Отдых в Абхазии из Уфы', 'zhiraf-ufa' ),
 			'title'            => __( 'Абхазия — Гагра, Пицунда | трансфер из Адлера | Жираф', 'zhiraf-ufa' ),
 			'description'      => __( 'Туры в Абхазию: въезд по паспорту РФ, рубли, трансфер из аэропорта Адлер до отеля. Гагра и Пицунда.', 'zhiraf-ufa' ),
-			'image'            => 'alt-armeniya-3.jpg',
+			'image'            => 'dest-abkhazia.jpg',
 			'image_alt'        => __( 'Абхазия — море и сосновые рощи', 'zhiraf-ufa' ),
 			'domestic'         => true,
 			'landing_module'   => 'battle',

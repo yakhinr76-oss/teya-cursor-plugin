@@ -93,8 +93,8 @@ function zhiraf_ufa_destination_hero_image_standards() {
 			'alt'   => __( 'Сочи — Имеретинская набережная и море', 'zhiraf-ufa' ),
 		),
 		'abkhaziya'  => array(
-			'image' => 'alt-armeniya-2.jpg',
-			'alt'   => __( 'Абхазия — сосны и бирюзовое море у Пицунды', 'zhiraf-ufa' ),
+			'image' => 'dest-abkhazia.jpg',
+			'alt'   => __( 'Абхазия — аркада у моря, Гагра', 'zhiraf-ufa' ),
 		),
 		'maldivy'    => array(
 			'image' => 'resort-maldivy-atoll-1.jpg',
@@ -679,7 +679,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'tag'       => __( '🌴 Движ и набережная', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для молодёжи, пар и любителей вечерних прогулок', 'zhiraf-ufa' ),
 					'meta'      => __( 'От границы: ~25 мин', 'zhiraf-ufa' ),
-					'image'     => 'alt-armeniya-3.jpg',
+					'image'     => 'dest-abkhazia.jpg',
 					'cta_label' => __( 'Искать отели в Гагре', 'zhiraf-ufa' ),
 					'cta_href'  => '#dest-lead',
 					'rows'      => array(

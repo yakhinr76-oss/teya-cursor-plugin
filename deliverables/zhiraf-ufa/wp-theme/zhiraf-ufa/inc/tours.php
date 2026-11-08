@@ -204,7 +204,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		'uzbekistan' => array( 'resort-samarkand.jpg', 'country-uzbekistan.jpg', 'alt-uzbekistan-2.jpg', 'alt-uzbekistan-3.jpg' ),
 		'armeniya'   => array( 'alt-armeniya-yerevan.jpg', 'alt-armeniya-sevan.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
 		'rossiya'    => array( 'hero-collage-1.jpg', 'hero-collage-2.jpg', 'hero-collage-3.jpg' ),
-		'abkhaziya'  => array( 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg', 'country-armeniya.jpg' ),
+		'abkhaziya'  => array( 'dest-abkhazia.jpg', 'alt-armeniya-2.jpg', 'alt-armeniya-3.jpg' ),
 	);
 
 	$candidates = array();

@@ -1,9 +1,9 @@
 {
-  "note": "User ★ v3 — блок «Готовые подборки под вашу ситуацию» (life-scenarios only).",
+  "note": "User ★ from v3 gallery (Подборки) — not default REC rows.",
   "files": [
-    {"file": "life-scenario-family.jpg", "pexels_id": 30032099, "label": "Семья с детьми"},
-    {"file": "life-scenario-couple.jpg", "pexels_id": 4765027, "label": "Для пар и релакса"},
-    {"file": "life-scenario-value.jpg", "pexels_id": 34156265, "label": "Хит «Цена / Качество»"},
-    {"file": "life-scenario-city.jpg", "pexels_id": 19350915, "label": "Город и шопинг"}
+    {"file": "life-scenario-family.jpg", "pexels_id": 12261095, "label": "Семья с детьми — бассейн, фламинго"},
+    {"file": "life-scenario-couple.jpg", "pexels_id": 8907262, "label": "Для пар — infinity pool"},
+    {"file": "life-scenario-value.jpg", "pexels_id": 31817153, "label": "Цена/качество — номер с джакузи и морем"},
+    {"file": "life-scenario-city.jpg", "pexels_id": 18139273, "label": "Город — турист у historic square"}
   ]
 }

@@ -1038,6 +1038,8 @@
     if (!cards.length || !chipButtons.length) {
       return;
     }
+    var pickCards = qsa('[data-turciya-pick-card]', showcase);
+    var curatedGrid = qs('[data-curated-grid]', showcase);
     function applyFilter(resort) {
       resort = resort || 'all';
       cards.forEach(function (card) {
@@ -1058,22 +1060,35 @@
           btn.setAttribute('aria-selected', on ? 'true' : 'false');
         }
       });
+      pickCards.forEach(function (pick) {
+        var pickId = pick.getAttribute('data-resort-filter') || '';
+        var active = resort !== 'all' && pickId === resort;
+        pick.classList.toggle('is-active', active);
+        pick.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
     }
-    function scrollToShowcase() {
-      if (typeof showcase.scrollIntoView === 'function') {
-        showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function scrollToCuratedGrid() {
+      var target = curatedGrid || showcase;
+      if (target && typeof target.scrollIntoView === 'function') {
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     }
-    window.filterByResort = function (resort) {
-      applyFilter(resort);
-      scrollToShowcase();
-    };
+    function selectResort(resort) {
+      applyFilter(resort || 'all');
+      if (resort && resort !== 'all') {
+        scrollToCuratedGrid();
+      }
+    }
+    window.filterByResort = selectResort;
+    window.selectResort = selectResort;
     chipButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         applyFilter(btn.getAttribute('data-resort-filter') || 'all');
-        if (btn.hasAttribute('data-turciya-goto-showcase')) {
-          scrollToShowcase();
-        }
+      });
+    });
+    pickCards.forEach(function (pick) {
+      pick.addEventListener('click', function () {
+        selectResort(pick.getAttribute('data-resort-filter') || 'all');
       });
     });
   }

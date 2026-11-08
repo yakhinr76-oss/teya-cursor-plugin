@@ -88,7 +88,6 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php if ( $use_turciya_curated ) : ?>
-		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-table' ); ?>
 		<?php get_template_part( 'template-parts/destination/turciya-curated-showcase' ); ?>
 		<?php get_template_part( 'template-parts/destination/turciya-expert-nuances' ); ?>
 		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>

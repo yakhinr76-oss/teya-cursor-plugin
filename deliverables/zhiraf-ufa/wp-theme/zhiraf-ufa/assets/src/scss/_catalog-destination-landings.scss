@@ -686,6 +686,235 @@
 }
 
 /* Turkey curated landing (/tour/turciya/) */
+.turciya-curated-hub {
+  background: var(--color-bg);
+  padding-top: var(--section-pad-y, 3rem);
+  padding-bottom: var(--section-pad-y, 3rem);
+}
+
+.turciya-curated-showcase__block {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+}
+
+.turciya-resort-pick {
+  margin-bottom: 0;
+}
+
+.turciya-resort-pick__head {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+}
+
+.turciya-resort-pick__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.turciya-resort-pick__lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.turciya-resort-pick__track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1023px) {
+  .turciya-resort-pick__track {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0.25rem 2px 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.turciya-resort-pick__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 100%;
+  padding: 1.15rem 1.25rem;
+  text-align: left;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  box-shadow: 0 2px 8px rgba(30, 28, 24, 0.04);
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+@media (max-width: 1023px) {
+  .turciya-resort-pick__card {
+    flex: 0 0 min(82vw, 17.5rem);
+    scroll-snap-align: start;
+  }
+}
+
+.turciya-resort-pick__card:hover {
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.08);
+  transform: translateY(-2px);
+}
+
+.turciya-resort-pick__card--featured {
+  border-width: 2px;
+  border-color: rgba(5, 150, 105, 0.35);
+}
+
+.turciya-resort-pick__card--emerald:hover { border-color: #059669; }
+.turciya-resort-pick__card--teal:hover { border-color: #0d9488; }
+.turciya-resort-pick__card--amber:hover { border-color: #d97706; }
+.turciya-resort-pick__card--lux:hover { border-color: #1c1917; }
+
+.turciya-resort-pick__card.is-active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(200, 90, 50, 0.25), 0 8px 20px rgba(200, 90, 50, 0.12);
+}
+
+.turciya-resort-pick__card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.turciya-resort-pick__card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.turciya-resort-pick__tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.turciya-resort-pick__tag--family {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.turciya-resort-pick__tag--nature {
+  background: #ccfbf1;
+  color: #115e59;
+}
+
+.turciya-resort-pick__tag--value {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.turciya-resort-pick__tag--premium {
+  background: #1c1917;
+  color: #fcd34d;
+}
+
+.turciya-resort-pick__transfer {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.turciya-resort-pick__transfer--warn {
+  color: #b45309;
+}
+
+.turciya-resort-pick__transfer--fast {
+  color: #047857;
+}
+
+.turciya-resort-pick__name {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.turciya-resort-pick__subtitle {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.turciya-resort-pick__bullets {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.turciya-resort-pick__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #44403c;
+}
+
+.turciya-resort-pick__bullet-icon {
+  flex-shrink: 0;
+  font-weight: 800;
+}
+
+.turciya-resort-pick__bullet--pro .turciya-resort-pick__bullet-icon {
+  color: #059669;
+}
+
+.turciya-resort-pick__bullet--info .turciya-resort-pick__bullet-icon {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.turciya-resort-pick__card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.turciya-resort-pick__card:not(.is-active) .turciya-resort-pick__card-foot {
+  color: var(--color-ink);
+}
+
+.turciya-resort-pick__card:hover .turciya-resort-pick__card-foot,
+.turciya-resort-pick__card.is-active .turciya-resort-pick__card-foot {
+  color: var(--color-primary);
+}
+
+.turciya-resort-pick__foot-arrow {
+  transition: transform 0.15s ease;
+}
+
+.turciya-resort-pick__card:hover .turciya-resort-pick__foot-arrow {
+  transform: translateY(2px);
+}
+
 .turciya-resort-chips {
   display: flex;
   flex-wrap: wrap;
@@ -961,152 +1190,6 @@
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-}
-
-.turciya-resort-table__head {
-  text-align: center;
-  max-width: 40rem;
-  margin: 0 auto 2rem;
-}
-
-.turciya-resort-table__eyebrow {
-  margin: 0;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-accent, #c85a32);
-}
-
-.turciya-resort-table__lead {
-  margin: 0.5rem 0 0;
-  font-size: 0.875rem;
-  color: var(--color-muted);
-}
-
-.turciya-resort-table__scroll {
-  overflow-x: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  background: var(--color-white);
-  box-shadow: 0 4px 16px rgba(30, 28, 24, 0.05);
-}
-
-.turciya-resort-table__grid {
-  width: 100%;
-  min-width: 720px;
-  border-collapse: collapse;
-  font-size: 0.8125rem;
-  line-height: 1.45;
-}
-
-.turciya-resort-table__corner,
-.turciya-resort-table__row-label {
-  padding: 1rem 1.25rem;
-  font-weight: 700;
-  text-align: left;
-  color: var(--color-ink);
-  background: rgba(245, 243, 240, 0.7);
-  vertical-align: top;
-}
-
-.turciya-resort-table__col-head {
-  padding: 1rem 0.75rem;
-  text-align: center;
-  vertical-align: bottom;
-  border-bottom: 1px solid var(--color-border);
-  background: rgba(245, 243, 240, 0.5);
-}
-
-.turciya-resort-table__col-head--featured {
-  background: rgba(200, 90, 50, 0.06);
-  border-left: 2px solid rgba(200, 90, 50, 0.2);
-  border-right: 2px solid rgba(200, 90, 50, 0.2);
-}
-
-.turciya-resort-table__tag {
-  display: inline-block;
-  margin-bottom: 0.35rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  font-size: 0.625rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.turciya-resort-table__tag--family { background: #059669; }
-.turciya-resort-table__tag--nature { background: #0d9488; }
-.turciya-resort-table__tag--value { background: #d97706; }
-.turciya-resort-table__tag--premium { background: #1c1917; color: #fcd34d; }
-
-.turciya-resort-table__col-name {
-  display: block;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--color-ink);
-}
-
-.turciya-resort-table__col-sub {
-  display: block;
-  margin-top: 0.15rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--color-muted);
-}
-
-.turciya-resort-table__cell {
-  padding: 1rem 0.85rem;
-  text-align: center;
-  vertical-align: top;
-  border-top: 1px solid var(--color-border);
-  color: #44403c;
-}
-
-.turciya-resort-table__cell--featured {
-  background: rgba(200, 90, 50, 0.04);
-  border-left: 2px solid rgba(200, 90, 50, 0.15);
-  border-right: 2px solid rgba(200, 90, 50, 0.15);
-}
-
-.turciya-resort-table__cell--best {
-  font-weight: 600;
-  color: #065f46;
-}
-
-.turciya-resort-table__cell--warn {
-  font-weight: 700;
-  color: #b45309;
-}
-
-.turciya-resort-table__cell--fast {
-  font-weight: 700;
-  color: #047857;
-}
-
-.turciya-resort-table__cell--cta {
-  padding-bottom: 1.25rem;
-}
-
-.turciya-resort-table__filter-btn {
-  border: none;
-  cursor: pointer;
-  font: inherit;
-}
-
-.turciya-resort-table__filter-btn--ghost {
-  display: inline-block;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-md);
-  font-size: 0.75rem;
-  font-weight: 700;
-  background: rgba(245, 243, 240, 0.9);
-  color: var(--color-ink);
-  transition: background 0.15s ease;
-}
-
-.turciya-resort-table__filter-btn--ghost:hover {
-  background: rgba(200, 90, 50, 0.12);
 }
 
 @media (max-width: 768px) {

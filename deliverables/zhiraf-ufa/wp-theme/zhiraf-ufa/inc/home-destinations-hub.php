@@ -60,7 +60,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			array(
 				'slug'        => 'abkhaziya',
 				'flag'        => '',
-				'flag_image'  => 'flags/abkhazia.svg',
+				'flag_image'  => 'flags/abkhazia.png',
 				'title'       => __( 'Абхазия', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Гагра, Пицунда • Море и горы', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Трансфер из Сочи', 'zhiraf-ufa' ),

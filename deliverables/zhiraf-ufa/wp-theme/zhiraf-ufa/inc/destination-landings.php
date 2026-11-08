@@ -27,14 +27,16 @@ function zhiraf_ufa_destination_landing_data() {
 	return array_merge( array(
 		'turciya'  => array(
 			'name'           => __( 'Турция', 'zhiraf-ufa' ),
-			'h1'             => __( 'Туры в Турцию из Уфы — всё включено', 'zhiraf-ufa' ),
+			'curated_landing_v1' => true,
+			'hide_landing_prose' => true,
+			'h1'             => __( 'Туры в Турцию с прямым вылетом из Уфы', 'zhiraf-ufa' ),
 			'title'          => __( 'Турция из Уфы — туры «всё включено» | Жираф', 'zhiraf-ufa' ),
 			'description'    => __( 'Подбор туров в Турцию с вылетом из Уфы: курорты Анталья, Кемер, Аланья, Сиде и Белек. Концепции All Inclusive и Ultra All Inclusive, цены туроператора «Библио-Глобус».', 'zhiraf-ufa' ),
 			'image'          => 'hero-turkey.jpg',
 			'image_alt'      => __( 'Турция — пляж, пальмы и отели на первой линии', 'zhiraf-ufa' ),
 			'name_in'        => __( 'Турции', 'zhiraf-ufa' ),
 			'hero_image_override' => true,
-			'hero_lead'      => __( 'Подбираем туры в Турцию с вылетом из Уфы: семейные отели с аквапарками, спокойные резорты для пар и премиальные комплексы Ultra All Inclusive. Честно разбираем варианты без фиктивных цен и скрытых доплат.', 'zhiraf-ufa' ),
+			'hero_lead'      => __( 'Шесть проверенных отелей под разные сценарии: первая карточка — минимальная цена с главной, остальные — семья, хит цена/качество, 16+, Кемер и премиум. Честные ориентиры за двоих на 7–9 ночей.', 'zhiraf-ufa' ),
 			'landing_module'      => 'battle',
 			'vibes_after_central' => true,
 			'hide_geo_block'      => true,

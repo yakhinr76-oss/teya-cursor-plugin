@@ -1028,6 +1028,41 @@
     });
   });
 
+  function initTurciyaResortChips() {
+    var showcase = qs('[data-turciya-curated-root]');
+    if (!showcase) {
+      return;
+    }
+    var cards = qsa('[data-curated-card]', showcase);
+    var chipButtons = qsa('[data-resort-filter]');
+    if (!cards.length || !chipButtons.length) {
+      return;
+    }
+    function applyFilter(resort) {
+      cards.forEach(function (card) {
+        var match = resort === 'all' || (card.getAttribute('data-resort') || '') === resort;
+        card.classList.toggle('is-hidden', !match);
+        if (match) {
+          card.removeAttribute('hidden');
+        } else {
+          card.setAttribute('hidden', '');
+        }
+      });
+      chipButtons.forEach(function (btn) {
+        var on = (btn.getAttribute('data-resort-filter') || 'all') === resort;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+    chipButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyFilter(btn.getAttribute('data-resort-filter') || 'all');
+      });
+    });
+  }
+
+  initTurciyaResortChips();
+
   qsa('[data-dest-season-module]').forEach(function (root) {
     var tabs = qsa('[data-season-tab]', root);
     var cards = qsa('[data-season-card]', root);

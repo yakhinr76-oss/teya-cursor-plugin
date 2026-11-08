@@ -46,6 +46,10 @@
   border-color: rgba(0, 119, 255, 0.4);
 }
 
+.zh-social-link--max:hover {
+  border-color: rgba(200, 90, 50, 0.45);
+}
+
 .zh-social-links--pill .zh-social-link {
   padding: 12px 18px;
   border-radius: 999px;
@@ -70,8 +74,167 @@
   margin-top: 16px;
 }
 
-.footer-social {
+.footer-contact-channels {
   margin-top: 16px;
+}
+
+.footer-contact-channels__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.footer-social {
+  margin-top: 0;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.zh-social-links--footer-bar .zh-social-link,
+.footer-social.zh-social-links--icon .zh-social-link {
+  position: relative;
+  flex: 0 0 2.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  border-radius: 0.75rem;
+  border: 0;
+  gap: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: var(--color-text);
+  overflow: hidden;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link .screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link .zh-social-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.footer-social.zh-social-links--icon .zh-social-icon__svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--max {
+  padding: 0;
+  background: #fff;
+  background-image: url("../images/max-messenger-sign-logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 108% 108%;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--max .zh-social-link__icon {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--whatsapp {
+  background: #25d366;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--telegram {
+  background: #229ed9;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--vk {
+  background: #0077ff;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(30, 28, 24, 0.14);
+  color: #fff;
+}
+
+.footer-social.zh-social-links--icon .zh-social-link--whatsapp:hover,
+.footer-social.zh-social-links--icon .zh-social-link--telegram:hover,
+.footer-social.zh-social-links--icon .zh-social-link--vk:hover,
+.footer-social.zh-social-links--icon .zh-social-link--max:hover {
+  border-color: transparent;
+}
+
+.zh-social-links--header {
+  gap: 6px;
+}
+
+.zh-social-links--header.zh-social-links--icon .zh-social-link {
+  width: 38px;
+  height: 38px;
+  color: var(--color-text);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.zh-social-links--header .zh-social-link--telegram:hover {
+  color: #229ed9;
+  border-color: rgba(34, 158, 217, 0.45);
+}
+
+.zh-social-links--header .zh-social-link__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.zh-social-links--header .zh-social-icon__svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}
+
+.zh-social-links--header .zh-social-link--max .zh-social-icon__img {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.92;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.zh-social-links--header .zh-social-link--max:hover .zh-social-icon__img {
+  filter: none;
+  opacity: 1;
+}
+
+.zh-social-links--header .zh-social-link--max:hover {
+  border-color: rgba(91, 75, 230, 0.4);
 }
 
 .contacts-card--social .zh-social-links {

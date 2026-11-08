@@ -136,7 +136,7 @@ function zhiraf_ufa_about_office_gallery() {
 				'slot'              => 'primary',
 			),
 			array(
-				'file'              => 'about-office-desk.jpg',
+				'file'              => 'about-office-team.jpg',
 				'placeholder_title' => __( 'Живая команда в Уфе', 'zhiraf-ufa' ),
 				'caption'           => __( 'Менеджеры на связи по телефону и в мессенджере — без анонимного колл-центра.', 'zhiraf-ufa' ),
 				'slot'              => 'secondary',

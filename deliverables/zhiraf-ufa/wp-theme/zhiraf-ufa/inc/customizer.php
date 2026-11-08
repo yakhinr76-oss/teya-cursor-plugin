@@ -115,7 +115,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 		'zhiraf_telegram_url',
 		array(
 			'label'       => __( 'Ссылка Telegram', 'zhiraf-ufa' ),
-			'description' => __( 'Необязательно. Пустое значение скрывает кнопку.', 'zhiraf-ufa' ),
+			'description' => __( 'Пустое значение — ссылка t.me на офисный +7 901 810-50-18.', 'zhiraf-ufa' ),
 			'section'     => 'zhiraf_ufa_brand',
 			'type'        => 'url',
 		)
@@ -132,7 +132,7 @@ function zhiraf_ufa_customize_register( $wp_customize ) {
 		'zhiraf_max_url',
 		array(
 			'label'       => __( 'Ссылка MAX', 'zhiraf-ufa' ),
-			'description' => __( 'Необязательно. Пустое значение скрывает кнопку с логотипом MAX.', 'zhiraf-ufa' ),
+			'description' => __( 'Пустое значение — «Поделиться в MAX» с приветственным текстом (замените на max.ru/u/… из приложения).', 'zhiraf-ufa' ),
 			'section'     => 'zhiraf_ufa_brand',
 			'type'        => 'url',
 		)

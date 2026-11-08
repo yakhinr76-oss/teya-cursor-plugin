@@ -15,6 +15,8 @@ $variant = ! empty( $args['variant'] ) ? (string) $args['variant'] : 'icon';
 $labels  = ! empty( $args['labels'] );
 $class   = ! empty( $args['class'] ) ? (string) $args['class'] : '';
 $context = ! empty( $args['context'] ) ? (string) $args['context'] : '';
+$only    = ! empty( $args['only'] ) && is_array( $args['only'] ) ? array_map( 'sanitize_key', $args['only'] ) : array();
+$order   = ! empty( $args['order'] ) && is_array( $args['order'] ) ? array_map( 'sanitize_key', $args['order'] ) : array();
 
 if ( 'pill' === $variant ) {
 	$labels = true;
@@ -25,7 +27,50 @@ if ( empty( $channels ) ) {
 	return;
 }
 
+if ( ! empty( $only ) ) {
+	$allowed = array_flip( $only );
+	$channels = array_values(
+		array_filter(
+			$channels,
+			static function ( $channel ) use ( $allowed ) {
+				$id = ! empty( $channel['id'] ) ? sanitize_key( (string) $channel['id'] ) : '';
+
+				return isset( $allowed[ $id ] );
+			}
+		)
+	);
+}
+
+$sort_ids = ! empty( $order ) ? $order : $only;
+if ( ! empty( $sort_ids ) ) {
+	$by_id = array();
+	foreach ( $channels as $channel ) {
+		$id = ! empty( $channel['id'] ) ? sanitize_key( (string) $channel['id'] ) : '';
+		if ( '' !== $id ) {
+			$by_id[ $id ] = $channel;
+		}
+	}
+	$sorted = array();
+	foreach ( $sort_ids as $id ) {
+		if ( isset( $by_id[ $id ] ) ) {
+			$sorted[] = $by_id[ $id ];
+		}
+	}
+	if ( ! empty( $sorted ) ) {
+		$channels = $sorted;
+	}
+}
+
+if ( empty( $channels ) ) {
+	return;
+}
+
 $wrapper_class = 'zh-social-links zh-social-links--' . sanitize_html_class( $variant );
+if ( 'header' === $context ) {
+	$wrapper_class .= ' zh-social-links--header';
+} elseif ( 'footer' === $context ) {
+	$wrapper_class .= ' zh-social-links--footer';
+}
 if ( '' !== $class ) {
 	$wrapper_class .= ' ' . esc_attr( $class );
 }
@@ -40,6 +85,10 @@ $allowed_svg = array(
 		'focusable'       => true,
 	),
 	'path' => array( 'fill' => true, 'd' => true ),
+	'span' => array(
+		'class'       => true,
+		'aria-hidden' => true,
+	),
 	'img'  => array(
 		'class'       => true,
 		'src'         => true,
@@ -64,7 +113,17 @@ $allowed_svg = array(
 		if ( '' === $id || '' === $url || '' === $aria_label ) {
 			continue;
 		}
-		$icon = zhiraf_ufa_social_icon_svg( $id, 'pill' === $variant ? 20 : 22 );
+		if ( 'pill' === $variant ) {
+			$icon_size = 20;
+		} elseif ( 'header' === $context ) {
+			$icon_size = 20;
+		} elseif ( 'footer' === $context ) {
+			$icon_size = 18;
+		} else {
+			$icon_size = 22;
+		}
+		$mark = ( 'header' === $context && 'telegram' === $id ) ? 'plane' : 'default';
+		$icon      = zhiraf_ufa_social_icon_svg( $id, $icon_size, $mark );
 		if ( '' === $icon ) {
 			continue;
 		}

@@ -75,18 +75,35 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			<?php endif; ?>
 		</div>
 		<div class="turciya-curated-card__body">
-			<h3 class="turciya-curated-card__title"><?php echo esc_html( (string) $hotel['name'] ); ?></h3>
-			<?php if ( ! empty( $hotel['rating'] ) ) : ?>
-				<p class="turciya-curated-card__rating" aria-label="<?php esc_attr_e( 'Рейтинг по отзывам', 'zhiraf-ufa' ); ?>">
-					<span aria-hidden="true">★</span>
-					<?php echo esc_html( (string) $hotel['rating'] ); ?>
-				</p>
-			<?php endif; ?>
+			<div class="turciya-curated-card__headline">
+				<h3 class="turciya-curated-card__title"><?php echo esc_html( (string) $hotel['name'] ); ?></h3>
+				<?php if ( ! empty( $hotel['rating'] ) ) : ?>
+					<p class="turciya-curated-card__rating" aria-label="<?php esc_attr_e( 'Рейтинг по отзывам', 'zhiraf-ufa' ); ?>">
+						<span aria-hidden="true">★</span>
+						<?php echo esc_html( (string) $hotel['rating'] ); ?>
+					</p>
+				<?php endif; ?>
+			</div>
 			<?php if ( '' !== $concept ) : ?>
 				<p class="turciya-curated-card__concept"><?php echo esc_html( $concept ); ?></p>
 			<?php endif; ?>
-			<?php if ( ! empty( $hotel['description'] ) ) : ?>
-				<p class="turciya-curated-card__text"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
+			<?php if ( ! empty( $hotel['description'] ) || ! empty( $hotel['caveat'] ) ) : ?>
+				<div class="turciya-curated-card__trust">
+					<?php if ( ! empty( $hotel['description'] ) ) : ?>
+						<div class="turciya-curated-card__pros">
+							<p class="turciya-curated-card__trust-label"><?php esc_html_e( '✓ Плюсы:', 'zhiraf-ufa' ); ?></p>
+							<p class="turciya-curated-card__text"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
+						</div>
+					<?php endif; ?>
+					<?php if ( ! empty( $hotel['caveat'] ) ) : ?>
+						<div class="turciya-curated-card__caveat">
+							<p class="turciya-curated-card__trust-label turciya-curated-card__trust-label--warn">
+								<?php esc_html_e( '⚠ Честный нюанс (минус):', 'zhiraf-ufa' ); ?>
+							</p>
+							<p class="turciya-curated-card__caveat-text"><?php echo esc_html( (string) $hotel['caveat'] ); ?></p>
+						</div>
+					<?php endif; ?>
+				</div>
 			<?php endif; ?>
 		</div>
 	</div>

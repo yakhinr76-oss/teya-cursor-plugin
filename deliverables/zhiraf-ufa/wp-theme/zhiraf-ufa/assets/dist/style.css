@@ -3069,8 +3069,17 @@ details[open] > .faq-home__question::after {
   padding: 16px 20px 0;
 }
 
+.turciya-curated-card__headline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .turciya-curated-card__title {
   margin: 0;
+  flex: 1;
+  min-width: 0;
   font-size: 1.0625rem;
   font-weight: 900;
   line-height: 1.25;
@@ -3078,10 +3087,12 @@ details[open] > .faq-home__question::after {
 }
 
 .turciya-curated-card__rating {
-  margin: 6px 0 0;
+  margin: 2px 0 0;
+  flex-shrink: 0;
   font-size: 0.8125rem;
   font-weight: 800;
   color: #d97706;
+  white-space: nowrap;
 }
 
 .turciya-curated-card__rating span {
@@ -3097,15 +3108,53 @@ details[open] > .faq-home__question::after {
   color: var(--color-muted);
 }
 
-.turciya-curated-card__text {
-  margin: 10px 0 0;
+.turciya-curated-card__trust {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.turciya-curated-card__trust-label {
+  margin: 0 0 4px;
+  font-size: 0.625rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #059669;
+}
+
+.turciya-curated-card__trust-label--warn {
+  color: #b45309;
+}
+
+.turciya-curated-card__text,
+.turciya-curated-card__caveat-text {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: #57534e;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.turciya-curated-card__text {
+  color: #44403c;
+  -webkit-line-clamp: 3;
+}
+
+.turciya-curated-card__caveat {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #fffbeb;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+}
+
+.turciya-curated-card__caveat-text {
+  color: #78350f;
+  -webkit-line-clamp: 4;
 }
 
 .turciya-curated-card__footer {

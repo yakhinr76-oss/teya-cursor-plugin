@@ -56,7 +56,7 @@ $office_map_url = function_exists( 'zhiraf_ufa_office_map_url' ) ? zhiraf_ufa_of
 					<?php
 					zhiraf_ufa_img(
 						'about-office-gagarin-home.jpg',
-						__( 'Офис турагентства «Жираф» в Уфе — ул. Юрия Гагарина, 74/1, офис 3', 'zhiraf-ufa' ),
+						__( 'Команда турагентства «Жираф» в офисе на ул. Гагарина, 74/1', 'zhiraf-ufa' ),
 						'office-guarantees__media-img',
 						true
 					);

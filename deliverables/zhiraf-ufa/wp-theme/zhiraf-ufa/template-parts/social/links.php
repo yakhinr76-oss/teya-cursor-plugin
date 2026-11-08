@@ -123,9 +123,6 @@ $allowed_svg = array(
 			$icon_size = 22;
 		}
 		$mark = ( 'header' === $context && 'telegram' === $id ) ? 'plane' : 'default';
-		if ( 'footer' === $context && 'max' === $id ) {
-			$icon_size = 36;
-		}
 		$icon      = zhiraf_ufa_social_icon_svg( $id, $icon_size, $mark );
 		if ( '' === $icon ) {
 			continue;

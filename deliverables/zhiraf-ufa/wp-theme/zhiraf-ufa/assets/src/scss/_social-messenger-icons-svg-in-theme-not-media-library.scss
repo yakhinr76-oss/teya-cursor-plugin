@@ -46,6 +46,10 @@
   border-color: rgba(0, 119, 255, 0.4);
 }
 
+.zh-social-link--max:hover {
+  border-color: rgba(200, 90, 50, 0.45);
+}
+
 .zh-social-links--pill .zh-social-link {
   padding: 12px 18px;
   border-radius: 999px;
@@ -123,36 +127,19 @@
 }
 
 .zh-social-links--header {
-  gap: 0.375rem;
+  gap: 6px;
 }
 
-.zh-social-links--header .zh-social-link {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.5rem;
-  border: 0;
-  color: #fff;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+.zh-social-links--header.zh-social-links--icon .zh-social-link {
+  width: 38px;
+  height: 38px;
 }
 
-.zh-social-links--header .zh-social-link--max {
-  background: var(--color-primary);
-}
-
-.zh-social-links--header .zh-social-link--max .zh-social-link__max-mark {
-  font-size: 0.6875rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.zh-social-links--header .zh-social-link--telegram {
-  background: #229ed9;
-}
-
-.zh-social-links--header .zh-social-link:hover {
-  transform: scale(0.96);
-  filter: brightness(0.94);
-  color: #fff;
+.zh-social-links--header .zh-social-link--max .zh-social-icon__img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .contacts-card--social .zh-social-links {

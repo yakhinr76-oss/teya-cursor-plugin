@@ -25,10 +25,34 @@ function zhiraf_ufa_max_messenger_logo_url() {
  */
 function zhiraf_ufa_brand_max_url() {
 	$url = trim( (string) get_theme_mod( 'zhiraf_max_url', '' ) );
-	if ( '' === $url ) {
-		return '';
+	if ( '' !== $url ) {
+		return esc_url_raw( $url );
 	}
-	return esc_url_raw( $url );
+
+	$default = apply_filters( 'zhiraf_ufa_default_max_url', '' );
+	if ( '' !== $default ) {
+		return esc_url_raw( $default );
+	}
+
+	$text = rawurlencode(
+		__( 'Здравствуйте! Хочу подобрать тур из Уфы.', 'zhiraf-ufa' )
+	);
+
+	return 'https://max.ru/:share?text=' . $text;
+}
+
+/**
+ * Telegram chat / channel URL (Customizer or default office deep link).
+ *
+ * @return string
+ */
+function zhiraf_ufa_brand_telegram_url() {
+	$url = trim( (string) get_theme_mod( 'zhiraf_telegram_url', '' ) );
+	if ( '' !== $url ) {
+		return esc_url_raw( $url );
+	}
+
+	return apply_filters( 'zhiraf_ufa_default_telegram_url', 'https://t.me/+79018105018' );
 }
 
 /**
@@ -72,7 +96,7 @@ function zhiraf_ufa_brand_social_channels() {
 		);
 	}
 
-	$tg = trim( (string) get_theme_mod( 'zhiraf_telegram_url', '' ) );
+	$tg = zhiraf_ufa_brand_telegram_url();
 	if ( '' !== $tg ) {
 		$channels[] = array(
 			'id'          => 'telegram',

@@ -111,11 +111,8 @@ $allowed_svg = array(
 		if ( '' === $id || '' === $url || '' === $aria_label ) {
 			continue;
 		}
-		if ( 'header' === $context && 'max' === $id ) {
-			$icon = '<span class="zh-social-link__max-mark" aria-hidden="true">M</span>';
-		} else {
-			$icon = zhiraf_ufa_social_icon_svg( $id, 'pill' === $variant ? 20 : ( 'header' === $context ? 16 : 22 ) );
-		}
+		$icon_size = 'pill' === $variant ? 20 : ( 'header' === $context ? 20 : 22 );
+		$icon      = zhiraf_ufa_social_icon_svg( $id, $icon_size );
 		if ( '' === $icon ) {
 			continue;
 		}

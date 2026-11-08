@@ -26,6 +26,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 						<?php esc_html_e( 'Подобрать тур через квиз (1 мин)', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>
+				<?php get_template_part( 'template-parts/home/hero-mobile-dest-chips' ); ?>
 			</div>
 
 			<div class="hero-premium__collage hero-premium__collage--orbit reveal reveal-delay-1" data-three-canvas="hero-ambient" data-hero-orbit>

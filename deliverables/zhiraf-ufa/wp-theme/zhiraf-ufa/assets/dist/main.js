@@ -1046,8 +1046,13 @@
     var resetBtn = qs('[data-turciya-catalog-reset]', showcase);
     var defaultTitle = showcase.getAttribute('data-catalog-default-title') || '';
     var defaultDesc = showcase.getAttribute('data-catalog-default-desc') || '';
-    var maxVisible = 6;
+    var pageSize = 6;
+    var visibleLimit = pageSize;
     var activeFilter = 'starter';
+    var currentMatched = [];
+    var moreWrap = qs('[data-turciya-catalog-more-wrap]', showcase);
+    var moreBtn = qs('[data-turciya-catalog-more]', showcase);
+    var moreCountEl = qs('[data-turciya-catalog-more-count]', showcase);
 
     function parseTags(card) {
       return (card.getAttribute('data-filter-tags') || '')
@@ -1093,9 +1098,7 @@
       }
     }
 
-    function applyCatalogFilter(filterKey, meta) {
-      filterKey = filterKey || 'starter';
-      activeFilter = filterKey;
+    function getMatchedCards(filterKey) {
       var matched = [];
       cards.forEach(function (card) {
         var tags = parseTags(card);
@@ -1111,13 +1114,45 @@
         var rb = parseInt(b.getAttribute('data-pool-rank') || '999', 10);
         return ra - rb;
       });
-      var visibleSet = {};
-      matched.slice(0, maxVisible).forEach(function (card) {
-        visibleSet[card] = true;
+      return matched;
+    }
+
+    function updateMoreControl() {
+      if (!moreWrap) {
+        return;
+      }
+      var remaining = Math.max(0, currentMatched.length - visibleLimit);
+      if (remaining <= 0) {
+        moreWrap.setAttribute('hidden', '');
+        return;
+      }
+      moreWrap.removeAttribute('hidden');
+      if (moreCountEl) {
+        moreCountEl.textContent = ' (осталось ' + remaining + ') ↓';
+      }
+    }
+
+    function renderVisibleCards() {
+      var visible = new Set();
+      currentMatched.slice(0, visibleLimit).forEach(function (card) {
+        visible.add(card);
       });
       cards.forEach(function (card) {
-        setCardVisible(card, !!visibleSet[card]);
+        setCardVisible(card, visible.has(card));
       });
+      updateMoreControl();
+    }
+
+    function applyCatalogFilter(filterKey, meta) {
+      filterKey = filterKey || 'starter';
+      activeFilter = filterKey;
+      visibleLimit = pageSize;
+      currentMatched = getMatchedCards(filterKey);
+      renderVisibleCards();
+      if (curatedGrid) {
+        curatedGrid.removeAttribute('data-catalog-pending');
+      }
+      showcase.classList.add('is-catalog-ready');
 
       var title = defaultTitle;
       var desc = defaultDesc;
@@ -1198,7 +1233,7 @@
         if (!key) {
           return;
         }
-        var btn = filterButtons.find(function (b) {
+        var btn = filterButtonsArr.find(function (b) {
           return (b.getAttribute('data-turciya-catalog-filter') || '') === key;
         });
         var meta = btn ? metaFromButton(btn) : { title: '', desc: '' };
@@ -1208,6 +1243,13 @@
 
     if (resetBtn) {
       resetBtn.addEventListener('click', resetToDefault);
+    }
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        visibleLimit += pageSize;
+        renderVisibleCards();
+      });
     }
 
     applyCatalogFilter('starter', { title: defaultTitle, desc: defaultDesc });

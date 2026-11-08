@@ -17,6 +17,12 @@ if ( empty( $hotel['name'] ) ) {
 
 $is_base     = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
 $resort      = ! empty( $hotel['resort'] ) ? sanitize_html_class( (string) $hotel['resort'] ) : '';
+$filter_tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
+if ( empty( $filter_tags ) && '' !== $resort ) {
+	$filter_tags = array( 'resort-' . $resort );
+}
+$tags_attr   = esc_attr( implode( ' ', array_map( 'sanitize_html_class', $filter_tags ) ) );
+$pool_rank   = ! empty( $hotel['pool_rank'] ) ? (int) $hotel['pool_rank'] : 999;
 $card_class  = 'turciya-curated-card';
 if ( $is_base ) {
 	$card_class .= ' turciya-curated-card--base';
@@ -33,6 +39,8 @@ $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $h
 	class="<?php echo esc_attr( $card_class ); ?>"
 	data-curated-card
 	data-resort="<?php echo esc_attr( $resort ); ?>"
+	data-filter-tags="<?php echo $tags_attr; ?>"
+	data-pool-rank="<?php echo esc_attr( (string) $pool_rank ); ?>"
 >
 	<div class="turciya-curated-card__top">
 		<div class="turciya-curated-card__media">

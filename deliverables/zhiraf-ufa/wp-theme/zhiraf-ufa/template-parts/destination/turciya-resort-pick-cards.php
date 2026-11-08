@@ -48,11 +48,14 @@ if ( empty( $cards ) ) {
 			);
 			$transfer_mod = ! empty( $card['transfer_mod'] ) ? sanitize_html_class( (string) $card['transfer_mod'] ) : '';
 			?>
+			<?php
+			$catalog_filter = 'resort-' . $id;
+			?>
 			<button
 				type="button"
 				class="<?php echo esc_attr( $card_class ); ?>"
 				data-turciya-pick-card
-				data-resort-filter="<?php echo esc_attr( $id ); ?>"
+				data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
 				aria-pressed="false"
 				role="listitem"
 			>

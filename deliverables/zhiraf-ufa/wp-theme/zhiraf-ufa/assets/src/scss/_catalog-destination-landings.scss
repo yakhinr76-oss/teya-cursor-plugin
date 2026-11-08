@@ -697,6 +697,119 @@
   border-top: 1px solid rgba(30, 28, 24, 0.06);
 }
 
+.turciya-catalog-toolbar {
+  margin-bottom: 1.75rem;
+}
+
+.turciya-catalog-toolbar__head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .turciya-catalog-toolbar__head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.turciya-catalog-toolbar__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.turciya-catalog-toolbar__lead {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  max-width: 40rem;
+}
+
+.turciya-catalog-toolbar__reset {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.turciya-catalog-toolbar__reset:hover {
+  text-decoration: underline;
+}
+
+.turciya-catalog-toolbar__panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: rgba(245, 243, 240, 0.65);
+}
+
+.turciya-catalog-toolbar__divider {
+  display: none;
+  width: 1px;
+  height: 1rem;
+  background: rgba(30, 28, 24, 0.15);
+  margin: 0 0.15rem;
+}
+
+.turciya-catalog-toolbar__group-label {
+  display: none;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .turciya-catalog-toolbar__divider,
+  .turciya-catalog-toolbar__group-label {
+    display: inline-block;
+  }
+}
+
+.turciya-catalog-tab {
+  border: 1px solid rgba(30, 28, 24, 0.08);
+  background: var(--color-white);
+  color: var(--color-ink);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.turciya-catalog-tab:hover {
+  background: rgba(245, 243, 240, 0.9);
+}
+
+.turciya-catalog-tab--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(200, 90, 50, 0.2);
+}
+
+.turciya-catalog-tab--active:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 .turciya-resort-pick {
   margin-bottom: 0;
 }

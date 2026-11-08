@@ -39,8 +39,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 			
 			<div class="office-guarantees__map">
-				<!-- Map placeholder or actual iframe -->
-				<img src="<?php echo esc_url( ZHIRAF_UFA_URI . '/assets/images/subscribe-bg.jpg' ); ?>" alt="Офис турагентства" class="office-guarantees__map-img" loading="lazy" width="800" height="600" style="width:100%; height:100%; object-fit:cover; border-radius:1rem;">
+				<?php
+				zhiraf_ufa_img(
+					'about-office-gagarin.jpg',
+					__( 'Офис турагентства «Жираф» в Уфе — ул. Юрия Гагарина, 74/1, офис 3', 'zhiraf-ufa' ),
+					'office-guarantees__map-img',
+					true
+				);
+				?>
 			</div>
 		</div>
 	</div>

@@ -842,6 +842,27 @@
   margin-bottom: 0.5rem;
 }
 
+@media (min-width: 1200px) {
+  .turciya-resort-pick__track--five {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.turciya-catalog-toolbar__guide {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.turciya-catalog-toolbar__guide a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.turciya-catalog-toolbar__guide a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 1023px) {
   .turciya-resort-pick__track {
     display: flex;
@@ -866,8 +887,19 @@
   border: 1px solid var(--color-border);
   background: var(--color-white);
   box-shadow: 0 2px 8px rgba(30, 28, 24, 0.04);
-  cursor: pointer;
   transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.turciya-resort-pick__card-hit {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 @media (max-width: 1023px) {
@@ -891,6 +923,7 @@
 .turciya-resort-pick__card--teal:hover { border-color: #0d9488; }
 .turciya-resort-pick__card--amber:hover { border-color: #d97706; }
 .turciya-resort-pick__card--lux:hover { border-color: #1c1917; }
+.turciya-resort-pick__card--sky:hover { border-color: #0284c7; }
 
 .turciya-resort-pick__card.is-active {
   border-color: var(--color-primary);
@@ -938,6 +971,11 @@
 .turciya-resort-pick__tag--premium {
   background: #1c1917;
   color: #fcd34d;
+}
+
+.turciya-resort-pick__tag--urban {
+  background: #e0f2fe;
+  color: #0369a1;
 }
 
 .turciya-resort-pick__transfer {
@@ -1001,14 +1039,40 @@
 
 .turciya-resort-pick__card-foot {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(30, 28, 24, 0.06);
   font-size: 0.75rem;
   font-weight: 800;
   color: var(--color-primary);
+}
+
+.turciya-resort-pick__filter-cta {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 800;
+  color: inherit;
+  cursor: pointer;
+}
+
+.turciya-resort-pick__guide {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.turciya-resort-pick__guide:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 .turciya-resort-pick__card:not(.is-active) .turciya-resort-pick__card-foot {

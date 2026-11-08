@@ -40,6 +40,11 @@ foreach ( $filters as $filter ) {
 			<p class="turciya-catalog-toolbar__lead" id="turciya-catalog-desc" data-turciya-catalog-desc>
 				<?php echo esc_html( $copy['desc'] ?? '' ); ?>
 			</p>
+			<p class="turciya-catalog-toolbar__guide" data-turciya-catalog-guide hidden>
+				<a href="<?php echo esc_url( home_url( '/tour/turciya/antalya/' ) ); ?>">
+					<?php esc_html_e( 'Подробный гид по Анталье (Лара, Коньяалты, Калеичи) →', 'zhiraf-ufa' ); ?>
+				</a>
+			</p>
 		</div>
 		<button
 			type="button"

@@ -66,6 +66,10 @@ function zhiraf_ufa_turciya_resort_chips() {
 			'id'    => 'resort-belek',
 			'label' => __( 'Белек — премиум', 'zhiraf-ufa' ),
 		),
+		array(
+			'id'    => 'resort-antalya',
+			'label' => __( 'Анталья — город', 'zhiraf-ufa' ),
+		),
 	);
 }
 
@@ -196,7 +200,7 @@ function zhiraf_ufa_turciya_hotel_name_key( $name ) {
  * Resort region key from JSON resort label.
  *
  * @param string $resort_label Resort line from JSON.
- * @return string side|kemer|alanya|belek or empty.
+ * @return string side|kemer|alanya|belek|antalya or empty.
  */
 function zhiraf_ufa_turciya_resort_region_key( $resort_label ) {
 	$r = mb_strtolower( (string) $resort_label, 'UTF-8' );
@@ -206,14 +210,31 @@ function zhiraf_ufa_turciya_resort_region_key( $resort_label ) {
 	if ( preg_match( '/белек|kadri|cullinan|regnum/u', $r ) ) {
 		return 'belek';
 	}
-	if ( preg_match( '/алань|алан|инжек|анталь|лара|мурат|сарай/u', $r ) ) {
+	if ( preg_match( '/алань|алан|инжек|клеопат|сарай/u', $r ) ) {
 		return 'alanya';
+	}
+	if ( preg_match( '/анталь|муратпаш|калеичи|kaleici|terra\s*city/u', $r ) || preg_match( '/\bлара\b/u', $r ) ) {
+		return 'antalya';
 	}
 	if ( preg_match( '/кемер|кириш|текир|гёню|гёйн|бельд/u', $r ) ) {
 		return 'kemer';
 	}
 
 	return '';
+}
+
+/**
+ * Resort landing URL for Turkey pick cards (optional deep guide).
+ *
+ * @param string $resort_key side|kemer|alanya|belek|antalya.
+ * @return string
+ */
+function zhiraf_ufa_turciya_resort_guide_url( $resort_key ) {
+	$resort_key = sanitize_key( (string) $resort_key );
+	$map        = array(
+		'antalya' => home_url( '/tour/turciya/antalya/' ),
+	);
+	return ! empty( $map[ $resort_key ] ) ? (string) $map[ $resort_key ] : '';
 }
 
 /**
@@ -278,10 +299,11 @@ function zhiraf_ufa_turciya_starter_filter_tags( $hotel ) {
  */
 function zhiraf_ufa_turciya_pool_image_for_region( $region ) {
 	$map = array(
-		'side'   => 'resort-turciya-belek-1.jpg',
-		'kemer'  => 'resort-turciya-kemer-2.jpg',
-		'alanya' => 'resort-turciya-alanya-2.jpg',
-		'belek'  => 'resort-turciya-belek-1.jpg',
+		'side'    => 'resort-turciya-belek-1.jpg',
+		'kemer'   => 'resort-turciya-kemer-2.jpg',
+		'alanya'  => 'resort-turciya-alanya-2.jpg',
+		'belek'   => 'resort-turciya-belek-1.jpg',
+		'antalya' => 'resort-turciya-antalya-2.jpg',
 	);
 
 	return ! empty( $map[ $region ] ) ? $map[ $region ] : 'resort-turciya-alanya-2.jpg';
@@ -464,6 +486,14 @@ function zhiraf_ufa_turciya_catalog_filters() {
 			'desc'  => __( 'Флагманские отели с закрытой территорией и сервисом премиум-уровня.', 'zhiraf-ufa' ),
 		),
 		array(
+			'id'        => 'resort-antalya',
+			'group'     => 'resort',
+			'label'     => __( '🏙️ Анталья', 'zhiraf-ufa' ),
+			'title'     => __( 'Отели Антальи (город и Лара)', 'zhiraf-ufa' ),
+			'desc'      => __( 'Короткий трансфер, пляжи Лара / Коньяалты, Калеичи и шопинг — до 6 отелей из базы.', 'zhiraf-ufa' ),
+			'guide_url' => zhiraf_ufa_turciya_resort_guide_url( 'antalya' ),
+		),
+		array(
 			'id'    => 'need-family',
 			'group' => 'need',
 			'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ),
@@ -509,10 +539,11 @@ function zhiraf_ufa_turciya_catalog_default_copy() {
  */
 function zhiraf_ufa_turciya_resort_hotel_counts() {
 	$counts = array(
-		'side'   => 0,
-		'kemer'  => 0,
-		'alanya' => 0,
-		'belek'  => 0,
+		'side'    => 0,
+		'kemer'   => 0,
+		'alanya'  => 0,
+		'belek'   => 0,
+		'antalya' => 0,
 	);
 	foreach ( zhiraf_ufa_turciya_catalog_hotels() as $hotel ) {
 		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
@@ -531,7 +562,7 @@ function zhiraf_ufa_turciya_resort_hotel_counts() {
 }
 
 /**
- * Four resort pick cards — «В чём разница за 10 секунд».
+ * Five resort pick cards — «В чём разница за 10 секунд».
  *
  * @return array<int,array<string,mixed>>
  */
@@ -622,6 +653,30 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 				array(
 					'type' => 'pro',
 					'text' => __( 'Закрытые территории и гольф', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		array(
+			'id'           => 'antalya',
+			'name'         => __( 'Анталья', 'zhiraf-ufa' ),
+			'subtitle'     => __( 'Пляжи Лара, Коньяалты и центр', 'zhiraf-ufa' ),
+			'tag'          => __( 'Город и шопинг', 'zhiraf-ufa' ),
+			'tag_mod'      => 'urban',
+			'transfer'     => __( '~15–20 мин', 'zhiraf-ufa' ),
+			'transfer_mod' => 'fast',
+			'featured'     => false,
+			'hotel_count'  => $counts['antalya'],
+			'accent_mod'   => 'sky',
+			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'antalya' ),
+			'guide_label'  => __( 'Подробный гид по курорту →', 'zhiraf-ufa' ),
+			'bullets'      => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Самый короткий трансфер от рейса Уфы', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'pro',
+					'text' => __( 'ТРЦ, Калеичи, рестораны у моря', 'zhiraf-ufa' ),
 				),
 			),
 		),

@@ -19,7 +19,7 @@
 | country-sejshely.jpg | 1591372 | https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/ |
 | resort-samarkand.jpg | 16386337 | https://www.pexels.com/photo/registan-square-in-samarkand-16386337/ |
 | alt-armeniya-yerevan.jpg | 17550070 | https://www.pexels.com/photo/sevanavank-monastery-in-armenia-17550070/ |
-Hero-коллаж и блок «сценарии» **не** входят в эту подборку (откат при ошибочном заливе 08.11.2026).
+Блок «Готовые подборки»: `user-v3-life-scenarios-picks.json` — `life-scenario-family.jpg` (12261095), `life-scenario-couple.jpg` (8907262), `life-scenario-value.jpg` (31817153), `life-scenario-city.jpg` (18139273).
 
 # Фото направлений (assets/images/country-*.jpg)
 

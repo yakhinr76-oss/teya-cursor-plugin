@@ -173,42 +173,61 @@ function zhiraf_ufa_home_hub_cta_genitive( $slug ) {
 }
 
 /**
- * Count distinct hotels in synced tours for hub card CTA.
+ * Hub slug → curated hotels JSON country code (data/*_hotels_*.json).
  *
- * @param string $country_slug Country slug.
- * @param string $departure    ufa|mow.
+ * @param string $slug Landing slug.
+ * @return string
+ */
+function zhiraf_ufa_home_hub_hotels_json_country( $slug ) {
+	$map = array(
+		'turciya'    => 'turkey',
+		'oae'        => 'uae',
+		'egipet'     => 'egypt',
+		'tailand'    => 'thailand',
+		'rossiya'    => 'russia',
+		'abkhaziya'  => 'abkhazia',
+		'maldivy'    => 'maldives',
+		'shri-lanka' => 'sri_lanka',
+		'vietnam'    => 'vietnam',
+		'kitaj'      => 'china',
+		'indiya'     => 'india',
+		'indoneziya' => 'indonesia',
+		'sejshely'   => 'seychelles',
+		'uzbekistan' => 'uzbekistan',
+		'armeniya'   => 'armenia',
+	);
+
+	return isset( $map[ $slug ] ) ? (string) $map[ $slug ] : '';
+}
+
+/**
+ * Number of curated hotels on the landing (real catalog size for CTA).
+ *
+ * @param string $country_slug Hub / landing slug.
  * @return int
  */
-function zhiraf_ufa_home_hub_offer_count( $country_slug, $departure = 'ufa' ) {
-	if ( ! function_exists( 'zhiraf_ufa_get_country_tours' ) ) {
+function zhiraf_ufa_home_hub_curated_hotel_count( $country_slug ) {
+	if ( ! function_exists( 'zhiraf_ufa_hotels_json_path' ) ) {
 		return 0;
 	}
-	$departure = 'mow' === $departure ? 'mow' : 'ufa';
-	$hotels    = array();
-	$tour_hits = 0;
-
-	foreach ( zhiraf_ufa_get_country_tours( $country_slug, 500 ) as $t ) {
-		$dep_city = (string) ( $t['departure_city'] ?? '' );
-		if ( 'mow' === $departure ) {
-			if ( false === mb_stripos( $dep_city, 'моск', 0, 'UTF-8' ) ) {
-				continue;
-			}
-		} elseif ( false === mb_stripos( $dep_city, 'уф', 0, 'UTF-8' ) ) {
-			continue;
-		}
-		++$tour_hits;
-		$name = trim( (string) ( $t['hotel_name'] ?? '' ) );
-		if ( '' !== $name ) {
-			$hotels[ mb_strtolower( $name, 'UTF-8' ) ] = true;
-		}
+	$json_country = zhiraf_ufa_home_hub_hotels_json_country( $country_slug );
+	if ( '' === $json_country ) {
+		return 0;
+	}
+	$path = zhiraf_ufa_hotels_json_path( $json_country );
+	if ( ! is_readable( $path ) ) {
+		return 0;
+	}
+	$raw = file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	if ( false === $raw ) {
+		return 0;
+	}
+	$rows = json_decode( $raw, true );
+	if ( ! is_array( $rows ) ) {
+		return 0;
 	}
 
-	$count = count( $hotels );
-	if ( $count > 0 ) {
-		return $count;
-	}
-
-	return $tour_hits > 0 ? $tour_hits : 0;
+	return count( $rows );
 }
 
 /**
@@ -297,12 +316,12 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		if ( ! empty( $row['flag_image'] ) ) {
 			$flag_img = zhiraf_ufa_theme_image( (string) $row['flag_image'], (string) $row['title'] );
 		}
-		$offer_count = zhiraf_ufa_home_hub_offer_count( $slug, $key );
-		$cta_action  = $offer_count > 0
+		$hotel_count = zhiraf_ufa_home_hub_curated_hotel_count( $slug );
+		$cta_action  = $hotel_count > 0
 			? sprintf(
-				/* translators: %d: number of hotel offers */
+				/* translators: %d: number of curated hotels on landing */
 				__( 'Смотреть отели (%d) →', 'zhiraf-ufa' ),
-				$offer_count
+				$hotel_count
 			)
 			: __( 'Смотреть отели →', 'zhiraf-ufa' );
 

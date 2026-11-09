@@ -88,20 +88,12 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 				<p class="turciya-curated-card__concept"><?php echo esc_html( $concept ); ?></p>
 			<?php endif; ?>
 			<?php if ( ! empty( $hotel['description'] ) || ! empty( $hotel['caveat'] ) ) : ?>
-				<div class="turciya-curated-card__trust">
+				<div class="turciya-curated-card__copy">
 					<?php if ( ! empty( $hotel['description'] ) ) : ?>
-						<div class="turciya-curated-card__pros">
-							<p class="turciya-curated-card__trust-label"><?php esc_html_e( '✓ Плюсы:', 'zhiraf-ufa' ); ?></p>
-							<p class="turciya-curated-card__text"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
-						</div>
+						<p class="turciya-curated-card__usp"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
 					<?php endif; ?>
 					<?php if ( ! empty( $hotel['caveat'] ) ) : ?>
-						<div class="turciya-curated-card__caveat">
-							<p class="turciya-curated-card__trust-label turciya-curated-card__trust-label--warn">
-								<?php esc_html_e( '⚠ Честный нюанс (минус):', 'zhiraf-ufa' ); ?>
-							</p>
-							<p class="turciya-curated-card__caveat-text"><?php echo esc_html( (string) $hotel['caveat'] ); ?></p>
-						</div>
+						<p class="turciya-curated-card__nuance"><?php echo esc_html( (string) $hotel['caveat'] ); ?></p>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
@@ -118,7 +110,7 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			</span>
 		</div>
 		<a
-			class="btn <?php echo $is_base ? 'btn--primary' : 'btn--outline'; ?> btn--sm turciya-curated-card__cta"
+			class="btn btn--primary turciya-curated-card__cta"
 			href="<?php echo esc_url( $wa_url ); ?>"
 			target="_blank"
 			rel="noopener noreferrer"
@@ -126,7 +118,7 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			data-channel="whatsapp"
 			data-cta-context="turciya_curated_hotel"
 		>
-			<?php esc_html_e( 'Узнать даты →', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Узнать даты в WhatsApp →', 'zhiraf-ufa' ); ?>
 		</a>
 	</div>
 </article>

@@ -1039,7 +1039,8 @@
     }
     var filterButtons = qsa('[data-turciya-catalog-filter]', showcase);
     var filterButtonsArr = Array.prototype.slice.call(filterButtons);
-    var pickCards = qsa('[data-turciya-pick-card]', showcase);
+    var pickCards = qsa('.turciya-resort-pick__card', showcase);
+    var catalogGuide = qs('[data-turciya-catalog-guide]', showcase);
     var curatedGrid = qs('[data-curated-grid]', showcase);
     var titleEl = qs('[data-turciya-catalog-title]', showcase);
     var descEl = qs('[data-turciya-catalog-desc]', showcase);
@@ -1083,12 +1084,23 @@
           btn.setAttribute('aria-selected', on ? 'true' : 'false');
         }
       });
-      pickCards.forEach(function (pick) {
-        var key = pick.getAttribute('data-turciya-catalog-filter') || '';
+      pickCards.forEach(function (pickWrap) {
+        var pickBtn = qs('[data-turciya-pick-card]', pickWrap);
+        var filterBtn = qs('[data-turciya-catalog-filter]', pickWrap);
+        var key = filterBtn ? (filterBtn.getAttribute('data-turciya-catalog-filter') || '') : '';
         var on = key === filterKey;
-        pick.classList.toggle('is-active', on);
-        pick.setAttribute('aria-pressed', on ? 'true' : 'false');
+        pickWrap.classList.toggle('is-active', on);
+        if (pickBtn) {
+          pickBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
       });
+      if (catalogGuide) {
+        if (filterKey === 'resort-antalya') {
+          catalogGuide.removeAttribute('hidden');
+        } else {
+          catalogGuide.setAttribute('hidden', '');
+        }
+      }
       if (resetBtn) {
         if (filterKey === 'starter') {
           resetBtn.setAttribute('hidden', '');
@@ -1227,7 +1239,7 @@
       });
     });
 
-    pickCards.forEach(function (pick) {
+    qsa('[data-turciya-pick-card]', showcase).forEach(function (pick) {
       pick.addEventListener('click', function () {
         var key = pick.getAttribute('data-turciya-catalog-filter') || '';
         if (!key) {

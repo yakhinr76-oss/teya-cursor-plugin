@@ -166,12 +166,16 @@
     });
   });
 
-  /* Mobile nav */
+  /* Mobile nav — is-open на ul.primary-menu (см. _mobile-responsiveness.scss) */
   var toggle = qs('.nav-toggle');
   var menuWrap = qs('#primary-menu-wrap');
-  if (toggle && menuWrap) {
+  var menuList = menuWrap ? qs('.primary-menu', menuWrap) : null;
+  if (toggle && menuList) {
     toggle.addEventListener('click', function () {
-      var open = menuWrap.classList.toggle('is-open');
+      var open = menuList.classList.toggle('is-open');
+      if (menuWrap) {
+        menuWrap.classList.toggle('is-open', open);
+      }
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }

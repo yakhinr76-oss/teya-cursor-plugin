@@ -187,6 +187,8 @@ h1, h2, h3, h4 {
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .primary-menu {
@@ -1581,20 +1583,23 @@ details[open] > .faq-home__question::after {
   .site-header__actions {
     display: none;
   }
-  .primary-menu {
-    display: none;
-    position: absolute;
+  .primary-menu-wrap.is-open .primary-menu,
+  .primary-menu.is-open {
+    display: flex;
+    position: fixed;
     top: var(--header-h);
     left: 0;
     right: 0;
+    z-index: 101;
+    box-shadow: 0 12px 24px rgba(30, 28, 24, 0.08);
+  }
+  .primary-menu {
+    display: none;
     background: #fff;
     flex-direction: column;
     padding: 20px;
     gap: 16px;
     border-bottom: 1px solid var(--color-border);
-  }
-  .primary-menu.is-open {
-    display: flex;
   }
   .nav-toggle {
     display: block;

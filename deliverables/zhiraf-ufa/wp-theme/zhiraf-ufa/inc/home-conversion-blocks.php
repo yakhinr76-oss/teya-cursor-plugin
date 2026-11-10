@@ -86,7 +86,7 @@ function zhiraf_ufa_home_guarantee_pillars() {
 function zhiraf_ufa_home_life_scenarios() {
 	return array(
 		array(
-			'image'       => 'team-travel.jpg',
+			'image'       => 'life-scenario-family.jpg',
 			'title'       => __( 'Семья с детьми', 'zhiraf-ufa' ),
 			'text'        => __( 'Пологий песчаный вход, тёплые детские бассейны, анимация и меню без специй.', 'zhiraf-ufa' ),
 			'tags'        => array(
@@ -104,7 +104,7 @@ function zhiraf_ufa_home_life_scenarios() {
 			'track'       => 'scenario_family',
 		),
 		array(
-			'image'       => 'hero-collage-2.jpg',
+			'image'       => 'life-scenario-couple.jpg',
 			'title'       => __( 'Для пар и релакса', 'zhiraf-ufa' ),
 			'text'        => __( 'Отели 16+ / 18+, приватные бунгало, тишина у бассейна, спа-комплексы и романтика.', 'zhiraf-ufa' ),
 			'tags'        => array(
@@ -122,7 +122,7 @@ function zhiraf_ufa_home_life_scenarios() {
 			'track'       => 'scenario_couple',
 		),
 		array(
-			'image'       => 'resort-turciya-belek-1.jpg',
+			'image'       => 'life-scenario-value.jpg',
 			'title'       => __( 'Хит «Цена / Качество»', 'zhiraf-ufa' ),
 			'text'        => __( 'Проверенные 4* и 5* с отличным питанием и сервисом без переплаты за люксовый бренд.', 'zhiraf-ufa' ),
 			'tags'        => array(
@@ -140,7 +140,7 @@ function zhiraf_ufa_home_life_scenarios() {
 			'track'       => 'scenario_value',
 		),
 		array(
-			'image'       => 'dest-uae-new.jpg',
+			'image'       => 'life-scenario-city.jpg',
 			'title'       => __( 'Город и шопинг', 'zhiraf-ufa' ),
 			'text'        => __( 'В пешей доступности от набережных, торговых моллов, метро и ресторанных улиц.', 'zhiraf-ufa' ),
 			'tags'        => array(

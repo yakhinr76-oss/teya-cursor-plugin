@@ -30,9 +30,19 @@ if ( $is_base ) {
 $wa_url      = function_exists( 'zhiraf_ufa_turciya_curated_wa_url' )
 	? zhiraf_ufa_turciya_curated_wa_url( $hotel )
 	: '#';
-$price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && ! empty( $hotel['price_rub'] )
-	? zhiraf_ufa_turciya_curated_format_price( (int) $hotel['price_rub'] )
-	: '';
+$price_amount = (int) ( $hotel['price_rub'] ?? 0 );
+if ( $price_amount <= 0 && function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
+	$min_tour = zhiraf_ufa_get_country_min_tour( 'turciya' );
+	if ( is_array( $min_tour ) && ! empty( $min_tour['price_rur'] ) ) {
+		$price_amount = (int) $min_tour['price_rur'];
+	}
+}
+if ( $price_amount <= 0 && function_exists( 'zhiraf_ufa_turciya_hub_min_price_rub' ) ) {
+	$price_amount = zhiraf_ufa_turciya_hub_min_price_rub();
+}
+$price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && $price_amount > 0
+	? zhiraf_ufa_turciya_curated_format_price( $price_amount )
+	: ( function_exists( 'zhiraf_ufa_format_tour_price' ) ? zhiraf_ufa_format_tour_price( 0 ) : '' );
 $concept     = ! empty( $hotel['subtitle'] ) ? (string) $hotel['subtitle'] : '';
 $price_note  = function_exists( 'zhiraf_ufa_turciya_curated_price_note' )
 	? zhiraf_ufa_turciya_curated_price_note( $hotel )

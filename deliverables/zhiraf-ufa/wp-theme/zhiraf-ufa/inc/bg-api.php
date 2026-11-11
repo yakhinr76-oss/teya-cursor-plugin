@@ -1058,6 +1058,55 @@ class Zhiraf_BG_Price_Engine {
 	}
 
 	/**
+	 * Resort filter regex for curated Turkey cards (side, kemer, …).
+	 *
+	 * @param string $resort_key side|kemer|alanya|belek|antalya.
+	 * @return string Regex or empty.
+	 */
+	public static function turkey_resort_match_regex( $resort_key ) {
+		$key = sanitize_key( (string) $resort_key );
+		$map = array(
+			'side'    => '/сиде|side|кумк|кызылагач|чолак|эврен/u',
+			'kemer'   => '/кемер|kemer|кириш|текир|гёню|гёйн|бельд/u',
+			'alanya'  => '/алань|алан|инжек|клеопат|сарай/u',
+			'belek'   => '/белек|kadri|cullinan|regnum/u',
+			'antalya' => '/анталь|муратпаш|калеичи|kaleici|лара/u',
+		);
+
+		return ! empty( $map[ $key ] ) ? (string) $map[ $key ] : '';
+	}
+
+	/**
+	 * Cheapest BG tour for a Turkey resort bucket.
+	 *
+	 * @param string $country_slug_or_id Country slug.
+	 * @param string $resort_key         side|kemer|alanya|belek|antalya.
+	 * @return array<string,mixed>|null
+	 */
+	public function get_resort_min_tour( $country_slug_or_id, $resort_key ) {
+		$rx = self::turkey_resort_match_regex( $resort_key );
+		if ( '' === $rx ) {
+			return null;
+		}
+
+		$best  = null;
+		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
+		foreach ( $tours as $t ) {
+			if ( empty( $t['price_rur'] ) ) {
+				continue;
+			}
+			if ( ! preg_match( $rx, (string) ( $t['resort'] ?? '' ) ) ) {
+				continue;
+			}
+			if ( null === $best || (int) $t['price_rur'] < (int) $best['price_rur'] ) {
+				$best = $t;
+			}
+		}
+
+		return $best;
+	}
+
+	/**
 	 * Cheapest card for a country (homepage tile).
 	 *
 	 * @param string $country_slug_or_id Slug or id.
@@ -2232,4 +2281,15 @@ function zhiraf_ufa_get_country_min_tour( $country_slug ) {
  */
 function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name ) {
 	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name );
+}
+
+/**
+ * Cheapest BG offer for a resort bucket within a country.
+ *
+ * @param string $country_slug Country slug.
+ * @param string $resort_key   Resort bucket (side, kemer, …).
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_get_resort_min_tour( $country_slug, $resort_key ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_resort_min_tour( $country_slug, $resort_key );
 }

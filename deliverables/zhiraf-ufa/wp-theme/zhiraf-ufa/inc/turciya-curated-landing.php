@@ -51,24 +51,64 @@ function zhiraf_ufa_turciya_apply_bg_pricing( array $card ) {
 		return $card;
 	}
 
-	$fallback = (int) ( $card['price_rub'] ?? 0 );
-	if ( $fallback <= 0 && ! empty( $card['slot'] ) && 'base' === $card['slot'] ) {
-		$fallback = zhiraf_ufa_turciya_hub_min_price_rub();
+	$editorial = (int) ( $card['price_rub'] ?? 0 );
+	$resort    = ! empty( $card['resort'] ) ? sanitize_key( (string) $card['resort'] ) : '';
+	$is_base   = ! empty( $card['slot'] ) && 'base' === $card['slot'];
+
+	$tour        = null;
+	$price_scope = '';
+
+	// Card #1: минимум по Турции = как на главной (hub), не «угадывание» по отелю.
+	if ( $is_base && function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
+		$tour = zhiraf_ufa_get_country_min_tour( 'turciya' );
+		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
+			$price_scope = 'country';
+		} else {
+			$tour = null;
+		}
 	}
 
-	$tour = zhiraf_ufa_get_hotel_min_tour( 'turciya', $name );
+	if ( null === $tour ) {
+		$tour = zhiraf_ufa_get_hotel_min_tour( 'turciya', $name );
+		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
+			$price_scope = 'hotel';
+		} else {
+			$tour = null;
+		}
+	}
+
+	if ( null === $tour && '' !== $resort && function_exists( 'zhiraf_ufa_get_resort_min_tour' ) ) {
+		$tour = zhiraf_ufa_get_resort_min_tour( 'turciya', $resort );
+		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
+			$price_scope = 'resort';
+		} else {
+			$tour = null;
+		}
+	}
+
+	if ( null === $tour && function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
+		$tour = zhiraf_ufa_get_country_min_tour( 'turciya' );
+		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
+			$price_scope = 'country';
+		} else {
+			$tour = null;
+		}
+	}
+
 	if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
 		$card['price_rub']      = (int) $tour['price_rur'];
 		$card['price_from_api'] = true;
+		$card['price_scope']    = $price_scope;
 		$card['tour_offer']     = $tour;
 		if ( ! empty( $tour['hotel_name'] ) ) {
 			$card['bg_hotel_name'] = (string) $tour['hotel_name'];
 		}
 		$card['wa_prefill'] = zhiraf_ufa_turciya_curated_messenger_prefill( $name, $tour );
 	} else {
-		$card['price_rub']      = $fallback > 0 ? $fallback : (int) ( $card['price_rub'] ?? 0 );
+		$hub_min = zhiraf_ufa_turciya_hub_min_price_rub();
+		$card['price_rub']      = $editorial > 0 ? $editorial : $hub_min;
 		$card['price_from_api'] = false;
-		unset( $card['tour_offer'], $card['bg_hotel_name'] );
+		unset( $card['tour_offer'], $card['bg_hotel_name'], $card['price_scope'] );
 	}
 
 	return $card;
@@ -83,18 +123,20 @@ function zhiraf_ufa_turciya_apply_bg_pricing( array $card ) {
 function zhiraf_ufa_turciya_curated_price_note( array $hotel ) {
 	if ( ! empty( $hotel['price_from_api'] ) && ! empty( $hotel['tour_offer'] ) && is_array( $hotel['tour_offer'] ) ) {
 		$tour        = $hotel['tour_offer'];
+		$scope       = ! empty( $hotel['price_scope'] ) ? (string) $hotel['price_scope'] : 'hotel';
 		$date        = ! empty( $tour['departure_date'] ) ? (string) $tour['departure_date'] : '';
 		$nights      = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;
 		$nights_text = $nights > 0 && function_exists( 'zhiraf_ufa_plural_nights' )
 			? zhiraf_ufa_plural_nights( $nights )
 			: ( $nights > 0 ? sprintf( _n( '%d ночь', '%d ночи', $nights, 'zhiraf-ufa' ), $nights ) : '' );
 		$price_date  = ! empty( $tour['price_date'] ) ? (string) $tour['price_date'] : '';
+		$bg_hotel    = ! empty( $tour['hotel_name'] ) ? (string) $tour['hotel_name'] : '';
 
-		if ( '' !== $date && '' !== $nights_text ) {
+		if ( 'hotel' === $scope && '' !== $date && '' !== $nights_text ) {
 			if ( '' !== $price_date ) {
 				return sprintf(
 					/* translators: 1: departure date, 2: nights phrase, 3: price calculation date */
-					__( 'Вылет %1$s, %2$s, за 2 взрослых с перелётом из Уфы, трансфером, страховкой и питанием. Цена по туроператору на %3$s.', 'zhiraf-ufa' ),
+					__( 'Минимальная цена по этому отелю: вылет %1$s, %2$s, за 2 взрослых с перелётом из Уфы, трансфером, страховкой и питанием. Курс туроператора на %3$s.', 'zhiraf-ufa' ),
 					$date,
 					$nights_text,
 					$price_date
@@ -103,9 +145,42 @@ function zhiraf_ufa_turciya_curated_price_note( array $hotel ) {
 
 			return sprintf(
 				/* translators: 1: departure date, 2: nights phrase */
-				__( 'Вылет %1$s, %2$s, за 2 взрослых с перелётом из Уфы, трансфером, страховкой и питанием — по данным туроператора.', 'zhiraf-ufa' ),
+				__( 'Минимальная цена по этому отелю: вылет %1$s, %2$s, за 2 взрослых — по данным туроператора.', 'zhiraf-ufa' ),
 				$date,
 				$nights_text
+			);
+		}
+
+		if ( 'resort' === $scope && '' !== $date && '' !== $nights_text ) {
+			return sprintf(
+				/* translators: 1: departure date, 2: nights phrase, 3: BG hotel name */
+				__( 'Минимум по курорту на %1$s, %2$s — отель %3$s в этой смете. Точную цену в %4$s уточним в чате.', 'zhiraf-ufa' ),
+				$date,
+				$nights_text,
+				$bg_hotel ? $bg_hotel : '—',
+				! empty( $hotel['name'] ) ? (string) $hotel['name'] : __( 'выбранном отеле', 'zhiraf-ufa' )
+			);
+		}
+
+		if ( 'country' === $scope && '' !== $date && '' !== $nights_text ) {
+			$is_base = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
+			if ( $is_base ) {
+				return sprintf(
+					/* translators: 1: departure date, 2: nights phrase, 3: BG hotel name */
+					__( 'Минимальная цена по Турции с главной: вылет %1$s, %2$s, в смете %3$s. За 2 взрослых с перелётом из Уфы.', 'zhiraf-ufa' ),
+					$date,
+					$nights_text,
+					$bg_hotel ? $bg_hotel : '—'
+				);
+			}
+
+			return sprintf(
+				/* translators: 1: departure date, 2: nights phrase, 3: BG hotel name */
+				__( 'Минимальная цена по Турции на %1$s, %2$s — в смете %3$s. Для отеля %4$s уточним точную сумму.', 'zhiraf-ufa' ),
+				$date,
+				$nights_text,
+				$bg_hotel ? $bg_hotel : '—',
+				! empty( $hotel['name'] ) ? (string) $hotel['name'] : ''
 			);
 		}
 	}

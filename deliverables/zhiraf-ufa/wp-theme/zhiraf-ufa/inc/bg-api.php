@@ -1028,13 +1028,6 @@ class Zhiraf_BG_Price_Engine {
 	}
 
 	/**
-	 * Cheapest BG tour card for a hotel (fuzzy name match).
-	 *
-	 * @param string $country_slug_or_id Country slug.
-	 * @param string $hotel_name Hotel title from curated JSON or showcase.
-	 * @return array<string,mixed>|null
-	 */
-	/**
 	 * BG catalog names that match a curated title.
 	 *
 	 * @param string $hotel_name Display title.

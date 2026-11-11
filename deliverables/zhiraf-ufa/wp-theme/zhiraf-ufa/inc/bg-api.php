@@ -1034,19 +1034,68 @@ class Zhiraf_BG_Price_Engine {
 	 * @param string $hotel_name Hotel title from curated JSON or showcase.
 	 * @return array<string,mixed>|null
 	 */
-	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name ) {
+	/**
+	 * BG catalog names that match a curated title.
+	 *
+	 * @param string $hotel_name Display title.
+	 * @return array<int,string>
+	 */
+	public function get_hotel_catalog_match_names( $hotel_name ) {
+		$names = array( trim( (string) $hotel_name ) );
+		foreach ( $this->load_hotel_catalog() as $row ) {
+			if ( empty( $row['name'] ) ) {
+				continue;
+			}
+			$cat_name = (string) $row['name'];
+			if ( self::hotel_names_match( $hotel_name, $cat_name ) ) {
+				$names[] = $cat_name;
+			}
+		}
+
+		return array_values( array_unique( array_filter( $names ) ) );
+	}
+
+	/**
+	 * Cheapest BG tour card for a hotel (catalog + fuzzy name, optional BG id).
+	 *
+	 * @param string $country_slug_or_id Country slug.
+	 * @param string $hotel_name Hotel title from curated JSON or showcase.
+	 * @param string $hotel_id     Optional BG hotelsJson key.
+	 * @return array<string,mixed>|null
+	 */
+	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name, $hotel_id = '' ) {
 		$hotel_name = trim( (string) $hotel_name );
-		if ( '' === $hotel_name ) {
+		$hotel_id   = trim( (string) $hotel_id );
+		if ( '' === $hotel_name && '' === $hotel_id ) {
 			return null;
+		}
+
+		$catalog    = $this->load_hotel_catalog();
+		$name_hits  = '' !== $hotel_name ? $this->get_hotel_catalog_match_names( $hotel_name ) : array();
+		if ( '' !== $hotel_id && isset( $catalog[ $hotel_id ]['name'] ) ) {
+			$name_hits[] = (string) $catalog[ $hotel_id ]['name'];
+			$name_hits   = array_values( array_unique( $name_hits ) );
 		}
 
 		$best  = null;
 		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
 		foreach ( $tours as $t ) {
-			if ( empty( $t['hotel_name'] ) || empty( $t['price_rur'] ) ) {
+			if ( empty( $t['price_rur'] ) ) {
 				continue;
 			}
-			if ( ! self::hotel_names_match( $hotel_name, (string) $t['hotel_name'] ) ) {
+			$matched = false;
+			if ( '' !== $hotel_id && ! empty( $t['hotel_id'] ) && (string) $t['hotel_id'] === $hotel_id ) {
+				$matched = true;
+			}
+			if ( ! $matched && ! empty( $t['hotel_name'] ) ) {
+				foreach ( $name_hits as $candidate ) {
+					if ( self::hotel_names_match( $candidate, (string) $t['hotel_name'] ) ) {
+						$matched = true;
+						break;
+					}
+				}
+			}
+			if ( ! $matched ) {
 				continue;
 			}
 			if ( null === $best || (int) $t['price_rur'] < (int) $best['price_rur'] ) {
@@ -1593,6 +1642,7 @@ class Zhiraf_BG_Price_Engine {
 			}
 
 			$card = array(
+				'hotel_id'        => $hotel_id,
 				'hotel_name'      => $hotel_name,
 				'stars'           => $stars,
 				'resort'          => $resort,
@@ -2279,8 +2329,8 @@ function zhiraf_ufa_get_country_min_tour( $country_slug ) {
  * @param string $hotel_name   Hotel title.
  * @return array<string,mixed>|null
  */
-function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name ) {
-	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name );
+function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id = '' ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id );
 }
 
 /**

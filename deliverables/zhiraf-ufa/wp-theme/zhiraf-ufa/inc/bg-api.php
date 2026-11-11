@@ -925,6 +925,139 @@ class Zhiraf_BG_Price_Engine {
 	}
 
 	/**
+	 * Normalize hotel title for fuzzy BG ↔ curated matching.
+	 *
+	 * @param string $name Hotel title.
+	 * @return string
+	 */
+	public static function normalize_hotel_match_key( $name ) {
+		$name = remove_accents( wp_strip_all_tags( (string) $name ) );
+		$name = mb_strtolower( $name, 'UTF-8' );
+		$name = preg_replace( '/[★⭐\*]+/u', ' ', $name );
+		$name = preg_replace( '/\b\d\s*\*+\b/u', ' ', $name );
+		$name = preg_replace( '/\b(hotel|hotels|resort|spa|suites|club|golf|beach|apartments)\b/iu', ' ', $name );
+		$name = preg_replace( '/&/u', ' ', $name );
+		$name = preg_replace( '/[^\p{L}\p{N}]+/u', '', $name );
+
+		return $name;
+	}
+
+	/**
+	 * Significant tokens from a hotel name (brand matching).
+	 *
+	 * @param string $name Hotel title.
+	 * @return array<int,string>
+	 */
+	public static function hotel_match_tokens( $name ) {
+		$raw = remove_accents( wp_strip_all_tags( (string) $name ) );
+		$raw = mb_strtolower( $raw, 'UTF-8' );
+		if ( ! preg_match_all( '/\p{L}{3,}/u', $raw, $matches ) ) {
+			return array();
+		}
+		$stop = array(
+			'hotel',
+			'hotels',
+			'resort',
+			'spa',
+			'beach',
+			'golf',
+			'club',
+			'and',
+			'the',
+			'ultra',
+			'all',
+			'inclusive',
+			'adults',
+			'only',
+			'family',
+			'eco',
+			'suites',
+			'premium',
+		);
+		$tokens = array();
+		foreach ( $matches[0] as $token ) {
+			if ( in_array( $token, $stop, true ) ) {
+				continue;
+			}
+			$tokens[ $token ] = $token;
+		}
+
+		return array_values( $tokens );
+	}
+
+	/**
+	 * Whether a curated hotel title matches a BG tour hotel_name.
+	 *
+	 * @param string $needle Curated title.
+	 * @param string $haystack BG hotel_name.
+	 * @return bool
+	 */
+	public static function hotel_names_match( $needle, $haystack ) {
+		$ka = self::normalize_hotel_match_key( $needle );
+		$kb = self::normalize_hotel_match_key( $haystack );
+		if ( '' === $ka || '' === $kb ) {
+			return false;
+		}
+		if ( $ka === $kb ) {
+			return true;
+		}
+		$min_len = min( strlen( $ka ), strlen( $kb ) );
+		if ( $min_len >= 8 && ( str_contains( $ka, $kb ) || str_contains( $kb, $ka ) ) ) {
+			return true;
+		}
+
+		$ta = self::hotel_match_tokens( $needle );
+		$tb = self::hotel_match_tokens( $haystack );
+		if ( empty( $ta ) || empty( $tb ) ) {
+			return false;
+		}
+
+		$brand = $ta[0];
+		foreach ( $ta as $token ) {
+			if ( strlen( $token ) > strlen( $brand ) ) {
+				$brand = $token;
+			}
+		}
+		if ( strlen( $brand ) < 4 || ! in_array( $brand, $tb, true ) ) {
+			return false;
+		}
+
+		$shared = array_values( array_intersect( $ta, $tb ) );
+
+		return count( $shared ) >= 2 || ( 1 === count( $shared ) && strlen( $brand ) >= 7 );
+	}
+
+	/**
+	 * Cheapest BG tour card for a hotel (fuzzy name match).
+	 *
+	 * @param string $country_slug_or_id Country slug.
+	 * @param string $hotel_name Hotel title from curated JSON or showcase.
+	 * @return array<string,mixed>|null
+	 */
+	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name ) {
+		$hotel_name = trim( (string) $hotel_name );
+		if ( '' === $hotel_name ) {
+			return null;
+		}
+
+		$best  = null;
+		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
+		foreach ( $tours as $t ) {
+			if ( empty( $t['hotel_name'] ) || empty( $t['price_rur'] ) ) {
+				continue;
+			}
+			if ( ! self::hotel_names_match( $hotel_name, (string) $t['hotel_name'] ) ) {
+				continue;
+			}
+			if ( null === $best || (int) $t['price_rur'] < (int) $best['price_rur'] ) {
+				$best = $t;
+			}
+		}
+
+		return $best;
+	}
+
+	/**
 	 * Cheapest card for a country (homepage tile).
 	 *
 	 * @param string $country_slug_or_id Slug or id.
@@ -2088,4 +2221,15 @@ function zhiraf_ufa_get_country_top_tours( $country_slug, $limit = 3, $resort_rx
  */
 function zhiraf_ufa_get_country_min_tour( $country_slug ) {
 	return Zhiraf_BG_Price_Engine::get_instance()->get_country_min_tour( $country_slug );
+}
+
+/**
+ * Cheapest BG offer for a specific hotel within a country destination.
+ *
+ * @param string $country_slug Country slug (turciya, oae, …).
+ * @param string $hotel_name   Hotel title.
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name );
 }

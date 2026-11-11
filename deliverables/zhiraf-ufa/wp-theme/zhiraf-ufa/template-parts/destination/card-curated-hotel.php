@@ -34,6 +34,9 @@ $price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && !
 	? zhiraf_ufa_turciya_curated_format_price( (int) $hotel['price_rub'] )
 	: '';
 $concept     = ! empty( $hotel['subtitle'] ) ? (string) $hotel['subtitle'] : '';
+$price_note  = function_exists( 'zhiraf_ufa_turciya_curated_price_note' )
+	? zhiraf_ufa_turciya_curated_price_note( $hotel )
+	: __( '7–9 ночей, ориентир (включая прямой перелёт из Уфы, трансфер, страховку и питание).', 'zhiraf-ufa' );
 $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $hotel['badge_mod'] ) : 'default';
 $is_starter  = in_array( 'starter', $filter_tags, true );
 $hide_init   = ! empty( $hotel['initial_hidden'] ) || ! $is_starter;
@@ -106,7 +109,7 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 				<?php echo esc_html( $price_label ); ?>
 			</span>
 			<span class="turciya-curated-card__price-note">
-				<?php esc_html_e( '7–9 ночей, ориентир (включая прямой перелёт из Уфы, трансфер, страховку и питание).', 'zhiraf-ufa' ); ?>
+				<?php echo esc_html( $price_note ); ?>
 			</span>
 		</div>
 		<a

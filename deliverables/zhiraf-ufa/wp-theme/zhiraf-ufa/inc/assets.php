@@ -132,6 +132,32 @@ function zhiraf_ufa_hero_collage_img( $basename, $alt, $class = '', $priority = 
 }
 
 /**
+ * Two Pexels reference images for the homepage moodboard (from internal picks).
+ *
+ * JPG copies live under assets/images; IDs match photo-candidates/pexels-resorts-table-picks.json.
+ *
+ * @return array<int,array{file:string,label:string,alt:string,photographer:string,credit_url:string}>
+ */
+function zhiraf_ufa_home_pexels_moodboard_items() {
+	return array(
+		array(
+			'file'         => 'home-pexels-dubai-marina.jpg',
+			'label'        => __( 'Дубай, марина', 'zhiraf-ufa' ),
+			'alt'          => __( 'Вид на набережную Дубай Марина с яхтами', 'zhiraf-ufa' ),
+			'photographer' => 'Subbu Rayan',
+			'credit_url'   => 'https://www.pexels.com/photo/stunning-view-of-dubai-marina-with-luxurious-yachts-31692133/',
+		),
+		array(
+			'file'         => 'home-pexels-antalya-beach.jpg',
+			'label'        => __( 'Анталья, пляж', 'zhiraf-ufa' ),
+			'alt'          => __( 'Средиземноморский пляж в Анталье', 'zhiraf-ufa' ),
+			'photographer' => 'Engin Akyurt',
+			'credit_url'   => 'https://www.pexels.com/photo/people-relaxing-on-the-beach-2880483/',
+		),
+	);
+}
+
+/**
  * Destination cards data.
  *
  * @return array<int,array<string,string>>

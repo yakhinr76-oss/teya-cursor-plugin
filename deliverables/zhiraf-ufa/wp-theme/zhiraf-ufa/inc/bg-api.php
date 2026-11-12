@@ -477,13 +477,14 @@ class Zhiraf_BG_Price_Engine {
 	 */
 	public static $countries = array(
 		'turciya' => array(
-			'id'       => '100411293179',
-			'name_ru'  => 'Турция',
-			'code'     => 'TR',
-			'currency' => 'EUR',
-			'resorts'  => '/Анталия|Аланья|Белек|Сиде|Кемер|Кириш|Текирова|Даламан|Фетхие|Мармарис|Бодрум/u',
-			'beach'    => true,
+			'id'        => '100411293179',
+			'name_ru'   => 'Турция',
+			'code'      => 'TR',
+			'currency'  => 'EUR',
+			'resorts'   => '/Анталия|Аланья|Белек|Сиде|Кемер|Кириш|Текирова|Даламан|Фетхие|Мармарис|Бодрум/u',
+			'beach'     => true,
 			'route_exc' => '/Стамбул/u',
+			'max_files' => 24,
 		),
 		'oae'     => array(
 			'id'       => '100410510097',
@@ -1096,6 +1097,17 @@ class Zhiraf_BG_Price_Engine {
 			}
 		}
 
+		$slug   = self::normalize_country_slug( $country_slug_or_id );
+		$bundle = $this->get_bundle_data();
+		if ( '' !== $hotel_id && ! empty( $bundle['hotel_mins'][ $slug ][ $hotel_id ] ) ) {
+			$from_index = $bundle['hotel_mins'][ $slug ][ $hotel_id ];
+			if ( is_array( $from_index ) && ! empty( $from_index['price_rur'] ) ) {
+				if ( null === $best || (int) $from_index['price_rur'] < (int) $best['price_rur'] ) {
+					$best = $from_index;
+				}
+			}
+		}
+
 		return $best;
 	}
 
@@ -1296,6 +1308,15 @@ class Zhiraf_BG_Price_Engine {
 					$fixtures = $this->get_fixtures_data();
 					$bundle['destinations'][ $slug ] = ! empty( $fixtures['destinations'][ $slug ] ) ? $fixtures['destinations'][ $slug ] : array();
 				}
+				if ( ! empty( $prev['hotel_mins'][ $slug ] ) ) {
+					if ( ! isset( $bundle['hotel_mins'] ) ) {
+						$bundle['hotel_mins'] = array();
+					}
+					$bundle['hotel_mins'][ $slug ] = array_merge(
+						$prev['hotel_mins'][ $slug ],
+						$bundle['hotel_mins'][ $slug ] ?? array()
+					);
+				}
 				$counts[ $slug ] = count( $bundle['destinations'][ $slug ] );
 
 				$sync_log['steps'][] = $step_log;
@@ -1304,6 +1325,23 @@ class Zhiraf_BG_Price_Engine {
 
 			$parse_stats   = array();
 			$parsed_tours  = $this->parse_price_entries_with_stats( $res['data'], $slug, $price_date, $disclaimer, $parse_stats );
+
+			if ( ! empty( $parse_stats['hotel_mins'] ) && is_array( $parse_stats['hotel_mins'] ) ) {
+				if ( ! isset( $bundle['hotel_mins'] ) ) {
+					$bundle['hotel_mins'] = array();
+				}
+				if ( ! isset( $bundle['hotel_mins'][ $slug ] ) ) {
+					$bundle['hotel_mins'][ $slug ] = array();
+				}
+				foreach ( $parse_stats['hotel_mins'] as $hid => $card ) {
+					if ( ! is_array( $card ) || empty( $card['price_rur'] ) ) {
+						continue;
+					}
+					if ( ! isset( $bundle['hotel_mins'][ $slug ][ $hid ] ) || (int) $card['price_rur'] < (int) $bundle['hotel_mins'][ $slug ][ $hid ]['price_rur'] ) {
+						$bundle['hotel_mins'][ $slug ][ $hid ] = $card;
+					}
+				}
+			}
 
 			$step_log['raw_entries_count'] = $parse_stats['raw_entries'] ?? 0;
 			$step_log['parsed_count']      = count( $parsed_tours );
@@ -1326,6 +1364,15 @@ class Zhiraf_BG_Price_Engine {
 				} else {
 					$fixtures = $this->get_fixtures_data();
 					$bundle['destinations'][ $slug ] = ! empty( $fixtures['destinations'][ $slug ] ) ? $fixtures['destinations'][ $slug ] : array();
+				}
+				if ( ! empty( $prev['hotel_mins'][ $slug ] ) ) {
+					if ( ! isset( $bundle['hotel_mins'] ) ) {
+						$bundle['hotel_mins'] = array();
+					}
+					$bundle['hotel_mins'][ $slug ] = array_merge(
+						$prev['hotel_mins'][ $slug ],
+						$bundle['hotel_mins'][ $slug ] ?? array()
+					);
 				}
 				$counts[ $slug ]                 = count( $bundle['destinations'][ $slug ] );
 			}
@@ -1658,6 +1705,15 @@ class Zhiraf_BG_Price_Engine {
 			);
 
 			$tiers[ $resort ][ $tier ][ $hotel_name ] = $card;
+
+			if ( '' !== $hotel_id ) {
+				if ( ! isset( $stats['hotel_mins'] ) ) {
+					$stats['hotel_mins'] = array();
+				}
+				if ( ! isset( $stats['hotel_mins'][ $hotel_id ] ) || $price_rur < (int) $stats['hotel_mins'][ $hotel_id ]['price_rur'] ) {
+					$stats['hotel_mins'][ $hotel_id ] = $card;
+				}
+			}
 		}
 
 		// Per resort: use the best tier that has data (6-10 nights; else 5+; else 3-4 for non-beach).

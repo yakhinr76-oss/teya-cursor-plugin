@@ -19,7 +19,11 @@
       "paloma_oceana_1.jpg",
       "paloma_oceana_2.jpg",
       "paloma_oceana_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625109341",
+    "bg_hotel_name": "Paloma Oceana",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 900
   },
   {
     "id": 2,
@@ -41,7 +45,11 @@
       "papillon_belvil_1.jpg",
       "papillon_belvil_2.jpg",
       "papillon_belvil_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625075930",
+    "bg_hotel_name": "Papillon Belvil Hotel",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 900
   },
   {
     "id": 3,
@@ -63,7 +71,11 @@
       "voyage_belek_1.jpg",
       "voyage_belek_2.jpg",
       "voyage_belek_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625262108",
+    "bg_hotel_name": "Voyage Belek Golf and Spa",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 486
   },
   {
     "id": 4,
@@ -85,7 +97,11 @@
       "paloma_grida_1.jpg",
       "paloma_grida_2.jpg",
       "paloma_grida_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625075926",
+    "bg_hotel_name": "Paloma Grida",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 900
   },
   {
     "id": 5,
@@ -107,7 +123,8 @@
       "pegasos_royal_1.jpg",
       "pegasos_royal_2.jpg",
       "pegasos_royal_3.jpg"
-    ]
+    ],
+    "bg_match_method": "none"
   },
   {
     "id": 6,
@@ -129,7 +146,11 @@
       "liberty_lykia_1.jpg",
       "liberty_lykia_2.jpg",
       "liberty_lykia_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102610208678",
+    "bg_hotel_name": "Liberty Hotels Lykia (only adults 16+)",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 7,
@@ -151,7 +172,11 @@
       "rixos_gocek_1.jpg",
       "rixos_gocek_2.jpg",
       "rixos_gocek_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102616061210",
+    "bg_hotel_name": "Rixos Premium Gocek (only adults 13+)",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 8,
@@ -173,7 +198,11 @@
       "hillside_1.jpg",
       "hillside_2.jpg",
       "hillside_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625330687",
+    "bg_hotel_name": "Hillside Beach Club",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 9,
@@ -195,7 +224,8 @@
       "tui_magic_bodrum_1.jpg",
       "tui_magic_bodrum_2.jpg",
       "tui_magic_bodrum_3.jpg"
-    ]
+    ],
+    "bg_match_method": "none"
   },
   {
     "id": 10,
@@ -217,7 +247,8 @@
       "tui_seno_1.jpg",
       "tui_seno_2.jpg",
       "tui_seno_3.jpg"
-    ]
+    ],
+    "bg_match_method": "none"
   },
   {
     "id": 11,
@@ -239,7 +270,11 @@
       "maxx_belek_1.jpg",
       "maxx_belek_2.jpg",
       "maxx_belek_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625167179",
+    "bg_hotel_name": "Maxx Royal Belek Golf & Resort",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 900
   },
   {
     "id": 12,
@@ -261,7 +296,11 @@
       "maxx_kemer_1.jpg",
       "maxx_kemer_2.jpg",
       "maxx_kemer_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102616066533",
+    "bg_hotel_name": "Maxx Royal Kemer",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 900
   },
   {
     "id": 13,
@@ -283,7 +322,11 @@
       "regnum_carya_1.jpg",
       "regnum_carya_2.jpg",
       "regnum_carya_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102616571361",
+    "bg_hotel_name": "Regnum Carya",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 900
   },
   {
     "id": 14,
@@ -305,7 +348,11 @@
       "lujo_bodrum_1.jpg",
       "lujo_bodrum_2.jpg",
       "lujo_bodrum_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102610111693",
+    "bg_hotel_name": "Lujo Art & Joy Bodrum",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 15,
@@ -327,7 +374,11 @@
       "cullinan_1.jpg",
       "cullinan_2.jpg",
       "cullinan_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102610188919",
+    "bg_hotel_name": "Cullinan Belek (Upgrade Imperial Service)",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 16,
@@ -349,7 +400,11 @@
       "riviera_zen_1.jpg",
       "riviera_zen_2.jpg",
       "riviera_zen_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102610166041",
+    "bg_hotel_name": "Kleopatra Riviera Zen Hotel (only adults 16+)",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 486
   },
   {
     "id": 17,
@@ -371,7 +426,12 @@
       "xperia_saray_1.jpg",
       "xperia_saray_2.jpg",
       "xperia_saray_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625075840",
+    "bg_hotel_name": "Xperia Saray Beach (only for child 7+)",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 489,
+    "bg_in_price_feed": true
   },
   {
     "id": 18,
@@ -393,7 +453,11 @@
       "akra_kemer_1.jpg",
       "akra_kemer_2.jpg",
       "akra_kemer_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102626196946",
+    "bg_hotel_name": "Akra Kemer",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 19,
@@ -415,7 +479,11 @@
       "doubletree_kemer_1.jpg",
       "doubletree_kemer_2.jpg",
       "doubletree_kemer_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102616040109",
+    "bg_hotel_name": "DoubleTree By Hilton Antalya Kemer",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 20,
@@ -437,7 +505,11 @@
       "akra_antalya_1.jpg",
       "akra_antalya_2.jpg",
       "akra_antalya_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102626219120",
+    "bg_hotel_name": "Akra Antalya Hotel",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 21,
@@ -459,7 +531,11 @@
       "side_star_1.jpg",
       "side_star_2.jpg",
       "side_star_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102610108941",
+    "bg_hotel_name": "Side Star Elegance",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 22,
@@ -481,7 +557,11 @@
       "club_tuana_1.jpg",
       "club_tuana_2.jpg",
       "club_tuana_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102616370470",
+    "bg_hotel_name": "Club Tuana",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   },
   {
     "id": 23,
@@ -503,7 +583,11 @@
       "palm_garden_1.jpg",
       "palm_garden_2.jpg",
       "palm_garden_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102625423126",
+    "bg_hotel_name": "Dizalya Palm Garden",
+    "bg_match_method": "fuzzy",
+    "bg_match_score": 490
   },
   {
     "id": 24,
@@ -525,7 +609,8 @@
       "kamelya_aishen_1.jpg",
       "kamelya_aishen_2.jpg",
       "kamelya_aishen_3.jpg"
-    ]
+    ],
+    "bg_match_method": "none"
   },
   {
     "id": 25,
@@ -547,6 +632,10 @@
       "barut_b_suites_1.jpg",
       "barut_b_suites_2.jpg",
       "barut_b_suites_3.jpg"
-    ]
+    ],
+    "bg_hotel_id": "102610085649",
+    "bg_hotel_name": "Barut B Suites",
+    "bg_match_method": "manual",
+    "bg_match_score": 9999
   }
 ]

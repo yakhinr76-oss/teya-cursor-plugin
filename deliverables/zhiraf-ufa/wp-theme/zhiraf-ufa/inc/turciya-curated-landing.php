@@ -10,6 +10,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Departure window for curated hotel cards (BG min price = cheapest tour in this range).
+ *
+ * @return array{start:string,end:string,label:string}
+ */
+function zhiraf_ufa_turciya_curated_departure_window() {
+	return apply_filters(
+		'zhiraf_ufa_turciya_curated_departure_window',
+		array(
+			'start' => '2027-05-01',
+			'end'   => '2027-05-31',
+			'label' => 'май 2027',
+		)
+	);
+}
+
+/**
  * Minimal tour price from home hub (align card #1 with hub «от … ₽»).
  *
  * @return int RUB.
@@ -66,7 +82,8 @@ function zhiraf_ufa_turciya_apply_bg_pricing( array $card ) {
 			$tour = null;
 		}
 	} else {
-		$tour = zhiraf_ufa_get_hotel_min_tour( 'turciya', $name, $bg_hotel_id );
+		$window = zhiraf_ufa_turciya_curated_departure_window();
+		$tour   = zhiraf_ufa_get_hotel_min_tour( 'turciya', $name, $bg_hotel_id, $window );
 		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
 			$price_scope = 'hotel';
 		} else {
@@ -117,7 +134,20 @@ function zhiraf_ufa_turciya_curated_price_note( array $hotel ) {
 		$bg_hotel    = ! empty( $tour['hotel_name'] ) ? (string) $tour['hotel_name'] : '';
 
 		if ( 'hotel' === $scope && '' !== $date && '' !== $nights_text ) {
+			$win   = function_exists( 'zhiraf_ufa_turciya_curated_departure_window' ) ? zhiraf_ufa_turciya_curated_departure_window() : array();
+			$label = ! empty( $win['label'] ) ? (string) $win['label'] : '';
 			if ( '' !== $price_date ) {
+				if ( '' !== $label ) {
+					return sprintf(
+						/* translators: 1: season label, 2: departure date, 3: nights phrase, 4: price calculation date */
+						__( 'Минимальная цена по этому отелю (%1$s): вылет %2$s, %3$s, за 2 взрослых с перелётом из Уфы, трансфером, страховкой и питанием. Курс туроператора на %4$s.', 'zhiraf-ufa' ),
+						$label,
+						$date,
+						$nights_text,
+						$price_date
+					);
+				}
+
 				return sprintf(
 					/* translators: 1: departure date, 2: nights phrase, 3: price calculation date */
 					__( 'Минимальная цена по этому отелю: вылет %1$s, %2$s, за 2 взрослых с перелётом из Уфы, трансфером, страховкой и питанием. Курс туроператора на %3$s.', 'zhiraf-ufa' ),

@@ -485,6 +485,12 @@ class Zhiraf_BG_Price_Engine {
 			'beach'     => true,
 			'route_exc' => '/Стамбул/u',
 			'max_files' => 24,
+			// Extra fetch for /tour/turciya/ curated cards (does not replace main vitrina sync).
+			'curated_departure_window' => array(
+				'start' => '2027-05-01',
+				'end'   => '2027-05-31',
+			),
+			'curated_max_files'          => 36,
 		),
 		'oae'     => array(
 			'id'       => '100410510097',
@@ -585,9 +591,10 @@ class Zhiraf_BG_Price_Engine {
 	 *
 	 * @param string $country_id BG country id.
 	 * @param int    $max_files Max price files to fetch.
+	 * @param array{start?:string,end?:string} $departure_window Optional Y-m-d bounds on file departure date.
 	 * @return array{ok:bool,code:int,bytes:int,error:string,entries:array,files:int}
 	 */
-	public function fetch_country_entries( $country_id, $max_files = 12, $from_id = '', $route_inc = '', $route_exc = '' ) {
+	public function fetch_country_entries( $country_id, $max_files = 12, $from_id = '', $route_inc = '', $route_exc = '', $departure_window = array() ) {
 		if ( '' === $from_id ) {
 			$from_id = self::UFA_DEPARTURE_ID;
 		}
@@ -602,9 +609,11 @@ class Zhiraf_BG_Price_Engine {
 			}
 			return $out;
 		}
-		$today = strtotime( date( 'Y-m-d' ) );
-		$seen  = array();
-		$files = array();
+		$today       = strtotime( date( 'Y-m-d' ) );
+		$win_start   = ! empty( $departure_window['start'] ) ? strtotime( (string) $departure_window['start'] ) : 0;
+		$win_end     = ! empty( $departure_window['end'] ) ? strtotime( (string) $departure_window['end'] . ' 23:59:59' ) : 0;
+		$seen        = array();
+		$files       = array();
 		foreach ( $list['data']['entries'] as $f ) {
 			if ( empty( $f['id_price'] ) || empty( $f['date'] ) ) {
 				continue;
@@ -631,6 +640,12 @@ class Zhiraf_BG_Price_Engine {
 			}
 			$ts = strtotime( str_replace( '.', '-', $f['date'] ) );
 			if ( false === $ts || $ts <= $today ) {
+				continue;
+			}
+			if ( $win_start > 0 && $ts < $win_start ) {
+				continue;
+			}
+			if ( $win_end > 0 && $ts > $win_end ) {
 				continue;
 			}
 			$min = (float) str_replace( ',', '.', (string) ( $f['minprice'] ?? '0' ) );
@@ -1050,14 +1065,56 @@ class Zhiraf_BG_Price_Engine {
 	}
 
 	/**
+	 * Parse tour departure to Unix timestamp (d.m.Y from BG).
+	 *
+	 * @param array<string,mixed> $tour Tour card.
+	 * @return int
+	 */
+	public static function tour_departure_ts( array $tour ) {
+		$raw = ! empty( $tour['departure_date'] ) ? (string) $tour['departure_date'] : '';
+		if ( '' === $raw && ! empty( $tour['date'] ) ) {
+			$raw = (string) $tour['date'];
+		}
+		$raw = trim( $raw );
+		if ( '' === $raw ) {
+			return 0;
+		}
+		$ts = strtotime( str_replace( '.', '-', $raw ) );
+		if ( false !== $ts ) {
+			return (int) $ts;
+		}
+		$dt = \DateTime::createFromFormat( 'd.m.Y', $raw );
+		return ( $dt instanceof \DateTime ) ? (int) $dt->getTimestamp() : 0;
+	}
+
+	/**
+	 * @param array<string,mixed>     $tour   Tour card.
+	 * @param array{start?:string,end?:string} $window Y-m-d bounds.
+	 * @return bool
+	 */
+	public static function tour_in_departure_window( array $tour, array $window ) {
+		if ( empty( $window['start'] ) && empty( $window['end'] ) ) {
+			return true;
+		}
+		$ts = self::tour_departure_ts( $tour );
+		if ( $ts <= 0 ) {
+			return false;
+		}
+		$start = ! empty( $window['start'] ) ? strtotime( (string) $window['start'] ) : 0;
+		$end   = ! empty( $window['end'] ) ? strtotime( (string) $window['end'] . ' 23:59:59' ) : PHP_INT_MAX;
+		return $ts >= $start && $ts <= $end;
+	}
+
+	/**
 	 * Cheapest BG tour card for a hotel (catalog + fuzzy name, optional BG id).
 	 *
 	 * @param string $country_slug_or_id Country slug.
 	 * @param string $hotel_name Hotel title from curated JSON or showcase.
 	 * @param string $hotel_id     Optional BG hotelsJson key.
+	 * @param array{start?:string,end?:string} $departure_window Optional departure filter.
 	 * @return array<string,mixed>|null
 	 */
-	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name, $hotel_id = '' ) {
+	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name, $hotel_id = '', $departure_window = array() ) {
 		$hotel_name = trim( (string) $hotel_name );
 		$hotel_id   = trim( (string) $hotel_id );
 		if ( '' === $hotel_name && '' === $hotel_id ) {
@@ -1075,6 +1132,9 @@ class Zhiraf_BG_Price_Engine {
 		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
 		foreach ( $tours as $t ) {
 			if ( empty( $t['price_rur'] ) ) {
+				continue;
+			}
+			if ( ! empty( $departure_window ) && ! self::tour_in_departure_window( $t, $departure_window ) ) {
 				continue;
 			}
 			$matched = false;
@@ -1102,8 +1162,22 @@ class Zhiraf_BG_Price_Engine {
 		if ( '' !== $hotel_id && ! empty( $bundle['hotel_mins'][ $slug ][ $hotel_id ] ) ) {
 			$from_index = $bundle['hotel_mins'][ $slug ][ $hotel_id ];
 			if ( is_array( $from_index ) && ! empty( $from_index['price_rur'] ) ) {
-				if ( null === $best || (int) $from_index['price_rur'] < (int) $best['price_rur'] ) {
-					$best = $from_index;
+				if ( empty( $departure_window ) || self::tour_in_departure_window( $from_index, $departure_window ) ) {
+					if ( null === $best || (int) $from_index['price_rur'] < (int) $best['price_rur'] ) {
+						$best = $from_index;
+					}
+				}
+			}
+		}
+
+		if ( '' !== $hotel_id && ! empty( $departure_window ) && ! empty( $bundle['hotel_mins_season'][ $slug ] ) ) {
+			$season_key = (string) ( $departure_window['start'] ?? '' ) . '_' . (string) ( $departure_window['end'] ?? '' );
+			if ( ! empty( $bundle['hotel_mins_season'][ $slug ][ $season_key ][ $hotel_id ] ) ) {
+				$season_card = $bundle['hotel_mins_season'][ $slug ][ $season_key ][ $hotel_id ];
+				if ( is_array( $season_card ) && ! empty( $season_card['price_rur'] ) ) {
+					if ( null === $best || (int) $season_card['price_rur'] < (int) $best['price_rur'] ) {
+						$best = $season_card;
+					}
 				}
 			}
 		}
@@ -1378,6 +1452,49 @@ class Zhiraf_BG_Price_Engine {
 			}
 
 			$sync_log['steps'][] = $step_log;
+
+			if ( 'turciya' === $slug && ! empty( $c_info['curated_departure_window'] ) && is_array( $c_info['curated_departure_window'] ) ) {
+				$cur_win  = $c_info['curated_departure_window'];
+				$cur_max  = (int) ( $c_info['curated_max_files'] ?? 24 );
+				$fetch_cur = $this->fetch_country_entries(
+					$country_id,
+					$cur_max,
+					(string) ( $c_info['from'] ?? self::UFA_DEPARTURE_ID ),
+					(string) ( $c_info['route_inc'] ?? '' ),
+					(string) ( $c_info['route_exc'] ?? '' ),
+					$cur_win
+				);
+				if ( $fetch_cur['ok'] && ! empty( $fetch_cur['entries'] ) ) {
+					$cur_stats = array();
+					$this->parse_price_entries_with_stats(
+						array( 'entries' => $fetch_cur['entries'] ),
+						$slug,
+						$price_date,
+						$disclaimer,
+						$cur_stats
+					);
+					if ( ! empty( $cur_stats['hotel_mins'] ) && is_array( $cur_stats['hotel_mins'] ) ) {
+						$season_key = (string) ( $cur_win['start'] ?? '' ) . '_' . (string) ( $cur_win['end'] ?? '' );
+						if ( ! isset( $bundle['hotel_mins_season'] ) ) {
+							$bundle['hotel_mins_season'] = array();
+						}
+						if ( ! isset( $bundle['hotel_mins_season'][ $slug ] ) ) {
+							$bundle['hotel_mins_season'][ $slug ] = array();
+						}
+						if ( ! isset( $bundle['hotel_mins_season'][ $slug ][ $season_key ] ) ) {
+							$bundle['hotel_mins_season'][ $slug ][ $season_key ] = array();
+						}
+						foreach ( $cur_stats['hotel_mins'] as $hid => $card ) {
+							if ( ! is_array( $card ) || empty( $card['price_rur'] ) ) {
+								continue;
+							}
+							if ( ! isset( $bundle['hotel_mins_season'][ $slug ][ $season_key ][ $hid ] ) || (int) $card['price_rur'] < (int) $bundle['hotel_mins_season'][ $slug ][ $season_key ][ $hid ]['price_rur'] ) {
+								$bundle['hotel_mins_season'][ $slug ][ $season_key ][ $hid ] = $card;
+							}
+						}
+					}
+				}
+			}
 		}
 
 		// Build home featured selection.
@@ -2378,8 +2495,8 @@ function zhiraf_ufa_get_country_min_tour( $country_slug ) {
  * @param string $hotel_name   Hotel title.
  * @return array<string,mixed>|null
  */
-function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id = '' ) {
-	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id );
+function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id = '', $departure_window = array() ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id, $departure_window );
 }
 
 /**

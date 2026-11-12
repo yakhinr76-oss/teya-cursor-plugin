@@ -38,6 +38,13 @@ if ( ! is_array( $rows ) ) {
 	exit( 2 );
 }
 
+$window = function_exists( 'zhiraf_ufa_turciya_curated_departure_window' )
+	? zhiraf_ufa_turciya_curated_departure_window()
+	: array();
+if ( ! empty( $window['label'] ) ) {
+	echo 'departure_window=' . (string) $window['label'] . "\n";
+}
+
 $with_id = 0;
 $priced  = 0;
 foreach ( $rows as $row ) {
@@ -48,7 +55,7 @@ foreach ( $rows as $row ) {
 	$name = (string) ( $row['hotel_name'] ?? '' );
 	$hid  = (string) $row['bg_hotel_id'];
 	$tour = function_exists( 'zhiraf_ufa_get_hotel_min_tour' )
-		? zhiraf_ufa_get_hotel_min_tour( 'turciya', $name, $hid )
+		? zhiraf_ufa_get_hotel_min_tour( 'turciya', $name, $hid, $window )
 		: null;
 	if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
 		++$priced;

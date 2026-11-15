@@ -118,7 +118,7 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 			'alt' => $post->post_title,
 		);
 	}
-	return array(
+	$row = array(
 		'id'              => (int) $post->ID,
 		'source_id'       => (int) ( $meta['hotel_source_id'] ?? 0 ),
 		'hotel_name'      => $post->post_title,
@@ -139,6 +139,11 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 		'ta_property_url' => (string) ( $meta['hotel_ta_property_url'] ?? '' ),
 		'photos'          => $photos,
 	);
+	if ( function_exists( 'zhiraf_ufa_tourvisor_attach_hotel_price' ) ) {
+		$row = zhiraf_ufa_tourvisor_attach_hotel_price( $row );
+	}
+
+	return $row;
 }
 
 /**

@@ -1,0 +1,34 @@
+{
+  "schema": "zhiraf.tourvisor-prices.v1",
+  "source": "tourvisor",
+  "currency": "RUB",
+  "generated_at": "2026-11-15T06:00:00Z",
+  "prices": {
+    "turkey:1": {
+      "country_slug": "turkey",
+      "zhiraf_id": 1,
+      "hotel_name": "Paloma Oceana 5★",
+      "place": "Сиде, Кумкёй",
+      "price_rub": 145000,
+      "nights": 7,
+      "adults": 2,
+      "departure_city": "Уфа",
+      "departure_date": "2026-06-12",
+      "meal": "AI",
+      "operator": ""
+    },
+    "turkey:2": {
+      "country_slug": "turkey",
+      "zhiraf_id": 2,
+      "hotel_name": "Papillon Belvil 5★",
+      "place": "Белек",
+      "price_rub": 198000,
+      "nights": 7,
+      "adults": 2,
+      "departure_city": "Уфа",
+      "departure_date": "2026-06-14",
+      "meal": "UAI",
+      "operator": ""
+    }
+  }
+}

@@ -1,3 +1,6 @@
+# Live Tourvisor push. The webhook writes this on the host.
+deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/tourvisor-prices.json
+
 # Runtime memory and project outputs
 node_modules/
 teya-memory/*

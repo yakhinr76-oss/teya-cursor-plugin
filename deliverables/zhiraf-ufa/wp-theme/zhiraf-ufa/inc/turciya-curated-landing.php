@@ -46,6 +46,13 @@ function zhiraf_ufa_turciya_curated_format_price( $amount ) {
  * @return array<string,mixed>
  */
 function zhiraf_ufa_turciya_apply_bg_pricing( array $card ) {
+	if ( function_exists( 'zhiraf_ufa_tourvisor_overlay_turkey_card' ) ) {
+		$with_tourvisor = zhiraf_ufa_tourvisor_overlay_turkey_card( $card );
+		if ( ! empty( $with_tourvisor['price_source'] ) && 'tourvisor' === $with_tourvisor['price_source'] ) {
+			return $with_tourvisor;
+		}
+	}
+
 	$name = ! empty( $card['name'] ) ? trim( (string) $card['name'] ) : '';
 	if ( '' === $name || ! function_exists( 'zhiraf_ufa_get_hotel_min_tour' ) ) {
 		return $card;
@@ -107,6 +114,30 @@ function zhiraf_ufa_turciya_apply_bg_pricing( array $card ) {
 function zhiraf_ufa_turciya_curated_price_note( array $hotel ) {
 	if ( ! empty( $hotel['price_from_api'] ) && ! empty( $hotel['tour_offer'] ) && is_array( $hotel['tour_offer'] ) ) {
 		$tour        = $hotel['tour_offer'];
+		$source      = ! empty( $hotel['price_source'] ) ? (string) $hotel['price_source'] : 'bg';
+		if ( 'tourvisor' === $source ) {
+			$place = ! empty( $tour['place'] ) ? (string) $tour['place'] : '';
+			$date  = ! empty( $tour['departure_date'] ) ? (string) $tour['departure_date'] : '';
+			$nights = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;
+			if ( '' !== $place && '' !== $date && $nights > 0 ) {
+				return sprintf(
+					/* translators: 1: place, 2: departure date, 3: nights count */
+					__( 'Цена Tourvisor, %1$s: вылет %2$s, %3$d ночей, за 2 взрослых с перелётом из Уфы.', 'zhiraf-ufa' ),
+					$place,
+					$date,
+					$nights
+				);
+			}
+			if ( '' !== $place ) {
+				return sprintf(
+					/* translators: %s: resort or city from the parser */
+					__( 'Цена Tourvisor по этому отелю, %s. За 2 взрослых с перелётом из Уфы.', 'zhiraf-ufa' ),
+					$place
+				);
+			}
+
+			return __( 'Цена Tourvisor по этому отелю. За 2 взрослых с перелётом из Уфы.', 'zhiraf-ufa' );
+		}
 		$scope       = ! empty( $hotel['price_scope'] ) ? (string) $hotel['price_scope'] : 'hotel';
 		$date        = ! empty( $tour['departure_date'] ) ? (string) $tour['departure_date'] : '';
 		$nights      = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;

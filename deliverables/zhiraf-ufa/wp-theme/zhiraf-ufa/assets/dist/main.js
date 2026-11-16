@@ -490,6 +490,132 @@
     return !!(form && form.id === 'quiz-form' && modal && modal.contains(form));
   }
 
+  function isHotelInquiryForm(form) {
+    return !!(form && form.id === 'hotel-inquiry-form');
+  }
+
+  var hotelInquiryModal = qs('#hotel-inquiry-modal');
+  var hotelInquiryForm = qs('#hotel-inquiry-form');
+
+  function resetHotelInquiryModal() {
+    if (!hotelInquiryModal) return;
+    var body = qs('#hotel-inquiry-body', hotelInquiryModal);
+    var success = qs('#hotel-inquiry-success', hotelInquiryModal);
+    var status = qs('.form-status', hotelInquiryForm || hotelInquiryModal);
+    if (body) body.hidden = false;
+    if (success) success.setAttribute('hidden', '');
+    if (status) {
+      status.textContent = '';
+      status.classList.remove('is-success', 'is-error');
+    }
+    if (hotelInquiryForm) {
+      hotelInquiryForm.reset();
+      var nameSpan = qs('[data-hotel-inquiry-name]', hotelInquiryModal);
+      if (nameSpan) nameSpan.textContent = '';
+      qsa('input[name="hotel_timing"]', hotelInquiryForm).forEach(function (input) {
+        input.checked = false;
+      });
+      var defaultWa = qs('input[name="hotel_messenger"][value="WhatsApp"]', hotelInquiryForm);
+      if (defaultWa) defaultWa.checked = true;
+      var ch = qs('[name="contact_channel"]', hotelInquiryForm);
+      if (ch) ch.value = 'WhatsApp';
+      initMessengerPicker(hotelInquiryForm);
+    }
+  }
+
+  function closeHotelInquiryModal() {
+    if (!hotelInquiryModal) return;
+    hotelInquiryModal.setAttribute('hidden', '');
+    hotelInquiryModal.setAttribute('inert', '');
+    document.body.style.overflow = '';
+    document.body.classList.remove('hotel-inquiry-open');
+    resetHotelInquiryModal();
+  }
+
+  function openHotelInquiryModal(trigger) {
+    if (!hotelInquiryModal || !hotelInquiryForm || !trigger) return;
+    resetHotelInquiryModal();
+    var hotelName = trigger.getAttribute('data-hotel-name') || '';
+    var hotelId = trigger.getAttribute('data-uon-hotel-id') || '';
+    var nameField = qs('[data-hotel-inquiry-field="name"]', hotelInquiryForm);
+    var idField = qs('[data-hotel-inquiry-field="id"]', hotelInquiryForm);
+    var nameSpan = qs('[data-hotel-inquiry-name]', hotelInquiryModal);
+    if (nameField) nameField.value = hotelName;
+    if (idField) idField.value = hotelId;
+    if (nameSpan) nameSpan.textContent = hotelName;
+    hotelInquiryModal.removeAttribute('hidden');
+    hotelInquiryModal.removeAttribute('inert');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('hotel-inquiry-open');
+    initMessengerPicker(hotelInquiryForm);
+    var phoneInput = qs('#hotel-inquiry-phone', hotelInquiryForm);
+    if (phoneInput) bindRuPhoneMask(phoneInput);
+    window.zhirafTrack('hotel_inquiry_open', {
+      hotel_name: hotelName,
+      hotel_id: hotelId,
+      cta_context: trigger.getAttribute('data-cta-context') || 'turciya_curated_hotel',
+    });
+    setTimeout(function () {
+      var focusTarget = qs('#hotel-inquiry-phone', hotelInquiryForm) || hotelInquiryForm;
+      if (focusTarget && focusTarget.focus) focusTarget.focus();
+    }, 80);
+  }
+
+  function showHotelInquirySuccess(payload) {
+    if (!hotelInquiryModal) return;
+    var body = qs('#hotel-inquiry-body', hotelInquiryModal);
+    var success = qs('#hotel-inquiry-success', hotelInquiryModal);
+    var chat = qs('[data-hotel-inquiry-open-chat]', hotelInquiryModal);
+    var lead = qs('[data-hotel-inquiry-success-text]', hotelInquiryModal);
+    var url = payload && payload.messenger_url ? payload.messenger_url : '';
+    if (body) body.hidden = true;
+    if (success) success.removeAttribute('hidden');
+    if (lead && payload && payload.message) lead.textContent = payload.message;
+    if (chat) {
+      if (url) {
+        chat.href = url;
+        chat.removeAttribute('hidden');
+      } else {
+        chat.setAttribute('hidden', '');
+      }
+    }
+    if (url) {
+      try {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      } catch (err) {}
+    }
+    if (payload && payload.channel) {
+      var chMap = { MAX: 'max', WhatsApp: 'whatsapp', Telegram: 'telegram' };
+      window.zhirafTrack('messenger_click', {
+        channel: chMap[payload.channel] || 'unknown',
+        hotel_id: payload.uon_hotel_id || '',
+        placement: 'hotel_inquiry_success',
+      });
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    var openBtn = e.target.closest('[data-hotel-modal-open]');
+    if (openBtn) {
+      e.preventDefault();
+      openHotelInquiryModal(openBtn);
+      return;
+    }
+    if (hotelInquiryModal && e.target.closest('[data-hotel-inquiry-close]')) {
+      e.preventDefault();
+      closeHotelInquiryModal();
+    }
+  });
+
+  if (hotelInquiryForm) {
+    initMessengerPicker(hotelInquiryForm);
+    hotelInquiryForm.addEventListener('submit', function () {
+      var picked = hotelInquiryForm.querySelector('[name="hotel_messenger"]:checked');
+      var channel = qs('[name="contact_channel"]', hotelInquiryForm);
+      if (picked && channel) channel.value = picked.value;
+    });
+  }
+
   function resetQuizModalState() {
     if (!modal || !quizForm) {
       return;
@@ -597,6 +723,11 @@
 
   function messengerSubmitLabelText(channel, variant) {
     variant = variant || 'quiz';
+    if (variant === 'hotel') {
+      if (channel === 'MAX') return 'Получить расчёт в MAX →';
+      if (channel === 'Telegram') return 'Получить расчёт в Telegram →';
+      return 'Получить расчёт в WhatsApp →';
+    }
     if (channel === 'MAX') {
       return variant === 'lead'
         ? 'Получить PDF-гид в MAX →'
@@ -621,7 +752,12 @@
       return;
     }
     form.dataset.messengerPickerInit = '1';
-    var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
+    var variant = 'quiz';
+    if (form.id === 'hotel-inquiry-form') {
+      variant = 'hotel';
+    } else if (form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet') {
+      variant = 'lead';
+    }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
     if (!radios.length) {
@@ -836,7 +972,12 @@
     btn.addEventListener('click', closeQuiz);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeQuiz();
+    if (e.key !== 'Escape') return;
+    if (hotelInquiryModal && !hotelInquiryModal.hasAttribute('hidden')) {
+      closeHotelInquiryModal();
+      return;
+    }
+    closeQuiz();
   });
 
   qsa('[data-lead-channel]').forEach(function (btn) {
@@ -983,7 +1124,9 @@
     var status = qs('.form-status', form);
     var submitBtn = form.querySelector('button[type="submit"]');
     var isModalQuiz = isModalQuizForm(form);
+    var isHotelInquiry = isHotelInquiryForm(form);
     var quizSuccessShown = false;
+    var hotelSuccessShown = false;
     if (!cfg.ajaxUrl) {
       setStatus(status, PHONE_FALLBACK, false);
       return;
@@ -996,8 +1139,11 @@
         submitBtn.textContent = 'Отправляем...';
       }
     }
-    if (!isModalQuiz) {
+    if (!isModalQuiz && !isHotelInquiry) {
       setStatus(status, 'Отправляем…', null);
+    }
+    if (isHotelInquiry && submitBtn) {
+      submitBtn.textContent = 'Отправляем…';
     }
     sendForm(form, action)
       .then(function (data) {
@@ -1015,6 +1161,12 @@
           showQuizModalSuccess();
           return;
         }
+        if (data.success && isHotelInquiry) {
+          trackFormSuccess(form, action);
+          hotelSuccessShown = true;
+          showHotelInquirySuccess(data.data || {});
+          return;
+        }
         var msg = data.data && data.data.message ? data.data.message : (data.success ? 'Спасибо! Заявка отправлена.' : PHONE_FALLBACK);
         setStatus(status, msg, !!data.success);
         if (data.success) {
@@ -1026,11 +1178,14 @@
         setStatus(status, 'Нет связи с сервером. ' + PHONE_FALLBACK, false);
       })
       .finally(function () {
-        if (submitBtn && !quizSuccessShown) {
+        if (submitBtn && !quizSuccessShown && !hotelSuccessShown) {
           submitBtn.disabled = false;
           submitBtn.removeAttribute('aria-busy');
           if (isModalQuiz) {
             updateQuizSubmitLabel(form);
+          }
+          if (isHotelInquiry) {
+            initMessengerPicker(form);
           }
         }
       });

@@ -128,7 +128,7 @@ function zhiraf_ufa_destination_hero_image_standards() {
 function zhiraf_ufa_destination_default_hero_badges( $slug ) {
 	$map = array(
 		'turciya'   => array(
-			array( 'icon' => '✈', 'text' => __( 'Прямой рейс или стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
+			array( 'icon' => '✈', 'text' => __( 'Прямой рейс из Уфы (4 ч 30 мин)', 'zhiraf-ufa' ) ),
 			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 90 дней', 'zhiraf-ufa' ) ),
 		),
 		'oae'       => array(

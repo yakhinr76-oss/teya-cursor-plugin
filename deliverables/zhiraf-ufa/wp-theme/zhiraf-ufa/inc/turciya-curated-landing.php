@@ -602,10 +602,19 @@ function zhiraf_ufa_turciya_pool_card_caveat( $row ) {
  * @param array<string,mixed>|null $tour   Optional BG tour row.
  * @return string
  */
-function zhiraf_ufa_turciya_curated_messenger_prefill( $hotel_name, $tour = null ) {
+function zhiraf_ufa_turciya_curated_messenger_prefill( $hotel_name, $tour = null, $uon_id = '' ) {
 	$hotel_name = trim( (string) $hotel_name );
+	$uon_id     = trim( (string) $uon_id );
+	$id_bit     = '';
+	if ( '' !== $uon_id ) {
+		$id_bit = ' ' . sprintf(
+			/* translators: %s: hotel id passed to U-ON */
+			__( 'ID отеля: %s.', 'zhiraf-ufa' ),
+			$uon_id
+		);
+	}
 	if ( '' === $hotel_name ) {
-		return __( 'Здравствуйте! Интересует тур в Турцию из Уфы. Подскажите свободные даты и актуальную стоимость.', 'zhiraf-ufa' );
+		return __( 'Здравствуйте! Интересует тур в Турцию из Уфы. Подскажите свободные даты и актуальную стоимость.', 'zhiraf-ufa' ) . $id_bit;
 	}
 
 	if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
@@ -614,21 +623,174 @@ function zhiraf_ufa_turciya_curated_messenger_prefill( $hotel_name, $tour = null
 		$nights = ! empty( $tour['nights'] ) ? (int) $tour['nights'] : 0;
 		if ( '' !== $date && $nights > 0 ) {
 			return sprintf(
-				/* translators: 1: hotel, 2: departure date, 3: nights count, 4: formatted RUB price */
-				__( 'Здравствуйте! Интересует %1$s из Уфы: вылет %2$s, %3$d ночей, ориентир от %4$s ₽. Подскажите, есть ли места на эти даты?', 'zhiraf-ufa' ),
+				/* translators: 1: hotel, 2: departure date, 3: nights count, 4: formatted RUB price, 5: U-ON id sentence */
+				__( 'Здравствуйте! Интересует %1$s из Уфы: вылет %2$s, %3$d ночей, ориентир от %4$s ₽. Подскажите, есть ли места на эти даты?%5$s', 'zhiraf-ufa' ),
 				$hotel_name,
 				$date,
 				$nights,
-				$price
+				$price,
+				$id_bit
 			);
 		}
 	}
 
 	return sprintf(
-		/* translators: %s: hotel name */
-		__( 'Здравствуйте! Интересует тур в %1$s из Уфы. Подскажите свободные даты и актуальную стоимость.', 'zhiraf-ufa' ),
-		$hotel_name
+		/* translators: 1: hotel name, 2: U-ON id sentence */
+		__( 'Здравствуйте! Интересует тур в %1$s из Уфы. Подскажите свободные даты и актуальную стоимость.%2$s', 'zhiraf-ufa' ),
+		$hotel_name,
+		$id_bit
 	);
+}
+
+/**
+ * Stable hotel id for the messenger template and U-ON payload.
+ *
+ * @param array<string,mixed> $hotel Card row.
+ * @return string
+ */
+function zhiraf_ufa_turciya_curated_uon_hotel_id( array $hotel ) {
+	if ( ! empty( $hotel['json_hotel_id'] ) ) {
+		return 'TR-' . (int) $hotel['json_hotel_id'];
+	}
+	if ( ! empty( $hotel['pool_id'] ) && is_numeric( $hotel['pool_id'] ) ) {
+		return 'TR-' . (int) $hotel['pool_id'];
+	}
+	$slot = ! empty( $hotel['slot'] ) ? strtoupper( sanitize_key( (string) $hotel['slot'] ) ) : '';
+	if ( '' !== $slot ) {
+		return 'TR-STARTER-' . $slot;
+	}
+
+	return 'TR-HOTEL';
+}
+
+/**
+ * WhatsApp / MAX / Telegram links with the same prefilled message.
+ *
+ * @param string $text Message template.
+ * @return array{whatsapp:string,max:string,telegram:string}
+ */
+function zhiraf_ufa_turciya_messenger_channel_urls( $text ) {
+	$text    = trim( (string) $text );
+	$wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
+	$wa      = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
+		? zhiraf_ufa_whatsapp_url_with_text( $wa_base, $text )
+		: $wa_base;
+	$page    = function_exists( 'home_url' ) ? home_url( '/tour/turciya/' ) : 'https://zhiraf-ufa.ru/tour/turciya/';
+
+	return array(
+		'whatsapp' => $wa,
+		'max'      => 'https://max.ru/:share?text=' . rawurlencode( $text ),
+		'telegram' => 'https://t.me/share/url?url=' . rawurlencode( $page ) . '&text=' . rawurlencode( $text ),
+	);
+}
+
+/**
+ * Attach U-ON id and messenger links after price overlay.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_turciya_finalize_catalog_card( array $card ) {
+	$card['uon_hotel_id'] = zhiraf_ufa_turciya_curated_uon_hotel_id( $card );
+	$tour                 = null;
+	if ( ! empty( $card['price_api_matched'] ) && ! empty( $card['tour_offer'] ) && is_array( $card['tour_offer'] ) ) {
+		$tour = $card['tour_offer'];
+	}
+	$name               = ! empty( $card['name'] ) ? (string) $card['name'] : '';
+	$card['wa_prefill'] = zhiraf_ufa_turciya_curated_messenger_prefill( $name, $tour, $card['uon_hotel_id'] );
+	$card['messenger']  = zhiraf_ufa_turciya_messenger_channel_urls( $card['wa_prefill'] );
+
+	return $card;
+}
+
+/**
+ * Display-size CDN url. Originals from Terra are several megabytes.
+ *
+ * @param string $url Photo URL.
+ * @return string
+ */
+function zhiraf_ufa_turciya_display_photo_url( $url ) {
+	$url = trim( (string) $url );
+	if ( ! preg_match( '#^https://dynamic-media\.tacdn\.com/#i', $url ) ) {
+		return $url;
+	}
+	if ( false !== strpos( $url, 'w=' ) ) {
+		return $url;
+	}
+	$sep = ( false !== strpos( $url, '?' ) ) ? '&' : '?';
+
+	return $url . $sep . 'w=1200&h=-1&s=1';
+}
+
+/**
+ * Card image from JSON photos[0]: remote URL, local file, then region fallback.
+ *
+ * @param array<string,mixed> $row JSON hotel.
+ * @return array{image:string,image_remote:bool,image_width:int,image_height:int}
+ */
+function zhiraf_ufa_turciya_image_from_json_row( array $row ) {
+	$region = zhiraf_ufa_turciya_resort_region_key( ! empty( $row['resort'] ) ? (string) $row['resort'] : '' );
+	$photos = ! empty( $row['photos'] ) && is_array( $row['photos'] ) ? $row['photos'] : array();
+	$first  = isset( $photos[0] ) ? trim( (string) $photos[0] ) : '';
+	$width  = ! empty( $row['lead_photo_width'] ) ? (int) $row['lead_photo_width'] : 0;
+	$height = ! empty( $row['lead_photo_height'] ) ? (int) $row['lead_photo_height'] : 0;
+
+	if ( preg_match( '#^https://#i', $first ) ) {
+		if ( $width > 1200 && $height > 0 ) {
+			$height = (int) max( 1, round( $height * 1200 / $width ) );
+			$width  = 1200;
+		}
+
+		return array(
+			'image'        => zhiraf_ufa_turciya_display_photo_url( $first ),
+			'image_remote' => true,
+			'image_width'  => $width,
+			'image_height' => $height,
+		);
+	}
+
+	if ( '' !== $first ) {
+		$base = basename( $first );
+		foreach ( array( 'hotels/turkey/' . $base, $base ) as $rel ) {
+			if ( defined( 'ZHIRAF_UFA_DIR' ) && is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $rel ) ) {
+				return array(
+					'image'        => $rel,
+					'image_remote' => false,
+					'image_width'  => 0,
+					'image_height' => 0,
+				);
+			}
+		}
+	}
+
+	return array(
+		'image'        => zhiraf_ufa_turciya_pool_image_for_region( $region ),
+		'image_remote' => false,
+		'image_width'  => 0,
+		'image_height' => 0,
+	);
+}
+
+/**
+ * Decoded turkey_hotels_25.json rows.
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_turciya_json_rows() {
+	static $cache = null;
+	if ( null !== $cache ) {
+		return $cache;
+	}
+	$cache = array();
+	$path  = function_exists( 'zhiraf_ufa_turkey_hotels_json_path' ) ? zhiraf_ufa_turkey_hotels_json_path() : '';
+	if ( $path && is_readable( $path ) ) {
+		$decoded = json_decode( (string) file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		if ( is_array( $decoded ) ) {
+			$cache = $decoded;
+		}
+	}
+
+	return $cache;
 }
 
 /**
@@ -682,16 +844,21 @@ function zhiraf_ufa_turciya_json_row_to_card( $row ) {
 	$desc        = zhiraf_ufa_turciya_pool_card_usp( $row );
 	$caveat      = zhiraf_ufa_turciya_pool_card_caveat( $row );
 	$concept     = zhiraf_ufa_turciya_pool_meal_concept( $name, $cat );
+	$image       = zhiraf_ufa_turciya_image_from_json_row( $row );
 
 	$bg_hotel_id = ! empty( $row['bg_hotel_id'] ) ? trim( (string) $row['bg_hotel_id'] ) : '';
 
 	return array(
 		'bg_hotel_id'   => $bg_hotel_id,
 		'pool_id'       => $pool_id,
+		'json_hotel_id' => $pool_id,
 		'pool_rank'     => 100 + $pool_id,
 		'filter_tags'   => array_values( array_unique( $tags ) ),
 		'resort'        => $region,
-		'image'         => zhiraf_ufa_turciya_pool_image_for_region( $region ),
+		'image'         => $image['image'],
+		'image_remote'  => $image['image_remote'],
+		'image_width'   => $image['image_width'],
+		'image_height'  => $image['image_height'],
 		'image_alt'     => sprintf(
 			/* translators: %s: hotel name */
 			__( 'Отель %s', 'zhiraf-ufa' ),
@@ -723,33 +890,44 @@ function zhiraf_ufa_turciya_catalog_hotels() {
 
 	$hotels       = array();
 	$starter_keys = array();
-	$rank         = 1;
+	$json_by_name = array();
+	foreach ( zhiraf_ufa_turciya_json_rows() as $json_row ) {
+		if ( ! is_array( $json_row ) ) {
+			continue;
+		}
+		$key = zhiraf_ufa_turciya_hotel_name_key( ! empty( $json_row['hotel_name'] ) ? (string) $json_row['hotel_name'] : '' );
+		if ( '' !== $key ) {
+			$json_by_name[ $key ] = $json_row;
+		}
+	}
+	$rank = 1;
 	foreach ( zhiraf_ufa_turciya_curated_hotels() as $row ) {
-		$starter_keys[] = zhiraf_ufa_turciya_hotel_name_key( ! empty( $row['name'] ) ? (string) $row['name'] : '' );
+		$name_key       = zhiraf_ufa_turciya_hotel_name_key( ! empty( $row['name'] ) ? (string) $row['name'] : '' );
+		$starter_keys[] = $name_key;
 		$row['pool_id']     = 'starter-' . ( ! empty( $row['slot'] ) ? (string) $row['slot'] : $rank );
 		$row['pool_rank']   = $rank;
 		$row['filter_tags'] = zhiraf_ufa_turciya_starter_filter_tags( $row );
-		$hotels[]           = zhiraf_ufa_turciya_apply_bg_pricing( $row );
+		if ( '' !== $name_key && isset( $json_by_name[ $name_key ] ) ) {
+			$image = zhiraf_ufa_turciya_image_from_json_row( $json_by_name[ $name_key ] );
+			$row['image']         = $image['image'];
+			$row['image_remote']  = $image['image_remote'];
+			$row['image_width']   = $image['image_width'];
+			$row['image_height']  = $image['image_height'];
+			if ( ! empty( $json_by_name[ $name_key ]['id'] ) ) {
+				$row['json_hotel_id'] = (int) $json_by_name[ $name_key ]['id'];
+			}
+		}
+		$hotels[] = zhiraf_ufa_turciya_finalize_catalog_card( zhiraf_ufa_turciya_apply_bg_pricing( $row ) );
 		++$rank;
 	}
 
-	$json_path = function_exists( 'zhiraf_ufa_turkey_hotels_json_path' ) ? zhiraf_ufa_turkey_hotels_json_path() : '';
-	if ( $json_path && is_readable( $json_path ) ) {
-		$decoded = json_decode( (string) file_get_contents( $json_path ), true );
-		if ( is_array( $decoded ) ) {
-			foreach ( $decoded as $json_row ) {
-				if ( ! is_array( $json_row ) ) {
-					continue;
-				}
-				$key = zhiraf_ufa_turciya_hotel_name_key( ! empty( $json_row['hotel_name'] ) ? (string) $json_row['hotel_name'] : '' );
-				if ( '' === $key || in_array( $key, $starter_keys, true ) ) {
-					continue;
-				}
-				$card = zhiraf_ufa_turciya_json_row_to_card( $json_row );
-				if ( $card ) {
-					$hotels[] = zhiraf_ufa_turciya_apply_bg_pricing( $card );
-				}
-			}
+	foreach ( $json_by_name as $key => $json_row ) {
+		if ( '' === $key || in_array( $key, $starter_keys, true ) ) {
+			continue;
+		}
+		$card = zhiraf_ufa_turciya_json_row_to_card( $json_row );
+		if ( $card ) {
+			$hotels[] = zhiraf_ufa_turciya_finalize_catalog_card( zhiraf_ufa_turciya_apply_bg_pricing( $card ) );
 		}
 	}
 
@@ -983,7 +1161,7 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 			'hotel_count'  => $counts['antalya'],
 			'accent_mod'   => 'sky',
 			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'antalya' ),
-			'guide_label'  => __( 'Подробный гид по курорту →', 'zhiraf-ufa' ),
+			'guide_label'  => __( 'Подробный гид по Анталье →', 'zhiraf-ufa' ),
 			'bullets'      => array(
 				array(
 					'type' => 'pro',
@@ -1048,3 +1226,48 @@ function zhiraf_ufa_turciya_curated_wa_url( $hotel ) {
 function zhiraf_ufa_turciya_resort_compare_wa_text() {
 	return __( 'Здравствуйте! Не могу выбрать между Кемером и Сиде. Возраст детей: __. Подскажите 2–3 отеля с вылетом из Уфы на 7–9 ночей под наш бюджет.', 'zhiraf-ufa' );
 }
+
+/**
+ * Click on a hotel messenger link: pass the hotel id to U-ON.
+ */
+function zhiraf_ufa_ajax_hotel_intent() {
+	$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+	if ( ! wp_verify_nonce( $nonce, 'zhiraf_ufa_forms' ) ) {
+		wp_send_json_error(
+			array(
+				'message' => __( 'Страница устарела. Обновите её и откройте мессенджер ещё раз.', 'zhiraf-ufa' ),
+			),
+			403
+		);
+	}
+
+	$hotel_id = isset( $_POST['uon_hotel_id'] ) ? sanitize_text_field( wp_unslash( $_POST['uon_hotel_id'] ) ) : '';
+	$name     = isset( $_POST['hotel_name'] ) ? sanitize_text_field( wp_unslash( $_POST['hotel_name'] ) ) : '';
+	$channel  = isset( $_POST['channel'] ) ? sanitize_key( wp_unslash( $_POST['channel'] ) ) : '';
+	if ( ! preg_match( '/^TR-[A-Z0-9-]{1,40}$/', $hotel_id ) ) {
+		wp_send_json_error( array( 'message' => 'hotel id' ), 400 );
+	}
+
+	$payload = array(
+		'source'       => 'turciya_hotel_card',
+		'uon_hotel_id' => $hotel_id,
+		'hotel_name'   => $name,
+		'channel'      => $channel,
+		'page'         => home_url( '/tour/turciya/' ),
+	);
+	$uon_ok  = false;
+	if ( class_exists( 'Zhiraf_UON_CRM' ) ) {
+		$crm    = new Zhiraf_UON_CRM();
+		$result = $crm->send_lead( $payload );
+		$uon_ok = ! empty( $result['ok'] );
+	}
+
+	wp_send_json_success(
+		array(
+			'uon_hotel_id' => $hotel_id,
+			'uon'          => $uon_ok,
+		)
+	);
+}
+add_action( 'wp_ajax_zhiraf_hotel_intent', 'zhiraf_ufa_ajax_hotel_intent' );
+add_action( 'wp_ajax_nopriv_zhiraf_hotel_intent', 'zhiraf_ufa_ajax_hotel_intent' );

@@ -27,9 +27,14 @@ $card_class  = 'turciya-curated-card';
 if ( $is_base ) {
 	$card_class .= ' turciya-curated-card--base';
 }
-$wa_url      = function_exists( 'zhiraf_ufa_turciya_curated_wa_url' )
-	? zhiraf_ufa_turciya_curated_wa_url( $hotel )
-	: '#';
+$messenger   = ! empty( $hotel['messenger'] ) && is_array( $hotel['messenger'] ) ? $hotel['messenger'] : array();
+$wa_url      = ! empty( $messenger['whatsapp'] )
+	? (string) $messenger['whatsapp']
+	: ( function_exists( 'zhiraf_ufa_turciya_curated_wa_url' ) ? zhiraf_ufa_turciya_curated_wa_url( $hotel ) : '#' );
+$max_url     = ! empty( $messenger['max'] ) ? (string) $messenger['max'] : '';
+$tg_url      = ! empty( $messenger['telegram'] ) ? (string) $messenger['telegram'] : '';
+$uon_id      = ! empty( $hotel['uon_hotel_id'] ) ? (string) $hotel['uon_hotel_id'] : '';
+$image_remote = ! empty( $hotel['image_remote'] );
 $is_base_slot = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
 $price_amount = (int) ( $hotel['price_rub'] ?? 0 );
 if ( $price_amount <= 0 && $is_base_slot ) {
@@ -73,13 +78,30 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 		<div class="turciya-curated-card__media">
 			<?php if ( ! empty( $hotel['image'] ) ) : ?>
 				<?php
-				zhiraf_ufa_img(
-					(string) $hotel['image'],
-					! empty( $hotel['image_alt'] ) ? (string) $hotel['image_alt'] : (string) $hotel['name'],
-					'turciya-curated-card__img',
-					true
-				);
-				?>
+				$image_alt = ! empty( $hotel['image_alt'] ) ? (string) $hotel['image_alt'] : (string) $hotel['name'];
+				if ( $image_remote ) :
+					$image_w = ! empty( $hotel['image_width'] ) ? (int) $hotel['image_width'] : 1200;
+					$image_h = ! empty( $hotel['image_height'] ) ? (int) $hotel['image_height'] : 800;
+					?>
+					<img
+						class="turciya-curated-card__img"
+						src="<?php echo esc_url( (string) $hotel['image'] ); ?>"
+						alt="<?php echo esc_attr( $image_alt ); ?>"
+						width="<?php echo esc_attr( (string) $image_w ); ?>"
+						height="<?php echo esc_attr( (string) $image_h ); ?>"
+						loading="lazy"
+						decoding="async"
+					/>
+				<?php else : ?>
+					<?php
+					zhiraf_ufa_img(
+						(string) $hotel['image'],
+						$image_alt,
+						'turciya-curated-card__img',
+						true
+					);
+					?>
+				<?php endif; ?>
 			<?php endif; ?>
 			<?php if ( ! empty( $hotel['badge'] ) ) : ?>
 				<span class="turciya-curated-card__badge turciya-curated-card__badge--<?php echo esc_attr( $badge_mod ); ?>">
@@ -133,8 +155,38 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			data-track="messenger"
 			data-channel="whatsapp"
 			data-cta-context="turciya_curated_hotel"
+			data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
+			data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
 		>
-			<?php esc_html_e( 'Узнать даты в WhatsApp →', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Узнать даты / цену →', 'zhiraf-ufa' ); ?>
 		</a>
+		<?php if ( '' !== $max_url || '' !== $tg_url ) : ?>
+			<p class="turciya-curated-card__channels">
+				<?php if ( '' !== $max_url ) : ?>
+					<a
+						href="<?php echo esc_url( $max_url ); ?>"
+						target="_blank"
+						rel="noopener noreferrer"
+						data-track="messenger"
+						data-channel="max"
+						data-cta-context="turciya_curated_hotel"
+						data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
+						data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
+					><?php esc_html_e( 'MAX', 'zhiraf-ufa' ); ?></a>
+				<?php endif; ?>
+				<?php if ( '' !== $tg_url ) : ?>
+					<a
+						href="<?php echo esc_url( $tg_url ); ?>"
+						target="_blank"
+						rel="noopener noreferrer"
+						data-track="messenger"
+						data-channel="telegram"
+						data-cta-context="turciya_curated_hotel"
+						data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
+						data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
+					><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
+				<?php endif; ?>
+			</p>
+		<?php endif; ?>
 	</div>
 </article>

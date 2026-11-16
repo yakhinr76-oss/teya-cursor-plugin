@@ -16,10 +16,19 @@
     "caveat": "Часть гостей считает оформление номеров устаревшим; бронировать стоит проверенные категории.",
     "reviews_summary": "Хвалят песчаное мелководье и бассейны. Встречаются отдельные замечания к возрасту номеров.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/34/2f/fd/fd/general-view.jpg",
+      "paloma_oceana_2.jpg",
+      "paloma_oceana_3.jpg"
+    ],
+    "photo_files": [
       "paloma_oceana_1.jpg",
       "paloma_oceana_2.jpg",
       "paloma_oceana_3.jpg"
-    ]
+    ],
+    "ta_location_id": 647856,
+    "lead_photo_width": 3533,
+    "lead_photo_height": 3010,
+    "photo_match_name": "Paloma Oceana"
   },
   {
     "id": 2,
@@ -38,10 +47,19 @@
     "caveat": "На больших горках действуют ограничения по росту и возрасту — дошкольникам доступны не все аттракционы.",
     "reviews_summary": "Семьи отмечают идеальный отдых с детьми всех возрастов. Отдельно благодарят внимательный и чуткий персонал.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/05/f9/42/eb/papillon-belvil-hotel.jpg",
+      "papillon_belvil_2.jpg",
+      "papillon_belvil_3.jpg"
+    ],
+    "photo_files": [
       "papillon_belvil_1.jpg",
       "papillon_belvil_2.jpg",
       "papillon_belvil_3.jpg"
-    ]
+    ],
+    "ta_location_id": 551332,
+    "lead_photo_width": 1181,
+    "lead_photo_height": 787,
+    "photo_match_name": "Papillon Belvil Hotel"
   },
   {
     "id": 3,
@@ -60,10 +78,19 @@
     "caveat": "Высокий уровень сервиса не исключает естественного износа — в свежих отзывах встречаются пожелания реновации некоторых корпусов.",
     "reviews_summary": "Родители в восторге от детского клуба и анимации. Дети особенно довольны аквапарком и луна-парком.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/32/7c/62/59/general-view.jpg",
+      "voyage_belek_2.jpg",
+      "voyage_belek_3.jpg"
+    ],
+    "photo_files": [
       "voyage_belek_1.jpg",
       "voyage_belek_2.jpg",
       "voyage_belek_3.jpg"
-    ]
+    ],
+    "ta_location_id": 647824,
+    "lead_photo_width": 2309,
+    "lead_photo_height": 1646,
+    "photo_match_name": "Voyage Belek Golf & Spa"
   },
   {
     "id": 4,
@@ -82,10 +109,19 @@
     "caveat": "Архитектура в стиле средиземноморской деревушки предполагает много дорожек и лестниц — с тяжелой коляской не везде удобно.",
     "reviews_summary": "Отмечают зеленую просторную территорию и безопасность бассейнов. Положительно оценивают чистоту пляжного участка.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/33/3d/0f/10/caption.jpg",
+      "paloma_grida_2.jpg",
+      "paloma_grida_3.jpg"
+    ],
+    "photo_files": [
       "paloma_grida_1.jpg",
       "paloma_grida_2.jpg",
       "paloma_grida_3.jpg"
-    ]
+    ],
+    "ta_location_id": 482571,
+    "lead_photo_width": 5734,
+    "lead_photo_height": 4300,
+    "photo_match_name": "Paloma Grida"
   },
   {
     "id": 5,
@@ -104,10 +140,19 @@
     "caveat": "Импортные премиальные напитки оплачиваются отдельно — это классический турецкий All Inclusive.",
     "reviews_summary": "Родители хвалят пляж и безопасность входа в воду для малышей. Отмечают отличную работу детских аниматоров.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/b2/37/24/pegasos-royal-hotel.jpg",
+      "pegasos_royal_2.jpg",
+      "pegasos_royal_3.jpg"
+    ],
+    "photo_files": [
       "pegasos_royal_1.jpg",
       "pegasos_royal_2.jpg",
       "pegasos_royal_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1128010,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1125,
+    "photo_match_name": "Aqi Pegasos Royal"
   },
   {
     "id": 6,
@@ -126,10 +171,19 @@
     "caveat": "Соседняя семейная часть комплекса Liberty Lykia работает очень активно и шумно — выходить за пределы взрослой зоны стоит с этим расчетом.",
     "reviews_summary": "Гости восхищаются спокойствием взрослой зоны и живописной природой. Встречаются редкие претензии к оперативности клининга.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/05/5e/cf/08/sentido-lykia-resort.jpg",
+      "liberty_lykia_2.jpg",
+      "liberty_lykia_3.jpg"
+    ],
+    "photo_files": [
       "liberty_lykia_1.jpg",
       "liberty_lykia_2.jpg",
       "liberty_lykia_3.jpg"
-    ]
+    ],
+    "ta_location_id": 6206482,
+    "lead_photo_width": 1563,
+    "lead_photo_height": 1043,
+    "photo_match_name": "Liberty Lykia Adults Only"
   },
   {
     "id": 7,
@@ -148,10 +202,19 @@
     "caveat": "Часть ресторанов a la carte предполагает сервисную доплату; Ultra All Inclusive не покрывает абсолютно всю карту меню.",
     "reviews_summary": "Особенно хвалят катерные прогулки на Secret Beach. Отмечают внимательный персонал и атмосферу полного умиротворения.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/33/d7/ca/e9/harika-bir-otel-konumu.jpg",
+      "rixos_gocek_2.jpg",
+      "rixos_gocek_3.jpg"
+    ],
+    "photo_files": [
       "rixos_gocek_1.jpg",
       "rixos_gocek_2.jpg",
       "rixos_gocek_3.jpg"
-    ]
+    ],
+    "ta_location_id": 33265468,
+    "lead_photo_width": 1536,
+    "lead_photo_height": 2048,
+    "photo_match_name": "Rixos Premium Göcek Adult Only"
   },
   {
     "id": 8,
@@ -170,10 +233,19 @@
     "caveat": "Отель расположен каскадом на склоне горы — перемещение между террасами требует ходьбы по ступеням.",
     "reviews_summary": "Восхищаются природной бухтой и безукоризненной гастрономией. Ценник высокий, но гости возвращаются сюда годами.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/06/4a/d4/9e/hillside-beach-club.jpg",
+      "hillside_2.jpg",
+      "hillside_3.jpg"
+    ],
+    "photo_files": [
       "hillside_1.jpg",
       "hillside_2.jpg",
       "hillside_3.jpg"
-    ]
+    ],
+    "ta_location_id": 300017,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1333,
+    "photo_match_name": "Hillside Beach Club"
   },
   {
     "id": 9,
@@ -192,10 +264,19 @@
     "caveat": "По вечерам у бассейнов играет громкая музыка — любителям раннего сна нужно выбирать номера подальше от амфитеатра.",
     "reviews_summary": "Хвалят работу аниматоров и качество коктейлей. Замечания касаются перепадов высот и слышимости вечерних шоу.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/3e/76/ee/sea-view.jpg",
+      "tui_magic_bodrum_2.jpg",
+      "tui_magic_bodrum_3.jpg"
+    ],
+    "photo_files": [
       "tui_magic_bodrum_1.jpg",
       "tui_magic_bodrum_2.jpg",
       "tui_magic_bodrum_3.jpg"
-    ]
+    ],
+    "ta_location_id": 16775061,
+    "lead_photo_width": 5000,
+    "lead_photo_height": 2813,
+    "photo_match_name": "TUI MAGIC LIFE Bodrum - Adults Only"
   },
   {
     "id": 10,
@@ -214,10 +295,19 @@
     "caveat": "Из-за холмистого рельефа до пляжа курсирует фуникулер/шаттл, пешком придется подниматься в гору.",
     "reviews_summary": "Гости восхищаются панорамами и тишиной. Отмечают высокий европейский уровень обслуживания и вкусные завтраки.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/19/ee/dc/5e/general-view.jpg",
+      "tui_seno_2.jpg",
+      "tui_seno_3.jpg"
+    ],
+    "photo_files": [
       "tui_seno_1.jpg",
       "tui_seno_2.jpg",
       "tui_seno_3.jpg"
-    ]
+    ],
+    "ta_location_id": 4291624,
+    "lead_photo_width": 2800,
+    "lead_photo_height": 2096,
+    "photo_match_name": "TUI BLUE Seno"
   },
   {
     "id": 11,
@@ -236,10 +326,19 @@
     "caveat": "Отдельные авторские рестораны Signature требуют предварительной записи и сервисной оплаты.",
     "reviews_summary": "Постоянные клиенты отмечают идеальный сервис и приватность. Отдельная благодарность заботливым ассистентам.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2a/30/cf/79/general-view.jpg",
+      "maxx_belek_2.jpg",
+      "maxx_belek_3.jpg"
+    ],
+    "photo_files": [
       "maxx_belek_1.jpg",
       "maxx_belek_2.jpg",
       "maxx_belek_3.jpg"
-    ]
+    ],
+    "ta_location_id": 2135900,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1072,
+    "photo_match_name": "Maxx Royal Belek Golf Resort"
   },
   {
     "id": 12,
@@ -258,10 +357,19 @@
     "caveat": "Ограниченное количество мест на первой линии — бронировать виллы и видовые сьюты нужно за полгода.",
     "reviews_summary": "Гости называют отель абсолютным эталоном гостеприимства. Восхищаются природой Кемера и гастрономией высочайшего уровня.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/29/a6/71/07/maxx-royal-kemer-resort.jpg",
+      "maxx_kemer_2.jpg",
+      "maxx_kemer_3.jpg"
+    ],
+    "photo_files": [
       "maxx_kemer_1.jpg",
       "maxx_kemer_2.jpg",
       "maxx_kemer_3.jpg"
-    ]
+    ],
+    "ta_location_id": 6938889,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1072,
+    "photo_match_name": "Maxx Royal Kemer"
   },
   {
     "id": 13,
@@ -280,10 +388,19 @@
     "caveat": "Некоторые гастрономические позиции (например, коллекционные вина и мраморная говядина) оплачиваются дополнительно.",
     "reviews_summary": "Хвалят качество ресторанов и размах вечерних шоу мировых звезд. Высоко оценивают инфраструктуру для гольфа и спа.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/8c/76/aa/regnum-carya-golf-spa.jpg",
+      "regnum_carya_2.jpg",
+      "regnum_carya_3.jpg"
+    ],
+    "photo_files": [
       "regnum_carya_1.jpg",
       "regnum_carya_2.jpg",
       "regnum_carya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 5484934,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1328,
+    "photo_match_name": "Regnum Carya"
   },
   {
     "id": 14,
@@ -302,10 +419,19 @@
     "caveat": "Территория каскадная — перемещение между зонами на эскалаторах и гольф-карах.",
     "reviews_summary": "Восторгаются эстетикой номеров, подачей блюд в ресторанах и качеством сервиса. Отмечают превосходные инстаграмные виды.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1d/83/a4/17/lujo-hotel.jpg",
+      "lujo_bodrum_2.jpg",
+      "lujo_bodrum_3.jpg"
+    ],
+    "photo_files": [
       "lujo_bodrum_1.jpg",
       "lujo_bodrum_2.jpg",
       "lujo_bodrum_3.jpg"
-    ]
+    ],
+    "ta_location_id": 13298623,
+    "lead_photo_width": 4000,
+    "lead_photo_height": 3000,
+    "photo_match_name": "Lujo Hotel Bodrum"
   },
   {
     "id": 15,
@@ -324,10 +450,19 @@
     "caveat": "Отель ориентирован на разные аудитории — чтобы отдохнуть без детского шума, лучше выбирать взрослые зоны Lagoon.",
     "reviews_summary": "Отмечают свежесть и роскошь интерьеров. Хвалят качество импортных напитков и гастрономические буфеты.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/24/f6/5e/8b/cullinan-belek.jpg",
+      "cullinan_2.jpg",
+      "cullinan_3.jpg"
+    ],
+    "photo_files": [
       "cullinan_1.jpg",
       "cullinan_2.jpg",
       "cullinan_3.jpg"
-    ]
+    ],
+    "ta_location_id": 23980615,
+    "lead_photo_width": 1920,
+    "lead_photo_height": 1280,
+    "photo_match_name": "Cullinan Belek"
   },
   {
     "id": 16,
@@ -346,10 +481,19 @@
     "caveat": "Пляж муниципальный — лежаки и зонтики оплачиваются отдельно (городской формат).",
     "reviews_summary": "Хвалят удобное расположение и чистоту. Отмечают вкусное городское питание и близость набережной.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/17/71/0d/5a/riviera-zen-hotel.jpg",
+      "riviera_zen_2.jpg",
+      "riviera_zen_3.jpg"
+    ],
+    "photo_files": [
       "riviera_zen_1.jpg",
       "riviera_zen_2.jpg",
       "riviera_zen_3.jpg"
-    ]
+    ],
+    "ta_location_id": 15228656,
+    "lead_photo_width": 1600,
+    "lead_photo_height": 1200,
+    "photo_match_name": "Riviera Zen Hotel"
   },
   {
     "id": 17,
@@ -368,10 +512,19 @@
     "caveat": "Номера классические, компактные; любителям просторных загородных комплексов может быть тесновато.",
     "reviews_summary": "Туристы в восторге от близости моря: завтрак с видом на прибой. Хвалят доброжелательный персонал.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/13/f5/16/xperia-saray-beach-hotel.jpg",
+      "xperia_saray_2.jpg",
+      "xperia_saray_3.jpg"
+    ],
+    "photo_files": [
       "xperia_saray_1.jpg",
       "xperia_saray_2.jpg",
       "xperia_saray_3.jpg"
-    ]
+    ],
+    "ta_location_id": 633017,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1333,
+    "photo_match_name": "Xperia Saray Beach Hotel"
   },
   {
     "id": 18,
@@ -390,10 +543,19 @@
     "caveat": "Пляж галечный (характерно для Кемера) — вход с берега требует специальной обуви.",
     "reviews_summary": "Гости восхищаются стильным дизайном и чистотой моря. Отмечают превосходное ресторанное питание.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/16/8d/b5/a1/main-restaurant.jpg",
+      "akra_kemer_2.jpg",
+      "akra_kemer_3.jpg"
+    ],
+    "photo_files": [
       "akra_kemer_1.jpg",
       "akra_kemer_2.jpg",
       "akra_kemer_3.jpg"
-    ]
+    ],
+    "ta_location_id": 572231,
+    "lead_photo_width": 6651,
+    "lead_photo_height": 5040,
+    "photo_match_name": "Akra Kemer"
   },
   {
     "id": 19,
@@ -412,10 +574,19 @@
     "caveat": "Вечером на пирсе и у бассейна проходят активные музыкальные программы — отель не про ранний сон.",
     "reviews_summary": "Хвалят разнообразие еды и необычный формат фудтраков. Отмечают стильную тусовочную атмосферу.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2f/83/cd/24/general-view-of-the-hotel.jpg",
+      "doubletree_kemer_2.jpg",
+      "doubletree_kemer_3.jpg"
+    ],
+    "photo_files": [
       "doubletree_kemer_1.jpg",
       "doubletree_kemer_2.jpg",
       "doubletree_kemer_3.jpg"
-    ]
+    ],
+    "ta_location_id": 12125044,
+    "lead_photo_width": 5334,
+    "lead_photo_height": 3000,
+    "photo_match_name": "Doubletree By Hilton Antalya-kemer All-inclusive Resort"
   },
   {
     "id": 20,
@@ -434,10 +605,19 @@
     "caveat": "Скалистый берег: песчаного входа нет, купание в море организовано с платформы по лестницам на глубину.",
     "reviews_summary": "Гости в восторге от видов на закат и горную гряду. Хвалят завтраки и близость к ресторанам города.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/30/c8/95/a8/caption.jpg",
+      "akra_antalya_2.jpg",
+      "akra_antalya_3.jpg"
+    ],
+    "photo_files": [
       "akra_antalya_1.jpg",
       "akra_antalya_2.jpg",
       "akra_antalya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 295121,
+    "lead_photo_width": 2880,
+    "lead_photo_height": 2000,
+    "photo_match_name": "Akra Antalya"
   },
   {
     "id": 21,
@@ -456,10 +636,19 @@
     "caveat": "Номера с видом на дорогу могут быть шумными при открытом балконе — лучше выбирать категорию с видом на море.",
     "reviews_summary": "Хвалят вкусное питание и возможность вечерних пеших прогулок по променаду. Отмечают вежливый персонал.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/11/34/15/79/genel-gorunum.jpg",
+      "side_star_2.jpg",
+      "side_star_3.jpg"
+    ],
+    "photo_files": [
       "side_star_1.jpg",
       "side_star_2.jpg",
       "side_star_3.jpg"
-    ]
+    ],
+    "ta_location_id": 304601,
+    "lead_photo_width": 1906,
+    "lead_photo_height": 1500,
+    "photo_match_name": "Side Star Elegance Hotel"
   },
   {
     "id": 22,
@@ -478,10 +667,19 @@
     "caveat": "Пляж галечный, при заходе в воду есть камни — для захода лучше пользоваться отельным пирсом.",
     "reviews_summary": "Хвалят огромную зеленую территорию и насыщенную анимацию. Отмечают простоту номеров, компенсируемую природой.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/22/cb/aa/club-tuana-fethiye.jpg",
+      "club_tuana_2.jpg",
+      "club_tuana_3.jpg"
+    ],
+    "photo_files": [
       "club_tuana_1.jpg",
       "club_tuana_2.jpg",
       "club_tuana_3.jpg"
-    ]
+    ],
+    "ta_location_id": 553651,
+    "lead_photo_width": 3433,
+    "lead_photo_height": 2289,
+    "photo_match_name": "Club Tuana Fethiye"
   },
   {
     "id": 23,
@@ -500,10 +698,19 @@
     "caveat": "Широкий пляж песчано-галечный, на кромке прибоя намывает гальку.",
     "reviews_summary": "Восторгаются качеством еды и чистотой. Многие семьи приезжают сюда повторно каждый год.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/df/ab/1f/beach.jpg",
+      "palm_garden_2.jpg",
+      "palm_garden_3.jpg"
+    ],
+    "photo_files": [
       "palm_garden_1.jpg",
       "palm_garden_2.jpg",
       "palm_garden_3.jpg"
-    ]
+    ],
+    "ta_location_id": 638289,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1499,
+    "photo_match_name": "TUI BLUE Palm Garden"
   },
   {
     "id": 24,
@@ -522,10 +729,19 @@
     "caveat": "Территория настолько большая, что из некоторых дальних бунгало до моря идти около 7–10 минут.",
     "reviews_summary": "Хвалят бесконечный песчаный пляж и аквапарк. Встречаются замечания к усталости части номерного фонда.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/7e/d8/c2/indoor-pool.jpg",
+      "kamelya_aishen_2.jpg",
+      "kamelya_aishen_3.jpg"
+    ],
+    "photo_files": [
       "kamelya_aishen_1.jpg",
       "kamelya_aishen_2.jpg",
       "kamelya_aishen_3.jpg"
-    ]
+    ],
+    "ta_location_id": 666145,
+    "lead_photo_width": 2000,
+    "lead_photo_height": 1363,
+    "photo_match_name": "Kamelya Aishen Club"
   },
   {
     "id": 25,
@@ -544,9 +760,18 @@
     "caveat": "Вторая линия — до пляжа около 250 метров по тенистой прогулочной дорожке.",
     "reviews_summary": "Хвалят комфорт апартаментов, тишину и вкусную кухню. Отдельно благодарят персонал за внимание к детям.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/31/73/43/a4/caption.jpg",
+      "barut_b_suites_2.jpg",
+      "barut_b_suites_3.jpg"
+    ],
+    "photo_files": [
       "barut_b_suites_1.jpg",
       "barut_b_suites_2.jpg",
       "barut_b_suites_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1187634,
+    "lead_photo_width": 6048,
+    "lead_photo_height": 3402,
+    "photo_match_name": "Barut B Suites"
   }
 ]

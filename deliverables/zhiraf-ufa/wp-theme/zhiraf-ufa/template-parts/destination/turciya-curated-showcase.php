@@ -13,10 +13,18 @@ $hotels      = function_exists( 'zhiraf_ufa_turciya_catalog_hotels' ) ? zhiraf_u
 $copy        = function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array();
 $pool_total  = count( $hotels );
 $wa_text     = __( 'Здравствуйте! Нужна подборка из базы проверенных отелей Турции под наши даты и состав семьи — пришлите лучшие варианты с вылетом из Уфы.', 'zhiraf-ufa' );
+$fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
 $wa_base     = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
 $wa_url      = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 	? zhiraf_ufa_whatsapp_url_with_text( $wa_base, $wa_text )
 	: $wa_base;
+$fill_urls   = function_exists( 'zhiraf_ufa_turciya_messenger_channel_urls' )
+	? zhiraf_ufa_turciya_messenger_channel_urls( $fill_text )
+	: array(
+		'whatsapp' => $wa_url,
+		'max'      => '',
+		'telegram' => '',
+	);
 
 if ( empty( $hotels ) ) {
 	return;
@@ -46,11 +54,57 @@ if ( empty( $hotels ) ) {
 					);
 					?>
 				<?php endforeach; ?>
+				<aside class="turciya-catalog-fill" data-turciya-catalog-fill hidden>
+					<p class="turciya-catalog-fill__badge"><?php esc_html_e( 'Индивидуальный подбор', 'zhiraf-ufa' ); ?></p>
+					<h3 class="turciya-catalog-fill__title" data-turciya-fill-title>
+						<?php esc_html_e( 'Подберём отель под вашу семью', 'zhiraf-ufa' ); ?>
+					</h3>
+					<p class="turciya-catalog-fill__text" data-turciya-fill-text>
+						<?php esc_html_e( 'В этой выборке 5 отелей. Напишите возраст детей — пришлём ещё 2–3 варианта из базы под ваши даты и вылет из Уфы.', 'zhiraf-ufa' ); ?>
+					</p>
+					<a
+						class="btn btn--primary turciya-catalog-fill__cta"
+						href="<?php echo esc_url( (string) ( $fill_urls['whatsapp'] ?? $wa_url ) ); ?>"
+						target="_blank"
+						rel="noopener noreferrer"
+						data-track="messenger"
+						data-channel="whatsapp"
+						data-cta-context="turciya_catalog_fill"
+						data-uon-hotel-id="TR-FILL"
+						data-hotel-name="<?php esc_attr_e( 'Индивидуальный подбор', 'zhiraf-ufa' ); ?>"
+					>
+						<?php esc_html_e( 'Подобрать в мессенджере →', 'zhiraf-ufa' ); ?>
+					</a>
+					<p class="turciya-curated-card__channels">
+						<?php if ( ! empty( $fill_urls['max'] ) ) : ?>
+							<a
+								href="<?php echo esc_url( (string) $fill_urls['max'] ); ?>"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track="messenger"
+								data-channel="max"
+								data-cta-context="turciya_catalog_fill"
+								data-uon-hotel-id="TR-FILL"
+							><?php esc_html_e( 'MAX', 'zhiraf-ufa' ); ?></a>
+						<?php endif; ?>
+						<?php if ( ! empty( $fill_urls['telegram'] ) ) : ?>
+							<a
+								href="<?php echo esc_url( (string) $fill_urls['telegram'] ); ?>"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track="messenger"
+								data-channel="telegram"
+								data-cta-context="turciya_catalog_fill"
+								data-uon-hotel-id="TR-FILL"
+							><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
+						<?php endif; ?>
+					</p>
+				</aside>
 			</div>
 
 			<div class="turciya-catalog-more" data-turciya-catalog-more-wrap hidden>
 				<button type="button" class="btn btn--outline turciya-catalog-more__btn" data-turciya-catalog-more>
-					<?php esc_html_e( 'Показать ещё отели', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Показать ещё отели из базы', 'zhiraf-ufa' ); ?>
 					<span data-turciya-catalog-more-count></span>
 				</button>
 				<p class="turciya-catalog-more__hint">

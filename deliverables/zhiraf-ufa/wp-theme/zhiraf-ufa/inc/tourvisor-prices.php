@@ -116,6 +116,188 @@ function zhiraf_ufa_tourvisor_name_key( $name ) {
 }
 
 /**
+ * Tourvisor titles drop stars, "Hotel/Resort" and "(Ex. …)".
+ * Same loose key means the same property.
+ *
+ * @param string $name Hotel title.
+ * @return string
+ */
+function zhiraf_ufa_tourvisor_loose_key( $name ) {
+	$name = preg_replace( '/\([^)]*\)/u', ' ', (string) $name );
+	$name = strtr(
+		is_string( $name ) ? $name : '',
+		array(
+			'ö' => 'o',
+			'ü' => 'u',
+			'ğ' => 'g',
+			'ş' => 's',
+			'ı' => 'i',
+			'ç' => 'c',
+			'é' => 'e',
+			'Ö' => 'o',
+			'Ü' => 'u',
+			'Ğ' => 'g',
+			'Ş' => 's',
+			'İ' => 'i',
+			'Ç' => 'c',
+			'É' => 'e',
+			'—' => ' ',
+			'–' => ' ',
+			'-' => ' ',
+		)
+	);
+	if ( function_exists( 'mb_strtolower' ) ) {
+		$name = mb_strtolower( $name, 'UTF-8' );
+	} else {
+		$name = strtolower( $name );
+	}
+	$name  = str_replace( array( '★', '*', '+', '&' ), ' ', $name );
+	$name  = preg_replace( '/[^\p{L}\s]+/u', ' ', $name );
+	$stop  = array(
+		'hotel'      => true,
+		'hotels'     => true,
+		'resort'     => true,
+		'spa'        => true,
+		'golf'       => true,
+		'beach'      => true,
+		'club'       => true,
+		'the'        => true,
+		'by'         => true,
+		'and'        => true,
+		'adults'     => true,
+		'adult'      => true,
+		'only'       => true,
+		'all'        => true,
+		'inclusive'  => true,
+		'ex'         => true,
+		'collection' => true,
+		'villas'     => true,
+		'villa'      => true,
+	);
+	$parts = preg_split( '/\s+/u', trim( (string) $name ) );
+	$keep  = array();
+	if ( is_array( $parts ) ) {
+		foreach ( $parts as $part ) {
+			if ( '' === $part || isset( $stop[ $part ] ) ) {
+				continue;
+			}
+			$len = function_exists( 'mb_strlen' ) ? mb_strlen( $part, 'UTF-8' ) : strlen( $part );
+			if ( $len < 2 ) {
+				continue;
+			}
+			$keep[] = $part;
+		}
+	}
+
+	return implode( ' ', $keep );
+}
+
+/**
+ * @return string
+ */
+function zhiraf_ufa_tourvisor_turkey_map_path() {
+	return dirname( __DIR__ ) . '/data/turkey-tourvisor-hotels.json';
+}
+
+/**
+ * Catalog id ↔ Tourvisor hotel id for the 25 Turkey cards.
+ *
+ * @return array{by_zhiraf:array<int,array<string,mixed>>,by_tv:array<int,int>,by_loose:array<string,int>}
+ */
+function zhiraf_ufa_tourvisor_turkey_map() {
+	static $map = null;
+	if ( is_array( $map ) ) {
+		return $map;
+	}
+
+	$map = array(
+		'by_zhiraf' => array(),
+		'by_tv'     => array(),
+		'by_loose'  => array(),
+	);
+	$path = zhiraf_ufa_tourvisor_turkey_map_path();
+	if ( ! is_readable( $path ) ) {
+		return $map;
+	}
+	$data   = json_decode( (string) file_get_contents( $path ), true );
+	$hotels = ( is_array( $data ) && isset( $data['hotels'] ) && is_array( $data['hotels'] ) ) ? $data['hotels'] : array();
+	$owners = array();
+	foreach ( $hotels as $hotel ) {
+		if ( ! is_array( $hotel ) ) {
+			continue;
+		}
+		$zid = isset( $hotel['zhiraf_id'] ) ? (int) $hotel['zhiraf_id'] : 0;
+		$tid = isset( $hotel['tourvisor_id'] ) ? (int) $hotel['tourvisor_id'] : 0;
+		if ( $zid <= 0 || $tid <= 0 ) {
+			continue;
+		}
+		$map['by_zhiraf'][ $zid ] = $hotel;
+		$map['by_tv'][ $tid ]     = $zid;
+		$names                    = array();
+		if ( isset( $hotel['match_names'] ) && is_array( $hotel['match_names'] ) ) {
+			$names = $hotel['match_names'];
+		}
+		if ( isset( $hotel['hotel_name'] ) ) {
+			$names[] = $hotel['hotel_name'];
+		}
+		if ( isset( $hotel['tourvisor_name'] ) ) {
+			$names[] = $hotel['tourvisor_name'];
+		}
+		foreach ( $names as $alias ) {
+			$loose = zhiraf_ufa_tourvisor_loose_key( $alias );
+			if ( '' === $loose ) {
+				continue;
+			}
+			$tokens = substr_count( $loose, ' ' ) + 1;
+			if ( $tokens < 2 && strlen( $loose ) < 8 ) {
+				continue;
+			}
+			if ( ! isset( $owners[ $loose ] ) ) {
+				$owners[ $loose ] = $zid;
+			} elseif ( (int) $owners[ $loose ] !== $zid ) {
+				$owners[ $loose ] = 0;
+			}
+		}
+	}
+	foreach ( $owners as $loose => $zid ) {
+		if ( $zid > 0 ) {
+			$map['by_loose'][ $loose ] = (int) $zid;
+		}
+	}
+
+	return $map;
+}
+
+/**
+ * Prefer the catalog id. A bare Tourvisor hotel id or a Tourvisor title still resolves.
+ *
+ * @param int    $zhiraf_id Catalog id, or a Tourvisor id the parser sent as id.
+ * @param int    $tourvisor_id Tourvisor hotel id when the parser sent it separately.
+ * @param string $hotel_name Title from either side.
+ * @return int
+ */
+function zhiraf_ufa_tourvisor_turkey_resolve_id( $zhiraf_id, $tourvisor_id, $hotel_name ) {
+	$map = zhiraf_ufa_tourvisor_turkey_map();
+	$zid = (int) $zhiraf_id;
+	$tid = (int) $tourvisor_id;
+	if ( $zid > 0 && isset( $map['by_zhiraf'][ $zid ] ) ) {
+		return $zid;
+	}
+	if ( $tid > 0 && isset( $map['by_tv'][ $tid ] ) ) {
+		return (int) $map['by_tv'][ $tid ];
+	}
+	if ( $zid > 0 && isset( $map['by_tv'][ $zid ] ) ) {
+		return (int) $map['by_tv'][ $zid ];
+	}
+	$loose = zhiraf_ufa_tourvisor_loose_key( $hotel_name );
+	if ( '' !== $loose && isset( $map['by_loose'][ $loose ] ) ) {
+		return (int) $map['by_loose'][ $loose ];
+	}
+
+	return $zid;
+}
+
+/**
  * @param array<mixed> $value Decoded JSON array.
  * @return bool
  */
@@ -183,6 +365,18 @@ function zhiraf_ufa_tourvisor_normalize_row( $row ) {
 		$id = (int) $row['zhiraf_id'];
 	} elseif ( isset( $row['id'] ) ) {
 		$id = (int) $row['id'];
+	}
+
+	$tourvisor_id = 0;
+	foreach ( array( 'tourvisor_id', 'hotelcode', 'tv_id' ) as $tv_key ) {
+		if ( isset( $row[ $tv_key ] ) && is_numeric( $row[ $tv_key ] ) ) {
+			$tourvisor_id = (int) $row[ $tv_key ];
+			break;
+		}
+	}
+	$raw_name = isset( $row['hotel_name'] ) ? (string) $row['hotel_name'] : '';
+	if ( 'turkey' === $country ) {
+		$id = zhiraf_ufa_tourvisor_turkey_resolve_id( $id, $tourvisor_id, $raw_name );
 	}
 
 	$raw_price = null;
@@ -332,6 +526,33 @@ function zhiraf_ufa_tourvisor_build_index( array $document ) {
 			}
 		}
 		$by_name[ $country ][ $name_key ] = $key;
+		$loose                            = zhiraf_ufa_tourvisor_loose_key( isset( $row['hotel_name'] ) ? $row['hotel_name'] : '' );
+		if ( '' === $loose || $loose === $name_key ) {
+			continue;
+		}
+		if ( isset( $by_name[ $country ][ $loose ] ) && $by_name[ $country ][ $loose ] !== $key ) {
+			$occupant      = $by_name[ $country ][ $loose ];
+			$occupant_name = isset( $by_key[ $occupant ]['hotel_name'] ) ? (string) $by_key[ $occupant ]['hotel_name'] : '';
+			if ( zhiraf_ufa_tourvisor_loose_key( $occupant_name ) !== $loose ) {
+				continue;
+			}
+		}
+		$row_id     = isset( $row['zhiraf_id'] ) ? (int) $row['zhiraf_id'] : 0;
+		$expected   = 0;
+		$turkey_map = array();
+		if ( 'turkey' === $country ) {
+			$turkey_map = zhiraf_ufa_tourvisor_turkey_map();
+			if ( isset( $turkey_map['by_loose'][ $loose ] ) ) {
+				$expected = (int) $turkey_map['by_loose'][ $loose ];
+			}
+		}
+		$same_hotel = ( 0 === $expected ) || $expected === $row_id;
+		if ( ! $same_hotel && isset( $turkey_map['by_tv'][ $row_id ] ) ) {
+			$same_hotel = (int) $turkey_map['by_tv'][ $row_id ] === $expected;
+		}
+		if ( $same_hotel ) {
+			$by_name[ $country ][ $loose ] = $key;
+		}
 	}
 
 	return array(
@@ -358,12 +579,32 @@ function zhiraf_ufa_tourvisor_lookup_in_index( array $index, $country, $zhiraf_i
 	}
 
 	$name_key = zhiraf_ufa_tourvisor_name_key( $hotel_name );
-	if ( '' === $name_key || '' === $country || empty( $index['by_name'][ $country ][ $name_key ] ) ) {
-		return null;
+	if ( '' !== $name_key && '' !== $country && ! empty( $index['by_name'][ $country ][ $name_key ] ) ) {
+		$key = $index['by_name'][ $country ][ $name_key ];
+		if ( isset( $index['by_key'][ $key ] ) ) {
+			return $index['by_key'][ $key ];
+		}
 	}
-	$key = $index['by_name'][ $country ][ $name_key ];
 
-	return isset( $index['by_key'][ $key ] ) ? $index['by_key'][ $key ] : null;
+	$loose = zhiraf_ufa_tourvisor_loose_key( $hotel_name );
+	if ( '' !== $loose && '' !== $country && ! empty( $index['by_name'][ $country ][ $loose ] ) ) {
+		$key = $index['by_name'][ $country ][ $loose ];
+		if ( isset( $index['by_key'][ $key ] ) ) {
+			return $index['by_key'][ $key ];
+		}
+	}
+
+	if ( 'turkey' === $country && '' !== $loose ) {
+		$map = zhiraf_ufa_tourvisor_turkey_map();
+		if ( isset( $map['by_loose'][ $loose ] ) ) {
+			$key = $country . ':' . (int) $map['by_loose'][ $loose ];
+			if ( isset( $index['by_key'][ $key ] ) ) {
+				return $index['by_key'][ $key ];
+			}
+		}
+	}
+
+	return null;
 }
 
 /**
@@ -877,6 +1118,7 @@ function zhiraf_ufa_tourvisor_admin_page() {
 		<h2><?php esc_html_e( 'Тело POST', 'zhiraf-ufa' ); ?></h2>
 		<pre><?php echo esc_html( '{"generated_at":"2026-11-15T06:00:00Z","prices":{"turkey:1":{"country_slug":"turkey","zhiraf_id":1,"hotel_name":"Paloma Oceana 5*","place":"Сиде","price_rub":145000,"nights":7,"adults":2,"departure_city":"Уфа","departure_date":"2026-06-12","meal":"AI"}}}' ); ?></pre>
 		<p class="description"><?php esc_html_e( 'Ключ — country_slug:zhiraf_id. Допустимы и массив prices, и price_rur вместо price_rub. Токен из тела в файл не пишется.', 'zhiraf-ufa' ); ?></p>
+		<p class="description"><?php esc_html_e( '25 отелей Турции лежат в data/turkey-tourvisor-hotels.json: в поиск Tourvisor передавать tourvisor_id, в этот JSON — zhiraf_id. Имя как в базе Tourvisor тоже склеивается с карточкой.', 'zhiraf-ufa' ); ?></p>
 	</div>
 	<?php
 }

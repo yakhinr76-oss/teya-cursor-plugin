@@ -86,6 +86,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 </div>
 
 <?php get_template_part( 'template-parts/quiz', 'modal' ); ?>
+<?php get_template_part( 'template-parts/hotel-inquiry', 'modal' ); ?>
 
 <?php
 $metrika_id = trim( (string) get_theme_mod( 'zhiraf_metrika_id', '45658173' ) );

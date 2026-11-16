@@ -300,29 +300,63 @@ function zhiraf_ufa_form_respond( $res, $success ) {
  */
 function zhiraf_ufa_ajax_lead() {
 	zhiraf_ufa_form_guard( 'lead', 8 );
-	$phone_only = ! empty( $_POST['phone_only'] ) || ! empty( $_POST['contact_channel'] ); // phpcs:ignore WordPress.Security.NonceVerification
-	$contact    = zhiraf_ufa_validate_contact( ! $phone_only );
+	$hotel_inquiry = ! empty( $_POST['hotel_inquiry'] ); // phpcs:ignore WordPress.Security.NonceVerification
+	$phone_only    = ! empty( $_POST['phone_only'] ) || ! empty( $_POST['contact_channel'] ); // phpcs:ignore WordPress.Security.NonceVerification
+	$contact       = zhiraf_ufa_validate_contact( ( $phone_only || $hotel_inquiry ) ? false : true );
 	if ( is_wp_error( $contact ) ) {
 		wp_send_json_error( array( 'message' => $contact->get_error_message() ), 400 );
 	}
-	$values = zhiraf_ufa_collect_fields(
-		array(
-			'name'             => 'Имя',
-			'phone'            => 'Телефон',
-			'email'            => 'Email',
-			'message'          => 'Сообщение',
-			'tour'             => 'Тур',
-			'destination'      => 'Направление',
-			'destination_slug'   => 'Slug направления',
-			'express_pick'       => 'Экспресс-подбор',
-			'contact_channel'  => 'Куда отправить подборку',
-			'hot_destination'  => 'Направление (горящие)',
-			'hot_budget'       => 'Бюджет (горящие)',
-			'hot_dates'        => 'Даты вылета (горящие)',
-			'ai_travelers'     => 'Состав (AI)',
-			'ai_month'         => 'Месяц (AI)',
-		)
+	$field_map = array(
+		'name'               => 'Имя',
+		'phone'              => 'Телефон',
+		'email'              => 'Email',
+		'message'            => 'Сообщение',
+		'tour'               => 'Тур',
+		'destination'        => 'Направление',
+		'destination_slug'   => 'Slug направления',
+		'express_pick'       => 'Экспресс-подбор',
+		'contact_channel'    => 'Куда отправить подборку',
+		'hotel_messenger'    => 'Канал (выбор в форме)',
+		'hotel_name'         => 'Отель',
+		'uon_hotel_id'       => 'ID отеля (CRM)',
+		'hotel_timing'       => 'Период вылета',
+		'hot_destination'    => 'Направление (горящие)',
+		'hot_budget'         => 'Бюджет (горящие)',
+		'hot_dates'          => 'Даты вылета (горящие)',
+		'ai_travelers'       => 'Состав (AI)',
+		'ai_month'           => 'Месяц (AI)',
 	);
+	$values    = zhiraf_ufa_collect_fields( $field_map );
+	if ( $hotel_inquiry ) {
+		$channel = '';
+		if ( ! empty( $values['Канал (выбор в форме)'] ) ) {
+			$channel = (string) $values['Канал (выбор в форме)'];
+		} elseif ( ! empty( $values['Куда отправить подборку'] ) ) {
+			$channel = (string) $values['Куда отправить подборку'];
+		}
+		if ( '' !== $channel ) {
+			$values['Куда отправить подборку'] = $channel;
+		}
+		unset( $values['Канал (выбор в форме)'] );
+		$hotel_name = ! empty( $values['Отель'] ) ? (string) $values['Отель'] : '';
+		$uon_id     = ! empty( $values['ID отеля (CRM)'] ) ? (string) $values['ID отеля (CRM)'] : '';
+		$timing     = ! empty( $values['Период вылета'] ) ? (string) $values['Период вылета'] : '';
+		$msg_lines  = array( __( 'Запрос расчёта по отелю с каталога.', 'zhiraf-ufa' ) );
+		if ( '' !== $hotel_name ) {
+			$msg_lines[] = __( 'Отель', 'zhiraf-ufa' ) . ': ' . $hotel_name;
+		}
+		if ( '' !== $uon_id ) {
+			$msg_lines[] = __( 'Код', 'zhiraf-ufa' ) . ': ' . $uon_id;
+		}
+		if ( '' !== $timing ) {
+			$msg_lines[] = __( 'Период вылета', 'zhiraf-ufa' ) . ': ' . $timing;
+		}
+		if ( ! empty( $values['Куда отправить подборку'] ) ) {
+			$msg_lines[] = __( 'Канал', 'zhiraf-ufa' ) . ': ' . $values['Куда отправить подборку'];
+		}
+		$values['Сообщение'] = implode( '. ', $msg_lines );
+		$values['Тур']       = __( 'Турция — каталог отелей', 'zhiraf-ufa' );
+	}
 	if ( ! empty( $values['Состав (AI)'] ) || ! empty( $values['Месяц (AI)'] ) ) {
 		$parts = array_filter(
 			array(
@@ -365,15 +399,43 @@ function zhiraf_ufa_ajax_lead() {
 		}
 	}
 	$subject = 'Заявка на подбор тура';
-	if ( ! empty( $values['Тур'] ) && false !== mb_stripos( (string) $values['Тур'], 'горящ', 0, 'UTF-8' ) ) {
+	if ( $hotel_inquiry ) {
+		$hotel_label = ! empty( $values['Отель'] ) ? (string) $values['Отель'] : __( 'отель', 'zhiraf-ufa' );
+		$subject     = 'Отель: запрос дат/цены — ' . $hotel_label;
+	} elseif ( ! empty( $values['Тур'] ) && false !== mb_stripos( (string) $values['Тур'], 'горящ', 0, 'UTF-8' ) ) {
 		$subject = 'Горящий тур: мониторинг / заявка';
 	} elseif ( ! empty( $values['Тур'] ) && false !== mb_stripos( (string) $values['Тур'], 'всё включено', 0, 'UTF-8' ) ) {
 		$subject = 'All Inclusive: подбор семейного отеля';
 	}
-	$res = zhiraf_ufa_store_and_mail_lead( 'lead', $subject, $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
+	$form_key = $hotel_inquiry ? 'hotel-inquiry' : 'lead';
+	$res      = zhiraf_ufa_store_and_mail_lead( $form_key, $subject, $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
 	if ( $res['id'] && class_exists( 'Zhiraf_UON_CRM' ) ) {
 		$crm = new Zhiraf_UON_CRM();
 		$crm->send_lead( $values );
+	}
+	if ( $hotel_inquiry && ( $res['id'] || $res['mail'] ) ) {
+		$hotel_name = ! empty( $values['Отель'] ) ? (string) $values['Отель'] : '';
+		$uon_id     = ! empty( $values['ID отеля (CRM)'] ) ? (string) $values['ID отеля (CRM)'] : '';
+		$timing     = ! empty( $values['Период вылета'] ) ? (string) $values['Период вылета'] : '';
+		$channel    = ! empty( $values['Куда отправить подборку'] ) ? (string) $values['Куда отправить подборку'] : 'WhatsApp';
+		$prefill    = function_exists( 'zhiraf_ufa_hotel_inquiry_messenger_prefill' )
+			? zhiraf_ufa_hotel_inquiry_messenger_prefill( $hotel_name, $timing, $uon_id )
+			: '';
+		$urls       = function_exists( 'zhiraf_ufa_turciya_messenger_channel_urls' )
+			? zhiraf_ufa_turciya_messenger_channel_urls( $prefill )
+			: array();
+		$key        = function_exists( 'zhiraf_ufa_hotel_inquiry_channel_key' )
+			? zhiraf_ufa_hotel_inquiry_channel_key( $channel )
+			: 'whatsapp';
+		$messenger  = ! empty( $urls[ $key ] ) ? (string) $urls[ $key ] : '';
+		wp_send_json_success(
+			array(
+				'message'       => __( 'Заявка принята! Откроется чат с готовым текстом — можно дописать детали.', 'zhiraf-ufa' ),
+				'messenger_url' => $messenger,
+				'channel'       => $channel,
+				'uon_hotel_id'  => $uon_id,
+			)
+		);
 	}
 	zhiraf_ufa_form_respond( $res, __( 'Спасибо! Заявка принята, менеджер перезвонит в рабочее время.', 'zhiraf-ufa' ) );
 }

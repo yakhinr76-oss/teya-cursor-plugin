@@ -1,0 +1,73 @@
+/* Hotel inquiry modal (Turkey catalog + reuse) */
+
+.hotel-inquiry-modal__subtitle {
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.hotel-inquiry-modal__subtitle [data-hotel-inquiry-name] {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.hotel-inquiry-modal__timing {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.hotel-inquiry-modal__timing-label {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.hotel-inquiry-modal__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hotel-inquiry-modal__chips .quiz-chip {
+  flex: 1 1 calc(50% - 4px);
+  min-width: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (min-width: 480px) {
+  .hotel-inquiry-modal__chips .quiz-chip {
+    flex: 1 1 auto;
+  }
+}
+
+.hotel-inquiry-modal__phone {
+  margin-bottom: 16px;
+}
+
+.hotel-inquiry-modal__status {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.hotel-inquiry-modal__success[hidden] {
+  display: none !important;
+}
+
+.hotel-inquiry-modal__success-lead {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.hotel-inquiry-modal__done {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.turciya-curated-card__cta--modal {
+  width: 100%;
+}

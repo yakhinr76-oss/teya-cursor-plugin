@@ -602,6 +602,44 @@ function zhiraf_ufa_turciya_pool_card_caveat( $row ) {
  * @param array<string,mixed>|null $tour   Optional BG tour row.
  * @return string
  */
+function zhiraf_ufa_hotel_inquiry_messenger_prefill( $hotel_name, $timing = '', $uon_id = '' ) {
+	$hotel_name = trim( (string) $hotel_name );
+	$timing     = trim( (string) $timing );
+	$uon_id     = trim( (string) $uon_id );
+	if ( '' === $hotel_name ) {
+		$hotel_name = __( 'отель', 'zhiraf-ufa' );
+	}
+	$period = '' !== $timing ? $timing : __( 'даты уточняю', 'zhiraf-ufa' );
+	$code   = '' !== $uon_id ? $uon_id : '';
+
+	return sprintf(
+		/* translators: 1: hotel name, 2: departure period, 3: TR code */
+		__( 'Здравствуйте! Интересует расчёт по отелю %1$s (вылет из Уфы, %2$s). Код: %3$s', 'zhiraf-ufa' ),
+		$hotel_name,
+		$period,
+		$code
+	);
+}
+
+/**
+ * Map UI channel label to messenger URL key.
+ *
+ * @param string $channel MAX|WhatsApp|Telegram.
+ * @return string whatsapp|max|telegram
+ */
+function zhiraf_ufa_hotel_inquiry_channel_key( $channel ) {
+	$channel = sanitize_text_field( (string) $channel );
+	switch ( $channel ) {
+		case 'MAX':
+			return 'max';
+		case 'Telegram':
+			return 'telegram';
+		case 'WhatsApp':
+		default:
+			return 'whatsapp';
+	}
+}
+
 function zhiraf_ufa_turciya_curated_messenger_prefill( $hotel_name, $tour = null, $uon_id = '' ) {
 	$hotel_name = trim( (string) $hotel_name );
 	$uon_id     = trim( (string) $uon_id );

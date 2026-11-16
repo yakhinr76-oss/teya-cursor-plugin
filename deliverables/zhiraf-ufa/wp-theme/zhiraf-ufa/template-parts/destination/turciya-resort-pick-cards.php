@@ -16,6 +16,16 @@ $cards = function_exists( 'zhiraf_ufa_turciya_resort_pick_cards' )
 if ( empty( $cards ) ) {
 	return;
 }
+
+$filter_meta = array();
+if ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ) {
+	foreach ( zhiraf_ufa_turciya_catalog_filters() as $filter ) {
+		$fid = ! empty( $filter['id'] ) ? (string) $filter['id'] : '';
+		if ( '' !== $fid ) {
+			$filter_meta[ $fid ] = $filter;
+		}
+	}
+}
 ?>
 <div class="turciya-resort-pick" id="dest-resort-compare" aria-labelledby="turciya-resort-pick-title">
 	<div class="turciya-resort-pick__head">
@@ -43,6 +53,9 @@ if ( empty( $cards ) ) {
 				$card_class .= ' turciya-resort-pick__card--featured';
 			}
 			$catalog_filter = 'resort-' . $id;
+			$meta           = isset( $filter_meta[ $catalog_filter ] ) ? $filter_meta[ $catalog_filter ] : array();
+			$catalog_title  = ! empty( $meta['title'] ) ? (string) $meta['title'] : '';
+			$catalog_desc   = ! empty( $meta['desc'] ) ? (string) $meta['desc'] : '';
 			$transfer_mod   = ! empty( $card['transfer_mod'] ) ? sanitize_html_class( (string) $card['transfer_mod'] ) : '';
 			$guide_url      = ! empty( $card['guide_url'] ) ? (string) $card['guide_url'] : '';
 			$guide_label    = ! empty( $card['guide_label'] ) ? (string) $card['guide_label'] : __( 'Подробный гид по курорту →', 'zhiraf-ufa' );
@@ -55,6 +68,8 @@ if ( empty( $cards ) ) {
 					class="turciya-resort-pick__card-hit"
 					data-turciya-pick-card
 					data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
+					data-catalog-title="<?php echo esc_attr( $catalog_title ); ?>"
+					data-catalog-desc="<?php echo esc_attr( $catalog_desc ); ?>"
 					aria-pressed="false"
 				>
 					<span class="turciya-resort-pick__card-top">
@@ -98,6 +113,8 @@ if ( empty( $cards ) ) {
 						type="button"
 						class="turciya-resort-pick__filter-cta"
 						data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
+						data-catalog-title="<?php echo esc_attr( $catalog_title ); ?>"
+						data-catalog-desc="<?php echo esc_attr( $catalog_desc ); ?>"
 					>
 						<?php echo esc_html( $filter_cta ); ?>
 					</button>

@@ -1242,6 +1242,56 @@
   margin-top: 0.75rem;
 }
 
+.turciya-catalog-fill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 100%;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  background: #faf6f3;
+  border: 2px dashed rgba(200, 90, 50, 0.55);
+  border-radius: 1.25rem;
+}
+
+.turciya-catalog-fill[hidden] {
+  display: none !important;
+}
+
+.turciya-catalog-fill__badge {
+  align-self: center;
+  margin: 0;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.turciya-catalog-fill__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.turciya-catalog-fill__text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #57534e;
+}
+
+.turciya-catalog-fill__cta {
+  width: 100%;
+  min-height: 48px;
+}
+
 .turciya-curated-card__media {
   position: relative;
   height: 12rem;
@@ -1452,6 +1502,25 @@
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 2px 0 rgba(120, 50, 20, 0.35);
+}
+
+.turciya-curated-card__channels {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.turciya-curated-card__channels a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.turciya-curated-card__channels a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 .turciya-expert-nuances__grid {

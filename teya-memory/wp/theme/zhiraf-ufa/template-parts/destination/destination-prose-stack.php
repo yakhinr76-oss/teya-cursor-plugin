@@ -190,22 +190,40 @@ if ( empty( $dest ) ) {
 
 			<?php if ( ! empty( $dest['resort_links'] ) || ! empty( $dest['blog_links'] ) ) : ?>
 				<?php if ( ! empty( $dest['resort_links'] ) ) : ?>
-					<div class="dest-seo-tags" role="list" aria-label="<?php esc_attr_e( 'Курорты направления', 'zhiraf-ufa' ); ?>">
-						<?php foreach ( $dest['resort_links'] as $link ) : ?>
-							<?php
-							$chip_label = (string) ( $link['label'] ?? '' );
-							?>
-							<a
-								class="dest-seo-tag"
-								href="<?php echo esc_url( $link['url'] ); ?>"
-								role="listitem"
-							>
-								<span class="dest-seo-tag__title"><?php echo esc_html( $chip_label ); ?></span>
-								<?php if ( ! empty( $link['desc'] ) ) : ?>
-									<span class="dest-seo-tag__desc"><?php echo esc_html( $link['desc'] ); ?></span>
-								<?php endif; ?>
-							</a>
-						<?php endforeach; ?>
+					<div class="dest-resort-link-hub">
+						<p class="dest-resort-link-hub__label"><?php esc_html_e( 'Курорты направления', 'zhiraf-ufa' ); ?></p>
+						<div class="dest-resort-link-grid" role="list">
+							<?php foreach ( $dest['resort_links'] as $link ) : ?>
+								<?php
+								$label = (string) ( $link['label'] ?? '' );
+								$title = $label;
+								if ( preg_match( '/^Туры в (.+) из Уфы$/u', $label, $m ) ) {
+									$title = $m[1];
+								}
+								?>
+								<a
+									class="dest-resort-link-card"
+									href="<?php echo esc_url( $link['url'] ); ?>"
+									role="listitem"
+								>
+									<span class="dest-resort-link-card__body">
+										<span class="dest-resort-link-card__title">
+											<?php
+											printf(
+												/* translators: %s: resort name */
+												esc_html__( 'Туры в %s из Уфы', 'zhiraf-ufa' ),
+												esc_html( $title )
+											);
+											?>
+										</span>
+										<?php if ( ! empty( $link['desc'] ) ) : ?>
+											<span class="dest-resort-link-card__subtitle"><?php echo esc_html( $link['desc'] ); ?></span>
+										<?php endif; ?>
+									</span>
+									<span class="dest-resort-link-card__arrow" aria-hidden="true">→</span>
+								</a>
+							<?php endforeach; ?>
+						</div>
 					</div>
 				<?php endif; ?>
 				<?php if ( ! empty( $dest['blog_links'] ) && is_array( $dest['blog_links'] ) ) : ?>

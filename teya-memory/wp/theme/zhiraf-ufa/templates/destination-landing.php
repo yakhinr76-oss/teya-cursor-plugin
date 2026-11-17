@@ -80,10 +80,36 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					<p class="dest-landing-hero__cta-hint"><?php echo esc_html( $dest['hero_cta_hint'] ); ?></p>
 				<?php endif; ?>
 				<?php if ( $use_curated_landing ) : ?>
+					<?php
+					$curated_trust = ! empty( $dest['curated_hero_trust'] ) && is_array( $dest['curated_hero_trust'] )
+						? $dest['curated_hero_trust']
+						: array(
+							array(
+								'icon' => '✈️',
+								'text' => __( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ),
+							),
+							array(
+								'icon' => '📅',
+								'text' => __( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ),
+							),
+							array(
+								'icon' => '🛡️',
+								'text' => __( 'Честные цены (включая топливные сборы и страховку)', 'zhiraf-ufa' ),
+							),
+						);
+					?>
 					<ul class="dest-landing-hero__trust">
-						<li><span aria-hidden="true">✈️</span> <?php esc_html_e( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ); ?></li>
-						<li><span aria-hidden="true">📅</span> <?php esc_html_e( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ); ?></li>
-						<li><span aria-hidden="true">🛡️</span> <?php esc_html_e( 'Честные цены (включая топливные сборы и страховку)', 'zhiraf-ufa' ); ?></li>
+						<?php foreach ( $curated_trust as $trust_row ) : ?>
+							<?php if ( empty( $trust_row['text'] ) ) : ?>
+								<?php continue; ?>
+							<?php endif; ?>
+							<li>
+								<?php if ( ! empty( $trust_row['icon'] ) ) : ?>
+									<span aria-hidden="true"><?php echo esc_html( $trust_row['icon'] ); ?></span>
+								<?php endif; ?>
+								<?php echo esc_html( $trust_row['text'] ); ?>
+							</li>
+						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>
 			</div>
@@ -210,7 +236,16 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php if ( $use_curated_landing ) : ?>
-		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
+		<?php
+		get_template_part(
+			'template-parts/destination/turciya-resort-compare-lead',
+			null,
+			array(
+				'dest'      => $dest,
+				'dest_slug' => $dest_slug,
+			)
+		);
+		?>
 	<?php endif; ?>
 
 	<?php if ( ! $use_curated_landing ) : ?>

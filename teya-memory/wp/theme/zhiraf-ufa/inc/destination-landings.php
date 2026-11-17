@@ -32,6 +32,21 @@ function zhiraf_ufa_destination_landing_data() {
 			'curated_kids_section'   => true,
 			'curated_expert_section' => true,
 			'curated_compare_btn_default' => __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ),
+			'curated_compare_lead_default' => __( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' ),
+			'curated_hero_trust' => array(
+				array(
+					'icon' => '✈️',
+					'text' => __( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => '📅',
+					'text' => __( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => '🛡️',
+					'text' => __( 'Честные цены (включая топливные сборы и страховку)', 'zhiraf-ufa' ),
+				),
+			),
 			'hide_landing_prose' => false,
 			'seo_prose_after_faq' => true,
 			'h1'             => __( 'Туры в Турцию из Уфы', 'zhiraf-ufa' ),
@@ -147,6 +162,48 @@ function zhiraf_ufa_destination_landing_data() {
 			),
 		),
 		'oae'      => array(
+			'curated_landing_v1'           => true,
+			'seo_prose_after_faq'          => true,
+			'seo_prose_accordions'         => true,
+			'prose_accordion_title'        => __( 'Подробнее об эмиратах, сезоне и пакете', 'zhiraf-ufa' ),
+			'curated_compare_btn_default'  => __( 'Сравнить Дубай и Рас-эль-Хайму', 'zhiraf-ufa' ),
+			'curated_compare_lead_default' => __( 'Сравним Дубай и Рас-эль-Хайму под ваш бюджет за 15 минут', 'zhiraf-ufa' ),
+			'curated_hero_trust'           => array(
+				array(
+					'icon' => '✈️',
+					'text' => __( 'Перелёт из Уфы ~4,5–5 часов (прямой рейс или удобная стыковка)', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => '🛂',
+					'text' => __( 'Без визы — штамп на 90 дней при въезде', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => '🛡️',
+					'text' => __( 'Прозрачные цены: туристический налог и депозиты отеля — заранее в подборке', 'zhiraf-ufa' ),
+				),
+			),
+			'resort_links'                 => array(
+				array(
+					'label' => __( 'Туры в Дубай из Уфы', 'zhiraf-ufa' ),
+					'url'   => home_url( '/tour/oae/' ),
+					'desc'  => __( 'Город, марина, JBR и отели у моря — для пар и активного отдыха.', 'zhiraf-ufa' ),
+				),
+				array(
+					'label' => __( 'Туры в Рас-эль-Хайму из Уфы', 'zhiraf-ufa' ),
+					'url'   => home_url( '/tour/oae/' ),
+					'desc'  => __( 'Широкие пляжи и отели All Inclusive — спокойный курорт у залива.', 'zhiraf-ufa' ),
+				),
+				array(
+					'label' => __( 'Туры в Шарджу из Уфы', 'zhiraf-ufa' ),
+					'url'   => home_url( '/tour/oae/' ),
+					'desc'  => __( 'Семейные пляжи рядом с Дубаем, спокойнее и доступнее по цене.', 'zhiraf-ufa' ),
+				),
+				array(
+					'label' => __( 'Туры в Абу-Даби из Уфы', 'zhiraf-ufa' ),
+					'url'   => home_url( '/tour/oae/' ),
+					'desc'  => __( 'Культура, остров Яс и парки — формат «город + пляж».', 'zhiraf-ufa' ),
+				),
+			),
 			'landing_module'      => 'season',
 			'climate_module_title' => __( 'Когда ехать в ОАЭ: климат по сезонам', 'zhiraf-ufa' ),
 			'name'           => __( 'ОАЭ', 'zhiraf-ufa' ),

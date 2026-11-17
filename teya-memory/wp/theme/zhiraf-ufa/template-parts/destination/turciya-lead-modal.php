@@ -9,12 +9,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
-	? zhiraf_ufa_turciya_resort_compare_wa_text()
-	: __( 'Здравствуйте! Сравните, пожалуйста, Кемер и Сиде под наш бюджет — вылет из Уфы, семья с детьми.', 'zhiraf-ufa' );
+$dest      = isset( $args['dest'] ) && is_array( $args['dest'] ) ? $args['dest'] : array();
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+if ( empty( $dest ) && function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+	$dest = zhiraf_ufa_get_destination_landing( $dest_slug );
+	if ( is_array( $dest ) ) {
+		$dest_slug = ! empty( $dest['slug'] ) ? $dest['slug'] : $dest_slug;
+	} else {
+		$dest = array();
+	}
+}
+
+if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_compare_wa_text' ) ) {
+	$wa_text = zhiraf_ufa_oae_resort_compare_wa_text();
+} elseif ( function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' ) ) {
+	$wa_text = zhiraf_ufa_turciya_resort_compare_wa_text();
+} else {
+	$wa_text = __( 'Здравствуйте! Сравните, пожалуйста, Кемер и Сиде под наш бюджет — вылет из Уфы, семья с детьми.', 'zhiraf-ufa' );
+}
 
 $compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
-$modal_title   = ! empty( $compare_title ) ? $compare_title : __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
+if ( ! empty( $compare_title ) ) {
+	$modal_title = $compare_title;
+} elseif ( ! empty( $dest['curated_compare_lead_default'] ) ) {
+	$modal_title = (string) $dest['curated_compare_lead_default'];
+} else {
+	$modal_title = __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
+}
+
+$default_tour = ! empty( $dest['quiz_prefill'] )
+	? (string) $dest['quiz_prefill']
+	: __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' );
 ?>
 <div
 	id="turciya-lead-modal"
@@ -24,7 +49,7 @@ $modal_title   = ! empty( $compare_title ) ? $compare_title : __( 'Сравни�
 	aria-labelledby="turciya-lead-modal-title"
 	data-default-title="<?php echo esc_attr( $modal_title ); ?>"
 	data-default-lead="<?php echo esc_attr__( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>"
-	data-default-tour="<?php echo esc_attr__( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' ); ?>"
+	data-default-tour="<?php echo esc_attr( $default_tour ); ?>"
 	data-default-message="<?php echo esc_attr( $wa_text ); ?>"
 	hidden
 	inert

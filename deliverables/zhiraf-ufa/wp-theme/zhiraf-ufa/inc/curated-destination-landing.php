@@ -30,6 +30,9 @@ function zhiraf_ufa_curated_catalog_hotels( $dest_slug ) {
 	if ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_catalog_hotels' ) ) {
 		return zhiraf_ufa_turciya_catalog_hotels();
 	}
+	if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_hotels' ) ) {
+		return zhiraf_ufa_oae_catalog_hotels();
+	}
 
 	/**
 	 * Filter curated hotels for a destination (non-Turkey rollout).
@@ -50,6 +53,9 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 	$dest_slug = sanitize_key( (string) $dest_slug );
 	if ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ) {
 		return zhiraf_ufa_turciya_catalog_default_copy();
+	}
+	if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_default_copy' ) ) {
+		return zhiraf_ufa_oae_catalog_default_copy();
 	}
 
 	/**

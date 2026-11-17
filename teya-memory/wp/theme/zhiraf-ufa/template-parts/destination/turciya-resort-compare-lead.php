@@ -8,6 +8,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$dest = isset( $args['dest'] ) && is_array( $args['dest'] ) ? $args['dest'] : array();
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
 ?>
 <section class="section turciya-compare-lead" id="dest-inquiry">
 	<div class="container container--narrow turciya-compare-lead__inner">
@@ -16,6 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
 			if ( ! empty( $compare_title ) ) {
 				echo esc_html( $compare_title );
+			} elseif ( ! empty( $dest['curated_compare_lead_default'] ) ) {
+				echo esc_html( $dest['curated_compare_lead_default'] );
 			} else {
 				esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' );
 			}
@@ -35,4 +40,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</button>
 	</div>
 </section>
-<?php get_template_part( 'template-parts/destination/turciya-lead-modal' ); ?>
+<?php
+get_template_part(
+	'template-parts/destination/turciya-lead-modal',
+	null,
+	array(
+		'dest'      => $dest,
+		'dest_slug' => $dest_slug,
+	)
+);
+?>

@@ -19,3 +19,13 @@
 | Китай, Индия, Индонезия, Мальдивы, Сейшелы | battle (Москва) |
 
 Конфиг: `inc/destination-landing-config.php` → `zhiraf_ufa_destination_default_module_map()`.
+
+---
+
+## Curated landing v1 (эталон — Турция)
+
+Для направлений с `curated_landing_v1 => true` в `inc/destination-landings.php` используется отдельный layout: 6 отелей, модалка заявки, FAQ-панель, SEO-хвост. **Не привязан к slug `turciya`** — любая страна с флагом и данными каталога.
+
+Полный чеклист, ACF, порядок блоков и тираж: **[CURATED-LANDING-V1-ETALON.md](./CURATED-LANDING-V1-ETALON.md)**.
+
+Хелперы: `inc/curated-destination-landing.php` — `zhiraf_ufa_destination_uses_curated_landing()`, `zhiraf_ufa_curated_catalog_hotels( $slug )`.

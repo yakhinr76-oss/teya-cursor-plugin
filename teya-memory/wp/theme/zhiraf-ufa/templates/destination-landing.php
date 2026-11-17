@@ -16,7 +16,12 @@ if ( empty( $dest_slug ) ) {
 }
 $central_module      = 'battle';
 $dest_show_resort_compare_in_prose = false;
-$use_turciya_curated = ( 'turciya' === $dest_slug ) && ! empty( $dest['curated_landing_v1'] );
+$use_curated_landing = function_exists( 'zhiraf_ufa_destination_uses_curated_landing' )
+	? zhiraf_ufa_destination_uses_curated_landing( $dest )
+	: ! empty( $dest['curated_landing_v1'] );
+$curated_has_catalog = $use_curated_landing
+	&& function_exists( 'zhiraf_ufa_curated_catalog_hotels' )
+	&& ! empty( zhiraf_ufa_curated_catalog_hotels( $dest_slug ) );
 $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	? zhiraf_ufa_merge_faq_lists( ! empty( $dest['faq'] ) ? $dest['faq'] : array() )
 	: ( ! empty( $dest['faq'] ) ? $dest['faq'] : array() );
@@ -44,7 +49,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>
-				<?php if ( $use_turciya_curated ) : ?>
+				<?php if ( $use_curated_landing && ! empty( $dest['curated_resort_chips'] ) ) : ?>
 					<?php
 					get_template_part(
 						'template-parts/destination/turciya-resort-chips',
@@ -54,13 +59,18 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					?>
 				<?php endif; ?>
 				<div class="dest-landing-hero__actions">
-					<?php if ( $use_turciya_curated ) : ?>
-						<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
+					<?php if ( $use_curated_landing ) : ?>
+						<?php if ( $curated_has_catalog ) : ?>
+							<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
+						<?php endif; ?>
 						<?php
 						$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
+						if ( empty( $hero_compare_btn ) && ! empty( $dest['curated_compare_btn_default'] ) ) {
+							$hero_compare_btn = (string) $dest['curated_compare_btn_default'];
+						}
 						$hero_compare_btn = ! empty( $hero_compare_btn ) ? $hero_compare_btn : __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' );
 						?>
-						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
+						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open data-curated-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
 					<?php else : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
 						<a class="btn btn--outline btn--lg" href="#dest-price-tiers"><?php esc_html_e( 'Ценовые ориентиры', 'zhiraf-ufa' ); ?></a>
@@ -69,7 +79,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				<?php if ( ! empty( $dest['hero_cta_hint'] ) ) : ?>
 					<p class="dest-landing-hero__cta-hint"><?php echo esc_html( $dest['hero_cta_hint'] ); ?></p>
 				<?php endif; ?>
-				<?php if ( $use_turciya_curated ) : ?>
+				<?php if ( $use_curated_landing ) : ?>
 					<ul class="dest-landing-hero__trust">
 						<li><span aria-hidden="true">✈️</span> <?php esc_html_e( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ); ?></li>
 						<li><span aria-hidden="true">📅</span> <?php esc_html_e( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ); ?></li>
@@ -100,10 +110,25 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		</section>
 	<?php endif; ?>
 
-	<?php if ( $use_turciya_curated ) : ?>
-		<?php get_template_part( 'template-parts/destination/turciya-curated-showcase' ); ?>
-		<?php get_template_part( 'template-parts/sections/kids-turkey' ); ?>
-		<?php get_template_part( 'template-parts/destination/turciya-expert-nuances' ); ?>
+	<?php if ( $use_curated_landing ) : ?>
+		<?php
+		if ( $curated_has_catalog ) {
+			get_template_part(
+				'template-parts/destination/turciya-curated-showcase',
+				null,
+				array(
+					'dest_slug' => $dest_slug,
+					'dest'      => $dest,
+				)
+			);
+		}
+		if ( ! empty( $dest['curated_kids_section'] ) ) {
+			get_template_part( 'template-parts/sections/kids-turkey' );
+		}
+		if ( ! empty( $dest['curated_expert_section'] ) ) {
+			get_template_part( 'template-parts/destination/turciya-expert-nuances' );
+		}
+		?>
 	<?php else : ?>
 	<?php
 	if ( function_exists( 'zhiraf_ufa_render_landing_conversion_stack' ) ) {
@@ -113,7 +138,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php
-	if ( ! $use_turciya_curated ) {
+	if ( ! $use_curated_landing ) {
 	$hotels_showcases = function_exists( 'zhiraf_ufa_hotels_showcase_for_destinations' )
 		? zhiraf_ufa_hotels_showcase_for_destinations()
 		: array();
@@ -149,7 +174,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php if ( ! empty( $dest_faq_items ) ) : ?>
-	<section class="section dest-landing-faq<?php echo $use_turciya_curated ? ' dest-landing-faq--panel' : ''; ?>">
+	<section class="section dest-landing-faq<?php echo $use_curated_landing ? ' dest-landing-faq--panel' : ''; ?>">
 		<div class="container container--narrow">
 			<h2 class="section-title">
 				<?php
@@ -161,7 +186,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				?>
 			</h2>
 			<div class="dest-landing-faq__panel">
-				<div class="faq-home__list<?php echo $use_turciya_curated ? ' faq-home__list--panel' : ''; ?>">
+				<div class="faq-home__list<?php echo $use_curated_landing ? ' faq-home__list--panel' : ''; ?>">
 					<?php foreach ( $dest_faq_items as $item ) : ?>
 						<details class="faq-home__item">
 							<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
@@ -184,11 +209,11 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		<?php get_template_part( 'template-parts/destination/destination-prose-stack', null, $dest_prose_args ); ?>
 	<?php endif; ?>
 
-	<?php if ( $use_turciya_curated ) : ?>
+	<?php if ( $use_curated_landing ) : ?>
 		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
 	<?php endif; ?>
 
-	<?php if ( ! $use_turciya_curated ) : ?>
+	<?php if ( ! $use_curated_landing ) : ?>
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
@@ -255,7 +280,8 @@ get_template_part(
 	array(
 		'wa_text'           => sprintf( __( 'Здравствуйте! Нужен подбор тура: %s', 'zhiraf-ufa' ), $dest['quiz_prefill'] ?? $dest_slug ),
 		'quiz_prefill'      => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
-		'use_turciya_modal' => $use_turciya_curated,
+		'use_curated_modal'   => $use_curated_landing,
+		'use_turciya_modal'   => $use_curated_landing,
 	)
 );
 ?>

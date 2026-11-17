@@ -27,7 +27,11 @@ function zhiraf_ufa_destination_landing_data() {
 	return array_merge( array(
 		'turciya'  => array(
 			'name'           => __( 'Турция', 'zhiraf-ufa' ),
-			'curated_landing_v1' => true,
+			'curated_landing_v1'     => true,
+			'curated_resort_chips'   => true,
+			'curated_kids_section'   => true,
+			'curated_expert_section' => true,
+			'curated_compare_btn_default' => __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ),
 			'hide_landing_prose' => false,
 			'seo_prose_after_faq' => true,
 			'h1'             => __( 'Туры в Турцию из Уфы', 'zhiraf-ufa' ),

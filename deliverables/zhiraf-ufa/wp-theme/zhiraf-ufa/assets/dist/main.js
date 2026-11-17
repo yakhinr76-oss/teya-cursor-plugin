@@ -918,7 +918,7 @@
     initMessengerPicker(turciyaLeadForm);
   }
 
-  qsa('[data-turciya-lead-open]').forEach(function (btn) {
+  qsa('[data-turciya-lead-open], [data-curated-lead-open]').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       openTurciyaLeadModal(btn);

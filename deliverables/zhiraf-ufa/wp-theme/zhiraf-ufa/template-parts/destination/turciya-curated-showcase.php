@@ -9,8 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$hotels      = function_exists( 'zhiraf_ufa_turciya_catalog_hotels' ) ? zhiraf_ufa_turciya_catalog_hotels() : array();
-$copy        = function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array();
+$dest_slug   = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+$hotels      = function_exists( 'zhiraf_ufa_curated_catalog_hotels' )
+	? zhiraf_ufa_curated_catalog_hotels( $dest_slug )
+	: ( function_exists( 'zhiraf_ufa_turciya_catalog_hotels' ) ? zhiraf_ufa_turciya_catalog_hotels() : array() );
+$copy        = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
+	? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
+	: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
 $pool_total  = count( $hotels );
 $fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
 

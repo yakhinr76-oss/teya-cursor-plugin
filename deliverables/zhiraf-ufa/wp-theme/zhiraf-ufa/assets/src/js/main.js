@@ -857,8 +857,34 @@
   var turciyaLeadModal = qs('#turciya-lead-modal');
   var turciyaLeadForm = qs('#turciya-lead-modal-form');
 
-  function openTurciyaLeadModal() {
+  function openTurciyaLeadModal(trigger) {
     if (!turciyaLeadModal) return;
+    var titleEl = qs('#turciya-lead-modal-title');
+    var leadEl = qs('#turciya-lead-modal-lead');
+    var msgEl = turciyaLeadForm ? qs('[name="message"]', turciyaLeadForm) : null;
+    var tourEl = qs('#turciya-lead-modal-tour');
+    var uonEl = qs('#turciya-lead-modal-uon');
+    var defTitle = turciyaLeadModal.getAttribute('data-default-title') || '';
+    var defLead = turciyaLeadModal.getAttribute('data-default-lead') || '';
+    var defTour = turciyaLeadModal.getAttribute('data-default-tour') || '';
+    var defMsg = turciyaLeadModal.getAttribute('data-default-message') || '';
+    if (titleEl) titleEl.textContent = defTitle;
+    if (leadEl) leadEl.textContent = defLead;
+    if (tourEl) tourEl.value = defTour;
+    if (uonEl) uonEl.value = '';
+    if (msgEl) msgEl.value = defMsg;
+    if (trigger) {
+      var hotelTitle = trigger.getAttribute('data-lead-title') || trigger.getAttribute('data-hotel-name') || '';
+      var hotelLead = trigger.getAttribute('data-lead-subtitle') || '';
+      var hotelMsg = trigger.getAttribute('data-lead-message') || '';
+      var hotelTour = trigger.getAttribute('data-lead-tour') || hotelTitle;
+      var hotelUon = trigger.getAttribute('data-uon-hotel-id') || '';
+      if (hotelTitle && titleEl) titleEl.textContent = hotelTitle;
+      if (hotelLead && leadEl) leadEl.textContent = hotelLead;
+      if (hotelMsg && msgEl) msgEl.value = hotelMsg;
+      if (hotelTour && tourEl) tourEl.value = hotelTour;
+      if (uonEl) uonEl.value = hotelUon;
+    }
     turciyaLeadModal.classList.remove('quiz-modal--closing');
     turciyaLeadModal.removeAttribute('hidden');
     turciyaLeadModal.removeAttribute('inert');
@@ -895,7 +921,7 @@
   qsa('[data-turciya-lead-open]').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      openTurciyaLeadModal();
+      openTurciyaLeadModal(btn);
     });
   });
   qsa('[data-turciya-lead-close]').forEach(function (btn) {

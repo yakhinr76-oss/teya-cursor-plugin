@@ -19,6 +19,10 @@ $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 	role="dialog"
 	aria-modal="true"
 	aria-labelledby="turciya-lead-modal-title"
+	data-default-title="<?php echo esc_attr__( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' ); ?>"
+	data-default-lead="<?php echo esc_attr__( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>"
+	data-default-tour="<?php echo esc_attr__( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' ); ?>"
+	data-default-message="<?php echo esc_attr( $wa_text ); ?>"
 	hidden
 	inert
 >
@@ -30,7 +34,7 @@ $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 			<h2 id="turciya-lead-modal-title" class="home-quiz__title home-quiz__title--modal">
 				<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' ); ?>
 			</h2>
-			<p class="home-quiz__lead home-quiz__lead--modal">
+			<p id="turciya-lead-modal-lead" class="home-quiz__lead home-quiz__lead--modal">
 				<?php esc_html_e( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>
 			</p>
 			<form
@@ -61,9 +65,10 @@ $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 					placeholder="<?php esc_attr_e( 'Кемер или Сиде, даты, возраст детей, бюджет', 'zhiraf-ufa' ); ?>"
 				><?php echo esc_textarea( $wa_text ); ?></textarea>
 				<div class="zhiraf-hp" aria-hidden="true">
-					<input type="hidden" name="tour" value="<?php echo esc_attr( __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' ) ); ?>" data-lead-tour />
+					<input type="hidden" name="tour" value="<?php echo esc_attr( __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' ) ); ?>" data-lead-tour id="turciya-lead-modal-tour" />
 					<input type="hidden" name="destination" value="Турция" />
 					<input type="hidden" name="destination_slug" value="turciya" />
+					<input type="hidden" name="uon_hotel_id" id="turciya-lead-modal-uon" value="" />
 				</div>
 				<?php
 				if ( function_exists( 'zhiraf_ufa_consent_fields' ) ) {

@@ -188,31 +188,52 @@ if ( empty( $dest ) ) {
 				<?php endforeach; ?>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $dest['resort_links'] ) ) : ?>
-				<h2><?php esc_html_e( 'Курорты направления', 'zhiraf-ufa' ); ?></h2>
-				<ul class="resort-link-list">
-					<?php foreach ( $dest['resort_links'] as $link ) : ?>
-						<li>
-							<a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a>
-							<?php if ( ! empty( $link['desc'] ) ) : ?>
-								<span class="resort-link-list__desc"><?php echo esc_html( $link['desc'] ); ?></span>
-							<?php endif; ?>
-						</li>
-					<?php endforeach; ?>
-				</ul>
-			<?php endif; ?>
-			<?php if ( ! empty( $dest['blog_links'] ) ) : ?>
-				<p class="dest-landing-links">
-					<?php
-					foreach ( $dest['blog_links'] as $link ) {
-						printf(
-							'<a href="%s">%s</a>',
-							esc_url( $link['url'] ),
-							esc_html( $link['label'] )
-						);
-					}
-					?>
-				</p>
+			<?php if ( ! empty( $dest['resort_links'] ) || ! empty( $dest['blog_links'] ) ) : ?>
+				<?php if ( ! empty( $dest['resort_links'] ) ) : ?>
+					<h2 class="dest-resort-chip-hub__title"><?php esc_html_e( 'Курорты направления', 'zhiraf-ufa' ); ?></h2>
+					<div class="dest-resort-chip-hub">
+						<div class="dest-resort-chip-grid" role="list">
+							<?php foreach ( $dest['resort_links'] as $link ) : ?>
+								<?php
+								$chip_label = (string) ( $link['label'] ?? '' );
+								if ( preg_match( '/^Туры в (.+) из Уфы$/u', $chip_label, $m ) ) {
+									$chip_label = $m[1];
+								}
+								?>
+								<a
+									class="dest-resort-chip"
+									href="<?php echo esc_url( $link['url'] ); ?>"
+									role="listitem"
+								>
+									<span class="dest-resort-chip__body">
+										<span class="dest-resort-chip__title"><?php echo esc_html( $chip_label ); ?></span>
+										<?php if ( ! empty( $link['desc'] ) ) : ?>
+											<span class="dest-resort-chip__desc"><?php echo esc_html( $link['desc'] ); ?></span>
+										<?php endif; ?>
+									</span>
+									<span class="dest-resort-chip__arrow" aria-hidden="true">→</span>
+								</a>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif; ?>
+				<?php if ( ! empty( $dest['blog_links'] ) && is_array( $dest['blog_links'] ) ) : ?>
+					<h3 class="dest-resort-chip-hub__guides"><?php esc_html_e( 'Полезные гиды', 'zhiraf-ufa' ); ?></h3>
+					<div class="dest-resort-chip-grid dest-resort-chip-grid--guides" role="list">
+						<?php foreach ( $dest['blog_links'] as $link ) : ?>
+							<a
+								class="dest-resort-chip dest-resort-chip--guide"
+								href="<?php echo esc_url( $link['url'] ); ?>"
+								role="listitem"
+							>
+								<span class="dest-resort-chip__body">
+									<span class="dest-resort-chip__title"><?php echo esc_html( $link['label'] ); ?></span>
+								</span>
+								<span class="dest-resort-chip__arrow" aria-hidden="true">→</span>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>
 	</section>

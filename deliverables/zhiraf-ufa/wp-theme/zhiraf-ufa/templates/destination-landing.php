@@ -138,7 +138,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php if ( ! empty( $dest_faq_items ) ) : ?>
-	<section class="section dest-landing-faq">
+	<section class="section dest-landing-faq<?php echo $use_turciya_curated ? ' dest-landing-faq--panel' : ''; ?>">
 		<div class="container container--narrow">
 			<h2 class="section-title">
 				<?php
@@ -149,18 +149,20 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				);
 				?>
 			</h2>
-			<div class="faq-home__list">
-				<?php foreach ( $dest_faq_items as $item ) : ?>
-					<details class="faq-home__item">
-						<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
-						<div class="faq-home__answer">
-							<p><?php echo wp_kses_post( $item['a'] ); ?></p>
-							<?php if ( ! empty( $item['link'] ) ) : ?>
-								<p><a href="<?php echo esc_url( $item['link'] ); ?>"><?php esc_html_e( 'Подробнее в блоге', 'zhiraf-ufa' ); ?></a></p>
-							<?php endif; ?>
-						</div>
-					</details>
-				<?php endforeach; ?>
+			<div class="dest-landing-faq__panel">
+				<div class="faq-home__list<?php echo $use_turciya_curated ? ' faq-home__list--panel' : ''; ?>">
+					<?php foreach ( $dest_faq_items as $item ) : ?>
+						<details class="faq-home__item">
+							<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
+							<div class="faq-home__answer">
+								<p><?php echo wp_kses_post( $item['a'] ); ?></p>
+								<?php if ( ! empty( $item['link'] ) ) : ?>
+									<p><a href="<?php echo esc_url( $item['link'] ); ?>"><?php esc_html_e( 'Подробнее в блоге', 'zhiraf-ufa' ); ?></a></p>
+								<?php endif; ?>
+							</div>
+						</details>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	</section>

@@ -1927,6 +1927,133 @@ details[open] > .faq-home__question::after {
   color: var(--color-muted);
 }
 
+.dest-resort-chip-hub {
+  margin: 0 0 1.5rem;
+}
+
+.dest-resort-chip-hub__title {
+  margin: 1.75rem 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.dest-resort-chip-hub__guides {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #78716c;
+}
+
+.dest-resort-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+@media (min-width: 480px) {
+  .dest-resort-chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 720px) {
+  .dest-resort-chip-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.dest-resort-chip-grid--guides {
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .dest-resort-chip-grid--guides {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.dest-resort-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #eae4dc);
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(30, 28, 24, 0.04);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.dest-resort-chip:hover {
+  border-color: rgba(200, 90, 50, 0.45);
+  box-shadow: 0 6px 18px rgba(30, 28, 24, 0.07);
+  transform: translateY(-1px);
+}
+
+.dest-resort-chip__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.dest-resort-chip__title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.dest-resort-chip__desc {
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.dest-resort-chip__arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary, #c85a32);
+}
+
+.dest-resort-chip--guide .dest-resort-chip__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.dest-landing-faq--panel .dest-landing-faq__panel {
+  padding: 0.25rem 1.25rem 0.5rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1px solid var(--color-border, #eae4dc);
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.05);
+}
+
+.faq-home__list--panel {
+  max-width: none;
+  margin: 0;
+}
+
+.faq-home__list--panel .faq-home__item {
+  padding: 1rem 0;
+}
+
+.faq-home__list--panel .faq-home__item:first-child {
+  border-top: 0;
+}
+
+.faq-home__list--panel .faq-home__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.75rem;
+}
+
 .resort-hub-links {
   margin-bottom: 28px;
 }
@@ -3369,11 +3496,13 @@ details[open] > .faq-home__question::after {
   text-underline-offset: 2px;
 }
 
-.turciya-catalog-wa-strip__btn {
+.turciya-catalog-wa-strip__link {
   flex-shrink: 0;
-  min-height: 2.5rem;
-  padding-inline: 1.1rem;
   font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--color-primary, #c85a32);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .turciya-curated-card__footer {
@@ -3575,6 +3704,30 @@ details[open] > .faq-home__question::after {
 
 .turciya-compare-lead__form {
   margin: 1.25rem 0;
+  text-align: left;
+}
+
+.turciya-compare-lead__form .messenger-picker__inner {
+  min-height: 3.5rem;
+  padding: 0.625rem 0.85rem;
+}
+
+@media (max-width: 479px) {
+  .turciya-compare-lead__form .messenger-picker__inner {
+    min-height: 3.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+.turciya-compare-lead__form .form-consents {
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #a8a29e;
+}
+
+.turciya-compare-lead__form .form-consents .form-check {
+  margin-bottom: 0.35rem;
 }
 
 .turciya-compare-lead__actions {

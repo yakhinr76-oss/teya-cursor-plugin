@@ -19,7 +19,7 @@ $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 			<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' ); ?>
 		</h2>
 		<p class="turciya-compare-lead__text">
-			<?php esc_html_e( 'Напишите возраст детей и даты — пришлём 2–3 варианта в выбранный канал. Быстрее ответить в WhatsApp — кнопка сразу под каталогом отелей.', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы и пришлём в удобный мессенджер.', 'zhiraf-ufa' ); ?>
 		</p>
 		<form class="zhiraf-form dest-landing-lead-form turciya-compare-lead__form" data-action="zhiraf_lead" data-form-context="dest-turciya-compare">
 			<div class="dest-landing-lead-form__fields">

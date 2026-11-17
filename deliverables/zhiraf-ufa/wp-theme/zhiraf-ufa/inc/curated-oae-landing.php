@@ -121,10 +121,37 @@ function zhiraf_ufa_oae_emirate_filter_slug( $emirate ) {
 }
 
 /**
+ * Pexels stock leads for curated starters (see assets/images/CREDITS.md — curated OAE).
+ *
+ * @return array<int,string>
+ */
+function zhiraf_ufa_oae_stock_lead_photos() {
+	return array(
+		1  => 'https://images.pexels.com/photos/36134146/pexels-photo-36134146.jpeg?auto=compress&cs=tinysrgb&w=1200',
+		2  => 'https://images.pexels.com/photos/9080918/pexels-photo-9080918.jpeg?auto=compress&cs=tinysrgb&w=1200',
+		3  => 'https://images.pexels.com/photos/18227450/pexels-photo-18227450.jpeg?auto=compress&cs=tinysrgb&w=1200',
+		5  => 'https://images.pexels.com/photos/32119558/pexels-photo-32119558.jpeg?auto=compress&cs=tinysrgb&w=1200',
+		6  => 'https://images.pexels.com/photos/4679438/pexels-photo-4679438.jpeg?auto=compress&cs=tinysrgb&w=1200',
+		11 => 'https://images.pexels.com/photos/31566720/pexels-photo-31566720.jpeg?auto=compress&cs=tinysrgb&w=1200',
+	);
+}
+
+/**
  * @param array<string,mixed> $row JSON row.
  * @return array{image:string,image_remote:bool,image_width:int,image_height:int}
  */
 function zhiraf_ufa_oae_image_from_json_row( array $row ) {
+	$json_id = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
+	$stock   = zhiraf_ufa_oae_stock_lead_photos();
+	if ( $json_id > 0 && isset( $stock[ $json_id ] ) ) {
+		return array(
+			'image'        => $stock[ $json_id ],
+			'image_remote' => true,
+			'image_width'  => 1200,
+			'image_height' => 800,
+		);
+	}
+
 	$photos = ! empty( $row['photos'] ) && is_array( $row['photos'] ) ? $row['photos'] : array();
 	$first  = isset( $photos[0] ) ? trim( (string) $photos[0] ) : '';
 

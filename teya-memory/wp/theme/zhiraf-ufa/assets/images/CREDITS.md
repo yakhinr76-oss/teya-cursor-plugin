@@ -49,6 +49,17 @@
 |---|---|---|---|---|
 | resort-phuket.jpg | Таиланд — Пхукет (карточки курортов о.Пхукет) | Phakchira Sukcharearn | https://www.pexels.com/photo/monument-of-buddha-6027591/ | Explore the iconic Big Buddha statue atop Nakkerd Hill in Phuket, Thailand, a serene and spiritual landmark. |
 | resort-abu-dabi.jpg | ОАЭ — Абу-Даби | Daniel Dang | https://www.pexels.com/photo/majestic-exterior-of-sheikh-zayed-grand-mosque-32119558/ | Stunning view of the Sheikh Zayed Grand Mosque in Abu Dhabi with clear blue sky. |
+
+## Curated /tour/oae/ — 6 карточек (Pexels CDN, без логотипов отелей)
+
+| JSON id | Отель (витрина) | Pexels | Назначение кадра |
+|---:|---|---|---|
+| 1 | Centara Mirage Dubai | https://www.pexels.com/photo/stunning-aerial-view-of-palm-jumeirah-dubai-36134146/ | Пляж / Пальма, Дубай |
+| 2 | DoubleTree Marjan | https://www.pexels.com/photo/beach-huts-on-the-sea-in-maldives-9080918/ | Пляжные бунгало, All Inclusive |
+| 3 | Hampton Marjan | https://www.pexels.com/photo/bird-eye-view-on-tranquil-sea-and-coastline-18227450/ | Берег залива, стартовая цена |
+| 5 | Yas Plaza Bay | https://www.pexels.com/photo/majestic-exterior-of-sheikh-zayed-grand-mosque-32119558/ | Абу-Даби / остров Яс |
+| 6 | Coral Beach Sharjah | https://www.pexels.com/photo/beautiful-beach-with-calm-blue-waters-4679438/ | Спокойный пляж, Шарджа |
+| 11 | Rove City Walk | https://www.pexels.com/photo/majestic-view-of-burj-khalifa-and-dubai-skyline-31566720/ | Город, Дубай |
 | resort-sanya-2.jpg | Китай — Санья | 茵 夏 | https://www.pexels.com/photo/bird-eye-view-on-tranquil-sea-and-coastline-18227450/ | Explore the scenic coastal beauty of Sanya, Hainan with its sandy beaches and lush greenery. |
 | resort-sanya-3.jpg | Китай — Санья | Alex Peet | https://www.pexels.com/photo/stunning-coastal-view-of-sanya-hainan-39555096/ | Coastal view of Sanya, Hainan (Dadonghai bay); cropped to exclude a building with a logo |
 | resort-severnyj-goa.jpg | Индия — Северный Гоа | Mohit Hambiria | https://www.pexels.com/photo/scenic-beach-view-from-chapora-india-at-sunset-28518933/ | Beach view from Chapora (North Goa) at sunset |

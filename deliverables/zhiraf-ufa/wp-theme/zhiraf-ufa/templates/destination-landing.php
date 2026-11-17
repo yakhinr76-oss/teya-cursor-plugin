@@ -55,7 +55,16 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				<?php endif; ?>
 				<div class="dest-landing-hero__actions">
 					<?php if ( $use_turciya_curated ) : ?>
-						<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
+						<button
+							type="button"
+							class="btn btn--primary btn--lg"
+							data-quiz-open
+							data-quiz-prefill="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>"
+							data-cta-context="turciya_hero_quiz_open"
+						>
+							<?php esc_html_e( 'Подбор за 1 мин', 'zhiraf-ufa' ); ?>
+						</button>
+						<a class="btn btn--outline btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
 						<a class="btn btn--outline btn--lg" href="#dest-inquiry"><?php esc_html_e( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ); ?></a>
 					<?php else : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
@@ -360,7 +369,6 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 
 	<?php endif; ?>
 
-	<?php if ( ! $use_turciya_curated ) : ?>
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
@@ -378,14 +386,27 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					<?php if ( ! empty( $dest['cta_message_placeholder'] ) ) : ?>
 						<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php echo esc_attr( $dest['cta_message_placeholder'] ); ?>"></textarea>
 					<?php endif; ?>
-					<label class="form-label dest-landing-lead-form__channel-label">
-						<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить подборку', 'zhiraf-ufa' ); ?></span>
-						<select name="contact_channel" class="form-input">
-							<option value="<?php esc_attr_e( 'WhatsApp', 'zhiraf-ufa' ); ?>" selected><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Telegram', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
+					<?php if ( $use_turciya_curated ) : ?>
+						<input type="hidden" name="contact_channel" value="WhatsApp" />
+						<?php
+						zhiraf_ufa_render_messenger_picker(
+							array(
+								'name'    => 'lead_messenger',
+								'default' => 'WhatsApp',
+								'label'   => __( 'Куда отправить подборку:', 'zhiraf-ufa' ),
+							)
+						);
+						?>
+					<?php else : ?>
+						<label class="form-label dest-landing-lead-form__channel-label">
+							<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить подборку', 'zhiraf-ufa' ); ?></span>
+							<select name="contact_channel" class="form-input">
+								<option value="<?php esc_attr_e( 'WhatsApp', 'zhiraf-ufa' ); ?>" selected><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></option>
+								<option value="<?php esc_attr_e( 'Telegram', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></option>
+								<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
+							</select>
+						</label>
+					<?php endif; ?>
 					<div class="zhiraf-hp" aria-hidden="true">
 						<input type="hidden" name="tour" value="<?php echo esc_attr( $dest['quiz_prefill'] ); ?>" data-lead-tour />
 						<input type="hidden" name="destination" value="<?php echo esc_attr( ! empty( $dest['name'] ) ? $dest['name'] : $dest_slug ); ?>" />
@@ -393,7 +414,19 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 						<input type="hidden" name="express_pick" value="" data-lead-express />
 					</div>
 					<?php zhiraf_ufa_consent_fields( 'dest-lead-' . $dest_slug ); ?>
-					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
+					<button
+						type="submit"
+						class="btn btn--primary btn--lg"
+						<?php echo $use_turciya_curated ? 'data-messenger-submit-label' : ''; ?>
+					>
+						<?php
+						echo esc_html(
+							$use_turciya_curated
+								? __( 'Отправить заявку в WhatsApp →', 'zhiraf-ufa' )
+								: __( 'Отправить заявку', 'zhiraf-ufa' )
+						);
+						?>
+					</button>
 				</div>
 				<p class="form-status" role="status" aria-live="polite"></p>
 			</form>
@@ -410,9 +443,12 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 			</p>
 		</div>
 	</section>
-	<?php endif; ?>
 </main>
 <?php
+if ( $use_turciya_curated ) {
+	get_template_part( 'template-parts/shared/messenger-choice', 'modal' );
+}
+
 get_template_part(
 	'template-parts/destination/sticky-mobile-bar',
 	null,

@@ -11,11 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $kids_guide_url = home_url( '/blog/tury-s-detmi-iz-ufy/' );
 $all_inc_url    = home_url( '/vse-vklyucheno/' );
-$wa_text        = __( 'Здравствуйте! Подбираем семейный тур в Турцию из Уфы с ребёнком. Нужны отели с песчаным входом и детским меню.', 'zhiraf-ufa' );
-$wa_base        = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
-$wa_link        = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
-	? zhiraf_ufa_whatsapp_url_with_text( $wa_base, $wa_text )
-	: $wa_base;
+$lead_message   = __( 'Здравствуйте! Подбираем семейный тур в Турцию из Уфы с ребёнком. Пришлите, пожалуйста, 3 варианта отелей с песчаным входом и детским меню.', 'zhiraf-ufa' );
 ?>
 <section id="kids-turkey" class="section turciya-kids-turkey bg-sand">
 	<div class="container">
@@ -52,17 +48,18 @@ $wa_link        = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 				<a class="btn btn--primary btn--lg turciya-kids-turkey__cta" href="<?php echo esc_url( $kids_guide_url ); ?>">
 					<?php esc_html_e( 'Читать гид →', 'zhiraf-ufa' ); ?>
 				</a>
-				<a
+				<button
+					type="button"
 					class="btn btn--outline turciya-kids-turkey__wa"
-					href="<?php echo esc_url( $wa_link ); ?>"
-					target="_blank"
-					rel="noopener noreferrer"
-					data-track="messenger"
-					data-channel="whatsapp"
-					data-cta-context="turciya_kids_whatsapp"
+					data-turciya-lead-open
+					data-cta-context="turciya_kids_lead_modal"
+					data-lead-title="<?php esc_attr_e( '3 семейных отеля из Уфы', 'zhiraf-ufa' ); ?>"
+					data-lead-subtitle="<?php esc_attr_e( 'Укажите телефон и мессенджер — пришлём три проверенных варианта с песчаным входом и детским меню.', 'zhiraf-ufa' ); ?>"
+					data-lead-message="<?php echo esc_attr( $lead_message ); ?>"
+					data-lead-tour="<?php esc_attr_e( 'Турция, 3 семейных отеля', 'zhiraf-ufa' ); ?>"
 				>
-					<?php esc_html_e( 'Запросить 3 семейных отеля в WhatsApp', 'zhiraf-ufa' ); ?>
-				</a>
+					<?php esc_html_e( 'Запросить 3 семейных отеля →', 'zhiraf-ufa' ); ?>
+				</button>
 			</aside>
 		</div>
 	</div>

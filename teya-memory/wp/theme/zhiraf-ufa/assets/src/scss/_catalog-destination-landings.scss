@@ -1,0 +1,2052 @@
+/* Catalog / destination landings */
+
+.container--narrow {
+  max-width: 720px;
+}
+
+.catalog-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.catalog-hero__img {
+  border-radius: var(--radius-lg);
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.chip-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.chip {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.chip.is-active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.chip--link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chip__stat {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.chip-filter--offers {
+  margin-top: 12px;
+}
+
+.geo-answer-block__text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.resort-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.resort-link-list li {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.resort-link-list--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.resort-link-list--inline li {
+  margin: 0;
+}
+
+.resort-link-list__stat {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.dest-resort-chip-hub {
+  margin: 0 0 1.5rem;
+}
+
+.dest-resort-chip-hub__title {
+  margin: 1.75rem 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.dest-resort-chip-hub__guides {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #78716c;
+}
+
+.dest-resort-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+@media (min-width: 480px) {
+  .dest-resort-chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 720px) {
+  .dest-resort-chip-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.dest-resort-chip-grid--guides {
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .dest-resort-chip-grid--guides {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dest-resort-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #eae4dc);
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(30, 28, 24, 0.04);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.dest-resort-chip:hover {
+  border-color: rgba(200, 90, 50, 0.45);
+  box-shadow: 0 6px 18px rgba(30, 28, 24, 0.07);
+  transform: translateY(-1px);
+}
+
+.dest-resort-chip__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.dest-resort-chip__title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.dest-resort-chip__desc {
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.dest-resort-chip__arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary, #c85a32);
+}
+
+.dest-resort-chip--guide .dest-resort-chip__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.dest-resort-link-hub {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dest-resort-link-hub__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a8a29e;
+}
+
+.dest-resort-link-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .dest-resort-link-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .dest-resort-link-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.dest-resort-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  border-radius: 1rem;
+  border: 1px solid #eae4dc;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.dest-resort-link-card:hover,
+.dest-resort-link-card:focus-visible {
+  border-color: #c85a32;
+}
+
+.dest-resort-link-card__body {
+  min-width: 0;
+}
+
+.dest-resort-link-card__title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1c1917;
+  transition: color 0.15s ease;
+}
+
+.dest-resort-link-card:hover .dest-resort-link-card__title,
+.dest-resort-link-card:focus-visible .dest-resort-link-card__title {
+  color: #c85a32;
+}
+
+.dest-resort-link-card__subtitle {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #78716c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dest-resort-link-card__arrow {
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #c85a32;
+  transition: transform 0.15s ease;
+}
+
+.dest-resort-link-card:hover .dest-resort-link-card__arrow,
+.dest-resort-link-card:focus-visible .dest-resort-link-card__arrow {
+  transform: translateX(2px);
+}
+
+.dest-landing-faq--panel .dest-landing-faq__panel {
+  padding: 0.25rem 1.25rem 0.5rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1px solid var(--color-border, #eae4dc);
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.05);
+}
+
+.faq-home__list--panel {
+  max-width: none;
+  margin: 0;
+}
+
+.faq-home__list--panel .faq-home__item {
+  padding: 1rem 0;
+}
+
+.faq-home__list--panel .faq-home__item:first-child {
+  border-top: 0;
+}
+
+.faq-home__list--panel .faq-home__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.75rem;
+}
+
+.resort-hub-links {
+  margin-bottom: 28px;
+}
+
+.resort-hub-links__title {
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.dest-grid--large {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dest-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.dest-card--large img, .dest-card__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.dest-card.is-hidden {
+  display: none;
+}
+
+.dest-landing-hero {
+  padding: 60px 0 40px;
+}
+
+.dest-landing-hero__lead {
+  max-width: 36rem;
+}
+
+.dest-landing-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.dest-landing-hero__cta-hint {
+  margin-top: 16px;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  max-width: 32rem;
+}
+
+.dest-landing-hero__trust {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.dest-landing-hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dest-landing-hero__trust span[aria-hidden] {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.dest-landing-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.dest-landing-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.dest-landing-hero__badge-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.dest-resort-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0 32px;
+}
+
+.dest-resort-compare__col {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+
+.dest-resort-compare__img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+
+.dest-resort-compare__body {
+  padding: 16px 18px 20px;
+}
+
+.dest-resort-compare__tag {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.dest-resort-compare__title {
+  margin: 0 0 12px;
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+}
+
+.dest-resort-compare__rows {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  font-size: 0.9375rem;
+}
+
+.dest-resort-compare__rows dt {
+  margin: 0;
+  color: var(--color-muted);
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.dest-resort-compare__rows dd {
+  margin: 2px 0 0;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.dest-landing-lead-form__message {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.dest-tour-card-wrap.is-collapsed {
+  display: none;
+}
+
+.dest-tour-card-wrap.is-hidden {
+  display: none;
+}
+
+.dest-climate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 20px 0 32px;
+}
+
+.dest-climate-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+}
+
+.dest-climate-card__label {
+  font-weight: 800;
+  margin: 0 0 10px;
+  font-family: var(--font-head);
+}
+
+.dest-climate-card__months {
+  font-weight: 600;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.dest-climate-card__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 10px;
+  font-size: 0.9375rem;
+}
+
+.dest-climate-card__stats dt {
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.dest-climate-card__stats dd {
+  margin: 0;
+  font-weight: 800;
+}
+
+.dest-climate-card__tip {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.dest-season-glance__title {
+  margin-bottom: 12px;
+  font-size: 1.375rem;
+}
+
+.dest-season-glance {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 28px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  font-size: 0.9375rem;
+}
+
+.dest-season-glance th,
+.dest-season-glance td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dest-season-glance thead th {
+  background: var(--color-sand);
+  font-weight: 800;
+  font-family: var(--font-head);
+}
+
+.dest-season-glance tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dest-season-glance tbody td:first-child {
+  font-weight: 700;
+}
+
+.dest-resort-compare--module {
+  margin-top: 0;
+}
+
+.dest-resort-compare--battle {
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.section-head--center {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.section-head--center .section-title,
+.section-head--center .lead {
+  width: 100%;
+}
+
+.dest-battle__eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.dest-battle__lead {
+  margin-top: 8px;
+  max-width: 40rem;
+}
+
+.dest-battle__vs {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-text);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--color-white);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+  z-index: 2;
+}
+
+.dest-battle__col-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dest-battle__meta {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.dest-battle__subtitle {
+  margin: 0 0 12px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.dest-battle__cta {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.dest-battle__hint {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.dest-prose-accordion--seo {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+  .dest-resort-compare--battle .dest-battle__vs {
+    display: flex;
+  }
+}
+@media (max-width: 767px) {
+  .dest-resort-compare--battle {
+    grid-template-columns: 1fr;
+  }
+}
+.dest-climate-grid--module .dest-climate-card.is-active {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(232, 122, 93, 0.15);
+}
+
+.dest-season-module {
+  margin-top: 8px;
+}
+
+.dest-season-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.dest-season-tab {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dest-season-tab.is-active,
+.dest-season-tab[aria-selected=true] {
+  border-color: var(--color-primary);
+  background: rgba(232, 122, 93, 0.08);
+  color: var(--color-primary);
+}
+
+.dest-climate-grid--module {
+  grid-template-columns: 1fr;
+  max-width: 640px;
+}
+
+.dest-climate-grid--module .dest-climate-card {
+  cursor: default;
+}
+
+.dest-season-module__cta-wrap {
+  margin: 20px 0 0;
+  text-align: center;
+}
+
+.dest-domestic-modes {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.dest-domestic-modes li {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  font-weight: 700;
+}
+
+.dest-emirate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 20px 0 32px;
+}
+
+.dest-emirate-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+}
+
+.dest-emirate-card__img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+
+.dest-emirate-card__body {
+  padding: 16px 18px 20px;
+}
+
+.dest-emirate-card__tag {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.dest-emirate-card__title {
+  margin: 0 0 8px;
+  font-family: var(--font-head);
+  font-size: 1.375rem;
+}
+
+.dest-emirate-card__text {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.dest-prose-accordion {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  margin-bottom: 12px;
+  padding: 0 18px;
+}
+
+.dest-prose-accordion__summary {
+  cursor: pointer;
+  font-weight: 800;
+  font-family: var(--font-head);
+  padding: 16px 28px 16px 0;
+  list-style: none;
+  position: relative;
+}
+
+.dest-prose-accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.dest-prose-accordion__summary::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+  transform: translateY(-65%) rotate(45deg);
+}
+
+.dest-prose-accordion[open] .dest-prose-accordion__summary::after {
+  transform: translateY(-35%) rotate(-135deg);
+}
+
+.dest-prose-accordion__body {
+  padding-bottom: 16px;
+  color: var(--color-muted);
+}
+
+.dest-landing-prose__intro {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.dest-landing-lead-form {
+  max-width: 520px;
+  margin: 24px auto 0;
+  text-align: left;
+}
+
+.dest-landing-lead-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dest-landing-lead-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+.dest-landing-lead-form__field-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.dest-landing-lead-form__channel-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+.dest-landing-lead-form__channel-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.dest-landing-cta__alt {
+  margin-top: 16px;
+}
+
+.dest-landing-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.dest-landing-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dest-landing-hero__eyebrow {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.dest-landing-hero__eyebrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--color-muted, #6b6560);
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.dest-landing-hero__eyebrow-link:hover,
+.dest-landing-hero__eyebrow-link:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dest-landing-hero__eyebrow-back {
+  font-weight: 800;
+}
+
+.dest-landing-hero__img {
+  border-radius: var(--radius-lg);
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.dest-landing-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-weight: 700;
+}
+
+.dest-landing-cta__inner {
+  text-align: center;
+}
+
+.dest-landing-cta__meta {
+  margin-top: 24px;
+  color: var(--color-muted);
+}
+
+/* Turkey curated landing (/tour/turciya/) */
+.turciya-curated-hub {
+  background: var(--color-bg);
+  padding-top: var(--section-pad-y, 3rem);
+  padding-bottom: var(--section-pad-y, 3rem);
+}
+
+.turciya-curated-showcase__block {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+}
+
+.turciya-catalog-toolbar {
+  margin-bottom: 1.75rem;
+}
+
+.turciya-catalog-toolbar__head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .turciya-catalog-toolbar__head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.turciya-catalog-toolbar__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.turciya-catalog-toolbar__lead {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  max-width: 40rem;
+}
+
+.turciya-catalog-toolbar__reset {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.turciya-catalog-toolbar__reset:hover {
+  text-decoration: underline;
+}
+
+.turciya-catalog-toolbar__panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: rgba(245, 243, 240, 0.65);
+}
+
+.turciya-catalog-toolbar__divider {
+  display: none;
+  width: 1px;
+  height: 1rem;
+  background: rgba(30, 28, 24, 0.15);
+  margin: 0 0.15rem;
+}
+
+.turciya-catalog-toolbar__group-label {
+  display: none;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .turciya-catalog-toolbar__divider,
+  .turciya-catalog-toolbar__group-label {
+    display: inline-block;
+  }
+}
+
+.turciya-catalog-tab {
+  border: 1px solid rgba(30, 28, 24, 0.08);
+  background: var(--color-white);
+  color: var(--color-ink);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.turciya-catalog-tab:hover {
+  background: rgba(245, 243, 240, 0.9);
+}
+
+.turciya-catalog-tab--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(200, 90, 50, 0.2);
+}
+
+.turciya-catalog-tab--active:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.turciya-resort-pick {
+  margin-bottom: 0;
+}
+
+.turciya-resort-pick__head {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+}
+
+.turciya-resort-pick__eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c85a32;
+}
+
+.turciya-resort-pick__title {
+  margin: 0.25rem 0 0;
+}
+
+.turciya-resort-pick__lead {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .turciya-resort-pick__lead {
+    font-size: 0.875rem;
+  }
+}
+
+.turciya-resort-pick__track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 1200px) {
+  .turciya-resort-pick__track--five {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.turciya-catalog-toolbar__guide {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.turciya-catalog-toolbar__guide a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.turciya-catalog-toolbar__guide a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1023px) {
+  .turciya-resort-pick__track {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0.25rem 2px 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.turciya-resort-pick__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 100%;
+  padding: 1.15rem 1.25rem;
+  text-align: left;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  box-shadow: 0 2px 8px rgba(30, 28, 24, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.turciya-resort-pick__card-hit {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .turciya-resort-pick__card {
+    flex: 0 0 min(82vw, 17.5rem);
+    scroll-snap-align: start;
+  }
+}
+
+.turciya-resort-pick__card:hover {
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.08);
+  transform: translateY(-2px);
+}
+
+.turciya-resort-pick__card--featured {
+  border-width: 2px;
+  border-color: rgba(5, 150, 105, 0.35);
+}
+
+.turciya-resort-pick__card--emerald:hover { border-color: #059669; }
+.turciya-resort-pick__card--teal:hover { border-color: #0d9488; }
+.turciya-resort-pick__card--amber:hover { border-color: #d97706; }
+.turciya-resort-pick__card--lux:hover { border-color: #1c1917; }
+.turciya-resort-pick__card--sky:hover { border-color: #0284c7; }
+
+.turciya-resort-pick__card.is-active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(200, 90, 50, 0.25), 0 8px 20px rgba(200, 90, 50, 0.12);
+}
+
+.turciya-resort-pick__card-top {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.turciya-resort-pick__card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.turciya-resort-pick__tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.turciya-resort-pick__tag--family {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.turciya-resort-pick__tag--nature {
+  background: #ccfbf1;
+  color: #115e59;
+}
+
+.turciya-resort-pick__tag--value {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.turciya-resort-pick__tag--premium {
+  background: #1c1917;
+  color: #fcd34d;
+}
+
+.turciya-resort-pick__tag--urban {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.turciya-resort-pick__transfer {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.turciya-resort-pick__transfer--warn {
+  color: #b45309;
+}
+
+.turciya-resort-pick__transfer--fast {
+  color: #047857;
+}
+
+.turciya-resort-pick__name {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.turciya-resort-pick__subtitle {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.turciya-resort-pick__bullets {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.turciya-resort-pick__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #44403c;
+}
+
+.turciya-resort-pick__bullet-icon {
+  flex-shrink: 0;
+  font-weight: 800;
+}
+
+.turciya-resort-pick__bullet--pro .turciya-resort-pick__bullet-icon {
+  color: #059669;
+}
+
+.turciya-resort-pick__bullet--info .turciya-resort-pick__bullet-icon {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.turciya-resort-pick__card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(30, 28, 24, 0.06);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.turciya-resort-pick__filter-cta {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 800;
+  color: inherit;
+  cursor: pointer;
+}
+
+.turciya-resort-pick__guide {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.turciya-resort-pick__guide:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.turciya-resort-pick__card:not(.is-active) .turciya-resort-pick__card-foot {
+  color: var(--color-ink);
+}
+
+.turciya-resort-pick__card:hover .turciya-resort-pick__card-foot,
+.turciya-resort-pick__card.is-active .turciya-resort-pick__card-foot {
+  color: var(--color-primary);
+}
+
+.turciya-resort-pick__foot-arrow {
+  transition: transform 0.15s ease;
+}
+
+.turciya-resort-pick__card:hover .turciya-resort-pick__foot-arrow {
+  transform: translateY(2px);
+}
+
+.turciya-resort-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.turciya-resort-chips--hero {
+  margin-top: 20px;
+}
+
+.turciya-resort-chips--showcase {
+  margin-top: 0;
+  justify-content: flex-end;
+}
+
+.turciya-resort-chips__btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--color-surface, #f5f2ed);
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.turciya-resort-chips__btn.is-active,
+.turciya-resort-chips__btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.turciya-resort-chips--hero .turciya-resort-chips__btn {
+  background: #fff;
+  border: 1px solid rgba(30, 28, 24, 0.14);
+}
+
+.turciya-resort-chips--hero .turciya-resort-chips__btn:hover:not(.is-active) {
+  background: var(--color-surface, #f5f2ed);
+  color: var(--color-text);
+  border-color: rgba(30, 28, 24, 0.22);
+}
+
+.turciya-resort-chips--hero .turciya-resort-chips__btn.is-active {
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: 0 1px 0 rgba(30, 28, 24, 0.04);
+}
+
+.turciya-resort-chips--hero .turciya-resort-chips__btn.is-active:hover {
+  background: rgba(200, 90, 50, 0.08);
+  color: var(--color-primary);
+}
+
+.turciya-resort-chips__count {
+  opacity: 0.85;
+  font-weight: 700;
+}
+
+.turciya-curated-showcase__head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 900px) {
+  .turciya-curated-showcase__head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.turciya-curated-showcase__eyebrow {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.turciya-curated-showcase__lead {
+  margin: 8px 0 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  max-width: 36rem;
+}
+
+.turciya-curated-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .turciya-curated-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .turciya-curated-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.turciya-curated-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(30, 28, 24, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.turciya-curated-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(30, 28, 24, 0.1);
+}
+
+.turciya-curated-card--base {
+  border-width: 2px;
+  border-color: rgba(200, 90, 50, 0.45);
+}
+
+.turciya-curated-card.is-hidden,
+.turciya-curated-card[hidden] {
+  display: none !important;
+}
+
+.turciya-catalog-more {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.turciya-catalog-more__hint {
+  margin: 0.75rem auto 0;
+  max-width: 28rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.turciya-catalog-more__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.turciya-catalog-fill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 100%;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  background: #faf6f3;
+  border: 2px dashed rgba(200, 90, 50, 0.55);
+  border-radius: 1.25rem;
+}
+
+.turciya-catalog-fill[hidden] {
+  display: none !important;
+}
+
+.turciya-catalog-fill__badge {
+  align-self: center;
+  margin: 0;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.turciya-catalog-fill__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.turciya-catalog-fill__text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #57534e;
+}
+
+.turciya-catalog-fill__cta {
+  width: 100%;
+  min-height: 48px;
+}
+
+.turciya-curated-card__media {
+  position: relative;
+  height: 12rem;
+  overflow: hidden;
+}
+
+.turciya-curated-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.turciya-curated-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  max-width: calc(100% - 5.5rem);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.turciya-curated-card__badge--family {
+  background: #047857;
+}
+
+.turciya-curated-card__badge--adults {
+  background: #6d28d9;
+}
+
+.turciya-curated-card__badge--value,
+.turciya-curated-card__badge--home-price {
+  background: #c85a32;
+}
+
+.turciya-curated-card__badge--nature {
+  background: #0f766e;
+}
+
+.turciya-curated-card__badge--premium {
+  background: #1c1917;
+}
+
+.turciya-curated-card__pill {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1;
+  max-width: calc(100% - 5.5rem);
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: right;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(6px);
+}
+
+.turciya-curated-card__top {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.turciya-curated-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 14px 16px 0;
+}
+
+.turciya-curated-card__headline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.turciya-curated-card__title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 1.0625rem;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.turciya-curated-card__rating {
+  margin: 2px 0 0;
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #d97706;
+  white-space: nowrap;
+}
+
+.turciya-curated-card__rating span {
+  margin-right: 2px;
+}
+
+.turciya-curated-card__concept {
+  margin: 4px 0 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+}
+
+.turciya-curated-card__copy {
+  margin-top: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 3.25rem;
+}
+
+.turciya-curated-card__usp {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  color: #44403c;
+  font-weight: 600;
+}
+
+.turciya-curated-card__honest {
+  margin: 0 16px 0;
+  padding: 0.75rem;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-lg);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #78350f;
+  background: #fffbeb;
+}
+
+.turciya-curated-card__honest-label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 800;
+  color: #92400e;
+}
+
+.turciya-curated-card__honest-text {
+  display: block;
+}
+
+.turciya-catalog-wa-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: #faf7f2;
+}
+
+.turciya-catalog-wa-strip__text {
+  margin: 0;
+  flex: 1;
+  min-width: min(100%, 14rem);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #44403c;
+}
+
+.turciya-catalog-wa-strip__form-link {
+  margin-left: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.turciya-lead-modal__form .messenger-picker__inner {
+  min-height: 3.5rem;
+  padding: 0.625rem 0.85rem;
+}
+
+.turciya-lead-modal__form .form-consents {
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #a8a29e;
+}
+
+.turciya-catalog-wa-strip__link {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--color-primary, #c85a32);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.turciya-curated-card__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 12px 16px 16px;
+  margin-top: auto;
+  border-top: 1px solid var(--color-border);
+}
+
+.turciya-curated-card__price {
+  flex: 1;
+  min-width: 0;
+}
+
+.turciya-curated-card__price-label,
+.turciya-curated-card__price-note {
+  font-size: 0.625rem;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.turciya-curated-card__price-label {
+  display: block;
+}
+
+.turciya-curated-card__price-note {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.turciya-curated-card__price-value {
+  display: block;
+  margin: 2px 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.turciya-curated-card__price-value--accent {
+  font-size: 1.375rem;
+  color: var(--color-primary);
+}
+
+.turciya-curated-card__cta {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 rgba(120, 50, 20, 0.35);
+}
+
+.turciya-curated-card__channels {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.turciya-curated-card__channels a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.turciya-curated-card__channels a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.turciya-expert-nuances__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .turciya-expert-nuances__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.turciya-expert-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px;
+}
+
+.turciya-expert-card__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.turciya-expert-card__title {
+  margin: 12px 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.turciya-expert-card__text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.turciya-compare-lead__inner {
+  text-align: center;
+  padding: 32px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.06);
+}
+
+.turciya-compare-lead__title {
+  margin: 0 0 12px;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.turciya-compare-lead__text {
+  margin: 0 auto 20px;
+  max-width: 32rem;
+  color: var(--color-muted);
+}
+
+.turciya-kids-turkey__card {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: #fff;
+  border: 1px solid var(--color-border, #eae4dc);
+  border-radius: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .turciya-kids-turkey__card {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: start;
+  }
+}
+
+.turciya-kids-turkey__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent, #c85a32);
+  margin: 0 0 0.5rem;
+}
+
+.turciya-kids-turkey__lead {
+  color: var(--color-muted);
+  margin: 0.75rem 0 1rem;
+}
+
+.turciya-kids-turkey__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.turciya-kids-turkey__aside {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--color-sand, #faf7f2);
+  border: 1px solid var(--color-border, #eae4dc);
+}
+
+.turciya-kids-turkey__aside-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+}
+
+.turciya-kids-turkey__aside-text {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+}
+
+.turciya-kids-turkey__cta {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.turciya-kids-turkey__wa {
+  width: 100%;
+}
+
+.turciya-compare-lead__form {
+  margin: 1.25rem 0;
+  text-align: left;
+}
+
+.turciya-compare-lead__form .messenger-picker__inner {
+  min-height: 3.5rem;
+  padding: 0.625rem 0.85rem;
+}
+
+@media (max-width: 479px) {
+  .turciya-compare-lead__form .messenger-picker__inner {
+    min-height: 3.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+.turciya-compare-lead__form .form-consents {
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #a8a29e;
+}
+
+.turciya-compare-lead__form .form-consents .form-check {
+  margin-bottom: 0.35rem;
+}
+
+.turciya-compare-lead__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .catalog-hero, .dest-landing-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .dest-grid, .dest-grid--large {
+    grid-template-columns: 1fr;
+  }
+}

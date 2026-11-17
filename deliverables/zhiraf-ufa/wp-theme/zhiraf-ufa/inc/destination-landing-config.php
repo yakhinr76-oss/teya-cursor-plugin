@@ -128,8 +128,8 @@ function zhiraf_ufa_destination_hero_image_standards() {
 function zhiraf_ufa_destination_default_hero_badges( $slug ) {
 	$map = array(
 		'turciya'   => array(
-			array( 'icon' => '✈', 'text' => __( 'Прямой рейс из Уфы (4 ч 30 мин)', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 90 дней', 'zhiraf-ufa' ) ),
+			array( 'icon' => '✈', 'text' => __( 'Прямой чартер из Уфы • 4,5–5 часов в пути', 'zhiraf-ufa' ) ),
+			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 60 дней', 'zhiraf-ufa' ) ),
 		),
 		'oae'       => array(
 			array( 'icon' => '✈', 'text' => __( 'Прямой рейс из Уфы ~4,5–5 ч', 'zhiraf-ufa' ) ),
@@ -212,7 +212,7 @@ function zhiraf_ufa_apply_destination_presentation( $dest, $slug ) {
 	if ( ! isset( $dest['seo_prose_accordions'] ) ) {
 		$dest['seo_prose_accordions'] = true;
 	}
-	if ( ! isset( $dest['hide_landing_prose'] ) ) {
+	if ( ! array_key_exists( 'hide_landing_prose', $dest ) ) {
 		$dest['hide_landing_prose'] = true;
 	}
 	if ( ! empty( $dest['name'] ) && empty( $dest['name_in'] ) ) {

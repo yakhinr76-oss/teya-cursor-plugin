@@ -13,7 +13,19 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 			</p>
 			<p class="footer-rta"><?php esc_html_e( 'ООО «Жираф» · РТА 0012822', 'zhiraf-ufa' ); ?><br>
 			<?php esc_html_e( 'ИНН 0276132049 · ОГРН 1110280016007', 'zhiraf-ufa' ); ?></p>
-			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'class' => 'footer-social' ) ); ?>
+			<div class="footer-contact-channels">
+				<p class="footer-contact-channels__label"><?php esc_html_e( 'Связь и соцсети:', 'zhiraf-ufa' ); ?></p>
+				<?php
+				zhiraf_ufa_render_social_links(
+					array(
+						'variant' => 'icon',
+						'context' => 'footer',
+						'class'   => 'footer-social',
+						'order'   => array( 'max', 'whatsapp', 'telegram', 'vk' ),
+					)
+				);
+				?>
+			</div>
 		</div>
 		<div class="footer-col">
 			<p class="footer-col__title"><?php esc_html_e( 'Навигация', 'zhiraf-ufa' ); ?></p>

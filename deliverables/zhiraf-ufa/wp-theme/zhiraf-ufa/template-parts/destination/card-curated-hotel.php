@@ -27,13 +27,15 @@ $card_class  = 'turciya-curated-card';
 if ( $is_base ) {
 	$card_class .= ' turciya-curated-card--base';
 }
-$messenger   = ! empty( $hotel['messenger'] ) && is_array( $hotel['messenger'] ) ? $hotel['messenger'] : array();
-$wa_url      = ! empty( $messenger['whatsapp'] )
-	? (string) $messenger['whatsapp']
-	: ( function_exists( 'zhiraf_ufa_turciya_curated_wa_url' ) ? zhiraf_ufa_turciya_curated_wa_url( $hotel ) : '#' );
-$max_url     = ! empty( $messenger['max'] ) ? (string) $messenger['max'] : '';
-$tg_url      = ! empty( $messenger['telegram'] ) ? (string) $messenger['telegram'] : '';
 $uon_id      = ! empty( $hotel['uon_hotel_id'] ) ? (string) $hotel['uon_hotel_id'] : '';
+$lead_message = ! empty( $hotel['wa_prefill'] )
+	? (string) $hotel['wa_prefill']
+	: sprintf(
+		/* translators: %s: hotel name */
+		__( 'Здравствуйте! Интересует отель %s — даты, цена за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
+		(string) $hotel['name']
+	);
+$lead_tour    = (string) $hotel['name'];
 $image_remote = ! empty( $hotel['image_remote'] );
 $is_base_slot = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
 $price_amount = (int) ( $hotel['price_rub'] ?? 0 );
@@ -62,6 +64,15 @@ if ( $hide_init ) {
 	$card_class .= ' is-hidden';
 }
 $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hotel['pool_id'] ) : '';
+$honest_raw  = '';
+if ( ! empty( $hotel['caveat'] ) ) {
+	$honest_raw = (string) $hotel['caveat'];
+} elseif ( ! empty( $hotel['hotel_honest_con'] ) ) {
+	$honest_raw = (string) $hotel['hotel_honest_con'];
+} elseif ( ! empty( $hotel['nuance'] ) ) {
+	$honest_raw = (string) $hotel['nuance'];
+}
+$honest_raw = trim( $honest_raw );
 ?>
 <article
 	class="<?php echo esc_attr( $card_class ); ?>"
@@ -125,18 +136,19 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			<?php if ( '' !== $concept ) : ?>
 				<p class="turciya-curated-card__concept"><?php echo esc_html( $concept ); ?></p>
 			<?php endif; ?>
-			<?php if ( ! empty( $hotel['description'] ) || ! empty( $hotel['caveat'] ) ) : ?>
+			<?php if ( ! empty( $hotel['description'] ) ) : ?>
 				<div class="turciya-curated-card__copy">
-					<?php if ( ! empty( $hotel['description'] ) ) : ?>
-						<p class="turciya-curated-card__usp"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
-					<?php endif; ?>
-					<?php if ( ! empty( $hotel['caveat'] ) ) : ?>
-						<p class="turciya-curated-card__nuance"><?php echo esc_html( (string) $hotel['caveat'] ); ?></p>
-					<?php endif; ?>
+					<p class="turciya-curated-card__usp"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>
 	</div>
+	<?php if ( '' !== $honest_raw ) : ?>
+		<div class="turciya-curated-card__honest" role="note">
+			<span class="turciya-curated-card__honest-label"><?php esc_html_e( 'Честный нюанс:', 'zhiraf-ufa' ); ?></span>
+			<span class="turciya-curated-card__honest-text"><?php echo esc_html( $honest_raw ); ?></span>
+		</div>
+	<?php endif; ?>
 	<div class="turciya-curated-card__footer">
 		<div class="turciya-curated-card__price">
 			<span class="turciya-curated-card__price-label"><?php esc_html_e( 'за двоих с перелётом:', 'zhiraf-ufa' ); ?></span>
@@ -147,46 +159,19 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 				<?php echo esc_html( $price_note ); ?>
 			</span>
 		</div>
-		<a
-			class="btn btn--primary turciya-curated-card__cta"
-			href="<?php echo esc_url( $wa_url ); ?>"
-			target="_blank"
-			rel="noopener noreferrer"
-			data-track="messenger"
-			data-channel="whatsapp"
-			data-cta-context="turciya_curated_hotel"
-			data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
+		<button
+			type="button"
+			class="btn btn--outline turciya-curated-card__cta"
+			data-turciya-lead-open
+			data-cta-context="turciya_curated_hotel_modal"
 			data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
+			data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
+			data-lead-message="<?php echo esc_attr( $lead_message ); ?>"
+			data-lead-tour="<?php echo esc_attr( $lead_tour ); ?>"
+			data-lead-title="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
+			data-lead-subtitle="<?php echo esc_attr__( 'Укажите телефон и выберите мессенджер — пришлём даты и цену с вылетом из Уфы.', 'zhiraf-ufa' ); ?>"
 		>
 			<?php esc_html_e( 'Узнать даты / цену →', 'zhiraf-ufa' ); ?>
-		</a>
-		<?php if ( '' !== $max_url || '' !== $tg_url ) : ?>
-			<p class="turciya-curated-card__channels">
-				<?php if ( '' !== $max_url ) : ?>
-					<a
-						href="<?php echo esc_url( $max_url ); ?>"
-						target="_blank"
-						rel="noopener noreferrer"
-						data-track="messenger"
-						data-channel="max"
-						data-cta-context="turciya_curated_hotel"
-						data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
-						data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
-					><?php esc_html_e( 'MAX', 'zhiraf-ufa' ); ?></a>
-				<?php endif; ?>
-				<?php if ( '' !== $tg_url ) : ?>
-					<a
-						href="<?php echo esc_url( $tg_url ); ?>"
-						target="_blank"
-						rel="noopener noreferrer"
-						data-track="messenger"
-						data-channel="telegram"
-						data-cta-context="turciya_curated_hotel"
-						data-uon-hotel-id="<?php echo esc_attr( $uon_id ); ?>"
-						data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"
-					><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
-				<?php endif; ?>
-			</p>
-		<?php endif; ?>
+		</button>
 	</div>
 </article>

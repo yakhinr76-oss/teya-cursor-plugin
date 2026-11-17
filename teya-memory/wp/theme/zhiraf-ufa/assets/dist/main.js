@@ -155,7 +155,24 @@
       if (maybe && !maybe.getAttribute('data-track')) messenger = maybe;
     }
     if (messenger) {
-      window.zhirafTrack('messenger_click', { channel: messengerChannel(messenger) });
+      var hotelId = messenger.getAttribute('data-uon-hotel-id') || '';
+      window.zhirafTrack('messenger_click', {
+        channel: messengerChannel(messenger),
+        hotel_id: hotelId
+      });
+      if (hotelId && cfg.ajaxUrl) {
+        try {
+          var intent = new FormData();
+          intent.append('action', 'zhiraf_hotel_intent');
+          intent.append('nonce', cfg.nonce || '');
+          intent.append('uon_hotel_id', hotelId);
+          intent.append('hotel_name', messenger.getAttribute('data-hotel-name') || '');
+          intent.append('channel', messengerChannel(messenger));
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(cfg.ajaxUrl, intent);
+          }
+        } catch (err) {}
+      }
     }
   });
 
@@ -166,12 +183,16 @@
     });
   });
 
-  /* Mobile nav */
+  /* Mobile nav — is-open на ul.primary-menu (см. _mobile-responsiveness.scss) */
   var toggle = qs('.nav-toggle');
   var menuWrap = qs('#primary-menu-wrap');
-  if (toggle && menuWrap) {
+  var menuList = menuWrap ? qs('.primary-menu', menuWrap) : null;
+  if (toggle && menuList) {
     toggle.addEventListener('click', function () {
-      var open = menuWrap.classList.toggle('is-open');
+      var open = menuList.classList.toggle('is-open');
+      if (menuWrap) {
+        menuWrap.classList.toggle('is-open', open);
+      }
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
@@ -463,7 +484,85 @@
   /* Quiz wizard (modal #quiz-form only) */
   var modal = qs('#quiz-modal');
   var quizForm = qs('#quiz-form');
+  var quizAutoCloseTimer = null;
 
+  function isModalQuizForm(form) {
+    return !!(form && form.id === 'quiz-form' && modal && modal.contains(form));
+  }
+
+  function resetQuizModalState() {
+    if (!modal || !quizForm) {
+      return;
+    }
+    var body = qs('#quiz-modal-body', modal);
+    var success = qs('#quiz-success-state', modal);
+    if (body) {
+      body.hidden = false;
+      body.classList.remove('quiz-modal__body--hiding');
+    }
+    if (success) {
+      success.hidden = true;
+      success.classList.remove('quiz-modal__success--visible');
+    }
+    if (quizAutoCloseTimer) {
+      clearTimeout(quizAutoCloseTimer);
+      quizAutoCloseTimer = null;
+    }
+    quizForm.reset();
+    if (typeof quizForm._zhirafQuizGoStep === 'function') {
+      quizForm._zhirafQuizGoStep(1);
+    }
+    updateQuizSubmitLabel(quizForm);
+    var submitBtn = quizForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+    }
+    var status = qs('.form-status', quizForm);
+    if (status) {
+      status.textContent = '';
+      status.classList.remove('is-success', 'is-error');
+    }
+  }
+
+  function showQuizModalSuccess() {
+    if (!modal) {
+      return;
+    }
+    var body = qs('#quiz-modal-body', modal);
+    var success = qs('#quiz-success-state', modal);
+    if (!body || !success) {
+      return;
+    }
+    body.classList.add('quiz-modal__body--hiding');
+    window.setTimeout(function () {
+      body.hidden = true;
+      body.classList.remove('quiz-modal__body--hiding');
+      success.hidden = false;
+      window.requestAnimationFrame(function () {
+        success.classList.add('quiz-modal__success--visible');
+      });
+    }, 220);
+    if (quizAutoCloseTimer) {
+      clearTimeout(quizAutoCloseTimer);
+    }
+    quizAutoCloseTimer = window.setTimeout(function () {
+      closeQuiz();
+    }, 3000);
+  }
+
+  function closeQuiz() {
+    if (!modal) return;
+    modal.classList.add('quiz-modal--closing');
+    window.setTimeout(function () {
+      modal.classList.remove('quiz-modal--closing');
+      resetQuizModalState();
+      modal.setAttribute('hidden', '');
+      modal.setAttribute('inert', '');
+      document.body.style.overflow = '';
+      document.body.classList.remove('quiz-open');
+    }, 280);
+  }
   function trackQuizStep(stepIndex) {
     window.zhirafTrack('quiz_step_' + (stepIndex + 1), { step: stepIndex + 1 });
   }
@@ -496,15 +595,74 @@
     }
   }
 
+  function messengerSubmitLabelText(channel, variant) {
+    variant = variant || 'quiz';
+    if (variant === 'compare') {
+      if (channel === 'MAX') {
+        return 'Отправить в MAX →';
+      }
+      if (channel === 'Telegram') {
+        return 'Отправить в Telegram →';
+      }
+      return 'Отправить в WhatsApp →';
+    }
+    if (channel === 'MAX') {
+      return variant === 'lead'
+        ? 'Получить PDF-гид в MAX →'
+        : 'Получить расчёт туров в MAX →';
+    }
+    if (channel === 'Telegram') {
+      return variant === 'lead'
+        ? 'Получить PDF-гид в Telegram →'
+        : 'Получить расчёт туров в Telegram →';
+    }
+    return variant === 'lead'
+      ? 'Получить PDF-гид в WhatsApp →'
+      : 'Получить расчёт туров в WhatsApp →';
+  }
+
+  function initMessengerPicker(form) {
+    if (!form || form.dataset.messengerPickerInit === '1') {
+      return;
+    }
+    var picker = qs('[data-messenger-picker]', form);
+    if (!picker) {
+      return;
+    }
+    form.dataset.messengerPickerInit = '1';
+    var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
+    if (form.getAttribute('data-form-context') === 'dest-turciya-compare') {
+      variant = 'compare';
+    }
+    var submit = qs('[data-messenger-submit-label]', form);
+    var radios = qsa('input[type="radio"]', picker);
+    if (!radios.length) {
+      return;
+    }
+    var radioName = radios[0].name;
+
+    function sync() {
+      var channel = fieldValue(form, radioName) || 'WhatsApp';
+      if (submit) {
+        submit.textContent = messengerSubmitLabelText(channel, variant);
+      }
+      var hidden = qs('[name="contact_channel"]', form);
+      if (hidden) {
+        hidden.value = channel;
+      }
+    }
+
+    radios.forEach(function (input) {
+      input.addEventListener('change', sync);
+    });
+    sync();
+  }
+
   function updateQuizSubmitLabel(form) {
     var btn = qs('[data-quiz-submit-label]', form);
     var channel = fieldValue(form, 'quiz_channel') || 'WhatsApp';
     if (!btn) return;
-    if (channel === 'Telegram') {
-      btn.textContent = 'Получить расчёт туров в Telegram →';
-    } else {
-      btn.textContent = 'Получить расчёт туров в мессенджер →';
-    }
+    btn.textContent = messengerSubmitLabelText(channel, 'quiz');
   }
 
   function initQuizWizard(form) {
@@ -604,21 +762,15 @@
   }
 
   qsa('.js-quiz-wizard').forEach(initQuizWizard);
+  qsa('.js-quiz-wizard').forEach(initMessengerPicker);
 
   function openQuiz() {
     if (!modal || !quizForm) return;
+    modal.classList.remove('quiz-modal--closing');
     modal.removeAttribute('hidden');
     modal.removeAttribute('inert');
     document.body.style.overflow = 'hidden';
     document.body.classList.add('quiz-open');
-  }
-
-  function closeQuiz() {
-    if (!modal) return;
-    modal.setAttribute('hidden', '');
-    modal.setAttribute('inert', '');
-    document.body.style.overflow = '';
-    document.body.classList.remove('quiz-open');
   }
 
   var vibeQuizMap = {
@@ -627,6 +779,7 @@
     city: { composition: '', wishTag: '[Шопинг и движ]' },
     party: { composition: 'Компания друзей', wishTag: '[Шопинг и движ]' },
     active: { composition: '', wishTag: '[Активный отдых / Экскурсии]' },
+    balance: { composition: '', wishTag: '[Хит цена/качество · рейтинг 4.7+]' },
   };
 
   function applyQuizPrefillToForm(form, btn) {
@@ -644,6 +797,10 @@
       var target = qs('[name="quiz_composition"][value="' + map.composition + '"]', form);
       if (target) target.checked = true;
     }
+    if (map && map.wishTag) {
+      var wishField = qs('[name="quiz_wishes"]', form);
+      if (wishField && !wishField.value) wishField.value = map.wishTag;
+    }
   }
 
   function applyQuizScenarioPrefill(form, btn) {
@@ -660,7 +817,15 @@
       if (compInput) compInput.checked = true;
     }
     var wishes = qs('[name="quiz_wishes"]', form);
-    if (wishes) wishes.value = 'Сценарий: ' + step1;
+    if (wishes) {
+      var extra = '';
+      if (step1 === 'Хит Цена/Качество') {
+        extra = ' [Хит цена/качество · рейтинг 4.7+]';
+      } else if (step1 === 'Город и шопинг') {
+        extra = ' [Шопинг и движ]';
+      }
+      wishes.value = 'Сценарий: ' + step1 + extra;
+    }
   }
 
   function openQuizFromButton(btn) {
@@ -683,7 +848,84 @@
     btn.addEventListener('click', closeQuiz);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeQuiz();
+    if (e.key === 'Escape') {
+      closeQuiz();
+      closeTurciyaLeadModal();
+    }
+  });
+
+  var turciyaLeadModal = qs('#turciya-lead-modal');
+  var turciyaLeadForm = qs('#turciya-lead-modal-form');
+
+  function openTurciyaLeadModal(trigger) {
+    if (!turciyaLeadModal) return;
+    var titleEl = qs('#turciya-lead-modal-title');
+    var leadEl = qs('#turciya-lead-modal-lead');
+    var msgEl = turciyaLeadForm ? qs('[name="message"]', turciyaLeadForm) : null;
+    var tourEl = qs('#turciya-lead-modal-tour');
+    var uonEl = qs('#turciya-lead-modal-uon');
+    var defTitle = turciyaLeadModal.getAttribute('data-default-title') || '';
+    var defLead = turciyaLeadModal.getAttribute('data-default-lead') || '';
+    var defTour = turciyaLeadModal.getAttribute('data-default-tour') || '';
+    var defMsg = turciyaLeadModal.getAttribute('data-default-message') || '';
+    if (titleEl) titleEl.textContent = defTitle;
+    if (leadEl) leadEl.textContent = defLead;
+    if (tourEl) tourEl.value = defTour;
+    if (uonEl) uonEl.value = '';
+    if (msgEl) msgEl.value = defMsg;
+    if (trigger) {
+      var hotelTitle = trigger.getAttribute('data-lead-title') || trigger.getAttribute('data-hotel-name') || '';
+      var hotelLead = trigger.getAttribute('data-lead-subtitle') || '';
+      var hotelMsg = trigger.getAttribute('data-lead-message') || '';
+      var hotelTour = trigger.getAttribute('data-lead-tour') || hotelTitle;
+      var hotelUon = trigger.getAttribute('data-uon-hotel-id') || '';
+      if (hotelTitle && titleEl) titleEl.textContent = hotelTitle;
+      if (hotelLead && leadEl) leadEl.textContent = hotelLead;
+      if (hotelMsg && msgEl) msgEl.value = hotelMsg;
+      if (hotelTour && tourEl) tourEl.value = hotelTour;
+      if (uonEl) uonEl.value = hotelUon;
+    }
+    turciyaLeadModal.classList.remove('quiz-modal--closing');
+    turciyaLeadModal.removeAttribute('hidden');
+    turciyaLeadModal.removeAttribute('inert');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('quiz-open');
+    if (turciyaLeadForm) {
+      var phone = qs('[name="phone"]', turciyaLeadForm);
+      if (phone) {
+        setTimeout(function () {
+          phone.focus();
+        }, 120);
+      }
+    }
+  }
+
+  function closeTurciyaLeadModal() {
+    if (!turciyaLeadModal || turciyaLeadModal.hasAttribute('hidden')) return;
+    turciyaLeadModal.classList.add('quiz-modal--closing');
+    window.setTimeout(function () {
+      turciyaLeadModal.classList.remove('quiz-modal--closing');
+      turciyaLeadModal.setAttribute('hidden', '');
+      turciyaLeadModal.setAttribute('inert', '');
+      if (!modal || modal.hasAttribute('hidden')) {
+        document.body.style.overflow = '';
+        document.body.classList.remove('quiz-open');
+      }
+    }, 200);
+  }
+
+  if (turciyaLeadForm) {
+    initMessengerPicker(turciyaLeadForm);
+  }
+
+  qsa('[data-turciya-lead-open], [data-curated-lead-open]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openTurciyaLeadModal(btn);
+    });
+  });
+  qsa('[data-turciya-lead-close]').forEach(function (btn) {
+    btn.addEventListener('click', closeTurciyaLeadModal);
   });
 
   qsa('[data-lead-channel]').forEach(function (btn) {
@@ -717,6 +959,7 @@
 
   var leadMagnetForm = qs('#lead-magnet-form');
   if (leadMagnetForm) {
+    initMessengerPicker(leadMagnetForm);
     leadMagnetForm.addEventListener('submit', function () {
       var picked = leadMagnetForm.querySelector('[name="lead_messenger"]:checked');
       var channel = qs('[name="contact_channel"]', leadMagnetForm);
@@ -828,6 +1071,8 @@
   function postForm(form, action) {
     var status = qs('.form-status', form);
     var submitBtn = form.querySelector('button[type="submit"]');
+    var isModalQuiz = isModalQuizForm(form);
+    var quizSuccessShown = false;
     if (!cfg.ajaxUrl) {
       setStatus(status, PHONE_FALLBACK, false);
       return;
@@ -836,8 +1081,13 @@
       if (submitBtn.disabled) return;
       submitBtn.disabled = true;
       submitBtn.setAttribute('aria-busy', 'true');
+      if (isModalQuiz) {
+        submitBtn.textContent = 'Отправляем...';
+      }
     }
-    setStatus(status, 'Отправляем…', null);
+    if (!isModalQuiz) {
+      setStatus(status, 'Отправляем…', null);
+    }
     sendForm(form, action)
       .then(function (data) {
         if (!data.success && data.data && data.data.code === 'nonce') {
@@ -848,20 +1098,32 @@
         return data;
       })
       .then(function (data) {
+        if (data.success && isModalQuiz) {
+          trackFormSuccess(form, action);
+          quizSuccessShown = true;
+          showQuizModalSuccess();
+          return;
+        }
         var msg = data.data && data.data.message ? data.data.message : (data.success ? 'Спасибо! Заявка отправлена.' : PHONE_FALLBACK);
         setStatus(status, msg, !!data.success);
         if (data.success) {
           trackFormSuccess(form, action);
           form.reset();
+          if (form.id === 'turciya-lead-modal-form') {
+            window.setTimeout(closeTurciyaLeadModal, 1800);
+          }
         }
       })
       .catch(function () {
         setStatus(status, 'Нет связи с сервером. ' + PHONE_FALLBACK, false);
       })
       .finally(function () {
-        if (submitBtn) {
+        if (submitBtn && !quizSuccessShown) {
           submitBtn.disabled = false;
           submitBtn.removeAttribute('aria-busy');
+          if (isModalQuiz) {
+            updateQuizSubmitLabel(form);
+          }
         }
       });
   }
@@ -878,6 +1140,291 @@
       postForm(form, action);
     });
   });
+
+  function initTurciyaCatalog() {
+    var showcase = qs('[data-turciya-curated-root]');
+    if (!showcase) {
+      return;
+    }
+    var cards = qsa('[data-curated-card]', showcase);
+    if (!cards.length) {
+      return;
+    }
+    var filterButtons = qsa('[data-turciya-catalog-filter]', showcase);
+    var filterButtonsArr = Array.prototype.slice.call(filterButtons);
+    var pickCards = qsa('.turciya-resort-pick__card', showcase);
+    var catalogGuide = qs('[data-turciya-catalog-guide]', showcase);
+    var curatedGrid = qs('[data-curated-grid]', showcase);
+    var titleEl = qs('[data-turciya-catalog-title]', showcase);
+    var descEl = qs('[data-turciya-catalog-desc]', showcase);
+    var resetBtn = qs('[data-turciya-catalog-reset]', showcase);
+    var defaultTitle = showcase.getAttribute('data-catalog-default-title') || '';
+    var defaultDesc = showcase.getAttribute('data-catalog-default-desc') || '';
+    var pageSize = 6;
+    var visibleLimit = pageSize;
+    var activeFilter = 'starter';
+    var currentMatched = [];
+    var moreWrap = qs('[data-turciya-catalog-more-wrap]', showcase);
+    var moreBtn = qs('[data-turciya-catalog-more]', showcase);
+    var moreCountEl = qs('[data-turciya-catalog-more-count]', showcase);
+    var fillSlot = qs('[data-turciya-catalog-fill]', showcase);
+    var fillTitle = qs('[data-turciya-fill-title]', showcase);
+    var fillText = qs('[data-turciya-fill-text]', showcase);
+
+    function parseTags(card) {
+      return (card.getAttribute('data-filter-tags') || '')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+    }
+
+    function setCardVisible(card, visible) {
+      card.classList.toggle('is-hidden', !visible);
+      if (visible) {
+        card.removeAttribute('hidden');
+      } else {
+        card.setAttribute('hidden', '');
+      }
+    }
+
+    function syncControls(filterKey) {
+      filterButtons.forEach(function (btn) {
+        var key = btn.getAttribute('data-turciya-catalog-filter') || '';
+        var on = key === filterKey;
+        if (btn.classList.contains('turciya-catalog-tab')) {
+          btn.classList.toggle('turciya-catalog-tab--active', on);
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+        if (btn.classList.contains('turciya-resort-chips__btn')) {
+          btn.classList.toggle('is-active', on);
+          btn.setAttribute('aria-selected', on ? 'true' : 'false');
+        }
+      });
+      pickCards.forEach(function (pickWrap) {
+        var pickBtn = qs('[data-turciya-pick-card]', pickWrap);
+        var filterBtn = qs('[data-turciya-catalog-filter]', pickWrap);
+        var key = filterBtn ? (filterBtn.getAttribute('data-turciya-catalog-filter') || '') : '';
+        var on = key === filterKey;
+        pickWrap.classList.toggle('is-active', on);
+        if (pickBtn) {
+          pickBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+      });
+      if (catalogGuide) {
+        if (filterKey === 'resort-antalya') {
+          catalogGuide.removeAttribute('hidden');
+        } else {
+          catalogGuide.setAttribute('hidden', '');
+        }
+      }
+      if (resetBtn) {
+        if (filterKey === 'starter') {
+          resetBtn.setAttribute('hidden', '');
+        } else {
+          resetBtn.removeAttribute('hidden');
+        }
+      }
+      qsa('[data-turciya-resort-chips] [data-turciya-catalog-filter]').forEach(function (chip) {
+        var on = (chip.getAttribute('data-turciya-catalog-filter') || '') === filterKey;
+        chip.classList.toggle('is-active', on);
+        chip.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    function getMatchedCards(filterKey) {
+      var matched = [];
+      cards.forEach(function (card) {
+        var tags = parseTags(card);
+        var ok = filterKey === 'starter'
+          ? tags.indexOf('starter') !== -1
+          : tags.indexOf(filterKey) !== -1;
+        if (ok) {
+          matched.push(card);
+        }
+      });
+      matched.sort(function (a, b) {
+        var ra = parseInt(a.getAttribute('data-pool-rank') || '999', 10);
+        var rb = parseInt(b.getAttribute('data-pool-rank') || '999', 10);
+        return ra - rb;
+      });
+      return matched;
+    }
+
+    function updateMoreControl() {
+      if (!moreWrap) {
+        return;
+      }
+      var remaining = Math.max(0, currentMatched.length - visibleLimit);
+      if (remaining <= 0) {
+        moreWrap.setAttribute('hidden', '');
+        return;
+      }
+      moreWrap.removeAttribute('hidden');
+      if (moreCountEl) {
+        moreCountEl.textContent = ' (+' + remaining + ') ↓';
+      }
+    }
+
+    function updateFillSlot() {
+      if (!fillSlot) {
+        return;
+      }
+      var shown = Math.min(currentMatched.length, visibleLimit);
+      var hole = currentMatched.length === 5 && shown === 5;
+      if (!hole) {
+        fillSlot.setAttribute('hidden', '');
+        return;
+      }
+      fillSlot.removeAttribute('hidden');
+      if (activeFilter === 'need-family') {
+        if (fillTitle) {
+          fillTitle.textContent = 'Подберём отель под вашу семью';
+        }
+        if (fillText) {
+          fillText.textContent = 'В этой выборке 5 отелей. Напишите возраст детей — пришлём ещё 2–3 варианта из базы под ваши даты и вылет из Уфы.';
+        }
+      } else if (fillTitle && fillText) {
+        fillTitle.textContent = 'Нужен ещё один вариант?';
+        fillText.textContent = 'В этой выборке 5 отелей. Напишите даты и состав — пришлём ещё 2–3 варианта из базы с вылетом из Уфы.';
+      }
+    }
+
+    function renderVisibleCards() {
+      var visible = new Set();
+      currentMatched.slice(0, visibleLimit).forEach(function (card) {
+        visible.add(card);
+      });
+      cards.forEach(function (card) {
+        setCardVisible(card, visible.has(card));
+      });
+      updateMoreControl();
+      updateFillSlot();
+    }
+
+    function applyCatalogFilter(filterKey, meta) {
+      filterKey = filterKey || 'starter';
+      activeFilter = filterKey;
+      visibleLimit = pageSize;
+      currentMatched = getMatchedCards(filterKey);
+      renderVisibleCards();
+      if (curatedGrid) {
+        curatedGrid.removeAttribute('data-catalog-pending');
+      }
+      showcase.classList.add('is-catalog-ready');
+
+      var title = defaultTitle;
+      var desc = defaultDesc;
+      if (meta && meta.title) {
+        title = meta.title;
+      }
+      if (meta && meta.desc) {
+        desc = meta.desc;
+      }
+      if (titleEl && title) {
+        titleEl.textContent = title;
+      }
+      if (descEl && desc) {
+        descEl.textContent = desc;
+      }
+      syncControls(filterKey);
+    }
+
+    function scrollToCatalogHead() {
+      var target = qs('[data-turciya-catalog-title]', showcase) || curatedGrid || showcase;
+      if (target && typeof target.scrollIntoView === 'function') {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function applyFilter(filterKey, titleText, descText, options) {
+      var meta = {
+        title: titleText || '',
+        desc: descText || '',
+      };
+      applyCatalogFilter(filterKey, meta);
+      if (!options || options.scroll !== false) {
+        scrollToCatalogHead();
+      }
+    }
+
+    function resetToDefault() {
+      applyFilter('starter', defaultTitle, defaultDesc);
+    }
+
+    function metaFromButton(btn) {
+      return {
+        title: btn.getAttribute('data-catalog-title') || '',
+        desc: btn.getAttribute('data-catalog-desc') || '',
+      };
+    }
+
+    function metaForFilter(key) {
+      var titled = null;
+      filterButtonsArr.forEach(function (btn) {
+        if (titled) {
+          return;
+        }
+        if ((btn.getAttribute('data-turciya-catalog-filter') || '') === key && btn.getAttribute('data-catalog-title')) {
+          titled = btn;
+        }
+      });
+      return titled ? metaFromButton(titled) : { title: '', desc: '' };
+    }
+
+    window.applyFilter = applyFilter;
+    window.resetToDefault = resetToDefault;
+    window.filterByResort = function (key) {
+      if (key && key.indexOf('resort-') !== 0) {
+        key = 'resort-' + key;
+      }
+      var meta = metaForFilter(key);
+      applyFilter(key, meta.title, meta.desc);
+    };
+    window.selectResort = window.filterByResort;
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-turciya-catalog-filter') || 'starter';
+        var meta = metaFromButton(btn);
+        var scroll = !btn.classList.contains('turciya-resort-chips__btn');
+        applyFilter(key, meta.title, meta.desc, { scroll: scroll });
+      });
+    });
+
+    qsa('[data-turciya-pick-card]', showcase).forEach(function (pick) {
+      pick.addEventListener('click', function () {
+        var key = pick.getAttribute('data-turciya-catalog-filter') || '';
+        if (!key) {
+          return;
+        }
+        var meta = metaForFilter(key);
+        applyFilter(key, meta.title, meta.desc);
+      });
+    });
+
+    qsa('[data-turciya-resort-chips] [data-turciya-catalog-filter]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var key = chip.getAttribute('data-turciya-catalog-filter') || 'starter';
+        var meta = metaForFilter(key);
+        applyFilter(key, meta.title, meta.desc, { scroll: true });
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', resetToDefault);
+    }
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        visibleLimit += pageSize;
+        renderVisibleCards();
+      });
+    }
+
+    applyCatalogFilter('starter', { title: defaultTitle, desc: defaultDesc });
+  }
+
+  initTurciyaCatalog();
 
   qsa('[data-dest-season-module]').forEach(function (root) {
     var tabs = qsa('[data-season-tab]', root);

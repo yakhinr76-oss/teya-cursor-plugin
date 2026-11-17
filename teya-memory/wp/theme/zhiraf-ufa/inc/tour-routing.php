@@ -55,6 +55,36 @@ function zhiraf_ufa_tour_resort_template( $template ) {
 add_filter( 'template_include', 'zhiraf_ufa_tour_resort_template', 99 );
 
 /**
+ * Permanent redirects for resort URLs that are consolidated on country landings.
+ *
+ * @return array<string,string> resort key country/resort => absolute URL.
+ */
+function zhiraf_ufa_resort_permanent_redirects() {
+	return array(
+		'vietnam/fukuok' => home_url( '/tour/vietnam/#dest-module' ),
+	);
+}
+
+/**
+ * 301 away from deprecated resort landings (e.g. Phu Quoc → Vietnam hub).
+ */
+function zhiraf_ufa_resort_permanent_redirect() {
+	$country = sanitize_title( (string) get_query_var( 'zhiraf_tour_country' ) );
+	$resort  = sanitize_title( (string) get_query_var( 'zhiraf_tour_resort' ) );
+	if ( '' === $country || '' === $resort ) {
+		return;
+	}
+	$key = $country . '/' . $resort;
+	$map = zhiraf_ufa_resort_permanent_redirects();
+	if ( empty( $map[ $key ] ) ) {
+		return;
+	}
+	wp_safe_redirect( $map[ $key ], 301 );
+	exit;
+}
+add_action( 'template_redirect', 'zhiraf_ufa_resort_permanent_redirect', 1 );
+
+/**
  * Flush rewrite rules after theme activation.
  */
 function zhiraf_ufa_flush_tour_rewrites() {

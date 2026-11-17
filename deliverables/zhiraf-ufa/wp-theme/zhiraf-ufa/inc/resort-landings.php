@@ -17,6 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 function zhiraf_ufa_resort_landing_index() {
 	return array(
 		array( 'country' => 'turciya', 'resort' => 'antalya' ),
+		array( 'country' => 'turciya', 'resort' => 'kemer' ),
+		array( 'country' => 'turciya', 'resort' => 'alanya' ),
+		array( 'country' => 'turciya', 'resort' => 'side' ),
+		array( 'country' => 'turciya', 'resort' => 'belek' ),
 		array( 'country' => 'egipet', 'resort' => 'hurgada' ),
 		array( 'country' => 'egipet', 'resort' => 'sharm-el-sheyh' ),
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
@@ -29,7 +33,12 @@ function zhiraf_ufa_resort_landing_index() {
  * @return array<string,array<string,mixed>>
  */
 function zhiraf_ufa_resort_landing_data() {
-	return array(
+	$extra = function_exists( 'zhiraf_ufa_turciya_extra_resort_landings' )
+		? zhiraf_ufa_turciya_extra_resort_landings()
+		: array();
+
+	return array_merge(
+		array(
 		'turciya/antalya' => array(
 			'tours_rx'           => '/Лара|Кунду|Коньяалты|Анталия/ui',
 			'tours_meal_prefer'  => 'AI',
@@ -473,6 +482,8 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 			),
 		),
+		),
+		$extra
 	);
 }
 

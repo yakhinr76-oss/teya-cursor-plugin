@@ -1,6 +1,6 @@
 <?php
 /**
- * Contextual lead magnet — Kemer vs Side in messengers.
+ * Turkey — CTA to open lead modal (messenger picker inside popup).
  *
  * @package Zhiraf_Ufa
  */
@@ -8,49 +8,31 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-$wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
-	? zhiraf_ufa_turciya_resort_compare_wa_text()
-	: '';
-$wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
-$wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
-	? zhiraf_ufa_whatsapp_url_with_text( $wa_base, $wa_text )
-	: $wa_base;
-$max_url = function_exists( 'zhiraf_ufa_brand_max_url' ) ? zhiraf_ufa_brand_max_url() : '';
 ?>
 <section class="section turciya-compare-lead" id="dest-inquiry">
 	<div class="container container--narrow turciya-compare-lead__inner">
 		<h2 class="turciya-compare-lead__title">
-			<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' ); ?>
+			<?php
+			$compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
+			if ( ! empty( $compare_title ) ) {
+				echo esc_html( $compare_title );
+			} else {
+				esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' );
+			}
+			?>
 		</h2>
 		<p class="turciya-compare-lead__text">
-			<?php esc_html_e( 'Не можете определиться между Кемером и Сиде? Напишите возраст детей — пришлём подборку в WhatsApp / MAX за 15 минут, без «оставьте номер и ждите».', 'zhiraf-ufa' ); ?>
+			<?php
+			$compare_text = __( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. В попапе выберете MAX, WhatsApp или Telegram — туда уйдёт расчёт.', 'zhiraf-ufa' );
+			if ( strpos( $compare_text, 'Быстрее ответить в WhatsApp' ) !== false ) {
+				$compare_text = __( 'Нужен ответ прямо сейчас? Нажмите кнопку WhatsApp сразу под каталогом отелей выше.', 'zhiraf-ufa' );
+			}
+			echo esc_html( $compare_text );
+			?>
 		</p>
-		<div class="turciya-compare-lead__actions">
-			<a
-				class="btn btn--whatsapp btn--lg"
-				href="<?php echo esc_url( $wa_url ); ?>"
-				target="_blank"
-				rel="noopener noreferrer"
-				data-track="messenger"
-				data-channel="whatsapp"
-				data-cta-context="turciya_compare_kemer_side"
-			>
-				<?php esc_html_e( 'Сравнить в WhatsApp', 'zhiraf-ufa' ); ?>
-			</a>
-			<?php if ( '' !== $max_url ) : ?>
-				<a
-					class="btn btn--outline btn--lg"
-					href="<?php echo esc_url( $max_url ); ?>"
-					target="_blank"
-					rel="noopener noreferrer"
-					data-track="messenger"
-					data-channel="max"
-					data-cta-context="turciya_compare_kemer_side_max"
-				>
-					<?php esc_html_e( 'Написать в MAX', 'zhiraf-ufa' ); ?>
-				</a>
-			<?php endif; ?>
-		</div>
+		<button type="button" class="btn btn--primary btn--lg" data-turciya-lead-open>
+			<?php esc_html_e( 'Оставить заявку и выбрать мессенджер', 'zhiraf-ufa' ); ?>
+		</button>
 	</div>
 </section>
+<?php get_template_part( 'template-parts/destination/turciya-lead-modal' ); ?>

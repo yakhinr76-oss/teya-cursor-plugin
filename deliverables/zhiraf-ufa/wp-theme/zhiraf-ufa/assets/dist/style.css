@@ -1927,6 +1927,225 @@ details[open] > .faq-home__question::after {
   color: var(--color-muted);
 }
 
+.dest-resort-chip-hub {
+  margin: 0 0 1.5rem;
+}
+
+.dest-resort-chip-hub__title {
+  margin: 1.75rem 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.dest-resort-chip-hub__guides {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #78716c;
+}
+
+.dest-resort-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+@media (min-width: 480px) {
+  .dest-resort-chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 720px) {
+  .dest-resort-chip-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.dest-resort-chip-grid--guides {
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .dest-resort-chip-grid--guides {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.dest-resort-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #eae4dc);
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(30, 28, 24, 0.04);
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.dest-resort-chip:hover {
+  border-color: rgba(200, 90, 50, 0.45);
+  box-shadow: 0 6px 18px rgba(30, 28, 24, 0.07);
+  transform: translateY(-1px);
+}
+
+.dest-resort-chip__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.dest-resort-chip__title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.dest-resort-chip__desc {
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.dest-resort-chip__arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary, #c85a32);
+}
+
+.dest-resort-chip--guide .dest-resort-chip__title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.dest-resort-link-hub {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dest-resort-link-hub__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a8a29e;
+}
+
+.dest-resort-link-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .dest-resort-link-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .dest-resort-link-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.dest-resort-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  border-radius: 1rem;
+  border: 1px solid #eae4dc;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.dest-resort-link-card:hover,
+.dest-resort-link-card:focus-visible {
+  border-color: #c85a32;
+}
+
+.dest-resort-link-card__body {
+  min-width: 0;
+}
+
+.dest-resort-link-card__title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1c1917;
+  transition: color 0.15s ease;
+}
+
+.dest-resort-link-card:hover .dest-resort-link-card__title,
+.dest-resort-link-card:focus-visible .dest-resort-link-card__title {
+  color: #c85a32;
+}
+
+.dest-resort-link-card__subtitle {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #78716c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dest-resort-link-card__arrow {
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #c85a32;
+  transition: transform 0.15s ease;
+}
+
+.dest-resort-link-card:hover .dest-resort-link-card__arrow,
+.dest-resort-link-card:focus-visible .dest-resort-link-card__arrow {
+  transform: translateX(2px);
+}
+
+.dest-landing-faq--panel .dest-landing-faq__panel {
+  padding: 0.25rem 1.25rem 0.5rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1px solid var(--color-border, #eae4dc);
+  box-shadow: 0 8px 24px rgba(30, 28, 24, 0.05);
+}
+
+.faq-home__list--panel {
+  max-width: none;
+  margin: 0;
+}
+
+.faq-home__list--panel .faq-home__item {
+  padding: 1rem 0;
+}
+
+.faq-home__list--panel .faq-home__item:first-child {
+  border-top: 0;
+}
+
+.faq-home__list--panel .faq-home__item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.75rem;
+}
+
 .resort-hub-links {
   margin-bottom: 28px;
 }
@@ -1982,6 +2201,28 @@ details[open] > .faq-home__question::after {
   font-size: 0.9375rem;
   color: var(--color-muted);
   max-width: 32rem;
+}
+
+.dest-landing-hero__trust {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.dest-landing-hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dest-landing-hero__trust span[aria-hidden] {
+  font-size: 1rem;
+  opacity: 0.7;
 }
 
 .dest-landing-hero__badges {
@@ -2487,7 +2728,13 @@ details[open] > .faq-home__question::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: center;
+  align-items: stretch;
+}
+
+.dest-landing-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dest-landing-hero__eyebrow {
@@ -2699,6 +2946,7 @@ details[open] > .faq-home__question::after {
 .turciya-resort-pick__track {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -2750,6 +2998,9 @@ details[open] > .faq-home__question::after {
 }
 
 .turciya-resort-pick__card-hit {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -2804,6 +3055,7 @@ details[open] > .faq-home__question::after {
 
 .turciya-resort-pick__card-top {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 0.35rem;
 }
@@ -2915,7 +3167,7 @@ details[open] > .faq-home__question::after {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin-top: 0.75rem;
+  margin-top: auto;
   padding-top: 0.75rem;
   border-top: 1px solid rgba(30, 28, 24, 0.06);
   font-size: 0.75rem;
@@ -3300,8 +3552,7 @@ details[open] > .faq-home__question::after {
   min-height: 3.25rem;
 }
 
-.turciya-curated-card__usp,
-.turciya-curated-card__nuance {
+.turciya-curated-card__usp {
   margin: 0;
   font-size: 0.8125rem;
   line-height: 1.45;
@@ -3309,22 +3560,85 @@ details[open] > .faq-home__question::after {
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 2;
-}
-
-.turciya-curated-card__usp {
   color: #44403c;
   font-weight: 600;
 }
 
-.turciya-curated-card__nuance {
-  color: #78716c;
+.turciya-curated-card__honest {
+  margin: 0 16px 0;
+  padding: 0.75rem;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-lg);
   font-size: 0.75rem;
+  line-height: 1.45;
+  color: #78350f;
+  background: #fffbeb;
 }
 
-.turciya-curated-card__nuance::before {
-  content: "⚠ ";
-  color: #b45309;
+.turciya-curated-card__honest-label {
+  display: block;
+  margin-bottom: 0.2rem;
   font-weight: 800;
+  color: #92400e;
+}
+
+.turciya-curated-card__honest-text {
+  display: block;
+}
+
+.turciya-catalog-wa-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: #faf7f2;
+}
+
+.turciya-catalog-wa-strip__text {
+  margin: 0;
+  flex: 1;
+  min-width: min(100%, 14rem);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #44403c;
+}
+
+.turciya-catalog-wa-strip__form-link {
+  margin-left: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.turciya-lead-modal__form .messenger-picker__inner {
+  min-height: 3.5rem;
+  padding: 0.625rem 0.85rem;
+}
+
+.turciya-lead-modal__form .form-consents {
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #a8a29e;
+}
+
+.turciya-catalog-wa-strip__link {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--color-primary, #c85a32);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .turciya-curated-card__footer {
@@ -3459,6 +3773,97 @@ details[open] > .faq-home__question::after {
   margin: 0 auto 20px;
   max-width: 32rem;
   color: var(--color-muted);
+}
+
+.turciya-kids-turkey__card {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: #fff;
+  border: 1px solid var(--color-border, #eae4dc);
+  border-radius: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .turciya-kids-turkey__card {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: start;
+  }
+}
+.turciya-kids-turkey__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent, #c85a32);
+  margin: 0 0 0.5rem;
+}
+
+.turciya-kids-turkey__lead {
+  color: var(--color-muted);
+  margin: 0.75rem 0 1rem;
+}
+
+.turciya-kids-turkey__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.turciya-kids-turkey__aside {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--color-sand, #faf7f2);
+  border: 1px solid var(--color-border, #eae4dc);
+}
+
+.turciya-kids-turkey__aside-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+}
+
+.turciya-kids-turkey__aside-text {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+}
+
+.turciya-kids-turkey__cta {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.turciya-kids-turkey__wa {
+  width: 100%;
+}
+
+.turciya-compare-lead__form {
+  margin: 1.25rem 0;
+  text-align: left;
+}
+
+.turciya-compare-lead__form .messenger-picker__inner {
+  min-height: 3.5rem;
+  padding: 0.625rem 0.85rem;
+}
+
+@media (max-width: 479px) {
+  .turciya-compare-lead__form .messenger-picker__inner {
+    min-height: 3.75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+.turciya-compare-lead__form .form-consents {
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #a8a29e;
+}
+
+.turciya-compare-lead__form .form-consents .form-check {
+  margin-bottom: 0.35rem;
 }
 
 .turciya-compare-lead__actions {

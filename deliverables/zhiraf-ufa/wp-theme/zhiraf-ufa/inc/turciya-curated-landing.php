@@ -232,7 +232,7 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'resort'        => 'alanya',
 			'image'         => 'resort-turciya-alanya-1.jpg',
 			'image_alt'     => __( 'Базовый доступный тур в Турцию, Аланья', 'zhiraf-ufa' ),
-			'badge'         => __( 'Цена с главной', 'zhiraf-ufa' ),
+			'badge'         => __( 'Старт по Турции', 'zhiraf-ufa' ),
 			'badge_mod'     => 'home-price',
 			'resort_pill'   => __( 'Аланья • 4★ All Inclusive', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Базовый комфорт', 'zhiraf-ufa' ),
@@ -248,8 +248,8 @@ function zhiraf_ufa_turciya_curated_hotels() {
 		array(
 			'slot'        => 'family',
 			'resort'      => 'side',
-			'image'       => 'resort-turciya-belek-1.jpg',
-			'image_alt'   => __( 'Песчаный пляж и территория семейного отеля', 'zhiraf-ufa' ),
+			'image'       => 'resort-turciya-side-1.jpg',
+			'image_alt'   => __( 'Сиде — песчаный пляж и семейный отель', 'zhiraf-ufa' ),
 			'badge'       => __( 'Идеально детям', 'zhiraf-ufa' ),
 			'badge_mod'   => 'family',
 			'resort_pill' => __( 'Сиде • Песчаный вход', 'zhiraf-ufa' ),
@@ -282,8 +282,8 @@ function zhiraf_ufa_turciya_curated_hotels() {
 		array(
 			'slot'        => 'relax',
 			'resort'      => 'side',
-			'image'       => 'resort-turciya-kemer-2.jpg',
-			'image_alt'   => __( 'Спокойный пляж и море — отдых 16+', 'zhiraf-ufa' ),
+			'image'       => 'resort-turciya-side-2.jpg',
+			'image_alt'   => __( 'Сиде — спокойный пляж, отдых 16+', 'zhiraf-ufa' ),
 			'badge'       => __( 'Только для взрослых 16+', 'zhiraf-ufa' ),
 			'badge_mod'   => 'adults',
 			'resort_pill' => __( 'Сиде • 16+', 'zhiraf-ufa' ),
@@ -384,6 +384,10 @@ function zhiraf_ufa_turciya_resort_guide_url( $resort_key ) {
 	$resort_key = sanitize_key( (string) $resort_key );
 	$map        = array(
 		'antalya' => home_url( '/tour/turciya/antalya/' ),
+		'kemer'   => home_url( '/tour/turciya/kemer/' ),
+		'alanya'  => home_url( '/tour/turciya/alanya/' ),
+		'side'    => home_url( '/tour/turciya/side/' ),
+		'belek'   => home_url( '/tour/turciya/belek/' ),
 	);
 	return ! empty( $map[ $resort_key ] ) ? (string) $map[ $resort_key ] : '';
 }
@@ -450,7 +454,7 @@ function zhiraf_ufa_turciya_starter_filter_tags( $hotel ) {
  */
 function zhiraf_ufa_turciya_pool_image_for_region( $region ) {
 	$map = array(
-		'side'    => 'resort-turciya-belek-1.jpg',
+		'side'    => 'resort-turciya-side-1.jpg',
 		'kemer'   => 'resort-turciya-kemer-2.jpg',
 		'alanya'  => 'resort-turciya-alanya-2.jpg',
 		'belek'   => 'resort-turciya-belek-1.jpg',
@@ -1065,6 +1069,8 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 	return array(
 		array(
 			'id'           => 'side',
+			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'side' ),
+			'guide_label'  => __( 'На страницу →', 'zhiraf-ufa' ),
 			'name'         => __( 'Сиде', 'zhiraf-ufa' ),
 			'subtitle'     => __( 'Песок и пологий вход', 'zhiraf-ufa' ),
 			'tag'          => __( 'Детский хит', 'zhiraf-ufa' ),
@@ -1086,6 +1092,8 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 		),
 		array(
 			'id'           => 'kemer',
+			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'kemer' ),
+			'guide_label'  => __( 'На страницу →', 'zhiraf-ufa' ),
 			'name'         => __( 'Кемер', 'zhiraf-ufa' ),
 			'subtitle'     => __( 'Сосны, скалы и чистейшая вода', 'zhiraf-ufa' ),
 			'tag'          => __( 'Природа и горы', 'zhiraf-ufa' ),
@@ -1107,6 +1115,8 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 		),
 		array(
 			'id'           => 'alanya',
+			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'alanya' ),
+			'guide_label'  => __( 'На страницу →', 'zhiraf-ufa' ),
 			'name'         => __( 'Аланья', 'zhiraf-ufa' ),
 			'subtitle'     => __( 'Тепло и бюджетно', 'zhiraf-ufa' ),
 			'tag'          => __( 'Эконом-хит', 'zhiraf-ufa' ),
@@ -1129,6 +1139,8 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 		),
 		array(
 			'id'           => 'belek',
+			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'belek' ),
+			'guide_label'  => __( 'На страницу →', 'zhiraf-ufa' ),
 			'name'         => __( 'Белек', 'zhiraf-ufa' ),
 			'subtitle'     => __( 'Сервис 5★ Lux', 'zhiraf-ufa' ),
 			'tag'          => __( 'Премиум', 'zhiraf-ufa' ),
@@ -1161,7 +1173,7 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 			'hotel_count'  => $counts['antalya'],
 			'accent_mod'   => 'sky',
 			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'antalya' ),
-			'guide_label'  => __( 'Подробный гид по Анталье →', 'zhiraf-ufa' ),
+			'guide_label'  => __( 'На страницу →', 'zhiraf-ufa' ),
 			'bullets'      => array(
 				array(
 					'type' => 'pro',
@@ -1191,12 +1203,12 @@ function zhiraf_ufa_turciya_expert_nuances() {
 		array(
 			'icon'  => '🚌',
 			'title' => __( 'Трансферы по курортам', 'zhiraf-ufa' ),
-			'text'  => __( 'До Антальи и Аланьи — короче путь от аэропорта; Кемер и Белек — дольше по трассе. Закладываем время в дороге в подбор.', 'zhiraf-ufa' ),
+			'text'  => __( 'До Антальи и Белека — 20–40 минут от аэропорта. До Сиде и Кемера — около часа, до Аланьи — от 2 часов по побережью. Учитываем это при подборе с детьми.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '✈️',
-			'title' => __( 'Рейсы из Уфы в сезоне', 'zhiraf-ufa' ),
-			'text'  => __( 'На части дат — прямой чартер, на других — стыковка в Москве. Показываем тип перелёта и багаж по данным туроператора до оплаты.', 'zhiraf-ufa' ),
+			'icon'  => '✈',
+			'title' => __( 'Прямой чартер из Уфы', 'zhiraf-ufa' ),
+			'text'  => __( 'Вылет из Уфы в Анталью — в среднем 4,5–5 часов. Багаж, время вылета и трансфер фиксируем в договоре до оплаты.', 'zhiraf-ufa' ),
 		),
 	);
 }

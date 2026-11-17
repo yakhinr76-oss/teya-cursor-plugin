@@ -35,7 +35,17 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 		</nav>
 		<div class="site-header__actions">
 			<a class="header-phone" href="tel:+79018105018" data-track="phone">+7 901 810-50-18</a>
-			<?php zhiraf_ufa_render_social_links( array( 'variant' => 'icon', 'context' => 'header' ) ); ?>
+			<span class="header-actions__divider" aria-hidden="true"></span>
+			<?php
+			zhiraf_ufa_render_social_links(
+				array(
+					'variant' => 'icon',
+					'context' => 'header',
+					'class'   => 'header-messengers',
+					'only'    => array( 'max', 'telegram' ),
+				)
+			);
+			?>
 			<button type="button" class="btn btn--outline btn--sm" data-quiz-open data-cta-context="cta_header_quiz_open">
 				<?php echo esc_html( zhiraf_ufa_quiz_cta_label() ); ?>
 			</button>

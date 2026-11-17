@@ -1,0 +1,93 @@
+/* Destinations (Tabs & Cards Row) */
+
+.section-tabs {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-muted);
+  cursor: pointer;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+.tab-link-all {
+  margin-left: auto;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.dest-premium-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.dest-premium-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.dest-premium-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.dest-premium-card__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dest-premium-card:hover .dest-premium-card__bg img {
+  transform: scale(1.05);
+}
+
+.dest-premium-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+}
+
+.dest-premium-card__content {
+  position: relative;
+  z-index: 3;
+  padding: 24px;
+  color: #fff;
+}
+
+.dest-premium-card__title {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.dest-premium-card__subtitle {
+  font-size: 0.875rem;
+  opacity: 0.8;
+  margin: 0;
+}

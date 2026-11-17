@@ -925,6 +925,230 @@ class Zhiraf_BG_Price_Engine {
 	}
 
 	/**
+	 * Normalize hotel title for fuzzy BG ↔ curated matching.
+	 *
+	 * @param string $name Hotel title.
+	 * @return string
+	 */
+	public static function normalize_hotel_match_key( $name ) {
+		$name = remove_accents( wp_strip_all_tags( (string) $name ) );
+		$name = mb_strtolower( $name, 'UTF-8' );
+		$name = preg_replace( '/[★⭐\*]+/u', ' ', $name );
+		$name = preg_replace( '/\b\d\s*\*+\b/u', ' ', $name );
+		$name = preg_replace( '/\b(hotel|hotels|resort|spa|suites|club|golf|beach|apartments)\b/iu', ' ', $name );
+		$name = preg_replace( '/&/u', ' ', $name );
+		$name = preg_replace( '/[^\p{L}\p{N}]+/u', '', $name );
+
+		return $name;
+	}
+
+	/**
+	 * Significant tokens from a hotel name (brand matching).
+	 *
+	 * @param string $name Hotel title.
+	 * @return array<int,string>
+	 */
+	public static function hotel_match_tokens( $name ) {
+		$raw = remove_accents( wp_strip_all_tags( (string) $name ) );
+		$raw = mb_strtolower( $raw, 'UTF-8' );
+		if ( ! preg_match_all( '/\p{L}{3,}/u', $raw, $matches ) ) {
+			return array();
+		}
+		$stop = array(
+			'hotel',
+			'hotels',
+			'resort',
+			'spa',
+			'beach',
+			'golf',
+			'club',
+			'and',
+			'the',
+			'ultra',
+			'all',
+			'inclusive',
+			'adults',
+			'only',
+			'family',
+			'eco',
+			'suites',
+			'premium',
+		);
+		$tokens = array();
+		foreach ( $matches[0] as $token ) {
+			if ( in_array( $token, $stop, true ) ) {
+				continue;
+			}
+			$tokens[ $token ] = $token;
+		}
+
+		return array_values( $tokens );
+	}
+
+	/**
+	 * Whether a curated hotel title matches a BG tour hotel_name.
+	 *
+	 * @param string $needle Curated title.
+	 * @param string $haystack BG hotel_name.
+	 * @return bool
+	 */
+	public static function hotel_names_match( $needle, $haystack ) {
+		$ka = self::normalize_hotel_match_key( $needle );
+		$kb = self::normalize_hotel_match_key( $haystack );
+		if ( '' === $ka || '' === $kb ) {
+			return false;
+		}
+		if ( $ka === $kb ) {
+			return true;
+		}
+		$min_len = min( strlen( $ka ), strlen( $kb ) );
+		if ( $min_len >= 8 && ( str_contains( $ka, $kb ) || str_contains( $kb, $ka ) ) ) {
+			return true;
+		}
+
+		$ta = self::hotel_match_tokens( $needle );
+		$tb = self::hotel_match_tokens( $haystack );
+		if ( empty( $ta ) || empty( $tb ) ) {
+			return false;
+		}
+
+		$brand = $ta[0];
+		foreach ( $ta as $token ) {
+			if ( strlen( $token ) > strlen( $brand ) ) {
+				$brand = $token;
+			}
+		}
+		if ( strlen( $brand ) < 4 || ! in_array( $brand, $tb, true ) ) {
+			return false;
+		}
+
+		$shared = array_values( array_intersect( $ta, $tb ) );
+
+		return count( $shared ) >= 2 || ( 1 === count( $shared ) && strlen( $brand ) >= 7 );
+	}
+
+	/**
+	 * BG catalog names that match a curated title.
+	 *
+	 * @param string $hotel_name Display title.
+	 * @return array<int,string>
+	 */
+	public function get_hotel_catalog_match_names( $hotel_name ) {
+		$names = array( trim( (string) $hotel_name ) );
+		foreach ( $this->load_hotel_catalog() as $row ) {
+			if ( empty( $row['name'] ) ) {
+				continue;
+			}
+			$cat_name = (string) $row['name'];
+			if ( self::hotel_names_match( $hotel_name, $cat_name ) ) {
+				$names[] = $cat_name;
+			}
+		}
+
+		return array_values( array_unique( array_filter( $names ) ) );
+	}
+
+	/**
+	 * Cheapest BG tour card for a hotel (catalog + fuzzy name, optional BG id).
+	 *
+	 * @param string $country_slug_or_id Country slug.
+	 * @param string $hotel_name Hotel title from curated JSON or showcase.
+	 * @param string $hotel_id     Optional BG hotelsJson key.
+	 * @return array<string,mixed>|null
+	 */
+	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name, $hotel_id = '' ) {
+		$hotel_name = trim( (string) $hotel_name );
+		$hotel_id   = trim( (string) $hotel_id );
+		if ( '' === $hotel_name && '' === $hotel_id ) {
+			return null;
+		}
+
+		$catalog    = $this->load_hotel_catalog();
+		$name_hits  = '' !== $hotel_name ? $this->get_hotel_catalog_match_names( $hotel_name ) : array();
+		if ( '' !== $hotel_id && isset( $catalog[ $hotel_id ]['name'] ) ) {
+			$name_hits[] = (string) $catalog[ $hotel_id ]['name'];
+			$name_hits   = array_values( array_unique( $name_hits ) );
+		}
+
+		$best  = null;
+		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
+		foreach ( $tours as $t ) {
+			if ( empty( $t['price_rur'] ) ) {
+				continue;
+			}
+			$matched = false;
+			if ( '' !== $hotel_id && ! empty( $t['hotel_id'] ) && (string) $t['hotel_id'] === $hotel_id ) {
+				$matched = true;
+			}
+			if ( ! $matched && ! empty( $t['hotel_name'] ) ) {
+				foreach ( $name_hits as $candidate ) {
+					if ( self::hotel_names_match( $candidate, (string) $t['hotel_name'] ) ) {
+						$matched = true;
+						break;
+					}
+				}
+			}
+			if ( ! $matched ) {
+				continue;
+			}
+			if ( null === $best || (int) $t['price_rur'] < (int) $best['price_rur'] ) {
+				$best = $t;
+			}
+		}
+
+		return $best;
+	}
+
+	/**
+	 * Resort filter regex for curated Turkey cards (side, kemer, …).
+	 *
+	 * @param string $resort_key side|kemer|alanya|belek|antalya.
+	 * @return string Regex or empty.
+	 */
+	public static function turkey_resort_match_regex( $resort_key ) {
+		$key = sanitize_key( (string) $resort_key );
+		$map = array(
+			'side'    => '/сиде|side|кумк|кызылагач|чолак|эврен/u',
+			'kemer'   => '/кемер|kemer|кириш|текир|гёню|гёйн|бельд/u',
+			'alanya'  => '/алань|алан|инжек|клеопат|сарай/u',
+			'belek'   => '/белек|kadri|cullinan|regnum/u',
+			'antalya' => '/анталь|муратпаш|калеичи|kaleici|лара/u',
+		);
+
+		return ! empty( $map[ $key ] ) ? (string) $map[ $key ] : '';
+	}
+
+	/**
+	 * Cheapest BG tour for a Turkey resort bucket.
+	 *
+	 * @param string $country_slug_or_id Country slug.
+	 * @param string $resort_key         side|kemer|alanya|belek|antalya.
+	 * @return array<string,mixed>|null
+	 */
+	public function get_resort_min_tour( $country_slug_or_id, $resort_key ) {
+		$rx = self::turkey_resort_match_regex( $resort_key );
+		if ( '' === $rx ) {
+			return null;
+		}
+
+		$best  = null;
+		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
+		foreach ( $tours as $t ) {
+			if ( empty( $t['price_rur'] ) ) {
+				continue;
+			}
+			if ( ! preg_match( $rx, (string) ( $t['resort'] ?? '' ) ) ) {
+				continue;
+			}
+			if ( null === $best || (int) $t['price_rur'] < (int) $best['price_rur'] ) {
+				$best = $t;
+			}
+		}
+
+		return $best;
+	}
+
+	/**
 	 * Cheapest card for a country (homepage tile).
 	 *
 	 * @param string $country_slug_or_id Slug or id.
@@ -1411,6 +1635,7 @@ class Zhiraf_BG_Price_Engine {
 			}
 
 			$card = array(
+				'hotel_id'        => $hotel_id,
 				'hotel_name'      => $hotel_name,
 				'stars'           => $stars,
 				'resort'          => $resort,
@@ -2088,4 +2313,26 @@ function zhiraf_ufa_get_country_top_tours( $country_slug, $limit = 3, $resort_rx
  */
 function zhiraf_ufa_get_country_min_tour( $country_slug ) {
 	return Zhiraf_BG_Price_Engine::get_instance()->get_country_min_tour( $country_slug );
+}
+
+/**
+ * Cheapest BG offer for a specific hotel within a country destination.
+ *
+ * @param string $country_slug Country slug (turciya, oae, …).
+ * @param string $hotel_name   Hotel title.
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id = '' ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_hotel_min_tour( $country_slug, $hotel_name, $hotel_id );
+}
+
+/**
+ * Cheapest BG offer for a resort bucket within a country.
+ *
+ * @param string $country_slug Country slug.
+ * @param string $resort_key   Resort bucket (side, kemer, …).
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_get_resort_min_tour( $country_slug, $resort_key ) {
+	return Zhiraf_BG_Price_Engine::get_instance()->get_resort_min_tour( $country_slug, $resort_key );
 }

@@ -16,7 +16,12 @@ if ( empty( $dest_slug ) ) {
 }
 $central_module      = 'battle';
 $dest_show_resort_compare_in_prose = false;
-$use_turciya_curated = ( 'turciya' === $dest_slug ) && ! empty( $dest['curated_landing_v1'] );
+$use_curated_landing = function_exists( 'zhiraf_ufa_destination_uses_curated_landing' )
+	? zhiraf_ufa_destination_uses_curated_landing( $dest )
+	: ! empty( $dest['curated_landing_v1'] );
+$curated_has_catalog = $use_curated_landing
+	&& function_exists( 'zhiraf_ufa_curated_catalog_hotels' )
+	&& ! empty( zhiraf_ufa_curated_catalog_hotels( $dest_slug ) );
 $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	? zhiraf_ufa_merge_faq_lists( ! empty( $dest['faq'] ) ? $dest['faq'] : array() )
 	: ( ! empty( $dest['faq'] ) ? $dest['faq'] : array() );
@@ -44,7 +49,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>
-				<?php if ( $use_turciya_curated ) : ?>
+				<?php if ( $use_curated_landing && ! empty( $dest['curated_resort_chips'] ) ) : ?>
 					<?php
 					get_template_part(
 						'template-parts/destination/turciya-resort-chips',
@@ -54,9 +59,18 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					?>
 				<?php endif; ?>
 				<div class="dest-landing-hero__actions">
-					<?php if ( $use_turciya_curated ) : ?>
-						<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
-						<a class="btn btn--outline btn--lg" href="#dest-inquiry"><?php esc_html_e( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ); ?></a>
+					<?php if ( $use_curated_landing ) : ?>
+						<?php if ( $curated_has_catalog ) : ?>
+							<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
+						<?php endif; ?>
+						<?php
+						$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
+						if ( empty( $hero_compare_btn ) && ! empty( $dest['curated_compare_btn_default'] ) ) {
+							$hero_compare_btn = (string) $dest['curated_compare_btn_default'];
+						}
+						$hero_compare_btn = ! empty( $hero_compare_btn ) ? $hero_compare_btn : __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' );
+						?>
+						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open data-curated-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
 					<?php else : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
 						<a class="btn btn--outline btn--lg" href="#dest-price-tiers"><?php esc_html_e( 'Ценовые ориентиры', 'zhiraf-ufa' ); ?></a>
@@ -64,6 +78,13 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				</div>
 				<?php if ( ! empty( $dest['hero_cta_hint'] ) ) : ?>
 					<p class="dest-landing-hero__cta-hint"><?php echo esc_html( $dest['hero_cta_hint'] ); ?></p>
+				<?php endif; ?>
+				<?php if ( $use_curated_landing ) : ?>
+					<ul class="dest-landing-hero__trust">
+						<li><span aria-hidden="true">✈️</span> <?php esc_html_e( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ); ?></li>
+						<li><span aria-hidden="true">📅</span> <?php esc_html_e( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ); ?></li>
+						<li><span aria-hidden="true">🛡️</span> <?php esc_html_e( 'Честные цены (включая топливные сборы и страховку)', 'zhiraf-ufa' ); ?></li>
+					</ul>
 				<?php endif; ?>
 			</div>
 			<div class="dest-landing-hero__visual">
@@ -89,10 +110,25 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		</section>
 	<?php endif; ?>
 
-	<?php if ( $use_turciya_curated ) : ?>
-		<?php get_template_part( 'template-parts/destination/turciya-curated-showcase' ); ?>
-		<?php get_template_part( 'template-parts/destination/turciya-expert-nuances' ); ?>
-		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
+	<?php if ( $use_curated_landing ) : ?>
+		<?php
+		if ( $curated_has_catalog ) {
+			get_template_part(
+				'template-parts/destination/turciya-curated-showcase',
+				null,
+				array(
+					'dest_slug' => $dest_slug,
+					'dest'      => $dest,
+				)
+			);
+		}
+		if ( ! empty( $dest['curated_kids_section'] ) ) {
+			get_template_part( 'template-parts/sections/kids-turkey' );
+		}
+		if ( ! empty( $dest['curated_expert_section'] ) ) {
+			get_template_part( 'template-parts/destination/turciya-expert-nuances' );
+		}
+		?>
 	<?php else : ?>
 	<?php
 	if ( function_exists( 'zhiraf_ufa_render_landing_conversion_stack' ) ) {
@@ -102,7 +138,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php
-	if ( ! $use_turciya_curated ) {
+	if ( ! $use_curated_landing ) {
 	$hotels_showcases = function_exists( 'zhiraf_ufa_hotels_showcase_for_destinations' )
 		? zhiraf_ufa_hotels_showcase_for_destinations()
 		: array();
@@ -126,212 +162,19 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php
 	$dest_show_prose_block = empty( $dest['hide_landing_prose'] )
 		&& ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) );
+	$seo_prose_after_faq   = ! empty( $dest['seo_prose_after_faq'] );
+	$dest_prose_args       = array(
+		'dest'                            => $dest,
+		'central_module'                  => $central_module,
+		'dest_show_resort_compare_in_prose' => $dest_show_resort_compare_in_prose,
+	);
 	?>
-	<?php if ( $dest_show_prose_block ) : ?>
-	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
-		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
-		<div class="container container--narrow">
-			<?php if ( ! empty( $dest['season_at_a_glance'] ) && is_array( $dest['season_at_a_glance'] ) && ! empty( $dest['season_at_a_glance']['rows'] ) ) : ?>
-				<h2 class="section-title dest-season-glance__title"><?php echo esc_html( ! empty( $dest['season_at_a_glance']['title'] ) ? $dest['season_at_a_glance']['title'] : __( 'Когда куда лететь', 'zhiraf-ufa' ) ); ?></h2>
-				<table class="dest-season-glance">
-					<thead>
-						<tr>
-							<th scope="col"><?php esc_html_e( 'Курорт', 'zhiraf-ufa' ); ?></th>
-							<th scope="col"><?php esc_html_e( 'Лучший сезон для купания', 'zhiraf-ufa' ); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ( $dest['season_at_a_glance']['rows'] as $row ) : ?>
-							<tr>
-								<td><?php echo esc_html( $row['resort'] ?? '' ); ?></td>
-								<td><?php echo esc_html( $row['when'] ?? '' ); ?></td>
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
-			<?php endif; ?>
-			<?php if ( ! empty( $dest['seo_prose_accordions'] ) ) : ?>
-				<details class="dest-prose-accordion dest-prose-accordion--seo">
-					<summary class="dest-prose-accordion__summary">
-						<?php
-						echo esc_html(
-							! empty( $dest['prose_accordion_title'] )
-								? $dest['prose_accordion_title']
-								: __( 'Подробнее о регионах, сезоне и пакете', 'zhiraf-ufa' )
-						);
-						?>
-					</summary>
-					<div class="dest-prose-accordion__body">
-						<?php if ( ! empty( $dest['hero_lead_extended'] ) ) : ?>
-							<p><?php echo esc_html( $dest['hero_lead_extended'] ); ?></p>
-						<?php endif; ?>
-						<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
-							<p><?php echo esc_html( $dest['geo_answer'] ); ?></p>
-						<?php endif; ?>
-						<?php if ( ! empty( $dest['for_who'] ) ) : ?>
-							<h3><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h3>
-							<p><?php echo esc_html( $dest['for_who'] ); ?></p>
-						<?php endif; ?>
-						<?php if ( ! empty( $dest['we_clarify'] ) ) : ?>
-							<h3><?php esc_html_e( 'Что уточняем при подборе', 'zhiraf-ufa' ); ?></h3>
-							<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
-						<?php endif; ?>
-						<?php if ( ! empty( $dest['season'] ) ) : ?>
-							<h3><?php esc_html_e( 'Пляжный сезон', 'zhiraf-ufa' ); ?></h3>
-							<p><?php echo esc_html( $dest['season'] ); ?></p>
-						<?php endif; ?>
-						<?php if ( ! empty( $dest['climate_seasons'] ) && is_array( $dest['climate_seasons'] ) ) : ?>
-							<h3><?php esc_html_e( 'Сезон и климат по месяцам', 'zhiraf-ufa' ); ?></h3>
-							<div class="dest-climate-grid dest-climate-grid--accordion">
-								<?php foreach ( $dest['climate_seasons'] as $season_row ) : ?>
-									<article class="dest-climate-card">
-										<p class="dest-climate-card__label"><?php echo esc_html( $season_row['label'] ); ?> <span class="dest-climate-card__months"><?php echo esc_html( $season_row['months'] ); ?></span></p>
-										<dl class="dest-climate-card__stats">
-											<div><dt><?php esc_html_e( 'Воздух', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['air'] ); ?></dd></div>
-											<div><dt><?php esc_html_e( 'Вода', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['water'] ); ?></dd></div>
-										</dl>
-										<?php if ( ! empty( $season_row['tip'] ) ) : ?>
-											<p class="dest-climate-card__tip"><?php echo esc_html( $season_row['tip'] ); ?></p>
-										<?php endif; ?>
-									</article>
-								<?php endforeach; ?>
-							</div>
-						<?php endif; ?>
-					</div>
-				</details>
-			<?php else : ?>
-				<?php if ( ! empty( $dest['hero_lead_extended'] ) ) : ?>
-					<p class="dest-landing-prose__intro"><?php echo esc_html( $dest['hero_lead_extended'] ); ?></p>
-				<?php endif; ?>
-				<?php if ( ! empty( $dest['for_who'] ) ) : ?>
-					<h2><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h2>
-					<p><?php echo esc_html( $dest['for_who'] ); ?></p>
-					<h2><?php esc_html_e( 'Что уточняем при подборе', 'zhiraf-ufa' ); ?></h2>
-					<p><?php echo esc_html( $dest['we_clarify'] ); ?></p>
-				<?php endif; ?>
-			<?php endif; ?>
-
-			<?php if ( empty( $dest['seo_prose_accordions'] ) && 'season' !== $central_module && ! empty( $dest['climate_seasons'] ) && is_array( $dest['climate_seasons'] ) ) : ?>
-				<h2><?php esc_html_e( 'Сезон и климат', 'zhiraf-ufa' ); ?></h2>
-				<div class="dest-climate-grid">
-					<?php foreach ( $dest['climate_seasons'] as $season_row ) : ?>
-						<article class="dest-climate-card">
-							<p class="dest-climate-card__label"><?php echo esc_html( $season_row['label'] ); ?> <span class="dest-climate-card__months"><?php echo esc_html( $season_row['months'] ); ?></span></p>
-							<dl class="dest-climate-card__stats">
-								<div><dt><?php esc_html_e( 'Воздух', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['air'] ); ?></dd></div>
-								<div><dt><?php esc_html_e( 'Вода', 'zhiraf-ufa' ); ?></dt><dd><?php echo esc_html( $season_row['water'] ); ?></dd></div>
-							</dl>
-							<?php if ( ! empty( $season_row['tip'] ) ) : ?>
-								<p class="dest-climate-card__tip"><?php echo esc_html( $season_row['tip'] ); ?></p>
-							<?php endif; ?>
-						</article>
-					<?php endforeach; ?>
-				</div>
-			<?php elseif ( empty( $dest['seo_prose_accordions'] ) && ! empty( $dest['season'] ) ) : ?>
-				<h2><?php esc_html_e( 'Сезон и климат', 'zhiraf-ufa' ); ?></h2>
-				<p><?php echo esc_html( $dest['season'] ); ?></p>
-			<?php endif; ?>
-
-			<?php if ( $dest_show_resort_compare_in_prose && is_array( $dest['resort_compare'] ) ) : ?>
-				<h2><?php echo esc_html( ! empty( $dest['resort_compare_title'] ) ? $dest['resort_compare_title'] : __( 'Нячанг или Фукуок: что выбрать', 'zhiraf-ufa' ) ); ?></h2>
-				<div class="dest-resort-compare">
-					<?php foreach ( $dest['resort_compare'] as $col ) : ?>
-						<article class="dest-resort-compare__col">
-							<?php if ( ! empty( $col['image'] ) ) : ?>
-								<?php zhiraf_ufa_img( $col['image'], $col['title'], 'dest-resort-compare__img', true ); ?>
-							<?php endif; ?>
-							<div class="dest-resort-compare__body">
-								<?php if ( ! empty( $col['tag'] ) ) : ?>
-									<p class="dest-resort-compare__tag"><?php echo esc_html( $col['tag'] ); ?></p>
-								<?php endif; ?>
-								<h3 class="dest-resort-compare__title"><?php echo esc_html( $col['title'] ); ?></h3>
-								<?php if ( ! empty( $col['rows'] ) && is_array( $col['rows'] ) ) : ?>
-									<dl class="dest-resort-compare__rows">
-										<?php foreach ( $col['rows'] as $row ) : ?>
-											<div>
-												<dt><?php echo esc_html( $row['label'] ); ?></dt>
-												<dd><?php echo esc_html( $row['value'] ); ?></dd>
-											</div>
-										<?php endforeach; ?>
-									</dl>
-								<?php endif; ?>
-							</div>
-						</article>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( ! in_array( $central_module, array( 'vibe', 'battle' ), true ) && ! empty( $dest['emirate_cards'] ) && is_array( $dest['emirate_cards'] ) ) : ?>
-				<h2><?php echo esc_html( ! empty( $dest['emirate_cards_title'] ) ? $dest['emirate_cards_title'] : __( 'Какой эмират выбрать для отдыха из Уфы', 'zhiraf-ufa' ) ); ?></h2>
-				<div class="dest-emirate-grid">
-					<?php foreach ( $dest['emirate_cards'] as $card ) : ?>
-						<article class="dest-emirate-card">
-							<?php if ( ! empty( $card['image'] ) ) : ?>
-								<?php zhiraf_ufa_img( $card['image'], $card['title'], 'dest-emirate-card__img', true ); ?>
-							<?php endif; ?>
-							<div class="dest-emirate-card__body">
-								<?php if ( ! empty( $card['tag'] ) ) : ?>
-									<p class="dest-emirate-card__tag"><?php echo esc_html( $card['tag'] ); ?></p>
-								<?php endif; ?>
-								<h3 class="dest-emirate-card__title"><?php echo esc_html( $card['title'] ); ?></h3>
-								<p class="dest-emirate-card__text"><?php echo esc_html( $card['text'] ); ?></p>
-							</div>
-						</article>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
-
-			<?php if ( ! empty( $dest['extra_sections'] ) ) : ?>
-				<?php foreach ( $dest['extra_sections'] as $section ) : ?>
-					<details class="dest-prose-accordion">
-						<summary class="dest-prose-accordion__summary"><?php echo esc_html( $section['h2'] ); ?></summary>
-						<div class="dest-prose-accordion__body">
-							<?php if ( ! empty( $section['lead'] ) ) : ?>
-								<p><?php echo esc_html( $section['lead'] ); ?></p>
-							<?php endif; ?>
-							<?php if ( ! empty( $section['paragraphs'] ) ) : ?>
-								<?php foreach ( $section['paragraphs'] as $para ) : ?>
-									<p><?php echo wp_kses_post( $para ); ?></p>
-								<?php endforeach; ?>
-							<?php endif; ?>
-						</div>
-					</details>
-				<?php endforeach; ?>
-			<?php endif; ?>
-
-			<?php if ( ! empty( $dest['resort_links'] ) ) : ?>
-				<h2><?php esc_html_e( 'Курорты направления', 'zhiraf-ufa' ); ?></h2>
-				<ul class="resort-link-list">
-					<?php foreach ( $dest['resort_links'] as $link ) : ?>
-						<li>
-							<a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a>
-							<?php if ( ! empty( $link['desc'] ) ) : ?>
-								<span class="resort-link-list__desc"><?php echo esc_html( $link['desc'] ); ?></span>
-							<?php endif; ?>
-						</li>
-					<?php endforeach; ?>
-				</ul>
-			<?php endif; ?>
-			<?php if ( ! empty( $dest['blog_links'] ) ) : ?>
-				<p class="dest-landing-links">
-					<?php
-					foreach ( $dest['blog_links'] as $link ) {
-						printf(
-							'<a href="%s">%s</a>',
-							esc_url( $link['url'] ),
-							esc_html( $link['label'] )
-						);
-					}
-					?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</section>
-
+	<?php if ( $dest_show_prose_block && ! $seo_prose_after_faq ) : ?>
+		<?php get_template_part( 'template-parts/destination/destination-prose-stack', null, $dest_prose_args ); ?>
 	<?php endif; ?>
 
 	<?php if ( ! empty( $dest_faq_items ) ) : ?>
-	<section class="section dest-landing-faq">
+	<section class="section dest-landing-faq<?php echo $use_curated_landing ? ' dest-landing-faq--panel' : ''; ?>">
 		<div class="container container--narrow">
 			<h2 class="section-title">
 				<?php
@@ -342,29 +185,47 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				);
 				?>
 			</h2>
-			<div class="faq-home__list">
-				<?php foreach ( $dest_faq_items as $item ) : ?>
-					<details class="faq-home__item">
-						<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
-						<div class="faq-home__answer">
-							<p><?php echo esc_html( $item['a'] ); ?></p>
-							<?php if ( ! empty( $item['link'] ) ) : ?>
-								<p><a href="<?php echo esc_url( $item['link'] ); ?>"><?php esc_html_e( 'Подробнее в блоге', 'zhiraf-ufa' ); ?></a></p>
-							<?php endif; ?>
-						</div>
-					</details>
-				<?php endforeach; ?>
+			<div class="dest-landing-faq__panel">
+				<div class="faq-home__list<?php echo $use_curated_landing ? ' faq-home__list--panel' : ''; ?>">
+					<?php foreach ( $dest_faq_items as $item ) : ?>
+						<details class="faq-home__item">
+							<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
+							<div class="faq-home__answer">
+								<p><?php echo wp_kses_post( $item['a'] ); ?></p>
+								<?php if ( ! empty( $item['link'] ) ) : ?>
+									<p><a href="<?php echo esc_url( $item['link'] ); ?>"><?php esc_html_e( 'Подробнее в блоге', 'zhiraf-ufa' ); ?></a></p>
+								<?php endif; ?>
+							</div>
+						</details>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<?php endif; ?>
 
-	<?php if ( ! $use_turciya_curated ) : ?>
+	<?php if ( $dest_show_prose_block && $seo_prose_after_faq ) : ?>
+		<?php get_template_part( 'template-parts/destination/destination-prose-stack', null, $dest_prose_args ); ?>
+	<?php endif; ?>
+
+	<?php if ( $use_curated_landing ) : ?>
+		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
+	<?php endif; ?>
+
+	<?php if ( ! $use_curated_landing ) : ?>
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
-			<p><?php echo esc_html( ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ) ); ?></p>
+			<p>
+				<?php
+				$cta_lead = ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' );
+				if ( strpos( $cta_lead, 'Быстрее ответить в WhatsApp' ) !== false ) {
+					$cta_lead = __( 'Нужен ответ прямо сейчас? Нажмите кнопку WhatsApp сразу под каталогом отелей выше.', 'zhiraf-ufa' );
+				}
+				echo esc_html( $cta_lead );
+				?>
+			</p>
 			<form class="zhiraf-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="dest-<?php echo esc_attr( $dest_slug ); ?>">
 				<div class="dest-landing-lead-form__fields">
 					<label class="form-label dest-landing-lead-form__field">
@@ -417,8 +278,10 @@ get_template_part(
 	'template-parts/destination/sticky-mobile-bar',
 	null,
 	array(
-		'wa_text'      => sprintf( __( 'Здравствуйте! Нужен подбор тура: %s', 'zhiraf-ufa' ), $dest['quiz_prefill'] ?? $dest_slug ),
-		'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+		'wa_text'           => sprintf( __( 'Здравствуйте! Нужен подбор тура: %s', 'zhiraf-ufa' ), $dest['quiz_prefill'] ?? $dest_slug ),
+		'quiz_prefill'      => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+		'use_curated_modal'   => $use_curated_landing,
+		'use_turciya_modal'   => $use_curated_landing,
 	)
 );
 ?>

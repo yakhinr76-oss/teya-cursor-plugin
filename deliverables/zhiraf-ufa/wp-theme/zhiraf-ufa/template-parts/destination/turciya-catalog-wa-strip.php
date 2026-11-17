@@ -18,9 +18,9 @@ $wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 <div class="turciya-catalog-wa-strip">
 	<p class="turciya-catalog-wa-strip__text">
 		<?php esc_html_e( 'Не нашли свой отель в шестёрке? Напишите — подберём из всей базы или сравним Кемер и Сиде под бюджет.', 'zhiraf-ufa' ); ?>
-		<a class="turciya-catalog-wa-strip__form-link" href="#dest-inquiry">
-			<?php esc_html_e( 'Оставить телефон', 'zhiraf-ufa' ); ?>
-		</a>
+		<button type="button" class="turciya-catalog-wa-strip__form-link" data-turciya-lead-open>
+			<?php esc_html_e( 'Оставить заявку в попапе', 'zhiraf-ufa' ); ?>
+		</button>
 	</p>
 	<a
 		class="turciya-catalog-wa-strip__link"

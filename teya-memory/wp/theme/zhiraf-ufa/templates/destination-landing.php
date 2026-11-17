@@ -56,7 +56,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				<div class="dest-landing-hero__actions">
 					<?php if ( $use_turciya_curated ) : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
-						<a class="btn btn--outline btn--lg" href="#dest-inquiry"><?php esc_html_e( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ); ?></a>
+						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open><?php esc_html_e( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ); ?></button>
 					<?php else : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
 						<a class="btn btn--outline btn--lg" href="#dest-price-tiers"><?php esc_html_e( 'Ценовые ориентиры', 'zhiraf-ufa' ); ?></a>
@@ -234,8 +234,9 @@ get_template_part(
 	'template-parts/destination/sticky-mobile-bar',
 	null,
 	array(
-		'wa_text'      => sprintf( __( 'Здравствуйте! Нужен подбор тура: %s', 'zhiraf-ufa' ), $dest['quiz_prefill'] ?? $dest_slug ),
-		'quiz_prefill' => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+		'wa_text'           => sprintf( __( 'Здравствуйте! Нужен подбор тура: %s', 'zhiraf-ufa' ), $dest['quiz_prefill'] ?? $dest_slug ),
+		'quiz_prefill'      => ! empty( $dest['quiz_prefill'] ) ? $dest['quiz_prefill'] : '',
+		'use_turciya_modal' => $use_turciya_curated,
 	)
 );
 ?>

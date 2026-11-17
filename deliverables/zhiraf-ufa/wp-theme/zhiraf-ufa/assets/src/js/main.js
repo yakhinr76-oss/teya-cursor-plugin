@@ -597,6 +597,15 @@
 
   function messengerSubmitLabelText(channel, variant) {
     variant = variant || 'quiz';
+    if (variant === 'compare') {
+      if (channel === 'MAX') {
+        return 'Отправить в MAX →';
+      }
+      if (channel === 'Telegram') {
+        return 'Отправить в Telegram →';
+      }
+      return 'Отправить в WhatsApp →';
+    }
     if (channel === 'MAX') {
       return variant === 'lead'
         ? 'Получить PDF-гид в MAX →'
@@ -622,6 +631,9 @@
     }
     form.dataset.messengerPickerInit = '1';
     var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
+    if (form.getAttribute('data-form-context') === 'dest-turciya-compare') {
+      variant = 'compare';
+    }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
     if (!radios.length) {
@@ -836,7 +848,58 @@
     btn.addEventListener('click', closeQuiz);
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeQuiz();
+    if (e.key === 'Escape') {
+      closeQuiz();
+      closeTurciyaLeadModal();
+    }
+  });
+
+  var turciyaLeadModal = qs('#turciya-lead-modal');
+  var turciyaLeadForm = qs('#turciya-lead-modal-form');
+
+  function openTurciyaLeadModal() {
+    if (!turciyaLeadModal) return;
+    turciyaLeadModal.classList.remove('quiz-modal--closing');
+    turciyaLeadModal.removeAttribute('hidden');
+    turciyaLeadModal.removeAttribute('inert');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('quiz-open');
+    if (turciyaLeadForm) {
+      var phone = qs('[name="phone"]', turciyaLeadForm);
+      if (phone) {
+        setTimeout(function () {
+          phone.focus();
+        }, 120);
+      }
+    }
+  }
+
+  function closeTurciyaLeadModal() {
+    if (!turciyaLeadModal || turciyaLeadModal.hasAttribute('hidden')) return;
+    turciyaLeadModal.classList.add('quiz-modal--closing');
+    window.setTimeout(function () {
+      turciyaLeadModal.classList.remove('quiz-modal--closing');
+      turciyaLeadModal.setAttribute('hidden', '');
+      turciyaLeadModal.setAttribute('inert', '');
+      if (!modal || modal.hasAttribute('hidden')) {
+        document.body.style.overflow = '';
+        document.body.classList.remove('quiz-open');
+      }
+    }, 200);
+  }
+
+  if (turciyaLeadForm) {
+    initMessengerPicker(turciyaLeadForm);
+  }
+
+  qsa('[data-turciya-lead-open]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openTurciyaLeadModal();
+    });
+  });
+  qsa('[data-turciya-lead-close]').forEach(function (btn) {
+    btn.addEventListener('click', closeTurciyaLeadModal);
   });
 
   qsa('[data-lead-channel]').forEach(function (btn) {
@@ -1020,6 +1083,9 @@
         if (data.success) {
           trackFormSuccess(form, action);
           form.reset();
+          if (form.id === 'turciya-lead-modal-form') {
+            window.setTimeout(closeTurciyaLeadModal, 1800);
+          }
         }
       })
       .catch(function () {

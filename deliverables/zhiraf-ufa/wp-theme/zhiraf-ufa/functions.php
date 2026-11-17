@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.25-staging' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.27-turciya-ux-fixes' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -26,6 +26,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/destination-landing-config.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landing-standard.php';
 require_once ZHIRAF_UFA_DIR . '/inc/activation.php';
 require_once ZHIRAF_UFA_DIR . '/inc/tour-routing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/resort-landings-turciya-extra.php';
 require_once ZHIRAF_UFA_DIR . '/inc/resort-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/offer-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/hot-tours-landing.php';

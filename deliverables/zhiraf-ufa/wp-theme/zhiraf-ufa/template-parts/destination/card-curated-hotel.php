@@ -62,6 +62,15 @@ if ( $hide_init ) {
 	$card_class .= ' is-hidden';
 }
 $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hotel['pool_id'] ) : '';
+$honest_raw  = '';
+if ( ! empty( $hotel['caveat'] ) ) {
+	$honest_raw = (string) $hotel['caveat'];
+} elseif ( ! empty( $hotel['hotel_honest_con'] ) ) {
+	$honest_raw = (string) $hotel['hotel_honest_con'];
+} elseif ( ! empty( $hotel['nuance'] ) ) {
+	$honest_raw = (string) $hotel['nuance'];
+}
+$honest_raw = trim( $honest_raw );
 ?>
 <article
 	class="<?php echo esc_attr( $card_class ); ?>"
@@ -125,18 +134,19 @@ $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hot
 			<?php if ( '' !== $concept ) : ?>
 				<p class="turciya-curated-card__concept"><?php echo esc_html( $concept ); ?></p>
 			<?php endif; ?>
-			<?php if ( ! empty( $hotel['description'] ) || ! empty( $hotel['caveat'] ) ) : ?>
+			<?php if ( ! empty( $hotel['description'] ) ) : ?>
 				<div class="turciya-curated-card__copy">
-					<?php if ( ! empty( $hotel['description'] ) ) : ?>
-						<p class="turciya-curated-card__usp"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
-					<?php endif; ?>
-					<?php if ( ! empty( $hotel['caveat'] ) ) : ?>
-						<p class="turciya-curated-card__nuance"><?php echo esc_html( (string) $hotel['caveat'] ); ?></p>
-					<?php endif; ?>
+					<p class="turciya-curated-card__usp"><?php echo esc_html( (string) $hotel['description'] ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>
 	</div>
+	<?php if ( '' !== $honest_raw ) : ?>
+		<div class="turciya-curated-card__honest" role="note">
+			<span class="turciya-curated-card__honest-label"><?php esc_html_e( 'Честный нюанс:', 'zhiraf-ufa' ); ?></span>
+			<span class="turciya-curated-card__honest-text"><?php echo esc_html( $honest_raw ); ?></span>
+		</div>
+	<?php endif; ?>
 	<div class="turciya-curated-card__footer">
 		<div class="turciya-curated-card__price">
 			<span class="turciya-curated-card__price-label"><?php esc_html_e( 'за двоих с перелётом:', 'zhiraf-ufa' ); ?></span>

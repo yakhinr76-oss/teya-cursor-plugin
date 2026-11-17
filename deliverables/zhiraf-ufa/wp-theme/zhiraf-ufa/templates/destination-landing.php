@@ -91,8 +91,8 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 
 	<?php if ( $use_turciya_curated ) : ?>
 		<?php get_template_part( 'template-parts/destination/turciya-curated-showcase' ); ?>
+		<?php get_template_part( 'template-parts/sections/kids-turkey' ); ?>
 		<?php get_template_part( 'template-parts/destination/turciya-expert-nuances' ); ?>
-		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
 	<?php else : ?>
 	<?php
 	if ( function_exists( 'zhiraf_ufa_render_landing_conversion_stack' ) ) {
@@ -126,30 +126,17 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php
 	$dest_show_prose_block = empty( $dest['hide_landing_prose'] )
 		&& ( ! empty( $dest['for_who'] ) || ! empty( $dest['extra_sections'] ) || ! empty( $dest['emirate_cards'] ) || ! empty( $dest['climate_seasons'] ) || $dest_show_resort_compare_in_prose || ! empty( $dest['seo_prose_accordions'] ) || ! empty( $dest['season_at_a_glance'] ) );
+	$seo_prose_after_faq   = ! empty( $dest['seo_prose_after_faq'] );
+	$dest_prose_args       = array(
+		'dest'                            => $dest,
+		'central_module'                  => $central_module,
+		'dest_show_resort_compare_in_prose' => $dest_show_resort_compare_in_prose,
+	);
 	?>
-	<?php if ( $dest_show_prose_block ) : ?>
-	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
-		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
-		<div class="container container--narrow">
-			<?php if ( ! empty( $dest['season_at_a_glance'] ) && is_array( $dest['season_at_a_glance'] ) && ! empty( $dest['season_at_a_glance']['rows'] ) ) : ?>
-				<h2 class="section-title dest-season-glance__title"><?php echo esc_html( ! empty( $dest['season_at_a_glance']['title'] ) ? $dest['season_at_a_glance']['title'] : __( 'Когда куда лететь', 'zhiraf-ufa' ) ); ?></h2>
-				<table class="dest-season-glance">
-					<thead>
-						<tr>
-							<th scope="col"><?php esc_html_e( 'Курорт', 'zhiraf-ufa' ); ?></th>
-							<th scope="col"><?php esc_html_e( 'Лучший сезон для купания', 'zhiraf-ufa' ); ?></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ( $dest['season_at_a_glance']['rows'] as $row ) : ?>
-							<tr>
-								<td><?php echo esc_html( $row['resort'] ?? '' ); ?></td>
-								<td><?php echo esc_html( $row['when'] ?? '' ); ?></td>
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
-			<?php endif; ?>
+	<?php if ( $dest_show_prose_block && ! $seo_prose_after_faq ) : ?>
+		<?php get_template_part( 'template-parts/destination/destination-prose-stack', null, $dest_prose_args ); ?>
+	<?php endif; ?>
+
 			<?php if ( ! empty( $dest['seo_prose_accordions'] ) ) : ?>
 				<details class="dest-prose-accordion dest-prose-accordion--seo">
 					<summary class="dest-prose-accordion__summary">
@@ -347,7 +334,7 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					<details class="faq-home__item">
 						<summary class="faq-home__question"><?php echo esc_html( $item['q'] ); ?></summary>
 						<div class="faq-home__answer">
-							<p><?php echo esc_html( $item['a'] ); ?></p>
+							<p><?php echo wp_kses_post( $item['a'] ); ?></p>
 							<?php if ( ! empty( $item['link'] ) ) : ?>
 								<p><a href="<?php echo esc_url( $item['link'] ); ?>"><?php esc_html_e( 'Подробнее в блоге', 'zhiraf-ufa' ); ?></a></p>
 							<?php endif; ?>
@@ -358,6 +345,14 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		</div>
 	</section>
 
+	<?php endif; ?>
+
+	<?php if ( $dest_show_prose_block && $seo_prose_after_faq ) : ?>
+		<?php get_template_part( 'template-parts/destination/destination-prose-stack', null, $dest_prose_args ); ?>
+	<?php endif; ?>
+
+	<?php if ( $use_turciya_curated ) : ?>
+		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
 	<?php endif; ?>
 
 	<?php if ( ! $use_turciya_curated ) : ?>

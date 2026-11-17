@@ -102,6 +102,8 @@ if ( empty( $hotels ) ) {
 				</aside>
 			</div>
 
+			<?php get_template_part( 'template-parts/destination/turciya-catalog-wa-strip' ); ?>
+
 			<div class="turciya-catalog-more" data-turciya-catalog-more-wrap hidden>
 				<button type="button" class="btn btn--outline turciya-catalog-more__btn" data-turciya-catalog-more>
 					<?php esc_html_e( 'Показать ещё отели из базы', 'zhiraf-ufa' ); ?>
@@ -116,19 +118,6 @@ if ( empty( $hotels ) ) {
 					);
 					?>
 				</p>
-				<div class="turciya-catalog-more__actions">
-					<a
-						class="btn btn--whatsapp"
-						href="<?php echo esc_url( $wa_url ); ?>"
-						target="_blank"
-						rel="noopener noreferrer"
-						data-track="messenger"
-						data-channel="whatsapp"
-						data-cta-context="turciya_catalog_pool_whatsapp"
-					>
-						<?php esc_html_e( 'Подборка в WhatsApp', 'zhiraf-ufa' ); ?>
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -37,26 +37,37 @@ $lead_message = ! empty( $hotel['wa_prefill'] )
 	);
 $lead_tour    = (string) $hotel['name'];
 $image_remote = ! empty( $hotel['image_remote'] );
+$country_slug = ! empty( $hotel['country_slug'] ) ? sanitize_key( (string) $hotel['country_slug'] ) : 'turciya';
 $is_base_slot = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
 $price_amount = (int) ( $hotel['price_rub'] ?? 0 );
 if ( $price_amount <= 0 && $is_base_slot ) {
 	if ( function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
-		$min_tour = zhiraf_ufa_get_country_min_tour( 'turciya' );
+		$min_tour = zhiraf_ufa_get_country_min_tour( $country_slug );
 		if ( is_array( $min_tour ) && ! empty( $min_tour['price_rur'] ) ) {
 			$price_amount = (int) $min_tour['price_rur'];
 		}
 	}
-	if ( $price_amount <= 0 && function_exists( 'zhiraf_ufa_turciya_hub_min_price_rub' ) ) {
+	if ( $price_amount <= 0 && 'oae' === $country_slug && function_exists( 'zhiraf_ufa_oae_hub_min_price_rub' ) ) {
+		$price_amount = zhiraf_ufa_oae_hub_min_price_rub();
+	} elseif ( $price_amount <= 0 && function_exists( 'zhiraf_ufa_turciya_hub_min_price_rub' ) ) {
 		$price_amount = zhiraf_ufa_turciya_hub_min_price_rub();
 	}
 }
-$price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && $price_amount > 0
-	? zhiraf_ufa_turciya_curated_format_price( $price_amount )
-	: ( function_exists( 'zhiraf_ufa_format_tour_price' ) ? zhiraf_ufa_format_tour_price( 0 ) : '' );
-$concept     = ! empty( $hotel['subtitle'] ) ? (string) $hotel['subtitle'] : '';
-$price_note  = function_exists( 'zhiraf_ufa_turciya_curated_price_note' )
-	? zhiraf_ufa_turciya_curated_price_note( $hotel )
-	: __( '7–9 ночей, ориентир (включая прямой перелёт из Уфы, трансфер, страховку и питание).', 'zhiraf-ufa' );
+if ( 'oae' === $country_slug && function_exists( 'zhiraf_ufa_oae_curated_format_price' ) && $price_amount > 0 ) {
+	$price_label = zhiraf_ufa_oae_curated_format_price( $price_amount );
+} elseif ( function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && $price_amount > 0 ) {
+	$price_label = zhiraf_ufa_turciya_curated_format_price( $price_amount );
+} else {
+	$price_label = function_exists( 'zhiraf_ufa_format_tour_price' ) ? zhiraf_ufa_format_tour_price( 0 ) : '';
+}
+$concept = ! empty( $hotel['subtitle'] ) ? (string) $hotel['subtitle'] : '';
+if ( 'oae' === $country_slug && function_exists( 'zhiraf_ufa_oae_curated_price_note' ) ) {
+	$price_note = zhiraf_ufa_oae_curated_price_note( $hotel );
+} elseif ( function_exists( 'zhiraf_ufa_turciya_curated_price_note' ) ) {
+	$price_note = zhiraf_ufa_turciya_curated_price_note( $hotel );
+} else {
+	$price_note = __( '7–9 ночей, ориентир (включая прямой перелёт из Уфы, трансфер, страховку и питание).', 'zhiraf-ufa' );
+}
 $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $hotel['badge_mod'] ) : 'default';
 $is_starter  = in_array( 'starter', $filter_tags, true );
 $hide_init   = ! empty( $hotel['initial_hidden'] ) || ! $is_starter;

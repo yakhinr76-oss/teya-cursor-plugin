@@ -91,9 +91,8 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 
 	<?php if ( $use_turciya_curated ) : ?>
 		<?php get_template_part( 'template-parts/destination/turciya-curated-showcase' ); ?>
-		<?php get_template_part( 'template-parts/destination/turciya-kids-turkey' ); ?>
+		<?php get_template_part( 'template-parts/sections/kids-turkey' ); ?>
 		<?php get_template_part( 'template-parts/destination/turciya-expert-nuances' ); ?>
-		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
 	<?php else : ?>
 	<?php
 	if ( function_exists( 'zhiraf_ufa_render_landing_conversion_stack' ) ) {
@@ -350,6 +349,10 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 
 	<?php if ( $dest_show_prose_block && $seo_prose_after_faq ) : ?>
 		<?php get_template_part( 'template-parts/destination/destination-prose-stack', null, $dest_prose_args ); ?>
+	<?php endif; ?>
+
+	<?php if ( $use_turciya_curated ) : ?>
+		<?php get_template_part( 'template-parts/destination/turciya-resort-compare-lead' ); ?>
 	<?php endif; ?>
 
 	<?php if ( ! $use_turciya_curated ) : ?>

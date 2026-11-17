@@ -12,11 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 	? zhiraf_ufa_turciya_resort_compare_wa_text()
 	: __( 'Здравствуйте! Сравните, пожалуйста, Кемер и Сиде под наш бюджет — вылет из Уфы, семья с детьми.', 'zhiraf-ufa' );
-$wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
-$wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
-	? zhiraf_ufa_whatsapp_url_with_text( $wa_base, $wa_text )
-	: $wa_base;
-$max_url = function_exists( 'zhiraf_ufa_brand_max_url' ) ? zhiraf_ufa_brand_max_url() : '';
 ?>
 <section class="section turciya-compare-lead" id="dest-inquiry">
 	<div class="container container--narrow turciya-compare-lead__inner">
@@ -24,7 +19,7 @@ $max_url = function_exists( 'zhiraf_ufa_brand_max_url' ) ? zhiraf_ufa_brand_max_
 			<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' ); ?>
 		</h2>
 		<p class="turciya-compare-lead__text">
-			<?php esc_html_e( 'Напишите возраст детей и даты — пришлём 2–3 варианта. Удобнее мессенджер — жмите кнопку ниже; без WhatsApp на десктопе — оставьте телефон и канал.', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Напишите возраст детей и даты — пришлём 2–3 варианта в выбранный канал. Быстрее ответить в WhatsApp — кнопка сразу под каталогом отелей.', 'zhiraf-ufa' ); ?>
 		</p>
 		<form class="zhiraf-form dest-landing-lead-form turciya-compare-lead__form" data-action="zhiraf_lead" data-form-context="dest-turciya-compare">
 			<div class="dest-landing-lead-form__fields">
@@ -63,31 +58,5 @@ $max_url = function_exists( 'zhiraf_ufa_brand_max_url' ) ? zhiraf_ufa_brand_max_
 			</div>
 			<p class="form-status" role="status" aria-live="polite"></p>
 		</form>
-		<div class="turciya-compare-lead__actions">
-			<a
-				class="btn btn--whatsapp btn--lg"
-				href="<?php echo esc_url( $wa_url ); ?>"
-				target="_blank"
-				rel="noopener noreferrer"
-				data-track="messenger"
-				data-channel="whatsapp"
-				data-cta-context="turciya_compare_kemer_side"
-			>
-				<?php esc_html_e( 'Сразу в WhatsApp', 'zhiraf-ufa' ); ?>
-			</a>
-			<?php if ( '' !== $max_url ) : ?>
-				<a
-					class="btn btn--outline btn--lg"
-					href="<?php echo esc_url( $max_url ); ?>"
-					target="_blank"
-					rel="noopener noreferrer"
-					data-track="messenger"
-					data-channel="max"
-					data-cta-context="turciya_compare_kemer_side_max"
-				>
-					<?php esc_html_e( 'Написать в MAX', 'zhiraf-ufa' ); ?>
-				</a>
-			<?php endif; ?>
-		</div>
 	</div>
 </section>

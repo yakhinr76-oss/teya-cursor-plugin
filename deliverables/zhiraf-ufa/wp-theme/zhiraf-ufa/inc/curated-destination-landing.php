@@ -73,3 +73,25 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 		$dest_slug
 	);
 }
+
+/**
+ * Catalog filter tabs for curated hub.
+ *
+ * @param string $dest_slug Destination slug.
+ * @return array<int,array<string,string>>
+ */
+function zhiraf_ufa_curated_catalog_filters( $dest_slug ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	if ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ) {
+		return zhiraf_ufa_turciya_catalog_filters();
+	}
+	if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_filters' ) ) {
+		return zhiraf_ufa_oae_catalog_filters();
+	}
+
+	/**
+	 * @param array<int,array<string,string>> $filters
+	 * @param string                         $dest_slug
+	 */
+	return apply_filters( 'zhiraf_ufa_curated_catalog_filters', array(), $dest_slug );
+}

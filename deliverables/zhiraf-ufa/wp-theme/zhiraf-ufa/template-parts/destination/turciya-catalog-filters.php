@@ -1,6 +1,6 @@
 <?php
 /**
- * Turkey catalog — filter toolbar (starter top + need). Resort picks live in the cards above.
+ * Curated catalog — filter toolbar (starter + optional emirates + needs).
  *
  * @package Zhiraf_Ufa
  */
@@ -9,18 +9,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$filters = function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ? zhiraf_ufa_turciya_catalog_filters() : array();
-$copy    = function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array();
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+
+$filters = function_exists( 'zhiraf_ufa_curated_catalog_filters' )
+	? zhiraf_ufa_curated_catalog_filters( $dest_slug )
+	: ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ? zhiraf_ufa_turciya_catalog_filters() : array() );
+$copy    = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
+	? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
+	: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
 
 if ( empty( $filters ) ) {
 	return;
 }
 
 $starter = $filters[0];
+$resorts = array();
 $needs   = array();
 foreach ( $filters as $filter ) {
 	$group = ! empty( $filter['group'] ) ? (string) $filter['group'] : '';
-	if ( 'need' === $group ) {
+	if ( 'resort' === $group ) {
+		$resorts[] = $filter;
+	} elseif ( 'need' === $group ) {
 		$needs[] = $filter;
 	}
 }
@@ -37,11 +46,13 @@ foreach ( $filters as $filter ) {
 			<p class="turciya-catalog-toolbar__lead" id="turciya-catalog-desc" data-turciya-catalog-desc>
 				<?php echo esc_html( $copy['desc'] ?? '' ); ?>
 			</p>
-			<p class="turciya-catalog-toolbar__guide" data-turciya-catalog-guide hidden>
-				<a href="<?php echo esc_url( home_url( '/tour/turciya/antalya/' ) ); ?>">
-					<?php esc_html_e( 'Подробный гид по Анталье →', 'zhiraf-ufa' ); ?>
-				</a>
-			</p>
+			<?php if ( 'turciya' === $dest_slug ) : ?>
+				<p class="turciya-catalog-toolbar__guide" data-turciya-catalog-guide hidden>
+					<a href="<?php echo esc_url( home_url( '/tour/turciya/antalya/' ) ); ?>">
+						<?php esc_html_e( 'Подробный гид по Анталье →', 'zhiraf-ufa' ); ?>
+					</a>
+				</p>
+			<?php endif; ?>
 		</div>
 		<button
 			type="button"
@@ -65,6 +76,25 @@ foreach ( $filters as $filter ) {
 			>
 				<?php echo esc_html( (string) ( $starter['label'] ?? '' ) ); ?>
 			</button>
+		<?php endif; ?>
+
+		<?php if ( $resorts ) : ?>
+			<span class="turciya-catalog-toolbar__divider" aria-hidden="true"></span>
+			<span class="turciya-catalog-toolbar__group-label">
+				<?php echo 'oae' === $dest_slug ? esc_html__( 'Эмират:', 'zhiraf-ufa' ) : esc_html__( 'Курорт:', 'zhiraf-ufa' ); ?>
+			</span>
+			<?php foreach ( $resorts as $filter ) : ?>
+				<button
+					type="button"
+					class="turciya-catalog-tab"
+					data-turciya-catalog-filter="<?php echo esc_attr( (string) ( $filter['id'] ?? '' ) ); ?>"
+					data-catalog-title="<?php echo esc_attr( (string) ( $filter['title'] ?? '' ) ); ?>"
+					data-catalog-desc="<?php echo esc_attr( (string) ( $filter['desc'] ?? '' ) ); ?>"
+					aria-pressed="false"
+				>
+					<?php echo esc_html( (string) ( $filter['label'] ?? '' ) ); ?>
+				</button>
+			<?php endforeach; ?>
 		<?php endif; ?>
 
 		<?php if ( $needs ) : ?>

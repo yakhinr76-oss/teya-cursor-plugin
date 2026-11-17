@@ -2,11 +2,10 @@
 """
 Build or refresh data/uae-tourvisor-hotels.json from uae_hotels_25.json.
 
-Scaffold (no API creds):
-  python3 scripts/map_uae_tourvisor_hotels.py --scaffold
+Uses the same public Tourvisor autocomplete as turkey-tourvisor-hotels.json
+(no login/password).
 
-Match via Tourvisor list API (needs login/password in env):
-  export TOURVISOR_LOGIN=... TOURVISOR_PASSWORD=...
+  python3 scripts/map_uae_tourvisor_hotels.py --scaffold
   python3 scripts/map_uae_tourvisor_hotels.py --match
 
 Output: deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/uae-tourvisor-hotels.json
@@ -18,49 +17,178 @@ import argparse
 import json
 import os
 import re
-import sys
-import urllib.error
+import time
 import urllib.parse
 import urllib.request
 from datetime import date
-from difflib import SequenceMatcher
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 CATALOG_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/uae_hotels_25.json"
 OUT_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/uae-tourvisor-hotels.json"
 
-# Tourvisor XML list.php: ОАЭ / UAE (same id used in partner integrations).
-TOURVISOR_UAE_COUNTRY_ID = os.environ.get("TOURVISOR_UAE_COUNTRY_ID", "9")
-LIST_URL = "http://tourvisor.ru/xml/list.php"
+# Tourvisor autocomplete: ОАЭ (countryid in response).
+TOURVISOR_UAE_COUNTRY_ID = int(os.environ.get("TOURVISOR_UAE_COUNTRY_ID", "9"))
+AUTOCOMPLETE_URL = "https://tourvisor.ru/xml/autocomplete.php"
+
+TR = str.maketrans(
+    {
+        "ö": "o",
+        "ü": "u",
+        "ğ": "g",
+        "ş": "s",
+        "ı": "i",
+        "ç": "c",
+        "é": "e",
+        "è": "e",
+        "â": "a",
+        "Ö": "o",
+        "Ü": "u",
+        "Ğ": "g",
+        "Ş": "s",
+        "İ": "i",
+        "Ç": "c",
+        "—": " ",
+        "–": " ",
+        "-": " ",
+        "★": " ",
+        "*": " ",
+        "+": " ",
+        "&": " ",
+    }
+)
+STOP = {
+    "hotel",
+    "resort",
+    "spa",
+    "golf",
+    "beach",
+    "club",
+    "the",
+    "by",
+    "and",
+    "adults",
+    "adult",
+    "only",
+    "all",
+    "inclusive",
+    "ex",
+    "collection",
+    "apartments",
+    "apartment",
+    "suites",
+    "suite",
+    "villas",
+    "villa",
+}
 
 
 def strip_stars(name: str) -> str:
     name = name.strip()
-    name = re.sub(r"\s*[0-9]\s*[★*]\s*$", "", name)
+    name = re.sub(r"\s*[0-9]\s*[★*+]\s*$", "", name)
     name = re.sub(r"\s*[★*]\s*$", "", name)
     return name.strip()
 
 
+def norm(s: str) -> str:
+    s = (s or "").translate(TR).lower()
+    s = re.sub(r"\d", " ", s)
+    s = re.sub(r"[^a-z\s]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def tokens(s: str) -> list[str]:
+    return [t for t in norm(s).split() if t not in STOP and len(t) > 1]
+
+
 def search_query(name: str) -> str:
     q = strip_stars(name)
-    q = re.sub(r"\s+", " ", q)
-    return q[:80]
+    return re.sub(r"\s+", " ", q).strip()[:80]
 
 
-def match_names(name: str) -> list[str]:
+def match_names(name: str, tv_name: str = "") -> list[str]:
     base = strip_stars(name)
     names = [name.strip(), base]
     if "&" in base:
         names.append(base.replace(" & ", " and "))
+    if tv_name:
+        names.append(tv_name.strip())
     out: list[str] = []
     seen: set[str] = set()
     for n in names:
         n = n.strip()
-        if n and n not in seen:
-            seen.add(n)
+        if n and n.lower() not in seen:
+            seen.add(n.lower())
             out.append(n)
     return out
+
+
+def autocomplete_fetch(query: str) -> list[dict]:
+    url = AUTOCOMPLETE_URL + "?" + urllib.parse.urlencode({"citymode": 1, "search": query.lower()})
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "Mozilla/5.0", "Referer": "https://tourvisor.ru/search.php"},
+    )
+    with urllib.request.urlopen(req, timeout=25) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    hotels = (((data.get("lists") or {}).get("searchresults") or {}).get("hotels") or [])
+    return [h for h in hotels if int(h.get("countryid", 0)) == TOURVISOR_UAE_COUNTRY_ID]
+
+
+def score_candidate(query_tokens: list[str], cand: dict) -> float:
+    ct = tokens(str(cand.get("name") or ""))
+    if not query_tokens or not ct:
+        return 0.0
+    qs, cs = set(query_tokens), set(ct)
+    inter = qs & cs
+    if not inter:
+        return 0.0
+    recall = len(inter) / len(qs)
+    precision = len(inter) / len(cs)
+    return round(0.65 * recall + 0.35 * precision, 3)
+
+
+def build_queries(row: dict) -> list[str]:
+    hotel_name = str(row.get("hotel_name", ""))
+    base = search_query(hotel_name)
+    queries: list[str] = []
+    for q in [base, hotel_name, norm(base), " ".join(tokens(base))]:
+        q = re.sub(r"\s+", " ", q).strip()
+        if q and q.lower() not in [x.lower() for x in queries]:
+            queries.append(q)
+    sig = tokens(base)
+    if len(sig) >= 2:
+        queries.append(" ".join(sig[:2]))
+    if sig:
+        queries.append(sig[0] if len(sig[0]) > 4 else " ".join(sig[:2]))
+    return queries
+
+
+def pick_best(row: dict, min_score: float, sleep_s: float) -> tuple[dict | None, float, str]:
+    base = search_query(str(row.get("hotel_name", "")))
+    qtoks = tokens(base)
+    best_by_id: dict[int, dict] = {}
+    for q in build_queries(row):
+        try:
+            hits = autocomplete_fetch(q)
+        except Exception as exc:  # noqa: BLE001 — surface per-row, continue batch
+            print(f"  ERR zhiraf {row.get('id')} query={q!r}: {exc}", file=__import__("sys").stderr)
+            hits = []
+        for hit in hits:
+            sc = score_candidate(qtoks, hit)
+            if sc < min_score:
+                continue
+            tid = int(hit.get("id", 0))
+            prev = best_by_id.get(tid)
+            if not prev or sc > float(prev["score"]):
+                best_by_id[tid] = {"score": sc, "query": q, **hit}
+        if sleep_s > 0:
+            time.sleep(sleep_s)
+    if not best_by_id:
+        return None, 0.0, ""
+    top = max(best_by_id.values(), key=lambda x: (x["score"], x.get("name", "")))
+    return top, float(top["score"]), str(top.get("query", ""))
 
 
 def scaffold_hotel(row: dict) -> dict:
@@ -84,6 +212,21 @@ def scaffold_hotel(row: dict) -> dict:
     }
 
 
+def hotel_from_pick(row: dict, hit: dict, status: str = "auto") -> dict:
+    item = scaffold_hotel(row)
+    item["tourvisor_id"] = int(hit.get("id", 0))
+    item["tourvisor_name"] = str(hit.get("name", ""))
+    item["tourvisor_region"] = str(hit.get("regionname", ""))
+    item["tourvisor_region_code"] = int(hit.get("regioncode", 0) or 0)
+    item["tourvisor_stars"] = int(hit.get("stars", 0) or 0)
+    item["match_score"] = float(hit.get("score", 0))
+    item["match_status"] = status
+    item["match_names"] = match_names(item["hotel_name"], item["tourvisor_name"])
+    if hit.get("query"):
+        item["search_query"] = str(hit["query"])
+    return item
+
+
 def load_catalog() -> list[dict]:
     with CATALOG_PATH.open(encoding="utf-8") as f:
         data = json.load(f)
@@ -103,106 +246,9 @@ def build_document(hotels: list[dict], source: str) -> dict:
             "В webhook prices ключ uae:{zhiraf_id} (country_slug uae, не oae). "
             "Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл."
         ),
-        "tourvisor_country_id": int(TOURVISOR_UAE_COUNTRY_ID),
+        "tourvisor_country_id": TOURVISOR_UAE_COUNTRY_ID,
         "hotels": hotels,
     }
-
-
-def tv_request(login: str, password: str, params: dict) -> dict | list:
-    q = {
-        "authlogin": login,
-        "authpass": password,
-        "format": "json",
-        **params,
-    }
-    url = LIST_URL + "?" + urllib.parse.urlencode(q)
-    req = urllib.request.Request(url, headers={"User-Agent": "zhiraf-uae-map/1.0"})
-    try:
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            raw = resp.read().decode("utf-8", errors="replace")
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")[:500]
-        raise SystemExit(f"Tourvisor HTTP {exc.code}: {body}") from exc
-    except urllib.error.URLError as exc:
-        raise SystemExit(f"Tourvisor request failed: {exc}") from exc
-
-    try:
-        parsed = json.loads(raw)
-    except json.JSONDecodeError as exc:
-        raise SystemExit(f"Tourvisor response is not JSON (maybe Authorization Error): {raw[:200]}") from exc
-
-    if isinstance(parsed, dict) and parsed.get("error"):
-        raise SystemExit(f"Tourvisor error: {parsed.get('errormessage', parsed)}")
-
-    return parsed
-
-
-def normalize_tv_hotels(payload: dict | list) -> list[dict]:
-    if isinstance(payload, list):
-        return [h for h in payload if isinstance(h, dict)]
-    if not isinstance(payload, dict):
-        return []
-    for key in ("hotels", "hotel", "data", "list"):
-        block = payload.get(key)
-        if isinstance(block, list):
-            return [h for h in block if isinstance(h, dict)]
-        if isinstance(block, dict):
-            hotels = block.get("hotel")
-            if isinstance(hotels, list):
-                return [h for h in hotels if isinstance(h, dict)]
-    return []
-
-
-def tv_hotel_id(row: dict) -> int:
-    for key in ("id", "hotelcode", "code", "hotel_id"):
-        if key in row and str(row[key]).isdigit():
-            return int(row[key])
-    return 0
-
-
-def tv_hotel_name(row: dict) -> str:
-    for key in ("name", "hotelname", "hotel_name", "title"):
-        if key in row and row[key]:
-            return str(row[key]).strip()
-    return ""
-
-
-def tv_region(row: dict) -> str:
-    for key in ("region", "regionname", "resort", "city"):
-        if key in row and row[key]:
-            return str(row[key]).strip()
-    return ""
-
-
-def loose_key(name: str) -> str:
-    name = name.lower()
-    name = name.replace("★", "").replace("*", "")
-    name = re.sub(r"[^\w\s]", " ", name, flags=re.UNICODE)
-    name = re.sub(r"\s+", " ", name).strip()
-    for drop in (" hotel", " resort", " apartments", " apartment"):
-        if name.endswith(drop):
-            name = name[: -len(drop)].strip()
-    return name
-
-
-def best_match(query: str, tv_hotels: list[dict], min_score: float = 0.72) -> tuple[dict | None, float]:
-    q = loose_key(query)
-    best: dict | None = None
-    best_score = 0.0
-    for row in tv_hotels:
-        name = tv_hotel_name(row)
-        if not name:
-            continue
-        cand = loose_key(name)
-        score = SequenceMatcher(None, q, cand).ratio()
-        if q and (q in cand or cand in q):
-            score = max(score, 0.85)
-        if score > best_score:
-            best_score = score
-            best = row
-    if best is None or best_score < min_score:
-        return None, best_score
-    return best, best_score
 
 
 def run_scaffold() -> None:
@@ -215,63 +261,38 @@ def run_scaffold() -> None:
     print(f"Wrote {len(hotels)} scaffold rows → {OUT_PATH}")
 
 
-def run_match(min_score: float) -> None:
-    login = os.environ.get("TOURVISOR_LOGIN", "").strip()
-    password = os.environ.get("TOURVISOR_PASSWORD", "").strip()
-    if not login or not password:
-        raise SystemExit("Set TOURVISOR_LOGIN and TOURVISOR_PASSWORD")
-
-    payload = tv_request(
-        login,
-        password,
-        {"type": "hotel", "hotcountry": TOURVISOR_UAE_COUNTRY_ID},
-    )
-    tv_hotels = normalize_tv_hotels(payload)
-    if not tv_hotels:
-        raise SystemExit(
-            "Tourvisor returned no UAE hotels — check TOURVISOR_UAE_COUNTRY_ID "
-            f"(now {TOURVISOR_UAE_COUNTRY_ID}) and API access."
-        )
-
+def run_match(min_score: float, sleep_s: float) -> None:
     matched = 0
     hotels: list[dict] = []
     for row in load_catalog():
-        item = scaffold_hotel(row)
-        hit, score = best_match(item["search_query"], tv_hotels, min_score=min_score)
-        item["match_score"] = round(score, 3)
-        if hit:
-            tid = tv_hotel_id(hit)
-            tname = tv_hotel_name(hit)
-            if tid > 0:
-                item["tourvisor_id"] = tid
-                item["tourvisor_name"] = tname
-                item["tourvisor_region"] = tv_region(hit)
-                item["match_status"] = "auto"
-                matched += 1
-            else:
-                item["match_status"] = "no_id"
+        zid = int(row["id"])
+        name = str(row.get("hotel_name", ""))
+        hit, score, _q = pick_best(row, min_score=min_score, sleep_s=sleep_s)
+        print(f"#{zid:02d} {name}")
+        if hit and int(hit.get("id", 0)) > 0:
+            print(f"    {score:.3f} tv={hit['id']} {hit.get('name')} | {hit.get('regionname')} via {hit.get('query')!r}")
+            hotels.append(hotel_from_pick(row, hit))
+            matched += 1
         else:
+            print("    NO HIT")
+            item = scaffold_hotel(row)
             item["match_status"] = "unmatched"
+            hotels.append(item)
 
-        hotels.append(item)
-
-    doc = build_document(hotels, "tourvisor-list-match")
+    doc = build_document(hotels, "tourvisor-autocomplete")
     with OUT_PATH.open("w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=2)
         f.write("\n")
-
     print(f"Matched {matched}/{len(hotels)} (min_score={min_score}) → {OUT_PATH}")
-    for h in hotels:
-        if h["match_status"] != "auto":
-            print(f"  [ ] zhiraf {h['zhiraf_id']:2d} {h['search_query']!r} — {h['match_status']} ({h['match_score']})")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="UAE zhiraf_id ↔ Tourvisor hotel map")
+    parser = argparse.ArgumentParser(description="UAE zhiraf_id ↔ Tourvisor hotel map (public autocomplete)")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--scaffold", action="store_true", help="Write 25 rows with tourvisor_id=0")
-    mode.add_argument("--match", action="store_true", help="Fill tourvisor_id via Tourvisor list API")
-    parser.add_argument("--min-score", type=float, default=0.72, help="Fuzzy match threshold for --match")
+    mode.add_argument("--match", action="store_true", help="Fill tourvisor_id via tourvisor.ru/xml/autocomplete.php")
+    parser.add_argument("--min-score", type=float, default=0.75, help="Token overlap threshold")
+    parser.add_argument("--sleep", type=float, default=0.12, help="Pause between autocomplete calls (seconds)")
     args = parser.parse_args()
 
     if not CATALOG_PATH.is_file():
@@ -280,7 +301,7 @@ def main() -> None:
     if args.scaffold:
         run_scaffold()
     else:
-        run_match(args.min_score)
+        run_match(args.min_score, args.sleep)
 
 
 if __name__ == "__main__":

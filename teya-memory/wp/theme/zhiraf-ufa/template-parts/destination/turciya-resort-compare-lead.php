@@ -22,7 +22,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</h2>
 		<p class="turciya-compare-lead__text">
-			<?php esc_html_e( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. В попапе выберете MAX, WhatsApp или Telegram — туда уйдёт расчёт.', 'zhiraf-ufa' ); ?>
+			<?php
+			$compare_text = __( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. В попапе выберете MAX, WhatsApp или Telegram — туда уйдёт расчёт.', 'zhiraf-ufa' );
+			if ( strpos( $compare_text, 'Быстрее ответить в WhatsApp' ) !== false ) {
+				$compare_text = __( 'Нужен ответ прямо сейчас? Нажмите кнопку WhatsApp сразу под каталогом отелей выше.', 'zhiraf-ufa' );
+			}
+			echo esc_html( $compare_text );
+			?>
 		</p>
 		<button type="button" class="btn btn--primary btn--lg" data-turciya-lead-open>
 			<?php esc_html_e( 'Оставить заявку и выбрать мессенджер', 'zhiraf-ufa' ); ?>

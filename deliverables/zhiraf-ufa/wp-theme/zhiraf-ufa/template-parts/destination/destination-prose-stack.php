@@ -200,7 +200,10 @@ if ( empty( $dest ) ) {
 								href="<?php echo esc_url( $link['url'] ); ?>"
 								role="listitem"
 							>
-								<?php echo esc_html( $chip_label ); ?>
+								<span class="dest-seo-tag__title"><?php echo esc_html( $chip_label ); ?></span>
+								<?php if ( ! empty( $link['desc'] ) ) : ?>
+									<span class="dest-seo-tag__desc"><?php echo esc_html( $link['desc'] ); ?></span>
+								<?php endif; ?>
 							</a>
 						<?php endforeach; ?>
 					</div>

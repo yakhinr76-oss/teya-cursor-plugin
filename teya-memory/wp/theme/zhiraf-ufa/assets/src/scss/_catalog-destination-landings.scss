@@ -207,19 +207,31 @@
 
 .dest-seo-tag {
   display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.375rem 0.75rem;
   background-color: #f5f5f4;
   color: #78716c;
   font-size: 0.75rem;
   border-radius: 9999px;
   text-decoration: none;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease;
+}
+
+.dest-seo-tag__title {
+  font-weight: 500;
+  color: #1c1917;
+  transition: text-decoration 0.15s ease;
+}
+
+.dest-seo-tag:hover .dest-seo-tag__title,
+.dest-seo-tag:focus-visible .dest-seo-tag__title {
+  text-decoration: underline;
 }
 
 .dest-seo-tag:hover,
 .dest-seo-tag:focus-visible {
   background-color: #e7e5e4;
-  color: #57534e;
 }
 
 .dest-landing-faq--panel .dest-landing-faq__panel {

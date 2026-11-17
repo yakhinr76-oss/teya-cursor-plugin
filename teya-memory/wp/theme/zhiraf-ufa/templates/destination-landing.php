@@ -192,7 +192,15 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
-			<p><?php echo esc_html( ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ) ); ?></p>
+			<p>
+				<?php
+				$cta_lead = ! empty( $dest['cta_lead'] ) ? $dest['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' );
+				if ( strpos( $cta_lead, 'Быстрее ответить в WhatsApp' ) !== false ) {
+					$cta_lead = __( 'Нужен ответ прямо сейчас? Нажмите кнопку WhatsApp сразу под каталогом отелей выше.', 'zhiraf-ufa' );
+				}
+				echo esc_html( $cta_lead );
+				?>
+			</p>
 			<form class="zhiraf-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="dest-<?php echo esc_attr( $dest_slug ); ?>">
 				<div class="dest-landing-lead-form__fields">
 					<label class="form-label dest-landing-lead-form__field">

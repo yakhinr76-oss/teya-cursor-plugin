@@ -17,7 +17,13 @@ $copy        = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
 	? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
 	: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
 $pool_total  = count( $hotels );
-$fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
+$fill_text   = 'oae' === $dest_slug
+	? __( 'Здравствуйте! На странице ОАЭ в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: UAE-FILL', 'zhiraf-ufa' )
+	: __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
+$fill_uon_id = 'oae' === $dest_slug ? 'UAE-FILL' : 'TR-FILL';
+$fill_tour   = 'oae' === $dest_slug
+	? __( 'ОАЭ, индивидуальный подбор', 'zhiraf-ufa' )
+	: __( 'Турция, индивидуальный подбор', 'zhiraf-ufa' );
 
 if ( empty( $hotels ) ) {
 	return;
@@ -32,10 +38,18 @@ if ( empty( $hotels ) ) {
 	data-catalog-pool-total="<?php echo esc_attr( (string) $pool_total ); ?>"
 >
 	<div class="container">
-		<?php get_template_part( 'template-parts/destination/turciya-resort-pick-cards' ); ?>
+		<?php if ( 'turciya' === $dest_slug ) : ?>
+			<?php get_template_part( 'template-parts/destination/turciya-resort-pick-cards' ); ?>
+		<?php endif; ?>
 
 		<div class="turciya-curated-showcase__block">
-			<?php get_template_part( 'template-parts/destination/turciya-catalog-filters' ); ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-catalog-filters',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
+			?>
 
 			<div class="turciya-curated-grid" data-curated-grid data-catalog-pending>
 				<?php foreach ( $hotels as $hotel ) : ?>
@@ -60,12 +74,12 @@ if ( empty( $hotels ) ) {
 						class="btn btn--outline turciya-catalog-fill__cta"
 						data-turciya-lead-open
 						data-cta-context="turciya_catalog_fill_modal"
-						data-uon-hotel-id="TR-FILL"
+						data-uon-hotel-id="<?php echo esc_attr( $fill_uon_id ); ?>"
 						data-hotel-name="<?php esc_attr_e( 'Индивидуальный подбор', 'zhiraf-ufa' ); ?>"
 						data-lead-title="<?php esc_attr_e( 'Подберём отель под вашу семью', 'zhiraf-ufa' ); ?>"
 						data-lead-subtitle="<?php esc_attr_e( 'Укажите телефон и мессенджер — уточним возраст детей и пришлём ещё 2–3 варианта с вылетом из Уфы.', 'zhiraf-ufa' ); ?>"
 						data-lead-message="<?php echo esc_attr( $fill_text ); ?>"
-						data-lead-tour="<?php esc_attr_e( 'Турция, индивидуальный подбор', 'zhiraf-ufa' ); ?>"
+						data-lead-tour="<?php echo esc_attr( $fill_tour ); ?>"
 					>
 						<?php esc_html_e( 'Подобрать в мессенджере →', 'zhiraf-ufa' ); ?>
 					</button>
@@ -81,11 +95,19 @@ if ( empty( $hotels ) ) {
 				</button>
 				<p class="turciya-catalog-more__hint">
 					<?php
-					printf(
-						/* translators: %d: hotels count beyond first six */
-						esc_html__( 'В нашей базе ещё %d проверенных отелей Турции под любые даты и состав семьи.', 'zhiraf-ufa' ),
-						max( 0, $pool_total - 6 )
-					);
+					if ( 'oae' === $dest_slug ) {
+						printf(
+							/* translators: %d: hotels count beyond first six */
+							esc_html__( 'В нашей базе ещё %d проверенных отелей ОАЭ под любые даты и состав семьи.', 'zhiraf-ufa' ),
+							max( 0, $pool_total - 6 )
+						);
+					} else {
+						printf(
+							/* translators: %d: hotels count beyond first six */
+							esc_html__( 'В нашей базе ещё %d проверенных отелей Турции под любые даты и состав семьи.', 'zhiraf-ufa' ),
+							max( 0, $pool_total - 6 )
+						);
+					}
 					?>
 				</p>
 			</div>

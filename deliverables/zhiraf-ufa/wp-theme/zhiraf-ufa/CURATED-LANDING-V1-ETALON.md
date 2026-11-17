@@ -52,7 +52,7 @@
 
 ### ОАЭ (каркас, `/tour/oae/`)
 
-- `curated_landing_v1` включён; **каталог 6 отелей пуст** (`inc/curated-oae-landing.php`) — layout v1 без сетки, с FAQ + SEO prose + compare lead.
+- `curated_landing_v1` включён; каталог из **`data/uae_hotels_25.json`** (`inc/curated-oae-landing.php`): 6 стартовых слотов + пул 25, фильтры по эмиратам (без Turkey pick-cards).
 - Без `curated_kids_section` / `curated_expert_section` / `curated_resort_chips` до контента.
 - Дефолты сравнения: `curated_compare_btn_default`, `curated_compare_lead_default`, `curated_hero_trust`, `resort_links` (URL эмиратов — на `/tour/oae/` до появления курортных дочерних страниц).
 - Следующий шаг: 6 карточек из `data/uae_hotels_25.json` + ACF на странице ОАЭ в WP.

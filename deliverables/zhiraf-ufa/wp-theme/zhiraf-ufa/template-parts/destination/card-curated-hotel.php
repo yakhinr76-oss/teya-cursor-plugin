@@ -37,16 +37,19 @@ $lead_message = ! empty( $hotel['wa_prefill'] )
 	);
 $lead_tour    = (string) $hotel['name'];
 $image_remote = ! empty( $hotel['image_remote'] );
-$is_base_slot = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
-$price_amount = (int) ( $hotel['price_rub'] ?? 0 );
+$is_base_slot   = ! empty( $hotel['slot'] ) && 'base' === $hotel['slot'];
+$country_slug   = ! empty( $hotel['destination_slug'] ) ? sanitize_key( (string) $hotel['destination_slug'] ) : 'turciya';
+$price_amount   = (int) ( $hotel['price_rub'] ?? 0 );
 if ( $price_amount <= 0 && $is_base_slot ) {
 	if ( function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
-		$min_tour = zhiraf_ufa_get_country_min_tour( 'turciya' );
+		$min_tour = zhiraf_ufa_get_country_min_tour( $country_slug );
 		if ( is_array( $min_tour ) && ! empty( $min_tour['price_rur'] ) ) {
 			$price_amount = (int) $min_tour['price_rur'];
 		}
 	}
-	if ( $price_amount <= 0 && function_exists( 'zhiraf_ufa_turciya_hub_min_price_rub' ) ) {
+	if ( $price_amount <= 0 && 'oae' === $country_slug && function_exists( 'zhiraf_ufa_oae_hub_min_price_rub' ) ) {
+		$price_amount = zhiraf_ufa_oae_hub_min_price_rub();
+	} elseif ( $price_amount <= 0 && function_exists( 'zhiraf_ufa_turciya_hub_min_price_rub' ) ) {
 		$price_amount = zhiraf_ufa_turciya_hub_min_price_rub();
 	}
 }

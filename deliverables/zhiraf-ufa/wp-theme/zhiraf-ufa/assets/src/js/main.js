@@ -597,6 +597,15 @@
 
   function messengerSubmitLabelText(channel, variant) {
     variant = variant || 'quiz';
+    if (variant === 'dest_lead') {
+      if (channel === 'MAX') {
+        return 'Отправить заявку в MAX →';
+      }
+      if (channel === 'Telegram') {
+        return 'Отправить заявку в Telegram →';
+      }
+      return 'Отправить заявку в WhatsApp →';
+    }
     if (channel === 'MAX') {
       return variant === 'lead'
         ? 'Получить PDF-гид в MAX →'
@@ -621,7 +630,13 @@
       return;
     }
     form.dataset.messengerPickerInit = '1';
-    var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
+    var ctx = form.getAttribute('data-form-context') || '';
+    var variant = 'quiz';
+    if (form.id === 'lead-magnet-form' || ctx === 'home-lead-magnet') {
+      variant = 'lead';
+    } else if (form.classList.contains('dest-landing-lead-form')) {
+      variant = 'dest_lead';
+    }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
     if (!radios.length) {
@@ -868,15 +883,34 @@
 
   qsa('[data-phone-mask]').forEach(bindRuPhoneMask);
 
-  var leadMagnetForm = qs('#lead-magnet-form');
-  if (leadMagnetForm) {
-    initMessengerPicker(leadMagnetForm);
-    leadMagnetForm.addEventListener('submit', function () {
-      var picked = leadMagnetForm.querySelector('[name="lead_messenger"]:checked');
-      var channel = qs('[name="contact_channel"]', leadMagnetForm);
+  function bindLeadMessengerChannel(form) {
+    if (!form || form.dataset.leadMessengerBound === '1') {
+      return;
+    }
+    initMessengerPicker(form);
+    var picker = qs('[data-messenger-picker]', form);
+    if (!picker) {
+      return;
+    }
+    form.dataset.leadMessengerBound = '1';
+    var radioName = 'lead_messenger';
+    var sample = qs('[name="' + radioName + '"]', form);
+    if (sample) {
+      radioName = sample.name;
+    }
+    form.addEventListener('submit', function () {
+      var picked = form.querySelector('[name="' + radioName + '"]:checked');
+      var channel = qs('[name="contact_channel"]', form);
       if (picked && channel) {
         channel.value = picked.value;
       }
+    });
+  }
+
+  var leadMagnetForm = qs('#lead-magnet-form');
+  if (leadMagnetForm) {
+    bindLeadMessengerChannel(leadMagnetForm);
+    leadMagnetForm.addEventListener('submit', function () {
       var dest = qs('[name="destination"]', leadMagnetForm);
       var msg = qs('[name="message"]', leadMagnetForm);
       if (dest && msg && dest.value.trim()) {
@@ -884,6 +918,8 @@
       }
     });
   }
+
+  qsa('.dest-landing-lead-form').forEach(bindLeadMessengerChannel);
 
   var leadFormStarted = {};
   qsa('.zhiraf-form').forEach(function (form) {

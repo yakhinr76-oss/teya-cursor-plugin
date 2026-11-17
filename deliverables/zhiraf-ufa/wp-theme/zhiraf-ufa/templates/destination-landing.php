@@ -445,6 +445,10 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	</section>
 </main>
 <?php
+if ( $use_turciya_curated ) {
+	get_template_part( 'template-parts/shared/messenger-choice', 'modal' );
+}
+
 get_template_part(
 	'template-parts/destination/sticky-mobile-bar',
 	null,

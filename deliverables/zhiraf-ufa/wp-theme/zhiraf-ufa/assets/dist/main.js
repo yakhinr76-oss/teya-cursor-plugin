@@ -630,7 +630,13 @@
       return;
     }
     form.dataset.messengerPickerInit = '1';
-    var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
+    var ctx = form.getAttribute('data-form-context') || '';
+    var variant = 'quiz';
+    if (form.id === 'lead-magnet-form' || ctx === 'home-lead-magnet') {
+      variant = 'lead';
+    } else if (form.classList.contains('dest-landing-lead-form')) {
+      variant = 'dest_lead';
+    }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
     if (!radios.length) {
@@ -1362,6 +1368,74 @@
     applyCatalogFilter('starter', { title: defaultTitle, desc: defaultDesc });
   }
 
+  function initTurciyaMessengerChoiceModal() {
+    var modal = qs('#turciya-messenger-modal');
+    if (!modal) {
+      return;
+    }
+    var titleEl = qs('[data-turciya-messenger-title]', modal);
+    var channelLinks = qsa('[data-turciya-messenger-channel]', modal);
+    var channelMap = {
+      max: 'max',
+      whatsapp: 'whatsapp',
+      telegram: 'telegram'
+    };
+
+    function closeModal() {
+      modal.setAttribute('hidden', '');
+      modal.setAttribute('inert', '');
+      document.body.classList.remove('turciya-messenger-open');
+      document.body.style.overflow = '';
+    }
+
+    function openModal(trigger) {
+      if (!trigger) {
+        return;
+      }
+      var hotelName = trigger.getAttribute('data-hotel-name') || '';
+      var uonId = trigger.getAttribute('data-uon-hotel-id') || '';
+      var ctx = trigger.getAttribute('data-cta-context') || 'turciya_curated_hotel';
+      if (titleEl) {
+        titleEl.textContent = hotelName;
+      }
+      channelLinks.forEach(function (link) {
+        var key = link.getAttribute('data-turciya-messenger-channel') || '';
+        var dataKey = channelMap[key] || key;
+        var url = trigger.getAttribute('data-messenger-url-' + dataKey) || '';
+        if (url && url !== '#') {
+          link.href = url;
+          link.removeAttribute('hidden');
+          link.setAttribute('data-uon-hotel-id', uonId);
+          link.setAttribute('data-hotel-name', hotelName);
+          link.setAttribute('data-cta-context', ctx);
+        } else {
+          link.setAttribute('hidden', '');
+        }
+      });
+      modal.removeAttribute('hidden');
+      modal.removeAttribute('inert');
+      document.body.classList.add('turciya-messenger-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    qsa('[data-turciya-messenger-open]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openModal(btn);
+      });
+    });
+
+    qsa('[data-turciya-messenger-close]', modal).forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) {
+        closeModal();
+      }
+    });
+  }
+
+  initTurciyaMessengerChoiceModal();
   initTurciyaCatalog();
 
   qsa('[data-dest-season-module]').forEach(function (root) {

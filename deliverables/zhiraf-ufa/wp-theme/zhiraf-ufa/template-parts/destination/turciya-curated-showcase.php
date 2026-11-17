@@ -62,43 +62,19 @@ if ( empty( $hotels ) ) {
 					<p class="turciya-catalog-fill__text" data-turciya-fill-text>
 						<?php esc_html_e( 'В этой выборке 5 отелей. Напишите возраст детей — пришлём ещё 2–3 варианта из базы под ваши даты и вылет из Уфы.', 'zhiraf-ufa' ); ?>
 					</p>
-					<a
+					<button
+						type="button"
 						class="btn btn--primary turciya-catalog-fill__cta"
-						href="<?php echo esc_url( (string) ( $fill_urls['whatsapp'] ?? $wa_url ) ); ?>"
-						target="_blank"
-						rel="noopener noreferrer"
-						data-track="messenger"
-						data-channel="whatsapp"
-						data-cta-context="turciya_catalog_fill"
+						data-turciya-messenger-open
+						data-messenger-url-whatsapp="<?php echo esc_url( (string) ( $fill_urls['whatsapp'] ?? $wa_url ) ); ?>"
+						data-messenger-url-max="<?php echo esc_url( (string) ( $fill_urls['max'] ?? '' ) ); ?>"
+						data-messenger-url-telegram="<?php echo esc_url( (string) ( $fill_urls['telegram'] ?? '' ) ); ?>"
 						data-uon-hotel-id="TR-FILL"
-						data-hotel-name="<?php esc_attr_e( 'Индивидуальный подбор', 'zhiraf-ufa' ); ?>"
+						data-hotel-name="<?php echo esc_attr( __( 'Индивидуальный подбор', 'zhiraf-ufa' ) ); ?>"
+						data-cta-context="turciya_catalog_fill"
 					>
 						<?php esc_html_e( 'Подобрать в мессенджере →', 'zhiraf-ufa' ); ?>
-					</a>
-					<p class="turciya-curated-card__channels">
-						<?php if ( ! empty( $fill_urls['max'] ) ) : ?>
-							<a
-								href="<?php echo esc_url( (string) $fill_urls['max'] ); ?>"
-								target="_blank"
-								rel="noopener noreferrer"
-								data-track="messenger"
-								data-channel="max"
-								data-cta-context="turciya_catalog_fill"
-								data-uon-hotel-id="TR-FILL"
-							><?php esc_html_e( 'MAX', 'zhiraf-ufa' ); ?></a>
-						<?php endif; ?>
-						<?php if ( ! empty( $fill_urls['telegram'] ) ) : ?>
-							<a
-								href="<?php echo esc_url( (string) $fill_urls['telegram'] ); ?>"
-								target="_blank"
-								rel="noopener noreferrer"
-								data-track="messenger"
-								data-channel="telegram"
-								data-cta-context="turciya_catalog_fill"
-								data-uon-hotel-id="TR-FILL"
-							><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></a>
-						<?php endif; ?>
-					</p>
+					</button>
 				</aside>
 			</div>
 

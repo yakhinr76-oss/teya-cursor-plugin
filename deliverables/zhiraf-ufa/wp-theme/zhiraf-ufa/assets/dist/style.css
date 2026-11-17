@@ -6814,6 +6814,60 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+/* Turkey hotel card: messenger choice pop-up */
+.turciya-messenger-modal__panel {
+  max-width: 420px;
+}
+
+.turciya-messenger-modal__eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted, #6b6560);
+}
+
+.turciya-messenger-modal__title {
+  margin: 0 36px 12px 0;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.turciya-messenger-modal__label {
+  margin-bottom: 10px;
+}
+
+.turciya-messenger-modal__hint {
+  margin: 16px 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-muted, #6b6560);
+  line-height: 1.45;
+}
+
+.messenger-choice-modal__channel {
+  text-decoration: none;
+  color: inherit;
+}
+
+.messenger-choice-modal__channel:hover .messenger-picker__inner,
+.messenger-choice-modal__channel:focus-visible .messenger-picker__inner {
+  border-color: var(--color-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.messenger-choice-modal__channel.messenger-picker__option--wa:hover .messenger-picker__inner {
+  border-color: #25d366;
+}
+
+.messenger-choice-modal__channel.messenger-picker__option--tg:hover .messenger-picker__inner {
+  border-color: #229ed9;
+}
+
+body.turciya-messenger-open {
+  overflow: hidden;
+}
+
 /* Quiz modal */
 .quiz-modal {
   position: fixed;

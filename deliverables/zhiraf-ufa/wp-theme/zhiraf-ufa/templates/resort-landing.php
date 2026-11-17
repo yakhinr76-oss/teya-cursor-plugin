@@ -24,7 +24,9 @@ $resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		<div class="container dest-landing-hero__grid">
 			<div class="dest-landing-hero__copy">
 				<p class="dest-landing-hero__eyebrow">
-					<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Все направления', 'zhiraf-ufa' ); ?></a>
+					<a class="dest-landing-hero__eyebrow-link" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>">
+						<span class="dest-landing-hero__eyebrow-back" aria-hidden="true">← </span><?php esc_html_e( 'Все направления', 'zhiraf-ufa' ); ?>
+					</a>
 					·
 					<a href="<?php echo esc_url( $country_url ); ?>"><?php echo esc_html( $resort_data['country_name'] ); ?></a>
 				</p>

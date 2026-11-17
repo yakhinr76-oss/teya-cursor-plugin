@@ -1,0 +1,433 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "tourvisor-autocomplete",
+  "country_slug": "turkey",
+  "identified_at": "2026-11-16",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В prices ключ turkey:{zhiraf_id}. Не подставляй tourvisor_id вместо zhiraf_id.",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "turkey",
+      "hotel_name": "Paloma Oceana 5★",
+      "resort": "Сиде, Кумкёй",
+      "tourvisor_id": 1416,
+      "tourvisor_name": "Paloma Oceana Resort",
+      "tourvisor_region": "Кумкой",
+      "tourvisor_region_code": 2197,
+      "tourvisor_stars": 5,
+      "search_query": "Paloma Oceana",
+      "match_names": [
+        "Paloma Oceana 5★",
+        "Paloma Oceana",
+        "Paloma Oceana Resort"
+      ]
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "turkey",
+      "hotel_name": "Papillon Belvil 5★",
+      "resort": "Белек",
+      "tourvisor_id": 1421,
+      "tourvisor_name": "Papillon Belvil",
+      "tourvisor_region": "Кадрие",
+      "tourvisor_region_code": 2234,
+      "tourvisor_stars": 5,
+      "search_query": "Papillon Belvil",
+      "match_names": [
+        "Papillon Belvil 5★",
+        "Papillon Belvil Hotel",
+        "Papillon Belvil"
+      ]
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "turkey",
+      "hotel_name": "Voyage Belek Golf & Spa 5★",
+      "resort": "Белек",
+      "tourvisor_id": 1582,
+      "tourvisor_name": "Voyage Belek Golf & Spa",
+      "tourvisor_region": "Белек-центр",
+      "tourvisor_region_code": 2231,
+      "tourvisor_stars": 5,
+      "search_query": "Voyage Belek Golf & Spa",
+      "match_names": [
+        "Voyage Belek Golf & Spa 5★",
+        "Voyage Belek Golf & Spa"
+      ]
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "turkey",
+      "hotel_name": "Paloma Grida 5★",
+      "resort": "Белек",
+      "tourvisor_id": 1417,
+      "tourvisor_name": "Paloma Grida",
+      "tourvisor_region": "Искеле",
+      "tourvisor_region_code": 2233,
+      "tourvisor_stars": 5,
+      "search_query": "Paloma Grida",
+      "match_names": [
+        "Paloma Grida 5★",
+        "Paloma Grida"
+      ]
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "turkey",
+      "hotel_name": "AQI Pegasos Royal 5★",
+      "resort": "Аланья, Инжекум",
+      "tourvisor_id": 1277,
+      "tourvisor_name": "Aqi Pegasos Royal Hotel (Ex. Tt Hotels Pegasos Royal)",
+      "tourvisor_region": "Инжекум",
+      "tourvisor_region_code": 2186,
+      "tourvisor_stars": 5,
+      "search_query": "Aqi Pegasos Royal",
+      "match_names": [
+        "AQI Pegasos Royal 5★",
+        "Aqi Pegasos Royal",
+        "Aqi Pegasos Royal Hotel (Ex. Tt Hotels Pegasos Royal)"
+      ]
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "turkey",
+      "hotel_name": "Liberty Lykia — Adults Only 5★",
+      "resort": "Фетхие, Олюдениз",
+      "tourvisor_id": 17513,
+      "tourvisor_name": "Liberty Hotels Lykia Adults Only 16+",
+      "tourvisor_region": "Олюдениз",
+      "tourvisor_region_code": 2212,
+      "tourvisor_stars": 5,
+      "search_query": "Liberty Lykia Adults Only",
+      "match_names": [
+        "Liberty Lykia — Adults Only 5★",
+        "Liberty Lykia Adults Only",
+        "Liberty Hotels Lykia Adults Only 16+"
+      ],
+      "note": "В базе Tourvisor это отдельная карточка Adults Only 16+, не семейный Liberty Hotels Lykia (id 3452)."
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "turkey",
+      "hotel_name": "Rixos Premium Göcek 5★",
+      "resort": "Фетхие, Гёджек",
+      "tourvisor_id": 28668,
+      "tourvisor_name": "Rixos Premium Gocek Adults Only 13+",
+      "tourvisor_region": "Фетхие",
+      "tourvisor_region_code": 27,
+      "tourvisor_stars": 5,
+      "search_query": "Rixos Premium Gocek",
+      "match_names": [
+        "Rixos Premium Göcek 5★",
+        "Rixos Premium Göcek Adult Only",
+        "Rixos Premium Gocek Adults Only 13+"
+      ]
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "turkey",
+      "hotel_name": "Hillside Beach Club 5★",
+      "resort": "Фетхие, бухта Калета",
+      "tourvisor_id": 2175,
+      "tourvisor_name": "Hillside Beach Club",
+      "tourvisor_region": "Фетхие",
+      "tourvisor_region_code": 27,
+      "tourvisor_stars": 5,
+      "search_query": "Hillside Beach Club",
+      "match_names": [
+        "Hillside Beach Club 5★",
+        "Hillside Beach Club"
+      ]
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "turkey",
+      "hotel_name": "TUI MAGIC LIFE Bodrum — Adults Only 5★",
+      "resort": "Бодрум",
+      "tourvisor_id": 2161,
+      "tourvisor_name": "Tui Magic Life Bodrum Adult Only 16+ (Ex. Ersan Exclusive Resort & Spa)",
+      "tourvisor_region": "Бодрум",
+      "tourvisor_region_code": 24,
+      "tourvisor_stars": 5,
+      "search_query": "Tui Magic Life Bodrum Adult Only",
+      "match_names": [
+        "TUI MAGIC LIFE Bodrum — Adults Only 5★",
+        "TUI MAGIC LIFE Bodrum - Adults Only",
+        "Tui Magic Life Bodrum Adult Only 16+ (Ex. Ersan Exclusive Resort & Spa)"
+      ]
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "turkey",
+      "hotel_name": "TUI BLUE Seno 4+★",
+      "resort": "Сарыгерме, Даламан",
+      "tourvisor_id": 21695,
+      "tourvisor_name": "Tui Blue Seno Adults Only 16+",
+      "tourvisor_region": "Сарыгерме",
+      "tourvisor_region_code": 2226,
+      "tourvisor_stars": 4,
+      "search_query": "Tui Blue Seno",
+      "match_names": [
+        "TUI BLUE Seno 4+★",
+        "TUI BLUE Seno",
+        "Tui Blue Seno Adults Only 16+"
+      ],
+      "note": "В базе Tourvisor отель записан как Adults Only 16+. Другой карточки Seno нет."
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "turkey",
+      "hotel_name": "Maxx Royal Belek Golf Resort 5★",
+      "resort": "Белек",
+      "tourvisor_id": 3405,
+      "tourvisor_name": "Maxx Royal Belek Golf & Spa",
+      "tourvisor_region": "Искеле",
+      "tourvisor_region_code": 2233,
+      "tourvisor_stars": 5,
+      "search_query": "Maxx Royal Belek",
+      "match_names": [
+        "Maxx Royal Belek Golf Resort 5★",
+        "Maxx Royal Belek Golf Resort",
+        "Maxx Royal Belek Golf & Spa"
+      ]
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "turkey",
+      "hotel_name": "Maxx Royal Kemer Resort 5★",
+      "resort": "Кемер, Кириш",
+      "tourvisor_id": 27349,
+      "tourvisor_name": "Maxx Royal Kemer Resort",
+      "tourvisor_region": "Кириш",
+      "tourvisor_region_code": 2222,
+      "tourvisor_stars": 5,
+      "search_query": "Maxx Royal Kemer",
+      "match_names": [
+        "Maxx Royal Kemer Resort 5★",
+        "Maxx Royal Kemer",
+        "Maxx Royal Kemer Resort"
+      ]
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "turkey",
+      "hotel_name": "Regnum Carya 5★",
+      "resort": "Белек, Кадрие",
+      "tourvisor_id": 27316,
+      "tourvisor_name": "Regnum Carya Golf & Spa",
+      "tourvisor_region": "Кадрие",
+      "tourvisor_region_code": 2234,
+      "tourvisor_stars": 5,
+      "search_query": "Regnum Carya",
+      "match_names": [
+        "Regnum Carya 5★",
+        "Regnum Carya",
+        "Regnum Carya Golf & Spa"
+      ]
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "turkey",
+      "hotel_name": "Lujo Hotel Bodrum 5★",
+      "resort": "Бодрум, Гюverджinlik",
+      "tourvisor_id": 59116,
+      "tourvisor_name": "Lujo Hotel Bodrum (Ex. Lujo Art & Joy)",
+      "tourvisor_region": "Бодрум",
+      "tourvisor_region_code": 24,
+      "tourvisor_stars": 5,
+      "search_query": "Lujo Hotel Bodrum",
+      "match_names": [
+        "Lujo Hotel Bodrum 5★",
+        "Lujo Hotel Bodrum",
+        "Lujo Hotel Bodrum (Ex. Lujo Art & Joy)"
+      ]
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "turkey",
+      "hotel_name": "Cullinan Belek 5★",
+      "resort": "Белек, Кадрие",
+      "tourvisor_id": 78251,
+      "tourvisor_name": "Cullinan Belek (Ex. Cullinan Golf Resort Belek)",
+      "tourvisor_region": "Кадрие",
+      "tourvisor_region_code": 2234,
+      "tourvisor_stars": 5,
+      "search_query": "Cullinan Belek",
+      "match_names": [
+        "Cullinan Belek 5★",
+        "Cullinan Belek",
+        "Cullinan Belek (Ex. Cullinan Golf Resort Belek)"
+      ]
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "turkey",
+      "hotel_name": "Riviera Zen Hotel 4★",
+      "resort": "Аланья, пляж Клеопатры",
+      "tourvisor_id": 16785,
+      "tourvisor_name": "Kleopatra Riviera Zen Adults Only 16+",
+      "tourvisor_region": "Алания-центр",
+      "tourvisor_region_code": 2185,
+      "tourvisor_stars": 4,
+      "search_query": "Riviera Zen",
+      "match_names": [
+        "Riviera Zen Hotel 4★",
+        "Riviera Zen Hotel",
+        "Kleopatra Riviera Zen Adults Only 16+"
+      ],
+      "note": "В базе Tourvisor имя Kleopatra Riviera Zen Adults Only 16+."
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "turkey",
+      "hotel_name": "Xperia Saray Beach Hotel 4★",
+      "resort": "Аланья, Сарай",
+      "tourvisor_id": 1472,
+      "tourvisor_name": "Xperia Saray Beach",
+      "tourvisor_region": "Алания-центр",
+      "tourvisor_region_code": 2185,
+      "tourvisor_stars": 4,
+      "search_query": "Xperia Saray Beach",
+      "match_names": [
+        "Xperia Saray Beach Hotel 4★",
+        "Xperia Saray Beach Hotel",
+        "Xperia Saray Beach"
+      ]
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "turkey",
+      "hotel_name": "Akra Kemer 5★",
+      "resort": "Кемер, центр",
+      "tourvisor_id": 1291,
+      "tourvisor_name": "Akra Kemer (Ex. Kemer Barut Collection)",
+      "tourvisor_region": "Кемер",
+      "tourvisor_region_code": 22,
+      "tourvisor_stars": 5,
+      "search_query": "Akra Kemer",
+      "match_names": [
+        "Akra Kemer 5★",
+        "Akra Kemer",
+        "Akra Kemer (Ex. Kemer Barut Collection)"
+      ]
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "turkey",
+      "hotel_name": "DoubleTree by Hilton Antalya-Kemer 5★",
+      "resort": "Кемер, центр",
+      "tourvisor_id": 1555,
+      "tourvisor_name": "Doubletree By Hilton Antalya Kemer",
+      "tourvisor_region": "Кемер - центр",
+      "tourvisor_region_code": 2221,
+      "tourvisor_stars": 5,
+      "search_query": "Doubletree By Hilton Antalya Kemer",
+      "match_names": [
+        "DoubleTree by Hilton Antalya-Kemer 5★",
+        "Doubletree By Hilton Antalya-kemer All-inclusive Resort",
+        "Doubletree By Hilton Antalya Kemer"
+      ]
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "turkey",
+      "hotel_name": "Akra Antalya 5★",
+      "resort": "Анталья, Муратпаша / Лара",
+      "tourvisor_id": 1146,
+      "tourvisor_name": "Akra Antalya",
+      "tourvisor_region": "Анталья",
+      "tourvisor_region_code": 20,
+      "tourvisor_stars": 5,
+      "search_query": "Akra Antalya",
+      "match_names": [
+        "Akra Antalya 5★",
+        "Akra Antalya"
+      ]
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "turkey",
+      "hotel_name": "Side Star Elegance Hotel 5★",
+      "resort": "Сиде, Кумкёй",
+      "tourvisor_id": 1014,
+      "tourvisor_name": "Side Star Elegance (Ex. Asteria Side)",
+      "tourvisor_region": "Сиде-центр",
+      "tourvisor_region_code": 2201,
+      "tourvisor_stars": 5,
+      "search_query": "Side Star Elegance",
+      "match_names": [
+        "Side Star Elegance Hotel 5★",
+        "Side Star Elegance Hotel",
+        "Side Star Elegance (Ex. Asteria Side)"
+      ]
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "turkey",
+      "hotel_name": "Club Tuana Fethiye 5★",
+      "resort": "Фетхие, Яникарлар",
+      "tourvisor_id": 1679,
+      "tourvisor_name": "Club Tuana Fethiye (Ex. Majesty Club Tuana Park)",
+      "tourvisor_region": "Фетхие",
+      "tourvisor_region_code": 27,
+      "tourvisor_stars": 5,
+      "search_query": "Club Tuana Fethiye",
+      "match_names": [
+        "Club Tuana Fethiye 5★",
+        "Club Tuana Fethiye",
+        "Club Tuana Fethiye (Ex. Majesty Club Tuana Park)"
+      ]
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "turkey",
+      "hotel_name": "TUI BLUE Palm Garden 4+★",
+      "resort": "Сиде, Кызылагач",
+      "tourvisor_id": 17480,
+      "tourvisor_name": "Tui Blue Palm Garden",
+      "tourvisor_region": "Кызылагач",
+      "tourvisor_region_code": 2198,
+      "tourvisor_stars": 4,
+      "search_query": "Tui Blue Palm Garden",
+      "match_names": [
+        "TUI BLUE Palm Garden 4+★",
+        "TUI BLUE Palm Garden",
+        "Tui Blue Palm Garden"
+      ]
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "turkey",
+      "hotel_name": "Kamelya Aishen Club 5★",
+      "resort": "Сиде, Чолаклы",
+      "tourvisor_id": 1281,
+      "tourvisor_name": "Kamelya Aishen K Club (Ex. Kamelya K Club)",
+      "tourvisor_region": "Чолаклы",
+      "tourvisor_region_code": 2204,
+      "tourvisor_stars": 5,
+      "search_query": "Kamelya Aishen",
+      "match_names": [
+        "Kamelya Aishen Club 5★",
+        "Kamelya Aishen Club",
+        "Kamelya Aishen K Club (Ex. Kamelya K Club)"
+      ]
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "turkey",
+      "hotel_name": "Barut B Suites 4★",
+      "resort": "Сиде, Эвrenseki",
+      "tourvisor_id": 55647,
+      "tourvisor_name": "Barut B Suites (Ex. Family Life Side, Sunwing)",
+      "tourvisor_region": "Эвренсеки",
+      "tourvisor_region_code": 2205,
+      "tourvisor_stars": 4,
+      "search_query": "Barut B Suites",
+      "match_names": [
+        "Barut B Suites 4★",
+        "Barut B Suites",
+        "Barut B Suites (Ex. Family Life Side, Sunwing)"
+      ]
+    }
+  ]
+}

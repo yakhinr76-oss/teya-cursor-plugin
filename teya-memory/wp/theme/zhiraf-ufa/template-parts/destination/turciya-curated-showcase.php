@@ -52,7 +52,7 @@ if ( empty( $hotels ) ) {
 					</p>
 					<button
 						type="button"
-						class="btn btn--primary turciya-catalog-fill__cta"
+						class="btn btn--outline turciya-catalog-fill__cta"
 						data-turciya-lead-open
 						data-cta-context="turciya_catalog_fill_modal"
 						data-uon-hotel-id="TR-FILL"

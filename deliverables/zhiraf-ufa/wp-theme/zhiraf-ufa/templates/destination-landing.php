@@ -65,6 +65,13 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				<?php if ( ! empty( $dest['hero_cta_hint'] ) ) : ?>
 					<p class="dest-landing-hero__cta-hint"><?php echo esc_html( $dest['hero_cta_hint'] ); ?></p>
 				<?php endif; ?>
+				<?php if ( $use_turciya_curated ) : ?>
+					<ul class="dest-landing-hero__trust">
+						<li><span aria-hidden="true">✈️</span> <?php esc_html_e( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ); ?></li>
+						<li><span aria-hidden="true">📅</span> <?php esc_html_e( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ); ?></li>
+						<li><span aria-hidden="true">🛡️</span> <?php esc_html_e( 'Честные цены (включая топливные сборы и страховку)', 'zhiraf-ufa' ); ?></li>
+					</ul>
+				<?php endif; ?>
 			</div>
 			<div class="dest-landing-hero__visual">
 				<?php if ( ! empty( $dest['image'] ) ) : ?>

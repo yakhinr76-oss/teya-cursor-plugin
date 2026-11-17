@@ -161,7 +161,7 @@ $honest_raw = trim( $honest_raw );
 		</div>
 		<button
 			type="button"
-			class="btn btn--primary turciya-curated-card__cta"
+			class="btn btn--outline turciya-curated-card__cta"
 			data-turciya-lead-open
 			data-cta-context="turciya_curated_hotel_modal"
 			data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"

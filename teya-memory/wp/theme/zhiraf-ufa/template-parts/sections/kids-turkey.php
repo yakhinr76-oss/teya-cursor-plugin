@@ -45,12 +45,12 @@ $lead_message   = __( 'Здравствуйте! Подбираем семейн
 				</h3>
 				<p class="turciya-kids-turkey__aside-text">
 					<?php esc_html_e( 'Аптечка, бассейны в межсезонье и на чём можно сэкономить без потери комфорта.', 'zhiraf-ufa' ); ?></p>
-				<a class="btn btn--primary btn--lg turciya-kids-turkey__cta" href="<?php echo esc_url( $kids_guide_url ); ?>">
+				<a class="btn btn--outline btn--lg turciya-kids-turkey__cta" href="<?php echo esc_url( $kids_guide_url ); ?>">
 					<?php esc_html_e( 'Читать гид →', 'zhiraf-ufa' ); ?>
 				</a>
 				<button
 					type="button"
-					class="btn btn--outline turciya-kids-turkey__wa"
+					class="btn btn--primary turciya-kids-turkey__wa"
 					data-turciya-lead-open
 					data-cta-context="turciya_kids_lead_modal"
 					data-lead-title="<?php esc_attr_e( '3 семейных отеля из Уфы', 'zhiraf-ufa' ); ?>"

@@ -1,3 +1,26 @@
+# Хаб «Актуальные предложения» + сценарии (обновление 08.11.2026)
+
+Источник подборки: галерея `pexels-home-v3-gallery.html` (★ REC). Скрипт: `photo-candidates/apply_user_v3_picks.py`, манифест: `user-v3-applied-picks.json`.
+
+| Файл | Pexels ID | Страница |
+|---|---:|---|
+| dest-turkey-new.jpg | 3102821 | https://www.pexels.com/photo/flying-hot-air-balloons-3102821/ |
+| dest-uae-new.jpg | 36134146 | https://www.pexels.com/photo/stunning-aerial-view-of-palm-jumeirah-dubai-36134146/ |
+| dest-egypt-new.jpg | 24913567 | https://www.pexels.com/photo/sea-star-beau-rivage-hotel-in-egypt-24913567/ |
+| dest-thailand-new.jpg | 4679438 | https://www.pexels.com/photo/beautiful-beach-with-calm-blue-waters-4679438/ |
+| hero-collage-1.jpg | 8924543 | https://www.pexels.com/photo/a-lighted-building-with-tower-at-the-seaport-8924543/ |
+| alt-armeniya-3.jpg (Абхазия) | 15138264 | https://www.pexels.com/photo/passage-in-diminishing-perspective-15138264/ |
+| resort-maldivy-atoll-1.jpg | 9080918 | https://www.pexels.com/photo/beach-huts-on-the-sea-in-maldives-9080918/ |
+| country-shri-lanka.jpg | 4769075 | https://www.pexels.com/photo/nine-arch-bridge-in-demodara-sri-lanka-4769075/ |
+| dest-vietnam-new.jpg | 38116406 | https://www.pexels.com/photo/scenic-view-of-ha-long-bay-with-cruise-boats-38116406/ |
+| resort-sanya-2.jpg | 32262450 | https://www.pexels.com/photo/tropical-beach-scene-with-palm-trees-and-kayaks-32262450/ |
+| country-indiya.jpg | 3226433 | https://www.pexels.com/photo/aerial-view-of-people-on-a-beach-3226433/ |
+| alt-indoneziya-beach-1.jpg | 33344641 | https://www.pexels.com/photo/stunning-view-of-ulun-danu-beratan-temple-on-bali-lake-33344641/ |
+| country-sejshely.jpg | 1591372 | https://www.pexels.com/photo/brown-dock-near-coconut-trees-1591372/ |
+| resort-samarkand.jpg | 16386337 | https://www.pexels.com/photo/registan-square-in-samarkand-16386337/ |
+| alt-armeniya-yerevan.jpg | 17550070 | https://www.pexels.com/photo/sevanavank-monastery-in-armenia-17550070/ |
+Блок «Готовые подборки»: `user-v3-life-scenarios-picks.json` — `life-scenario-family.jpg` (12261095), `life-scenario-couple.jpg` (8907262), `life-scenario-value.jpg` (31817153), `life-scenario-city.jpg` (18139273).
+
 # Фото направлений (assets/images/country-*.jpg)
 
 Источник: Pexels, лицензия Pexels License (бесплатное коммерческое использование, атрибуция не обязательна, но указана). Одобрено владельцем 19.10.2026. Файлы уменьшены до 1600 px, JPEG ≤ 300 КБ.
@@ -32,13 +55,53 @@
 | resort-maldivy-atoll-1.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/bird-s-eye-view-photo-of-cabanas-1456293/ | Stunning aerial shot of luxurious overwater villas in the Maldives, showcasing crystal clear turquoise waters. |
 | resort-maldivy-atoll-2.jpg | Мальдивы — «Мальдивский архипелаг» | Asad Photo Maldives | https://www.pexels.com/photo/beach-huts-on-water-9394274/ | Beach huts on water, Maldives |
 | resort-samarkand.jpg | Узбекистан — Самарканд | Khusen Rustamov | https://www.pexels.com/photo/stunning-architecture-of-registan-square-in-samarkand-39662648/ | Registan Square, Samarkand |
+| alt-indiya-beach-1.jpg | Индия — пляж Гоа | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-1450360/ | Sandy beach and ocean, Goa coast |
+| alt-indiya-beach-2.jpg | Индия — пляж Гоа (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/photo-of-people-on-beach-457881/ | Beach with loungers and palms |
 | alt-indiya-2.jpg | Индия — фото страны (вариант 2) | LiveLoveLife and TRAVEL | https://www.pexels.com/photo/basilica-of-bom-jesus-in-goa-in-india-19940057/ | View of a historical church building in Goa, India, showcasing colonial architecture. |
+| alt-shri-lanka-beach-1.jpg | Шри-Ланка — пляж | Asad Photo Maldives | https://www.pexels.com/photo/tropical-beach-with-palm-trees-3428284/ | Tropical beach with palm trees, Sri Lanka coast |
+| alt-shri-lanka-beach-2.jpg | Шри-Ланка — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-3601450/ | Sandy beach and ocean, Sri Lanka |
 | alt-shri-lanka-2.jpg | Шри-Ланка — фото страны (вариант 2) | Malik Cil | https://www.pexels.com/photo/scenic-aerial-view-of-nine-arches-bridge-in-ella-34218649/ | Aerial view of the iconic Nine Arches Bridge surrounded by lush greenery in Ella, Sri Lanka. |
 | alt-shri-lanka-3.jpg | Шри-Ланка — фото страны (вариант 3) | Stephanie Perera | https://www.pexels.com/photo/majestic-view-of-sigiriya-rock-in-sri-lanka-34128251/ | Sigiriya rock, Sri Lanka |
+| alt-indoneziya-beach-1.jpg | Бали — пляж / бассейн | Asad Photo Maldives | https://www.pexels.com/photo/photo-of-people-on-beach-1320684/ | Tropical beach with palm trees |
+| alt-indoneziya-beach-2.jpg | Бали — пляж (вариант 2) | Asad Photo Maldives | https://www.pexels.com/photo/beach-near-ocean-during-daytime-1450363/ | Sandy beach and ocean |
 | alt-indoneziya-2.jpg | Бали — фото страны (вариант 2) | Patrick Gamelkoorn | https://www.pexels.com/photo/temple-by-the-sea-in-indonesia-18144499/ | Breathtaking view of Tanah Lot Temple on the rocky coast of Bali, Indonesia, during sunset. |
 | alt-indoneziya-3.jpg | Бали — фото страны (вариант 3) | Evert jan Hoek | https://www.pexels.com/photo/lush-green-terraced-rice-fields-in-bali-36133244/ | Terraced rice fields, Bali |
 | alt-sejshely-2.jpg | Сейшелы — фото страны (вариант 2) | Logan Hamm | https://www.pexels.com/photo/canoe-on-sea-near-rocks-at-anse-source-argent-in-seychelles-24713347/ | Discover the stunning beach with distinctive granite rocks and clear turquoise water in Seychelles. |
 | alt-sejshely-3.jpg | Сейшелы — фото страны (вариант 3) | Holger Wulschlaeger | https://www.pexels.com/photo/brown-rock-formations-on-sea-shore-5044865/ | Granite rocks on the sea shore, Seychelles |
 | alt-uzbekistan-2.jpg | Узбекистан — фото страны (вариант 2, Хива) | AXP Photography | https://www.pexels.com/photo/kaltaminor-minaret-between-the-kuhna-ark-fortress-and-the-mohammed-amin-khan-madrassah-in-uzbekistan-19473625/ | View of the iconic Kalta Minor Minaret in Khiva, showcasing Islamic architecture in summer. |
+| alt-uzbekistan-3.jpg | Узбекистан — базар / архитектура | Asad Photo Maldives | https://www.pexels.com/photo/people-walking-on-street-3601425/ | Street and architecture, Central Asia |
+| alt-armeniya-yerevan.jpg | Армения — Ереван | Asad Photo Maldives | https://www.pexels.com/photo/city-buildings-near-body-of-water-during-daytime-2901209/ | Cityscape, Yerevan |
+| alt-armeniya-sevan.jpg | Армения — озеро Севан | Asad Photo Maldives | https://www.pexels.com/photo/green-trees-near-body-of-water-under-blue-sky-3601422/ | Lake and mountains, Armenia |
 | alt-armeniya-2.jpg | Армения — фото страны (вариант 2) | Oleksiy Yeshtokyn,🌻🇺🇦🌻 | https://www.pexels.com/photo/khor-virap-monastery-at-sunset-in-armenia-39152787/ | A stunning view of Khor Virap Monastery set against the Armenian landscape at sunset. |
 | alt-armeniya-3.jpg | Армения — фото страны (вариант 3) | Vladimir Konoplev | https://www.pexels.com/photo/view-of-khor-virap-monastery-from-behind-the-rocks-11885462/ | Khor Virap monastery behind the rocks, Armenia |
+
+Добавлено 20.10.2026 (курорты Турции, Египта, Вьетнама — photo-candidates/v3). 1200×800, JPEG ≤ 250 КБ.
+
+| Файл | Для чего | Автор | Страница Pexels | Что на фото |
+|---|---|---|---|---|
+| resort-turciya-antalya-1.jpg | Турция — Анталья | Valeria Drozdova | https://www.pexels.com/photo/scenic-view-of-old-town-kaleici-in-antalya-turkey-34727219/ | Aerial view of Kaleici, Antalya, showcasing historic architecture and Yivli Minaret Mosque. |
+| resort-turciya-antalya-2.jpg | Турция — Анталья | Hatice Kesnik | https://www.pexels.com/photo/historic-hadrian-s-gate-in-antalya-turkiye-31749469/ | Majestic view of Hadrian's Gate, an ancient Roman gateway in Antalya, Türkiye. |
+| resort-turciya-alanya-1.jpg | Турция — Аланья | Atlantic Ambience | https://www.pexels.com/photo/the-red-tower-near-body-of-water-in-alanya-antalya-turkey-12940603/ | Stunning view of Kizil Kule and Alanya harbor in Antalya, Turkey with vibrant city and sea landscape. |
+| resort-turciya-alanya-2.jpg | Турция — Аланья | Alparslan Eraslan | https://www.pexels.com/photo/bird-s-eye-view-photography-of-body-of-water-near-seashore-1479760/ | Stunning panoramic view of Alanya's turquoise coastline, beach, and distant cityscape in Antalya, Turkey. |
+| resort-turciya-kemer-1.jpg | Турция — Кемер (вкл. Бельдиби, Гёйнюк) | MUHAMMED TARIK KAHRAMAN | https://www.pexels.com/photo/boats-in-marina-of-coastal-town-in-birds-eye-view-16930500/ | Stunning aerial view of Kemer marina with yachts and mountains in Antalya, Türkiye. |
+| resort-turciya-kemer-2.jpg | Турция — Кемер (вкл. Бельдиби, Гёйнюк) | Erik Karits | https://www.pexels.com/photo/sea-coast-with-mountains-15417833/ | Scenic coastline with mountains in Kemer, Antalya, Türkiye, under a partly cloudy sky. |
+| resort-turciya-belek-1.jpg | Турция — Белек | Vasily Kleymenov | https://www.pexels.com/photo/a-person-walking-on-the-beach-at-sunset-21358245/ | A serene sunset view over Belek beach in Antalya, Turkey, capturing the silhouette of a person walking along the shore. |
+| resort-turciya-belek-2.jpg | Турция — Белек (Aspendos, рядом) | Emrah AYVALI | https://www.pexels.com/photo/aspendos-theater-near-antalya-in-turkey-19004827/ | Explore the ancient Aspendos Theater in Antalya, Türkiye, surrounded by beautiful landscapes. |
+| resort-turciya-side-1.jpg | Турция — Сиде | Mihman Duğanlı | https://www.pexels.com/photo/stunning-view-of-temple-of-apollo-in-side-antalya-31085589/ | A majestic photo of the ancient Temple of Apollo in Side, Antalya, with a bright sky and a serene coastal backdrop. |
+| resort-turciya-side-2.jpg | Турция — Сиде | Ibrahim Plavci | https://www.pexels.com/photo/ruins-of-apollon-temple-in-manavgat-in-turkey-26352615/ | Striking view of ancient Apollon Temple columns under clear skies in Side, Turkey. |
+| resort-egipet-hurghada-1.jpg | Египет — Хургада | Clive Kim | https://www.pexels.com/photo/white-dome-building-under-the-gray-sky-4312243/ | Elegant mosque facade in Hurghada, Egypt seen through a geometric frame, highlighting Islamic architecture. |
+| resort-egipet-hurghada-2.jpg | Египет — Хургада | Mo Ismail | https://www.pexels.com/photo/aerial-view-of-boats-on-sea-22643815/ | Aerial photo of boats moored near coral reefs in the clear waters of Hurghada, Egypt. |
+| resort-egipet-sharm-1.jpg | Египет — Шарм-эль-Шейх | Vika Glitter | https://www.pexels.com/photo/view-of-the-sharm-el-maya-bay-in-sharm-el-sheikh-egypt-18895961/ | A stunning aerial view of Al Sahaba Mosque against Sharm El Sheikh cityscape and mountains. |
+| resort-egipet-sharm-2.jpg | Египет — Шарм-эль-Шейх | Svetozar Milashevich | https://www.pexels.com/photo/yellow-watercrafts-against-the-background-of-mountains-and-the-sea-in-ras-mohammed-national-park-egypt-7974661/ | Yellow boats float on the vibrant blue waters of Ras Mohammed with scenic Egyptian mountains in the background. |
+| resort-egipet-marsa-alam-1.jpg | Египет — Марса-Алам | Tadeáš Černohous | https://www.pexels.com/photo/turtle-on-seabed-19261157/ | A green sea turtle gracefully glides over the seabed in Marsa Alam, Egypt. |
+| resort-egipet-marsa-alam-2.jpg | Египет — Марса-Алам | Stephan Ernst | https://www.pexels.com/photo/vibrant-coral-reef-in-marsa-alam-egypt-31895961/ | Explore the colorful coral reef underwater in Marsa Alam, Egypt's Red Sea. |
+| resort-egipet-el-gouna-1.jpg | Египет — Эль-Гуна | Mido Makasardi ©️ | https://www.pexels.com/photo/el-gouna-festival-plaza-hurghada-egypt-20401331/ | Captivating view of a modern architectural landmark at El Gouna Festival Plaza, surrounded by palm trees. |
+| resort-egipet-el-gouna-2.jpg | Египет — Эль-Гуна | Mido Makasardi ©️ | https://www.pexels.com/photo/el-gouna-festival-plaza-building-hurghada-egypt-20401343/ | Striking modern architecture with arches in El Gouna, Egypt, under a clear blue sky. |
+| resort-vietnam-nha-trang-1.jpg | Вьетнам — Нячанг | Nguyễn Vũ | https://www.pexels.com/photo/people-praying-in-the-temple-nha-trang-vietnam-11407046/ | Aerial view of people praying at Po Nagar Cham Towers in Nha Trang, Vietnam, surrounded by yellow flowers. |
+| resort-vietnam-nha-trang-2.jpg | Вьетнам — Нячанг | Thanh-Thang Phan | https://www.pexels.com/photo/panoramic-view-of-nha-trang-vietnam-coastal-cityscape-37278813/ | Scenic view of Tran Phu Bridge and Nha Trang's coastal skyline on a sunny day. |
+| resort-vietnam-phu-quoc-1.jpg | Вьетнам — Фукуок | Quang Nguyen Vinh | https://www.pexels.com/photo/aerial-view-of-the-ho-quoc-pagoda-complex-in-vietnam-14012683/ | Breathtaking aerial of Ho Quoc Pagoda in Phu Quoc, surrounded by lush nature and sea. |
+| resort-vietnam-phu-quoc-2.jpg | Вьетнам — Фукуок | Samual lim | https://www.pexels.com/photo/aerial-view-of-coastal-village-in-phu-quoc-vietnam-35979700/ | Discover the serene coastal village on Phu Quoc Island with vibrant houses and boats. |
+| resort-vietnam-cam-ranh-1.jpg | Вьетнам — Камрань | Dương Nhân | https://www.pexels.com/photo/a-sandy-beach-with-mountains-in-the-background-27606028/ | Idyllic beach scene with lush mountains in Cam Ranh, Vietnam, captured during a sunny day. |
+| resort-vietnam-cam-ranh-2.jpg | Вьетнам — Камрань | Bắp Studio | https://www.pexels.com/photo/motorboat-on-wavy-sea-coast-16762198/ | A picturesque view of a traditional fishing boat sailing through the vibrant waters of Cam Ranh Bay, Vietnam. |
+| resort-vietnam-phan-thiet-1.jpg | Вьетнам — Фантьет / Муйне | Margo Evardson | https://www.pexels.com/photo/majestic-red-sand-dunes-in-mui-ne-vietnam-37331388/ | Explore the stunning red sand dunes of Mui Ne, Vietnam under a vibrant blue sky. |
+| resort-vietnam-phan-thiet-2.jpg | Вьетнам — Фантьет / Муйне | Pew Nguyen | https://www.pexels.com/photo/people-sitting-in-a-basket-fishing-boat-on-the-shore-and-looking-at-other-boats-on-the-sea-26173831/ | Fishermen in traditional basket boats work on the coast of Phan Thiet, Vietnam. |

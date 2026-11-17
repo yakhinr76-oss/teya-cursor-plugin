@@ -133,12 +133,13 @@ function zhiraf_ufa_validate_consents() {
 /**
  * Validate name + phone (lead and quiz).
  *
+ * @param bool $require_name Whether name is required.
  * @return true|WP_Error
  */
-function zhiraf_ufa_validate_contact() {
+function zhiraf_ufa_validate_contact( $require_name = true ) {
 	$name  = isset( $_POST['name'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['name'] ) ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 	$phone = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
-	if ( '' === $name ) {
+	if ( $require_name && '' === $name ) {
 		return new WP_Error( 'name', __( 'Укажите имя.', 'zhiraf-ufa' ) );
 	}
 	if ( strlen( preg_replace( '/\D+/', '', $phone ) ) < 10 ) {
@@ -299,20 +300,77 @@ function zhiraf_ufa_form_respond( $res, $success ) {
  */
 function zhiraf_ufa_ajax_lead() {
 	zhiraf_ufa_form_guard( 'lead', 8 );
-	$contact = zhiraf_ufa_validate_contact();
+	$phone_only = ! empty( $_POST['phone_only'] ) || ! empty( $_POST['contact_channel'] ); // phpcs:ignore WordPress.Security.NonceVerification
+	$contact    = zhiraf_ufa_validate_contact( ! $phone_only );
 	if ( is_wp_error( $contact ) ) {
 		wp_send_json_error( array( 'message' => $contact->get_error_message() ), 400 );
 	}
 	$values = zhiraf_ufa_collect_fields(
 		array(
-			'name'    => 'Имя',
-			'phone'   => 'Телефон',
-			'email'   => 'Email',
-			'message' => 'Сообщение',
-			'tour'    => 'Тур',
+			'name'             => 'Имя',
+			'phone'            => 'Телефон',
+			'email'            => 'Email',
+			'message'          => 'Сообщение',
+			'tour'             => 'Тур',
+			'destination'      => 'Направление',
+			'destination_slug'   => 'Slug направления',
+			'express_pick'       => 'Экспресс-подбор',
+			'contact_channel'  => 'Куда отправить подборку',
+			'hot_destination'  => 'Направление (горящие)',
+			'hot_budget'       => 'Бюджет (горящие)',
+			'hot_dates'        => 'Даты вылета (горящие)',
+			'ai_travelers'     => 'Состав (AI)',
+			'ai_month'         => 'Месяц (AI)',
 		)
 	);
-	$res = zhiraf_ufa_store_and_mail_lead( 'lead', 'Заявка на подбор тура', $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
+	if ( ! empty( $values['Состав (AI)'] ) || ! empty( $values['Месяц (AI)'] ) ) {
+		$parts = array_filter(
+			array(
+				! empty( $values['Состав (AI)'] ) ? sprintf( __( 'Состав: %s', 'zhiraf-ufa' ), $values['Состав (AI)'] ) : '',
+				! empty( $values['Месяц (AI)'] ) ? sprintf( __( 'Месяц: %s', 'zhiraf-ufa' ), $values['Месяц (AI)'] ) : '',
+			)
+		);
+		$extra = implode( '. ', $parts );
+		if ( ! empty( $values['Сообщение'] ) ) {
+			$values['Сообщение'] = trim( $values['Сообщение'] . '. ' . $extra );
+		} else {
+			$values['Сообщение'] = $extra;
+		}
+	}
+	if ( ! empty( $values['Направление (горящие)'] ) || ! empty( $values['Бюджет (горящие)'] ) || ! empty( $values['Даты вылета (горящие)'] ) ) {
+		$parts = array_filter(
+			array(
+				! empty( $values['Направление (горящие)'] ) ? sprintf(
+					/* translators: %s: destination */
+					__( 'Куда: %s', 'zhiraf-ufa' ),
+					$values['Направление (горящие)']
+				) : '',
+				! empty( $values['Даты вылета (горящие)'] ) ? sprintf(
+					/* translators: %s: dates */
+					__( 'Даты: %s', 'zhiraf-ufa' ),
+					$values['Даты вылета (горящие)']
+				) : '',
+				! empty( $values['Бюджет (горящие)'] ) ? sprintf(
+					/* translators: %s: budget */
+					__( 'Бюджет: %s', 'zhiraf-ufa' ),
+					$values['Бюджет (горящие)']
+				) : '',
+			)
+		);
+		$extra = implode( '. ', $parts );
+		if ( ! empty( $values['Сообщение'] ) ) {
+			$values['Сообщение'] = trim( $values['Сообщение'] . '. ' . $extra );
+		} else {
+			$values['Сообщение'] = $extra;
+		}
+	}
+	$subject = 'Заявка на подбор тура';
+	if ( ! empty( $values['Тур'] ) && false !== mb_stripos( (string) $values['Тур'], 'горящ', 0, 'UTF-8' ) ) {
+		$subject = 'Горящий тур: мониторинг / заявка';
+	} elseif ( ! empty( $values['Тур'] ) && false !== mb_stripos( (string) $values['Тур'], 'всё включено', 0, 'UTF-8' ) ) {
+		$subject = 'All Inclusive: подбор семейного отеля';
+	}
+	$res = zhiraf_ufa_store_and_mail_lead( 'lead', $subject, $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
 	if ( $res['id'] && class_exists( 'Zhiraf_UON_CRM' ) ) {
 		$crm = new Zhiraf_UON_CRM();
 		$crm->send_lead( $values );
@@ -342,21 +400,53 @@ add_action( 'wp_ajax_nopriv_zhiraf_subscribe', 'zhiraf_ufa_ajax_subscribe' );
  */
 function zhiraf_ufa_ajax_quiz() {
 	zhiraf_ufa_form_guard( 'quiz', 5 );
-	$contact = zhiraf_ufa_validate_contact();
+	$contact = zhiraf_ufa_validate_contact( false );
 	if ( is_wp_error( $contact ) ) {
 		wp_send_json_error( array( 'message' => $contact->get_error_message() ), 400 );
 	}
 	$values = zhiraf_ufa_collect_fields(
 		array(
-			'name'             => 'Имя',
-			'phone'            => 'Телефон',
-			'quiz_composition' => 'Состав',
-			'quiz_month'       => 'Месяц',
-			'quiz_budget'      => 'Бюджет на человека',
-			'quiz_wishes'      => 'Пожелания',
+			'name'              => 'Имя',
+			'phone'             => 'Телефон',
+			'quiz_destination'  => 'Направление',
+			'quiz_composition'  => 'Состав',
+			'quiz_child_age'    => 'Возраст ребёнка',
+			'quiz_timing'       => 'Срок вылета',
+			'quiz_duration'     => 'Длительность',
+			'quiz_flight_pref'  => 'Перелёт',
+			'quiz_channel'      => 'Канал связи',
+			'quiz_month'        => 'Месяц',
+			'quiz_budget'       => 'Бюджет на человека',
+			'quiz_wishes'       => 'Пожелания',
+			'vibe'              => 'Вайб (slug)',
 		)
 	);
-	$res = zhiraf_ufa_store_and_mail_lead( 'quiz', 'Квиз: подбор тура', $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
+	if ( empty( $values['Пожелания'] ) ) {
+		$wish_parts = array_filter(
+			array(
+				! empty( $values['Направление'] ) ? sprintf( __( 'Куда: %s', 'zhiraf-ufa' ), $values['Направление'] ) : '',
+				! empty( $values['Состав'] ) ? sprintf( __( 'Состав: %s', 'zhiraf-ufa' ), $values['Состав'] ) : '',
+				! empty( $values['Возраст ребёнка'] ) ? sprintf( __( 'Ребёнок: %s', 'zhiraf-ufa' ), $values['Возраст ребёнка'] ) : '',
+				! empty( $values['Срок вылета'] ) ? sprintf( __( 'Срок: %s', 'zhiraf-ufa' ), $values['Срок вылета'] ) : '',
+				! empty( $values['Длительность'] ) ? sprintf( __( 'Ночей: %s', 'zhiraf-ufa' ), $values['Длительность'] ) : '',
+				! empty( $values['Канал связи'] ) ? sprintf( __( 'Связь: %s', 'zhiraf-ufa' ), $values['Канал связи'] ) : '',
+			)
+		);
+		if ( ! empty( $wish_parts ) ) {
+			$values['Пожелания'] = implode( '. ', $wish_parts );
+		}
+	}
+	if ( ! empty( $values['Срок вылета'] ) && empty( $values['Месяц'] ) ) {
+		$values['Месяц'] = $values['Срок вылета'];
+	}
+	if ( ! empty( $values['Вайб (slug)'] ) && function_exists( 'zhiraf_ufa_vibe_slug_label' ) ) {
+		$values['Вайб'] = zhiraf_ufa_vibe_slug_label( sanitize_key( $values['Вайб (slug)'] ) );
+	}
+	$subject = 'Квиз: подбор тура';
+	if ( ! empty( $values['Вайб'] ) ) {
+		$subject .= ' — ' . $values['Вайб'];
+	}
+	$res = zhiraf_ufa_store_and_mail_lead( 'quiz', $subject, $values, isset( $values['Телефон'] ) ? $values['Телефон'] : '' );
 	zhiraf_ufa_form_respond( $res, __( 'Заявка отправлена! Мы подберём варианты и перезвоним.', 'zhiraf-ufa' ) );
 }
 add_action( 'wp_ajax_zhiraf_quiz', 'zhiraf_ufa_ajax_quiz' );

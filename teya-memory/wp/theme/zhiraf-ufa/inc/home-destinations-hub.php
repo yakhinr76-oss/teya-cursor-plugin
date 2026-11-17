@@ -60,11 +60,11 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			array(
 				'slug'        => 'abkhaziya',
 				'flag'        => '',
-				'flag_image'  => 'flags/abkhazia.svg',
+				'flag_image'  => 'flags/abkhazia.png',
 				'title'       => __( 'Абхазия', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Гагра, Пицунда • Море и горы', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Трансфер из Сочи', 'zhiraf-ufa' ),
-				'image'       => 'alt-armeniya-3.jpg',
+				'image'       => 'dest-abkhazia.jpg',
 			),
 		),
 		'mow' => array(
@@ -73,7 +73,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇲🇻',
 				'title'       => __( 'Мальдивы', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Атоллы, виллы на воде • All Inclusive', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'resort-maldivy-atoll-1.jpg',
 			),
 			array(
@@ -81,7 +81,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇱🇰',
 				'title'       => __( 'Шри-Ланка', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Бентота, Хиккадува • Завтраки', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'country-shri-lanka.jpg',
 			),
 			array(
@@ -89,7 +89,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇻🇳',
 				'title'       => __( 'Вьетнам', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Нячанг, Фукуок • Пляж и SPA', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'dest-vietnam-new.jpg',
 			),
 			array(
@@ -97,7 +97,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇨🇳',
 				'title'       => __( 'Китай (Хайнань)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Санья • Пляж и тропики', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'resort-sanya-2.jpg',
 			),
 			array(
@@ -105,7 +105,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇮🇳',
 				'title'       => __( 'Индия (Гоа)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Северный и Южный Гоа • Завтраки', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'country-indiya.jpg',
 			),
 			array(
@@ -113,7 +113,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇮🇩',
 				'title'       => __( 'Индонезия (Бали)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Бали • Пляж и завтраки', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'alt-indoneziya-beach-1.jpg',
 			),
 			array(
@@ -121,7 +121,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇸🇨',
 				'title'       => __( 'Сейшелы', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Маэ, Праслин • Романтика и пляж', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Регулярный рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'country-sejshely.jpg',
 			),
 			array(
@@ -129,7 +129,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇺🇿',
 				'title'       => __( 'Узбекистан', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Самарканд, Бухара • экскурсии', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Прямой рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Вылет из Москвы', 'zhiraf-ufa' ),
 				'image'       => 'resort-samarkand.jpg',
 			),
 			array(
@@ -137,11 +137,97 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flag'        => '🇦🇲',
 				'title'       => __( 'Армения', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Ереван, озеро Севан • гастрономия', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Прямой рейс', 'zhiraf-ufa' ),
+				'flight_badge'=> __( 'Вылет из Москвы', 'zhiraf-ufa' ),
 				'image'       => 'alt-armeniya-yerevan.jpg',
 			),
 		),
 	);
+}
+
+/**
+ * Country name in genitive for hub card CTA («Смотреть отели …»).
+ *
+ * @param string $slug Hub slug.
+ * @return string
+ */
+function zhiraf_ufa_home_hub_cta_genitive( $slug ) {
+	$map = array(
+		'turciya'    => __( 'Турции', 'zhiraf-ufa' ),
+		'oae'        => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'egipet'     => __( 'Египта', 'zhiraf-ufa' ),
+		'tailand'    => __( 'Таиланда', 'zhiraf-ufa' ),
+		'rossiya'    => __( 'Сочи', 'zhiraf-ufa' ),
+		'abkhaziya'  => __( 'Абхазии', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Мальдив', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланки', 'zhiraf-ufa' ),
+		'vietnam'    => __( 'Вьетнама', 'zhiraf-ufa' ),
+		'kitaj'      => __( 'Хайнаня', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Гоа', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Бали', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Сейшел', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Узбекистана', 'zhiraf-ufa' ),
+		'armeniya'   => __( 'Армении', 'zhiraf-ufa' ),
+	);
+
+	return isset( $map[ $slug ] ) ? (string) $map[ $slug ] : '';
+}
+
+/**
+ * Hub slug → curated hotels JSON country code (data/*_hotels_*.json).
+ *
+ * @param string $slug Landing slug.
+ * @return string
+ */
+function zhiraf_ufa_home_hub_hotels_json_country( $slug ) {
+	$map = array(
+		'turciya'    => 'turkey',
+		'oae'        => 'uae',
+		'egipet'     => 'egypt',
+		'tailand'    => 'thailand',
+		'rossiya'    => 'russia',
+		'abkhaziya'  => 'abkhazia',
+		'maldivy'    => 'maldives',
+		'shri-lanka' => 'sri_lanka',
+		'vietnam'    => 'vietnam',
+		'kitaj'      => 'china',
+		'indiya'     => 'india',
+		'indoneziya' => 'indonesia',
+		'sejshely'   => 'seychelles',
+		'uzbekistan' => 'uzbekistan',
+		'armeniya'   => 'armenia',
+	);
+
+	return isset( $map[ $slug ] ) ? (string) $map[ $slug ] : '';
+}
+
+/**
+ * Number of curated hotels on the landing (real catalog size for CTA).
+ *
+ * @param string $country_slug Hub / landing slug.
+ * @return int
+ */
+function zhiraf_ufa_home_hub_curated_hotel_count( $country_slug ) {
+	if ( ! function_exists( 'zhiraf_ufa_hotels_json_path' ) ) {
+		return 0;
+	}
+	$json_country = zhiraf_ufa_home_hub_hotels_json_country( $country_slug );
+	if ( '' === $json_country ) {
+		return 0;
+	}
+	$path = zhiraf_ufa_hotels_json_path( $json_country );
+	if ( ! is_readable( $path ) ) {
+		return 0;
+	}
+	$raw = file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	if ( false === $raw ) {
+		return 0;
+	}
+	$rows = json_decode( $raw, true );
+	if ( ! is_array( $rows ) ) {
+		return 0;
+	}
+
+	return count( $rows );
 }
 
 /**
@@ -230,11 +316,21 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		if ( ! empty( $row['flag_image'] ) ) {
 			$flag_img = zhiraf_ufa_theme_image( (string) $row['flag_image'], (string) $row['title'] );
 		}
+		$hotel_count = zhiraf_ufa_home_hub_curated_hotel_count( $slug );
+		$cta_action  = $hotel_count > 0
+			? sprintf(
+				/* translators: %d: number of curated hotels on landing */
+				__( 'Смотреть отели (%d) →', 'zhiraf-ufa' ),
+				$hotel_count
+			)
+			: __( 'Смотреть отели →', 'zhiraf-ufa' );
+
 		$out[] = array_merge(
 			$row,
 			array(
 				'url'         => zhiraf_ufa_home_hub_destination_url( $slug ),
 				'price_label' => $price_label,
+				'cta_action'  => $cta_action,
 				'photo_url'   => ! empty( $img['url'] ) ? (string) $img['url'] : '',
 				'photo_alt'   => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
 				'flag_url'    => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',

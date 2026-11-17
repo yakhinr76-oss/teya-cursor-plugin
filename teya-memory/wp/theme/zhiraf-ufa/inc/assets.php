@@ -75,6 +75,63 @@ function zhiraf_ufa_img( $filename, $alt, $class = '', $lazy = true, $priority =
 }
 
 /**
+ * Hero collage image with WebP srcset (LCP-safe, no lazy load).
+ *
+ * @param string $basename Base filename without extension, e.g. hero-collage-uae.
+ * @param string $alt      Alt text.
+ * @param string $class    CSS class on img.
+ * @param bool   $priority fetchpriority=high for primary LCP candidate.
+ */
+function zhiraf_ufa_hero_collage_img( $basename, $alt, $class = '', $priority = false ) {
+	$dir = ZHIRAF_UFA_DIR . '/assets/images/';
+	$uri = ZHIRAF_UFA_URI . '/assets/images/';
+	$jpg_1x  = $basename . '.jpg';
+	$jpg_2x  = $basename . '@2x.jpg';
+	$webp_1x = $basename . '.webp';
+	$webp_2x = $basename . '@2x.webp';
+
+	if ( ! is_readable( $dir . $jpg_1x ) ) {
+		zhiraf_ufa_img( $jpg_1x, $alt, $class, false, $priority );
+		return;
+	}
+
+	$size = @getimagesize( $dir . $jpg_1x );
+	$width  = is_array( $size ) ? (int) $size[0] : 500;
+	$height = is_array( $size ) ? (int) $size[1] : 625;
+
+	$webp_srcset = esc_attr( $uri . $webp_1x . ' 1x, ' . $uri . $webp_2x . ' 2x' );
+	$jpg_srcset  = esc_attr( $uri . $jpg_1x . ' 1x, ' . $uri . $jpg_2x . ' 2x' );
+
+	$img_attrs = array(
+		'src'         => $uri . $jpg_1x,
+		'srcset'      => $jpg_srcset,
+		'alt'         => $alt,
+		'width'       => $width,
+		'height'      => $height,
+		'class'       => $class,
+		'loading'     => 'eager',
+		'decoding'    => 'async',
+		'fetchpriority' => $priority ? 'high' : 'auto',
+	);
+
+	echo '<picture>';
+	if ( is_readable( $dir . $webp_1x ) && is_readable( $dir . $webp_2x ) ) {
+		printf(
+			'<source type="image/webp" srcset="%s" />',
+			$webp_srcset // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		);
+	}
+	echo '<img';
+	foreach ( $img_attrs as $k => $v ) {
+		if ( '' === $v && 'class' === $k ) {
+			continue;
+		}
+		printf( ' %s="%s"', esc_attr( $k ), esc_attr( (string) $v ) );
+	}
+	echo ' /></picture>';
+}
+
+/**
  * Destination cards data.
  *
  * @return array<int,array<string,string>>
@@ -94,6 +151,49 @@ function zhiraf_ufa_offer_hub_links() {
 			'label' => __( 'Всё включено', 'zhiraf-ufa' ),
 			'url'   => home_url( '/vse-vklyucheno/' ),
 		),
+	);
+}
+
+/**
+ * Quick destination chips under hero subtitle.
+ *
+ * @return array<int,array{slug:string,flag:string,label:string}>
+ */
+function zhiraf_ufa_hero_mobile_destination_chips() {
+	return apply_filters(
+		'zhiraf_ufa_hero_mobile_destination_chips',
+		array(
+			array(
+				'slug'  => 'turciya',
+				'flag'  => '🇹🇷',
+				'label' => __( 'Турция', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'oae',
+				'flag'  => '🇦🇪',
+				'label' => __( 'ОАЭ', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'egipet',
+				'flag'  => '🇪🇬',
+				'label' => __( 'Египет', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'tailand',
+				'flag'  => '🇹🇭',
+				'label' => __( 'Таиланд', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'rossiya',
+				'flag'  => '🇷🇺',
+				'label' => __( 'Сочи', 'zhiraf-ufa' ),
+			),
+			array(
+				'slug'  => 'vietnam',
+				'flag'  => '🇻🇳',
+				'label' => __( 'Вьетнам', 'zhiraf-ufa' ),
+			),
+		)
 	);
 }
 
@@ -157,6 +257,50 @@ function zhiraf_ufa_destinations() {
 }
 
 /**
+ * Russia & Abkhazia — domestic directions (no BG «from» price on hub card).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_domestic_catalog_destinations() {
+	if ( ! function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+		return array();
+	}
+	$rows = array(
+		array(
+			'slug'         => 'rossiya',
+			'image'        => 'hero-collage-1.jpg',
+			'teaser'       => __( 'Сочи, Красная Поляна, Кавминводы и Калининград — пакет с перелётом или только отель.', 'zhiraf-ufa' ),
+			'flight_label' => __( 'паспорт РФ', 'zhiraf-ufa' ),
+		),
+		array(
+			'slug'         => 'abkhaziya',
+			'image'        => 'dest-abkhazia.jpg',
+			'teaser'       => __( 'Гагра и Пицунда: рубли, въезд по паспорту РФ, трансфер из аэропорта Адлер.', 'zhiraf-ufa' ),
+			'flight_label' => __( 'трансфер из Адлера', 'zhiraf-ufa' ),
+		),
+	);
+	$out = array();
+	foreach ( $rows as $row ) {
+		$landing = zhiraf_ufa_get_destination_landing( $row['slug'] );
+		if ( ! $landing ) {
+			continue;
+		}
+		$out[] = array(
+			'slug'         => $row['slug'],
+			'name'         => ! empty( $landing['name'] ) ? $landing['name'] : $row['slug'],
+			'image'        => $row['image'],
+			'alt'          => ! empty( $landing['image_alt'] ) ? $landing['image_alt'] : ( ! empty( $landing['name'] ) ? $landing['name'] : $row['slug'] ),
+			'url'          => home_url( '/tour/' . $row['slug'] . '/' ),
+			'teaser'       => $row['teaser'],
+			'catalog'      => true,
+			'domestic'     => true,
+			'flight_label' => $row['flight_label'],
+		);
+	}
+	return $out;
+}
+
+/**
  * Destinations shown on /tour/ catalog hub (priced cards).
  *
  * @return array<int,array<string,mixed>>
@@ -169,7 +313,7 @@ function zhiraf_ufa_catalog_hub_destinations() {
 		}
 		$items[] = $dest;
 	}
-	return $items;
+	return array_merge( $items, zhiraf_ufa_domestic_catalog_destinations() );
 }
 
 /**

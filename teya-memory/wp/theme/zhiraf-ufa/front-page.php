@@ -18,26 +18,27 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 				<p class="hero-premium__subtitle">
 					<?php esc_html_e( 'Показываем реальную стоимость туроператоров без скрытых доплат. Проверенная база 400 отелей с честным разбором плюсов и нюансов.', 'zhiraf-ufa' ); ?>
 				</p>
+				<?php get_template_part( 'template-parts/home/hero-mobile-dest-chips' ); ?>
 				<div class="hero-premium__actions">
 					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('destinations-hub') && document.getElementById('destinations-hub').scrollIntoView({behavior: 'smooth'})">
 						<?php esc_html_e( 'Выбрать направление отдыха', 'zhiraf-ufa' ); ?>
 					</button>
-					<button type="button" class="btn btn--outline btn--lg" data-quiz-trigger="hero">
+					<button type="button" class="btn btn--outline btn--lg" data-quiz-open data-quiz-trigger="hero">
 						<?php esc_html_e( 'Подобрать тур через квиз (1 мин)', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>
 			</div>
 
-			<div class="hero-premium__collage reveal reveal-delay-1" data-three-canvas="hero-ambient">
+			<div class="hero-premium__collage hero-premium__collage--orbit reveal reveal-delay-1" data-three-canvas="hero-ambient" data-hero-orbit>
 				<div class="hero-ambient-canvas" aria-hidden="true"></div>
 				<div class="hero-collage__img hero-collage__img--1 collage-tile">
-					<?php zhiraf_ufa_img( 'hero-uae.jpg', 'ОАЭ', '', false, true ); ?>
+					<?php zhiraf_ufa_hero_collage_img( 'hero-collage-uae', __( 'Туры в ОАЭ и пляжный отдых с вылетом из Уфы', 'zhiraf-ufa' ), '', true ); ?>
 				</div>
 				<div class="hero-collage__img hero-collage__img--2 collage-tile">
-					<?php zhiraf_ufa_img( 'hero-turkey.jpg', 'Турция', '', false, true ); ?>
+					<?php zhiraf_ufa_hero_collage_img( 'hero-collage-family', __( 'Семейный отдых с детьми и отельной анимацией', 'zhiraf-ufa' ) ); ?>
 				</div>
 				<div class="hero-collage__img hero-collage__img--3 collage-tile">
-					<?php zhiraf_ufa_img( 'hero-egypt.jpg', 'Египет', '', false, true ); ?>
+					<?php zhiraf_ufa_hero_collage_img( 'hero-collage-active', __( 'Активный отдых и экскурсии на морских курортах', 'zhiraf-ufa' ) ); ?>
 				</div>
 				<svg class="hero-collage__flight-path" data-motion="flight-path" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 					<path d="M10,180 Q100,50 380,80" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="6,6" fill="none"/>

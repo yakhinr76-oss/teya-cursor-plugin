@@ -61,10 +61,13 @@ $flag_url     = ! empty( $card['flag_url'] ) ? (string) $card['flag_url'] : '';
 				<span class="dest-hub-card__teaser"><?php echo esc_html( $card['teaser'] ); ?></span>
 			<?php endif; ?>
 		</span>
-		<?php if ( ! empty( $card['price_label'] ) ) : ?>
-			<span class="dest-hub-card__price"><?php echo esc_html( $card['price_label'] ); ?></span>
-		<?php else : ?>
-			<span class="dest-hub-card__price dest-hub-card__price--muted"><?php esc_html_e( 'Цена по запросу', 'zhiraf-ufa' ); ?></span>
-		<?php endif; ?>
+		<span class="dest-hub-card__cta-bar<?php echo empty( $card['price_label'] ) ? ' dest-hub-card__cta-bar--solo' : ''; ?>">
+			<span class="dest-hub-card__cta-action">
+				<?php echo esc_html( ! empty( $card['cta_action'] ) ? $card['cta_action'] : __( 'Смотреть отели →', 'zhiraf-ufa' ) ); ?>
+			</span>
+			<?php if ( ! empty( $card['price_label'] ) ) : ?>
+				<span class="dest-hub-card__cta-price"><?php echo esc_html( $card['price_label'] ); ?></span>
+			<?php endif; ?>
+		</span>
 	</span>
 </a>

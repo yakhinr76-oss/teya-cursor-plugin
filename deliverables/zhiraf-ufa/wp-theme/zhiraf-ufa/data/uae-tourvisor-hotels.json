@@ -1,0 +1,489 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "uae-catalog-scaffold",
+  "country_slug": "uae",
+  "identified_at": "2026-11-17",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ uae:{zhiraf_id} (country_slug uae, не oae). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 9,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "uae",
+      "hotel_name": "Centara Mirage Beach Resort Dubai 4★",
+      "resort": "Дубай, Dubai Islands",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Centara Mirage Beach Resort Dubai 4",
+      "match_names": [
+        "Centara Mirage Beach Resort Dubai 4★",
+        "Centara Mirage Beach Resort Dubai 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "uae",
+      "hotel_name": "DoubleTree by Hilton Resort & Spa Marjan Island 5★",
+      "resort": "Рас-эль-Хайма, остров Аль-Марджан",
+      "emirate": "ras_al_khaimah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "DoubleTree by Hilton Resort & Spa Marjan Island 5",
+      "match_names": [
+        "DoubleTree by Hilton Resort & Spa Marjan Island 5★",
+        "DoubleTree by Hilton Resort & Spa Marjan Island 5",
+        "DoubleTree by Hilton Resort and Spa Marjan Island 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "uae",
+      "hotel_name": "Hampton by Hilton Marjan Island 4★",
+      "resort": "Рас-эль-Хайма, остров Аль-Марджан",
+      "emirate": "ras_al_khaimah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Hampton by Hilton Marjan Island 4",
+      "match_names": [
+        "Hampton by Hilton Marjan Island 4★",
+        "Hampton by Hilton Marjan Island 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "uae",
+      "hotel_name": "Radisson Resort Ras Al Khaimah Marjan Island 4★",
+      "resort": "Рас-эль-Хайма, остров Аль-Марджан",
+      "emirate": "ras_al_khaimah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Radisson Resort Ras Al Khaimah Marjan Island 4",
+      "match_names": [
+        "Radisson Resort Ras Al Khaimah Marjan Island 4★",
+        "Radisson Resort Ras Al Khaimah Marjan Island 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "uae",
+      "hotel_name": "Yas Plaza Bay by IHG 4★",
+      "resort": "Абу-Даби, остров Яс",
+      "emirate": "abu_dhabi",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Yas Plaza Bay by IHG 4",
+      "match_names": [
+        "Yas Plaza Bay by IHG 4★",
+        "Yas Plaza Bay by IHG 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "uae",
+      "hotel_name": "Coral Beach Resort Sharjah 4★",
+      "resort": "Шарджа, Аль-Мунтаза",
+      "emirate": "sharjah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Coral Beach Resort Sharjah 4",
+      "match_names": [
+        "Coral Beach Resort Sharjah 4★",
+        "Coral Beach Resort Sharjah 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "uae",
+      "hotel_name": "Occidental Sharjah Grand 4★",
+      "resort": "Шарджа, Аль-Хан",
+      "emirate": "sharjah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Occidental Sharjah Grand 4",
+      "match_names": [
+        "Occidental Sharjah Grand 4★",
+        "Occidental Sharjah Grand 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "uae",
+      "hotel_name": "Sheraton Sharjah Beach Resort & Spa 5★",
+      "resort": "Шарджа, Аль-Хира",
+      "emirate": "sharjah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Sheraton Sharjah Beach Resort & Spa 5",
+      "match_names": [
+        "Sheraton Sharjah Beach Resort & Spa 5★",
+        "Sheraton Sharjah Beach Resort & Spa 5",
+        "Sheraton Sharjah Beach Resort and Spa 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "uae",
+      "hotel_name": "Bahi Ajman Palace Hotel 5★",
+      "resort": "Аджман, Корниш",
+      "emirate": "ajman",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Bahi Ajman Palace Hotel 5",
+      "match_names": [
+        "Bahi Ajman Palace Hotel 5★",
+        "Bahi Ajman Palace Hotel 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "uae",
+      "hotel_name": "Ajman Hotel & Villas by Blazon Hotels 5★",
+      "resort": "Аджман, Корниш",
+      "emirate": "ajman",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Ajman Hotel & Villas by Blazon Hotels 5",
+      "match_names": [
+        "Ajman Hotel & Villas by Blazon Hotels 5★",
+        "Ajman Hotel & Villas by Blazon Hotels 5",
+        "Ajman Hotel and Villas by Blazon Hotels 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "uae",
+      "hotel_name": "Rove City Walk 3★",
+      "resort": "Дубай, City Walk / Downtown",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Rove City Walk 3",
+      "match_names": [
+        "Rove City Walk 3★",
+        "Rove City Walk 3"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "uae",
+      "hotel_name": "Citymax Hotel Al Barsha at the Mall 3★",
+      "resort": "Дубай, Аль-Барша",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Citymax Hotel Al Barsha at the Mall 3",
+      "match_names": [
+        "Citymax Hotel Al Barsha at the Mall 3★",
+        "Citymax Hotel Al Barsha at the Mall 3"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "uae",
+      "hotel_name": "Rose Park Hotel Al Barsha 4★",
+      "resort": "Дубай, Аль-Барша",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Rose Park Hotel Al Barsha 4",
+      "match_names": [
+        "Rose Park Hotel Al Barsha 4★",
+        "Rose Park Hotel Al Barsha 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "uae",
+      "hotel_name": "TRYP by Wyndham Dubai 4★",
+      "resort": "Дубай, Barsha Heights",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "TRYP by Wyndham Dubai 4",
+      "match_names": [
+        "TRYP by Wyndham Dubai 4★",
+        "TRYP by Wyndham Dubai 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "uae",
+      "hotel_name": "Premier Inn Dubai Ibn Battuta Mall 3★",
+      "resort": "Дубай, Джебель-Али",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Premier Inn Dubai Ibn Battuta Mall 3",
+      "match_names": [
+        "Premier Inn Dubai Ibn Battuta Mall 3★",
+        "Premier Inn Dubai Ibn Battuta Mall 3"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "uae",
+      "hotel_name": "Rove Dubai Marina 3★",
+      "resort": "Дубай, Дубай Марина",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Rove Dubai Marina 3",
+      "match_names": [
+        "Rove Dubai Marina 3★",
+        "Rove Dubai Marina 3"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "uae",
+      "hotel_name": "Vida Creek Harbour 4★",
+      "resort": "Дубай, Dubai Creek Harbour",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Vida Creek Harbour 4",
+      "match_names": [
+        "Vida Creek Harbour 4★",
+        "Vida Creek Harbour 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "uae",
+      "hotel_name": "Canal Central Hotel Business Bay 5★",
+      "resort": "Дубай, Business Bay",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Canal Central Hotel Business Bay 5",
+      "match_names": [
+        "Canal Central Hotel Business Bay 5★",
+        "Canal Central Hotel Business Bay 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "uae",
+      "hotel_name": "Copthorne Hotel Dubai 4★",
+      "resort": "Дубай, Дейра / Port Saeed",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Copthorne Hotel Dubai 4",
+      "match_names": [
+        "Copthorne Hotel Dubai 4★",
+        "Copthorne Hotel Dubai 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "uae",
+      "hotel_name": "Grand Plaza Mövenpick Media City 5★",
+      "resort": "Дубай, Media City",
+      "emirate": "dubai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Grand Plaza Mövenpick Media City 5",
+      "match_names": [
+        "Grand Plaza Mövenpick Media City 5★",
+        "Grand Plaza Mövenpick Media City 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "uae",
+      "hotel_name": "Beach Rotana Residences 5★",
+      "resort": "Абу-Даби, Аль-Захия",
+      "emirate": "abu_dhabi",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Beach Rotana Residences 5",
+      "match_names": [
+        "Beach Rotana Residences 5★",
+        "Beach Rotana Residences 5"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "uae",
+      "hotel_name": "Hala Arjaan by Rotana 4★",
+      "resort": "Абу-Даби, Корниш",
+      "emirate": "abu_dhabi",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Hala Arjaan by Rotana 4",
+      "match_names": [
+        "Hala Arjaan by Rotana 4★",
+        "Hala Arjaan by Rotana 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "uae",
+      "hotel_name": "Premier Inn Abu Dhabi Airport 3★",
+      "resort": "Абу-Даби, Аэропорт / Яс",
+      "emirate": "abu_dhabi",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Premier Inn Abu Dhabi Airport 3",
+      "match_names": [
+        "Premier Inn Abu Dhabi Airport 3★",
+        "Premier Inn Abu Dhabi Airport 3"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "uae",
+      "hotel_name": "City Stay Beach Hotel Apartment 3★",
+      "resort": "Рас-эль-Хайма, остров Аль-Марджан",
+      "emirate": "ras_al_khaimah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "City Stay Beach Hotel Apartment 3",
+      "match_names": [
+        "City Stay Beach Hotel Apartment 3★",
+        "City Stay Beach Hotel Apartment 3"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "uae",
+      "hotel_name": "Jannah Hotel Apartments & Villas 4★",
+      "resort": "Рас-эль-Хайма, Mina Al Arab",
+      "emirate": "ras_al_khaimah",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Jannah Hotel Apartments & Villas 4",
+      "match_names": [
+        "Jannah Hotel Apartments & Villas 4★",
+        "Jannah Hotel Apartments & Villas 4",
+        "Jannah Hotel Apartments and Villas 4"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    }
+  ]
+}

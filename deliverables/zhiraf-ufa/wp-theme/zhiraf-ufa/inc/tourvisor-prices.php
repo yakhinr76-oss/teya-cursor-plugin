@@ -4,7 +4,7 @@
  *
  * Parser POSTs output/tourvisor-prices.json to
  * /wp-json/zhiraf/v1/update-prices with header X-Zhiraf-Token.
- * Theme stores the document and overlays Turkey + hotels REST.
+ * Theme stores the document and overlays Turkey, UAE curated + hotels REST.
  * Tourvisor wins over BG when a row matches.
  *
  * @package Zhiraf_Ufa
@@ -193,21 +193,56 @@ function zhiraf_ufa_tourvisor_loose_key( $name ) {
 }
 
 /**
+ * Basename of zhiraf_id ↔ tourvisor_id map for a catalog country.
+ *
+ * @param string $country Normalized country slug (turkey, uae, …).
  * @return string
  */
-function zhiraf_ufa_tourvisor_turkey_map_path() {
-	return dirname( __DIR__ ) . '/data/turkey-tourvisor-hotels.json';
+function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
+	$country = zhiraf_ufa_tourvisor_country_slug( $country );
+	$known   = array(
+		'turkey' => 'turkey-tourvisor-hotels.json',
+		'uae'    => 'uae-tourvisor-hotels.json',
+	);
+
+	return ! empty( $known[ $country ] ) ? (string) $known[ $country ] : $country . '-tourvisor-hotels.json';
 }
 
 /**
- * Catalog id ↔ Tourvisor hotel id for the 25 Turkey cards.
+ * @param string $country Normalized country slug.
+ * @return string
+ */
+function zhiraf_ufa_tourvisor_hotels_map_path( $country ) {
+	$dir = defined( 'ZHIRAF_UFA_DIR' ) ? ZHIRAF_UFA_DIR : dirname( __DIR__ );
+
+	return $dir . '/data/' . zhiraf_ufa_tourvisor_hotels_map_basename( $country );
+}
+
+/**
+ * @return string
+ */
+function zhiraf_ufa_tourvisor_turkey_map_path() {
+	return zhiraf_ufa_tourvisor_hotels_map_path( 'turkey' );
+}
+
+/**
+ * @return string
+ */
+function zhiraf_ufa_tourvisor_uae_map_path() {
+	return zhiraf_ufa_tourvisor_hotels_map_path( 'uae' );
+}
+
+/**
+ * Catalog id ↔ Tourvisor hotel id for curated cards.
  *
+ * @param string $country Normalized country slug.
  * @return array{by_zhiraf:array<int,array<string,mixed>>,by_tv:array<int,int>,by_loose:array<string,int>}
  */
-function zhiraf_ufa_tourvisor_turkey_map() {
-	static $map = null;
-	if ( is_array( $map ) ) {
-		return $map;
+function zhiraf_ufa_tourvisor_country_map( $country ) {
+	static $cache = array();
+	$country      = zhiraf_ufa_tourvisor_country_slug( $country );
+	if ( isset( $cache[ $country ] ) && is_array( $cache[ $country ] ) ) {
+		return $cache[ $country ];
 	}
 
 	$map = array(
@@ -215,11 +250,13 @@ function zhiraf_ufa_tourvisor_turkey_map() {
 		'by_tv'     => array(),
 		'by_loose'  => array(),
 	);
-	$path = zhiraf_ufa_tourvisor_turkey_map_path();
+	$path = zhiraf_ufa_tourvisor_hotels_map_path( $country );
 	if ( ! is_readable( $path ) ) {
+		$cache[ $country ] = $map;
+
 		return $map;
 	}
-	$data   = json_decode( (string) file_get_contents( $path ), true );
+	$data   = json_decode( (string) file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$hotels = ( is_array( $data ) && isset( $data['hotels'] ) && is_array( $data['hotels'] ) ) ? $data['hotels'] : array();
 	$owners = array();
 	foreach ( $hotels as $hotel ) {
@@ -265,19 +302,38 @@ function zhiraf_ufa_tourvisor_turkey_map() {
 		}
 	}
 
+	$cache[ $country ] = $map;
+
 	return $map;
+}
+
+/**
+ * Catalog id ↔ Tourvisor hotel id for the 25 Turkey cards.
+ *
+ * @return array{by_zhiraf:array<int,array<string,mixed>>,by_tv:array<int,int>,by_loose:array<string,int>}
+ */
+function zhiraf_ufa_tourvisor_turkey_map() {
+	return zhiraf_ufa_tourvisor_country_map( 'turkey' );
+}
+
+/**
+ * @return array{by_zhiraf:array<int,array<string,mixed>>,by_tv:array<int,int>,by_loose:array<string,int>}
+ */
+function zhiraf_ufa_tourvisor_uae_map() {
+	return zhiraf_ufa_tourvisor_country_map( 'uae' );
 }
 
 /**
  * Prefer the catalog id. A bare Tourvisor hotel id or a Tourvisor title still resolves.
  *
- * @param int    $zhiraf_id Catalog id, or a Tourvisor id the parser sent as id.
+ * @param string $country      Normalized country slug.
+ * @param int    $zhiraf_id   Catalog id, or a Tourvisor id the parser sent as id.
  * @param int    $tourvisor_id Tourvisor hotel id when the parser sent it separately.
- * @param string $hotel_name Title from either side.
+ * @param string $hotel_name  Title from either side.
  * @return int
  */
-function zhiraf_ufa_tourvisor_turkey_resolve_id( $zhiraf_id, $tourvisor_id, $hotel_name ) {
-	$map = zhiraf_ufa_tourvisor_turkey_map();
+function zhiraf_ufa_tourvisor_resolve_catalog_id( $country, $zhiraf_id, $tourvisor_id, $hotel_name ) {
+	$map = zhiraf_ufa_tourvisor_country_map( $country );
 	$zid = (int) $zhiraf_id;
 	$tid = (int) $tourvisor_id;
 	if ( $zid > 0 && isset( $map['by_zhiraf'][ $zid ] ) ) {
@@ -295,6 +351,26 @@ function zhiraf_ufa_tourvisor_turkey_resolve_id( $zhiraf_id, $tourvisor_id, $hot
 	}
 
 	return $zid;
+}
+
+/**
+ * @param int    $zhiraf_id Catalog id, or a Tourvisor id the parser sent as id.
+ * @param int    $tourvisor_id Tourvisor hotel id when the parser sent it separately.
+ * @param string $hotel_name Title from either side.
+ * @return int
+ */
+function zhiraf_ufa_tourvisor_turkey_resolve_id( $zhiraf_id, $tourvisor_id, $hotel_name ) {
+	return zhiraf_ufa_tourvisor_resolve_catalog_id( 'turkey', $zhiraf_id, $tourvisor_id, $hotel_name );
+}
+
+/**
+ * @param int    $zhiraf_id Catalog id.
+ * @param int    $tourvisor_id Tourvisor hotel id.
+ * @param string $hotel_name Title.
+ * @return int
+ */
+function zhiraf_ufa_tourvisor_uae_resolve_id( $zhiraf_id, $tourvisor_id, $hotel_name ) {
+	return zhiraf_ufa_tourvisor_resolve_catalog_id( 'uae', $zhiraf_id, $tourvisor_id, $hotel_name );
 }
 
 /**
@@ -375,8 +451,8 @@ function zhiraf_ufa_tourvisor_normalize_row( $row ) {
 		}
 	}
 	$raw_name = isset( $row['hotel_name'] ) ? (string) $row['hotel_name'] : '';
-	if ( 'turkey' === $country ) {
-		$id = zhiraf_ufa_tourvisor_turkey_resolve_id( $id, $tourvisor_id, $raw_name );
+	if ( in_array( $country, array( 'turkey', 'uae' ), true ) ) {
+		$id = zhiraf_ufa_tourvisor_resolve_catalog_id( $country, $id, $tourvisor_id, $raw_name );
 	}
 
 	$raw_price = null;
@@ -537,18 +613,15 @@ function zhiraf_ufa_tourvisor_build_index( array $document ) {
 				continue;
 			}
 		}
-		$row_id     = isset( $row['zhiraf_id'] ) ? (int) $row['zhiraf_id'] : 0;
-		$expected   = 0;
-		$turkey_map = array();
-		if ( 'turkey' === $country ) {
-			$turkey_map = zhiraf_ufa_tourvisor_turkey_map();
-			if ( isset( $turkey_map['by_loose'][ $loose ] ) ) {
-				$expected = (int) $turkey_map['by_loose'][ $loose ];
-			}
+		$row_id      = isset( $row['zhiraf_id'] ) ? (int) $row['zhiraf_id'] : 0;
+		$expected    = 0;
+		$country_map = in_array( $country, array( 'turkey', 'uae' ), true ) ? zhiraf_ufa_tourvisor_country_map( $country ) : array();
+		if ( isset( $country_map['by_loose'][ $loose ] ) ) {
+			$expected = (int) $country_map['by_loose'][ $loose ];
 		}
 		$same_hotel = ( 0 === $expected ) || $expected === $row_id;
-		if ( ! $same_hotel && isset( $turkey_map['by_tv'][ $row_id ] ) ) {
-			$same_hotel = (int) $turkey_map['by_tv'][ $row_id ] === $expected;
+		if ( ! $same_hotel && isset( $country_map['by_tv'][ $row_id ] ) ) {
+			$same_hotel = (int) $country_map['by_tv'][ $row_id ] === $expected;
 		}
 		if ( $same_hotel ) {
 			$by_name[ $country ][ $loose ] = $key;
@@ -594,8 +667,8 @@ function zhiraf_ufa_tourvisor_lookup_in_index( array $index, $country, $zhiraf_i
 		}
 	}
 
-	if ( 'turkey' === $country && '' !== $loose ) {
-		$map = zhiraf_ufa_tourvisor_turkey_map();
+	if ( in_array( $country, array( 'turkey', 'uae' ), true ) && '' !== $loose ) {
+		$map = zhiraf_ufa_tourvisor_country_map( $country );
 		if ( isset( $map['by_loose'][ $loose ] ) ) {
 			$key = $country . ':' . (int) $map['by_loose'][ $loose ];
 			if ( isset( $index['by_key'][ $key ] ) ) {
@@ -687,18 +760,20 @@ function zhiraf_ufa_tourvisor_find_price( $country, $zhiraf_id = 0, $hotel_name 
 }
 
 /**
- * Tourvisor price on a Turkey card. Unmatched card is returned as-is.
+ * Tourvisor price on a curated card (Turkey, UAE, …). Unmatched card is returned as-is.
  *
- * @param array<string,mixed> $card Card row.
+ * @param array<string,mixed> $card    Card row.
+ * @param string              $country Catalog country slug (turkey, uae).
  * @return array<string,mixed>
  */
-function zhiraf_ufa_tourvisor_overlay_turkey_card( array $card ) {
-	$id = 0;
+function zhiraf_ufa_tourvisor_overlay_curated_card( array $card, $country ) {
+	$country = zhiraf_ufa_tourvisor_country_slug( $country );
+	$id      = 0;
 	if ( isset( $card['pool_id'] ) && is_numeric( $card['pool_id'] ) ) {
 		$id = (int) $card['pool_id'];
 	}
 	$name = isset( $card['name'] ) ? (string) $card['name'] : '';
-	$hit  = zhiraf_ufa_tourvisor_find_price( 'turkey', $id, $name );
+	$hit  = zhiraf_ufa_tourvisor_find_price( $country, $id, $name );
 	if ( ! is_array( $hit ) ) {
 		return $card;
 	}
@@ -723,11 +798,32 @@ function zhiraf_ufa_tourvisor_overlay_turkey_card( array $card ) {
 	$card['price_place']           = (string) $hit['place'];
 	$card['tour_offer']            = $tour;
 	if ( function_exists( 'zhiraf_ufa_turciya_curated_messenger_prefill' ) ) {
-		$label               = '' !== $name ? $name : (string) $hit['hotel_name'];
-		$card['wa_prefill']  = zhiraf_ufa_turciya_curated_messenger_prefill( $label, $tour );
+		$label              = '' !== $name ? $name : (string) $hit['hotel_name'];
+		$uon                = isset( $card['uon_hotel_id'] ) ? (string) $card['uon_hotel_id'] : '';
+		$card['wa_prefill'] = zhiraf_ufa_turciya_curated_messenger_prefill( $label, $tour, $uon );
 	}
 
 	return $card;
+}
+
+/**
+ * Tourvisor price on a Turkey card. Unmatched card is returned as-is.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_turkey_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'turkey' );
+}
+
+/**
+ * Tourvisor price on a UAE curated card. Unmatched card is returned as-is.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_uae_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'uae' );
 }
 
 /**

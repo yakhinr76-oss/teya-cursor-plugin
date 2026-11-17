@@ -414,6 +414,14 @@ function zhiraf_ufa_oae_json_row_to_card( $row ) {
  * @return array<string,mixed>
  */
 function zhiraf_ufa_oae_apply_bg_pricing( array $card ) {
+	if ( function_exists( 'zhiraf_ufa_tourvisor_overlay_uae_card' ) ) {
+		$with_tourvisor = zhiraf_ufa_tourvisor_overlay_uae_card( $card );
+		if ( ! empty( $with_tourvisor['price_from_api'] ) && 'tourvisor' === ( $with_tourvisor['price_source'] ?? '' ) ) {
+			return $with_tourvisor;
+		}
+		$card = $with_tourvisor;
+	}
+
 	$name = ! empty( $card['name'] ) ? trim( (string) $card['name'] ) : '';
 	if ( '' === $name || ! function_exists( 'zhiraf_ufa_get_hotel_min_tour' ) ) {
 		return $card;

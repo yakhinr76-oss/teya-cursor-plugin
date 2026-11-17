@@ -56,7 +56,11 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				<div class="dest-landing-hero__actions">
 					<?php if ( $use_turciya_curated ) : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
-						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open><?php esc_html_e( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' ); ?></button>
+						<?php
+						$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
+						$hero_compare_btn = ! empty( $hero_compare_btn ) ? $hero_compare_btn : __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' );
+						?>
+						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
 					<?php else : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
 						<a class="btn btn--outline btn--lg" href="#dest-price-tiers"><?php esc_html_e( 'Ценовые ориентиры', 'zhiraf-ufa' ); ?></a>

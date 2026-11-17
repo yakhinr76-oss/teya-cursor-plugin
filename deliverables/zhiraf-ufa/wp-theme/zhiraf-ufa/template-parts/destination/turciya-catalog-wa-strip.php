@@ -17,7 +17,14 @@ $wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 ?>
 <div class="turciya-catalog-wa-strip">
 	<p class="turciya-catalog-wa-strip__text">
-		<?php esc_html_e( 'Не нашли свой отель в шестёрке? Напишите — подберём из всей базы или сравним Кемер и Сиде под бюджет.', 'zhiraf-ufa' ); ?>
+		<?php
+		$strip_text = function_exists( 'get_field' ) ? get_field( 'resort_compare_strip_text', get_queried_object() ) : '';
+		if ( ! empty( $strip_text ) ) {
+			echo esc_html( $strip_text );
+		} else {
+			esc_html_e( 'Не нашли свой отель в шестёрке? Напишите — подберём из всей базы или сравним Кемер и Сиде под бюджет.', 'zhiraf-ufa' );
+		}
+		?>
 		<button type="button" class="turciya-catalog-wa-strip__form-link" data-turciya-lead-open>
 			<?php esc_html_e( 'Оставить заявку в попапе', 'zhiraf-ufa' ); ?>
 		</button>

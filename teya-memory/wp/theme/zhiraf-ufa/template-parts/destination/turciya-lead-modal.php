@@ -12,6 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 	? zhiraf_ufa_turciya_resort_compare_wa_text()
 	: __( 'Здравствуйте! Сравните, пожалуйста, Кемер и Сиде под наш бюджет — вылет из Уфы, семья с детьми.', 'zhiraf-ufa' );
+
+$compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
+$modal_title   = ! empty( $compare_title ) ? $compare_title : __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
 ?>
 <div
 	id="turciya-lead-modal"
@@ -19,7 +22,7 @@ $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 	role="dialog"
 	aria-modal="true"
 	aria-labelledby="turciya-lead-modal-title"
-	data-default-title="<?php echo esc_attr__( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' ); ?>"
+	data-default-title="<?php echo esc_attr( $modal_title ); ?>"
 	data-default-lead="<?php echo esc_attr__( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>"
 	data-default-tour="<?php echo esc_attr__( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' ); ?>"
 	data-default-message="<?php echo esc_attr( $wa_text ); ?>"
@@ -32,7 +35,7 @@ $wa_text = function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' )
 		<div class="quiz-modal__body">
 			<p class="home-quiz__eyebrow home-quiz__eyebrow--modal"><?php esc_html_e( 'Подбор за 15 минут', 'zhiraf-ufa' ); ?></p>
 			<h2 id="turciya-lead-modal-title" class="home-quiz__title home-quiz__title--modal">
-				<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' ); ?>
+				<?php echo esc_html( $modal_title ); ?>
 			</h2>
 			<p id="turciya-lead-modal-lead" class="home-quiz__lead home-quiz__lead--modal">
 				<?php esc_html_e( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>

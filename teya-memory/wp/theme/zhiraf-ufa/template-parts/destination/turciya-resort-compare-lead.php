@@ -12,7 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <section class="section turciya-compare-lead" id="dest-inquiry">
 	<div class="container container--narrow turciya-compare-lead__inner">
 		<h2 class="turciya-compare-lead__title">
-			<?php esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' ); ?>
+			<?php
+			$compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
+			if ( ! empty( $compare_title ) ) {
+				echo esc_html( $compare_title );
+			} else {
+				esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' );
+			}
+			?>
 		</h2>
 		<p class="turciya-compare-lead__text">
 			<?php esc_html_e( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. В попапе выберете MAX, WhatsApp или Telegram — туда уйдёт расчёт.', 'zhiraf-ufa' ); ?>

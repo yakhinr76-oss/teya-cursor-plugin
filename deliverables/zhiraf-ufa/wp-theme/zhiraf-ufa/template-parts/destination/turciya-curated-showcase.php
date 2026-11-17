@@ -17,7 +17,9 @@ $copy        = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
 	? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
 	: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
 $pool_total  = count( $hotels );
-$fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
+$fill_text = 'turciya' === $dest_slug
+	? __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' )
+	: __( 'Здравствуйте! На странице ОАЭ в подборке 5 отелей — нужен ещё вариант (Дубай или Рас-эль-Хайма) под наши даты. Вылет из Уфы. Пришлите 2–3 варианта. ID: AE-FILL', 'zhiraf-ufa' );
 
 if ( empty( $hotels ) ) {
 	return;
@@ -32,10 +34,20 @@ if ( empty( $hotels ) ) {
 	data-catalog-pool-total="<?php echo esc_attr( (string) $pool_total ); ?>"
 >
 	<div class="container">
-		<?php get_template_part( 'template-parts/destination/turciya-resort-pick-cards' ); ?>
+		<?php
+		if ( 'turciya' === $dest_slug ) {
+			get_template_part( 'template-parts/destination/turciya-resort-pick-cards' );
+		}
+		?>
 
 		<div class="turciya-curated-showcase__block">
-			<?php get_template_part( 'template-parts/destination/turciya-catalog-filters' ); ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-catalog-filters',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
+			?>
 
 			<div class="turciya-curated-grid" data-curated-grid data-catalog-pending>
 				<?php foreach ( $hotels as $hotel ) : ?>
@@ -72,7 +84,13 @@ if ( empty( $hotels ) ) {
 				</aside>
 			</div>
 
-			<?php get_template_part( 'template-parts/destination/turciya-catalog-wa-strip' ); ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-catalog-wa-strip',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
+			?>
 
 			<div class="turciya-catalog-more" data-turciya-catalog-more-wrap hidden>
 				<button type="button" class="btn btn--outline turciya-catalog-more__btn" data-turciya-catalog-more>

@@ -9,8 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$filters = function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ? zhiraf_ufa_turciya_catalog_filters() : array();
-$copy    = function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array();
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_filters' ) ) {
+	$filters = zhiraf_ufa_oae_catalog_filters();
+	$copy    = function_exists( 'zhiraf_ufa_oae_catalog_default_copy' ) ? zhiraf_ufa_oae_catalog_default_copy() : array();
+} else {
+	$filters = function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ? zhiraf_ufa_turciya_catalog_filters() : array();
+	$copy    = function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array();
+}
 
 if ( empty( $filters ) ) {
 	return;

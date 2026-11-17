@@ -9,7 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$wa_text = __( 'Здравствуйте! Не нашли подходящий отель в подборке на странице Турции — нужны ещё варианты с вылетом из Уфы под наши даты и состав.', 'zhiraf-ufa' );
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+$wa_text   = 'oae' === $dest_slug
+	? __( 'Здравствуйте! Не нашли подходящий отель в подборке на странице ОАЭ — нужны ещё варианты (Дубай или Рас-эль-Хайма) с вылетом из Уфы.', 'zhiraf-ufa' )
+	: __( 'Здравствуйте! Не нашли подходящий отель в подборке на странице Турции — нужны ещё варианты с вылетом из Уфы под наши даты и состав.', 'zhiraf-ufa' );
 $wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
 $wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 	? zhiraf_ufa_whatsapp_url_with_text( $wa_base, $wa_text )
@@ -21,6 +24,8 @@ $wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 		$strip_text = function_exists( 'get_field' ) ? get_field( 'resort_compare_strip_text', get_queried_object() ) : '';
 		if ( ! empty( $strip_text ) ) {
 			echo esc_html( $strip_text );
+		} elseif ( 'oae' === $dest_slug ) {
+			esc_html_e( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы или сравним Дубай и Рас-эль-Хайму под бюджет.', 'zhiraf-ufa' );
 		} else {
 			esc_html_e( 'Не нашли свой отель в шестёрке? Напишите — подберём из всей базы или сравним Кемер и Сиде под бюджет.', 'zhiraf-ufa' );
 		}

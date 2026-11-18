@@ -164,7 +164,34 @@ def build_queries(row: dict) -> list[str]:
     norm_name = norm(hotel_name)
     if "sierra" in norm_name and "resort" not in norm_name:
         queries.append("Sierra Resort")
+    if "movenpick" in norm_name and "siam" in norm_name:
+        queries.insert(0, "Movenpick Siam")
+    if "clover" in norm_name and "patong" in norm_name:
+        queries.insert(0, "Clover Hotel Patong")
+    if all(t in norm_name for t in ("sea", "sand", "sun")):
+        queries.insert(0, "Sea Sand Sun Resort")
     return queries
+
+
+def filter_auto_hits(row: dict, best_by_id: dict[int, dict]) -> dict[int, dict]:
+    """Drop obvious wrong-country/brand hits from autocomplete noise."""
+    hotel_name = norm(str(row.get("hotel_name", "")))
+    resort = norm(str(row.get("resort", "")))
+    out: dict[int, dict] = {}
+    for tid, cand in best_by_id.items():
+        tvn = norm(str(cand.get("name", "")))
+        rn = norm(str(cand.get("regionname", "")))
+        if "clover" in hotel_name and "clover" not in tvn:
+            continue
+        if all(w in hotel_name for w in ("sea", "sand", "sun")) and not (
+            "sand" in tvn and "sun" in tvn and ("villas" in tvn or "villa" in tvn)
+        ):
+            continue
+        if any(h in resort for h in ("джомтьен", "jomtien", "банг сарай", "bang saray")):
+            if "патонг" in rn and "джомтьен" not in rn:
+                continue
+        out[tid] = cand
+    return out if out else best_by_id
 
 
 def pick_best(row: dict, min_score: float, sleep_s: float) -> tuple[dict | None, float, str]:
@@ -177,9 +204,12 @@ def pick_best(row: dict, min_score: float, sleep_s: float) -> tuple[dict | None,
         except Exception as exc:  # noqa: BLE001
             print(f"  ERR zhiraf {row.get('id')} query={q!r}: {exc}", file=__import__("sys").stderr)
             hits = []
+        hotel_norm = norm(str(row.get("hotel_name", "")))
         for hit in hits:
             sc = score_candidate(qtoks, hit)
-            if sc < min_score:
+            tv_norm = norm(str(hit.get("name", "")))
+            brand_ok = "movenpick" in hotel_norm and "siam" in hotel_norm and "movenpick" in tv_norm and "siam" in tv_norm
+            if sc < min_score and not brand_ok:
                 continue
             tid = int(hit.get("id", 0))
             prev = best_by_id.get(tid)
@@ -189,6 +219,7 @@ def pick_best(row: dict, min_score: float, sleep_s: float) -> tuple[dict | None,
             time.sleep(sleep_s)
     if not best_by_id:
         return None, 0.0, ""
+    best_by_id = filter_auto_hits(row, best_by_id)
     top = max(best_by_id.values(), key=lambda x: (x["score"], x.get("name", "")))
     return top, float(top["score"]), str(top.get("query", ""))
 
@@ -293,7 +324,12 @@ def main() -> None:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--scaffold", action="store_true", help="Write 25 rows with tourvisor_id=0")
     mode.add_argument("--match", action="store_true", help="Fill tourvisor_id via tourvisor.ru/xml/autocomplete.php")
-    parser.add_argument("--min-score", type=float, default=0.72, help="Token overlap threshold")
+    parser.add_argument(
+        "--min-score",
+        type=float,
+        default=0.65,
+        help="Token overlap threshold (Mövenpick/Clover often ~0.55–0.67)",
+    )
     parser.add_argument("--sleep", type=float, default=0.12, help="Pause between autocomplete calls (seconds)")
     args = parser.parse_args()
 

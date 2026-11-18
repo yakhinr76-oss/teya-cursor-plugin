@@ -75,7 +75,7 @@
 | — | **Турция** | `turciya` | ✅ | `turciya-curated-landing.php` | `turkey_hotels_25.json` | ✅ | ✅ | ✅ | 6 курортов | 2 статьи (симметрия) |
 | — | **ОАЭ** | `oae` | ✅ | `curated-oae-landing.php` | `uae_hotels_25.json` | ✅ | ✅ | ✅ | 5 эмиратов (ряд) | 2 статьи |
 | — | **Египет** | `egipet` | ✅ | `curated-egypt-landing.php` | `egypt_hotels_25.json` | ✅ | ✅ | ✅ | 4 курорта (ряд) + resort pages | 3 статьи (1+2) |
-| — | **Таиланд** | `tailand` | ✅ | `curated-thailand-landing.php` | `thailand_hotels_25.json` | ✅ scaffold | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
+| — | **Таиланд** | `tailand` | ✅ | `curated-thailand-landing.php` | `thailand_hotels_25.json` | ✅ 25/25 | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
 | — | **Мальдивы** | `maldivy` | ✅ | `curated-maldives-landing.php` | `maldives_hotels_25.json` | ✅ 25/25 | ✅ | ✅ | 4 атолла (ряд) | 2 статьи |
 | — | **Вьетнам** | `vietnam` | ✅ | `curated-vietnam-landing.php` | `vietnam_hotels_25.json` | ✅ map (TV countryid **16**) | ✅ | ✅ | 4 курорта (ряд) | 3 статьи |
 | 3+ | Шри-Ланка, Индия, … | … | ⬜ | — | есть `*_hotels_25.json` | ⬜ | ⬜ | ⬜ | по контенту | по контенту |

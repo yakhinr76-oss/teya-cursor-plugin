@@ -5,10 +5,638 @@
   "identified_at": "2026-11-18",
   "departure_city": "Уфа",
   "modsearch_hotels_per_request": 5,
-  "modsearch_batch_count": 0,
-  "search_batches": [],
-  "hotel_count": 0,
-  "hotel_ids": "",
-  "hotels": [],
-  "by_tourvisor_id": {}
+  "modsearch_batch_count": 5,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        810,
+        682,
+        599,
+        44661,
+        51492
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "price_keys": [
+        "thailand:1",
+        "thailand:2",
+        "thailand:3",
+        "thailand:4",
+        "thailand:5"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        57460,
+        13110,
+        677,
+        42534,
+        45160
+      ],
+      "zhiraf_ids": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "price_keys": [
+        "thailand:6",
+        "thailand:7",
+        "thailand:8",
+        "thailand:9",
+        "thailand:10"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        2050,
+        9385,
+        763,
+        786,
+        68972
+      ],
+      "zhiraf_ids": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "price_keys": [
+        "thailand:11",
+        "thailand:12",
+        "thailand:13",
+        "thailand:14",
+        "thailand:15"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        59599,
+        696,
+        2069,
+        70521,
+        58635
+      ],
+      "zhiraf_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "price_keys": [
+        "thailand:16",
+        "thailand:17",
+        "thailand:18",
+        "thailand:19",
+        "thailand:20"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        811,
+        788,
+        58533,
+        580,
+        99943
+      ],
+      "zhiraf_ids": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "price_keys": [
+        "thailand:21",
+        "thailand:22",
+        "thailand:23",
+        "thailand:24",
+        "thailand:25"
+      ]
+    }
+  ],
+  "hotel_count": 25,
+  "hotel_ids": "580,599,677,682,696,763,786,788,810,811,2050,2069,9385,13110,42534,44661,45160,51492,57460,58533,58635,59599,68972,70521,99943",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "thailand",
+      "tourvisor_id": 810,
+      "hotel_name": "Sunwing Bangtao Beach 4★",
+      "place": "Пхукет, пляж Бангтао",
+      "search_query": "Sunwing Bangtao Beach",
+      "tourvisor_name": "Sunwing Resort & Spa Bangtao Beach",
+      "price_key": "thailand:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "thailand",
+      "tourvisor_id": 682,
+      "hotel_name": "Katathani Phuket Beach Resort 5★",
+      "place": "Пхукет, пляж Ката-Ной",
+      "search_query": "Katathani Phuket Beach Resort",
+      "tourvisor_name": "Katathani Phuket Beach Resort",
+      "price_key": "thailand:2"
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "thailand",
+      "tourvisor_id": 599,
+      "hotel_name": "Centara Grand Mirage Beach Resort 5★",
+      "place": "Паттайя, бухта Вонгамат",
+      "search_query": "Centara Grand Mirage Beach Resort",
+      "tourvisor_name": "Centara Grand Mirage Beach Resort Pattaya",
+      "price_key": "thailand:3"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "thailand",
+      "tourvisor_id": 44661,
+      "hotel_name": "Mövenpick Siam Hotel Na Jomtien 5★",
+      "place": "Паттайя, На-Джомтьен",
+      "search_query": "Movenpick Siam",
+      "tourvisor_name": "Movenpick Siam Hotel Pattaya",
+      "price_key": "thailand:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "thailand",
+      "tourvisor_id": 51492,
+      "hotel_name": "X10 Khaolak Resort 5★",
+      "place": "Као-Лак, Банг-Нианг",
+      "search_query": "X10 Khaolak Resort",
+      "tourvisor_name": "X10 Khaolak Resort",
+      "price_key": "thailand:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "thailand",
+      "tourvisor_id": 57460,
+      "hotel_name": "The SIS Kata 4★",
+      "place": "Пхукет, пляж Ката",
+      "search_query": "The SIS Kata",
+      "tourvisor_name": "The Sis Kata Adults Only 12+",
+      "price_key": "thailand:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "thailand",
+      "tourvisor_id": 13110,
+      "hotel_name": "Avista Hideaway Phuket Patong – MGallery 5★",
+      "place": "Пхукет, холмы Патонга",
+      "search_query": "Avista Hideaway Phuket Patong – MGallery",
+      "tourvisor_name": "Avista Hideaway Phuket Patong Mgallery By Sofitel",
+      "price_key": "thailand:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "thailand",
+      "tourvisor_id": 677,
+      "hotel_name": "Beyond Karon 4★",
+      "place": "Пхукет, пляж Карон",
+      "search_query": "Beyond Karon",
+      "tourvisor_name": "Beyond Resort Karon Adults Only 18+",
+      "price_key": "thailand:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "thailand",
+      "tourvisor_id": 42534,
+      "hotel_name": "U Pattaya 5★",
+      "place": "Паттайя, Банг-Сарай",
+      "search_query": "U Pattaya",
+      "tourvisor_name": "U Pattaya",
+      "price_key": "thailand:9"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "thailand",
+      "tourvisor_id": 45160,
+      "hotel_name": "Mantra Samui Resort 5★",
+      "place": "Самуи, холмы Бопхут",
+      "search_query": "Mantra Samui Resort",
+      "tourvisor_name": "Mantra Samui Resort Adults Only 16+",
+      "price_key": "thailand:10"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "thailand",
+      "tourvisor_id": 2050,
+      "hotel_name": "Pullman Pattaya Hotel G 5★",
+      "place": "Паттайя, бухта Вонгамат",
+      "search_query": "Pullman Pattaya Hotel G",
+      "tourvisor_name": "Pullman Pattaya Hotel G (Ex. Pullman Pattaya Aisawan) ",
+      "price_key": "thailand:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "thailand",
+      "tourvisor_id": 9385,
+      "hotel_name": "Cape Dara Resort Pattaya 5★",
+      "place": "Паттайя, мыс Дара / Вонгамат",
+      "search_query": "Cape Dara Resort Pattaya",
+      "tourvisor_name": "Cape Dara Resort",
+      "price_key": "thailand:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "thailand",
+      "tourvisor_id": 763,
+      "hotel_name": "Ravindra Beach Resort & Spa 5★",
+      "place": "Паттайя, На-Джомтьен",
+      "search_query": "Ravindra Beach Resort & Spa",
+      "tourvisor_name": "Ravindra Beach Resort & Spa",
+      "price_key": "thailand:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "thailand",
+      "tourvisor_id": 786,
+      "hotel_name": "Sea Sand Sun Resort and Villas 5★",
+      "place": "Паттайя, Банг-Сарай",
+      "search_query": "Sea Sand Sun Resort",
+      "tourvisor_name": "Sea Sand Sun Resort & Villas",
+      "price_key": "thailand:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "thailand",
+      "tourvisor_id": 68972,
+      "hotel_name": "Ana Anan Resort & Villas Pattaya 5★",
+      "place": "Паттайя, На-Джомтьен",
+      "search_query": "Ana Anan Resort & Villas Pattaya",
+      "tourvisor_name": "Ana Anan Resort & Villa Pattaya",
+      "price_key": "thailand:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "thailand",
+      "tourvisor_id": 59599,
+      "hotel_name": "Hotel Clover Patong Phuket 4★",
+      "place": "Пхукет, центр Патонга",
+      "search_query": "Clover Hotel Patong",
+      "tourvisor_name": "Clover Hotel Patong (Ex. Surf Hotel Patong)",
+      "price_key": "thailand:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "thailand",
+      "tourvisor_id": 696,
+      "hotel_name": "The Marina Phuket Hotel 4★",
+      "place": "Пхукет, Патонг",
+      "search_query": "The Marina Phuket Hotel",
+      "tourvisor_name": "Marina Phuket Resort",
+      "price_key": "thailand:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "thailand",
+      "tourvisor_id": 2069,
+      "hotel_name": "The Kee Resort & Spa 4★",
+      "place": "Пхукет, Патонг / Бангла Роуд",
+      "search_query": "The Kee Resort & Spa",
+      "tourvisor_name": "The Kee Resort & Spa",
+      "price_key": "thailand:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "thailand",
+      "tourvisor_id": 70521,
+      "hotel_name": "Holiday Inn Express Pattaya Central 4★",
+      "place": "Паттайя, центр / Soi Buakhao",
+      "search_query": "Holiday Inn Express Pattaya Central",
+      "tourvisor_name": "Holiday Inn Express Pattaya Central",
+      "price_key": "thailand:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "thailand",
+      "tourvisor_id": 58635,
+      "hotel_name": "COSI Samui Chaweng Beach 3★",
+      "place": "Самуи, центр Чавенга",
+      "search_query": "COSI Samui Chaweng Beach",
+      "tourvisor_name": "Cosi Samui Chaweng Beach",
+      "price_key": "thailand:20"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "thailand",
+      "tourvisor_id": 811,
+      "hotel_name": "Sunwing Kamala Beach 4★",
+      "place": "Пхукет, пляж Камала",
+      "search_query": "Sunwing Kamala Beach",
+      "tourvisor_name": "Sunwing Resort Kamala Beach",
+      "price_key": "thailand:21"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "thailand",
+      "tourvisor_id": 788,
+      "hotel_name": "Chanalai Flora Resort 4★",
+      "place": "Пхукет, пляж Ката",
+      "search_query": "Chanalai Flora Resort",
+      "tourvisor_name": "Chanalai Flora Resort (Ex. Serene Resort)",
+      "price_key": "thailand:22"
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "thailand",
+      "tourvisor_id": 58533,
+      "hotel_name": "Baan Sailom Resort 3★",
+      "place": "Пхукет, пляж Карон",
+      "search_query": "Baan Sailom Resort",
+      "tourvisor_name": "Baan Sailom",
+      "price_key": "thailand:23"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "thailand",
+      "tourvisor_id": 580,
+      "hotel_name": "Best Western Phuket Ocean Resort 3★",
+      "place": "Пхукет, пляж Карон",
+      "search_query": "Best Western Phuket Ocean Resort",
+      "tourvisor_name": "Best Western Phuket Ocean Resort",
+      "price_key": "thailand:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "thailand",
+      "tourvisor_id": 99943,
+      "hotel_name": "Kata White Villas 3★",
+      "place": "Пхукет, пляж Ката",
+      "search_query": "Kata White Villas",
+      "tourvisor_name": "Kata White Villas",
+      "price_key": "thailand:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "810": {
+      "zhiraf_id": 1,
+      "country_slug": "thailand",
+      "tourvisor_id": 810,
+      "hotel_name": "Sunwing Bangtao Beach 4★",
+      "place": "Пхукет, пляж Бангтао",
+      "search_query": "Sunwing Bangtao Beach",
+      "tourvisor_name": "Sunwing Resort & Spa Bangtao Beach",
+      "price_key": "thailand:1"
+    },
+    "682": {
+      "zhiraf_id": 2,
+      "country_slug": "thailand",
+      "tourvisor_id": 682,
+      "hotel_name": "Katathani Phuket Beach Resort 5★",
+      "place": "Пхукет, пляж Ката-Ной",
+      "search_query": "Katathani Phuket Beach Resort",
+      "tourvisor_name": "Katathani Phuket Beach Resort",
+      "price_key": "thailand:2"
+    },
+    "599": {
+      "zhiraf_id": 3,
+      "country_slug": "thailand",
+      "tourvisor_id": 599,
+      "hotel_name": "Centara Grand Mirage Beach Resort 5★",
+      "place": "Паттайя, бухта Вонгамат",
+      "search_query": "Centara Grand Mirage Beach Resort",
+      "tourvisor_name": "Centara Grand Mirage Beach Resort Pattaya",
+      "price_key": "thailand:3"
+    },
+    "44661": {
+      "zhiraf_id": 4,
+      "country_slug": "thailand",
+      "tourvisor_id": 44661,
+      "hotel_name": "Mövenpick Siam Hotel Na Jomtien 5★",
+      "place": "Паттайя, На-Джомтьен",
+      "search_query": "Movenpick Siam",
+      "tourvisor_name": "Movenpick Siam Hotel Pattaya",
+      "price_key": "thailand:4"
+    },
+    "51492": {
+      "zhiraf_id": 5,
+      "country_slug": "thailand",
+      "tourvisor_id": 51492,
+      "hotel_name": "X10 Khaolak Resort 5★",
+      "place": "Као-Лак, Банг-Нианг",
+      "search_query": "X10 Khaolak Resort",
+      "tourvisor_name": "X10 Khaolak Resort",
+      "price_key": "thailand:5"
+    },
+    "57460": {
+      "zhiraf_id": 6,
+      "country_slug": "thailand",
+      "tourvisor_id": 57460,
+      "hotel_name": "The SIS Kata 4★",
+      "place": "Пхукет, пляж Ката",
+      "search_query": "The SIS Kata",
+      "tourvisor_name": "The Sis Kata Adults Only 12+",
+      "price_key": "thailand:6"
+    },
+    "13110": {
+      "zhiraf_id": 7,
+      "country_slug": "thailand",
+      "tourvisor_id": 13110,
+      "hotel_name": "Avista Hideaway Phuket Patong – MGallery 5★",
+      "place": "Пхукет, холмы Патонга",
+      "search_query": "Avista Hideaway Phuket Patong – MGallery",
+      "tourvisor_name": "Avista Hideaway Phuket Patong Mgallery By Sofitel",
+      "price_key": "thailand:7"
+    },
+    "677": {
+      "zhiraf_id": 8,
+      "country_slug": "thailand",
+      "tourvisor_id": 677,
+      "hotel_name": "Beyond Karon 4★",
+      "place": "Пхукет, пляж Карон",
+      "search_query": "Beyond Karon",
+      "tourvisor_name": "Beyond Resort Karon Adults Only 18+",
+      "price_key": "thailand:8"
+    },
+    "42534": {
+      "zhiraf_id": 9,
+      "country_slug": "thailand",
+      "tourvisor_id": 42534,
+      "hotel_name": "U Pattaya 5★",
+      "place": "Паттайя, Банг-Сарай",
+      "search_query": "U Pattaya",
+      "tourvisor_name": "U Pattaya",
+      "price_key": "thailand:9"
+    },
+    "45160": {
+      "zhiraf_id": 10,
+      "country_slug": "thailand",
+      "tourvisor_id": 45160,
+      "hotel_name": "Mantra Samui Resort 5★",
+      "place": "Самуи, холмы Бопхут",
+      "search_query": "Mantra Samui Resort",
+      "tourvisor_name": "Mantra Samui Resort Adults Only 16+",
+      "price_key": "thailand:10"
+    },
+    "2050": {
+      "zhiraf_id": 11,
+      "country_slug": "thailand",
+      "tourvisor_id": 2050,
+      "hotel_name": "Pullman Pattaya Hotel G 5★",
+      "place": "Паттайя, бухта Вонгамат",
+      "search_query": "Pullman Pattaya Hotel G",
+      "tourvisor_name": "Pullman Pattaya Hotel G (Ex. Pullman Pattaya Aisawan) ",
+      "price_key": "thailand:11"
+    },
+    "9385": {
+      "zhiraf_id": 12,
+      "country_slug": "thailand",
+      "tourvisor_id": 9385,
+      "hotel_name": "Cape Dara Resort Pattaya 5★",
+      "place": "Паттайя, мыс Дара / Вонгамат",
+      "search_query": "Cape Dara Resort Pattaya",
+      "tourvisor_name": "Cape Dara Resort",
+      "price_key": "thailand:12"
+    },
+    "763": {
+      "zhiraf_id": 13,
+      "country_slug": "thailand",
+      "tourvisor_id": 763,
+      "hotel_name": "Ravindra Beach Resort & Spa 5★",
+      "place": "Паттайя, На-Джомтьен",
+      "search_query": "Ravindra Beach Resort & Spa",
+      "tourvisor_name": "Ravindra Beach Resort & Spa",
+      "price_key": "thailand:13"
+    },
+    "786": {
+      "zhiraf_id": 14,
+      "country_slug": "thailand",
+      "tourvisor_id": 786,
+      "hotel_name": "Sea Sand Sun Resort and Villas 5★",
+      "place": "Паттайя, Банг-Сарай",
+      "search_query": "Sea Sand Sun Resort",
+      "tourvisor_name": "Sea Sand Sun Resort & Villas",
+      "price_key": "thailand:14"
+    },
+    "68972": {
+      "zhiraf_id": 15,
+      "country_slug": "thailand",
+      "tourvisor_id": 68972,
+      "hotel_name": "Ana Anan Resort & Villas Pattaya 5★",
+      "place": "Паттайя, На-Джомтьен",
+      "search_query": "Ana Anan Resort & Villas Pattaya",
+      "tourvisor_name": "Ana Anan Resort & Villa Pattaya",
+      "price_key": "thailand:15"
+    },
+    "59599": {
+      "zhiraf_id": 16,
+      "country_slug": "thailand",
+      "tourvisor_id": 59599,
+      "hotel_name": "Hotel Clover Patong Phuket 4★",
+      "place": "Пхукет, центр Патонга",
+      "search_query": "Clover Hotel Patong",
+      "tourvisor_name": "Clover Hotel Patong (Ex. Surf Hotel Patong)",
+      "price_key": "thailand:16"
+    },
+    "696": {
+      "zhiraf_id": 17,
+      "country_slug": "thailand",
+      "tourvisor_id": 696,
+      "hotel_name": "The Marina Phuket Hotel 4★",
+      "place": "Пхукет, Патонг",
+      "search_query": "The Marina Phuket Hotel",
+      "tourvisor_name": "Marina Phuket Resort",
+      "price_key": "thailand:17"
+    },
+    "2069": {
+      "zhiraf_id": 18,
+      "country_slug": "thailand",
+      "tourvisor_id": 2069,
+      "hotel_name": "The Kee Resort & Spa 4★",
+      "place": "Пхукет, Патонг / Бангла Роуд",
+      "search_query": "The Kee Resort & Spa",
+      "tourvisor_name": "The Kee Resort & Spa",
+      "price_key": "thailand:18"
+    },
+    "70521": {
+      "zhiraf_id": 19,
+      "country_slug": "thailand",
+      "tourvisor_id": 70521,
+      "hotel_name": "Holiday Inn Express Pattaya Central 4★",
+      "place": "Паттайя, центр / Soi Buakhao",
+      "search_query": "Holiday Inn Express Pattaya Central",
+      "tourvisor_name": "Holiday Inn Express Pattaya Central",
+      "price_key": "thailand:19"
+    },
+    "58635": {
+      "zhiraf_id": 20,
+      "country_slug": "thailand",
+      "tourvisor_id": 58635,
+      "hotel_name": "COSI Samui Chaweng Beach 3★",
+      "place": "Самуи, центр Чавенга",
+      "search_query": "COSI Samui Chaweng Beach",
+      "tourvisor_name": "Cosi Samui Chaweng Beach",
+      "price_key": "thailand:20"
+    },
+    "811": {
+      "zhiraf_id": 21,
+      "country_slug": "thailand",
+      "tourvisor_id": 811,
+      "hotel_name": "Sunwing Kamala Beach 4★",
+      "place": "Пхукет, пляж Камала",
+      "search_query": "Sunwing Kamala Beach",
+      "tourvisor_name": "Sunwing Resort Kamala Beach",
+      "price_key": "thailand:21"
+    },
+    "788": {
+      "zhiraf_id": 22,
+      "country_slug": "thailand",
+      "tourvisor_id": 788,
+      "hotel_name": "Chanalai Flora Resort 4★",
+      "place": "Пхукет, пляж Ката",
+      "search_query": "Chanalai Flora Resort",
+      "tourvisor_name": "Chanalai Flora Resort (Ex. Serene Resort)",
+      "price_key": "thailand:22"
+    },
+    "58533": {
+      "zhiraf_id": 23,
+      "country_slug": "thailand",
+      "tourvisor_id": 58533,
+      "hotel_name": "Baan Sailom Resort 3★",
+      "place": "Пхукет, пляж Карон",
+      "search_query": "Baan Sailom Resort",
+      "tourvisor_name": "Baan Sailom",
+      "price_key": "thailand:23"
+    },
+    "580": {
+      "zhiraf_id": 24,
+      "country_slug": "thailand",
+      "tourvisor_id": 580,
+      "hotel_name": "Best Western Phuket Ocean Resort 3★",
+      "place": "Пхукет, пляж Карон",
+      "search_query": "Best Western Phuket Ocean Resort",
+      "tourvisor_name": "Best Western Phuket Ocean Resort",
+      "price_key": "thailand:24"
+    },
+    "99943": {
+      "zhiraf_id": 25,
+      "country_slug": "thailand",
+      "tourvisor_id": 99943,
+      "hotel_name": "Kata White Villas 3★",
+      "place": "Пхукет, пляж Ката",
+      "search_query": "Kata White Villas",
+      "tourvisor_name": "Kata White Villas",
+      "price_key": "thailand:25"
+    }
+  }
 }

@@ -36,16 +36,83 @@ python3 scripts/export_tourvisor_parser_map.py --flat \
 | Египет | `egypt` | `egipet` | 1 | `egypt-tourvisor-hotels.json` |
 | Таиланд | `thailand` | `tailand` | 2 | `thailand-tourvisor-hotels.json` |
 | **Вьетнам** | **`vietnam`** | **`vietnam`** | **16** | **`vietnam-tourvisor-hotels.json`** |
+| **Мальдивы** | **`maldives`** | **`maldivy`** | **8** | **`maldives-tourvisor-hotels.json`** |
 
-## Локальный «parser tourvisor» (ваш ПК)
+### Мальдивы: modsearch из **Москвы**
 
-Готовый drop-in (как для Турции/ОАЭ): **`deliverables/zhiraf-ufa/tourvisor-parser-dropin/`**
+Пакеты на Мальдивы в Tourvisor для Уфы часто **пустые**; на сайте честно: вылет **из Уфы со стыковкой в Москве** (hero, `geo_answer`).
 
-- `output/hotels_map_vietnam.json` — скопировать в `output/` парсера
-- `hotels_config.countries.snippet.json` — включить `vietnam` в `hotels_config.json`
-- Пересборка: `python3 scripts/export_tourvisor_parser_map.py --country vietnam --parser-dropin deliverables/zhiraf-ufa/tourvisor-parser-dropin/output`
+В парсере для **`fetch_prices_by_map.py --country maldives`**:
 
-Облачный агент **не** имеет доступа к Tourvisor login на вашем ПК — батч-поиск и `push` выполняются только там, после копирования drop-in.
+- в **`hotels_config.json`** → `countries.maldives` поставить **тот же `departure` / city id, что у других направлений «Из Москвы»** (см. `tourvisor_departure.py` или блок Сейшел/Бали в конфиге);
+- в map-файле и webhook поле **`departure_city`: `"Москва"`** (drop-in из teya уже так для MV);
+- ключи webhook по-прежнему **`maldives:{zhiraf_id}`** — landing `maldivy` не меняем.
+
+Цена на карточке — **ориентир пакета из Москвы**; в текстах сайта — что смета из Уфы = Москва + стыковка (как bento «Из Москвы»).
+
+## Локальный проект `parser tourvisor` (ваш ПК)
+
+Подробности — **`TOURVISOR_SITE_SYNC.md`** в корне парсера. Типовая цепочка для сайта:
+
+```text
+карты id  →  fetch_prices_by_map.py  →  push_tourvisor_prices.py
+```
+
+| Скрипт | Роль |
+|--------|------|
+| `find_hotel_ids.py` | Собрать/обновить `output/hotels_map_*.json` (если map нет — берём drop-in из teya-cursor-plugin) |
+| `apply_hotel_aliases.py` | Поправить алиасы в карте (редко) |
+| **`fetch_prices_by_map.py`** | Карта → modsearch Tourvisor → **`output/tourvisor-prices.json`** |
+| **`push_tourvisor_prices.py`** | POST на webhook b2b / prod |
+| `run_min_prices_5.py` | Пакет минимумов по 5 направлениям (если внутри уже дергает fetch+merge — смотрите `TOURVISOR_SITE_SYNC.md`) |
+| `run_egypt_december.py` | Разовый прогон Египта (не для VN/MV) |
+| `tourvisor_parser.py` | Открытый поиск → `output/latest_tours.json` (не curated webhook) |
+
+### Подготовка карт (из teya-cursor-plugin)
+
+Готовый drop-in: **`deliverables/zhiraf-ufa/tourvisor-parser-dropin/`**
+
+```bash
+# В клоне teya-cursor-plugin (ветка с VN/MV drop-in)
+python3 scripts/export_tourvisor_parser_map.py --country vietnam --country maldives \
+  --parser-dropin deliverables/zhiraf-ufa/tourvisor-parser-dropin/output
+```
+
+Скопировать в **`parser tourvisor/output/`**:
+
+- `hotels_map_vietnam.json`
+- `hotels_map_maldives.json`
+- (при необходимости обновить turkey/uae/egypt/thailand)
+
+В **`hotels_config.json`** влить блоки `vietnam` и `maldives` из  
+`deliverables/zhiraf-ufa/tourvisor-parser-dropin/hotels_config.countries.snippet.json`  
+(`tourvisor_country_id`: **16** / **8**, ключи webhook **`vietnam:*`** / **`maldives:*`**).
+
+### Прогон (в корне `parser tourvisor`)
+
+```bash
+cd "parser tourvisor"
+
+# 1) Уточнить флаги (версии скриптов у вас локальные)
+python fetch_prices_by_map.py --help
+
+# 2) Батч — обычно одна или обе страны (сверьте с TOURVISOR_SITE_SYNC.md)
+python fetch_prices_by_map.py --country vietnam
+python fetch_prices_by_map.py --country maldives
+# или один общий прогон по всем enabled в hotels_config.json:
+# python fetch_prices_by_map.py
+
+# 3) Проверить, что в output/tourvisor-prices.json есть vietnam:1 и maldives:1…
+# 4) Push на стейдж
+python push_tourvisor_prices.py
+```
+
+`.env` в корне парсера (см. `TOURVISOR_WEBHOOK_SETUP.md`):
+
+- `ZHIRAF_PRICE_WEBHOOK_URL=https://b2b-tour.ru/wp-json/zhiraf/v1/update-prices`
+- `ZHIRAF_TOURVISOR_WEBHOOK_TOKEN=<как в WP → Настройки → Цены Tourvisor>`
+
+Облачный агент **не** имеет Tourvisor login — батч и push только на вашем ПК.
 
 ## Вьетнам — что добавить в парсер
 

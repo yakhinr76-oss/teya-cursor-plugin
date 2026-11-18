@@ -21,7 +21,7 @@
 
 | # | Блок | Примечание |
 |---|------|------------|
-| 1 | Hero | H1, lead, badges, опционально resort chips, **одна primary** («Смотреть 6 отелей») + outline (сравнение курортов → модалка), trust-триггеры под кнопками |
+| 1 | Hero | H1, lead, badges, опционально resort chips, **одна primary** («Смотреть 6 отелей») + outline (сравнение курортов → модалка), trust-триггеры под кнопками. **Тексты и запреты:** `HERO-V1-STANDARD.md` |
 | 2 | Curated hub | Pick-карточки курортов/эмиратов (**≤5 в одну строку** на desktop), фильтры, **6 карточек отелей**, fill-слот (при 2 отелях в ряду курорта), полоска под сеткой |
 | 3 | Kids | Только если `curated_kids_section` (`kids-turkey.php` / `kids-uae.php` / `kids-egypt.php` …) |
 | 4 | Expert nuances | Только если `curated_expert_section` |

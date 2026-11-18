@@ -11,7 +11,14 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 THEME_DATA = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data"
 
-TV_COUNTRY_ID = {"turkey": 4, "uae": 9, "egypt": 1, "thailand": 2, "vietnam": 16}
+TV_COUNTRY_ID = {
+    "turkey": 4,
+    "uae": 9,
+    "egypt": 1,
+    "thailand": 2,
+    "vietnam": 16,
+    "maldives": 8,
+}
 
 GITHUB_RAW = (
     "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/{ref}/"
@@ -24,6 +31,7 @@ MAPS: dict[str, Path] = {
     "egypt": THEME_DATA / "egypt-tourvisor-hotels.json",
     "thailand": THEME_DATA / "thailand-tourvisor-hotels.json",
     "vietnam": THEME_DATA / "vietnam-tourvisor-hotels.json",
+    "maldives": THEME_DATA / "maldives-tourvisor-hotels.json",
 }
 
 
@@ -67,7 +75,7 @@ def parser_hotels_map(doc: dict) -> dict:
         "country_slug": slug,
         "tourvisor_country_id": doc.get("tourvisor_country_id"),
         "identified_at": doc.get("identified_at"),
-        "departure_city": "Уфа",
+        "departure_city": "Москва" if slug == "maldives" else "Уфа",
         "hotel_count": len(rows),
         "hotel_ids": ",".join(str(i) for i in ids),
         "hotels": rows,

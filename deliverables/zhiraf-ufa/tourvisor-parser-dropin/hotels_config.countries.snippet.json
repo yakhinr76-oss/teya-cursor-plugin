@@ -7,8 +7,18 @@
       "enabled": true,
       "country_slug": "vietnam",
       "tourvisor_country_id": 16,
+      "departure_city": "Уфа",
       "hotels_map": "output/hotels_map_vietnam.json",
       "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_vietnam.json"
+    },
+    "maldives": {
+      "enabled": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8,
+      "departure_city": "Москва",
+      "departure_city_note": "modsearch только из Москвы; на сайте — пакет из Уфы со стыковкой",
+      "hotels_map": "output/hotels_map_maldives.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_maldives.json"
     }
   }
 }

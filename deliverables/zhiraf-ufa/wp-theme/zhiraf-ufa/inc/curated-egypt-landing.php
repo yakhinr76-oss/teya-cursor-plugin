@@ -700,7 +700,7 @@ function zhiraf_ufa_egypt_resort_chips() {
 		array( 'id' => 'resort-hurghada', 'label' => __( 'Хургада — песок', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-sharm', 'label' => __( 'Шарм — рифы', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-makadi', 'label' => __( 'Макади — семьи', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-sahl', 'label' => __( 'Сахл — люкс', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sahl', 'label' => __( 'Сахл-Хашиш — люкс', 'zhiraf-ufa' ) ),
 	);
 }
 

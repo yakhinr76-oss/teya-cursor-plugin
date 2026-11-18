@@ -198,13 +198,13 @@ function zhiraf_ufa_vietnam_pool_meal_concept( $name, $cat ) {
 		$stars = $m[1] . '★';
 	}
 	if ( 'cam_ranh_resorts' === $cat || 'family' === $cat ) {
-		return trim( $stars . ' ' . __( 'All Inclusive', 'zhiraf-ufa' ) );
+		return trim( $stars . ' ' . __( '«Всё включено»', 'zhiraf-ufa' ) );
 	}
 	if ( 'urban' === $cat ) {
 		return trim( $stars . ' ' . __( 'Завтраки + кафе рядом', 'zhiraf-ufa' ) );
 	}
 
-	return trim( $stars . ' ' . __( 'Завтраки (BB)', 'zhiraf-ufa' ) );
+	return trim( $stars . ' ' . __( 'на завтраках', 'zhiraf-ufa' ) );
 }
 
 /**

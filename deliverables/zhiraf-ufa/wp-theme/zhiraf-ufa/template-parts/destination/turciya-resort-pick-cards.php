@@ -50,7 +50,12 @@ $pick_lead = 'oae' === $dest_slug
 		</p>
 	</div>
 
-	<div class="turciya-resort-pick__track turciya-resort-pick__track--five" role="list">
+	<?php
+	$pick_track_class = count( $cards ) >= 6
+		? 'turciya-resort-pick__track turciya-resort-pick__track--six'
+		: 'turciya-resort-pick__track turciya-resort-pick__track--five';
+	?>
+	<div class="<?php echo esc_attr( $pick_track_class ); ?>" role="list">
 		<?php foreach ( $cards as $card ) : ?>
 			<?php
 			$id             = ! empty( $card['id'] ) ? sanitize_html_class( (string) $card['id'] ) : '';
@@ -68,9 +73,15 @@ $pick_lead = 'oae' === $dest_slug
 			$catalog_desc   = ! empty( $meta['desc'] ) ? (string) $meta['desc'] : '';
 			$transfer_mod   = ! empty( $card['transfer_mod'] ) ? sanitize_html_class( (string) $card['transfer_mod'] ) : '';
 			$guide_url      = ! empty( $card['guide_url'] ) ? (string) $card['guide_url'] : '';
-			$guide_label    = ! empty( $card['guide_label'] ) ? (string) $card['guide_label'] : __( 'Подробный гид по курорту →', 'zhiraf-ufa' );
+			$guide_label    = ! empty( $card['guide_label'] ) ? (string) $card['guide_label'] : __( 'На страницу →', 'zhiraf-ufa' );
+			$show_filter_cta = $count > 0 && empty( $card['hide_catalog_filter'] );
 			/* translators: %d: hotel count */
-			$filter_cta     = sprintf( __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ), $count );
+			$filter_cta     = sprintf(
+				'oae' === $dest_slug
+					? __( 'Показать здесь (%d) ↓', 'zhiraf-ufa' )
+					: __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ),
+				$count
+			);
 			?>
 			<div class="<?php echo esc_attr( $card_class ); ?>" role="listitem">
 				<button
@@ -119,15 +130,17 @@ $pick_lead = 'oae' === $dest_slug
 					</span>
 				</button>
 				<div class="turciya-resort-pick__card-foot">
-					<button
-						type="button"
-						class="turciya-resort-pick__filter-cta"
-						data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
-						data-catalog-title="<?php echo esc_attr( $catalog_title ); ?>"
-						data-catalog-desc="<?php echo esc_attr( $catalog_desc ); ?>"
-					>
-						<?php echo esc_html( $filter_cta ); ?>
-					</button>
+					<?php if ( $show_filter_cta ) : ?>
+						<button
+							type="button"
+							class="turciya-resort-pick__filter-cta"
+							data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
+							data-catalog-title="<?php echo esc_attr( $catalog_title ); ?>"
+							data-catalog-desc="<?php echo esc_attr( $catalog_desc ); ?>"
+						>
+							<?php echo esc_html( $filter_cta ); ?>
+						</button>
+					<?php endif; ?>
 					<?php if ( '' !== $guide_url ) : ?>
 						<a
 							class="turciya-resort-pick__guide"

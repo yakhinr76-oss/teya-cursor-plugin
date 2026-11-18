@@ -251,19 +251,30 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 	<?php endif; ?>
 
 	<?php if ( $use_curated_landing ) : ?>
-		<?php
-		get_template_part(
-			'template-parts/destination/turciya-resort-compare-lead',
-			null,
-			array(
-				'dest'      => $dest,
-				'dest_slug' => $dest_slug,
-			)
-		);
-		?>
-	<?php endif; ?>
-
-	<?php if ( ! $use_curated_landing ) : ?>
+		<?php if ( ! empty( $dest['curated_dest_lead_form'] ) ) : ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/destination-curated-lead',
+				null,
+				array(
+					'dest'      => $dest,
+					'dest_slug' => $dest_slug,
+				)
+			);
+			?>
+		<?php else : ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-resort-compare-lead',
+				null,
+				array(
+					'dest'      => $dest,
+					'dest_slug' => $dest_slug,
+				)
+			);
+			?>
+		<?php endif; ?>
+	<?php elseif ( ! $use_curated_landing ) : ?>
 	<section class="section dest-landing-cta" id="dest-lead">
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>

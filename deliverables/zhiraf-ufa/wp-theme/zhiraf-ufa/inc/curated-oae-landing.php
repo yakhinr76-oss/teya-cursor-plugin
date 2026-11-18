@@ -70,9 +70,30 @@ function zhiraf_ufa_oae_emirate_key( $emirate ) {
 		'sharjah'        => 'sharjah',
 		'dubai'          => 'dubai',
 		'ajman'          => 'ajman',
+		'fujairah'       => 'fujairah',
 	);
 
 	return ! empty( $map[ $e ] ) ? (string) $map[ $e ] : str_replace( '_', '-', $e );
+}
+
+/**
+ * Child emirate landing URL.
+ *
+ * @param string $emirate_slug dubai|rak|sharjah|abu-dhabi|ajman|fujairah.
+ * @return string
+ */
+function zhiraf_ufa_oae_emirate_landing_url( $emirate_slug ) {
+	$map = array(
+		'dubai'     => 'dubai',
+		'rak'       => 'ras-al-khaimah',
+		'sharjah'   => 'sharjah',
+		'abu-dhabi' => 'abu-dhabi',
+		'ajman'     => 'ajman',
+		'fujairah'  => 'fujairah',
+	);
+	$path = ! empty( $map[ $emirate_slug ] ) ? (string) $map[ $emirate_slug ] : sanitize_title( (string) $emirate_slug );
+
+	return home_url( '/tour/oae/' . $path . '/' );
 }
 
 /**
@@ -658,6 +679,13 @@ function zhiraf_ufa_oae_catalog_filters() {
 			'desc'  => __( 'Спокойный пляж и доступные цены — из нашей базы 25 отелей.', 'zhiraf-ufa' ),
 		),
 		array(
+			'id'    => 'emirate-fujairah',
+			'group' => 'resort',
+			'label' => __( '🐢 Фуджейра', 'zhiraf-ufa' ),
+			'title' => __( 'Отели Фуджейры', 'zhiraf-ufa' ),
+			'desc'  => __( 'Оманский залив, горы Хаджар и снорклинг — отели у побережья Индийского океана.', 'zhiraf-ufa' ),
+		),
+		array(
 			'id'    => 'need-family',
 			'group' => 'need',
 			'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ),
@@ -702,7 +730,7 @@ function zhiraf_ufa_oae_catalog_default_copy() {
 	$filters = zhiraf_ufa_oae_catalog_filters();
 
 	return array(
-		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
+		'eyebrow' => __( 'Выборка из базы 27 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в ОАЭ', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Подбираем под задачу: город у метро, пляж JBR или All Inclusive в Рас-эль-Хайме. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
@@ -727,6 +755,7 @@ function zhiraf_ufa_oae_emirate_hotel_counts() {
 		'sharjah'   => 0,
 		'abu-dhabi' => 0,
 		'ajman'     => 0,
+		'fujairah'  => 0,
 	);
 	foreach ( zhiraf_ufa_oae_catalog_hotels() as $hotel ) {
 		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
@@ -775,21 +804,29 @@ function zhiraf_ufa_oae_resort_chips() {
 			'id'    => 'emirate-ajman',
 			'label' => __( 'Аджман — бюджет', 'zhiraf-ufa' ),
 		),
+		array(
+			'id'    => 'emirate-fujairah',
+			'label' => __( 'Фуджейра', 'zhiraf-ufa' ),
+		),
 	);
 }
 
 /**
- * Five emirate pick cards — H2 «Какой эмират ОАЭ выбрать именно вам?».
+ * Six emirate pick cards — H2 «Какой эмират ОАЭ выбрать именно вам?».
  *
  * @return array<int,array<string,mixed>>
  */
 function zhiraf_ufa_oae_resort_pick_cards() {
 	$counts = zhiraf_ufa_oae_emirate_hotel_counts();
 
+	$guide_here = __( 'На страницу →', 'zhiraf-ufa' );
+
 	return array(
 		array(
 			'id'            => 'dubai',
 			'filter_id'     => 'emirate-dubai',
+			'guide_url'     => zhiraf_ufa_oae_emirate_landing_url( 'dubai' ),
+			'guide_label'   => $guide_here,
 			'name'          => __( 'Дубай', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Метро, марина и JBR', 'zhiraf-ufa' ),
 			'tag'           => __( 'Город-хит', 'zhiraf-ufa' ),
@@ -812,6 +849,8 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 		array(
 			'id'            => 'rak',
 			'filter_id'     => 'emirate-rak',
+			'guide_url'     => zhiraf_ufa_oae_emirate_landing_url( 'rak' ),
+			'guide_label'   => $guide_here,
 			'name'          => __( 'Рас-эль-Хайма', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Пляж и All Inclusive', 'zhiraf-ufa' ),
 			'tag'           => __( 'Семейный курорт', 'zhiraf-ufa' ),
@@ -834,6 +873,8 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 		array(
 			'id'            => 'sharjah',
 			'filter_id'     => 'emirate-sharjah',
+			'guide_url'     => zhiraf_ufa_oae_emirate_landing_url( 'sharjah' ),
+			'guide_label'   => $guide_here,
 			'name'          => __( 'Шарджа', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Спокойнее и доступнее', 'zhiraf-ufa' ),
 			'tag'           => __( 'Бюджет', 'zhiraf-ufa' ),
@@ -857,6 +898,8 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 		array(
 			'id'            => 'abu-dhabi',
 			'filter_id'     => 'emirate-abu-dhabi',
+			'guide_url'     => zhiraf_ufa_oae_emirate_landing_url( 'abu-dhabi' ),
+			'guide_label'   => $guide_here,
 			'name'          => __( 'Абу-Даби', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Культура и Яс', 'zhiraf-ufa' ),
 			'tag'           => __( 'Парки и музеи', 'zhiraf-ufa' ),
@@ -879,11 +922,13 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 		array(
 			'id'            => 'ajman',
 			'filter_id'     => 'emirate-ajman',
+			'guide_url'     => zhiraf_ufa_oae_emirate_landing_url( 'ajman' ),
+			'guide_label'   => $guide_here,
 			'name'          => __( 'Аджман', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Тихий пляж у залива', 'zhiraf-ufa' ),
 			'tag'           => __( 'Цена/качество', 'zhiraf-ufa' ),
 			'tag_mod'       => 'nature',
-			'transfer'      => __( '30–40 мин от аэропорта', 'zhiraf-ufa' ),
+			'transfer'      => __( '~35 мин', 'zhiraf-ufa' ),
 			'transfer_mod'  => 'fast',
 			'featured'      => false,
 			'hotel_count'   => $counts['ajman'],
@@ -896,6 +941,31 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 				array(
 					'type' => 'info',
 					'text' => __( 'Меньше отелей — заранее бронируем номера', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		array(
+			'id'            => 'fujairah',
+			'filter_id'     => 'emirate-fujairah',
+			'guide_url'     => zhiraf_ufa_oae_emirate_landing_url( 'fujairah' ),
+			'guide_label'   => $guide_here,
+			'name'          => __( 'Фуджейра', 'zhiraf-ufa' ),
+			'subtitle'      => __( 'Горы Хаджар и снорклинг', 'zhiraf-ufa' ),
+			'tag'           => __( 'Индийский океан', 'zhiraf-ufa' ),
+			'tag_mod'       => 'ocean',
+			'transfer'      => __( '~2 ч от Дубая', 'zhiraf-ufa' ),
+			'transfer_mod'  => 'warn',
+			'featured'      => false,
+			'hotel_count'   => $counts['fujairah'],
+			'accent_mod'    => 'teal',
+			'bullets'       => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Единственный эмират на Индийском океане, а не в заливе', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'pro',
+					'text' => __( 'Свой коралловый риф, черепахи и мягче переносится жара', 'zhiraf-ufa' ),
 				),
 			),
 		),

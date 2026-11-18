@@ -28,7 +28,7 @@ MAPS = {
 }
 
 # Countries that must have 25/25 tourvisor_id before CI fails (Thailand may stay scaffold).
-STRICT_READY = {"turkey", "uae", "egypt", "vietnam", "maldives"}
+STRICT_READY = {"turkey", "uae", "egypt", "thailand", "vietnam", "maldives"}
 
 
 def check_theme_map(slug: str, path: Path, expected_tv_country: int) -> list[str]:

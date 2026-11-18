@@ -16,13 +16,6 @@
       "tourvisor_country_id": 8,
       "hotels_map": "output/hotels_map_maldives.json",
       "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_maldives.json"
-    },
-    "maldives": {
-      "enabled": true,
-      "country_slug": "maldives",
-      "tourvisor_country_id": 8,
-      "hotels_map": "output/hotels_map_maldives.json",
-      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_maldives.json"
     }
   }
 }

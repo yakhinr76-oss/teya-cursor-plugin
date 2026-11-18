@@ -29,6 +29,20 @@
       "departure_date": "2026-06-14",
       "meal": "UAI",
       "operator": ""
+    },
+    "uae:1": {
+      "country_slug": "uae",
+      "zhiraf_id": 1,
+      "tourvisor_id": 76213,
+      "hotel_name": "Centara Mirage Beach Resort Dubai 4★",
+      "place": "Дубай",
+      "price_rub": 185000,
+      "nights": 7,
+      "adults": 2,
+      "departure_city": "Уфа",
+      "departure_date": "2026-12-10",
+      "meal": "AI",
+      "operator": ""
     }
   }
 }

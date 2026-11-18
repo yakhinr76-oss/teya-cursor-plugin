@@ -38,6 +38,18 @@ python3 scripts/export_tourvisor_parser_map.py --flat \
 | **Вьетнам** | **`vietnam`** | **`vietnam`** | **16** | **`vietnam-tourvisor-hotels.json`** |
 | **Мальдивы** | **`maldives`** | **`maldivy`** | **8** | **`maldives-tourvisor-hotels.json`** |
 
+### Мальдивы: modsearch из **Москвы**
+
+Пакеты на Мальдивы в Tourvisor для Уфы часто **пустые**; на сайте честно: вылет **из Уфы со стыковкой в Москве** (hero, `geo_answer`).
+
+В парсере для **`fetch_prices_by_map.py --country maldives`**:
+
+- в **`hotels_config.json`** → `countries.maldives` поставить **тот же `departure` / city id, что у других направлений «Из Москвы»** (см. `tourvisor_departure.py` или блок Сейшел/Бали в конфиге);
+- в map-файле и webhook поле **`departure_city`: `"Москва"`** (drop-in из teya уже так для MV);
+- ключи webhook по-прежнему **`maldives:{zhiraf_id}`** — landing `maldivy` не меняем.
+
+Цена на карточке — **ориентир пакета из Москвы**; в текстах сайта — что смета из Уфы = Москва + стыковка (как bento «Из Москвы»).
+
 ## Локальный проект `parser tourvisor` (ваш ПК)
 
 Подробности — **`TOURVISOR_SITE_SYNC.md`** в корне парсера. Типовая цепочка для сайта:

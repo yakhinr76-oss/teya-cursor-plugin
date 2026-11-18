@@ -75,7 +75,7 @@ def parser_hotels_map(doc: dict) -> dict:
         "country_slug": slug,
         "tourvisor_country_id": doc.get("tourvisor_country_id"),
         "identified_at": doc.get("identified_at"),
-        "departure_city": "Уфа",
+        "departure_city": "Москва" if slug == "maldives" else "Уфа",
         "hotel_count": len(rows),
         "hotel_ids": ",".join(str(i) for i in ids),
         "hotels": rows,

@@ -38,6 +38,18 @@ python3 scripts/export_tourvisor_parser_map.py --flat \
 | **Вьетнам** | **`vietnam`** | **`vietnam`** | **16** | **`vietnam-tourvisor-hotels.json`** |
 | **Мальдивы** | **`maldives`** | **`maldivy`** | **8** | **`maldives-tourvisor-hotels.json`** |
 
+### Modsearch: **не больше 5 отелей** в одном запросе
+
+Tourvisor modsearch при **6+ `tourvisor_id` в одном поиске** часто отдаёт **пустой результат**. Договорённость с парсером: **≤ 5 id на запрос**, для 25 curated — **5 запросов** (или цикл по `search_batches` в map).
+
+| Где | Что |
+|-----|-----|
+| `hotels_config.json` | `modsearch_hotels_per_request`: **5** (см. drop-in snippet) |
+| `hotels_map_{country}.json` | поле **`search_batches`**: пачки по 5 с `tourvisor_ids` / `zhiraf_ids` |
+| `fetch_prices_by_map.py` | для каждой страны: **цикл по `search_batches`** (или нарезка map на 5), merge в `tourvisor-prices.json` |
+
+Пауза 1–2 с между modsearch — по желанию, если API душит.
+
 ### Мальдивы: modsearch из **Москвы**
 
 Пакеты на Мальдивы в Tourvisor для Уфы часто **пустые**; на сайте честно: вылет **из Уфы со стыковкой в Москве** (hero, `geo_answer`).
@@ -62,7 +74,7 @@ python3 scripts/export_tourvisor_parser_map.py --flat \
 |--------|------|
 | `find_hotel_ids.py` | Собрать/обновить `output/hotels_map_*.json` (если map нет — берём drop-in из teya-cursor-plugin) |
 | `apply_hotel_aliases.py` | Поправить алиасы в карте (редко) |
-| **`fetch_prices_by_map.py`** | Карта → modsearch Tourvisor → **`output/tourvisor-prices.json`** |
+| **`fetch_prices_by_map.py`** | Карта → modsearch Tourvisor → **`output/tourvisor-prices.json`** (см. **батчи по 5 отелей** ниже) |
 | **`push_tourvisor_prices.py`** | POST на webhook b2b / prod |
 | `run_min_prices_5.py` | Пакет минимумов по 5 направлениям (если внутри уже дергает fetch+merge — смотрите `TOURVISOR_SITE_SYNC.md`) |
 | `run_egypt_december.py` | Разовый прогон Египта (не для VN/MV) |

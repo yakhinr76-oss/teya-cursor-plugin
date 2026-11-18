@@ -4,6 +4,135 @@
   "tourvisor_country_id": 9,
   "identified_at": "2026-11-17",
   "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 5,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        76213,
+        23864,
+        68024,
+        78398,
+        2938
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "price_keys": [
+        "uae:1",
+        "uae:2",
+        "uae:3",
+        "uae:4",
+        "uae:5"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        2536,
+        2563,
+        43061,
+        13853,
+        2590
+      ],
+      "zhiraf_ids": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "price_keys": [
+        "uae:6",
+        "uae:7",
+        "uae:8",
+        "uae:9",
+        "uae:10"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        76727,
+        2926,
+        59333,
+        64915,
+        55946
+      ],
+      "zhiraf_ids": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "price_keys": [
+        "uae:11",
+        "uae:12",
+        "uae:13",
+        "uae:14",
+        "uae:15"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        63195,
+        67405,
+        63880,
+        2535,
+        67402
+      ],
+      "zhiraf_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "price_keys": [
+        "uae:16",
+        "uae:17",
+        "uae:18",
+        "uae:19",
+        "uae:20"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        67445,
+        2570,
+        23751,
+        59331,
+        57333
+      ],
+      "zhiraf_ids": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "price_keys": [
+        "uae:21",
+        "uae:22",
+        "uae:23",
+        "uae:24",
+        "uae:25"
+      ]
+    }
+  ],
   "hotel_count": 25,
   "hotel_ids": "2535,2536,2563,2570,2590,2926,2938,13853,23751,23864,43061,55946,57333,59331,59333,63195,63880,64915,67402,67405,67445,68024,76213,76727,78398",
   "hotels": [

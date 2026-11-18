@@ -48,7 +48,7 @@ python3 scripts/export_tourvisor_parser_map.py \
 
 ## Прогон (как раньше)
 
-1. `fetch-by-map` / батч — читает `output/hotels_map_vietnam.json`, в Tourvisor ищет по **id**, не по имени.
+1. `fetch-by-map` — читает `output/hotels_map_*.json`, modsearch **по `tourvisor_id`**, **не больше 5 отелей за запрос** (поле `search_batches` в map — 5 пачек × 5 для curated 25).
 2. Сборка `output/tourvisor-prices.json` — в турах должны быть `country_slug` + `zhiraf_id` (join по `hotelcode` ↔ map).
 3. `push_tourvisor_prices.py` → `https://b2b-tour.ru/wp-json/zhiraf/v1/update-prices` (см. `deliverables/zhiraf-ufa/TOURVISOR_WEBHOOK_SETUP.md`).
 

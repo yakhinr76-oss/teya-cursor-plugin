@@ -25,7 +25,7 @@ CATALOG_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/india_ho
 OUT_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/india-tourvisor-hotels.json"
 
 # Tourvisor autocomplete: Индия (Гоа) (country id TODO).
-TOURVISOR_INDONESIA_COUNTRY_ID = int(os.environ.get("TOURVISOR_INDONESIA_COUNTRY_ID", "0"))
+TOURVISOR_INDIA_COUNTRY_ID = int(os.environ.get("TOURVISOR_INDIA_COUNTRY_ID", "0"))
 AUTOCOMPLETE_URL = "https://tourvisor.ru/xml/autocomplete.php"
 
 TR = str.maketrans(
@@ -132,7 +132,7 @@ def autocomplete_fetch(query: str) -> list[dict]:
     with urllib.request.urlopen(req, timeout=25) as resp:
         data = json.loads(resp.read().decode("utf-8"))
     hotels = (((data.get("lists") or {}).get("searchresults") or {}).get("hotels") or [])
-    return [h for h in hotels if int(h.get("countryid", 0)) == TOURVISOR_INDONESIA_COUNTRY_ID]
+    return [h for h in hotels if int(h.get("countryid", 0)) == TOURVISOR_INDIA_COUNTRY_ID]
 
 
 def score_candidate(query_tokens: list[str], cand: dict) -> float:
@@ -248,7 +248,7 @@ def build_document(hotels: list[dict], source: str) -> dict:
             "В webhook prices ключ india:{zhiraf_id} (country_slug india, не egipet). "
             "Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл."
         ),
-        "tourvisor_country_id": TOURVISOR_INDONESIA_COUNTRY_ID,
+        "tourvisor_country_id": TOURVISOR_INDIA_COUNTRY_ID,
         "hotels": hotels,
     }
 

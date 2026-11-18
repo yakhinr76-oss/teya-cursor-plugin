@@ -103,10 +103,12 @@ function zhiraf_ufa_destination_landing_data() {
 				array(
 					'url'   => home_url( '/blog/turciya-ili-egipet-iz-ufy/' ),
 					'label' => __( 'Турция или Египет: сравнение курортов', 'zhiraf-ufa' ),
+					'tag'   => __( 'СРАВНЕНИЕ', 'zhiraf-ufa' ),
 				),
 				array(
 					'url'   => home_url( '/blog/tury-s-detmi-iz-ufy/' ),
 					'label' => __( 'Туры с детьми из Уфы: критерии отеля', 'zhiraf-ufa' ),
+					'tag'   => __( 'СЕМЕЙНЫЙ ОТДЫХ', 'zhiraf-ufa' ),
 				),
 			),
 			'faq'            => array(
@@ -336,10 +338,13 @@ function zhiraf_ufa_destination_landing_data() {
 				array(
 					'url'   => home_url( '/blog/turciya-ili-egipet-iz-ufy/' ),
 					'label' => __( 'Турция или ОАЭ: куда лететь из Уфы', 'zhiraf-ufa' ),
+					'tag'   => __( 'СРАВНЕНИЕ', 'zhiraf-ufa' ),
 				),
 				array(
 					'url'   => home_url( '/tour/oae/#kids-uae' ),
 					'label' => __( 'ОАЭ с детьми из Уфы: лучшие пляжные отели', 'zhiraf-ufa' ),
+					'tag'   => __( 'СЕМЕЙНЫЙ ОТДЫХ', 'zhiraf-ufa' ),
+					'image' => 'hero-uae.jpg',
 				),
 			),
 			'faq'            => array(
@@ -465,14 +470,17 @@ function zhiraf_ufa_destination_landing_data() {
 				array(
 					'url'   => home_url( '/blog/turciya-ili-egipet-iz-ufy/' ),
 					'label' => __( 'Турция или Египет: подробное сравнение', 'zhiraf-ufa' ),
+					'tag'   => __( 'СРАВНЕНИЕ', 'zhiraf-ufa' ),
 				),
 				array(
 					'url'   => home_url( '/blog/tury-s-detmi-iz-ufy/' ),
 					'label' => __( 'Туры с детьми из Уфы: критерии отеля', 'zhiraf-ufa' ),
+					'tag'   => __( 'СЕМЕЙНЫЙ ОТДЫХ', 'zhiraf-ufa' ),
 				),
 				array(
 					'url'   => home_url( '/blog/kak-kupit-tur-v-ufe/' ),
 					'label' => __( 'Как купить тур в Уфе: пошаговая инструкция', 'zhiraf-ufa' ),
+					'tag'   => __( 'ИНСТРУКЦИЯ', 'zhiraf-ufa' ),
 				),
 			),
 			'faq'            => array(

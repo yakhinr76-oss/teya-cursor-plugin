@@ -227,21 +227,13 @@ if ( empty( $dest ) ) {
 					</div>
 				<?php endif; ?>
 				<?php if ( ! empty( $dest['blog_links'] ) && is_array( $dest['blog_links'] ) ) : ?>
-					<h3 class="dest-resort-chip-hub__guides"><?php esc_html_e( 'Полезные гиды', 'zhiraf-ufa' ); ?></h3>
-					<div class="dest-resort-chip-grid dest-resort-chip-grid--guides" role="list">
-						<?php foreach ( $dest['blog_links'] as $link ) : ?>
-							<a
-								class="dest-resort-chip dest-resort-chip--guide"
-								href="<?php echo esc_url( $link['url'] ); ?>"
-								role="listitem"
-							>
-								<span class="dest-resort-chip__body">
-									<span class="dest-resort-chip__title"><?php echo esc_html( $link['label'] ); ?></span>
-								</span>
-								<span class="dest-resort-chip__arrow" aria-hidden="true">→</span>
-							</a>
-						<?php endforeach; ?>
-					</div>
+					<?php
+					get_template_part(
+						'template-parts/sections/useful-guides',
+						null,
+						array( 'blog_links' => $dest['blog_links'] )
+					);
+					?>
 				<?php endif; ?>
 			<?php endif; ?>
 		</div>

@@ -57,7 +57,7 @@ $wa_url  = function_exists( 'zhiraf_ufa_whatsapp_url_with_text' )
 		</button>
 	</p>
 	<a
-		class="turciya-catalog-wa-strip__link"
+		class="btn btn--outline btn--sm turciya-catalog-wa-strip__link"
 		href="<?php echo esc_url( $wa_url ); ?>"
 		target="_blank"
 		rel="noopener noreferrer"

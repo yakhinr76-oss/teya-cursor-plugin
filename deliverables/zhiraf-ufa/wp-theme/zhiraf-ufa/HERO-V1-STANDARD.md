@@ -37,6 +37,7 @@
 
 ## Визуал
 
+- **CTA vs чипы:** все кнопки действий — `border-radius: var(--radius-cta)` (12px, rounded-xl); чипы фильтров и бейджи — `var(--radius-pill)` (rounded-full). См. `--radius-cta` / `--radius-pill` в `assets/src/scss/main.scss`.
 - Сетка Hero: **7fr / 5fr** (текст / фото) от 992px — `_catalog-destination-landings.scss`, класс `site-main--destination`.
 - Фото Hero: открыточный пляж/курорт страны, без «анти-отпуска» (трущобы, промзоны). Файл в `assets/images/`, поле `image` в landing data.
 - Иконка визы: `inc/hero-badges.php`, поле `icon_svg` => `passport`.

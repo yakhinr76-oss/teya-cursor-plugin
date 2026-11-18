@@ -8,7 +8,7 @@
   font-weight: 700;
   font-size: 15px;
   padding: 12px 24px;
-  border-radius: 50px;
+  border-radius: var(--radius-cta);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;

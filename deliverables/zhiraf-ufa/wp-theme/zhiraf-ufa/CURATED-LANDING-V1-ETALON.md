@@ -34,6 +34,7 @@
 
 ## Конверсия и кнопки
 
+- **Радиус:** CTA — `var(--radius-cta)` (12px); чипы/бейджи — `var(--radius-pill)`.
 - **Solid (primary):** hero «Смотреть 6 отелей», kids «Запросить 3 семейных отеля», нижний баннер «Оставить заявку».
 - **Ghost (outline):** все CTA на карточках отелей «Узнать даты / цену», fill-карточка, hero «Сравнить …».
 - Заявки с карточек и sticky — `data-turciya-lead-open` / `data-curated-lead-open` → модалка с **MAX / WhatsApp / Telegram**, без прямых `wa.me` на CTA карточек.

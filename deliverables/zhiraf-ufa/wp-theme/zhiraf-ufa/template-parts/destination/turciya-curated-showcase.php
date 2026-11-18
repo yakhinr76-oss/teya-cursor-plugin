@@ -29,6 +29,10 @@ if ( 'oae' === $dest_slug ) {
 	$fill_text   = __( 'Здравствуйте! На странице Таиланда в выбранной категории нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TH-FILL', 'zhiraf-ufa' );
 	$fill_uon_id = 'TH-FILL';
 	$fill_tour   = __( 'Таиланд, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'maldivy' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! На странице Мальдив в выбранной категории нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: MV-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'MV-FILL';
+	$fill_tour   = __( 'Мальдивы, индивидуальный подбор', 'zhiraf-ufa' );
 } else {
 	$fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
 	$fill_uon_id = 'TR-FILL';
@@ -42,6 +46,8 @@ if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_fill_emira
 	$fill_emirate_labels = zhiraf_ufa_egypt_catalog_fill_resort_labels();
 } elseif ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_catalog_fill_resort_labels' ) ) {
 	$fill_emirate_labels = zhiraf_ufa_thailand_catalog_fill_resort_labels();
+} elseif ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_maldives_catalog_fill_resort_labels();
 }
 $fill_wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' )
 	? zhiraf_ufa_brand_whatsapp_url()

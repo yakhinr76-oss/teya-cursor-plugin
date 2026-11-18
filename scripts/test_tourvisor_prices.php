@@ -169,4 +169,38 @@ zhiraf_tv_assert( is_array( $zen ) && 16 === (int) $zen['zhiraf_id'], 'Riviera Z
 $kept = zhiraf_ufa_tourvisor_turkey_resolve_id( 4, 1416, 'Paloma Oceana Resort' );
 zhiraf_tv_assert( 4 === $kept, 'explicit catalog id wins over a foreign tourvisor id' );
 
+$egypt_map_path = dirname( __DIR__ ) . '/deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/egypt-tourvisor-hotels.json';
+$egypt_map      = is_readable( $egypt_map_path ) ? json_decode( (string) file_get_contents( $egypt_map_path ), true ) : array();
+$egypt_hotels   = ( is_array( $egypt_map ) && isset( $egypt_map['hotels'] ) && is_array( $egypt_map['hotels'] ) ) ? $egypt_map['hotels'] : array();
+zhiraf_tv_assert( 25 === count( $egypt_hotels ), 'egypt map has 25 hotels' );
+
+$egypt_prices = zhiraf_ufa_tourvisor_normalize_payload(
+	array(
+		'prices' => array(
+			'egypt:3' => array(
+				'country_slug' => 'egypt',
+				'zhiraf_id'    => 3,
+				'hotel_name'   => 'Pickalbatros White Beach Resort 5★',
+				'place'        => 'Хургада',
+				'price_rub'    => 172000,
+				'nights'       => 7,
+			),
+		),
+	)
+);
+zhiraf_tv_assert( empty( $egypt_prices['error'] ), 'egypt price row accepted' );
+$egypt_index = zhiraf_ufa_tourvisor_build_index( $egypt_prices );
+$eg_white    = zhiraf_ufa_tourvisor_lookup_in_index( $egypt_index, 'egypt', 3, 'Pickalbatros White Beach Resort' );
+zhiraf_tv_assert( is_array( $eg_white ) && 172000 === (int) $eg_white['price_rub'], 'egypt:3 lookup by id' );
+
+$starter_card = array(
+	'name'           => 'Pickalbatros White Beach Resort 5★',
+	'pool_id'        => 'starter-family',
+	'json_hotel_id'  => 3,
+);
+zhiraf_ufa_tourvisor_document_cache( $egypt_prices );
+$overlay = zhiraf_ufa_tourvisor_overlay_egypt_card( $starter_card );
+zhiraf_tv_assert( ! empty( $overlay['price_source'] ) && 'tourvisor' === $overlay['price_source'], 'egypt overlay uses json_hotel_id when pool_id is non-numeric' );
+zhiraf_ufa_tourvisor_document_cache( false );
+
 exit( $failed > 0 ? 1 : 0 );

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.41-oae-curated-etalon' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.45-useful-guides-magazine' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -23,7 +23,9 @@ require_once ZHIRAF_UFA_DIR . '/inc/destination-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-destination-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/turciya-curated-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-oae-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/curated-egypt-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/vibe-cards.php';
+require_once ZHIRAF_UFA_DIR . '/inc/useful-guides.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landing-config.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landing-standard.php';
 require_once ZHIRAF_UFA_DIR . '/inc/activation.php';

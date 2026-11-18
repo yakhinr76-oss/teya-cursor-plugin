@@ -18,7 +18,9 @@ if ( empty( $items ) ) {
 }
 $expert_title = 'oae' === $dest_slug
 	? __( 'Что важно знать об ОАЭ в этом сезоне', 'zhiraf-ufa' )
-	: __( 'Что важно знать о Турции в этом сезоне', 'zhiraf-ufa' );
+	: ( 'egipet' === $dest_slug
+		? __( 'Что важно знать о Египте в этом сезоне', 'zhiraf-ufa' )
+		: __( 'Что важно знать о Турции в этом сезоне', 'zhiraf-ufa' ) );
 ?>
 <section class="section turciya-expert-nuances bg-sand">
 	<div class="container">

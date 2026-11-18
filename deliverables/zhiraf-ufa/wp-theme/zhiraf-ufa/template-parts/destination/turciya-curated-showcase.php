@@ -17,17 +17,25 @@ $copy        = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
 	? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
 	: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
 $pool_total  = count( $hotels );
-$fill_text   = 'oae' === $dest_slug
-	? __( 'Здравствуйте! На странице ОАЭ в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: UAE-FILL', 'zhiraf-ufa' )
-	: __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
-$fill_uon_id = 'oae' === $dest_slug ? 'UAE-FILL' : 'TR-FILL';
-$fill_tour   = 'oae' === $dest_slug
-	? __( 'ОАЭ, индивидуальный подбор', 'zhiraf-ufa' )
-	: __( 'Турция, индивидуальный подбор', 'zhiraf-ufa' );
+if ( 'oae' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! На странице ОАЭ в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: UAE-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'UAE-FILL';
+	$fill_tour   = __( 'ОАЭ, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'egipet' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! На странице Египта в выбранной категории нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: EG-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'EG-FILL';
+	$fill_tour   = __( 'Египет, индивидуальный подбор', 'zhiraf-ufa' );
+} else {
+	$fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'TR-FILL';
+	$fill_tour   = __( 'Турция, индивидуальный подбор', 'zhiraf-ufa' );
+}
 
 $fill_emirate_labels = array();
 if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_fill_emirate_labels' ) ) {
 	$fill_emirate_labels = zhiraf_ufa_oae_catalog_fill_emirate_labels();
+} elseif ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_egypt_catalog_fill_resort_labels();
 }
 $fill_wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' )
 	? zhiraf_ufa_brand_whatsapp_url()
@@ -117,7 +125,13 @@ if ( empty( $hotels ) ) {
 				</aside>
 			</div>
 
-			<?php get_template_part( 'template-parts/destination/turciya-catalog-wa-strip' ); ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-catalog-wa-strip',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
+			?>
 
 			<div class="turciya-catalog-more" data-turciya-catalog-more-wrap hidden>
 				<button type="button" class="btn btn--outline turciya-catalog-more__btn" data-turciya-catalog-more>

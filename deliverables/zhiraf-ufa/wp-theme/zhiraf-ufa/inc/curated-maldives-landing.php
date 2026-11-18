@@ -715,8 +715,8 @@ function zhiraf_ufa_maldives_resort_hotel_counts() {
 function zhiraf_ufa_maldives_resort_chips() {
 	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-north_male', 'label' => __( 'Сев. Мале', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-south_ari', 'label' => __( 'Юж. Ари', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-north_male', 'label' => __( 'Северный Мале', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-south_ari', 'label' => __( 'Южный Ари', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-raa', 'label' => __( 'Раа', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-lhaviyani', 'label' => __( 'Лавиани', 'zhiraf-ufa' ) ),
 	);

@@ -643,6 +643,12 @@
   line-height: 1;
 }
 
+.dest-landing-hero__badge-svg {
+  flex-shrink: 0;
+  display: block;
+  color: var(--color-primary, #e87a5d);
+}
+
 .dest-resort-compare {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1120,6 +1126,26 @@
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: stretch;
+}
+
+@media (min-width: 992px) {
+  .site-main--destination .dest-landing-hero__grid {
+    grid-template-columns: 7fr 5fr;
+    gap: 48px;
+  }
+
+  .site-main--destination .dest-landing-hero__lead {
+    max-width: none;
+  }
+
+  .site-main--destination .dest-landing-hero__badges {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .site-main--destination .dest-landing-hero__badge {
+    white-space: nowrap;
+  }
 }
 
 .dest-landing-hero__copy {

@@ -810,7 +810,7 @@ function zhiraf_ufa_oae_resort_chips() {
 		),
 		array(
 			'id'    => 'emirate-rak',
-			'label' => __( 'РАК — пляж', 'zhiraf-ufa' ),
+			'label' => __( 'Рас-эль-Хайма', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'emirate-sharjah',
@@ -1002,7 +1002,7 @@ function zhiraf_ufa_oae_expert_nuances() {
 		array(
 			'icon'  => '🧾',
 			'title' => __( 'Туристический налог', 'zhiraf-ufa' ),
-			'text'  => __( 'В Дубае, Абу-Даби и РАК при заселении берут Tourism Dirham Fee (примерно 7–20 AED за номер в сутки в зависимости от категории). В смету тура закладываем её заранее, без сюрпризов на ресепшене.', 'zhiraf-ufa' ),
+			'text'  => __( 'В Дубае, Абу-Даби и Рас-эль-Хайме при заселении берут Tourism Dirham Fee (примерно 7–20 AED за номер в сутки в зависимости от категории). В смету тура закладываем её заранее, без сюрпризов на ресепшене.', 'zhiraf-ufa' ),
 		),
 		array(
 			'icon'  => '💳',

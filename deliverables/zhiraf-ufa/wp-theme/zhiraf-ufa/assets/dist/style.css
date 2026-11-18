@@ -3454,6 +3454,23 @@ details[open] > .faq-home__question::after {
   min-height: 48px;
 }
 
+.turciya-catalog-fill__cta[hidden] {
+  display: none !important;
+}
+
+.turciya-catalog-fill--compact {
+  padding: 1.15rem 1rem;
+  gap: 0.55rem;
+}
+
+.turciya-catalog-fill--compact .turciya-catalog-fill__title {
+  font-size: 1.0625rem;
+}
+
+.turciya-catalog-fill--compact .turciya-catalog-fill__text {
+  font-size: 0.8125rem;
+}
+
 .turciya-curated-card__media {
   position: relative;
   height: 12rem;

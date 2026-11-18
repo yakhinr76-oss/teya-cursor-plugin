@@ -82,6 +82,26 @@ function zhiraf_ufa_oae_emirate_key( $emirate ) {
  * @param string $emirate_slug dubai|rak|sharjah|abu-dhabi|ajman|fujairah.
  * @return string
  */
+/**
+ * Prepositional labels for catalog fill copy (filter id → «в …»).
+ *
+ * @return array<string,string>
+ */
+function zhiraf_ufa_oae_catalog_fill_emirate_labels() {
+	return array(
+		'emirate-dubai'     => __( 'Дубае', 'zhiraf-ufa' ),
+		'emirate-rak'       => __( 'Рас-эль-Хайме', 'zhiraf-ufa' ),
+		'emirate-sharjah'   => __( 'Шардже', 'zhiraf-ufa' ),
+		'emirate-abu-dhabi' => __( 'Абу-Даби', 'zhiraf-ufa' ),
+		'emirate-ajman'     => __( 'Аджмане', 'zhiraf-ufa' ),
+		'emirate-fujairah'  => __( 'Фуджейре', 'zhiraf-ufa' ),
+	);
+}
+
+/**
+ * @param string $emirate_slug dubai|rak|sharjah|abu-dhabi|ajman|fujairah.
+ * @return string
+ */
 function zhiraf_ufa_oae_emirate_landing_url( $emirate_slug ) {
 	$map = array(
 		'dubai'     => 'dubai',

@@ -41,6 +41,7 @@ function zhiraf_ufa_curated_catalog_hotels( $dest_slug ) {
 	}
 	if ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_catalog_hotels' ) ) {
 		return zhiraf_ufa_maldives_catalog_hotels();
+	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_hotels' ) ) {
 		return zhiraf_ufa_vietnam_catalog_hotels();
 	}
@@ -76,6 +77,7 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 	}
 	if ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_catalog_default_copy' ) ) {
 		return zhiraf_ufa_maldives_catalog_default_copy();
+	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_default_copy' ) ) {
 		return zhiraf_ufa_vietnam_catalog_default_copy();
 	}
@@ -131,6 +133,7 @@ function zhiraf_ufa_curated_resort_pick_cards( $dest_slug ) {
 	}
 	if ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_resort_pick_cards' ) ) {
 		return zhiraf_ufa_maldives_resort_pick_cards();
+	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_resort_pick_cards' ) ) {
 		return zhiraf_ufa_vietnam_resort_pick_cards();
 	}
@@ -164,6 +167,7 @@ function zhiraf_ufa_curated_resort_chips( $dest_slug ) {
 	}
 	if ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_resort_chips' ) ) {
 		return zhiraf_ufa_maldives_resort_chips();
+	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_resort_chips' ) ) {
 		return zhiraf_ufa_vietnam_resort_chips();
 	}
@@ -197,6 +201,7 @@ function zhiraf_ufa_curated_expert_nuances( $dest_slug ) {
 	}
 	if ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_expert_nuances' ) ) {
 		return zhiraf_ufa_maldives_expert_nuances();
+	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_expert_nuances' ) ) {
 		return zhiraf_ufa_vietnam_expert_nuances();
 	}
@@ -230,6 +235,7 @@ function zhiraf_ufa_curated_catalog_filters( $dest_slug ) {
 	}
 	if ( 'maldivy' === $dest_slug && function_exists( 'zhiraf_ufa_maldives_catalog_filters' ) ) {
 		return zhiraf_ufa_maldives_catalog_filters();
+	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_filters' ) ) {
 		return zhiraf_ufa_vietnam_catalog_filters();
 	}

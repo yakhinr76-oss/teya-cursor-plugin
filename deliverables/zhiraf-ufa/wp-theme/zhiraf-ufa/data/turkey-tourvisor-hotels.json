@@ -2,6 +2,7 @@
   "schema": "zhiraf.tourvisor-hotels-map.v1",
   "source": "tourvisor-autocomplete",
   "country_slug": "turkey",
+  "tourvisor_country_id": 4,
   "identified_at": "2026-11-16",
   "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В prices ключ turkey:{zhiraf_id}. Не подставляй tourvisor_id вместо zhiraf_id.",
   "hotels": [

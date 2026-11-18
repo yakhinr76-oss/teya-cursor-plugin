@@ -11,6 +11,13 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 THEME_DATA = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data"
 
+TV_COUNTRY_ID = {"turkey": 4, "uae": 9, "egypt": 1, "thailand": 2, "vietnam": 16}
+
+GITHUB_RAW = (
+    "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/{ref}/"
+    "deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_{slug}.json"
+)
+
 MAPS: dict[str, Path] = {
     "turkey": THEME_DATA / "turkey-tourvisor-hotels.json",
     "uae": THEME_DATA / "uae-tourvisor-hotels.json",
@@ -173,17 +180,21 @@ def main() -> None:
             print(f"Wrote {path}", file=sys.stderr)
         snippet = {
             "schema": "zhiraf.tourvisor-parser.hotels_config.snippet.v1",
-            "note": "Merge countries into your local hotels_config.json (enabled + hotels_map path).",
-            "countries": {
-                c: {
-                    "enabled": True,
-                    "country_slug": str(load_map(c).get("country_slug", c)),
-                    "tourvisor_country_id": load_map(c).get("tourvisor_country_id"),
-                    "hotels_map": f"output/hotels_map_{load_map(c).get('country_slug', c)}.json",
-                }
-                for c in countries
-            },
+            "note": "Merge into local hotels_config.json. hotels_map_url — скачать с GitHub без копипаста после merge в main.",
+            "github_ref": "main",
+            "countries": {},
         }
+        for c in countries:
+            doc = load_map(c)
+            slug = str(doc.get("country_slug", c))
+            tv_id = int(doc.get("tourvisor_country_id") or 0) or TV_COUNTRY_ID.get(slug, 0)
+            snippet["countries"][c] = {
+                "enabled": True,
+                "country_slug": slug,
+                "tourvisor_country_id": tv_id,
+                "hotels_map": f"output/hotels_map_{slug}.json",
+                "hotels_map_url": GITHUB_RAW.format(ref="main", slug=slug),
+            }
         snippet_path = out_dir.parent / "hotels_config.countries.snippet.json"
         snippet_path.write_text(json.dumps(snippet, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"Wrote {snippet_path}", file=sys.stderr)

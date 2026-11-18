@@ -1,36 +1,14 @@
 {
   "schema": "zhiraf.tourvisor-parser.hotels_config.snippet.v1",
-  "note": "Merge countries into your local hotels_config.json (enabled + hotels_map path).",
+  "note": "Merge into local hotels_config.json. hotels_map_url — скачать с GitHub без копипаста после merge в main.",
+  "github_ref": "main",
   "countries": {
-    "turkey": {
-      "enabled": true,
-      "country_slug": "turkey",
-      "tourvisor_country_id": null,
-      "hotels_map": "output/hotels_map_turkey.json"
-    },
-    "uae": {
-      "enabled": true,
-      "country_slug": "uae",
-      "tourvisor_country_id": 9,
-      "hotels_map": "output/hotels_map_uae.json"
-    },
-    "egypt": {
-      "enabled": true,
-      "country_slug": "egypt",
-      "tourvisor_country_id": 1,
-      "hotels_map": "output/hotels_map_egypt.json"
-    },
-    "thailand": {
-      "enabled": true,
-      "country_slug": "thailand",
-      "tourvisor_country_id": 2,
-      "hotels_map": "output/hotels_map_thailand.json"
-    },
     "vietnam": {
       "enabled": true,
       "country_slug": "vietnam",
       "tourvisor_country_id": 16,
-      "hotels_map": "output/hotels_map_vietnam.json"
+      "hotels_map": "output/hotels_map_vietnam.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_vietnam.json"
     }
   }
 }

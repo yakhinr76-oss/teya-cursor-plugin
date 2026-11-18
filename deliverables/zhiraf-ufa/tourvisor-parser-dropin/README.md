@@ -2,9 +2,18 @@
 
 Сайт и карты — в `teya-cursor-plugin`. Парсер с Tourvisor API — **на вашем ПК**. Эта папка — то же, что делали для **Турции** и **ОАЭ**: готовые `output/hotels_map_*.json` + сниппет для `hotels_config.json`.
 
-## Скопировать на компьютер
+## GitHub
 
-Из клона репо (или после `git pull` на ветке Vietnam PR):
+В **teya-cursor-plugin** на GitHub всё воспроизводимо:
+
+- Workflow **Tourvisor curated maps** — пересобирает drop-in и гоняет `verify_tourvisor_curated_maps.py` (без Tourvisor login и без webhook-токена).
+- После merge в `main` парсер может тянуть map по URL из `hotels_config.countries.snippet.json` → `hotels_map_url` (raw GitHub).
+
+**Не на GitHub:** сам батч Tourvisor API и `push_tourvisor_prices.py` — только там, где есть `.env` с логином Tourvisor и `ZHIRAF_TOURVISOR_WEBHOOK_TOKEN`.
+
+## Скопировать на компьютер (офлайн)
+
+Из клона репо (или после `git pull`):
 
 ```
 teya-cursor-plugin/deliverables/zhiraf-ufa/tourvisor-parser-dropin/

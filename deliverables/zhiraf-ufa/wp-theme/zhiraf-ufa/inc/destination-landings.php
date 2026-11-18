@@ -1235,53 +1235,6 @@ function zhiraf_ufa_destination_landing_data() {
 				array( 'q' => __( 'Когда сезон?', 'zhiraf-ufa' ), 'a' => __( 'Лучше ноябрь — апрель: спокойнее море и меньше дождей.', 'zhiraf-ufa' ) ),
 			),
 		),
-		'sejshely' => array(
-			'curated_landing_v1'           => true,
-			'curated_resort_chips'         => true,
-			'curated_dest_lead_form'       => true,
-			'curated_kids_section'         => true,
-			'curated_expert_section'       => true,
-			'curated_compare_btn_default'  => __( 'Сравнить Маэ и Праслин', 'zhiraf-ufa' ),
-			'curated_compare_lead_default' => __( 'Сравним Маэ и Праслин под ваш бюджет', 'zhiraf-ufa' ),
-			'name'           => __( 'Сейшелы', 'zhiraf-ufa' ),
-			'h1'             => __( 'Туры на Сейшелы из Уфы', 'zhiraf-ufa' ),
-			'title'          => __( 'Сейшелы из Уфы — туры на Маэ и Праслин | Жираф', 'zhiraf-ufa' ),
-			'description'    => __( 'Туры на Сейшелы с вылетом из Уфы: Маэ, Праслин, Ла-Диг. ETA, подбор отелей «Жираф».', 'zhiraf-ufa' ),
-			'image'          => 'country-sejshely.jpg',
-			'hero_badges'    => array(
-				array( 'icon' => '✈', 'text' => __( 'Вылет из Уфы', 'zhiraf-ufa' ) ),
-				array( 'icon_svg' => 'passport', 'text' => __( 'ETA • без визы', 'zhiraf-ufa' ) ),
-			),
-			'hero_lead'      => __( '6 отелей на Маэ, Праслине и Ла-Диг: гранитные бухты и белый песок. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
-			'resort_compare_title' => __( 'Маэ или Праслин', 'zhiraf-ufa' ),
-			'resort_compare' => array(
-				array(
-					'title' => __( 'Маэ', 'zhiraf-ufa' ),
-					'tag'   => __( 'Старт', 'zhiraf-ufa' ),
-					'image' => 'country-sejshely.jpg',
-					'rows'  => array(
-						array( 'label' => __( 'Плюсы', 'zhiraf-ufa' ), 'value' => __( 'Аэропорт, Бо-Валлон, инфраструктура', 'zhiraf-ufa' ) ),
-					),
-				),
-				array(
-					'title' => __( 'Праслин', 'zhiraf-ufa' ),
-					'tag'   => __( 'Природа', 'zhiraf-ufa' ),
-					'image' => 'country-sejshely.jpg',
-					'rows'  => array(
-						array( 'label' => __( 'Плюсы', 'zhiraf-ufa' ), 'value' => __( 'Валлон де Мэ, паром, тише', 'zhiraf-ufa' ) ),
-					),
-				),
-			),
-			'quiz_prefill'   => __( 'Сейшелы, вылет из Уфы', 'zhiraf-ufa' ),
-			'blog_links'     => array(
-				array( 'url' => home_url( '/blog/chto-vhodit-v-tur-vse-vklyucheno/' ), 'label' => __( 'Состав пакета', 'zhiraf-ufa' ), 'tag' => __( 'ПАКЕТ', 'zhiraf-ufa' ) ),
-				array( 'url' => home_url( '/blog/tury-s-detmi-iz-ufy/' ), 'label' => __( 'С детьми из Уфы', 'zhiraf-ufa' ), 'tag' => __( 'СЕМЬЯ', 'zhiraf-ufa' ) ),
-			),
-			'faq'            => array(
-				array( 'q' => __( 'Нужна ли ETA?', 'zhiraf-ufa' ), 'a' => __( 'Да, электронное разрешение до вылета; въезд безвизовый.', 'zhiraf-ufa' ) ),
-				array( 'q' => __( 'Маэ или Праслин?', 'zhiraf-ufa' ), 'a' => __( 'Маэ — без парома после прилёта. Праслин и Ла-Диг — природа, паромы.', 'zhiraf-ufa' ) ),
-			),
-		),
 
 		'rossiya'  => array(
 			'name'             => __( 'Россия', 'zhiraf-ufa' ),

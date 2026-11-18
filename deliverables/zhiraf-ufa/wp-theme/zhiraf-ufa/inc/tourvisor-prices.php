@@ -950,16 +950,6 @@ function zhiraf_ufa_tourvisor_overlay_seychelles_card( array $card ) {
 }
 
 /**
- * Tourvisor price on an Indonesia (Bali) curated card. Unmatched card is returned as-is.
- *
- * @param array<string,mixed> $card Card row.
- * @return array<string,mixed>
- */
-function zhiraf_ufa_tourvisor_overlay_indonesia_card( array $card ) {
-	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'indonesia' );
-}
-
-/**
  * Attach Tourvisor fields onto a zhiraf/v1/hotels row.
  *
  * @param array<string,mixed> $row Public hotel.

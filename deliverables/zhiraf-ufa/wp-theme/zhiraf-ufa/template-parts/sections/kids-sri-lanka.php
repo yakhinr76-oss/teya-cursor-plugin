@@ -19,7 +19,7 @@ $lead_message = __( 'Здравствуйте! Подбираем семейны
 			<div class="turciya-kids-turkey__main">
 				<p class="turciya-kids-turkey__eyebrow"><?php esc_html_e( 'Семейный чек-лист «Жирафа»', 'zhiraf-ufa' ); ?></p>
 				<h2 class="section-title turciya-kids-turkey__title">
-					<?php esc_html_e( 'Шри-Ланку с детьми из Уфы: на что смотреть при выборе', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Шри-Ланка с детьми из Уфы: на что смотреть при выборе', 'zhiraf-ufa' ); ?>
 				</h2>
 				<p class="turciya-kids-turkey__lead">
 					<?php

@@ -1314,6 +1314,11 @@
         && activeFilter.indexOf('emirate-') === 0
         && rowHole
         && !legacyFive;
+      var resortWa = destSlug === 'egipet'
+        && activeFilter.indexOf('resort-') === 0
+        && rowHole
+        && !legacyFive;
+      var compactFillWa = emirateWa || resortWa;
 
       if (!legacyFive && !rowHole) {
         fillSlot.setAttribute('hidden', '');
@@ -1323,8 +1328,9 @@
       }
       fillSlot.removeAttribute('hidden');
 
-      if (emirateWa) {
-        var place = fillEmirates[activeFilter] || 'ОАЭ';
+      if (compactFillWa) {
+        var placeDefault = destSlug === 'egipet' ? 'Египте' : 'ОАЭ';
+        var place = fillEmirates[activeFilter] || placeDefault;
         fillSlot.classList.add('turciya-catalog-fill--compact');
         if (fillTitle) {
           fillTitle.textContent = 'Подберём ещё 3 отеля в ' + place + ' на ваши даты';

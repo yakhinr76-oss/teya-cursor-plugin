@@ -159,7 +159,13 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 			);
 		}
 		if ( ! empty( $dest['curated_kids_section'] ) ) {
-			$kids_part = 'oae' === $dest_slug ? 'kids-uae' : 'kids-turkey';
+			if ( 'oae' === $dest_slug ) {
+				$kids_part = 'kids-uae';
+			} elseif ( 'egipet' === $dest_slug ) {
+				$kids_part = 'kids-egypt';
+			} else {
+				$kids_part = 'kids-turkey';
+			}
 			get_template_part( 'template-parts/sections/' . $kids_part );
 		}
 		if ( ! empty( $dest['curated_expert_section'] ) ) {

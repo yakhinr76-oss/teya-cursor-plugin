@@ -1,6 +1,6 @@
 <?php
 /**
- * Sri Lanka (/tour/shri-lanka/) curated landing — 6 starters + pool from sri_lanka_hotels_25.json.
+ * Sri Lanka (/tour/shri-lanka/) curated landing v1 — 6 starters + pool from sri_lanka_hotels_25.json.
  *
  * @package Zhiraf_Ufa
  */

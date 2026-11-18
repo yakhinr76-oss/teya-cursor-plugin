@@ -79,6 +79,9 @@ STOP = {
     "sentido",
     "pickalbatros",
     "albatros",
+    "maldives",
+    "maldivy",
+    "island",
 }
 
 

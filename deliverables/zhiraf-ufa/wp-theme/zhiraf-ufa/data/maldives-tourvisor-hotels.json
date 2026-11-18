@@ -1,6 +1,6 @@
 {
   "schema": "zhiraf.tourvisor-hotels-map.v1",
-  "source": "maldives-catalog-scaffold",
+  "source": "tourvisor-autocomplete",
   "country_slug": "maldives",
   "identified_at": "2026-11-18",
   "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ maldives:{zhiraf_id} (country_slug maldives, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
@@ -12,18 +12,19 @@
       "hotel_name": "Villa Park 5★",
       "resort": "Южный Ари, внутренний перелет (20 мин) + катер",
       "atoll": "south_ari",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2482,
+      "tourvisor_name": "Villa Park Sun Island",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Villa Park",
       "match_names": [
         "Villa Park 5★",
-        "Villa Park"
+        "Villa Park",
+        "Villa Park Sun Island"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 2,
@@ -31,18 +32,19 @@
       "hotel_name": "Villa Nautica 5★",
       "resort": "Северный Мале, скоростной катер (20 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2472,
+      "tourvisor_name": "Villa Nautica (Ex. Paradise Island Resort & Spa)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Villa Nautica",
       "match_names": [
         "Villa Nautica 5★",
-        "Villa Nautica"
+        "Villa Nautica",
+        "Villa Nautica (Ex. Paradise Island Resort & Spa)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 3,
@@ -50,18 +52,19 @@
       "hotel_name": "Furaveri Maldives 5★",
       "resort": "Раа, гидросамолет (45 мин)",
       "atoll": "raa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
-      "search_query": "Furaveri Maldives",
+      "tourvisor_id": 46068,
+      "tourvisor_name": "Furaveri Island Resort & Spa",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
+      "search_query": "furaveri",
       "match_names": [
         "Furaveri Maldives 5★",
-        "Furaveri Maldives"
+        "Furaveri Maldives",
+        "Furaveri Island Resort & Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 4,
@@ -69,18 +72,19 @@
       "hotel_name": "Dhigali Maldives 5★",
       "resort": "Раа, гидросамолет (45 мин)",
       "atoll": "raa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 56077,
+      "tourvisor_name": "Niva Dhigali Maldives (Ex. Dhigali Maldives)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Dhigali Maldives",
       "match_names": [
         "Dhigali Maldives 5★",
-        "Dhigali Maldives"
+        "Dhigali Maldives",
+        "Niva Dhigali Maldives (Ex. Dhigali Maldives)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 5,
@@ -88,18 +92,18 @@
       "hotel_name": "Brennia Kottefaru 5★",
       "resort": "Раа, гидросамолет (40–45 мин)",
       "atoll": "raa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 72602,
+      "tourvisor_name": "Brennia Kottefaru",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Brennia Kottefaru",
       "match_names": [
         "Brennia Kottefaru 5★",
         "Brennia Kottefaru"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 6,
@@ -107,19 +111,20 @@
       "hotel_name": "Vilamendhoo Island Resort & Spa 4★",
       "resort": "Южный Ари, гидросамолет (25 мин)",
       "atoll": "south_ari",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2490,
+      "tourvisor_name": "Vilamendhoo Island Resort",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Vilamendhoo Island Resort & Spa",
       "match_names": [
         "Vilamendhoo Island Resort & Spa 4★",
         "Vilamendhoo Island Resort & Spa",
-        "Vilamendhoo Island Resort and Spa"
+        "Vilamendhoo Island Resort and Spa",
+        "Vilamendhoo Island Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 7,
@@ -127,18 +132,18 @@
       "hotel_name": "OBLU NATURE Helengeli by SENTIDO 4★",
       "resort": "Северный Мале, скоростной катер (50 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 43569,
+      "tourvisor_name": "Oblu Nature Helengeli By Sentido",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "OBLU NATURE Helengeli by SENTIDO",
       "match_names": [
         "OBLU NATURE Helengeli by SENTIDO 4★",
         "OBLU NATURE Helengeli by SENTIDO"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 8,
@@ -146,18 +151,19 @@
       "hotel_name": "Ellaidhoo Maldives by Cinnamon 4★",
       "resort": "Северный Ари, гидросамолет (25 мин)",
       "atoll": "north_ari",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2430,
+      "tourvisor_name": "Ellaidhoo Maldives By Cinnamon (Ex. Chaaya Reef Ellaidhoo)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Ellaidhoo Maldives by Cinnamon",
       "match_names": [
         "Ellaidhoo Maldives by Cinnamon 4★",
-        "Ellaidhoo Maldives by Cinnamon"
+        "Ellaidhoo Maldives by Cinnamon",
+        "Ellaidhoo Maldives By Cinnamon (Ex. Chaaya Reef Ellaidhoo)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 9,
@@ -165,18 +171,18 @@
       "hotel_name": "Reethi Faru Resort 5★",
       "resort": "Раа, гидросамолет (45 мин)",
       "atoll": "raa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 57552,
+      "tourvisor_name": "Reethi Faru Resort",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Reethi Faru Resort",
       "match_names": [
         "Reethi Faru Resort 5★",
         "Reethi Faru Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 10,
@@ -184,18 +190,19 @@
       "hotel_name": "Sandies Bathala Maldives 4★",
       "resort": "Северный Ари, гидросамолет (25–30 мин)",
       "atoll": "north_ari",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 66513,
+      "tourvisor_name": "Sandies Bathala",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Sandies Bathala Maldives",
       "match_names": [
         "Sandies Bathala Maldives 4★",
-        "Sandies Bathala Maldives"
+        "Sandies Bathala Maldives",
+        "Sandies Bathala"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 11,
@@ -203,19 +210,20 @@
       "hotel_name": "Komandoo Island Resort & Spa 4★",
       "resort": "Лавиани, гидросамолет (40 мин)",
       "atoll": "lhaviyani",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2458,
+      "tourvisor_name": "Komandoo Island Resort",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Komandoo Island Resort & Spa",
       "match_names": [
         "Komandoo Island Resort & Spa 4★",
         "Komandoo Island Resort & Spa",
-        "Komandoo Island Resort and Spa"
+        "Komandoo Island Resort and Spa",
+        "Komandoo Island Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 12,
@@ -223,19 +231,20 @@
       "hotel_name": "You & Me Maldives 5★",
       "resort": "Раа, гидросамолет (45 мин)",
       "atoll": "raa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 64918,
+      "tourvisor_name": "You & Me By Cocoon Maldives (Adults Only 16+)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "You & Me Maldives",
       "match_names": [
         "You & Me Maldives 5★",
         "You & Me Maldives",
-        "You and Me Maldives"
+        "You and Me Maldives",
+        "You & Me By Cocoon Maldives (Adults Only 16+)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.883
     },
     {
       "zhiraf_id": 13,
@@ -243,19 +252,20 @@
       "hotel_name": "Centara Ras Fushi Resort & Spa 4★",
       "resort": "Северный Мале, скоростной катер (20 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 13900,
+      "tourvisor_name": "Centara Ras Fushi Resort&spa (Adults Only 18+)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Centara Ras Fushi Resort & Spa",
       "match_names": [
         "Centara Ras Fushi Resort & Spa 4★",
         "Centara Ras Fushi Resort & Spa",
-        "Centara Ras Fushi Resort and Spa"
+        "Centara Ras Fushi Resort and Spa",
+        "Centara Ras Fushi Resort&spa (Adults Only 18+)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 14,
@@ -263,18 +273,19 @@
       "hotel_name": "Adaaran Prestige Vadoo 5★",
       "resort": "Южный Мале, скоростной катер (15 мин)",
       "atoll": "south_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2412,
+      "tourvisor_name": "Adaaran Prestige Vadoo (Adult Only 18+)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Adaaran Prestige Vadoo",
       "match_names": [
         "Adaaran Prestige Vadoo 5★",
-        "Adaaran Prestige Vadoo"
+        "Adaaran Prestige Vadoo",
+        "Adaaran Prestige Vadoo (Adult Only 18+)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 15,
@@ -282,19 +293,20 @@
       "hotel_name": "Le Méridien Maldives Resort & Spa 5★",
       "resort": "Лавиани, гидросамолет (35 мин)",
       "atoll": "lhaviyani",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 76318,
+      "tourvisor_name": "Le Meridien Maldives Resort & Spa",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Le Méridien Maldives Resort & Spa",
       "match_names": [
         "Le Méridien Maldives Resort & Spa 5★",
         "Le Méridien Maldives Resort & Spa",
-        "Le Méridien Maldives Resort and Spa"
+        "Le Méridien Maldives Resort and Spa",
+        "Le Meridien Maldives Resort & Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 16,
@@ -302,18 +314,19 @@
       "hotel_name": "Bandos Maldives 4★",
       "resort": "Северный Мале, скоростной катер (15 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2421,
+      "tourvisor_name": "Bandos Maldives (Ex. Bandos Island Resort)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Bandos Maldives",
       "match_names": [
         "Bandos Maldives 4★",
-        "Bandos Maldives"
+        "Bandos Maldives",
+        "Bandos Maldives (Ex. Bandos Island Resort)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 17,
@@ -321,18 +334,18 @@
       "hotel_name": "Summer Island Maldives 4★",
       "resort": "Северный Мале, скоростной катер (45 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 12128,
+      "tourvisor_name": "Summer Island Maldives",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Summer Island Maldives",
       "match_names": [
         "Summer Island Maldives 4★",
         "Summer Island Maldives"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 18,
@@ -340,18 +353,19 @@
       "hotel_name": "Sheraton Maldives Full Moon Resort 5★",
       "resort": "Северный Мале, скоростной катер (15 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2479,
+      "tourvisor_name": "Sheraton Maldives Full Moon Resort & Spa",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Sheraton Maldives Full Moon Resort",
       "match_names": [
         "Sheraton Maldives Full Moon Resort 5★",
-        "Sheraton Maldives Full Moon Resort"
+        "Sheraton Maldives Full Moon Resort",
+        "Sheraton Maldives Full Moon Resort & Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 19,
@@ -359,18 +373,18 @@
       "hotel_name": "Adaaran Club Rannalhi 4★",
       "resort": "Южный Мале, скоростной катер (45 мин)",
       "atoll": "south_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2410,
+      "tourvisor_name": "Adaaran Club Rannalhi",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "Adaaran Club Rannalhi",
       "match_names": [
         "Adaaran Club Rannalhi 4★",
         "Adaaran Club Rannalhi"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 20,
@@ -378,18 +392,18 @@
       "hotel_name": "OBLU XPERIENCE Ailafushi 4★",
       "resort": "Северный Мале, скоростной катер (15 мин)",
       "atoll": "north_male",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 78002,
+      "tourvisor_name": "Oblu Xperience Ailafushi",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 4,
       "search_query": "OBLU XPERIENCE Ailafushi",
       "match_names": [
         "OBLU XPERIENCE Ailafushi 4★",
         "OBLU XPERIENCE Ailafushi"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 21,
@@ -397,18 +411,18 @@
       "hotel_name": "Cocoon Maldives 5★",
       "resort": "Лавиани, гидросамолет (30–35 мин)",
       "atoll": "lhaviyani",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 52409,
+      "tourvisor_name": "Cocoon Maldives",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Cocoon Maldives",
       "match_names": [
         "Cocoon Maldives 5★",
         "Cocoon Maldives"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 22,
@@ -416,18 +430,18 @@
       "hotel_name": "Fushifaru Maldives 5★",
       "resort": "Лавиани, гидросамолет (35 мин)",
       "atoll": "lhaviyani",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 58743,
+      "tourvisor_name": "Fushifaru Maldives",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Fushifaru Maldives",
       "match_names": [
         "Fushifaru Maldives 5★",
         "Fushifaru Maldives"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 23,
@@ -435,18 +449,19 @@
       "hotel_name": "NH Collection Maldives Reethi Resort 5★",
       "resort": "Баа, гидросамолет (35 мин) или внутренний рейс + катер",
       "atoll": "baa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2475,
+      "tourvisor_name": "Nh Collection Reethi Maldives (Ex. Reethi Beach Resort)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "NH Collection Maldives Reethi Resort",
       "match_names": [
         "NH Collection Maldives Reethi Resort 5★",
-        "NH Collection Maldives Reethi Resort"
+        "NH Collection Maldives Reethi Resort",
+        "Nh Collection Reethi Maldives (Ex. Reethi Beach Resort)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 24,
@@ -454,18 +469,19 @@
       "hotel_name": "NH Maldives Kuda Rah Resort 5★",
       "resort": "Южный Ари, гидросамолет (25 мин)",
       "atoll": "south_ari",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 43565,
+      "tourvisor_name": "Nh Maldives Kuda Rah Resort (Ex. Amaya Kuda Rah)",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "NH Maldives Kuda Rah Resort",
       "match_names": [
         "NH Maldives Kuda Rah Resort 5★",
-        "NH Maldives Kuda Rah Resort"
+        "NH Maldives Kuda Rah Resort",
+        "Nh Maldives Kuda Rah Resort (Ex. Amaya Kuda Rah)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.912
     },
     {
       "zhiraf_id": 25,
@@ -473,18 +489,19 @@
       "hotel_name": "Diamonds Thudufushi Maldives 5★",
       "resort": "Южный Ари, гидросамолет (25–30 мин)",
       "atoll": "south_ari",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 26062,
+      "tourvisor_name": "Diamonds Thudufushi",
+      "tourvisor_region": "Мальдивы",
+      "tourvisor_region_code": 42,
+      "tourvisor_stars": 5,
       "search_query": "Diamonds Thudufushi Maldives",
       "match_names": [
         "Diamonds Thudufushi Maldives 5★",
-        "Diamonds Thudufushi Maldives"
+        "Diamonds Thudufushi Maldives",
+        "Diamonds Thudufushi"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     }
   ]
 }

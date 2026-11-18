@@ -307,19 +307,20 @@
       "hotel_name": "Sierra Sharm El Sheikh 5★",
       "resort": "Шарм-эль-Шейх, SOHO Square",
       "region": "sharm",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
+      "tourvisor_id": 440,
+      "tourvisor_name": "Sierra Resort",
+      "tourvisor_region": "Шарм-эль-Шейх",
       "tourvisor_region_code": 6,
       "tourvisor_stars": 5,
-      "search_query": "Sierra Sharm El Sheikh",
+      "search_query": "Sierra Resort",
       "match_names": [
         "Sierra Sharm El Sheikh 5★",
         "Sierra Sharm El Sheikh",
-        "The Grand Hotel Sharm El Sheikh"
+        "Sierra Resort",
+        "Sierra Resort 5★"
       ],
-      "match_status": "unmatched",
-      "match_score": 0.0
+      "match_status": "manual",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 17,

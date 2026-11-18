@@ -161,6 +161,9 @@ def build_queries(row: dict) -> list[str]:
         queries.append(" ".join(sig[:2]))
     if sig:
         queries.append(sig[0] if len(sig[0]) > 4 else " ".join(sig[:2]))
+    norm_name = norm(hotel_name)
+    if "sierra" in norm_name and "resort" not in norm_name:
+        queries.append("Sierra Resort")
     return queries
 
 

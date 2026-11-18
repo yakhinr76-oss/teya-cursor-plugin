@@ -53,12 +53,12 @@ $pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug )
 	</div>
 
 	<?php
-	if ( count( $cards ) === 4 ) {
-		$pick_track_class = 'turciya-resort-pick__track turciya-resort-pick__track--four';
-	} elseif ( count( $cards ) >= 6 ) {
+	$card_count = count( $cards );
+	if ( $card_count >= 6 ) {
 		$pick_track_class = 'turciya-resort-pick__track turciya-resort-pick__track--six';
 	} else {
-		$pick_track_class = 'turciya-resort-pick__track turciya-resort-pick__track--five';
+		$cols             = max( 1, min( 5, $card_count ) );
+		$pick_track_class = 'turciya-resort-pick__track turciya-resort-pick__track--five turciya-resort-pick__track--cols-' . $cols;
 	}
 	?>
 	<div class="<?php echo esc_attr( $pick_track_class ); ?>" role="list">

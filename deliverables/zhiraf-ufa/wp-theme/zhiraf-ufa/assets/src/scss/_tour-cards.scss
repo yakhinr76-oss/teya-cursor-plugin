@@ -24,7 +24,7 @@
     color: var(--color-muted);
     cursor: pointer;
     padding: 8px 14px;
-    border-radius: 50px;
+    border-radius: var(--radius-pill);
     border: 1px solid transparent;
     transition: all 0.2s ease;
 

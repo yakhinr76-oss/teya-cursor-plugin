@@ -14,8 +14,10 @@
   --container-max: 1280px;
   --header-h: 80px;
   --radius-sm: 8px;
+  --radius-cta: 12px; /* rounded-xl — все CTA-кнопки */
   --radius-md: 16px;
   --radius-lg: 24px;
+  --radius-pill: 9999px; /* rounded-full — чипы фильтров и бейджи */
 }
 
 @import 'reset';

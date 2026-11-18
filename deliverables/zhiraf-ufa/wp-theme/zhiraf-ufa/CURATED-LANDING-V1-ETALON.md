@@ -52,8 +52,9 @@
 
 ### ОАЭ (каркас, `/tour/oae/`)
 
-- `curated_landing_v1` включён; каталог из **`data/uae_hotels_25.json`** (`inc/curated-oae-landing.php`): 6 стартовых слотов + пул 25, фильтры по эмиратам (без Turkey pick-cards).
-- Без `curated_kids_section` / `curated_expert_section` / `curated_resort_chips` до контента.
+- `curated_landing_v1` включён; каталог из **`data/uae_hotels_25.json`** (`inc/curated-oae-landing.php`): 6 стартовых слотов + пул 25, pick-cards по 5 эмиратам (как у Турции), в toolbar — стартовый топ + «потребности» (эмираты только в pick-cards / hero chips).
+- Включены `curated_kids_section` (`kids-uae.php`), `curated_expert_section` (налоги, депозиты, трансферы), `curated_resort_chips` в hero.
+- Hero ОАЭ: только primary + chips (`curated_hero_show_compare` / `curated_hero_show_trust` = false); сравнение — в pick-cards и нижнем баннере.
 - Дефолты сравнения: `curated_compare_btn_default`, `curated_compare_lead_default`, `curated_hero_trust`, `resort_links` (URL эмиратов — на `/tour/oae/` до появления курортных дочерних страниц).
 - Следующий шаг: 6 карточек из `data/uae_hotels_25.json` + ACF на странице ОАЭ в WP.
 

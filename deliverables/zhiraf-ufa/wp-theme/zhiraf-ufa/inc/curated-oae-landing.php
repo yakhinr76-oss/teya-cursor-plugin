@@ -714,3 +714,215 @@ function zhiraf_ufa_oae_catalog_default_copy() {
 function zhiraf_ufa_oae_resort_compare_wa_text() {
 	return __( 'Здравствуйте! Сравните, пожалуйста, Дубай и Рас-эль-Хайму под наш бюджет — вылет из Уфы.', 'zhiraf-ufa' );
 }
+
+/**
+ * Count curated hotels per emirate (for pick-card footers).
+ *
+ * @return array<string,int>
+ */
+function zhiraf_ufa_oae_emirate_hotel_counts() {
+	$counts = array(
+		'dubai'     => 0,
+		'rak'       => 0,
+		'sharjah'   => 0,
+		'abu-dhabi' => 0,
+		'ajman'     => 0,
+	);
+	foreach ( zhiraf_ufa_oae_catalog_hotels() as $hotel ) {
+		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
+		foreach ( $tags as $tag ) {
+			if ( 0 !== strpos( (string) $tag, 'emirate-' ) ) {
+				continue;
+			}
+			$key = substr( (string) $tag, 8 );
+			if ( isset( $counts[ $key ] ) ) {
+				++$counts[ $key ];
+			}
+		}
+	}
+
+	return $counts;
+}
+
+/**
+ * Hero / showcase filter chips (same ids as catalog filters).
+ *
+ * @return array<int,array{id:string,label:string}>
+ */
+function zhiraf_ufa_oae_resort_chips() {
+	return array(
+		array(
+			'id'    => 'starter',
+			'label' => __( 'Топ-6', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'emirate-dubai',
+			'label' => __( 'Дубай — город', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'emirate-rak',
+			'label' => __( 'РАК — пляж', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'emirate-sharjah',
+			'label' => __( 'Шарджа — семьи', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'emirate-abu-dhabi',
+			'label' => __( 'Абу-Даби', 'zhiraf-ufa' ),
+		),
+		array(
+			'id'    => 'emirate-ajman',
+			'label' => __( 'Аджман — бюджет', 'zhiraf-ufa' ),
+		),
+	);
+}
+
+/**
+ * Five emirate pick cards — H2 «Какой эмират ОАЭ выбрать именно вам?».
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_oae_resort_pick_cards() {
+	$counts = zhiraf_ufa_oae_emirate_hotel_counts();
+
+	return array(
+		array(
+			'id'            => 'dubai',
+			'filter_id'     => 'emirate-dubai',
+			'name'          => __( 'Дубай', 'zhiraf-ufa' ),
+			'subtitle'      => __( 'Метро, марина и JBR', 'zhiraf-ufa' ),
+			'tag'           => __( 'Город-хит', 'zhiraf-ufa' ),
+			'tag_mod'       => 'urban',
+			'transfer'      => __( '~5 ч из Уфы', 'zhiraf-ufa' ),
+			'featured'      => true,
+			'hotel_count'   => $counts['dubai'],
+			'accent_mod'    => 'sky',
+			'bullets'       => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Парки, шопинг и пляжи в одном маршруте', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'info',
+					'text' => __( 'Туристический налог в отеле — заранее в смете', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		array(
+			'id'            => 'rak',
+			'filter_id'     => 'emirate-rak',
+			'name'          => __( 'Рас-эль-Хайма', 'zhiraf-ufa' ),
+			'subtitle'      => __( 'Пляж и All Inclusive', 'zhiraf-ufa' ),
+			'tag'           => __( 'Семейный курорт', 'zhiraf-ufa' ),
+			'tag_mod'       => 'family',
+			'transfer'      => __( '~1 ч от Дубая', 'zhiraf-ufa' ),
+			'featured'      => false,
+			'hotel_count'   => $counts['rak'],
+			'accent_mod'    => 'emerald',
+			'bullets'       => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Широкие пляжи и спокойный ритм', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'pro',
+					'text' => __( 'Удобный формат «всё включено»', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		array(
+			'id'            => 'sharjah',
+			'filter_id'     => 'emirate-sharjah',
+			'name'          => __( 'Шарджа', 'zhiraf-ufa' ),
+			'subtitle'      => __( 'Спокойнее и доступнее', 'zhiraf-ufa' ),
+			'tag'           => __( 'Бюджет', 'zhiraf-ufa' ),
+			'tag_mod'       => 'value',
+			'transfer'      => __( '20–30 мин до Дубая', 'zhiraf-ufa' ),
+			'transfer_mod'  => 'fast',
+			'featured'      => false,
+			'hotel_count'   => $counts['sharjah'],
+			'accent_mod'    => 'amber',
+			'bullets'       => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Семейные пляжи рядом с Дубаем', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'info',
+					'text' => __( 'Сухой закон эмирата — без алкоголя в отелях', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		array(
+			'id'            => 'abu-dhabi',
+			'filter_id'     => 'emirate-abu-dhabi',
+			'name'          => __( 'Абу-Даби', 'zhiraf-ufa' ),
+			'subtitle'      => __( 'Культура и Яс', 'zhiraf-ufa' ),
+			'tag'           => __( 'Парки и музеи', 'zhiraf-ufa' ),
+			'tag_mod'       => 'premium',
+			'transfer'      => __( '~1 ч 20 от Дубая', 'zhiraf-ufa' ),
+			'featured'      => false,
+			'hotel_count'   => $counts['abu-dhabi'],
+			'accent_mod'    => 'lux',
+			'bullets'       => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Остров Яс и тематические парки', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'pro',
+					'text' => __( 'Сочетание пляжа и экскурсий', 'zhiraf-ufa' ),
+				),
+			),
+		),
+		array(
+			'id'            => 'ajman',
+			'filter_id'     => 'emirate-ajman',
+			'name'          => __( 'Аджман', 'zhiraf-ufa' ),
+			'subtitle'      => __( 'Тихий пляж у залива', 'zhiraf-ufa' ),
+			'tag'           => __( 'Цена/качество', 'zhiraf-ufa' ),
+			'tag_mod'       => 'nature',
+			'transfer'      => __( '30–40 мин от аэропорта', 'zhiraf-ufa' ),
+			'transfer_mod'  => 'fast',
+			'featured'      => false,
+			'hotel_count'   => $counts['ajman'],
+			'accent_mod'    => 'teal',
+			'bullets'       => array(
+				array(
+					'type' => 'pro',
+					'text' => __( 'Компактный курорт без суеты мегаполиса', 'zhiraf-ufa' ),
+				),
+				array(
+					'type' => 'info',
+					'text' => __( 'Меньше отелей — заранее бронируем номера', 'zhiraf-ufa' ),
+				),
+			),
+		),
+	);
+}
+
+/**
+ * Expert nuances (taxes, deposits, transfers).
+ *
+ * @return array<int,array{icon:string,title:string,text:string}>
+ */
+function zhiraf_ufa_oae_expert_nuances() {
+	return array(
+		array(
+			'icon'  => '🧾',
+			'title' => __( 'Туристический налог', 'zhiraf-ufa' ),
+			'text'  => __( 'В Дубае, Абу-Даби и РАК при заселении берут Tourism Dirham Fee (примерно 7–20 AED за номер в сутки в зависимости от категории). В смету тура закладываем её заранее, без сюрпризов на ресепшене.', 'zhiraf-ufa' ),
+		),
+		array(
+			'icon'  => '💳',
+			'title' => __( 'Депозиты в отелях', 'zhiraf-ufa' ),
+			'text'  => __( 'Часть отелей блокирует возвратный депозит на карту за мини-бар, рум-сервис или парковку. Перед бронью пишем сумму и условия возврата — особенно важно при городских отелях Дубая.', 'zhiraf-ufa' ),
+		),
+		array(
+			'icon'  => '🚌',
+			'title' => __( 'Трансферы между эмиратами', 'zhiraf-ufa' ),
+			'text'  => __( 'Аэропорт DXB/SHJ — базовая точка вылета из Уфы. До пляжей RAK и Ajman — 40–90 минут; до Абу-Даби — около 1,5 ч. Учитываем это при семейных поездках с малышами.', 'zhiraf-ufa' ),
+		),
+	);
+}

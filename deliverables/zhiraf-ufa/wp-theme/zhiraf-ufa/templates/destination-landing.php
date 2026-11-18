@@ -54,7 +54,10 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					get_template_part(
 						'template-parts/destination/turciya-resort-chips',
 						null,
-						array( 'context' => 'hero' )
+						array(
+							'context'   => 'hero',
+							'dest_slug' => $dest_slug,
+						)
 					);
 					?>
 				<?php endif; ?>
@@ -64,22 +67,29 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 							<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
 						<?php endif; ?>
 						<?php
-						$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
-						if ( empty( $hero_compare_btn ) && ! empty( $dest['curated_compare_btn_default'] ) ) {
-							$hero_compare_btn = (string) $dest['curated_compare_btn_default'];
-						}
-						$hero_compare_btn = ! empty( $hero_compare_btn ) ? $hero_compare_btn : __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' );
-						?>
-						<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open data-curated-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
+						$show_hero_compare = ! isset( $dest['curated_hero_show_compare'] ) || ! empty( $dest['curated_hero_show_compare'] );
+						if ( $show_hero_compare ) :
+							$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
+							if ( empty( $hero_compare_btn ) && ! empty( $dest['curated_compare_btn_default'] ) ) {
+								$hero_compare_btn = (string) $dest['curated_compare_btn_default'];
+							}
+							$hero_compare_btn = ! empty( $hero_compare_btn ) ? $hero_compare_btn : __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' );
+							?>
+							<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open data-curated-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
+						<?php endif; ?>
 					<?php else : ?>
 						<a class="btn btn--primary btn--lg" href="#dest-express-pick"><?php esc_html_e( 'Подбор за 10 секунд', 'zhiraf-ufa' ); ?></a>
 						<a class="btn btn--outline btn--lg" href="#dest-price-tiers"><?php esc_html_e( 'Ценовые ориентиры', 'zhiraf-ufa' ); ?></a>
 					<?php endif; ?>
 				</div>
-				<?php if ( ! empty( $dest['hero_cta_hint'] ) ) : ?>
+				<?php if ( ! $use_curated_landing && ! empty( $dest['hero_cta_hint'] ) ) : ?>
 					<p class="dest-landing-hero__cta-hint"><?php echo esc_html( $dest['hero_cta_hint'] ); ?></p>
 				<?php endif; ?>
-				<?php if ( $use_curated_landing ) : ?>
+				<?php
+				$show_hero_trust = $use_curated_landing
+					&& ( ! isset( $dest['curated_hero_show_trust'] ) || ! empty( $dest['curated_hero_show_trust'] ) );
+				if ( $show_hero_trust ) :
+				?>
 					<?php
 					$curated_trust = ! empty( $dest['curated_hero_trust'] ) && is_array( $dest['curated_hero_trust'] )
 						? $dest['curated_hero_trust']
@@ -149,10 +159,15 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 			);
 		}
 		if ( ! empty( $dest['curated_kids_section'] ) ) {
-			get_template_part( 'template-parts/sections/kids-turkey' );
+			$kids_part = 'oae' === $dest_slug ? 'kids-uae' : 'kids-turkey';
+			get_template_part( 'template-parts/sections/' . $kids_part );
 		}
 		if ( ! empty( $dest['curated_expert_section'] ) ) {
-			get_template_part( 'template-parts/destination/turciya-expert-nuances' );
+			get_template_part(
+				'template-parts/destination/turciya-expert-nuances',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
 		}
 		?>
 	<?php else : ?>

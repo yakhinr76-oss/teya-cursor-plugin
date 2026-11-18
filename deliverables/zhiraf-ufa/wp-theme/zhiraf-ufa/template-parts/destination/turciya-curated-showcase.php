@@ -38,8 +38,14 @@ if ( empty( $hotels ) ) {
 	data-catalog-pool-total="<?php echo esc_attr( (string) $pool_total ); ?>"
 >
 	<div class="container">
-		<?php if ( 'turciya' === $dest_slug ) : ?>
-			<?php get_template_part( 'template-parts/destination/turciya-resort-pick-cards' ); ?>
+		<?php if ( function_exists( 'zhiraf_ufa_curated_has_resort_pick_cards' ) && zhiraf_ufa_curated_has_resort_pick_cards( $dest_slug ) ) : ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-resort-pick-cards',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
+			?>
 		<?php endif; ?>
 
 		<div class="turciya-curated-showcase__block">

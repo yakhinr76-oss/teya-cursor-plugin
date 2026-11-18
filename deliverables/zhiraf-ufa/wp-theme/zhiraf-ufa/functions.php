@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.39-uae-tourvisor-map' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.40-oae-curated-etalon' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 

@@ -163,6 +163,11 @@ function zhiraf_ufa_destination_landing_data() {
 		),
 		'oae'      => array(
 			'curated_landing_v1'           => true,
+			'curated_resort_chips'         => true,
+			'curated_hero_show_compare'    => false,
+			'curated_hero_show_trust'      => false,
+			'curated_kids_section'         => true,
+			'curated_expert_section'       => true,
 			'seo_prose_after_faq'          => true,
 			'seo_prose_accordions'         => true,
 			'prose_accordion_title'        => __( 'Подробнее об эмиратах, сезоне и пакете', 'zhiraf-ufa' ),
@@ -179,7 +184,7 @@ function zhiraf_ufa_destination_landing_data() {
 				),
 				array(
 					'icon' => '🛡️',
-					'text' => __( 'Прозрачные цены: туристический налог и депозиты отеля — заранее в подборке', 'zhiraf-ufa' ),
+					'text' => __( 'Честные цены за двоих с перелётом и страховкой', 'zhiraf-ufa' ),
 				),
 			),
 			'resort_links'                 => array(
@@ -212,8 +217,11 @@ function zhiraf_ufa_destination_landing_data() {
 			'description'    => __( 'Подбор туров в ОАЭ с вылетом из Уфы: Дубай, Шарджа, Рас-эль-Хайма, Абу-Даби и Фуджейра. Безвизовый въезд, отели у пляжа и в центре города.', 'zhiraf-ufa' ),
 			'image'          => 'hero-uae.jpg',
 			'image_alt'      => __( 'ОАЭ — пляж и отель Burj Al Arab, Дубай', 'zhiraf-ufa' ),
-			'hero_lead'      => __( 'Пляжи Персидского залива, сервис 4–5★ и прямой перелёт из Уфы за ~5 часов. Подберём 2–4 варианта под ваш бюджет — без навязчивых звонков.', 'zhiraf-ufa' ),
-			'hero_cta_hint'  => __( 'Короткий квиз или заявка — ответим в WhatsApp, Telegram или перезвоним, как удобнее.', 'zhiraf-ufa' ),
+			'hero_lead'      => __( 'Отобрали 6 проверенных отелей под разные задачи: город у метро, пляж JBR, семейный All Inclusive в РАК и тихий Аджман. Честные цены за двоих на 7–9 ночей с вылетом из Уфы.', 'zhiraf-ufa' ),
+			'hero_badges'    => array(
+				array( 'icon' => '✈', 'text' => __( 'Перелёт из Уфы • ~4,5–5 часов', 'zhiraf-ufa' ) ),
+				array( 'icon' => '🛂', 'text' => __( 'Без визы • до 90 дней', 'zhiraf-ufa' ) ),
+			),
 			'hero_lead_extended' => __( 'Турагентство «Жираф» в Уфе организует поездки в Дубай, Шарджу, Рас-эль-Хайму, Абу-Даби и Фуджейру. Помогаем выбрать эмират, тип питания и отель у моря или в центре — с учётом депозитов и туристического налога.', 'zhiraf-ufa' ),
 			'tour_card_limit' => 8,
 			'tour_collapsed_after' => 6,

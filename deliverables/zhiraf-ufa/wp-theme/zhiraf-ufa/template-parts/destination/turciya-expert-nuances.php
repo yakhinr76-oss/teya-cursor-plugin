@@ -9,15 +9,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$items = function_exists( 'zhiraf_ufa_turciya_expert_nuances' ) ? zhiraf_ufa_turciya_expert_nuances() : array();
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+$items     = function_exists( 'zhiraf_ufa_curated_expert_nuances' )
+	? zhiraf_ufa_curated_expert_nuances( $dest_slug )
+	: ( function_exists( 'zhiraf_ufa_turciya_expert_nuances' ) ? zhiraf_ufa_turciya_expert_nuances() : array() );
 if ( empty( $items ) ) {
 	return;
 }
+$expert_title = 'oae' === $dest_slug
+	? __( 'Что важно знать об ОАЭ в этом сезоне', 'zhiraf-ufa' )
+	: __( 'Что важно знать о Турции в этом сезоне', 'zhiraf-ufa' );
 ?>
 <section class="section turciya-expert-nuances bg-sand">
 	<div class="container">
 		<h2 class="section-title turciya-expert-nuances__title">
-			<?php esc_html_e( 'Что важно знать о Турции в этом сезоне', 'zhiraf-ufa' ); ?>
+			<?php echo esc_html( $expert_title ); ?>
 		</h2>
 		<div class="turciya-expert-nuances__grid">
 			<?php foreach ( $items as $item ) : ?>

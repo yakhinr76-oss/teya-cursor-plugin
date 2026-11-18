@@ -214,5 +214,10 @@ $maldives_map      = is_readable( $maldives_map_path ) ? json_decode( (string) f
 $maldives_hotels   = ( is_array( $maldives_map ) && isset( $maldives_map['hotels'] ) && is_array( $maldives_map['hotels'] ) ) ? $maldives_map['hotels'] : array();
 zhiraf_tv_assert( 25 === count( $maldives_hotels ), 'maldives map has 25 hotels' );
 zhiraf_tv_assert( in_array( 'maldives', zhiraf_ufa_tourvisor_curated_map_countries(), true ), 'maldives in curated map countries' );
+$vietnam_map_path = dirname( __DIR__ ) . '/deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/vietnam-tourvisor-hotels.json';
+$vietnam_map      = is_readable( $vietnam_map_path ) ? json_decode( (string) file_get_contents( $vietnam_map_path ), true ) : array();
+$vietnam_hotels   = ( is_array( $vietnam_map ) && isset( $vietnam_map['hotels'] ) && is_array( $vietnam_map['hotels'] ) ) ? $vietnam_map['hotels'] : array();
+zhiraf_tv_assert( 25 === count( $vietnam_hotels ), 'vietnam map has 25 hotels' );
+zhiraf_tv_assert( in_array( 'vietnam', zhiraf_ufa_tourvisor_curated_map_countries(), true ), 'vietnam in curated map countries' );
 
 exit( $failed > 0 ? 1 : 0 );

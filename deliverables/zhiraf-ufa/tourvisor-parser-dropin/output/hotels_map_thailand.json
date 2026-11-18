@@ -1,0 +1,11 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "thailand",
+  "tourvisor_country_id": 2,
+  "identified_at": "2026-11-18",
+  "departure_city": "Уфа",
+  "hotel_count": 0,
+  "hotel_ids": "",
+  "hotels": [],
+  "by_tourvisor_id": {}
+}

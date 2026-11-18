@@ -37,9 +37,19 @@ python3 scripts/export_tourvisor_parser_map.py --flat \
 | Таиланд | `thailand` | `tailand` | 2 | `thailand-tourvisor-hotels.json` |
 | **Вьетнам** | **`vietnam`** | **`vietnam`** | **16** | **`vietnam-tourvisor-hotels.json`** |
 
+## Локальный «parser tourvisor» (ваш ПК)
+
+Готовый drop-in (как для Турции/ОАЭ): **`deliverables/zhiraf-ufa/tourvisor-parser-dropin/`**
+
+- `output/hotels_map_vietnam.json` — скопировать в `output/` парсера
+- `hotels_config.countries.snippet.json` — включить `vietnam` в `hotels_config.json`
+- Пересборка: `python3 scripts/export_tourvisor_parser_map.py --country vietnam --parser-dropin deliverables/zhiraf-ufa/tourvisor-parser-dropin/output`
+
+Облачный агент **не** имеет доступа к Tourvisor login на вашем ПК — батч-поиск и `push` выполняются только там, после копирования drop-in.
+
 ## Вьетнам — что добавить в парсер
 
-1. Подключить map: theme `data/vietnam-tourvisor-hotels.json` или `data/tourvisor-parser-map.vietnam.json` (25 строк, все `tourvisor_id > 0`).
+1. Подключить map: drop-in `hotels_map_vietnam.json` или theme `data/vietnam-tourvisor-hotels.json` (25 строк, все `tourvisor_id > 0`).
 2. В поиск Tourvisor передавать **`tourvisor_id`** из map (страна TV **16**).
 3. В webhook для каждого найденного минимума — ключ **`vietnam:1` … `vietnam:25`**, поля `country_slug: "vietnam"`, `zhiraf_id`, `tourvisor_id`, `price_rub`, `nights`, `departure_city: "Уфа"`, …
 4. Допускается слать только `tourvisor_id` / `hotelcode` — тема сведёт к `zhiraf_id` через map.

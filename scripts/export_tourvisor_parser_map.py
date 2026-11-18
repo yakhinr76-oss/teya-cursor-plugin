@@ -27,6 +27,47 @@ def load_map(country: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def parser_hotels_map(doc: dict) -> dict:
+    """Shape for local parser output/hotels_map_*.json (fetch-by-map, join on hotelcode)."""
+    slug = str(doc.get("country_slug", ""))
+    rows: list[dict] = []
+    by_tv: dict[str, dict] = {}
+    ids: list[int] = []
+    for h in doc.get("hotels") or []:
+        if not isinstance(h, dict):
+            continue
+        tid = int(h.get("tourvisor_id") or 0)
+        zid = int(h.get("zhiraf_id") or 0)
+        if zid <= 0 or tid <= 0:
+            continue
+        place = str(h.get("resort") or h.get("tourvisor_region") or "")
+        row = {
+            "zhiraf_id": zid,
+            "country_slug": slug,
+            "tourvisor_id": tid,
+            "hotel_name": str(h.get("hotel_name") or ""),
+            "place": place,
+            "search_query": str(h.get("search_query") or ""),
+            "tourvisor_name": str(h.get("tourvisor_name") or ""),
+            "price_key": f"{slug}:{zid}",
+        }
+        rows.append(row)
+        by_tv[str(tid)] = row
+        ids.append(tid)
+    ids.sort()
+    return {
+        "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+        "country_slug": slug,
+        "tourvisor_country_id": doc.get("tourvisor_country_id"),
+        "identified_at": doc.get("identified_at"),
+        "departure_city": "Уфа",
+        "hotel_count": len(rows),
+        "hotel_ids": ",".join(str(i) for i in ids),
+        "hotels": rows,
+        "by_tourvisor_id": by_tv,
+    }
+
+
 def flatten(doc: dict) -> list[dict]:
     rows: list[dict] = []
     for h in doc.get("hotels") or []:
@@ -72,6 +113,12 @@ def main() -> None:
         action="store_true",
         help="Single list under \"hotels\" (for parsers that iterate one array)",
     )
+    parser.add_argument(
+        "--parser-dropin",
+        type=Path,
+        metavar="DIR",
+        help="Write output/hotels_map_{country}.json for local «parser tourvisor» (DIR=output parent)",
+    )
     args = parser.parse_args()
     countries = args.countries or sorted(MAPS)
 
@@ -111,6 +158,36 @@ def main() -> None:
                 "search_ready_count": sum(1 for r in rows if r["search_ok"]),
                 "hotels": rows,
             }
+
+    if args.parser_dropin:
+        out_dir = args.parser_dropin
+        out_dir.mkdir(parents=True, exist_ok=True)
+        for c in countries:
+            doc = load_map(c)
+            slug = str(doc.get("country_slug", c))
+            path = out_dir / f"hotels_map_{slug}.json"
+            path.write_text(
+                json.dumps(parser_hotels_map(doc), ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            print(f"Wrote {path}", file=sys.stderr)
+        snippet = {
+            "schema": "zhiraf.tourvisor-parser.hotels_config.snippet.v1",
+            "note": "Merge countries into your local hotels_config.json (enabled + hotels_map path).",
+            "countries": {
+                c: {
+                    "enabled": True,
+                    "country_slug": str(load_map(c).get("country_slug", c)),
+                    "tourvisor_country_id": load_map(c).get("tourvisor_country_id"),
+                    "hotels_map": f"output/hotels_map_{load_map(c).get('country_slug', c)}.json",
+                }
+                for c in countries
+            },
+        }
+        snippet_path = out_dir.parent / "hotels_config.countries.snippet.json"
+        snippet_path.write_text(json.dumps(snippet, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote {snippet_path}", file=sys.stderr)
+        return
 
     text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
     if args.out:

@@ -1,0 +1,513 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "uae",
+  "tourvisor_country_id": 9,
+  "identified_at": "2026-11-17",
+  "departure_city": "Уфа",
+  "hotel_count": 25,
+  "hotel_ids": "2535,2536,2563,2570,2590,2926,2938,13853,23751,23864,43061,55946,57333,59331,59333,63195,63880,64915,67402,67405,67445,68024,76213,76727,78398",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "uae",
+      "tourvisor_id": 76213,
+      "hotel_name": "Centara Mirage Beach Resort Dubai 4★",
+      "place": "Дубай, Dubai Islands",
+      "search_query": "Centara Mirage Beach Resort Dubai",
+      "tourvisor_name": "Centara Mirage Beach Resort Dubai",
+      "price_key": "uae:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "uae",
+      "tourvisor_id": 23864,
+      "hotel_name": "DoubleTree by Hilton Resort & Spa Marjan Island 5★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "DoubleTree by Hilton Resort & Spa Marjan Island",
+      "tourvisor_name": "Doubletree By Hilton Resort & Spa Marjan Island",
+      "price_key": "uae:2"
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "uae",
+      "tourvisor_id": 68024,
+      "hotel_name": "Hampton by Hilton Marjan Island 4★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "Hampton by Hilton Marjan Island",
+      "tourvisor_name": "Hampton By Hilton Marjan Island",
+      "price_key": "uae:3"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "uae",
+      "tourvisor_id": 78398,
+      "hotel_name": "Radisson Resort Ras Al Khaimah Marjan Island 4★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "Radisson Resort Ras Al Khaimah Marjan Island",
+      "tourvisor_name": "Radisson Resort Ras Al Khaimah Marjan Island",
+      "price_key": "uae:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "uae",
+      "tourvisor_id": 2938,
+      "hotel_name": "Yas Plaza Bay by IHG 4★",
+      "place": "Абу-Даби, остров Яс",
+      "search_query": "Yas Plaza Bay by IHG",
+      "tourvisor_name": "Vista Yas World Resort Vignette Collection By Ihg (Ex. Yas Plaza Bay By Ihg)",
+      "price_key": "uae:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "uae",
+      "tourvisor_id": 2536,
+      "hotel_name": "Coral Beach Resort Sharjah 4★",
+      "place": "Шарджа, Аль-Мунтаза",
+      "search_query": "coral beach resort",
+      "tourvisor_name": "Coral Beach Resort",
+      "price_key": "uae:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "uae",
+      "tourvisor_id": 2563,
+      "hotel_name": "Occidental Sharjah Grand 4★",
+      "place": "Шарджа, Аль-Хан",
+      "search_query": "Occidental Sharjah Grand",
+      "tourvisor_name": "Occidental Sharjah Grand (Ex. Grand Hotel Sharjah)",
+      "price_key": "uae:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "uae",
+      "tourvisor_id": 43061,
+      "hotel_name": "Sheraton Sharjah Beach Resort & Spa 5★",
+      "place": "Шарджа, Аль-Хира",
+      "search_query": "Sheraton Sharjah Beach Resort & Spa",
+      "tourvisor_name": "Sheraton Sharjah Beach Resort & Spa",
+      "price_key": "uae:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "uae",
+      "tourvisor_id": 13853,
+      "hotel_name": "Bahi Ajman Palace Hotel 5★",
+      "place": "Аджман, Корниш",
+      "search_query": "Bahi Ajman Palace Hotel",
+      "tourvisor_name": "Bahi Ajman Palace (Ex. The Ajman Palace)",
+      "price_key": "uae:9"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "uae",
+      "tourvisor_id": 2590,
+      "hotel_name": "Ajman Hotel & Villas by Blazon Hotels 5★",
+      "place": "Аджман, Корниш",
+      "search_query": "dusit ajman",
+      "tourvisor_name": "Dusit Ajman (Ex. Ajman Hotel)",
+      "price_key": "uae:10"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "uae",
+      "tourvisor_id": 76727,
+      "hotel_name": "Rove City Walk 3★",
+      "place": "Дубай, City Walk / Downtown",
+      "search_query": "Rove City Walk",
+      "tourvisor_name": "Rove City Walk",
+      "price_key": "uae:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "uae",
+      "tourvisor_id": 2926,
+      "hotel_name": "Citymax Hotel Al Barsha at the Mall 3★",
+      "place": "Дубай, Аль-Барша",
+      "search_query": "Citymax Hotel Al Barsha at the Mall",
+      "tourvisor_name": "Citymax Hotel Al Barsha At The Mall",
+      "price_key": "uae:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "uae",
+      "tourvisor_id": 59333,
+      "hotel_name": "Rose Park Hotel Al Barsha 4★",
+      "place": "Дубай, Аль-Барша",
+      "search_query": "Rose Park Hotel Al Barsha",
+      "tourvisor_name": "Rose Park Hotel Al Barsha",
+      "price_key": "uae:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "uae",
+      "tourvisor_id": 64915,
+      "hotel_name": "TRYP by Wyndham Dubai 4★",
+      "place": "Дубай, Barsha Heights",
+      "search_query": "tryp barsha heights",
+      "tourvisor_name": "Tryp By Wyndham Barsha Heights",
+      "price_key": "uae:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "uae",
+      "tourvisor_id": 55946,
+      "hotel_name": "Premier Inn Dubai Ibn Battuta Mall 3★",
+      "place": "Дубай, Джебель-Али",
+      "search_query": "Premier Inn Dubai Ibn Battuta Mall",
+      "tourvisor_name": "Premier Inn Dubai Ibn Battuta Mall",
+      "price_key": "uae:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "uae",
+      "tourvisor_id": 63195,
+      "hotel_name": "Rove Dubai Marina 3★",
+      "place": "Дубай, Дубай Марина",
+      "search_query": "Rove Dubai Marina",
+      "tourvisor_name": "Rove Dubai Marina",
+      "price_key": "uae:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "uae",
+      "tourvisor_id": 67405,
+      "hotel_name": "Vida Creek Harbour 4★",
+      "place": "Дубай, Dubai Creek Harbour",
+      "search_query": "Vida Creek Harbour",
+      "tourvisor_name": "Vida Creek Harbour (Ex. Vida Harbour Point)",
+      "price_key": "uae:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "uae",
+      "tourvisor_id": 63880,
+      "hotel_name": "Canal Central Hotel Business Bay 5★",
+      "place": "Дубай, Business Bay",
+      "search_query": "Canal Central Hotel Business Bay",
+      "tourvisor_name": "Canal Central Business Bay",
+      "price_key": "uae:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "uae",
+      "tourvisor_id": 2535,
+      "hotel_name": "Copthorne Hotel Dubai 4★",
+      "place": "Дубай, Дейра / Port Saeed",
+      "search_query": "Copthorne Hotel Dubai",
+      "tourvisor_name": "Copthorne Hotel Dubai",
+      "price_key": "uae:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "uae",
+      "tourvisor_id": 67402,
+      "hotel_name": "Grand Plaza Mövenpick Media City 5★",
+      "place": "Дубай, Media City",
+      "search_query": "Grand Plaza Mövenpick Media City",
+      "tourvisor_name": "Grand Plaza Movenpick Media City Dubai",
+      "price_key": "uae:20"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "uae",
+      "tourvisor_id": 67445,
+      "hotel_name": "Beach Rotana Residences 5★",
+      "place": "Абу-Даби, Аль-Захия",
+      "search_query": "Beach Rotana Residences",
+      "tourvisor_name": "Beach Rotana Residences",
+      "price_key": "uae:21"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "uae",
+      "tourvisor_id": 2570,
+      "hotel_name": "Hala Arjaan by Rotana 4★",
+      "place": "Абу-Даби, Корниш",
+      "search_query": "Hala Arjaan by Rotana",
+      "tourvisor_name": "Hala Arjaan",
+      "price_key": "uae:22"
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "uae",
+      "tourvisor_id": 23751,
+      "hotel_name": "Premier Inn Abu Dhabi Airport 3★",
+      "place": "Абу-Даби, Аэропорт / Яс",
+      "search_query": "Premier Inn Abu Dhabi Airport",
+      "tourvisor_name": "Premier Inn Abu Dhabi International Airport",
+      "price_key": "uae:23"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "uae",
+      "tourvisor_id": 59331,
+      "hotel_name": "City Stay Beach Hotel Apartment 3★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "City Stay Beach Hotel Apartment",
+      "tourvisor_name": "City Stay Beach Hotel Apartment",
+      "price_key": "uae:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "uae",
+      "tourvisor_id": 57333,
+      "hotel_name": "Jannah Hotel Apartments & Villas 4★",
+      "place": "Рас-эль-Хайма, Mina Al Arab",
+      "search_query": "jannah hotel apartments villas ras",
+      "tourvisor_name": "Jannah Hotel Apartments & Villas In Ras Al Khaimah",
+      "price_key": "uae:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "76213": {
+      "zhiraf_id": 1,
+      "country_slug": "uae",
+      "tourvisor_id": 76213,
+      "hotel_name": "Centara Mirage Beach Resort Dubai 4★",
+      "place": "Дубай, Dubai Islands",
+      "search_query": "Centara Mirage Beach Resort Dubai",
+      "tourvisor_name": "Centara Mirage Beach Resort Dubai",
+      "price_key": "uae:1"
+    },
+    "23864": {
+      "zhiraf_id": 2,
+      "country_slug": "uae",
+      "tourvisor_id": 23864,
+      "hotel_name": "DoubleTree by Hilton Resort & Spa Marjan Island 5★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "DoubleTree by Hilton Resort & Spa Marjan Island",
+      "tourvisor_name": "Doubletree By Hilton Resort & Spa Marjan Island",
+      "price_key": "uae:2"
+    },
+    "68024": {
+      "zhiraf_id": 3,
+      "country_slug": "uae",
+      "tourvisor_id": 68024,
+      "hotel_name": "Hampton by Hilton Marjan Island 4★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "Hampton by Hilton Marjan Island",
+      "tourvisor_name": "Hampton By Hilton Marjan Island",
+      "price_key": "uae:3"
+    },
+    "78398": {
+      "zhiraf_id": 4,
+      "country_slug": "uae",
+      "tourvisor_id": 78398,
+      "hotel_name": "Radisson Resort Ras Al Khaimah Marjan Island 4★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "Radisson Resort Ras Al Khaimah Marjan Island",
+      "tourvisor_name": "Radisson Resort Ras Al Khaimah Marjan Island",
+      "price_key": "uae:4"
+    },
+    "2938": {
+      "zhiraf_id": 5,
+      "country_slug": "uae",
+      "tourvisor_id": 2938,
+      "hotel_name": "Yas Plaza Bay by IHG 4★",
+      "place": "Абу-Даби, остров Яс",
+      "search_query": "Yas Plaza Bay by IHG",
+      "tourvisor_name": "Vista Yas World Resort Vignette Collection By Ihg (Ex. Yas Plaza Bay By Ihg)",
+      "price_key": "uae:5"
+    },
+    "2536": {
+      "zhiraf_id": 6,
+      "country_slug": "uae",
+      "tourvisor_id": 2536,
+      "hotel_name": "Coral Beach Resort Sharjah 4★",
+      "place": "Шарджа, Аль-Мунтаза",
+      "search_query": "coral beach resort",
+      "tourvisor_name": "Coral Beach Resort",
+      "price_key": "uae:6"
+    },
+    "2563": {
+      "zhiraf_id": 7,
+      "country_slug": "uae",
+      "tourvisor_id": 2563,
+      "hotel_name": "Occidental Sharjah Grand 4★",
+      "place": "Шарджа, Аль-Хан",
+      "search_query": "Occidental Sharjah Grand",
+      "tourvisor_name": "Occidental Sharjah Grand (Ex. Grand Hotel Sharjah)",
+      "price_key": "uae:7"
+    },
+    "43061": {
+      "zhiraf_id": 8,
+      "country_slug": "uae",
+      "tourvisor_id": 43061,
+      "hotel_name": "Sheraton Sharjah Beach Resort & Spa 5★",
+      "place": "Шарджа, Аль-Хира",
+      "search_query": "Sheraton Sharjah Beach Resort & Spa",
+      "tourvisor_name": "Sheraton Sharjah Beach Resort & Spa",
+      "price_key": "uae:8"
+    },
+    "13853": {
+      "zhiraf_id": 9,
+      "country_slug": "uae",
+      "tourvisor_id": 13853,
+      "hotel_name": "Bahi Ajman Palace Hotel 5★",
+      "place": "Аджман, Корниш",
+      "search_query": "Bahi Ajman Palace Hotel",
+      "tourvisor_name": "Bahi Ajman Palace (Ex. The Ajman Palace)",
+      "price_key": "uae:9"
+    },
+    "2590": {
+      "zhiraf_id": 10,
+      "country_slug": "uae",
+      "tourvisor_id": 2590,
+      "hotel_name": "Ajman Hotel & Villas by Blazon Hotels 5★",
+      "place": "Аджман, Корниш",
+      "search_query": "dusit ajman",
+      "tourvisor_name": "Dusit Ajman (Ex. Ajman Hotel)",
+      "price_key": "uae:10"
+    },
+    "76727": {
+      "zhiraf_id": 11,
+      "country_slug": "uae",
+      "tourvisor_id": 76727,
+      "hotel_name": "Rove City Walk 3★",
+      "place": "Дубай, City Walk / Downtown",
+      "search_query": "Rove City Walk",
+      "tourvisor_name": "Rove City Walk",
+      "price_key": "uae:11"
+    },
+    "2926": {
+      "zhiraf_id": 12,
+      "country_slug": "uae",
+      "tourvisor_id": 2926,
+      "hotel_name": "Citymax Hotel Al Barsha at the Mall 3★",
+      "place": "Дубай, Аль-Барша",
+      "search_query": "Citymax Hotel Al Barsha at the Mall",
+      "tourvisor_name": "Citymax Hotel Al Barsha At The Mall",
+      "price_key": "uae:12"
+    },
+    "59333": {
+      "zhiraf_id": 13,
+      "country_slug": "uae",
+      "tourvisor_id": 59333,
+      "hotel_name": "Rose Park Hotel Al Barsha 4★",
+      "place": "Дубай, Аль-Барша",
+      "search_query": "Rose Park Hotel Al Barsha",
+      "tourvisor_name": "Rose Park Hotel Al Barsha",
+      "price_key": "uae:13"
+    },
+    "64915": {
+      "zhiraf_id": 14,
+      "country_slug": "uae",
+      "tourvisor_id": 64915,
+      "hotel_name": "TRYP by Wyndham Dubai 4★",
+      "place": "Дубай, Barsha Heights",
+      "search_query": "tryp barsha heights",
+      "tourvisor_name": "Tryp By Wyndham Barsha Heights",
+      "price_key": "uae:14"
+    },
+    "55946": {
+      "zhiraf_id": 15,
+      "country_slug": "uae",
+      "tourvisor_id": 55946,
+      "hotel_name": "Premier Inn Dubai Ibn Battuta Mall 3★",
+      "place": "Дубай, Джебель-Али",
+      "search_query": "Premier Inn Dubai Ibn Battuta Mall",
+      "tourvisor_name": "Premier Inn Dubai Ibn Battuta Mall",
+      "price_key": "uae:15"
+    },
+    "63195": {
+      "zhiraf_id": 16,
+      "country_slug": "uae",
+      "tourvisor_id": 63195,
+      "hotel_name": "Rove Dubai Marina 3★",
+      "place": "Дубай, Дубай Марина",
+      "search_query": "Rove Dubai Marina",
+      "tourvisor_name": "Rove Dubai Marina",
+      "price_key": "uae:16"
+    },
+    "67405": {
+      "zhiraf_id": 17,
+      "country_slug": "uae",
+      "tourvisor_id": 67405,
+      "hotel_name": "Vida Creek Harbour 4★",
+      "place": "Дубай, Dubai Creek Harbour",
+      "search_query": "Vida Creek Harbour",
+      "tourvisor_name": "Vida Creek Harbour (Ex. Vida Harbour Point)",
+      "price_key": "uae:17"
+    },
+    "63880": {
+      "zhiraf_id": 18,
+      "country_slug": "uae",
+      "tourvisor_id": 63880,
+      "hotel_name": "Canal Central Hotel Business Bay 5★",
+      "place": "Дубай, Business Bay",
+      "search_query": "Canal Central Hotel Business Bay",
+      "tourvisor_name": "Canal Central Business Bay",
+      "price_key": "uae:18"
+    },
+    "2535": {
+      "zhiraf_id": 19,
+      "country_slug": "uae",
+      "tourvisor_id": 2535,
+      "hotel_name": "Copthorne Hotel Dubai 4★",
+      "place": "Дубай, Дейра / Port Saeed",
+      "search_query": "Copthorne Hotel Dubai",
+      "tourvisor_name": "Copthorne Hotel Dubai",
+      "price_key": "uae:19"
+    },
+    "67402": {
+      "zhiraf_id": 20,
+      "country_slug": "uae",
+      "tourvisor_id": 67402,
+      "hotel_name": "Grand Plaza Mövenpick Media City 5★",
+      "place": "Дубай, Media City",
+      "search_query": "Grand Plaza Mövenpick Media City",
+      "tourvisor_name": "Grand Plaza Movenpick Media City Dubai",
+      "price_key": "uae:20"
+    },
+    "67445": {
+      "zhiraf_id": 21,
+      "country_slug": "uae",
+      "tourvisor_id": 67445,
+      "hotel_name": "Beach Rotana Residences 5★",
+      "place": "Абу-Даби, Аль-Захия",
+      "search_query": "Beach Rotana Residences",
+      "tourvisor_name": "Beach Rotana Residences",
+      "price_key": "uae:21"
+    },
+    "2570": {
+      "zhiraf_id": 22,
+      "country_slug": "uae",
+      "tourvisor_id": 2570,
+      "hotel_name": "Hala Arjaan by Rotana 4★",
+      "place": "Абу-Даби, Корниш",
+      "search_query": "Hala Arjaan by Rotana",
+      "tourvisor_name": "Hala Arjaan",
+      "price_key": "uae:22"
+    },
+    "23751": {
+      "zhiraf_id": 23,
+      "country_slug": "uae",
+      "tourvisor_id": 23751,
+      "hotel_name": "Premier Inn Abu Dhabi Airport 3★",
+      "place": "Абу-Даби, Аэропорт / Яс",
+      "search_query": "Premier Inn Abu Dhabi Airport",
+      "tourvisor_name": "Premier Inn Abu Dhabi International Airport",
+      "price_key": "uae:23"
+    },
+    "59331": {
+      "zhiraf_id": 24,
+      "country_slug": "uae",
+      "tourvisor_id": 59331,
+      "hotel_name": "City Stay Beach Hotel Apartment 3★",
+      "place": "Рас-эль-Хайма, остров Аль-Марджан",
+      "search_query": "City Stay Beach Hotel Apartment",
+      "tourvisor_name": "City Stay Beach Hotel Apartment",
+      "price_key": "uae:24"
+    },
+    "57333": {
+      "zhiraf_id": 25,
+      "country_slug": "uae",
+      "tourvisor_id": 57333,
+      "hotel_name": "Jannah Hotel Apartments & Villas 4★",
+      "place": "Рас-эль-Хайма, Mina Al Arab",
+      "search_query": "jannah hotel apartments villas ras",
+      "tourvisor_name": "Jannah Hotel Apartments & Villas In Ras Al Khaimah",
+      "price_key": "uae:25"
+    }
+  }
+}

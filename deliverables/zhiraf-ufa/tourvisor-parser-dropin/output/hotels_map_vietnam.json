@@ -4,6 +4,135 @@
   "tourvisor_country_id": 16,
   "identified_at": "2026-11-18",
   "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 5,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        73974,
+        68661,
+        69116,
+        32342,
+        54193
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "price_keys": [
+        "vietnam:1",
+        "vietnam:2",
+        "vietnam:3",
+        "vietnam:4",
+        "vietnam:5"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        4965,
+        23725,
+        4960,
+        4072,
+        128157
+      ],
+      "zhiraf_ids": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "price_keys": [
+        "vietnam:6",
+        "vietnam:7",
+        "vietnam:8",
+        "vietnam:9",
+        "vietnam:10"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        37940,
+        69260,
+        57086,
+        65254,
+        59346
+      ],
+      "zhiraf_ids": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "price_keys": [
+        "vietnam:11",
+        "vietnam:12",
+        "vietnam:13",
+        "vietnam:14",
+        "vietnam:15"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        41495,
+        66367,
+        32356,
+        71560,
+        66668
+      ],
+      "zhiraf_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "price_keys": [
+        "vietnam:16",
+        "vietnam:17",
+        "vietnam:18",
+        "vietnam:19",
+        "vietnam:20"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        22617,
+        61583,
+        32341,
+        7457,
+        4065
+      ],
+      "zhiraf_ids": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "price_keys": [
+        "vietnam:21",
+        "vietnam:22",
+        "vietnam:23",
+        "vietnam:24",
+        "vietnam:25"
+      ]
+    }
+  ],
   "hotel_count": 25,
   "hotel_ids": "4065,4072,4960,4965,7457,22617,23725,32341,32342,32356,37940,41495,54193,57086,59346,61583,65254,66367,66668,68661,69116,69260,71560,73974,128157",
   "hotels": [

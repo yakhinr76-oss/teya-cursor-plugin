@@ -25,6 +25,9 @@ GITHUB_RAW = (
     "deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_{slug}.json"
 )
 
+# Tourvisor modsearch: больше ~5 hotel id в одном запросе часто даёт пустую выдачу (договорённость с парсером).
+MODSEARCH_HOTELS_PER_REQUEST = 5
+
 MAPS: dict[str, Path] = {
     "turkey": THEME_DATA / "turkey-tourvisor-hotels.json",
     "uae": THEME_DATA / "uae-tourvisor-hotels.json",
@@ -70,12 +73,28 @@ def parser_hotels_map(doc: dict) -> dict:
         by_tv[str(tid)] = row
         ids.append(tid)
     ids.sort()
+    batches: list[dict] = []
+    size = MODSEARCH_HOTELS_PER_REQUEST
+    for batch_index, start in enumerate(range(0, len(rows), size), start=1):
+        chunk = rows[start : start + size]
+        batches.append(
+            {
+                "batch_index": batch_index,
+                "hotel_count": len(chunk),
+                "tourvisor_ids": [int(r["tourvisor_id"]) for r in chunk],
+                "zhiraf_ids": [int(r["zhiraf_id"]) for r in chunk],
+                "price_keys": [str(r["price_key"]) for r in chunk],
+            }
+        )
     return {
         "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
         "country_slug": slug,
         "tourvisor_country_id": doc.get("tourvisor_country_id"),
         "identified_at": doc.get("identified_at"),
         "departure_city": "Москва" if slug == "maldives" else "Уфа",
+        "modsearch_hotels_per_request": MODSEARCH_HOTELS_PER_REQUEST,
+        "modsearch_batch_count": len(batches),
+        "search_batches": batches,
         "hotel_count": len(rows),
         "hotel_ids": ",".join(str(i) for i in ids),
         "hotels": rows,
@@ -190,19 +209,28 @@ def main() -> None:
             "schema": "zhiraf.tourvisor-parser.hotels_config.snippet.v1",
             "note": "Merge into local hotels_config.json. hotels_map_url — скачать с GitHub без копипаста после merge в main.",
             "github_ref": "main",
+            "modsearch_hotels_per_request": MODSEARCH_HOTELS_PER_REQUEST,
+            "modsearch_batch_note": "Не больше modsearch_hotels_per_request tourvisor_id в одном modsearch; см. search_batches в hotels_map_*.json",
             "countries": {},
         }
         for c in countries:
             doc = load_map(c)
             slug = str(doc.get("country_slug", c))
             tv_id = int(doc.get("tourvisor_country_id") or 0) or TV_COUNTRY_ID.get(slug, 0)
-            snippet["countries"][c] = {
+            block = {
                 "enabled": True,
                 "country_slug": slug,
                 "tourvisor_country_id": tv_id,
+                "departure_city": "Москва" if slug == "maldives" else "Уфа",
+                "modsearch_hotels_per_request": MODSEARCH_HOTELS_PER_REQUEST,
                 "hotels_map": f"output/hotels_map_{slug}.json",
                 "hotels_map_url": GITHUB_RAW.format(ref="main", slug=slug),
             }
+            if slug == "maldives":
+                block["departure_city_note"] = (
+                    "modsearch только из Москвы; на сайте — пакет из Уфы со стыковкой"
+                )
+            snippet["countries"][c] = block
         snippet_path = out_dir.parent / "hotels_config.countries.snippet.json"
         snippet_path.write_text(json.dumps(snippet, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"Wrote {snippet_path}", file=sys.stderr)

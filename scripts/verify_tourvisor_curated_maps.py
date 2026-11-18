@@ -11,7 +11,16 @@ REPO = Path(__file__).resolve().parents[1]
 THEME_DATA = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data"
 DROPIN = REPO / "deliverables/zhiraf-ufa/tourvisor-parser-dropin/output"
 
-TV_COUNTRY_ID = {"turkey": 4, "uae": 9, "egypt": 1, "thailand": 2, "vietnam": 16}
+TV_COUNTRY_ID = {
+    "turkey": 4,
+    "uae": 9,
+    "egypt": 1,
+    "thailand": 2,
+    "vietnam": 16,
+    "maldives": 8,
+}
+
+MODSEARCH_HOTELS_PER_REQUEST = 5
 
 MAPS = {
     slug: (THEME_DATA / f"{slug}-tourvisor-hotels.json", TV_COUNTRY_ID[slug])
@@ -19,7 +28,7 @@ MAPS = {
 }
 
 # Countries that must have 25/25 tourvisor_id before CI fails (Thailand may stay scaffold).
-STRICT_READY = {"turkey", "uae", "egypt", "vietnam"}
+STRICT_READY = {"turkey", "uae", "egypt", "vietnam", "maldives"}
 
 
 def check_theme_map(slug: str, path: Path, expected_tv_country: int) -> list[str]:
@@ -64,6 +73,21 @@ def check_dropin(slug: str) -> list[str]:
     got = int(doc.get("hotel_count") or 0)
     if got != expected:
         errs.append(f"dropin {slug}: hotel_count {got} != theme ready {expected}")
+    if got <= 0:
+        return errs
+    per_req = int(doc.get("modsearch_hotels_per_request") or 0)
+    if per_req != MODSEARCH_HOTELS_PER_REQUEST:
+        errs.append(
+            f"dropin {slug}: modsearch_hotels_per_request {per_req} != {MODSEARCH_HOTELS_PER_REQUEST}"
+        )
+    batches = doc.get("search_batches") or []
+    if not batches:
+        errs.append(f"dropin {slug}: missing search_batches")
+    else:
+        for b in batches:
+            n = int(b.get("hotel_count") or 0)
+            if n < 1 or n > MODSEARCH_HOTELS_PER_REQUEST:
+                errs.append(f"dropin {slug}: batch {b.get('batch_index')} has {n} hotels")
     return errs
 
 

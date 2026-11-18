@@ -1,0 +1,506 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "tourvisor-autocomplete",
+  "country_slug": "egypt",
+  "identified_at": "2026-11-18",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ egypt:{zhiraf_id} (country_slug egypt, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 1,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "egypt",
+      "hotel_name": "SENTIDO Reef Oasis Aqua Park Resort 5★",
+      "resort": "Шарм-эль-Шейх, Хадаба / Рас-Ум-эль-Сид",
+      "region": "sharm",
+      "tourvisor_id": 4184,
+      "tourvisor_name": "Sentido Reef Oasis Senses Resort (Ex. Reef Oasis Senses Resort)",
+      "tourvisor_region": "Шарм-эль-Шейх",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "SENTIDO Reef Oasis Aqua Park Resort",
+      "match_names": [
+        "SENTIDO Reef Oasis Aqua Park Resort 5★",
+        "SENTIDO Reef Oasis Aqua Park Resort",
+        "Sentido Reef Oasis Senses Resort (Ex. Reef Oasis Senses Resort)"
+      ],
+      "match_status": "manual",
+      "match_score": 0.95
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "egypt",
+      "hotel_name": "Pickalbatros Aqua Blu Resort 4★",
+      "resort": "Шарм-эль-Шейх, Хадаба",
+      "region": "sharm",
+      "tourvisor_id": 108,
+      "tourvisor_name": "Pickalbatros Aqua Blu Resort (Ex. Pickalbatros Sea World)",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 2555,
+      "tourvisor_stars": 4,
+      "search_query": "Pickalbatros Aqua Blu Resort",
+      "match_names": [
+        "Pickalbatros Aqua Blu Resort 4★",
+        "Pickalbatros Aqua Blu Resort",
+        "Pickalbatros Aqua Blu Resort (Ex. Pickalbatros Sea World)"
+      ],
+      "match_status": "auto",
+      "match_score": 0.825
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "egypt",
+      "hotel_name": "Pickalbatros White Beach Resort 5★",
+      "resort": "Хургада, променад Эль-Мамша",
+      "region": "hurghada",
+      "tourvisor_id": 55574,
+      "tourvisor_name": "Pickalbatros White Beach Resort",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 2555,
+      "tourvisor_stars": 5,
+      "search_query": "Pickalbatros White Beach Resort",
+      "match_names": [
+        "Pickalbatros White Beach Resort 5★",
+        "Pickalbatros White Beach Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "egypt",
+      "hotel_name": "SUNRISE Royal Makadi Resort 5★",
+      "resort": "Хургада, Макади Бэй",
+      "region": "hurghada",
+      "tourvisor_id": 483,
+      "tourvisor_name": "Sunrise Royal Makadi Resort",
+      "tourvisor_region": "Макади Бей",
+      "tourvisor_region_code": 2527,
+      "tourvisor_stars": 5,
+      "search_query": "SUNRISE Royal Makadi Resort",
+      "match_names": [
+        "SUNRISE Royal Makadi Resort 5★",
+        "SUNRISE Royal Makadi Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "egypt",
+      "hotel_name": "Desert Rose Resort 5★",
+      "resort": "Хургада, южное побережье",
+      "region": "hurghada",
+      "tourvisor_id": 178,
+      "tourvisor_name": "Desert Rose Resort",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 2555,
+      "tourvisor_stars": 5,
+      "search_query": "Desert Rose Resort",
+      "match_names": [
+        "Desert Rose Resort 5★",
+        "Desert Rose Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "egypt",
+      "hotel_name": "Baron Palms Resort 5★",
+      "resort": "Шарм-эль-Шейх, Рас-Насрани",
+      "region": "sharm",
+      "tourvisor_id": 1962,
+      "tourvisor_name": "Baron Palms Resort Adults Only 16+",
+      "tourvisor_region": "Рас Насрани",
+      "tourvisor_region_code": 2530,
+      "tourvisor_stars": 5,
+      "search_query": "Baron Palms Resort",
+      "match_names": [
+        "Baron Palms Resort 5★",
+        "Baron Palms Resort",
+        "Baron Palms Resort Adults Only 16+"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "egypt",
+      "hotel_name": "Meraki Resort Sharm El Sheikh 5★",
+      "resort": "Шарм-эль-Шейх, Рас-Насрани",
+      "region": "sharm",
+      "tourvisor_id": 80964,
+      "tourvisor_name": "Meraki Resort Sharm El Sheikh Adults Only 16+",
+      "tourvisor_region": "Шарм-эль-Шейх",
+      "tourvisor_region_code": 6,
+      "tourvisor_stars": 5,
+      "search_query": "Meraki Resort Sharm El Sheikh",
+      "match_names": [
+        "Meraki Resort Sharm El Sheikh 5★",
+        "Meraki Resort Sharm El Sheikh",
+        "Meraki Resort Sharm El Sheikh Adults Only 16+"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "egypt",
+      "hotel_name": "Reef Oasis Blue Bay Resort 5★",
+      "resort": "Шарм-эль-Шейх, Паша Бэй",
+      "region": "sharm",
+      "tourvisor_id": 372,
+      "tourvisor_name": "Reef Oasis Blue Bay",
+      "tourvisor_region": "Шарм-эль-Шейх",
+      "tourvisor_region_code": 6,
+      "tourvisor_stars": 5,
+      "search_query": "Reef Oasis Blue Bay Resort",
+      "match_names": [
+        "Reef Oasis Blue Bay Resort 5★",
+        "Reef Oasis Blue Bay Resort",
+        "Reef Oasis Blue Bay"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "egypt",
+      "hotel_name": "Stella Di Mare Beach Hotel & Spa 5★",
+      "resort": "Шарм-эль-Шейх, Наама Бэй",
+      "region": "sharm",
+      "tourvisor_id": 465,
+      "tourvisor_name": "Stella Di Mare Beach Hotel & Spa",
+      "tourvisor_region": "Наама Бей",
+      "tourvisor_region_code": 2528,
+      "tourvisor_stars": 5,
+      "search_query": "Stella Di Mare Beach Hotel & Spa",
+      "match_names": [
+        "Stella Di Mare Beach Hotel & Spa 5★",
+        "Stella Di Mare Beach Hotel & Spa",
+        "Stella Di Mare Beach Hotel and Spa"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "egypt",
+      "hotel_name": "Fort Arabesque — The West Bay 4+★",
+      "resort": "Хургада, Макади Бэй",
+      "region": "hurghada",
+      "tourvisor_id": 77809,
+      "tourvisor_name": "Fort Arabesque The West Bay Adults Only",
+      "tourvisor_region": "Макади Бей",
+      "tourvisor_region_code": 2527,
+      "tourvisor_stars": 4,
+      "search_query": "Fort Arabesque — The West Bay 4+",
+      "match_names": [
+        "Fort Arabesque — The West Bay 4+★",
+        "Fort Arabesque — The West Bay 4+",
+        "Fort Arabesque The West Bay Adults Only"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "egypt",
+      "hotel_name": "Four Seasons Resort Sharm El Sheikh 5★",
+      "resort": "Шарм-эль-Шейх, Рас-Насрани",
+      "region": "sharm",
+      "tourvisor_id": 218,
+      "tourvisor_name": "Four Seasons Resort Ssh",
+      "tourvisor_region": "Шарм-эль-Шейх",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Four Seasons Resort Sharm El Sheikh",
+      "match_names": [
+        "Four Seasons Resort Sharm El Sheikh 5★",
+        "Four Seasons Resort Sharm El Sheikh",
+        "Four Seasons Resort Ssh"
+      ],
+      "match_status": "manual",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "egypt",
+      "hotel_name": "Rixos Premium Seagate 5★",
+      "resort": "Шарм-эль-Шейх, Набк Бэй",
+      "region": "sharm",
+      "tourvisor_id": 37668,
+      "tourvisor_name": "Rixos Premium Seagate ",
+      "tourvisor_region": "Набк Бей",
+      "tourvisor_region_code": 2529,
+      "tourvisor_stars": 5,
+      "search_query": "Rixos Premium Seagate",
+      "match_names": [
+        "Rixos Premium Seagate 5★",
+        "Rixos Premium Seagate"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "egypt",
+      "hotel_name": "The Oberoi Beach Resort, Sahl Hasheesh 5★",
+      "resort": "Хургада, Сахл-Хашиш",
+      "region": "hurghada",
+      "tourvisor_id": 342,
+      "tourvisor_name": "The Oberoi Sahl Hasheesh",
+      "tourvisor_region": "Сахль-Хашиш",
+      "tourvisor_region_code": 2526,
+      "tourvisor_stars": 5,
+      "search_query": "The Oberoi Beach Resort, Sahl Hasheesh",
+      "match_names": [
+        "The Oberoi Beach Resort, Sahl Hasheesh 5★",
+        "The Oberoi Beach Resort, Sahl Hasheesh",
+        "The Oberoi Sahl Hasheesh"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "egypt",
+      "hotel_name": "Kempinski Hotel Soma Bay 5★",
+      "resort": "Хургада, Сома Бэй",
+      "region": "hurghada",
+      "tourvisor_id": 287,
+      "tourvisor_name": "Kempinski Hotel Soma Bay",
+      "tourvisor_region": "Сома Бей",
+      "tourvisor_region_code": 2525,
+      "tourvisor_stars": 5,
+      "search_query": "Kempinski Hotel Soma Bay",
+      "match_names": [
+        "Kempinski Hotel Soma Bay 5★",
+        "Kempinski Hotel Soma Bay"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "egypt",
+      "hotel_name": "Steigenberger ALDAU Beach Hotel 5★",
+      "resort": "Хургада, Эль-Мамша",
+      "region": "hurghada",
+      "tourvisor_id": 12119,
+      "tourvisor_name": "Steigenberger Al Dau Beach",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Steigenberger ALDAU Beach Hotel",
+      "match_names": [
+        "Steigenberger ALDAU Beach Hotel 5★",
+        "Steigenberger ALDAU Beach Hotel",
+        "Steigenberger Al Dau Beach"
+      ],
+      "match_status": "manual",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "egypt",
+      "hotel_name": "Sierra Sharm El Sheikh 5★",
+      "resort": "Шарм-эль-Шейх, SOHO Square",
+      "region": "sharm",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 6,
+      "tourvisor_stars": 5,
+      "search_query": "Sierra Sharm El Sheikh",
+      "match_names": [
+        "Sierra Sharm El Sheikh 5★",
+        "Sierra Sharm El Sheikh",
+        "The Grand Hotel Sharm El Sheikh"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "egypt",
+      "hotel_name": "Naama Bay Hotel & Resort 5★",
+      "resort": "Шарм-эль-Шейх, центр Наама Бэй",
+      "region": "sharm",
+      "tourvisor_id": 513,
+      "tourvisor_name": "Naama Bay Hotel & Resort (Ex. Tropitel Naama Bay)",
+      "tourvisor_region": "Наама Бей",
+      "tourvisor_region_code": 2528,
+      "tourvisor_stars": 5,
+      "search_query": "naama bay",
+      "match_names": [
+        "Naama Bay Hotel & Resort 5★",
+        "Naama Bay Hotel & Resort",
+        "Naama Bay Hotel and Resort",
+        "Naama Bay Suites & Spa Adults Only 18+",
+        "Naama Bay Hotel & Resort (Ex. Tropitel Naama Bay)"
+      ],
+      "match_status": "manual",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "egypt",
+      "hotel_name": "Camel Dive Club & Boutique Hotel 4★",
+      "resort": "Шарм-эль-Шейх, центр Наама Бэй",
+      "region": "sharm",
+      "tourvisor_id": 32572,
+      "tourvisor_name": "Camel Dive Club & Hotel",
+      "tourvisor_region": "Наама Бей",
+      "tourvisor_region_code": 2528,
+      "tourvisor_stars": 4,
+      "search_query": "Camel Dive Club & Boutique Hotel",
+      "match_names": [
+        "Camel Dive Club & Boutique Hotel 4★",
+        "Camel Dive Club & Boutique Hotel",
+        "Camel Dive Club and Boutique Hotel",
+        "Camel Dive Club & Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 0.783
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "egypt",
+      "hotel_name": "Three Corners Ocean View 4★",
+      "resort": "Эль-Гуна, Abu Tig Marina",
+      "region": "hurghada",
+      "tourvisor_id": 162145,
+      "tourvisor_name": "Three Corners Ocean View",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 5,
+      "tourvisor_stars": 4,
+      "search_query": "Three Corners Ocean View",
+      "match_names": [
+        "Three Corners Ocean View 4★",
+        "Three Corners Ocean View"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "egypt",
+      "hotel_name": "SeaGull Beach Resort 4★",
+      "resort": "Хургада, центр, Sheraton Road",
+      "region": "hurghada",
+      "tourvisor_id": 415,
+      "tourvisor_name": "Seagull Beach Resort & Club",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 2555,
+      "tourvisor_stars": 4,
+      "search_query": "SeaGull Beach Resort",
+      "match_names": [
+        "SeaGull Beach Resort 4★",
+        "SeaGull Beach Resort",
+        "Seagull Beach Resort & Club"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "egypt",
+      "hotel_name": "JAZ Fanara Resort 5★",
+      "resort": "Шарм-эль-Шейх, Рас-Ум-эль-Сид",
+      "region": "sharm",
+      "tourvisor_id": 12107,
+      "tourvisor_name": "Jaz Fanara Resort & Residence (Ex. Iberotel Club)",
+      "tourvisor_region": "Хадаба",
+      "tourvisor_region_code": 2531,
+      "tourvisor_stars": 4,
+      "search_query": "JAZ Fanara Resort",
+      "match_names": [
+        "JAZ Fanara Resort 5★",
+        "JAZ Fanara Resort",
+        "Jaz Fanara Resort & Residence (Ex. Iberotel Club)"
+      ],
+      "match_status": "auto",
+      "match_score": 0.825
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "egypt",
+      "hotel_name": "Mövenpick Resort Sharm El Sheikh 5★",
+      "resort": "Шарм-эль-Шейх, Наама Бэй",
+      "region": "sharm",
+      "tourvisor_id": 12111,
+      "tourvisor_name": "Movenpick Resort Sharm El Sheikh Naama Bay",
+      "tourvisor_region": "Наама Бей",
+      "tourvisor_region_code": 2528,
+      "tourvisor_stars": 5,
+      "search_query": "Mövenpick Resort Sharm El Sheikh",
+      "match_names": [
+        "Mövenpick Resort Sharm El Sheikh 5★",
+        "Mövenpick Resort Sharm El Sheikh",
+        "Movenpick Resort Sharm El Sheikh Naama Bay"
+      ],
+      "match_status": "auto",
+      "match_score": 0.883
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "egypt",
+      "hotel_name": "Continental Hotel Hurghada 5★",
+      "resort": "Хургада, южное побережье",
+      "region": "hurghada",
+      "tourvisor_id": 272,
+      "tourvisor_name": "Continental Hotel Hurghada",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 2555,
+      "tourvisor_stars": 5,
+      "search_query": "Continental Hotel Hurghada",
+      "match_names": [
+        "Continental Hotel Hurghada 5★",
+        "Continental Hotel Hurghada"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "egypt",
+      "hotel_name": "Arabia Azur Resort 4★",
+      "resort": "Хургада, побережье Саккала",
+      "region": "hurghada",
+      "tourvisor_id": 128,
+      "tourvisor_name": "Arabia Azur Beach Resort",
+      "tourvisor_region": "Хургада",
+      "tourvisor_region_code": 2555,
+      "tourvisor_stars": 4,
+      "search_query": "Arabia Azur Resort",
+      "match_names": [
+        "Arabia Azur Resort 4★",
+        "Arabia Azur Resort",
+        "Arabia Azur Beach Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "egypt",
+      "hotel_name": "Palm Royale Resort Soma Bay 5★",
+      "resort": "Хургада, Сома Бэй",
+      "region": "hurghada",
+      "tourvisor_id": 273,
+      "tourvisor_name": "Palm Royale Soma Bay (Ex. Sentido Palm Royale)",
+      "tourvisor_region": "Сома Бей",
+      "tourvisor_region_code": 2525,
+      "tourvisor_stars": 5,
+      "search_query": "Palm Royale Resort Soma Bay",
+      "match_names": [
+        "Palm Royale Resort Soma Bay 5★",
+        "Palm Royale Resort Soma Bay",
+        "Palm Royale Soma Bay (Ex. Sentido Palm Royale)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    }
+  ]
+}

@@ -206,6 +206,7 @@ function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
 		'egypt'    => 'egypt-tourvisor-hotels.json',
 		'thailand' => 'thailand-tourvisor-hotels.json',
 		'maldives' => 'maldives-tourvisor-hotels.json',
+		'vietnam'  => 'vietnam-tourvisor-hotels.json',
 	);
 
 	return ! empty( $known[ $country ] ) ? (string) $known[ $country ] : $country . '-tourvisor-hotels.json';
@@ -217,7 +218,7 @@ function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
  * @return string[]
  */
 function zhiraf_ufa_tourvisor_curated_map_countries() {
-	return array( 'turkey', 'uae', 'egypt', 'thailand', 'maldives' );
+	return array( 'turkey', 'uae', 'egypt', 'thailand', 'maldives', 'vietnam' );
 }
 
 /**
@@ -895,6 +896,16 @@ function zhiraf_ufa_tourvisor_overlay_maldives_card( array $card ) {
 }
 
 /**
+ * Tourvisor price on a Vietnam curated card. Unmatched card is returned as-is.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_vietnam_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'vietnam' );
+}
+
+/**
  * Attach Tourvisor fields onto a zhiraf/v1/hotels row.
  *
  * @param array<string,mixed> $row Public hotel.
@@ -1282,7 +1293,7 @@ function zhiraf_ufa_tourvisor_admin_page() {
 		<h2><?php esc_html_e( 'Тело POST', 'zhiraf-ufa' ); ?></h2>
 		<pre><?php echo esc_html( '{"generated_at":"2026-11-15T06:00:00Z","prices":{"turkey:1":{"country_slug":"turkey","zhiraf_id":1,"hotel_name":"Paloma Oceana 5*","place":"Сиде","price_rub":145000,"nights":7,"adults":2,"departure_city":"Уфа","departure_date":"2026-06-12","meal":"AI"}}}' ); ?></pre>
 		<p class="description"><?php esc_html_e( 'Ключ — country_slug:zhiraf_id. Допустимы и массив prices, и price_rur вместо price_rub. Токен из тела в файл не пишется.', 'zhiraf-ufa' ); ?></p>
-		<p class="description"><?php esc_html_e( 'Маппинги curated: turkey-tourvisor-hotels.json, uae-tourvisor-hotels.json, egypt-tourvisor-hotels.json. В webhook — ключ country_slug:zhiraf_id (например egypt:3). tourvisor_id из парсера сводится к zhiraf_id через соответствующий файл.', 'zhiraf-ufa' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Маппинги curated: turkey-, uae-, egypt-, thailand-, vietnam-tourvisor-hotels.json. В webhook — ключ country_slug:zhiraf_id (например vietnam:1, egypt:3). tourvisor_id из парсера сводится к zhiraf_id через соответствующий файл.', 'zhiraf-ufa' ); ?></p>
 	</div>
 	<?php
 }

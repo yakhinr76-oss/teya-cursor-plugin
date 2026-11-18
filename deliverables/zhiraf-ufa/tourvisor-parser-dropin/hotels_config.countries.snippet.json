@@ -1,0 +1,14 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_config.snippet.v1",
+  "note": "Merge into local hotels_config.json. hotels_map_url — скачать с GitHub без копипаста после merge в main.",
+  "github_ref": "main",
+  "countries": {
+    "vietnam": {
+      "enabled": true,
+      "country_slug": "vietnam",
+      "tourvisor_country_id": 16,
+      "hotels_map": "output/hotels_map_vietnam.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_vietnam.json"
+    }
+  }
+}

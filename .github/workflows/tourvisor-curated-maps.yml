@@ -1,0 +1,35 @@
+name: Tourvisor curated maps
+
+on:
+  pull_request:
+    paths:
+      - "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/*-tourvisor-hotels.json"
+      - "deliverables/zhiraf-ufa/tourvisor-parser-dropin/**"
+      - "scripts/export_tourvisor_parser_map.py"
+      - "scripts/verify_tourvisor_curated_maps.py"
+      - "scripts/map_*_tourvisor_hotels.py"
+  push:
+    branches:
+      - main
+    paths:
+      - "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/*-tourvisor-hotels.json"
+      - "deliverables/zhiraf-ufa/tourvisor-parser-dropin/**"
+      - "scripts/export_tourvisor_parser_map.py"
+      - "scripts/verify_tourvisor_curated_maps.py"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate parser drop-in (must match committed files)
+        run: |
+          python3 scripts/export_tourvisor_parser_map.py \
+            --country turkey --country uae --country egypt --country thailand --country vietnam \
+            --parser-dropin deliverables/zhiraf-ufa/tourvisor-parser-dropin/output
+          git diff --exit-code deliverables/zhiraf-ufa/tourvisor-parser-dropin/ \
+            || (echo "::error::Parser drop-in out of date — run export_tourvisor_parser_map.py --parser-dropin and commit" && exit 1)
+
+      - name: Verify maps and drop-in
+        run: python3 scripts/verify_tourvisor_curated_maps.py

@@ -58,10 +58,11 @@
 - `scripts/map_uae_tourvisor_hotels.py`
 - `scripts/map_egypt_tourvisor_hotels.py`
 - `scripts/map_thailand_tourvisor_hotels.py`
+- `scripts/map_maldives_tourvisor_hotels.py`
 - `scripts/map_vietnam_tourvisor_hotels.py`
 - Турция: map уже в репо (`turkey-tourvisor-hotels.json`)
 
-В теме: `zhiraf_ufa_tourvisor_overlay_*_card()` в начале `*_apply_bg_pricing()`; страны с map — `turkey`, `uae`, `egypt`, `thailand`, `vietnam`.
+В теме: `zhiraf_ufa_tourvisor_overlay_*_card()` в начале `*_apply_bg_pricing()`; страны с map — `zhiraf_ufa_tourvisor_curated_map_countries()` → `turkey`, `uae`, `egypt`, `thailand`, `maldives`, `vietnam`.
 
 **Парсер:** для каждой новой curated-страны добавить в выгрузку 25 `tourvisor_id` из map-файла; в payload — `country_slug` + `zhiraf_id` (или `tourvisor_id` / `hotelcode` — тема сведёт через map).
 
@@ -75,8 +76,9 @@
 | — | **ОАЭ** | `oae` | ✅ | `curated-oae-landing.php` | `uae_hotels_25.json` | ✅ | ✅ | ✅ | 5 эмиратов (ряд) | 2 статьи |
 | — | **Египет** | `egipet` | ✅ | `curated-egypt-landing.php` | `egypt_hotels_25.json` | ✅ | ✅ | ✅ | 4 курорта (ряд) + resort pages | 3 статьи (1+2) |
 | — | **Таиланд** | `tailand` | ✅ | `curated-thailand-landing.php` | `thailand_hotels_25.json` | ✅ scaffold | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
+| — | **Мальдивы** | `maldivy` | ✅ | `curated-maldives-landing.php` | `maldives_hotels_25.json` | ✅ 25/25 | ✅ | ✅ | 4 атолла (ряд) | 2 статьи |
 | — | **Вьетнам** | `vietnam` | ✅ | `curated-vietnam-landing.php` | `vietnam_hotels_25.json` | ✅ map (TV countryid **16**) | ✅ | ✅ | 4 курорта (ряд) | 3 статьи |
-| 3+ | Мальдивы, Шри-Ланка, Индия, … | … | ⬜ | — | есть `*_hotels_25.json` | ⬜ | ⬜ | ⬜ | по контенту | по контенту |
+| 3+ | Шри-Ланка, Индия, … | … | ⬜ | — | есть `*_hotels_25.json` | ⬜ | ⬜ | ⬜ | по контенту | по контенту |
 
 Дочерние **курортные** страницы — отдельно (`inc/resort-landings.php`); для Египта заведены минимальные `makadi-bay`, `sahl-hasheesh` (помимо Хургады/Шарма).
 

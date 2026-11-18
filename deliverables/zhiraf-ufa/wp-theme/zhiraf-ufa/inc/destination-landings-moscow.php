@@ -24,7 +24,6 @@ function zhiraf_ufa_moscow_landing_data() {
 		'indiya'     => array( __( 'Индия', 'zhiraf-ufa' ), __( 'Индия (Гоа)', 'zhiraf-ufa' ), __( 'в Индию (Гоа)', 'zhiraf-ufa' ) ),
 		'shri-lanka' => array( __( 'Шри-Ланка', 'zhiraf-ufa' ), __( 'Шри-Ланка', 'zhiraf-ufa' ), __( 'на Шри-Ланку', 'zhiraf-ufa' ) ),
 		'indoneziya' => array( __( 'Индонезия', 'zhiraf-ufa' ), __( 'Индонезия (Бали)', 'zhiraf-ufa' ), __( 'на Бали', 'zhiraf-ufa' ) ),
-		'maldivy'    => array( __( 'Мальдивы', 'zhiraf-ufa' ), __( 'Мальдивы', 'zhiraf-ufa' ), __( 'на Мальдивы', 'zhiraf-ufa' ) ),
 		'sejshely'   => array( __( 'Сейшелы', 'zhiraf-ufa' ), __( 'Сейшелы', 'zhiraf-ufa' ), __( 'на Сейшелы', 'zhiraf-ufa' ) ),
 		'uzbekistan' => array( __( 'Узбекистан', 'zhiraf-ufa' ), __( 'Узбекистан', 'zhiraf-ufa' ), __( 'в Узбекистан', 'zhiraf-ufa' ) ),
 		'armeniya'   => array( __( 'Армения', 'zhiraf-ufa' ), __( 'Армения', 'zhiraf-ufa' ), __( 'в Армению', 'zhiraf-ufa' ) ),
@@ -34,7 +33,6 @@ function zhiraf_ufa_moscow_landing_data() {
 		'indiya' => __( 'Индия — собор Се в Старом Гоа', 'zhiraf-ufa' ),
 		'shri-lanka' => __( 'Шри-Ланка — рыбаки на шестах в океане', 'zhiraf-ufa' ),
 		'indoneziya' => __( 'Бали — храм Улун Дану Братан на озере Братан', 'zhiraf-ufa' ),
-		'maldivy' => __( 'Мальдивы — виллы над лагуной', 'zhiraf-ufa' ),
 		'sejshely' => __( 'Сейшелы — гранитные валуны на пляже Ла-Диг', 'zhiraf-ufa' ),
 		'uzbekistan' => __( 'Узбекистан — Регистан в Самарканде', 'zhiraf-ufa' ),
 		'armeniya' => __( 'Армения — античный храм Гарни', 'zhiraf-ufa' ),
@@ -153,19 +151,6 @@ function zhiraf_ufa_moscow_landing_data() {
 						'q' => __( 'Как забронировать тур в Санью в «Жираф»?', 'zhiraf-ufa' ),
 						'a' => $common['how'][0],
 					),
-				);
-			} elseif ( 'maldivy' === $slug ) {
-				$out[ $slug ]['landing_module'] = 'battle';
-				$out[ $slug ]['vibe_section']   = false;
-				$out[ $slug ]['hero_lead']      = __( 'Бирюзовые лагуны и водные виллы с вылетом из Москвы. Поможем состыковать перелёт из Уфы и выбрать между резорт-островом и гестхаусом на местном острове.', 'zhiraf-ufa' );
-				$out[ $slug ]['hero_badges']    = array(
-					array( 'icon' => '🛂', 'text' => __( 'Безвизово • IMUGA до вылета', 'zhiraf-ufa' ) ),
-					array( 'icon' => '✈', 'text' => __( 'Вылет из Москвы • стыковка из Уфы', 'zhiraf-ufa' ) ),
-					array( 'icon' => '🛥', 'text' => __( 'Катер / гидросамолёт на остров', 'zhiraf-ufa' ) ),
-				);
-				$out[ $slug ]['faq'] = array_merge(
-					$out[ $slug ]['faq'],
-					$c['faq']
 				);
 			} elseif ( 'sejshely' === $slug ) {
 				$out[ $slug ]['landing_module'] = 'battle';

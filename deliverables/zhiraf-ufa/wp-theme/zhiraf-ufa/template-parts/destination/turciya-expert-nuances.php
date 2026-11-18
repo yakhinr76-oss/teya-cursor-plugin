@@ -22,6 +22,8 @@ if ( 'oae' === $dest_slug ) {
 	$expert_title = __( 'Что важно знать о Египте в этом сезоне', 'zhiraf-ufa' );
 } elseif ( 'tailand' === $dest_slug ) {
 	$expert_title = __( 'Что важно знать о Таиланде в этом сезоне', 'zhiraf-ufa' );
+} elseif ( 'maldivy' === $dest_slug ) {
+	$expert_title = __( 'Что важно знать о Мальдивах в этом сезоне', 'zhiraf-ufa' );
 } elseif ( 'vietnam' === $dest_slug ) {
 	$expert_title = __( 'Что важно знать о Вьетнаме в этом сезоне', 'zhiraf-ufa' );
 } else {

@@ -165,6 +165,8 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				$kids_part = 'kids-egypt';
 			} elseif ( 'tailand' === $dest_slug ) {
 				$kids_part = 'kids-thailand';
+			} elseif ( 'maldivy' === $dest_slug ) {
+				$kids_part = 'kids-maldives';
 			} elseif ( 'vietnam' === $dest_slug ) {
 				$kids_part = 'kids-vietnam';
 			} else {

@@ -1282,7 +1282,7 @@ function zhiraf_ufa_tourvisor_admin_page() {
 		<h2><?php esc_html_e( 'Тело POST', 'zhiraf-ufa' ); ?></h2>
 		<pre><?php echo esc_html( '{"generated_at":"2026-11-15T06:00:00Z","prices":{"turkey:1":{"country_slug":"turkey","zhiraf_id":1,"hotel_name":"Paloma Oceana 5*","place":"Сиде","price_rub":145000,"nights":7,"adults":2,"departure_city":"Уфа","departure_date":"2026-06-12","meal":"AI"}}}' ); ?></pre>
 		<p class="description"><?php esc_html_e( 'Ключ — country_slug:zhiraf_id. Допустимы и массив prices, и price_rur вместо price_rub. Токен из тела в файл не пишется.', 'zhiraf-ufa' ); ?></p>
-		<p class="description"><?php esc_html_e( 'Маппинги curated: turkey-tourvisor-hotels.json, uae-tourvisor-hotels.json, egypt-tourvisor-hotels.json. В webhook — ключ country_slug:zhiraf_id (например egypt:3). tourvisor_id из парсера сводится к zhiraf_id через соответствующий файл.', 'zhiraf-ufa' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Маппинги curated: turkey-, uae-, egypt-, thailand-, vietnam-tourvisor-hotels.json. В webhook — ключ country_slug:zhiraf_id (например vietnam:1, egypt:3). tourvisor_id из парсера сводится к zhiraf_id через соответствующий файл.', 'zhiraf-ufa' ); ?></p>
 	</div>
 	<?php
 }

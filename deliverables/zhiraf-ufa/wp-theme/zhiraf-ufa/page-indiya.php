@@ -1,6 +1,6 @@
 <?php
 /**
- * Destination landing (Moscow departure): /tour/indiya/.
+ * Destination landing: /tour/indiya/ (curated Goa hub, Ufa departure).
  *
  * @package Zhiraf_Ufa
  */

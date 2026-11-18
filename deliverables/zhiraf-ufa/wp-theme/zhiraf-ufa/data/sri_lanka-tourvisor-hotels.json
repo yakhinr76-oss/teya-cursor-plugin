@@ -1,0 +1,491 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "sri_lanka-catalog-scaffold",
+  "country_slug": "sri_lanka",
+  "identified_at": "2026-11-18",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ sri_lanka:{zhiraf_id} (country_slug sri_lanka, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 0,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Araliya Beach Resort & Spa 5★",
+      "resort": "Южное побережье, пляж Унаватуна",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Araliya Beach Resort & Spa",
+      "match_names": [
+        "Araliya Beach Resort & Spa 5★",
+        "Araliya Beach Resort & Spa",
+        "Araliya Beach Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "sri_lanka",
+      "hotel_name": "CoCoBay Unawatuna 4★",
+      "resort": "Южное побережье, пляж Унаватуна",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "CoCoBay Unawatuna",
+      "match_names": [
+        "CoCoBay Unawatuna 4★",
+        "CoCoBay Unawatuna"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Amaya Beach Pasikudah 5★",
+      "resort": "Восточное побережье, пляж Пасикуда",
+      "region": "east_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Amaya Beach Pasikudah",
+      "match_names": [
+        "Amaya Beach Pasikudah 5★",
+        "Amaya Beach Pasikudah"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Maalu Maalu Resort & Spa 4★",
+      "resort": "Восточное побережье, пляж Пасикуда",
+      "region": "east_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Maalu Maalu Resort & Spa",
+      "match_names": [
+        "Maalu Maalu Resort & Spa 4★",
+        "Maalu Maalu Resort & Spa",
+        "Maalu Maalu Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Anantaya Resort & Spa Pasikudah 5★",
+      "resort": "Восточное побережье, пляж Пасикуда",
+      "region": "east_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Anantaya Resort & Spa Pasikudah",
+      "match_names": [
+        "Anantaya Resort & Spa Pasikudah 5★",
+        "Anantaya Resort & Spa Pasikudah",
+        "Anantaya Resort and Spa Pasikudah"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Riff Hikkaduwa 5★",
+      "resort": "Юго-Западное побережье, пляж Хиккадува",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Riff Hikkaduwa",
+      "match_names": [
+        "Riff Hikkaduwa 5★",
+        "Riff Hikkaduwa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Suite Lanka 4★",
+      "resort": "Юго-Западное побережье, Хиккадува",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Suite Lanka",
+      "match_names": [
+        "Suite Lanka 4★",
+        "Suite Lanka"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "sri_lanka",
+      "hotel_name": "W15 Weligama 4★",
+      "resort": "Южное побережье, бухта Велигама",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "W15 Weligama",
+      "match_names": [
+        "W15 Weligama 4★",
+        "W15 Weligama"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Weligama Bay Marriott Resort & Spa 5★",
+      "resort": "Южное побережье, бухта Велигама",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Weligama Bay Marriott Resort & Spa",
+      "match_names": [
+        "Weligama Bay Marriott Resort & Spa 5★",
+        "Weligama Bay Marriott Resort & Spa",
+        "Weligama Bay Marriott Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Citrus Hikkaduwa 4★",
+      "resort": "Юго-Западное побережье, Хиккадува",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Citrus Hikkaduwa",
+      "match_names": [
+        "Citrus Hikkaduwa 4★",
+        "Citrus Hikkaduwa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Centara Ceysands Resort & Spa 4★",
+      "resort": "Западное побережье, коса Бентоты",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Centara Ceysands Resort & Spa",
+      "match_names": [
+        "Centara Ceysands Resort & Spa 4★",
+        "Centara Ceysands Resort & Spa",
+        "Centara Ceysands Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Thaala Bentota 4★",
+      "resort": "Западное побережье, пляж Бентота",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Thaala Bentota",
+      "match_names": [
+        "Thaala Bentota 4★",
+        "Thaala Bentota"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "sri_lanka",
+      "hotel_name": "EKHO Surf 4★",
+      "resort": "Западное побережье, пляж Бентота",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "EKHO Surf",
+      "match_names": [
+        "EKHO Surf 4★",
+        "EKHO Surf"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "sri_lanka",
+      "hotel_name": "The Palms 4★",
+      "resort": "Западное побережье, пляж Берувела",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Palms",
+      "match_names": [
+        "The Palms 4★",
+        "The Palms"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "sri_lanka",
+      "hotel_name": "The Eden Beruwala 5★",
+      "resort": "Западное побережье, пляж Берувела",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Eden Beruwala",
+      "match_names": [
+        "The Eden Beruwala 5★",
+        "The Eden Beruwala"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Hikka Tranz by Cinnamon 4★",
+      "resort": "Юго-Западное побережье, Хиккадува",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Hikka Tranz by Cinnamon",
+      "match_names": [
+        "Hikka Tranz by Cinnamon 4★",
+        "Hikka Tranz by Cinnamon"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Thaproban Beach House 3★",
+      "resort": "Южное побережье, пляж Унаватуна",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Thaproban Beach House",
+      "match_names": [
+        "Thaproban Beach House 3★",
+        "Thaproban Beach House"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Coral Rock by Bansei 4★",
+      "resort": "Юго-Западное побережье, Хиккадува",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Coral Rock by Bansei",
+      "match_names": [
+        "Coral Rock by Bansei 4★",
+        "Coral Rock by Bansei"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Calamander Unawatuna Beach 4★",
+      "resort": "Южное побережье, пляж Унаватуна",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Calamander Unawatuna Beach",
+      "match_names": [
+        "Calamander Unawatuna Beach 4★",
+        "Calamander Unawatuna Beach"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Rockside Cabanas Hotel 3★",
+      "resort": "Южное побережье, Унаватуна / Далавелла",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Rockside Cabanas Hotel",
+      "match_names": [
+        "Rockside Cabanas Hotel 3★",
+        "Rockside Cabanas Hotel"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Cinnamon Bey Beruwala 5★",
+      "resort": "Западное побережье, Берувела / Морагалла",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Cinnamon Bey Beruwala",
+      "match_names": [
+        "Cinnamon Bey Beruwala 5★",
+        "Cinnamon Bey Beruwala"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Taj Bentota Resort & Spa 5★",
+      "resort": "Западное побережье, пляж Бентота",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Taj Bentota Resort & Spa",
+      "match_names": [
+        "Taj Bentota Resort & Spa 5★",
+        "Taj Bentota Resort & Spa",
+        "Taj Bentota Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Lanka Princess Hotel 4★",
+      "resort": "Западное побережье, Берувела",
+      "region": "west_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Lanka Princess Hotel",
+      "match_names": [
+        "Lanka Princess Hotel 4★",
+        "Lanka Princess Hotel"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Fairway Sunset Galle 4★",
+      "resort": "Южное побережье, Галле / Унаватуна",
+      "region": "south_west",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Fairway Sunset Galle",
+      "match_names": [
+        "Fairway Sunset Galle 4★",
+        "Fairway Sunset Galle"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "sri_lanka",
+      "hotel_name": "Uga Bay by Uga Escapes 5★",
+      "resort": "Восточное побережье, пляж Пасикуда",
+      "region": "east_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Uga Bay by Uga Escapes",
+      "match_names": [
+        "Uga Bay by Uga Escapes 5★",
+        "Uga Bay by Uga Escapes"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    }
+  ]
+}

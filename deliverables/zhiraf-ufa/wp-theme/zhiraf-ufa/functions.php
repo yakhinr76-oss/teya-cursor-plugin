@@ -27,6 +27,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/curated-egypt-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-thailand-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-maldives-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-vietnam-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/curated-sri-lanka-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-indonesia-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-sri-lanka-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-india-landing.php';

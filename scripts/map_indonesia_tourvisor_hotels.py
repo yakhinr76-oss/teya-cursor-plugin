@@ -24,8 +24,8 @@ REPO = Path(__file__).resolve().parents[1]
 CATALOG_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/indonesia_hotels_25.json"
 OUT_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/indonesia-tourvisor-hotels.json"
 
-# Tourvisor autocomplete: Индонезия (countryid in response).
-TOURVISOR_INDONESIA_COUNTRY_ID = int(os.environ.get("TOURVISOR_INDONESIA_COUNTRY_ID", "7"))
+# Tourvisor autocomplete: Индонезия (country id TODO).
+TOURVISOR_INDONESIA_COUNTRY_ID = int(os.environ.get("TOURVISOR_INDONESIA_COUNTRY_ID", "0"))
 AUTOCOMPLETE_URL = "https://tourvisor.ru/xml/autocomplete.php"
 
 TR = str.maketrans(

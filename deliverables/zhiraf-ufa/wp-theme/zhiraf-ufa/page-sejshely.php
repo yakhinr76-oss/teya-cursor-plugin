@@ -1,6 +1,6 @@
 <?php
 /**
- * Destination landing (Moscow departure): /tour/sejshely/.
+ * Destination landing (Ufa departure, curated v1): /tour/sejshely/.
  *
  * @package Zhiraf_Ufa
  */

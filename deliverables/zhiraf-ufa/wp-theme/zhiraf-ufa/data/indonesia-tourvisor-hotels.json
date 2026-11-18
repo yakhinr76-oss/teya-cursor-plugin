@@ -4,7 +4,7 @@
   "country_slug": "indonesia",
   "identified_at": "2026-11-18",
   "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ indonesia:{zhiraf_id} (country_slug indonesia, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
-  "tourvisor_country_id": 7,
+  "tourvisor_country_id": 0,
   "hotels": [
     {
       "zhiraf_id": 1,

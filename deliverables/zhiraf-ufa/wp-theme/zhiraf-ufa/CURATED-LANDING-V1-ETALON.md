@@ -79,8 +79,6 @@
 | — | **Мальдивы** | `maldivy` | ✅ | `curated-maldives-landing.php` | `maldives_hotels_25.json` | ✅ 25/25 | ✅ | ✅ | 4 атолла (ряд) | 2 статьи |
 | — | **Вьетнам** | `vietnam` | ✅ | `curated-vietnam-landing.php` | `vietnam_hotels_25.json` | ✅ map (TV countryid **16**) | ✅ | ✅ | 4 курорта (ряд) | 3 статьи |
 | 3+ | Шри-Ланка, Индия, … | … | ⬜ | — | есть `*_hotels_25.json` | ⬜ | ⬜ | ⬜ | по контенту | по контенту |
-| — | **Вьетнам** | `vietnam` | ✅ | `curated-vietnam-landing.php` | `vietnam_hotels_25.json` | ✅ map (TV countryid **16**) | ✅ | ✅ | 4 курорта (ряд) | 3 статьи |
-| 3+ | Мальдивы, Шри-Ланка, Индия, … | … | ⬜ | — | есть `*_hotels_25.json` | ⬜ | ⬜ | ⬜ | по контенту | по контенту |
 
 Дочерние **курортные** страницы — отдельно (`inc/resort-landings.php`); для Египта заведены минимальные `makadi-bay`, `sahl-hasheesh` (помимо Хургады/Шарма).
 

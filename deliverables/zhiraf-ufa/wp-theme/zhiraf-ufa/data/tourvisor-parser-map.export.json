@@ -2,12 +2,13 @@
   "schema": "zhiraf.tourvisor-parser-map.flat.v1",
   "countries": [
     "egypt",
+    "maldives",
     "thailand",
     "turkey",
     "uae",
     "vietnam"
   ],
-  "hotel_count": 125,
+  "hotel_count": 150,
   "hotels": [
     {
       "zhiraf_id": 1,
@@ -358,6 +359,356 @@
       "search_ok": true,
       "country_slug": "egypt",
       "tourvisor_country_id": 1
+    },
+    {
+      "zhiraf_id": 1,
+      "tourvisor_id": 2482,
+      "hotel_name": "Villa Park 5★",
+      "search_query": "Villa Park",
+      "tourvisor_name": "Villa Park Sun Island",
+      "resort": "Южный Ари, внутренний перелет (20 мин) + катер",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:1",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 2,
+      "tourvisor_id": 2472,
+      "hotel_name": "Villa Nautica 5★",
+      "search_query": "Villa Nautica",
+      "tourvisor_name": "Villa Nautica (Ex. Paradise Island Resort & Spa)",
+      "resort": "Северный Мале, скоростной катер (20 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:2",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 3,
+      "tourvisor_id": 46068,
+      "hotel_name": "Furaveri Maldives 5★",
+      "search_query": "furaveri",
+      "tourvisor_name": "Furaveri Island Resort & Spa",
+      "resort": "Раа, гидросамолет (45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:3",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 4,
+      "tourvisor_id": 56077,
+      "hotel_name": "Dhigali Maldives 5★",
+      "search_query": "Dhigali Maldives",
+      "tourvisor_name": "Niva Dhigali Maldives (Ex. Dhigali Maldives)",
+      "resort": "Раа, гидросамолет (45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:4",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 5,
+      "tourvisor_id": 72602,
+      "hotel_name": "Brennia Kottefaru 5★",
+      "search_query": "Brennia Kottefaru",
+      "tourvisor_name": "Brennia Kottefaru",
+      "resort": "Раа, гидросамолет (40–45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:5",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 6,
+      "tourvisor_id": 2490,
+      "hotel_name": "Vilamendhoo Island Resort & Spa 4★",
+      "search_query": "Vilamendhoo Island Resort & Spa",
+      "tourvisor_name": "Vilamendhoo Island Resort",
+      "resort": "Южный Ари, гидросамолет (25 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:6",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 7,
+      "tourvisor_id": 43569,
+      "hotel_name": "OBLU NATURE Helengeli by SENTIDO 4★",
+      "search_query": "OBLU NATURE Helengeli by SENTIDO",
+      "tourvisor_name": "Oblu Nature Helengeli By Sentido",
+      "resort": "Северный Мале, скоростной катер (50 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:7",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 8,
+      "tourvisor_id": 2430,
+      "hotel_name": "Ellaidhoo Maldives by Cinnamon 4★",
+      "search_query": "Ellaidhoo Maldives by Cinnamon",
+      "tourvisor_name": "Ellaidhoo Maldives By Cinnamon (Ex. Chaaya Reef Ellaidhoo)",
+      "resort": "Северный Ари, гидросамолет (25 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:8",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 9,
+      "tourvisor_id": 57552,
+      "hotel_name": "Reethi Faru Resort 5★",
+      "search_query": "Reethi Faru Resort",
+      "tourvisor_name": "Reethi Faru Resort",
+      "resort": "Раа, гидросамолет (45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:9",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 10,
+      "tourvisor_id": 66513,
+      "hotel_name": "Sandies Bathala Maldives 4★",
+      "search_query": "Sandies Bathala Maldives",
+      "tourvisor_name": "Sandies Bathala",
+      "resort": "Северный Ари, гидросамолет (25–30 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:10",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 11,
+      "tourvisor_id": 2458,
+      "hotel_name": "Komandoo Island Resort & Spa 4★",
+      "search_query": "Komandoo Island Resort & Spa",
+      "tourvisor_name": "Komandoo Island Resort",
+      "resort": "Лавиани, гидросамолет (40 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:11",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 12,
+      "tourvisor_id": 64918,
+      "hotel_name": "You & Me Maldives 5★",
+      "search_query": "You & Me Maldives",
+      "tourvisor_name": "You & Me By Cocoon Maldives (Adults Only 16+)",
+      "resort": "Раа, гидросамолет (45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:12",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 13,
+      "tourvisor_id": 13900,
+      "hotel_name": "Centara Ras Fushi Resort & Spa 4★",
+      "search_query": "Centara Ras Fushi Resort & Spa",
+      "tourvisor_name": "Centara Ras Fushi Resort&spa (Adults Only 18+)",
+      "resort": "Северный Мале, скоростной катер (20 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:13",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 14,
+      "tourvisor_id": 2412,
+      "hotel_name": "Adaaran Prestige Vadoo 5★",
+      "search_query": "Adaaran Prestige Vadoo",
+      "tourvisor_name": "Adaaran Prestige Vadoo (Adult Only 18+)",
+      "resort": "Южный Мале, скоростной катер (15 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:14",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 15,
+      "tourvisor_id": 76318,
+      "hotel_name": "Le Méridien Maldives Resort & Spa 5★",
+      "search_query": "Le Méridien Maldives Resort & Spa",
+      "tourvisor_name": "Le Meridien Maldives Resort & Spa",
+      "resort": "Лавиани, гидросамолет (35 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:15",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 16,
+      "tourvisor_id": 2421,
+      "hotel_name": "Bandos Maldives 4★",
+      "search_query": "Bandos Maldives",
+      "tourvisor_name": "Bandos Maldives (Ex. Bandos Island Resort)",
+      "resort": "Северный Мале, скоростной катер (15 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:16",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 17,
+      "tourvisor_id": 12128,
+      "hotel_name": "Summer Island Maldives 4★",
+      "search_query": "Summer Island Maldives",
+      "tourvisor_name": "Summer Island Maldives",
+      "resort": "Северный Мале, скоростной катер (45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:17",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 18,
+      "tourvisor_id": 2479,
+      "hotel_name": "Sheraton Maldives Full Moon Resort 5★",
+      "search_query": "Sheraton Maldives Full Moon Resort",
+      "tourvisor_name": "Sheraton Maldives Full Moon Resort & Spa",
+      "resort": "Северный Мале, скоростной катер (15 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:18",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 19,
+      "tourvisor_id": 2410,
+      "hotel_name": "Adaaran Club Rannalhi 4★",
+      "search_query": "Adaaran Club Rannalhi",
+      "tourvisor_name": "Adaaran Club Rannalhi",
+      "resort": "Южный Мале, скоростной катер (45 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:19",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 20,
+      "tourvisor_id": 78002,
+      "hotel_name": "OBLU XPERIENCE Ailafushi 4★",
+      "search_query": "OBLU XPERIENCE Ailafushi",
+      "tourvisor_name": "Oblu Xperience Ailafushi",
+      "resort": "Северный Мале, скоростной катер (15 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:20",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 21,
+      "tourvisor_id": 52409,
+      "hotel_name": "Cocoon Maldives 5★",
+      "search_query": "Cocoon Maldives",
+      "tourvisor_name": "Cocoon Maldives",
+      "resort": "Лавиани, гидросамолет (30–35 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:21",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 22,
+      "tourvisor_id": 58743,
+      "hotel_name": "Fushifaru Maldives 5★",
+      "search_query": "Fushifaru Maldives",
+      "tourvisor_name": "Fushifaru Maldives",
+      "resort": "Лавиани, гидросамолет (35 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:22",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 23,
+      "tourvisor_id": 2475,
+      "hotel_name": "NH Collection Maldives Reethi Resort 5★",
+      "search_query": "NH Collection Maldives Reethi Resort",
+      "tourvisor_name": "Nh Collection Reethi Maldives (Ex. Reethi Beach Resort)",
+      "resort": "Баа, гидросамолет (35 мин) или внутренний рейс + катер",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:23",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 24,
+      "tourvisor_id": 43565,
+      "hotel_name": "NH Maldives Kuda Rah Resort 5★",
+      "search_query": "NH Maldives Kuda Rah Resort",
+      "tourvisor_name": "Nh Maldives Kuda Rah Resort (Ex. Amaya Kuda Rah)",
+      "resort": "Южный Ари, гидросамолет (25 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:24",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
+    },
+    {
+      "zhiraf_id": 25,
+      "tourvisor_id": 26062,
+      "hotel_name": "Diamonds Thudufushi Maldives 5★",
+      "search_query": "Diamonds Thudufushi Maldives",
+      "tourvisor_name": "Diamonds Thudufushi",
+      "resort": "Южный Ари, гидросамолет (25–30 мин)",
+      "region": "",
+      "match_status": "auto",
+      "price_key": "maldives:25",
+      "search_ok": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8
     },
     {
       "zhiraf_id": 1,
@@ -721,7 +1072,7 @@
       "price_key": "turkey:1",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 2,
@@ -735,7 +1086,7 @@
       "price_key": "turkey:2",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 3,
@@ -749,7 +1100,7 @@
       "price_key": "turkey:3",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 4,
@@ -763,7 +1114,7 @@
       "price_key": "turkey:4",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 5,
@@ -777,7 +1128,7 @@
       "price_key": "turkey:5",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 6,
@@ -791,7 +1142,7 @@
       "price_key": "turkey:6",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 7,
@@ -805,7 +1156,7 @@
       "price_key": "turkey:7",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 8,
@@ -819,7 +1170,7 @@
       "price_key": "turkey:8",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 9,
@@ -833,7 +1184,7 @@
       "price_key": "turkey:9",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 10,
@@ -847,7 +1198,7 @@
       "price_key": "turkey:10",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 11,
@@ -861,7 +1212,7 @@
       "price_key": "turkey:11",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 12,
@@ -875,7 +1226,7 @@
       "price_key": "turkey:12",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 13,
@@ -889,7 +1240,7 @@
       "price_key": "turkey:13",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 14,
@@ -903,7 +1254,7 @@
       "price_key": "turkey:14",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 15,
@@ -917,7 +1268,7 @@
       "price_key": "turkey:15",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 16,
@@ -931,7 +1282,7 @@
       "price_key": "turkey:16",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 17,
@@ -945,7 +1296,7 @@
       "price_key": "turkey:17",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 18,
@@ -959,7 +1310,7 @@
       "price_key": "turkey:18",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 19,
@@ -973,7 +1324,7 @@
       "price_key": "turkey:19",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 20,
@@ -987,7 +1338,7 @@
       "price_key": "turkey:20",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 21,
@@ -1001,7 +1352,7 @@
       "price_key": "turkey:21",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 22,
@@ -1015,7 +1366,7 @@
       "price_key": "turkey:22",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 23,
@@ -1029,7 +1380,7 @@
       "price_key": "turkey:23",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 24,
@@ -1043,7 +1394,7 @@
       "price_key": "turkey:24",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 25,
@@ -1057,7 +1408,7 @@
       "price_key": "turkey:25",
       "search_ok": true,
       "country_slug": "turkey",
-      "tourvisor_country_id": null
+      "tourvisor_country_id": 4
     },
     {
       "zhiraf_id": 1,

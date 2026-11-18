@@ -36,6 +36,7 @@ python3 scripts/export_tourvisor_parser_map.py --flat \
 | Египет | `egypt` | `egipet` | 1 | `egypt-tourvisor-hotels.json` |
 | Таиланд | `thailand` | `tailand` | 2 | `thailand-tourvisor-hotels.json` |
 | **Вьетнам** | **`vietnam`** | **`vietnam`** | **16** | **`vietnam-tourvisor-hotels.json`** |
+| **Мальдивы** | **`maldives`** | **`maldivy`** | **8** | **`maldives-tourvisor-hotels.json`** |
 
 ## Локальный «parser tourvisor» (ваш ПК)
 

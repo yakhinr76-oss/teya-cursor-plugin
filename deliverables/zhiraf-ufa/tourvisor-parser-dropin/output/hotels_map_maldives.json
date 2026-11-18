@@ -1,0 +1,513 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "maldives",
+  "tourvisor_country_id": 8,
+  "identified_at": "2026-11-18",
+  "departure_city": "Уфа",
+  "hotel_count": 25,
+  "hotel_ids": "2410,2412,2421,2430,2458,2472,2475,2479,2482,2490,12128,13900,26062,43565,43569,46068,52409,56077,57552,58743,64918,66513,72602,76318,78002",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "maldives",
+      "tourvisor_id": 2482,
+      "hotel_name": "Villa Park 5★",
+      "place": "Южный Ари, внутренний перелет (20 мин) + катер",
+      "search_query": "Villa Park",
+      "tourvisor_name": "Villa Park Sun Island",
+      "price_key": "maldives:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "maldives",
+      "tourvisor_id": 2472,
+      "hotel_name": "Villa Nautica 5★",
+      "place": "Северный Мале, скоростной катер (20 мин)",
+      "search_query": "Villa Nautica",
+      "tourvisor_name": "Villa Nautica (Ex. Paradise Island Resort & Spa)",
+      "price_key": "maldives:2"
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "maldives",
+      "tourvisor_id": 46068,
+      "hotel_name": "Furaveri Maldives 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "furaveri",
+      "tourvisor_name": "Furaveri Island Resort & Spa",
+      "price_key": "maldives:3"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "maldives",
+      "tourvisor_id": 56077,
+      "hotel_name": "Dhigali Maldives 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "Dhigali Maldives",
+      "tourvisor_name": "Niva Dhigali Maldives (Ex. Dhigali Maldives)",
+      "price_key": "maldives:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "maldives",
+      "tourvisor_id": 72602,
+      "hotel_name": "Brennia Kottefaru 5★",
+      "place": "Раа, гидросамолет (40–45 мин)",
+      "search_query": "Brennia Kottefaru",
+      "tourvisor_name": "Brennia Kottefaru",
+      "price_key": "maldives:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "maldives",
+      "tourvisor_id": 2490,
+      "hotel_name": "Vilamendhoo Island Resort & Spa 4★",
+      "place": "Южный Ари, гидросамолет (25 мин)",
+      "search_query": "Vilamendhoo Island Resort & Spa",
+      "tourvisor_name": "Vilamendhoo Island Resort",
+      "price_key": "maldives:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "maldives",
+      "tourvisor_id": 43569,
+      "hotel_name": "OBLU NATURE Helengeli by SENTIDO 4★",
+      "place": "Северный Мале, скоростной катер (50 мин)",
+      "search_query": "OBLU NATURE Helengeli by SENTIDO",
+      "tourvisor_name": "Oblu Nature Helengeli By Sentido",
+      "price_key": "maldives:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "maldives",
+      "tourvisor_id": 2430,
+      "hotel_name": "Ellaidhoo Maldives by Cinnamon 4★",
+      "place": "Северный Ари, гидросамолет (25 мин)",
+      "search_query": "Ellaidhoo Maldives by Cinnamon",
+      "tourvisor_name": "Ellaidhoo Maldives By Cinnamon (Ex. Chaaya Reef Ellaidhoo)",
+      "price_key": "maldives:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "maldives",
+      "tourvisor_id": 57552,
+      "hotel_name": "Reethi Faru Resort 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "Reethi Faru Resort",
+      "tourvisor_name": "Reethi Faru Resort",
+      "price_key": "maldives:9"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "maldives",
+      "tourvisor_id": 66513,
+      "hotel_name": "Sandies Bathala Maldives 4★",
+      "place": "Северный Ари, гидросамолет (25–30 мин)",
+      "search_query": "Sandies Bathala Maldives",
+      "tourvisor_name": "Sandies Bathala",
+      "price_key": "maldives:10"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "maldives",
+      "tourvisor_id": 2458,
+      "hotel_name": "Komandoo Island Resort & Spa 4★",
+      "place": "Лавиани, гидросамолет (40 мин)",
+      "search_query": "Komandoo Island Resort & Spa",
+      "tourvisor_name": "Komandoo Island Resort",
+      "price_key": "maldives:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "maldives",
+      "tourvisor_id": 64918,
+      "hotel_name": "You & Me Maldives 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "You & Me Maldives",
+      "tourvisor_name": "You & Me By Cocoon Maldives (Adults Only 16+)",
+      "price_key": "maldives:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "maldives",
+      "tourvisor_id": 13900,
+      "hotel_name": "Centara Ras Fushi Resort & Spa 4★",
+      "place": "Северный Мале, скоростной катер (20 мин)",
+      "search_query": "Centara Ras Fushi Resort & Spa",
+      "tourvisor_name": "Centara Ras Fushi Resort&spa (Adults Only 18+)",
+      "price_key": "maldives:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "maldives",
+      "tourvisor_id": 2412,
+      "hotel_name": "Adaaran Prestige Vadoo 5★",
+      "place": "Южный Мале, скоростной катер (15 мин)",
+      "search_query": "Adaaran Prestige Vadoo",
+      "tourvisor_name": "Adaaran Prestige Vadoo (Adult Only 18+)",
+      "price_key": "maldives:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "maldives",
+      "tourvisor_id": 76318,
+      "hotel_name": "Le Méridien Maldives Resort & Spa 5★",
+      "place": "Лавиани, гидросамолет (35 мин)",
+      "search_query": "Le Méridien Maldives Resort & Spa",
+      "tourvisor_name": "Le Meridien Maldives Resort & Spa",
+      "price_key": "maldives:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "maldives",
+      "tourvisor_id": 2421,
+      "hotel_name": "Bandos Maldives 4★",
+      "place": "Северный Мале, скоростной катер (15 мин)",
+      "search_query": "Bandos Maldives",
+      "tourvisor_name": "Bandos Maldives (Ex. Bandos Island Resort)",
+      "price_key": "maldives:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "maldives",
+      "tourvisor_id": 12128,
+      "hotel_name": "Summer Island Maldives 4★",
+      "place": "Северный Мале, скоростной катер (45 мин)",
+      "search_query": "Summer Island Maldives",
+      "tourvisor_name": "Summer Island Maldives",
+      "price_key": "maldives:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "maldives",
+      "tourvisor_id": 2479,
+      "hotel_name": "Sheraton Maldives Full Moon Resort 5★",
+      "place": "Северный Мале, скоростной катер (15 мин)",
+      "search_query": "Sheraton Maldives Full Moon Resort",
+      "tourvisor_name": "Sheraton Maldives Full Moon Resort & Spa",
+      "price_key": "maldives:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "maldives",
+      "tourvisor_id": 2410,
+      "hotel_name": "Adaaran Club Rannalhi 4★",
+      "place": "Южный Мале, скоростной катер (45 мин)",
+      "search_query": "Adaaran Club Rannalhi",
+      "tourvisor_name": "Adaaran Club Rannalhi",
+      "price_key": "maldives:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "maldives",
+      "tourvisor_id": 78002,
+      "hotel_name": "OBLU XPERIENCE Ailafushi 4★",
+      "place": "Северный Мале, скоростной катер (15 мин)",
+      "search_query": "OBLU XPERIENCE Ailafushi",
+      "tourvisor_name": "Oblu Xperience Ailafushi",
+      "price_key": "maldives:20"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "maldives",
+      "tourvisor_id": 52409,
+      "hotel_name": "Cocoon Maldives 5★",
+      "place": "Лавиани, гидросамолет (30–35 мин)",
+      "search_query": "Cocoon Maldives",
+      "tourvisor_name": "Cocoon Maldives",
+      "price_key": "maldives:21"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "maldives",
+      "tourvisor_id": 58743,
+      "hotel_name": "Fushifaru Maldives 5★",
+      "place": "Лавиани, гидросамолет (35 мин)",
+      "search_query": "Fushifaru Maldives",
+      "tourvisor_name": "Fushifaru Maldives",
+      "price_key": "maldives:22"
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "maldives",
+      "tourvisor_id": 2475,
+      "hotel_name": "NH Collection Maldives Reethi Resort 5★",
+      "place": "Баа, гидросамолет (35 мин) или внутренний рейс + катер",
+      "search_query": "NH Collection Maldives Reethi Resort",
+      "tourvisor_name": "Nh Collection Reethi Maldives (Ex. Reethi Beach Resort)",
+      "price_key": "maldives:23"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "maldives",
+      "tourvisor_id": 43565,
+      "hotel_name": "NH Maldives Kuda Rah Resort 5★",
+      "place": "Южный Ари, гидросамолет (25 мин)",
+      "search_query": "NH Maldives Kuda Rah Resort",
+      "tourvisor_name": "Nh Maldives Kuda Rah Resort (Ex. Amaya Kuda Rah)",
+      "price_key": "maldives:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "maldives",
+      "tourvisor_id": 26062,
+      "hotel_name": "Diamonds Thudufushi Maldives 5★",
+      "place": "Южный Ари, гидросамолет (25–30 мин)",
+      "search_query": "Diamonds Thudufushi Maldives",
+      "tourvisor_name": "Diamonds Thudufushi",
+      "price_key": "maldives:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "2482": {
+      "zhiraf_id": 1,
+      "country_slug": "maldives",
+      "tourvisor_id": 2482,
+      "hotel_name": "Villa Park 5★",
+      "place": "Южный Ари, внутренний перелет (20 мин) + катер",
+      "search_query": "Villa Park",
+      "tourvisor_name": "Villa Park Sun Island",
+      "price_key": "maldives:1"
+    },
+    "2472": {
+      "zhiraf_id": 2,
+      "country_slug": "maldives",
+      "tourvisor_id": 2472,
+      "hotel_name": "Villa Nautica 5★",
+      "place": "Северный Мале, скоростной катер (20 мин)",
+      "search_query": "Villa Nautica",
+      "tourvisor_name": "Villa Nautica (Ex. Paradise Island Resort & Spa)",
+      "price_key": "maldives:2"
+    },
+    "46068": {
+      "zhiraf_id": 3,
+      "country_slug": "maldives",
+      "tourvisor_id": 46068,
+      "hotel_name": "Furaveri Maldives 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "furaveri",
+      "tourvisor_name": "Furaveri Island Resort & Spa",
+      "price_key": "maldives:3"
+    },
+    "56077": {
+      "zhiraf_id": 4,
+      "country_slug": "maldives",
+      "tourvisor_id": 56077,
+      "hotel_name": "Dhigali Maldives 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "Dhigali Maldives",
+      "tourvisor_name": "Niva Dhigali Maldives (Ex. Dhigali Maldives)",
+      "price_key": "maldives:4"
+    },
+    "72602": {
+      "zhiraf_id": 5,
+      "country_slug": "maldives",
+      "tourvisor_id": 72602,
+      "hotel_name": "Brennia Kottefaru 5★",
+      "place": "Раа, гидросамолет (40–45 мин)",
+      "search_query": "Brennia Kottefaru",
+      "tourvisor_name": "Brennia Kottefaru",
+      "price_key": "maldives:5"
+    },
+    "2490": {
+      "zhiraf_id": 6,
+      "country_slug": "maldives",
+      "tourvisor_id": 2490,
+      "hotel_name": "Vilamendhoo Island Resort & Spa 4★",
+      "place": "Южный Ари, гидросамолет (25 мин)",
+      "search_query": "Vilamendhoo Island Resort & Spa",
+      "tourvisor_name": "Vilamendhoo Island Resort",
+      "price_key": "maldives:6"
+    },
+    "43569": {
+      "zhiraf_id": 7,
+      "country_slug": "maldives",
+      "tourvisor_id": 43569,
+      "hotel_name": "OBLU NATURE Helengeli by SENTIDO 4★",
+      "place": "Северный Мале, скоростной катер (50 мин)",
+      "search_query": "OBLU NATURE Helengeli by SENTIDO",
+      "tourvisor_name": "Oblu Nature Helengeli By Sentido",
+      "price_key": "maldives:7"
+    },
+    "2430": {
+      "zhiraf_id": 8,
+      "country_slug": "maldives",
+      "tourvisor_id": 2430,
+      "hotel_name": "Ellaidhoo Maldives by Cinnamon 4★",
+      "place": "Северный Ари, гидросамолет (25 мин)",
+      "search_query": "Ellaidhoo Maldives by Cinnamon",
+      "tourvisor_name": "Ellaidhoo Maldives By Cinnamon (Ex. Chaaya Reef Ellaidhoo)",
+      "price_key": "maldives:8"
+    },
+    "57552": {
+      "zhiraf_id": 9,
+      "country_slug": "maldives",
+      "tourvisor_id": 57552,
+      "hotel_name": "Reethi Faru Resort 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "Reethi Faru Resort",
+      "tourvisor_name": "Reethi Faru Resort",
+      "price_key": "maldives:9"
+    },
+    "66513": {
+      "zhiraf_id": 10,
+      "country_slug": "maldives",
+      "tourvisor_id": 66513,
+      "hotel_name": "Sandies Bathala Maldives 4★",
+      "place": "Северный Ари, гидросамолет (25–30 мин)",
+      "search_query": "Sandies Bathala Maldives",
+      "tourvisor_name": "Sandies Bathala",
+      "price_key": "maldives:10"
+    },
+    "2458": {
+      "zhiraf_id": 11,
+      "country_slug": "maldives",
+      "tourvisor_id": 2458,
+      "hotel_name": "Komandoo Island Resort & Spa 4★",
+      "place": "Лавиани, гидросамолет (40 мин)",
+      "search_query": "Komandoo Island Resort & Spa",
+      "tourvisor_name": "Komandoo Island Resort",
+      "price_key": "maldives:11"
+    },
+    "64918": {
+      "zhiraf_id": 12,
+      "country_slug": "maldives",
+      "tourvisor_id": 64918,
+      "hotel_name": "You & Me Maldives 5★",
+      "place": "Раа, гидросамолет (45 мин)",
+      "search_query": "You & Me Maldives",
+      "tourvisor_name": "You & Me By Cocoon Maldives (Adults Only 16+)",
+      "price_key": "maldives:12"
+    },
+    "13900": {
+      "zhiraf_id": 13,
+      "country_slug": "maldives",
+      "tourvisor_id": 13900,
+      "hotel_name": "Centara Ras Fushi Resort & Spa 4★",
+      "place": "Северный Мале, скоростной катер (20 мин)",
+      "search_query": "Centara Ras Fushi Resort & Spa",
+      "tourvisor_name": "Centara Ras Fushi Resort&spa (Adults Only 18+)",
+      "price_key": "maldives:13"
+    },
+    "2412": {
+      "zhiraf_id": 14,
+      "country_slug": "maldives",
+      "tourvisor_id": 2412,
+      "hotel_name": "Adaaran Prestige Vadoo 5★",
+      "place": "Южный Мале, скоростной катер (15 мин)",
+      "search_query": "Adaaran Prestige Vadoo",
+      "tourvisor_name": "Adaaran Prestige Vadoo (Adult Only 18+)",
+      "price_key": "maldives:14"
+    },
+    "76318": {
+      "zhiraf_id": 15,
+      "country_slug": "maldives",
+      "tourvisor_id": 76318,
+      "hotel_name": "Le Méridien Maldives Resort & Spa 5★",
+      "place": "Лавиани, гидросамолет (35 мин)",
+      "search_query": "Le Méridien Maldives Resort & Spa",
+      "tourvisor_name": "Le Meridien Maldives Resort & Spa",
+      "price_key": "maldives:15"
+    },
+    "2421": {
+      "zhiraf_id": 16,
+      "country_slug": "maldives",
+      "tourvisor_id": 2421,
+      "hotel_name": "Bandos Maldives 4★",
+      "place": "Северный Мале, скоростной катер (15 мин)",
+      "search_query": "Bandos Maldives",
+      "tourvisor_name": "Bandos Maldives (Ex. Bandos Island Resort)",
+      "price_key": "maldives:16"
+    },
+    "12128": {
+      "zhiraf_id": 17,
+      "country_slug": "maldives",
+      "tourvisor_id": 12128,
+      "hotel_name": "Summer Island Maldives 4★",
+      "place": "Северный Мале, скоростной катер (45 мин)",
+      "search_query": "Summer Island Maldives",
+      "tourvisor_name": "Summer Island Maldives",
+      "price_key": "maldives:17"
+    },
+    "2479": {
+      "zhiraf_id": 18,
+      "country_slug": "maldives",
+      "tourvisor_id": 2479,
+      "hotel_name": "Sheraton Maldives Full Moon Resort 5★",
+      "place": "Северный Мале, скоростной катер (15 мин)",
+      "search_query": "Sheraton Maldives Full Moon Resort",
+      "tourvisor_name": "Sheraton Maldives Full Moon Resort & Spa",
+      "price_key": "maldives:18"
+    },
+    "2410": {
+      "zhiraf_id": 19,
+      "country_slug": "maldives",
+      "tourvisor_id": 2410,
+      "hotel_name": "Adaaran Club Rannalhi 4★",
+      "place": "Южный Мале, скоростной катер (45 мин)",
+      "search_query": "Adaaran Club Rannalhi",
+      "tourvisor_name": "Adaaran Club Rannalhi",
+      "price_key": "maldives:19"
+    },
+    "78002": {
+      "zhiraf_id": 20,
+      "country_slug": "maldives",
+      "tourvisor_id": 78002,
+      "hotel_name": "OBLU XPERIENCE Ailafushi 4★",
+      "place": "Северный Мале, скоростной катер (15 мин)",
+      "search_query": "OBLU XPERIENCE Ailafushi",
+      "tourvisor_name": "Oblu Xperience Ailafushi",
+      "price_key": "maldives:20"
+    },
+    "52409": {
+      "zhiraf_id": 21,
+      "country_slug": "maldives",
+      "tourvisor_id": 52409,
+      "hotel_name": "Cocoon Maldives 5★",
+      "place": "Лавиани, гидросамолет (30–35 мин)",
+      "search_query": "Cocoon Maldives",
+      "tourvisor_name": "Cocoon Maldives",
+      "price_key": "maldives:21"
+    },
+    "58743": {
+      "zhiraf_id": 22,
+      "country_slug": "maldives",
+      "tourvisor_id": 58743,
+      "hotel_name": "Fushifaru Maldives 5★",
+      "place": "Лавиани, гидросамолет (35 мин)",
+      "search_query": "Fushifaru Maldives",
+      "tourvisor_name": "Fushifaru Maldives",
+      "price_key": "maldives:22"
+    },
+    "2475": {
+      "zhiraf_id": 23,
+      "country_slug": "maldives",
+      "tourvisor_id": 2475,
+      "hotel_name": "NH Collection Maldives Reethi Resort 5★",
+      "place": "Баа, гидросамолет (35 мин) или внутренний рейс + катер",
+      "search_query": "NH Collection Maldives Reethi Resort",
+      "tourvisor_name": "Nh Collection Reethi Maldives (Ex. Reethi Beach Resort)",
+      "price_key": "maldives:23"
+    },
+    "43565": {
+      "zhiraf_id": 24,
+      "country_slug": "maldives",
+      "tourvisor_id": 43565,
+      "hotel_name": "NH Maldives Kuda Rah Resort 5★",
+      "place": "Южный Ари, гидросамолет (25 мин)",
+      "search_query": "NH Maldives Kuda Rah Resort",
+      "tourvisor_name": "Nh Maldives Kuda Rah Resort (Ex. Amaya Kuda Rah)",
+      "price_key": "maldives:24"
+    },
+    "26062": {
+      "zhiraf_id": 25,
+      "country_slug": "maldives",
+      "tourvisor_id": 26062,
+      "hotel_name": "Diamonds Thudufushi Maldives 5★",
+      "place": "Южный Ари, гидросамолет (25–30 мин)",
+      "search_query": "Diamonds Thudufushi Maldives",
+      "tourvisor_name": "Diamonds Thudufushi",
+      "price_key": "maldives:25"
+    }
+  }
+}

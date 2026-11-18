@@ -203,7 +203,8 @@ function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
 	$known   = array(
 		'turkey' => 'turkey-tourvisor-hotels.json',
 		'uae'    => 'uae-tourvisor-hotels.json',
-		'egypt'  => 'egypt-tourvisor-hotels.json',
+		'egypt'    => 'egypt-tourvisor-hotels.json',
+		'thailand' => 'thailand-tourvisor-hotels.json',
 	);
 
 	return ! empty( $known[ $country ] ) ? (string) $known[ $country ] : $country . '-tourvisor-hotels.json';
@@ -215,7 +216,7 @@ function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
  * @return string[]
  */
 function zhiraf_ufa_tourvisor_curated_map_countries() {
-	return array( 'turkey', 'uae', 'egypt' );
+	return array( 'turkey', 'uae', 'egypt', 'thailand' );
 }
 
 /**
@@ -870,6 +871,16 @@ function zhiraf_ufa_tourvisor_overlay_uae_card( array $card ) {
  */
 function zhiraf_ufa_tourvisor_overlay_egypt_card( array $card ) {
 	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'egypt' );
+}
+
+/**
+ * Tourvisor price on a Thailand curated card. Unmatched card is returned as-is.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_thailand_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'thailand' );
 }
 
 /**

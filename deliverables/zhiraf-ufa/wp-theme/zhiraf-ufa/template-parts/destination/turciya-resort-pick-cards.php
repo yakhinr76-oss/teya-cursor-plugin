@@ -30,12 +30,16 @@ if ( function_exists( 'zhiraf_ufa_curated_catalog_filters' ) ) {
 	}
 }
 
-$pick_title = 'oae' === $dest_slug
-	? __( 'Какой эмират ОАЭ выбрать именно вам?', 'zhiraf-ufa' )
-	: ( 'egipet' === $dest_slug
-		? __( 'Какой курорт Египта выбрать именно вам?', 'zhiraf-ufa' )
-		: __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' ) );
-$pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug )
+if ( 'oae' === $dest_slug ) {
+	$pick_title = __( 'Какой эмират ОАЭ выбрать именно вам?', 'zhiraf-ufa' );
+} elseif ( 'egipet' === $dest_slug ) {
+	$pick_title = __( 'Какой курорт Египта выбрать именно вам?', 'zhiraf-ufa' );
+} elseif ( 'tailand' === $dest_slug ) {
+	$pick_title = __( 'Какой курорт Таиланда выбрать именно вам?', 'zhiraf-ufa' );
+} else {
+	$pick_title = __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' );
+}
+$pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug )
 	? __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' )
 	: __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
 ?>
@@ -83,7 +87,7 @@ $pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug )
 			$show_filter_cta = $count > 0 && empty( $card['hide_catalog_filter'] );
 			/* translators: %d: hotel count */
 			$filter_cta     = sprintf(
-				( 'oae' === $dest_slug || 'egipet' === $dest_slug )
+				( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug )
 					? __( 'Показать здесь (%d) ↓', 'zhiraf-ufa' )
 					: __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ),
 				$count

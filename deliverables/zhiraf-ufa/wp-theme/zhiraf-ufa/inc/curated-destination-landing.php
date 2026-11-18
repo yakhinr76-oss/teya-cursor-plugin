@@ -36,6 +36,9 @@ function zhiraf_ufa_curated_catalog_hotels( $dest_slug ) {
 	if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_hotels' ) ) {
 		return zhiraf_ufa_egypt_catalog_hotels();
 	}
+	if ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_catalog_hotels' ) ) {
+		return zhiraf_ufa_thailand_catalog_hotels();
+	}
 
 	/**
 	 * Filter curated hotels for a destination (non-Turkey rollout).
@@ -62,6 +65,9 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 	}
 	if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_default_copy' ) ) {
 		return zhiraf_ufa_egypt_catalog_default_copy();
+	}
+	if ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_catalog_default_copy' ) ) {
+		return zhiraf_ufa_thailand_catalog_default_copy();
 	}
 
 	/**
@@ -110,6 +116,9 @@ function zhiraf_ufa_curated_resort_pick_cards( $dest_slug ) {
 	if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_resort_pick_cards' ) ) {
 		return zhiraf_ufa_egypt_resort_pick_cards();
 	}
+	if ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_resort_pick_cards' ) ) {
+		return zhiraf_ufa_thailand_resort_pick_cards();
+	}
 
 	/**
 	 * @param array<int,array<string,mixed>> $cards
@@ -134,6 +143,9 @@ function zhiraf_ufa_curated_resort_chips( $dest_slug ) {
 	}
 	if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_resort_chips' ) ) {
 		return zhiraf_ufa_egypt_resort_chips();
+	}
+	if ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_resort_chips' ) ) {
+		return zhiraf_ufa_thailand_resort_chips();
 	}
 
 	/**
@@ -160,6 +172,9 @@ function zhiraf_ufa_curated_expert_nuances( $dest_slug ) {
 	if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_expert_nuances' ) ) {
 		return zhiraf_ufa_egypt_expert_nuances();
 	}
+	if ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_expert_nuances' ) ) {
+		return zhiraf_ufa_thailand_expert_nuances();
+	}
 
 	/**
 	 * @param array<int,array{icon:string,title:string,text:string}> $items
@@ -184,6 +199,9 @@ function zhiraf_ufa_curated_catalog_filters( $dest_slug ) {
 	}
 	if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_filters' ) ) {
 		return zhiraf_ufa_egypt_catalog_filters();
+	}
+	if ( 'tailand' === $dest_slug && function_exists( 'zhiraf_ufa_thailand_catalog_filters' ) ) {
+		return zhiraf_ufa_thailand_catalog_filters();
 	}
 
 	/**

@@ -1,0 +1,488 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "thailand-catalog-scaffold",
+  "country_slug": "thailand",
+  "identified_at": "2026-11-18",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ thailand:{zhiraf_id} (country_slug thailand, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 2,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "thailand",
+      "hotel_name": "Sunwing Bangtao Beach 4★",
+      "resort": "Пхукет, пляж Бангтао",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Sunwing Bangtao Beach",
+      "match_names": [
+        "Sunwing Bangtao Beach 4★",
+        "Sunwing Bangtao Beach"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "thailand",
+      "hotel_name": "Katathani Phuket Beach Resort 5★",
+      "resort": "Пхукет, пляж Ката-Ной",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Katathani Phuket Beach Resort",
+      "match_names": [
+        "Katathani Phuket Beach Resort 5★",
+        "Katathani Phuket Beach Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "thailand",
+      "hotel_name": "Centara Grand Mirage Beach Resort 5★",
+      "resort": "Паттайя, бухта Вонгамат",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Centara Grand Mirage Beach Resort",
+      "match_names": [
+        "Centara Grand Mirage Beach Resort 5★",
+        "Centara Grand Mirage Beach Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "thailand",
+      "hotel_name": "Mövenpick Siam Hotel Na Jomtien 5★",
+      "resort": "Паттайя, На-Джомтьен",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Mövenpick Siam Hotel Na Jomtien",
+      "match_names": [
+        "Mövenpick Siam Hotel Na Jomtien 5★",
+        "Mövenpick Siam Hotel Na Jomtien"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "thailand",
+      "hotel_name": "X10 Khaolak Resort 5★",
+      "resort": "Као-Лак, Банг-Нианг",
+      "region": "khaolak",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "X10 Khaolak Resort",
+      "match_names": [
+        "X10 Khaolak Resort 5★",
+        "X10 Khaolak Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "thailand",
+      "hotel_name": "The SIS Kata 4★",
+      "resort": "Пхукет, пляж Ката",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The SIS Kata",
+      "match_names": [
+        "The SIS Kata 4★",
+        "The SIS Kata"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "thailand",
+      "hotel_name": "Avista Hideaway Phuket Patong – MGallery 5★",
+      "resort": "Пхукет, холмы Патонга",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Avista Hideaway Phuket Patong – MGallery",
+      "match_names": [
+        "Avista Hideaway Phuket Patong – MGallery 5★",
+        "Avista Hideaway Phuket Patong – MGallery"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "thailand",
+      "hotel_name": "Beyond Karon 4★",
+      "resort": "Пхукет, пляж Карон",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Beyond Karon",
+      "match_names": [
+        "Beyond Karon 4★",
+        "Beyond Karon"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "thailand",
+      "hotel_name": "U Pattaya 5★",
+      "resort": "Паттайя, Банг-Сарай",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "U Pattaya",
+      "match_names": [
+        "U Pattaya 5★",
+        "U Pattaya"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "thailand",
+      "hotel_name": "Mantra Samui Resort 5★",
+      "resort": "Самуи, холмы Бопхут",
+      "region": "samui",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Mantra Samui Resort",
+      "match_names": [
+        "Mantra Samui Resort 5★",
+        "Mantra Samui Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "thailand",
+      "hotel_name": "Pullman Pattaya Hotel G 5★",
+      "resort": "Паттайя, бухта Вонгамат",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Pullman Pattaya Hotel G",
+      "match_names": [
+        "Pullman Pattaya Hotel G 5★",
+        "Pullman Pattaya Hotel G"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "thailand",
+      "hotel_name": "Cape Dara Resort Pattaya 5★",
+      "resort": "Паттайя, мыс Дара / Вонгамат",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Cape Dara Resort Pattaya",
+      "match_names": [
+        "Cape Dara Resort Pattaya 5★",
+        "Cape Dara Resort Pattaya"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "thailand",
+      "hotel_name": "Ravindra Beach Resort & Spa 5★",
+      "resort": "Паттайя, На-Джомтьен",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Ravindra Beach Resort & Spa",
+      "match_names": [
+        "Ravindra Beach Resort & Spa 5★",
+        "Ravindra Beach Resort & Spa",
+        "Ravindra Beach Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "thailand",
+      "hotel_name": "Sea Sand Sun Resort and Villas 5★",
+      "resort": "Паттайя, Банг-Сарай",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Sea Sand Sun Resort and Villas",
+      "match_names": [
+        "Sea Sand Sun Resort and Villas 5★",
+        "Sea Sand Sun Resort and Villas"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "thailand",
+      "hotel_name": "Ana Anan Resort & Villas Pattaya 5★",
+      "resort": "Паттайя, На-Джомтьен",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Ana Anan Resort & Villas Pattaya",
+      "match_names": [
+        "Ana Anan Resort & Villas Pattaya 5★",
+        "Ana Anan Resort & Villas Pattaya",
+        "Ana Anan Resort and Villas Pattaya"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "thailand",
+      "hotel_name": "Hotel Clover Patong Phuket 4★",
+      "resort": "Пхукет, центр Патонга",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Hotel Clover Patong Phuket",
+      "match_names": [
+        "Hotel Clover Patong Phuket 4★",
+        "Hotel Clover Patong Phuket"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "thailand",
+      "hotel_name": "The Marina Phuket Hotel 4★",
+      "resort": "Пхукет, Патонг",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Marina Phuket Hotel",
+      "match_names": [
+        "The Marina Phuket Hotel 4★",
+        "The Marina Phuket Hotel"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "thailand",
+      "hotel_name": "The Kee Resort & Spa 4★",
+      "resort": "Пхукет, Патонг / Бангла Роуд",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Kee Resort & Spa",
+      "match_names": [
+        "The Kee Resort & Spa 4★",
+        "The Kee Resort & Spa",
+        "The Kee Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "thailand",
+      "hotel_name": "Holiday Inn Express Pattaya Central 4★",
+      "resort": "Паттайя, центр / Soi Buakhao",
+      "region": "pattaya",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Holiday Inn Express Pattaya Central",
+      "match_names": [
+        "Holiday Inn Express Pattaya Central 4★",
+        "Holiday Inn Express Pattaya Central"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "thailand",
+      "hotel_name": "COSI Samui Chaweng Beach 3★",
+      "resort": "Самуи, центр Чавенга",
+      "region": "samui",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "COSI Samui Chaweng Beach",
+      "match_names": [
+        "COSI Samui Chaweng Beach 3★",
+        "COSI Samui Chaweng Beach"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "thailand",
+      "hotel_name": "Sunwing Kamala Beach 4★",
+      "resort": "Пхукет, пляж Камала",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Sunwing Kamala Beach",
+      "match_names": [
+        "Sunwing Kamala Beach 4★",
+        "Sunwing Kamala Beach"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "thailand",
+      "hotel_name": "Chanalai Flora Resort 4★",
+      "resort": "Пхукет, пляж Ката",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Chanalai Flora Resort",
+      "match_names": [
+        "Chanalai Flora Resort 4★",
+        "Chanalai Flora Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "thailand",
+      "hotel_name": "Baan Sailom Resort 3★",
+      "resort": "Пхукет, пляж Карон",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Baan Sailom Resort",
+      "match_names": [
+        "Baan Sailom Resort 3★",
+        "Baan Sailom Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "thailand",
+      "hotel_name": "Best Western Phuket Ocean Resort 3★",
+      "resort": "Пхукет, пляж Карон",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Best Western Phuket Ocean Resort",
+      "match_names": [
+        "Best Western Phuket Ocean Resort 3★",
+        "Best Western Phuket Ocean Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "thailand",
+      "hotel_name": "Kata White Villas 3★",
+      "resort": "Пхукет, пляж Ката",
+      "region": "phuket",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Kata White Villas",
+      "match_names": [
+        "Kata White Villas 3★",
+        "Kata White Villas"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    }
+  ]
+}

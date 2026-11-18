@@ -75,6 +75,85 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 }
 
 /**
+ * Whether curated hub renders resort/emirate pick cards (toolbar hides duplicate resort tabs).
+ *
+ * @param string $dest_slug Destination slug.
+ * @return bool
+ */
+function zhiraf_ufa_curated_has_resort_pick_cards( $dest_slug ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	$cards     = zhiraf_ufa_curated_resort_pick_cards( $dest_slug );
+
+	return ! empty( $cards );
+}
+
+/**
+ * Resort / emirate pick cards for curated hub.
+ *
+ * @param string $dest_slug Destination slug.
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_curated_resort_pick_cards( $dest_slug ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	if ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_resort_pick_cards' ) ) {
+		return zhiraf_ufa_turciya_resort_pick_cards();
+	}
+	if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_pick_cards' ) ) {
+		return zhiraf_ufa_oae_resort_pick_cards();
+	}
+
+	/**
+	 * @param array<int,array<string,mixed>> $cards
+	 * @param string                         $dest_slug
+	 */
+	return apply_filters( 'zhiraf_ufa_curated_resort_pick_cards', array(), $dest_slug );
+}
+
+/**
+ * Quick filter chips in hero (sync with catalog JS).
+ *
+ * @param string $dest_slug Destination slug.
+ * @return array<int,array{id:string,label:string}>
+ */
+function zhiraf_ufa_curated_resort_chips( $dest_slug ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	if ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_resort_chips' ) ) {
+		return zhiraf_ufa_turciya_resort_chips();
+	}
+	if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_chips' ) ) {
+		return zhiraf_ufa_oae_resort_chips();
+	}
+
+	/**
+	 * @param array<int,array{id:string,label:string}> $chips
+	 * @param string                                   $dest_slug
+	 */
+	return apply_filters( 'zhiraf_ufa_curated_resort_chips', array(), $dest_slug );
+}
+
+/**
+ * Expert nuance cards (3 columns) for curated landing.
+ *
+ * @param string $dest_slug Destination slug.
+ * @return array<int,array{icon:string,title:string,text:string}>
+ */
+function zhiraf_ufa_curated_expert_nuances( $dest_slug ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	if ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_expert_nuances' ) ) {
+		return zhiraf_ufa_turciya_expert_nuances();
+	}
+	if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_expert_nuances' ) ) {
+		return zhiraf_ufa_oae_expert_nuances();
+	}
+
+	/**
+	 * @param array<int,array{icon:string,title:string,text:string}> $items
+	 * @param string                                                 $dest_slug
+	 */
+	return apply_filters( 'zhiraf_ufa_curated_expert_nuances', array(), $dest_slug );
+}
+
+/**
  * Catalog filter tabs for curated hub.
  *
  * @param string $dest_slug Destination slug.

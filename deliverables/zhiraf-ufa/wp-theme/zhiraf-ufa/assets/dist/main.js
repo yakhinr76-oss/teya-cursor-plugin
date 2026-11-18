@@ -1170,6 +1170,16 @@
     var fillSlot = qs('[data-turciya-catalog-fill]', showcase);
     var fillTitle = qs('[data-turciya-fill-title]', showcase);
     var fillText = qs('[data-turciya-fill-text]', showcase);
+    var fillModalBtn = qs('[data-turciya-fill-cta-modal]', showcase);
+    var fillWaBtn = qs('[data-turciya-fill-cta-wa]', showcase);
+    var destSlug = showcase.getAttribute('data-dest-slug') || 'turciya';
+    var fillWaBase = showcase.getAttribute('data-catalog-fill-wa-base') || '';
+    var fillEmirates = {};
+    try {
+      fillEmirates = JSON.parse(showcase.getAttribute('data-catalog-fill-emirates') || '{}') || {};
+    } catch (err) {
+      fillEmirates = {};
+    }
 
     function parseTags(card) {
       return (card.getAttribute('data-filter-tags') || '')
@@ -1265,27 +1275,89 @@
       }
     }
 
+    function whatsappUrlWithText(base, text) {
+      if (!base) {
+        return '#';
+      }
+      if (!text) {
+        return base;
+      }
+      var sep = base.indexOf('?') === -1 ? '?' : '&';
+      return base + sep + 'text=' + encodeURIComponent(text);
+    }
+
+    function setFillCtaMode(mode) {
+      if (fillModalBtn) {
+        if (mode === 'modal') {
+          fillModalBtn.removeAttribute('hidden');
+        } else {
+          fillModalBtn.setAttribute('hidden', '');
+        }
+      }
+      if (fillWaBtn) {
+        if (mode === 'whatsapp') {
+          fillWaBtn.removeAttribute('hidden');
+        } else {
+          fillWaBtn.setAttribute('hidden', '');
+        }
+      }
+    }
+
     function updateFillSlot() {
       if (!fillSlot) {
         return;
       }
       var shown = Math.min(currentMatched.length, visibleLimit);
-      var hole = currentMatched.length === 5 && shown === 5;
-      if (!hole) {
+      var legacyFive = currentMatched.length === 5 && shown === 5;
+      var rowHole = shown > 0 && shown < visibleLimit && shown % 3 === 2;
+      var emirateWa = destSlug === 'oae'
+        && activeFilter.indexOf('emirate-') === 0
+        && rowHole
+        && !legacyFive;
+
+      if (!legacyFive && !rowHole) {
         fillSlot.setAttribute('hidden', '');
+        fillSlot.classList.remove('turciya-catalog-fill--compact');
+        setFillCtaMode('modal');
         return;
       }
       fillSlot.removeAttribute('hidden');
-      if (activeFilter === 'need-family') {
+
+      if (emirateWa) {
+        var place = fillEmirates[activeFilter] || 'ОАЭ';
+        fillSlot.classList.add('turciya-catalog-fill--compact');
         if (fillTitle) {
-          fillTitle.textContent = 'Подберём отель под вашу семью';
+          fillTitle.textContent = 'Подберём ещё 3 отеля в ' + place + ' на ваши даты';
         }
         if (fillText) {
-          fillText.textContent = 'В этой выборке 5 отелей. Напишите возраст детей — пришлём ещё 2–3 варианта из базы под ваши даты и вылет из Уфы.';
+          fillText.textContent = 'Напишите даты и состав — пришлём варианты из базы с вылетом из Уфы.';
         }
-      } else if (fillTitle && fillText) {
+        if (fillWaBtn && fillWaBase) {
+          var waMsg = 'Здравствуйте! Нужна подборка ещё 3 отелей в ' + place + ' на наши даты — вылет из Уфы.';
+          fillWaBtn.href = whatsappUrlWithText(fillWaBase, waMsg);
+        }
+        setFillCtaMode('whatsapp');
+        return;
+      }
+
+      fillSlot.classList.remove('turciya-catalog-fill--compact');
+      setFillCtaMode('modal');
+
+      if (legacyFive) {
+        if (activeFilter === 'need-family') {
+          if (fillTitle) {
+            fillTitle.textContent = 'Подберём отель под вашу семью';
+          }
+          if (fillText) {
+            fillText.textContent = 'В этой выборке 5 отелей. Напишите возраст детей — пришлём ещё 2–3 варианта из базы под ваши даты и вылет из Уфы.';
+          }
+        } else if (fillTitle && fillText) {
+          fillTitle.textContent = 'Нужен ещё один вариант?';
+          fillText.textContent = 'В этой выборке 5 отелей. Напишите даты и состав — пришлём ещё 2–3 варианта из базы с вылетом из Уфы.';
+        }
+      } else if (rowHole && fillTitle && fillText) {
         fillTitle.textContent = 'Нужен ещё один вариант?';
-        fillText.textContent = 'В этой выборке 5 отелей. Напишите даты и состав — пришлём ещё 2–3 варианта из базы с вылетом из Уфы.';
+        fillText.textContent = 'В этой выборке ' + shown + ' отеля. Напишите даты и состав — пришлём ещё варианты из базы с вылетом из Уфы.';
       }
     }
 

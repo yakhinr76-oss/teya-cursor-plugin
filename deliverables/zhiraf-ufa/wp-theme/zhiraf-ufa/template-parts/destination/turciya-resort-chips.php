@@ -10,10 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$context = ! empty( $args['context'] ) ? (string) $args['context'] : 'showcase';
-$chips   = ! empty( $args['chips'] ) && is_array( $args['chips'] )
+$context   = ! empty( $args['context'] ) ? (string) $args['context'] : 'showcase';
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+$chips     = ! empty( $args['chips'] ) && is_array( $args['chips'] )
 	? $args['chips']
-	: ( function_exists( 'zhiraf_ufa_turciya_resort_chips' ) ? zhiraf_ufa_turciya_resort_chips() : array() );
+	: ( function_exists( 'zhiraf_ufa_curated_resort_chips' )
+		? zhiraf_ufa_curated_resort_chips( $dest_slug )
+		: ( function_exists( 'zhiraf_ufa_turciya_resort_chips' ) ? zhiraf_ufa_turciya_resort_chips() : array() ) );
 
 if ( empty( $chips ) ) {
 	return;
@@ -25,7 +28,7 @@ $wrap_class = 'turciya-resort-chips turciya-resort-chips--' . sanitize_html_clas
 	class="<?php echo esc_attr( $wrap_class ); ?>"
 	data-turciya-resort-chips="<?php echo esc_attr( $context ); ?>"
 	role="tablist"
-	aria-label="<?php esc_attr_e( 'Фильтр по курортам Турции', 'zhiraf-ufa' ); ?>"
+	aria-label="<?php echo 'oae' === $dest_slug ? esc_attr__( 'Фильтр по эмиратам ОАЭ', 'zhiraf-ufa' ) : esc_attr__( 'Фильтр по курортам Турции', 'zhiraf-ufa' ); ?>"
 >
 	<?php foreach ( $chips as $i => $chip ) : ?>
 		<?php

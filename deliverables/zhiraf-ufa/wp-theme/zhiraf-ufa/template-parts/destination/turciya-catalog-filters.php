@@ -25,10 +25,15 @@ if ( empty( $filters ) ) {
 $starter = $filters[0];
 $resorts = array();
 $needs   = array();
+$hide_resort_tabs = function_exists( 'zhiraf_ufa_curated_has_resort_pick_cards' )
+	&& zhiraf_ufa_curated_has_resort_pick_cards( $dest_slug );
+
 foreach ( $filters as $filter ) {
 	$group = ! empty( $filter['group'] ) ? (string) $filter['group'] : '';
 	if ( 'resort' === $group ) {
-		$resorts[] = $filter;
+		if ( ! $hide_resort_tabs ) {
+			$resorts[] = $filter;
+		}
 	} elseif ( 'need' === $group ) {
 		$needs[] = $filter;
 	}

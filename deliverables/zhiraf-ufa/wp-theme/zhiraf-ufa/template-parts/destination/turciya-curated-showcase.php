@@ -25,6 +25,14 @@ $fill_tour   = 'oae' === $dest_slug
 	? __( 'ОАЭ, индивидуальный подбор', 'zhiraf-ufa' )
 	: __( 'Турция, индивидуальный подбор', 'zhiraf-ufa' );
 
+$fill_emirate_labels = array();
+if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_fill_emirate_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_oae_catalog_fill_emirate_labels();
+}
+$fill_wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' )
+	? zhiraf_ufa_brand_whatsapp_url()
+	: 'https://wa.me/79018105018';
+
 if ( empty( $hotels ) ) {
 	return;
 }
@@ -36,10 +44,19 @@ if ( empty( $hotels ) ) {
 	data-catalog-default-title="<?php echo esc_attr( $copy['title'] ?? '' ); ?>"
 	data-catalog-default-desc="<?php echo esc_attr( $copy['desc'] ?? '' ); ?>"
 	data-catalog-pool-total="<?php echo esc_attr( (string) $pool_total ); ?>"
+	data-dest-slug="<?php echo esc_attr( $dest_slug ); ?>"
+	data-catalog-fill-wa-base="<?php echo esc_url( $fill_wa_base ); ?>"
+	data-catalog-fill-emirates="<?php echo esc_attr( wp_json_encode( $fill_emirate_labels ) ); ?>"
 >
 	<div class="container">
-		<?php if ( 'turciya' === $dest_slug ) : ?>
-			<?php get_template_part( 'template-parts/destination/turciya-resort-pick-cards' ); ?>
+		<?php if ( function_exists( 'zhiraf_ufa_curated_has_resort_pick_cards' ) && zhiraf_ufa_curated_has_resort_pick_cards( $dest_slug ) ) : ?>
+			<?php
+			get_template_part(
+				'template-parts/destination/turciya-resort-pick-cards',
+				null,
+				array( 'dest_slug' => $dest_slug )
+			);
+			?>
 		<?php endif; ?>
 
 		<div class="turciya-curated-showcase__block">
@@ -72,6 +89,7 @@ if ( empty( $hotels ) ) {
 					<button
 						type="button"
 						class="btn btn--outline turciya-catalog-fill__cta"
+						data-turciya-fill-cta-modal
 						data-turciya-lead-open
 						data-cta-context="turciya_catalog_fill_modal"
 						data-uon-hotel-id="<?php echo esc_attr( $fill_uon_id ); ?>"
@@ -83,6 +101,19 @@ if ( empty( $hotels ) ) {
 					>
 						<?php esc_html_e( 'Подобрать в мессенджере →', 'zhiraf-ufa' ); ?>
 					</button>
+					<a
+						class="btn btn--primary turciya-catalog-fill__cta turciya-catalog-fill__cta--wa"
+						data-turciya-fill-cta-wa
+						href="<?php echo esc_url( $fill_wa_base ); ?>"
+						target="_blank"
+						rel="noopener noreferrer"
+						data-track="messenger"
+						data-channel="whatsapp"
+						data-cta-context="oae_catalog_fill_whatsapp"
+						hidden
+					>
+						<?php esc_html_e( 'Написать в WhatsApp →', 'zhiraf-ufa' ); ?>
+					</a>
 				</aside>
 			</div>
 

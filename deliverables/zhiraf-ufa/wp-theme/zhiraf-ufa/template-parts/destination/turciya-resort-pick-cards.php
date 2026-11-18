@@ -1,31 +1,41 @@
 <?php
 /**
- * Turkey — resort pick cards (SEO H2 + «Разница за 10 секунд» eyebrow).
+ * Curated hub — resort / emirate pick cards (SEO H2 + «Разница за 10 секунд» eyebrow).
  *
  * @package Zhiraf_Ufa
+ * @var array $args { dest_slug?: string }.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$cards = function_exists( 'zhiraf_ufa_turciya_resort_pick_cards' )
-	? zhiraf_ufa_turciya_resort_pick_cards()
-	: array();
+$dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+
+$cards = function_exists( 'zhiraf_ufa_curated_resort_pick_cards' )
+	? zhiraf_ufa_curated_resort_pick_cards( $dest_slug )
+	: ( function_exists( 'zhiraf_ufa_turciya_resort_pick_cards' ) ? zhiraf_ufa_turciya_resort_pick_cards() : array() );
 
 if ( empty( $cards ) ) {
 	return;
 }
 
 $filter_meta = array();
-if ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ) {
-	foreach ( zhiraf_ufa_turciya_catalog_filters() as $filter ) {
+if ( function_exists( 'zhiraf_ufa_curated_catalog_filters' ) ) {
+	foreach ( zhiraf_ufa_curated_catalog_filters( $dest_slug ) as $filter ) {
 		$fid = ! empty( $filter['id'] ) ? (string) $filter['id'] : '';
 		if ( '' !== $fid ) {
 			$filter_meta[ $fid ] = $filter;
 		}
 	}
 }
+
+$pick_title = 'oae' === $dest_slug
+	? __( 'Какой эмират ОАЭ выбрать именно вам?', 'zhiraf-ufa' )
+	: __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' );
+$pick_lead = 'oae' === $dest_slug
+	? __( 'Нажмите на эмират — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' )
+	: __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
 ?>
 <div class="turciya-resort-pick" id="dest-resort-compare" aria-labelledby="turciya-resort-pick-title">
 	<div class="turciya-resort-pick__head">
@@ -33,14 +43,19 @@ if ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ) {
 			<?php esc_html_e( 'Шпаргалка туриста • Разница за 10 секунд', 'zhiraf-ufa' ); ?>
 		</p>
 		<h2 class="section-title turciya-resort-pick__title" id="turciya-resort-pick-title">
-			<?php esc_html_e( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' ); ?>
+			<?php echo esc_html( $pick_title ); ?>
 		</h2>
 		<p class="turciya-resort-pick__lead">
-			<?php esc_html_e( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' ); ?>
+			<?php echo esc_html( $pick_lead ); ?>
 		</p>
 	</div>
 
-	<div class="turciya-resort-pick__track turciya-resort-pick__track--five" role="list">
+	<?php
+	$pick_track_class = count( $cards ) >= 6
+		? 'turciya-resort-pick__track turciya-resort-pick__track--six'
+		: 'turciya-resort-pick__track turciya-resort-pick__track--five';
+	?>
+	<div class="<?php echo esc_attr( $pick_track_class ); ?>" role="list">
 		<?php foreach ( $cards as $card ) : ?>
 			<?php
 			$id             = ! empty( $card['id'] ) ? sanitize_html_class( (string) $card['id'] ) : '';
@@ -52,15 +67,21 @@ if ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ) {
 			if ( $featured ) {
 				$card_class .= ' turciya-resort-pick__card--featured';
 			}
-			$catalog_filter = 'resort-' . $id;
+			$catalog_filter = ! empty( $card['filter_id'] ) ? (string) $card['filter_id'] : 'resort-' . $id;
 			$meta           = isset( $filter_meta[ $catalog_filter ] ) ? $filter_meta[ $catalog_filter ] : array();
 			$catalog_title  = ! empty( $meta['title'] ) ? (string) $meta['title'] : '';
 			$catalog_desc   = ! empty( $meta['desc'] ) ? (string) $meta['desc'] : '';
 			$transfer_mod   = ! empty( $card['transfer_mod'] ) ? sanitize_html_class( (string) $card['transfer_mod'] ) : '';
 			$guide_url      = ! empty( $card['guide_url'] ) ? (string) $card['guide_url'] : '';
-			$guide_label    = ! empty( $card['guide_label'] ) ? (string) $card['guide_label'] : __( 'Подробный гид по курорту →', 'zhiraf-ufa' );
+			$guide_label    = ! empty( $card['guide_label'] ) ? (string) $card['guide_label'] : __( 'На страницу →', 'zhiraf-ufa' );
+			$show_filter_cta = $count > 0 && empty( $card['hide_catalog_filter'] );
 			/* translators: %d: hotel count */
-			$filter_cta     = sprintf( __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ), $count );
+			$filter_cta     = sprintf(
+				'oae' === $dest_slug
+					? __( 'Показать здесь (%d) ↓', 'zhiraf-ufa' )
+					: __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ),
+				$count
+			);
 			?>
 			<div class="<?php echo esc_attr( $card_class ); ?>" role="listitem">
 				<button
@@ -109,15 +130,17 @@ if ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ) {
 					</span>
 				</button>
 				<div class="turciya-resort-pick__card-foot">
-					<button
-						type="button"
-						class="turciya-resort-pick__filter-cta"
-						data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
-						data-catalog-title="<?php echo esc_attr( $catalog_title ); ?>"
-						data-catalog-desc="<?php echo esc_attr( $catalog_desc ); ?>"
-					>
-						<?php echo esc_html( $filter_cta ); ?>
-					</button>
+					<?php if ( $show_filter_cta ) : ?>
+						<button
+							type="button"
+							class="turciya-resort-pick__filter-cta"
+							data-turciya-catalog-filter="<?php echo esc_attr( $catalog_filter ); ?>"
+							data-catalog-title="<?php echo esc_attr( $catalog_title ); ?>"
+							data-catalog-desc="<?php echo esc_attr( $catalog_desc ); ?>"
+						>
+							<?php echo esc_html( $filter_cta ); ?>
+						</button>
+					<?php endif; ?>
 					<?php if ( '' !== $guide_url ) : ?>
 						<a
 							class="turciya-resort-pick__guide"

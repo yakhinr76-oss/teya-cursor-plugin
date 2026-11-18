@@ -1131,6 +1131,31 @@
   }
 }
 
+.turciya-resort-pick__track--six {
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .turciya-resort-pick__track--six {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .turciya-resort-pick__track--six {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .turciya-resort-pick__track--six .turciya-resort-pick__card {
+    flex: initial;
+    scroll-snap-align: unset;
+  }
+}
+
 .turciya-catalog-toolbar__guide {
   margin: 0.5rem 0 0;
   font-size: 0.8125rem;
@@ -1263,6 +1288,12 @@
 .turciya-resort-pick__tag--urban {
   background: #e0f2fe;
   color: #0369a1;
+}
+
+.turciya-resort-pick__tag--ocean {
+  background: #ecfeff;
+  color: #155e75;
+  border: 1px solid #a5f3fc;
 }
 
 .turciya-resort-pick__transfer {
@@ -1592,6 +1623,23 @@
   min-height: 48px;
 }
 
+.turciya-catalog-fill__cta[hidden] {
+  display: none !important;
+}
+
+.turciya-catalog-fill--compact {
+  padding: 1.15rem 1rem;
+  gap: 0.55rem;
+}
+
+.turciya-catalog-fill--compact .turciya-catalog-fill__title {
+  font-size: 1.0625rem;
+}
+
+.turciya-catalog-fill--compact .turciya-catalog-fill__text {
+  font-size: 0.8125rem;
+}
+
 .turciya-curated-card__media {
   position: relative;
   height: 12rem;
@@ -1864,6 +1912,17 @@
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 2px 0 rgba(120, 50, 20, 0.35);
+}
+
+.turciya-curated-card__cta.btn--primary {
+  border: 1px solid #b04d29;
+  background: #c85a32;
+  color: #fff;
+}
+
+.turciya-curated-card__cta.btn--primary:hover {
+  background: #b04d29;
+  color: #fff;
 }
 
 .turciya-curated-card__channels {

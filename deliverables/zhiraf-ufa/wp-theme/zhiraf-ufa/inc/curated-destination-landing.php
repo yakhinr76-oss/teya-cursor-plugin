@@ -45,6 +45,18 @@ function zhiraf_ufa_curated_catalog_hotels( $dest_slug ) {
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_hotels' ) ) {
 		return zhiraf_ufa_vietnam_catalog_hotels();
 	}
+	if ( 'shri-lanka' === $dest_slug && function_exists( 'zhiraf_ufa_sri_lanka_catalog_hotels' ) ) {
+		return zhiraf_ufa_sri_lanka_catalog_hotels();
+	}
+	if ( 'indoneziya' === $dest_slug && function_exists( 'zhiraf_ufa_indonesia_catalog_hotels' ) ) {
+		return zhiraf_ufa_indonesia_catalog_hotels();
+	}
+	if ( 'indiya' === $dest_slug && function_exists( 'zhiraf_ufa_india_catalog_hotels' ) ) {
+		return zhiraf_ufa_india_catalog_hotels();
+	}
+	if ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_catalog_hotels' ) ) {
+		return zhiraf_ufa_seychelles_catalog_hotels();
+	}
 
 	/**
 	 * Filter curated hotels for a destination (non-Turkey rollout).
@@ -80,6 +92,18 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_default_copy' ) ) {
 		return zhiraf_ufa_vietnam_catalog_default_copy();
+	}
+	if ( 'shri-lanka' === $dest_slug && function_exists( 'zhiraf_ufa_sri_lanka_catalog_default_copy' ) ) {
+		return zhiraf_ufa_sri_lanka_catalog_default_copy();
+	}
+	if ( 'indoneziya' === $dest_slug && function_exists( 'zhiraf_ufa_indonesia_catalog_default_copy' ) ) {
+		return zhiraf_ufa_indonesia_catalog_default_copy();
+	}
+	if ( 'indiya' === $dest_slug && function_exists( 'zhiraf_ufa_india_catalog_default_copy' ) ) {
+		return zhiraf_ufa_india_catalog_default_copy();
+	}
+	if ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_catalog_default_copy' ) ) {
+		return zhiraf_ufa_seychelles_catalog_default_copy();
 	}
 
 	/**
@@ -137,6 +161,18 @@ function zhiraf_ufa_curated_resort_pick_cards( $dest_slug ) {
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_resort_pick_cards' ) ) {
 		return zhiraf_ufa_vietnam_resort_pick_cards();
 	}
+	if ( 'shri-lanka' === $dest_slug && function_exists( 'zhiraf_ufa_sri_lanka_resort_pick_cards' ) ) {
+		return zhiraf_ufa_sri_lanka_resort_pick_cards();
+	}
+	if ( 'indoneziya' === $dest_slug && function_exists( 'zhiraf_ufa_indonesia_resort_pick_cards' ) ) {
+		return zhiraf_ufa_indonesia_resort_pick_cards();
+	}
+	if ( 'indiya' === $dest_slug && function_exists( 'zhiraf_ufa_india_resort_pick_cards' ) ) {
+		return zhiraf_ufa_india_resort_pick_cards();
+	}
+	if ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_resort_pick_cards' ) ) {
+		return zhiraf_ufa_seychelles_resort_pick_cards();
+	}
 
 	/**
 	 * @param array<int,array<string,mixed>> $cards
@@ -170,6 +206,18 @@ function zhiraf_ufa_curated_resort_chips( $dest_slug ) {
 	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_resort_chips' ) ) {
 		return zhiraf_ufa_vietnam_resort_chips();
+	}
+	if ( 'shri-lanka' === $dest_slug && function_exists( 'zhiraf_ufa_sri_lanka_resort_chips' ) ) {
+		return zhiraf_ufa_sri_lanka_resort_chips();
+	}
+	if ( 'indoneziya' === $dest_slug && function_exists( 'zhiraf_ufa_indonesia_resort_chips' ) ) {
+		return zhiraf_ufa_indonesia_resort_chips();
+	}
+	if ( 'indiya' === $dest_slug && function_exists( 'zhiraf_ufa_india_resort_chips' ) ) {
+		return zhiraf_ufa_india_resort_chips();
+	}
+	if ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_resort_chips' ) ) {
+		return zhiraf_ufa_seychelles_resort_chips();
 	}
 
 	/**
@@ -205,6 +253,18 @@ function zhiraf_ufa_curated_expert_nuances( $dest_slug ) {
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_expert_nuances' ) ) {
 		return zhiraf_ufa_vietnam_expert_nuances();
 	}
+	if ( 'shri-lanka' === $dest_slug && function_exists( 'zhiraf_ufa_sri_lanka_expert_nuances' ) ) {
+		return zhiraf_ufa_sri_lanka_expert_nuances();
+	}
+	if ( 'indoneziya' === $dest_slug && function_exists( 'zhiraf_ufa_indonesia_expert_nuances' ) ) {
+		return zhiraf_ufa_indonesia_expert_nuances();
+	}
+	if ( 'indiya' === $dest_slug && function_exists( 'zhiraf_ufa_india_expert_nuances' ) ) {
+		return zhiraf_ufa_india_expert_nuances();
+	}
+	if ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_expert_nuances' ) ) {
+		return zhiraf_ufa_seychelles_expert_nuances();
+	}
 
 	/**
 	 * @param array<int,array{icon:string,title:string,text:string}> $items
@@ -238,6 +298,18 @@ function zhiraf_ufa_curated_catalog_filters( $dest_slug ) {
 	}
 	if ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_filters' ) ) {
 		return zhiraf_ufa_vietnam_catalog_filters();
+	}
+	if ( 'shri-lanka' === $dest_slug && function_exists( 'zhiraf_ufa_sri_lanka_catalog_filters' ) ) {
+		return zhiraf_ufa_sri_lanka_catalog_filters();
+	}
+	if ( 'indoneziya' === $dest_slug && function_exists( 'zhiraf_ufa_indonesia_catalog_filters' ) ) {
+		return zhiraf_ufa_indonesia_catalog_filters();
+	}
+	if ( 'indiya' === $dest_slug && function_exists( 'zhiraf_ufa_india_catalog_filters' ) ) {
+		return zhiraf_ufa_india_catalog_filters();
+	}
+	if ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_catalog_filters' ) ) {
+		return zhiraf_ufa_seychelles_catalog_filters();
 	}
 
 	/**

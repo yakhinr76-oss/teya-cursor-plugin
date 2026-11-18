@@ -207,6 +207,10 @@ function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
 		'thailand' => 'thailand-tourvisor-hotels.json',
 		'maldives' => 'maldives-tourvisor-hotels.json',
 		'vietnam'  => 'vietnam-tourvisor-hotels.json',
+		'sri_lanka' => 'sri_lanka-tourvisor-hotels.json',
+		'indonesia' => 'indonesia-tourvisor-hotels.json',
+		'india'     => 'india-tourvisor-hotels.json',
+		'seychelles' => 'seychelles-tourvisor-hotels.json',
 	);
 
 	return ! empty( $known[ $country ] ) ? (string) $known[ $country ] : $country . '-tourvisor-hotels.json';
@@ -218,7 +222,7 @@ function zhiraf_ufa_tourvisor_hotels_map_basename( $country ) {
  * @return string[]
  */
 function zhiraf_ufa_tourvisor_curated_map_countries() {
-	return array( 'turkey', 'uae', 'egypt', 'thailand', 'maldives', 'vietnam' );
+	return array( 'turkey', 'uae', 'egypt', 'thailand', 'maldives', 'vietnam', 'sri_lanka', 'indonesia', 'india', 'seychelles' );
 }
 
 /**
@@ -903,6 +907,56 @@ function zhiraf_ufa_tourvisor_overlay_maldives_card( array $card ) {
  */
 function zhiraf_ufa_tourvisor_overlay_vietnam_card( array $card ) {
 	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'vietnam' );
+}
+
+/**
+ * Tourvisor price on a Sri Lanka curated card.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_sri_lanka_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'sri_lanka' );
+}
+
+/**
+ * Tourvisor price on an Indonesia curated card.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_indonesia_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'indonesia' );
+}
+
+/**
+ * Tourvisor price on an India curated card.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_india_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'india' );
+}
+
+/**
+ * Tourvisor price on a Seychelles curated card.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_seychelles_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'seychelles' );
+}
+
+/**
+ * Tourvisor price on an Indonesia (Bali) curated card. Unmatched card is returned as-is.
+ *
+ * @param array<string,mixed> $card Card row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_tourvisor_overlay_indonesia_card( array $card ) {
+	return zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'indonesia' );
 }
 
 /**

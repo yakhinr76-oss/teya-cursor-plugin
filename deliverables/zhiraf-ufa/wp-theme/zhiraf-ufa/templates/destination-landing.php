@@ -179,6 +179,16 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				$kids_part = 'kids-maldives';
 			} elseif ( 'vietnam' === $dest_slug ) {
 				$kids_part = 'kids-vietnam';
+			} elseif ( 'sejshely' === $dest_slug ) {
+				$kids_part = 'kids-seychelles';
+			} elseif ( 'shri-lanka' === $dest_slug ) {
+				$kids_part = 'kids-sri-lanka';
+			} elseif ( 'indoneziya' === $dest_slug ) {
+				$kids_part = 'kids-indonesia';
+			} elseif ( 'indiya' === $dest_slug ) {
+				$kids_part = 'kids-india';
+			} elseif ( 'sejshely' === $dest_slug ) {
+				$kids_part = 'kids-seychelles';
 			} else {
 				$kids_part = 'kids-turkey';
 			}

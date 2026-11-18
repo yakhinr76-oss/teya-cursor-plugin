@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.54-cta-radius-xl' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.55-wave2-curated-four' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -27,6 +27,10 @@ require_once ZHIRAF_UFA_DIR . '/inc/curated-egypt-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-thailand-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-maldives-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-vietnam-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/curated-indonesia-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/curated-sri-lanka-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/curated-india-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/curated-seychelles-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/vibe-cards.php';
 require_once ZHIRAF_UFA_DIR . '/inc/useful-guides.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landing-config.php';

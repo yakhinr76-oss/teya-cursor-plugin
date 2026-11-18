@@ -1,6 +1,6 @@
 <?php
 /**
- * Destination landing (Moscow departure): /tour/indoneziya/.
+ * Destination landing: Indonesia / Bali (/tour/indoneziya/).
  *
  * @package Zhiraf_Ufa
  */

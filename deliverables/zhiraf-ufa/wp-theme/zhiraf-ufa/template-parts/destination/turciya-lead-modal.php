@@ -40,6 +40,9 @@ if ( ! empty( $compare_title ) ) {
 $default_tour = ! empty( $dest['quiz_prefill'] )
 	? (string) $dest['quiz_prefill']
 	: __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' );
+$dest_name    = ! empty( $dest['name'] ) ? (string) $dest['name'] : __( 'Турция', 'zhiraf-ufa' );
+$form_context = 'dest-' . $dest_slug . '-compare';
+$consent_id   = 'dest-' . $dest_slug . '-compare-modal';
 ?>
 <div
 	id="turciya-lead-modal"
@@ -69,7 +72,7 @@ $default_tour = ! empty( $dest['quiz_prefill'] )
 				id="turciya-lead-modal-form"
 				class="zhiraf-form dest-landing-lead-form turciya-lead-modal__form"
 				data-action="zhiraf_lead"
-				data-form-context="dest-turciya-compare"
+				data-form-context="<?php echo esc_attr( $form_context ); ?>"
 			>
 				<?php
 				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
@@ -93,14 +96,14 @@ $default_tour = ! empty( $dest['quiz_prefill'] )
 					placeholder="<?php esc_attr_e( 'Кемер или Сиде, даты, возраст детей, бюджет', 'zhiraf-ufa' ); ?>"
 				><?php echo esc_textarea( $wa_text ); ?></textarea>
 				<div class="zhiraf-hp" aria-hidden="true">
-					<input type="hidden" name="tour" value="<?php echo esc_attr( __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' ) ); ?>" data-lead-tour id="turciya-lead-modal-tour" />
-					<input type="hidden" name="destination" value="Турция" />
-					<input type="hidden" name="destination_slug" value="turciya" />
+					<input type="hidden" name="tour" value="<?php echo esc_attr( $default_tour ); ?>" data-lead-tour id="turciya-lead-modal-tour" />
+					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_name ); ?>" />
+					<input type="hidden" name="destination_slug" value="<?php echo esc_attr( $dest_slug ); ?>" />
 					<input type="hidden" name="uon_hotel_id" id="turciya-lead-modal-uon" value="" />
 				</div>
 				<?php
 				if ( function_exists( 'zhiraf_ufa_consent_fields' ) ) {
-					zhiraf_ufa_consent_fields( 'dest-turciya-compare-modal' );
+					zhiraf_ufa_consent_fields( $consent_id );
 				}
 				?>
 				<button type="submit" class="btn btn--primary btn--lg btn--block" data-messenger-submit-label>

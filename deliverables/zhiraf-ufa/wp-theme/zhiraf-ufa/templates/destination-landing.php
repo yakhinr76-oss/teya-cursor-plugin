@@ -283,6 +283,14 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					'dest_slug' => $dest_slug,
 				)
 			);
+			get_template_part(
+				'template-parts/destination/turciya-lead-modal',
+				null,
+				array(
+					'dest'      => $dest,
+					'dest_slug' => $dest_slug,
+				)
+			);
 			?>
 		<?php else : ?>
 			<?php

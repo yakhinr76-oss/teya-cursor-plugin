@@ -10,33 +10,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
-$items     = function_exists( 'zhiraf_ufa_curated_expert_nuances' )
+$dest      = array();
+if ( function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+	$resolved = zhiraf_ufa_get_destination_landing( $dest_slug );
+	if ( is_array( $resolved ) ) {
+		$dest = $resolved;
+	}
+}
+$items = function_exists( 'zhiraf_ufa_curated_expert_nuances' )
 	? zhiraf_ufa_curated_expert_nuances( $dest_slug )
 	: ( function_exists( 'zhiraf_ufa_turciya_expert_nuances' ) ? zhiraf_ufa_turciya_expert_nuances() : array() );
 if ( empty( $items ) ) {
 	return;
 }
-if ( 'oae' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать об ОАЭ в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'egipet' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Египте в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'tailand' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Таиланде в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'maldivy' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Мальдивах в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'vietnam' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Вьетнаме в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'shri-lanka' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Шри-Ланке в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'indoneziya' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Бали в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'indiya' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Гоа в этом сезоне', 'zhiraf-ufa' );
-} elseif ( 'sejshely' === $dest_slug ) {
-	$expert_title = __( 'Что важно знать о Сейшелах в этом сезоне', 'zhiraf-ufa' );
-} else {
-	$expert_title = __( 'Что важно знать о Турции в этом сезоне', 'zhiraf-ufa' );
-}
+$expert_title = function_exists( 'zhiraf_ufa_curated_expert_section_title' )
+	? zhiraf_ufa_curated_expert_section_title( $dest_slug, $dest )
+	: __( 'Что важно знать перед поездкой в этом сезоне', 'zhiraf-ufa' );
 ?>
 <section class="section turciya-expert-nuances bg-sand">
 	<div class="container">

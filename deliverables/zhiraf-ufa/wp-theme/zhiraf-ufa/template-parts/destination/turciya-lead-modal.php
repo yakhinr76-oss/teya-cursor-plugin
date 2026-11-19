@@ -22,10 +22,12 @@ if ( empty( $dest ) && function_exists( 'zhiraf_ufa_get_destination_landing' ) )
 
 if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_compare_wa_text' ) ) {
 	$wa_text = zhiraf_ufa_oae_resort_compare_wa_text();
-} elseif ( function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' ) ) {
+} elseif ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' ) ) {
 	$wa_text = zhiraf_ufa_turciya_resort_compare_wa_text();
 } else {
-	$wa_text = __( 'Здравствуйте! Сравните, пожалуйста, Кемер и Сиде под наш бюджет — вылет из Уфы, семья с детьми.', 'zhiraf-ufa' );
+	$dest_name = ! empty( $dest['name'] ) ? (string) $dest['name'] : $dest_slug;
+	/* translators: %s: destination name */
+	$wa_text = sprintf( __( 'Здравствуйте! Помогите выбрать отель по направлению «%s» — вылет из Уфы, даты и состав в сообщении.', 'zhiraf-ufa' ), $dest_name );
 }
 
 $compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
@@ -33,14 +35,24 @@ if ( ! empty( $compare_title ) ) {
 	$modal_title = $compare_title;
 } elseif ( ! empty( $dest['curated_compare_lead_default'] ) ) {
 	$modal_title = (string) $dest['curated_compare_lead_default'];
-} else {
+} elseif ( 'turciya' === $dest_slug ) {
 	$modal_title = __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
+} else {
+	$dest_name   = ! empty( $dest['name'] ) ? (string) $dest['name'] : $dest_slug;
+	/* translators: %s: destination name */
+	$modal_title = sprintf( __( 'Подберём отель: %s', 'zhiraf-ufa' ), $dest_name );
 }
 
+$dest_name    = ! empty( $dest['name'] ) ? (string) $dest['name'] : ( 'turciya' === $dest_slug ? __( 'Турция', 'zhiraf-ufa' ) : $dest_slug );
 $default_tour = ! empty( $dest['quiz_prefill'] )
 	? (string) $dest['quiz_prefill']
-	: __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' );
-$dest_name    = ! empty( $dest['name'] ) ? (string) $dest['name'] : __( 'Турция', 'zhiraf-ufa' );
+	: ( 'turciya' === $dest_slug
+		? __( 'Турция, сравнение Кемер и Сиде', 'zhiraf-ufa' )
+		: sprintf(
+			/* translators: %s: destination name */
+			__( '%s, подбор отеля', 'zhiraf-ufa' ),
+			$dest_name
+		) );
 $form_context = 'dest-' . $dest_slug . '-compare';
 $consent_id   = 'dest-' . $dest_slug . '-compare-modal';
 ?>

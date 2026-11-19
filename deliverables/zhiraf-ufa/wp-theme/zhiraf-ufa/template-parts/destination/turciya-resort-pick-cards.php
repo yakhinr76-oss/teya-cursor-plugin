@@ -11,6 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
+$dest      = array();
+if ( function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+	$resolved = zhiraf_ufa_get_destination_landing( $dest_slug );
+	if ( is_array( $resolved ) ) {
+		$dest = $resolved;
+	}
+}
 
 $cards = function_exists( 'zhiraf_ufa_curated_resort_pick_cards' )
 	? zhiraf_ufa_curated_resort_pick_cards( $dest_slug )
@@ -30,27 +37,9 @@ if ( function_exists( 'zhiraf_ufa_curated_catalog_filters' ) ) {
 	}
 }
 
-if ( 'oae' === $dest_slug ) {
-	$pick_title = __( 'Какой эмират ОАЭ выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'egipet' === $dest_slug ) {
-	$pick_title = __( 'Какой курорт Египта выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'tailand' === $dest_slug ) {
-	$pick_title = __( 'Какой курорт Таиланда выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'maldivy' === $dest_slug ) {
-	$pick_title = __( 'Какой атолл Мальдив выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'vietnam' === $dest_slug ) {
-	$pick_title = __( 'Какой курорт Вьетнама выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'shri-lanka' === $dest_slug ) {
-	$pick_title = __( 'Какое побережье Шри-Ланки выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'indoneziya' === $dest_slug ) {
-	$pick_title = __( 'Какой курорт Бали выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'indiya' === $dest_slug ) {
-	$pick_title = __( 'Какую часть Гоа выбрать именно вам?', 'zhiraf-ufa' );
-} elseif ( 'sejshely' === $dest_slug ) {
-	$pick_title = __( 'Какой остров Сейшел выбрать именно вам?', 'zhiraf-ufa' );
-} else {
-	$pick_title = __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' );
-}
+$pick_title = function_exists( 'zhiraf_ufa_curated_resort_pick_section_title' )
+	? zhiraf_ufa_curated_resort_pick_section_title( $dest_slug, $dest )
+	: __( 'Куда поехать — подсказка за 10 секунд', 'zhiraf-ufa' );
 if ( 'sejshely' === $dest_slug ) {
 	$pick_lead = __( 'Нажмите на остров — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
 } elseif ( 'indiya' === $dest_slug ) {

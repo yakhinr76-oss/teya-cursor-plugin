@@ -419,6 +419,24 @@ function zhiraf_ufa_turkey_hotels_json_path() {
  */
 function zhiraf_ufa_hotels_json_path( $country ) {
 	$country = sanitize_key( (string) $country );
+	$slug_aliases = array(
+		'kitaj'      => 'china',
+		'turciya'    => 'turkey',
+		'egipet'     => 'egypt',
+		'oae'        => 'uae',
+		'tailand'    => 'thailand',
+		'maldivy'    => 'maldives',
+		'sejshely'   => 'seychelles',
+		'shri-lanka' => 'sri_lanka',
+		'indoneziya' => 'indonesia',
+		'indiya'     => 'india',
+		'armeniya'   => 'armenia',
+		'abkhaziya'  => 'abkhazia',
+		'rossiya'    => 'russia',
+	);
+	if ( ! empty( $slug_aliases[ $country ] ) ) {
+		$country = $slug_aliases[ $country ];
+	}
 	$map     = array(
 		'turkey' => 'turkey_hotels_25.json',
 		'egypt'  => 'egypt_hotels_25.json',

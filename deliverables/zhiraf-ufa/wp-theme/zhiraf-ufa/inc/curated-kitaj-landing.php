@@ -1,6 +1,6 @@
 <?php
 /**
- * Thailand (/tour/kitaj/) curated landing — 6 starters + pool from kitaj_hotels_25.json.
+ * China (/tour/kitaj/) curated landing — 6 starters + pool from kitaj_hotels_25.json.
  *
  * @package Zhiraf_Ufa
  */
@@ -20,7 +20,7 @@ function zhiraf_ufa_kitaj_hub_min_price_rub() {
 		}
 	}
 
-	return (int) apply_filters( 'zhiraf_ufa_kitaj_base_price_rub', 185000 );
+	return (int) apply_filters( 'zhiraf_ufa_kitaj_base_price_rub', 150000 );
 }
 
 /**
@@ -53,27 +53,36 @@ function zhiraf_ufa_kitaj_json_rows() {
 }
 
 /**
- * Resort filter keys for a JSON row (dadonghai, pattaya, khaolak, samui).
+ * Resort filter keys for a JSON row (phuket, pattaya, khaolak, samui).
+ *
+ * @param array<string,mixed> $row JSON row.
+ * @return string[]
+ */
+/**
+ * Hainan bays from JSON resort label.
  *
  * @param array<string,mixed> $row JSON row.
  * @return string[]
  */
 function zhiraf_ufa_kitaj_resort_keys_from_row( array $row ) {
-	$region = ! empty( $row['region'] ) ? sanitize_key( (string) $row['region'] ) : '';
+	$resort = mb_strtolower( (string) ( $row['resort'] ?? '' ) );
 	$keys   = array();
-	foreach ( array( 'dadonghai', 'yalong', 'haitang' ) as $allowed ) {
-		if ( $region === $allowed ) {
-			$keys[] = $allowed;
-		}
+	if ( str_contains( $resort, 'дадунхай' ) ) {
+		$keys[] = 'dadonghai';
 	}
-	return $keys;
+	if ( str_contains( $resort, 'ялунван' ) ) {
+		$keys[] = 'yalong';
+	}
+	if ( str_contains( $resort, 'хайтан' ) ) {
+		$keys[] = 'haitang';
+	}
+	return array_values( array_unique( $keys ) );
 }
 
-
 /**
- * Hub anchor — отдельных курортных URL для Китайа нет (редирект с /dadonghai/).
+ * Hub anchor — отдельных курортных URL для Китая нет (якорь каталога).
  *
- * @param string $resort_key dadonghai|pattaya|khaolak|samui.
+ * @param string $resort_key phuket|pattaya|khaolak|samui.
  * @return string
  */
 function zhiraf_ufa_kitaj_resort_landing_url( $resort_key ) {
@@ -89,10 +98,9 @@ function zhiraf_ufa_kitaj_resort_landing_url( $resort_key ) {
  */
 function zhiraf_ufa_kitaj_catalog_fill_resort_labels() {
 	return array(
-		'resort-dadonghai'  => __( 'Пхукете', 'zhiraf-ufa' ),
-		'resort-pattaya' => __( 'Паттайе', 'zhiraf-ufa' ),
-		'resort-khaolak' => __( 'Као-Лаке', 'zhiraf-ufa' ),
-		'resort-samui'   => __( 'Самуи', 'zhiraf-ufa' ),
+		'resort-dadonghai' => __( 'Дадунхае', 'zhiraf-ufa' ),
+		'resort-yalong'    => __( 'Ялунване', 'zhiraf-ufa' ),
+		'resort-haitang'   => __( 'Хайтанге', 'zhiraf-ufa' ),
 	);
 }
 
@@ -170,7 +178,7 @@ function zhiraf_ufa_kitaj_pool_price_rub( $row ) {
 	$cat = ! empty( $row['category_slug'] ) ? sanitize_key( (string) $row['category_slug'] ) : 'balance';
 	switch ( $cat ) {
 		case 'family':
-			return 150000;
+			return 198000;
 		case 'couples':
 			return 218000;
 		case 'premium':
@@ -238,14 +246,23 @@ function zhiraf_ufa_kitaj_pool_card_caveat( $row ) {
  * @param array<string,mixed> $row JSON row.
  * @return string
  */
-function zhiraf_ufa_kitaj_pool_resort_pill( $hotel ) {
-	$resort = $hotel['resort'] ?? '';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Дадунхай' ) ) ) return 'dadonghai';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Ялунвань' ) ) ) return 'yalong';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Хайтанг' ) ) ) return 'haitang';
-	return 'dadonghai';
+function zhiraf_ufa_kitaj_pool_resort_pill( array $row ) {
+	$resort = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
+	if ( '' !== $resort ) {
+		$parts = explode( ',', $resort );
+		return trim( $parts[0] );
+	}
+	$keys = zhiraf_ufa_kitaj_resort_keys_from_row( $row );
+	$labels = array(
+		'dadonghai' => __( 'Дадунхай', 'zhiraf-ufa' ),
+		'yalong' => __( 'Ялунвань', 'zhiraf-ufa' ),
+		'haitang' => __( 'Хайтан', 'zhiraf-ufa' ),
+	);
+	if ( ! empty( $keys[0] ) && isset( $labels[ $keys[0] ] ) ) {
+		return $labels[ $keys[0] ];
+	}
+	return __( 'Санья', 'zhiraf-ufa' );
 }
-
 
 /**
  * Unique theme fallbacks so six starters do not share one stock photo.
@@ -257,7 +274,6 @@ function zhiraf_ufa_kitaj_image_from_json_row( array $row ) {
 	$pool_id = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$photos  = ! empty( $row['photos'] ) && is_array( $row['photos'] ) ? $row['photos'] : array();
 	$first   = isset( $photos[0] ) ? trim( (string) $photos[0] ) : '';
-
 	if ( preg_match( '#^https://#i', $first ) ) {
 		return array(
 			'image'        => $first,
@@ -266,7 +282,6 @@ function zhiraf_ufa_kitaj_image_from_json_row( array $row ) {
 			'image_height' => 0,
 		);
 	}
-
 	if ( '' !== $first && defined( 'ZHIRAF_UFA_DIR' ) ) {
 		foreach ( array( 'hotels/kitaj/' . $first, $first ) as $rel ) {
 			if ( is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $rel ) ) {
@@ -279,27 +294,10 @@ function zhiraf_ufa_kitaj_image_from_json_row( array $row ) {
 			}
 		}
 	}
-
-	$id_fallbacks = array(
-		1  => 'dest-kitaj.jpg',
-		3  => 'dest-kitaj-new.jpg',
-		5  => 'country-kitaj.jpg',
-		6  => 'hero-kitaj.jpg',
-		16 => 'dest-kitaj.jpg',
-		23 => 'dest-kitaj-new.jpg',
-	);
-	$region_fb    = array(
-		'dadonghai'  => 'dest-kitaj.jpg',
-		'pattaya' => 'dest-kitaj-new.jpg',
-		'khaolak' => 'country-kitaj.jpg',
-		'samui'   => 'hero-kitaj.jpg',
-	);
-	$fallback     = ! empty( $id_fallbacks[ $pool_id ] ) ? $id_fallbacks[ $pool_id ] : 'hero-kitaj.jpg';
-	$region       = ! empty( $row['region'] ) ? sanitize_key( (string) $row['region'] ) : '';
-	if ( isset( $region_fb[ $region ] ) && 'hero-kitaj.jpg' === $fallback ) {
-		$fallback = $region_fb[ $region ];
+	$fallback = 'resort-sanya-2.jpg';
+	if ( ! is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $fallback ) ) {
+		$fallback = 'resort-sanya-2.jpg';
 	}
-
 	return array(
 		'image'        => $fallback,
 		'image_remote' => false,
@@ -313,12 +311,14 @@ function zhiraf_ufa_kitaj_image_from_json_row( array $row ) {
  */
 function zhiraf_ufa_kitaj_starter_definitions() {
 	return array(
-		array( 'title' => __( 'Дадунхай', 'zhiraf-ufa' ), 'url' => home_url( '/tour/kitaj/#resort-dadonghai' ) ),
-		array( 'title' => __( 'Ялунвань', 'zhiraf-ufa' ), 'url' => home_url( '/tour/kitaj/#resort-yalong' ) ),
-		array( 'title' => __( 'Хайтанг', 'zhiraf-ufa' ), 'url' => home_url( '/tour/kitaj/#resort-haitang' ) ),
+		array( 'json_id' => 1, 'slot' => 'base' ),
+		array( 'json_id' => 2, 'slot' => 'yalong' ),
+		array( 'json_id' => 5, 'slot' => 'dadonghai' ),
+		array( 'json_id' => 7, 'slot' => 'haitang' ),
+		array( 'json_id' => 9, 'slot' => 'family' ),
+		array( 'json_id' => 21, 'slot' => 'balance' ),
 	);
 }
-
 
 /**
  * @param array<string,mixed> $hotel Card with slot / filter tags.
@@ -577,31 +577,33 @@ function zhiraf_ufa_kitaj_catalog_hotels() {
  */
 function zhiraf_ufa_kitaj_catalog_filters() {
 	return array(
-		'resort-dadonghai' => array( 'label' => __( 'Дадунхай', 'zhiraf-ufa' ), 'category' => 'all' ),
-		'resort-yalong'    => array( 'label' => __( 'Ялунвань', 'zhiraf-ufa' ), 'category' => 'all' ),
-		'resort-haitang'   => array( 'label' => __( 'Хайтанг', 'zhiraf-ufa' ), 'category' => 'all' ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Санью: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Дадунхай, Ялунвань и Хайтан — цены за двоих с перелётом (часто стыковка в Москве).', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dadonghai', 'group' => 'resort', 'label' => __( '🏙 Дадунхай', 'zhiraf-ufa' ), 'title' => __( 'Дадунхай', 'zhiraf-ufa' ), 'desc' => __( 'Центр, кафе и инфраструктура.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yalong', 'group' => 'resort', 'label' => __( '🏝 Ялунвань', 'zhiraf-ufa' ), 'title' => __( 'Ялунвань', 'zhiraf-ufa' ), 'desc' => __( 'Широкий пляж и премиум-отели.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-haitang', 'group' => 'resort', 'label' => __( '🌴 Хайтан', 'zhiraf-ufa' ), 'title' => __( 'Хайтан', 'zhiraf-ufa' ), 'desc' => __( 'Новые резорты и спокойный ритм.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Бассейны и анимация.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '4–5★ у моря.', 'zhiraf-ufa' ) ),
 	);
 }
-
 
 /**
  * @return array{title:string,desc:string,eyebrow:string}
  */
 function zhiraf_ufa_kitaj_catalog_default_copy() {
-	return array( 'title' => __( 'Отели на Хайнане', 'zhiraf-ufa' ), 'subtitle' => __( 'Проверенные резорты для отдыха в Санье', 'zhiraf-ufa' ) );
-}
+	$filters = zhiraf_ufa_kitaj_catalog_filters();
 
+	return array(
+		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
+		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Китайе', 'zhiraf-ufa' ),
+		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
+	);
+}
 
 /**
  * @return array<string,int>
  */
 function zhiraf_ufa_kitaj_resort_hotel_counts() {
-	$counts = array(
-		'dadonghai'  => 0,
-		'pattaya' => 0,
-		'khaolak' => 0,
-		'samui'   => 0,
-	);
+	$counts = array();
 	foreach ( zhiraf_ufa_kitaj_catalog_hotels() as $hotel ) {
 		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
 		foreach ( $tags as $tag ) {
@@ -609,12 +611,12 @@ function zhiraf_ufa_kitaj_resort_hotel_counts() {
 				continue;
 			}
 			$key = substr( (string) $tag, 7 );
-			if ( isset( $counts[ $key ] ) ) {
-				++$counts[ $key ];
+			if ( ! isset( $counts[ $key ] ) ) {
+				$counts[ $key ] = 0;
 			}
+			++$counts[ $key ];
 		}
 	}
-
 	return $counts;
 }
 
@@ -623,32 +625,35 @@ function zhiraf_ufa_kitaj_resort_hotel_counts() {
  */
 function zhiraf_ufa_kitaj_resort_chips() {
 	return array(
-		'dadonghai' => array( 'label' => __( 'Дадунхай', 'zhiraf-ufa' ), 'desc' => __( 'Центр, кафе и ТЦ.', 'zhiraf-ufa' ) ),
-		'yalong'    => array( 'label' => __( 'Ялунвань', 'zhiraf-ufa' ), 'desc' => __( 'Широкие пляжи.', 'zhiraf-ufa' ) ),
-		'haitang'   => array( 'label' => __( 'Хайтанг', 'zhiraf-ufa' ), 'desc' => __( 'Новые отели.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dadonghai', 'label' => __( 'Дадунхай', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yalong', 'label' => __( 'Ялунвань', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-haitang', 'label' => __( 'Хайтан', 'zhiraf-ufa' ) ),
 	);
 }
-
 
 /**
  * Four resort pick cards in one row on desktop.
  *
  * @return array<int,array<string,mixed>>
  */
-function zhiraf_ufa_kitaj_resort_pick_cards( $counts = array() ) {
-	$guide = __( 'Гид по курорту', 'zhiraf-ufa' );
+function zhiraf_ufa_kitaj_resort_pick_cards() {
+	$counts = zhiraf_ufa_kitaj_resort_hotel_counts();
+	$guide = __( 'К отелям →', 'zhiraf-ufa' );
 	return array(
-		array( 'id' => 'dadonghai', 'filter_id' => 'resort-dadonghai', 'guide_url' => zhiraf_ufa_kitaj_resort_landing_url( 'dadonghai' ), 'guide_label' => $guide, 'name' => __( 'Дадунхай', 'zhiraf-ufa' ), 'subtitle' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'tag' => __( 'Популярно', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Прямой рейс', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['dadonghai'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
-		array( 'id' => 'yalong', 'filter_id' => 'resort-yalong', 'guide_url' => zhiraf_ufa_kitaj_resort_landing_url( 'yalong' ), 'guide_label' => $guide, 'name' => __( 'Ялунвань', 'zhiraf-ufa' ), 'subtitle' => __( 'Чистое море', 'zhiraf-ufa' ), 'tag' => __( 'Релакс', 'zhiraf-ufa' ), 'tag_mod' => 'nature', 'transfer' => __( 'Прямой рейс', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['yalong'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array() ),
+		array( 'id' => 'dadonghai', 'filter_id' => 'resort-dadonghai', 'guide_url' => zhiraf_ufa_kitaj_resort_landing_url( 'dadonghai' ), 'guide_label' => $guide, 'name' => __( 'Дадунхай', 'zhiraf-ufa' ), 'subtitle' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'tag' => __( 'Старт', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Стыковка в Москве', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['dadonghai'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
+		array( 'id' => 'yalong', 'filter_id' => 'resort-yalong', 'guide_url' => zhiraf_ufa_kitaj_resort_landing_url( 'yalong' ), 'guide_label' => $guide, 'name' => __( 'Ялунвань', 'zhiraf-ufa' ), 'subtitle' => __( 'Пляж 7 км', 'zhiraf-ufa' ), 'tag' => __( 'Релакс', 'zhiraf-ufa' ), 'tag_mod' => 'nature', 'transfer' => __( 'Трансфер 40–50 мин', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['yalong'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array() ),
 	);
 }
-
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_kitaj_expert_nuances() {
 	return array(
-		array( 'icon' => '🛂', 'title' => __( 'Виза по прилёту', 'zhiraf-ufa' ), 'text' => __( 'Оформляется групповая виза.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🛂', 'title' => __( 'Виза', 'zhiraf-ufa' ), 'text' => __( 'Групповая виза по прилёту или оформление заранее — уточним до оплаты.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '✈', 'title' => __( 'Вылет', 'zhiraf-ufa' ), 'text' => __( 'Из Уфы — стыковка в Москве; считаем багаж и время на пересадку.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🌴', 'title' => __( 'Бухты', 'zhiraf-ufa' ), 'text' => __( 'Дадунхай — город и кафе; Ялунвань — широкий пляж; Хайтан — новые отели.', 'zhiraf-ufa' ) ),
 	);
 }
+

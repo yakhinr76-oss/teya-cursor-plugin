@@ -1,6 +1,6 @@
 <?php
 /**
- * Thailand (/tour/armeniya/) curated landing — 6 starters + pool from armeniya_hotels_25.json.
+ * Armenia (/tour/armeniya/) curated landing — 6 starters + pool from armeniya_hotels_25.json.
  *
  * @package Zhiraf_Ufa
  */
@@ -20,7 +20,7 @@ function zhiraf_ufa_armeniya_hub_min_price_rub() {
 		}
 	}
 
-	return (int) apply_filters( 'zhiraf_ufa_armeniya_base_price_rub', 185000 );
+	return (int) apply_filters( 'zhiraf_ufa_armeniya_base_price_rub', 95000 );
 }
 
 /**
@@ -53,27 +53,27 @@ function zhiraf_ufa_armeniya_json_rows() {
 }
 
 /**
- * Resort filter keys for a JSON row (yerevan, pattaya, khaolak, samui).
+ * Resort filter keys for a JSON row (phuket, pattaya, khaolak, samui).
  *
  * @param array<string,mixed> $row JSON row.
  * @return string[]
  */
 function zhiraf_ufa_armeniya_resort_keys_from_row( array $row ) {
-	$region = ! empty( $row['region'] ) ? sanitize_key( (string) $row['region'] ) : '';
+	$resort = mb_strtolower( (string) ( $row['resort'] ?? '' ) );
 	$keys   = array();
-	foreach ( array( 'yerevan', 'sevan' ) as $allowed ) {
-		if ( $region === $allowed ) {
-			$keys[] = $allowed;
-		}
+	if ( str_contains( $resort, 'ереван' ) ) {
+		$keys[] = 'yerevan';
 	}
-	return $keys;
+	if ( str_contains( $resort, 'севан' ) || str_contains( $resort, 'дилижан' ) || str_contains( $resort, 'цахкадзор' ) || str_contains( $resort, 'джермук' ) ) {
+		$keys[] = 'regions';
+	}
+	return array_values( array_unique( $keys ) );
 }
 
-
 /**
- * Hub anchor — отдельных курортных URL для Арменияа нет (редирект с /yerevan/).
+ * Hub anchor — отдельных курортных URL для Армении нет (якорь каталога).
  *
- * @param string $resort_key yerevan|pattaya|khaolak|samui.
+ * @param string $resort_key phuket|pattaya|khaolak|samui.
  * @return string
  */
 function zhiraf_ufa_armeniya_resort_landing_url( $resort_key ) {
@@ -89,10 +89,8 @@ function zhiraf_ufa_armeniya_resort_landing_url( $resort_key ) {
  */
 function zhiraf_ufa_armeniya_catalog_fill_resort_labels() {
 	return array(
-		'resort-yerevan'  => __( 'Пхукете', 'zhiraf-ufa' ),
-		'resort-pattaya' => __( 'Паттайе', 'zhiraf-ufa' ),
-		'resort-khaolak' => __( 'Као-Лаке', 'zhiraf-ufa' ),
-		'resort-samui'   => __( 'Самуи', 'zhiraf-ufa' ),
+		'resort-yerevan' => __( 'Ереване', 'zhiraf-ufa' ),
+		'resort-regions' => __( 'Загородом', 'zhiraf-ufa' ),
 	);
 }
 
@@ -170,7 +168,7 @@ function zhiraf_ufa_armeniya_pool_price_rub( $row ) {
 	$cat = ! empty( $row['category_slug'] ) ? sanitize_key( (string) $row['category_slug'] ) : 'balance';
 	switch ( $cat ) {
 		case 'family':
-			return 90000;
+			return 198000;
 		case 'couples':
 			return 218000;
 		case 'premium':
@@ -238,13 +236,22 @@ function zhiraf_ufa_armeniya_pool_card_caveat( $row ) {
  * @param array<string,mixed> $row JSON row.
  * @return string
  */
-function zhiraf_ufa_armeniya_pool_resort_pill( $hotel ) {
-	$resort = $hotel['resort'] ?? '';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Ереван' ) ) ) return 'yerevan';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Севан' ) ) ) return 'sevan';
-	return 'yerevan';
+function zhiraf_ufa_armeniya_pool_resort_pill( array $row ) {
+	$resort = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
+	if ( '' !== $resort ) {
+		$parts = explode( ',', $resort );
+		return trim( $parts[0] );
+	}
+	$keys = zhiraf_ufa_armeniya_resort_keys_from_row( $row );
+	$labels = array(
+		'yerevan' => __( 'Ереван', 'zhiraf-ufa' ),
+		'regions' => __( 'Севан', 'zhiraf-ufa' ),
+	);
+	if ( ! empty( $keys[0] ) && isset( $labels[ $keys[0] ] ) ) {
+		return $labels[ $keys[0] ];
+	}
+	return __( 'Армения', 'zhiraf-ufa' );
 }
-
 
 /**
  * Unique theme fallbacks so six starters do not share one stock photo.
@@ -256,7 +263,6 @@ function zhiraf_ufa_armeniya_image_from_json_row( array $row ) {
 	$pool_id = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$photos  = ! empty( $row['photos'] ) && is_array( $row['photos'] ) ? $row['photos'] : array();
 	$first   = isset( $photos[0] ) ? trim( (string) $photos[0] ) : '';
-
 	if ( preg_match( '#^https://#i', $first ) ) {
 		return array(
 			'image'        => $first,
@@ -265,7 +271,6 @@ function zhiraf_ufa_armeniya_image_from_json_row( array $row ) {
 			'image_height' => 0,
 		);
 	}
-
 	if ( '' !== $first && defined( 'ZHIRAF_UFA_DIR' ) ) {
 		foreach ( array( 'hotels/armeniya/' . $first, $first ) as $rel ) {
 			if ( is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $rel ) ) {
@@ -278,27 +283,10 @@ function zhiraf_ufa_armeniya_image_from_json_row( array $row ) {
 			}
 		}
 	}
-
-	$id_fallbacks = array(
-		1  => 'dest-armeniya.jpg',
-		3  => 'dest-armeniya-new.jpg',
-		5  => 'country-armeniya.jpg',
-		6  => 'hero-armeniya.jpg',
-		16 => 'dest-armeniya.jpg',
-		23 => 'dest-armeniya-new.jpg',
-	);
-	$region_fb    = array(
-		'yerevan'  => 'dest-armeniya.jpg',
-		'pattaya' => 'dest-armeniya-new.jpg',
-		'khaolak' => 'country-armeniya.jpg',
-		'samui'   => 'hero-armeniya.jpg',
-	);
-	$fallback     = ! empty( $id_fallbacks[ $pool_id ] ) ? $id_fallbacks[ $pool_id ] : 'hero-armeniya.jpg';
-	$region       = ! empty( $row['region'] ) ? sanitize_key( (string) $row['region'] ) : '';
-	if ( isset( $region_fb[ $region ] ) && 'hero-armeniya.jpg' === $fallback ) {
-		$fallback = $region_fb[ $region ];
+	$fallback = 'country-armeniya.jpg';
+	if ( ! is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $fallback ) ) {
+		$fallback = 'country-armeniya.jpg';
 	}
-
 	return array(
 		'image'        => $fallback,
 		'image_remote' => false,
@@ -312,11 +300,14 @@ function zhiraf_ufa_armeniya_image_from_json_row( array $row ) {
  */
 function zhiraf_ufa_armeniya_starter_definitions() {
 	return array(
-		array( 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'url' => home_url( '/tour/armeniya/#resort-yerevan' ) ),
-		array( 'title' => __( 'Севан', 'zhiraf-ufa' ), 'url' => home_url( '/tour/armeniya/#resort-sevan' ) ),
+		array( 'json_id' => 22, 'slot' => 'yerevan' ),
+		array( 'json_id' => 4, 'slot' => 'yerevan' ),
+		array( 'json_id' => 21, 'slot' => 'yerevan' ),
+		array( 'json_id' => 6, 'slot' => 'regions' ),
+		array( 'json_id' => 12, 'slot' => 'regions' ),
+		array( 'json_id' => 19, 'slot' => 'balance' ),
 	);
 }
-
 
 /**
  * @param array<string,mixed> $hotel Card with slot / filter tags.
@@ -575,30 +566,31 @@ function zhiraf_ufa_armeniya_catalog_hotels() {
  */
 function zhiraf_ufa_armeniya_catalog_filters() {
 	return array(
-		'resort-yerevan' => array( 'label' => __( 'Ереван', 'zhiraf-ufa' ), 'category' => 'all' ),
-		'resort-sevan'   => array( 'label' => __( 'Севан', 'zhiraf-ufa' ), 'category' => 'all' ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Армению: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Ереван и регионы — Севан, Цахкадзор. Вылет из Уфы.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( '🏙 Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Город и гастрономия.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-regions', 'group' => 'resort', 'label' => __( '🏔 Регионы', 'zhiraf-ufa' ), 'title' => __( 'Загород', 'zhiraf-ufa' ), 'desc' => __( 'Севан и курорты.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( '3–4★', 'zhiraf-ufa' ), 'desc' => __( 'Бутики и сетевые отели.', 'zhiraf-ufa' ) ),
 	);
 }
-
 
 /**
  * @return array{title:string,desc:string,eyebrow:string}
  */
 function zhiraf_ufa_armeniya_catalog_default_copy() {
-	return array( 'title' => __( 'Отели в Армении', 'zhiraf-ufa' ), 'subtitle' => __( 'Отели в Ереване и загородом', 'zhiraf-ufa' ) );
-}
+	$filters = zhiraf_ufa_armeniya_catalog_filters();
 
+	return array(
+		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
+		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Армении', 'zhiraf-ufa' ),
+		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
+	);
+}
 
 /**
  * @return array<string,int>
  */
 function zhiraf_ufa_armeniya_resort_hotel_counts() {
-	$counts = array(
-		'yerevan'  => 0,
-		'pattaya' => 0,
-		'khaolak' => 0,
-		'samui'   => 0,
-	);
+	$counts = array();
 	foreach ( zhiraf_ufa_armeniya_catalog_hotels() as $hotel ) {
 		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
 		foreach ( $tags as $tag ) {
@@ -606,12 +598,12 @@ function zhiraf_ufa_armeniya_resort_hotel_counts() {
 				continue;
 			}
 			$key = substr( (string) $tag, 7 );
-			if ( isset( $counts[ $key ] ) ) {
-				++$counts[ $key ];
+			if ( ! isset( $counts[ $key ] ) ) {
+				$counts[ $key ] = 0;
 			}
+			++$counts[ $key ];
 		}
 	}
-
 	return $counts;
 }
 
@@ -620,30 +612,32 @@ function zhiraf_ufa_armeniya_resort_hotel_counts() {
  */
 function zhiraf_ufa_armeniya_resort_chips() {
 	return array(
-		'yerevan' => array( 'label' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Столица.', 'zhiraf-ufa' ) ),
-		'sevan'   => array( 'label' => __( 'Севан', 'zhiraf-ufa' ), 'desc' => __( 'Озеро и природа.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yerevan', 'label' => __( 'Ереван', 'zhiraf-ufa' ) ),
 	);
 }
-
 
 /**
  * Four resort pick cards in one row on desktop.
  *
  * @return array<int,array<string,mixed>>
  */
-function zhiraf_ufa_armeniya_resort_pick_cards( $counts = array() ) {
-	$guide = __( 'Гид по региону', 'zhiraf-ufa' );
+function zhiraf_ufa_armeniya_resort_pick_cards() {
+	$counts = zhiraf_ufa_armeniya_resort_hotel_counts();
+	$guide = __( 'К отелям →', 'zhiraf-ufa' );
 	return array(
-		array( 'id' => 'yerevan', 'filter_id' => 'resort-yerevan', 'guide_url' => zhiraf_ufa_armeniya_resort_landing_url( 'yerevan' ), 'guide_label' => $guide, 'name' => __( 'Ереван', 'zhiraf-ufa' ), 'subtitle' => __( 'Столица', 'zhiraf-ufa' ), 'tag' => __( 'Популярно', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Прямой рейс', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['yerevan'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
+		array( 'id' => 'yerevan', 'filter_id' => 'resort-yerevan', 'guide_url' => zhiraf_ufa_armeniya_resort_landing_url( 'yerevan' ), 'guide_label' => $guide, 'name' => __( 'Ереван', 'zhiraf-ufa' ), 'subtitle' => __( 'Столица', 'zhiraf-ufa' ), 'tag' => __( 'Старт', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Прямой рейс', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['yerevan'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
 	);
 }
-
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_armeniya_expert_nuances() {
 	return array(
-		array( 'icon' => '🍷', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Вкусная еда и гостеприимство.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🛂', 'title' => __( 'Безвиз', 'zhiraf-ufa' ), 'text' => __( 'Паспорт РФ — въезд без визы.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🍷', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Бронируем столики и маршруты с дегустациями.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🏔', 'title' => __( 'Севан', 'zhiraf-ufa' ), 'text' => __( '1–2 ночи у озера — закладываем в пакет.', 'zhiraf-ufa' ) ),
 	);
 }
+

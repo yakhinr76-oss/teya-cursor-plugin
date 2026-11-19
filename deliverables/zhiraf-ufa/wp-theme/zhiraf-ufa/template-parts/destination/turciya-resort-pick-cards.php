@@ -42,12 +42,22 @@ if ( 'oae' === $dest_slug ) {
 	$pick_title = __( 'Какой курорт Вьетнама выбрать именно вам?', 'zhiraf-ufa' );
 } elseif ( 'shri-lanka' === $dest_slug ) {
 	$pick_title = __( 'Какое побережье Шри-Ланки выбрать именно вам?', 'zhiraf-ufa' );
+} elseif ( 'indoneziya' === $dest_slug ) {
+	$pick_title = __( 'Какой курорт Бали выбрать именно вам?', 'zhiraf-ufa' );
+} elseif ( 'indiya' === $dest_slug ) {
+	$pick_title = __( 'Какую часть Гоа выбрать именно вам?', 'zhiraf-ufa' );
+} elseif ( 'sejshely' === $dest_slug ) {
+	$pick_title = __( 'Какой остров Сейшел выбрать именно вам?', 'zhiraf-ufa' );
 } else {
 	$pick_title = __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' );
 }
-$pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug || 'shri-lanka' === $dest_slug )
-	? __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' )
-	: __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
+if ( 'sejshely' === $dest_slug ) {
+	$pick_lead = __( 'Нажмите на остров — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
+} elseif ( 'indiya' === $dest_slug ) {
+	$pick_lead = __( 'Нажмите на берег — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
+} else {
+	$pick_lead = __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
+}
 ?>
 <div class="turciya-resort-pick" id="dest-resort-compare" aria-labelledby="turciya-resort-pick-title">
 	<div class="turciya-resort-pick__head">

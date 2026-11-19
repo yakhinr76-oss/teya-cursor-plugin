@@ -28,6 +28,12 @@ if ( 'oae' === $dest_slug ) {
 	$expert_title = __( 'Что важно знать о Вьетнаме в этом сезоне', 'zhiraf-ufa' );
 } elseif ( 'shri-lanka' === $dest_slug ) {
 	$expert_title = __( 'Что важно знать о Шри-Ланке в этом сезоне', 'zhiraf-ufa' );
+} elseif ( 'indoneziya' === $dest_slug ) {
+	$expert_title = __( 'Что важно знать о Бали в этом сезоне', 'zhiraf-ufa' );
+} elseif ( 'indiya' === $dest_slug ) {
+	$expert_title = __( 'Что важно знать о Гоа в этом сезоне', 'zhiraf-ufa' );
+} elseif ( 'sejshely' === $dest_slug ) {
+	$expert_title = __( 'Что важно знать о Сейшелах в этом сезоне', 'zhiraf-ufa' );
 } else {
 	$expert_title = __( 'Что важно знать о Турции в этом сезоне', 'zhiraf-ufa' );
 }

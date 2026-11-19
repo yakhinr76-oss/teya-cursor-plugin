@@ -5,6 +5,43 @@
   "modsearch_hotels_per_request": 5,
   "modsearch_batch_note": "Не больше modsearch_hotels_per_request tourvisor_id в одном modsearch; см. search_batches в hotels_map_*.json",
   "countries": {
+    "egypt": {
+      "enabled": true,
+      "country_slug": "egypt",
+      "tourvisor_country_id": 1,
+      "departure_city": "Уфа",
+      "modsearch_hotels_per_request": 5,
+      "hotels_map": "output/hotels_map_egypt.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_egypt.json"
+    },
+    "indonesia": {
+      "enabled": true,
+      "country_slug": "indonesia",
+      "tourvisor_country_id": 7,
+      "departure_city": "Уфа",
+      "modsearch_hotels_per_request": 5,
+      "hotels_map": "output/hotels_map_indonesia.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_indonesia.json"
+    },
+    "maldives": {
+      "enabled": true,
+      "country_slug": "maldives",
+      "tourvisor_country_id": 8,
+      "departure_city": "Москва",
+      "modsearch_hotels_per_request": 5,
+      "hotels_map": "output/hotels_map_maldives.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_maldives.json",
+      "departure_city_note": "modsearch только из Москвы; на сайте — пакет из Уфы со стыковкой"
+    },
+    "thailand": {
+      "enabled": true,
+      "country_slug": "thailand",
+      "tourvisor_country_id": 2,
+      "departure_city": "Уфа",
+      "modsearch_hotels_per_request": 5,
+      "hotels_map": "output/hotels_map_thailand.json",
+      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_thailand.json"
+    },
     "turkey": {
       "enabled": true,
       "country_slug": "turkey",
@@ -23,24 +60,6 @@
       "hotels_map": "output/hotels_map_uae.json",
       "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_uae.json"
     },
-    "egypt": {
-      "enabled": true,
-      "country_slug": "egypt",
-      "tourvisor_country_id": 1,
-      "departure_city": "Уфа",
-      "modsearch_hotels_per_request": 5,
-      "hotels_map": "output/hotels_map_egypt.json",
-      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_egypt.json"
-    },
-    "thailand": {
-      "enabled": true,
-      "country_slug": "thailand",
-      "tourvisor_country_id": 2,
-      "departure_city": "Уфа",
-      "modsearch_hotels_per_request": 5,
-      "hotels_map": "output/hotels_map_thailand.json",
-      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_thailand.json"
-    },
     "vietnam": {
       "enabled": true,
       "country_slug": "vietnam",
@@ -49,16 +68,6 @@
       "modsearch_hotels_per_request": 5,
       "hotels_map": "output/hotels_map_vietnam.json",
       "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_vietnam.json"
-    },
-    "maldives": {
-      "enabled": true,
-      "country_slug": "maldives",
-      "tourvisor_country_id": 8,
-      "departure_city": "Москва",
-      "modsearch_hotels_per_request": 5,
-      "hotels_map": "output/hotels_map_maldives.json",
-      "hotels_map_url": "https://raw.githubusercontent.com/yakhinr76-oss/teya-cursor-plugin/main/deliverables/zhiraf-ufa/tourvisor-parser-dropin/output/hotels_map_maldives.json",
-      "departure_city_note": "modsearch только из Москвы; на сайте — пакет из Уфы со стыковкой"
     }
   }
 }

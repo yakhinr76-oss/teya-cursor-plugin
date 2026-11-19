@@ -19,9 +19,9 @@ if ( empty( $block['items'] ) ) {
 $section_id = ! empty( $block['section_id'] ) ? $block['section_id'] : 'intent-checklist';
 $eyebrow    = $block['eyebrow'] ?? '';
 $title      = $block['title'] ?? '';
-$lead_html  = $block['lead_html'] ?? '';
+$subtitle   = $block['subtitle'] ?? '';
 $items      = (array) $block['items'];
-$cta        = $block['cta'] ?? __( 'Запросить подбор →', 'zhiraf-ufa' );
+$cta        = $block['cta_text'] ?? __( 'Запросить подбор →', 'zhiraf-ufa' );
 $aside      = ! empty( $block['aside'] ) && is_array( $block['aside'] ) ? $block['aside'] : null;
 $modal      = ! empty( $block['lead_modal'] ) && is_array( $block['lead_modal'] ) ? $block['lead_modal'] : array();
 
@@ -37,8 +37,8 @@ $check_icon = '<svg class="intent-checklist__icon" width="20" height="20" viewBo
 				<?php if ( $title ) : ?>
 					<h2 class="section-title intent-checklist__title turciya-kids-turkey__title"><?php echo esc_html( $title ); ?></h2>
 				<?php endif; ?>
-				<?php if ( $lead_html ) : ?>
-					<p class="intent-checklist__lead turciya-kids-turkey__lead"><?php echo wp_kses_post( $lead_html ); ?></p>
+				<?php if ( $subtitle ) : ?>
+					<p class="intent-checklist__lead turciya-kids-turkey__lead"><?php echo wp_kses_post( $subtitle ); ?></p>
 				<?php endif; ?>
 				<ul class="intent-checklist__list turciya-kids-turkey__list">
 					<?php foreach ( $items as $item ) : ?>

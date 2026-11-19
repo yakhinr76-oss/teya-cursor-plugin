@@ -1489,7 +1489,7 @@ function zhiraf_ufa_destination_landing_data() {
 			'image'            => 'hero-collage-1.jpg',
 			'image_alt'        => __( 'Россия — горы и море, курортный отдых', 'zhiraf-ufa' ),
 			'domestic'         => true,
-			'landing_module'   => 'vibe',
+			'intent_block'                 => true,
 			'booking_modes'    => array(
 				__( 'Пакетный тур с перелётом из Уфы', 'zhiraf-ufa' ),
 				__( 'Только проживание в отеле (блочные тарифы)', 'zhiraf-ufa' ),
@@ -1517,7 +1517,7 @@ function zhiraf_ufa_destination_landing_data() {
 			'image'            => 'dest-abkhazia.jpg',
 			'image_alt'        => __( 'Абхазия — море и сосновые рощи', 'zhiraf-ufa' ),
 			'domestic'         => true,
-			'landing_module'   => 'battle',
+			'intent_block'                 => true,
 			'hero_lead'        => __( 'Море, горы и реликтовые сосны — без загранпаспорта. Организуем трансфер из аэропорта Адлер прямо до отеля.', 'zhiraf-ufa' ),
 			'hero_lead_extended' => __( 'Оплата в рублях, въезд по внутреннему паспорту РФ. Поможем выбрать между динамичной Гагрой и спокойной Пицундой.', 'zhiraf-ufa' ),
 			'geo_answer'       => __( 'Обычный маршрут: перелёт Уфа — Сочи/Адлер, далее трансфер 1–2 часа до Гагры или Пицунды. Все детали трансфера согласуем до оплаты.', 'zhiraf-ufa' ),

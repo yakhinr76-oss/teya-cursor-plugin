@@ -84,7 +84,7 @@
 | — | **Индонезия (Бали)** | `indoneziya` | ✅ layout | `curated-indonesia-landing.php` | `indonesia_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
 | — | **Сейшелы** | `sejshely` | ✅ layout | `curated-seychelles-landing.php` | `seychelles_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 острова (ряд) | 2 статьи |
 
-**SEO wave 2:** layout v1 готов; текстовый пакет **слабее эталона** (короткий FAQ, нет `geo_answer` / `extra_sections` / `resort_links` на ряде slug). Очередь — **`deliverables/zhiraf-ufa/WAVE2-SEO-BACKLOG.md`**.
+**SEO wave 2:** P0 в `destination-landings.php` (1.0.57) — FAQ 7+, geo/season, `extra_sections`, `resort_links`. Остаток P1/P2 — **`deliverables/zhiraf-ufa/WAVE2-SEO-BACKLOG.md`**.
 
 Дочерние **курортные** страницы — отдельно (`inc/resort-landings.php`); для Египта заведены минимальные `makadi-bay`, `sahl-hasheesh` (помимо Хургады/Шарма).
 

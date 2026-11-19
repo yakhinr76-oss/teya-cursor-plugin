@@ -1,0 +1,392 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "uzbekistan",
+  "tourvisor_country_id": 56,
+  "identified_at": "2026-11-19",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 3,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        134728,
+        124679,
+        155259,
+        47756,
+        60564
+      ],
+      "zhiraf_ids": [
+        1,
+        4,
+        5,
+        7,
+        8
+      ],
+      "price_keys": [
+        "uzbekistan:1",
+        "uzbekistan:4",
+        "uzbekistan:5",
+        "uzbekistan:7",
+        "uzbekistan:8"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        124046,
+        124776,
+        78530,
+        113110,
+        80363
+      ],
+      "zhiraf_ids": [
+        9,
+        14,
+        16,
+        17,
+        18
+      ],
+      "price_keys": [
+        "uzbekistan:9",
+        "uzbekistan:14",
+        "uzbekistan:16",
+        "uzbekistan:17",
+        "uzbekistan:18"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        37725,
+        147021,
+        88335,
+        47758,
+        78527
+      ],
+      "zhiraf_ids": [
+        19,
+        20,
+        21,
+        24,
+        25
+      ],
+      "price_keys": [
+        "uzbekistan:19",
+        "uzbekistan:20",
+        "uzbekistan:21",
+        "uzbekistan:24",
+        "uzbekistan:25"
+      ]
+    }
+  ],
+  "hotel_count": 15,
+  "hotel_ids": "37725,47756,47758,60564,78527,78530,80363,88335,113110,124046,124679,124776,134728,147021,155259",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 134728,
+      "hotel_name": "Zukhro Boutique Hotel",
+      "place": "Хива, цитадель Ичан-Кала",
+      "search_query": "Zukhro Boutique Hotel",
+      "tourvisor_name": "Zukhro Boutique Hotel",
+      "price_key": "uzbekistan:1"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 124679,
+      "hotel_name": "Khans Palace",
+      "place": "Хива, цитадель Ичан-Кала",
+      "search_query": "Khans Palace",
+      "tourvisor_name": "Khans Palace Hotel",
+      "price_key": "uzbekistan:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 155259,
+      "hotel_name": "Twins Hotel Khiva",
+      "place": "Хива, цитадель Ичан-Кала",
+      "search_query": "Twins Hotel Khiva",
+      "tourvisor_name": "Twins Hotel Khiva",
+      "price_key": "uzbekistan:5"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 47756,
+      "hotel_name": "Amelia Boutique Hotel",
+      "place": "Бухара, еврейский квартал у Ляби-Хауз",
+      "search_query": "Amelia Boutique Hotel",
+      "tourvisor_name": "Amelia Boutique",
+      "price_key": "uzbekistan:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 60564,
+      "hotel_name": "Amulet Hotel",
+      "place": "Бухара, район Ляби-Хауз",
+      "search_query": "Amulet Hotel",
+      "tourvisor_name": "Amulet",
+      "price_key": "uzbekistan:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 124046,
+      "hotel_name": "Sasha & Son Hotel",
+      "place": "Бухара, старый еврейский квартал",
+      "search_query": "Sasha & Son Hotel",
+      "tourvisor_name": "Sasha & Son",
+      "price_key": "uzbekistan:9"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 124776,
+      "hotel_name": "RABAT Boutique Hotel",
+      "place": "Самарканд, старая махалля у Регистана",
+      "search_query": "RABAT Boutique Hotel",
+      "tourvisor_name": "Rabat Boutique",
+      "price_key": "uzbekistan:14"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 78530,
+      "hotel_name": "Hampton by Hilton Tashkent 4★",
+      "place": "Ташкент, центр / метро Амир Темур",
+      "search_query": "Hampton by Hilton Tashkent",
+      "tourvisor_name": "Hampton By Hilton Tashkent",
+      "price_key": "uzbekistan:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 113110,
+      "hotel_name": "Holiday Inn Tashkent City 4★",
+      "place": "Ташкент, парк Tashkent City",
+      "search_query": "Holiday Inn Tashkent City",
+      "tourvisor_name": "Holiday Inn Tashkent City",
+      "price_key": "uzbekistan:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 80363,
+      "hotel_name": "Hotel Inspira-S Tashkent 4★",
+      "place": "Ташкент, у базара Чорсу",
+      "search_query": "hotel inspira s tashkent",
+      "tourvisor_name": "Inspira S Tashkent",
+      "price_key": "uzbekistan:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 37725,
+      "hotel_name": "Radisson Blu Hotel Tashkent 4★",
+      "place": "Ташкент, проспект Амира Темура",
+      "search_query": "Radisson Blu Hotel Tashkent",
+      "tourvisor_name": "Radisson Blu Hotel Tashkent",
+      "price_key": "uzbekistan:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 147021,
+      "hotel_name": "Wyndham Tashkent 4★",
+      "place": "Ташкент, массив Ц-4 / метро Кадыри",
+      "search_query": "Wyndham Tashkent",
+      "tourvisor_name": "Ramada Plaza By Wyndham Tashkent",
+      "price_key": "uzbekistan:20"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 88335,
+      "hotel_name": "Zarafshon Parkside",
+      "place": "Самарканд, парк Университетского бульвара",
+      "search_query": "Zarafshon Parkside",
+      "tourvisor_name": "Zarafshon Parkside",
+      "price_key": "uzbekistan:21"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 47758,
+      "hotel_name": "Devon Begi Heritage Hotel",
+      "place": "Бухара, 50 м до Ляби-Хауз",
+      "search_query": "Devon Begi Heritage Hotel",
+      "tourvisor_name": "Devon Begi",
+      "price_key": "uzbekistan:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 78527,
+      "hotel_name": "Courtyard by Marriott Tashkent 4★",
+      "place": "Ташкент, Яккасарайский район",
+      "search_query": "Courtyard by Marriott Tashkent",
+      "tourvisor_name": "Courtyard By Marriott Tashkent",
+      "price_key": "uzbekistan:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "134728": {
+      "zhiraf_id": 1,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 134728,
+      "hotel_name": "Zukhro Boutique Hotel",
+      "place": "Хива, цитадель Ичан-Кала",
+      "search_query": "Zukhro Boutique Hotel",
+      "tourvisor_name": "Zukhro Boutique Hotel",
+      "price_key": "uzbekistan:1"
+    },
+    "124679": {
+      "zhiraf_id": 4,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 124679,
+      "hotel_name": "Khans Palace",
+      "place": "Хива, цитадель Ичан-Кала",
+      "search_query": "Khans Palace",
+      "tourvisor_name": "Khans Palace Hotel",
+      "price_key": "uzbekistan:4"
+    },
+    "155259": {
+      "zhiraf_id": 5,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 155259,
+      "hotel_name": "Twins Hotel Khiva",
+      "place": "Хива, цитадель Ичан-Кала",
+      "search_query": "Twins Hotel Khiva",
+      "tourvisor_name": "Twins Hotel Khiva",
+      "price_key": "uzbekistan:5"
+    },
+    "47756": {
+      "zhiraf_id": 7,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 47756,
+      "hotel_name": "Amelia Boutique Hotel",
+      "place": "Бухара, еврейский квартал у Ляби-Хауз",
+      "search_query": "Amelia Boutique Hotel",
+      "tourvisor_name": "Amelia Boutique",
+      "price_key": "uzbekistan:7"
+    },
+    "60564": {
+      "zhiraf_id": 8,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 60564,
+      "hotel_name": "Amulet Hotel",
+      "place": "Бухара, район Ляби-Хауз",
+      "search_query": "Amulet Hotel",
+      "tourvisor_name": "Amulet",
+      "price_key": "uzbekistan:8"
+    },
+    "124046": {
+      "zhiraf_id": 9,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 124046,
+      "hotel_name": "Sasha & Son Hotel",
+      "place": "Бухара, старый еврейский квартал",
+      "search_query": "Sasha & Son Hotel",
+      "tourvisor_name": "Sasha & Son",
+      "price_key": "uzbekistan:9"
+    },
+    "124776": {
+      "zhiraf_id": 14,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 124776,
+      "hotel_name": "RABAT Boutique Hotel",
+      "place": "Самарканд, старая махалля у Регистана",
+      "search_query": "RABAT Boutique Hotel",
+      "tourvisor_name": "Rabat Boutique",
+      "price_key": "uzbekistan:14"
+    },
+    "78530": {
+      "zhiraf_id": 16,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 78530,
+      "hotel_name": "Hampton by Hilton Tashkent 4★",
+      "place": "Ташкент, центр / метро Амир Темур",
+      "search_query": "Hampton by Hilton Tashkent",
+      "tourvisor_name": "Hampton By Hilton Tashkent",
+      "price_key": "uzbekistan:16"
+    },
+    "113110": {
+      "zhiraf_id": 17,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 113110,
+      "hotel_name": "Holiday Inn Tashkent City 4★",
+      "place": "Ташкент, парк Tashkent City",
+      "search_query": "Holiday Inn Tashkent City",
+      "tourvisor_name": "Holiday Inn Tashkent City",
+      "price_key": "uzbekistan:17"
+    },
+    "80363": {
+      "zhiraf_id": 18,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 80363,
+      "hotel_name": "Hotel Inspira-S Tashkent 4★",
+      "place": "Ташкент, у базара Чорсу",
+      "search_query": "hotel inspira s tashkent",
+      "tourvisor_name": "Inspira S Tashkent",
+      "price_key": "uzbekistan:18"
+    },
+    "37725": {
+      "zhiraf_id": 19,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 37725,
+      "hotel_name": "Radisson Blu Hotel Tashkent 4★",
+      "place": "Ташкент, проспект Амира Темура",
+      "search_query": "Radisson Blu Hotel Tashkent",
+      "tourvisor_name": "Radisson Blu Hotel Tashkent",
+      "price_key": "uzbekistan:19"
+    },
+    "147021": {
+      "zhiraf_id": 20,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 147021,
+      "hotel_name": "Wyndham Tashkent 4★",
+      "place": "Ташкент, массив Ц-4 / метро Кадыри",
+      "search_query": "Wyndham Tashkent",
+      "tourvisor_name": "Ramada Plaza By Wyndham Tashkent",
+      "price_key": "uzbekistan:20"
+    },
+    "88335": {
+      "zhiraf_id": 21,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 88335,
+      "hotel_name": "Zarafshon Parkside",
+      "place": "Самарканд, парк Университетского бульвара",
+      "search_query": "Zarafshon Parkside",
+      "tourvisor_name": "Zarafshon Parkside",
+      "price_key": "uzbekistan:21"
+    },
+    "47758": {
+      "zhiraf_id": 24,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 47758,
+      "hotel_name": "Devon Begi Heritage Hotel",
+      "place": "Бухара, 50 м до Ляби-Хауз",
+      "search_query": "Devon Begi Heritage Hotel",
+      "tourvisor_name": "Devon Begi",
+      "price_key": "uzbekistan:24"
+    },
+    "78527": {
+      "zhiraf_id": 25,
+      "country_slug": "uzbekistan",
+      "tourvisor_id": 78527,
+      "hotel_name": "Courtyard by Marriott Tashkent 4★",
+      "place": "Ташкент, Яккасарайский район",
+      "search_query": "Courtyard by Marriott Tashkent",
+      "tourvisor_name": "Courtyard By Marriott Tashkent",
+      "price_key": "uzbekistan:25"
+    }
+  }
+}

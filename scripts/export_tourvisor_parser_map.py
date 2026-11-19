@@ -19,6 +19,14 @@ TV_COUNTRY_ID = {
     "vietnam": 16,
     "maldives": 8,
     "indonesia": 7,
+    "sri_lanka": 12,
+    "india": 3,
+    "seychelles": 28,
+    "china": 13,
+    "uzbekistan": 56,
+    "armenia": 53,
+    "abkhazia": 46,
+    "russia": 47,
 }
 
 GITHUB_RAW = (
@@ -37,6 +45,14 @@ MAPS: dict[str, Path] = {
     "vietnam": THEME_DATA / "vietnam-tourvisor-hotels.json",
     "maldives": THEME_DATA / "maldives-tourvisor-hotels.json",
     "indonesia": THEME_DATA / "indonesia-tourvisor-hotels.json",
+    "sri_lanka": THEME_DATA / "sri_lanka-tourvisor-hotels.json",
+    "india": THEME_DATA / "india-tourvisor-hotels.json",
+    "seychelles": THEME_DATA / "seychelles-tourvisor-hotels.json",
+    "china": THEME_DATA / "china-tourvisor-hotels.json",
+    "uzbekistan": THEME_DATA / "uzbekistan-tourvisor-hotels.json",
+    "armenia": THEME_DATA / "armenia-tourvisor-hotels.json",
+    "abkhazia": THEME_DATA / "abkhazia-tourvisor-hotels.json",
+    "russia": THEME_DATA / "russia-tourvisor-hotels.json",
 }
 
 

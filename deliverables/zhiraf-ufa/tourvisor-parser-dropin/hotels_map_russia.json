@@ -1,0 +1,448 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "russia",
+  "tourvisor_country_id": 47,
+  "identified_at": "2026-11-19",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 4,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        58198,
+        32141,
+        80167,
+        57925,
+        46148
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        5,
+        6,
+        7
+      ],
+      "price_keys": [
+        "russia:1",
+        "russia:2",
+        "russia:5",
+        "russia:6",
+        "russia:7"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        30197,
+        30375,
+        39131,
+        30403,
+        45694
+      ],
+      "zhiraf_ids": [
+        8,
+        9,
+        11,
+        12,
+        13
+      ],
+      "price_keys": [
+        "russia:8",
+        "russia:9",
+        "russia:11",
+        "russia:12",
+        "russia:13"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        65519,
+        71959,
+        38485,
+        67277,
+        84631
+      ],
+      "zhiraf_ids": [
+        14,
+        27,
+        28,
+        32,
+        38
+      ],
+      "price_keys": [
+        "russia:14",
+        "russia:27",
+        "russia:28",
+        "russia:32",
+        "russia:38"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 2,
+      "tourvisor_ids": [
+        123821,
+        46520
+      ],
+      "zhiraf_ids": [
+        42,
+        50
+      ],
+      "price_keys": [
+        "russia:42",
+        "russia:50"
+      ]
+    }
+  ],
+  "hotel_count": 17,
+  "hotel_ids": "30197,30375,30403,32141,38485,39131,45694,46148,46520,57925,58198,65519,67277,71959,80167,84631,123821",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "russia",
+      "tourvisor_id": 58198,
+      "hotel_name": "Bridge Resort 4★",
+      "place": "Сириус, Имеретинская низменность",
+      "search_query": "bridge",
+      "tourvisor_name": "The Bridge (Бридж)",
+      "price_key": "russia:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "russia",
+      "tourvisor_id": 32141,
+      "hotel_name": "Sport Inn Hotel & Wellness 4★",
+      "place": "Сириус, Нижнеимеретинская бухта",
+      "search_query": "Sport Inn Hotel & Wellness",
+      "tourvisor_name": "Sport Inn",
+      "price_key": "russia:2"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "russia",
+      "tourvisor_id": 80167,
+      "hotel_name": "Cosmos Stay Le Rond Sochi 4★",
+      "place": "Большой Сочи, пос. Дагомыс",
+      "search_query": "Cosmos Stay Le Rond Sochi",
+      "tourvisor_name": "Cosmos Stay Le Rond Sochi (Космос Стей Ле Ронд Сочи)",
+      "price_key": "russia:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "russia",
+      "tourvisor_id": 57925,
+      "hotel_name": "Green Flow Hotel 4★",
+      "place": "Роза Хутор, плато 1170 м",
+      "search_query": "Green Flow Hotel",
+      "tourvisor_name": "The Garden Велнес-Отель (Бывш. Green Flow)",
+      "price_key": "russia:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "russia",
+      "tourvisor_id": 46148,
+      "hotel_name": "Rosa Springs Life Balance Hotel 5★",
+      "place": "Роза Хутор, плато 1170 м",
+      "search_query": "Rosa Springs Life Balance Hotel",
+      "tourvisor_name": "Life Balance Отель Rosa Springs (Роза Спрингс)",
+      "price_key": "russia:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "russia",
+      "tourvisor_id": 30197,
+      "hotel_name": "Golden Tulip Rosa Khutor 4★",
+      "place": "Роза Хутор, Роза Долина 560 м",
+      "search_query": "Golden Tulip Rosa Khutor",
+      "tourvisor_name": "Golden Tulip Rosa Khutor (Голден Тулип Роза Хутор)",
+      "price_key": "russia:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "russia",
+      "tourvisor_id": 30375,
+      "hotel_name": "Park Inn by Radisson Rosa Khutor 4★",
+      "place": "Роза Хутор, Роза Долина 560 м",
+      "search_query": "Park Inn by Radisson Rosa Khutor",
+      "tourvisor_name": "Park Inn By Radisson Rosa Khutor (Парк Инн Рэдиссон Роза Хутор)",
+      "price_key": "russia:9"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "russia",
+      "tourvisor_id": 39131,
+      "hotel_name": "Alean Family Doville 5★",
+      "place": "Анапа, Пионерский проспект",
+      "search_query": "Alean Family Doville",
+      "tourvisor_name": "Alean Family Doville",
+      "price_key": "russia:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "russia",
+      "tourvisor_id": 30403,
+      "hotel_name": "Alean Family Riviera 4★",
+      "place": "Анапа, Пионерский проспект",
+      "search_query": "Alean Family Riviera",
+      "tourvisor_name": "Alean Family Riviera",
+      "price_key": "russia:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "russia",
+      "tourvisor_id": 45694,
+      "hotel_name": "Beton Brut Ultra All Inclusive & SPA 4★",
+      "place": "Анапа, район Верхнее Джемете",
+      "search_query": "Beton Brut Ultra All Inclusive & SPA",
+      "tourvisor_name": "Miracleon Beton Brut Ultra All Inclusive & Spa Anapa",
+      "price_key": "russia:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "russia",
+      "tourvisor_id": 65519,
+      "hotel_name": "Fioleto Ultra All Inclusive & SPA 4★",
+      "place": "Анапа, курортная зона Джемете",
+      "search_query": "Fioleto Ultra All Inclusive & SPA",
+      "tourvisor_name": "Miracleon Fioleto Ultra All Inclusive  Resort  & Sra Anapa",
+      "price_key": "russia:14"
+    },
+    {
+      "zhiraf_id": 27,
+      "country_slug": "russia",
+      "tourvisor_id": 71959,
+      "hotel_name": "Garden Embassy 4★",
+      "place": "Москва, Ботанический переулок",
+      "search_query": "Garden Embassy",
+      "tourvisor_name": "Garden Embassy",
+      "price_key": "russia:27"
+    },
+    {
+      "zhiraf_id": 28,
+      "country_slug": "russia",
+      "tourvisor_id": 38485,
+      "hotel_name": "Mercure Москва Павелецкая 4★",
+      "place": "Москва, Замоскворечье, ул. Бахрушина",
+      "search_query": "Mercure Москва Павелецкая",
+      "tourvisor_name": "Mercure Москва Бауманская",
+      "price_key": "russia:28"
+    },
+    {
+      "zhiraf_id": 32,
+      "country_slug": "russia",
+      "tourvisor_id": 67277,
+      "hotel_name": "Holiday Inn Kaliningrad 4★",
+      "place": "Калининград, наб. Виктора Гюго",
+      "search_query": "Holiday Inn Kaliningrad",
+      "tourvisor_name": "Holiday Inn Kaliningrad (Холидей Инн)",
+      "price_key": "russia:32"
+    },
+    {
+      "zhiraf_id": 38,
+      "country_slug": "russia",
+      "tourvisor_id": 84631,
+      "hotel_name": "Эко-отель «Белая Чайка» (BaikalWood)",
+      "place": "Остров Ольхон, пос. Хужир",
+      "search_query": "Эко-отель «Белая Чайка» (BaikalWood)",
+      "tourvisor_name": "Baikalwood Эко Лодж & Spa",
+      "price_key": "russia:38"
+    },
+    {
+      "zhiraf_id": 42,
+      "country_slug": "russia",
+      "tourvisor_id": 123821,
+      "hotel_name": "Klever Resort & SPA 5★",
+      "place": "Чемальский район, берег Катуни",
+      "search_query": "Klever Resort & SPA",
+      "tourvisor_name": "Клевер (Klever)",
+      "price_key": "russia:42"
+    },
+    {
+      "zhiraf_id": 50,
+      "country_slug": "russia",
+      "tourvisor_id": 46520,
+      "hotel_name": "Cosmos Petrozavodsk Hotel 4★",
+      "place": "Петрозаводск, Онежская набережная",
+      "search_query": "Cosmos Petrozavodsk Hotel",
+      "tourvisor_name": "Cosmos Petrozavodsk (Ex. Онего Палас)",
+      "price_key": "russia:50"
+    }
+  ],
+  "by_tourvisor_id": {
+    "58198": {
+      "zhiraf_id": 1,
+      "country_slug": "russia",
+      "tourvisor_id": 58198,
+      "hotel_name": "Bridge Resort 4★",
+      "place": "Сириус, Имеретинская низменность",
+      "search_query": "bridge",
+      "tourvisor_name": "The Bridge (Бридж)",
+      "price_key": "russia:1"
+    },
+    "32141": {
+      "zhiraf_id": 2,
+      "country_slug": "russia",
+      "tourvisor_id": 32141,
+      "hotel_name": "Sport Inn Hotel & Wellness 4★",
+      "place": "Сириус, Нижнеимеретинская бухта",
+      "search_query": "Sport Inn Hotel & Wellness",
+      "tourvisor_name": "Sport Inn",
+      "price_key": "russia:2"
+    },
+    "80167": {
+      "zhiraf_id": 5,
+      "country_slug": "russia",
+      "tourvisor_id": 80167,
+      "hotel_name": "Cosmos Stay Le Rond Sochi 4★",
+      "place": "Большой Сочи, пос. Дагомыс",
+      "search_query": "Cosmos Stay Le Rond Sochi",
+      "tourvisor_name": "Cosmos Stay Le Rond Sochi (Космос Стей Ле Ронд Сочи)",
+      "price_key": "russia:5"
+    },
+    "57925": {
+      "zhiraf_id": 6,
+      "country_slug": "russia",
+      "tourvisor_id": 57925,
+      "hotel_name": "Green Flow Hotel 4★",
+      "place": "Роза Хутор, плато 1170 м",
+      "search_query": "Green Flow Hotel",
+      "tourvisor_name": "The Garden Велнес-Отель (Бывш. Green Flow)",
+      "price_key": "russia:6"
+    },
+    "46148": {
+      "zhiraf_id": 7,
+      "country_slug": "russia",
+      "tourvisor_id": 46148,
+      "hotel_name": "Rosa Springs Life Balance Hotel 5★",
+      "place": "Роза Хутор, плато 1170 м",
+      "search_query": "Rosa Springs Life Balance Hotel",
+      "tourvisor_name": "Life Balance Отель Rosa Springs (Роза Спрингс)",
+      "price_key": "russia:7"
+    },
+    "30197": {
+      "zhiraf_id": 8,
+      "country_slug": "russia",
+      "tourvisor_id": 30197,
+      "hotel_name": "Golden Tulip Rosa Khutor 4★",
+      "place": "Роза Хутор, Роза Долина 560 м",
+      "search_query": "Golden Tulip Rosa Khutor",
+      "tourvisor_name": "Golden Tulip Rosa Khutor (Голден Тулип Роза Хутор)",
+      "price_key": "russia:8"
+    },
+    "30375": {
+      "zhiraf_id": 9,
+      "country_slug": "russia",
+      "tourvisor_id": 30375,
+      "hotel_name": "Park Inn by Radisson Rosa Khutor 4★",
+      "place": "Роза Хутор, Роза Долина 560 м",
+      "search_query": "Park Inn by Radisson Rosa Khutor",
+      "tourvisor_name": "Park Inn By Radisson Rosa Khutor (Парк Инн Рэдиссон Роза Хутор)",
+      "price_key": "russia:9"
+    },
+    "39131": {
+      "zhiraf_id": 11,
+      "country_slug": "russia",
+      "tourvisor_id": 39131,
+      "hotel_name": "Alean Family Doville 5★",
+      "place": "Анапа, Пионерский проспект",
+      "search_query": "Alean Family Doville",
+      "tourvisor_name": "Alean Family Doville",
+      "price_key": "russia:11"
+    },
+    "30403": {
+      "zhiraf_id": 12,
+      "country_slug": "russia",
+      "tourvisor_id": 30403,
+      "hotel_name": "Alean Family Riviera 4★",
+      "place": "Анапа, Пионерский проспект",
+      "search_query": "Alean Family Riviera",
+      "tourvisor_name": "Alean Family Riviera",
+      "price_key": "russia:12"
+    },
+    "45694": {
+      "zhiraf_id": 13,
+      "country_slug": "russia",
+      "tourvisor_id": 45694,
+      "hotel_name": "Beton Brut Ultra All Inclusive & SPA 4★",
+      "place": "Анапа, район Верхнее Джемете",
+      "search_query": "Beton Brut Ultra All Inclusive & SPA",
+      "tourvisor_name": "Miracleon Beton Brut Ultra All Inclusive & Spa Anapa",
+      "price_key": "russia:13"
+    },
+    "65519": {
+      "zhiraf_id": 14,
+      "country_slug": "russia",
+      "tourvisor_id": 65519,
+      "hotel_name": "Fioleto Ultra All Inclusive & SPA 4★",
+      "place": "Анапа, курортная зона Джемете",
+      "search_query": "Fioleto Ultra All Inclusive & SPA",
+      "tourvisor_name": "Miracleon Fioleto Ultra All Inclusive  Resort  & Sra Anapa",
+      "price_key": "russia:14"
+    },
+    "71959": {
+      "zhiraf_id": 27,
+      "country_slug": "russia",
+      "tourvisor_id": 71959,
+      "hotel_name": "Garden Embassy 4★",
+      "place": "Москва, Ботанический переулок",
+      "search_query": "Garden Embassy",
+      "tourvisor_name": "Garden Embassy",
+      "price_key": "russia:27"
+    },
+    "38485": {
+      "zhiraf_id": 28,
+      "country_slug": "russia",
+      "tourvisor_id": 38485,
+      "hotel_name": "Mercure Москва Павелецкая 4★",
+      "place": "Москва, Замоскворечье, ул. Бахрушина",
+      "search_query": "Mercure Москва Павелецкая",
+      "tourvisor_name": "Mercure Москва Бауманская",
+      "price_key": "russia:28"
+    },
+    "67277": {
+      "zhiraf_id": 32,
+      "country_slug": "russia",
+      "tourvisor_id": 67277,
+      "hotel_name": "Holiday Inn Kaliningrad 4★",
+      "place": "Калининград, наб. Виктора Гюго",
+      "search_query": "Holiday Inn Kaliningrad",
+      "tourvisor_name": "Holiday Inn Kaliningrad (Холидей Инн)",
+      "price_key": "russia:32"
+    },
+    "84631": {
+      "zhiraf_id": 38,
+      "country_slug": "russia",
+      "tourvisor_id": 84631,
+      "hotel_name": "Эко-отель «Белая Чайка» (BaikalWood)",
+      "place": "Остров Ольхон, пос. Хужир",
+      "search_query": "Эко-отель «Белая Чайка» (BaikalWood)",
+      "tourvisor_name": "Baikalwood Эко Лодж & Spa",
+      "price_key": "russia:38"
+    },
+    "123821": {
+      "zhiraf_id": 42,
+      "country_slug": "russia",
+      "tourvisor_id": 123821,
+      "hotel_name": "Klever Resort & SPA 5★",
+      "place": "Чемальский район, берег Катуни",
+      "search_query": "Klever Resort & SPA",
+      "tourvisor_name": "Клевер (Klever)",
+      "price_key": "russia:42"
+    },
+    "46520": {
+      "zhiraf_id": 50,
+      "country_slug": "russia",
+      "tourvisor_id": 46520,
+      "hotel_name": "Cosmos Petrozavodsk Hotel 4★",
+      "place": "Петрозаводск, Онежская набережная",
+      "search_query": "Cosmos Petrozavodsk Hotel",
+      "tourvisor_name": "Cosmos Petrozavodsk (Ex. Онего Палас)",
+      "price_key": "russia:50"
+    }
+  }
+}

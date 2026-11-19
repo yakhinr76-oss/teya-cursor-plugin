@@ -1,10 +1,10 @@
 {
   "schema": "zhiraf.tourvisor-hotels-map.v1",
-  "source": "india-catalog-scaffold",
+  "source": "tourvisor-autocomplete",
   "country_slug": "india",
-  "identified_at": "2026-11-18",
+  "identified_at": "2026-11-19",
   "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ india:{zhiraf_id} (country_slug india, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
-  "tourvisor_country_id": 0,
+  "tourvisor_country_id": 3,
   "hotels": [
     {
       "zhiraf_id": 1,
@@ -12,18 +12,18 @@
       "hotel_name": "Novotel Goa Dona Sylvia Resort 5★",
       "resort": "Южный Гоа, пляж Кавелоссим",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 872,
+      "tourvisor_name": "Novotel Goa Dona Sylvia Resort",
+      "tourvisor_region": "Кавелоссим",
+      "tourvisor_region_code": 2350,
+      "tourvisor_stars": 5,
       "search_query": "Novotel Goa Dona Sylvia Resort",
       "match_names": [
         "Novotel Goa Dona Sylvia Resort 5★",
         "Novotel Goa Dona Sylvia Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 2,
@@ -31,18 +31,18 @@
       "hotel_name": "Holiday Inn Resort Goa 5★",
       "resort": "Южный Гоа, пляж Мобор / Кавелоссим",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 878,
+      "tourvisor_name": "Holiday Inn Resort Goa",
+      "tourvisor_region": "Кавелоссим",
+      "tourvisor_region_code": 2350,
+      "tourvisor_stars": 5,
       "search_query": "Holiday Inn Resort Goa",
       "match_names": [
         "Holiday Inn Resort Goa 5★",
         "Holiday Inn Resort Goa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 3,
@@ -50,18 +50,19 @@
       "hotel_name": "Radisson Blu Resort Goa Cavelossim 5★",
       "resort": "Южный Гоа, пляж Кавелоссим",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 4105,
+      "tourvisor_name": "Radisson Blu Resort Cavelossim Beach",
+      "tourvisor_region": "Кавелоссим",
+      "tourvisor_region_code": 2350,
+      "tourvisor_stars": 5,
       "search_query": "Radisson Blu Resort Goa Cavelossim",
       "match_names": [
         "Radisson Blu Resort Goa Cavelossim 5★",
-        "Radisson Blu Resort Goa Cavelossim"
+        "Radisson Blu Resort Goa Cavelossim",
+        "Radisson Blu Resort Cavelossim Beach"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.838
     },
     {
       "zhiraf_id": 4,
@@ -69,18 +70,18 @@
       "hotel_name": "Club Mahindra Varca Beach 4★",
       "resort": "Южный Гоа, пляж Варка",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 868,
+      "tourvisor_name": "Club Mahindra Varca Beach",
+      "tourvisor_region": "Варка",
+      "tourvisor_region_code": 2353,
+      "tourvisor_stars": 4,
       "search_query": "Club Mahindra Varca Beach",
       "match_names": [
         "Club Mahindra Varca Beach 4★",
         "Club Mahindra Varca Beach"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 5,
@@ -88,18 +89,19 @@
       "hotel_name": "Caravela Beach Resort 5★",
       "resort": "Южный Гоа, пляж Варка",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 902,
+      "tourvisor_name": "Caravela Beach Resort (Ex. Ramada Caravella)",
+      "tourvisor_region": "Варка",
+      "tourvisor_region_code": 2353,
+      "tourvisor_stars": 4,
       "search_query": "Caravela Beach Resort",
       "match_names": [
         "Caravela Beach Resort 5★",
-        "Caravela Beach Resort"
+        "Caravela Beach Resort",
+        "Caravela Beach Resort (Ex. Ramada Caravella)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.767
     },
     {
       "zhiraf_id": 6,
@@ -107,19 +109,19 @@
       "hotel_name": "La Cabana Beach & Spa 4★",
       "resort": "Северный Гоа, пляж Ашвем",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 12152,
+      "tourvisor_name": "La Cabana Beach & Spa",
+      "tourvisor_region": "Ашвем бич",
+      "tourvisor_region_code": 2344,
+      "tourvisor_stars": 2,
       "search_query": "La Cabana Beach & Spa",
       "match_names": [
         "La Cabana Beach & Spa 4★",
         "La Cabana Beach & Spa",
         "La Cabana Beach and Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 7,
@@ -127,18 +129,18 @@
       "hotel_name": "Riva Beach Resort 4★",
       "resort": "Северный Гоа, пляж Мандрем",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 12151,
+      "tourvisor_name": "Riva Beach Resort",
+      "tourvisor_region": "Мандрем бич",
+      "tourvisor_region_code": 2346,
+      "tourvisor_stars": 3,
       "search_query": "Riva Beach Resort",
       "match_names": [
         "Riva Beach Resort 4★",
         "Riva Beach Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 8,
@@ -146,18 +148,18 @@
       "hotel_name": "Sur La Mer 3★",
       "resort": "Северный Гоа, Морджим / Ашвем",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 133264,
+      "tourvisor_name": "Sur La Mer",
+      "tourvisor_region": "Морджим бич",
+      "tourvisor_region_code": 2340,
+      "tourvisor_stars": 4,
       "search_query": "Sur La Mer",
       "match_names": [
         "Sur La Mer 3★",
         "Sur La Mer"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 9,
@@ -175,7 +177,7 @@
         "Mandrem Beach Resort, Radisson Individuals 4★",
         "Mandrem Beach Resort, Radisson Individuals"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -184,19 +186,20 @@
       "hotel_name": "LaRiSa Resort & Spa Ashwem 4★",
       "resort": "Северный Гоа, пляж Ашвем",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 129518,
+      "tourvisor_name": "Larisa Hotel And Resort Ashwem",
+      "tourvisor_region": "Мандрем бич",
+      "tourvisor_region_code": 2346,
+      "tourvisor_stars": 4,
       "search_query": "LaRiSa Resort & Spa Ashwem",
       "match_names": [
         "LaRiSa Resort & Spa Ashwem 4★",
         "LaRiSa Resort & Spa Ashwem",
-        "LaRiSa Resort and Spa Ashwem"
+        "LaRiSa Resort and Spa Ashwem",
+        "Larisa Hotel And Resort Ashwem"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 11,
@@ -204,18 +207,18 @@
       "hotel_name": "Santana Beach Resort 3★",
       "resort": "Северный Гоа, пляж Кандолим",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 4156,
+      "tourvisor_name": "Santana Beach Resort",
+      "tourvisor_region": "Кандолим",
+      "tourvisor_region_code": 2337,
+      "tourvisor_stars": 3,
       "search_query": "Santana Beach Resort",
       "match_names": [
         "Santana Beach Resort 3★",
         "Santana Beach Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 12,
@@ -223,18 +226,19 @@
       "hotel_name": "Sonesta Inns Beach Resort 4★",
       "resort": "Северный Гоа, Кандолим / Калангут",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 4108,
+      "tourvisor_name": "Sonesta Inns",
+      "tourvisor_region": "Кандолим",
+      "tourvisor_region_code": 2337,
+      "tourvisor_stars": 3,
       "search_query": "Sonesta Inns Beach Resort",
       "match_names": [
         "Sonesta Inns Beach Resort 4★",
-        "Sonesta Inns Beach Resort"
+        "Sonesta Inns Beach Resort",
+        "Sonesta Inns"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 13,
@@ -242,18 +246,18 @@
       "hotel_name": "Lemon Tree Amarante Beach Resort 4★",
       "resort": "Северный Гоа, пляж Кандолим",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 884,
+      "tourvisor_name": "Lemon Tree Amarante Beach Resort",
+      "tourvisor_region": "Кандолим",
+      "tourvisor_region_code": 2337,
+      "tourvisor_stars": 4,
       "search_query": "Lemon Tree Amarante Beach Resort",
       "match_names": [
         "Lemon Tree Amarante Beach Resort 4★",
         "Lemon Tree Amarante Beach Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 14,
@@ -261,18 +265,18 @@
       "hotel_name": "ibis Styles Goa Calangute 3★",
       "resort": "Северный Гоа, Калангут / Тивай",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 51062,
+      "tourvisor_name": "Ibis Styles Goa Calangute",
+      "tourvisor_region": "Калангут",
+      "tourvisor_region_code": 2339,
+      "tourvisor_stars": 4,
       "search_query": "ibis Styles Goa Calangute",
       "match_names": [
         "ibis Styles Goa Calangute 3★",
         "ibis Styles Goa Calangute"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 15,
@@ -280,18 +284,19 @@
       "hotel_name": "Bloom Hotel Calangute 3★",
       "resort": "Северный Гоа, Калангут",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
-      "search_query": "Bloom Hotel Calangute",
+      "tourvisor_id": 156595,
+      "tourvisor_name": "Bloom Calangute",
+      "tourvisor_region": "Калангут",
+      "tourvisor_region_code": 2339,
+      "tourvisor_stars": 3,
+      "search_query": "bloom calangute",
       "match_names": [
         "Bloom Hotel Calangute 3★",
-        "Bloom Hotel Calangute"
+        "Bloom Hotel Calangute",
+        "Bloom Calangute"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 16,
@@ -299,19 +304,20 @@
       "hotel_name": "The Zuri White Sands Resort & Casino 5★",
       "resort": "Южный Гоа, пляж Варка",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2099,
+      "tourvisor_name": "The Zuri White Sands Goa Resort & Casino (Ex. Radisson)",
+      "tourvisor_region": "Варка",
+      "tourvisor_region_code": 2353,
+      "tourvisor_stars": 5,
       "search_query": "The Zuri White Sands Resort & Casino",
       "match_names": [
         "The Zuri White Sands Resort & Casino 5★",
         "The Zuri White Sands Resort & Casino",
-        "The Zuri White Sands Resort and Casino"
+        "The Zuri White Sands Resort and Casino",
+        "The Zuri White Sands Goa Resort & Casino (Ex. Radisson)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.883
     },
     {
       "zhiraf_id": 17,
@@ -319,19 +325,20 @@
       "hotel_name": "Kenilworth Resort & Spa 5★",
       "resort": "Южный Гоа, пляж Уторда",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 921,
+      "tourvisor_name": "The Kenilworth Beach Resort & Spa",
+      "tourvisor_region": "Маджорда",
+      "tourvisor_region_code": 2354,
+      "tourvisor_stars": 5,
       "search_query": "Kenilworth Resort & Spa",
       "match_names": [
         "Kenilworth Resort & Spa 5★",
         "Kenilworth Resort & Spa",
-        "Kenilworth Resort and Spa"
+        "Kenilworth Resort and Spa",
+        "The Kenilworth Beach Resort & Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 18,
@@ -339,19 +346,19 @@
       "hotel_name": "Royal Orchid Beach Resort & Spa 5★",
       "resort": "Южный Гоа, пляж Уторда",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 271,
+      "tourvisor_name": "Royal Orchid Beach Resort & Spa ",
+      "tourvisor_region": "Юг Гоа",
+      "tourvisor_region_code": 16,
+      "tourvisor_stars": 4,
       "search_query": "Royal Orchid Beach Resort & Spa",
       "match_names": [
         "Royal Orchid Beach Resort & Spa 5★",
         "Royal Orchid Beach Resort & Spa",
         "Royal Orchid Beach Resort and Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 19,
@@ -359,18 +366,18 @@
       "hotel_name": "Planet Hollywood Beach Resort 5★",
       "resort": "Южный Гоа, пляж Уторда",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 50593,
+      "tourvisor_name": "Planet Hollywood Beach Resort",
+      "tourvisor_region": "Юг Гоа",
+      "tourvisor_region_code": 16,
+      "tourvisor_stars": 5,
       "search_query": "Planet Hollywood Beach Resort",
       "match_names": [
         "Planet Hollywood Beach Resort 5★",
         "Planet Hollywood Beach Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 20,
@@ -388,7 +395,7 @@
         "Azaya Beach Resort Goa 5★",
         "Azaya Beach Resort Goa"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -397,18 +404,18 @@
       "hotel_name": "Fairfield by Marriott Goa Benaulim 4★",
       "resort": "Южный Гоа, пляж Бенаулим",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 108249,
+      "tourvisor_name": "Fairfield By Marriott Goa Benaulim",
+      "tourvisor_region": "Бенаулим",
+      "tourvisor_region_code": 2351,
+      "tourvisor_stars": 4,
       "search_query": "Fairfield by Marriott Goa Benaulim",
       "match_names": [
         "Fairfield by Marriott Goa Benaulim 4★",
         "Fairfield by Marriott Goa Benaulim"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 22,
@@ -416,19 +423,20 @@
       "hotel_name": "TreeHouse Blue Hotel & Serviced Apartments 3★",
       "resort": "Южный Гоа, Маджорда",
       "region": "south_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 68865,
+      "tourvisor_name": "Treehouse Blue Villas",
+      "tourvisor_region": "Юг Гоа",
+      "tourvisor_region_code": 16,
+      "tourvisor_stars": 2,
       "search_query": "TreeHouse Blue Hotel & Serviced Apartments",
       "match_names": [
         "TreeHouse Blue Hotel & Serviced Apartments 3★",
         "TreeHouse Blue Hotel & Serviced Apartments",
-        "TreeHouse Blue Hotel and Serviced Apartments"
+        "TreeHouse Blue Hotel and Serviced Apartments",
+        "Treehouse Blue Villas"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.783
     },
     {
       "zhiraf_id": 23,
@@ -446,7 +454,7 @@
         "Stone Wood Resorts Mandrem 4★",
         "Stone Wood Resorts Mandrem"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -455,18 +463,19 @@
       "hotel_name": "White Wood Resort by Stone Wood 4★",
       "resort": "Северный Гоа, Морджим / Ашвем",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 63697,
+      "tourvisor_name": "Stone Wood Resort & Spa",
+      "tourvisor_region": "Мандрем бич",
+      "tourvisor_region_code": 2346,
+      "tourvisor_stars": 3,
       "search_query": "White Wood Resort by Stone Wood",
       "match_names": [
         "White Wood Resort by Stone Wood 4★",
-        "White Wood Resort by Stone Wood"
+        "White Wood Resort by Stone Wood",
+        "Stone Wood Resort & Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.783
     },
     {
       "zhiraf_id": 25,
@@ -474,18 +483,18 @@
       "hotel_name": "Grand Continent Morjim 4★",
       "resort": "Северный Гоа, пляж Морджим",
       "region": "north_goa",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 117800,
+      "tourvisor_name": "Grand Continent Morjim",
+      "tourvisor_region": "Морджим бич",
+      "tourvisor_region_code": 2340,
+      "tourvisor_stars": 4,
       "search_query": "Grand Continent Morjim",
       "match_names": [
         "Grand Continent Morjim 4★",
         "Grand Continent Morjim"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     }
   ]
 }

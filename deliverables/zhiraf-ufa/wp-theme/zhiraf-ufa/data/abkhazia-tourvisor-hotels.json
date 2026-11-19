@@ -1,0 +1,482 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "tourvisor-autocomplete",
+  "country_slug": "abkhazia",
+  "identified_at": "2026-11-19",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ abkhazia:{zhiraf_id} (country_slug abkhazia, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 46,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "abkhazia",
+      "hotel_name": "Amza Park Hotel 4★",
+      "resort": "Гагра, пр-т В. Ардзинба",
+      "region": "gagra",
+      "tourvisor_id": 30084,
+      "tourvisor_name": "Amza Park Hotel (Ex. Энергетик)",
+      "tourvisor_region": "Гагра Центр",
+      "tourvisor_region_code": 2549,
+      "tourvisor_stars": 4,
+      "search_query": "Amza Park Hotel",
+      "match_names": [
+        "Amza Park Hotel 4★",
+        "Amza Park Hotel",
+        "Amza Park Hotel (Ex. Энергетик)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "abkhazia",
+      "hotel_name": "Санаторий «Самшитовая роща» 4★",
+      "resort": "Пицунда, мыс Пицунда",
+      "region": "pitsunda",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Санаторий «Самшитовая роща»",
+      "match_names": [
+        "Санаторий «Самшитовая роща» 4★",
+        "Санаторий «Самшитовая роща»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "abkhazia",
+      "hotel_name": "Пансионат «Литфонд» 3★+",
+      "resort": "Пицунда, берег озера Инкит",
+      "region": "pitsunda",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Пансионат «Литфонд» 3★+",
+      "match_names": [
+        "Пансионат «Литфонд» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "abkhazia",
+      "hotel_name": "Клубный отель «Дельфин» 4★",
+      "resort": "Пицунда, пос. Лдзаа",
+      "region": "pitsunda",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Клубный отель «Дельфин»",
+      "match_names": [
+        "Клубный отель «Дельфин» 4★",
+        "Клубный отель «Дельфин»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Абаата» 4★",
+      "resort": "Старая Гагра, у крепости Абаата",
+      "region": "gagra",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Абаата»",
+      "match_names": [
+        "Отель «Абаата» 4★",
+        "Отель «Абаата»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "abkhazia",
+      "hotel_name": "Black Sea Hotel Ldzaa 4★",
+      "resort": "Пицунда, пос. Лдзаа",
+      "region": "pitsunda",
+      "tourvisor_id": 76587,
+      "tourvisor_name": "Грейс Black Sea",
+      "tourvisor_region": "Сухумский район",
+      "tourvisor_region_code": 421,
+      "tourvisor_stars": 3,
+      "search_query": "black sea",
+      "match_names": [
+        "Black Sea Hotel Ldzaa 4★",
+        "Black Sea Hotel Ldzaa",
+        "Грейс Black Sea"
+      ],
+      "match_status": "auto",
+      "match_score": 0.783
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Мандарин» Лдзаа",
+      "resort": "Пицунда, пос. Лдзаа",
+      "region": "pitsunda",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Мандарин» Лдзаа",
+      "match_names": [
+        "Отель «Мандарин» Лдзаа"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "abkhazia",
+      "hotel_name": "ECO HOUSE PITIUNT",
+      "resort": "Пицунда, Кипарисовая аллея",
+      "region": "pitsunda",
+      "tourvisor_id": 122342,
+      "tourvisor_name": "Eco House Pitiunt",
+      "tourvisor_region": "Пицунда",
+      "tourvisor_region_code": 422,
+      "tourvisor_stars": 0,
+      "search_query": "ECO HOUSE PITIUNT",
+      "match_names": [
+        "ECO HOUSE PITIUNT"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Золотой гранат»",
+      "resort": "Пицунда, пос. Лдзаа",
+      "region": "pitsunda",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Золотой гранат»",
+      "match_names": [
+        "Отель «Золотой гранат»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Ирэн» 3★+",
+      "resort": "Пицунда, въезд в заповедную зону",
+      "region": "pitsunda",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Ирэн» 3★+",
+      "match_names": [
+        "Отель «Ирэн» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "abkhazia",
+      "hotel_name": "Abaash Hotel Afon 4★",
+      "resort": "Новый Афон, ул. Ладария",
+      "region": "new_afon",
+      "tourvisor_id": 65783,
+      "tourvisor_name": "Abaash Hotel Afon (Абааш Афон)",
+      "tourvisor_region": "Новый Афон",
+      "tourvisor_region_code": 420,
+      "tourvisor_stars": 4,
+      "search_query": "Abaash Hotel Afon",
+      "match_names": [
+        "Abaash Hotel Afon 4★",
+        "Abaash Hotel Afon",
+        "Abaash Hotel Afon (Абааш Афон)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Никополи» 3★+",
+      "resort": "Новый Афон, центр курорта",
+      "region": "new_afon",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Никополи» 3★+",
+      "match_names": [
+        "Отель «Никополи» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Царская аллея» 3★+",
+      "resort": "Новый Афон, ул. Торосяна",
+      "region": "new_afon",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Царская аллея» 3★+",
+      "match_names": [
+        "Отель «Царская аллея» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Грифон» 3★",
+      "resort": "Новый Афон, берег реки Псырцха",
+      "region": "new_afon",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Грифон»",
+      "match_names": [
+        "Отель «Грифон» 3★",
+        "Отель «Грифон»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "abkhazia",
+      "hotel_name": "Парк-отель «Анакопия Клаб» 3★+",
+      "resort": "Новый Афон, побережье",
+      "region": "new_afon",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Парк-отель «Анакопия Клаб» 3★+",
+      "match_names": [
+        "Парк-отель «Анакопия Клаб» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "abkhazia",
+      "hotel_name": "Amra Park-Hotel & SPA 4★",
+      "resort": "Старая Гагра, дендропарк принца Ольденбургского",
+      "region": "gagra",
+      "tourvisor_id": 30033,
+      "tourvisor_name": "Amra Park Hotel & Spa",
+      "tourvisor_region": "Гагрский район",
+      "tourvisor_region_code": 418,
+      "tourvisor_stars": 4,
+      "search_query": "Amra Park-Hotel & SPA",
+      "match_names": [
+        "Amra Park-Hotel & SPA 4★",
+        "Amra Park-Hotel & SPA",
+        "Amra Park-Hotel and SPA",
+        "Amra Park Hotel & Spa"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "abkhazia",
+      "hotel_name": "Alex Resort & SPA Hotel 4★",
+      "resort": "Новая Гагра, ул. Званба",
+      "region": "gagra",
+      "tourvisor_id": 30032,
+      "tourvisor_name": "Alex Resort & Spa Hotel",
+      "tourvisor_region": "Гагра Центр",
+      "tourvisor_region_code": 2549,
+      "tourvisor_stars": 4,
+      "search_query": "Alex Resort & SPA Hotel",
+      "match_names": [
+        "Alex Resort & SPA Hotel 4★",
+        "Alex Resort & SPA Hotel",
+        "Alex Resort and SPA Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "abkhazia",
+      "hotel_name": "Garden Resort Gagra 4★",
+      "resort": "Старая Гагра, склон ущелья",
+      "region": "gagra",
+      "tourvisor_id": 40414,
+      "tourvisor_name": "Garden Resort Gagra (Ex. Санаторий Москва)",
+      "tourvisor_region": "Гагрский район",
+      "tourvisor_region_code": 418,
+      "tourvisor_stars": 4,
+      "search_query": "Garden Resort Gagra",
+      "match_names": [
+        "Garden Resort Gagra 4★",
+        "Garden Resort Gagra",
+        "Garden Resort Gagra (Ex. Санаторий Москва)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "abkhazia",
+      "hotel_name": "Sunrise Garden Hotel 3★+",
+      "resort": "Старая Гагра, Комсомольский парк",
+      "region": "gagra",
+      "tourvisor_id": 51585,
+      "tourvisor_name": "Sunrise Garden Hotel (Санрайз Гарден)",
+      "tourvisor_region": "Гагра Центр",
+      "tourvisor_region_code": 2549,
+      "tourvisor_stars": 3,
+      "search_query": "Sunrise Garden Hotel 3★+",
+      "match_names": [
+        "Sunrise Garden Hotel 3★+",
+        "Sunrise Garden Hotel (Санрайз Гарден)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "abkhazia",
+      "hotel_name": "Grand Hotel Gagra 4★",
+      "resort": "Новая Гагра, ул. Абазгаа",
+      "region": "gagra",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Grand Hotel Gagra",
+      "match_names": [
+        "Grand Hotel Gagra 4★",
+        "Grand Hotel Gagra"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "abkhazia",
+      "hotel_name": "Garuda Boutique Hotel 4★",
+      "resort": "Сухум, ул. Буби Темир-оглы",
+      "region": "sukhum",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Garuda Boutique Hotel",
+      "match_names": [
+        "Garuda Boutique Hotel 4★",
+        "Garuda Boutique Hotel"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «ДЭМ» 4★",
+      "resort": "Сухум, набережная Махаджиров",
+      "region": "sukhum",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «ДЭМ»",
+      "match_names": [
+        "Отель «ДЭМ» 4★",
+        "Отель «ДЭМ»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Диоскурия» 3★+",
+      "resort": "Сухум, ул. Воронова",
+      "region": "sukhum",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Диоскурия» 3★+",
+      "match_names": [
+        "Отель «Диоскурия» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "abkhazia",
+      "hotel_name": "Гранд Отель «Маяк» 3★+",
+      "resort": "Сухум, набережная Диоскуров",
+      "region": "sukhum",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Гранд Отель «Маяк» 3★+",
+      "match_names": [
+        "Гранд Отель «Маяк» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "abkhazia",
+      "hotel_name": "Отель «Атриум Виктория» 4★",
+      "resort": "Сухум, ул. Айдгылара",
+      "region": "sukhum",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Атриум Виктория»",
+      "match_names": [
+        "Отель «Атриум Виктория» 4★",
+        "Отель «Атриум Виктория»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    }
+  ]
+}

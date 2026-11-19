@@ -1,0 +1,496 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "tourvisor-autocomplete",
+  "country_slug": "armenia",
+  "identified_at": "2026-11-19",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ armenia:{zhiraf_id} (country_slug armenia, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 53,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "armenia",
+      "hotel_name": "Republica Hotel Yerevan 4★",
+      "resort": "Ереван, Малый Кентрон, ул. Амиряна",
+      "region": "",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Republica Hotel Yerevan",
+      "match_names": [
+        "Republica Hotel Yerevan 4★",
+        "Republica Hotel Yerevan"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "armenia",
+      "hotel_name": "Paris Hotel Yerevan 4★",
+      "resort": "Ереван, Малый Кентрон, ул. Амиряна",
+      "region": "",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Paris Hotel Yerevan",
+      "match_names": [
+        "Paris Hotel Yerevan 4★",
+        "Paris Hotel Yerevan"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "armenia",
+      "hotel_name": "Tufenkian Historic Yerevan Hotel 4★",
+      "resort": "Ереван, Малый Кентрон, ул. Анрапетутян",
+      "region": "",
+      "tourvisor_id": 41540,
+      "tourvisor_name": "Tufenkian Historic Yerevan Hotel",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 4,
+      "search_query": "Tufenkian Historic Yerevan Hotel",
+      "match_names": [
+        "Tufenkian Historic Yerevan Hotel 4★",
+        "Tufenkian Historic Yerevan Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "armenia",
+      "hotel_name": "Holiday Inn Express Yerevan 3★",
+      "resort": "Ереван, Малый Кентрон, ул. Бузанда",
+      "region": "",
+      "tourvisor_id": 65652,
+      "tourvisor_name": "Holiday Inn Express Yerevan",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 3,
+      "search_query": "Holiday Inn Express Yerevan",
+      "match_names": [
+        "Holiday Inn Express Yerevan 3★",
+        "Holiday Inn Express Yerevan"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "armenia",
+      "hotel_name": "Cascade Hotel 3★",
+      "resort": "Ереван, Малый Кентрон, у комплекса Каскад",
+      "region": "",
+      "tourvisor_id": 37583,
+      "tourvisor_name": "Cascade",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 3,
+      "search_query": "cascade",
+      "match_names": [
+        "Cascade Hotel 3★",
+        "Cascade Hotel",
+        "Cascade"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "armenia",
+      "hotel_name": "Best Western Plus Paradise Hotel Dilijan 4★",
+      "resort": "Дилижан, у национального парка",
+      "region": "",
+      "tourvisor_id": 61245,
+      "tourvisor_name": "Best Western Plus Paradise Hotel Dilijan",
+      "tourvisor_region": "Севан",
+      "tourvisor_region_code": 573,
+      "tourvisor_stars": 4,
+      "search_query": "Best Western Plus Paradise Hotel Dilijan",
+      "match_names": [
+        "Best Western Plus Paradise Hotel Dilijan 4★",
+        "Best Western Plus Paradise Hotel Dilijan"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "armenia",
+      "hotel_name": "Ecokayan Dilijan Resort Hotel 3★",
+      "resort": "Дилижан, долина реки Овк",
+      "region": "",
+      "tourvisor_id": 80807,
+      "tourvisor_name": "Ecokayan Dilijan Resort",
+      "tourvisor_region": "Севан",
+      "tourvisor_region_code": 573,
+      "tourvisor_stars": 3,
+      "search_query": "Ecokayan Dilijan Resort Hotel",
+      "match_names": [
+        "Ecokayan Dilijan Resort Hotel 3★",
+        "Ecokayan Dilijan Resort Hotel",
+        "Ecokayan Dilijan Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "armenia",
+      "hotel_name": "Cozy House Dilijan",
+      "resort": "Дилижан, лесной массив",
+      "region": "",
+      "tourvisor_id": 144730,
+      "tourvisor_name": "Cozy House Dilijan",
+      "tourvisor_region": "Севан",
+      "tourvisor_region_code": 573,
+      "tourvisor_stars": 2,
+      "search_query": "Cozy House Dilijan",
+      "match_names": [
+        "Cozy House Dilijan"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "armenia",
+      "hotel_name": "DiliJazz Hotel & Restaurant 4★",
+      "resort": "Дилижан, ущелье Техут",
+      "region": "",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "DiliJazz Hotel & Restaurant",
+      "match_names": [
+        "DiliJazz Hotel & Restaurant 4★",
+        "DiliJazz Hotel & Restaurant",
+        "DiliJazz Hotel and Restaurant"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "armenia",
+      "hotel_name": "Casanova Inn Boutique Hotel 3★",
+      "resort": "Дилижан, возвышенность над центром",
+      "region": "",
+      "tourvisor_id": 65232,
+      "tourvisor_name": "Casanova Inn",
+      "tourvisor_region": "Севан",
+      "tourvisor_region_code": 573,
+      "tourvisor_stars": 3,
+      "search_query": "Casanova Inn Boutique Hotel",
+      "match_names": [
+        "Casanova Inn Boutique Hotel 3★",
+        "Casanova Inn Boutique Hotel",
+        "Casanova Inn"
+      ],
+      "match_status": "auto",
+      "match_score": 0.783
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "armenia",
+      "hotel_name": "Elegant Hotel & Resort 4★",
+      "resort": "Цахкадзор, долина реки Тандзахпюр",
+      "region": "",
+      "tourvisor_id": 43875,
+      "tourvisor_name": "Elegant Hotel & Resort",
+      "tourvisor_region": "Цахкадзор",
+      "tourvisor_region_code": 475,
+      "tourvisor_stars": 4,
+      "search_query": "Elegant Hotel & Resort",
+      "match_names": [
+        "Elegant Hotel & Resort 4★",
+        "Elegant Hotel & Resort",
+        "Elegant Hotel and Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "armenia",
+      "hotel_name": "Tsaghkadzor Park Hotel & Spa 4★",
+      "resort": "Цахкадзор, парковая зона",
+      "region": "",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Tsaghkadzor Park Hotel & Spa",
+      "match_names": [
+        "Tsaghkadzor Park Hotel & Spa 4★",
+        "Tsaghkadzor Park Hotel & Spa",
+        "Tsaghkadzor Park Hotel and Spa"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "armenia",
+      "hotel_name": "Eighty Eight Hotel & Spa 5★",
+      "resort": "Цахкадзор, горнолыжная зона",
+      "region": "",
+      "tourvisor_id": 123958,
+      "tourvisor_name": "Eighty Eight Hotel & Spa",
+      "tourvisor_region": "Цахкадзор",
+      "tourvisor_region_code": 475,
+      "tourvisor_stars": 4,
+      "search_query": "Eighty Eight Hotel & Spa",
+      "match_names": [
+        "Eighty Eight Hotel & Spa 5★",
+        "Eighty Eight Hotel & Spa",
+        "Eighty Eight Hotel and Spa"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "armenia",
+      "hotel_name": "Kecharis Hotel & Resort 3★+",
+      "resort": "Цахкадзор, центр курорта",
+      "region": "",
+      "tourvisor_id": 43883,
+      "tourvisor_name": "Kecharis",
+      "tourvisor_region": "Цахкадзор",
+      "tourvisor_region_code": 475,
+      "tourvisor_stars": 4,
+      "search_query": "Kecharis Hotel & Resort 3★+",
+      "match_names": [
+        "Kecharis Hotel & Resort 3★+",
+        "Kecharis Hotel and Resort 3★+",
+        "Kecharis"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "armenia",
+      "hotel_name": "Grand Resort Jermuk 4★",
+      "resort": "Джермук, у Питьевой галереи",
+      "region": "",
+      "tourvisor_id": 43879,
+      "tourvisor_name": "Grand Resort Jermuk (Ex. Hyatt Place)",
+      "tourvisor_region": "Джермук",
+      "tourvisor_region_code": 474,
+      "tourvisor_stars": 4,
+      "search_query": "Grand Resort Jermuk",
+      "match_names": [
+        "Grand Resort Jermuk 4★",
+        "Grand Resort Jermuk",
+        "Grand Resort Jermuk (Ex. Hyatt Place)"
+      ],
+      "match_status": "auto",
+      "match_score": 0.825
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "armenia",
+      "hotel_name": "Tsovasar Family Rest Complex",
+      "resort": "Озеро Севан, полуостров / Норашен",
+      "region": "",
+      "tourvisor_id": 57078,
+      "tourvisor_name": "Tsovasar Family Rest Complex",
+      "tourvisor_region": "Севан",
+      "tourvisor_region_code": 573,
+      "tourvisor_stars": 3,
+      "search_query": "Tsovasar Family Rest Complex",
+      "match_names": [
+        "Tsovasar Family Rest Complex"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "armenia",
+      "hotel_name": "Lavash Hotel Sevan 3★+",
+      "resort": "Озеро Севан, трасса Ереван-Иджеван у воды",
+      "region": "",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Lavash Hotel Sevan 3★+",
+      "match_names": [
+        "Lavash Hotel Sevan 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "armenia",
+      "hotel_name": "Armenia Wellness & SPA Hotel 4★",
+      "resort": "Джермук, курортный парк",
+      "region": "",
+      "tourvisor_id": 37599,
+      "tourvisor_name": "Moselle Armenia (Ex. Armenia Wellness & Spa)",
+      "tourvisor_region": "Джермук",
+      "tourvisor_region_code": 474,
+      "tourvisor_stars": 5,
+      "search_query": "Armenia Wellness & SPA Hotel",
+      "match_names": [
+        "Armenia Wellness & SPA Hotel 4★",
+        "Armenia Wellness & SPA Hotel",
+        "Armenia Wellness and SPA Hotel",
+        "Moselle Armenia (Ex. Armenia Wellness & Spa)"
+      ],
+      "match_status": "auto",
+      "match_score": 0.883
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "armenia",
+      "hotel_name": "Jermuk Hotel and SPA 4★",
+      "resort": "Джермук, ул. Мясникяна",
+      "region": "",
+      "tourvisor_id": 69937,
+      "tourvisor_name": "Jermuk Hotel And Spa",
+      "tourvisor_region": "Джермук",
+      "tourvisor_region_code": 474,
+      "tourvisor_stars": 5,
+      "search_query": "Jermuk Hotel and SPA",
+      "match_names": [
+        "Jermuk Hotel and SPA 4★",
+        "Jermuk Hotel and SPA"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "armenia",
+      "hotel_name": "Moselle Armenia Wellness & SPA 4★",
+      "resort": "Джермук, парковая зона",
+      "region": "",
+      "tourvisor_id": 37599,
+      "tourvisor_name": "Moselle Armenia (Ex. Armenia Wellness & Spa)",
+      "tourvisor_region": "Джермук",
+      "tourvisor_region_code": 474,
+      "tourvisor_stars": 5,
+      "search_query": "Moselle Armenia Wellness & SPA",
+      "match_names": [
+        "Moselle Armenia Wellness & SPA 4★",
+        "Moselle Armenia Wellness & SPA",
+        "Moselle Armenia Wellness and SPA",
+        "Moselle Armenia (Ex. Armenia Wellness & Spa)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "armenia",
+      "hotel_name": "Ani Grand Hotel Yerevan 4★",
+      "resort": "Ереван, Малый Кентрон, ул. Ханджяна",
+      "region": "",
+      "tourvisor_id": 68412,
+      "tourvisor_name": "Ani Grand Hotel",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 4,
+      "search_query": "Ani Grand Hotel Yerevan",
+      "match_names": [
+        "Ani Grand Hotel Yerevan 4★",
+        "Ani Grand Hotel Yerevan",
+        "Ani Grand Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 0.783
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "armenia",
+      "hotel_name": "DoubleTree by Hilton Yerevan 4★",
+      "resort": "Ереван, Кентрон, ул. Григора Лусаворича",
+      "region": "",
+      "tourvisor_id": 43877,
+      "tourvisor_name": "Doubletree By Hilton Yerevan",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 4,
+      "search_query": "DoubleTree by Hilton Yerevan",
+      "match_names": [
+        "DoubleTree by Hilton Yerevan 4★",
+        "DoubleTree by Hilton Yerevan"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "armenia",
+      "hotel_name": "Nova Hotel Yerevan 4★",
+      "resort": "Ереван, Малый Кентрон, ул. Саят-Нова",
+      "region": "",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Nova Hotel Yerevan",
+      "match_names": [
+        "Nova Hotel Yerevan 4★",
+        "Nova Hotel Yerevan"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "armenia",
+      "hotel_name": "ibis Yerevan Center 3★",
+      "resort": "Ереван, Северный проспект",
+      "region": "",
+      "tourvisor_id": 56219,
+      "tourvisor_name": "Ibis Yerevan Center",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 3,
+      "search_query": "ibis Yerevan Center",
+      "match_names": [
+        "ibis Yerevan Center 3★",
+        "ibis Yerevan Center"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "armenia",
+      "hotel_name": "Central Hotel Yerevan 4★",
+      "resort": "Ереван, Малый Кентрон, ул. Закяна",
+      "region": "",
+      "tourvisor_id": 58768,
+      "tourvisor_name": "Central Hotel Yerevan",
+      "tourvisor_region": "Ереван",
+      "tourvisor_region_code": 473,
+      "tourvisor_stars": 4,
+      "search_query": "Central Hotel Yerevan",
+      "match_names": [
+        "Central Hotel Yerevan 4★",
+        "Central Hotel Yerevan"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    }
+  ]
+}

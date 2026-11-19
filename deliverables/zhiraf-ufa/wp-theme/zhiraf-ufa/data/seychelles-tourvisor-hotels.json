@@ -1,10 +1,10 @@
 {
   "schema": "zhiraf.tourvisor-hotels-map.v1",
-  "source": "seychelles-catalog-scaffold",
+  "source": "tourvisor-autocomplete",
   "country_slug": "seychelles",
-  "identified_at": "2026-11-18",
+  "identified_at": "2026-11-19",
   "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ seychelles:{zhiraf_id} (country_slug seychelles, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
-  "tourvisor_country_id": 0,
+  "tourvisor_country_id": 28,
   "hotels": [
     {
       "zhiraf_id": 1,
@@ -12,18 +12,19 @@
       "hotel_name": "STORY Seychelles 5★",
       "resort": "Остров Маэ, пляж Бо-Валлон",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 44408,
+      "tourvisor_name": "Story Seychelles (Ex. The H Resort Beau Vallon Beach)",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 5,
       "search_query": "STORY Seychelles",
       "match_names": [
         "STORY Seychelles 5★",
-        "STORY Seychelles"
+        "STORY Seychelles",
+        "Story Seychelles (Ex. The H Resort Beau Vallon Beach)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 2,
@@ -31,19 +32,19 @@
       "hotel_name": "Savoy Seychelles Resort & Spa 5★",
       "resort": "Остров Маэ, центр Бо-Валлона",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 33531,
+      "tourvisor_name": "Savoy Seychelles Resort & Spa",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 5,
       "search_query": "Savoy Seychelles Resort & Spa",
       "match_names": [
         "Savoy Seychelles Resort & Spa 5★",
         "Savoy Seychelles Resort & Spa",
         "Savoy Seychelles Resort and Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 3,
@@ -60,7 +61,7 @@
       "match_names": [
         "Clef des Îles Self-Catering"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -69,18 +70,19 @@
       "hotel_name": "Paradise Sun Hotel 4★",
       "resort": "Остров Праслин, пляж Кот-д’Ор",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 11878,
+      "tourvisor_name": "Paradise Sun",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
+      "tourvisor_stars": 4,
       "search_query": "Paradise Sun Hotel",
       "match_names": [
         "Paradise Sun Hotel 4★",
-        "Paradise Sun Hotel"
+        "Paradise Sun Hotel",
+        "Paradise Sun"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 5,
@@ -88,18 +90,19 @@
       "hotel_name": "Acajou Beach Resort 4★",
       "resort": "Остров Праслин, пляж Кот-д’Ор",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 11807,
+      "tourvisor_name": "Acajou Hotel",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
+      "tourvisor_stars": 3,
       "search_query": "Acajou Beach Resort",
       "match_names": [
         "Acajou Beach Resort 4★",
-        "Acajou Beach Resort"
+        "Acajou Beach Resort",
+        "Acajou Hotel"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 6,
@@ -117,7 +120,7 @@
         "CaranaBeach Hotel 4★",
         "CaranaBeach Hotel"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -126,18 +129,18 @@
       "hotel_name": "Crown Beach Hotel 4★",
       "resort": "Остров Маэ, Пуэнт-О-Сель",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 33532,
+      "tourvisor_name": "Crown Beach Hotel",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 4,
       "search_query": "Crown Beach Hotel",
       "match_names": [
         "Crown Beach Hotel 4★",
         "Crown Beach Hotel"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 8,
@@ -145,18 +148,19 @@
       "hotel_name": "Hotel L’Archipel 4★",
       "resort": "Остров Праслин, Анс-Гувернеман",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 11852,
+      "tourvisor_name": "L Archipel Hotel",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
+      "tourvisor_stars": 4,
       "search_query": "Hotel L’Archipel",
       "match_names": [
         "Hotel L’Archipel 4★",
-        "Hotel L’Archipel"
+        "Hotel L’Archipel",
+        "L Archipel Hotel"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 9,
@@ -164,18 +168,19 @@
       "hotel_name": "Le Duc de Praslin 5★",
       "resort": "Остров Праслин, пляж Кот-д’Ор",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
+      "tourvisor_id": 79785,
+      "tourvisor_name": "Villa 270 Le Duc De Praslin",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
       "tourvisor_stars": 0,
       "search_query": "Le Duc de Praslin",
       "match_names": [
         "Le Duc de Praslin 5★",
-        "Le Duc de Praslin"
+        "Le Duc de Praslin",
+        "Villa 270 Le Duc De Praslin"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 10,
@@ -183,19 +188,19 @@
       "hotel_name": "Coco de Mer & Black Parrot Suites 4★",
       "resort": "Остров Праслин, Анс-Буа-де-Роз",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 11829,
+      "tourvisor_name": "Coco De Mer & Black Parrot Suites",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
+      "tourvisor_stars": 4,
       "search_query": "Coco de Mer & Black Parrot Suites",
       "match_names": [
         "Coco de Mer & Black Parrot Suites 4★",
         "Coco de Mer & Black Parrot Suites",
         "Coco de Mer and Black Parrot Suites"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 11,
@@ -203,18 +208,19 @@
       "hotel_name": "Le Repaire Boutique Hotel 4★",
       "resort": "Остров Ла-Диг, Анс-Реюньон",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 24510,
+      "tourvisor_name": "Le Repaire Boutique Hotel & Restaurant",
+      "tourvisor_region": "Ла Диг о.",
+      "tourvisor_region_code": 705,
+      "tourvisor_stars": 3,
       "search_query": "Le Repaire Boutique Hotel",
       "match_names": [
         "Le Repaire Boutique Hotel 4★",
-        "Le Repaire Boutique Hotel"
+        "Le Repaire Boutique Hotel",
+        "Le Repaire Boutique Hotel & Restaurant"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.912
     },
     {
       "zhiraf_id": 12,
@@ -222,18 +228,19 @@
       "hotel_name": "Le Nautique Waterfront Hotel 4★",
       "resort": "Остров Ла-Диг, Ла-Пасс",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 64659,
+      "tourvisor_name": "Le Nautique Luxury Waterfront Hotel",
+      "tourvisor_region": "Ла Диг о.",
+      "tourvisor_region_code": 705,
+      "tourvisor_stars": 4,
       "search_query": "Le Nautique Waterfront Hotel",
       "match_names": [
         "Le Nautique Waterfront Hotel 4★",
-        "Le Nautique Waterfront Hotel"
+        "Le Nautique Waterfront Hotel",
+        "Le Nautique Luxury Waterfront Hotel"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.912
     },
     {
       "zhiraf_id": 13,
@@ -250,7 +257,7 @@
       "match_names": [
         "Cabanes des Anges Self-Catering"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -268,7 +275,7 @@
       "match_names": [
         "Chalets d’Anse Réunion"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -277,17 +284,17 @@
       "hotel_name": "Cocotier du Rocher",
       "resort": "Остров Ла-Диг, Анс-Реюньон (внутренняя часть)",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 77718,
+      "tourvisor_name": "Cocotier Du Rocher",
+      "tourvisor_region": "Ла Диг о.",
+      "tourvisor_region_code": 705,
+      "tourvisor_stars": 2,
       "search_query": "Cocotier du Rocher",
       "match_names": [
         "Cocotier du Rocher"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 16,
@@ -295,17 +302,18 @@
       "hotel_name": "Au Fond de Mer View",
       "resort": "Остров Маэ, Анс-Рояль",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
+      "tourvisor_id": 24508,
+      "tourvisor_name": "Au Fond De Mer View Self Catering Apartment",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
       "tourvisor_stars": 0,
       "search_query": "Au Fond de Mer View",
       "match_names": [
-        "Au Fond de Mer View"
+        "Au Fond de Mer View",
+        "Au Fond De Mer View Self Catering Apartment"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.9
     },
     {
       "zhiraf_id": 17,
@@ -313,17 +321,18 @@
       "hotel_name": "La Villa Therese Holiday Apartments",
       "resort": "Остров Маэ, Анс-Рояль",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
-      "search_query": "La Villa Therese Holiday Apartments",
+      "tourvisor_id": 36552,
+      "tourvisor_name": "La Villa Therese",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 3,
+      "search_query": "la therese",
       "match_names": [
-        "La Villa Therese Holiday Apartments"
+        "La Villa Therese Holiday Apartments",
+        "La Villa Therese"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.783
     },
     {
       "zhiraf_id": 18,
@@ -331,17 +340,17 @@
       "hotel_name": "Pineapple Beach Villas",
       "resort": "Остров Маэ, Анс-О-Пуль-Блё / Бэ-Лазар",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
+      "tourvisor_id": 77152,
+      "tourvisor_name": "Pineapple Beach Villas",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
       "tourvisor_stars": 0,
       "search_query": "Pineapple Beach Villas",
       "match_names": [
         "Pineapple Beach Villas"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 19,
@@ -358,7 +367,7 @@
       "match_names": [
         "Chalets d’Anse Forbans"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -376,7 +385,7 @@
       "match_names": [
         "Les Villas d’Or"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -385,18 +394,19 @@
       "hotel_name": "Constance Ephelia 5★",
       "resort": "Остров Маэ, Порт-Лоне",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 11832,
+      "tourvisor_name": "Constance Ephelia Resort",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 5,
       "search_query": "Constance Ephelia",
       "match_names": [
         "Constance Ephelia 5★",
-        "Constance Ephelia"
+        "Constance Ephelia",
+        "Constance Ephelia Resort"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 22,
@@ -404,18 +414,19 @@
       "hotel_name": "DoubleTree by Hilton Allamanda 4★",
       "resort": "Остров Маэ, Анс-Форбан",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 36549,
+      "tourvisor_name": "Doubletree By Hilton Seychelles Allamanda Resort & Spa",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 4,
       "search_query": "DoubleTree by Hilton Allamanda",
       "match_names": [
         "DoubleTree by Hilton Allamanda 4★",
-        "DoubleTree by Hilton Allamanda"
+        "DoubleTree by Hilton Allamanda",
+        "Doubletree By Hilton Seychelles Allamanda Resort & Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.912
     },
     {
       "zhiraf_id": 23,
@@ -423,18 +434,18 @@
       "hotel_name": "Chateau Elysium 4★",
       "resort": "Остров Маэ, Бо-Валлон / Бель-Омбр",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 102787,
+      "tourvisor_name": "Chateau Elysium",
+      "tourvisor_region": "Маэ о.",
+      "tourvisor_region_code": 703,
+      "tourvisor_stars": 4,
       "search_query": "Chateau Elysium",
       "match_names": [
         "Chateau Elysium 4★",
         "Chateau Elysium"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 24,
@@ -442,18 +453,19 @@
       "hotel_name": "Les Lauriers Eco Hotel 4★",
       "resort": "Остров Праслин, Кот-д’Ор",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 36558,
+      "tourvisor_name": "Les Lauriers Eco Hotel & Restaurant",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
+      "tourvisor_stars": 3,
       "search_query": "Les Lauriers Eco Hotel",
       "match_names": [
         "Les Lauriers Eco Hotel 4★",
-        "Les Lauriers Eco Hotel"
+        "Les Lauriers Eco Hotel",
+        "Les Lauriers Eco Hotel & Restaurant"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.912
     },
     {
       "zhiraf_id": 25,
@@ -461,18 +473,18 @@
       "hotel_name": "Village du Pecheur 4★",
       "resort": "Остров Праслин, пляж Кот-д’Ор",
       "region": "",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 11897,
+      "tourvisor_name": "Village Du Pecheur",
+      "tourvisor_region": "Праслин о.",
+      "tourvisor_region_code": 704,
+      "tourvisor_stars": 4,
       "search_query": "Village du Pecheur",
       "match_names": [
         "Village du Pecheur 4★",
         "Village du Pecheur"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     }
   ]
 }

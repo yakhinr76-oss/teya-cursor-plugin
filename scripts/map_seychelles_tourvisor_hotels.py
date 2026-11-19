@@ -25,7 +25,7 @@ CATALOG_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/seychell
 OUT_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/seychelles-tourvisor-hotels.json"
 
 # Tourvisor autocomplete: Сейшелы (country id TODO).
-TOURVISOR_SEYCHELLES_COUNTRY_ID = int(os.environ.get("TOURVISOR_SEYCHELLES_COUNTRY_ID", "0"))
+TOURVISOR_SEYCHELLES_COUNTRY_ID = int(os.environ.get("TOURVISOR_SEYCHELLES_COUNTRY_ID", "28"))
 AUTOCOMPLETE_URL = "https://tourvisor.ru/xml/autocomplete.php"
 
 TR = str.maketrans(

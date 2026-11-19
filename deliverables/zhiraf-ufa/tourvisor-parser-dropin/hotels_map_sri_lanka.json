@@ -1,0 +1,517 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "sri_lanka",
+  "tourvisor_country_id": 12,
+  "identified_at": "2026-11-19",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 4,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        77625,
+        12143,
+        64753,
+        43636,
+        45674
+      ],
+      "zhiraf_ids": [
+        1,
+        4,
+        6,
+        7,
+        8
+      ],
+      "price_keys": [
+        "sri_lanka:1",
+        "sri_lanka:4",
+        "sri_lanka:6",
+        "sri_lanka:7",
+        "sri_lanka:8"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        57802,
+        2791,
+        2849,
+        2832,
+        2862
+      ],
+      "zhiraf_ids": [
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "price_keys": [
+        "sri_lanka:9",
+        "sri_lanka:10",
+        "sri_lanka:12",
+        "sri_lanka:13",
+        "sri_lanka:14"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        2812,
+        2810,
+        12149,
+        43240,
+        2864
+      ],
+      "zhiraf_ids": [
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "price_keys": [
+        "sri_lanka:15",
+        "sri_lanka:16",
+        "sri_lanka:17",
+        "sri_lanka:18",
+        "sri_lanka:19"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        162976,
+        2854,
+        2830,
+        65713,
+        24474
+      ],
+      "zhiraf_ids": [
+        20,
+        22,
+        23,
+        24,
+        25
+      ],
+      "price_keys": [
+        "sri_lanka:20",
+        "sri_lanka:22",
+        "sri_lanka:23",
+        "sri_lanka:24",
+        "sri_lanka:25"
+      ]
+    }
+  ],
+  "hotel_count": 20,
+  "hotel_ids": "2791,2810,2812,2830,2832,2849,2854,2862,2864,12143,12149,24474,43240,43636,45674,57802,64753,65713,77625,162976",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 77625,
+      "hotel_name": "Araliya Beach Resort & Spa 5★",
+      "place": "Южное побережье, пляж Унаватуна",
+      "search_query": "Araliya Beach Resort & Spa",
+      "tourvisor_name": "Araliya Beach Resort & Spa",
+      "price_key": "sri_lanka:1"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 12143,
+      "hotel_name": "Maalu Maalu Resort & Spa 4★",
+      "place": "Восточное побережье, пляж Пасикуда",
+      "search_query": "Maalu Maalu Resort & Spa",
+      "tourvisor_name": "Maalu Maalu Resort & Spa",
+      "price_key": "sri_lanka:4"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 64753,
+      "hotel_name": "Riff Hikkaduwa 5★",
+      "place": "Юго-Западное побережье, пляж Хиккадува",
+      "search_query": "Riff Hikkaduwa",
+      "tourvisor_name": "Riff Hikkaduwa",
+      "price_key": "sri_lanka:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 43636,
+      "hotel_name": "Suite Lanka 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Suite Lanka",
+      "tourvisor_name": "Suite Lanka",
+      "price_key": "sri_lanka:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 45674,
+      "hotel_name": "W15 Weligama 4★",
+      "place": "Южное побережье, бухта Велигама",
+      "search_query": "W15 Weligama",
+      "tourvisor_name": "W15 Weligama",
+      "price_key": "sri_lanka:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 57802,
+      "hotel_name": "Weligama Bay Marriott Resort & Spa 5★",
+      "place": "Южное побережье, бухта Велигама",
+      "search_query": "Weligama Bay Marriott Resort & Spa",
+      "tourvisor_name": "Weligama Bay Marriott Resort & Spa",
+      "price_key": "sri_lanka:9"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2791,
+      "hotel_name": "Citrus Hikkaduwa 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Citrus Hikkaduwa",
+      "tourvisor_name": "Citrus Hikkaduwa (Ex. Amaya Reef)",
+      "price_key": "sri_lanka:10"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2849,
+      "hotel_name": "Thaala Bentota 4★",
+      "place": "Западное побережье, пляж Бентота",
+      "search_query": "Thaala Bentota",
+      "tourvisor_name": "Thaala Bentota (Ex. Avani Bentota)",
+      "price_key": "sri_lanka:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2832,
+      "hotel_name": "EKHO Surf 4★",
+      "place": "Западное побережье, пляж Бентота",
+      "search_query": "EKHO Surf",
+      "tourvisor_name": "Ekho Surf (Ex. The Surf Bentota)",
+      "price_key": "sri_lanka:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2862,
+      "hotel_name": "The Palms 4★",
+      "place": "Западное побережье, пляж Берувела",
+      "search_query": "The Palms",
+      "tourvisor_name": "The Palms",
+      "price_key": "sri_lanka:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2812,
+      "hotel_name": "The Eden Beruwala 5★",
+      "place": "Западное побережье, пляж Берувела",
+      "search_query": "The Eden Beruwala",
+      "tourvisor_name": "Occidental Eden Beruwala (Ex. Eden Resort & Spa)",
+      "price_key": "sri_lanka:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2810,
+      "hotel_name": "Hikka Tranz by Cinnamon 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Hikka Tranz by Cinnamon",
+      "tourvisor_name": "Hikka Tranz By Cinnamon",
+      "price_key": "sri_lanka:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 12149,
+      "hotel_name": "Thaproban Beach House 3★",
+      "place": "Южное побережье, пляж Унаватуна",
+      "search_query": "Thaproban Beach House",
+      "tourvisor_name": "Thaproban Beach House",
+      "price_key": "sri_lanka:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 43240,
+      "hotel_name": "Coral Rock by Bansei 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Coral Rock by Bansei",
+      "tourvisor_name": "Coral Rock By Bansei (Ex. Bansei By Hotel J)",
+      "price_key": "sri_lanka:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2864,
+      "hotel_name": "Calamander Unawatuna Beach 4★",
+      "place": "Южное побережье, пляж Унаватуна",
+      "search_query": "Calamander Unawatuna Beach",
+      "tourvisor_name": "Calamander Unawatuna Beach (Ex. Unawatuna Beach Resort)",
+      "price_key": "sri_lanka:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 162976,
+      "hotel_name": "Rockside Cabanas Hotel 3★",
+      "place": "Южное побережье, Унаватуна / Далавелла",
+      "search_query": "Rockside Cabanas Hotel",
+      "tourvisor_name": "Rockside Cabanas Hotel",
+      "price_key": "sri_lanka:20"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2854,
+      "hotel_name": "Taj Bentota Resort & Spa 5★",
+      "place": "Западное побережье, пляж Бентота",
+      "search_query": "Taj Bentota Resort & Spa",
+      "tourvisor_name": "Taj Bentota Resort & Spa (Ex. Vivanta By Taj Bentota, Taj Exotica)",
+      "price_key": "sri_lanka:22"
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2830,
+      "hotel_name": "Lanka Princess Hotel 4★",
+      "place": "Западное побережье, Берувела",
+      "search_query": "Lanka Princess Hotel",
+      "tourvisor_name": "Lanka Princess Hotel",
+      "price_key": "sri_lanka:23"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 65713,
+      "hotel_name": "Fairway Sunset Galle 4★",
+      "place": "Южное побережье, Галле / Унаватуна",
+      "search_query": "Fairway Sunset Galle",
+      "tourvisor_name": "Fairway Sunset",
+      "price_key": "sri_lanka:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 24474,
+      "hotel_name": "Uga Bay by Uga Escapes 5★",
+      "place": "Восточное побережье, пляж Пасикуда",
+      "search_query": "Uga Bay by Uga Escapes",
+      "tourvisor_name": "Uga Bay",
+      "price_key": "sri_lanka:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "77625": {
+      "zhiraf_id": 1,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 77625,
+      "hotel_name": "Araliya Beach Resort & Spa 5★",
+      "place": "Южное побережье, пляж Унаватуна",
+      "search_query": "Araliya Beach Resort & Spa",
+      "tourvisor_name": "Araliya Beach Resort & Spa",
+      "price_key": "sri_lanka:1"
+    },
+    "12143": {
+      "zhiraf_id": 4,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 12143,
+      "hotel_name": "Maalu Maalu Resort & Spa 4★",
+      "place": "Восточное побережье, пляж Пасикуда",
+      "search_query": "Maalu Maalu Resort & Spa",
+      "tourvisor_name": "Maalu Maalu Resort & Spa",
+      "price_key": "sri_lanka:4"
+    },
+    "64753": {
+      "zhiraf_id": 6,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 64753,
+      "hotel_name": "Riff Hikkaduwa 5★",
+      "place": "Юго-Западное побережье, пляж Хиккадува",
+      "search_query": "Riff Hikkaduwa",
+      "tourvisor_name": "Riff Hikkaduwa",
+      "price_key": "sri_lanka:6"
+    },
+    "43636": {
+      "zhiraf_id": 7,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 43636,
+      "hotel_name": "Suite Lanka 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Suite Lanka",
+      "tourvisor_name": "Suite Lanka",
+      "price_key": "sri_lanka:7"
+    },
+    "45674": {
+      "zhiraf_id": 8,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 45674,
+      "hotel_name": "W15 Weligama 4★",
+      "place": "Южное побережье, бухта Велигама",
+      "search_query": "W15 Weligama",
+      "tourvisor_name": "W15 Weligama",
+      "price_key": "sri_lanka:8"
+    },
+    "57802": {
+      "zhiraf_id": 9,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 57802,
+      "hotel_name": "Weligama Bay Marriott Resort & Spa 5★",
+      "place": "Южное побережье, бухта Велигама",
+      "search_query": "Weligama Bay Marriott Resort & Spa",
+      "tourvisor_name": "Weligama Bay Marriott Resort & Spa",
+      "price_key": "sri_lanka:9"
+    },
+    "2791": {
+      "zhiraf_id": 10,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2791,
+      "hotel_name": "Citrus Hikkaduwa 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Citrus Hikkaduwa",
+      "tourvisor_name": "Citrus Hikkaduwa (Ex. Amaya Reef)",
+      "price_key": "sri_lanka:10"
+    },
+    "2849": {
+      "zhiraf_id": 12,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2849,
+      "hotel_name": "Thaala Bentota 4★",
+      "place": "Западное побережье, пляж Бентота",
+      "search_query": "Thaala Bentota",
+      "tourvisor_name": "Thaala Bentota (Ex. Avani Bentota)",
+      "price_key": "sri_lanka:12"
+    },
+    "2832": {
+      "zhiraf_id": 13,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2832,
+      "hotel_name": "EKHO Surf 4★",
+      "place": "Западное побережье, пляж Бентота",
+      "search_query": "EKHO Surf",
+      "tourvisor_name": "Ekho Surf (Ex. The Surf Bentota)",
+      "price_key": "sri_lanka:13"
+    },
+    "2862": {
+      "zhiraf_id": 14,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2862,
+      "hotel_name": "The Palms 4★",
+      "place": "Западное побережье, пляж Берувела",
+      "search_query": "The Palms",
+      "tourvisor_name": "The Palms",
+      "price_key": "sri_lanka:14"
+    },
+    "2812": {
+      "zhiraf_id": 15,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2812,
+      "hotel_name": "The Eden Beruwala 5★",
+      "place": "Западное побережье, пляж Берувела",
+      "search_query": "The Eden Beruwala",
+      "tourvisor_name": "Occidental Eden Beruwala (Ex. Eden Resort & Spa)",
+      "price_key": "sri_lanka:15"
+    },
+    "2810": {
+      "zhiraf_id": 16,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2810,
+      "hotel_name": "Hikka Tranz by Cinnamon 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Hikka Tranz by Cinnamon",
+      "tourvisor_name": "Hikka Tranz By Cinnamon",
+      "price_key": "sri_lanka:16"
+    },
+    "12149": {
+      "zhiraf_id": 17,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 12149,
+      "hotel_name": "Thaproban Beach House 3★",
+      "place": "Южное побережье, пляж Унаватуна",
+      "search_query": "Thaproban Beach House",
+      "tourvisor_name": "Thaproban Beach House",
+      "price_key": "sri_lanka:17"
+    },
+    "43240": {
+      "zhiraf_id": 18,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 43240,
+      "hotel_name": "Coral Rock by Bansei 4★",
+      "place": "Юго-Западное побережье, Хиккадува",
+      "search_query": "Coral Rock by Bansei",
+      "tourvisor_name": "Coral Rock By Bansei (Ex. Bansei By Hotel J)",
+      "price_key": "sri_lanka:18"
+    },
+    "2864": {
+      "zhiraf_id": 19,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2864,
+      "hotel_name": "Calamander Unawatuna Beach 4★",
+      "place": "Южное побережье, пляж Унаватуна",
+      "search_query": "Calamander Unawatuna Beach",
+      "tourvisor_name": "Calamander Unawatuna Beach (Ex. Unawatuna Beach Resort)",
+      "price_key": "sri_lanka:19"
+    },
+    "162976": {
+      "zhiraf_id": 20,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 162976,
+      "hotel_name": "Rockside Cabanas Hotel 3★",
+      "place": "Южное побережье, Унаватуна / Далавелла",
+      "search_query": "Rockside Cabanas Hotel",
+      "tourvisor_name": "Rockside Cabanas Hotel",
+      "price_key": "sri_lanka:20"
+    },
+    "2854": {
+      "zhiraf_id": 22,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2854,
+      "hotel_name": "Taj Bentota Resort & Spa 5★",
+      "place": "Западное побережье, пляж Бентота",
+      "search_query": "Taj Bentota Resort & Spa",
+      "tourvisor_name": "Taj Bentota Resort & Spa (Ex. Vivanta By Taj Bentota, Taj Exotica)",
+      "price_key": "sri_lanka:22"
+    },
+    "2830": {
+      "zhiraf_id": 23,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 2830,
+      "hotel_name": "Lanka Princess Hotel 4★",
+      "place": "Западное побережье, Берувела",
+      "search_query": "Lanka Princess Hotel",
+      "tourvisor_name": "Lanka Princess Hotel",
+      "price_key": "sri_lanka:23"
+    },
+    "65713": {
+      "zhiraf_id": 24,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 65713,
+      "hotel_name": "Fairway Sunset Galle 4★",
+      "place": "Южное побережье, Галле / Унаватуна",
+      "search_query": "Fairway Sunset Galle",
+      "tourvisor_name": "Fairway Sunset",
+      "price_key": "sri_lanka:24"
+    },
+    "24474": {
+      "zhiraf_id": 25,
+      "country_slug": "sri_lanka",
+      "tourvisor_id": 24474,
+      "hotel_name": "Uga Bay by Uga Escapes 5★",
+      "place": "Восточное побережье, пляж Пасикуда",
+      "search_query": "Uga Bay by Uga Escapes",
+      "tourvisor_name": "Uga Bay",
+      "price_key": "sri_lanka:25"
+    }
+  }
+}

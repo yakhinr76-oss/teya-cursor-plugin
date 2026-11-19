@@ -36,6 +36,10 @@ function zhiraf_ufa_moscow_landing_data() {
 		$out[ $slug ] = array(
 			'name'         => $name,
 			'needs_review' => true,
+			'curated_landing_v1'           => true,
+			'curated_resort_chips'         => true,
+			'curated_dest_lead_form'       => true,
+			'curated_expert_section'       => true,
 			'departure'    => __( 'из Москвы', 'zhiraf-ufa' ),
 			'h1'           => sprintf( __( 'Туры %s с вылетом из Москвы', 'zhiraf-ufa' ), $to ),
 			'title'        => sprintf( __( 'Туры %s из Москвы — цены туроператора | Жираф', 'zhiraf-ufa' ), $to ),

@@ -106,7 +106,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'title'       => __( 'Индия (Гоа)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Северный и Южный Гоа • Завтраки', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
-				'image'       => 'country-indiya.jpg',
+				'image'       => 'alt-indiya-beach-1.jpg',
 			),
 			array(
 				'slug'        => 'indoneziya',

@@ -25,7 +25,7 @@ CATALOG_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/india_ho
 OUT_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/india-tourvisor-hotels.json"
 
 # Tourvisor autocomplete: Индия (Гоа) (country id TODO).
-TOURVISOR_INDIA_COUNTRY_ID = int(os.environ.get("TOURVISOR_INDIA_COUNTRY_ID", "0"))
+TOURVISOR_INDIA_COUNTRY_ID = int(os.environ.get("TOURVISOR_INDIA_COUNTRY_ID", "3"))
 AUTOCOMPLETE_URL = "https://tourvisor.ru/xml/autocomplete.php"
 
 TR = str.maketrans(

@@ -1,0 +1,221 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "abkhazia",
+  "tourvisor_country_id": 46,
+  "identified_at": "2026-11-19",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 2,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        30084,
+        76587,
+        122342,
+        65783,
+        30033
+      ],
+      "zhiraf_ids": [
+        1,
+        6,
+        8,
+        11,
+        16
+      ],
+      "price_keys": [
+        "abkhazia:1",
+        "abkhazia:6",
+        "abkhazia:8",
+        "abkhazia:11",
+        "abkhazia:16"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 3,
+      "tourvisor_ids": [
+        30032,
+        40414,
+        51585
+      ],
+      "zhiraf_ids": [
+        17,
+        18,
+        19
+      ],
+      "price_keys": [
+        "abkhazia:17",
+        "abkhazia:18",
+        "abkhazia:19"
+      ]
+    }
+  ],
+  "hotel_count": 8,
+  "hotel_ids": "30032,30033,30084,40414,51585,65783,76587,122342",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 30084,
+      "hotel_name": "Amza Park Hotel 4★",
+      "place": "Гагра, пр-т В. Ардзинба",
+      "search_query": "Amza Park Hotel",
+      "tourvisor_name": "Amza Park Hotel (Ex. Энергетик)",
+      "price_key": "abkhazia:1"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 76587,
+      "hotel_name": "Black Sea Hotel Ldzaa 4★",
+      "place": "Пицунда, пос. Лдзаа",
+      "search_query": "black sea",
+      "tourvisor_name": "Грейс Black Sea",
+      "price_key": "abkhazia:6"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 122342,
+      "hotel_name": "ECO HOUSE PITIUNT",
+      "place": "Пицунда, Кипарисовая аллея",
+      "search_query": "ECO HOUSE PITIUNT",
+      "tourvisor_name": "Eco House Pitiunt",
+      "price_key": "abkhazia:8"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 65783,
+      "hotel_name": "Abaash Hotel Afon 4★",
+      "place": "Новый Афон, ул. Ладария",
+      "search_query": "Abaash Hotel Afon",
+      "tourvisor_name": "Abaash Hotel Afon (Абааш Афон)",
+      "price_key": "abkhazia:11"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 30033,
+      "hotel_name": "Amra Park-Hotel & SPA 4★",
+      "place": "Старая Гагра, дендропарк принца Ольденбургского",
+      "search_query": "Amra Park-Hotel & SPA",
+      "tourvisor_name": "Amra Park Hotel & Spa",
+      "price_key": "abkhazia:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 30032,
+      "hotel_name": "Alex Resort & SPA Hotel 4★",
+      "place": "Новая Гагра, ул. Званба",
+      "search_query": "Alex Resort & SPA Hotel",
+      "tourvisor_name": "Alex Resort & Spa Hotel",
+      "price_key": "abkhazia:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 40414,
+      "hotel_name": "Garden Resort Gagra 4★",
+      "place": "Старая Гагра, склон ущелья",
+      "search_query": "Garden Resort Gagra",
+      "tourvisor_name": "Garden Resort Gagra (Ex. Санаторий Москва)",
+      "price_key": "abkhazia:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 51585,
+      "hotel_name": "Sunrise Garden Hotel 3★+",
+      "place": "Старая Гагра, Комсомольский парк",
+      "search_query": "Sunrise Garden Hotel 3★+",
+      "tourvisor_name": "Sunrise Garden Hotel (Санрайз Гарден)",
+      "price_key": "abkhazia:19"
+    }
+  ],
+  "by_tourvisor_id": {
+    "30084": {
+      "zhiraf_id": 1,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 30084,
+      "hotel_name": "Amza Park Hotel 4★",
+      "place": "Гагра, пр-т В. Ардзинба",
+      "search_query": "Amza Park Hotel",
+      "tourvisor_name": "Amza Park Hotel (Ex. Энергетик)",
+      "price_key": "abkhazia:1"
+    },
+    "76587": {
+      "zhiraf_id": 6,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 76587,
+      "hotel_name": "Black Sea Hotel Ldzaa 4★",
+      "place": "Пицунда, пос. Лдзаа",
+      "search_query": "black sea",
+      "tourvisor_name": "Грейс Black Sea",
+      "price_key": "abkhazia:6"
+    },
+    "122342": {
+      "zhiraf_id": 8,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 122342,
+      "hotel_name": "ECO HOUSE PITIUNT",
+      "place": "Пицунда, Кипарисовая аллея",
+      "search_query": "ECO HOUSE PITIUNT",
+      "tourvisor_name": "Eco House Pitiunt",
+      "price_key": "abkhazia:8"
+    },
+    "65783": {
+      "zhiraf_id": 11,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 65783,
+      "hotel_name": "Abaash Hotel Afon 4★",
+      "place": "Новый Афон, ул. Ладария",
+      "search_query": "Abaash Hotel Afon",
+      "tourvisor_name": "Abaash Hotel Afon (Абааш Афон)",
+      "price_key": "abkhazia:11"
+    },
+    "30033": {
+      "zhiraf_id": 16,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 30033,
+      "hotel_name": "Amra Park-Hotel & SPA 4★",
+      "place": "Старая Гагра, дендропарк принца Ольденбургского",
+      "search_query": "Amra Park-Hotel & SPA",
+      "tourvisor_name": "Amra Park Hotel & Spa",
+      "price_key": "abkhazia:16"
+    },
+    "30032": {
+      "zhiraf_id": 17,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 30032,
+      "hotel_name": "Alex Resort & SPA Hotel 4★",
+      "place": "Новая Гагра, ул. Званба",
+      "search_query": "Alex Resort & SPA Hotel",
+      "tourvisor_name": "Alex Resort & Spa Hotel",
+      "price_key": "abkhazia:17"
+    },
+    "40414": {
+      "zhiraf_id": 18,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 40414,
+      "hotel_name": "Garden Resort Gagra 4★",
+      "place": "Старая Гагра, склон ущелья",
+      "search_query": "Garden Resort Gagra",
+      "tourvisor_name": "Garden Resort Gagra (Ex. Санаторий Москва)",
+      "price_key": "abkhazia:18"
+    },
+    "51585": {
+      "zhiraf_id": 19,
+      "country_slug": "abkhazia",
+      "tourvisor_id": 51585,
+      "hotel_name": "Sunrise Garden Hotel 3★+",
+      "place": "Старая Гагра, Комсомольский парк",
+      "search_query": "Sunrise Garden Hotel 3★+",
+      "tourvisor_name": "Sunrise Garden Hotel (Санрайз Гарден)",
+      "price_key": "abkhazia:19"
+    }
+  }
+}

@@ -2299,9 +2299,35 @@
 
 .turciya-kids-turkey__list {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 0;
+  list-style: none;
   display: grid;
   gap: 0.5rem;
+}
+
+.intent-checklist__list.turciya-kids-turkey__list {
+  padding-left: 0;
+}
+
+.intent-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.intent-checklist__icon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.intent-checklist__text {
+  flex: 1;
+}
+
+.intent-checklist__cta-btn {
+  border-radius: var(--radius-cta, 12px);
+  background: var(--color-primary, #c85a32);
+  width: 100%;
 }
 
 .turciya-kids-turkey__aside {

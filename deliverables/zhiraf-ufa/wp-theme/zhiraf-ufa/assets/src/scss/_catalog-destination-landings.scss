@@ -2330,6 +2330,31 @@
   width: 100%;
 }
 
+@media (min-width: 576px) {
+  .intent-checklist__cta-btn {
+    width: auto;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+}
+
+.intent-checklist__cta-wrapper {
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .intent-checklist__cta-wrapper {
+    align-self: center;
+  }
+}
+
+.intent-checklist__micro {
+  font-size: 0.75rem;
+  color: var(--color-muted, #78716c);
+  margin: 0.5rem 0 0;
+  text-align: center;
+}
+
 .turciya-kids-turkey__aside {
   padding: 1.25rem;
   border-radius: 1rem;

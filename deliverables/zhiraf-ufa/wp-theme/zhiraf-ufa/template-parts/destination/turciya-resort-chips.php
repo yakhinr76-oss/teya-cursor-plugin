@@ -28,7 +28,21 @@ $wrap_class = 'turciya-resort-chips turciya-resort-chips--' . sanitize_html_clas
 	class="<?php echo esc_attr( $wrap_class ); ?>"
 	data-turciya-resort-chips="<?php echo esc_attr( $context ); ?>"
 	role="tablist"
-	aria-label="<?php echo 'oae' === $dest_slug ? esc_attr__( 'Фильтр по эмиратам ОАЭ', 'zhiraf-ufa' ) : esc_attr__( 'Фильтр по курортам Турции', 'zhiraf-ufa' ); ?>"
+	aria-label="<?php
+	$chip_aria_labels = array(
+		'oae'        => __( 'Фильтр по эмиратам ОАЭ', 'zhiraf-ufa' ),
+		'egipet'     => __( 'Фильтр по курортам Египта', 'zhiraf-ufa' ),
+		'tailand'    => __( 'Фильтр по курортам Таиланда', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Фильтр по атоллам Мальдив', 'zhiraf-ufa' ),
+		'vietnam'    => __( 'Фильтр по курортам Вьетнама', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Фильтр по побережьям Шри-Ланки', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Фильтр по курортам Бали', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Фильтр по берегам Гоа', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Фильтр по островам Сейшел', 'zhiraf-ufa' ),
+		'turciya'    => __( 'Фильтр по курортам Турции', 'zhiraf-ufa' ),
+	);
+	echo esc_attr( $chip_aria_labels[ $dest_slug ] ?? $chip_aria_labels['turciya'] );
+	?>"
 >
 	<?php foreach ( $chips as $i => $chip ) : ?>
 		<?php

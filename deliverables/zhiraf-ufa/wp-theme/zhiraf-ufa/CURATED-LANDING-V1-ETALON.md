@@ -79,10 +79,12 @@
 | — | **Таиланд** | `tailand` | ✅ | `curated-thailand-landing.php` | `thailand_hotels_25.json` | ✅ 25/25 | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
 | — | **Мальдивы** | `maldivy` | ✅ | `curated-maldives-landing.php` | `maldives_hotels_25.json` | ✅ 25/25 | ✅ | ✅ | 4 атолла (ряд) | 2 статьи |
 | — | **Вьетнам** | `vietnam` | ✅ | `curated-vietnam-landing.php` | `vietnam_hotels_25.json` | ✅ map (TV countryid **16**) | ✅ | ✅ | 4 курорта (ряд) | 3 статьи |
-| — | **Шри-Ланка** | `shri-lanka` | ✅ | `curated-sri-lanka-landing.php` | `sri_lanka_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 региона (ряд) | 2 статьи |
-| — | **Индия (Гоа)** | `indiya` | ✅ | `curated-india-landing.php` | `india_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 региона (ряд) | 2 статьи |
-| — | **Индонезия (Бали)** | `indoneziya` | ✅ | `curated-indonesia-landing.php` | `indonesia_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
-| — | **Сейшелы** | `sejshely` | ✅ | `curated-seychelles-landing.php` | `seychelles_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 острова (ряд) | 2 статьи |
+| — | **Шри-Ланка** | `shri-lanka` | ✅ layout | `curated-sri-lanka-landing.php` | `sri_lanka_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 региона (ряд) | 2 статьи |
+| — | **Индия (Гоа)** | `indiya` | ✅ layout | `curated-india-landing.php` | `india_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 2 берега | 1 статья ⚠️ |
+| — | **Индонезия (Бали)** | `indoneziya` | ✅ layout | `curated-indonesia-landing.php` | `indonesia_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 курорта (ряд) | 2 статьи |
+| — | **Сейшелы** | `sejshely` | ✅ layout | `curated-seychelles-landing.php` | `seychelles_hotels_25.json` | ⬜ scaffold | ✅ | ✅ | 4 острова (ряд) | 2 статьи |
+
+**SEO wave 2:** layout v1 готов; текстовый пакет **слабее эталона** (короткий FAQ, нет `geo_answer` / `extra_sections` / `resort_links` на ряде slug). Очередь — **`deliverables/zhiraf-ufa/WAVE2-SEO-BACKLOG.md`**.
 
 Дочерние **курортные** страницы — отдельно (`inc/resort-landings.php`); для Египта заведены минимальные `makadi-bay`, `sahl-hasheesh` (помимо Хургады/Шарма).
 

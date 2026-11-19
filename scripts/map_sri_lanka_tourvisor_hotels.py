@@ -25,7 +25,7 @@ CATALOG_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/sri_lank
 OUT_PATH = REPO / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/data/sri_lanka-tourvisor-hotels.json"
 
 # Tourvisor autocomplete: Шри-Ланка (country id TODO).
-TOURVISOR_SRI_LANKA_COUNTRY_ID = int(os.environ.get("TOURVISOR_SRI_LANKA_COUNTRY_ID", "0"))
+TOURVISOR_SRI_LANKA_COUNTRY_ID = int(os.environ.get("TOURVISOR_SRI_LANKA_COUNTRY_ID", "12"))
 AUTOCOMPLETE_URL = "https://tourvisor.ru/xml/autocomplete.php"
 
 TR = str.maketrans(

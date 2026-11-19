@@ -1,0 +1,979 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "tourvisor-autocomplete",
+  "country_slug": "russia",
+  "identified_at": "2026-11-19",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ russia:{zhiraf_id} (country_slug russia, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 47,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "russia",
+      "hotel_name": "Bridge Resort 4★",
+      "resort": "Сириус, Имеретинская низменность",
+      "region": "sochi_coast",
+      "tourvisor_id": 58198,
+      "tourvisor_name": "The Bridge (Бридж)",
+      "tourvisor_region": "Санкт-Петербург",
+      "tourvisor_region_code": 470,
+      "tourvisor_stars": 4,
+      "search_query": "bridge",
+      "match_names": [
+        "Bridge Resort 4★",
+        "Bridge Resort",
+        "The Bridge (Бридж)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "russia",
+      "hotel_name": "Sport Inn Hotel & Wellness 4★",
+      "resort": "Сириус, Нижнеимеретинская бухта",
+      "region": "sochi_coast",
+      "tourvisor_id": 32141,
+      "tourvisor_name": "Sport Inn",
+      "tourvisor_region": "Имеретинская бухта",
+      "tourvisor_region_code": 2560,
+      "tourvisor_stars": 4,
+      "search_query": "Sport Inn Hotel & Wellness",
+      "match_names": [
+        "Sport Inn Hotel & Wellness 4★",
+        "Sport Inn Hotel & Wellness",
+        "Sport Inn Hotel and Wellness",
+        "Sport Inn"
+      ],
+      "match_status": "auto",
+      "match_score": 0.783
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "russia",
+      "hotel_name": "Отель-замок «Богатырь» 4★",
+      "resort": "Сириус, Олимпийский парк",
+      "region": "sochi_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель-замок «Богатырь»",
+      "match_names": [
+        "Отель-замок «Богатырь» 4★",
+        "Отель-замок «Богатырь»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "russia",
+      "hotel_name": "ОК «Дагомыс» 4★",
+      "resort": "Большой Сочи, пос. Дагомыс",
+      "region": "sochi_coast",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "ОК «Дагомыс»",
+      "match_names": [
+        "ОК «Дагомыс» 4★",
+        "ОК «Дагомыс»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "russia",
+      "hotel_name": "Cosmos Stay Le Rond Sochi 4★",
+      "resort": "Большой Сочи, пос. Дагомыс",
+      "region": "sochi_coast",
+      "tourvisor_id": 80167,
+      "tourvisor_name": "Cosmos Stay Le Rond Sochi (Космос Стей Ле Ронд Сочи)",
+      "tourvisor_region": "Дагомыс",
+      "tourvisor_region_code": 2541,
+      "tourvisor_stars": 4,
+      "search_query": "Cosmos Stay Le Rond Sochi",
+      "match_names": [
+        "Cosmos Stay Le Rond Sochi 4★",
+        "Cosmos Stay Le Rond Sochi",
+        "Cosmos Stay Le Rond Sochi (Космос Стей Ле Ронд Сочи)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "russia",
+      "hotel_name": "Green Flow Hotel 4★",
+      "resort": "Роза Хутор, плато 1170 м",
+      "region": "krasnaya_polyana",
+      "tourvisor_id": 57925,
+      "tourvisor_name": "The Garden Велнес-Отель (Бывш. Green Flow)",
+      "tourvisor_region": "Красная Поляна",
+      "tourvisor_region_code": 495,
+      "tourvisor_stars": 4,
+      "search_query": "Green Flow Hotel",
+      "match_names": [
+        "Green Flow Hotel 4★",
+        "Green Flow Hotel",
+        "The Garden Велнес-Отель (Бывш. Green Flow)"
+      ],
+      "match_status": "auto",
+      "match_score": 0.883
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "russia",
+      "hotel_name": "Rosa Springs Life Balance Hotel 5★",
+      "resort": "Роза Хутор, плато 1170 м",
+      "region": "krasnaya_polyana",
+      "tourvisor_id": 46148,
+      "tourvisor_name": "Life Balance Отель Rosa Springs (Роза Спрингс)",
+      "tourvisor_region": "Красная Поляна",
+      "tourvisor_region_code": 495,
+      "tourvisor_stars": 5,
+      "search_query": "Rosa Springs Life Balance Hotel",
+      "match_names": [
+        "Rosa Springs Life Balance Hotel 5★",
+        "Rosa Springs Life Balance Hotel",
+        "Life Balance Отель Rosa Springs (Роза Спрингс)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "russia",
+      "hotel_name": "Golden Tulip Rosa Khutor 4★",
+      "resort": "Роза Хутор, Роза Долина 560 м",
+      "region": "krasnaya_polyana",
+      "tourvisor_id": 30197,
+      "tourvisor_name": "Golden Tulip Rosa Khutor (Голден Тулип Роза Хутор)",
+      "tourvisor_region": "Красная Поляна",
+      "tourvisor_region_code": 495,
+      "tourvisor_stars": 4,
+      "search_query": "Golden Tulip Rosa Khutor",
+      "match_names": [
+        "Golden Tulip Rosa Khutor 4★",
+        "Golden Tulip Rosa Khutor",
+        "Golden Tulip Rosa Khutor (Голден Тулип Роза Хутор)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "russia",
+      "hotel_name": "Park Inn by Radisson Rosa Khutor 4★",
+      "resort": "Роза Хутор, Роза Долина 560 м",
+      "region": "krasnaya_polyana",
+      "tourvisor_id": 30375,
+      "tourvisor_name": "Park Inn By Radisson Rosa Khutor (Парк Инн Рэдиссон Роза Хутор)",
+      "tourvisor_region": "Красная Поляна",
+      "tourvisor_region_code": 495,
+      "tourvisor_stars": 4,
+      "search_query": "Park Inn by Radisson Rosa Khutor",
+      "match_names": [
+        "Park Inn by Radisson Rosa Khutor 4★",
+        "Park Inn by Radisson Rosa Khutor",
+        "Park Inn By Radisson Rosa Khutor (Парк Инн Рэдиссон Роза Хутор)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "russia",
+      "hotel_name": "Novotel Resort & SPA Красная Поляна 5★",
+      "resort": "Курорт Красная Поляна, Поляна 960",
+      "region": "krasnaya_polyana",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Novotel Resort & SPA Красная Поляна",
+      "match_names": [
+        "Novotel Resort & SPA Красная Поляна 5★",
+        "Novotel Resort & SPA Красная Поляна",
+        "Novotel Resort and SPA Красная Поляна"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "russia",
+      "hotel_name": "Alean Family Doville 5★",
+      "resort": "Анапа, Пионерский проспект",
+      "region": "anapa",
+      "tourvisor_id": 39131,
+      "tourvisor_name": "Alean Family Doville",
+      "tourvisor_region": "Пионерский проспект",
+      "tourvisor_region_code": 2521,
+      "tourvisor_stars": 5,
+      "search_query": "Alean Family Doville",
+      "match_names": [
+        "Alean Family Doville 5★",
+        "Alean Family Doville"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "russia",
+      "hotel_name": "Alean Family Riviera 4★",
+      "resort": "Анапа, Пионерский проспект",
+      "region": "anapa",
+      "tourvisor_id": 30403,
+      "tourvisor_name": "Alean Family Riviera",
+      "tourvisor_region": "Джемете",
+      "tourvisor_region_code": 2062,
+      "tourvisor_stars": 4,
+      "search_query": "Alean Family Riviera",
+      "match_names": [
+        "Alean Family Riviera 4★",
+        "Alean Family Riviera"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "russia",
+      "hotel_name": "Beton Brut Ultra All Inclusive & SPA 4★",
+      "resort": "Анапа, район Верхнее Джемете",
+      "region": "anapa",
+      "tourvisor_id": 45694,
+      "tourvisor_name": "Miracleon Beton Brut Ultra All Inclusive & Spa Anapa",
+      "tourvisor_region": "Витязево",
+      "tourvisor_region_code": 2061,
+      "tourvisor_stars": 4,
+      "search_query": "Beton Brut Ultra All Inclusive & SPA",
+      "match_names": [
+        "Beton Brut Ultra All Inclusive & SPA 4★",
+        "Beton Brut Ultra All Inclusive & SPA",
+        "Beton Brut Ultra All Inclusive and SPA",
+        "Miracleon Beton Brut Ultra All Inclusive & Spa Anapa"
+      ],
+      "match_status": "auto",
+      "match_score": 0.86
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "russia",
+      "hotel_name": "Fioleto Ultra All Inclusive & SPA 4★",
+      "resort": "Анапа, курортная зона Джемете",
+      "region": "anapa",
+      "tourvisor_id": 65519,
+      "tourvisor_name": "Miracleon Fioleto Ultra All Inclusive  Resort  & Sra Anapa",
+      "tourvisor_region": "Пионерский проспект",
+      "tourvisor_region_code": 2521,
+      "tourvisor_stars": 4,
+      "search_query": "Fioleto Ultra All Inclusive & SPA",
+      "match_names": [
+        "Fioleto Ultra All Inclusive & SPA 4★",
+        "Fioleto Ultra All Inclusive & SPA",
+        "Fioleto Ultra All Inclusive and SPA",
+        "Miracleon Fioleto Ultra All Inclusive  Resort  & Sra Anapa"
+      ],
+      "match_status": "auto",
+      "match_score": 0.79
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "russia",
+      "hotel_name": "Курорт-отель «Джамайка» 4★",
+      "resort": "Анапа, Пионерский проспект, 47",
+      "region": "anapa",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Курорт-отель «Джамайка»",
+      "match_names": [
+        "Курорт-отель «Джамайка» 4★",
+        "Курорт-отель «Джамайка»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "russia",
+      "hotel_name": "Санаторий «Арника» 4★",
+      "resort": "Кисловодск, у Каскадной лестницы",
+      "region": "kmv",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Санаторий «Арника»",
+      "match_names": [
+        "Санаторий «Арника» 4★",
+        "Санаторий «Арника»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "russia",
+      "hotel_name": "Green Resort Hotel & SPA 4★",
+      "resort": "Кисловодск, курортный центр",
+      "region": "kmv",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Green Resort Hotel & SPA",
+      "match_names": [
+        "Green Resort Hotel & SPA 4★",
+        "Green Resort Hotel & SPA",
+        "Green Resort Hotel and SPA"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "russia",
+      "hotel_name": "Плаза СПА Железноводск 4★",
+      "resort": "Железноводск, ул. Калинина",
+      "region": "kmv",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Плаза СПА Железноводск",
+      "match_names": [
+        "Плаза СПА Железноводск 4★",
+        "Плаза СПА Железноводск"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "russia",
+      "hotel_name": "Санаторий «Русь» 4★",
+      "resort": "Ессентуки, ул. Пушкина",
+      "region": "kmv",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Санаторий «Русь»",
+      "match_names": [
+        "Санаторий «Русь» 4★",
+        "Санаторий «Русь»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "russia",
+      "hotel_name": "Санаторий «Машук Аква-Терм» 4★",
+      "resort": "Железноводск / пос. Иноземцево",
+      "region": "kmv",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Санаторий «Машук Аква-Терм»",
+      "match_names": [
+        "Санаторий «Машук Аква-Терм» 4★",
+        "Санаторий «Машук Аква-Терм»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "russia",
+      "hotel_name": "Rossi Boutique Hotel & SPA 4★",
+      "resort": "Санкт-Петербург, наб. реки Фонтанки",
+      "region": "spb",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Rossi Boutique Hotel & SPA",
+      "match_names": [
+        "Rossi Boutique Hotel & SPA 4★",
+        "Rossi Boutique Hotel & SPA",
+        "Rossi Boutique Hotel and SPA"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Пушка ИНН» 4★",
+      "resort": "Санкт-Петербург, наб. реки Мойки, 14",
+      "region": "spb",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Пушка ИНН»",
+      "match_names": [
+        "Отель «Пушка ИНН» 4★",
+        "Отель «Пушка ИНН»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Пётръ» 4★",
+      "resort": "Санкт-Петербург, Адмиралтейский проспект",
+      "region": "spb",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Пётръ»",
+      "match_names": [
+        "Отель «Пётръ» 4★",
+        "Отель «Пётръ»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Аркадия» 4★",
+      "resort": "Санкт-Петербург, наб. реки Мойки, 58",
+      "region": "spb",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Аркадия»",
+      "match_names": [
+        "Отель «Аркадия» 4★",
+        "Отель «Аркадия»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "russia",
+      "hotel_name": "AKYAN St. Petersburg 4★",
+      "resort": "Санкт-Петербург, ул. Восстания, 19",
+      "region": "spb",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "AKYAN St. Petersburg",
+      "match_names": [
+        "AKYAN St. Petersburg 4★",
+        "AKYAN St. Petersburg"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 26,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Де Пари» 4★",
+      "resort": "Москва, Большая Бронная ул.",
+      "region": "moscow",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Де Пари»",
+      "match_names": [
+        "Отель «Де Пари» 4★",
+        "Отель «Де Пари»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 27,
+      "country_slug": "russia",
+      "hotel_name": "Garden Embassy 4★",
+      "resort": "Москва, Ботанический переулок",
+      "region": "moscow",
+      "tourvisor_id": 71959,
+      "tourvisor_name": "Garden Embassy",
+      "tourvisor_region": "Москва/Подмосковье",
+      "tourvisor_region_code": 469,
+      "tourvisor_stars": 4,
+      "search_query": "Garden Embassy",
+      "match_names": [
+        "Garden Embassy 4★",
+        "Garden Embassy"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 28,
+      "country_slug": "russia",
+      "hotel_name": "Mercure Москва Павелецкая 4★",
+      "resort": "Москва, Замоскворечье, ул. Бахрушина",
+      "region": "moscow",
+      "tourvisor_id": 38485,
+      "tourvisor_name": "Mercure Москва Бауманская",
+      "tourvisor_region": "Москва/Подмосковье",
+      "tourvisor_region_code": 469,
+      "tourvisor_stars": 4,
+      "search_query": "Mercure Москва Павелецкая",
+      "match_names": [
+        "Mercure Москва Павелецкая 4★",
+        "Mercure Москва Павелецкая",
+        "Mercure Москва Бауманская"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 29,
+      "country_slug": "russia",
+      "hotel_name": "Альянс Бородино / Альянс Маяковская 4★",
+      "resort": "Москва, Садово-Кудринская ул.",
+      "region": "moscow",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Альянс Бородино / Альянс Маяковская",
+      "match_names": [
+        "Альянс Бородино / Альянс Маяковская 4★",
+        "Альянс Бородино / Альянс Маяковская"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 30,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Багратион» 3★+",
+      "resort": "Москва, Хамовники, Сеченовский пер.",
+      "region": "moscow",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Багратион» 3★+",
+      "match_names": [
+        "Отель «Багратион» 3★+"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 31,
+      "country_slug": "russia",
+      "hotel_name": "Kaiserhof Hotel & SPA 4★",
+      "resort": "Калининград, Рыбная деревня",
+      "region": "kaliningrad_baltic",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Kaiserhof Hotel & SPA",
+      "match_names": [
+        "Kaiserhof Hotel & SPA 4★",
+        "Kaiserhof Hotel & SPA",
+        "Kaiserhof Hotel and SPA"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 32,
+      "country_slug": "russia",
+      "hotel_name": "Holiday Inn Kaliningrad 4★",
+      "resort": "Калининград, наб. Виктора Гюго",
+      "region": "kaliningrad_baltic",
+      "tourvisor_id": 67277,
+      "tourvisor_name": "Holiday Inn Kaliningrad (Холидей Инн)",
+      "tourvisor_region": "Калининградская обл.",
+      "tourvisor_region_code": 425,
+      "tourvisor_stars": 4,
+      "search_query": "Holiday Inn Kaliningrad",
+      "match_names": [
+        "Holiday Inn Kaliningrad 4★",
+        "Holiday Inn Kaliningrad",
+        "Holiday Inn Kaliningrad (Холидей Инн)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 33,
+      "country_slug": "russia",
+      "hotel_name": "Kristall Hotel & SPA 4★",
+      "resort": "Светлогорск, ул. Ленина",
+      "region": "kaliningrad_baltic",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Kristall Hotel & SPA",
+      "match_names": [
+        "Kristall Hotel & SPA 4★",
+        "Kristall Hotel & SPA",
+        "Kristall Hotel and SPA"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 34,
+      "country_slug": "russia",
+      "hotel_name": "СПА-отель «Зеленоградск» 4★",
+      "resort": "Зеленоградск, ул. Гагарина",
+      "region": "kaliningrad_baltic",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "СПА-отель «Зеленоградск»",
+      "match_names": [
+        "СПА-отель «Зеленоградск» 4★",
+        "СПА-отель «Зеленоградск»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 35,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Аура» 4★",
+      "resort": "Куршская коса, пос. Лесной",
+      "region": "kaliningrad_baltic",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Аура»",
+      "match_names": [
+        "Отель «Аура» 4★",
+        "Отель «Аура»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 36,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Байкал» 4★",
+      "resort": "Листвянка, склон у камня Черского",
+      "region": "baikal",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Байкал»",
+      "match_names": [
+        "Отель «Байкал» 4★",
+        "Отель «Байкал»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 37,
+      "country_slug": "russia",
+      "hotel_name": "Гостиничный комплекс «Анастасия» 4★",
+      "resort": "пос. Никола у Листвянки",
+      "region": "baikal",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Гостиничный комплекс «Анастасия»",
+      "match_names": [
+        "Гостиничный комплекс «Анастасия» 4★",
+        "Гостиничный комплекс «Анастасия»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 38,
+      "country_slug": "russia",
+      "hotel_name": "Эко-отель «Белая Чайка» (BaikalWood)",
+      "resort": "Остров Ольхон, пос. Хужир",
+      "region": "baikal",
+      "tourvisor_id": 84631,
+      "tourvisor_name": "Baikalwood Эко Лодж & Spa",
+      "tourvisor_region": "Иркутская область",
+      "tourvisor_region_code": 2502,
+      "tourvisor_stars": 5,
+      "search_query": "Эко-отель «Белая Чайка» (BaikalWood)",
+      "match_names": [
+        "Эко-отель «Белая Чайка» (BaikalWood)",
+        "Baikalwood Эко Лодж & Spa"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 39,
+      "country_slug": "russia",
+      "hotel_name": "Усадьба «Крестовая Падь» 3★",
+      "resort": "Листвянка, Крестовая падь",
+      "region": "baikal",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Усадьба «Крестовая Падь»",
+      "match_names": [
+        "Усадьба «Крестовая Падь» 3★",
+        "Усадьба «Крестовая Падь»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 40,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Байкал Хан Ольхон»",
+      "resort": "Остров Ольхон, пос. Хужир",
+      "region": "baikal",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Байкал Хан Ольхон»",
+      "match_names": [
+        "Отель «Байкал Хан Ольхон»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 41,
+      "country_slug": "russia",
+      "hotel_name": "Эко-отель «Алтика» 4★",
+      "resort": "Горный Алтай, берег реки Катунь",
+      "region": "altai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Эко-отель «Алтика»",
+      "match_names": [
+        "Эко-отель «Алтика» 4★",
+        "Эко-отель «Алтика»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 42,
+      "country_slug": "russia",
+      "hotel_name": "Klever Resort & SPA 5★",
+      "resort": "Чемальский район, берег Катуни",
+      "region": "altai",
+      "tourvisor_id": 123821,
+      "tourvisor_name": "Клевер (Klever)",
+      "tourvisor_region": "Дербент",
+      "tourvisor_region_code": 2550,
+      "tourvisor_stars": 0,
+      "search_query": "Klever Resort & SPA",
+      "match_names": [
+        "Klever Resort & SPA 5★",
+        "Klever Resort & SPA",
+        "Klever Resort and SPA",
+        "Клевер (Klever)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 43,
+      "country_slug": "russia",
+      "hotel_name": "Парк-отель «Чепош Парк»",
+      "resort": "Чемальский район, берег Катуни",
+      "region": "altai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Парк-отель «Чепош Парк»",
+      "match_names": [
+        "Парк-отель «Чепош Парк»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 44,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Сказка Алтая» 5★",
+      "resort": "Горный Алтай, район Усть-Муны",
+      "region": "altai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Сказка Алтая»",
+      "match_names": [
+        "Отель «Сказка Алтая» 5★",
+        "Отель «Сказка Алтая»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 45,
+      "country_slug": "russia",
+      "hotel_name": "Природный курорт «Марьин Остров» 4★",
+      "resort": "Чемал, берег реки Чемалка",
+      "region": "altai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Природный курорт «Марьин Остров»",
+      "match_names": [
+        "Природный курорт «Марьин Остров» 4★",
+        "Природный курорт «Марьин Остров»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 46,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Ладожская Усадьба» 4★",
+      "resort": "Северное Приладожье, пос. Ниэмелянхови",
+      "region": "karelia",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Ладожская Усадьба»",
+      "match_names": [
+        "Отель «Ладожская Усадьба» 4★",
+        "Отель «Ладожская Усадьба»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 47,
+      "country_slug": "russia",
+      "hotel_name": "База отдыха «Чёрные Камни» 4★",
+      "resort": "Сортавальский район, озеро Янисъярви",
+      "region": "karelia",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "База отдыха «Чёрные Камни»",
+      "match_names": [
+        "База отдыха «Чёрные Камни» 4★",
+        "База отдыха «Чёрные Камни»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 48,
+      "country_slug": "russia",
+      "hotel_name": "Отель «Фрегат» 4★",
+      "resort": "Петрозаводск, Онежская набережная",
+      "region": "karelia",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Отель «Фрегат»",
+      "match_names": [
+        "Отель «Фрегат» 4★",
+        "Отель «Фрегат»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 49,
+      "country_slug": "russia",
+      "hotel_name": "СПА-отель «Карелия» 4★",
+      "resort": "Петрозаводск, наб. Гюллинга",
+      "region": "karelia",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "СПА-отель «Карелия»",
+      "match_names": [
+        "СПА-отель «Карелия» 4★",
+        "СПА-отель «Карелия»"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 50,
+      "country_slug": "russia",
+      "hotel_name": "Cosmos Petrozavodsk Hotel 4★",
+      "resort": "Петрозаводск, Онежская набережная",
+      "region": "karelia",
+      "tourvisor_id": 46520,
+      "tourvisor_name": "Cosmos Petrozavodsk (Ex. Онего Палас)",
+      "tourvisor_region": "Карелия",
+      "tourvisor_region_code": 526,
+      "tourvisor_stars": 4,
+      "search_query": "Cosmos Petrozavodsk Hotel",
+      "match_names": [
+        "Cosmos Petrozavodsk Hotel 4★",
+        "Cosmos Petrozavodsk Hotel",
+        "Cosmos Petrozavodsk (Ex. Онего Палас)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    }
+  ]
+}

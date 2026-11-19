@@ -1,10 +1,10 @@
 {
   "schema": "zhiraf.tourvisor-hotels-map.v1",
-  "source": "sri_lanka-catalog-scaffold",
+  "source": "tourvisor-autocomplete",
   "country_slug": "sri_lanka",
-  "identified_at": "2026-11-18",
+  "identified_at": "2026-11-19",
   "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ sri_lanka:{zhiraf_id} (country_slug sri_lanka, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
-  "tourvisor_country_id": 0,
+  "tourvisor_country_id": 12,
   "hotels": [
     {
       "zhiraf_id": 1,
@@ -12,19 +12,19 @@
       "hotel_name": "Araliya Beach Resort & Spa 5★",
       "resort": "Южное побережье, пляж Унаватуна",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 77625,
+      "tourvisor_name": "Araliya Beach Resort & Spa",
+      "tourvisor_region": "Унаватуна",
+      "tourvisor_region_code": 593,
+      "tourvisor_stars": 5,
       "search_query": "Araliya Beach Resort & Spa",
       "match_names": [
         "Araliya Beach Resort & Spa 5★",
         "Araliya Beach Resort & Spa",
         "Araliya Beach Resort and Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 2,
@@ -42,7 +42,7 @@
         "CoCoBay Unawatuna 4★",
         "CoCoBay Unawatuna"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -61,7 +61,7 @@
         "Amaya Beach Pasikudah 5★",
         "Amaya Beach Pasikudah"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -70,19 +70,19 @@
       "hotel_name": "Maalu Maalu Resort & Spa 4★",
       "resort": "Восточное побережье, пляж Пасикуда",
       "region": "east_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 12143,
+      "tourvisor_name": "Maalu Maalu Resort & Spa",
+      "tourvisor_region": "Пассекудах",
+      "tourvisor_region_code": 2389,
+      "tourvisor_stars": 5,
       "search_query": "Maalu Maalu Resort & Spa",
       "match_names": [
         "Maalu Maalu Resort & Spa 4★",
         "Maalu Maalu Resort & Spa",
         "Maalu Maalu Resort and Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 5,
@@ -101,7 +101,7 @@
         "Anantaya Resort & Spa Pasikudah",
         "Anantaya Resort and Spa Pasikudah"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -110,18 +110,18 @@
       "hotel_name": "Riff Hikkaduwa 5★",
       "resort": "Юго-Западное побережье, пляж Хиккадува",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 64753,
+      "tourvisor_name": "Riff Hikkaduwa",
+      "tourvisor_region": "Хиккадува",
+      "tourvisor_region_code": 594,
+      "tourvisor_stars": 5,
       "search_query": "Riff Hikkaduwa",
       "match_names": [
         "Riff Hikkaduwa 5★",
         "Riff Hikkaduwa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 7,
@@ -129,18 +129,18 @@
       "hotel_name": "Suite Lanka 4★",
       "resort": "Юго-Западное побережье, Хиккадува",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 43636,
+      "tourvisor_name": "Suite Lanka",
+      "tourvisor_region": "Хиккадува",
+      "tourvisor_region_code": 594,
+      "tourvisor_stars": 4,
       "search_query": "Suite Lanka",
       "match_names": [
         "Suite Lanka 4★",
         "Suite Lanka"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 8,
@@ -148,18 +148,18 @@
       "hotel_name": "W15 Weligama 4★",
       "resort": "Южное побережье, бухта Велигама",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 45674,
+      "tourvisor_name": "W15 Weligama",
+      "tourvisor_region": "Велигама",
+      "tourvisor_region_code": 2379,
+      "tourvisor_stars": 4,
       "search_query": "W15 Weligama",
       "match_names": [
         "W15 Weligama 4★",
         "W15 Weligama"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 9,
@@ -167,19 +167,19 @@
       "hotel_name": "Weligama Bay Marriott Resort & Spa 5★",
       "resort": "Южное побережье, бухта Велигама",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 57802,
+      "tourvisor_name": "Weligama Bay Marriott Resort & Spa",
+      "tourvisor_region": "Велигама",
+      "tourvisor_region_code": 2379,
+      "tourvisor_stars": 5,
       "search_query": "Weligama Bay Marriott Resort & Spa",
       "match_names": [
         "Weligama Bay Marriott Resort & Spa 5★",
         "Weligama Bay Marriott Resort & Spa",
         "Weligama Bay Marriott Resort and Spa"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 10,
@@ -187,18 +187,19 @@
       "hotel_name": "Citrus Hikkaduwa 4★",
       "resort": "Юго-Западное побережье, Хиккадува",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2791,
+      "tourvisor_name": "Citrus Hikkaduwa (Ex. Amaya Reef)",
+      "tourvisor_region": "Хиккадува",
+      "tourvisor_region_code": 594,
+      "tourvisor_stars": 4,
       "search_query": "Citrus Hikkaduwa",
       "match_names": [
         "Citrus Hikkaduwa 4★",
-        "Citrus Hikkaduwa"
+        "Citrus Hikkaduwa",
+        "Citrus Hikkaduwa (Ex. Amaya Reef)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 11,
@@ -217,7 +218,7 @@
         "Centara Ceysands Resort & Spa",
         "Centara Ceysands Resort and Spa"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -226,18 +227,19 @@
       "hotel_name": "Thaala Bentota 4★",
       "resort": "Западное побережье, пляж Бентота",
       "region": "west_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2849,
+      "tourvisor_name": "Thaala Bentota (Ex. Avani Bentota)",
+      "tourvisor_region": "Бентота",
+      "tourvisor_region_code": 2376,
+      "tourvisor_stars": 4,
       "search_query": "Thaala Bentota",
       "match_names": [
         "Thaala Bentota 4★",
-        "Thaala Bentota"
+        "Thaala Bentota",
+        "Thaala Bentota (Ex. Avani Bentota)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.883
     },
     {
       "zhiraf_id": 13,
@@ -245,18 +247,19 @@
       "hotel_name": "EKHO Surf 4★",
       "resort": "Западное побережье, пляж Бентота",
       "region": "west_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2832,
+      "tourvisor_name": "Ekho Surf (Ex. The Surf Bentota)",
+      "tourvisor_region": "Бентота",
+      "tourvisor_region_code": 2376,
+      "tourvisor_stars": 4,
       "search_query": "EKHO Surf",
       "match_names": [
         "EKHO Surf 4★",
-        "EKHO Surf"
+        "EKHO Surf",
+        "Ekho Surf (Ex. The Surf Bentota)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.883
     },
     {
       "zhiraf_id": 14,
@@ -264,18 +267,18 @@
       "hotel_name": "The Palms 4★",
       "resort": "Западное побережье, пляж Берувела",
       "region": "west_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2862,
+      "tourvisor_name": "The Palms",
+      "tourvisor_region": "Берувела",
+      "tourvisor_region_code": 2377,
+      "tourvisor_stars": 4,
       "search_query": "The Palms",
       "match_names": [
         "The Palms 4★",
         "The Palms"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 15,
@@ -283,18 +286,19 @@
       "hotel_name": "The Eden Beruwala 5★",
       "resort": "Западное побережье, пляж Берувела",
       "region": "west_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2812,
+      "tourvisor_name": "Occidental Eden Beruwala (Ex. Eden Resort & Spa)",
+      "tourvisor_region": "Берувела",
+      "tourvisor_region_code": 2377,
+      "tourvisor_stars": 5,
       "search_query": "The Eden Beruwala",
       "match_names": [
         "The Eden Beruwala 5★",
-        "The Eden Beruwala"
+        "The Eden Beruwala",
+        "Occidental Eden Beruwala (Ex. Eden Resort & Spa)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.883
     },
     {
       "zhiraf_id": 16,
@@ -302,18 +306,18 @@
       "hotel_name": "Hikka Tranz by Cinnamon 4★",
       "resort": "Юго-Западное побережье, Хиккадува",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2810,
+      "tourvisor_name": "Hikka Tranz By Cinnamon",
+      "tourvisor_region": "Хиккадува",
+      "tourvisor_region_code": 594,
+      "tourvisor_stars": 4,
       "search_query": "Hikka Tranz by Cinnamon",
       "match_names": [
         "Hikka Tranz by Cinnamon 4★",
         "Hikka Tranz by Cinnamon"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 17,
@@ -321,18 +325,18 @@
       "hotel_name": "Thaproban Beach House 3★",
       "resort": "Южное побережье, пляж Унаватуна",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 12149,
+      "tourvisor_name": "Thaproban Beach House",
+      "tourvisor_region": "Унаватуна",
+      "tourvisor_region_code": 593,
+      "tourvisor_stars": 4,
       "search_query": "Thaproban Beach House",
       "match_names": [
         "Thaproban Beach House 3★",
         "Thaproban Beach House"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 18,
@@ -340,18 +344,19 @@
       "hotel_name": "Coral Rock by Bansei 4★",
       "resort": "Юго-Западное побережье, Хиккадува",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 43240,
+      "tourvisor_name": "Coral Rock By Bansei (Ex. Bansei By Hotel J)",
+      "tourvisor_region": "Хиккадува",
+      "tourvisor_region_code": 594,
+      "tourvisor_stars": 4,
       "search_query": "Coral Rock by Bansei",
       "match_names": [
         "Coral Rock by Bansei 4★",
-        "Coral Rock by Bansei"
+        "Coral Rock by Bansei",
+        "Coral Rock By Bansei (Ex. Bansei By Hotel J)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 19,
@@ -359,18 +364,19 @@
       "hotel_name": "Calamander Unawatuna Beach 4★",
       "resort": "Южное побережье, пляж Унаватуна",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2864,
+      "tourvisor_name": "Calamander Unawatuna Beach (Ex. Unawatuna Beach Resort)",
+      "tourvisor_region": "Унаватуна",
+      "tourvisor_region_code": 593,
+      "tourvisor_stars": 3,
       "search_query": "Calamander Unawatuna Beach",
       "match_names": [
         "Calamander Unawatuna Beach 4★",
-        "Calamander Unawatuna Beach"
+        "Calamander Unawatuna Beach",
+        "Calamander Unawatuna Beach (Ex. Unawatuna Beach Resort)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 20,
@@ -378,18 +384,18 @@
       "hotel_name": "Rockside Cabanas Hotel 3★",
       "resort": "Южное побережье, Унаватуна / Далавелла",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 162976,
+      "tourvisor_name": "Rockside Cabanas Hotel",
+      "tourvisor_region": "Унаватуна",
+      "tourvisor_region_code": 593,
+      "tourvisor_stars": 3,
       "search_query": "Rockside Cabanas Hotel",
       "match_names": [
         "Rockside Cabanas Hotel 3★",
         "Rockside Cabanas Hotel"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 21,
@@ -407,7 +413,7 @@
         "Cinnamon Bey Beruwala 5★",
         "Cinnamon Bey Beruwala"
       ],
-      "match_status": "pending",
+      "match_status": "unmatched",
       "match_score": 0.0
     },
     {
@@ -416,19 +422,20 @@
       "hotel_name": "Taj Bentota Resort & Spa 5★",
       "resort": "Западное побережье, пляж Бентота",
       "region": "west_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2854,
+      "tourvisor_name": "Taj Bentota Resort & Spa (Ex. Vivanta By Taj Bentota, Taj Exotica)",
+      "tourvisor_region": "Бентота",
+      "tourvisor_region_code": 2376,
+      "tourvisor_stars": 5,
       "search_query": "Taj Bentota Resort & Spa",
       "match_names": [
         "Taj Bentota Resort & Spa 5★",
         "Taj Bentota Resort & Spa",
-        "Taj Bentota Resort and Spa"
+        "Taj Bentota Resort and Spa",
+        "Taj Bentota Resort & Spa (Ex. Vivanta By Taj Bentota, Taj Exotica)"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.825
     },
     {
       "zhiraf_id": 23,
@@ -436,18 +443,18 @@
       "hotel_name": "Lanka Princess Hotel 4★",
       "resort": "Западное побережье, Берувела",
       "region": "west_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 2830,
+      "tourvisor_name": "Lanka Princess Hotel",
+      "tourvisor_region": "Берувела",
+      "tourvisor_region_code": 2377,
+      "tourvisor_stars": 4,
       "search_query": "Lanka Princess Hotel",
       "match_names": [
         "Lanka Princess Hotel 4★",
         "Lanka Princess Hotel"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 1.0
     },
     {
       "zhiraf_id": 24,
@@ -455,18 +462,19 @@
       "hotel_name": "Fairway Sunset Galle 4★",
       "resort": "Южное побережье, Галле / Унаватуна",
       "region": "south_west",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 65713,
+      "tourvisor_name": "Fairway Sunset",
+      "tourvisor_region": "Галле",
+      "tourvisor_region_code": 590,
+      "tourvisor_stars": 3,
       "search_query": "Fairway Sunset Galle",
       "match_names": [
         "Fairway Sunset Galle 4★",
-        "Fairway Sunset Galle"
+        "Fairway Sunset Galle",
+        "Fairway Sunset"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.783
     },
     {
       "zhiraf_id": 25,
@@ -474,18 +482,19 @@
       "hotel_name": "Uga Bay by Uga Escapes 5★",
       "resort": "Восточное побережье, пляж Пасикуда",
       "region": "east_coast",
-      "tourvisor_id": 0,
-      "tourvisor_name": "",
-      "tourvisor_region": "",
-      "tourvisor_region_code": 0,
-      "tourvisor_stars": 0,
+      "tourvisor_id": 24474,
+      "tourvisor_name": "Uga Bay",
+      "tourvisor_region": "Пассекудах",
+      "tourvisor_region_code": 2389,
+      "tourvisor_stars": 5,
       "search_query": "Uga Bay by Uga Escapes",
       "match_names": [
         "Uga Bay by Uga Escapes 5★",
-        "Uga Bay by Uga Escapes"
+        "Uga Bay by Uga Escapes",
+        "Uga Bay"
       ],
-      "match_status": "pending",
-      "match_score": 0.0
+      "match_status": "auto",
+      "match_score": 0.783
     }
   ]
 }

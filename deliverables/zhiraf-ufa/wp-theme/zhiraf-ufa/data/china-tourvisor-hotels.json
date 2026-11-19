@@ -1,0 +1,501 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "tourvisor-autocomplete",
+  "country_slug": "china",
+  "identified_at": "2026-11-19",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ china:{zhiraf_id} (country_slug china, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 13,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "china",
+      "hotel_name": "Horizon Sanya Yalong Bay Resort & Spa 5★",
+      "resort": "Санья, бухта Ялунвань",
+      "region": "hainan",
+      "tourvisor_id": 3114,
+      "tourvisor_name": "Universal Resort Yalong Bay Sanya Hotel",
+      "tourvisor_region": "Ялунвань",
+      "tourvisor_region_code": 2394,
+      "tourvisor_stars": 5,
+      "search_query": "Horizon Sanya Yalong Bay Resort & Spa",
+      "match_names": [
+        "Horizon Sanya Yalong Bay Resort & Spa 5★",
+        "Horizon Sanya Yalong Bay Resort & Spa",
+        "Horizon Sanya Yalong Bay Resort and Spa",
+        "Universal Resort Yalong Bay Sanya Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 0.75
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "china",
+      "hotel_name": "Sheraton Sanya Yalong Bay Resort 5★",
+      "resort": "Санья, бухта Ялунвань",
+      "region": "hainan",
+      "tourvisor_id": 118307,
+      "tourvisor_name": "Sanya Yalong Bay 99 Resort",
+      "tourvisor_region": "Хайнань",
+      "tourvisor_region_code": 584,
+      "tourvisor_stars": 4,
+      "search_query": "Sheraton Sanya Yalong Bay Resort",
+      "match_names": [
+        "Sheraton Sanya Yalong Bay Resort 5★",
+        "Sheraton Sanya Yalong Bay Resort",
+        "Sanya Yalong Bay 99 Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 0.838
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "china",
+      "hotel_name": "Hilton Sanya Yalong Bay Resort & Spa 5★",
+      "resort": "Санья, бухта Ялунвань",
+      "region": "hainan",
+      "tourvisor_id": 136244,
+      "tourvisor_name": "Xinasia Sanya Yalong Bay",
+      "tourvisor_region": "Хайнань",
+      "tourvisor_region_code": 584,
+      "tourvisor_stars": 4,
+      "search_query": "Hilton Sanya Yalong Bay Resort & Spa",
+      "match_names": [
+        "Hilton Sanya Yalong Bay Resort & Spa 5★",
+        "Hilton Sanya Yalong Bay Resort & Spa",
+        "Hilton Sanya Yalong Bay Resort and Spa",
+        "Xinasia Sanya Yalong Bay"
+      ],
+      "match_status": "auto",
+      "match_score": 0.75
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "china",
+      "hotel_name": "Pullman Oceanview Sanya Bay Resort 5★",
+      "resort": "Санья, бухта Саньявань",
+      "region": "hainan",
+      "tourvisor_id": 3095,
+      "tourvisor_name": "Pullman Sanya Yalong Bay Resort&spa",
+      "tourvisor_region": "Ялунвань",
+      "tourvisor_region_code": 2394,
+      "tourvisor_stars": 5,
+      "search_query": "Pullman Oceanview Sanya Bay Resort",
+      "match_names": [
+        "Pullman Oceanview Sanya Bay Resort 5★",
+        "Pullman Oceanview Sanya Bay Resort",
+        "Pullman Sanya Yalong Bay Resort&spa"
+      ],
+      "match_status": "auto",
+      "match_score": 0.75
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "china",
+      "hotel_name": "Pearl River Garden Hotel Sanya 5★",
+      "resort": "Санья, бухта Дадунхай",
+      "region": "hainan",
+      "tourvisor_id": 3093,
+      "tourvisor_name": "Pearl River Garden Hotel",
+      "tourvisor_region": "Дадунхай",
+      "tourvisor_region_code": 2392,
+      "tourvisor_stars": 5,
+      "search_query": "Pearl River Garden Hotel Sanya",
+      "match_names": [
+        "Pearl River Garden Hotel Sanya 5★",
+        "Pearl River Garden Hotel Sanya",
+        "Pearl River Garden Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 0.838
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "china",
+      "hotel_name": "The Shanhaitian Resort Sanya, Autograph Collection 5★",
+      "resort": "Санья, бухта Дадунхай",
+      "region": "hainan",
+      "tourvisor_id": 58324,
+      "tourvisor_name": "The Shanhaitian Resort Sanya",
+      "tourvisor_region": "Дадунхай",
+      "tourvisor_region_code": 2392,
+      "tourvisor_stars": 5,
+      "search_query": "shanhaitian sanya autograph",
+      "match_names": [
+        "The Shanhaitian Resort Sanya, Autograph Collection 5★",
+        "The Shanhaitian Resort Sanya, Autograph Collection",
+        "The Shanhaitian Resort Sanya"
+      ],
+      "match_status": "auto",
+      "match_score": 0.783
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "china",
+      "hotel_name": "InterContinental Sanya Haitang Bay Resort 5★",
+      "resort": "Санья, бухта Хайтанвань",
+      "region": "hainan",
+      "tourvisor_id": 41934,
+      "tourvisor_name": "Intercontinental Sanya Haitang Bay Resort",
+      "tourvisor_region": "Хайтан",
+      "tourvisor_region_code": 2393,
+      "tourvisor_stars": 5,
+      "search_query": "InterContinental Sanya Haitang Bay Resort",
+      "match_names": [
+        "InterContinental Sanya Haitang Bay Resort 5★",
+        "InterContinental Sanya Haitang Bay Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "china",
+      "hotel_name": "Sunshine Yi Hotel Haitang Bay Sanya 5★",
+      "resort": "Санья, бухта Хайтанвань",
+      "region": "hainan",
+      "tourvisor_id": 155090,
+      "tourvisor_name": "Sanya Haitang Bay Resort",
+      "tourvisor_region": "Хайнань",
+      "tourvisor_region_code": 584,
+      "tourvisor_stars": 5,
+      "search_query": "Sunshine Yi Hotel Haitang Bay Sanya",
+      "match_names": [
+        "Sunshine Yi Hotel Haitang Bay Sanya 5★",
+        "Sunshine Yi Hotel Haitang Bay Sanya",
+        "Sanya Haitang Bay Resort"
+      ],
+      "match_status": "auto",
+      "match_score": 0.74
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "china",
+      "hotel_name": "Haitang Bay Resort Sanya 5★",
+      "resort": "Санья, бухта Хайтанвань",
+      "region": "hainan",
+      "tourvisor_id": 152840,
+      "tourvisor_name": "Haitang Bay Resort Sanya",
+      "tourvisor_region": "Хайнань",
+      "tourvisor_region_code": 584,
+      "tourvisor_stars": 5,
+      "search_query": "Haitang Bay Resort Sanya",
+      "match_names": [
+        "Haitang Bay Resort Sanya 5★",
+        "Haitang Bay Resort Sanya"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "china",
+      "hotel_name": "MGM Grand Sanya 5★",
+      "resort": "Санья, бухта Ялунвань",
+      "region": "hainan",
+      "tourvisor_id": 8356,
+      "tourvisor_name": "Mgm Grand Sanya",
+      "tourvisor_region": "Ялунвань",
+      "tourvisor_region_code": 2394,
+      "tourvisor_stars": 5,
+      "search_query": "MGM Grand Sanya",
+      "match_names": [
+        "MGM Grand Sanya 5★",
+        "MGM Grand Sanya"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "china",
+      "hotel_name": "Park Plaza Beijing Wangfujing 4★",
+      "resort": "Пекин, район Дунчэн / Ванфуцзин",
+      "region": "beijing",
+      "tourvisor_id": 8365,
+      "tourvisor_name": "Park Plaza Beijing Wangfujing",
+      "tourvisor_region": "Пекин",
+      "tourvisor_region_code": 65,
+      "tourvisor_stars": 4,
+      "search_query": "Park Plaza Beijing Wangfujing",
+      "match_names": [
+        "Park Plaza Beijing Wangfujing 4★",
+        "Park Plaza Beijing Wangfujing"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "china",
+      "hotel_name": "Sunworld Hotel Wangfujing 4★",
+      "resort": "Пекин, район Дунчэн / Ванфуцзин",
+      "region": "beijing",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Sunworld Hotel Wangfujing",
+      "match_names": [
+        "Sunworld Hotel Wangfujing 4★",
+        "Sunworld Hotel Wangfujing"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "china",
+      "hotel_name": "New World Beijing Hotel 5★",
+      "resort": "Пекин, район Дунчэн / Чунвэньмэнь",
+      "region": "beijing",
+      "tourvisor_id": 65350,
+      "tourvisor_name": "New World Beijing Hotel",
+      "tourvisor_region": "Пекин",
+      "tourvisor_region_code": 65,
+      "tourvisor_stars": 5,
+      "search_query": "New World Beijing Hotel",
+      "match_names": [
+        "New World Beijing Hotel 5★",
+        "New World Beijing Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "china",
+      "hotel_name": "Beijing Hotel NUO 5★",
+      "resort": "Пекин, проспект Чанъань / Ванфуцзин",
+      "region": "beijing",
+      "tourvisor_id": 117440,
+      "tourvisor_name": "Beijing Hotel Nuo",
+      "tourvisor_region": "Пекин",
+      "tourvisor_region_code": 65,
+      "tourvisor_stars": 5,
+      "search_query": "Beijing Hotel NUO",
+      "match_names": [
+        "Beijing Hotel NUO 5★",
+        "Beijing Hotel NUO"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "china",
+      "hotel_name": "Mercure Hotel Beijing Qianmen 3★",
+      "resort": "Пекин, район Сичэн / Цяньмэнь",
+      "region": "beijing",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Mercure Hotel Beijing Qianmen",
+      "match_names": [
+        "Mercure Hotel Beijing Qianmen 3★",
+        "Mercure Hotel Beijing Qianmen"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "china",
+      "hotel_name": "SSAW Boutique Hotel Shanghai Bund 4★",
+      "resort": "Шанхай, район Хуанпу / Сад Юйюань",
+      "region": "shanghai",
+      "tourvisor_id": 160129,
+      "tourvisor_name": "Ssaw Boutique Hotel Shanghai Bund",
+      "tourvisor_region": "Шанхай",
+      "tourvisor_region_code": 246,
+      "tourvisor_stars": 4,
+      "search_query": "SSAW Boutique Hotel Shanghai Bund",
+      "match_names": [
+        "SSAW Boutique Hotel Shanghai Bund 4★",
+        "SSAW Boutique Hotel Shanghai Bund"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "china",
+      "hotel_name": "Golden Tulip New Asia The Bund 4★",
+      "resort": "Шанхай, район Хункоу / Северный Бунд",
+      "region": "shanghai",
+      "tourvisor_id": 66768,
+      "tourvisor_name": "Golden Tulip Bund New Asia",
+      "tourvisor_region": "Шанхай",
+      "tourvisor_region_code": 246,
+      "tourvisor_stars": 4,
+      "search_query": "Golden Tulip New Asia The Bund",
+      "match_names": [
+        "Golden Tulip New Asia The Bund 4★",
+        "Golden Tulip New Asia The Bund",
+        "Golden Tulip Bund New Asia"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "china",
+      "hotel_name": "Radisson Blu Hotel Shanghai New World 5★",
+      "resort": "Шанхай, район Хуанпу / Народная площадь",
+      "region": "shanghai",
+      "tourvisor_id": 156609,
+      "tourvisor_name": "Radisson Hotel Shanghai New World",
+      "tourvisor_region": "Шанхай",
+      "tourvisor_region_code": 246,
+      "tourvisor_stars": 5,
+      "search_query": "Radisson Blu Hotel Shanghai New World",
+      "match_names": [
+        "Radisson Blu Hotel Shanghai New World 5★",
+        "Radisson Blu Hotel Shanghai New World",
+        "Radisson Hotel Shanghai New World"
+      ],
+      "match_status": "auto",
+      "match_score": 0.87
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "china",
+      "hotel_name": "Novotel Shanghai Atlantis 4★",
+      "resort": "Шанхай, район Пудун / Луцзяцзуй",
+      "region": "shanghai",
+      "tourvisor_id": 53644,
+      "tourvisor_name": "Novotel Atlantis Shanghai",
+      "tourvisor_region": "Шанхай",
+      "tourvisor_region_code": 246,
+      "tourvisor_stars": 4,
+      "search_query": "Novotel Shanghai Atlantis",
+      "match_names": [
+        "Novotel Shanghai Atlantis 4★",
+        "Novotel Shanghai Atlantis",
+        "Novotel Atlantis Shanghai"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "china",
+      "hotel_name": "The Eton Hotel Shanghai 4★",
+      "resort": "Шанхай, район Пудун / Луцзяцзуй",
+      "region": "shanghai",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Eton Hotel Shanghai",
+      "match_names": [
+        "The Eton Hotel Shanghai 4★",
+        "The Eton Hotel Shanghai"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "china",
+      "hotel_name": "Sunshine Resort Intime Sanya 5★",
+      "resort": "Санья, бухта Дадунхай",
+      "region": "hainan",
+      "tourvisor_id": 3097,
+      "tourvisor_name": "Sunshine Resort Intime Sanya (Ex. Resort Intime Sanya)",
+      "tourvisor_region": "Дадунхай",
+      "tourvisor_region_code": 2392,
+      "tourvisor_stars": 5,
+      "search_query": "Sunshine Resort Intime Sanya",
+      "match_names": [
+        "Sunshine Resort Intime Sanya 5★",
+        "Sunshine Resort Intime Sanya",
+        "Sunshine Resort Intime Sanya (Ex. Resort Intime Sanya)"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "china",
+      "hotel_name": "South China Hotel 4★",
+      "resort": "Санья, бухта Дадунхай",
+      "region": "hainan",
+      "tourvisor_id": 57272,
+      "tourvisor_name": "The South China",
+      "tourvisor_region": "Гонконг",
+      "tourvisor_region_code": 302,
+      "tourvisor_stars": 3,
+      "search_query": "south china",
+      "match_names": [
+        "South China Hotel 4★",
+        "South China Hotel",
+        "The South China"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "china",
+      "hotel_name": "Harman Hotel Sanya 5★",
+      "resort": "Санья, бухта Дадунхай",
+      "region": "hainan",
+      "tourvisor_id": 49612,
+      "tourvisor_name": "Harman Resort Hotel Sanya",
+      "tourvisor_region": "Дадунхай",
+      "tourvisor_region_code": 2392,
+      "tourvisor_stars": 5,
+      "search_query": "Harman Hotel Sanya",
+      "match_names": [
+        "Harman Hotel Sanya 5★",
+        "Harman Hotel Sanya",
+        "Harman Resort Hotel Sanya"
+      ],
+      "match_status": "auto",
+      "match_score": 1.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "china",
+      "hotel_name": "LN Hotel Haizhu Square Guangzhou 4★",
+      "resort": "Гуанчжоу, район Юэсю / Площадь Хайчжу",
+      "region": "guangzhou",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "LN Hotel Haizhu Square Guangzhou",
+      "match_names": [
+        "LN Hotel Haizhu Square Guangzhou 4★",
+        "LN Hotel Haizhu Square Guangzhou"
+      ],
+      "match_status": "unmatched",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "china",
+      "hotel_name": "Campanile Hotel Xi'an Bell Tower 4★",
+      "resort": "Сиань, район Бэйлинь / Колокольная башня",
+      "region": "xian",
+      "tourvisor_id": 159881,
+      "tourvisor_name": "Xi An Bell Tower South Gate Manxin Hotel",
+      "tourvisor_region": "Сиань",
+      "tourvisor_region_code": 720,
+      "tourvisor_stars": 3,
+      "search_query": "Campanile Hotel Xi'an Bell Tower",
+      "match_names": [
+        "Campanile Hotel Xi'an Bell Tower 4★",
+        "Campanile Hotel Xi'an Bell Tower",
+        "Xi An Bell Tower South Gate Manxin Hotel"
+      ],
+      "match_status": "auto",
+      "match_score": 0.72
+    }
+  ]
+}

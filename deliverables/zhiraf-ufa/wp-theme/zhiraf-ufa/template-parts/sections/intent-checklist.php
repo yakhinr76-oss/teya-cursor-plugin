@@ -84,7 +84,7 @@ $check_icon = '<svg class="intent-checklist__icon" width="20" height="20" viewBo
 					</button>
 				</aside>
 			<?php else : ?>
-				<div class="intent-checklist__cta turciya-kids-turkey__cta">
+				<div class="intent-checklist__cta-wrapper">
 					<button
 						type="button"
 						class="btn btn--primary intent-checklist__cta-btn"
@@ -105,6 +105,7 @@ $check_icon = '<svg class="intent-checklist__icon" width="20" height="20" viewBo
 					>
 						<?php echo esc_html( $cta ); ?>
 					</button>
+					<p class="intent-checklist__micro"><?php esc_html_e( 'Бесплатный подбор · ответим за 15 минут', 'zhiraf-ufa' ); ?></p>
 				</div>
 			<?php endif; ?>
 		</div>

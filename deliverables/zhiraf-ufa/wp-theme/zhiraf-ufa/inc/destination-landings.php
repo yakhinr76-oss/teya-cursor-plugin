@@ -1482,6 +1482,10 @@ function zhiraf_ufa_destination_landing_data() {
 		),
 
 		'rossiya'  => array(
+			'curated_landing_v1'           => true,
+			'curated_resort_chips'         => true,
+			'curated_dest_lead_form'       => true,
+			'curated_expert_section'       => true,
 			'name'             => __( 'Россия', 'zhiraf-ufa' ),
 			'h1'               => __( 'Отдых в России из Уфы', 'zhiraf-ufa' ),
 			'title'            => __( 'Россия — Сочи, Кавминводы, Калининград | Жираф', 'zhiraf-ufa' ),
@@ -1510,6 +1514,10 @@ function zhiraf_ufa_destination_landing_data() {
 			),
 		),
 		'abkhaziya' => array(
+			'curated_landing_v1'           => true,
+			'curated_resort_chips'         => true,
+			'curated_dest_lead_form'       => true,
+			'curated_expert_section'       => true,
 			'name'             => __( 'Абхазия', 'zhiraf-ufa' ),
 			'h1'               => __( 'Отдых в Абхазии из Уфы', 'zhiraf-ufa' ),
 			'title'            => __( 'Абхазия — Гагра, Пицунда | трансфер из Адлера | Жираф', 'zhiraf-ufa' ),

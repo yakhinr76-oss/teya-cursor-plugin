@@ -1,0 +1,642 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "vietnam",
+  "tourvisor_country_id": 16,
+  "identified_at": "2026-11-18",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 5,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        73974,
+        68661,
+        69116,
+        32342,
+        54193
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "price_keys": [
+        "vietnam:1",
+        "vietnam:2",
+        "vietnam:3",
+        "vietnam:4",
+        "vietnam:5"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        4965,
+        23725,
+        4960,
+        4072,
+        128157
+      ],
+      "zhiraf_ids": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "price_keys": [
+        "vietnam:6",
+        "vietnam:7",
+        "vietnam:8",
+        "vietnam:9",
+        "vietnam:10"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        37940,
+        69260,
+        57086,
+        65254,
+        59346
+      ],
+      "zhiraf_ids": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "price_keys": [
+        "vietnam:11",
+        "vietnam:12",
+        "vietnam:13",
+        "vietnam:14",
+        "vietnam:15"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        41495,
+        66367,
+        32356,
+        71560,
+        66668
+      ],
+      "zhiraf_ids": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "price_keys": [
+        "vietnam:16",
+        "vietnam:17",
+        "vietnam:18",
+        "vietnam:19",
+        "vietnam:20"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        22617,
+        61583,
+        32341,
+        7457,
+        4065
+      ],
+      "zhiraf_ids": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "price_keys": [
+        "vietnam:21",
+        "vietnam:22",
+        "vietnam:23",
+        "vietnam:24",
+        "vietnam:25"
+      ]
+    }
+  ],
+  "hotel_count": 25,
+  "hotel_ids": "4065,4072,4960,4965,7457,22617,23725,32341,32342,32356,37940,41495,54193,57086,59346,61583,65254,66367,66668,68661,69116,69260,71560,73974,128157",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "vietnam",
+      "tourvisor_id": 73974,
+      "hotel_name": "ALMA Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "ALMA Resort Cam Ranh",
+      "tourvisor_name": "Alma Resort Cam Ranh",
+      "price_key": "vietnam:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "vietnam",
+      "tourvisor_id": 68661,
+      "hotel_name": "Mövenpick Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Mövenpick Resort Cam Ranh",
+      "tourvisor_name": "Movenpick Resort Cam Ranh",
+      "price_key": "vietnam:2"
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "vietnam",
+      "tourvisor_id": 69116,
+      "hotel_name": "Selectum Noa Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Selectum Noa Resort Cam Ranh",
+      "tourvisor_name": "Selectum Noa Resort Cam Ranh",
+      "price_key": "vietnam:3"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "vietnam",
+      "tourvisor_id": 32342,
+      "hotel_name": "Vinpearl Resort & Spa Phu Quoc 5★",
+      "place": "Фукуок, пляж Ганьзау",
+      "search_query": "Vinpearl Resort & Spa Phu Quoc",
+      "tourvisor_name": "Vinpearl Resort & Spa Phu Quoc",
+      "price_key": "vietnam:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "vietnam",
+      "tourvisor_id": 54193,
+      "hotel_name": "SOL by Meliá Phu Quoc 5★",
+      "place": "Фукуок, пляж Лонг Бич",
+      "search_query": "SOL by Meliá Phu Quoc",
+      "tourvisor_name": "Sol By Melia Phu Quoc (Ex. Sol Beach House Phu Quoc)",
+      "price_key": "vietnam:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4965,
+      "hotel_name": "Chen Sea Resort & Spa 5★",
+      "place": "Фукуок, бухта Бай Сеп / Онг Ланг",
+      "search_query": "Chen Sea Resort & Spa",
+      "tourvisor_name": "Chen Sea Resort & Spa Phu Quoc",
+      "price_key": "vietnam:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "vietnam",
+      "tourvisor_id": 23725,
+      "hotel_name": "Cassia Cottage 4★",
+      "place": "Фукуок, Лонг Бич",
+      "search_query": "Cassia Cottage",
+      "tourvisor_name": "Cassia Cottage",
+      "price_key": "vietnam:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4960,
+      "hotel_name": "Mango Bay Resort 3★",
+      "place": "Фукуок, пляж Онг Ланг",
+      "search_query": "mango bay",
+      "tourvisor_name": "Mango Bay",
+      "price_key": "vietnam:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4072,
+      "hotel_name": "Sailing Club Resort Mui Ne 4★",
+      "place": "Муйне, Хамтьен",
+      "search_query": "Sailing Club Resort Mui Ne",
+      "tourvisor_name": "Sailing Club Resort Mui Ne (Ex. Mia Resort Mui Ne)",
+      "price_key": "vietnam:9"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "vietnam",
+      "tourvisor_id": 128157,
+      "hotel_name": "AIRA Boutique Hoi An Hotel & Villa 4★",
+      "place": "Хойан, пляж Ан Банг",
+      "search_query": "AIRA Boutique Hoi An Hotel & Villa",
+      "tourvisor_name": "Aira Boutique Hoi An Hotel & Villa",
+      "price_key": "vietnam:10"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "vietnam",
+      "tourvisor_id": 37940,
+      "hotel_name": "Cam Ranh Riviera Beach Resort 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Cam Ranh Riviera Beach Resort",
+      "tourvisor_name": "Riviera Beach Resort Cam Ranh",
+      "price_key": "vietnam:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "vietnam",
+      "tourvisor_id": 69260,
+      "hotel_name": "Radisson Blu Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Radisson Blu Resort Cam Ranh",
+      "tourvisor_name": "Radisson Blu Resort Cam Ranh",
+      "price_key": "vietnam:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "vietnam",
+      "tourvisor_id": 57086,
+      "hotel_name": "Swandor Hotels & Resorts Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Swandor Hotels & Resorts Cam Ranh",
+      "tourvisor_name": "Swandor Hotels & Resorts Cam Ranh",
+      "price_key": "vietnam:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "vietnam",
+      "tourvisor_id": 65254,
+      "hotel_name": "Premier Residences Phu Quoc 5★",
+      "place": "Фукуок, пляж Кем",
+      "search_query": "Premier Residences Phu Quoc",
+      "tourvisor_name": "Premier Residences Phu Quoc Emerald Bay",
+      "price_key": "vietnam:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "vietnam",
+      "tourvisor_id": 59346,
+      "hotel_name": "Green Bay Phu Quoc Resort 5★",
+      "place": "Фукуок, Куа Кан",
+      "search_query": "Green Bay Phu Quoc Resort",
+      "tourvisor_name": "Green Bay Phu Quoc Resort & Spa",
+      "price_key": "vietnam:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "vietnam",
+      "tourvisor_id": 41495,
+      "hotel_name": "Liberty Central Nha Trang 4★",
+      "place": "Нячанг, центр / Лок Тхо",
+      "search_query": "Liberty Central Nha Trang",
+      "tourvisor_name": "Liberty Central Nha Trang Hotel",
+      "price_key": "vietnam:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "vietnam",
+      "tourvisor_id": 66367,
+      "hotel_name": "DTX Hotel Nha Trang 4★",
+      "place": "Нячанг, центр",
+      "search_query": "DTX Hotel Nha Trang",
+      "tourvisor_name": "Dtx Hotel",
+      "price_key": "vietnam:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "vietnam",
+      "tourvisor_id": 32356,
+      "hotel_name": "Galina Hotel & Spa 4★",
+      "place": "Нячанг, центр",
+      "search_query": "Galina Hotel & Spa",
+      "tourvisor_name": "Galina Hotel & Spa",
+      "price_key": "vietnam:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "vietnam",
+      "tourvisor_id": 71560,
+      "hotel_name": "SALA Danang Beach Hotel 4★",
+      "place": "Дананг, пляж Микхе",
+      "search_query": "SALA Danang Beach Hotel",
+      "tourvisor_name": "Sala Danang Beach Hotel",
+      "price_key": "vietnam:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "vietnam",
+      "tourvisor_id": 66668,
+      "hotel_name": "HAIAN Beach Hotel & Spa 4★",
+      "place": "Дананг, пляж Микхе",
+      "search_query": "HAIAN Beach Hotel & Spa",
+      "tourvisor_name": "Haian Beach Hotel & Spa",
+      "price_key": "vietnam:20"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "vietnam",
+      "tourvisor_id": 22617,
+      "hotel_name": "Amiana Resort Nha Trang 5★",
+      "place": "Север Нячанга, частная бухта",
+      "search_query": "Amiana Resort Nha Trang",
+      "tourvisor_name": "Amiana Resort And Villas Nha Trang",
+      "price_key": "vietnam:21"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "vietnam",
+      "tourvisor_id": 61583,
+      "hotel_name": "Dusit Princess Moonrise Beach 5★",
+      "place": "Фукуок, пляж Лонг Бич",
+      "search_query": "Dusit Princess Moonrise Beach",
+      "tourvisor_name": "Dusit Princess Moonrise Beach Resort",
+      "price_key": "vietnam:22"
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "vietnam",
+      "tourvisor_id": 32341,
+      "hotel_name": "Salinda Resort Phu Quoc 5★",
+      "place": "Фукуок, пляж Лонг Бич",
+      "search_query": "Salinda Resort Phu Quoc",
+      "tourvisor_name": "Salinda Resort Phu Quoc Island",
+      "price_key": "vietnam:23"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "vietnam",
+      "tourvisor_id": 7457,
+      "hotel_name": "Muine Bay Resort 4★",
+      "place": "Муйне, залив у рыбацкой деревни",
+      "search_query": "Muine Bay Resort",
+      "tourvisor_name": "Muine Bay Resort",
+      "price_key": "vietnam:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4065,
+      "hotel_name": "Phu Hai Beach Resort & Spa 4★",
+      "place": "Фантхьет / Муйне, пляж Фухай",
+      "search_query": "Phu Hai Beach Resort & Spa",
+      "tourvisor_name": "Phu Hai Resort",
+      "price_key": "vietnam:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "73974": {
+      "zhiraf_id": 1,
+      "country_slug": "vietnam",
+      "tourvisor_id": 73974,
+      "hotel_name": "ALMA Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "ALMA Resort Cam Ranh",
+      "tourvisor_name": "Alma Resort Cam Ranh",
+      "price_key": "vietnam:1"
+    },
+    "68661": {
+      "zhiraf_id": 2,
+      "country_slug": "vietnam",
+      "tourvisor_id": 68661,
+      "hotel_name": "Mövenpick Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Mövenpick Resort Cam Ranh",
+      "tourvisor_name": "Movenpick Resort Cam Ranh",
+      "price_key": "vietnam:2"
+    },
+    "69116": {
+      "zhiraf_id": 3,
+      "country_slug": "vietnam",
+      "tourvisor_id": 69116,
+      "hotel_name": "Selectum Noa Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Selectum Noa Resort Cam Ranh",
+      "tourvisor_name": "Selectum Noa Resort Cam Ranh",
+      "price_key": "vietnam:3"
+    },
+    "32342": {
+      "zhiraf_id": 4,
+      "country_slug": "vietnam",
+      "tourvisor_id": 32342,
+      "hotel_name": "Vinpearl Resort & Spa Phu Quoc 5★",
+      "place": "Фукуок, пляж Ганьзау",
+      "search_query": "Vinpearl Resort & Spa Phu Quoc",
+      "tourvisor_name": "Vinpearl Resort & Spa Phu Quoc",
+      "price_key": "vietnam:4"
+    },
+    "54193": {
+      "zhiraf_id": 5,
+      "country_slug": "vietnam",
+      "tourvisor_id": 54193,
+      "hotel_name": "SOL by Meliá Phu Quoc 5★",
+      "place": "Фукуок, пляж Лонг Бич",
+      "search_query": "SOL by Meliá Phu Quoc",
+      "tourvisor_name": "Sol By Melia Phu Quoc (Ex. Sol Beach House Phu Quoc)",
+      "price_key": "vietnam:5"
+    },
+    "4965": {
+      "zhiraf_id": 6,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4965,
+      "hotel_name": "Chen Sea Resort & Spa 5★",
+      "place": "Фукуок, бухта Бай Сеп / Онг Ланг",
+      "search_query": "Chen Sea Resort & Spa",
+      "tourvisor_name": "Chen Sea Resort & Spa Phu Quoc",
+      "price_key": "vietnam:6"
+    },
+    "23725": {
+      "zhiraf_id": 7,
+      "country_slug": "vietnam",
+      "tourvisor_id": 23725,
+      "hotel_name": "Cassia Cottage 4★",
+      "place": "Фукуок, Лонг Бич",
+      "search_query": "Cassia Cottage",
+      "tourvisor_name": "Cassia Cottage",
+      "price_key": "vietnam:7"
+    },
+    "4960": {
+      "zhiraf_id": 8,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4960,
+      "hotel_name": "Mango Bay Resort 3★",
+      "place": "Фукуок, пляж Онг Ланг",
+      "search_query": "mango bay",
+      "tourvisor_name": "Mango Bay",
+      "price_key": "vietnam:8"
+    },
+    "4072": {
+      "zhiraf_id": 9,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4072,
+      "hotel_name": "Sailing Club Resort Mui Ne 4★",
+      "place": "Муйне, Хамтьен",
+      "search_query": "Sailing Club Resort Mui Ne",
+      "tourvisor_name": "Sailing Club Resort Mui Ne (Ex. Mia Resort Mui Ne)",
+      "price_key": "vietnam:9"
+    },
+    "128157": {
+      "zhiraf_id": 10,
+      "country_slug": "vietnam",
+      "tourvisor_id": 128157,
+      "hotel_name": "AIRA Boutique Hoi An Hotel & Villa 4★",
+      "place": "Хойан, пляж Ан Банг",
+      "search_query": "AIRA Boutique Hoi An Hotel & Villa",
+      "tourvisor_name": "Aira Boutique Hoi An Hotel & Villa",
+      "price_key": "vietnam:10"
+    },
+    "37940": {
+      "zhiraf_id": 11,
+      "country_slug": "vietnam",
+      "tourvisor_id": 37940,
+      "hotel_name": "Cam Ranh Riviera Beach Resort 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Cam Ranh Riviera Beach Resort",
+      "tourvisor_name": "Riviera Beach Resort Cam Ranh",
+      "price_key": "vietnam:11"
+    },
+    "69260": {
+      "zhiraf_id": 12,
+      "country_slug": "vietnam",
+      "tourvisor_id": 69260,
+      "hotel_name": "Radisson Blu Resort Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Radisson Blu Resort Cam Ranh",
+      "tourvisor_name": "Radisson Blu Resort Cam Ranh",
+      "price_key": "vietnam:12"
+    },
+    "57086": {
+      "zhiraf_id": 13,
+      "country_slug": "vietnam",
+      "tourvisor_id": 57086,
+      "hotel_name": "Swandor Hotels & Resorts Cam Ranh 5★",
+      "place": "Камрань, пляж Бай Дай",
+      "search_query": "Swandor Hotels & Resorts Cam Ranh",
+      "tourvisor_name": "Swandor Hotels & Resorts Cam Ranh",
+      "price_key": "vietnam:13"
+    },
+    "65254": {
+      "zhiraf_id": 14,
+      "country_slug": "vietnam",
+      "tourvisor_id": 65254,
+      "hotel_name": "Premier Residences Phu Quoc 5★",
+      "place": "Фукуок, пляж Кем",
+      "search_query": "Premier Residences Phu Quoc",
+      "tourvisor_name": "Premier Residences Phu Quoc Emerald Bay",
+      "price_key": "vietnam:14"
+    },
+    "59346": {
+      "zhiraf_id": 15,
+      "country_slug": "vietnam",
+      "tourvisor_id": 59346,
+      "hotel_name": "Green Bay Phu Quoc Resort 5★",
+      "place": "Фукуок, Куа Кан",
+      "search_query": "Green Bay Phu Quoc Resort",
+      "tourvisor_name": "Green Bay Phu Quoc Resort & Spa",
+      "price_key": "vietnam:15"
+    },
+    "41495": {
+      "zhiraf_id": 16,
+      "country_slug": "vietnam",
+      "tourvisor_id": 41495,
+      "hotel_name": "Liberty Central Nha Trang 4★",
+      "place": "Нячанг, центр / Лок Тхо",
+      "search_query": "Liberty Central Nha Trang",
+      "tourvisor_name": "Liberty Central Nha Trang Hotel",
+      "price_key": "vietnam:16"
+    },
+    "66367": {
+      "zhiraf_id": 17,
+      "country_slug": "vietnam",
+      "tourvisor_id": 66367,
+      "hotel_name": "DTX Hotel Nha Trang 4★",
+      "place": "Нячанг, центр",
+      "search_query": "DTX Hotel Nha Trang",
+      "tourvisor_name": "Dtx Hotel",
+      "price_key": "vietnam:17"
+    },
+    "32356": {
+      "zhiraf_id": 18,
+      "country_slug": "vietnam",
+      "tourvisor_id": 32356,
+      "hotel_name": "Galina Hotel & Spa 4★",
+      "place": "Нячанг, центр",
+      "search_query": "Galina Hotel & Spa",
+      "tourvisor_name": "Galina Hotel & Spa",
+      "price_key": "vietnam:18"
+    },
+    "71560": {
+      "zhiraf_id": 19,
+      "country_slug": "vietnam",
+      "tourvisor_id": 71560,
+      "hotel_name": "SALA Danang Beach Hotel 4★",
+      "place": "Дананг, пляж Микхе",
+      "search_query": "SALA Danang Beach Hotel",
+      "tourvisor_name": "Sala Danang Beach Hotel",
+      "price_key": "vietnam:19"
+    },
+    "66668": {
+      "zhiraf_id": 20,
+      "country_slug": "vietnam",
+      "tourvisor_id": 66668,
+      "hotel_name": "HAIAN Beach Hotel & Spa 4★",
+      "place": "Дананг, пляж Микхе",
+      "search_query": "HAIAN Beach Hotel & Spa",
+      "tourvisor_name": "Haian Beach Hotel & Spa",
+      "price_key": "vietnam:20"
+    },
+    "22617": {
+      "zhiraf_id": 21,
+      "country_slug": "vietnam",
+      "tourvisor_id": 22617,
+      "hotel_name": "Amiana Resort Nha Trang 5★",
+      "place": "Север Нячанга, частная бухта",
+      "search_query": "Amiana Resort Nha Trang",
+      "tourvisor_name": "Amiana Resort And Villas Nha Trang",
+      "price_key": "vietnam:21"
+    },
+    "61583": {
+      "zhiraf_id": 22,
+      "country_slug": "vietnam",
+      "tourvisor_id": 61583,
+      "hotel_name": "Dusit Princess Moonrise Beach 5★",
+      "place": "Фукуок, пляж Лонг Бич",
+      "search_query": "Dusit Princess Moonrise Beach",
+      "tourvisor_name": "Dusit Princess Moonrise Beach Resort",
+      "price_key": "vietnam:22"
+    },
+    "32341": {
+      "zhiraf_id": 23,
+      "country_slug": "vietnam",
+      "tourvisor_id": 32341,
+      "hotel_name": "Salinda Resort Phu Quoc 5★",
+      "place": "Фукуок, пляж Лонг Бич",
+      "search_query": "Salinda Resort Phu Quoc",
+      "tourvisor_name": "Salinda Resort Phu Quoc Island",
+      "price_key": "vietnam:23"
+    },
+    "7457": {
+      "zhiraf_id": 24,
+      "country_slug": "vietnam",
+      "tourvisor_id": 7457,
+      "hotel_name": "Muine Bay Resort 4★",
+      "place": "Муйне, залив у рыбацкой деревни",
+      "search_query": "Muine Bay Resort",
+      "tourvisor_name": "Muine Bay Resort",
+      "price_key": "vietnam:24"
+    },
+    "4065": {
+      "zhiraf_id": 25,
+      "country_slug": "vietnam",
+      "tourvisor_id": 4065,
+      "hotel_name": "Phu Hai Beach Resort & Spa 4★",
+      "place": "Фантхьет / Муйне, пляж Фухай",
+      "search_query": "Phu Hai Beach Resort & Spa",
+      "tourvisor_name": "Phu Hai Resort",
+      "price_key": "vietnam:25"
+    }
+  }
+}

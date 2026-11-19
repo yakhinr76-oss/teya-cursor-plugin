@@ -58,6 +58,21 @@ function zhiraf_ufa_curated_catalog_hotels( $dest_slug ) {
 		return zhiraf_ufa_seychelles_catalog_hotels();
 	}
 
+	if ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_catalog_hotels' ) ) {
+		return zhiraf_ufa_kitaj_catalog_hotels();
+	}
+	if ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_catalog_hotels' ) ) {
+		return zhiraf_ufa_uzbekistan_catalog_hotels();
+	}
+	if ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_catalog_hotels' ) ) {
+		return zhiraf_ufa_armeniya_catalog_hotels();
+	}
+	if ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_catalog_hotels' ) ) {
+		return zhiraf_ufa_abkhaziya_catalog_hotels();
+	}
+	if ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_catalog_hotels' ) ) {
+		return zhiraf_ufa_rossiya_catalog_hotels();
+	}
 	/**
 	 * Filter curated hotels for a destination (non-Turkey rollout).
 	 *
@@ -106,6 +121,21 @@ function zhiraf_ufa_curated_catalog_default_copy( $dest_slug ) {
 		return zhiraf_ufa_seychelles_catalog_default_copy();
 	}
 
+	if ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_catalog_default_copy' ) ) {
+		return zhiraf_ufa_kitaj_catalog_default_copy();
+	}
+	if ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_catalog_default_copy' ) ) {
+		return zhiraf_ufa_uzbekistan_catalog_default_copy();
+	}
+	if ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_catalog_default_copy' ) ) {
+		return zhiraf_ufa_armeniya_catalog_default_copy();
+	}
+	if ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_catalog_default_copy' ) ) {
+		return zhiraf_ufa_abkhaziya_catalog_default_copy();
+	}
+	if ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_catalog_default_copy' ) ) {
+		return zhiraf_ufa_rossiya_catalog_default_copy();
+	}
 	/**
 	 * Filter default catalog title/desc for curated hub.
 	 *
@@ -174,6 +204,21 @@ function zhiraf_ufa_curated_resort_pick_cards( $dest_slug ) {
 		return zhiraf_ufa_seychelles_resort_pick_cards();
 	}
 
+	if ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_resort_pick_cards' ) ) {
+		return zhiraf_ufa_kitaj_resort_pick_cards();
+	}
+	if ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_resort_pick_cards' ) ) {
+		return zhiraf_ufa_uzbekistan_resort_pick_cards();
+	}
+	if ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_resort_pick_cards' ) ) {
+		return zhiraf_ufa_armeniya_resort_pick_cards();
+	}
+	if ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_resort_pick_cards' ) ) {
+		return zhiraf_ufa_abkhaziya_resort_pick_cards();
+	}
+	if ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_resort_pick_cards' ) ) {
+		return zhiraf_ufa_rossiya_resort_pick_cards();
+	}
 	/**
 	 * @param array<int,array<string,mixed>> $cards
 	 * @param string                         $dest_slug
@@ -220,6 +265,21 @@ function zhiraf_ufa_curated_resort_chips( $dest_slug ) {
 		return zhiraf_ufa_seychelles_resort_chips();
 	}
 
+	if ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_resort_chips' ) ) {
+		return zhiraf_ufa_kitaj_resort_chips();
+	}
+	if ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_resort_chips' ) ) {
+		return zhiraf_ufa_uzbekistan_resort_chips();
+	}
+	if ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_resort_chips' ) ) {
+		return zhiraf_ufa_armeniya_resort_chips();
+	}
+	if ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_resort_chips' ) ) {
+		return zhiraf_ufa_abkhaziya_resort_chips();
+	}
+	if ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_resort_chips' ) ) {
+		return zhiraf_ufa_rossiya_resort_chips();
+	}
 	/**
 	 * @param array<int,array{id:string,label:string}> $chips
 	 * @param string                                   $dest_slug
@@ -266,6 +326,21 @@ function zhiraf_ufa_curated_expert_nuances( $dest_slug ) {
 		return zhiraf_ufa_seychelles_expert_nuances();
 	}
 
+	if ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_expert_nuances' ) ) {
+		return zhiraf_ufa_kitaj_expert_nuances();
+	}
+	if ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_expert_nuances' ) ) {
+		return zhiraf_ufa_uzbekistan_expert_nuances();
+	}
+	if ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_expert_nuances' ) ) {
+		return zhiraf_ufa_armeniya_expert_nuances();
+	}
+	if ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_expert_nuances' ) ) {
+		return zhiraf_ufa_abkhaziya_expert_nuances();
+	}
+	if ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_expert_nuances' ) ) {
+		return zhiraf_ufa_rossiya_expert_nuances();
+	}
 	/**
 	 * @param array<int,array{icon:string,title:string,text:string}> $items
 	 * @param string                                                 $dest_slug
@@ -312,6 +387,21 @@ function zhiraf_ufa_curated_catalog_filters( $dest_slug ) {
 		return zhiraf_ufa_seychelles_catalog_filters();
 	}
 
+	if ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_catalog_filters' ) ) {
+		return zhiraf_ufa_kitaj_catalog_filters();
+	}
+	if ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_catalog_filters' ) ) {
+		return zhiraf_ufa_uzbekistan_catalog_filters();
+	}
+	if ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_catalog_filters' ) ) {
+		return zhiraf_ufa_armeniya_catalog_filters();
+	}
+	if ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_catalog_filters' ) ) {
+		return zhiraf_ufa_abkhaziya_catalog_filters();
+	}
+	if ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_catalog_filters' ) ) {
+		return zhiraf_ufa_rossiya_catalog_filters();
+	}
 	/**
 	 * @param array<int,array<string,string>> $filters
 	 * @param string                         $dest_slug

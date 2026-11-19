@@ -1,0 +1,573 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "india",
+  "tourvisor_country_id": 3,
+  "identified_at": "2026-11-19",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 5,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        872,
+        878,
+        4105,
+        868,
+        902
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "price_keys": [
+        "india:1",
+        "india:2",
+        "india:3",
+        "india:4",
+        "india:5"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        12152,
+        12151,
+        133264,
+        129518,
+        4156
+      ],
+      "zhiraf_ids": [
+        6,
+        7,
+        8,
+        10,
+        11
+      ],
+      "price_keys": [
+        "india:6",
+        "india:7",
+        "india:8",
+        "india:10",
+        "india:11"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        4108,
+        884,
+        51062,
+        156595,
+        2099
+      ],
+      "zhiraf_ids": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "price_keys": [
+        "india:12",
+        "india:13",
+        "india:14",
+        "india:15",
+        "india:16"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        921,
+        271,
+        50593,
+        108249,
+        68865
+      ],
+      "zhiraf_ids": [
+        17,
+        18,
+        19,
+        21,
+        22
+      ],
+      "price_keys": [
+        "india:17",
+        "india:18",
+        "india:19",
+        "india:21",
+        "india:22"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "hotel_count": 2,
+      "tourvisor_ids": [
+        63697,
+        117800
+      ],
+      "zhiraf_ids": [
+        24,
+        25
+      ],
+      "price_keys": [
+        "india:24",
+        "india:25"
+      ]
+    }
+  ],
+  "hotel_count": 22,
+  "hotel_ids": "271,868,872,878,884,902,921,2099,4105,4108,4156,12151,12152,50593,51062,63697,68865,108249,117800,129518,133264,156595",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "india",
+      "tourvisor_id": 872,
+      "hotel_name": "Novotel Goa Dona Sylvia Resort 5★",
+      "place": "Южный Гоа, пляж Кавелоссим",
+      "search_query": "Novotel Goa Dona Sylvia Resort",
+      "tourvisor_name": "Novotel Goa Dona Sylvia Resort",
+      "price_key": "india:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "india",
+      "tourvisor_id": 878,
+      "hotel_name": "Holiday Inn Resort Goa 5★",
+      "place": "Южный Гоа, пляж Мобор / Кавелоссим",
+      "search_query": "Holiday Inn Resort Goa",
+      "tourvisor_name": "Holiday Inn Resort Goa",
+      "price_key": "india:2"
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "india",
+      "tourvisor_id": 4105,
+      "hotel_name": "Radisson Blu Resort Goa Cavelossim 5★",
+      "place": "Южный Гоа, пляж Кавелоссим",
+      "search_query": "Radisson Blu Resort Goa Cavelossim",
+      "tourvisor_name": "Radisson Blu Resort Cavelossim Beach",
+      "price_key": "india:3"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "india",
+      "tourvisor_id": 868,
+      "hotel_name": "Club Mahindra Varca Beach 4★",
+      "place": "Южный Гоа, пляж Варка",
+      "search_query": "Club Mahindra Varca Beach",
+      "tourvisor_name": "Club Mahindra Varca Beach",
+      "price_key": "india:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "india",
+      "tourvisor_id": 902,
+      "hotel_name": "Caravela Beach Resort 5★",
+      "place": "Южный Гоа, пляж Варка",
+      "search_query": "Caravela Beach Resort",
+      "tourvisor_name": "Caravela Beach Resort (Ex. Ramada Caravella)",
+      "price_key": "india:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "india",
+      "tourvisor_id": 12152,
+      "hotel_name": "La Cabana Beach & Spa 4★",
+      "place": "Северный Гоа, пляж Ашвем",
+      "search_query": "La Cabana Beach & Spa",
+      "tourvisor_name": "La Cabana Beach & Spa",
+      "price_key": "india:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "india",
+      "tourvisor_id": 12151,
+      "hotel_name": "Riva Beach Resort 4★",
+      "place": "Северный Гоа, пляж Мандрем",
+      "search_query": "Riva Beach Resort",
+      "tourvisor_name": "Riva Beach Resort",
+      "price_key": "india:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "india",
+      "tourvisor_id": 133264,
+      "hotel_name": "Sur La Mer 3★",
+      "place": "Северный Гоа, Морджим / Ашвем",
+      "search_query": "Sur La Mer",
+      "tourvisor_name": "Sur La Mer",
+      "price_key": "india:8"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "india",
+      "tourvisor_id": 129518,
+      "hotel_name": "LaRiSa Resort & Spa Ashwem 4★",
+      "place": "Северный Гоа, пляж Ашвем",
+      "search_query": "LaRiSa Resort & Spa Ashwem",
+      "tourvisor_name": "Larisa Hotel And Resort Ashwem",
+      "price_key": "india:10"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "india",
+      "tourvisor_id": 4156,
+      "hotel_name": "Santana Beach Resort 3★",
+      "place": "Северный Гоа, пляж Кандолим",
+      "search_query": "Santana Beach Resort",
+      "tourvisor_name": "Santana Beach Resort",
+      "price_key": "india:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "india",
+      "tourvisor_id": 4108,
+      "hotel_name": "Sonesta Inns Beach Resort 4★",
+      "place": "Северный Гоа, Кандолим / Калангут",
+      "search_query": "Sonesta Inns Beach Resort",
+      "tourvisor_name": "Sonesta Inns",
+      "price_key": "india:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "india",
+      "tourvisor_id": 884,
+      "hotel_name": "Lemon Tree Amarante Beach Resort 4★",
+      "place": "Северный Гоа, пляж Кандолим",
+      "search_query": "Lemon Tree Amarante Beach Resort",
+      "tourvisor_name": "Lemon Tree Amarante Beach Resort",
+      "price_key": "india:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "india",
+      "tourvisor_id": 51062,
+      "hotel_name": "ibis Styles Goa Calangute 3★",
+      "place": "Северный Гоа, Калангут / Тивай",
+      "search_query": "ibis Styles Goa Calangute",
+      "tourvisor_name": "Ibis Styles Goa Calangute",
+      "price_key": "india:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "india",
+      "tourvisor_id": 156595,
+      "hotel_name": "Bloom Hotel Calangute 3★",
+      "place": "Северный Гоа, Калангут",
+      "search_query": "bloom calangute",
+      "tourvisor_name": "Bloom Calangute",
+      "price_key": "india:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "india",
+      "tourvisor_id": 2099,
+      "hotel_name": "The Zuri White Sands Resort & Casino 5★",
+      "place": "Южный Гоа, пляж Варка",
+      "search_query": "The Zuri White Sands Resort & Casino",
+      "tourvisor_name": "The Zuri White Sands Goa Resort & Casino (Ex. Radisson)",
+      "price_key": "india:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "india",
+      "tourvisor_id": 921,
+      "hotel_name": "Kenilworth Resort & Spa 5★",
+      "place": "Южный Гоа, пляж Уторда",
+      "search_query": "Kenilworth Resort & Spa",
+      "tourvisor_name": "The Kenilworth Beach Resort & Spa",
+      "price_key": "india:17"
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "india",
+      "tourvisor_id": 271,
+      "hotel_name": "Royal Orchid Beach Resort & Spa 5★",
+      "place": "Южный Гоа, пляж Уторда",
+      "search_query": "Royal Orchid Beach Resort & Spa",
+      "tourvisor_name": "Royal Orchid Beach Resort & Spa ",
+      "price_key": "india:18"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "india",
+      "tourvisor_id": 50593,
+      "hotel_name": "Planet Hollywood Beach Resort 5★",
+      "place": "Южный Гоа, пляж Уторда",
+      "search_query": "Planet Hollywood Beach Resort",
+      "tourvisor_name": "Planet Hollywood Beach Resort",
+      "price_key": "india:19"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "india",
+      "tourvisor_id": 108249,
+      "hotel_name": "Fairfield by Marriott Goa Benaulim 4★",
+      "place": "Южный Гоа, пляж Бенаулим",
+      "search_query": "Fairfield by Marriott Goa Benaulim",
+      "tourvisor_name": "Fairfield By Marriott Goa Benaulim",
+      "price_key": "india:21"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "india",
+      "tourvisor_id": 68865,
+      "hotel_name": "TreeHouse Blue Hotel & Serviced Apartments 3★",
+      "place": "Южный Гоа, Маджорда",
+      "search_query": "TreeHouse Blue Hotel & Serviced Apartments",
+      "tourvisor_name": "Treehouse Blue Villas",
+      "price_key": "india:22"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "india",
+      "tourvisor_id": 63697,
+      "hotel_name": "White Wood Resort by Stone Wood 4★",
+      "place": "Северный Гоа, Морджим / Ашвем",
+      "search_query": "White Wood Resort by Stone Wood",
+      "tourvisor_name": "Stone Wood Resort & Spa",
+      "price_key": "india:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "india",
+      "tourvisor_id": 117800,
+      "hotel_name": "Grand Continent Morjim 4★",
+      "place": "Северный Гоа, пляж Морджим",
+      "search_query": "Grand Continent Morjim",
+      "tourvisor_name": "Grand Continent Morjim",
+      "price_key": "india:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "872": {
+      "zhiraf_id": 1,
+      "country_slug": "india",
+      "tourvisor_id": 872,
+      "hotel_name": "Novotel Goa Dona Sylvia Resort 5★",
+      "place": "Южный Гоа, пляж Кавелоссим",
+      "search_query": "Novotel Goa Dona Sylvia Resort",
+      "tourvisor_name": "Novotel Goa Dona Sylvia Resort",
+      "price_key": "india:1"
+    },
+    "878": {
+      "zhiraf_id": 2,
+      "country_slug": "india",
+      "tourvisor_id": 878,
+      "hotel_name": "Holiday Inn Resort Goa 5★",
+      "place": "Южный Гоа, пляж Мобор / Кавелоссим",
+      "search_query": "Holiday Inn Resort Goa",
+      "tourvisor_name": "Holiday Inn Resort Goa",
+      "price_key": "india:2"
+    },
+    "4105": {
+      "zhiraf_id": 3,
+      "country_slug": "india",
+      "tourvisor_id": 4105,
+      "hotel_name": "Radisson Blu Resort Goa Cavelossim 5★",
+      "place": "Южный Гоа, пляж Кавелоссим",
+      "search_query": "Radisson Blu Resort Goa Cavelossim",
+      "tourvisor_name": "Radisson Blu Resort Cavelossim Beach",
+      "price_key": "india:3"
+    },
+    "868": {
+      "zhiraf_id": 4,
+      "country_slug": "india",
+      "tourvisor_id": 868,
+      "hotel_name": "Club Mahindra Varca Beach 4★",
+      "place": "Южный Гоа, пляж Варка",
+      "search_query": "Club Mahindra Varca Beach",
+      "tourvisor_name": "Club Mahindra Varca Beach",
+      "price_key": "india:4"
+    },
+    "902": {
+      "zhiraf_id": 5,
+      "country_slug": "india",
+      "tourvisor_id": 902,
+      "hotel_name": "Caravela Beach Resort 5★",
+      "place": "Южный Гоа, пляж Варка",
+      "search_query": "Caravela Beach Resort",
+      "tourvisor_name": "Caravela Beach Resort (Ex. Ramada Caravella)",
+      "price_key": "india:5"
+    },
+    "12152": {
+      "zhiraf_id": 6,
+      "country_slug": "india",
+      "tourvisor_id": 12152,
+      "hotel_name": "La Cabana Beach & Spa 4★",
+      "place": "Северный Гоа, пляж Ашвем",
+      "search_query": "La Cabana Beach & Spa",
+      "tourvisor_name": "La Cabana Beach & Spa",
+      "price_key": "india:6"
+    },
+    "12151": {
+      "zhiraf_id": 7,
+      "country_slug": "india",
+      "tourvisor_id": 12151,
+      "hotel_name": "Riva Beach Resort 4★",
+      "place": "Северный Гоа, пляж Мандрем",
+      "search_query": "Riva Beach Resort",
+      "tourvisor_name": "Riva Beach Resort",
+      "price_key": "india:7"
+    },
+    "133264": {
+      "zhiraf_id": 8,
+      "country_slug": "india",
+      "tourvisor_id": 133264,
+      "hotel_name": "Sur La Mer 3★",
+      "place": "Северный Гоа, Морджим / Ашвем",
+      "search_query": "Sur La Mer",
+      "tourvisor_name": "Sur La Mer",
+      "price_key": "india:8"
+    },
+    "129518": {
+      "zhiraf_id": 10,
+      "country_slug": "india",
+      "tourvisor_id": 129518,
+      "hotel_name": "LaRiSa Resort & Spa Ashwem 4★",
+      "place": "Северный Гоа, пляж Ашвем",
+      "search_query": "LaRiSa Resort & Spa Ashwem",
+      "tourvisor_name": "Larisa Hotel And Resort Ashwem",
+      "price_key": "india:10"
+    },
+    "4156": {
+      "zhiraf_id": 11,
+      "country_slug": "india",
+      "tourvisor_id": 4156,
+      "hotel_name": "Santana Beach Resort 3★",
+      "place": "Северный Гоа, пляж Кандолим",
+      "search_query": "Santana Beach Resort",
+      "tourvisor_name": "Santana Beach Resort",
+      "price_key": "india:11"
+    },
+    "4108": {
+      "zhiraf_id": 12,
+      "country_slug": "india",
+      "tourvisor_id": 4108,
+      "hotel_name": "Sonesta Inns Beach Resort 4★",
+      "place": "Северный Гоа, Кандолим / Калангут",
+      "search_query": "Sonesta Inns Beach Resort",
+      "tourvisor_name": "Sonesta Inns",
+      "price_key": "india:12"
+    },
+    "884": {
+      "zhiraf_id": 13,
+      "country_slug": "india",
+      "tourvisor_id": 884,
+      "hotel_name": "Lemon Tree Amarante Beach Resort 4★",
+      "place": "Северный Гоа, пляж Кандолим",
+      "search_query": "Lemon Tree Amarante Beach Resort",
+      "tourvisor_name": "Lemon Tree Amarante Beach Resort",
+      "price_key": "india:13"
+    },
+    "51062": {
+      "zhiraf_id": 14,
+      "country_slug": "india",
+      "tourvisor_id": 51062,
+      "hotel_name": "ibis Styles Goa Calangute 3★",
+      "place": "Северный Гоа, Калангут / Тивай",
+      "search_query": "ibis Styles Goa Calangute",
+      "tourvisor_name": "Ibis Styles Goa Calangute",
+      "price_key": "india:14"
+    },
+    "156595": {
+      "zhiraf_id": 15,
+      "country_slug": "india",
+      "tourvisor_id": 156595,
+      "hotel_name": "Bloom Hotel Calangute 3★",
+      "place": "Северный Гоа, Калангут",
+      "search_query": "bloom calangute",
+      "tourvisor_name": "Bloom Calangute",
+      "price_key": "india:15"
+    },
+    "2099": {
+      "zhiraf_id": 16,
+      "country_slug": "india",
+      "tourvisor_id": 2099,
+      "hotel_name": "The Zuri White Sands Resort & Casino 5★",
+      "place": "Южный Гоа, пляж Варка",
+      "search_query": "The Zuri White Sands Resort & Casino",
+      "tourvisor_name": "The Zuri White Sands Goa Resort & Casino (Ex. Radisson)",
+      "price_key": "india:16"
+    },
+    "921": {
+      "zhiraf_id": 17,
+      "country_slug": "india",
+      "tourvisor_id": 921,
+      "hotel_name": "Kenilworth Resort & Spa 5★",
+      "place": "Южный Гоа, пляж Уторда",
+      "search_query": "Kenilworth Resort & Spa",
+      "tourvisor_name": "The Kenilworth Beach Resort & Spa",
+      "price_key": "india:17"
+    },
+    "271": {
+      "zhiraf_id": 18,
+      "country_slug": "india",
+      "tourvisor_id": 271,
+      "hotel_name": "Royal Orchid Beach Resort & Spa 5★",
+      "place": "Южный Гоа, пляж Уторда",
+      "search_query": "Royal Orchid Beach Resort & Spa",
+      "tourvisor_name": "Royal Orchid Beach Resort & Spa ",
+      "price_key": "india:18"
+    },
+    "50593": {
+      "zhiraf_id": 19,
+      "country_slug": "india",
+      "tourvisor_id": 50593,
+      "hotel_name": "Planet Hollywood Beach Resort 5★",
+      "place": "Южный Гоа, пляж Уторда",
+      "search_query": "Planet Hollywood Beach Resort",
+      "tourvisor_name": "Planet Hollywood Beach Resort",
+      "price_key": "india:19"
+    },
+    "108249": {
+      "zhiraf_id": 21,
+      "country_slug": "india",
+      "tourvisor_id": 108249,
+      "hotel_name": "Fairfield by Marriott Goa Benaulim 4★",
+      "place": "Южный Гоа, пляж Бенаулим",
+      "search_query": "Fairfield by Marriott Goa Benaulim",
+      "tourvisor_name": "Fairfield By Marriott Goa Benaulim",
+      "price_key": "india:21"
+    },
+    "68865": {
+      "zhiraf_id": 22,
+      "country_slug": "india",
+      "tourvisor_id": 68865,
+      "hotel_name": "TreeHouse Blue Hotel & Serviced Apartments 3★",
+      "place": "Южный Гоа, Маджорда",
+      "search_query": "TreeHouse Blue Hotel & Serviced Apartments",
+      "tourvisor_name": "Treehouse Blue Villas",
+      "price_key": "india:22"
+    },
+    "63697": {
+      "zhiraf_id": 24,
+      "country_slug": "india",
+      "tourvisor_id": 63697,
+      "hotel_name": "White Wood Resort by Stone Wood 4★",
+      "place": "Северный Гоа, Морджим / Ашвем",
+      "search_query": "White Wood Resort by Stone Wood",
+      "tourvisor_name": "Stone Wood Resort & Spa",
+      "price_key": "india:24"
+    },
+    "117800": {
+      "zhiraf_id": 25,
+      "country_slug": "india",
+      "tourvisor_id": 117800,
+      "hotel_name": "Grand Continent Morjim 4★",
+      "place": "Северный Гоа, пляж Морджим",
+      "search_query": "Grand Continent Morjim",
+      "tourvisor_name": "Grand Continent Morjim",
+      "price_key": "india:25"
+    }
+  }
+}

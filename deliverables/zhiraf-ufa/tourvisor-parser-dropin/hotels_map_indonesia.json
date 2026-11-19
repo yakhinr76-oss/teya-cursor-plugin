@@ -1,0 +1,609 @@
+{
+  "schema": "zhiraf.tourvisor-parser.hotels_map.v1",
+  "country_slug": "indonesia",
+  "tourvisor_country_id": 7,
+  "identified_at": "2026-11-19",
+  "departure_city": "Уфа",
+  "modsearch_hotels_per_request": 5,
+  "modsearch_batch_count": 5,
+  "search_batches": [
+    {
+      "batch_index": 1,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        2294,
+        42141,
+        2357,
+        2319,
+        66518
+      ],
+      "zhiraf_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "price_keys": [
+        "indonesia:1",
+        "indonesia:2",
+        "indonesia:3",
+        "indonesia:4",
+        "indonesia:5"
+      ]
+    },
+    {
+      "batch_index": 2,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        2369,
+        63983,
+        148321,
+        62531,
+        2286
+      ],
+      "zhiraf_ids": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "price_keys": [
+        "indonesia:6",
+        "indonesia:7",
+        "indonesia:8",
+        "indonesia:9",
+        "indonesia:10"
+      ]
+    },
+    {
+      "batch_index": 3,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        57153,
+        68636,
+        127483,
+        2379,
+        127320
+      ],
+      "zhiraf_ids": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "price_keys": [
+        "indonesia:11",
+        "indonesia:12",
+        "indonesia:13",
+        "indonesia:14",
+        "indonesia:15"
+      ]
+    },
+    {
+      "batch_index": 4,
+      "hotel_count": 5,
+      "tourvisor_ids": [
+        2320,
+        2374,
+        108696,
+        38616,
+        28400
+      ],
+      "zhiraf_ids": [
+        16,
+        17,
+        19,
+        20,
+        21
+      ],
+      "price_keys": [
+        "indonesia:16",
+        "indonesia:17",
+        "indonesia:19",
+        "indonesia:20",
+        "indonesia:21"
+      ]
+    },
+    {
+      "batch_index": 5,
+      "hotel_count": 4,
+      "tourvisor_ids": [
+        2355,
+        28400,
+        2299,
+        154672
+      ],
+      "zhiraf_ids": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "price_keys": [
+        "indonesia:22",
+        "indonesia:23",
+        "indonesia:24",
+        "indonesia:25"
+      ]
+    }
+  ],
+  "hotel_count": 24,
+  "hotel_ids": "2286,2294,2299,2319,2320,2355,2357,2369,2374,2379,28400,28400,38616,42141,57153,62531,63983,66518,68636,108696,127320,127483,148321,154672",
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2294,
+      "hotel_name": "Ayodya Resort Bali 5★",
+      "place": "Нуса-Дуа, пляж Менгиат",
+      "search_query": "Ayodya Resort Bali",
+      "tourvisor_name": "Ayodya Resort Bali",
+      "price_key": "indonesia:1"
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "indonesia",
+      "tourvisor_id": 42141,
+      "hotel_name": "MERUSAKA Nusa Dua 5★",
+      "place": "Нуса-Дуа, пляж Менгиат",
+      "search_query": "MERUSAKA Nusa Dua",
+      "tourvisor_name": "Merusaka Nusa Dua (Ex. Inaya Putri Bali Resort)",
+      "price_key": "indonesia:2"
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2357,
+      "hotel_name": "Nusa Dua Beach Hotel & Spa 5★",
+      "place": "Нуса-Дуа, пляж Самух",
+      "search_query": "Nusa Dua Beach Hotel & Spa",
+      "tourvisor_name": "Nusa Dua Beach Hotel & Spa",
+      "price_key": "indonesia:3"
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2319,
+      "hotel_name": "Grand Mirage Resort & Thalasso Bali 5★",
+      "place": "Танджунг-Беноа, пляж Беноа",
+      "search_query": "Grand Mirage Resort & Thalasso Bali",
+      "tourvisor_name": "Grand Mirage Resort & Thalasso Bali",
+      "price_key": "indonesia:4"
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "indonesia",
+      "tourvisor_id": 66518,
+      "hotel_name": "Hyatt Regency Bali 5★",
+      "place": "Санур, центральный пляж Санура",
+      "search_query": "Hyatt Regency Bali",
+      "tourvisor_name": "Hyatt Regency Bali",
+      "price_key": "indonesia:5"
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2369,
+      "hotel_name": "Pita Maha Resort & Spa 4★",
+      "place": "Убуд, долина реки Кампухан",
+      "search_query": "Pita Maha Resort & Spa",
+      "tourvisor_name": "Pita Maha Resort & Spa",
+      "price_key": "indonesia:6"
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "indonesia",
+      "tourvisor_id": 63983,
+      "hotel_name": "Ulun Ubud Resort & Spa 4★",
+      "place": "Убуд, склон Санггинган / река Кампухан",
+      "search_query": "Ulun Ubud Resort & Spa",
+      "tourvisor_name": "Ulun Ubud Resort & Spa",
+      "price_key": "indonesia:7"
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "indonesia",
+      "tourvisor_id": 148321,
+      "hotel_name": "The Sankara Suites & Villas 4★",
+      "place": "Убуд, долина к северу от центра",
+      "search_query": "The Sankara Suites & Villas",
+      "tourvisor_name": "The Sankara Suite & Villas",
+      "price_key": "indonesia:8"
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "indonesia",
+      "tourvisor_id": 62531,
+      "hotel_name": "Sthala, Tribute Portfolio by Marriott 5★",
+      "place": "Убуд, Лодтундух / река Вос",
+      "search_query": "Sthala, Tribute Portfolio by Marriott",
+      "tourvisor_name": "Sthala A Tribute Portfolio Hotel",
+      "price_key": "indonesia:9"
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2286,
+      "hotel_name": "Alila Ubud 4★",
+      "place": "Паянган / Убуд, долина реки Аюнг",
+      "search_query": "Alila Ubud",
+      "tourvisor_name": "Alila Ubud Resort",
+      "price_key": "indonesia:10"
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "indonesia",
+      "tourvisor_id": 57153,
+      "hotel_name": "Viva Dash Hotel Seminyak 4★",
+      "place": "Семиньяк, район Петитенгет",
+      "search_query": "Viva Dash Hotel Seminyak",
+      "tourvisor_name": "Viva Dash Hotel Seminyak Bali",
+      "price_key": "indonesia:11"
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "indonesia",
+      "tourvisor_id": 68636,
+      "hotel_name": "Eastin Ashta Resort Canggu 4★",
+      "place": "Чангу, пляж Бату Болонг",
+      "search_query": "Eastin Ashta Resort Canggu",
+      "tourvisor_name": "Eastin Ashta Resort Canggu",
+      "price_key": "indonesia:12"
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "indonesia",
+      "tourvisor_id": 127483,
+      "hotel_name": "Chesa Canggu 4★",
+      "place": "Чангу, пляж Бату Болонг",
+      "search_query": "Chesa Canggu",
+      "tourvisor_name": "Chesa Canggu",
+      "price_key": "indonesia:13"
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2379,
+      "hotel_name": "Away Bali Legian Camakila 4★",
+      "place": "Легиан, пляж Легиан",
+      "search_query": "Away Bali Legian Camakila",
+      "tourvisor_name": "Sono Belle Bali Legian (Ex. Away Bali Legian Camakila)",
+      "price_key": "indonesia:14"
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "indonesia",
+      "tourvisor_id": 127320,
+      "hotel_name": "Lloyd’s Inn Bali 4★",
+      "place": "Семиньяк, пляж Double Six",
+      "search_query": "Lloyd’s Inn Bali",
+      "tourvisor_name": "Lloyd S Inn Bali",
+      "price_key": "indonesia:15"
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2320,
+      "hotel_name": "Griya Santrian 4★",
+      "place": "Санур, центральный пляж Санура",
+      "search_query": "Griya Santrian",
+      "tourvisor_name": "Griya Santrian",
+      "price_key": "indonesia:16"
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2374,
+      "hotel_name": "Puri Santrian 4★",
+      "place": "Санур, пляж Семаванг",
+      "search_query": "Puri Santrian",
+      "tourvisor_name": "Puri Santrian",
+      "price_key": "indonesia:17"
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "indonesia",
+      "tourvisor_id": 108696,
+      "hotel_name": "Tandjung Sari Hotel 4★",
+      "place": "Санур, центральный пляж Санура",
+      "search_query": "Tandjung Sari Hotel",
+      "tourvisor_name": "Tandjung Sari",
+      "price_key": "indonesia:19"
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "indonesia",
+      "tourvisor_id": 38616,
+      "hotel_name": "Maya Sanur Resort & Spa 5★",
+      "place": "Санур, пляж Санур",
+      "search_query": "Maya Sanur Resort & Spa",
+      "tourvisor_name": "Maya Sanur Resort & Spa",
+      "price_key": "indonesia:20"
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "indonesia",
+      "tourvisor_id": 28400,
+      "hotel_name": "The Grand Bali Nusa Dua 4★",
+      "place": "Нуса-Дуа, район Менгиат",
+      "search_query": "grand bali nusa dua",
+      "tourvisor_name": "Sofitel Bali Nusa Dua Beach Resort",
+      "price_key": "indonesia:21"
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2355,
+      "hotel_name": "Novotel Bali Benoa 5★",
+      "place": "Танджунг-Беноа, пляж Беноа",
+      "search_query": "Novotel Bali Benoa",
+      "tourvisor_name": "Novotel Bali Benoa",
+      "price_key": "indonesia:22"
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "indonesia",
+      "tourvisor_id": 28400,
+      "hotel_name": "Bali Nusa Dua Hotel 5★",
+      "place": "Нуса-Дуа, комплекс ITDC",
+      "search_query": "bali nusa dua",
+      "tourvisor_name": "Sofitel Bali Nusa Dua Beach Resort",
+      "price_key": "indonesia:23"
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2299,
+      "hotel_name": "Bali Mandira Beach Resort & Spa 5★",
+      "place": "Легиан, пляж Падма / Легиан",
+      "search_query": "Bali Mandira Beach Resort & Spa",
+      "tourvisor_name": "Bali Mandira Beach Resort & Spa",
+      "price_key": "indonesia:24"
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "indonesia",
+      "tourvisor_id": 154672,
+      "hotel_name": "Ubud Wana Resort 4★",
+      "place": "Убуд, район Нюх-Кунинг",
+      "search_query": "ubud wana",
+      "tourvisor_name": "Ubud Wana Villa",
+      "price_key": "indonesia:25"
+    }
+  ],
+  "by_tourvisor_id": {
+    "2294": {
+      "zhiraf_id": 1,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2294,
+      "hotel_name": "Ayodya Resort Bali 5★",
+      "place": "Нуса-Дуа, пляж Менгиат",
+      "search_query": "Ayodya Resort Bali",
+      "tourvisor_name": "Ayodya Resort Bali",
+      "price_key": "indonesia:1"
+    },
+    "42141": {
+      "zhiraf_id": 2,
+      "country_slug": "indonesia",
+      "tourvisor_id": 42141,
+      "hotel_name": "MERUSAKA Nusa Dua 5★",
+      "place": "Нуса-Дуа, пляж Менгиат",
+      "search_query": "MERUSAKA Nusa Dua",
+      "tourvisor_name": "Merusaka Nusa Dua (Ex. Inaya Putri Bali Resort)",
+      "price_key": "indonesia:2"
+    },
+    "2357": {
+      "zhiraf_id": 3,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2357,
+      "hotel_name": "Nusa Dua Beach Hotel & Spa 5★",
+      "place": "Нуса-Дуа, пляж Самух",
+      "search_query": "Nusa Dua Beach Hotel & Spa",
+      "tourvisor_name": "Nusa Dua Beach Hotel & Spa",
+      "price_key": "indonesia:3"
+    },
+    "2319": {
+      "zhiraf_id": 4,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2319,
+      "hotel_name": "Grand Mirage Resort & Thalasso Bali 5★",
+      "place": "Танджунг-Беноа, пляж Беноа",
+      "search_query": "Grand Mirage Resort & Thalasso Bali",
+      "tourvisor_name": "Grand Mirage Resort & Thalasso Bali",
+      "price_key": "indonesia:4"
+    },
+    "66518": {
+      "zhiraf_id": 5,
+      "country_slug": "indonesia",
+      "tourvisor_id": 66518,
+      "hotel_name": "Hyatt Regency Bali 5★",
+      "place": "Санур, центральный пляж Санура",
+      "search_query": "Hyatt Regency Bali",
+      "tourvisor_name": "Hyatt Regency Bali",
+      "price_key": "indonesia:5"
+    },
+    "2369": {
+      "zhiraf_id": 6,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2369,
+      "hotel_name": "Pita Maha Resort & Spa 4★",
+      "place": "Убуд, долина реки Кампухан",
+      "search_query": "Pita Maha Resort & Spa",
+      "tourvisor_name": "Pita Maha Resort & Spa",
+      "price_key": "indonesia:6"
+    },
+    "63983": {
+      "zhiraf_id": 7,
+      "country_slug": "indonesia",
+      "tourvisor_id": 63983,
+      "hotel_name": "Ulun Ubud Resort & Spa 4★",
+      "place": "Убуд, склон Санггинган / река Кампухан",
+      "search_query": "Ulun Ubud Resort & Spa",
+      "tourvisor_name": "Ulun Ubud Resort & Spa",
+      "price_key": "indonesia:7"
+    },
+    "148321": {
+      "zhiraf_id": 8,
+      "country_slug": "indonesia",
+      "tourvisor_id": 148321,
+      "hotel_name": "The Sankara Suites & Villas 4★",
+      "place": "Убуд, долина к северу от центра",
+      "search_query": "The Sankara Suites & Villas",
+      "tourvisor_name": "The Sankara Suite & Villas",
+      "price_key": "indonesia:8"
+    },
+    "62531": {
+      "zhiraf_id": 9,
+      "country_slug": "indonesia",
+      "tourvisor_id": 62531,
+      "hotel_name": "Sthala, Tribute Portfolio by Marriott 5★",
+      "place": "Убуд, Лодтундух / река Вос",
+      "search_query": "Sthala, Tribute Portfolio by Marriott",
+      "tourvisor_name": "Sthala A Tribute Portfolio Hotel",
+      "price_key": "indonesia:9"
+    },
+    "2286": {
+      "zhiraf_id": 10,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2286,
+      "hotel_name": "Alila Ubud 4★",
+      "place": "Паянган / Убуд, долина реки Аюнг",
+      "search_query": "Alila Ubud",
+      "tourvisor_name": "Alila Ubud Resort",
+      "price_key": "indonesia:10"
+    },
+    "57153": {
+      "zhiraf_id": 11,
+      "country_slug": "indonesia",
+      "tourvisor_id": 57153,
+      "hotel_name": "Viva Dash Hotel Seminyak 4★",
+      "place": "Семиньяк, район Петитенгет",
+      "search_query": "Viva Dash Hotel Seminyak",
+      "tourvisor_name": "Viva Dash Hotel Seminyak Bali",
+      "price_key": "indonesia:11"
+    },
+    "68636": {
+      "zhiraf_id": 12,
+      "country_slug": "indonesia",
+      "tourvisor_id": 68636,
+      "hotel_name": "Eastin Ashta Resort Canggu 4★",
+      "place": "Чангу, пляж Бату Болонг",
+      "search_query": "Eastin Ashta Resort Canggu",
+      "tourvisor_name": "Eastin Ashta Resort Canggu",
+      "price_key": "indonesia:12"
+    },
+    "127483": {
+      "zhiraf_id": 13,
+      "country_slug": "indonesia",
+      "tourvisor_id": 127483,
+      "hotel_name": "Chesa Canggu 4★",
+      "place": "Чангу, пляж Бату Болонг",
+      "search_query": "Chesa Canggu",
+      "tourvisor_name": "Chesa Canggu",
+      "price_key": "indonesia:13"
+    },
+    "2379": {
+      "zhiraf_id": 14,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2379,
+      "hotel_name": "Away Bali Legian Camakila 4★",
+      "place": "Легиан, пляж Легиан",
+      "search_query": "Away Bali Legian Camakila",
+      "tourvisor_name": "Sono Belle Bali Legian (Ex. Away Bali Legian Camakila)",
+      "price_key": "indonesia:14"
+    },
+    "127320": {
+      "zhiraf_id": 15,
+      "country_slug": "indonesia",
+      "tourvisor_id": 127320,
+      "hotel_name": "Lloyd’s Inn Bali 4★",
+      "place": "Семиньяк, пляж Double Six",
+      "search_query": "Lloyd’s Inn Bali",
+      "tourvisor_name": "Lloyd S Inn Bali",
+      "price_key": "indonesia:15"
+    },
+    "2320": {
+      "zhiraf_id": 16,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2320,
+      "hotel_name": "Griya Santrian 4★",
+      "place": "Санур, центральный пляж Санура",
+      "search_query": "Griya Santrian",
+      "tourvisor_name": "Griya Santrian",
+      "price_key": "indonesia:16"
+    },
+    "2374": {
+      "zhiraf_id": 17,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2374,
+      "hotel_name": "Puri Santrian 4★",
+      "place": "Санур, пляж Семаванг",
+      "search_query": "Puri Santrian",
+      "tourvisor_name": "Puri Santrian",
+      "price_key": "indonesia:17"
+    },
+    "108696": {
+      "zhiraf_id": 19,
+      "country_slug": "indonesia",
+      "tourvisor_id": 108696,
+      "hotel_name": "Tandjung Sari Hotel 4★",
+      "place": "Санур, центральный пляж Санура",
+      "search_query": "Tandjung Sari Hotel",
+      "tourvisor_name": "Tandjung Sari",
+      "price_key": "indonesia:19"
+    },
+    "38616": {
+      "zhiraf_id": 20,
+      "country_slug": "indonesia",
+      "tourvisor_id": 38616,
+      "hotel_name": "Maya Sanur Resort & Spa 5★",
+      "place": "Санур, пляж Санур",
+      "search_query": "Maya Sanur Resort & Spa",
+      "tourvisor_name": "Maya Sanur Resort & Spa",
+      "price_key": "indonesia:20"
+    },
+    "28400": {
+      "zhiraf_id": 23,
+      "country_slug": "indonesia",
+      "tourvisor_id": 28400,
+      "hotel_name": "Bali Nusa Dua Hotel 5★",
+      "place": "Нуса-Дуа, комплекс ITDC",
+      "search_query": "bali nusa dua",
+      "tourvisor_name": "Sofitel Bali Nusa Dua Beach Resort",
+      "price_key": "indonesia:23"
+    },
+    "2355": {
+      "zhiraf_id": 22,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2355,
+      "hotel_name": "Novotel Bali Benoa 5★",
+      "place": "Танджунг-Беноа, пляж Беноа",
+      "search_query": "Novotel Bali Benoa",
+      "tourvisor_name": "Novotel Bali Benoa",
+      "price_key": "indonesia:22"
+    },
+    "2299": {
+      "zhiraf_id": 24,
+      "country_slug": "indonesia",
+      "tourvisor_id": 2299,
+      "hotel_name": "Bali Mandira Beach Resort & Spa 5★",
+      "place": "Легиан, пляж Падма / Легиан",
+      "search_query": "Bali Mandira Beach Resort & Spa",
+      "tourvisor_name": "Bali Mandira Beach Resort & Spa",
+      "price_key": "indonesia:24"
+    },
+    "154672": {
+      "zhiraf_id": 25,
+      "country_slug": "indonesia",
+      "tourvisor_id": 154672,
+      "hotel_name": "Ubud Wana Resort 4★",
+      "place": "Убуд, район Нюх-Кунинг",
+      "search_query": "ubud wana",
+      "tourvisor_name": "Ubud Wana Villa",
+      "price_key": "indonesia:25"
+    }
+  }
+}

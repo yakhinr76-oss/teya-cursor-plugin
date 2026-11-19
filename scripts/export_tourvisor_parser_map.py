@@ -18,6 +18,7 @@ TV_COUNTRY_ID = {
     "thailand": 2,
     "vietnam": 16,
     "maldives": 8,
+    "indonesia": 7,
 }
 
 GITHUB_RAW = (
@@ -35,6 +36,7 @@ MAPS: dict[str, Path] = {
     "thailand": THEME_DATA / "thailand-tourvisor-hotels.json",
     "vietnam": THEME_DATA / "vietnam-tourvisor-hotels.json",
     "maldives": THEME_DATA / "maldives-tourvisor-hotels.json",
+    "indonesia": THEME_DATA / "indonesia-tourvisor-hotels.json",
 }
 
 

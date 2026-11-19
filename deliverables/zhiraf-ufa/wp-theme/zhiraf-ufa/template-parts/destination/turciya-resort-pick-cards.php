@@ -40,10 +40,12 @@ if ( 'oae' === $dest_slug ) {
 	$pick_title = __( 'Какой атолл Мальдив выбрать именно вам?', 'zhiraf-ufa' );
 } elseif ( 'vietnam' === $dest_slug ) {
 	$pick_title = __( 'Какой курорт Вьетнама выбрать именно вам?', 'zhiraf-ufa' );
+} elseif ( 'shri-lanka' === $dest_slug ) {
+	$pick_title = __( 'Какое побережье Шри-Ланки выбрать именно вам?', 'zhiraf-ufa' );
 } else {
 	$pick_title = __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' );
 }
-$pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug )
+$pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug || 'shri-lanka' === $dest_slug )
 	? __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' )
 	: __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
 ?>
@@ -91,7 +93,7 @@ $pick_lead = ( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === 
 			$show_filter_cta = $count > 0 && empty( $card['hide_catalog_filter'] );
 			/* translators: %d: hotel count */
 			$filter_cta     = sprintf(
-				( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug )
+				( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug || 'shri-lanka' === $dest_slug )
 					? __( 'Показать здесь (%d) ↓', 'zhiraf-ufa' )
 					: __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ),
 				$count

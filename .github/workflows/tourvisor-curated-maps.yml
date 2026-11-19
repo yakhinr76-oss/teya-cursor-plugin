@@ -26,7 +26,7 @@ jobs:
       - name: Regenerate parser drop-in (must match committed files)
         run: |
           python3 scripts/export_tourvisor_parser_map.py \
-            --country turkey --country uae --country egypt --country thailand --country vietnam \
+            --country turkey --country uae --country egypt --country thailand --country vietnam --country maldives \
             --parser-dropin deliverables/zhiraf-ufa/tourvisor-parser-dropin/output
           git diff --exit-code deliverables/zhiraf-ufa/tourvisor-parser-dropin/ \
             || (echo "::error::Parser drop-in out of date — run export_tourvisor_parser_map.py --parser-dropin and commit" && exit 1)

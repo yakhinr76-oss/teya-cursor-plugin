@@ -27,6 +27,22 @@ if ( 'oae' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Не нашли подходящий отель в подборке Таиланда — нужны ещё варианты с вылетом из Уфы под наши даты и состав.', 'zhiraf-ufa' );
 	$default_strip = __( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы или сравним Пхукет и Паттайю под бюджет.', 'zhiraf-ufa' );
 	$cta_context = 'thailand_catalog_under_grid_whatsapp';
+} elseif ( 'shri-lanka' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли подходящий отель в подборке Шри-Ланки — нужны ещё варианты с вылетом из Уфы.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы или сравним Унаватуну и Хиккадуву.', 'zhiraf-ufa' );
+	$cta_context = 'sri_lanka_catalog_under_grid_whatsapp';
+} elseif ( 'indoneziya' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли подходящий отель на Бали — нужны варианты с вылетом из Уфы.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Сравним Нуса-Дуа и Семиньяк под ваш бюджет.', 'zhiraf-ufa' );
+	$cta_context = 'indonesia_catalog_under_grid_whatsapp';
+} elseif ( 'indiya' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель в Гоа — подберём с вылетом из Уфы.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Сравним Южный и Северный Гоа.', 'zhiraf-ufa' );
+	$cta_context = 'india_catalog_under_grid_whatsapp';
+} elseif ( 'sejshely' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель на Сейшелах — подберём с вылетом из Уфы.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Сравним Маэ и Праслин.', 'zhiraf-ufa' );
+	$cta_context = 'seychelles_catalog_under_grid_whatsapp';
 } elseif ( 'maldivy' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Не нашли подходящий отель в подборке Мальдив — нужны ещё варианты с вылетом из Уфы под наши даты и состав.', 'zhiraf-ufa' );
 	$default_strip = __( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы или сравним катер и сиампан под бюджет.', 'zhiraf-ufa' );

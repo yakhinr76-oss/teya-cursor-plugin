@@ -1,0 +1,492 @@
+{
+  "schema": "zhiraf.tourvisor-hotels-map.v1",
+  "source": "indonesia-catalog-scaffold",
+  "country_slug": "indonesia",
+  "identified_at": "2026-11-18",
+  "usage": "tourvisor_id — id отеля в базе Tourvisor для батч-поиска. В webhook prices ключ indonesia:{zhiraf_id} (country_slug indonesia, не egipet). Парсер может слать tourvisor_id/hotelcode — тема сведёт к zhiraf_id через этот файл.",
+  "tourvisor_country_id": 7,
+  "hotels": [
+    {
+      "zhiraf_id": 1,
+      "country_slug": "indonesia",
+      "hotel_name": "Ayodya Resort Bali 5★",
+      "resort": "Нуса-Дуа, пляж Менгиат",
+      "region": "nusa_dua",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Ayodya Resort Bali",
+      "match_names": [
+        "Ayodya Resort Bali 5★",
+        "Ayodya Resort Bali"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 2,
+      "country_slug": "indonesia",
+      "hotel_name": "MERUSAKA Nusa Dua 5★",
+      "resort": "Нуса-Дуа, пляж Менгиат",
+      "region": "nusa_dua",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "MERUSAKA Nusa Dua",
+      "match_names": [
+        "MERUSAKA Nusa Dua 5★",
+        "MERUSAKA Nusa Dua"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 3,
+      "country_slug": "indonesia",
+      "hotel_name": "Nusa Dua Beach Hotel & Spa 5★",
+      "resort": "Нуса-Дуа, пляж Самух",
+      "region": "nusa_dua",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Nusa Dua Beach Hotel & Spa",
+      "match_names": [
+        "Nusa Dua Beach Hotel & Spa 5★",
+        "Nusa Dua Beach Hotel & Spa",
+        "Nusa Dua Beach Hotel and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 4,
+      "country_slug": "indonesia",
+      "hotel_name": "Grand Mirage Resort & Thalasso Bali 5★",
+      "resort": "Танджунг-Беноа, пляж Беноа",
+      "region": "benoa",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Grand Mirage Resort & Thalasso Bali",
+      "match_names": [
+        "Grand Mirage Resort & Thalasso Bali 5★",
+        "Grand Mirage Resort & Thalasso Bali",
+        "Grand Mirage Resort and Thalasso Bali"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 5,
+      "country_slug": "indonesia",
+      "hotel_name": "Hyatt Regency Bali 5★",
+      "resort": "Санур, центральный пляж Санура",
+      "region": "sanur",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Hyatt Regency Bali",
+      "match_names": [
+        "Hyatt Regency Bali 5★",
+        "Hyatt Regency Bali"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 6,
+      "country_slug": "indonesia",
+      "hotel_name": "Pita Maha Resort & Spa 4★",
+      "resort": "Убуд, долина реки Кампухан",
+      "region": "ubud",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Pita Maha Resort & Spa",
+      "match_names": [
+        "Pita Maha Resort & Spa 4★",
+        "Pita Maha Resort & Spa",
+        "Pita Maha Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 7,
+      "country_slug": "indonesia",
+      "hotel_name": "Ulun Ubud Resort & Spa 4★",
+      "resort": "Убуд, склон Санггинган / река Кампухан",
+      "region": "ubud",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Ulun Ubud Resort & Spa",
+      "match_names": [
+        "Ulun Ubud Resort & Spa 4★",
+        "Ulun Ubud Resort & Spa",
+        "Ulun Ubud Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 8,
+      "country_slug": "indonesia",
+      "hotel_name": "The Sankara Suites & Villas 4★",
+      "resort": "Убуд, долина к северу от центра",
+      "region": "ubud",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Sankara Suites & Villas",
+      "match_names": [
+        "The Sankara Suites & Villas 4★",
+        "The Sankara Suites & Villas",
+        "The Sankara Suites and Villas"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 9,
+      "country_slug": "indonesia",
+      "hotel_name": "Sthala, Tribute Portfolio by Marriott 5★",
+      "resort": "Убуд, Лодтундух / река Вос",
+      "region": "ubud",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Sthala, Tribute Portfolio by Marriott",
+      "match_names": [
+        "Sthala, Tribute Portfolio by Marriott 5★",
+        "Sthala, Tribute Portfolio by Marriott"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 10,
+      "country_slug": "indonesia",
+      "hotel_name": "Alila Ubud 4★",
+      "resort": "Паянган / Убуд, долина реки Аюнг",
+      "region": "ubud",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Alila Ubud",
+      "match_names": [
+        "Alila Ubud 4★",
+        "Alila Ubud"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 11,
+      "country_slug": "indonesia",
+      "hotel_name": "Viva Dash Hotel Seminyak 4★",
+      "resort": "Семиньяк, район Петитенгет",
+      "region": "seminyak",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Viva Dash Hotel Seminyak",
+      "match_names": [
+        "Viva Dash Hotel Seminyak 4★",
+        "Viva Dash Hotel Seminyak"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 12,
+      "country_slug": "indonesia",
+      "hotel_name": "Eastin Ashta Resort Canggu 4★",
+      "resort": "Чангу, пляж Бату Болонг",
+      "region": "canggu",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Eastin Ashta Resort Canggu",
+      "match_names": [
+        "Eastin Ashta Resort Canggu 4★",
+        "Eastin Ashta Resort Canggu"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 13,
+      "country_slug": "indonesia",
+      "hotel_name": "Chesa Canggu 4★",
+      "resort": "Чангу, пляж Бату Болонг",
+      "region": "canggu",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Chesa Canggu",
+      "match_names": [
+        "Chesa Canggu 4★",
+        "Chesa Canggu"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 14,
+      "country_slug": "indonesia",
+      "hotel_name": "Away Bali Legian Camakila 4★",
+      "resort": "Легиан, пляж Легиан",
+      "region": "legian",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Away Bali Legian Camakila",
+      "match_names": [
+        "Away Bali Legian Camakila 4★",
+        "Away Bali Legian Camakila"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 15,
+      "country_slug": "indonesia",
+      "hotel_name": "Lloyd’s Inn Bali 4★",
+      "resort": "Семиньяк, пляж Double Six",
+      "region": "seminyak",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Lloyd’s Inn Bali",
+      "match_names": [
+        "Lloyd’s Inn Bali 4★",
+        "Lloyd’s Inn Bali"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 16,
+      "country_slug": "indonesia",
+      "hotel_name": "Griya Santrian 4★",
+      "resort": "Санур, центральный пляж Санура",
+      "region": "sanur",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Griya Santrian",
+      "match_names": [
+        "Griya Santrian 4★",
+        "Griya Santrian"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 17,
+      "country_slug": "indonesia",
+      "hotel_name": "Puri Santrian 4★",
+      "resort": "Санур, пляж Семаванг",
+      "region": "sanur",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Puri Santrian",
+      "match_names": [
+        "Puri Santrian 4★",
+        "Puri Santrian"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 18,
+      "country_slug": "indonesia",
+      "hotel_name": "The Open House Jimbaran Bali 4★",
+      "resort": "Джимбаран, бухта Джимбаран",
+      "region": "jimbaran",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Open House Jimbaran Bali",
+      "match_names": [
+        "The Open House Jimbaran Bali 4★",
+        "The Open House Jimbaran Bali"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 19,
+      "country_slug": "indonesia",
+      "hotel_name": "Tandjung Sari Hotel 4★",
+      "resort": "Санур, центральный пляж Санура",
+      "region": "sanur",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Tandjung Sari Hotel",
+      "match_names": [
+        "Tandjung Sari Hotel 4★",
+        "Tandjung Sari Hotel"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 20,
+      "country_slug": "indonesia",
+      "hotel_name": "Maya Sanur Resort & Spa 5★",
+      "resort": "Санур, пляж Санур",
+      "region": "sanur",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Maya Sanur Resort & Spa",
+      "match_names": [
+        "Maya Sanur Resort & Spa 5★",
+        "Maya Sanur Resort & Spa",
+        "Maya Sanur Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 21,
+      "country_slug": "indonesia",
+      "hotel_name": "The Grand Bali Nusa Dua 4★",
+      "resort": "Нуса-Дуа, район Менгиат",
+      "region": "nusa_dua",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "The Grand Bali Nusa Dua",
+      "match_names": [
+        "The Grand Bali Nusa Dua 4★",
+        "The Grand Bali Nusa Dua"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 22,
+      "country_slug": "indonesia",
+      "hotel_name": "Novotel Bali Benoa 5★",
+      "resort": "Танджунг-Беноа, пляж Беноа",
+      "region": "benoa",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Novotel Bali Benoa",
+      "match_names": [
+        "Novotel Bali Benoa 5★",
+        "Novotel Bali Benoa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 23,
+      "country_slug": "indonesia",
+      "hotel_name": "Bali Nusa Dua Hotel 5★",
+      "resort": "Нуса-Дуа, комплекс ITDC",
+      "region": "nusa_dua",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Bali Nusa Dua Hotel",
+      "match_names": [
+        "Bali Nusa Dua Hotel 5★",
+        "Bali Nusa Dua Hotel"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 24,
+      "country_slug": "indonesia",
+      "hotel_name": "Bali Mandira Beach Resort & Spa 5★",
+      "resort": "Легиан, пляж Падма / Легиан",
+      "region": "legian",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Bali Mandira Beach Resort & Spa",
+      "match_names": [
+        "Bali Mandira Beach Resort & Spa 5★",
+        "Bali Mandira Beach Resort & Spa",
+        "Bali Mandira Beach Resort and Spa"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    },
+    {
+      "zhiraf_id": 25,
+      "country_slug": "indonesia",
+      "hotel_name": "Ubud Wana Resort 4★",
+      "resort": "Убуд, район Нюх-Кунинг",
+      "region": "ubud",
+      "tourvisor_id": 0,
+      "tourvisor_name": "",
+      "tourvisor_region": "",
+      "tourvisor_region_code": 0,
+      "tourvisor_stars": 0,
+      "search_query": "Ubud Wana Resort",
+      "match_names": [
+        "Ubud Wana Resort 4★",
+        "Ubud Wana Resort"
+      ],
+      "match_status": "pending",
+      "match_score": 0.0
+    }
+  ]
+}

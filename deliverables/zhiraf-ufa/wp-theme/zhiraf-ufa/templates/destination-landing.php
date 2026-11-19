@@ -168,29 +168,18 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				)
 			);
 		}
-		if ( ! empty( $dest['curated_kids_section'] ) ) {
-			if ( 'oae' === $dest_slug ) {
-				$kids_part = 'kids-uae';
-			} elseif ( 'egipet' === $dest_slug ) {
-				$kids_part = 'kids-egypt';
-			} elseif ( 'tailand' === $dest_slug ) {
-				$kids_part = 'kids-thailand';
-			} elseif ( 'maldivy' === $dest_slug ) {
-				$kids_part = 'kids-maldives';
-			} elseif ( 'vietnam' === $dest_slug ) {
-				$kids_part = 'kids-vietnam';
-			} elseif ( 'sejshely' === $dest_slug ) {
-				$kids_part = 'kids-seychelles';
-			} elseif ( 'shri-lanka' === $dest_slug ) {
-				$kids_part = 'kids-sri-lanka';
-			} elseif ( 'indoneziya' === $dest_slug ) {
-				$kids_part = 'kids-indonesia';
-			} elseif ( 'indiya' === $dest_slug ) {
-				$kids_part = 'kids-india';
-			} else {
-				$kids_part = 'kids-turkey';
+		if ( ! empty( $dest['intent_block'] ) || ! empty( $dest['curated_kids_section'] ) ) {
+			$intent_block = zhiraf_ufa_resolve_intent_block( $dest_slug, $dest );
+			if ( $intent_block ) {
+				get_template_part(
+					'template-parts/sections/intent-checklist',
+					null,
+					array(
+						'dest_slug' => $dest_slug,
+						'block'     => $intent_block,
+					)
+				);
 			}
-			get_template_part( 'template-parts/sections/' . $kids_part );
 		}
 		if ( ! empty( $dest['curated_expert_section'] ) ) {
 			get_template_part(

@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-19",
+  "region_id": 172,
+  "new_raw_rows": 0,
+  "seed_totals_sample": {},
+  "intent_scores": {
+    "turciya": {
+      "all_inclusive": 1104
+    },
+    "egipet": {
+      "all_inclusive": 420
+    },
+    "abkhaziya": {
+      "all_inclusive": 175
+    },
+    "rossiya": {
+      "all_inclusive": 13
+    },
+    "oae": {
+      "all_inclusive": 15
+    },
+    "kitaj": {
+      "excursion": 30
+    },
+    "uzbekistan": {
+      "excursion": 17
+    }
+  },
+  "intent_assignment": {
+    "turciya": "kids",
+    "oae": "kids",
+    "egipet": "kids",
+    "tailand": "kids",
+    "vietnam": "kids",
+    "kitaj": "all_inclusive",
+    "indiya": "kids",
+    "shri-lanka": "kids",
+    "indoneziya": "couples",
+    "maldivy": "couples",
+    "sejshely": "couples",
+    "uzbekistan": "excursion",
+    "armeniya": "excursion",
+    "rossiya": "excursion",
+    "abkhaziya": "kids",
+    "gruziya": "excursion",
+    "kuba": "all_inclusive",
+    "dominikana": "all_inclusive",
+    "tunis": "all_inclusive",
+    "mauritius": "couples"
+  },
+  "commercial_totals": {
+    "turciya": 8274,
+    "egipet": 4315,
+    "kitaj": 2251,
+    "rossiya": 2171,
+    "oae": 1705,
+    "abkhaziya": 1624,
+    "vietnam": 1214,
+    "uzbekistan": 932,
+    "gruziya": 332,
+    "maldivy": 220,
+    "tailand": 219,
+    "shri-lanka": 217,
+    "indiya": 110,
+    "armeniya": 60,
+    "indoneziya": 51,
+    "dominikana": 45,
+    "tunis": 31,
+    "kuba": 26
+  }
+}

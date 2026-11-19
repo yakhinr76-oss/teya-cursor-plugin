@@ -5,8 +5,8 @@
 When generating or updating a **country hub** (`/tour/{slug}/`):
 
 1. **SEO meta first:** read `teya-memory/semantic-core/zhiraf-ufa-2026/06-url-map.csv` for the row `target_url=/tour/{slug}/`. Use `recommended_h1`, `title_draft`, `description_draft`, and `primary_queries` as the source of truth (do not invent frequencies).
-2. **Intent checklist:** parse `notes` in that row for `intent_block=` OR read `10-intent-wave2-report.json` → `intent_assignment`. Map to `inc/destination-intent-blocks.php` types: `kids` | `couples` | `all_inclusive` | `excursion`.
+2. **Intent checklist:** read `10-intent-wave2-report.json` or config block for the country. The block must focus on specific seasonal, logistical, or practical risks (no generic clusters like kids/couples). Map to `inc/destination-intent-blocks.php`.
 3. In `inc/destination-landings.php` set `'intent_block' => true` (or an array override). Rendering is always `template-parts/sections/intent-checklist.php` — do **not** add new `kids-*.php` files.
 4. **Copy rules:** no tour-operator slang in customer-facing checklist text (`BB`, `HB`, `AI`, `UAI`, `HRG`, `Sinai Only`, `РАК`, etc.). Use plain Russian («завтраки», «всё включено», «Хургада», «Рас-эль-Хайма»).
-5. **CTA labels** (strict): `kids` → «Запросить 3 семейных отеля →»; `couples` → «Запросить 3 отеля для двоих →»; `all_inclusive` → «Подобрать отель «Всё включено» →»; `excursion` → «Получить программу и расчёт →».
+5. **CTA labels** (strict): Match the specific risk checklist context. Button is `btn--primary rounded-xl` in `#C85A32`.
 6. **Wordstat refresh:** region **Уфа `regionId=172`**, env `YANDEX_WORDSTAT_API_KEY`, pipeline CSVs `03`→`04`→`05`→`06`; extend with `scripts/wordstat_destination_pipeline.py` (--regenerate-only after raw is updated).

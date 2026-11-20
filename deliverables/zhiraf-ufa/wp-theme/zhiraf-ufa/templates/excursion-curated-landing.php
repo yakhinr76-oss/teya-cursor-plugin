@@ -17,8 +17,14 @@ $program_cnt  = count( $excursion_programs );
 $trust_rows   = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_trust'] : array();
 $filter_mode  = ! empty( $excursion_pack['catalog_filter_mode'] ) ? (string) $excursion_pack['catalog_filter_mode'] : 'days';
 $convert_card = ! empty( $excursion_pack['convert_card'] ) && is_array( $excursion_pack['convert_card'] ) ? $excursion_pack['convert_card'] : array();
+$day_filters  = function_exists( 'zhiraf_ufa_excursion_catalog_day_filters' )
+	? zhiraf_ufa_excursion_catalog_day_filters( $excursion_pack )
+	: array();
+$day_ranges   = function_exists( 'zhiraf_ufa_excursion_catalog_day_range_map' )
+	? zhiraf_ufa_excursion_catalog_day_range_map( $excursion_pack )
+	: array();
 ?>
-<main id="primary" class="site-main site-main--destination site-main--excursion-curated" data-excursion-landing data-excursion-filter-mode="<?php echo esc_attr( $filter_mode ); ?>">
+<main id="primary" class="site-main site-main--destination site-main--excursion-curated" data-excursion-landing data-excursion-filter-mode="<?php echo esc_attr( $filter_mode ); ?>" data-excursion-day-ranges="<?php echo esc_attr( wp_json_encode( $day_ranges ) ); ?>">
 	<section class="dest-landing-hero excursion-hero">
 		<div class="container dest-landing-hero__grid">
 			<div class="dest-landing-hero__copy">
@@ -116,8 +122,11 @@ $convert_card = ! empty( $excursion_pack['convert_card'] ) && is_array( $excursi
 					<button type="button" class="excursion-filter-chip" data-excursion-transport="avia" aria-selected="false"><?php esc_html_e( 'Авиа из Уфы', 'zhiraf-ufa' ); ?></button>
 					<button type="button" class="excursion-filter-chip" data-excursion-transport="bus" aria-selected="false"><?php esc_html_e( 'Автобус из Уфы', 'zhiraf-ufa' ); ?></button>
 				<?php else : ?>
-					<button type="button" class="excursion-filter-chip" data-excursion-days="3-5" aria-selected="false"><?php esc_html_e( '3–5 дней', 'zhiraf-ufa' ); ?></button>
-					<button type="button" class="excursion-filter-chip" data-excursion-days="6-9" aria-selected="false"><?php esc_html_e( '6–9 дней', 'zhiraf-ufa' ); ?></button>
+					<?php foreach ( $day_filters as $day_filter ) : ?>
+						<button type="button" class="excursion-filter-chip" data-excursion-days="<?php echo esc_attr( $day_filter['key'] ); ?>" aria-selected="false">
+							<?php echo esc_html( $day_filter['label'] ); ?>
+						</button>
+					<?php endforeach; ?>
 				<?php endif; ?>
 			</div>
 			<div class="excursion-program-grid">

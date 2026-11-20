@@ -623,11 +623,21 @@ function zhiraf_ufa_uzbekistan_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_uzbekistan_resort_chips() {
-	return array(
+	$chips = array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-samarkand', 'label' => __( 'Самарканд', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-bukhara', 'label' => __( 'Бухара', 'zhiraf-ufa' ) ),
 	);
+	foreach ( zhiraf_ufa_uzbekistan_catalog_filters() as $filter ) {
+		if ( empty( $filter['id'] ) || empty( $filter['group'] ) || 'resort' !== $filter['group'] ) {
+			continue;
+		}
+		$label = ! empty( $filter['title'] ) ? (string) $filter['title'] : (string) $filter['label'];
+		$chips[] = array(
+			'id'    => (string) $filter['id'],
+			'label' => $label,
+		);
+	}
+
+	return $chips;
 }
 
 /**
@@ -637,10 +647,101 @@ function zhiraf_ufa_uzbekistan_resort_chips() {
  */
 function zhiraf_ufa_uzbekistan_resort_pick_cards() {
 	$counts = zhiraf_ufa_uzbekistan_resort_hotel_counts();
-	$guide = __( 'К отелям →', 'zhiraf-ufa' );
+	$guide  = __( 'К отелям →', 'zhiraf-ufa' );
+
 	return array(
-		array( 'id' => 'samarkand', 'filter_id' => 'resort-samarkand', 'guide_url' => zhiraf_ufa_uzbekistan_resort_landing_url( 'samarkand' ), 'guide_label' => $guide, 'name' => __( 'Самарканд', 'zhiraf-ufa' ), 'subtitle' => __( 'Регистан', 'zhiraf-ufa' ), 'tag' => __( 'Must-see', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Поезд Сапсан', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['samarkand'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
-		array( 'id' => 'bukhara', 'filter_id' => 'resort-bukhara', 'guide_url' => zhiraf_ufa_uzbekistan_resort_landing_url( 'bukhara' ), 'guide_label' => $guide, 'name' => __( 'Бухара', 'zhiraf-ufa' ), 'subtitle' => __( 'Медресе', 'zhiraf-ufa' ), 'tag' => __( 'История', 'zhiraf-ufa' ), 'tag_mod' => 'nature', 'transfer' => __( '2 ночи в маршруте', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['bukhara'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array() ),
+		array(
+			'id'          => 'tashkent',
+			'filter_id'   => 'resort-tashkent',
+			'guide_url'   => zhiraf_ufa_uzbekistan_resort_landing_url( 'tashkent' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Ташкент', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Старт маршрута', 'zhiraf-ufa' ),
+			'tag'         => __( 'Въезд и перелёт', 'zhiraf-ufa' ),
+			'tag_mod'     => 'urban',
+			'transfer'    => __( 'Международный аэропорт', 'zhiraf-ufa' ),
+			'featured'    => false,
+			'hotel_count' => $counts['tashkent'] ?? 0,
+			'accent_mod'  => 'indigo',
+			'bullets'     => array(
+				array( 'type' => 'pro', 'text' => __( 'Сетевые 4–5★ у метро — удобно после перелёта', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Базар Чорсу и Tashkent City в шаговой доступности', 'zhiraf-ufa' ) ),
+				array(
+					'type' => 'info',
+					/* translators: %d: hotel count in catalog */
+					'text' => sprintf( __( 'В базе 25 отелей — %d в Ташкенте', 'zhiraf-ufa' ), (int) ( $counts['tashkent'] ?? 0 ) ),
+				),
+			),
+		),
+		array(
+			'id'          => 'samarkand',
+			'filter_id'   => 'resort-samarkand',
+			'guide_url'   => zhiraf_ufa_uzbekistan_resort_landing_url( 'samarkand' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Самарканд', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Регистан и Гур-Эмир', 'zhiraf-ufa' ),
+			'tag'         => __( 'Must-see', 'zhiraf-ufa' ),
+			'tag_mod'     => 'family',
+			'transfer'    => __( 'Поезд «Афросиаб»', 'zhiraf-ufa' ),
+			'featured'    => true,
+			'hotel_count' => $counts['samarkand'] ?? 0,
+			'accent_mod'  => 'emerald',
+			'bullets'     => array(
+				array( 'type' => 'pro', 'text' => __( 'Бутики у Регистана и отели у Гур-Эмира', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Silk Road Samarkand — курортный комплекс 5★', 'zhiraf-ufa' ) ),
+				array(
+					'type' => 'info',
+					/* translators: %d: hotel count in catalog */
+					'text' => sprintf( __( '%d отелей в подборке по Самарканду', 'zhiraf-ufa' ), (int) ( $counts['samarkand'] ?? 0 ) ),
+				),
+			),
+		),
+		array(
+			'id'          => 'bukhara',
+			'filter_id'   => 'resort-bukhara',
+			'guide_url'   => zhiraf_ufa_uzbekistan_resort_landing_url( 'bukhara' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Бухара', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Ляби-Хауз и Калян', 'zhiraf-ufa' ),
+			'tag'         => __( 'Город-музей', 'zhiraf-ufa' ),
+			'tag_mod'     => 'heritage',
+			'transfer'    => __( 'Центр пешком', 'zhiraf-ufa' ),
+			'featured'    => false,
+			'hotel_count' => $counts['bukhara'] ?? 0,
+			'accent_mod'  => 'teal',
+			'bullets'     => array(
+				array( 'type' => 'pro', 'text' => __( 'Бутики в медресе XIX века с айванами', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Торговые купола с керамикой и специями', 'zhiraf-ufa' ) ),
+				array(
+					'type' => 'info',
+					/* translators: %d: hotel count in catalog */
+					'text' => sprintf( __( '%d отелей у старого города Бухары', 'zhiraf-ufa' ), (int) ( $counts['bukhara'] ?? 0 ) ),
+				),
+			),
+		),
+		array(
+			'id'          => 'khiva',
+			'filter_id'   => 'resort-khiva',
+			'guide_url'   => zhiraf_ufa_uzbekistan_resort_landing_url( 'khiva' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Хива', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Ичан-Кала', 'zhiraf-ufa' ),
+			'tag'         => __( 'Крепость-музей', 'zhiraf-ufa' ),
+			'tag_mod'     => 'nature',
+			'transfer'    => __( 'Запад страны', 'zhiraf-ufa' ),
+			'featured'    => false,
+			'hotel_count' => $counts['khiva'] ?? 0,
+			'accent_mod'  => 'amber',
+			'bullets'     => array(
+				array( 'type' => 'pro', 'text' => __( 'Отели внутри глиняных стен цитадели', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Террасы с видами на минареты на закате', 'zhiraf-ufa' ) ),
+				array(
+					'type' => 'info',
+					/* translators: %d: hotel count in catalog */
+					'text' => sprintf( __( '%d бутиков в Хиве — группы бронируйте заранее', 'zhiraf-ufa' ), (int) ( $counts['khiva'] ?? 0 ) ),
+				),
+			),
+		),
 	);
 }
 

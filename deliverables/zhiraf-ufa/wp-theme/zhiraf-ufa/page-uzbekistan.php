@@ -10,5 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-zhiraf_ufa_render_destination_landing( 'uzbekistan' );
+if ( function_exists( 'zhiraf_ufa_render_excursion_curated_landing' ) ) {
+	zhiraf_ufa_render_excursion_curated_landing( 'uzbekistan' );
+} else {
+	zhiraf_ufa_render_destination_landing( 'uzbekistan' );
+}
 get_footer();

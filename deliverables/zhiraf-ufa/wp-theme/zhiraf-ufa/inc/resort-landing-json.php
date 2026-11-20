@@ -21,6 +21,7 @@ function zhiraf_ufa_resort_json_registry() {
 		'egipet/sharm-el-sheyh',
 		'tailand/phuket',
 		'vietnam/fukuok',
+		'vietnam/nyachang',
 	);
 }
 

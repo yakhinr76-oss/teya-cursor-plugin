@@ -116,30 +116,6 @@ function zhiraf_ufa_home_destinations_hub_config() {
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
 				'image'       => 'alt-indoneziya-beach-1.jpg',
 			),
-			array(
-				'slug'        => 'sejshely',
-				'flag'        => '🇸🇨',
-				'title'       => __( 'Сейшелы', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Маэ, Праслин • Романтика и пляж', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
-				'image'       => 'country-sejshely.jpg',
-			),
-			array(
-				'slug'        => 'uzbekistan',
-				'flag'        => '🇺🇿',
-				'title'       => __( 'Узбекистан', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Самарканд, Бухара • экскурсии', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Вылет из Москвы', 'zhiraf-ufa' ),
-				'image'       => 'resort-samarkand.jpg',
-			),
-			array(
-				'slug'        => 'armeniya',
-				'flag'        => '🇦🇲',
-				'title'       => __( 'Армения', 'zhiraf-ufa' ),
-				'teaser'      => __( 'Ереван, озеро Севан • гастрономия', 'zhiraf-ufa' ),
-				'flight_badge'=> __( 'Вылет из Москвы', 'zhiraf-ufa' ),
-				'image'       => 'alt-armeniya-yerevan.jpg',
-			),
 		),
 	);
 }

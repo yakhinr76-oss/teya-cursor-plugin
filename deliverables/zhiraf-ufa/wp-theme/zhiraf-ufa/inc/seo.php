@@ -139,6 +139,16 @@ function zhiraf_ufa_meta_descriptions() {
  * @return array{title?:string,description?:string}|null
  */
 function zhiraf_ufa_current_landing_seo() {
+	$exc_slug = function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) ? zhiraf_ufa_current_excursion_country_slug() : '';
+	if ( '' !== $exc_slug && function_exists( 'zhiraf_ufa_excursion_landing_pack' ) ) {
+		$pack = zhiraf_ufa_excursion_landing_pack( $exc_slug );
+		if ( $pack && ! empty( $pack['title'] ) ) {
+			return array(
+				'title'       => $pack['title'],
+				'description' => ! empty( $pack['description'] ) ? $pack['description'] : '',
+			);
+		}
+	}
 	$ctx = zhiraf_ufa_current_resort_context();
 	if ( $ctx ) {
 		$resort = zhiraf_ufa_get_resort_landing( $ctx['country'], $ctx['resort'] );
@@ -177,6 +187,13 @@ function zhiraf_ufa_current_landing_seo() {
 function zhiraf_ufa_og_image_url() {
 	$default = ZHIRAF_UFA_URI . '/assets/images/hero-turkey.jpg';
 
+	$exc_slug = function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) ? zhiraf_ufa_current_excursion_country_slug() : '';
+	if ( '' !== $exc_slug && function_exists( 'zhiraf_ufa_excursion_landing_pack' ) ) {
+		$pack = zhiraf_ufa_excursion_landing_pack( $exc_slug );
+		if ( $pack && ! empty( $pack['image'] ) ) {
+			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $pack['image'], '/' );
+		}
+	}
 	$ctx = zhiraf_ufa_current_resort_context();
 	if ( $ctx ) {
 		$resort = zhiraf_ufa_get_resort_landing( $ctx['country'], $ctx['resort'] );
@@ -251,7 +268,11 @@ function zhiraf_ufa_head_meta() {
 	$desc = '';
 	if ( is_front_page() ) {
 		$desc = zhiraf_ufa_meta_descriptions()['home'];
-	} elseif ( is_page() || zhiraf_ufa_current_resort_context() ) {
+	} elseif (
+		is_page()
+		|| zhiraf_ufa_current_resort_context()
+		|| ( function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) && zhiraf_ufa_current_excursion_country_slug() )
+	) {
 		$landing_seo = zhiraf_ufa_current_landing_seo();
 		if ( $landing_seo && ! empty( $landing_seo['description'] ) ) {
 			$desc = $landing_seo['description'];
@@ -421,6 +442,23 @@ function zhiraf_ufa_breadcrumb_json_ld() {
 			'name'     => __( 'Направления отдыха с вылетом из Уфы', 'zhiraf-ufa' ),
 			'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' ) ),
 		);
+	} elseif ( function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) && zhiraf_ufa_current_excursion_country_slug() ) {
+		$exc_slug = zhiraf_ufa_current_excursion_country_slug();
+		$pack     = function_exists( 'zhiraf_ufa_excursion_landing_pack' ) ? zhiraf_ufa_excursion_landing_pack( $exc_slug ) : null;
+		if ( $pack ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => __( 'Каталог направлений', 'zhiraf-ufa' ),
+				'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' ) ),
+			);
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => $pack['h1'],
+				'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' . $exc_slug . '/' ) ),
+			);
+		}
 	} elseif ( is_page() ) {
 		$slug  = get_post_field( 'post_name', get_queried_object_id() );
 		$dest  = zhiraf_ufa_get_destination_landing( $slug );
@@ -490,6 +528,12 @@ function zhiraf_ufa_faq_json_ld() {
 		$resort_data = zhiraf_ufa_get_resort_landing( $resort_ctx['country'], $resort_ctx['resort'] );
 		if ( $resort_data && ! empty( $resort_data['faq'] ) ) {
 			$faq_items = $resort_data['faq'];
+		}
+	} elseif ( function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) && zhiraf_ufa_current_excursion_country_slug() ) {
+		$exc_slug = zhiraf_ufa_current_excursion_country_slug();
+		$pack     = function_exists( 'zhiraf_ufa_excursion_landing_pack' ) ? zhiraf_ufa_excursion_landing_pack( $exc_slug ) : null;
+		if ( $pack && ! empty( $pack['faq'] ) ) {
+			$faq_items = $pack['faq'];
 		}
 	} elseif ( is_page() ) {
 		$slug = get_post_field( 'post_name', get_queried_object_id() );

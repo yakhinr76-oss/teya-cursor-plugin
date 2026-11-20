@@ -32,8 +32,17 @@ function zhiraf_ufa_canonical_public_url( $url ) {
 	if ( ! zhiraf_ufa_is_staging_host() || ! $url ) {
 		return $url;
 	}
+	$path = wp_parse_url( $url, PHP_URL_PATH );
+	if ( is_string( $path ) && function_exists( 'zhiraf_ufa_get_resort_landing' ) ) {
+		$segments = array_values( array_filter( explode( '/', trim( $path, '/' ) ) ) );
+		if ( count( $segments ) >= 3 && 'tour' === $segments[0] ) {
+			$resort_data = zhiraf_ufa_get_resort_landing( $segments[1], $segments[2] );
+			if ( $resort_data && ! empty( $resort_data['schema_version'] ) && (int) $resort_data['schema_version'] >= 2 ) {
+				return $url;
+			}
+		}
+	}
 	$public = trailingslashit( ZHIRAF_UFA_PUBLIC_SITE_URL );
-	$path   = wp_parse_url( $url, PHP_URL_PATH );
 	$query  = wp_parse_url( $url, PHP_URL_QUERY );
 	if ( ! is_string( $path ) ) {
 		$path = '/';

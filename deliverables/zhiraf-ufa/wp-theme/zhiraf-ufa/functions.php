@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.76-resort-district-nuance' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.77-staging-resort-canonical' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 

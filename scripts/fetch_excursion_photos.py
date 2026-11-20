@@ -162,6 +162,26 @@ PLANS: list[CountryPlan] = [
     ),
 ]
 
+# Extra batches (append to manifest; GE-WINE без «Georgia» — иначе US state).
+SUPPLEMENTAL: list[tuple[str, SearchSlot]] = [
+    (
+        "gruziya",
+        SearchSlot("GE-WINE", "red wine pouring glass rustic", "landscape", 2),
+    ),
+    (
+        "gruziya",
+        SearchSlot("GE-WINE", "wine barrels cellar warm light", "landscape", 2),
+    ),
+    (
+        "gruziya",
+        SearchSlot("GE-KAZBEGI", "Gergeti Trinity Church", "landscape", 2),
+    ),
+    (
+        "gruziya",
+        SearchSlot("GE-KAZBEGI", "Mount Kazbek Georgia", "landscape", 2),
+    ),
+]
+
 
 def slugify(text: str, max_len: int = 48) -> str:
     s = re.sub(r"[^a-zA-Z0-9]+", "-", text.strip().lower()).strip("-")
@@ -434,6 +454,37 @@ def build_preview_html(manifest: list[SavedFile]) -> None:
     print(f"Also: {PREVIEW_HTML}")
 
 
+def merge_manifest(existing: list[SavedFile], fresh: list[SavedFile]) -> list[SavedFile]:
+    seen_names = {row.filename_jpg for row in existing}
+    seen_ids = {row.pexels_id for row in existing}
+    out = list(existing)
+    for row in fresh:
+        if row.filename_jpg in seen_names or row.pexels_id in seen_ids:
+            continue
+        out.append(row)
+        seen_names.add(row.filename_jpg)
+        seen_ids.add(row.pexels_id)
+    return out
+
+
+def save_manifest(manifest: list[SavedFile]) -> Path:
+    manifest_path = OUT_ROOT / "_manifest.json"
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.write_text(
+        json.dumps([row.__dict__ for row in manifest], ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return manifest_path
+
+
+def run_supplement(client: PexelsClient) -> list[SavedFile]:
+    added: list[SavedFile] = []
+    for country, slot in SUPPLEMENTAL:
+        print(f"\n== supplement {country}/{slot.slot_id}: {slot.query!r} ==")
+        process_slot(client, country, slot, added)
+    return added
+
+
 def main() -> int:
     if "--preview-only" in sys.argv:
         manifest = load_manifest_rows()
@@ -455,6 +506,18 @@ def main() -> int:
         return 1
 
     client = PexelsClient(api_key)
+
+    if "--supplement-only" in sys.argv:
+        existing = load_manifest_rows()
+        for row in existing:
+            client._seen_ids.add(row.pexels_id)
+        added = run_supplement(client)
+        manifest = merge_manifest(existing, added)
+        manifest_path = save_manifest(manifest)
+        build_preview_html(manifest)
+        print(f"\nSupplement: +{len(added)} new, total {len(manifest)}. Manifest: {manifest_path}")
+        return 0
+
     manifest: list[SavedFile] = []
     for plan in PLANS:
         print(f"\n== {plan.slug} ==")
@@ -463,12 +526,7 @@ def main() -> int:
         for slot in plan.programs:
             process_slot(client, plan.slug, slot, manifest)
 
-    manifest_path = OUT_ROOT / "_manifest.json"
-    manifest_path.parent.mkdir(parents=True, exist_ok=True)
-    manifest_path.write_text(
-        json.dumps([row.__dict__ for row in manifest], ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    manifest_path = save_manifest(manifest)
     build_preview_html(manifest)
     print(f"\nDone. {len(manifest)} files. Manifest: {manifest_path}")
     return 0

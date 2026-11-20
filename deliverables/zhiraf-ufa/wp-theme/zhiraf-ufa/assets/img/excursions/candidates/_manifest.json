@@ -427,5 +427,93 @@
     "pexels_id": 35148286,
     "photographer": "Alexander Fadeev",
     "alt": "Lush green cliffs and distant hills in Dilijan National Park, Armenia, offering a breathtaking landscape view."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-WINE",
+    "query": "red wine pouring glass rustic",
+    "filename_jpg": "GE-WINE-01-red-wine-pouring-glass-rustic-pexels-6981935.jpg",
+    "filename_webp": "GE-WINE-01-red-wine-pouring-glass-rustic-pexels-6981935.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-WINE/GE-WINE-01-red-wine-pouring-glass-rustic-pexels-6981935.jpg",
+    "pexels_id": 6981935,
+    "photographer": "Paula Berken",
+    "alt": "Top view of red wine being poured into a glass with toasts and fresh ingredients nearby."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-WINE",
+    "query": "red wine pouring glass rustic",
+    "filename_jpg": "GE-WINE-02-red-wine-pouring-glass-rustic-pexels-8473179.jpg",
+    "filename_webp": "GE-WINE-02-red-wine-pouring-glass-rustic-pexels-8473179.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-WINE/GE-WINE-02-red-wine-pouring-glass-rustic-pexels-8473179.jpg",
+    "pexels_id": 8473179,
+    "photographer": "Cup of  Couple",
+    "alt": "A person pours red wine into glasses on a rustic wooden table, elegant and simple."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-WINE",
+    "query": "wine barrels cellar warm light",
+    "filename_jpg": "GE-WINE-01-wine-barrels-cellar-warm-light-pexels-5732740.jpg",
+    "filename_webp": "GE-WINE-01-wine-barrels-cellar-warm-light-pexels-5732740.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-WINE/GE-WINE-01-wine-barrels-cellar-warm-light-pexels-5732740.jpg",
+    "pexels_id": 5732740,
+    "photographer": "Laker",
+    "alt": "A warm-toned view of wine barrels stored in a winery cellar, ready for fermentation."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-WINE",
+    "query": "wine barrels cellar warm light",
+    "filename_jpg": "GE-WINE-02-wine-barrels-cellar-warm-light-pexels-14018318.jpg",
+    "filename_webp": "GE-WINE-02-wine-barrels-cellar-warm-light-pexels-14018318.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-WINE/GE-WINE-02-wine-barrels-cellar-warm-light-pexels-14018318.jpg",
+    "pexels_id": 14018318,
+    "photographer": "Ramon Perucho",
+    "alt": "Rustic wine barrels stacked in a dimly lit winery cellar showcasing the aging process."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-KAZBEGI",
+    "query": "Gergeti Trinity Church",
+    "filename_jpg": "GE-KAZBEGI-01-gergeti-trinity-church-pexels-9407207.jpg",
+    "filename_webp": "GE-KAZBEGI-01-gergeti-trinity-church-pexels-9407207.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-KAZBEGI/GE-KAZBEGI-01-gergeti-trinity-church-pexels-9407207.jpg",
+    "pexels_id": 9407207,
+    "photographer": "Atlantic Ambience",
+    "alt": "Stunning view of Gergeti Trinity Church atop a hill against majestic Georgian mountains."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-KAZBEGI",
+    "query": "Gergeti Trinity Church",
+    "filename_jpg": "GE-KAZBEGI-02-gergeti-trinity-church-pexels-7195781.jpg",
+    "filename_webp": "GE-KAZBEGI-02-gergeti-trinity-church-pexels-7195781.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-KAZBEGI/GE-KAZBEGI-02-gergeti-trinity-church-pexels-7195781.jpg",
+    "pexels_id": 7195781,
+    "photographer": "Руслан Кальницкий",
+    "alt": "Captured in soft daylight, a church sits atop a hill surrounded by mountains and sunrays."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-KAZBEGI",
+    "query": "Mount Kazbek Georgia",
+    "filename_jpg": "GE-KAZBEGI-01-mount-kazbek-georgia-pexels-5708952.jpg",
+    "filename_webp": "GE-KAZBEGI-01-mount-kazbek-georgia-pexels-5708952.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-KAZBEGI/GE-KAZBEGI-01-mount-kazbek-georgia-pexels-5708952.jpg",
+    "pexels_id": 5708952,
+    "photographer": "Arina Krasnikova",
+    "alt": "A stunning mountain landscape featuring a winding road under a clear blue sky."
+  },
+  {
+    "country": "gruziya",
+    "slot_id": "GE-KAZBEGI",
+    "query": "Mount Kazbek Georgia",
+    "filename_jpg": "GE-KAZBEGI-02-mount-kazbek-georgia-pexels-31623485.jpg",
+    "filename_webp": "GE-KAZBEGI-02-mount-kazbek-georgia-pexels-31623485.webp",
+    "rel_jpg": "assets/img/excursions/candidates/gruziya/GE-KAZBEGI/GE-KAZBEGI-02-mount-kazbek-georgia-pexels-31623485.jpg",
+    "pexels_id": 31623485,
+    "photographer": "Nadin Romanova",
+    "alt": "A breathtaking panorama of Mount Kazbek in the serene landscape of Georgia's Kazbegi region."
   }
 ]

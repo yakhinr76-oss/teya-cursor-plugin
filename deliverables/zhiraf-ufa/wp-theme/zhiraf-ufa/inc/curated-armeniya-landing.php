@@ -635,6 +635,7 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
  */
 function zhiraf_ufa_armeniya_expert_nuances() {
 	return array(
+		array( 'icon' => '🏨', 'title' => __( '25 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Топ-6 на старте, фильтры и «Показать ещё» — весь эталонный пул.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🛂', 'title' => __( 'Безвиз', 'zhiraf-ufa' ), 'text' => __( 'Паспорт РФ — въезд без визы.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🍷', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Бронируем столики и маршруты с дегустациями.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🏔', 'title' => __( 'Севан', 'zhiraf-ufa' ), 'text' => __( '1–2 ночи у озера — закладываем в пакет.', 'zhiraf-ufa' ) ),

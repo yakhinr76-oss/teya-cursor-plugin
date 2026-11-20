@@ -1507,6 +1507,23 @@
 
   initTurciyaCatalog();
 
+  document.addEventListener('click', function (e) {
+    var hubBtn = e.target.closest('[data-resort-hub-filter]');
+    if (!hubBtn) {
+      return;
+    }
+    var showcase = qs('[data-turciya-curated-root]');
+    if (!showcase || typeof window.filterByResort !== 'function') {
+      return;
+    }
+    e.preventDefault();
+    var filterKey = hubBtn.getAttribute('data-resort-hub-filter') || '';
+    if (!filterKey) {
+      return;
+    }
+    window.filterByResort(filterKey);
+  });
+
   qsa('[data-dest-season-module]').forEach(function (root) {
     var tabs = qsa('[data-season-tab]', root);
     var cards = qsa('[data-season-card]', root);

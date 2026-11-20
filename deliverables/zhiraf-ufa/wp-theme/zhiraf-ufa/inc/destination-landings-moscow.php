@@ -106,6 +106,28 @@ function zhiraf_ufa_moscow_landing_data() {
 						'a' => $common['how'][0],
 					),
 				);
+				$out[ $slug ]['resort_links'] = array(
+					array(
+						'label' => __( 'Туры в Санью из Уфы', 'zhiraf-ufa' ),
+						'url'   => home_url( '/tour/kitaj/sanya/' ),
+						'desc'  => __( 'Остров Хайнань, пляжный сезон с ноября по апрель, безвизовые программы — уточняем по туру.', 'zhiraf-ufa' ),
+					),
+					array(
+						'label'          => __( 'Дадунхай — город у моря', 'zhiraf-ufa' ),
+						'catalog_filter' => 'resort-dadonghai',
+						'desc'           => __( 'Городской пляж, рестораны и доступные отели рядом с морем.', 'zhiraf-ufa' ),
+					),
+					array(
+						'label'          => __( 'Ялунвань — Ялонг Бэй', 'zhiraf-ufa' ),
+						'catalog_filter' => 'resort-yalong',
+						'desc'           => __( 'Премиальные резорты, чистый песок и спокойная бухта.', 'zhiraf-ufa' ),
+					),
+					array(
+						'label'          => __( 'Хайтан — люкс-побережье', 'zhiraf-ufa' ),
+						'catalog_filter' => 'resort-haitang',
+						'desc'           => __( 'Цепочка 5★ на севере острова, тихие пляжи и СПА.', 'zhiraf-ufa' ),
+					),
+				);
 			} elseif ( 'uzbekistan' === $slug ) {
 				$out[ $slug ]['landing_module'] = 'vibe';
 				if ( function_exists( 'zhiraf_ufa_cultural_vibe_section' ) ) {

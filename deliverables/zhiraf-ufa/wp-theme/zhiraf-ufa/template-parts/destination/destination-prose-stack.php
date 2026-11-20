@@ -193,36 +193,14 @@ if ( empty( $dest ) ) {
 					<div class="dest-resort-link-hub">
 						<p class="dest-resort-link-hub__label"><?php esc_html_e( 'Курорты направления', 'zhiraf-ufa' ); ?></p>
 						<div class="dest-resort-link-grid" role="list">
-							<?php foreach ( $dest['resort_links'] as $link ) : ?>
-								<?php
-								$label = (string) ( $link['label'] ?? '' );
-								$title = $label;
-								if ( preg_match( '/^Туры в (.+) из Уфы$/u', $label, $m ) ) {
-									$title = $m[1];
+							<?php
+							$dest_slug = ! empty( $dest['slug'] ) ? (string) $dest['slug'] : '';
+							foreach ( $dest['resort_links'] as $link ) :
+								if ( function_exists( 'zhiraf_ufa_render_resort_hub_card' ) ) {
+									zhiraf_ufa_render_resort_hub_card( $link, $dest_slug );
 								}
-								?>
-								<a
-									class="dest-resort-link-card"
-									href="<?php echo esc_url( $link['url'] ); ?>"
-									role="listitem"
-								>
-									<span class="dest-resort-link-card__body">
-										<span class="dest-resort-link-card__title">
-											<?php
-											printf(
-												/* translators: %s: resort name */
-												esc_html__( 'Туры в %s из Уфы', 'zhiraf-ufa' ),
-												esc_html( $title )
-											);
-											?>
-										</span>
-										<?php if ( ! empty( $link['desc'] ) ) : ?>
-											<span class="dest-resort-link-card__subtitle"><?php echo esc_html( $link['desc'] ); ?></span>
-										<?php endif; ?>
-									</span>
-									<span class="dest-resort-link-card__arrow" aria-hidden="true">→</span>
-								</a>
-							<?php endforeach; ?>
+							endforeach;
+							?>
 						</div>
 					</div>
 				<?php endif; ?>

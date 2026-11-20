@@ -75,6 +75,124 @@ function zhiraf_ufa_img( $filename, $alt, $class = '', $lazy = true, $priority =
 }
 
 /**
+ * Resort landing image from assets/img/ (e.g. resorts/dubai/foo.jpg).
+ *
+ * @param string $relative Path under assets/img/.
+ * @param string $alt      Alt text.
+ * @param string $class    CSS classes.
+ * @param bool   $lazy     Lazy-load flag.
+ */
+function zhiraf_ufa_resort_content_img( $relative, $alt, $class = '', $lazy = true ) {
+	$relative = ltrim( (string) $relative, '/' );
+	$path     = ZHIRAF_UFA_DIR . '/assets/img/' . $relative;
+	if ( ! is_readable( $path ) ) {
+		zhiraf_ufa_img( $relative, $alt, $class, $lazy, false );
+		return;
+	}
+	$url = ZHIRAF_UFA_URI . '/assets/img/' . $relative;
+	$width  = 900;
+	$height = 506;
+	$size   = @getimagesize( $path );
+	if ( is_array( $size ) ) {
+		$width  = (int) $size[0];
+		$height = (int) $size[1];
+	}
+	$attrs = array(
+		'src'    => $url,
+		'alt'    => $alt,
+		'width'  => $width,
+		'height' => $height,
+		'class'  => $class,
+	);
+	if ( $lazy ) {
+		$attrs['loading'] = 'lazy';
+	}
+	$out = '<img';
+	foreach ( $attrs as $k => $v ) {
+		if ( '' === $v && 'class' === $k ) {
+			continue;
+		}
+		$out .= sprintf( ' %s="%s"', esc_attr( $k ), esc_attr( (string) $v ) );
+	}
+	$out .= ' />';
+	echo $out; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+/**
+ * Normalise resort local_guide landmark row (string legacy or object).
+ *
+ * @param mixed $item Raw JSON item.
+ * @return array{title:string,text:string,photo:string,photo_alt:string}
+ */
+function zhiraf_ufa_resort_landmark_row( $item ) {
+	if ( is_string( $item ) ) {
+		return array(
+			'title'      => '',
+			'text'       => $item,
+			'photo'      => '',
+			'photo_alt'  => '',
+		);
+	}
+	if ( ! is_array( $item ) ) {
+		return array(
+			'title'      => '',
+			'text'       => '',
+			'photo'      => '',
+			'photo_alt'  => '',
+		);
+	}
+	return array(
+		'title'      => ! empty( $item['title'] ) ? (string) $item['title'] : '',
+		'text'       => ! empty( $item['text'] ) ? (string) $item['text'] : ( ! empty( $item['desc'] ) ? (string) $item['desc'] : '' ),
+		'photo'      => ! empty( $item['photo'] ) ? (string) $item['photo'] : '',
+		'photo_alt'  => ! empty( $item['photo_alt'] ) ? (string) $item['photo_alt'] : ( ! empty( $item['title'] ) ? (string) $item['title'] : '' ),
+	);
+}
+
+/**
+ * Normalise resort local_guide tip row (string legacy or object with icon).
+ *
+ * @param mixed  $item    Raw JSON item.
+ * @param string $default_icon Lucide slug fallback.
+ * @return array{icon:string,title:string,text:string}
+ */
+function zhiraf_ufa_resort_tip_row( $item, $default_icon = 'info' ) {
+	if ( is_string( $item ) ) {
+		$title = '';
+		$text  = $item;
+		if ( preg_match( '/^([^:]+):\s*(.+)$/u', $item, $m ) ) {
+			$title = trim( $m[1] );
+			$text  = trim( $m[2] );
+		}
+		$icon = 'info';
+		if ( false !== mb_stripos( $title, 'налог', 0, 'UTF-8' ) || false !== mb_stripos( $title, 'депозит', 0, 'UTF-8' ) ) {
+			$icon = 'receipt';
+		} elseif ( false !== mb_stripos( $title, 'оплат', 0, 'UTF-8' ) ) {
+			$icon = 'credit-card';
+		} elseif ( false !== mb_stripos( $title, 'еда', 0, 'UTF-8' ) || false !== mb_stripos( $title, 'покуп', 0, 'UTF-8' ) ) {
+			$icon = 'shopping-bag';
+		}
+		return array(
+			'icon'  => $icon,
+			'title' => $title,
+			'text'  => $text,
+		);
+	}
+	if ( ! is_array( $item ) ) {
+		return array(
+			'icon'  => $default_icon,
+			'title' => '',
+			'text'  => '',
+		);
+	}
+	return array(
+		'icon'  => ! empty( $item['icon'] ) ? sanitize_key( (string) $item['icon'] ) : $default_icon,
+		'title' => ! empty( $item['title'] ) ? (string) $item['title'] : '',
+		'text'  => ! empty( $item['text'] ) ? (string) $item['text'] : '',
+	);
+}
+
+/**
  * Hero collage image with WebP srcset (LCP-safe, no lazy load).
  *
  * @param string $basename Base filename without extension, e.g. hero-collage-uae.

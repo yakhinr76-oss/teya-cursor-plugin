@@ -34,6 +34,8 @@
     "cards": [
       {
         "title": "Dubai Marina и JBR",
+        "photo": "resorts/dubai/district-marina-jbr.jpg",
+        "photo_alt": "Дубай — пляж и небоскрёбы Dubai Marina и JBR",
         "rows": [
           { "label": "Пляж", "text": "Общественный песчаный пляж The Beach (вход бесплатный, лежаки платно)." },
           { "label": "Кому", "text": "Парам, молодёжи и семьям, которым важны променад и рестораны рядом." },
@@ -42,6 +44,8 @@
       },
       {
         "title": "Palm Jumeirah",
+        "photo": "resorts/dubai/district-palm-jumeirah.jpg",
+        "photo_alt": "Пальма Джумейра — вид с воздуха на Атлантис и залив",
         "rows": [
           { "label": "Пляж", "text": "Собственные отельные пляжи и прогулочный Palm West Beach." },
           { "label": "Кому", "text": "Семьям и тем, кто планирует проводить большую часть дня на территории отеля." },
@@ -50,6 +54,8 @@
       },
       {
         "title": "Джумейра и Kite Beach",
+        "photo": "resorts/dubai/district-kite-beach.jpg",
+        "photo_alt": "Пляж Джумейра и вид на Burj Al Arab",
         "rows": [
           { "label": "Пляж", "text": "Широкий песчаный общественный пляж с видом на Burj Al Arab и водным спортом." },
           { "label": "Кому", "text": "Активным туристам и любителям просторных пляжей без привязки к резорту." },
@@ -58,6 +64,8 @@
       },
       {
         "title": "Al Mamzar",
+        "photo": "resorts/dubai/district-al-mamzar.jpg",
+        "photo_alt": "Пляжный парк Al Mamzar с пальмами",
         "rows": [
           { "label": "Пляж", "text": "Песчаные бухты внутри зелёного пляжного парка (вход в парк 5 AED)." },
           { "label": "Кому", "text": "Семьям для спокойного пляжного дня в парковой зоне." },
@@ -135,15 +143,42 @@
     "title": "Куда сходить и что учесть на месте",
     "landmarks_title": "Знаковые локации",
     "landmarks": [
-      "Burj Khalifa (At the Top, 124–125 этажи, 452 м — бронируем конкретный слот).",
-      "Сафари по красным дюнам Lahbab (~6 часов с закатом и ужином; багги — отдельно).",
-      "Старый квартал Al Fahidi и переправа через Dubai Creek на лодке абре (от 1 AED)."
+      {
+        "title": "Burj Khalifa",
+        "text": "At the Top, 124–125 этажи (452 м) — бронируем конкретный слот под ваш график, без очереди у кассы.",
+        "photo": "resorts/dubai/landmark-burj-khalifa.jpg",
+        "photo_alt": "Вид на небоскрёбы Дубая и Burj Khalifa"
+      },
+      {
+        "title": "Сафари в пустыне",
+        "text": "Красные дюны Lahbab (~6 часов с закатом и ужином; багги и квадроциклы — отдельная опция, уточняем до оплаты).",
+        "photo": "resorts/dubai/landmark-desert-safari.jpg",
+        "photo_alt": "Закат и верблюды в дюнах за Дубаем"
+      },
+      {
+        "title": "Dubai Creek и Al Fahidi",
+        "text": "Старый квартал и переправа на лодке-абре через залив (от 1 AED) — короткая прогулка с видом на историческую застройку.",
+        "photo": "resorts/dubai/landmark-dubai-creek.jpg",
+        "photo_alt": "Лодка-абра на Dubai Creek у старого города"
+      }
     ],
     "tips_title": "Местные фишки и быт",
     "tips": [
-      "Налог и депозит: Tourism Dirham (5★ — 20 AED, 4★ — 15 AED, 3★ — 10 AED за номер/ночь). Сумму депозита подтверждаем письменно до оплаты.",
-      "Оплата: российские Visa/Mastercard не работают, UnionPay нестабильна — берите наличные (USD/AED) или карту иностранного банка.",
-      "Еда и покупки: морепродукты в неформальном Bu Qtair, финики Khedri/Safawi/Medjool выгоднее брать в супермаркетах Carrefour."
+      {
+        "icon": "receipt",
+        "title": "Налог и депозит",
+        "text": "Tourism Dirham (5★ — 20 AED, 4★ — 15 AED, 3★ — 10 AED за номер/ночь). Сумму депозита подтверждаем письменно до оплаты."
+      },
+      {
+        "icon": "credit-card",
+        "title": "Оплата",
+        "text": "Российские Visa/Mastercard не работают, UnionPay нестабильна — берите наличные (USD/AED) или карту иностранного банка."
+      },
+      {
+        "icon": "shopping-bag",
+        "title": "Еда и покупки",
+        "text": "Морепродукты в неформальном Bu Qtair, финики Khedri/Safawi/Medjool выгоднее брать в супермаркетах Carrefour."
+      }
     ]
   },
   "faq": [

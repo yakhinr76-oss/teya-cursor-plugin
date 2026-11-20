@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function zhiraf_ufa_resort_json_registry() {
 	return array(
 		'oae/dubai',
+		'egipet/hurgada',
 	);
 }
 
@@ -79,22 +80,57 @@ function zhiraf_ufa_get_resort_landing_from_json( $country, $resort ) {
 function zhiraf_ufa_resort_json_catalog_hotels( array $resort_data ) {
 	$country_slug = ! empty( $resort_data['catalog_country'] ) ? sanitize_key( (string) $resort_data['catalog_country'] ) : sanitize_key( (string) ( $resort_data['country'] ?? '' ) );
 	$lock         = ! empty( $resort_data['catalog_lock_filter'] ) ? sanitize_key( (string) $resort_data['catalog_lock_filter'] ) : '';
+	$lock_any     = ! empty( $resort_data['catalog_lock_any'] ) && is_array( $resort_data['catalog_lock_any'] )
+		? array_values( array_filter( array_map( 'sanitize_key', $resort_data['catalog_lock_any'] ) ) )
+		: array();
+	$pool_tag     = ! empty( $resort_data['catalog_pool_tag'] ) ? sanitize_key( (string) $resort_data['catalog_pool_tag'] ) : '';
 	if ( '' === $country_slug || ! function_exists( 'zhiraf_ufa_curated_catalog_hotels' ) ) {
 		return array();
 	}
 	$hotels = zhiraf_ufa_curated_catalog_hotels( $country_slug );
-	if ( '' === $lock ) {
-		return $hotels;
-	}
-	return array_values(
-		array_filter(
-			$hotels,
-			function ( $row ) use ( $lock ) {
-				if ( ! is_array( $row ) || empty( $row['filter_tags'] ) || ! is_array( $row['filter_tags'] ) ) {
+	if ( $lock_any ) {
+		$hotels = array_values(
+			array_filter(
+				$hotels,
+				function ( $row ) use ( $lock_any ) {
+					if ( ! is_array( $row ) || empty( $row['filter_tags'] ) || ! is_array( $row['filter_tags'] ) ) {
+						return false;
+					}
+					foreach ( $lock_any as $tag ) {
+						if ( in_array( $tag, $row['filter_tags'], true ) ) {
+							return true;
+						}
+					}
 					return false;
 				}
-				return in_array( $lock, $row['filter_tags'], true );
+			)
+		);
+	} elseif ( '' !== $lock ) {
+		$hotels = array_values(
+			array_filter(
+				$hotels,
+				function ( $row ) use ( $lock ) {
+					if ( ! is_array( $row ) || empty( $row['filter_tags'] ) || ! is_array( $row['filter_tags'] ) ) {
+						return false;
+					}
+					return in_array( $lock, $row['filter_tags'], true );
+				}
+			)
+		);
+	}
+	if ( '' !== $pool_tag ) {
+		foreach ( $hotels as $i => $row ) {
+			if ( ! is_array( $row ) ) {
+				continue;
 			}
-		)
-	);
+			$tags = ! empty( $row['filter_tags'] ) && is_array( $row['filter_tags'] ) ? $row['filter_tags'] : array();
+			if ( ! in_array( $pool_tag, $tags, true ) ) {
+				$tags[] = $pool_tag;
+			}
+			$row['filter_tags']           = array_values( array_unique( $tags ) );
+			$hotels[ $i ]                 = $row;
+		}
+	}
+
+	return $hotels;
 }

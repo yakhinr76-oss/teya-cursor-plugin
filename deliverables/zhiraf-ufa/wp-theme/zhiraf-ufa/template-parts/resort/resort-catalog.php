@@ -37,7 +37,9 @@ $pool_total    = count( $hotels );
 $fill_wa_base  = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';
 
 $fill_emirate_labels = array();
-if ( function_exists( 'zhiraf_ufa_oae_catalog_fill_emirate_labels' ) ) {
+if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_egypt_catalog_fill_resort_labels();
+} elseif ( function_exists( 'zhiraf_ufa_oae_catalog_fill_emirate_labels' ) ) {
 	$fill_emirate_labels = zhiraf_ufa_oae_catalog_fill_emirate_labels();
 }
 ?>

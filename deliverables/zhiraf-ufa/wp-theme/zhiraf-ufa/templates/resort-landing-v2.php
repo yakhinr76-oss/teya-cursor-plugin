@@ -97,18 +97,40 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 			<h2 class="section-title"><?php echo esc_html( $districts['title'] ?? '' ); ?></h2>
 			<div class="resort-v2-districts__grid">
 				<?php foreach ( $districts['cards'] as $card ) : ?>
-					<article class="resort-v2-district-card">
-						<h3 class="resort-v2-district-card__title"><?php echo esc_html( $card['title'] ?? '' ); ?></h3>
-						<?php if ( ! empty( $card['rows'] ) && is_array( $card['rows'] ) ) : ?>
-							<dl class="resort-v2-district-card__rows">
-								<?php foreach ( $card['rows'] as $row ) : ?>
-									<div class="resort-v2-district-card__row">
-										<dt><?php echo esc_html( $row['label'] ?? '' ); ?></dt>
-										<dd><?php echo esc_html( $row['text'] ?? '' ); ?></dd>
-									</div>
-								<?php endforeach; ?>
-							</dl>
+					<?php
+					$district_title = ! empty( $card['title'] ) ? (string) $card['title'] : '';
+					$district_photo = ! empty( $card['photo'] ) ? (string) $card['photo'] : '';
+					$district_alt   = ! empty( $card['photo_alt'] ) ? (string) $card['photo_alt'] : $district_title;
+					$has_photo      = '' !== $district_photo;
+					?>
+					<article class="resort-v2-district-card<?php echo $has_photo ? ' resort-v2-district-card--photo' : ''; ?>">
+						<?php if ( $has_photo ) : ?>
+							<div class="resort-v2-district-card__media">
+								<?php
+								if ( function_exists( 'zhiraf_ufa_resort_content_img' ) ) {
+									zhiraf_ufa_resort_content_img( $district_photo, $district_alt, 'resort-v2-district-card__img' );
+								}
+								?>
+								<?php if ( '' !== $district_title ) : ?>
+									<span class="resort-v2-district-card__badge"><?php echo esc_html( $district_title ); ?></span>
+								<?php endif; ?>
+							</div>
 						<?php endif; ?>
+						<div class="resort-v2-district-card__body">
+							<?php if ( ! $has_photo && '' !== $district_title ) : ?>
+								<h3 class="resort-v2-district-card__title"><?php echo esc_html( $district_title ); ?></h3>
+							<?php endif; ?>
+							<?php if ( ! empty( $card['rows'] ) && is_array( $card['rows'] ) ) : ?>
+								<dl class="resort-v2-district-card__rows">
+									<?php foreach ( $card['rows'] as $row ) : ?>
+										<div class="resort-v2-district-card__row">
+											<dt><?php echo esc_html( $row['label'] ?? '' ); ?></dt>
+											<dd><?php echo esc_html( $row['text'] ?? '' ); ?></dd>
+										</div>
+									<?php endforeach; ?>
+								</dl>
+							<?php endif; ?>
+						</div>
 					</article>
 				<?php endforeach; ?>
 			</div>
@@ -141,23 +163,75 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 	<section class="section resort-v2-local bg-milky">
 		<div class="container">
 			<h2 class="section-title"><?php echo esc_html( $local['title'] ?? '' ); ?></h2>
-			<div class="resort-v2-local__grid">
-				<div class="resort-v2-local__col">
-					<h3 class="resort-v2-local__h3"><?php echo esc_html( $local['landmarks_title'] ?? '' ); ?></h3>
-					<ul class="resort-v2-local__list">
-						<?php foreach ( (array) ( $local['landmarks'] ?? array() ) as $item ) : ?>
-							<li><?php echo esc_html( $item ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-				<div class="resort-v2-local__col">
-					<h3 class="resort-v2-local__h3"><?php echo esc_html( $local['tips_title'] ?? '' ); ?></h3>
-					<ul class="resort-v2-local__list">
-						<?php foreach ( (array) ( $local['tips'] ?? array() ) as $item ) : ?>
-							<li><?php echo esc_html( $item ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
+			<div class="resort-v2-local__stack">
+				<?php if ( ! empty( $local['landmarks'] ) && is_array( $local['landmarks'] ) ) : ?>
+					<div class="resort-v2-local__landmarks">
+						<h3 class="resort-v2-local__h3"><?php echo esc_html( $local['landmarks_title'] ?? '' ); ?></h3>
+						<div class="resort-v2-landmarks__grid">
+							<?php foreach ( $local['landmarks'] as $raw_landmark ) : ?>
+								<?php
+								$landmark = function_exists( 'zhiraf_ufa_resort_landmark_row' )
+									? zhiraf_ufa_resort_landmark_row( $raw_landmark )
+									: array( 'title' => '', 'text' => (string) $raw_landmark, 'photo' => '', 'photo_alt' => '' );
+								$lm_title = $landmark['title'];
+								$lm_text  = $landmark['text'];
+								if ( '' === $lm_title && '' === $lm_text ) {
+									continue;
+								}
+								if ( '' === $lm_title && '' !== $lm_text ) {
+									$lm_title = mb_substr( $lm_text, 0, 48, 'UTF-8' );
+								}
+								?>
+								<article class="resort-v2-landmark-card">
+									<?php if ( ! empty( $landmark['photo'] ) && function_exists( 'zhiraf_ufa_resort_content_img' ) ) : ?>
+										<div class="resort-v2-landmark-card__media">
+											<?php zhiraf_ufa_resort_content_img( $landmark['photo'], $landmark['photo_alt'], 'resort-v2-landmark-card__img' ); ?>
+										</div>
+									<?php endif; ?>
+									<div class="resort-v2-landmark-card__body">
+										<?php if ( '' !== $lm_title ) : ?>
+											<h4 class="resort-v2-landmark-card__title"><?php echo esc_html( $lm_title ); ?></h4>
+										<?php endif; ?>
+										<?php if ( '' !== $lm_text ) : ?>
+											<p class="resort-v2-landmark-card__text"><?php echo esc_html( $lm_text ); ?></p>
+										<?php endif; ?>
+									</div>
+								</article>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif; ?>
+				<?php if ( ! empty( $local['tips'] ) && is_array( $local['tips'] ) ) : ?>
+					<div class="resort-v2-local__tips">
+						<h3 class="resort-v2-local__h3"><?php echo esc_html( $local['tips_title'] ?? '' ); ?></h3>
+						<div class="resort-v2-tips-panel">
+							<div class="resort-v2-tips-panel__grid">
+								<?php
+								$tip_icons = array( 'receipt', 'credit-card', 'shopping-bag' );
+								$tip_i     = 0;
+								foreach ( $local['tips'] as $raw_tip ) :
+									$fallback_icon = $tip_icons[ min( $tip_i, count( $tip_icons ) - 1 ) ];
+									$tip           = function_exists( 'zhiraf_ufa_resort_tip_row' )
+										? zhiraf_ufa_resort_tip_row( $raw_tip, $fallback_icon )
+										: array( 'icon' => $fallback_icon, 'title' => '', 'text' => (string) $raw_tip );
+									++$tip_i;
+									?>
+									<div class="resort-v2-tips-panel__col">
+										<?php
+										if ( function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+											echo zhiraf_ufa_lucide_icon( $tip['icon'], 22, 'resort-v2-tips-panel__icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+										}
+										?>
+										<?php if ( '' !== $tip['title'] ) : ?>
+											<p class="resort-v2-tips-panel__title"><?php echo esc_html( $tip['title'] ); ?></p>
+										<?php endif; ?>
+										<p class="resort-v2-tips-panel__text"><?php echo esc_html( $tip['text'] ); ?></p>
+									</div>
+								<?php endforeach; ?>
+							</div>
+						</div>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>

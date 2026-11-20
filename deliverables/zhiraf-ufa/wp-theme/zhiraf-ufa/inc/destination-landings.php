@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string[]
  */
 function zhiraf_ufa_destination_landing_slugs() {
-	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj', 'indiya', 'shri-lanka', 'indoneziya', 'maldivy', 'sejshely', 'uzbekistan', 'gruziya', 'armeniya', 'rossiya', 'abkhaziya' );
+	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj', 'indiya', 'shri-lanka', 'indoneziya', 'maldivy', 'sejshely', 'uzbekistan', 'gruziya', 'armeniya', 'kaliningrad', 'rossiya', 'abkhaziya' );
 }
 
 /**
@@ -1548,6 +1548,12 @@ function zhiraf_ufa_destination_landing_data() {
 			),
 		),
 	), zhiraf_ufa_moscow_landing_data(), array(
+		'kaliningrad' => array(
+			'name'                 => __( 'Калининград', 'zhiraf-ufa' ),
+			'name_in'              => __( 'Калининград', 'zhiraf-ufa' ),
+			'excursion_landing_v1' => true,
+			'hide_landing_prose'   => true,
+		),
 		'gruziya'  => array(
 			'name'           => __( 'Грузия', 'zhiraf-ufa' ),
 			'name_in'        => __( 'Грузии', 'zhiraf-ufa' ),

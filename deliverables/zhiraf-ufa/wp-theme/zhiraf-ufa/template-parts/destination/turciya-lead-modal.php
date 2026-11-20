@@ -11,16 +11,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $dest      = isset( $args['dest'] ) && is_array( $args['dest'] ) ? $args['dest'] : array();
 $dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
-if ( empty( $dest ) && function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+$is_home_modal = 'home' === $dest_slug;
+if ( ! $is_home_modal && empty( $dest ) && function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
 	$dest = zhiraf_ufa_get_destination_landing( $dest_slug );
 	if ( is_array( $dest ) ) {
 		$dest_slug = ! empty( $dest['slug'] ) ? $dest['slug'] : $dest_slug;
 	} else {
 		$dest = array();
 	}
+} elseif ( $is_home_modal ) {
+	$dest = array(
+		'name'         => __( 'Туры из Уфы', 'zhiraf-ufa' ),
+		'quiz_prefill' => __( 'Подбор тура из Уфы', 'zhiraf-ufa' ),
+	);
 }
 
-if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_compare_wa_text' ) ) {
+if ( $is_home_modal ) {
+	$wa_text = __( 'Здравствуйте! Хочу подобрать тур из Уфы: направление, даты, состав и ориентир по бюджету.', 'zhiraf-ufa' );
+} elseif ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_compare_wa_text' ) ) {
 	$wa_text = zhiraf_ufa_oae_resort_compare_wa_text();
 } elseif ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' ) ) {
 	$wa_text = zhiraf_ufa_turciya_resort_compare_wa_text();
@@ -35,6 +43,8 @@ if ( ! empty( $compare_title ) ) {
 	$modal_title = $compare_title;
 } elseif ( ! empty( $dest['curated_compare_lead_default'] ) ) {
 	$modal_title = (string) $dest['curated_compare_lead_default'];
+} elseif ( $is_home_modal ) {
+	$modal_title = __( 'Подберём тур из Уфы за 15 минут', 'zhiraf-ufa' );
 } elseif ( 'turciya' === $dest_slug ) {
 	$modal_title = __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
 } else {
@@ -53,8 +63,8 @@ $default_tour = ! empty( $dest['quiz_prefill'] )
 			__( '%s, подбор отеля', 'zhiraf-ufa' ),
 			$dest_name
 		) );
-$form_context = 'dest-' . $dest_slug . '-compare';
-$consent_id   = 'dest-' . $dest_slug . '-compare-modal';
+$form_context = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-compare';
+$consent_id   = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-compare-modal';
 ?>
 <div
 	id="turciya-lead-modal"

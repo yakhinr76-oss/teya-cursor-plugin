@@ -15,6 +15,7 @@ define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
 require_once ZHIRAF_UFA_DIR . '/inc/setup.php';
 require_once ZHIRAF_UFA_DIR . '/inc/logo.php';
+require_once ZHIRAF_UFA_DIR . '/inc/lucide-icons.php';
 require_once ZHIRAF_UFA_DIR . '/inc/enqueues.php';
 require_once ZHIRAF_UFA_DIR . '/inc/assets.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landings-moscow-content.php';

@@ -56,22 +56,22 @@ function zhiraf_ufa_home_express_vacation_chips() {
 function zhiraf_ufa_home_guarantee_pillars() {
 	return array(
 		array(
-			'icon'  => '🏷️',
+			'icon'  => 'tag',
 			'title' => __( 'Реальные цены туроператоров', 'zhiraf-ufa' ),
 			'text'  => __( 'Без скрытых комиссий агентства и внезапных доплат.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '🏨',
+			'icon'  => 'hotel',
 			'title' => __( 'Отели без прикрас', 'zhiraf-ufa' ),
 			'text'  => __( 'Честно предупреждаем о нюансах захода в море, шумных трассах и ремонте.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '💳',
+			'icon'  => 'credit-card',
 			'title' => __( 'Фиксация сметы в договоре', 'zhiraf-ufa' ),
 			'text'  => __( 'Окончательная цена с топливными сборами и трансфером прописывается до оплаты.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '🤝',
+			'icon'  => 'headphones',
 			'title' => __( 'Поддержка 24/7', 'zhiraf-ufa' ),
 			'text'  => __( 'Сопровождение туриста от регистрации в аэропорту Уфы до возвращения.', 'zhiraf-ufa' ),
 		),
@@ -93,7 +93,7 @@ function zhiraf_ufa_home_life_scenarios() {
 				__( 'Пологий песок', 'zhiraf-ufa' ),
 				__( 'Детские бассейны', 'zhiraf-ufa' ),
 			),
-			'overlay'     => __( '👨‍👩‍👧 Пляжи без камней', 'zhiraf-ufa' ),
+			'overlay'     => __( 'Пляжи без камней', 'zhiraf-ufa' ),
 			'badge'       => array(
 				'type'  => 'count',
 				'label' => __( '38 отелей', 'zhiraf-ufa' ),
@@ -111,7 +111,7 @@ function zhiraf_ufa_home_life_scenarios() {
 				__( 'Без шума 16+', 'zhiraf-ufa' ),
 				__( 'Спа и релакс', 'zhiraf-ufa' ),
 			),
-			'overlay'     => __( '🥂 Только для взрослых', 'zhiraf-ufa' ),
+			'overlay'     => __( 'Только для взрослых', 'zhiraf-ufa' ),
 			'badge'       => array(
 				'type'  => 'count',
 				'label' => __( '24 отеля', 'zhiraf-ufa' ),
@@ -129,7 +129,7 @@ function zhiraf_ufa_home_life_scenarios() {
 				__( 'Рейтинг 4.8+', 'zhiraf-ufa' ),
 				__( 'Честный All Inclusive', 'zhiraf-ufa' ),
 			),
-			'overlay'     => __( '⚖️ Честный рейтинг 4.7+', 'zhiraf-ufa' ),
+			'overlay'     => __( 'Честный рейтинг 4.7+', 'zhiraf-ufa' ),
 			'badge'       => array(
 				'type'  => 'featured',
 				'label' => __( '★ Топ выбор', 'zhiraf-ufa' ),
@@ -147,7 +147,7 @@ function zhiraf_ufa_home_life_scenarios() {
 				__( 'Центр города', 'zhiraf-ufa' ),
 				__( 'Шопинг рядом', 'zhiraf-ufa' ),
 			),
-			'overlay'     => __( '🛍️ В центре событий', 'zhiraf-ufa' ),
+			'overlay'     => __( 'В центре событий', 'zhiraf-ufa' ),
 			'badge'       => array(
 				'type'  => 'count',
 				'label' => __( '19 отелей', 'zhiraf-ufa' ),

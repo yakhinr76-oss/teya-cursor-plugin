@@ -17,8 +17,12 @@ if ( empty( $card['url'] ) ) {
 
 $country_name = (string) ( $card['title'] ?? '' );
 $flag_emoji   = (string) ( $card['flag'] ?? '' );
-$title        = trim( $flag_emoji . ' ' . $country_name );
+$show_emoji   = ! isset( $card['show_flag_emoji'] ) || ! empty( $card['show_flag_emoji'] );
+$title        = $show_emoji && '' !== $flag_emoji ? trim( $flag_emoji . ' ' . $country_name ) : $country_name;
 $flag_url     = ! empty( $card['flag_url'] ) ? (string) $card['flag_url'] : '';
+$nights_label = ! empty( $card['nights_label'] )
+	? (string) $card['nights_label']
+	: __( '7 ночей / 2 взр.', 'zhiraf-ufa' );
 ?>
 <a
 	class="dest-hub-card reveal"
@@ -39,7 +43,7 @@ $flag_url     = ! empty( $card['flag_url'] ) ? (string) $card['flag_url'] : '';
 	<span class="dest-hub-card__shade" aria-hidden="true"></span>
 	<span class="dest-hub-card__top">
 		<span class="dest-hub-card__badge"><?php echo esc_html( $card['flight_badge'] ?? '' ); ?></span>
-		<span class="dest-hub-card__nights"><?php esc_html_e( '7 ночей / 2 взр.', 'zhiraf-ufa' ); ?></span>
+		<span class="dest-hub-card__nights"><?php echo esc_html( $nights_label ); ?></span>
 	</span>
 	<span class="dest-hub-card__bottom">
 		<span class="dest-hub-card__copy">

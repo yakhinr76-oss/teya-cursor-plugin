@@ -28,7 +28,6 @@ if ( empty( $chips ) ) {
 				continue;
 			}
 			$url   = home_url( '/tour/' . rawurlencode( $slug ) . '/' );
-			$flag  = (string) ( $chip['flag'] ?? '' );
 			$label = (string) ( $chip['label'] ?? $slug );
 			?>
 			<a
@@ -36,7 +35,9 @@ if ( empty( $chips ) ) {
 				href="<?php echo esc_url( $url ); ?>"
 				data-track="hero_dest_chip_<?php echo esc_attr( $slug ); ?>"
 			>
-				<span class="hero-premium__quick-dest-flag" aria-hidden="true"><?php echo esc_html( $flag ); ?></span>
+				<?php if ( function_exists( 'zhiraf_ufa_lucide_icon' ) ) : ?>
+					<span class="hero-premium__quick-dest-flag" aria-hidden="true"><?php echo zhiraf_ufa_lucide_icon( 'map', 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+				<?php endif; ?>
 				<span class="hero-premium__quick-dest-name"><?php echo esc_html( $label ); ?></span>
 			</a>
 		<?php endforeach; ?>

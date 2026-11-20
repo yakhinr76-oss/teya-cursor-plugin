@@ -103,7 +103,8 @@
 
 .hero-premium__quick-dest-flag {
   flex-shrink: 0;
-  line-height: 1;
+  line-height: 0;
+  color: var(--color-primary);
 }
 
 .hero-premium__quick-dest-name {

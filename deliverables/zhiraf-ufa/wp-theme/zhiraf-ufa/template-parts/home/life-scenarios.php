@@ -1,6 +1,6 @@
 <?php
 /**
- * Life situation scenario cards → quiz with prefill.
+ * Life situation scenario cards → lead modal with messenger picker.
  *
  * @package Zhiraf_Ufa
  */
@@ -25,16 +25,15 @@ $scenarios = zhiraf_ufa_home_life_scenarios();
 				<?php
 				$badge = ! empty( $scenario['badge'] ) && is_array( $scenario['badge'] ) ? $scenario['badge'] : array();
 				$tags  = ! empty( $scenario['tags'] ) && is_array( $scenario['tags'] ) ? $scenario['tags'] : array();
-				$vibe  = ! empty( $scenario['vibe'] ) ? (string) $scenario['vibe'] : '';
+				$lead_tour = ! empty( $scenario['quiz_step_1'] ) ? (string) $scenario['quiz_step_1'] : (string) ( $scenario['title'] ?? '' );
 				?>
 				<button
 					type="button"
 					class="life-scenarios__card reveal"
-					data-quiz-open
-					data-quiz-trigger="scenario"
-					data-vibe="<?php echo esc_attr( $vibe ); ?>"
-					data-quiz-step-1="<?php echo esc_attr( $scenario['quiz_step_1'] ); ?>"
-					data-cta-context="<?php echo esc_attr( $scenario['track'] ); ?>"
+					data-turciya-lead-open
+					data-lead-tour="<?php echo esc_attr( $lead_tour ); ?>"
+					data-lead-title="<?php echo esc_attr( $scenario['title'] ?? '' ); ?>"
+					data-cta-context="<?php echo esc_attr( $scenario['track'] ?? 'scenario_lead' ); ?>"
 				>
 					<div class="life-scenarios__card-main">
 						<div class="life-scenarios__media">

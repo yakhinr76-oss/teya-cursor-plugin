@@ -328,12 +328,119 @@ function zhiraf_ufa_home_destinations_hub_cards( $departure = 'ufa' ) {
 		$out[] = array_merge(
 			$row,
 			array(
-				'url'         => zhiraf_ufa_home_hub_destination_url( $slug ),
-				'price_label' => $price_label,
-				'cta_action'  => $cta_action,
-				'photo_url'   => ! empty( $img['url'] ) ? (string) $img['url'] : '',
-				'photo_alt'   => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
-				'flag_url'    => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',
+				'url'             => zhiraf_ufa_home_hub_destination_url( $slug ),
+				'price_label'     => $price_label,
+				'cta_action'      => $cta_action,
+				'photo_url'       => ! empty( $img['url'] ) ? (string) $img['url'] : '',
+				'photo_alt'       => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
+				'flag_url'        => ! empty( $flag_img['url'] ) ? (string) $flag_img['url'] : '',
+				'show_flag_emoji' => false,
+			)
+		);
+	}
+
+	return $out;
+}
+
+/**
+ * Excursion tab cards (editorial programs, not hotel counts).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_home_excursion_hub_config() {
+	return array(
+		array(
+			'slug'         => 'gruziya',
+			'title'        => __( 'Грузия', 'zhiraf-ufa' ),
+			'teaser'       => __( 'Тбилиси, Кахетия, Казбеги • Гастро и горы', 'zhiraf-ufa' ),
+			'flight_badge' => __( 'Авиа из Уфы', 'zhiraf-ufa' ),
+			'image'        => 'hero-collage-active.jpg',
+			'path'         => '/tour/gruziya/',
+			'price_slug'   => 'gruziya',
+		),
+		array(
+			'slug'         => 'uzbekistan',
+			'title'        => __( 'Узбекистан', 'zhiraf-ufa' ),
+			'teaser'       => __( 'Ташкент, Самарканд, Бухара • Восток', 'zhiraf-ufa' ),
+			'flight_badge' => __( 'Авиа / Автобус', 'zhiraf-ufa' ),
+			'image'        => 'resort-samarkand.jpg',
+			'path'         => '/tour/uzbekistan/',
+			'price_slug'   => 'uzbekistan',
+		),
+		array(
+			'slug'         => 'armeniya',
+			'title'        => __( 'Армения', 'zhiraf-ufa' ),
+			'teaser'       => __( 'Ереван, Севан, Гарни • Без загранпаспорта', 'zhiraf-ufa' ),
+			'flight_badge' => __( 'Авиа из Уфы', 'zhiraf-ufa' ),
+			'image'        => 'alt-armeniya-sevan.jpg',
+			'path'         => '/tour/armeniya/',
+			'price_slug'   => 'armeniya',
+		),
+		array(
+			'slug'         => 'moskva',
+			'title'        => __( 'Москва', 'zhiraf-ufa' ),
+			'teaser'       => __( 'Кремль, музеи, парки • Уикенд', 'zhiraf-ufa' ),
+			'flight_badge' => __( 'Прямой рейс • 2 ч', 'zhiraf-ufa' ),
+			'image'        => 'life-scenario-city.jpg',
+			'path'         => '/tour/moskva/',
+			'price_slug'   => 'rossiya',
+		),
+		array(
+			'slug'         => 'sankt-peterburg',
+			'title'        => __( 'Санкт-Петербург', 'zhiraf-ufa' ),
+			'teaser'       => __( 'Петергоф, Эрмитаж, белые ночи', 'zhiraf-ufa' ),
+			'flight_badge' => __( 'Прямой рейс • 2,5 ч', 'zhiraf-ufa' ),
+			'image'        => 'hero-collage-2.jpg',
+			'path'         => '/tour/sankt-peterburg/',
+			'price_slug'   => 'rossiya',
+		),
+		array(
+			'slug'         => 'kaliningrad',
+			'title'        => __( 'Калининград', 'zhiraf-ufa' ),
+			'teaser'       => __( 'Куршская коса, Светлогорск, Балтика', 'zhiraf-ufa' ),
+			'flight_badge' => __( 'Авиа из Уфы', 'zhiraf-ufa' ),
+			'image'        => 'hero-collage-2.jpg',
+			'path'         => '/tour/kaliningrad/',
+			'price_slug'   => 'rossiya',
+		),
+	);
+}
+
+/**
+ * Render-ready excursion hub cards.
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_home_excursion_hub_cards() {
+	$out = array();
+
+	foreach ( zhiraf_ufa_home_excursion_hub_config() as $row ) {
+		$price_slug = ! empty( $row['price_slug'] ) ? (string) $row['price_slug'] : (string) $row['slug'];
+		$min        = zhiraf_ufa_home_hub_min_tour( $price_slug, 'ufa' );
+		$price      = '';
+		if ( $min && ! empty( $min['price_rur'] ) ) {
+			$price = sprintf(
+				/* translators: %s: formatted price */
+				__( 'от %s ₽', 'zhiraf-ufa' ),
+				number_format( (int) $min['price_rur'], 0, '.', ' ' )
+			);
+		}
+		$img = zhiraf_ufa_theme_image( (string) $row['image'], (string) $row['title'] );
+		$path = ! empty( $row['path'] ) ? (string) $row['path'] : '/tour/' . $row['slug'] . '/';
+
+		$out[] = array_merge(
+			$row,
+			array(
+				'url'           => home_url( $path ),
+				'price_label'   => $price,
+				'cta_action'    => __( 'Смотреть программы →', 'zhiraf-ufa' ),
+				'photo_url'     => ! empty( $img['url'] ) ? (string) $img['url'] : '',
+				'photo_alt'     => ! empty( $img['alt'] ) ? (string) $img['alt'] : (string) $row['title'],
+				'flag'          => '',
+				'flag_url'      => '',
+				'card_variant'  => 'excursion',
+				'nights_label'  => __( 'программы', 'zhiraf-ufa' ),
+				'show_flag_emoji' => false,
 			)
 		);
 	}

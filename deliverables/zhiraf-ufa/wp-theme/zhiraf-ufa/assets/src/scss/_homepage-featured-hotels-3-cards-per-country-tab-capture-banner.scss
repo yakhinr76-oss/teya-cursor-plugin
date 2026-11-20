@@ -337,9 +337,18 @@
   color: #78716c;
   max-width: 36rem;
 }
+.destinations-hub__tabs-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+}
 .destinations-hub__tabs {
   display: inline-flex;
   flex-shrink: 0;
+  flex-wrap: nowrap;
+  gap: 0.15rem;
   padding: 0.25rem;
   border-radius: 0.75rem;
   background: #f5f5f4;
@@ -349,12 +358,22 @@
   border: 0;
   background: transparent;
   cursor: pointer;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 0.9rem;
   border-radius: 0.5rem;
   font-size: clamp(0.6875rem, 2vw, 0.875rem);
   font-weight: 600;
   color: #57534e;
   transition: color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.destinations-hub__tab-icon {
+  display: inline-flex;
+  line-height: 0;
+  color: #c85a32;
 }
 .destinations-hub__tab:hover {
   color: #1c1917;
@@ -382,6 +401,25 @@
   .destinations-hub__grid.is-active {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+.destinations-hub__grid--excursion.is-active {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .destinations-hub__grid--excursion.is-active {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .destinations-hub__grid--excursion.is-active {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.lucide-icon {
+  color: #c85a32;
+}
+.guarantees-bar__icon .lucide-icon {
+  color: #c85a32;
 }
 .dest-hub-card {
   position: relative;

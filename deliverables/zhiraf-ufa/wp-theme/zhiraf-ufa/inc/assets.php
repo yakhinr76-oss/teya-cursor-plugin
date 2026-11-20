@@ -165,32 +165,32 @@ function zhiraf_ufa_hero_mobile_destination_chips() {
 		array(
 			array(
 				'slug'  => 'turciya',
-				'flag'  => '🇹🇷',
+				'flag'  => '',
 				'label' => __( 'Турция', 'zhiraf-ufa' ),
 			),
 			array(
 				'slug'  => 'oae',
-				'flag'  => '🇦🇪',
+				'flag'  => '',
 				'label' => __( 'ОАЭ', 'zhiraf-ufa' ),
 			),
 			array(
 				'slug'  => 'egipet',
-				'flag'  => '🇪🇬',
+				'flag'  => '',
 				'label' => __( 'Египет', 'zhiraf-ufa' ),
 			),
 			array(
 				'slug'  => 'tailand',
-				'flag'  => '🇹🇭',
+				'flag'  => '',
 				'label' => __( 'Таиланд', 'zhiraf-ufa' ),
 			),
 			array(
 				'slug'  => 'rossiya',
-				'flag'  => '🇷🇺',
+				'flag'  => '',
 				'label' => __( 'Сочи', 'zhiraf-ufa' ),
 			),
 			array(
 				'slug'  => 'vietnam',
-				'flag'  => '🇻🇳',
+				'flag'  => '',
 				'label' => __( 'Вьетнам', 'zhiraf-ufa' ),
 			),
 		)

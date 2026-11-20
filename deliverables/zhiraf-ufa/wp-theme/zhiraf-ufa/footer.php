@@ -44,6 +44,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 				<li><a href="<?php echo esc_url( home_url( '/tour/egipet/' ) ); ?>"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/tour/tailand/' ) ); ?>"><?php esc_html_e( 'Таиланд', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/tour/vietnam/' ) ); ?>"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/gruziya/' ) ); ?>"><?php esc_html_e( 'Грузия', 'zhiraf-ufa' ); ?></a></li>
+				<li><a href="<?php echo esc_url( home_url( '/tour/uzbekistan/' ) ); ?>"><?php esc_html_e( 'Узбекистан', 'zhiraf-ufa' ); ?></a></li>
 			</ul>
 		</div>
 		<div class="footer-col">
@@ -85,6 +87,17 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 	</div>
 </div>
 
+<?php
+if ( is_front_page() ) {
+	get_template_part(
+		'template-parts/destination/turciya-lead-modal',
+		null,
+		array(
+			'dest_slug' => 'home',
+		)
+	);
+}
+?>
 <?php get_template_part( 'template-parts/quiz', 'modal' ); ?>
 
 <?php

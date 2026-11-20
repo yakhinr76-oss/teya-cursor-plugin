@@ -13,7 +13,7 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 		<div class="container hero-premium__inner">
 			<div class="hero-premium__content reveal">
 				<h1 class="hero-premium__title">
-					<?php esc_html_e( 'Туры с прямым вылетом из Уфы — честный подбор по ценам туроператоров', 'zhiraf-ufa' ); ?>
+					<?php esc_html_e( 'Туры с вылетом из Уфы — подбор без давления', 'zhiraf-ufa' ); ?>
 				</h1>
 				<p class="hero-premium__subtitle">
 					<?php esc_html_e( 'Показываем реальную стоимость туроператоров без скрытых доплат. Проверенная база 400 отелей с честным разбором плюсов и нюансов.', 'zhiraf-ufa' ); ?>
@@ -23,8 +23,14 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 					<button type="button" class="btn btn--primary btn--lg" onclick="document.getElementById('destinations-hub') && document.getElementById('destinations-hub').scrollIntoView({behavior: 'smooth'})">
 						<?php esc_html_e( 'Выбрать направление отдыха', 'zhiraf-ufa' ); ?>
 					</button>
-					<button type="button" class="btn btn--outline btn--lg" data-quiz-open data-quiz-trigger="hero">
-						<?php esc_html_e( 'Подобрать тур через квиз (1 мин)', 'zhiraf-ufa' ); ?>
+					<button
+						type="button"
+						class="btn btn--outline btn--lg"
+						data-turciya-lead-open
+						data-lead-tour="<?php esc_attr_e( 'Главная — подбор тура из Уфы', 'zhiraf-ufa' ); ?>"
+						data-cta-context="cta_home_hero_lead"
+					>
+						<?php esc_html_e( 'Подобрать тур в мессенджер', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>
 			</div>
@@ -93,7 +99,13 @@ $quiz_cta  = zhiraf_ufa_quiz_cta_label();
 
 <div class="sticky-mobile-cta" id="sticky-mobile-cta" hidden>
 	<a href="tel:+79018105018" class="btn btn--outline btn--sm" data-track="phone"><?php esc_html_e( 'Позвонить', 'zhiraf-ufa' ); ?></a>
-	<button type="button" class="btn btn--primary btn--sm" data-quiz-open data-cta-context="cta_sticky_quiz_open"><?php echo esc_html( $quiz_cta ); ?></button>
+	<button
+		type="button"
+		class="btn btn--primary btn--sm"
+		data-turciya-lead-open
+		data-lead-tour="<?php esc_attr_e( 'Главная — подбор тура (sticky)', 'zhiraf-ufa' ); ?>"
+		data-cta-context="cta_sticky_lead_open"
+	><?php esc_html_e( 'Подобрать тур', 'zhiraf-ufa' ); ?></button>
 </div>
 <?php
 get_footer();

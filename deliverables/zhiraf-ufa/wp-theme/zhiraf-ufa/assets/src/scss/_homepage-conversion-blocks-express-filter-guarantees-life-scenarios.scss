@@ -122,7 +122,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
 }
 .guarantees-bar__title {
   margin: 0 0 0.35rem;
@@ -196,9 +195,10 @@
   outline: none;
 }
 .life-scenarios__card-main {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 .life-scenarios__media {
   position: relative;
@@ -254,6 +254,9 @@
 }
 .life-scenarios__body {
   padding: 1.25rem 1.25rem 0.75rem;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 .life-scenarios__title {
   margin: 0 0 0.5rem;
@@ -294,14 +297,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  margin: 0 1.25rem 1.25rem;
-  padding: 0.625rem 1rem;
-  border-radius: var(--radius-sm);
-  background: var(--color-sand);
+  margin-top: auto;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-cta, 12px);
+  border: 0;
+  background: #c85a32;
   font-size: 0.75rem;
   font-weight: 800;
-  color: var(--color-text);
-  transition: background 0.25s ease, color 0.25s ease;
+  color: #fff;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
 .life-scenarios__action-label {
   text-align: left;
@@ -314,6 +321,7 @@
 }
 .life-scenarios__card:hover .life-scenarios__action,
 .life-scenarios__card:focus-visible .life-scenarios__action {
-  background: #c85a32;
+  background: #b04b25;
   color: #fff;
+  box-shadow: 0 6px 18px rgba(200, 90, 50, 0.25);
 }

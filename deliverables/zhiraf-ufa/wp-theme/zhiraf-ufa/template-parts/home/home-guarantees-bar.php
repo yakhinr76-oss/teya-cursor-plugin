@@ -19,7 +19,13 @@ $pillars = zhiraf_ufa_home_guarantee_pillars();
 		<div class="guarantees-bar reveal">
 			<?php foreach ( $pillars as $pillar ) : ?>
 				<div class="guarantees-bar__item">
-					<div class="guarantees-bar__icon" aria-hidden="true"><?php echo esc_html( $pillar['icon'] ); ?></div>
+					<div class="guarantees-bar__icon" aria-hidden="true">
+						<?php
+						if ( function_exists( 'zhiraf_ufa_lucide_icon' ) && ! empty( $pillar['icon'] ) ) {
+							echo zhiraf_ufa_lucide_icon( (string) $pillar['icon'], 22 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						}
+						?>
+					</div>
 					<div class="guarantees-bar__body">
 						<h3 class="guarantees-bar__title"><?php echo esc_html( $pillar['title'] ); ?></h3>
 						<p class="guarantees-bar__text"><?php echo esc_html( $pillar['text'] ); ?></p>

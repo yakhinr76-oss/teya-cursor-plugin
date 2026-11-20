@@ -878,7 +878,10 @@
       var hotelLead = trigger.getAttribute('data-lead-subtitle') || '';
       var hotelMsg = trigger.getAttribute('data-lead-message') || '';
       var hotelTour = trigger.getAttribute('data-lead-tour') || hotelTitle;
-      var hotelUon = trigger.getAttribute('data-uon-hotel-id') || '';
+      var hotelUon = trigger.getAttribute('data-uon-hotel-id')
+        || trigger.getAttribute('data-uon-program-id')
+        || trigger.getAttribute('data-excursion-program-id')
+        || '';
       if (hotelTitle && titleEl) titleEl.textContent = hotelTitle;
       if (hotelLead && leadEl) leadEl.textContent = hotelLead;
       if (hotelMsg && msgEl) msgEl.value = hotelMsg;
@@ -1543,4 +1546,72 @@
       });
     });
   });
+
+  function initExcursionLanding() {
+    var root = qs('[data-excursion-landing]');
+    if (!root) {
+      return;
+    }
+    var programCards = qsa('[data-excursion-program]', root);
+    var formatBtns = qsa('[data-excursion-format]', root);
+    var dayBtns = qsa('[data-excursion-days]', root);
+    var activeFormat = '';
+    var activeDays = 'all';
+
+    function dayBucket(days) {
+      var d = parseInt(days, 10);
+      if (d >= 3 && d <= 5) {
+        return '3-5';
+      }
+      if (d >= 6 && d <= 9) {
+        return '6-9';
+      }
+      return '';
+    }
+
+    function applyExcursionFilters() {
+      programCards.forEach(function (card) {
+        var fmt = card.getAttribute('data-program-format') || '';
+        var bucket = dayBucket(card.getAttribute('data-program-days') || '');
+        var showFormat = !activeFormat || activeFormat === fmt;
+        var showDays = activeDays === 'all' || activeDays === bucket;
+        card.classList.toggle('is-hidden', !(showFormat && showDays));
+      });
+    }
+
+    formatBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-excursion-format') || '';
+        if (activeFormat === key) {
+          activeFormat = '';
+          btn.classList.remove('is-active');
+          btn.setAttribute('aria-selected', 'false');
+        } else {
+          activeFormat = key;
+          formatBtns.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+        }
+        applyExcursionFilters();
+      });
+    });
+
+    dayBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeDays = btn.getAttribute('data-excursion-days') || 'all';
+        dayBtns.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        applyExcursionFilters();
+      });
+    });
+
+    qsa('.excursion-final-cta__form', root).forEach(initMessengerPicker);
+  }
+
+  initExcursionLanding();
 })();

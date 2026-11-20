@@ -321,6 +321,7 @@ function zhiraf_ufa_ajax_lead() {
 			'hot_dates'        => 'Даты вылета (горящие)',
 			'ai_travelers'     => 'Состав (AI)',
 			'ai_month'         => 'Месяц (AI)',
+			'uon_hotel_id'     => 'ID U-ON (отель / программа)',
 		)
 	);
 	if ( ! empty( $values['Состав (AI)'] ) || ! empty( $values['Месяц (AI)'] ) ) {

@@ -26,8 +26,12 @@ if ( ! $is_home_modal && empty( $dest ) && function_exists( 'zhiraf_ufa_get_dest
 	);
 }
 
-if ( $is_home_modal ) {
+if ( ! empty( $args['modal_message'] ) ) {
+	$wa_text = (string) $args['modal_message'];
+} elseif ( $is_home_modal ) {
 	$wa_text = __( 'Здравствуйте! Хочу подобрать тур из Уфы: направление, даты, состав и ориентир по бюджету.', 'zhiraf-ufa' );
+} elseif ( 'uzbekistan' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Нужна программа экскурсионного тура в Узбекистан из Уфы — укажу даты, города и состав в переписке.', 'zhiraf-ufa' );
 } elseif ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_compare_wa_text' ) ) {
 	$wa_text = zhiraf_ufa_oae_resort_compare_wa_text();
 } elseif ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' ) ) {
@@ -39,7 +43,9 @@ if ( $is_home_modal ) {
 }
 
 $compare_title = function_exists( 'get_field' ) ? get_field( 'resort_compare_lead_title', get_queried_object() ) : '';
-if ( ! empty( $compare_title ) ) {
+if ( ! empty( $args['modal_title'] ) ) {
+	$modal_title = (string) $args['modal_title'];
+} elseif ( ! empty( $compare_title ) ) {
 	$modal_title = $compare_title;
 } elseif ( ! empty( $dest['curated_compare_lead_default'] ) ) {
 	$modal_title = (string) $dest['curated_compare_lead_default'];
@@ -47,6 +53,8 @@ if ( ! empty( $compare_title ) ) {
 	$modal_title = __( 'Подберём тур из Уфы за 15 минут', 'zhiraf-ufa' );
 } elseif ( 'turciya' === $dest_slug ) {
 	$modal_title = __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
+} elseif ( 'uzbekistan' === $dest_slug ) {
+	$modal_title = __( 'Программа по дням в мессенджер', 'zhiraf-ufa' );
 } else {
 	$dest_name   = ! empty( $dest['name'] ) ? (string) $dest['name'] : $dest_slug;
 	/* translators: %s: destination name */
@@ -65,6 +73,11 @@ $default_tour = ! empty( $dest['quiz_prefill'] )
 		) );
 $form_context = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-compare';
 $consent_id   = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-compare-modal';
+$modal_lead   = ! empty( $args['modal_lead'] )
+	? (string) $args['modal_lead']
+	: ( 'uzbekistan' === $dest_slug
+		? __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' )
+		: __( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ) );
 ?>
 <div
 	id="turciya-lead-modal"
@@ -73,7 +86,7 @@ $consent_id   = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-co
 	aria-modal="true"
 	aria-labelledby="turciya-lead-modal-title"
 	data-default-title="<?php echo esc_attr( $modal_title ); ?>"
-	data-default-lead="<?php echo esc_attr__( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>"
+	data-default-lead="<?php echo esc_attr( $modal_lead ); ?>"
 	data-default-tour="<?php echo esc_attr( $default_tour ); ?>"
 	data-default-message="<?php echo esc_attr( $wa_text ); ?>"
 	hidden
@@ -88,7 +101,7 @@ $consent_id   = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-co
 				<?php echo esc_html( $modal_title ); ?>
 			</h2>
 			<p id="turciya-lead-modal-lead" class="home-quiz__lead home-quiz__lead--modal">
-				<?php esc_html_e( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ); ?>
+				<?php echo esc_html( $modal_lead ); ?>
 			</p>
 			<form
 				id="turciya-lead-modal-form"

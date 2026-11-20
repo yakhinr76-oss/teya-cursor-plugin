@@ -18,6 +18,7 @@ function zhiraf_ufa_resort_json_registry() {
 	return array(
 		'oae/dubai',
 		'egipet/hurgada',
+		'egipet/sharm-el-sheyh',
 		'vietnam/fukuok',
 	);
 }
@@ -128,8 +129,28 @@ function zhiraf_ufa_resort_json_catalog_hotels( array $resort_data ) {
 			if ( ! in_array( $pool_tag, $tags, true ) ) {
 				$tags[] = $pool_tag;
 			}
-			$row['filter_tags']           = array_values( array_unique( $tags ) );
-			$hotels[ $i ]                 = $row;
+			$row['filter_tags'] = array_values( array_unique( $tags ) );
+			$hotels[ $i ]       = $row;
+		}
+	}
+	if ( ! empty( $resort_data['catalog_derived_tags'] ) && is_array( $resort_data['catalog_derived_tags'] ) ) {
+		foreach ( $hotels as $i => $row ) {
+			if ( ! is_array( $row ) ) {
+				continue;
+			}
+			$tags = ! empty( $row['filter_tags'] ) && is_array( $row['filter_tags'] ) ? $row['filter_tags'] : array();
+			foreach ( $resort_data['catalog_derived_tags'] as $rule ) {
+				if ( ! is_array( $rule ) || empty( $rule['tag'] ) || empty( $rule['from'] ) ) {
+					continue;
+				}
+				$from = sanitize_key( (string) $rule['from'] );
+				$tag  = sanitize_key( (string) $rule['tag'] );
+				if ( in_array( $from, $tags, true ) && ! in_array( $tag, $tags, true ) ) {
+					$tags[] = $tag;
+				}
+			}
+			$row['filter_tags'] = array_values( array_unique( $tags ) );
+			$hotels[ $i ]       = $row;
 		}
 	}
 

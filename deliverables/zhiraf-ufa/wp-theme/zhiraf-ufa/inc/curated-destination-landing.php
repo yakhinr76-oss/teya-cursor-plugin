@@ -80,7 +80,7 @@ function zhiraf_ufa_curated_resort_pick_section_title( $dest_slug, $dest = array
 		'kitaj'      => __( 'Какую бухту Саньи выбрать?', 'zhiraf-ufa' ),
 		'uzbekistan' => __( 'Какой город маршрута выбрать?', 'zhiraf-ufa' ),
 		'armeniya'   => __( 'Ереван или регионы — что выбрать?', 'zhiraf-ufa' ),
-		'abkhaziya'  => __( 'Гагра или Пицунда — что выбрать?', 'zhiraf-ufa' ),
+		'abkhaziya'  => __( 'Гагра, Пицунда, Новый Афон или Сухум — что выбрать?', 'zhiraf-ufa' ),
 		'rossiya'    => __( 'Куда поехать в России из Уфы?', 'zhiraf-ufa' ),
 	);
 

@@ -13,6 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Register rewrite rules for resort landings.
  */
 function zhiraf_ufa_register_tour_resort_rewrites() {
+	if ( function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) ) {
+		foreach ( zhiraf_ufa_excursion_landing_slugs() as $slug ) {
+			add_rewrite_rule(
+				'^tour/' . preg_quote( $slug, '/' ) . '/?$',
+				'index.php?zhiraf_excursion_country=' . $slug,
+				'top'
+			);
+		}
+	}
 	add_rewrite_rule(
 		'^tour/([^/]+)/([^/]+)/?$',
 		'index.php?zhiraf_tour_country=$matches[1]&zhiraf_tour_resort=$matches[2]',
@@ -30,9 +39,28 @@ add_action( 'init', 'zhiraf_ufa_register_tour_resort_rewrites' );
 function zhiraf_ufa_tour_query_vars( $vars ) {
 	$vars[] = 'zhiraf_tour_country';
 	$vars[] = 'zhiraf_tour_resort';
+	$vars[] = 'zhiraf_excursion_country';
 	return $vars;
 }
 add_filter( 'query_vars', 'zhiraf_ufa_tour_query_vars' );
+
+/**
+ * Load page-{slug}.php for virtual excursion country URLs (/tour/gruziya/).
+ *
+ * @param string $template Template path.
+ * @return string
+ */
+function zhiraf_ufa_excursion_country_template( $template ) {
+	$slug = function_exists( 'zhiraf_ufa_current_excursion_country_slug' )
+		? zhiraf_ufa_current_excursion_country_slug()
+		: '';
+	if ( '' === $slug ) {
+		return $template;
+	}
+	$custom = ZHIRAF_UFA_DIR . '/page-' . $slug . '.php';
+	return is_readable( $custom ) ? $custom : $template;
+}
+add_filter( 'template_include', 'zhiraf_ufa_excursion_country_template', 98 );
 
 /**
  * Load resort template when rewrite matches.
@@ -92,6 +120,24 @@ function zhiraf_ufa_flush_tour_rewrites() {
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'zhiraf_ufa_flush_tour_rewrites' );
+
+/**
+ * Flush rewrites once per theme version (virtual /tour/gruziya/ etc.).
+ */
+function zhiraf_ufa_maybe_flush_excursion_rewrites() {
+	if ( ! function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) || ! zhiraf_ufa_excursion_landing_slugs() ) {
+		return;
+	}
+	$key = 'zhiraf_excursion_rewrite_ver';
+	$ver = defined( 'ZHIRAF_UFA_VERSION' ) ? ZHIRAF_UFA_VERSION : '';
+	if ( '' === $ver || get_option( $key, '' ) === $ver ) {
+		return;
+	}
+	zhiraf_ufa_register_tour_resort_rewrites();
+	flush_rewrite_rules( false );
+	update_option( $key, $ver, false );
+}
+add_action( 'init', 'zhiraf_ufa_maybe_flush_excursion_rewrites', 99 );
 
 /**
  * Current resort context from query vars.

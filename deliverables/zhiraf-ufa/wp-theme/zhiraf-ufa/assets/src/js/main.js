@@ -1557,6 +1557,8 @@
     var dayBtns = qsa('[data-excursion-days]', root);
     var activeFormat = '';
     var activeDays = 'all';
+    var activeTransport = 'all';
+    var filterMode = root.getAttribute('data-excursion-filter-mode') || 'days';
 
     function dayBucket(days) {
       var d = parseInt(days, 10);
@@ -1572,10 +1574,16 @@
     function applyExcursionFilters() {
       programCards.forEach(function (card) {
         var fmt = card.getAttribute('data-program-format') || '';
-        var bucket = dayBucket(card.getAttribute('data-program-days') || '');
         var showFormat = !activeFormat || activeFormat === fmt;
-        var showDays = activeDays === 'all' || activeDays === bucket;
-        card.classList.toggle('is-hidden', !(showFormat && showDays));
+        var showSecondary = true;
+        if (filterMode === 'transport') {
+          var transport = card.getAttribute('data-program-transport') || 'avia';
+          showSecondary = activeTransport === 'all' || activeTransport === transport;
+        } else {
+          var bucket = dayBucket(card.getAttribute('data-program-days') || '');
+          showSecondary = activeDays === 'all' || activeDays === bucket;
+        }
+        card.classList.toggle('is-hidden', !(showFormat && showSecondary));
       });
     }
 
@@ -1600,7 +1608,11 @@
 
     dayBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        activeDays = btn.getAttribute('data-excursion-days') || 'all';
+        if (filterMode === 'transport') {
+          activeTransport = btn.getAttribute('data-excursion-transport') || 'all';
+        } else {
+          activeDays = btn.getAttribute('data-excursion-days') || 'all';
+        }
         dayBtns.forEach(function (b) {
           var on = b === btn;
           b.classList.toggle('is-active', on);

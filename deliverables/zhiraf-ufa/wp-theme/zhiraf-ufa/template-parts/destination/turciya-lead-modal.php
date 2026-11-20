@@ -32,6 +32,8 @@ if ( ! empty( $args['modal_message'] ) ) {
 	$wa_text = __( 'Здравствуйте! Хочу подобрать тур из Уфы: направление, даты, состав и ориентир по бюджету.', 'zhiraf-ufa' );
 } elseif ( 'uzbekistan' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Нужна программа экскурсионного тура в Узбекистан из Уфы — укажу даты, города и состав в переписке.', 'zhiraf-ufa' );
+} elseif ( 'gruziya' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Нужна программа экскурсионного тура в Грузию из Уфы — укажу даты, города и состав в переписке.', 'zhiraf-ufa' );
 } elseif ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_resort_compare_wa_text' ) ) {
 	$wa_text = zhiraf_ufa_oae_resort_compare_wa_text();
 } elseif ( 'turciya' === $dest_slug && function_exists( 'zhiraf_ufa_turciya_resort_compare_wa_text' ) ) {
@@ -53,7 +55,7 @@ if ( ! empty( $args['modal_title'] ) ) {
 	$modal_title = __( 'Подберём тур из Уфы за 15 минут', 'zhiraf-ufa' );
 } elseif ( 'turciya' === $dest_slug ) {
 	$modal_title = __( 'Сравним Кемер и Сиде под ваш бюджет', 'zhiraf-ufa' );
-} elseif ( 'uzbekistan' === $dest_slug ) {
+} elseif ( in_array( $dest_slug, array( 'uzbekistan', 'gruziya' ), true ) ) {
 	$modal_title = __( 'Программа по дням в мессенджер', 'zhiraf-ufa' );
 } else {
 	$dest_name   = ! empty( $dest['name'] ) ? (string) $dest['name'] : $dest_slug;
@@ -75,7 +77,7 @@ $form_context = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-co
 $consent_id   = $is_home_modal ? 'home-lead-modal' : 'dest-' . $dest_slug . '-compare-modal';
 $modal_lead   = ! empty( $args['modal_lead'] )
 	? (string) $args['modal_lead']
-	: ( 'uzbekistan' === $dest_slug
+	: ( in_array( $dest_slug, array( 'uzbekistan', 'gruziya' ), true )
 		? __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' )
 		: __( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ) );
 ?>

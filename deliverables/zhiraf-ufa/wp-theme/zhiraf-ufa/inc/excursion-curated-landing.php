@@ -44,8 +44,9 @@ function zhiraf_ufa_excursion_programs( $slug ) {
 		if ( empty( $row['id'] ) ) {
 			continue;
 		}
-		$row['days'] = zhiraf_ufa_excursion_program_days( isset( $row['duration'] ) ? (string) $row['duration'] : '' );
-		$out[]       = $row;
+		$row['days']            = zhiraf_ufa_excursion_program_days( isset( $row['duration'] ) ? (string) $row['duration'] : '' );
+		$row['transport_mode']  = zhiraf_ufa_excursion_program_transport_mode( $row );
+		$out[]                  = $row;
 	}
 	return $out;
 }
@@ -61,6 +62,49 @@ function zhiraf_ufa_excursion_program_days( $duration ) {
 		return (int) $m[1];
 	}
 	return 0;
+}
+
+/**
+ * Avia vs bus bucket for catalog filters.
+ *
+ * @param array<string,mixed> $row Program row.
+ * @return string avia|bus
+ */
+function zhiraf_ufa_excursion_program_transport_mode( array $row ) {
+	if ( ! empty( $row['format'] ) && 'bus' === sanitize_key( (string) $row['format'] ) ) {
+		return 'bus';
+	}
+	$transport = isset( $row['transport'] ) ? mb_strtolower( (string) $row['transport'], 'UTF-8' ) : '';
+	if ( false !== mb_strpos( $transport, 'автобус', 0, 'UTF-8' ) ) {
+		return 'bus';
+	}
+	return 'avia';
+}
+
+/**
+ * Slugs with active excursion pack + JSON.
+ *
+ * @return string[]
+ */
+function zhiraf_ufa_excursion_landing_slugs() {
+	$candidates = array( 'uzbekistan', 'gruziya' );
+	$out        = array();
+	foreach ( $candidates as $slug ) {
+		if ( zhiraf_ufa_excursion_landing_pack( $slug ) && zhiraf_ufa_excursion_programs( $slug ) ) {
+			$out[] = $slug;
+		}
+	}
+	return $out;
+}
+
+/**
+ * Virtual /tour/{slug}/ query var when no WP page exists.
+ *
+ * @return string
+ */
+function zhiraf_ufa_current_excursion_country_slug() {
+	$slug = get_query_var( 'zhiraf_excursion_country' );
+	return is_string( $slug ) ? sanitize_key( $slug ) : '';
 }
 
 /**
@@ -126,6 +170,12 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
 					'icon' => 'credit-card',
 					'text' => __( 'Честная смета до оплаты: сразу расписываем билеты, питание и доплаты', 'zhiraf-ufa' ),
 				),
+			),
+			'catalog_filter_mode'  => 'days',
+			'convert_card'         => array(
+				'title' => __( 'Нужен другой формат или автобусный тур?', 'zhiraf-ufa' ),
+				'text'  => __( 'Соберём индивидуальный маршрут под ваши даты. Автобусные поездки из Уфы — под запрос после подтверждения перевозчика и дат', 'zhiraf-ufa' ),
+				'cta'   => __( 'Описать задачу', 'zhiraf-ufa' ),
 			),
 			'format_cards'         => array(
 				array(
@@ -238,6 +288,147 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
 			'image_alt'            => __( 'Узбекистан — площадь Регистан в Самарканде', 'zhiraf-ufa' ),
 			'name'                 => __( 'Узбекистан', 'zhiraf-ufa' ),
 		),
+		'gruziya'    => array(
+			'slug'                 => 'gruziya',
+			'h1'                   => __( 'Экскурсионные туры в Грузию из Уфы', 'zhiraf-ufa' ),
+			'title'                => __( 'Грузию из Уфы — подбор тура «Жираф»', 'zhiraf-ufa' ),
+			'description'          => __( 'Пакетные туры в Грузию с вылетом из Уфы. Подбор без давления, актуальные цены Wordstat 2026-11-19.', 'zhiraf-ufa' ),
+			'hero_lead'            => __( 'Прямой перелёт в Тбилиси за 3 часа или бюджетные автобусные туры. Старый город, винодельни Кахетии, горы Казбеги и честная смета без скрытых доплат', 'zhiraf-ufa' ),
+			'hero_badges'          => array(
+				array( 'text' => __( 'Прямой рейс в Тбилиси • ~3 ч', 'zhiraf-ufa' ) ),
+				array( 'text' => __( 'Без визы • нужна страховка', 'zhiraf-ufa' ) ),
+			),
+			'hero_trust'           => array(
+				array(
+					'icon' => 'plane',
+					'text' => __( 'Прямой рейс Уфа — Тбилиси («Азимут») или автобусные туры через Северный Кавказ', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => 'shield-check',
+					'text' => __( 'Без визы до 1 года (нужен загранпаспорт, включая детей)', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => 'credit-card',
+					'text' => __( 'Оформляем обязательную страховку от 30 000 GEL по правилам въезда 2026 года', 'zhiraf-ufa' ),
+				),
+			),
+			'catalog_filter_mode'  => 'transport',
+			'convert_card'         => array(
+				'title' => __( 'Нужен индивидуальный маршрут?', 'zhiraf-ufa' ),
+				'text'  => __( 'Соберём программу под ваши даты, состав группы и желаемый темп (включая семейные варианты без длинных переездов)', 'zhiraf-ufa' ),
+				'cta'   => __( 'Описать задачу', 'zhiraf-ufa' ),
+			),
+			'format_cards'         => array(
+				array(
+					'key'   => 'classic',
+					'title' => __( 'Классика и горы', 'zhiraf-ufa' ),
+					'desc'  => __( 'Тбилиси, Мцхета, Кахетия, Казбеги', 'zhiraf-ufa' ),
+					'icon'  => 'compass',
+				),
+				array(
+					'key'   => 'weekend',
+					'title' => __( 'Уикенд 3–4 дня', 'zhiraf-ufa' ),
+					'desc'  => __( 'Тбилиси + Мцхета на прямом рейсе', 'zhiraf-ufa' ),
+					'icon'  => 'plane',
+				),
+				array(
+					'key'   => 'gastro',
+					'title' => __( 'Вино и гастро', 'zhiraf-ufa' ),
+					'desc'  => __( 'Кахетия, погреба квеври, хинкали', 'zhiraf-ufa' ),
+					'icon'  => 'tag',
+				),
+				array(
+					'key'   => 'bus',
+					'title' => __( 'Автобус из Уфы', 'zhiraf-ufa' ),
+					'desc'  => __( 'бюджетный маршрут от 45 000 ₽', 'zhiraf-ufa' ),
+					'icon'  => 'map',
+				),
+			),
+			'price_footnote'       => __( 'ориентир за 1 чел. при 2-местном размещении (перелёт или автобус из Уфы + отели 3–4★ + завтраки)', 'zhiraf-ufa' ),
+			'included'             => array(
+				'title'    => __( 'Что входит в программу и что оплачивается отдельно', 'zhiraf-ufa' ),
+				'in_price' => array(
+					__( 'Перелёт из Уфы или автобусный проезд по программе', 'zhiraf-ufa' ),
+					__( 'Отели 3–4★ с завтраками', 'zhiraf-ufa' ),
+					__( 'Трансферы и экскурсии по маршруту', 'zhiraf-ufa' ),
+					__( 'Русскоязычный гид', 'zhiraf-ufa' ),
+				),
+				'extra'    => array(
+					__( 'Входные билеты в музеи и объектов', 'zhiraf-ufa' ),
+					__( 'Фуникулёр на Мтацминду', 'zhiraf-ufa' ),
+					__( 'Серные бани', 'zhiraf-ufa' ),
+					__( 'Подъезд к Гергети (при необходимости)', 'zhiraf-ufa' ),
+					__( 'Дегустации, обеды и ужины', 'zhiraf-ufa' ),
+				),
+			),
+			'know_title'           => __( 'Что важно знать о Грузии в 2026 году', 'zhiraf-ufa' ),
+			'know_cards'           => array(
+				array(
+					'title' => __( 'Въезд и страховка', 'zhiraf-ufa' ),
+					'text'  => __( 'Нужен загранпаспорт и обязательная медстраховка от 30 000 GEL (на английском/грузинском). Въезд через Абхазию и Южную Осетию запрещён', 'zhiraf-ufa' ),
+					'icon'  => 'shield-check',
+				),
+				array(
+					'title' => __( 'Деньги и связь', 'zhiraf-ufa' ),
+					'text'  => __( 'Карты «Мир» и российских банков не работают — везите наличные (доллары, евро или рубли для обмена на лари). В горах связь нестабильна, скачайте офлайн-карты', 'zhiraf-ufa' ),
+					'icon'  => 'credit-card',
+				),
+				array(
+					'title' => __( 'Сезон и дороги', 'zhiraf-ufa' ),
+					'text'  => __( 'Лучшее время для Тбилиси и Кахетии — май–июнь и сентябрь–октябрь. Зимой и в непогоду Военно-Грузинскую дорогу к Казбеги могут перекрывать', 'zhiraf-ufa' ),
+					'icon'  => 'compass',
+				),
+			),
+			'faq'                  => array(
+				array(
+					'q' => __( 'Можно ли поехать с детьми?', 'zhiraf-ufa' ),
+					'a' => __( 'Да: нужен свой загранпаспорт и страховка. Для семей с детьми лучше авиатур и проживание в одном отеле в Тбилиси, без ночных автобусов.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Какие доплаты возможны на месте?', 'zhiraf-ufa' ),
+					'a' => __( 'Входные билеты, фуникулёр, серные бани, подъезд к Гергети, обеды и ужины — фиксируем список до бронирования.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Питание включено? Есть ли варианты без мяса?', 'zhiraf-ufa' ),
+					'a' => __( 'Базово — завтраки. В грузинской кухне есть хинкали с грибами, сыром и картофелем; согласуем меню заранее.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Безопасно ли ехать и нужна ли страховка?', 'zhiraf-ufa' ),
+					'a' => __( 'С 2026 года страховка от 30 000 GEL обязательна по закону. В горах учитываем погодные условия и темп маршрута.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Гарантирована ли поездка в Казбеги и вид на Казбек?', 'zhiraf-ufa' ),
+					'a' => __( 'Проезд зависит от погоды на перевале. При закрытии дороги заранее прописываем замену экскурсии или перерасчёт.', 'zhiraf-ufa' ),
+				),
+			),
+			'seo_details'          => array(
+				array(
+					'title' => __( 'Куда сходить вечером в Тбилиси (Абанотубани, Мтацминда, Шардени)', 'zhiraf-ufa' ),
+					'html'  => '<p>' . esc_html__( 'Вечером удобно гулять по Абанотубани и улице Шардени, подняться на Мтацминду ради панорамы. На ужин закладываем хинкали, хачапури и лёгкие блюда без жары днём.', 'zhiraf-ufa' ) . '</p>',
+				),
+				array(
+					'title' => __( 'Гастрономия: хинкали, аджарский хачапури, вино из квеври', 'zhiraf-ufa' ),
+					'html'  => '<p>' . esc_html__( 'В Кахетии — дегустации в квеври, в Тбилиси — мастер-классы по хинкали. Меню согласуем до оплаты, для непьющих подбираем альтернативы.', 'zhiraf-ufa' ) . '</p>',
+				),
+				array(
+					'title' => __( 'Автобусные туры из Уфы через Верхний Ларс: что учесть', 'zhiraf-ufa' ),
+					'html'  => '<p>' . esc_html__( 'В пути до двух суток в одну сторону, ночные переезды и прохождение границы Верхний Ларс. Перевозчика и даты подтверждаем до брони; маршрут не подходит при низкой переносимости долгой дороги.', 'zhiraf-ufa' ) . '</p>',
+				),
+			),
+			'excursion_chips'      => array(
+				array( 'label' => __( 'Узбекистан', 'zhiraf-ufa' ), 'url' => '/tour/uzbekistan/' ),
+				array( 'label' => __( 'Армения', 'zhiraf-ufa' ), 'url' => '/tour/armeniya/' ),
+				array( 'label' => __( 'Санкт-Петербург', 'zhiraf-ufa' ), 'url' => '/tour/sankt-peterburg/' ),
+				array( 'label' => __( 'Калининград', 'zhiraf-ufa' ), 'url' => '/tour/kaliningrad/' ),
+			),
+			'final_cta_title'      => __( 'Подберём маршрут по Грузии под ваши даты и темп за 15 минут', 'zhiraf-ufa' ),
+			'quiz_prefill'         => __( 'Грузия, экскурсионный тур из Уфы', 'zhiraf-ufa' ),
+			'modal_default_title'  => __( 'Программа по дням в мессенджер', 'zhiraf-ufa' ),
+			'modal_default_lead'   => __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' ),
+			'image'                => 'hero-collage-active.jpg',
+			'image_alt'            => __( 'Грузия — Старый Тбилиси и Кахетия', 'zhiraf-ufa' ),
+			'name'                 => __( 'Грузия', 'zhiraf-ufa' ),
+		),
 	);
 
 	return isset( $packs[ $slug ] ) ? $packs[ $slug ] : null;
@@ -251,12 +442,16 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
  * @return array<string,mixed>
  */
 function zhiraf_ufa_excursion_destination_landing_filter( $dest, $slug ) {
-	if ( 'uzbekistan' !== sanitize_key( (string) $slug ) ) {
+	$slug = sanitize_key( (string) $slug );
+	if ( ! in_array( $slug, zhiraf_ufa_excursion_landing_slugs(), true ) ) {
 		return $dest;
 	}
-	$pack = zhiraf_ufa_excursion_landing_pack( 'uzbekistan' );
-	if ( ! $pack || empty( zhiraf_ufa_excursion_programs( 'uzbekistan' ) ) ) {
+	$pack = zhiraf_ufa_excursion_landing_pack( $slug );
+	if ( ! $pack || empty( zhiraf_ufa_excursion_programs( $slug ) ) ) {
 		return $dest;
+	}
+	if ( ! is_array( $dest ) ) {
+		$dest = array( 'slug' => $slug );
 	}
 	foreach ( array( 'h1', 'title', 'description', 'hero_lead', 'hero_badges', 'image', 'image_alt', 'name', 'quiz_prefill' ) as $key ) {
 		if ( isset( $pack[ $key ] ) ) {
@@ -284,11 +479,14 @@ function zhiraf_ufa_render_excursion_curated_landing( $slug ) {
 	$pack     = zhiraf_ufa_excursion_landing_pack( $slug );
 	$programs = zhiraf_ufa_excursion_programs( $slug );
 	$dest     = zhiraf_ufa_get_destination_landing( $slug );
-	if ( ! $pack || ! $programs || ! $dest ) {
+	if ( ! $pack || ! $programs ) {
 		if ( function_exists( 'zhiraf_ufa_render_destination_landing' ) ) {
 			zhiraf_ufa_render_destination_landing( $slug );
 		}
 		return;
+	}
+	if ( ! is_array( $dest ) ) {
+		$dest = zhiraf_ufa_excursion_destination_landing_filter( array( 'slug' => $slug ), $slug );
 	}
 	$excursion_pack     = $pack;
 	$excursion_programs = $programs;

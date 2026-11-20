@@ -12,11 +12,13 @@ if ( ! defined( 'ABSPATH' ) || empty( $dest ) || empty( $excursion_pack ) ) {
 	return;
 }
 
-$dest_slug   = ! empty( $dest['slug'] ) ? $dest['slug'] : 'uzbekistan';
-$program_cnt = count( $excursion_programs );
-$trust_rows  = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_trust'] : array();
+$dest_slug    = ! empty( $dest['slug'] ) ? $dest['slug'] : ( ! empty( $excursion_pack['slug'] ) ? $excursion_pack['slug'] : 'uzbekistan' );
+$program_cnt  = count( $excursion_programs );
+$trust_rows   = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_trust'] : array();
+$filter_mode  = ! empty( $excursion_pack['catalog_filter_mode'] ) ? (string) $excursion_pack['catalog_filter_mode'] : 'days';
+$convert_card = ! empty( $excursion_pack['convert_card'] ) && is_array( $excursion_pack['convert_card'] ) ? $excursion_pack['convert_card'] : array();
 ?>
-<main id="primary" class="site-main site-main--destination site-main--excursion-curated" data-excursion-landing>
+<main id="primary" class="site-main site-main--destination site-main--excursion-curated" data-excursion-landing data-excursion-filter-mode="<?php echo esc_attr( $filter_mode ); ?>">
 	<section class="dest-landing-hero excursion-hero">
 		<div class="container dest-landing-hero__grid">
 			<div class="dest-landing-hero__copy">
@@ -95,8 +97,13 @@ $trust_rows  = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_
 
 	<section class="section excursion-catalog" id="excursion-programs">
 		<div class="container">
-			<div class="excursion-catalog__filters" role="tablist" aria-label="<?php esc_attr_e( 'Фильтр по длительности', 'zhiraf-ufa' ); ?>">
-				<button type="button" class="excursion-filter-chip is-active" data-excursion-days="all" aria-selected="true">
+			<?php
+			$catalog_aria = 'transport' === $filter_mode
+				? __( 'Фильтр по типу транспорта', 'zhiraf-ufa' )
+				: __( 'Фильтр по длительности', 'zhiraf-ufa' );
+			?>
+			<div class="excursion-catalog__filters" role="tablist" aria-label="<?php echo esc_attr( $catalog_aria ); ?>">
+				<button type="button" class="excursion-filter-chip is-active" data-excursion-days="all" data-excursion-transport="all" aria-selected="true">
 					<?php
 					printf(
 						/* translators: %d: program count */
@@ -105,8 +112,13 @@ $trust_rows  = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_
 					);
 					?>
 				</button>
-				<button type="button" class="excursion-filter-chip" data-excursion-days="3-5" aria-selected="false"><?php esc_html_e( '3–5 дней', 'zhiraf-ufa' ); ?></button>
-				<button type="button" class="excursion-filter-chip" data-excursion-days="6-9" aria-selected="false"><?php esc_html_e( '6–9 дней', 'zhiraf-ufa' ); ?></button>
+				<?php if ( 'transport' === $filter_mode ) : ?>
+					<button type="button" class="excursion-filter-chip" data-excursion-transport="avia" aria-selected="false"><?php esc_html_e( 'Авиа из Уфы', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="excursion-filter-chip" data-excursion-transport="bus" aria-selected="false"><?php esc_html_e( 'Автобус из Уфы', 'zhiraf-ufa' ); ?></button>
+				<?php else : ?>
+					<button type="button" class="excursion-filter-chip" data-excursion-days="3-5" aria-selected="false"><?php esc_html_e( '3–5 дней', 'zhiraf-ufa' ); ?></button>
+					<button type="button" class="excursion-filter-chip" data-excursion-days="6-9" aria-selected="false"><?php esc_html_e( '6–9 дней', 'zhiraf-ufa' ); ?></button>
+				<?php endif; ?>
 			</div>
 			<div class="excursion-program-grid">
 				<?php foreach ( $excursion_programs as $program ) : ?>
@@ -124,6 +136,7 @@ $trust_rows  = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_
 						data-excursion-program
 						data-program-format="<?php echo esc_attr( $program['format'] ); ?>"
 						data-program-days="<?php echo esc_attr( (string) $days ); ?>"
+						data-program-transport="<?php echo esc_attr( ! empty( $program['transport_mode'] ) ? (string) $program['transport_mode'] : 'avia' ); ?>"
 					>
 						<p class="excursion-program-card__id"><?php echo esc_html( $prog_id ); ?></p>
 						<h3 class="excursion-program-card__title"><?php echo esc_html( $program['title'] ); ?></h3>
@@ -160,13 +173,33 @@ $trust_rows  = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_
 					</article>
 				<?php endforeach; ?>
 				<article class="excursion-program-card excursion-program-card--convert">
-					<h3 class="excursion-program-card__title"><?php esc_html_e( 'Нужен другой формат или автобусный тур?', 'zhiraf-ufa' ); ?></h3>
+					<h3 class="excursion-program-card__title">
+						<?php
+						echo esc_html(
+							! empty( $convert_card['title'] )
+								? $convert_card['title']
+								: __( 'Нужен другой формат?', 'zhiraf-ufa' )
+						);
+						?>
+					</h3>
 					<p class="excursion-program-card__highlights">
-						<?php esc_html_e( 'Соберём индивидуальный маршрут под ваши даты. Автобусные поездки из Уфы — под запрос после подтверждения перевозчика и дат', 'zhiraf-ufa' ); ?>
+						<?php
+						echo esc_html(
+							! empty( $convert_card['text'] )
+								? $convert_card['text']
+								: __( 'Соберём индивидуальный маршрут под ваши даты и состав.', 'zhiraf-ufa' )
+						);
+						?>
 					</p>
 					<div class="excursion-program-card__footer">
 						<button type="button" class="btn btn--primary btn--lg rounded-xl" data-turciya-lead-open data-curated-lead-open>
-							<?php esc_html_e( 'Описать задачу', 'zhiraf-ufa' ); ?>
+							<?php
+							echo esc_html(
+								! empty( $convert_card['cta'] )
+									? $convert_card['cta']
+									: __( 'Описать задачу', 'zhiraf-ufa' )
+							);
+							?>
 						</button>
 					</div>
 				</article>
@@ -293,7 +326,15 @@ $trust_rows  = ! empty( $excursion_pack['hero_trust'] ) ? $excursion_pack['hero_
 					<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
 					<input type="tel" name="phone" data-phone-mask placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
 				</label>
-				<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php esc_attr_e( 'Города, даты, состав, темп', 'zhiraf-ufa' ); ?>"><?php echo esc_textarea( sprintf( __( 'Здравствуйте! Подберите экскурсионный тур в Узбекистан из Уфы: города, даты и состав.', 'zhiraf-ufa' ) ) ); ?></textarea>
+				<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php esc_attr_e( 'Города, даты, состав, темп', 'zhiraf-ufa' ); ?>"><?php
+					echo esc_textarea(
+						sprintf(
+							/* translators: %s: destination name */
+							__( 'Здравствуйте! Подберите экскурсионный тур в %s из Уфы: города, даты и состав.', 'zhiraf-ufa' ),
+							$excursion_pack['name']
+						)
+					);
+				?></textarea>
 				<div class="zhiraf-hp" aria-hidden="true">
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $excursion_pack['quiz_prefill'] ); ?>" data-lead-tour />
 					<input type="hidden" name="destination" value="<?php echo esc_attr( $excursion_pack['name'] ); ?>" />
@@ -319,7 +360,9 @@ get_template_part(
 		'modal_title'              => $excursion_pack['modal_default_title'],
 		'modal_lead'               => $excursion_pack['modal_default_lead'],
 		'modal_message'            => sprintf(
-			__( 'Здравствуйте! Нужна программа экскурсионного тура в Узбекистан из Уфы — укажу даты и состав в переписке.', 'zhiraf-ufa' )
+			/* translators: %s: destination name */
+			__( 'Здравствуйте! Нужна программа экскурсионного тура в %s из Уфы — укажу даты и состав в переписке.', 'zhiraf-ufa' ),
+			$excursion_pack['name']
 		),
 	)
 );

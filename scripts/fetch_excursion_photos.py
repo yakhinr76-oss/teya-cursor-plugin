@@ -26,7 +26,8 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 THEME_ROOT = REPO_ROOT / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa"
-OUT_ROOT = THEME_ROOT / "assets/img/excursions/candidates"
+# Staging outside theme (candidates/ in repo was removed after photo approval).
+OUT_ROOT = REPO_ROOT / "deliverables/zhiraf-ufa/photo-candidates/excursion-fetch"
 PREVIEW_HTML = Path(__file__).resolve().parent / "preview_excursion_photos.html"
 PREVIEW_INDEX = OUT_ROOT / "index.html"
 

@@ -139,7 +139,7 @@ function zhiraf_ufa_meta_descriptions() {
  * @return array{title?:string,description?:string}|null
  */
 function zhiraf_ufa_current_landing_seo() {
-	$exc_slug = function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) ? zhiraf_ufa_current_excursion_country_slug() : '';
+	$exc_slug = function_exists( 'zhiraf_ufa_active_excursion_landing_slug' ) ? zhiraf_ufa_active_excursion_landing_slug() : '';
 	if ( '' !== $exc_slug && function_exists( 'zhiraf_ufa_excursion_landing_pack' ) ) {
 		$pack = zhiraf_ufa_excursion_landing_pack( $exc_slug );
 		if ( $pack && ! empty( $pack['title'] ) ) {
@@ -187,9 +187,15 @@ function zhiraf_ufa_current_landing_seo() {
 function zhiraf_ufa_og_image_url() {
 	$default = ZHIRAF_UFA_URI . '/assets/images/hero-turkey.jpg';
 
-	$exc_slug = function_exists( 'zhiraf_ufa_current_excursion_country_slug' ) ? zhiraf_ufa_current_excursion_country_slug() : '';
+	$exc_slug = function_exists( 'zhiraf_ufa_active_excursion_landing_slug' ) ? zhiraf_ufa_active_excursion_landing_slug() : '';
 	if ( '' !== $exc_slug && function_exists( 'zhiraf_ufa_excursion_landing_pack' ) ) {
 		$pack = zhiraf_ufa_excursion_landing_pack( $exc_slug );
+		if ( $pack && ! empty( $pack['hero_photo'] ) && function_exists( 'zhiraf_ufa_excursion_program_photo' ) ) {
+			$hero = zhiraf_ufa_excursion_program_photo( (string) $pack['hero_photo'] );
+			if ( $hero && ! empty( $hero['url'] ) ) {
+				return $hero['url'];
+			}
+		}
 		if ( $pack && ! empty( $pack['image'] ) ) {
 			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $pack['image'], '/' );
 		}

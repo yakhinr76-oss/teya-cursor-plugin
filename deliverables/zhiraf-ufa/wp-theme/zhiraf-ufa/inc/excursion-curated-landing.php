@@ -108,6 +108,26 @@ function zhiraf_ufa_current_excursion_country_slug() {
 }
 
 /**
+ * Excursion landing slug for current request (rewrite or WP page).
+ *
+ * @return string
+ */
+function zhiraf_ufa_active_excursion_landing_slug() {
+	$slug = zhiraf_ufa_current_excursion_country_slug();
+	if ( '' !== $slug ) {
+		return $slug;
+	}
+	if ( is_page() && function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) ) {
+		$name = get_post_field( 'post_name', get_queried_object_id() );
+		$name = sanitize_key( (string) $name );
+		if ( in_array( $name, zhiraf_ufa_excursion_landing_slugs(), true ) ) {
+			return $name;
+		}
+	}
+	return '';
+}
+
+/**
  * Format price for cards.
  *
  * @param int $amount RUB.
@@ -185,6 +205,45 @@ function zhiraf_ufa_excursion_program_media_badge( array $program ) {
 	}
 
 	return $transport ? $transport : $days_label;
+}
+
+/**
+ * Echo img for theme-relative excursion asset (hero / program card).
+ *
+ * @param string $photo    Path relative to theme root or assets/img/excursions/.
+ * @param string $alt      Alt text.
+ * @param string $class    CSS class.
+ * @param bool   $lazy     Lazy load.
+ * @param bool   $priority LCP candidate.
+ */
+function zhiraf_ufa_excursion_photo_img_echo( $photo, $alt, $class = '', $lazy = true, $priority = false ) {
+	$resolved = zhiraf_ufa_excursion_program_photo( $photo );
+	if ( ! $resolved ) {
+		return;
+	}
+	$attrs = array(
+		'src'    => $resolved['url'],
+		'alt'    => $alt,
+		'width'  => (string) $resolved['width'],
+		'height' => (string) $resolved['height'],
+		'class'  => $class,
+	);
+	if ( $lazy && ! $priority ) {
+		$attrs['loading'] = 'lazy';
+	}
+	if ( $priority ) {
+		$attrs['loading']       = 'eager';
+		$attrs['fetchpriority'] = 'high';
+	}
+	$out = '<img';
+	foreach ( $attrs as $k => $v ) {
+		if ( '' === $v && 'class' === $k ) {
+			continue;
+		}
+		$out .= sprintf( ' %s="%s"', esc_attr( $k ), esc_attr( $v ) );
+	}
+	$out .= ' />';
+	echo $out; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
@@ -396,7 +455,7 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
 			'quiz_prefill'         => __( 'Узбекистан, экскурсионный тур из Уфы', 'zhiraf-ufa' ),
 			'modal_default_title'  => __( 'Программа по дням в мессенджер', 'zhiraf-ufa' ),
 			'modal_default_lead'   => __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' ),
-			'image'                => 'resort-samarkand.jpg',
+			'hero_photo'           => 'assets/img/excursions/uzbekistan/hero.jpg',
 			'image_alt'            => __( 'Узбекистан — площадь Регистан в Самарканде', 'zhiraf-ufa' ),
 			'name'                 => __( 'Узбекистан', 'zhiraf-ufa' ),
 		),
@@ -537,8 +596,8 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
 			'quiz_prefill'         => __( 'Грузия, экскурсионный тур из Уфы', 'zhiraf-ufa' ),
 			'modal_default_title'  => __( 'Программа по дням в мессенджер', 'zhiraf-ufa' ),
 			'modal_default_lead'   => __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' ),
-			'image'                => 'hero-collage-active.jpg',
-			'image_alt'            => __( 'Грузия — Старый Тбилиси и Кахетия', 'zhiraf-ufa' ),
+			'hero_photo'           => 'assets/img/excursions/gruziya/hero.jpg',
+			'image_alt'            => __( 'Грузия — закат над Старым Тбилиси', 'zhiraf-ufa' ),
 			'name'                 => __( 'Грузия', 'zhiraf-ufa' ),
 		),
 		'armeniya'   => array(
@@ -691,8 +750,8 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
 			'quiz_prefill'         => __( 'Армения, экскурсионный тур из Уфы', 'zhiraf-ufa' ),
 			'modal_default_title'  => __( 'Программа по дням в мессенджер', 'zhiraf-ufa' ),
 			'modal_default_lead'   => __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' ),
-			'image'                => 'alt-armeniya-yerevan.jpg',
-			'image_alt'            => __( 'Армения — Каскад в Ереване', 'zhiraf-ufa' ),
+			'hero_photo'           => 'assets/img/excursions/armeniya/hero.jpg',
+			'image_alt'            => __( 'Армения — Ереван и Арарат', 'zhiraf-ufa' ),
 			'name'                 => __( 'Армения', 'zhiraf-ufa' ),
 		),
 	);
@@ -719,7 +778,7 @@ function zhiraf_ufa_excursion_destination_landing_filter( $dest, $slug ) {
 	if ( ! is_array( $dest ) ) {
 		$dest = array( 'slug' => $slug );
 	}
-	foreach ( array( 'h1', 'title', 'description', 'hero_lead', 'hero_badges', 'image', 'image_alt', 'name', 'quiz_prefill' ) as $key ) {
+	foreach ( array( 'h1', 'title', 'description', 'hero_lead', 'hero_badges', 'hero_photo', 'image', 'image_alt', 'name', 'quiz_prefill' ) as $key ) {
 		if ( isset( $pack[ $key ] ) ) {
 			$dest[ $key ] = $pack[ $key ];
 		}

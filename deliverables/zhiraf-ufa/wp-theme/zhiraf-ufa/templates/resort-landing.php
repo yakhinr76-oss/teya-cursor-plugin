@@ -99,8 +99,10 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 				<?php foreach ( $districts['cards'] as $card ) : ?>
 					<?php
 					$district_title = ! empty( $card['title'] ) ? (string) $card['title'] : '';
+					$district_tag   = ! empty( $card['tag'] ) ? (string) $card['tag'] : '';
 					$district_photo = ! empty( $card['photo'] ) ? (string) $card['photo'] : '';
 					$district_alt   = ! empty( $card['photo_alt'] ) ? (string) $card['photo_alt'] : $district_title;
+					$badge_label    = '' !== $district_tag ? $district_tag : $district_title;
 					$has_photo      = '' !== $district_photo;
 					?>
 					<article class="resort-v2-district-card<?php echo $has_photo ? ' resort-v2-district-card--photo' : ''; ?>">
@@ -111,13 +113,13 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 									zhiraf_ufa_resort_content_img( $district_photo, $district_alt, 'resort-v2-district-card__img' );
 								}
 								?>
-								<?php if ( '' !== $district_title ) : ?>
-									<span class="resort-v2-district-card__badge"><?php echo esc_html( $district_title ); ?></span>
+								<?php if ( '' !== $badge_label ) : ?>
+									<span class="resort-v2-district-card__badge"><?php echo esc_html( $badge_label ); ?></span>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>
 						<div class="resort-v2-district-card__body">
-							<?php if ( ! $has_photo && '' !== $district_title ) : ?>
+							<?php if ( '' !== $district_title && ( ! $has_photo || '' !== $district_tag ) ) : ?>
 								<h3 class="resort-v2-district-card__title"><?php echo esc_html( $district_title ); ?></h3>
 							<?php endif; ?>
 							<?php if ( ! empty( $card['rows'] ) && is_array( $card['rows'] ) ) : ?>
@@ -147,9 +149,21 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 			<div class="resort-v2-seasons__grid">
 				<?php foreach ( $seasons['cards'] as $card ) : ?>
 					<article class="resort-v2-season-card">
+						<?php if ( ! empty( $card['icon'] ) && function_exists( 'zhiraf_ufa_lucide_icon' ) ) : ?>
+							<div class="resort-v2-season-card__icon" aria-hidden="true">
+								<?php echo zhiraf_ufa_lucide_icon( sanitize_key( (string) $card['icon'] ), 22, 'resort-v2-season-card__icon-svg' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							</div>
+						<?php endif; ?>
 						<h3 class="resort-v2-season-card__title"><?php echo esc_html( $card['title'] ?? '' ); ?></h3>
 						<?php if ( ! empty( $card['subtitle'] ) ) : ?>
 							<p class="resort-v2-season-card__sub"><?php echo esc_html( $card['subtitle'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( ! empty( $card['pills'] ) && is_array( $card['pills'] ) ) : ?>
+							<ul class="resort-v2-season-card__pills" aria-label="<?php esc_attr_e( 'Температура', 'zhiraf-ufa' ); ?>">
+								<?php foreach ( $card['pills'] as $pill ) : ?>
+									<li class="resort-v2-season-card__pill"><?php echo esc_html( (string) $pill ); ?></li>
+								<?php endforeach; ?>
+							</ul>
 						<?php endif; ?>
 						<p class="resort-v2-season-card__text"><?php echo esc_html( $card['text'] ?? '' ); ?></p>
 					</article>
@@ -255,8 +269,8 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 	</section>
 	<?php endif; ?>
 
-	<section class="section resort-v2-final-cta" id="dest-lead">
-		<div class="container container--narrow resort-v2-final-cta__inner">
+	<section class="section resort-v2-final-cta<?php echo ! empty( $final['panel'] ) ? ' resort-v2-final-cta--panel' : ''; ?>" id="dest-lead">
+		<div class="container container--narrow resort-v2-final-cta__inner<?php echo ! empty( $final['panel'] ) ? ' resort-v2-final-cta__panel' : ''; ?>">
 			<h2 class="section-title"><?php echo esc_html( $final['title'] ?? '' ); ?></h2>
 			<form class="zhiraf-form dest-landing-lead-form resort-v2-final-cta__form" data-action="zhiraf_lead" data-form-context="resort-<?php echo esc_attr( $country_slug . '-' . $resort_slug ); ?>">
 				<?php

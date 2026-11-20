@@ -27,6 +27,7 @@ function zhiraf_ufa_resort_landing_index() {
 		array( 'country' => 'egipet', 'resort' => 'makadi-bay' ),
 		array( 'country' => 'egipet', 'resort' => 'sahl-hasheesh' ),
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
+		array( 'country' => 'vietnam', 'resort' => 'fukuok' ),
 	);
 }
 

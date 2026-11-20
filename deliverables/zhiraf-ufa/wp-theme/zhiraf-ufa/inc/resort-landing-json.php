@@ -18,6 +18,7 @@ function zhiraf_ufa_resort_json_registry() {
 	return array(
 		'oae/dubai',
 		'egipet/hurgada',
+		'vietnam/fukuok',
 	);
 }
 

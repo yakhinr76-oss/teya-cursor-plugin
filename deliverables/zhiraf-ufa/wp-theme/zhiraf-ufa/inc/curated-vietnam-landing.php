@@ -77,9 +77,18 @@ function zhiraf_ufa_vietnam_resort_keys_from_row( array $row ) {
  * @return string
  */
 function zhiraf_ufa_vietnam_resort_landing_url( $resort_key ) {
-	unset( $resort_key );
+	$map = array(
+		'phu_quoc'  => 'fukuok',
+		'nha_trang' => 'nyachang',
+	);
+	$slug = ! empty( $map[ sanitize_key( (string) $resort_key ) ] )
+		? (string) $map[ sanitize_key( (string) $resort_key ) ]
+		: sanitize_title( (string) $resort_key );
+	if ( '' === $slug ) {
+		return home_url( '/tour/vietnam/#dest-curated-hotels' );
+	}
 
-	return home_url( '/tour/vietnam/#dest-curated-hotels' );
+	return home_url( '/tour/vietnam/' . $slug . '/' );
 }
 
 /**

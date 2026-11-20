@@ -39,9 +39,12 @@ $fill_wa_base  = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa
 $fill_emirate_labels = array();
 if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_fill_resort_labels' ) ) {
 	$fill_emirate_labels = zhiraf_ufa_egypt_catalog_fill_resort_labels();
+} elseif ( 'vietnam' === $dest_slug && function_exists( 'zhiraf_ufa_vietnam_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_vietnam_catalog_fill_resort_labels();
 } elseif ( function_exists( 'zhiraf_ufa_oae_catalog_fill_emirate_labels' ) ) {
 	$fill_emirate_labels = zhiraf_ufa_oae_catalog_fill_emirate_labels();
 }
+$cta_btn_class = ! empty( $catalog['cta_btn_class'] ) ? (string) $catalog['cta_btn_class'] : '';
 ?>
 <section
 	class="section turciya-curated-hub"
@@ -76,7 +79,10 @@ if ( 'egipet' === $dest_slug && function_exists( 'zhiraf_ufa_egypt_catalog_fill_
 					get_template_part(
 						'template-parts/destination/card-curated-hotel',
 						null,
-						array( 'hotel' => $hotel )
+						array(
+							'hotel'          => $hotel,
+							'cta_btn_class'  => $cta_btn_class,
+						)
 					);
 					?>
 				<?php endforeach; ?>

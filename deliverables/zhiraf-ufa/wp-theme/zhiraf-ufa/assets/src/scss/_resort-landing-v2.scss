@@ -157,6 +157,33 @@
   border-radius: 1.5rem;
   padding: 1.25rem;
 
+  &__icon {
+    margin-bottom: 0.5rem;
+    color: #c85a32;
+  }
+
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0 0 0.65rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.55rem;
+    border-radius: 9999px;
+    background: #faf8f5;
+    border: 1px solid #eae4dc;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #57534e;
+    line-height: 1.35;
+  }
+
   &__title {
     margin: 0;
     font-size: 1rem;
@@ -292,6 +319,21 @@
 
 .resort-v2-final-cta__inner {
   text-align: center;
+}
+
+.resort-v2-final-cta__panel {
+  background: #fff;
+  border: 1px solid #eae4dc;
+  border-radius: 1.5rem;
+  padding: 1.5rem 1.25rem;
+
+  @media (min-width: 640px) {
+    padding: 2rem 2.25rem;
+  }
+}
+
+.resort-v2-final-cta--panel {
+  background: transparent;
 }
 
 .resort-v2-peer-links {

@@ -111,7 +111,7 @@ function zhiraf_ufa_moscow_landing_data() {
 				if ( function_exists( 'zhiraf_ufa_cultural_vibe_section' ) ) {
 					$out[ $slug ]['vibe_section'] = zhiraf_ufa_cultural_vibe_section( $slug, $name );
 				}
-				$out[ $slug ]['hero_lead'] = __( 'Самарканд, Бухара и Хива с вылетом из Москвы. Поможем состыковать перелёт из Уфы и собрать маршрут под ваш темп.', 'zhiraf-ufa' );
+				$out[ $slug ]['hero_lead'] = __( 'База 25 отелей: Ташкент, Самарканд, Бухара и Хива. Топ-6 на старте, фильтры по каждому городу. Вылет из Москвы — состыкуем перелёт из Уфы.', 'zhiraf-ufa' );
 			} elseif ( 'armeniya' === $slug ) {
 				$out[ $slug ]['landing_module'] = 'vibe';
 				if ( function_exists( 'zhiraf_ufa_cultural_vibe_section' ) ) {

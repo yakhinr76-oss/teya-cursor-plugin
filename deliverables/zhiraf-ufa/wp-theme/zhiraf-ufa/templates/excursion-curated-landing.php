@@ -67,8 +67,11 @@ $day_ranges   = function_exists( 'zhiraf_ufa_excursion_catalog_day_range_map' )
 			</div>
 			<div class="dest-landing-hero__visual">
 				<?php
-				if ( ! empty( $excursion_pack['image'] ) ) {
-					zhiraf_ufa_img( $excursion_pack['image'], $excursion_pack['image_alt'], 'dest-landing-hero__img', true );
+				$hero_alt = ! empty( $excursion_pack['image_alt'] ) ? (string) $excursion_pack['image_alt'] : '';
+				if ( ! empty( $excursion_pack['hero_photo'] ) && function_exists( 'zhiraf_ufa_excursion_photo_img_echo' ) ) {
+					zhiraf_ufa_excursion_photo_img_echo( (string) $excursion_pack['hero_photo'], $hero_alt, 'dest-landing-hero__img', false, true );
+				} elseif ( ! empty( $excursion_pack['image'] ) ) {
+					zhiraf_ufa_img( $excursion_pack['image'], $hero_alt, 'dest-landing-hero__img', false, true );
 				}
 				?>
 			</div>

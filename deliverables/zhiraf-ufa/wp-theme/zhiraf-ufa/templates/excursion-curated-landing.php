@@ -139,45 +139,76 @@ $day_ranges   = function_exists( 'zhiraf_ufa_excursion_catalog_day_range_map' )
 						: '';
 					$lead_msg   = zhiraf_ufa_excursion_program_lead_message( $program );
 					$lead_title = $program['title'];
+					$photo      = ! empty( $program['photo'] ) && function_exists( 'zhiraf_ufa_excursion_program_photo' )
+						? zhiraf_ufa_excursion_program_photo( (string) $program['photo'] )
+						: null;
+					$card_class = 'excursion-program-card';
+					if ( $photo ) {
+						$card_class .= ' excursion-program-card--has-photo';
+					}
+					$media_badge = $photo && function_exists( 'zhiraf_ufa_excursion_program_media_badge' )
+						? zhiraf_ufa_excursion_program_media_badge( $program )
+						: '';
+					$photo_alt   = ! empty( $program['title'] ) ? (string) $program['title'] : $prog_id;
 					?>
 					<article
-						class="excursion-program-card"
+						class="<?php echo esc_attr( $card_class ); ?>"
 						data-excursion-program
 						data-program-format="<?php echo esc_attr( $program['format'] ); ?>"
 						data-program-days="<?php echo esc_attr( (string) $days ); ?>"
 						data-program-transport="<?php echo esc_attr( ! empty( $program['transport_mode'] ) ? (string) $program['transport_mode'] : 'avia' ); ?>"
 					>
-						<p class="excursion-program-card__id"><?php echo esc_html( $prog_id ); ?></p>
-						<h3 class="excursion-program-card__title"><?php echo esc_html( $program['title'] ); ?></h3>
-						<p class="excursion-program-card__route"><?php echo esc_html( $program['route'] ); ?></p>
-						<ul class="excursion-program-card__meta">
-							<li><?php echo esc_html( $program['duration'] ); ?></li>
-							<li><?php echo esc_html( $program['transport'] ); ?></li>
-						</ul>
-						<p class="excursion-program-card__highlights"><?php echo esc_html( $program['highlights'] ); ?></p>
-						<?php if ( ! empty( $program['caveat'] ) ) : ?>
-							<p class="excursion-program-card__caveat" role="note">
-								<span class="excursion-program-card__caveat-label"><?php esc_html_e( 'Нюанс:', 'zhiraf-ufa' ); ?></span>
-								<?php echo esc_html( $program['caveat'] ); ?>
-							</p>
-						<?php endif; ?>
-						<div class="excursion-program-card__footer">
-							<div class="excursion-program-card__price">
-								<span class="excursion-program-card__price-value"><?php echo esc_html( $price_lbl ); ?></span>
-								<span class="excursion-program-card__price-note"><?php echo esc_html( $excursion_pack['price_footnote'] ); ?></span>
+						<?php if ( $photo ) : ?>
+							<div class="excursion-program-card__media">
+								<img
+									class="excursion-program-card__img"
+									src="<?php echo esc_url( $photo['url'] ); ?>"
+									alt="<?php echo esc_attr( $photo_alt ); ?>"
+									width="<?php echo esc_attr( (string) $photo['width'] ); ?>"
+									height="<?php echo esc_attr( (string) $photo['height'] ); ?>"
+									loading="lazy"
+									decoding="async"
+								/>
+								<?php if ( $media_badge ) : ?>
+									<span class="excursion-program-card__media-badge"><?php echo esc_html( $media_badge ); ?></span>
+								<?php endif; ?>
 							</div>
-							<button
-								type="button"
-								class="btn btn--ghost excursion-program-card__cta"
-								data-turciya-lead-open
-								data-uon-program-id="<?php echo esc_attr( $prog_id ); ?>"
-								data-lead-title="<?php echo esc_attr( $lead_title ); ?>"
-								data-lead-subtitle="<?php echo esc_attr( $excursion_pack['modal_default_lead'] ); ?>"
-								data-lead-message="<?php echo esc_attr( $lead_msg ); ?>"
-								data-lead-tour="<?php echo esc_attr( $prog_id . ' — ' . $lead_title ); ?>"
-							>
-								<?php esc_html_e( 'Получить программу по дням →', 'zhiraf-ufa' ); ?>
-							</button>
+						<?php endif; ?>
+						<div class="excursion-program-card__body">
+							<p class="excursion-program-card__id"><?php echo esc_html( $prog_id ); ?></p>
+							<h3 class="excursion-program-card__title"><?php echo esc_html( $program['title'] ); ?></h3>
+							<p class="excursion-program-card__route"><?php echo esc_html( $program['route'] ); ?></p>
+							<?php if ( ! $photo ) : ?>
+								<ul class="excursion-program-card__meta">
+									<li><?php echo esc_html( $program['duration'] ); ?></li>
+									<li><?php echo esc_html( $program['transport'] ); ?></li>
+								</ul>
+							<?php endif; ?>
+							<p class="excursion-program-card__highlights"><?php echo esc_html( $program['highlights'] ); ?></p>
+							<?php if ( ! empty( $program['caveat'] ) ) : ?>
+								<p class="excursion-program-card__caveat" role="note">
+									<span class="excursion-program-card__caveat-label"><?php esc_html_e( 'Нюанс:', 'zhiraf-ufa' ); ?></span>
+									<?php echo esc_html( $program['caveat'] ); ?>
+								</p>
+							<?php endif; ?>
+							<div class="excursion-program-card__footer">
+								<div class="excursion-program-card__price">
+									<span class="excursion-program-card__price-value"><?php echo esc_html( $price_lbl ); ?></span>
+									<span class="excursion-program-card__price-note"><?php echo esc_html( $excursion_pack['price_footnote'] ); ?></span>
+								</div>
+								<button
+									type="button"
+									class="btn btn--ghost excursion-program-card__cta"
+									data-turciya-lead-open
+									data-uon-program-id="<?php echo esc_attr( $prog_id ); ?>"
+									data-lead-title="<?php echo esc_attr( $lead_title ); ?>"
+									data-lead-subtitle="<?php echo esc_attr( $excursion_pack['modal_default_lead'] ); ?>"
+									data-lead-message="<?php echo esc_attr( $lead_msg ); ?>"
+									data-lead-tour="<?php echo esc_attr( $prog_id . ' — ' . $lead_title ); ?>"
+								>
+									<?php esc_html_e( 'Получить программу по дням →', 'zhiraf-ufa' ); ?>
+								</button>
+							</div>
 						</div>
 					</article>
 				<?php endforeach; ?>

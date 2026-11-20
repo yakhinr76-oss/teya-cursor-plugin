@@ -44,6 +44,8 @@ if ( 'sejshely' === $dest_slug ) {
 	$pick_lead = __( 'Нажмите на остров — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
 } elseif ( 'indiya' === $dest_slug ) {
 	$pick_lead = __( 'Нажмите на берег — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
+} elseif ( 'armeniya' === $dest_slug ) {
+	$pick_lead = __( 'Коротко — кому какой сценарий: город, озеро, лыжи или курорт. Карточка ниже раскроет программу, отели подтянем после выбора региона.', 'zhiraf-ufa' );
 } else {
 	$pick_lead = __( 'Нажмите на курорт — сразу покажем проверенные отели и честные цены с вылетом из Уфы.', 'zhiraf-ufa' );
 }
@@ -90,13 +92,17 @@ if ( 'sejshely' === $dest_slug ) {
 			$guide_url      = ! empty( $card['guide_url'] ) ? (string) $card['guide_url'] : '';
 			$guide_label    = ! empty( $card['guide_label'] ) ? (string) $card['guide_label'] : __( 'На страницу →', 'zhiraf-ufa' );
 			$show_filter_cta = $count > 0 && empty( $card['hide_catalog_filter'] );
-			/* translators: %d: hotel count */
-			$filter_cta     = sprintf(
-				( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug || 'shri-lanka' === $dest_slug )
-					? __( 'Показать здесь (%d) ↓', 'zhiraf-ufa' )
-					: __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ),
-				$count
-			);
+			if ( 'armeniya' === $dest_slug ) {
+				$filter_cta = __( 'Варианты по региону ↓', 'zhiraf-ufa' );
+			} else {
+				/* translators: %d: hotel count */
+				$filter_cta = sprintf(
+					( 'oae' === $dest_slug || 'egipet' === $dest_slug || 'tailand' === $dest_slug || 'maldivy' === $dest_slug || 'vietnam' === $dest_slug || 'shri-lanka' === $dest_slug )
+						? __( 'Показать здесь (%d) ↓', 'zhiraf-ufa' )
+						: __( 'Показать отели (%d) ↓', 'zhiraf-ufa' ),
+					$count
+				);
+			}
 			?>
 			<div class="<?php echo esc_attr( $card_class ); ?>" role="listitem">
 				<button

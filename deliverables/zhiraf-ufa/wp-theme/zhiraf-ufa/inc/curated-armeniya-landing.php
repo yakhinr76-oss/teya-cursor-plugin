@@ -596,11 +596,11 @@ function zhiraf_ufa_armeniya_catalog_filters() {
 			'title' => __( 'Армения: топ-6 из базы 25 отелей', 'zhiraf-ufa' ),
 			'desc'  => __( 'По одному якорю на направление: Ереван, Дилижан, Севан, Цахкадзор, Джермук. Вылет из Уфы.', 'zhiraf-ufa' ),
 		),
-		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( '🏙 Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Город, гастрономия, экскурсии на день.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-dilijan', 'group' => 'resort', 'label' => __( '🌲 Дилижан', 'zhiraf-ufa' ), 'title' => __( 'Дилижан', 'zhiraf-ufa' ), 'desc' => __( 'Леса и нацпарк.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-sevan', 'group' => 'resort', 'label' => __( '💧 Севан', 'zhiraf-ufa' ), 'title' => __( 'Озеро Севан', 'zhiraf-ufa' ), 'desc' => __( 'Высокогорное озеро.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-tsaghkadzor', 'group' => 'resort', 'label' => __( '⛷ Цахкадзор', 'zhiraf-ufa' ), 'title' => __( 'Цахкадзор', 'zhiraf-ufa' ), 'desc' => __( 'Горнолыжная зона и SPA.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-jermuk', 'group' => 'resort', 'label' => __( '🩺 Джермук', 'zhiraf-ufa' ), 'title' => __( 'Джермук', 'zhiraf-ufa' ), 'desc' => __( 'Курорт и минеральная вода.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( '🏙 Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Парам и «первый раз в Армении»: город, кафе, выездные экскурсии.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dilijan', 'group' => 'resort', 'label' => __( '🌲 Дилижан', 'zhiraf-ufa' ), 'title' => __( 'Дилижан', 'zhiraf-ufa' ), 'desc' => __( 'Семьям и тем, кому нужна тишина: лес, трекинг, без городского шума.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sevan', 'group' => 'resort', 'label' => __( '💧 Севан', 'zhiraf-ufa' ), 'title' => __( 'Озеро Севан', 'zhiraf-ufa' ), 'desc' => __( 'Короткий «перезагруз» на 1–2 ночи: озеро, монастыри, рыба.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-tsaghkadzor', 'group' => 'resort', 'label' => __( '⛷ Цахкадзор', 'zhiraf-ufa' ), 'title' => __( 'Цахкадзор', 'zhiraf-ufa' ), 'desc' => __( 'Зимой — лыжи и активный отдых; межсезонье — SPA и горный воздух.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-jermuk', 'group' => 'resort', 'label' => __( '🩺 Джермук', 'zhiraf-ufa' ), 'title' => __( 'Джермук', 'zhiraf-ufa' ), 'desc' => __( 'Оздоровительный формат: минеральная вода, неспешный ритм, старшему поколению.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( '3–4★', 'zhiraf-ufa' ), 'desc' => __( 'Бутики и сетевые отели.', 'zhiraf-ufa' ) ),
 	);
 }
@@ -660,17 +660,7 @@ function zhiraf_ufa_armeniya_resort_chips() {
  */
 function zhiraf_ufa_armeniya_resort_pick_cards() {
 	$counts = zhiraf_ufa_armeniya_resort_hotel_counts();
-	$guide  = __( 'К отелям →', 'zhiraf-ufa' );
-
-	$bullet_hotel = static function ( $count ) {
-		return array(
-			'text' => sprintf(
-				/* translators: %d: hotels in pool */
-				_n( '%d отель в эталонной базе', '%d отеля в эталонной базе', (int) $count, 'zhiraf-ufa' ),
-				(int) $count
-			),
-		);
-	};
+	$guide  = __( 'Подобрать тур →', 'zhiraf-ufa' );
 
 	return array(
 		array(
@@ -679,16 +669,17 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'yerevan' ),
 			'guide_label' => $guide,
 			'name'        => __( 'Ереван', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Столица', 'zhiraf-ufa' ),
-			'tag'         => __( 'Старт', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Город + выезды на день', 'zhiraf-ufa' ),
+			'tag'         => __( 'Парам и первый визит', 'zhiraf-ufa' ),
 			'tag_mod'     => 'family',
-			'transfer'    => __( 'Вылет из Уфы', 'zhiraf-ufa' ),
+			'transfer'    => __( 'Логистический хаб', 'zhiraf-ufa' ),
 			'featured'    => true,
 			'hotel_count' => $counts['yerevan'] ?? 0,
 			'accent_mod'  => 'emerald',
 			'bullets'     => array(
-				$bullet_hotel( $counts['yerevan'] ?? 0 ),
-				array( 'text' => __( 'Каскад, Сарьяна, экскурсии на день', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Сарьяна, Каскад, гастрономия и джаз — без долгих переездов', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'База для Гарни, Гегарда и винных маршрутов', 'zhiraf-ufa' ) ),
+				array( 'type' => 'info', 'text' => __( 'Летом в городе жарко — лучше весна и осень', 'zhiraf-ufa' ) ),
 			),
 		),
 		array(
@@ -697,15 +688,16 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'dilijan' ),
 			'guide_label' => $guide,
 			'name'        => __( 'Дилижан', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Леса и воздух', 'zhiraf-ufa' ),
-			'tag'         => __( 'Природа', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Тишина в лесу', 'zhiraf-ufa' ),
+			'tag'         => __( 'Семьям и природе', 'zhiraf-ufa' ),
 			'tag_mod'     => 'nature',
-			'transfer'    => __( '~1,5 ч от Еревана', 'zhiraf-ufa' ),
+			'transfer'    => __( '1–2 ночи в программе', 'zhiraf-ufa' ),
 			'hotel_count' => $counts['dilijan'] ?? 0,
 			'accent_mod'  => 'teal',
 			'bullets'     => array(
-				$bullet_hotel( $counts['dilijan'] ?? 0 ),
-				array( 'text' => __( 'Нацпарк и тихие эко-отели', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Нацпарк, трекинг и прохладнее, чем в Ереване', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Хорошо совмещать с Севаном в одном маршруте', 'zhiraf-ufa' ) ),
+				array( 'type' => 'info', 'text' => __( 'Не подойдёт, если нужен ночной город', 'zhiraf-ufa' ) ),
 			),
 		),
 		array(
@@ -714,15 +706,16 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'sevan' ),
 			'guide_label' => $guide,
 			'name'        => __( 'Севан', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Высокогорное озеро', 'zhiraf-ufa' ),
-			'tag'         => __( 'Выходные', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Озеро и монастыри', 'zhiraf-ufa' ),
+			'tag'         => __( 'Короткая перезагрузка', 'zhiraf-ufa' ),
 			'tag_mod'     => 'heritage',
-			'transfer'    => __( '~1 ч от Еревана', 'zhiraf-ufa' ),
+			'transfer'    => __( 'Часто как выезд из Еревана', 'zhiraf-ufa' ),
 			'hotel_count' => $counts['sevan'] ?? 0,
 			'accent_mod'  => 'indigo',
 			'bullets'     => array(
-				$bullet_hotel( $counts['sevan'] ?? 0 ),
-				array( 'text' => __( 'Севанаванк и рыба', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Севанаванк, виды на воду, севанский ишхан', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Идеально добавить 1–2 ночи к городскому туру', 'zhiraf-ufa' ) ),
+				array( 'type' => 'info', 'text' => __( 'На озере ветрено — закладываем тёплую одежду', 'zhiraf-ufa' ) ),
 			),
 		),
 		array(
@@ -731,15 +724,16 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'tsaghkadzor' ),
 			'guide_label' => $guide,
 			'name'        => __( 'Цахкадзор', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Горы и SPA', 'zhiraf-ufa' ),
-			'tag'         => __( 'Зима', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Горнолыжный курорт', 'zhiraf-ufa' ),
+			'tag'         => __( 'Активный зимний отдых', 'zhiraf-ufa' ),
 			'tag_mod'     => 'active',
-			'transfer'    => __( '~1 ч от Еревана', 'zhiraf-ufa' ),
+			'transfer'    => __( 'Декабрь — март', 'zhiraf-ufa' ),
 			'hotel_count' => $counts['tsaghkadzor'] ?? 0,
 			'accent_mod'  => 'slate',
 			'bullets'     => array(
-				$bullet_hotel( $counts['tsaghkadzor'] ?? 0 ),
-				array( 'text' => __( 'Горнолыжные трассы и SPA-отели', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Лыжи, канатки и SPA после трасс', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Подходит парам и компаниям друзей', 'zhiraf-ufa' ) ),
+				array( 'type' => 'info', 'text' => __( 'Летом — горный воздух, но без катания', 'zhiraf-ufa' ) ),
 			),
 		),
 		array(
@@ -748,15 +742,16 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'jermuk' ),
 			'guide_label' => $guide,
 			'name'        => __( 'Джермук', 'zhiraf-ufa' ),
-			'subtitle'    => __( 'Минеральная вода', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Курортная вода и SPA', 'zhiraf-ufa' ),
 			'tag'         => __( 'Оздоровление', 'zhiraf-ufa' ),
 			'tag_mod'     => 'urban',
-			'transfer'    => __( '~2,5 ч от Еревана', 'zhiraf-ufa' ),
+			'transfer'    => __( 'Неспешный ритм', 'zhiraf-ufa' ),
 			'hotel_count' => $counts['jermuk'] ?? 0,
 			'accent_mod'  => 'amber',
 			'bullets'     => array(
-				$bullet_hotel( $counts['jermuk'] ?? 0 ),
-				array( 'text' => __( 'Питьевая галерея и SPA-отели', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Питьевая галерея, процедуры, минимум суеты', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Чаще выбирают 35+ и родителей', 'zhiraf-ufa' ) ),
+				array( 'type' => 'info', 'text' => __( 'Дальше от аэропорта — закладываем длинный трансфер', 'zhiraf-ufa' ) ),
 			),
 		),
 	);

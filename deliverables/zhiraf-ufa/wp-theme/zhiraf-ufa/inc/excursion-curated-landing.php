@@ -122,6 +122,72 @@ function zhiraf_ufa_excursion_format_price( $amount ) {
 }
 
 /**
+ * Resolve program card photo from JSON "photo" field (theme-relative path).
+ *
+ * @param string $photo Path relative to theme root or assets/images.
+ * @return array{url:string,alt:string,width:int,height:int}|null
+ */
+function zhiraf_ufa_excursion_program_photo( $photo ) {
+	$photo = ltrim( (string) $photo, '/' );
+	if ( '' === $photo ) {
+		return null;
+	}
+
+	$paths = array(
+		ZHIRAF_UFA_DIR . '/' . $photo,
+		ZHIRAF_UFA_DIR . '/assets/images/' . $photo,
+		ZHIRAF_UFA_DIR . '/assets/img/excursions/' . $photo,
+	);
+
+	foreach ( $paths as $abs ) {
+		if ( ! is_readable( $abs ) ) {
+			continue;
+		}
+		$rel = str_replace( trailingslashit( ZHIRAF_UFA_DIR ), '', $abs );
+		$url = trailingslashit( ZHIRAF_UFA_URI ) . ltrim( $rel, '/' );
+
+		$width  = 1200;
+		$height = 675;
+		$size   = @getimagesize( $abs );
+		if ( is_array( $size ) ) {
+			$width  = (int) $size[0];
+			$height = (int) $size[1];
+		}
+
+		return array(
+			'url'    => $url,
+			'alt'    => '',
+			'width'  => $width,
+			'height' => $height,
+		);
+	}
+
+	return null;
+}
+
+/**
+ * Transport + duration badge for program card photo overlay.
+ *
+ * @param array<string,mixed> $program Program row.
+ * @return string
+ */
+function zhiraf_ufa_excursion_program_media_badge( array $program ) {
+	$transport = isset( $program['transport'] ) ? trim( (string) $program['transport'] ) : '';
+	$duration  = isset( $program['duration'] ) ? trim( (string) $program['duration'] ) : '';
+
+	$days_label = $duration;
+	if ( preg_match( '/^([^\/]+)/u', $duration, $m ) ) {
+		$days_label = trim( $m[1] );
+	}
+
+	if ( $transport && $days_label ) {
+		return $transport . ' • ' . $days_label;
+	}
+
+	return $transport ? $transport : $days_label;
+}
+
+/**
  * WA/messenger prefill for a program card.
  *
  * @param array<string,mixed> $program Program row.

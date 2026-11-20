@@ -22,6 +22,7 @@ function zhiraf_ufa_resort_json_registry() {
 		'tailand/phuket',
 		'vietnam/fukuok',
 		'vietnam/nyachang',
+		'kitaj/sanya',
 	);
 }
 

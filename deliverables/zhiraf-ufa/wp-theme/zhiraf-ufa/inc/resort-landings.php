@@ -30,6 +30,7 @@ function zhiraf_ufa_resort_landing_index() {
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
 		array( 'country' => 'vietnam', 'resort' => 'fukuok' ),
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
+		array( 'country' => 'kitaj', 'resort' => 'sanya' ),
 	);
 }
 

@@ -80,15 +80,13 @@ function zhiraf_ufa_kitaj_resort_keys_from_row( array $row ) {
 }
 
 /**
- * Hub anchor — отдельных курортных URL для Китая нет (якорь каталога).
- *
- * @param string $resort_key phuket|pattaya|khaolak|samui.
+ * @param string $resort_key dadonghai|yalong|haitang|sanya.
  * @return string
  */
 function zhiraf_ufa_kitaj_resort_landing_url( $resort_key ) {
 	unset( $resort_key );
 
-	return home_url( '/tour/kitaj/#dest-curated-hotels' );
+	return home_url( '/tour/kitaj/sanya/' );
 }
 
 /**

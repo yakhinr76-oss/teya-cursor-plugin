@@ -61,6 +61,8 @@
   padding: 1.25rem;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   &--photo {
     padding: 0;
@@ -98,6 +100,10 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
     padding: 1.25rem;
   }
 
@@ -113,7 +119,11 @@
   }
 
   &__rows {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     margin: 0;
+    min-height: 0;
   }
 
   &__row {
@@ -139,6 +149,39 @@
       color: #525252;
     }
   }
+
+  &__dt--meta {
+    color: #737373 !important;
+    font-weight: 600 !important;
+  }
+
+  &__row--nuance {
+    margin-top: auto;
+    padding: 0.875rem;
+    border-radius: 1rem;
+    background: #f8f5f0;
+    border: 1px solid rgb(200 90 50 / 15%);
+  }
+
+  &__dt--nuance {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #c85a32 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.6875rem;
+  }
+
+  &__nuance-icon {
+    flex-shrink: 0;
+    color: #c85a32;
+  }
+
+  &__row--nuance dd {
+    margin-top: 0.35rem;
+  }
 }
 
 .resort-v2-seasons__grid {
@@ -156,6 +199,33 @@
   border: 1px solid #eae4dc;
   border-radius: 1.5rem;
   padding: 1.25rem;
+
+  &__icon {
+    margin-bottom: 0.5rem;
+    color: #c85a32;
+  }
+
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0 0 0.65rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.55rem;
+    border-radius: 9999px;
+    background: #faf8f5;
+    border: 1px solid #eae4dc;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #57534e;
+    line-height: 1.35;
+  }
 
   &__title {
     margin: 0;
@@ -292,6 +362,21 @@
 
 .resort-v2-final-cta__inner {
   text-align: center;
+}
+
+.resort-v2-final-cta__panel {
+  background: #fff;
+  border: 1px solid #eae4dc;
+  border-radius: 1.5rem;
+  padding: 1.5rem 1.25rem;
+
+  @media (min-width: 640px) {
+    padding: 2rem 2.25rem;
+  }
+}
+
+.resort-v2-final-cta--panel {
+  background: transparent;
 }
 
 .resort-v2-peer-links {

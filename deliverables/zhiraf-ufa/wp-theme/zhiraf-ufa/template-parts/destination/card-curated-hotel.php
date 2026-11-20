@@ -10,7 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$hotel = ! empty( $args['hotel'] ) && is_array( $args['hotel'] ) ? $args['hotel'] : array();
+$hotel     = ! empty( $args['hotel'] ) && is_array( $args['hotel'] ) ? $args['hotel'] : array();
+$cta_extra = ! empty( $args['cta_btn_class'] ) ? trim( (string) $args['cta_btn_class'] ) : '';
+$cta_class = ( false !== strpos( $cta_extra, 'btn--ghost' ) )
+	? 'btn btn--ghost turciya-curated-card__cta'
+	: 'btn btn--primary turciya-curated-card__cta';
 if ( empty( $hotel['name'] ) ) {
 	return;
 }
@@ -164,7 +168,7 @@ $honest_raw = trim( $honest_raw );
 		</div>
 		<button
 			type="button"
-			class="btn btn--primary turciya-curated-card__cta"
+			class="<?php echo esc_attr( $cta_class ); ?>"
 			data-turciya-lead-open
 			data-cta-context="turciya_curated_hotel_modal"
 			data-hotel-name="<?php echo esc_attr( (string) $hotel['name'] ); ?>"

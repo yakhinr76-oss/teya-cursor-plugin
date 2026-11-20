@@ -3,11 +3,15 @@
 Download Pexels candidates for excursion landings (hero + program cards).
 
 Saves optimized JPEG/WebP to:
-  deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/img/excursions/candidates/{country}/
+  deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa/assets/img/excursions/candidates/{city}/
 
 Env: PEXELS_API_KEY (from shell or repo .env / teya.env.local)
 
-Generates: scripts/preview_excursion_photos.html
+Flags: --russia-only, --caucasus-only, --supplement-only, --preview-only
+
+Generates:
+  …/assets/img/excursions/candidates/index.html
+  scripts/preview_excursion_photos.html (legacy, paths for http.server)
 """
 from __future__ import annotations
 
@@ -26,7 +30,7 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 THEME_ROOT = REPO_ROOT / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa"
-# Staging outside theme (candidates/ in repo was removed after photo approval).
+# Staging outside theme — production picks live under assets/img/excursions/{city}/.
 OUT_ROOT = REPO_ROOT / "deliverables/zhiraf-ufa/photo-candidates/excursion-fetch"
 PREVIEW_HTML = Path(__file__).resolve().parent / "preview_excursion_photos.html"
 PREVIEW_INDEX = OUT_ROOT / "index.html"
@@ -162,6 +166,132 @@ PLANS: list[CountryPlan] = [
         ],
     ),
 ]
+
+RUSSIA_PLANS: list[CountryPlan] = [
+    CountryPlan(
+        slug="moskva",
+        hero=[
+            SearchSlot("hero", "Red Square Moscow sunset", "portrait", 2),
+            SearchSlot("hero", "Moscow Kremlin architecture", "portrait", 1),
+        ],
+        programs=[
+            SearchSlot("MSK-CLASSIC", "Saint Basil Cathedral Moscow", "landscape", 2),
+            SearchSlot("MSK-WEEKEND", "Moscow City skyscrapers", "landscape", 2),
+            SearchSlot(
+                "MSK-KIDS",
+                "VDNH Moscow",
+                "landscape",
+                2,
+                fallback="aquarium underwater tunnel",
+            ),
+            SearchSlot(
+                "MSK-SERGIEV",
+                "Sergiev Posad monastery",
+                "landscape",
+                2,
+                fallback="Russian orthodox church golden domes",
+            ),
+            SearchSlot(
+                "MSK-OTHER",
+                "Moscow old street architecture",
+                "landscape",
+                2,
+                fallback="food market gourmet",
+            ),
+        ],
+    ),
+    CountryPlan(
+        slug="sankt_peterburg",
+        hero=[
+            SearchSlot("hero", "Saint Petersburg canal architecture", "portrait", 2),
+            SearchSlot("hero", "Church of the Savior on Spilled Blood", "portrait", 1),
+        ],
+        programs=[
+            SearchSlot(
+                "SPB-CLASSIC",
+                "Palace Square Saint Petersburg",
+                "landscape",
+                2,
+                fallback="Hermitage Saint Petersburg",
+            ),
+            SearchSlot("SPB-WEEKEND", "Saint Petersburg river bridge", "landscape", 2),
+            SearchSlot(
+                "SPB-KIDS",
+                "planetarium stars dome",
+                "landscape",
+                2,
+                fallback="Saint Petersburg boat canal",
+            ),
+            SearchSlot(
+                "SPB-SUBURBS",
+                "Peterhof Palace fountains",
+                "landscape",
+                2,
+                fallback="palace park autumn Russia",
+            ),
+            SearchSlot(
+                "SPB-OTHER",
+                "modern art gallery interior",
+                "landscape",
+                2,
+                fallback="Baltic sea sunset pier",
+            ),
+        ],
+    ),
+    CountryPlan(
+        slug="kaliningrad",
+        hero=[
+            SearchSlot("hero", "Kaliningrad cathedral", "portrait", 2),
+            SearchSlot("hero", "Curonian Spit sand dunes", "portrait", 1),
+        ],
+        programs=[
+            SearchSlot(
+                "KGD-CLASSIC",
+                "Curonian Spit Baltic sea",
+                "landscape",
+                2,
+                fallback="sand dunes pine forest sea",
+            ),
+            SearchSlot(
+                "KGD-WEEKEND",
+                "Kaliningrad Fishing Village",
+                "landscape",
+                2,
+                fallback="Baltic sea promenade pier",
+            ),
+            SearchSlot(
+                "KGD-KIDS",
+                "museum ship harbor",
+                "landscape",
+                2,
+                fallback="Baltic sea beach waves",
+            ),
+            SearchSlot(
+                "KGD-COAST",
+                "Baltic sea coast cliffs",
+                "landscape",
+                2,
+                fallback="wooden pier Baltic sea",
+            ),
+            SearchSlot(
+                "KGD-GASTRO",
+                "artisan cheese board rustic",
+                "landscape",
+                2,
+                fallback="medieval brick castle",
+            ),
+        ],
+    ),
+]
+
+PREVIEW_COUNTRY_ORDER = (
+    "gruziya",
+    "uzbekistan",
+    "armeniya",
+    "moskva",
+    "sankt_peterburg",
+    "kaliningrad",
+)
 
 # Extra batches (append to manifest; GE-WINE без «Georgia» — иначе US state).
 SUPPLEMENTAL: list[tuple[str, SearchSlot]] = [
@@ -371,7 +501,10 @@ def build_preview_html(manifest: list[SavedFile]) -> None:
         by_country.setdefault(row.country, {}).setdefault(row.slot_id, []).append(row)
 
     sections: list[str] = []
-    for country in ("gruziya", "uzbekistan", "armeniya"):
+    country_order = list(PREVIEW_COUNTRY_ORDER) + sorted(
+        k for k in by_country if k not in PREVIEW_COUNTRY_ORDER
+    )
+    for country in country_order:
         if country not in by_country:
             continue
         blocks: list[str] = [f"<h2>{country}</h2>"]
@@ -486,6 +619,17 @@ def run_supplement(client: PexelsClient) -> list[SavedFile]:
     return added
 
 
+def run_plans(client: PexelsClient, plans: list[CountryPlan]) -> list[SavedFile]:
+    manifest: list[SavedFile] = []
+    for plan in plans:
+        print(f"\n== {plan.slug} ==")
+        for slot in plan.hero:
+            process_slot(client, plan.slug, slot, manifest)
+        for slot in plan.programs:
+            process_slot(client, plan.slug, slot, manifest)
+    return manifest
+
+
 def main() -> int:
     if "--preview-only" in sys.argv:
         manifest = load_manifest_rows()
@@ -519,17 +663,32 @@ def main() -> int:
         print(f"\nSupplement: +{len(added)} new, total {len(manifest)}. Manifest: {manifest_path}")
         return 0
 
-    manifest: list[SavedFile] = []
-    for plan in PLANS:
-        print(f"\n== {plan.slug} ==")
-        for slot in plan.hero:
-            process_slot(client, plan.slug, slot, manifest)
-        for slot in plan.programs:
-            process_slot(client, plan.slug, slot, manifest)
+    russia_only = "--russia-only" in sys.argv
+    caucasus_only = "--caucasus-only" in sys.argv
+
+    if russia_only:
+        existing = load_manifest_rows()
+        for row in existing:
+            client._seen_ids.add(row.pexels_id)
+        fresh = run_plans(client, RUSSIA_PLANS)
+        manifest = merge_manifest(existing, fresh)
+    elif caucasus_only:
+        fresh = run_plans(client, PLANS)
+        manifest = fresh
+    else:
+        fresh = run_plans(client, PLANS + RUSSIA_PLANS)
+        manifest = fresh
 
     manifest_path = save_manifest(manifest)
     build_preview_html(manifest)
-    print(f"\nDone. {len(manifest)} files. Manifest: {manifest_path}")
+    jpg_count = sum(1 for row in manifest if row.filename_jpg.endswith(".jpg"))
+    print(f"\nDone. {len(manifest)} manifest rows ({jpg_count} JPG). Manifest: {manifest_path}")
+    print(f"Preview: {PREVIEW_INDEX}")
+    by_city: dict[str, int] = {}
+    for row in manifest:
+        by_city[row.country] = by_city.get(row.country, 0) + 1
+    for city, n in sorted(by_city.items()):
+        print(f"  {city}: {n} files")
     return 0
 
 

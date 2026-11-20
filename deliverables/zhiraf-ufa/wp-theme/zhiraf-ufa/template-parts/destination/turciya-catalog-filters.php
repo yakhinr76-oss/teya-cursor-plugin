@@ -11,12 +11,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_slug'] ) : 'turciya';
 
-$filters = function_exists( 'zhiraf_ufa_curated_catalog_filters' )
-	? zhiraf_ufa_curated_catalog_filters( $dest_slug )
-	: ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ? zhiraf_ufa_turciya_catalog_filters() : array() );
-$copy    = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
-	? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
-	: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
+if ( ! empty( $args['filters'] ) && is_array( $args['filters'] ) ) {
+	$filters = $args['filters'];
+} else {
+	$filters = function_exists( 'zhiraf_ufa_curated_catalog_filters' )
+		? zhiraf_ufa_curated_catalog_filters( $dest_slug )
+		: ( function_exists( 'zhiraf_ufa_turciya_catalog_filters' ) ? zhiraf_ufa_turciya_catalog_filters() : array() );
+}
+if ( ! empty( $args['copy'] ) && is_array( $args['copy'] ) ) {
+	$copy = $args['copy'];
+} else {
+	$copy = function_exists( 'zhiraf_ufa_curated_catalog_default_copy' )
+		? zhiraf_ufa_curated_catalog_default_copy( $dest_slug )
+		: ( function_exists( 'zhiraf_ufa_turciya_catalog_default_copy' ) ? zhiraf_ufa_turciya_catalog_default_copy() : array() );
+}
 
 if ( empty( $filters ) ) {
 	return;
@@ -47,8 +55,9 @@ if ( ! $starter ) {
 }
 $resorts = array();
 $needs   = array();
-$hide_resort_tabs = function_exists( 'zhiraf_ufa_curated_has_resort_pick_cards' )
-	&& zhiraf_ufa_curated_has_resort_pick_cards( $dest_slug );
+$hide_resort_tabs = ! empty( $args['hide_resort_tabs'] )
+	|| ( function_exists( 'zhiraf_ufa_curated_has_resort_pick_cards' )
+		&& zhiraf_ufa_curated_has_resort_pick_cards( $dest_slug ) );
 
 foreach ( $filters as $filter ) {
 	$group = ! empty( $filter['group'] ) ? (string) $filter['group'] : '';

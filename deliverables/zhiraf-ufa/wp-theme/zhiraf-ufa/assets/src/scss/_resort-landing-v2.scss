@@ -1,0 +1,206 @@
+.resort-v2-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  color: #78716c;
+
+  a {
+    color: #c85a32;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.resort-v2-trust {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+
+  &__item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #525252;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: #c85a32;
+  }
+}
+
+.resort-v2-districts__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.resort-v2-district-card {
+  background: #fff;
+  border: 1px solid #eae4dc;
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  height: 100%;
+
+  &__title {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1c1917;
+  }
+
+  &__rows {
+    margin: 0;
+  }
+
+  &__row {
+    margin: 0 0 0.65rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    dt {
+      margin: 0;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #a8a29e;
+    }
+
+    dd {
+      margin: 0.15rem 0 0;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: #525252;
+    }
+  }
+}
+
+.resort-v2-seasons__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.resort-v2-season-card {
+  background: #fff;
+  border: 1px solid #eae4dc;
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+
+  &__title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &__sub {
+    margin: 0.25rem 0 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #c85a32;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #525252;
+  }
+}
+
+.resort-v2-local__grid {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.resort-v2-local__h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.resort-v2-local__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #525252;
+
+  li + li {
+    margin-top: 0.5rem;
+  }
+}
+
+.resort-v2-faq__panel {
+  background: #fff;
+  border: 1px solid #eae4dc;
+  border-radius: 1.5rem;
+  padding: 1.5rem 1.25rem;
+
+  @media (min-width: 640px) {
+    padding: 2rem;
+  }
+}
+
+.resort-v2-final-cta__inner {
+  text-align: center;
+}
+
+.resort-v2-peer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.resort-v2-peer-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #eae4dc;
+  background: #fff;
+  color: #1c1917;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: #c85a32;
+    color: #c85a32;
+  }
+}

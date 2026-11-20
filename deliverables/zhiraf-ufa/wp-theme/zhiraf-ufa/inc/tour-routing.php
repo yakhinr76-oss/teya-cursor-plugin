@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Register rewrite rules for resort landings.
+ *
+ * P0 wave (JSON v2): /tour/oae/dubai/ — see data/resorts/dubai.json + zhiraf_ufa_resort_json_registry().
  */
 function zhiraf_ufa_register_tour_resort_rewrites() {
 	if ( function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) ) {

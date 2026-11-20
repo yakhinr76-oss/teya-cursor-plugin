@@ -131,6 +131,8 @@ function zhiraf_ufa_oae_need_tag_from_category( $category_slug ) {
 			return 'need-urban';
 		case 'apartments':
 			return 'need-apartments';
+		case 'premium':
+			return 'need-premium';
 		case 'balance':
 		default:
 			return 'need-price';

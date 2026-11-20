@@ -24,6 +24,10 @@ function zhiraf_ufa_render_hero_badge_icon( array $badge ) {
 			. '</svg>';
 	}
 
+	if ( 'plane' === $svg_key && function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+		return zhiraf_ufa_lucide_icon( 'plane', 18, 'dest-landing-hero__badge-svg' );
+	}
+
 	if ( ! empty( $badge['icon'] ) ) {
 		return '<span class="dest-landing-hero__badge-icon" aria-hidden="true">' . esc_html( (string) $badge['icon'] ) . '</span>';
 	}

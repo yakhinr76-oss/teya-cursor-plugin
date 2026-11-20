@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function zhiraf_ufa_resort_landing_index() {
 	return array(
+		array( 'country' => 'oae', 'resort' => 'dubai' ),
 		array( 'country' => 'turciya', 'resort' => 'antalya' ),
 		array( 'country' => 'turciya', 'resort' => 'kemer' ),
 		array( 'country' => 'turciya', 'resort' => 'alanya' ),
@@ -523,8 +524,14 @@ function zhiraf_ufa_resort_landing_data() {
 function zhiraf_ufa_get_resort_landing( $country, $resort ) {
 	$country = sanitize_title( $country );
 	$resort  = sanitize_title( $resort );
-	$key     = $country . '/' . $resort;
-	$data    = zhiraf_ufa_resort_landing_data();
+	if ( function_exists( 'zhiraf_ufa_get_resort_landing_from_json' ) ) {
+		$json = zhiraf_ufa_get_resort_landing_from_json( $country, $resort );
+		if ( $json ) {
+			return $json;
+		}
+	}
+	$key  = $country . '/' . $resort;
+	$data = zhiraf_ufa_resort_landing_data();
 	return isset( $data[ $key ] ) ? $data[ $key ] : null;
 }
 
@@ -650,7 +657,12 @@ function zhiraf_ufa_render_resort_landing( $country, $resort ) {
 	if ( ! $resort_data ) {
 		return;
 	}
-	$template = ZHIRAF_UFA_DIR . '/templates/resort-landing.php';
+	$is_v2 = ! empty( $resort_data['schema_version'] ) && (int) $resort_data['schema_version'] >= 2;
+	$v2_tpl = ZHIRAF_UFA_DIR . '/templates/resort-landing.php';
+	if ( ! is_readable( $v2_tpl ) ) {
+		$v2_tpl = ZHIRAF_UFA_DIR . '/templates/resort-landing-v2.php';
+	}
+	$template = $is_v2 ? $v2_tpl : ZHIRAF_UFA_DIR . '/templates/resort-landing-classic.php';
 	if ( is_readable( $template ) ) {
 		include $template;
 	}

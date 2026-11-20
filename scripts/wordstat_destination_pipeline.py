@@ -46,6 +46,160 @@ DESTINATIONS: list[dict] = [
     {"slug": "mauritius", "url": "/tour/mauritius/", "names": ["маврикий", "маврикия", "маврикии"]},
 ]
 
+# Курортные лендинги /tour/{country}/{resort}/ — частоты Уфа 172, API 2026-11-20 (якорь ≥100).
+RESORTS: list[dict] = [
+    {
+        "slug": "dubai",
+        "country_slug": "oae",
+        "url": "/tour/oae/dubai/",
+        "priority": "P0",
+        "h1": "Туры в Дубай из Уфы",
+        "title_name": "Дубай",
+        "description_in": "Дубай",
+        "names": ["дубай", "дубае"],
+        "freq_anchor": 1229,
+        "intent_block": "kids",
+        "primary_queries": "дубай из уфы 1229|туры в дубай из уфы 253|путевки в дубай из уфы 59|горящие туры дубай из уфы 42|дубай из уфы на двоих 25",
+        "parent_url": "/tour/oae/",
+        "peer_notes": "no_canonical_to_parent;no_redirect;peer_hub=/tour/oae/",
+    },
+    {
+        "slug": "hurgada",
+        "country_slug": "egipet",
+        "url": "/tour/egipet/hurgada/",
+        "priority": "P0",
+        "h1": "Туры в Хургаду из Уфы",
+        "title_name": "Хургада",
+        "description_in": "Хургаду",
+        "names": ["хургада", "хургаду", "хургаде"],
+        "freq_anchor": 763,
+        "intent_block": "kids",
+        "primary_queries": "хургада из уфы 763|туры в хургаду из уфы 109|хургада все включено из уфы 27|путевки в хургаду из уфы 15|горящие туры хургада из уфы 10",
+        "parent_url": "/tour/egipet/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "sharm-el-sheyh",
+        "country_slug": "egipet",
+        "url": "/tour/egipet/sharm-el-sheyh/",
+        "priority": "P0",
+        "h1": "Туры в Шарм-эль-Шейх из Уфы",
+        "title_name": "Шарм-эль-Шейх",
+        "description_in": "Шарм-эль-Шейх",
+        "names": ["шарм", "шарм эль шейх", "шарм-эль-шейх"],
+        "freq_anchor": 746,
+        "intent_block": "all_inclusive",
+        "primary_queries": "шарм эль шейх из уфы 746|туры в шарм эль шейх из уфы 195|шарм эль шейх все включено из уфы 75|путевки в шарм эль шейх из уфы 24|купить тур в шарм эль шейх из уфы 31",
+        "parent_url": "/tour/egipet/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "fukuok",
+        "country_slug": "vietnam",
+        "url": "/tour/vietnam/fukuok/",
+        "priority": "P0",
+        "h1": "Туры на Фукуок из Уфы",
+        "title_name": "Фукуок",
+        "description_in": "Фукуок",
+        "names": ["фукуок", "фукуоке"],
+        "freq_anchor": 760,
+        "intent_block": "kids",
+        "primary_queries": "фукуок из уфы 760|туры на фукуок из уфы 146|путевки на фукуок из уфы 19|горящие туры фукуок из уфы 14|купить тур на фукуок из уфы 10",
+        "parent_url": "/tour/vietnam/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "phuket",
+        "country_slug": "tailand",
+        "url": "/tour/tailand/phuket/",
+        "priority": "P0",
+        "h1": "Туры на Пхукет из Уфы",
+        "title_name": "Пхукет",
+        "description_in": "Пхукет",
+        "names": ["пхукет", "пхукете"],
+        "freq_anchor": 642,
+        "intent_block": "kids",
+        "primary_queries": "пхукет из уфы 642|туры на пхукет из уфы 116|горящие туры пхукет из уфы 21|путевки на пхукет из уфы 11|купить тур на пхукет из уфы 14",
+        "parent_url": "/tour/tailand/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "nyachang",
+        "country_slug": "vietnam",
+        "url": "/tour/vietnam/nyachang/",
+        "priority": "P0",
+        "h1": "Туры в Нячанг из Уфы",
+        "title_name": "Нячанг",
+        "description_in": "Нячанг",
+        "names": ["нячанг", "нячанге"],
+        "freq_anchor": 515,
+        "intent_block": "kids",
+        "primary_queries": "нячанг из уфы 515|туры в нячанг из уфы 87|путевки в нячанг из уфы 15|горящие туры нячанг из уфы 3|купить тур в нячанг из уфы 5",
+        "parent_url": "/tour/vietnam/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "sanya",
+        "country_slug": "kitaj",
+        "url": "/tour/kitaj/sanya/",
+        "priority": "P1",
+        "h1": "Туры в Санью из Уфы",
+        "title_name": "Санья",
+        "description_in": "Санью",
+        "names": ["санья", "санью", "хайнань"],
+        "freq_anchor": 381,
+        "intent_block": "all_inclusive",
+        "primary_queries": "санья из уфы 381|туры в санью из уфы 81|путевки в санью из уфы 12|горящие туры санья из уфы 5|санья из уфы с детьми 1",
+        "parent_url": "/tour/kitaj/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "pattaya",
+        "country_slug": "tailand",
+        "url": "/tour/tailand/pattaya/",
+        "priority": "P1",
+        "h1": "Туры в Паттайю из Уфы",
+        "title_name": "Паттайя",
+        "description_in": "Паттайю",
+        "names": ["паттайя", "паттайю", "паттайе"],
+        "freq_anchor": 324,
+        "intent_block": "kids",
+        "primary_queries": "паттайя из уфы 324|туры в паттайю из уфы 99|путевки в паттайю из уфы 4|горящие туры паттайя из уфы 2|купить тур в паттайю из уфы 2",
+        "parent_url": "/tour/tailand/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "antalya",
+        "country_slug": "turciya",
+        "url": "/tour/turciya/antalya/",
+        "priority": "P1",
+        "h1": "Туры в Анталью из Уфы",
+        "title_name": "Анталья",
+        "description_in": "Анталью",
+        "names": ["анталья", "анталия", "анталью"],
+        "freq_anchor": 257,
+        "intent_block": "kids",
+        "primary_queries": "анталья из уфы 257|туры в анталью из уфы 17|алания из уфы 61|путевки в анталью из уфы 2|купить тур в анталью из уфы 1",
+        "parent_url": "/tour/turciya/",
+        "peer_notes": "parent_peer_only",
+    },
+    {
+        "slug": "sharjah",
+        "country_slug": "oae",
+        "url": "/tour/oae/sharjah/",
+        "priority": "P1",
+        "h1": "Туры в Шарджу из Уфы",
+        "title_name": "Шарджа",
+        "description_in": "Шарджу",
+        "names": ["шарджа", "шарджу"],
+        "freq_anchor": 101,
+        "intent_block": "kids",
+        "primary_queries": "шарджа из уфы 101|туры в шарджу из уфы 44|путевки в шарджу из уфы 6|горящие туры шарджа из уфы 2",
+        "parent_url": "/tour/oae/",
+        "peer_notes": "parent_peer_only",
+    },
+]
+
 INTENT_KEYWORDS = {
     "kids": ("с детьми", "детям", "семейн", "аквапарк", "песчаный пляж", "детский"),
     "couples": ("для двоих", "свадеб", "вилл", "романт", "медов", "16+", "honeymoon"),
@@ -167,14 +321,48 @@ def slug_for_query(query: str, slug_terms: dict[str, set[str]]) -> str | None:
     return best
 
 
-def main() -> int:
-    api_key = os.environ.get("YANDEX_WORDSTAT_API_KEY", "")
-    if not api_key:
-        print("YANDEX_WORDSTAT_API_KEY is not set", file=sys.stderr)
-        return 1
+def resort_cluster_id(resort: dict) -> str:
+    country = resort["country_slug"].upper().replace("-", "_")
+    slug = resort["slug"].upper().replace("-", "_")
+    return f"CL-{country}_{slug}"
 
+
+def apply_resorts_to_url_map(by_url: dict[str, dict], today: str) -> None:
+    """Embed curated resort rows (Wordstat Уфа 172); no API required."""
+    for resort in RESORTS:
+        url = resort["url"]
+        parent = resort["parent_url"]
+        by_url[url] = {
+            "target_url": url,
+            "url_status": "create",
+            "page_type": "resort",
+            "cluster_ids": resort_cluster_id(resort),
+            "primary_queries": resort["primary_queries"],
+            "recommended_h1": resort["h1"],
+            "title_draft": f"{resort['title_name']} из Уфы — подбор тура «Жираф»",
+            "description_draft": (
+                f"Пакетные туры в {resort['description_in']} с вылетом из Уфы. "
+                f"Отдельная страница курорта; перелинковка со страницей страны {parent}."
+            ),
+            "internal_links_from": f"{parent}|/",
+            "internal_links_to": f"{parent}|/goryashchie-tury/|/vse-vklyucheno/",
+            "implementation_task": "curated-resort-landing",
+            "owner_hint": "conversion",
+            "notes": (
+                f"priority={resort['priority']};intent_block={resort['intent_block']};"
+                f"freq_anchor={resort['freq_anchor']};regionId=172;resort_landing;"
+                f"{resort.get('peer_notes', '')};wordstat_slice=2026-11-20"
+            ),
+        }
+
+
+def main() -> int:
     dry = "--dry-run" in sys.argv
     regen_only = "--regenerate-only" in sys.argv
+    api_key = os.environ.get("YANDEX_WORDSTAT_API_KEY", "")
+    if not api_key and not regen_only:
+        print("YANDEX_WORDSTAT_API_KEY is not set", file=sys.stderr)
+        return 1
     today = date.today().isoformat()
 
     slug_terms: dict[str, set[str]] = {}
@@ -498,6 +686,8 @@ def main() -> int:
             "notes": f"intent_block={block};freq_total={freq};regionId=172",
         }
         by_url[url] = row
+
+    apply_resorts_to_url_map(by_url, today)
 
     if not dry:
         write_csv(CORE / "06-url-map.csv", url_fields, list(by_url.values()))

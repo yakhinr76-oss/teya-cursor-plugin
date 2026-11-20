@@ -458,6 +458,15 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 45%, transparent 100%);
   pointer-events: none;
 }
+.destinations-hub__grid--excursion .dest-hub-card__shade {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.55) 38%,
+    rgba(0, 0, 0, 0.22) 68%,
+    transparent 100%
+  );
+}
 .dest-hub-card__top,
 .dest-hub-card__bottom {
   position: relative;

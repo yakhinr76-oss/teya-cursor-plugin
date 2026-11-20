@@ -87,7 +87,7 @@ function zhiraf_ufa_excursion_program_transport_mode( array $row ) {
  * @return string[]
  */
 function zhiraf_ufa_excursion_landing_slugs() {
-	$candidates = array( 'uzbekistan', 'gruziya' );
+	$candidates = array( 'uzbekistan', 'gruziya', 'armeniya' );
 	$out        = array();
 	foreach ( $candidates as $slug ) {
 		if ( zhiraf_ufa_excursion_landing_pack( $slug ) && zhiraf_ufa_excursion_programs( $slug ) ) {
@@ -136,6 +136,52 @@ function zhiraf_ufa_excursion_program_lead_message( array $program ) {
 		$title,
 		$id
 	);
+}
+
+/**
+ * Day-duration filter chips for catalog (days filter mode).
+ *
+ * @param array<string,mixed> $pack Landing pack.
+ * @return array<int,array{key:string,label:string,min:int,max:int}>
+ */
+function zhiraf_ufa_excursion_catalog_day_filters( array $pack ) {
+	if ( ! empty( $pack['catalog_day_filters'] ) && is_array( $pack['catalog_day_filters'] ) ) {
+		return $pack['catalog_day_filters'];
+	}
+	return array(
+		array(
+			'key'   => '3-5',
+			'label' => __( '3–5 дней', 'zhiraf-ufa' ),
+			'min'   => 3,
+			'max'   => 5,
+		),
+		array(
+			'key'   => '6-9',
+			'label' => __( '6–9 дней', 'zhiraf-ufa' ),
+			'min'   => 6,
+			'max'   => 9,
+		),
+	);
+}
+
+/**
+ * JSON map key => [min,max] for JS filters.
+ *
+ * @param array<string,mixed> $pack Landing pack.
+ * @return array<string,array{0:int,1:int}>
+ */
+function zhiraf_ufa_excursion_catalog_day_range_map( array $pack ) {
+	$map = array();
+	foreach ( zhiraf_ufa_excursion_catalog_day_filters( $pack ) as $row ) {
+		if ( empty( $row['key'] ) ) {
+			continue;
+		}
+		$map[ (string) $row['key'] ] = array(
+			(int) ( $row['min'] ?? 0 ),
+			(int) ( $row['max'] ?? 0 ),
+		);
+	}
+	return $map;
 }
 
 /**
@@ -428,6 +474,160 @@ function zhiraf_ufa_excursion_landing_pack( $slug ) {
 			'image'                => 'hero-collage-active.jpg',
 			'image_alt'            => __( 'Грузия — Старый Тбилиси и Кахетия', 'zhiraf-ufa' ),
 			'name'                 => __( 'Грузия', 'zhiraf-ufa' ),
+		),
+		'armeniya'   => array(
+			'slug'                 => 'armeniya',
+			'h1'                   => __( 'Экскурсионные туры в Армению из Уфы', 'zhiraf-ufa' ),
+			'title'                => __( 'Армению из Уфы — подбор тура «Жираф»', 'zhiraf-ufa' ),
+			'description'          => __( 'Пакетные туры в Армению с вылетом из Уфы. Подбор без давления, актуальные цены Wordstat 2026-11-19.', 'zhiraf-ufa' ),
+			'hero_lead'            => __( 'Прямой перелёт в Ереван за 3,5 часа по внутреннему паспорту РФ. Древние монастыри, озеро Севан, винодельни Арени и честная смета без скрытых доплат', 'zhiraf-ufa' ),
+			'hero_badges'          => array(
+				array( 'text' => __( 'Прямой рейс в Ереван • ~3,5 ч', 'zhiraf-ufa' ) ),
+				array( 'text' => __( 'Без визы • можно без загранпаспорта', 'zhiraf-ufa' ) ),
+			),
+			'hero_trust'           => array(
+				array(
+					'icon' => 'plane',
+					'text' => __( 'Прямые рейсы Уфа — Ереван («Азимут», Shirak Avia) — стыкуем даты под расписание', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => 'shield-check',
+					'text' => __( 'Въезд по внутреннему паспорту РФ при прямом перелёте (детям до 14 лет нужен загранпаспорт)', 'zhiraf-ufa' ),
+				),
+				array(
+					'icon' => 'credit-card',
+					'text' => __( 'Прозрачный расчёт до оплаты: сразу фиксируем багаж, входные билеты и дегустации', 'zhiraf-ufa' ),
+				),
+			),
+			'catalog_filter_mode'  => 'days',
+			'catalog_day_filters'  => array(
+				array(
+					'key'   => '4-5',
+					'label' => __( '4–5 дней', 'zhiraf-ufa' ),
+					'min'   => 4,
+					'max'   => 5,
+				),
+				array(
+					'key'   => '6-7',
+					'label' => __( '6–7 дней', 'zhiraf-ufa' ),
+					'min'   => 6,
+					'max'   => 7,
+				),
+			),
+			'convert_card'         => array(
+				'title' => __( 'Нужен индивидуальный маршрут или проезд автобусом?', 'zhiraf-ufa' ),
+				'text'  => __( 'Соберём программу под ваши даты и состав группы. Формат «рейсовый автобус до Еревана + экскурсии на месте» рассчитываем под запрос', 'zhiraf-ufa' ),
+				'cta'   => __( 'Описать задачу', 'zhiraf-ufa' ),
+			),
+			'format_cards'         => array(
+				array(
+					'key'   => 'classic',
+					'title' => __( 'Первое знакомство', 'zhiraf-ufa' ),
+					'desc'  => __( 'Ереван, Гарни, Гегард, Севан, Дилижан', 'zhiraf-ufa' ),
+					'icon'  => 'compass',
+				),
+				array(
+					'key'   => 'weekend',
+					'title' => __( 'Уикенд 3–4 дня', 'zhiraf-ufa' ),
+					'desc'  => __( 'Ереван и ближайшие выезды', 'zhiraf-ufa' ),
+					'icon'  => 'plane',
+				),
+				array(
+					'key'   => 'gastro',
+					'title' => __( 'Вино и гастро', 'zhiraf-ufa' ),
+					'desc'  => __( 'Арени, Воскеваз, лаваш, хоровац', 'zhiraf-ufa' ),
+					'icon'  => 'tag',
+				),
+				array(
+					'key'   => 'nature',
+					'title' => __( 'Горы и природа', 'zhiraf-ufa' ),
+					'desc'  => __( 'Татев, Дилижан, Севан, ущелья', 'zhiraf-ufa' ),
+					'icon'  => 'map',
+				),
+			),
+			'price_footnote'       => __( 'ориентир за 1 чел. при 2-местном размещении (авиа из Уфы + отели 3–4★ + завтраки)', 'zhiraf-ufa' ),
+			'included'             => array(
+				'title'    => __( 'Что входит в программу и что оплачивается отдельно', 'zhiraf-ufa' ),
+				'in_price' => array(
+					__( 'Авиаперелёт из Уфы', 'zhiraf-ufa' ),
+					__( 'Отели 3–4★ с завтраками', 'zhiraf-ufa' ),
+					__( 'Трансферы по программе', 'zhiraf-ufa' ),
+					__( 'Русскоязычный гид', 'zhiraf-ufa' ),
+				),
+				'extra'    => array(
+					__( 'Багаж сверх нормы', 'zhiraf-ufa' ),
+					__( 'Билет на канатную дорогу «Крылья Татева»', 'zhiraf-ufa' ),
+					__( 'Входные билеты в музеи и монастыри', 'zhiraf-ufa' ),
+					__( 'Обеды, ужины и дополнительные дегустации', 'zhiraf-ufa' ),
+				),
+			),
+			'know_title'           => __( 'Что важно знать об Армении в 2026 году', 'zhiraf-ufa' ),
+			'know_cards'           => array(
+				array(
+					'title' => __( 'Сезонность', 'zhiraf-ufa' ),
+					'text'  => __( 'Лучшее время — апрель–май и сентябрь–октябрь. В июле–августе в Ереване выше +30 °C (ставим прогулки на утро/вечер), а зимой и в горах нужны тёплые вещи', 'zhiraf-ufa' ),
+					'icon'  => 'compass',
+				),
+				array(
+					'title' => __( 'Деньги и связь', 'zhiraf-ufa' ),
+					'text'  => __( 'Возьмите наличные (рубли, доллары или евро для обмена на драмы). Карты «Мир» работают ограниченно — в основном для снятия наличных в ВТБ (Армения). Связь: местные SIM/eSIM (Viva, Ucom, Team)', 'zhiraf-ufa' ),
+					'icon'  => 'credit-card',
+				),
+				array(
+					'title' => __( 'Обувь и переезды', 'zhiraf-ufa' ),
+					'text'  => __( 'Переезды между локациями на авто/микроавтобусе. У монастырей и на Каскаде много ступеней — берите нескользящую обувь и закрытую одежду для действующих храмов', 'zhiraf-ufa' ),
+					'icon'  => 'map',
+				),
+			),
+			'faq'                  => array(
+				array(
+					'q' => __( 'Можно ли поехать без загранпаспорта?', 'zhiraf-ufa' ),
+					'a' => __( 'Да, взрослым при прямом перелёте в Ереван/Гюмри — по внутреннему паспорту РФ. Для автобуса или транзита, а также детям до 14 лет нужен загранпаспорт.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Подходит ли экскурсионный тур детям?', 'zhiraf-ufa' ),
+					'a' => __( 'Для первой семейной поездки лучше Ереван, Гарни и Севан без дальних переездов и долгих винных дегустаций.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'За что придётся доплачивать на месте?', 'zhiraf-ufa' ),
+					'a' => __( 'Обеды/ужины, канатная дорога «Крылья Татева», доп. дегустации — фиксируем закрытый список до бронирования.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Какое питание обычно включено?', 'zhiraf-ufa' ),
+					'a' => __( 'Базово — завтраки в отеле. Мастер-класс по лавашу и дегустации не заменяют полноценный обед.', 'zhiraf-ufa' ),
+				),
+				array(
+					'q' => __( 'Безопасно ли ехать и можно ли менять маршрут?', 'zhiraf-ufa' ),
+					'a' => __( 'Туристические маршруты безопасны, но самостоятельные отклонения к приграничным районам с Азербайджаном не рекомендуются — все дальние выезды согласуем с принимающей стороной.', 'zhiraf-ufa' ),
+				),
+			),
+			'seo_details'          => array(
+				array(
+					'title' => __( 'Куда сходить вечером в Ереване (Каскад, Опера, Площадь Республики)', 'zhiraf-ufa' ),
+					'html'  => '<p>' . esc_html__( 'Вечером удобны Каскад с видом на Арарат, оперный театр и Площадь Республики. Закладываем время на кафе и прогулку без жары днём.', 'zhiraf-ufa' ) . '</p>',
+				),
+				array(
+					'title' => __( 'Гастрономия: хоровац, лаваш из тонира, вина Арени', 'zhiraf-ufa' ),
+					'html'  => '<p>' . esc_html__( 'Хоровац, лаваш из тонира и вина Арени/Воскеваза — в гастро-маршрутах. Дегустации и меню фиксируем до оплаты.', 'zhiraf-ufa' ) . '</p>',
+				),
+				array(
+					'title' => __( 'Правила въезда без загранпаспорта и рейсовый автобус из Уфы', 'zhiraf-ufa' ),
+					'html'  => '<p>' . esc_html__( 'При прямом авиарейсе взрослые въезжают по внутреннему паспорту РФ. Автобусные схемы и транзит — только с загранпаспортом; рейсовый автобус до Еревана считаем под запрос.', 'zhiraf-ufa' ) . '</p>',
+				),
+			),
+			'excursion_chips'      => array(
+				array( 'label' => __( 'Грузия', 'zhiraf-ufa' ), 'url' => '/tour/gruziya/' ),
+				array( 'label' => __( 'Узбекистан', 'zhiraf-ufa' ), 'url' => '/tour/uzbekistan/' ),
+				array( 'label' => __( 'Санкт-Петербург', 'zhiraf-ufa' ), 'url' => '/tour/sankt-peterburg/' ),
+				array( 'label' => __( 'Калининград', 'zhiraf-ufa' ), 'url' => '/tour/kaliningrad/' ),
+			),
+			'final_cta_title'      => __( 'Подберём маршрут по Армении под ваши даты и темп за 15 минут', 'zhiraf-ufa' ),
+			'quiz_prefill'         => __( 'Армения, экскурсионный тур из Уфы', 'zhiraf-ufa' ),
+			'modal_default_title'  => __( 'Программа по дням в мессенджер', 'zhiraf-ufa' ),
+			'modal_default_lead'   => __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' ),
+			'image'                => 'alt-armeniya-yerevan.jpg',
+			'image_alt'            => __( 'Армения — Каскад в Ереване', 'zhiraf-ufa' ),
+			'name'                 => __( 'Армения', 'zhiraf-ufa' ),
 		),
 	);
 

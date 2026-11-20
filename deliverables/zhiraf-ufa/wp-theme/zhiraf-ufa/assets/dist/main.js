@@ -1560,15 +1560,38 @@
     var activeTransport = 'all';
     var filterMode = root.getAttribute('data-excursion-filter-mode') || 'days';
 
-    function dayBucket(days) {
+    var dayRanges = {};
+    try {
+      dayRanges = JSON.parse(root.getAttribute('data-excursion-day-ranges') || '{}');
+    } catch (e) {
+      dayRanges = {};
+    }
+
+    function dayInRange(activeKey, days) {
+      if (activeKey === 'all') {
+        return true;
+      }
       var d = parseInt(days, 10);
-      if (d >= 3 && d <= 5) {
-        return '3-5';
+      if (isNaN(d)) {
+        return false;
       }
-      if (d >= 6 && d <= 9) {
-        return '6-9';
+      var range = dayRanges[activeKey];
+      if (range && range.length >= 2) {
+        return d >= range[0] && d <= range[1];
       }
-      return '';
+      if (activeKey === '3-5') {
+        return d >= 3 && d <= 5;
+      }
+      if (activeKey === '6-9') {
+        return d >= 6 && d <= 9;
+      }
+      if (activeKey === '4-5') {
+        return d >= 4 && d <= 5;
+      }
+      if (activeKey === '6-7') {
+        return d >= 6 && d <= 7;
+      }
+      return true;
     }
 
     function applyExcursionFilters() {
@@ -1580,8 +1603,7 @@
           var transport = card.getAttribute('data-program-transport') || 'avia';
           showSecondary = activeTransport === 'all' || activeTransport === transport;
         } else {
-          var bucket = dayBucket(card.getAttribute('data-program-days') || '');
-          showSecondary = activeDays === 'all' || activeDays === bucket;
+          showSecondary = dayInRange(activeDays, card.getAttribute('data-program-days') || '');
         }
         card.classList.toggle('is-hidden', !(showFormat && showSecondary));
       });

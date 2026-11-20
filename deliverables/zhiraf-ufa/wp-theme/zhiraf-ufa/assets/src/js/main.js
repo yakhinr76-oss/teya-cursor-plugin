@@ -1163,9 +1163,10 @@
     var resetBtn = qs('[data-turciya-catalog-reset]', showcase);
     var defaultTitle = showcase.getAttribute('data-catalog-default-title') || '';
     var defaultDesc = showcase.getAttribute('data-catalog-default-desc') || '';
+    var defaultFilter = showcase.getAttribute('data-catalog-default-filter') || 'starter';
     var pageSize = 6;
     var visibleLimit = pageSize;
-    var activeFilter = 'starter';
+    var activeFilter = defaultFilter;
     var currentMatched = [];
     var moreWrap = qs('[data-turciya-catalog-more-wrap]', showcase);
     var moreBtn = qs('[data-turciya-catalog-more]', showcase);
@@ -1429,7 +1430,7 @@
     }
 
     function resetToDefault() {
-      applyFilter('starter', defaultTitle, defaultDesc);
+      applyFilter(defaultFilter, defaultTitle, defaultDesc);
     }
 
     function metaFromButton(btn) {
@@ -1502,7 +1503,7 @@
       });
     }
 
-    applyCatalogFilter('starter', { title: defaultTitle, desc: defaultDesc });
+    applyCatalogFilter(defaultFilter, { title: defaultTitle, desc: defaultDesc });
   }
 
   initTurciyaCatalog();

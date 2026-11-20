@@ -61,7 +61,7 @@ if ( 'oae' === $dest_slug ) {
 	$cta_context = 'armeniya_catalog_under_grid_whatsapp';
 } elseif ( 'abkhaziya' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Не нашли отель в Абхазии — подберём под даты и трансфер из Адлера.', 'zhiraf-ufa' );
-	$default_strip = __( 'Не нашли свой отель? Сравним Гагру и Пицунду.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Подберём по Гагре, Пицунде, Новому Афону или Сухуму — или из полной базы.', 'zhiraf-ufa' );
 	$cta_context = 'abkhaziya_catalog_under_grid_whatsapp';
 } elseif ( 'rossiya' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Не нашли отель в России — подберём под даты и формат (пакет или только отель).', 'zhiraf-ufa' );

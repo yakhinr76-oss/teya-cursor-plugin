@@ -28,6 +28,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 THEME_ROOT = REPO_ROOT / "deliverables/zhiraf-ufa/wp-theme/zhiraf-ufa"
 OUT_ROOT = THEME_ROOT / "assets/img/excursions/candidates"
 PREVIEW_HTML = Path(__file__).resolve().parent / "preview_excursion_photos.html"
+PREVIEW_INDEX = OUT_ROOT / "index.html"
 
 MAX_WIDTH = 1200
 JPEG_QUALITY = 82
@@ -310,12 +311,43 @@ def process_slot(
         time.sleep(0.2)
 
 
+def manifest_item_candidates_path(item: SavedFile) -> str:
+    """Path relative to assets/img/excursions/candidates/ (for index.html beside photos)."""
+    prefix = "assets/img/excursions/candidates/"
+    if item.rel_jpg.startswith(prefix):
+        return item.rel_jpg[len(prefix) :]
+    return f"{item.country}/{item.slot_id}/{item.filename_jpg}"
+
+
+def load_manifest_rows() -> list[SavedFile]:
+    path = OUT_ROOT / "_manifest.json"
+    if not path.is_file():
+        return []
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    out: list[SavedFile] = []
+    for row in raw:
+        if not isinstance(row, dict):
+            continue
+        out.append(
+            SavedFile(
+                country=str(row.get("country", "")),
+                slot_id=str(row.get("slot_id", "")),
+                query=str(row.get("query", "")),
+                filename_jpg=str(row.get("filename_jpg", "")),
+                filename_webp=str(row.get("filename_webp", "")),
+                rel_jpg=str(row.get("rel_jpg", "")),
+                pexels_id=int(row.get("pexels_id") or 0),
+                photographer=str(row.get("photographer", "")),
+                alt=str(row.get("alt", "")),
+            )
+        )
+    return out
+
+
 def build_preview_html(manifest: list[SavedFile]) -> None:
     by_country: dict[str, dict[str, list[SavedFile]]] = {}
     for row in manifest:
         by_country.setdefault(row.country, {}).setdefault(row.slot_id, []).append(row)
-
-    preview_to_theme = os.path.relpath(THEME_ROOT, PREVIEW_HTML.parent).replace("\\", "/")
 
     sections: list[str] = []
     for country in ("gruziya", "uzbekistan", "armeniya"):
@@ -331,10 +363,11 @@ def build_preview_html(manifest: list[SavedFile]) -> None:
                 continue
             blocks.append(f"<h3>{slot_id}</h3><div class='grid'>")
             for item in items:
-                src = f"{preview_to_theme}/{item.rel_jpg}"
+                src_candidates = manifest_item_candidates_path(item)
                 blocks.append(
-                    f"<figure><a href='{src}' target='_blank' rel='noopener'>"
-                    f"<img src='{src}' alt='' loading='lazy' /></a>"
+                    f"<figure data-src-candidates='{src_candidates}'>"
+                    f"<a href='{src_candidates}' target='_blank' rel='noopener'>"
+                    f"<img src='{src_candidates}' alt='' loading='lazy' /></a>"
                     f"<figcaption><code>{item.filename_jpg}</code><br>"
                     f"<small>{item.query} · pexels {item.pexels_id} · {item.photographer}</small>"
                     f"</figcaption></figure>"
@@ -342,35 +375,74 @@ def build_preview_html(manifest: list[SavedFile]) -> None:
             blocks.append("</div>")
         sections.append("".join(blocks))
 
-    html = f"""<!DOCTYPE html>
+    css = """
+    body { font-family: system-ui, sans-serif; margin: 24px; background: #f6f4f0; color: #1a1a1a; }
+    h1 { font-size: 1.5rem; }
+    .note { background: #fff3e6; border: 1px solid #e8c9a8; padding: 12px 14px; border-radius: 10px; font-size: 14px; }
+    h2 { margin-top: 2.5rem; border-bottom: 2px solid #c85a32; padding-bottom: 6px; text-transform: capitalize; }
+    h3 { margin-top: 1.5rem; color: #555; font-size: 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    figure { margin: 0; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e0dbd4; }
+    img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    figcaption { padding: 10px 12px; font-size: 13px; line-height: 1.4; }
+    code { font-size: 11px; word-break: break-all; }
+    """
+
+    intro = """
+  <div class="note">
+    <strong>Как открыть (Windows):</strong> двойной клик по этому файлу в Проводнике
+    (<code>…/assets/img/excursions/candidates/index.html</code>), не в превью Cursor и не на GitHub.<br>
+    Нужна ветка <code>cursor/excursion-program-photos-7ec1</code> или новее — на <code>main</code> картинок пока нет.
+  </div>
+"""
+
+    html_index = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <title>Excursion photo candidates — Pexels</title>
-  <style>
-    body {{ font-family: system-ui, sans-serif; margin: 24px; background: #f6f4f0; color: #1a1a1a; }}
-    h1 {{ font-size: 1.5rem; }}
-    h2 {{ margin-top: 2.5rem; border-bottom: 2px solid #c85a32; padding-bottom: 6px; text-transform: capitalize; }}
-    h3 {{ margin-top: 1.5rem; color: #555; font-size: 1rem; }}
-  .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }}
-    figure {{ margin: 0; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e0dbd4; }}
-    img {{ width: 100%; height: 200px; object-fit: cover; display: block; }}
-    figcaption {{ padding: 10px 12px; font-size: 13px; line-height: 1.4; }}
-    code {{ font-size: 11px; word-break: break-all; }}
-  </style>
+  <title>Экскурсии — кандидаты Pexels</title>
+  <style>{css}</style>
 </head>
 <body>
   <h1>Кандидаты фото для экскурсионных лендингов</h1>
-  <p>Откройте этот файл с диска или через <code>python3 -m http.server</code> в корне репозитория.</p>
+  {intro}
   {''.join(sections)}
 </body>
 </html>
 """
-    PREVIEW_HTML.write_text(html, encoding="utf-8")
-    print(f"Preview: {PREVIEW_HTML}")
+
+    # Primary: next to JPEGs (relative paths gruziya/hero/…)
+    OUT_ROOT.mkdir(parents=True, exist_ok=True)
+    PREVIEW_INDEX.write_text(html_index, encoding="utf-8")
+
+    # Legacy copy in scripts/: rewrite img src to ../deliverables/… for http.server from repo root
+    html_scripts = html_index
+    for row in manifest:
+        rel_c = manifest_item_candidates_path(row)
+        preview_to_theme = os.path.relpath(THEME_ROOT, PREVIEW_HTML.parent).replace("\\", "/")
+        long_src = f"{preview_to_theme}/{row.rel_jpg}"
+        html_scripts = html_scripts.replace(f"href='{rel_c}'", f"href='{long_src}'", 1)
+        html_scripts = html_scripts.replace(f"src='{rel_c}'", f"src='{long_src}'", 1)
+    html_scripts = html_scripts.replace(
+        "index.html</code>",
+        "index.html</code> (копия для сервера из корня репо)",
+        1,
+    )
+    PREVIEW_HTML.write_text(html_scripts, encoding="utf-8")
+
+    print(f"Preview (откройте этот): {PREVIEW_INDEX}")
+    print(f"Also: {PREVIEW_HTML}")
 
 
 def main() -> int:
+    if "--preview-only" in sys.argv:
+        manifest = load_manifest_rows()
+        if not manifest:
+            print(f"No manifest at {OUT_ROOT / '_manifest.json'}", file=sys.stderr)
+            return 1
+        build_preview_html(manifest)
+        return 0
+
     load_dotenv()
     api_key = os.environ.get("PEXELS_API_KEY", "").strip()
     if not api_key:

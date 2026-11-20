@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.69-home-mow-hub-6' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.70-resort-hub-cards' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -21,6 +21,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/assets.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landings-moscow-content.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landings-moscow.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-landings.php';
+require_once ZHIRAF_UFA_DIR . '/inc/resort-hub-links.php';
 require_once ZHIRAF_UFA_DIR . '/inc/destination-intent-blocks.php';
 require_once ZHIRAF_UFA_DIR . '/inc/curated-destination-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/turciya-curated-landing.php';

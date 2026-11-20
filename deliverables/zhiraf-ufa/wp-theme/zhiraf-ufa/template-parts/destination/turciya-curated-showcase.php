@@ -53,10 +53,34 @@ if ( 'oae' === $dest_slug ) {
 	$fill_text   = __( 'Здравствуйте! На странице Сейшел в выбранной категории нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: SC-FILL', 'zhiraf-ufa' );
 	$fill_uon_id = 'SC-FILL';
 	$fill_tour   = __( 'Сейшелы, индивидуальный подбор', 'zhiraf-ufa' );
-} else {
+} elseif ( 'kitaj' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! На странице Саньи в выбранной категории нужен ещё вариант под наши даты и состав. Пришлите 2–3 варианта из базы. ID: CN-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'CN-FILL';
+	$fill_tour   = __( 'Санья, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'uzbekistan' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! По Узбекистану в выбранной категории нужен ещё отель под даты и состав. ID: UZ-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'UZ-FILL';
+	$fill_tour   = __( 'Узбекистан, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'armeniya' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! По Армении в выбранной категории нужен ещё отель под даты и состав. ID: AM-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'AM-FILL';
+	$fill_tour   = __( 'Армения, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'abkhaziya' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! По Абхазии в выбранной категории нужен ещё отель под даты и трансфер. ID: AB-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'AB-FILL';
+	$fill_tour   = __( 'Абхазия, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'rossiya' === $dest_slug ) {
+	$fill_text   = __( 'Здравствуйте! По России в выбранной категории нужен ещё отель под даты и формат. ID: RU-FILL', 'zhiraf-ufa' );
+	$fill_uon_id = 'RU-FILL';
+	$fill_tour   = __( 'Россия, индивидуальный подбор', 'zhiraf-ufa' );
+} elseif ( 'turciya' === $dest_slug ) {
 	$fill_text   = __( 'Здравствуйте! На странице Турции в выбранной категории 5 отелей — нужен ещё вариант под наши даты и состав (возраст детей: __). Вылет из Уфы. Пришлите 2–3 варианта из базы. ID подбора: TR-FILL', 'zhiraf-ufa' );
 	$fill_uon_id = 'TR-FILL';
 	$fill_tour   = __( 'Турция, индивидуальный подбор', 'zhiraf-ufa' );
+} else {
+	$fill_text   = __( 'Здравствуйте! В выбранной категории нужен ещё отель под наши даты и состав. Пришлите 2–3 варианта из базы.', 'zhiraf-ufa' );
+	$fill_uon_id = strtoupper( preg_replace( '/[^a-z]/', '', $dest_slug ) ) . '-FILL';
+	$fill_tour   = __( 'Индивидуальный подбор', 'zhiraf-ufa' );
 }
 
 $fill_emirate_labels = array();
@@ -78,6 +102,16 @@ if ( 'oae' === $dest_slug && function_exists( 'zhiraf_ufa_oae_catalog_fill_emira
 	$fill_emirate_labels = zhiraf_ufa_india_catalog_fill_resort_labels();
 } elseif ( 'sejshely' === $dest_slug && function_exists( 'zhiraf_ufa_seychelles_catalog_fill_resort_labels' ) ) {
 	$fill_emirate_labels = zhiraf_ufa_seychelles_catalog_fill_resort_labels();
+} elseif ( 'kitaj' === $dest_slug && function_exists( 'zhiraf_ufa_kitaj_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_kitaj_catalog_fill_resort_labels();
+} elseif ( 'uzbekistan' === $dest_slug && function_exists( 'zhiraf_ufa_uzbekistan_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_uzbekistan_catalog_fill_resort_labels();
+} elseif ( 'armeniya' === $dest_slug && function_exists( 'zhiraf_ufa_armeniya_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_armeniya_catalog_fill_resort_labels();
+} elseif ( 'abkhaziya' === $dest_slug && function_exists( 'zhiraf_ufa_abkhaziya_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_abkhaziya_catalog_fill_resort_labels();
+} elseif ( 'rossiya' === $dest_slug && function_exists( 'zhiraf_ufa_rossiya_catalog_fill_resort_labels' ) ) {
+	$fill_emirate_labels = zhiraf_ufa_rossiya_catalog_fill_resort_labels();
 }
 $fill_wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' )
 	? zhiraf_ufa_brand_whatsapp_url()
@@ -193,8 +227,13 @@ if ( empty( $hotels ) ) {
 						'indoneziya' => __( 'Бали', 'zhiraf-ufa' ),
 						'indiya'     => __( 'Гоа', 'zhiraf-ufa' ),
 						'sejshely'   => __( 'Сейшел', 'zhiraf-ufa' ),
+						'kitaj'      => __( 'Саньи', 'zhiraf-ufa' ),
+						'uzbekistan' => __( 'Узбекистана', 'zhiraf-ufa' ),
+						'armeniya'   => __( 'Армении', 'zhiraf-ufa' ),
+						'abkhaziya'  => __( 'Абхазии', 'zhiraf-ufa' ),
+						'rossiya'    => __( 'России', 'zhiraf-ufa' ),
 					);
-					$pool_country        = $pool_country_labels[ $dest_slug ] ?? $pool_country_labels['turciya'];
+					$pool_country        = $pool_country_labels[ $dest_slug ] ?? __( 'направления', 'zhiraf-ufa' );
 					printf(
 						/* translators: 1: hotels count beyond first six, 2: destination name in genitive or fixed label */
 						esc_html__( 'В нашей базе ещё %1$d проверенных отелей %2$s под любые даты и состав семьи.', 'zhiraf-ufa' ),

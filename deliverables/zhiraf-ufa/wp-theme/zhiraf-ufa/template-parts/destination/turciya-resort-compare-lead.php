@@ -21,8 +21,12 @@ $dest_slug = ! empty( $args['dest_slug'] ) ? sanitize_key( (string) $args['dest_
 				echo esc_html( $compare_title );
 			} elseif ( ! empty( $dest['curated_compare_lead_default'] ) ) {
 				echo esc_html( $dest['curated_compare_lead_default'] );
-			} else {
+			} elseif ( 'turciya' === $dest_slug ) {
 				esc_html_e( 'Сравним Кемер и Сиде под ваш бюджет за 15 минут', 'zhiraf-ufa' );
+			} else {
+				$dest_name = ! empty( $dest['name'] ) ? (string) $dest['name'] : $dest_slug;
+				/* translators: %s: destination name */
+				echo esc_html( sprintf( __( 'Подберём отель по направлению «%s» за 15 минут', 'zhiraf-ufa' ), $dest_name ) );
 			}
 			?>
 		</h2>

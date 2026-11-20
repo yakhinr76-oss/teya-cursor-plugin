@@ -22,7 +22,29 @@ if ( empty( $filters ) ) {
 	return;
 }
 
-$starter = $filters[0];
+$starter = null;
+foreach ( $filters as $filter ) {
+	if ( ! is_array( $filter ) ) {
+		continue;
+	}
+	$group = ! empty( $filter['group'] ) ? (string) $filter['group'] : '';
+	$fid   = ! empty( $filter['id'] ) ? (string) $filter['id'] : '';
+	if ( 'default' === $group || 'starter' === $fid ) {
+		$starter = $filter;
+		break;
+	}
+}
+if ( ! $starter ) {
+	foreach ( $filters as $filter ) {
+		if ( is_array( $filter ) && ! empty( $filter['id'] ) && ! empty( $filter['label'] ) ) {
+			$starter = $filter;
+			break;
+		}
+	}
+}
+if ( ! $starter ) {
+	return;
+}
 $resorts = array();
 $needs   = array();
 $hide_resort_tabs = function_exists( 'zhiraf_ufa_curated_has_resort_pick_cards' )

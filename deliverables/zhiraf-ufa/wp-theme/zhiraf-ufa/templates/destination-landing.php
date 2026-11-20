@@ -77,13 +77,15 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 							<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
 						<?php endif; ?>
 						<?php
-						$show_hero_compare = ! isset( $dest['curated_hero_show_compare'] ) || ! empty( $dest['curated_hero_show_compare'] );
+						$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
+						if ( empty( $hero_compare_btn ) && ! empty( $dest['curated_compare_btn_default'] ) ) {
+							$hero_compare_btn = (string) $dest['curated_compare_btn_default'];
+						}
+						$show_hero_compare = ! empty( $hero_compare_btn );
+						if ( isset( $dest['curated_hero_show_compare'] ) ) {
+							$show_hero_compare = ! empty( $hero_compare_btn ) && ! empty( $dest['curated_hero_show_compare'] );
+						}
 						if ( $show_hero_compare ) :
-							$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';
-							if ( empty( $hero_compare_btn ) && ! empty( $dest['curated_compare_btn_default'] ) ) {
-								$hero_compare_btn = (string) $dest['curated_compare_btn_default'];
-							}
-							$hero_compare_btn = ! empty( $hero_compare_btn ) ? $hero_compare_btn : __( 'Сравнить Кемер и Сиде', 'zhiraf-ufa' );
 							?>
 							<button type="button" class="btn btn--outline btn--lg" data-turciya-lead-open data-curated-lead-open><?php echo esc_html( $hero_compare_btn ); ?></button>
 						<?php endif; ?>
@@ -105,16 +107,16 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 						? $dest['curated_hero_trust']
 						: array(
 							array(
-								'icon' => '✈️',
-								'text' => __( 'Прямой рейс из Уфы (в пути ~4.5–5 часов)', 'zhiraf-ufa' ),
-							),
-							array(
 								'icon' => '📅',
-								'text' => __( 'Вылеты каждый день (подберем под ваш отпуск)', 'zhiraf-ufa' ),
+								'text' => __( 'Вылеты подберём под ваши даты отпуска', 'zhiraf-ufa' ),
 							),
 							array(
 								'icon' => '🛡️',
-								'text' => __( 'Честные цены (включая топливные сборы и страховку)', 'zhiraf-ufa' ),
+								'text' => __( 'Честные цены: сборы и страховка в расчёте', 'zhiraf-ufa' ),
+							),
+							array(
+								'icon' => '💬',
+								'text' => __( 'Ответим в WhatsApp за 15 минут в рабочее время', 'zhiraf-ufa' ),
 							),
 						);
 					?>

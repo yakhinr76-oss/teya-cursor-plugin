@@ -1,6 +1,6 @@
 <?php
 /**
- * Thailand (/tour/abkhaziya/) curated landing — 6 starters + pool from abkhaziya_hotels_25.json.
+ * Abkhazia (/tour/abkhaziya/) curated landing — 6 starters + pool from abkhaziya_hotels_25.json.
  *
  * @package Zhiraf_Ufa
  */
@@ -20,7 +20,7 @@ function zhiraf_ufa_abkhaziya_hub_min_price_rub() {
 		}
 	}
 
-	return (int) apply_filters( 'zhiraf_ufa_abkhaziya_base_price_rub', 185000 );
+	return (int) apply_filters( 'zhiraf_ufa_abkhaziya_base_price_rub', 65000 );
 }
 
 /**
@@ -53,7 +53,7 @@ function zhiraf_ufa_abkhaziya_json_rows() {
 }
 
 /**
- * Resort filter keys for a JSON row (gagra, pattaya, khaolak, samui).
+ * Resort filter keys for a JSON row (phuket, pattaya, khaolak, samui).
  *
  * @param array<string,mixed> $row JSON row.
  * @return string[]
@@ -61,7 +61,7 @@ function zhiraf_ufa_abkhaziya_json_rows() {
 function zhiraf_ufa_abkhaziya_resort_keys_from_row( array $row ) {
 	$region = ! empty( $row['region'] ) ? sanitize_key( (string) $row['region'] ) : '';
 	$keys   = array();
-	foreach ( array( 'gagra', 'picunda', 'sukhum', 'novyj_afon' ) as $allowed ) {
+	foreach ( array( 'gagra', 'pitsunda', 'new_afon', 'sukhum' ) as $allowed ) {
 		if ( $region === $allowed ) {
 			$keys[] = $allowed;
 		}
@@ -69,11 +69,10 @@ function zhiraf_ufa_abkhaziya_resort_keys_from_row( array $row ) {
 	return $keys;
 }
 
-
 /**
- * Hub anchor — отдельных курортных URL для Абхазияа нет (редирект с /gagra/).
+ * Hub anchor — отдельных курортных URL для Абхазии нет (якорь каталога).
  *
- * @param string $resort_key gagra|pattaya|khaolak|samui.
+ * @param string $resort_key phuket|pattaya|khaolak|samui.
  * @return string
  */
 function zhiraf_ufa_abkhaziya_resort_landing_url( $resort_key ) {
@@ -89,10 +88,8 @@ function zhiraf_ufa_abkhaziya_resort_landing_url( $resort_key ) {
  */
 function zhiraf_ufa_abkhaziya_catalog_fill_resort_labels() {
 	return array(
-		'resort-gagra'  => __( 'Пхукете', 'zhiraf-ufa' ),
-		'resort-pattaya' => __( 'Паттайе', 'zhiraf-ufa' ),
-		'resort-khaolak' => __( 'Као-Лаке', 'zhiraf-ufa' ),
-		'resort-samui'   => __( 'Самуи', 'zhiraf-ufa' ),
+		'resort-gagra' => __( 'Гагре', 'zhiraf-ufa' ),
+		'resort-pitsunda' => __( 'Пицунде', 'zhiraf-ufa' ),
 	);
 }
 
@@ -170,7 +167,7 @@ function zhiraf_ufa_abkhaziya_pool_price_rub( $row ) {
 	$cat = ! empty( $row['category_slug'] ) ? sanitize_key( (string) $row['category_slug'] ) : 'balance';
 	switch ( $cat ) {
 		case 'family':
-			return 60000;
+			return 198000;
 		case 'couples':
 			return 218000;
 		case 'premium':
@@ -238,13 +235,22 @@ function zhiraf_ufa_abkhaziya_pool_card_caveat( $row ) {
  * @param array<string,mixed> $row JSON row.
  * @return string
  */
-function zhiraf_ufa_abkhaziya_pool_resort_pill( $hotel ) {
-	$resort = $hotel['resort'] ?? '';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Гагра' ) ) ) return 'gagra';
-	if ( str_contains( mb_strtolower( $resort ), mb_strtolower( 'Пицунда' ) ) ) return 'picunda';
-	return 'gagra';
+function zhiraf_ufa_abkhaziya_pool_resort_pill( array $row ) {
+	$resort = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
+	if ( '' !== $resort ) {
+		$parts = explode( ',', $resort );
+		return trim( $parts[0] );
+	}
+	$keys = zhiraf_ufa_abkhaziya_resort_keys_from_row( $row );
+	$labels = array(
+		'gagra' => __( 'Гагра', 'zhiraf-ufa' ),
+		'pitsunda' => __( 'Пицунда', 'zhiraf-ufa' ),
+	);
+	if ( ! empty( $keys[0] ) && isset( $labels[ $keys[0] ] ) ) {
+		return $labels[ $keys[0] ];
+	}
+	return __( 'Абхазия', 'zhiraf-ufa' );
 }
-
 
 /**
  * Unique theme fallbacks so six starters do not share one stock photo.
@@ -256,7 +262,6 @@ function zhiraf_ufa_abkhaziya_image_from_json_row( array $row ) {
 	$pool_id = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$photos  = ! empty( $row['photos'] ) && is_array( $row['photos'] ) ? $row['photos'] : array();
 	$first   = isset( $photos[0] ) ? trim( (string) $photos[0] ) : '';
-
 	if ( preg_match( '#^https://#i', $first ) ) {
 		return array(
 			'image'        => $first,
@@ -265,7 +270,6 @@ function zhiraf_ufa_abkhaziya_image_from_json_row( array $row ) {
 			'image_height' => 0,
 		);
 	}
-
 	if ( '' !== $first && defined( 'ZHIRAF_UFA_DIR' ) ) {
 		foreach ( array( 'hotels/abkhaziya/' . $first, $first ) as $rel ) {
 			if ( is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $rel ) ) {
@@ -278,27 +282,10 @@ function zhiraf_ufa_abkhaziya_image_from_json_row( array $row ) {
 			}
 		}
 	}
-
-	$id_fallbacks = array(
-		1  => 'dest-abkhaziya.jpg',
-		3  => 'dest-abkhaziya-new.jpg',
-		5  => 'country-abkhaziya.jpg',
-		6  => 'hero-abkhaziya.jpg',
-		16 => 'dest-abkhaziya.jpg',
-		23 => 'dest-abkhaziya-new.jpg',
-	);
-	$region_fb    = array(
-		'gagra'  => 'dest-abkhaziya.jpg',
-		'pattaya' => 'dest-abkhaziya-new.jpg',
-		'khaolak' => 'country-abkhaziya.jpg',
-		'samui'   => 'hero-abkhaziya.jpg',
-	);
-	$fallback     = ! empty( $id_fallbacks[ $pool_id ] ) ? $id_fallbacks[ $pool_id ] : 'hero-abkhaziya.jpg';
-	$region       = ! empty( $row['region'] ) ? sanitize_key( (string) $row['region'] ) : '';
-	if ( isset( $region_fb[ $region ] ) && 'hero-abkhaziya.jpg' === $fallback ) {
-		$fallback = $region_fb[ $region ];
+	$fallback = 'dest-abkhazia.jpg';
+	if ( ! is_readable( ZHIRAF_UFA_DIR . '/assets/images/' . $fallback ) ) {
+		$fallback = 'dest-abkhazia.jpg';
 	}
-
 	return array(
 		'image'        => $fallback,
 		'image_remote' => false,
@@ -312,11 +299,14 @@ function zhiraf_ufa_abkhaziya_image_from_json_row( array $row ) {
  */
 function zhiraf_ufa_abkhaziya_starter_definitions() {
 	return array(
-		array( 'title' => __( 'Гагра', 'zhiraf-ufa' ), 'url' => home_url( '/tour/abkhaziya/#resort-gagra' ) ),
-		array( 'title' => __( 'Пицунда', 'zhiraf-ufa' ), 'url' => home_url( '/tour/abkhaziya/#resort-picunda' ) ),
+		array( 'json_id' => 17, 'slot' => 'gagra' ),
+		array( 'json_id' => 18, 'slot' => 'gagra' ),
+		array( 'json_id' => 8, 'slot' => 'pitsunda' ),
+		array( 'json_id' => 16, 'slot' => 'gagra' ),
+		array( 'json_id' => 11, 'slot' => 'new_afon' ),
+		array( 'json_id' => 19, 'slot' => 'balance' ),
 	);
 }
-
 
 /**
  * @param array<string,mixed> $hotel Card with slot / filter tags.
@@ -575,30 +565,31 @@ function zhiraf_ufa_abkhaziya_catalog_hotels() {
  */
 function zhiraf_ufa_abkhaziya_catalog_filters() {
 	return array(
-		'resort-gagra'   => array( 'label' => __( 'Гагра', 'zhiraf-ufa' ), 'category' => 'all' ),
-		'resort-picunda' => array( 'label' => __( 'Пицунда', 'zhiraf-ufa' ), 'category' => 'all' ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Отдых в Абхазии: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Гагра и Пицунда — трансфер из Адлера.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-gagra', 'group' => 'resort', 'label' => __( '🌊 Гагра', 'zhiraf-ufa' ), 'title' => __( 'Гагра', 'zhiraf-ufa' ), 'desc' => __( 'Ближе к границе.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-pitsunda', 'group' => 'resort', 'label' => __( '🌲 Пицунда', 'zhiraf-ufa' ), 'title' => __( 'Пицунда', 'zhiraf-ufa' ), 'desc' => __( 'Сосны и чистое море.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологий заход.', 'zhiraf-ufa' ) ),
 	);
 }
-
 
 /**
  * @return array{title:string,desc:string,eyebrow:string}
  */
 function zhiraf_ufa_abkhaziya_catalog_default_copy() {
-	return array( 'title' => __( 'Отели в Абхазии', 'zhiraf-ufa' ), 'subtitle' => __( 'Санатории и пансионаты', 'zhiraf-ufa' ) );
-}
+	$filters = zhiraf_ufa_abkhaziya_catalog_filters();
 
+	return array(
+		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
+		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Абхазии', 'zhiraf-ufa' ),
+		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
+	);
+}
 
 /**
  * @return array<string,int>
  */
 function zhiraf_ufa_abkhaziya_resort_hotel_counts() {
-	$counts = array(
-		'gagra'  => 0,
-		'pattaya' => 0,
-		'khaolak' => 0,
-		'samui'   => 0,
-	);
+	$counts = array();
 	foreach ( zhiraf_ufa_abkhaziya_catalog_hotels() as $hotel ) {
 		$tags = ! empty( $hotel['filter_tags'] ) && is_array( $hotel['filter_tags'] ) ? $hotel['filter_tags'] : array();
 		foreach ( $tags as $tag ) {
@@ -606,12 +597,12 @@ function zhiraf_ufa_abkhaziya_resort_hotel_counts() {
 				continue;
 			}
 			$key = substr( (string) $tag, 7 );
-			if ( isset( $counts[ $key ] ) ) {
-				++$counts[ $key ];
+			if ( ! isset( $counts[ $key ] ) ) {
+				$counts[ $key ] = 0;
 			}
+			++$counts[ $key ];
 		}
 	}
-
 	return $counts;
 }
 
@@ -620,30 +611,34 @@ function zhiraf_ufa_abkhaziya_resort_hotel_counts() {
  */
 function zhiraf_ufa_abkhaziya_resort_chips() {
 	return array(
-		'gagra'   => array( 'label' => __( 'Гагра', 'zhiraf-ufa' ), 'desc' => __( 'Близко к границе.', 'zhiraf-ufa' ) ),
-		'picunda' => array( 'label' => __( 'Пицунда', 'zhiraf-ufa' ), 'desc' => __( 'Сосны и чистое море.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-gagra', 'label' => __( 'Гагра', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-pitsunda', 'label' => __( 'Пицунда', 'zhiraf-ufa' ) ),
 	);
 }
-
 
 /**
  * Four resort pick cards in one row on desktop.
  *
  * @return array<int,array<string,mixed>>
  */
-function zhiraf_ufa_abkhaziya_resort_pick_cards( $counts = array() ) {
-	$guide = __( 'Гид по курорту', 'zhiraf-ufa' );
+function zhiraf_ufa_abkhaziya_resort_pick_cards() {
+	$counts = zhiraf_ufa_abkhaziya_resort_hotel_counts();
+	$guide = __( 'К отелям →', 'zhiraf-ufa' );
 	return array(
-		array( 'id' => 'gagra', 'filter_id' => 'resort-gagra', 'guide_url' => zhiraf_ufa_abkhaziya_resort_landing_url( 'gagra' ), 'guide_label' => $guide, 'name' => __( 'Гагра', 'zhiraf-ufa' ), 'subtitle' => __( 'Ближе к Сочи', 'zhiraf-ufa' ), 'tag' => __( 'Популярно', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Переход границы', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['gagra'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
+		array( 'id' => 'gagra', 'filter_id' => 'resort-gagra', 'guide_url' => zhiraf_ufa_abkhaziya_resort_landing_url( 'gagra' ), 'guide_label' => $guide, 'name' => __( 'Гагра', 'zhiraf-ufa' ), 'subtitle' => __( 'Набережная', 'zhiraf-ufa' ), 'tag' => __( 'Популярно', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Из Адлера', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['gagra'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
+		array( 'id' => 'pitsunda', 'filter_id' => 'resort-pitsunda', 'guide_url' => zhiraf_ufa_abkhaziya_resort_landing_url( 'pitsunda' ), 'guide_label' => $guide, 'name' => __( 'Пицунда', 'zhiraf-ufa' ), 'subtitle' => __( 'Тишина', 'zhiraf-ufa' ), 'tag' => __( 'С семьёй', 'zhiraf-ufa' ), 'tag_mod' => 'nature', 'transfer' => __( '1–1,5 ч от Адлера', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['pitsunda'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array() ),
 	);
 }
-
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_abkhaziya_expert_nuances() {
 	return array(
-		array( 'icon' => '🛂', 'title' => __( 'Российский паспорт', 'zhiraf-ufa' ), 'text' => __( 'Для въезда достаточно внутреннего паспорта.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🛂', 'title' => __( 'Паспорт РФ', 'zhiraf-ufa' ), 'text' => __( 'Внутренний паспорт и рубли — без заграна.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🚐', 'title' => __( 'Трансфер', 'zhiraf-ufa' ), 'text' => __( 'Встреча в Адлере и довоз до отеля — согласуем до оплаты.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '🌲', 'title' => __( 'Гагра vs Пицунда', 'zhiraf-ufa' ), 'text' => __( 'Гагра — инфраструктура; Пицунда — сосны и спокойный пляж.', 'zhiraf-ufa' ) ),
 	);
 }
+

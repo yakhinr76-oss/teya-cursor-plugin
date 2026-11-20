@@ -47,10 +47,43 @@ if ( 'oae' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Не нашли подходящий отель в подборке Мальдив — нужны ещё варианты с вылетом из Уфы под наши даты и состав.', 'zhiraf-ufa' );
 	$default_strip = __( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы или сравним катер и сиампан под бюджет.', 'zhiraf-ufa' );
 	$cta_context = 'maldives_catalog_under_grid_whatsapp';
-} else {
+} elseif ( 'kitaj' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель в подборке Саньи — нужны варианты под наши даты и состав.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы или сравним Дадунхай и Ялунвань.', 'zhiraf-ufa' );
+	$cta_context = 'kitaj_catalog_under_grid_whatsapp';
+} elseif ( 'uzbekistan' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель по маршруту Узбекистана — подберём под даты и состав.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Сравним Самарканд и Бухару под ваш бюджет.', 'zhiraf-ufa' );
+	$cta_context = 'uzbekistan_catalog_under_grid_whatsapp';
+} elseif ( 'armeniya' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель в Армении — подберём под даты и состав.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Сравним Ереван и Севан.', 'zhiraf-ufa' );
+	$cta_context = 'armeniya_catalog_under_grid_whatsapp';
+} elseif ( 'abkhaziya' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель в Абхазии — подберём под даты и трансфер из Адлера.', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Сравним Гагру и Пицунду.', 'zhiraf-ufa' );
+	$cta_context = 'abkhaziya_catalog_under_grid_whatsapp';
+} elseif ( 'rossiya' === $dest_slug ) {
+	$wa_text = __( 'Здравствуйте! Не нашли отель в России — подберём под даты и формат (пакет или только отель).', 'zhiraf-ufa' );
+	$default_strip = __( 'Не нашли свой отель? Подскажем Сочи, Кавминводы или Калининград.', 'zhiraf-ufa' );
+	$cta_context = 'rossiya_catalog_under_grid_whatsapp';
+} elseif ( 'turciya' === $dest_slug ) {
 	$wa_text = __( 'Здравствуйте! Не нашли подходящий отель в подборке на странице Турции — нужны ещё варианты с вылетом из Уфы под наши даты и состав.', 'zhiraf-ufa' );
 	$default_strip = __( 'Не нашли свой отель в шестёрке? Напишите — подберём из всей базы или сравним Кемер и Сиде под бюджет.', 'zhiraf-ufa' );
 	$cta_context = 'turciya_catalog_under_grid_whatsapp';
+} else {
+	$dest_name = $dest_slug;
+	if ( function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+		$dest_row = zhiraf_ufa_get_destination_landing( $dest_slug );
+		if ( is_array( $dest_row ) && ! empty( $dest_row['name'] ) ) {
+			$dest_name = (string) $dest_row['name'];
+		}
+	}
+	/* translators: %s: destination name */
+	$wa_text = sprintf( __( 'Здравствуйте! Не нашли отель в подборке «%s» — нужны варианты под наши даты и состав.', 'zhiraf-ufa' ), $dest_name );
+	/* translators: %s: destination name */
+	$default_strip = sprintf( __( 'Не нашли свой отель в шестёрке? Напишите — подберём из базы по направлению «%s».', 'zhiraf-ufa' ), $dest_name );
+	$cta_context   = $dest_slug . '_catalog_under_grid_whatsapp';
 }
 
 $wa_base = function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018';

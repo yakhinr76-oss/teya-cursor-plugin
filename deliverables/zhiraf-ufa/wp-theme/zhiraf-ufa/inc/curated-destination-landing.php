@@ -20,6 +20,82 @@ function zhiraf_ufa_destination_uses_curated_landing( $dest ) {
 }
 
 /**
+ * H2 for expert nuances block (no Turkey fallback).
+ *
+ * @param string              $dest_slug Landing slug.
+ * @param array<string,mixed> $dest      Optional landing row.
+ * @return string
+ */
+function zhiraf_ufa_curated_expert_section_title( $dest_slug, $dest = array() ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	$labels    = array(
+		'turciya'    => __( 'Турции', 'zhiraf-ufa' ),
+		'oae'        => __( 'ОАЭ', 'zhiraf-ufa' ),
+		'egipet'     => __( 'Египте', 'zhiraf-ufa' ),
+		'tailand'    => __( 'Таиланде', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Мальдивах', 'zhiraf-ufa' ),
+		'vietnam'    => __( 'Вьетнаме', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланке', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Бали', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Гоа', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Сейшелах', 'zhiraf-ufa' ),
+		'kitaj'      => __( 'Китае (Хайнань)', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Узбекистане', 'zhiraf-ufa' ),
+		'armeniya'   => __( 'Армении', 'zhiraf-ufa' ),
+		'abkhaziya'  => __( 'Абхазии', 'zhiraf-ufa' ),
+		'rossiya'    => __( 'России', 'zhiraf-ufa' ),
+	);
+	$place     = $labels[ $dest_slug ] ?? '';
+	if ( '' === $place && ! empty( $dest['name'] ) ) {
+		$place = (string) $dest['name'];
+	}
+	if ( '' === $place ) {
+		return __( 'Что важно знать перед поездкой в этом сезоне', 'zhiraf-ufa' );
+	}
+
+	/* translators: %s: destination name in prepositional case or short label */
+	return sprintf( __( 'Что важно знать о %s в этом сезоне', 'zhiraf-ufa' ), $place );
+}
+
+/**
+ * H2 for resort pick cards (no Turkey fallback).
+ *
+ * @param string              $dest_slug Landing slug.
+ * @param array<string,mixed> $dest      Optional landing row.
+ * @return string
+ */
+function zhiraf_ufa_curated_resort_pick_section_title( $dest_slug, $dest = array() ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+	$titles    = array(
+		'turciya'    => __( 'Какой курорт Турции выбрать именно вам?', 'zhiraf-ufa' ),
+		'oae'        => __( 'Какой эмират ОАЭ выбрать именно вам?', 'zhiraf-ufa' ),
+		'egipet'     => __( 'Какой курорт Египта выбрать именно вам?', 'zhiraf-ufa' ),
+		'tailand'    => __( 'Какой курорт Таиланда выбрать именно вам?', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Какой атолл Мальдив выбрать именно вам?', 'zhiraf-ufa' ),
+		'vietnam'    => __( 'Какой курорт Вьетнама выбрать именно вам?', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Какое побережье Шри-Ланки выбрать именно вам?', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Какой курорт Бали выбрать именно вам?', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Какую часть Гоа выбрать именно вам?', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Какой остров Сейшел выбрать именно вам?', 'zhiraf-ufa' ),
+		'kitaj'      => __( 'Какую бухту Саньи выбрать?', 'zhiraf-ufa' ),
+		'uzbekistan' => __( 'Какой город маршрута выбрать?', 'zhiraf-ufa' ),
+		'armeniya'   => __( 'Ереван или регионы — что выбрать?', 'zhiraf-ufa' ),
+		'abkhaziya'  => __( 'Гагра или Пицунда — что выбрать?', 'zhiraf-ufa' ),
+		'rossiya'    => __( 'Куда поехать в России из Уфы?', 'zhiraf-ufa' ),
+	);
+
+	if ( ! empty( $titles[ $dest_slug ] ) ) {
+		return $titles[ $dest_slug ];
+	}
+	if ( ! empty( $dest['name'] ) ) {
+		/* translators: %s: country name */
+		return sprintf( __( 'Куда поехать в %s — подсказка за 10 секунд', 'zhiraf-ufa' ), (string) $dest['name'] );
+	}
+
+	return __( 'Куда поехать — подсказка за 10 секунд', 'zhiraf-ufa' );
+}
+
+/**
  * Curated hotel pool for showcase grid.
  *
  * @param string $dest_slug Destination slug (e.g. turciya, oae).

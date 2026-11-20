@@ -1,6 +1,6 @@
 <?php
 /**
- * Destination landing (Moscow departure): /tour/armeniya/.
+ * Destination landing (Ufa departure): /tour/armeniya/.
  *
  * @package Zhiraf_Ufa
  */

@@ -59,15 +59,38 @@ function zhiraf_ufa_armeniya_json_rows() {
  * @return string[]
  */
 function zhiraf_ufa_armeniya_resort_keys_from_row( array $row ) {
+	$allowed = array( 'yerevan', 'dilijan', 'tsaghkadzor', 'jermuk', 'sevan' );
+	$city    = ! empty( $row['city'] ) ? sanitize_key( (string) $row['city'] ) : '';
+	if ( in_array( $city, $allowed, true ) ) {
+		return array( $city );
+	}
 	$resort = mb_strtolower( (string) ( $row['resort'] ?? '' ) );
-	$keys   = array();
-	if ( str_contains( $resort, 'ереван' ) ) {
-		$keys[] = 'yerevan';
+	$map    = array(
+		'ереван'    => 'yerevan',
+		'дилижан'   => 'dilijan',
+		'цахкадзор' => 'tsaghkadzor',
+		'джермук'   => 'jermuk',
+		'севан'     => 'sevan',
+	);
+	foreach ( $map as $needle => $key ) {
+		if ( str_contains( $resort, $needle ) ) {
+			return array( $key );
+		}
 	}
-	if ( str_contains( $resort, 'севан' ) || str_contains( $resort, 'дилижан' ) || str_contains( $resort, 'цахкадзор' ) || str_contains( $resort, 'джермук' ) ) {
-		$keys[] = 'regions';
-	}
-	return array_values( array_unique( $keys ) );
+	return array();
+}
+
+/**
+ * @return array<string,string> resort key => nominative label.
+ */
+function zhiraf_ufa_armeniya_resort_labels() {
+	return array(
+		'yerevan'      => __( 'Ереван', 'zhiraf-ufa' ),
+		'dilijan'      => __( 'Дилижан', 'zhiraf-ufa' ),
+		'sevan'        => __( 'Севан', 'zhiraf-ufa' ),
+		'tsaghkadzor'  => __( 'Цахкадзор', 'zhiraf-ufa' ),
+		'jermuk'       => __( 'Джермук', 'zhiraf-ufa' ),
+	);
 }
 
 /**
@@ -89,8 +112,11 @@ function zhiraf_ufa_armeniya_resort_landing_url( $resort_key ) {
  */
 function zhiraf_ufa_armeniya_catalog_fill_resort_labels() {
 	return array(
-		'resort-yerevan' => __( 'Ереване', 'zhiraf-ufa' ),
-		'resort-regions' => __( 'Загородом', 'zhiraf-ufa' ),
+		'resort-yerevan'     => __( 'Ереване', 'zhiraf-ufa' ),
+		'resort-dilijan'     => __( 'Дилижане', 'zhiraf-ufa' ),
+		'resort-sevan'       => __( 'на Севане', 'zhiraf-ufa' ),
+		'resort-tsaghkadzor' => __( 'Цахкадзоре', 'zhiraf-ufa' ),
+		'resort-jermuk'      => __( 'Джермуке', 'zhiraf-ufa' ),
 	);
 }
 
@@ -242,11 +268,8 @@ function zhiraf_ufa_armeniya_pool_resort_pill( array $row ) {
 		$parts = explode( ',', $resort );
 		return trim( $parts[0] );
 	}
-	$keys = zhiraf_ufa_armeniya_resort_keys_from_row( $row );
-	$labels = array(
-		'yerevan' => __( 'Ереван', 'zhiraf-ufa' ),
-		'regions' => __( 'Севан', 'zhiraf-ufa' ),
-	);
+	$keys   = zhiraf_ufa_armeniya_resort_keys_from_row( $row );
+	$labels = zhiraf_ufa_armeniya_resort_labels();
 	if ( ! empty( $keys[0] ) && isset( $labels[ $keys[0] ] ) ) {
 		return $labels[ $keys[0] ];
 	}
@@ -302,10 +325,10 @@ function zhiraf_ufa_armeniya_starter_definitions() {
 	return array(
 		array( 'json_id' => 22, 'slot' => 'yerevan' ),
 		array( 'json_id' => 4, 'slot' => 'yerevan' ),
-		array( 'json_id' => 21, 'slot' => 'yerevan' ),
-		array( 'json_id' => 6, 'slot' => 'regions' ),
-		array( 'json_id' => 12, 'slot' => 'regions' ),
-		array( 'json_id' => 19, 'slot' => 'balance' ),
+		array( 'json_id' => 6, 'slot' => 'dilijan' ),
+		array( 'json_id' => 16, 'slot' => 'sevan' ),
+		array( 'json_id' => 13, 'slot' => 'tsaghkadzor' ),
+		array( 'json_id' => 19, 'slot' => 'jermuk' ),
 	);
 }
 
@@ -527,7 +550,7 @@ function zhiraf_ufa_armeniya_catalog_hotels() {
 		$card['pool_rank']   = $rank;
 		$card['filter_tags'] = zhiraf_ufa_armeniya_starter_filter_tags( array_merge( $card, array( 'slot' => $slot ) ) );
 		if ( 'base' === $slot ) {
-			$card['badge']          = __( 'Старт по Арменияу', 'zhiraf-ufa' );
+			$card['badge']          = __( 'Старт по Армении', 'zhiraf-ufa' );
 			$card['badge_mod']      = 'home-price';
 			$card['price_emphasis'] = true;
 		}
@@ -566,9 +589,18 @@ function zhiraf_ufa_armeniya_catalog_hotels() {
  */
 function zhiraf_ufa_armeniya_catalog_filters() {
 	return array(
-		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Армению: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Ереван и регионы — Севан, Цахкадзор. Вылет из Уфы.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( '🏙 Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Город и гастрономия.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-regions', 'group' => 'resort', 'label' => __( '🏔 Регионы', 'zhiraf-ufa' ), 'title' => __( 'Загород', 'zhiraf-ufa' ), 'desc' => __( 'Севан и курорты.', 'zhiraf-ufa' ) ),
+		array(
+			'id'    => 'starter',
+			'group' => 'default',
+			'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ),
+			'title' => __( 'Армения: топ-6 из базы 25 отелей', 'zhiraf-ufa' ),
+			'desc'  => __( 'По одному якорю на направление: Ереван, Дилижан, Севан, Цахкадзор, Джермук. Вылет из Уфы.', 'zhiraf-ufa' ),
+		),
+		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( '🏙 Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Город, гастрономия, экскурсии на день.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dilijan', 'group' => 'resort', 'label' => __( '🌲 Дилижан', 'zhiraf-ufa' ), 'title' => __( 'Дилижан', 'zhiraf-ufa' ), 'desc' => __( 'Леса и нацпарк.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sevan', 'group' => 'resort', 'label' => __( '💧 Севан', 'zhiraf-ufa' ), 'title' => __( 'Озеро Севан', 'zhiraf-ufa' ), 'desc' => __( 'Высокогорное озеро.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-tsaghkadzor', 'group' => 'resort', 'label' => __( '⛷ Цахкадзор', 'zhiraf-ufa' ), 'title' => __( 'Цахкадзор', 'zhiraf-ufa' ), 'desc' => __( 'Горнолыжная зона и SPA.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-jermuk', 'group' => 'resort', 'label' => __( '🩺 Джермук', 'zhiraf-ufa' ), 'title' => __( 'Джермук', 'zhiraf-ufa' ), 'desc' => __( 'Курорт и минеральная вода.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( '3–4★', 'zhiraf-ufa' ), 'desc' => __( 'Бутики и сетевые отели.', 'zhiraf-ufa' ) ),
 	);
 }
@@ -614,19 +646,119 @@ function zhiraf_ufa_armeniya_resort_chips() {
 	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-yerevan', 'label' => __( 'Ереван', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dilijan', 'label' => __( 'Дилижан', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sevan', 'label' => __( 'Севан', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-tsaghkadzor', 'label' => __( 'Цахкадзор', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-jermuk', 'label' => __( 'Джермук', 'zhiraf-ufa' ) ),
 	);
 }
 
 /**
- * Four resort pick cards in one row on desktop.
+ * Resort pick cards (desktop row).
  *
  * @return array<int,array<string,mixed>>
  */
 function zhiraf_ufa_armeniya_resort_pick_cards() {
 	$counts = zhiraf_ufa_armeniya_resort_hotel_counts();
-	$guide = __( 'К отелям →', 'zhiraf-ufa' );
+	$guide  = __( 'К отелям →', 'zhiraf-ufa' );
+
+	$bullet_hotel = static function ( $count ) {
+		return array(
+			'text' => sprintf(
+				/* translators: %d: hotels in pool */
+				_n( '%d отель в эталонной базе', '%d отеля в эталонной базе', (int) $count, 'zhiraf-ufa' ),
+				(int) $count
+			),
+		);
+	};
+
 	return array(
-		array( 'id' => 'yerevan', 'filter_id' => 'resort-yerevan', 'guide_url' => zhiraf_ufa_armeniya_resort_landing_url( 'yerevan' ), 'guide_label' => $guide, 'name' => __( 'Ереван', 'zhiraf-ufa' ), 'subtitle' => __( 'Столица', 'zhiraf-ufa' ), 'tag' => __( 'Старт', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Прямой рейс', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['yerevan'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
+		array(
+			'id'          => 'yerevan',
+			'filter_id'   => 'resort-yerevan',
+			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'yerevan' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Ереван', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Столица', 'zhiraf-ufa' ),
+			'tag'         => __( 'Старт', 'zhiraf-ufa' ),
+			'tag_mod'     => 'family',
+			'transfer'    => __( 'Вылет из Уфы', 'zhiraf-ufa' ),
+			'featured'    => true,
+			'hotel_count' => $counts['yerevan'] ?? 0,
+			'accent_mod'  => 'emerald',
+			'bullets'     => array(
+				$bullet_hotel( $counts['yerevan'] ?? 0 ),
+				array( 'text' => __( 'Каскад, Сарьяна, экскурсии на день', 'zhiraf-ufa' ) ),
+			),
+		),
+		array(
+			'id'          => 'dilijan',
+			'filter_id'   => 'resort-dilijan',
+			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'dilijan' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Дилижан', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Леса и воздух', 'zhiraf-ufa' ),
+			'tag'         => __( 'Природа', 'zhiraf-ufa' ),
+			'tag_mod'     => 'nature',
+			'transfer'    => __( '~1,5 ч от Еревана', 'zhiraf-ufa' ),
+			'hotel_count' => $counts['dilijan'] ?? 0,
+			'accent_mod'  => 'teal',
+			'bullets'     => array(
+				$bullet_hotel( $counts['dilijan'] ?? 0 ),
+				array( 'text' => __( 'Нацпарк и тихие эко-отели', 'zhiraf-ufa' ) ),
+			),
+		),
+		array(
+			'id'          => 'sevan',
+			'filter_id'   => 'resort-sevan',
+			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'sevan' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Севан', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Высокогорное озеро', 'zhiraf-ufa' ),
+			'tag'         => __( 'Выходные', 'zhiraf-ufa' ),
+			'tag_mod'     => 'heritage',
+			'transfer'    => __( '~1 ч от Еревана', 'zhiraf-ufa' ),
+			'hotel_count' => $counts['sevan'] ?? 0,
+			'accent_mod'  => 'indigo',
+			'bullets'     => array(
+				$bullet_hotel( $counts['sevan'] ?? 0 ),
+				array( 'text' => __( 'Севанаванк и рыба', 'zhiraf-ufa' ) ),
+			),
+		),
+		array(
+			'id'          => 'tsaghkadzor',
+			'filter_id'   => 'resort-tsaghkadzor',
+			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'tsaghkadzor' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Цахкадзор', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Горы и SPA', 'zhiraf-ufa' ),
+			'tag'         => __( 'Зима', 'zhiraf-ufa' ),
+			'tag_mod'     => 'active',
+			'transfer'    => __( '~1 ч от Еревана', 'zhiraf-ufa' ),
+			'hotel_count' => $counts['tsaghkadzor'] ?? 0,
+			'accent_mod'  => 'slate',
+			'bullets'     => array(
+				$bullet_hotel( $counts['tsaghkadzor'] ?? 0 ),
+				array( 'text' => __( 'Горнолыжные трассы и SPA-отели', 'zhiraf-ufa' ) ),
+			),
+		),
+		array(
+			'id'          => 'jermuk',
+			'filter_id'   => 'resort-jermuk',
+			'guide_url'   => zhiraf_ufa_armeniya_resort_landing_url( 'jermuk' ),
+			'guide_label' => $guide,
+			'name'        => __( 'Джермук', 'zhiraf-ufa' ),
+			'subtitle'    => __( 'Минеральная вода', 'zhiraf-ufa' ),
+			'tag'         => __( 'Оздоровление', 'zhiraf-ufa' ),
+			'tag_mod'     => 'urban',
+			'transfer'    => __( '~2,5 ч от Еревана', 'zhiraf-ufa' ),
+			'hotel_count' => $counts['jermuk'] ?? 0,
+			'accent_mod'  => 'amber',
+			'bullets'     => array(
+				$bullet_hotel( $counts['jermuk'] ?? 0 ),
+				array( 'text' => __( 'Питьевая галерея и SPA-отели', 'zhiraf-ufa' ) ),
+			),
+		),
 	);
 }
 
@@ -635,6 +767,7 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
  */
 function zhiraf_ufa_armeniya_expert_nuances() {
 	return array(
+		array( 'icon' => '🏨', 'title' => __( '25 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Топ-6 на старте, фильтры и «Показать ещё» — весь эталонный пул.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🛂', 'title' => __( 'Безвиз', 'zhiraf-ufa' ), 'text' => __( 'Паспорт РФ — въезд без визы.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🍷', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Бронируем столики и маршруты с дегустациями.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🏔', 'title' => __( 'Севан', 'zhiraf-ufa' ), 'text' => __( '1–2 ночи у озера — закладываем в пакет.', 'zhiraf-ufa' ) ),

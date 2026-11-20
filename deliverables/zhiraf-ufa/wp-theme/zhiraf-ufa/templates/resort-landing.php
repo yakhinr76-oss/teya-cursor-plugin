@@ -125,8 +125,18 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 							<?php if ( ! empty( $card['rows'] ) && is_array( $card['rows'] ) ) : ?>
 								<dl class="resort-v2-district-card__rows">
 									<?php foreach ( $card['rows'] as $row ) : ?>
-										<div class="resort-v2-district-card__row">
-											<dt><?php echo esc_html( $row['label'] ?? '' ); ?></dt>
+										<?php
+										$row_label = ! empty( $row['label'] ) ? (string) $row['label'] : '';
+										$is_nuance = ( '' !== $row_label && false !== mb_stripos( $row_label, 'нюанс', 0, 'UTF-8' ) );
+										$row_class = 'resort-v2-district-card__row' . ( $is_nuance ? ' resort-v2-district-card__row--nuance' : '' );
+										?>
+										<div class="<?php echo esc_attr( $row_class ); ?>">
+											<dt class="<?php echo $is_nuance ? 'resort-v2-district-card__dt--nuance' : 'resort-v2-district-card__dt--meta'; ?>">
+												<?php if ( $is_nuance && function_exists( 'zhiraf_ufa_lucide_icon' ) ) : ?>
+													<?php echo zhiraf_ufa_lucide_icon( 'info', 14, 'resort-v2-district-card__nuance-icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+												<?php endif; ?>
+												<span><?php echo esc_html( $row_label ); ?></span>
+											</dt>
 											<dd><?php echo esc_html( $row['text'] ?? '' ); ?></dd>
 										</div>
 									<?php endforeach; ?>

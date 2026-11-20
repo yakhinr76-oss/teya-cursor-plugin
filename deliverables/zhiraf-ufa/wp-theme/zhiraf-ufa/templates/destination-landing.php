@@ -74,7 +74,12 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				<div class="dest-landing-hero__actions">
 					<?php if ( $use_curated_landing ) : ?>
 						<?php if ( $curated_has_catalog ) : ?>
-							<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php esc_html_e( 'Смотреть 6 отелей', 'zhiraf-ufa' ); ?></a>
+							<?php
+							$hero_catalog_cta = ! empty( $dest['curated_hero_catalog_cta'] )
+								? (string) $dest['curated_hero_catalog_cta']
+								: __( 'Смотреть 6 отелей', 'zhiraf-ufa' );
+							?>
+							<a class="btn btn--primary btn--lg" href="#dest-curated-hotels"><?php echo esc_html( $hero_catalog_cta ); ?></a>
 						<?php endif; ?>
 						<?php
 						$hero_compare_btn = function_exists( 'get_field' ) ? get_field( 'resort_compare_btn_text', get_queried_object() ) : '';

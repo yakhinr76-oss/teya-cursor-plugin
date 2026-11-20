@@ -71,13 +71,18 @@ function zhiraf_ufa_thailand_resort_keys_from_row( array $row ) {
 }
 
 /**
- * Hub anchor — отдельных курортных URL для Таиланда нет (редирект с /phuket/).
- *
  * @param string $resort_key phuket|pattaya|khaolak|samui.
  * @return string
  */
 function zhiraf_ufa_thailand_resort_landing_url( $resort_key ) {
-	unset( $resort_key );
+	$map = array(
+		'phuket'  => 'phuket',
+		'pattaya' => 'pattaya',
+	);
+	$resort_key = sanitize_key( (string) $resort_key );
+	if ( ! empty( $map[ $resort_key ] ) ) {
+		return home_url( '/tour/tailand/' . $map[ $resort_key ] . '/' );
+	}
 
 	return home_url( '/tour/tailand/#dest-curated-hotels' );
 }

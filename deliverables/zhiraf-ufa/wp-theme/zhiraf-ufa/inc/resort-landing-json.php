@@ -19,6 +19,7 @@ function zhiraf_ufa_resort_json_registry() {
 		'oae/dubai',
 		'egipet/hurgada',
 		'egipet/sharm-el-sheyh',
+		'tailand/phuket',
 		'vietnam/fukuok',
 	);
 }

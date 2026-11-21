@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.84-sharjah-resort-v2' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.85-hub-offers-deals' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -53,6 +53,8 @@ require_once ZHIRAF_UFA_DIR . '/inc/resort-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/offer-landings.php';
 require_once ZHIRAF_UFA_DIR . '/inc/hot-tours-landing.php';
 require_once ZHIRAF_UFA_DIR . '/inc/all-inclusive-landing.php';
+require_once ZHIRAF_UFA_DIR . '/inc/hub-offer-landings.php';
+require_once ZHIRAF_UFA_DIR . '/inc/cpt-deals.php';
 require_once ZHIRAF_UFA_DIR . '/inc/about-page.php';
 require_once ZHIRAF_UFA_DIR . '/inc/social-icons.php';
 require_once ZHIRAF_UFA_DIR . '/inc/messenger-picker.php';

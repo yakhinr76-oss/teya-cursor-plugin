@@ -14,6 +14,38 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * P0/P1 resort JSON v2: …/tailand/pattaya/, …/turciya/antalya/, …/oae/sharjah/ — data/resorts/*.json + zhiraf_ufa_resort_json_registry().
  */
+/**
+ * Block nested indexable URLs under offer hubs (filters live client-side).
+ */
+function zhiraf_ufa_register_offer_hub_guards() {
+	add_rewrite_rule( '^goryashchie-tury/.+/?$', 'index.php?zhiraf_offer_hub_redirect=goryashchie-tury', 'top' );
+	add_rewrite_rule( '^vse-vklyucheno/.+/?$', 'index.php?zhiraf_offer_hub_redirect=vse-vklyucheno', 'top' );
+}
+add_action( 'init', 'zhiraf_ufa_register_offer_hub_guards', 5 );
+
+/**
+ * @param string[] $vars Vars.
+ * @return string[]
+ */
+function zhiraf_ufa_offer_hub_query_vars( $vars ) {
+	$vars[] = 'zhiraf_offer_hub_redirect';
+	return $vars;
+}
+add_filter( 'query_vars', 'zhiraf_ufa_offer_hub_query_vars' );
+
+/**
+ * 301 nested hub paths to canonical hub URL.
+ */
+function zhiraf_ufa_offer_hub_nested_redirect() {
+	$slug = sanitize_key( (string) get_query_var( 'zhiraf_offer_hub_redirect' ) );
+	if ( '' === $slug ) {
+		return;
+	}
+	wp_safe_redirect( home_url( '/' . $slug . '/' ), 301 );
+	exit;
+}
+add_action( 'template_redirect', 'zhiraf_ufa_offer_hub_nested_redirect', 0 );
+
 function zhiraf_ufa_register_tour_resort_rewrites() {
 	if ( function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) ) {
 		foreach ( zhiraf_ufa_excursion_landing_slugs() as $slug ) {
@@ -116,6 +148,7 @@ add_action( 'template_redirect', 'zhiraf_ufa_resort_permanent_redirect', 1 );
  * Flush rewrite rules after theme activation.
  */
 function zhiraf_ufa_flush_tour_rewrites() {
+	zhiraf_ufa_register_offer_hub_guards();
 	zhiraf_ufa_register_tour_resort_rewrites();
 	flush_rewrite_rules();
 }
@@ -133,6 +166,7 @@ function zhiraf_ufa_maybe_flush_excursion_rewrites() {
 	if ( '' === $ver || get_option( $key, '' ) === $ver ) {
 		return;
 	}
+	zhiraf_ufa_register_offer_hub_guards();
 	zhiraf_ufa_register_tour_resort_rewrites();
 	flush_rewrite_rules( false );
 	update_option( $key, $ver, false );

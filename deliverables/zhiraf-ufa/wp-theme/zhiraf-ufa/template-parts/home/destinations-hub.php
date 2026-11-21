@@ -80,6 +80,9 @@ $hub_panels = array(
 				<p class="destinations-hub__lead">
 					<?php esc_html_e( 'Минимальные цены туроператора на двоих на 7 ночей с перелётом, проживанием и страховкой.', 'zhiraf-ufa' ); ?>
 				</p>
+				<p class="destinations-hub__hot-link">
+					<a href="<?php echo esc_url( home_url( '/goryashchie-tury/' ) ); ?>"><?php esc_html_e( 'Смотреть все горящие туры →', 'zhiraf-ufa' ); ?></a>
+				</p>
 			</div>
 			<div class="destinations-hub__tabs-scroll">
 				<div class="destinations-hub__tabs" role="tablist" aria-label="<?php esc_attr_e( 'Город вылета', 'zhiraf-ufa' ); ?>">

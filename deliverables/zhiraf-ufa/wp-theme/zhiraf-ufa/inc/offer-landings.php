@@ -28,10 +28,10 @@ function zhiraf_ufa_offer_landing_data() {
 		'goryashchie-tury' => array(
 			'slug'          => 'goryashchie-tury',
 			'h1'            => __( 'Горящие туры из Уфы', 'zhiraf-ufa' ),
-			'title'         => __( 'Горящие туры из Уфы — честный подбор спецпредложений | Жираф', 'zhiraf-ufa' ),
-			'description'   => __( 'Подбор горящих туров с вылетом из Уфы: Турция, Египет, ОАЭ, Таиланд и Вьетнам. Честный поиск без фиктивных цен «от», официальный договор и офис в Уфе.', 'zhiraf-ufa' ),
-			'eyebrow'       => __( 'Вылет из Уфы · ближайшие 3–7 дней', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Ловим спеццены туроператора «Библио-Глобус», когда остаются места на рейсе или в отеле. На карточках — конкретный отель, дата вылета и цена за двоих.', 'zhiraf-ufa' ),
+			'title'         => __( 'Горящие туры и путёвки из Уфы — ближайшие вылеты | Жираф', 'zhiraf-ufa' ),
+			'description'   => __( 'Горящие туры и путёвки с вылетом из Уфы: Египет, Турция, ОАЭ, Таиланд, Вьетнам и Китай. Проверяем топливный сбор и места на рейсе за 15 минут.', 'zhiraf-ufa' ),
+			'eyebrow'       => __( 'Вылет из Уфы · ближайшие 3–14 дней', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Вылеты в ближайшие 3–14 дней по сниженным ценам туроператоров. Проверяем наличие мест на рейсе и итоговую цену с топливным сбором за 15 минут.', 'zhiraf-ufa' ),
 			'image'         => 'resort-turciya-belek-1.jpg',
 			'image_alt'     => __( 'Горящие туры из Уфы — пляж и море', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
@@ -147,11 +147,11 @@ function zhiraf_ufa_offer_landing_data() {
 		),
 		'vse-vklyucheno'   => array(
 			'slug'          => 'vse-vklyucheno',
-			'h1'            => __( 'Туры «всё включено» из Уфы', 'zhiraf-ufa' ),
-			'title'         => __( 'Всё включено из Уфы — подбор туров All Inclusive | Жираф', 'zhiraf-ufa' ),
-			'description'   => __( 'Подбор туров «всё включено» с вылетом из Уфы: отели All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и Азии. Прозрачный состав пакета, питание, перелёт и страховка.', 'zhiraf-ufa' ),
-			'eyebrow'       => __( 'AI / UAI · предсказуемый бюджет без сюрпризов', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Отели с питанием AI и Ultra AI — с ценой за двоих, звёздами и датой вылета из Уфы. Без «лекций про BB»: сначала витрина, потом детали.', 'zhiraf-ufa' ),
+			'h1'            => __( 'Туры «Всё включено» из Уфы', 'zhiraf-ufa' ),
+			'title'         => __( 'Туры «Всё включено» из Уфы — Турция, Египет, ОАЭ | Жираф', 'zhiraf-ufa' ),
+			'description'   => __( 'Туры «всё включено» с вылетом из Уфы: All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и курортах Азии. Честный состав пакета в договоре.', 'zhiraf-ufa' ),
+			'eyebrow'       => __( 'AI / UAI · предсказуемый бюджет', 'zhiraf-ufa' ),
+			'hero_lead'     => __( 'Отдых с предсказуемым бюджетом: перелёт, трансфер, проживание и питание уже в цене. Подбираем проверенные отели All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и Азии.', 'zhiraf-ufa' ),
 			'image'         => 'resort-turciya-belek-1.jpg',
 			'hero_badges'   => array(
 				array( 'icon' => '🇹🇷', 'text' => __( 'Турция · AI / UAI', 'zhiraf-ufa' ) ),
@@ -263,9 +263,15 @@ function zhiraf_ufa_render_offer_landing( $slug ) {
 	if ( ! $offer ) {
 		return;
 	}
-	$candidates = array(
-		ZHIRAF_UFA_DIR . '/templates/offer-landing-' . $slug . '.php',
+	$hub_map = array(
+		'goryashchie-tury' => 'hub-hot-tours.php',
+		'vse-vklyucheno'   => 'hub-all-inclusive.php',
 	);
+	$candidates = array();
+	if ( isset( $hub_map[ $slug ] ) ) {
+		$candidates[] = ZHIRAF_UFA_DIR . '/templates/' . $hub_map[ $slug ];
+	}
+	$candidates[] = ZHIRAF_UFA_DIR . '/templates/offer-landing-' . $slug . '.php';
 	if ( false !== strpos( $slug, '-' ) ) {
 		$short      = strstr( $slug, '-', true );
 		$candidates[] = ZHIRAF_UFA_DIR . '/templates/offer-landing-' . $short . '.php';

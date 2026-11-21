@@ -1,0 +1,189 @@
+.site-main--hub-hot,
+.site-main--hub-ai {
+  .hub-offer-hero {
+    padding-block: clamp(2rem, 4vw, 3.5rem);
+  }
+  .hub-offer-badge__icon {
+    color: var(--color-primary);
+  }
+  .hub-offer-badges .dest-landing-hero__badge {
+    background: var(--color-white);
+    border-radius: var(--radius-pill);
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--color-border);
+  }
+}
+
+.hub-offer-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.hub-offer-tabs__btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.hub-offer-tabs__btn.is-active,
+.hub-offer-tabs__btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: #fff8f4;
+}
+
+.hub-offer-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 12px 40px rgb(43 43 43 / 0.04);
+}
+.hub-offer-card__icon {
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+.hub-offer-card--faq .section-title {
+  margin-bottom: 1rem;
+}
+
+.hub-offer-info-grid,
+.hub-offer-expert-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.hub-offer-expert-grid {
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.hub-offer-card--expert .hub-offer-card__thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+}
+
+.hub-offer-country-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.hub-offer-country-card {
+  display: block;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.hub-offer-country-card:hover {
+  box-shadow: 0 10px 28px rgb(43 43 43 / 0.08);
+  transform: translateY(-2px);
+}
+.hub-offer-country-card__img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+.hub-offer-country-card__body {
+  padding: 0.85rem 1rem 1rem;
+}
+.hub-offer-country-card__body h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+.hub-offer-country-card__body p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-muted);
+}
+
+.hub-offer-included-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.hub-offer-chip-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.hub-offer-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+.hub-offer-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.hub-tour-wrap.is-filtered-out {
+  display: none;
+}
+
+.hero-premium__offer-scenarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+}
+.hero-premium__offer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.hero-premium__offer-chip .lucide-icon {
+  color: var(--color-primary);
+}
+
+.destinations-hub__hot-link {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+.destinations-hub__hot-link a {
+  color: var(--color-primary);
+}
+
+.hub-deal-meta {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.hub-deal-price {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}

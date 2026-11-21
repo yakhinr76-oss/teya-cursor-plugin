@@ -10511,8 +10511,42 @@ a.contacts-card__value:hover {
   color: var(--color-primary);
 }
 
-.hub-tour-wrap.is-filtered-out {
+.hub-tour-wrap.is-filtered-out,
+.hub-tour-wrap.is-hub-collapsed {
   display: none;
+}
+
+.hub-offer-catalog-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badges--hub-calm {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 6px;
+}
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--hot,
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--country {
+  background: rgba(43, 43, 43, 0.78);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--hot.tour-card__badge--accent {
+  box-shadow: inset 3px 0 0 #c85a32;
+  padding-left: 10px;
+}
+.site-main--hub-hot .tour-card--hub-calm .tour-card__meta-item:first-child .tour-card__meta-value {
+  color: var(--color-text);
+  font-size: inherit;
+  font-weight: 700;
+}
+.site-main--hub-hot .tour-card--hub-calm.tour-card--hot:has(.tour-card__badge--accent) .tour-card__meta-item:first-child .tour-card__meta-value {
+  color: #c85a32;
 }
 
 .hero-premium__offer-scenarios {

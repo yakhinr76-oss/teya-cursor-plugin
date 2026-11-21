@@ -10,8 +10,9 @@ if ( ! defined( 'ABSPATH' ) || empty( $offer ) ) {
 	return;
 }
 
-$hot_tours = zhiraf_ufa_get_hot_hub_catalog_tours( 24 );
-$tabs      = zhiraf_ufa_hot_hub_country_tabs();
+$hot_tours              = zhiraf_ufa_get_hot_hub_catalog_tours( 24 );
+$hub_hot_initial_visible = 9;
+$tabs                   = zhiraf_ufa_hot_hub_country_tabs();
 $visa      = zhiraf_ufa_hot_hub_visa_free_cards();
 $how       = zhiraf_ufa_hot_hub_how_cards();
 $faq       = zhiraf_ufa_hot_hub_faq();
@@ -85,7 +86,11 @@ $badges    = array(
 					</button>
 				<?php endforeach; ?>
 			</div>
-			<div class="tour-price-grid tour-price-grid--hub" data-hub-tour-grid>
+			<div
+				class="tour-price-grid tour-price-grid--hub"
+				data-hub-tour-grid
+				data-hub-initial-visible="<?php echo (int) $hub_hot_initial_visible; ?>"
+			>
 				<?php foreach ( $hot_tours as $tour_item ) : ?>
 					<div class="hub-tour-wrap" data-hub-country="<?php echo esc_attr( (string) ( $tour_item['country_slug'] ?? '' ) ); ?>">
 						<?php
@@ -93,16 +98,24 @@ $badges    = array(
 							'template-parts/cards/card-tour-price',
 							null,
 							array(
-								'tour'                   => $tour_item,
+								'tour'                    => $tour_item,
 								'emphasize_hot_departure' => true,
-								'emphasize_flight'       => true,
-								'cta_class'              => 'btn btn--ghost tour-card__cta',
+								'emphasize_flight'        => true,
+								'hub_calm_badges'         => true,
+								'cta_class'               => 'btn btn--ghost tour-card__cta',
 							)
 						);
 						?>
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<?php if ( count( $hot_tours ) > $hub_hot_initial_visible ) : ?>
+				<div class="hub-offer-catalog-more" data-hub-tour-more-wrap>
+					<button type="button" class="btn btn--outline rounded-xl" data-hub-tour-more>
+						<?php esc_html_e( 'Показать ещё', 'zhiraf-ufa' ); ?>
+					</button>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 

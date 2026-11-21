@@ -61,95 +61,63 @@ function zhiraf_ufa_get_all_inclusive_showcase_tours( $limit = 6, $country_slug 
 	if ( ! class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
 		return array();
 	}
-	$engine = Zhiraf_BG_Price_Engine::get_instance();
-	$slugs  = array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj' );
-	if ( '' !== $country_slug ) {
-		$slugs = array( sanitize_key( $country_slug ) );
+	$engine          = Zhiraf_BG_Price_Engine::get_instance();
+	$limit           = max( 1, (int) $limit );
+	$max_per_country = 3;
+	$country_slug    = sanitize_key( (string) $country_slug );
+	$priority_slugs  = function_exists( 'zhiraf_ufa_hub_country_slugs_ordered' )
+		? zhiraf_ufa_hub_country_slugs_ordered( array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj' ) )
+		: array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj' );
+	if ( '' !== $country_slug && 'all' !== $country_slug ) {
+		$priority_slugs = array( $country_slug );
 	}
-	$limit  = max( 1, (int) $limit );
-	$pool   = array();
-	$seen_h = array();
 
-	foreach ( $slugs as $slug ) {
-		$tours = $engine->get_country_tours( $slug, 300 );
-		foreach ( $tours as $t ) {
+	$by_country = array();
+	$order      = array();
+
+	foreach ( $priority_slugs as $slug ) {
+		$candidates = array();
+		foreach ( $engine->get_country_tours( $slug, 300 ) as $t ) {
 			if ( ! zhiraf_ufa_tour_is_all_inclusive( $t ) || ! zhiraf_ufa_tour_valid_for_price_card( $t ) ) {
 				continue;
 			}
-			$key = $slug . '|' . mb_strtolower( (string) ( $t['hotel_name'] ?? '' ), 'UTF-8' );
-			if ( isset( $seen_h[ $key ] ) ) {
-				continue;
+			$t['country_slug'] = $slug;
+			$candidates[]      = $t;
+		}
+		if ( empty( $candidates ) ) {
+			continue;
+		}
+		usort(
+			$candidates,
+			static function ( $a, $b ) {
+				$ua = ( 'UAI' === strtoupper( (string) ( $a['meal_code'] ?? '' ) ) ) ? 0 : 1;
+				$ub = ( 'UAI' === strtoupper( (string) ( $b['meal_code'] ?? '' ) ) ) ? 0 : 1;
+				if ( $ua !== $ub ) {
+					return $ua <=> $ub;
+				}
+
+				return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 );
 			}
-			$seen_h[ $key ] = true;
-			$pool[]         = $t;
+		);
+		$picked = function_exists( 'zhiraf_ufa_hub_unique_hotel_tours' )
+			? zhiraf_ufa_hub_unique_hotel_tours( $candidates, $max_per_country )
+			: array_slice( $candidates, 0, $max_per_country );
+		if ( ! empty( $picked ) ) {
+			$by_country[ $slug ] = $picked;
+			$order[]             = $slug;
 		}
 	}
 
-	usort(
-		$pool,
-		function ( $a, $b ) {
-			$ua = ( 'UAI' === strtoupper( (string) ( $a['meal_code'] ?? '' ) ) ) ? 0 : 1;
-			$ub = ( 'UAI' === strtoupper( (string) ( $b['meal_code'] ?? '' ) ) ) ? 0 : 1;
-			if ( $ua !== $ub ) {
-				return $ua <=> $ub;
-			}
-			return (int) ( $a['price_rur'] ?? 0 ) <=> (int) ( $b['price_rur'] ?? 0 );
-		}
-	);
-
-	if ( '' === $country_slug && count( $slugs ) > 1 ) {
-		$by_country = array();
-		foreach ( $pool as $t ) {
-			$cslug = ! empty( $t['country_slug'] ) ? (string) $t['country_slug'] : '';
-			if ( '' === $cslug ) {
-				continue;
-			}
-			if ( ! isset( $by_country[ $cslug ] ) ) {
-				$by_country[ $cslug ] = array();
-			}
-			$by_country[ $cslug ][] = $t;
-		}
-		$cards = array();
-		$round = 0;
-		while ( count( $cards ) < $limit ) {
-			$added = false;
-			foreach ( $slugs as $slug ) {
-				if ( empty( $by_country[ $slug ][ $round ] ) ) {
-					continue;
-				}
-				$cards[] = $by_country[ $slug ][ $round ];
-				$added   = true;
-				if ( count( $cards ) >= $limit ) {
-					break 2;
-				}
-			}
-			if ( ! $added ) {
-				break;
-			}
-			++$round;
-		}
-		if ( count( $cards ) < $limit ) {
-			foreach ( $pool as $t ) {
-				if ( count( $cards ) >= $limit ) {
-					break;
-				}
-				$dup = false;
-				foreach ( $cards as $picked ) {
-					if ( ( $picked['hotel_name'] ?? '' ) === ( $t['hotel_name'] ?? '' )
-						&& ( $picked['country_slug'] ?? '' ) === ( $t['country_slug'] ?? '' ) ) {
-						$dup = true;
-						break;
-					}
-				}
-				if ( ! $dup ) {
-					$cards[] = $t;
-				}
-			}
-		}
-		return array_slice( $cards, 0, $limit );
+	if ( function_exists( 'zhiraf_ufa_hub_round_robin_tours' ) ) {
+		return zhiraf_ufa_hub_round_robin_tours( $by_country, $order, $limit, $max_per_country );
 	}
 
-	return array_slice( $pool, 0, $limit );
+	$flat = array();
+	foreach ( $by_country as $rows ) {
+		$flat = array_merge( $flat, $rows );
+	}
+
+	return array_slice( $flat, 0, $limit );
 }
 
 /**

@@ -152,7 +152,7 @@ function zhiraf_ufa_offer_landing_data() {
 			'description'   => __( 'Туры «всё включено» с вылетом из Уфы: All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и курортах Азии. Честный состав пакета в договоре.', 'zhiraf-ufa' ),
 			'eyebrow'       => __( 'AI / UAI · предсказуемый бюджет', 'zhiraf-ufa' ),
 			'hero_lead'     => __( 'Отдых с предсказуемым бюджетом: перелёт, трансфер, проживание и питание уже в цене. Подбираем проверенные отели All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и Азии.', 'zhiraf-ufa' ),
-			'image'         => 'resort-turciya-belek-1.jpg',
+			'image'         => 'resort-egipet-hurghada-2.jpg',
 			'hero_badges'   => array(
 				array( 'icon' => '🇹🇷', 'text' => __( 'Турция · AI / UAI', 'zhiraf-ufa' ) ),
 				array( 'icon' => '🇪🇬', 'text' => __( 'Египет · AI', 'zhiraf-ufa' ) ),

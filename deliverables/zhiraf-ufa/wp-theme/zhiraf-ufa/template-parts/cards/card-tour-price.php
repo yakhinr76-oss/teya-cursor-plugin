@@ -59,6 +59,9 @@ $zhiraf_region = function_exists( 'zhiraf_ufa_tour_landing_region' )
 $zhiraf_emphasize_flight = ! empty( $args['emphasize_flight'] );
 $zhiraf_hot_departure    = ! empty( $args['emphasize_hot_departure'] );
 $zhiraf_hub_calm_badges  = ! empty( $args['hub_calm_badges'] );
+$zhiraf_emphasize_ai     = ! empty( $args['emphasize_all_inclusive'] );
+$zhiraf_meal_code_upper  = strtoupper( trim( $meal_code ) );
+$zhiraf_meal_ai_focus    = $zhiraf_emphasize_ai && in_array( $zhiraf_meal_code_upper, array( 'AI', 'UAI', 'AL', 'UAL' ), true );
 $zhiraf_departure_urgent = false;
 if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_to_timestamp' ) ) {
 	$zhiraf_dep_ts = zhiraf_ufa_departure_to_timestamp( $departure_date );
@@ -69,7 +72,7 @@ if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_to_timestam
 	}
 }
 ?>
-<article class="tour-card reveal<?php echo $zhiraf_emphasize_flight ? ' tour-card--flight-focus' : ''; ?><?php echo $zhiraf_hot_departure ? ' tour-card--hot' : ''; ?><?php echo $zhiraf_hub_calm_badges ? ' tour-card--hub-calm' : ''; ?>" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
+<article class="tour-card reveal<?php echo $zhiraf_emphasize_flight ? ' tour-card--flight-focus' : ''; ?><?php echo $zhiraf_hot_departure ? ' tour-card--hot' : ''; ?><?php echo $zhiraf_hub_calm_badges ? ' tour-card--hub-calm' : ''; ?><?php echo $zhiraf_emphasize_ai ? ' tour-card--hub-ai' : ''; ?>" data-dest="<?php echo esc_attr( $country_slug ); ?>"<?php echo '' !== $zhiraf_region ? ' data-tour-region="' . esc_attr( $zhiraf_region ) . '"' : ''; ?>>
 	<div class="tour-card__media">
 		<?php if ( $image_file ) : ?>
 		<?php zhiraf_ufa_img( $image_file, $image_info['alt'] ? $image_info['alt'] : $resort, 'tour-card__img', true ); ?>
@@ -109,6 +112,19 @@ if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_to_timestam
 		</div>
 
 		<div class="tour-card__meta">
+			<?php if ( $zhiraf_emphasize_ai && ( $country_name || $resort ) ) : ?>
+			<div class="tour-card__meta-item tour-card__meta-item--ai-dest">
+				<span class="tour-card__meta-label"><?php esc_html_e( 'Направление:', 'zhiraf-ufa' ); ?></span>
+				<strong class="tour-card__meta-value"><?php echo esc_html( trim( $country_name . ( $resort ? ' · ' . $resort : '' ) ) ); ?></strong>
+			</div>
+			<?php endif; ?>
+			<div class="tour-card__meta-item<?php echo $zhiraf_meal_ai_focus ? ' tour-card__meta-item--meal-prominent' : ''; ?>">
+				<span class="tour-card__meta-label"><?php esc_html_e( 'Питание:', 'zhiraf-ufa' ); ?></span>
+				<span class="tour-card__meal-badge<?php echo $zhiraf_meal_ai_focus ? ' tour-card__meal-badge--ai-hub' : ''; ?>" title="<?php echo esc_attr( $meal_name ); ?>">
+					<span class="tour-card__meal-code<?php echo $zhiraf_meal_ai_focus ? ' tour-card__meal-code--prominent' : ''; ?>"><?php echo esc_html( $meal_code ); ?></span>
+					<span class="tour-card__meal-desc"><?php echo esc_html( $meal_name ); ?></span>
+				</span>
+			</div>
 			<div class="tour-card__meta-item">
 				<span class="tour-card__meta-label"><?php echo ( 'Москва' === ( $tour['departure_city'] ?? '' ) ) ? esc_html__( 'Вылет из Москвы:', 'zhiraf-ufa' ) : esc_html__( 'Вылет из Уфы:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $departure_date ); ?></strong>
@@ -129,6 +145,7 @@ if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_to_timestam
 				<span class="tour-card__meta-label"><?php esc_html_e( 'Длительность:', 'zhiraf-ufa' ); ?></span>
 				<strong class="tour-card__meta-value"><?php echo esc_html( $nights_formatted ); ?></strong>
 			</div>
+			<?php if ( ! $zhiraf_emphasize_ai ) : ?>
 			<div class="tour-card__meta-item tour-card__meta-item--meal">
 				<span class="tour-card__meta-label"><?php esc_html_e( 'Питание:', 'zhiraf-ufa' ); ?></span>
 				<span class="tour-card__meal-badge" title="<?php echo esc_attr( $meal_name ); ?>">
@@ -136,6 +153,7 @@ if ( $zhiraf_hot_departure && function_exists( 'zhiraf_ufa_departure_to_timestam
 					<span class="tour-card__meal-desc"><?php echo esc_html( $meal_name ); ?></span>
 				</span>
 			</div>
+			<?php endif; ?>
 		</div>
 
 		<div class="tour-card__footer">

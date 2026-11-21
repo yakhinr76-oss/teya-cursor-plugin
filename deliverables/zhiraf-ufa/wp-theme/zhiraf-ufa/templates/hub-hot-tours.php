@@ -27,7 +27,8 @@ $badges    = array(
 	array(
 		'icon_svg' => 'shield-check',
 		'text'     => __( 'Быстрый вылет без визы', 'zhiraf-ufa' ),
-	);
+	),
+);
 ?>
 <main id="primary" class="site-main site-main--offer site-main--hub-hot">
 	<section class="section dest-landing-hero resort-v2-hero hub-offer-hero bg-milky">

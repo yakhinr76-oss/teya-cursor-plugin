@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Register rewrite rules for resort landings.
  *
- * P0/P1 resort JSON v2: …/kitaj/sanya/, …/vietnam/nyachang/ — data/resorts/*.json + zhiraf_ufa_resort_json_registry().
+ * P0/P1 resort JSON v2: …/tailand/pattaya/, …/kitaj/sanya/, …/vietnam/nyachang/ — data/resorts/*.json + zhiraf_ufa_resort_json_registry().
  */
 function zhiraf_ufa_register_tour_resort_rewrites() {
 	if ( function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) ) {

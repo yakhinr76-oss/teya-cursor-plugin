@@ -18,7 +18,8 @@
 | team-travel.jpg | Pexels | https://www.pexels.com/photo/3184418/ — Pexels License (не использовать на «О нас» / команде) |
 | team-rafael.jpg | **Клиент** | Портрет Рафаэля (директор), 2026 |
 | team-liana.jpg, team-alina.jpg | **Клиент** | Реальные портреты сотрудников (положить в assets/images) |
-| about-office-gagarin-home.jpg, about-office-gagarin.jpg, about-office-desk.jpg | **Клиент** | Фото офиса на ул. Гагарина, 74/1 |
+| about-office-gagarin.jpg | **Клиент** | Интерьер офиса (галерея /o-nas/, первый кадр) |
+| about-office-gagarin-home.jpg | **Клиент** | Команда в офисе (главная + второй кадр /o-nas/) |
 | blog-cover-01.jpg | Pexels | https://www.pexels.com/photo/2960885/ — Pexels License |
 
 Downloaded 2026-10-17 for local theme assets only (no hotlinking in HTML).

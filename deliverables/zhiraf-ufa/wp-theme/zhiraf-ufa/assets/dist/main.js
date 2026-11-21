@@ -621,57 +621,56 @@
       : 'Получить расчёт туров в WhatsApp →';
   }
 
-  function hubLeadSubmitLabel(form, channel) {
-    var base = form && form.getAttribute('data-hub-submit-base');
-    if (!base) {
-      base = 'Отправить запрос';
-    }
+  function hubMessengerGoLabel(channel) {
     channel = channel || 'WhatsApp';
     if (channel === 'MAX') {
-      return base + ' в MAX →';
+      return 'Написать в MAX →';
     }
     if (channel === 'Telegram') {
-      return base + ' в Telegram →';
+      return 'Написать в Telegram →';
     }
-    return base + ' в WhatsApp →';
+    return 'Написать в WhatsApp →';
   }
 
-  function buildHubLeadMessengerText(form) {
-    var parts = [];
-    var tour = fieldValue(form, 'tour');
-    if (tour) {
-      parts.push(tour);
-    }
-    var dates = fieldValue(form, 'hub_dates_nights');
-    if (dates) {
-      parts.push('Даты/ночи: ' + dates);
-    }
-    var budget = fieldValue(form, 'hub_budget');
-    if (budget) {
-      parts.push('Бюджет: ' + budget);
-    }
-    var name = fieldValue(form, 'name');
-    if (name) {
-      parts.push('Имя: ' + name);
-    }
-    return parts.join('. ');
-  }
-
-  function hubLeadMessengerUrl(channel, text) {
-    text = text || '';
-    var page = window.location.href || '';
-    if (channel === 'Telegram') {
-      return 'https://t.me/share/url?url=' + encodeURIComponent(page) + '&text=' + encodeURIComponent(text);
-    }
-    if (channel === 'MAX') {
-      return 'https://max.ru/:share?text=' + encodeURIComponent(text);
-    }
-    var waBase = (cfg && cfg.waBase) ? cfg.waBase : 'https://wa.me/79018105018';
-    if (!text) {
-      return waBase;
-    }
-    var sep = waBase.indexOf('?') !== -1 ? '&' : '?';
-    return waBase + sep + 'text=' + encodeURIComponent(text);
+  function initHubMessengerCta(root) {
+    var scope = root || document;
+    qsa('[data-hub-messenger-cta]', scope).forEach(function (wrap) {
+      if (wrap.dataset.hubMessengerCtaInit === '1') {
+        return;
+      }
+      wrap.dataset.hubMessengerCtaInit = '1';
+      var urlMap = {};
+      try {
+        urlMap = JSON.parse(wrap.getAttribute('data-messenger-urls') || '{}');
+      } catch (err) {
+        urlMap = {};
+      }
+      var channelUrls = {
+        WhatsApp: urlMap.whatsapp || urlMap.WhatsApp || '',
+        Telegram: urlMap.telegram || urlMap.Telegram || '',
+        MAX: urlMap.max || urlMap.MAX || '',
+      };
+      var go = qs('[data-hub-messenger-go]', wrap);
+      var picker = qs('[data-messenger-picker]', wrap);
+      if (!go || !picker) {
+        return;
+      }
+      var radios = qsa('input[type="radio"]', picker);
+      function sync() {
+        var channel = 'WhatsApp';
+        radios.forEach(function (radio) {
+          if (radio.checked) {
+            channel = radio.value;
+          }
+        });
+        go.href = channelUrls[channel] || channelUrls.WhatsApp || '#';
+        go.textContent = hubMessengerGoLabel(channel);
+      }
+      radios.forEach(function (radio) {
+        radio.addEventListener('change', sync);
+      });
+      sync();
+    });
   }
 
   function initMessengerPicker(form) {
@@ -687,9 +686,6 @@
     if (form.getAttribute('data-form-context') === 'dest-turciya-compare') {
       variant = 'compare';
     }
-    if (form.classList.contains('hub-offer-lead-form')) {
-      variant = 'hub';
-    }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
     if (!radios.length) {
@@ -700,9 +696,7 @@
     function sync() {
       var channel = fieldValue(form, radioName) || 'WhatsApp';
       if (submit) {
-        submit.textContent = variant === 'hub'
-          ? hubLeadSubmitLabel(form, channel)
-          : messengerSubmitLabelText(channel, variant);
+        submit.textContent = messengerSubmitLabelText(channel, variant);
       }
       var hidden = qs('[name="contact_channel"]', form);
       if (hidden) {
@@ -1019,7 +1013,7 @@
   qsa('[data-phone-mask]').forEach(bindRuPhoneMask);
 
   var leadMagnetForm = qs('#lead-magnet-form');
-  qsa('.hub-offer-lead-form').forEach(initMessengerPicker);
+  initHubMessengerCta(document);
 
   if (leadMagnetForm) {
     initMessengerPicker(leadMagnetForm);
@@ -1126,9 +1120,6 @@
         msgField.value = aiParts.join('. ');
       }
     }
-    if (msgField && form.classList.contains('hub-offer-lead-form')) {
-      msgField.value = buildHubLeadMessengerText(form);
-    }
     var fd = new FormData(form);
     fd.append('action', action);
     fd.append('nonce', cfg.nonce || '');
@@ -1171,38 +1162,10 @@
           return;
         }
         var msg = data.data && data.data.message ? data.data.message : (data.success ? 'Спасибо! Заявка отправлена.' : PHONE_FALLBACK);
-        var isHubLead = form.classList.contains('hub-offer-lead-form');
-        var hubChannel = '';
-        var hubChatUrl = '';
-        var hubPrefillText = '';
-        if (data.success && isHubLead) {
-          hubPrefillText = buildHubLeadMessengerText(form);
-          hubChannel = fieldValue(form, 'contact_channel') || fieldValue(form, 'lead_messenger') || 'WhatsApp';
-          hubChatUrl = hubLeadMessengerUrl(hubChannel, hubPrefillText);
-          msg = data.data && data.data.message ? data.data.message : 'Заявка отправлена.';
-        }
         setStatus(status, msg, !!data.success);
-        if (data.success && isHubLead && status && hubChatUrl) {
-          var oldLink = qs('.hub-offer-lead-form__chat-link', status);
-          if (oldLink) {
-            oldLink.remove();
-          }
-          status.appendChild(document.createElement('br'));
-          var chatLink = document.createElement('a');
-          chatLink.className = 'hub-offer-lead-form__chat-link';
-          chatLink.href = hubChatUrl;
-          chatLink.target = '_blank';
-          chatLink.rel = 'noopener noreferrer';
-          chatLink.textContent = 'Открыть чат в ' + hubChannel;
-          status.appendChild(chatLink);
-        }
         if (data.success) {
           trackFormSuccess(form, action);
           form.reset();
-          if (isHubLead) {
-            delete form.dataset.messengerPickerInit;
-            initMessengerPicker(form);
-          }
           if (form.id === 'turciya-lead-modal-form') {
             window.setTimeout(closeTurciyaLeadModal, 1800);
           }

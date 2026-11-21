@@ -83,10 +83,68 @@ function zhiraf_ufa_messenger_channel_urls( $text ) {
 }
 
 /**
- * Full hub final CTA form (fields + messenger + AJAX).
+ * Prefill text for hub messenger deep links.
  *
- * @param array<string,mixed> $args See template-parts/hub/hub-offer-lead-form.php.
+ * @param string $hub hot|ai.
+ */
+function zhiraf_ufa_hub_messenger_prefill_text( $hub = 'hot' ) {
+	$hub = sanitize_key( (string) $hub );
+	if ( 'ai' === $hub ) {
+		return __( 'Здравствуйте! Нужен подбор отеля All Inclusive с вылетом из Уфы. Подскажите, пожалуйста, варианты по датам и бюджету.', 'zhiraf-ufa' );
+	}
+
+	return __( 'Здравствуйте! Интересуют горящие или отказные туры с вылетом из Уфы. Подскажите, пожалуйста, ближайшие варианты по датам и бюджету.', 'zhiraf-ufa' );
+}
+
+/**
+ * Hub final CTA: picker + ссылка в мессенджер (без полей и AJAX).
+ *
+ * @param array<string,mixed> $args {
+ *   @type string $hub              hot|ai — контекст префилла.
+ *   @type string $lead             Одна поясняющая фраза.
+ *   @type string $prefill          Override prefill message.
+ *   @type string $messenger_label  Legend picker.
+ * }
+ */
+function zhiraf_ufa_render_hub_messenger_cta( $args = array() ) {
+	$args = wp_parse_args(
+		is_array( $args ) ? $args : array(),
+		array(
+			'hub'             => 'hot',
+			'lead'            => '',
+			'prefill'         => '',
+			'messenger_label' => __( 'Куда написать:', 'zhiraf-ufa' ),
+		)
+	);
+	$prefill = '' !== (string) $args['prefill']
+		? (string) $args['prefill']
+		: zhiraf_ufa_hub_messenger_prefill_text( (string) $args['hub'] );
+	$urls    = zhiraf_ufa_messenger_channel_urls( $prefill );
+
+	get_template_part(
+		'template-parts/hub/hub-offer-messenger-cta',
+		null,
+		array(
+			'lead'            => (string) $args['lead'],
+			'messenger_label' => (string) $args['messenger_label'],
+			'messenger_urls'  => $urls,
+		)
+	);
+}
+
+/**
+ * @deprecated Use zhiraf_ufa_render_hub_messenger_cta().
  */
 function zhiraf_ufa_render_hub_offer_lead_form( $args = array() ) {
-	get_template_part( 'template-parts/hub/hub-offer-lead-form', null, is_array( $args ) ? $args : array() );
+	$hub = 'ai';
+	if ( ! empty( $args['context'] ) && false !== mb_stripos( (string) $args['context'], 'hot', 0, 'UTF-8' ) ) {
+		$hub = 'hot';
+	}
+	zhiraf_ufa_render_hub_messenger_cta(
+		array(
+			'hub'             => $hub,
+			'messenger_label' => ! empty( $args['messenger_label'] ) ? (string) $args['messenger_label'] : __( 'Куда написать:', 'zhiraf-ufa' ),
+			'prefill'         => ! empty( $args['quiz_prefill'] ) ? (string) $args['quiz_prefill'] : '',
+		)
+	);
 }

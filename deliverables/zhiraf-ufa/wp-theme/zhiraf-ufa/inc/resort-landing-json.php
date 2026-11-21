@@ -23,6 +23,7 @@ function zhiraf_ufa_resort_json_registry() {
 		'vietnam/fukuok',
 		'vietnam/nyachang',
 		'kitaj/sanya',
+		'turciya/antalya',
 	);
 }
 
@@ -149,6 +150,39 @@ function zhiraf_ufa_resort_json_catalog_hotels( array $resort_data ) {
 				$from = sanitize_key( (string) $rule['from'] );
 				$tag  = sanitize_key( (string) $rule['tag'] );
 				if ( in_array( $from, $tags, true ) && ! in_array( $tag, $tags, true ) ) {
+					$tags[] = $tag;
+				}
+			}
+			$row['filter_tags'] = array_values( array_unique( $tags ) );
+			$hotels[ $i ]       = $row;
+		}
+	}
+	if ( ! empty( $resort_data['catalog_text_tags'] ) && is_array( $resort_data['catalog_text_tags'] ) ) {
+		foreach ( $hotels as $i => $row ) {
+			if ( ! is_array( $row ) ) {
+				continue;
+			}
+			$tags = ! empty( $row['filter_tags'] ) && is_array( $row['filter_tags'] ) ? $row['filter_tags'] : array();
+			foreach ( $resort_data['catalog_text_tags'] as $rule ) {
+				if ( ! is_array( $rule ) || empty( $rule['tag'] ) || empty( $rule['pattern'] ) ) {
+					continue;
+				}
+				$tag    = sanitize_key( (string) $rule['tag'] );
+				$fields = ! empty( $rule['fields'] ) && is_array( $rule['fields'] )
+					? array_map( 'strval', $rule['fields'] )
+					: array( 'name', 'description', 'caveat', 'subtitle', 'resort_pill' );
+				$hay    = '';
+				foreach ( $fields as $field ) {
+					if ( ! empty( $row[ $field ] ) ) {
+						$hay .= ' ' . (string) $row[ $field ];
+					}
+				}
+				$hay = trim( $hay );
+				if ( '' === $hay ) {
+					continue;
+				}
+				$matched = @preg_match( (string) $rule['pattern'], $hay ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+				if ( 1 === $matched && ! in_array( $tag, $tags, true ) ) {
 					$tags[] = $tag;
 				}
 			}

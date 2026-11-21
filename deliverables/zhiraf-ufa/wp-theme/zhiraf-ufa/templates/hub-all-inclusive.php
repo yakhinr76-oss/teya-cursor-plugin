@@ -215,16 +215,14 @@ $badges     = array(
 	<section class="section hub-offer-final bg-milky" id="ai-hub-cta">
 		<div class="container container--narrow">
 			<div class="hub-offer-card rounded-3xl">
-				<h2><?php esc_html_e( 'Подберём отель All Inclusive под ваш бюджет', 'zhiraf-ufa' ); ?></h2>
+				<h2><?php esc_html_e( 'Подберём отель All Inclusive', 'zhiraf-ufa' ); ?></h2>
 				<?php
-				if ( function_exists( 'zhiraf_ufa_render_hub_offer_lead_form' ) ) {
-					zhiraf_ufa_render_hub_offer_lead_form(
+				if ( function_exists( 'zhiraf_ufa_render_hub_messenger_cta' ) ) {
+					zhiraf_ufa_render_hub_messenger_cta(
 						array(
-							'context'         => 'ai-hub-final',
-							'quiz_prefill'    => $offer['quiz_prefill'] ?? '',
-							'consent_id'      => 'ai-hub-final',
-							'submit_base'     => __( 'Отправить запрос', 'zhiraf-ufa' ),
-							'messenger_label' => __( 'Где удобнее связаться:', 'zhiraf-ufa' ),
+							'hub'             => 'ai',
+							'lead'            => __( 'Одно сообщение — подборка AI/UAI с вылетом из Уфы, детали уточним в переписке.', 'zhiraf-ufa' ),
+							'messenger_label' => __( 'Где вам удобнее написать:', 'zhiraf-ufa' ),
 						)
 					);
 				}

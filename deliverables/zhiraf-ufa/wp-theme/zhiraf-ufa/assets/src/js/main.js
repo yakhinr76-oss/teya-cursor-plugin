@@ -1685,9 +1685,41 @@
     var catalogExpanded = false;
     var moreWrap = qs('[data-hub-tour-more-wrap]', root);
     var moreBtn = qs('[data-hub-tour-more]', root);
+    var labelMore = moreBtn ? moreBtn.getAttribute('data-label-more') || 'Показать ещё' : '';
+    var labelCollapse = moreBtn ? moreBtn.getAttribute('data-label-collapse') || 'Свернуть' : '';
+
+    function countMatchingWraps() {
+      var total = 0;
+      wraps.forEach(function (wrap) {
+        if (!wrap.classList.contains('is-filtered-out')) {
+          total += 1;
+        }
+      });
+      return total;
+    }
+
+    function updateMoreControl(hiddenExtra) {
+      if (!moreWrap || !moreBtn) {
+        return;
+      }
+      var matching = countMatchingWraps();
+      if (matching <= initialVisible) {
+        moreWrap.hidden = true;
+        moreBtn.setAttribute('aria-expanded', catalogExpanded ? 'true' : 'false');
+        return;
+      }
+      moreWrap.hidden = false;
+      if (catalogExpanded) {
+        moreBtn.textContent = labelCollapse;
+        moreBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        moreBtn.textContent = labelMore;
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
 
     function applyHubCatalogCollapse() {
-      if (catalogExpanded || mode !== 'hot') {
+      if (mode !== 'hot') {
         wraps.forEach(function (wrap) {
           wrap.classList.remove('is-hub-collapsed');
         });
@@ -1696,6 +1728,16 @@
         }
         return;
       }
+
+      if (catalogExpanded) {
+        wraps.forEach(function (wrap) {
+          wrap.classList.remove('is-hub-collapsed');
+        });
+        var matchingExpanded = countMatchingWraps();
+        updateMoreControl(Math.max(0, matchingExpanded - initialVisible));
+        return;
+      }
+
       var shown = 0;
       var hiddenExtra = 0;
       wraps.forEach(function (wrap) {
@@ -1711,13 +1753,12 @@
           hiddenExtra += 1;
         }
       });
-      if (moreWrap) {
-        moreWrap.hidden = hiddenExtra === 0;
-      }
+      updateMoreControl(hiddenExtra);
     }
 
     function applyHot(country) {
       var key = country || 'all';
+      catalogExpanded = false;
       wraps.forEach(function (wrap) {
         var slug = wrap.getAttribute('data-hub-country') || '';
         var show = key === 'all' || slug === key;
@@ -1757,7 +1798,7 @@
 
     if (moreBtn) {
       moreBtn.addEventListener('click', function () {
-        catalogExpanded = true;
+        catalogExpanded = !catalogExpanded;
         applyHubCatalogCollapse();
       });
     }

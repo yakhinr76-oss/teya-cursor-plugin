@@ -91,8 +91,11 @@ $badges    = array(
 				data-hub-tour-grid
 				data-hub-initial-visible="<?php echo (int) $hub_hot_initial_visible; ?>"
 			>
-				<?php foreach ( $hot_tours as $tour_item ) : ?>
-					<div class="hub-tour-wrap" data-hub-country="<?php echo esc_attr( (string) ( $tour_item['country_slug'] ?? '' ) ); ?>">
+				<?php foreach ( $hot_tours as $hub_tour_index => $tour_item ) : ?>
+					<div
+						class="hub-tour-wrap<?php echo $hub_tour_index >= $hub_hot_initial_visible ? ' is-hub-collapsed' : ''; ?>"
+						data-hub-country="<?php echo esc_attr( (string) ( $tour_item['country_slug'] ?? '' ) ); ?>"
+					>
 						<?php
 						get_template_part(
 							'template-parts/cards/card-tour-price',
@@ -111,7 +114,14 @@ $badges    = array(
 			</div>
 			<?php if ( count( $hot_tours ) > $hub_hot_initial_visible ) : ?>
 				<div class="hub-offer-catalog-more" data-hub-tour-more-wrap>
-					<button type="button" class="btn btn--outline rounded-xl" data-hub-tour-more>
+					<button
+						type="button"
+						class="btn btn--outline rounded-xl"
+						data-hub-tour-more
+						aria-expanded="false"
+						data-label-more="<?php esc_attr_e( 'Показать ещё', 'zhiraf-ufa' ); ?>"
+						data-label-collapse="<?php esc_attr_e( 'Свернуть', 'zhiraf-ufa' ); ?>"
+					>
 						<?php esc_html_e( 'Показать ещё', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>

@@ -75,18 +75,21 @@ $badges     = array(
 			<div class="hub-offer-expert-grid">
 				<?php foreach ( $dest_cards as $card ) : ?>
 					<div class="hub-offer-card rounded-3xl hub-offer-card--expert">
-						<?php zhiraf_ufa_img( $card['image'], $card['title'], 'hub-offer-card__thumb', true ); ?>
-						<h3><a href="<?php echo esc_url( $card['url'] ); ?>"><?php echo esc_html( $card['title'] ); ?></a></h3>
-						<p><?php echo esc_html( $card['text'] ); ?></p>
-						<?php if ( ! empty( $card['url2'] ) ) : ?>
-							<p class="hub-offer-card__link-row">
-								<a href="<?php echo esc_url( $card['url'] ); ?>"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></a>
-								·
-								<a href="<?php echo esc_url( $card['url2'] ); ?>"><?php esc_html_e( 'Китай', 'zhiraf-ufa' ); ?></a>
-							</p>
-						<?php else : ?>
-							<a class="btn btn--ghost btn--sm" href="<?php echo esc_url( $card['url'] ); ?>"><?php esc_html_e( 'Страница направления', 'zhiraf-ufa' ); ?></a>
-						<?php endif; ?>
+						<div class="hub-offer-card__thumb-wrap">
+							<?php zhiraf_ufa_img( $card['image'], $card['title'], 'hub-offer-card__thumb', true ); ?>
+						</div>
+						<h3 class="hub-offer-card__title">
+							<a href="<?php echo esc_url( $card['url'] ); ?>"><?php echo esc_html( $card['title'] ); ?></a>
+						</h3>
+						<p class="hub-offer-card__text"><?php echo esc_html( $card['text'] ); ?></p>
+						<div class="hub-offer-card__actions">
+							<?php if ( ! empty( $card['url2'] ) ) : ?>
+								<a class="btn btn--ghost btn--sm rounded-xl" href="<?php echo esc_url( $card['url'] ); ?>"><?php esc_html_e( 'Вьетнам', 'zhiraf-ufa' ); ?></a>
+								<a class="btn btn--ghost btn--sm rounded-xl" href="<?php echo esc_url( $card['url2'] ); ?>"><?php esc_html_e( 'Китай', 'zhiraf-ufa' ); ?></a>
+							<?php else : ?>
+								<a class="btn btn--ghost btn--sm rounded-xl" href="<?php echo esc_url( $card['url'] ); ?>"><?php esc_html_e( 'Страница направления', 'zhiraf-ufa' ); ?></a>
+							<?php endif; ?>
+						</div>
 					</div>
 				<?php endforeach; ?>
 			</div>
@@ -111,6 +114,20 @@ $badges     = array(
 					</button>
 				<?php endforeach; ?>
 			</div>
+			<?php
+			$hub_ai_reserve_images = array();
+			if ( ! empty( $offer['image'] ) ) {
+				$hub_ai_reserve_images[] = (string) $offer['image'];
+			}
+			foreach ( $dest_cards as $dest_card ) {
+				if ( ! empty( $dest_card['image'] ) ) {
+					$hub_ai_reserve_images[] = (string) $dest_card['image'];
+				}
+			}
+			if ( function_exists( 'zhiraf_ufa_tour_image_hub_context' ) ) {
+				zhiraf_ufa_tour_image_hub_context( $hub_ai_reserve_images, true );
+			}
+			?>
 			<div
 				class="tour-price-grid tour-price-grid--hub"
 				data-hub-tour-grid
@@ -126,9 +143,10 @@ $badges     = array(
 							'template-parts/cards/card-tour-price',
 							null,
 							array(
-								'tour'       => $tour_item,
-								'card_index' => $hub_tour_index,
-								'cta_class'  => 'btn btn--ghost tour-card__cta',
+								'tour'            => $tour_item,
+								'card_index'      => $hub_tour_index,
+								'cta_class'       => 'btn btn--ghost tour-card__cta',
+								'hub_calm_badges' => true,
 							)
 						);
 						?>
@@ -149,6 +167,11 @@ $badges     = array(
 					</button>
 				</div>
 			<?php endif; ?>
+			<?php
+			if ( function_exists( 'zhiraf_ufa_tour_image_hub_context_clear' ) ) {
+				zhiraf_ufa_tour_image_hub_context_clear();
+			}
+			?>
 		</div>
 	</section>
 

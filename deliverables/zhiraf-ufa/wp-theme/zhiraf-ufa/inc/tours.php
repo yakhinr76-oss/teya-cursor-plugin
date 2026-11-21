@@ -21,12 +21,40 @@ function zhiraf_ufa_tour_image( $tour ) {
 }
 
 /**
+ * Reserve hub hero/thumb filenames so catalog grids avoid repeats; prefer theme library over operator thumbs.
+ *
+ * @param array<int,string> $reserve_files Image basenames.
+ * @param bool              $prefer_library When true, skip operator image_url on hub_showcase tours.
+ */
+function zhiraf_ufa_tour_image_hub_context( array $reserve_files = array(), $prefer_library = false ) {
+	$reserve = array();
+	foreach ( $reserve_files as $file ) {
+		$file = trim( (string) $file );
+		if ( '' !== $file ) {
+			$reserve[ $file ] = true;
+		}
+	}
+	$GLOBALS['zhiraf_ufa_tour_image_hub_ctx'] = array(
+		'reserve'        => $reserve,
+		'prefer_library' => (bool) $prefer_library,
+	);
+}
+
+/**
+ * Clear hub image reservation (end of hub template catalog).
+ */
+function zhiraf_ufa_tour_image_hub_context_clear() {
+	unset( $GLOBALS['zhiraf_ufa_tour_image_hub_ctx'] );
+}
+
+/**
  * Photo for a tour card: the resort's own verified photo when the library has one,
  * otherwise a photo of the country. Within one page request the least-used candidate
  * is picked, so cards of one country look varied where several verified photos exist.
  * Sources/credits: assets/images/CREDITS.md (Pexels, no hotel signage, checked visually).
  *
  * @param array<string,mixed> $tour Tour data.
+ * @param int|null            $card_index Optional grid slot for photo rotation.
  * @return array{file:string,is_resort:bool,alt:string}
  */
 function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
@@ -35,6 +63,11 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	if ( ! empty( $tour['image'] ) ) {
 		return array( 'file' => (string) $tour['image'], 'is_resort' => true, 'alt' => '' );
 	}
+	$hub_ctx          = isset( $GLOBALS['zhiraf_ufa_tour_image_hub_ctx'] ) && is_array( $GLOBALS['zhiraf_ufa_tour_image_hub_ctx'] )
+		? $GLOBALS['zhiraf_ufa_tour_image_hub_ctx']
+		: array();
+	$hub_prefer_lib   = ! empty( $hub_ctx['prefer_library'] ) || ! empty( $tour['hub_showcase'] );
+	$hub_reserve      = ! empty( $hub_ctx['reserve'] ) && is_array( $hub_ctx['reserve'] ) ? $hub_ctx['reserve'] : array();
 	$resort   = ! empty( $tour['resort'] ) ? mb_strtolower( (string) $tour['resort'], 'UTF-8' ) : '';
 	$slug     = ! empty( $tour['country_slug'] ) ? (string) $tour['country_slug'] : '';
 	$hotel_lc = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
@@ -49,7 +82,7 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 		$slug = $legacy[ $slug ];
 	}
 	$skip_operator_image_slugs = array( 'maldivy', 'sejshely', 'shri-lanka', 'indoneziya', 'indiya' );
-	if ( ! $aqua_hotel && ! empty( $tour['image_url'] ) && ! in_array( $slug, $skip_operator_image_slugs, true ) ) {
+	if ( ! $aqua_hotel && ! $hub_prefer_lib && ! empty( $tour['image_url'] ) && ! in_array( $slug, $skip_operator_image_slugs, true ) ) {
 		$ext = zhiraf_ufa_tour_operator_image_file( (string) $tour['image_url'] );
 		if ( '' !== $ext ) {
 			return array( 'file' => $ext, 'is_resort' => true, 'alt' => '' );
@@ -257,7 +290,18 @@ function zhiraf_ufa_tour_image_info( $tour, $card_index = null ) {
 	}
 	// Never repeat the same fallback on adjacent cards: strict slot rotation on grids, least-used elsewhere.
 	if ( null !== $card_index && count( $candidates ) > 0 ) {
-		$pick = $candidates[ ( (int) $card_index ) % count( $candidates ) ];
+		$n    = count( $candidates );
+		$pick = (string) $candidates[ ( (int) $card_index ) % $n ];
+		if ( ! empty( $hub_reserve ) ) {
+			for ( $k = 0; $k < $n; $k++ ) {
+				$cand = (string) $candidates[ ( (int) $card_index + $k ) % $n ];
+				if ( isset( $hub_reserve[ $cand ] ) ) {
+					continue;
+				}
+				$pick = $cand;
+				break;
+			}
+		}
 	} else {
 		$pick = $candidates[0];
 		foreach ( $candidates as $f ) {

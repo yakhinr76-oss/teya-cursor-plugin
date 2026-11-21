@@ -1666,4 +1666,63 @@
   }
 
   initExcursionLanding();
+
+  function initHubOfferFilters() {
+    var root = qs('[data-hub-offer-root]');
+    if (!root) {
+      return;
+    }
+    var mode = root.getAttribute('data-hub-offer') || 'hot';
+    var grid = qs('[data-hub-tour-grid]', root);
+    if (!grid) {
+      return;
+    }
+    var wraps = qsa('.hub-tour-wrap', grid);
+
+    function applyHot(country) {
+      var key = country || 'all';
+      wraps.forEach(function (wrap) {
+        var slug = wrap.getAttribute('data-hub-country') || '';
+        var show = key === 'all' || slug === key;
+        wrap.classList.toggle('is-filtered-out', !show);
+      });
+    }
+
+    function applyAi(filterToken) {
+      var token = filterToken || 'all';
+      wraps.forEach(function (wrap) {
+        var tokens = (wrap.getAttribute('data-hub-filters') || '').split(/\s+/);
+        var show = token === 'all' || tokens.indexOf(token) !== -1;
+        wrap.classList.toggle('is-filtered-out', !show);
+      });
+    }
+
+    qsa('[data-hub-country-filter]', root).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        qsa('[data-hub-country-filter]', root).forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        applyHot(btn.getAttribute('data-hub-country-filter'));
+      });
+    });
+
+    qsa('[data-hub-ai-filter]', root).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        qsa('[data-hub-ai-filter]', root).forEach(function (b) {
+          b.classList.toggle('is-active', b === btn);
+        });
+        var raw = btn.getAttribute('data-hub-ai-filter') || 'all';
+        applyAi(raw === 'all' ? 'all' : raw);
+      });
+    });
+
+    if (mode === 'hot') {
+      applyHot('all');
+    } else {
+      applyAi('all');
+    }
+  }
+
+  initHubOfferFilters();
 })();

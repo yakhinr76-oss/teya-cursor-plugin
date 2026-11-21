@@ -151,9 +151,12 @@ $zhiraf_hot_departure    = ! empty( $args['emphasize_hot_departure'] );
 				<?php endif; ?>
 			</div>
 
+			<?php
+			$cta_class = ! empty( $args['cta_class'] ) ? (string) $args['cta_class'] : 'btn btn--primary tour-card__cta';
+			?>
 			<button
 				type="button"
-				class="btn btn--primary tour-card__cta"
+				class="<?php echo esc_attr( $cta_class ); ?>"
 				data-modal-open="quiz"
 				data-quiz-open
 				data-quiz-prefill="<?php echo esc_attr( $prefill_text ); ?>"

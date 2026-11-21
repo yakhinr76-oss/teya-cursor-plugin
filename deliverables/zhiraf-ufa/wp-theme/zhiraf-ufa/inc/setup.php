@@ -74,7 +74,7 @@ function zhiraf_ufa_primary_menu_fallback() {
 		home_url( '/tour/' )              => __( 'Туры', 'zhiraf-ufa' ),
 		home_url( '/tour/gruziya/' )      => __( 'Грузия', 'zhiraf-ufa' ),
 		home_url( '/tour/uzbekistan/' )   => __( 'Узбекистан', 'zhiraf-ufa' ),
-		home_url( '/goryashchie-tury/' )  => __( 'Горящие', 'zhiraf-ufa' ),
+		home_url( '/goryashchie-tury/' )  => __( 'Горящие туры', 'zhiraf-ufa' ),
 		home_url( '/vse-vklyucheno/' )    => __( 'Всё включено', 'zhiraf-ufa' ),
 		home_url( '/o-nas/' )             => __( 'О нас', 'zhiraf-ufa' ),
 		home_url( '/blog/' )              => __( 'Блог', 'zhiraf-ufa' ),

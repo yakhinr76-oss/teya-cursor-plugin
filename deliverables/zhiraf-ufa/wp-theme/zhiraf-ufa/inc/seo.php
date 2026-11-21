@@ -137,8 +137,8 @@ function zhiraf_ufa_meta_descriptions() {
 		'kontakty' => 'Телефон +7 901 810-50-18, email office@zhiraf-ufa.ru, часы работы, карта, реквизиты ООО «Жираф».',
 		'tour'              => 'Турция, ОАЭ, Египет, Таиланд и Вьетнам — пакетные туры из Уфы. Подбор без прайс-борда на сайте. Квиз за 2 минуты.',
 		'blog'              => 'Как купить тур, документы, «всё включено», отдых с детьми — статьи «Жираф» без рекламных цен «от».',
-		'goryashchie-tury'  => 'Актуальные горящие пакеты с вылетом из Уфы — без фиктивных цен «от», заявка и квиз.',
-		'vse-vklyucheno'    => 'Пакеты AI/UAI с вылетом из Уфы: что входит в тур — честно, в договоре.',
+		'goryashchie-tury'  => 'Горящие туры и путёвки с вылетом из Уфы: Египет, Турция, ОАЭ, Таиланд, Вьетнам и Китай. Проверяем топливный сбор и места на рейсе.',
+		'vse-vklyucheno'    => 'Туры «всё включено» с вылетом из Уфы: All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и Азии.',
 	);
 }
 
@@ -308,12 +308,19 @@ function zhiraf_ufa_head_meta() {
 	$resort_ctx  = zhiraf_ufa_current_resort_context();
 	if ( $resort_ctx ) {
 		$canonical = zhiraf_ufa_resort_url( $resort_ctx['country'], $resort_ctx['resort'] );
+	} elseif ( is_page() && function_exists( 'zhiraf_ufa_offer_landing_slugs' ) ) {
+		$slug = get_post_field( 'post_name', get_queried_object_id() );
+		if ( in_array( $slug, zhiraf_ufa_offer_landing_slugs(), true ) ) {
+			$canonical = get_permalink( get_queried_object_id() );
+		}
 	}
 	$canonical = zhiraf_ufa_canonical_public_url( $canonical );
 	$is_staging = zhiraf_ufa_is_staging_host();
 
 	if ( $is_staging ) {
 		echo '<meta name="robots" content="noindex, nofollow" />' . "\n";
+	} elseif ( is_singular( 'deal' ) ) {
+		echo '<meta name="robots" content="noindex, follow" />' . "\n";
 	} elseif ( is_search() || is_404() ) {
 		echo '<meta name="robots" content="noindex, follow" />' . "\n";
 	} else {
@@ -562,7 +569,11 @@ function zhiraf_ufa_faq_json_ld() {
 				$faq_items = $dest['faq'];
 			} else {
 				$offer = zhiraf_ufa_get_offer_landing( $slug );
-				if ( $offer && ! empty( $offer['faq'] ) ) {
+				if ( 'goryashchie-tury' === $slug && function_exists( 'zhiraf_ufa_hot_hub_faq' ) ) {
+					$faq_items = zhiraf_ufa_hot_hub_faq();
+				} elseif ( 'vse-vklyucheno' === $slug && function_exists( 'zhiraf_ufa_ai_hub_faq' ) ) {
+					$faq_items = zhiraf_ufa_ai_hub_faq();
+				} elseif ( $offer && ! empty( $offer['faq'] ) ) {
 					$faq_items = $offer['faq'];
 				}
 			}

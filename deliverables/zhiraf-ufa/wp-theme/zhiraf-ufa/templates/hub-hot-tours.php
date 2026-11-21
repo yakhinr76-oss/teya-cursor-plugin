@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) || empty( $offer ) ) {
 	return;
 }
 
-$hot_tours              = zhiraf_ufa_get_hot_hub_catalog_tours( 24 );
+$hot_tours               = zhiraf_ufa_get_hot_hub_catalog_tours( 24 );
 $hub_hot_initial_visible = 9;
-$tabs                   = zhiraf_ufa_hot_hub_country_tabs();
+$tabs                    = zhiraf_ufa_hot_hub_country_tabs( $hot_tours );
 $visa      = zhiraf_ufa_hot_hub_visa_free_cards();
 $how       = zhiraf_ufa_hot_hub_how_cards();
 $faq       = zhiraf_ufa_hot_hub_faq();
@@ -102,6 +102,7 @@ $badges    = array(
 							null,
 							array(
 								'tour'                    => $tour_item,
+								'card_index'              => $hub_tour_index,
 								'emphasize_hot_departure' => true,
 								'emphasize_flight'        => true,
 								'hub_calm_badges'         => true,
@@ -134,11 +135,29 @@ $badges    = array(
 			<h2 class="section-title"><?php esc_html_e( 'Куда реально улететь завтра (без визы)', 'zhiraf-ufa' ); ?></h2>
 			<div class="hub-offer-country-grid">
 				<?php foreach ( $visa as $card ) : ?>
-					<a class="hub-offer-country-card rounded-3xl" href="<?php echo esc_url( $card['url'] ); ?>">
-						<?php zhiraf_ufa_img( $card['image'], $card['name'], 'hub-offer-country-card__img', true ); ?>
+					<?php
+					$visa_name    = ! empty( $card['name'] ) ? (string) $card['name'] : '';
+					$visa_tagline = ! empty( $card['tagline'] ) ? (string) $card['tagline'] : '';
+					if ( '' === $visa_tagline && ! empty( $card['flight'] ) ) {
+						$visa_tagline = trim( (string) $card['flight'] . ( ! empty( $card['visa'] ) ? ' · ' . (string) $card['visa'] : '' ) );
+					}
+					$visa_url     = ! empty( $card['url'] ) ? (string) $card['url'] : '';
+					$visa_image   = ! empty( $card['image'] ) ? (string) $card['image'] : '';
+					$visa_label   = $visa_name . ( '' !== $visa_tagline ? ': ' . $visa_tagline : '' );
+					?>
+					<a
+						class="hub-offer-country-card rounded-3xl"
+						href="<?php echo esc_url( $visa_url ); ?>"
+						aria-label="<?php echo esc_attr( $visa_label ); ?>"
+					>
+						<div class="hub-offer-country-card__media">
+							<?php zhiraf_ufa_img( $visa_image, $visa_name, 'hub-offer-country-card__img', true ); ?>
+						</div>
 						<div class="hub-offer-country-card__body">
-							<h3><?php echo esc_html( $card['name'] ); ?></h3>
-							<p><?php echo esc_html( $card['flight'] ); ?> · <?php echo esc_html( $card['visa'] ); ?></p>
+							<h3 class="hub-offer-country-card__title"><?php echo esc_html( $visa_name ); ?></h3>
+							<?php if ( '' !== $visa_tagline ) : ?>
+								<p class="hub-offer-country-card__meta"><?php echo esc_html( $visa_tagline ); ?></p>
+							<?php endif; ?>
 						</div>
 					</a>
 				<?php endforeach; ?>

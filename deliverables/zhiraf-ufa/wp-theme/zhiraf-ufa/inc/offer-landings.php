@@ -32,8 +32,8 @@ function zhiraf_ufa_offer_landing_data() {
 			'description'   => __( 'Горящие туры и путёвки с вылетом из Уфы: Египет, Турция, ОАЭ, Таиланд, Вьетнам и Китай. Проверяем топливный сбор и места на рейсе за 15 минут.', 'zhiraf-ufa' ),
 			'eyebrow'       => __( 'Вылет из Уфы · ближайшие 3–14 дней', 'zhiraf-ufa' ),
 			'hero_lead'     => __( 'Вылеты в ближайшие 3–14 дней по сниженным ценам туроператоров. Проверяем наличие мест на рейсе и итоговую цену с топливным сбором за 15 минут.', 'zhiraf-ufa' ),
-			'image'         => 'resort-turciya-belek-1.jpg',
-			'image_alt'     => __( 'Горящие туры из Уфы — пляж и море', 'zhiraf-ufa' ),
+			'image'         => 'dest-thailand.jpg',
+			'image_alt'     => __( 'Горящие туры из Уфы — закат у моря', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
 				array(
 					'icon' => '⏱',
@@ -152,7 +152,8 @@ function zhiraf_ufa_offer_landing_data() {
 			'description'   => __( 'Туры «всё включено» с вылетом из Уфы: All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и курортах Азии. Честный состав пакета в договоре.', 'zhiraf-ufa' ),
 			'eyebrow'       => __( 'AI / UAI · предсказуемый бюджет', 'zhiraf-ufa' ),
 			'hero_lead'     => __( 'Отдых с предсказуемым бюджетом: перелёт, трансфер, проживание и питание уже в цене. Подбираем проверенные отели All Inclusive и Ultra All Inclusive в Турции, Египте, ОАЭ и Азии.', 'zhiraf-ufa' ),
-			'image'         => 'resort-turciya-belek-1.jpg',
+			'image'         => 'resort-turciya-kemer-2.jpg',
+			'image_alt'     => __( 'Курортный отель All Inclusive — бассейн и море', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
 				array( 'icon' => '🇹🇷', 'text' => __( 'Турция · AI / UAI', 'zhiraf-ufa' ) ),
 				array( 'icon' => '🇪🇬', 'text' => __( 'Египет · AI', 'zhiraf-ufa' ) ),

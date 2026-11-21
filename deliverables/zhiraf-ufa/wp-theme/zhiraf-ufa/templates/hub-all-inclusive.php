@@ -13,7 +13,8 @@ if ( ! defined( 'ABSPATH' ) || empty( $offer ) ) {
 $ai_tours = function_exists( 'zhiraf_ufa_get_all_inclusive_showcase_tours' )
 	? zhiraf_ufa_get_all_inclusive_showcase_tours( 24 )
 	: array();
-$dest_cards = zhiraf_ufa_ai_hub_destination_cards();
+$hub_ai_initial_visible = 9;
+$dest_cards             = zhiraf_ufa_ai_hub_destination_cards();
 $tabs       = zhiraf_ufa_ai_hub_catalog_tabs();
 $columns    = zhiraf_ufa_ai_hub_included_columns();
 $faq        = zhiraf_ufa_ai_hub_faq();
@@ -110,10 +111,14 @@ $badges     = array(
 					</button>
 				<?php endforeach; ?>
 			</div>
-			<div class="tour-price-grid tour-price-grid--hub" data-hub-tour-grid>
-				<?php foreach ( $ai_tours as $tour_item ) : ?>
+			<div
+				class="tour-price-grid tour-price-grid--hub"
+				data-hub-tour-grid
+				data-hub-initial-visible="<?php echo (int) $hub_ai_initial_visible; ?>"
+			>
+				<?php foreach ( $ai_tours as $hub_tour_index => $tour_item ) : ?>
 					<div
-						class="hub-tour-wrap"
+						class="hub-tour-wrap<?php echo $hub_tour_index >= $hub_ai_initial_visible ? ' is-hub-collapsed' : ''; ?>"
 						data-hub-filters="<?php echo esc_attr( zhiraf_ufa_ai_hub_tour_filter_tokens( $tour_item ) ); ?>"
 					>
 						<?php
@@ -121,14 +126,29 @@ $badges     = array(
 							'template-parts/cards/card-tour-price',
 							null,
 							array(
-								'tour'      => $tour_item,
-								'cta_class' => 'btn btn--ghost tour-card__cta',
+								'tour'       => $tour_item,
+								'card_index' => $hub_tour_index,
+								'cta_class'  => 'btn btn--ghost tour-card__cta',
 							)
 						);
 						?>
 					</div>
 				<?php endforeach; ?>
 			</div>
+			<?php if ( count( $ai_tours ) > $hub_ai_initial_visible ) : ?>
+				<div class="hub-offer-catalog-more" data-hub-tour-more-wrap>
+					<button
+						type="button"
+						class="btn btn--outline rounded-xl"
+						data-hub-tour-more
+						aria-expanded="false"
+						data-label-more="<?php esc_attr_e( 'Показать ещё', 'zhiraf-ufa' ); ?>"
+						data-label-collapse="<?php esc_attr_e( 'Свернуть', 'zhiraf-ufa' ); ?>"
+					>
+						<?php esc_html_e( 'Показать ещё', 'zhiraf-ufa' ); ?>
+					</button>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 

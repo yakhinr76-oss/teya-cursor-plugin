@@ -10,41 +10,204 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Country filter tabs for hot hub (client-side filter keys).
+ * All destination slugs configured in BG Price Engine.
  *
+ * @return string[]
+ */
+function zhiraf_ufa_hub_bg_country_slugs() {
+	if ( ! class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
+		return array();
+	}
+
+	return array_keys( Zhiraf_BG_Price_Engine::$countries );
+}
+
+/**
+ * BG country slugs: priority block first, then the rest of the engine config.
+ *
+ * @param string[] $priority Slugs in preferred order.
+ * @return string[]
+ */
+function zhiraf_ufa_hub_country_slugs_ordered( array $priority ) {
+	$all   = zhiraf_ufa_hub_bg_country_slugs();
+	$order = array();
+	foreach ( $priority as $slug ) {
+		$slug = sanitize_key( (string) $slug );
+		if ( '' !== $slug && in_array( $slug, $all, true ) ) {
+			$order[] = $slug;
+		}
+	}
+	foreach ( $all as $slug ) {
+		if ( ! in_array( $slug, $order, true ) ) {
+			$order[] = $slug;
+		}
+	}
+
+	return $order;
+}
+
+/**
+ * @param array<int,array{tour:array<string,mixed>,ts:int}> $rows Sorted departure rows.
+ * @param int                                               $window_ts End of the 14-day priority window.
+ */
+function zhiraf_ufa_hub_sort_hot_departure_rows( array &$rows, $window_ts ) {
+	usort(
+		$rows,
+		static function ( $a, $b ) use ( $window_ts ) {
+			$aw = $a['ts'] <= $window_ts ? 0 : 1;
+			$bw = $b['ts'] <= $window_ts ? 0 : 1;
+			if ( $aw !== $bw ) {
+				return $aw <=> $bw;
+			}
+			if ( $a['ts'] !== $b['ts'] ) {
+				return $a['ts'] <=> $b['ts'];
+			}
+
+			return (int) ( $a['tour']['price_rur'] ?? 0 ) <=> (int) ( $b['tour']['price_rur'] ?? 0 );
+		}
+	);
+}
+
+/**
+ * @param array<int,array{tour:array<string,mixed>,ts:int}> $rows Sorted rows.
+ * @param int                                               $max  Max unique hotels.
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_hub_unique_hotel_tours_from_rows( array $rows, $max ) {
+	$max  = max( 1, (int) $max );
+	$seen = array();
+	$out  = array();
+	foreach ( $rows as $row ) {
+		$tour = $row['tour'];
+		$key  = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+		if ( '' === $key || isset( $seen[ $key ] ) ) {
+			continue;
+		}
+		$seen[ $key ] = true;
+		$out[]        = $tour;
+		if ( count( $out ) >= $max ) {
+			break;
+		}
+	}
+
+	return $out;
+}
+
+/**
+ * @param array<int,array<string,mixed>> $tours Flat tour list.
+ * @param int                            $max   Max unique hotels.
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_hub_unique_hotel_tours( array $tours, $max ) {
+	$max  = max( 1, (int) $max );
+	$seen = array();
+	$out  = array();
+	foreach ( $tours as $tour ) {
+		if ( ! is_array( $tour ) ) {
+			continue;
+		}
+		$key = mb_strtolower( (string) ( $tour['hotel_name'] ?? '' ), 'UTF-8' );
+		if ( '' === $key || isset( $seen[ $key ] ) ) {
+			continue;
+		}
+		$seen[ $key ] = true;
+		$out[]        = $tour;
+		if ( count( $out ) >= $max ) {
+			break;
+		}
+	}
+
+	return $out;
+}
+
+/**
+ * @param array<string,array<int,array<string,mixed>>> $by_country Country slug => tours (max N each).
+ * @param string[]                                     $country_order Assembly order.
+ * @param int                                          $limit         Total cards cap.
+ * @param int                                          $max_rounds    Slots per country (e.g. 3).
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_hub_round_robin_tours( array $by_country, array $country_order, $limit, $max_rounds ) {
+	$limit      = max( 1, (int) $limit );
+	$max_rounds = max( 1, (int) $max_rounds );
+	$cards      = array();
+
+	for ( $round = 0; $round < $max_rounds; $round++ ) {
+		foreach ( $country_order as $slug ) {
+			if ( empty( $by_country[ $slug ][ $round ] ) ) {
+				continue;
+			}
+			$cards[] = $by_country[ $slug ][ $round ];
+			if ( count( $cards ) >= $limit ) {
+				return $cards;
+			}
+		}
+	}
+
+	return $cards;
+}
+
+/**
+ * Country filter tabs for hot hub — only countries present in the current showcase.
+ *
+ * @param array<int,array<string,mixed>> $tours Current catalog rows.
  * @return array<int,array{id:string,label:string}>
  */
-function zhiraf_ufa_hot_hub_country_tabs() {
-	return array(
+function zhiraf_ufa_hot_hub_country_tabs( array $tours = array() ) {
+	$tabs = array(
 		array(
 			'id'    => 'all',
 			'label' => __( 'Все страны', 'zhiraf-ufa' ),
 		),
-		array(
-			'id'    => 'egipet',
-			'label' => __( 'Египет', 'zhiraf-ufa' ),
-		),
-		array(
-			'id'    => 'turciya',
-			'label' => __( 'Турция', 'zhiraf-ufa' ),
-		),
-		array(
-			'id'    => 'oae',
-			'label' => __( 'ОАЭ', 'zhiraf-ufa' ),
-		),
-		array(
-			'id'    => 'tailand',
-			'label' => __( 'Таиланд', 'zhiraf-ufa' ),
-		),
-		array(
-			'id'    => 'vietnam',
-			'label' => __( 'Вьетнам', 'zhiraf-ufa' ),
-		),
-		array(
-			'id'    => 'kitaj',
-			'label' => __( 'Китай', 'zhiraf-ufa' ),
-		),
 	);
+	if ( empty( $tours ) ) {
+		return $tabs;
+	}
+
+	$present = array();
+	foreach ( $tours as $t ) {
+		$slug = ! empty( $t['country_slug'] ) ? sanitize_key( (string) $t['country_slug'] ) : '';
+		if ( '' !== $slug ) {
+			$present[ $slug ] = true;
+		}
+	}
+	if ( empty( $present ) ) {
+		return $tabs;
+	}
+
+	$priority = zhiraf_ufa_hub_country_slugs_ordered(
+		array( 'egipet', 'turciya', 'oae', 'tailand', 'vietnam', 'kitaj' )
+	);
+	$seen_tab = array();
+	foreach ( $priority as $slug ) {
+		if ( empty( $present[ $slug ] ) ) {
+			continue;
+		}
+		$label = function_exists( 'zhiraf_ufa_tour_country_name' ) ? zhiraf_ufa_tour_country_name( $slug ) : '';
+		if ( '' === $label ) {
+			$label = $slug;
+		}
+		$tabs[]           = array(
+			'id'    => $slug,
+			'label' => $label,
+		);
+		$seen_tab[ $slug ] = true;
+	}
+	foreach ( array_keys( $present ) as $slug ) {
+		if ( isset( $seen_tab[ $slug ] ) ) {
+			continue;
+		}
+		$label = function_exists( 'zhiraf_ufa_tour_country_name' ) ? zhiraf_ufa_tour_country_name( $slug ) : '';
+		if ( '' === $label ) {
+			$label = $slug;
+		}
+		$tabs[] = array(
+			'id'    => $slug,
+			'label' => $label,
+		);
+	}
+
+	return $tabs;
 }
 
 /**
@@ -58,56 +221,51 @@ function zhiraf_ufa_get_hot_hub_catalog_tours( $limit = 24, $country_slug = '' )
 	if ( ! class_exists( 'Zhiraf_BG_Price_Engine' ) ) {
 		return array();
 	}
-	$engine     = Zhiraf_BG_Price_Engine::get_instance();
-	$countries  = array( 'egipet', 'turciya', 'oae', 'tailand', 'vietnam', 'kitaj' );
-	$country_slug = sanitize_key( (string) $country_slug );
+	$engine           = Zhiraf_BG_Price_Engine::get_instance();
+	$limit            = max( 1, (int) $limit );
+	$max_per_country  = 3;
+	$country_slug     = sanitize_key( (string) $country_slug );
+	$priority_slugs   = zhiraf_ufa_hub_country_slugs_ordered(
+		array( 'egipet', 'turciya', 'oae', 'tailand', 'vietnam', 'kitaj' )
+	);
 	if ( '' !== $country_slug && 'all' !== $country_slug ) {
-		$countries = array( $country_slug );
+		$priority_slugs = array( $country_slug );
 	}
-	$today_ts = ( new DateTime( 'today', wp_timezone() ) )->getTimestamp();
-	$window   = $today_ts + ( 14 * DAY_IN_SECONDS );
-	$pool     = array();
+	$today_ts   = ( new DateTime( 'today', wp_timezone() ) )->getTimestamp();
+	$window_ts  = $today_ts + ( 14 * DAY_IN_SECONDS );
+	$by_country = array();
+	$order      = array();
 
-	foreach ( $countries as $slug ) {
+	foreach ( $priority_slugs as $slug ) {
+		$rows = array();
 		foreach ( $engine->get_country_tours( $slug, 250 ) as $t ) {
 			if ( ! function_exists( 'zhiraf_ufa_tour_valid_for_price_card' ) || ! zhiraf_ufa_tour_valid_for_price_card( $t ) ) {
 				continue;
 			}
-			$ts = zhiraf_ufa_departure_to_timestamp( $t['departure_date'] ?? '' );
+			$ts = function_exists( 'zhiraf_ufa_departure_to_timestamp' )
+				? zhiraf_ufa_departure_to_timestamp( $t['departure_date'] ?? '' )
+				: 0;
 			if ( ! $ts || $ts < $today_ts ) {
 				continue;
 			}
 			$t['country_slug'] = $slug;
-			$pool[]            = array(
+			$rows[]            = array(
 				'tour' => $t,
 				'ts'   => $ts,
 			);
 		}
-	}
-
-	usort(
-		$pool,
-		static function ( $a, $b ) use ( $window ) {
-			$aw = $a['ts'] <= $window ? 0 : 1;
-			$bw = $b['ts'] <= $window ? 0 : 1;
-			if ( $aw !== $bw ) {
-				return $aw <=> $bw;
-			}
-			if ( $a['ts'] !== $b['ts'] ) {
-				return $a['ts'] <=> $b['ts'];
-			}
-			return (int) ( $a['tour']['price_rur'] ?? 0 ) <=> (int) ( $b['tour']['price_rur'] ?? 0 );
+		if ( empty( $rows ) ) {
+			continue;
 		}
-	);
-
-	$out = array();
-	foreach ( $pool as $row ) {
-		$out[] = $row['tour'];
-		if ( count( $out ) >= $limit ) {
-			break;
+		zhiraf_ufa_hub_sort_hot_departure_rows( $rows, $window_ts );
+		$picked = zhiraf_ufa_hub_unique_hotel_tours_from_rows( $rows, $max_per_country );
+		if ( ! empty( $picked ) ) {
+			$by_country[ $slug ] = $picked;
+			$order[]             = $slug;
 		}
 	}
-	return $out;
+
+	return zhiraf_ufa_hub_round_robin_tours( $by_country, $order, $limit, $max_per_country );
 }
 
 /**
@@ -119,45 +277,39 @@ function zhiraf_ufa_hot_hub_visa_free_cards() {
 	return array(
 		array(
 			'name'    => __( 'Турция', 'zhiraf-ufa' ),
-			'flight'  => __( '~4 ч из Уфы', 'zhiraf-ufa' ),
-			'visa'    => __( 'Без визы', 'zhiraf-ufa' ),
+			'tagline' => __( '~4 ч из Уфы · без визы', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/turciya/' ),
 			'image'   => 'country-turciya.jpg',
 		),
 		array(
 			'name'    => __( 'Египет', 'zhiraf-ufa' ),
-			'flight'  => __( '~5,5 ч', 'zhiraf-ufa' ),
-			'visa'    => __( 'Без визы', 'zhiraf-ufa' ),
+			'tagline' => __( '~5,5 ч из Уфы · без визы', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/egipet/' ),
 			'image'   => 'resort-egipet-hurghada-1.jpg',
 		),
 		array(
 			'name'    => __( 'ОАЭ', 'zhiraf-ufa' ),
-			'flight'  => __( '~5 ч', 'zhiraf-ufa' ),
-			'visa'    => __( 'Без визы', 'zhiraf-ufa' ),
+			'tagline' => __( '~5 ч из Уфы · без визы', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/oae/' ),
 			'image'   => 'hero-uae.jpg',
 		),
 		array(
 			'name'    => __( 'Таиланд', 'zhiraf-ufa' ),
-			'flight'  => __( 'Через Москву', 'zhiraf-ufa' ),
-			'visa'    => __( 'Без визы до 30 дней', 'zhiraf-ufa' ),
+			'tagline' => __( 'Из Уфы через Москву · безвиз 30 дней', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/tailand/' ),
-			'image'   => 'resort-phuket.jpg',
+			'image'   => 'dest-thailand-new.jpg',
 		),
 		array(
 			'name'    => __( 'Вьетнам', 'zhiraf-ufa' ),
-			'flight'  => __( 'Через Москву', 'zhiraf-ufa' ),
-			'visa'    => __( 'Без визы до 45 дней', 'zhiraf-ufa' ),
+			'tagline' => __( 'Из Уфы через Москву · безвиз 45 дней', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/vietnam/' ),
-			'image'   => 'resort-vietnam-nha-trang-1.jpg',
+			'image'   => 'resort-vietnam-cam-ranh-2.jpg',
 		),
 		array(
 			'name'    => __( 'Китай', 'zhiraf-ufa' ),
-			'flight'  => __( 'Чартер / стыковка', 'zhiraf-ufa' ),
-			'visa'    => __( 'Безвиз до 30 дней (групповой)', 'zhiraf-ufa' ),
+			'tagline' => __( 'Из Уфы (стыковка) · безвиз 30 дней', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/kitaj/' ),
-			'image'   => 'resort-sanya-2.jpg',
+			'image'   => 'resort-sanya-3.jpg',
 		),
 	);
 }

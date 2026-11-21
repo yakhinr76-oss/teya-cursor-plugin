@@ -1678,6 +1678,43 @@
       return;
     }
     var wraps = qsa('.hub-tour-wrap', grid);
+    var initialVisible = parseInt(grid.getAttribute('data-hub-initial-visible') || '9', 10);
+    if (!initialVisible || initialVisible < 1) {
+      initialVisible = 9;
+    }
+    var catalogExpanded = false;
+    var moreWrap = qs('[data-hub-tour-more-wrap]', root);
+    var moreBtn = qs('[data-hub-tour-more]', root);
+
+    function applyHubCatalogCollapse() {
+      if (catalogExpanded || mode !== 'hot') {
+        wraps.forEach(function (wrap) {
+          wrap.classList.remove('is-hub-collapsed');
+        });
+        if (moreWrap) {
+          moreWrap.hidden = true;
+        }
+        return;
+      }
+      var shown = 0;
+      var hiddenExtra = 0;
+      wraps.forEach(function (wrap) {
+        if (wrap.classList.contains('is-filtered-out')) {
+          wrap.classList.remove('is-hub-collapsed');
+          return;
+        }
+        if (shown < initialVisible) {
+          wrap.classList.remove('is-hub-collapsed');
+          shown += 1;
+        } else {
+          wrap.classList.add('is-hub-collapsed');
+          hiddenExtra += 1;
+        }
+      });
+      if (moreWrap) {
+        moreWrap.hidden = hiddenExtra === 0;
+      }
+    }
 
     function applyHot(country) {
       var key = country || 'all';
@@ -1686,6 +1723,7 @@
         var show = key === 'all' || slug === key;
         wrap.classList.toggle('is-filtered-out', !show);
       });
+      applyHubCatalogCollapse();
     }
 
     function applyAi(filterToken) {
@@ -1716,6 +1754,13 @@
         applyAi(raw === 'all' ? 'all' : raw);
       });
     });
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        catalogExpanded = true;
+        applyHubCatalogCollapse();
+      });
+    }
 
     if (mode === 'hot') {
       applyHot('all');

@@ -1678,14 +1678,93 @@
       return;
     }
     var wraps = qsa('.hub-tour-wrap', grid);
+    var initialVisible = parseInt(grid.getAttribute('data-hub-initial-visible') || '9', 10);
+    if (!initialVisible || initialVisible < 1) {
+      initialVisible = 9;
+    }
+    var catalogExpanded = false;
+    var moreWrap = qs('[data-hub-tour-more-wrap]', root);
+    var moreBtn = qs('[data-hub-tour-more]', root);
+    var labelMore = moreBtn ? moreBtn.getAttribute('data-label-more') || 'Показать ещё' : '';
+    var labelCollapse = moreBtn ? moreBtn.getAttribute('data-label-collapse') || 'Свернуть' : '';
+
+    function countMatchingWraps() {
+      var total = 0;
+      wraps.forEach(function (wrap) {
+        if (!wrap.classList.contains('is-filtered-out')) {
+          total += 1;
+        }
+      });
+      return total;
+    }
+
+    function updateMoreControl(hiddenExtra) {
+      if (!moreWrap || !moreBtn) {
+        return;
+      }
+      var matching = countMatchingWraps();
+      if (matching <= initialVisible) {
+        moreWrap.hidden = true;
+        moreBtn.setAttribute('aria-expanded', catalogExpanded ? 'true' : 'false');
+        return;
+      }
+      moreWrap.hidden = false;
+      if (catalogExpanded) {
+        moreBtn.textContent = labelCollapse;
+        moreBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        moreBtn.textContent = labelMore;
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function applyHubCatalogCollapse() {
+      if (mode !== 'hot') {
+        wraps.forEach(function (wrap) {
+          wrap.classList.remove('is-hub-collapsed');
+        });
+        if (moreWrap) {
+          moreWrap.hidden = true;
+        }
+        return;
+      }
+
+      if (catalogExpanded) {
+        wraps.forEach(function (wrap) {
+          wrap.classList.remove('is-hub-collapsed');
+        });
+        var matchingExpanded = countMatchingWraps();
+        updateMoreControl(Math.max(0, matchingExpanded - initialVisible));
+        return;
+      }
+
+      var shown = 0;
+      var hiddenExtra = 0;
+      wraps.forEach(function (wrap) {
+        if (wrap.classList.contains('is-filtered-out')) {
+          wrap.classList.remove('is-hub-collapsed');
+          return;
+        }
+        if (shown < initialVisible) {
+          wrap.classList.remove('is-hub-collapsed');
+          shown += 1;
+        } else {
+          wrap.classList.add('is-hub-collapsed');
+          hiddenExtra += 1;
+        }
+      });
+      updateMoreControl(hiddenExtra);
+    }
 
     function applyHot(country) {
       var key = country || 'all';
+      catalogExpanded = false;
       wraps.forEach(function (wrap) {
         var slug = wrap.getAttribute('data-hub-country') || '';
         var show = key === 'all' || slug === key;
         wrap.classList.toggle('is-filtered-out', !show);
       });
+      applyHubCatalogCollapse();
     }
 
     function applyAi(filterToken) {
@@ -1716,6 +1795,13 @@
         applyAi(raw === 'all' ? 'all' : raw);
       });
     });
+
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function () {
+        catalogExpanded = !catalogExpanded;
+        applyHubCatalogCollapse();
+      });
+    }
 
     if (mode === 'hot') {
       applyHot('all');

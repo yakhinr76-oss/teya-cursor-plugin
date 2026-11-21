@@ -75,40 +75,60 @@
 
 .hub-offer-country-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
   grid-template-columns: repeat(2, 1fr);
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 .hub-offer-country-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--color-white);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgb(43 43 43 / 0.06);
+  border-radius: 1.5rem;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.15s, transform 0.15s;
+  box-shadow: 0 12px 40px rgb(43 43 43 / 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
 .hub-offer-country-card:hover {
-  box-shadow: 0 10px 28px rgb(43 43 43 / 0.08);
+  box-shadow: 0 16px 44px rgb(43 43 43 / 0.08);
   transform: translateY(-2px);
+  border-color: rgb(200 90 50 / 0.22);
+}
+.hub-offer-country-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+.hub-offer-country-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-sand, #f5f0e8);
 }
 .hub-offer-country-card__img {
   width: 100%;
-  height: 120px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 .hub-offer-country-card__body {
-  padding: 0.85rem 1rem 1rem;
+  padding: 1rem 1.1rem 1.15rem;
 }
-.hub-offer-country-card__body h3 {
+.hub-offer-country-card__title {
   margin: 0 0 0.35rem;
   font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
 }
-.hub-offer-country-card__body p {
+.hub-offer-country-card__meta {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
   color: var(--color-muted);
 }
 
@@ -145,6 +165,11 @@
 .hub-tour-wrap.is-filtered-out,
 .hub-tour-wrap.is-hub-collapsed {
   display: none;
+}
+
+.tour-price-grid--hub .tour-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 
 .hub-offer-catalog-more {

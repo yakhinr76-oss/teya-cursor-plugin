@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function zhiraf_ufa_resort_json_registry() {
 	return array(
 		'oae/dubai',
+		'oae/sharjah',
 		'egipet/hurgada',
 		'egipet/sharm-el-sheyh',
 		'tailand/phuket',

@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function zhiraf_ufa_resort_landing_index() {
 	return array(
 		array( 'country' => 'oae', 'resort' => 'dubai' ),
+		array( 'country' => 'oae', 'resort' => 'sharjah' ),
 		array( 'country' => 'turciya', 'resort' => 'antalya' ),
 		array( 'country' => 'turciya', 'resort' => 'kemer' ),
 		array( 'country' => 'turciya', 'resort' => 'alanya' ),

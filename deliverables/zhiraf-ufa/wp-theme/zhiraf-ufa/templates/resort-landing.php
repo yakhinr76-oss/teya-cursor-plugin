@@ -95,7 +95,13 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 	<section class="section resort-v2-districts bg-milky">
 		<div class="container">
 			<h2 class="section-title"><?php echo esc_html( $districts['title'] ?? '' ); ?></h2>
-			<div class="resort-v2-districts__grid">
+			<?php
+			$districts_grid_class = 'resort-v2-districts__grid';
+			if ( ! empty( $districts['grid_columns'] ) && 3 === (int) $districts['grid_columns'] ) {
+				$districts_grid_class .= ' resort-v2-districts__grid--3';
+			}
+			?>
+			<div class="<?php echo esc_attr( $districts_grid_class ); ?>">
 				<?php foreach ( $districts['cards'] as $card ) : ?>
 					<?php
 					$district_title = ! empty( $card['title'] ) ? (string) $card['title'] : '';

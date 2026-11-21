@@ -217,20 +217,26 @@ $badges     = array(
 			<div class="hub-offer-card rounded-3xl">
 				<h2><?php esc_html_e( 'Подберём отель All Inclusive под ваш бюджет', 'zhiraf-ufa' ); ?></h2>
 				<?php
-				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
-					zhiraf_ufa_render_messenger_picker(
+				if ( function_exists( 'zhiraf_ufa_render_hub_offer_lead_form' ) ) {
+					zhiraf_ufa_render_hub_offer_lead_form(
 						array(
-							'context'      => 'ai-hub-final',
-							'quiz_prefill' => $offer['quiz_prefill'] ?? '',
+							'context'         => 'ai-hub-final',
+							'quiz_prefill'    => $offer['quiz_prefill'] ?? '',
+							'consent_id'      => 'ai-hub-final',
+							'submit_base'     => __( 'Отправить запрос', 'zhiraf-ufa' ),
+							'messenger_label' => __( 'Где удобнее связаться:', 'zhiraf-ufa' ),
 						)
 					);
 				}
 				?>
-				<nav class="hub-offer-chip-links" aria-label="<?php esc_attr_e( 'Популярные направления', 'zhiraf-ufa' ); ?>">
-					<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/turciya/' ) ); ?>"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></a>
-					<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/egipet/' ) ); ?>"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></a>
-					<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/oae/' ) ); ?>"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></a>
-				</nav>
+				<div class="hub-offer-final-dest">
+					<p class="hub-offer-final-dest__title"><?php esc_html_e( 'Направления All Inclusive:', 'zhiraf-ufa' ); ?></p>
+					<nav class="hub-offer-chip-links hub-offer-final-dest__links" aria-label="<?php esc_attr_e( 'Направления All Inclusive', 'zhiraf-ufa' ); ?>">
+						<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/turciya/' ) ); ?>"><?php esc_html_e( 'Турция', 'zhiraf-ufa' ); ?></a>
+						<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/egipet/' ) ); ?>"><?php esc_html_e( 'Египет', 'zhiraf-ufa' ); ?></a>
+						<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/oae/' ) ); ?>"><?php esc_html_e( 'ОАЭ', 'zhiraf-ufa' ); ?></a>
+					</nav>
+				</div>
 			</div>
 		</div>
 	</section>

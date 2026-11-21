@@ -319,6 +319,8 @@ function zhiraf_ufa_ajax_lead() {
 			'hot_destination'  => 'Направление (горящие)',
 			'hot_budget'       => 'Бюджет (горящие)',
 			'hot_dates'        => 'Даты вылета (горящие)',
+			'hub_dates_nights' => 'Даты и ночи',
+			'hub_budget'       => 'Бюджет',
 			'ai_travelers'     => 'Состав (AI)',
 			'ai_month'         => 'Месяц (AI)',
 			'uon_hotel_id'     => 'ID U-ON (отель / программа)',
@@ -329,6 +331,28 @@ function zhiraf_ufa_ajax_lead() {
 			array(
 				! empty( $values['Состав (AI)'] ) ? sprintf( __( 'Состав: %s', 'zhiraf-ufa' ), $values['Состав (AI)'] ) : '',
 				! empty( $values['Месяц (AI)'] ) ? sprintf( __( 'Месяц: %s', 'zhiraf-ufa' ), $values['Месяц (AI)'] ) : '',
+			)
+		);
+		$extra = implode( '. ', $parts );
+		if ( ! empty( $values['Сообщение'] ) ) {
+			$values['Сообщение'] = trim( $values['Сообщение'] . '. ' . $extra );
+		} else {
+			$values['Сообщение'] = $extra;
+		}
+	}
+	if ( ! empty( $values['Даты и ночи'] ) || ! empty( $values['Бюджет'] ) ) {
+		$parts = array_filter(
+			array(
+				! empty( $values['Даты и ночи'] ) ? sprintf(
+					/* translators: %s: dates and nights */
+					__( 'Даты/ночи: %s', 'zhiraf-ufa' ),
+					$values['Даты и ночи']
+				) : '',
+				! empty( $values['Бюджет'] ) ? sprintf(
+					/* translators: %s: budget */
+					__( 'Бюджет: %s', 'zhiraf-ufa' ),
+					$values['Бюджет']
+				) : '',
 			)
 		);
 		$extra = implode( '. ', $parts );

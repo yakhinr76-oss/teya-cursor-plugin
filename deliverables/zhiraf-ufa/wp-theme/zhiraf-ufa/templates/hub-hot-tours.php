@@ -205,11 +205,14 @@ $badges    = array(
 			<div class="hub-offer-card rounded-3xl">
 				<h2><?php esc_html_e( 'Оставьте даты и бюджет — скинем горящий или отказной тур в мессенджер', 'zhiraf-ufa' ); ?></h2>
 				<?php
-				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
-					zhiraf_ufa_render_messenger_picker(
+				if ( function_exists( 'zhiraf_ufa_render_hub_offer_lead_form' ) ) {
+					zhiraf_ufa_render_hub_offer_lead_form(
 						array(
-							'context'      => 'hot-hub-final',
-							'quiz_prefill' => $offer['quiz_prefill'] ?? '',
+							'context'         => 'hot-hub-final',
+							'quiz_prefill'    => $offer['quiz_prefill'] ?? '',
+							'consent_id'      => 'hot-hub-final',
+							'submit_base'     => __( 'Подобрать тур', 'zhiraf-ufa' ),
+							'messenger_label' => __( 'Куда прислать подборку:', 'zhiraf-ufa' ),
 						)
 					);
 				}

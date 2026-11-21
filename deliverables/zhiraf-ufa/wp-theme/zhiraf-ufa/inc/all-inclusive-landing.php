@@ -103,6 +103,9 @@ function zhiraf_ufa_get_all_inclusive_showcase_tours( $limit = 6, $country_slug 
 			? zhiraf_ufa_hub_unique_hotel_tours( $candidates, $max_per_country )
 			: array_slice( $candidates, 0, $max_per_country );
 		if ( ! empty( $picked ) ) {
+			foreach ( $picked as $pi => $row ) {
+				$picked[ $pi ]['hub_showcase'] = true;
+			}
 			$by_country[ $slug ] = $picked;
 			$order[]             = $slug;
 		}

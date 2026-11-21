@@ -10389,9 +10389,75 @@ a.contacts-card__value:hover {
 
 .hub-offer-card {
   background: var(--color-white);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(43, 43, 43, 0.06);
+  border-radius: 1.5rem;
   padding: clamp(1.25rem, 3vw, 2rem);
   box-shadow: 0 12px 40px rgba(43, 43, 43, 0.04);
+}
+
+.hub-offer-card--expert {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hub-offer-card__thumb-wrap {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--color-sand, #f5f0e8);
+}
+
+.hub-offer-card--expert .hub-offer-card__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.hub-offer-card--expert .hub-offer-card__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.hub-offer-card--expert .hub-offer-card__title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.hub-offer-card--expert .hub-offer-card__title a:hover {
+  color: var(--color-primary);
+}
+
+.hub-offer-card--expert .hub-offer-card__text {
+  margin: 0;
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.hub-offer-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.hub-offer-card__actions .btn--ghost {
+  border-color: rgba(43, 43, 43, 0.1);
+}
+
+.hub-offer-card__actions .btn--ghost:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .hub-offer-card__icon {
@@ -10420,14 +10486,6 @@ a.contacts-card__value:hover {
   .hub-offer-expert-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-.hub-offer-card--expert .hub-offer-card__thumb {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  margin-bottom: 0.75rem;
 }
 
 .hub-offer-country-grid {
@@ -10544,13 +10602,16 @@ a.contacts-card__value:hover {
   margin-top: 1.5rem;
 }
 
-.site-main--hub-hot .tour-card--hub-calm .tour-card__badges--hub-calm {
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badges--hub-calm,
+.site-main--hub-ai .tour-card--hub-calm .tour-card__badges--hub-calm {
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 6px;
 }
 .site-main--hub-hot .tour-card--hub-calm .tour-card__badge--hot,
-.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--country {
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--country,
+.site-main--hub-ai .tour-card--hub-calm .tour-card__badge--hot,
+.site-main--hub-ai .tour-card--hub-calm .tour-card__badge--country {
   background: rgba(43, 43, 43, 0.78);
   color: #fff;
   font-weight: 600;
@@ -10558,17 +10619,31 @@ a.contacts-card__value:hover {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
-.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--hot.tour-card__badge--accent {
+.site-main--hub-hot .tour-card--hub-calm .tour-card__badge--hot.tour-card__badge--accent,
+.site-main--hub-ai .tour-card--hub-calm .tour-card__badge--hot.tour-card__badge--accent {
   box-shadow: inset 3px 0 0 #c85a32;
   padding-left: 10px;
 }
-.site-main--hub-hot .tour-card--hub-calm .tour-card__meta-item:first-child .tour-card__meta-value {
+.site-main--hub-hot .tour-card--hub-calm .tour-card__meta-item:first-child .tour-card__meta-value,
+.site-main--hub-ai .tour-card--hub-calm .tour-card__meta-item:first-child .tour-card__meta-value {
   color: var(--color-text);
   font-size: inherit;
   font-weight: 700;
 }
-.site-main--hub-hot .tour-card--hub-calm.tour-card--hot:has(.tour-card__badge--accent) .tour-card__meta-item:first-child .tour-card__meta-value {
+.site-main--hub-hot .tour-card--hub-calm.tour-card--hot:has(.tour-card__badge--accent) .tour-card__meta-item:first-child .tour-card__meta-value,
+.site-main--hub-ai .tour-card--hub-calm.tour-card--hot:has(.tour-card__badge--accent) .tour-card__meta-item:first-child .tour-card__meta-value {
   color: #c85a32;
+}
+
+.site-main--hub-ai .tour-card--hub-calm .tour-card__meal-code {
+  background: rgba(200, 90, 50, 0.12);
+  color: #c85a32;
+  border-radius: 6px;
+}
+
+.site-main--hub-ai .tour-card--hub-calm .tour-card__meal-desc {
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .hero-premium__offer-scenarios {

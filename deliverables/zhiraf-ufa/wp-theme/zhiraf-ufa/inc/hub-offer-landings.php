@@ -376,7 +376,7 @@ function zhiraf_ufa_ai_hub_destination_cards() {
 			'title' => __( 'Турция', 'zhiraf-ufa' ),
 			'text'  => __( 'Эталонный All Inclusive и Ultra All Inclusive: детские клубы и аквапарки, сезон май–октябрь.', 'zhiraf-ufa' ),
 			'url'   => home_url( '/tour/turciya/' ),
-			'image' => 'resort-turciya-belek-1.jpg',
+			'image' => 'resort-turciya-alanya-2.jpg',
 		),
 		array(
 			'title' => __( 'Египет', 'zhiraf-ufa' ),

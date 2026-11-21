@@ -496,6 +496,29 @@ a.contacts-card__value:hover {
   min-height: 220px;
 }
 
+.about-office-slot--secondary {
+  .about-office-slot__media {
+    min-height: 180px;
+    max-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--color-sand);
+  }
+
+  .about-office-slot__img--scaled {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: 220px;
+    object-fit: contain;
+    object-position: center;
+    transform: scale(0.94);
+    transform-origin: center center;
+  }
+}
+
 .about-office-slot__placeholder {
   min-height: 220px;
   padding: 28px 24px;

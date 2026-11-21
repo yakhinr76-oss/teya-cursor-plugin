@@ -47,17 +47,12 @@ get_header();
 					$file    = ! empty( $slot['file'] ) ? (string) $slot['file'] : '';
 					$caption = ! empty( $slot['caption'] ) ? (string) $slot['caption'] : '';
 					$placeholder_title = ! empty( $slot['placeholder_title'] ) ? (string) $slot['placeholder_title'] : __( 'Офис турагентства «Жираф» в Уфе', 'zhiraf-ufa' );
-					$has_img  = '' !== $file && zhiraf_ufa_theme_image_exists( $file );
-					$slot_key = ! empty( $slot['slot'] ) ? sanitize_key( (string) $slot['slot'] ) : '';
-					$img_class = 'about-office-slot__img';
-					if ( 'secondary' === $slot_key ) {
-						$img_class .= ' about-office-slot__img--scaled';
-					}
+					$has_img = '' !== $file && zhiraf_ufa_theme_image_exists( $file );
 					?>
-					<figure class="about-office-slot<?php echo '' !== $slot_key ? ' about-office-slot--' . esc_attr( $slot_key ) : ''; ?>">
+					<figure class="about-office-slot">
 						<div class="about-office-slot__media">
 							<?php if ( $has_img ) : ?>
-								<?php zhiraf_ufa_img( $file, $caption, $img_class, true ); ?>
+								<?php zhiraf_ufa_img( $file, $caption, 'about-office-slot__img', true ); ?>
 							<?php else : ?>
 								<div class="about-office-slot__placeholder">
 									<strong><?php echo esc_html( $placeholder_title ); ?></strong>

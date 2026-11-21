@@ -24,6 +24,7 @@ function zhiraf_ufa_resort_json_registry() {
 		'vietnam/fukuok',
 		'vietnam/nyachang',
 		'kitaj/sanya',
+		'turciya/antalya',
 	);
 }
 

@@ -1718,8 +1718,12 @@
       }
     }
 
+    function hubCatalogCollapseEnabled() {
+      return mode === 'hot' || mode === 'ai';
+    }
+
     function applyHubCatalogCollapse() {
-      if (mode !== 'hot') {
+      if (!hubCatalogCollapseEnabled()) {
         wraps.forEach(function (wrap) {
           wrap.classList.remove('is-hub-collapsed');
         });
@@ -1769,11 +1773,13 @@
 
     function applyAi(filterToken) {
       var token = filterToken || 'all';
+      catalogExpanded = false;
       wraps.forEach(function (wrap) {
         var tokens = (wrap.getAttribute('data-hub-filters') || '').split(/\s+/);
         var show = token === 'all' || tokens.indexOf(token) !== -1;
         wrap.classList.toggle('is-filtered-out', !show);
       });
+      applyHubCatalogCollapse();
     }
 
     qsa('[data-hub-country-filter]', root).forEach(function (btn) {

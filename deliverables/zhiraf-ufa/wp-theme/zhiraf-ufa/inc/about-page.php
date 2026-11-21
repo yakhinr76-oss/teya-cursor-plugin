@@ -132,7 +132,7 @@ function zhiraf_ufa_about_office_gallery() {
 			array(
 				'file'              => 'about-office-gagarin.jpg',
 				'placeholder_title' => __( 'Офис на ул. Гагарина, 74/1', 'zhiraf-ufa' ),
-				'caption'           => __( 'Офис 3 — можно приехать лично: покажем договор, реестр РТА и подберём тур за чашкой кофе.', 'zhiraf-ufa' ),
+				'caption'           => __( 'Офис 3 в Сипайлово — живая команда, можно приехать: покажем договор, реестр РТА и подберём тур.', 'zhiraf-ufa' ),
 				'slot'              => 'primary',
 			),
 			array(
@@ -140,6 +140,12 @@ function zhiraf_ufa_about_office_gallery() {
 				'placeholder_title' => __( 'Живая команда в Уфе', 'zhiraf-ufa' ),
 				'caption'           => __( 'Менеджеры на связи по телефону и в мессенджере — без анонимного колл-центра.', 'zhiraf-ufa' ),
 				'slot'              => 'secondary',
+			),
+			array(
+				'file'              => 'about-office-desk.jpg',
+				'placeholder_title' => __( 'Рабочие места менеджеров', 'zhiraf-ufa' ),
+				'caption'           => __( 'Подбор туров за столом — документы, чек и договор по 132-ФЗ прямо в офисе.', 'zhiraf-ufa' ),
+				'slot'              => 'tertiary',
 			),
 		)
 	);

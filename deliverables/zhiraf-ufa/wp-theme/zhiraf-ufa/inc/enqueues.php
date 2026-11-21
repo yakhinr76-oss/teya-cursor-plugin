@@ -45,6 +45,7 @@ function zhiraf_ufa_enqueue_assets() {
 			'privacyUrl' => home_url( '/politika-konfidenczialnosti/' ),
 			'cookiesUrl' => home_url( '/politika-cookies/' ),
 			'hotelsRest' => rest_url( 'zhiraf/v1/hotels' ),
+			'waBase'     => function_exists( 'zhiraf_ufa_brand_whatsapp_url' ) ? zhiraf_ufa_brand_whatsapp_url() : 'https://wa.me/79018105018',
 		)
 	);
 

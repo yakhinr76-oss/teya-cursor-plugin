@@ -210,6 +210,71 @@
   color: var(--color-primary);
 }
 
+.hub-offer-final-dest {
+  margin-top: 1.35rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgb(43 43 43 / 0.08);
+}
+.hub-offer-final-dest__title {
+  margin: 0 0 0.65rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.hub-offer-lead-form__grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.hub-offer-lead-form__field {
+  margin: 0;
+}
+.hub-offer-lead-form__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.hub-offer-lead-form .messenger-picker {
+  margin-bottom: 1rem;
+}
+.hub-offer-lead-form__submit {
+  margin-top: 0.25rem;
+}
+.hub-offer-lead-form__status {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+.hub-offer-lead-form__status.is-success .hub-offer-lead-form__chat-link {
+  display: inline-flex;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.hub-offer-lead-form {
+  .messenger-picker__option--tg:has(input:checked) .messenger-picker__inner {
+    border-color: #c85a32;
+    background: rgb(200 90 50 / 0.1);
+    box-shadow: 0 1px 3px rgb(43 43 43 / 0.08);
+  }
+  .messenger-picker__option--wa:has(input:checked) .messenger-picker__inner {
+    border-color: #c85a32;
+    background: rgb(200 90 50 / 0.08);
+  }
+  .messenger-picker__option--max:has(input:checked) .messenger-picker__inner {
+    border-color: #c85a32;
+  }
+  .messenger-picker__option--tg .messenger-picker__icon--tg {
+    color: var(--color-primary);
+  }
+}
+
 .hub-tour-wrap.is-filtered-out,
 .hub-tour-wrap.is-hub-collapsed {
   display: none;

@@ -34,7 +34,13 @@
     if (el.classList.contains('dest-hub-card')) {
       return true;
     }
+    if (el.classList.contains('dest-hub-card-wrap')) {
+      return true;
+    }
     if (el.closest && el.closest('#destinations-hub') && el.matches('a, button')) {
+      return true;
+    }
+    if (el.querySelector && el.querySelector('.dest-hub-card')) {
       return true;
     }
     var tag = el.tagName;

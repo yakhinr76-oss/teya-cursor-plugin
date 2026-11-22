@@ -213,6 +213,24 @@ function zhiraf_ufa_home_hub_curated_hotel_count( $country_slug ) {
  * @param string $departure    ufa|mow.
  * @return array<string,mixed>|null
  */
+/**
+ * Editorial min price for hubs without Biblio-Globus destination feed (Russia, Abkhazia).
+ *
+ * @param string $country_slug Hub slug.
+ * @return int Rubles or 0.
+ */
+function zhiraf_ufa_home_hub_editorial_min_rub( $country_slug ) {
+	$slug = sanitize_key( (string) $country_slug );
+	if ( 'rossiya' === $slug && function_exists( 'zhiraf_ufa_rossiya_hub_min_price_rub' ) ) {
+		return zhiraf_ufa_rossiya_hub_min_price_rub();
+	}
+	if ( 'abkhaziya' === $slug && function_exists( 'zhiraf_ufa_abkhaziya_hub_min_price_rub' ) ) {
+		return zhiraf_ufa_abkhaziya_hub_min_price_rub();
+	}
+
+	return 0;
+}
+
 function zhiraf_ufa_home_hub_min_tour( $country_slug, $departure = 'ufa' ) {
 	if ( ! function_exists( 'zhiraf_ufa_get_country_tours' ) ) {
 		return null;
@@ -250,9 +268,24 @@ function zhiraf_ufa_home_hub_min_tour( $country_slug, $departure = 'ufa' ) {
 		return $best;
 	}
 
-	return function_exists( 'zhiraf_ufa_get_country_min_tour' )
-		? zhiraf_ufa_get_country_min_tour( $country_slug )
-		: null;
+	if ( function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
+		$fallback = zhiraf_ufa_get_country_min_tour( $country_slug );
+		if ( is_array( $fallback ) && ! empty( $fallback['price_rur'] ) ) {
+			return $fallback;
+		}
+	}
+
+	$editorial = zhiraf_ufa_home_hub_editorial_min_rub( $country_slug );
+	if ( $editorial > 0 ) {
+		return array(
+			'price_rur'      => $editorial,
+			'departure_city' => 'Уфа',
+			'nights'         => 7,
+			'source'         => 'editorial',
+		);
+	}
+
+	return null;
 }
 
 /**

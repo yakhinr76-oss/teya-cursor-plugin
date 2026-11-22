@@ -13,14 +13,26 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return int RUB
  */
 function zhiraf_ufa_abkhaziya_hub_min_price_rub() {
-	if ( function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
-		$row = zhiraf_ufa_get_country_min_tour( 'abkhaziya' );
-		if ( is_array( $row ) && ! empty( $row['price_rur'] ) ) {
-			return (int) $row['price_rur'];
+	static $cached = null;
+	if ( null !== $cached ) {
+		return $cached;
+	}
+	$min = 0;
+	foreach ( zhiraf_ufa_abkhaziya_json_rows() as $row ) {
+		if ( ! is_array( $row ) ) {
+			continue;
+		}
+		$p = zhiraf_ufa_abkhaziya_pool_price_rub( $row );
+		if ( $p > 0 && ( $min <= 0 || $p < $min ) ) {
+			$min = $p;
 		}
 	}
+	if ( $min <= 0 ) {
+		$min = (int) apply_filters( 'zhiraf_ufa_abkhaziya_base_price_rub', 65000 );
+	}
+	$cached = $min;
 
-	return (int) apply_filters( 'zhiraf_ufa_abkhaziya_base_price_rub', 65000 );
+	return $cached;
 }
 
 /**
@@ -407,61 +419,22 @@ function zhiraf_ufa_abkhaziya_json_row_to_card( $row ) {
  * @return array<string,mixed>
  */
 function zhiraf_ufa_abkhaziya_apply_bg_pricing( array $card ) {
-	if ( function_exists( 'zhiraf_ufa_tourvisor_overlay_abkhaziya_card' ) ) {
-		$with_tourvisor = zhiraf_ufa_tourvisor_overlay_abkhaziya_card( $card );
+	if ( function_exists( 'zhiraf_ufa_tourvisor_overlay_curated_card' ) ) {
+		$with_tourvisor = zhiraf_ufa_tourvisor_overlay_curated_card( $card, 'abkhazia' );
 		if ( ! empty( $with_tourvisor['price_from_api'] ) && 'tourvisor' === ( $with_tourvisor['price_source'] ?? '' ) ) {
 			return $with_tourvisor;
 		}
 		$card = $with_tourvisor;
 	}
 
-	$name = ! empty( $card['name'] ) ? trim( (string) $card['name'] ) : '';
-	if ( '' === $name || ! function_exists( 'zhiraf_ufa_get_hotel_min_tour' ) ) {
-		return $card;
+	$editorial = (int) ( $card['price_rub'] ?? 0 );
+	if ( $editorial <= 0 ) {
+		$card['price_rub'] = zhiraf_ufa_abkhaziya_hub_min_price_rub();
 	}
-
-	$editorial   = (int) ( $card['price_rub'] ?? 0 );
-	$is_base     = ! empty( $card['slot'] ) && 'base' === $card['slot'];
-	$bg_hotel_id = ! empty( $card['bg_hotel_id'] ) ? trim( (string) $card['bg_hotel_id'] ) : '';
-
-	$tour        = null;
-	$price_scope = '';
-
-	if ( $is_base && function_exists( 'zhiraf_ufa_get_country_min_tour' ) ) {
-		$tour = zhiraf_ufa_get_country_min_tour( 'abkhaziya' );
-		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
-			$price_scope = 'country';
-		} else {
-			$tour = null;
-		}
-	} else {
-		$tour = zhiraf_ufa_get_hotel_min_tour( 'abkhaziya', $name, $bg_hotel_id );
-		if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
-			$price_scope = 'hotel';
-		} else {
-			$tour = null;
-		}
-	}
-
-	if ( is_array( $tour ) && ! empty( $tour['price_rur'] ) ) {
-		$card['price_rub']           = (int) $tour['price_rur'];
-		$card['price_from_api']      = true;
-		$card['price_scope']         = $price_scope;
-		$card['tour_offer']          = $tour;
-		$card['price_api_matched']   = ( 'hotel' === $price_scope );
-		if ( ! empty( $tour['hotel_name'] ) ) {
-			$card['bg_hotel_name'] = (string) $tour['hotel_name'];
-		}
-		if ( ! empty( $tour['hotel_id'] ) ) {
-			$card['bg_hotel_id'] = (string) $tour['hotel_id'];
-		}
-	} else {
-		$card['price_rub']             = $editorial > 0 ? $editorial : ( $is_base ? zhiraf_ufa_abkhaziya_hub_min_price_rub() : 0 );
-		$card['price_from_api']        = false;
-		$card['price_api_matched']     = false;
-		$card['price_api_unavailable'] = ! $is_base;
-		unset( $card['tour_offer'], $card['bg_hotel_name'], $card['price_scope'] );
-	}
+	$card['price_from_api']        = false;
+	$card['price_api_matched']     = false;
+	$card['price_api_unavailable'] = false;
+	unset( $card['tour_offer'], $card['bg_hotel_name'], $card['price_scope'] );
 
 	return $card;
 }

@@ -543,14 +543,40 @@ class Zhiraf_BG_Price_Engine {
 	 *
 	 * @return array<string,array{name:string,stars:string}>
 	 */
+	/**
+	 * Live hotelsJson is allowed only during BG sync (cron / manual), not on public page views.
+	 *
+	 * @return bool
+	 */
+	private function allow_live_hotel_catalog_fetch() {
+		if ( wp_doing_cron() ) {
+			return true;
+		}
+		if ( is_admin() && isset( $_POST['zhiraf_bg_action'] ) && 'manual_sync' === sanitize_key( wp_unslash( (string) $_POST['zhiraf_bg_action'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			return true;
+		}
+
+		return (bool) apply_filters( 'zhiraf_ufa_bg_allow_live_hotel_catalog_fetch', false );
+	}
+
 	public function load_hotel_catalog() {
-		if ( is_array( self::$hotel_catalog ) && ! empty( self::$hotel_catalog ) ) {
+		if ( is_array( self::$hotel_catalog ) ) {
 			return self::$hotel_catalog;
 		}
 		$cached = get_transient( 'zhiraf_bg_hotel_catalog_v2' );
 		if ( is_array( $cached ) && ! empty( $cached ) ) {
 			self::$hotel_catalog = $cached;
 			return $cached;
+		}
+		$backup = get_option( 'zhiraf_bg_hotel_catalog_v2_backup', array() );
+		if ( is_array( $backup ) && ! empty( $backup ) ) {
+			self::$hotel_catalog = $backup;
+			set_transient( 'zhiraf_bg_hotel_catalog_v2', $backup, DAY_IN_SECONDS );
+			return $backup;
+		}
+		if ( ! $this->allow_live_hotel_catalog_fetch() ) {
+			self::$hotel_catalog = array();
+			return array();
 		}
 		$country_ids = array();
 		foreach ( self::$countries as $c ) {
@@ -574,6 +600,7 @@ class Zhiraf_BG_Price_Engine {
 		}
 		if ( ! empty( $catalog ) ) {
 			set_transient( 'zhiraf_bg_hotel_catalog_v2', $catalog, DAY_IN_SECONDS );
+			update_option( 'zhiraf_bg_hotel_catalog_v2_backup', $catalog, false );
 		}
 		self::$hotel_catalog = $catalog;
 		return $catalog;

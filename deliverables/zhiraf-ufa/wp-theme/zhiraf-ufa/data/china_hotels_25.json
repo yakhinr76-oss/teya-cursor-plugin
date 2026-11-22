@@ -6,6 +6,7 @@
     "category_slug": "family",
     "category_name": "Семьи: пляжный Хайнань",
     "hotel_name": "Horizon Sanya Yalong Bay Resort & Spa 5★",
+    "photo_match_name": "Resort Horizon",
     "resort": "Санья, бухта Ялунвань",
     "rating": 4.6,
     "usp": "Один из самых насыщенных семейных комплексов Ялунваня: аквазоны, ленивая река, мини-поезд и тенистый парк без наценки премиум-сегмента.",
@@ -17,10 +18,17 @@
     "caveat": "Номерной фонд и часть общественных зон классические возрастные — отель не в стиле ультрасовременного минимализма.",
     "reviews_summary": "Семьи в восторге от прямого выхода к морю и колоссального выбора детских развлечений. Советуют не ждать дизайна новейшего бутика, но для детей условия идеальные.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/16/4d/e3/16/beyond-the-blue-horizon.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/56/21/2e/beyond-the-blue-horizon.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/4d/ed/cb/beyond-the-blue-horizon.jpg"
+    ],
+    "photo_files": [
       "horizon_sanya_1.jpg",
       "horizon_sanya_2.jpg",
       "horizon_sanya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 2656233,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g303907-d2656233-Reviews-Beyond_The_Blue_Horizon_Villa_Resort-Ko_Pha_Ngan_Surat_Thani_Province.html?m=70260"
   },
   {
     "id": 2,
@@ -29,6 +37,7 @@
     "category_slug": "family",
     "category_name": "Семьи: пляжный Хайнань",
     "hotel_name": "Sheraton Sanya Yalong Bay Resort 5★",
+    "photo_match_name": "Sheraton Sanya Resort",
     "resort": "Санья, бухта Ялунвань",
     "rating": 4.7,
     "usp": "Проверенная семейная классика первой линии с широким пляжем, пятью бассейнами и бесплатным детским клубом от 3 лет.",
@@ -40,10 +49,17 @@
     "caveat": "В праздничные дни на завтраках и в детских бассейнах наблюдается высокая загрузка.",
     "reviews_summary": "Родители хвалят чистоту садов, удобство пляжа для малышей и внимательный персонал. Возраст здания компенсируется стабильным сетевым сервисом.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/29/2e/c7/99/sheraton-sanya-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/13/6e/54/sea-and-sand-beach-bar.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/13/6d/d3/lotus-cafe.jpg"
+    ],
+    "photo_files": [
       "sheraton_yalong_1.jpg",
       "sheraton_yalong_2.jpg",
       "sheraton_yalong_3.jpg"
-    ]
+    ],
+    "ta_location_id": 553912,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d553912-Reviews-Sheraton_Sanya_Resort-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 3,
@@ -63,10 +79,17 @@
     "caveat": "Часть стандартных номеров требует косметического обновления; ужины-буфеты гости оценивают сдержаннее завтраков.",
     "reviews_summary": "Гости выделяют спокойный заход в море, безопасность бассейнов и живописную парковую зону. Прекрасный надежный выбор для семейного тура.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1a/9d/41/76/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/9d/d1/fe/kidz-paradise.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/9d/d1/da/kidz-paradise.jpg"
+    ],
+    "photo_files": [
       "hilton_yalong_1.jpg",
       "hilton_yalong_2.jpg",
       "hilton_yalong_3.jpg"
-    ]
+    ],
+    "ta_location_id": 582794,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d582794-Reviews-Hilton_Sanya_Yalong_Bay_Resort_&_Spa-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 4,
@@ -86,10 +109,17 @@
     "caveat": "Отель расположен в Саньяване — песок здесь темнее и плотнее, чем в Ялунване, а в пик сезона ремонтные детали местами заметны.",
     "reviews_summary": "Семьи отмечают оперативность персонала, отличные панорамы залива и удобство подземного выхода к морю. Хорошее соотношение цены и инфраструктуры.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/a8/e5/46/pullman-sanya-yalong.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/a8/ec/05/pullman-oceanview-sanya.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/a8/e5/2b/pullman-sanya-yalong.jpg"
+    ],
+    "photo_files": [
       "pullman_sanya_1.jpg",
       "pullman_sanya_2.jpg",
       "pullman_sanya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1974582,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d1974582-Reviews-Pullman_Oceanview_Sanya_Bay_Resort_&_Spa-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 5,
@@ -109,10 +139,17 @@
     "caveat": "Собственного огороженного участка пляжа нет — гости пользуются общественной полосой Дадунхая.",
     "reviews_summary": "Родители выделяют продуманный детский клуб и быстрый доступ к пляжу без светофоров. Хвалят свежий ремонт и развитую инфраструктуру вокруг.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/29/25/18/1c/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/29/41/4c/97/ktv.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/29/41/4c/8c/ktv.jpg"
+    ],
+    "photo_files": [
       "pearl_river_1.jpg",
       "pearl_river_2.jpg",
       "pearl_river_3.jpg"
-    ]
+    ],
+    "ta_location_id": 304995,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d304995-Reviews-Pearl_River_Garden_Hotel_Sanya-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 6,
@@ -132,10 +169,17 @@
     "caveat": "Компактная собственная территория; берег непосредственно под отелем каменистый, до песчаного входа нужно пройти около 250 метров.",
     "reviews_summary": "Пары восхищаются инстаграмным дизайном, чистотой и качеством завтраков. Лучший выбор для романтического отдыха с городским комфортом.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/ac/0a/14/the-shanhaitian-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/ac/09/41/the-shanhaitian-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/de/de/ad/the-shanhaitian-resort.jpg"
+    ],
+    "photo_files": [
       "autograph_sanya_1.jpg",
       "autograph_sanya_2.jpg",
       "autograph_sanya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 12188454,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d12188454-Reviews-The_Shanhaitian_Resort_Sanya_Autograph_Collection-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 7,
@@ -155,10 +199,17 @@
     "caveat": "В бухте Хайтанвань открытый океанический прибой — часто действуют сезонные красные флаги, запрещающие плавание в море.",
     "reviews_summary": "Гости высоко ценят спокойствие, размеры вилл и исключительный уровень спа. Предупреждают о сильных океанских волнах у берега.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/05/47/34/f7/resort-day-view2.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/b9/34/5e/intercontinental-sanya.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/b9/34/59/intercontinental-sanya.jpg"
+    ],
+    "photo_files": [
       "intercon_haitang_1.jpg",
       "intercon_haitang_2.jpg",
       "intercon_haitang_3.jpg"
-    ]
+    ],
+    "ta_location_id": 5229266,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d5229266-Reviews-InterContinental_Sanya_Haitang_Bay_Resort_by_IHG-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 8,
@@ -178,10 +229,17 @@
     "caveat": "Вторая линия — до пляжа около 10 минут пешком; персонал на ресепшн говорит на базовом английском.",
     "reviews_summary": "Пары хвалят необычную архитектуру, фотогеничные зоны отдыха и атмосферу релакса. Советуют использовать переводчик при заселении.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/70/1d/77/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/70/1d/79/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/53/b5/3b/hotel-exterior-night.jpg"
+    ],
+    "photo_files": [
       "sunshine_yi_1.jpg",
       "sunshine_yi_2.jpg",
       "sunshine_yi_3.jpg"
-    ]
+    ],
+    "ta_location_id": 20324337,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d20324337-Reviews-Sunshine_Yi_Hotel_Haitang_Bay_Sanya-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 9,
@@ -201,10 +259,16 @@
     "caveat": "За пределами курорта практически нет пешеходной инфраструктуры — для выездов на ужин требуется такси Didi.",
     "reviews_summary": "Туристы отмечают тишину, чистый воздух и великолепный кокосовый парк. Идеально для неспешного отдыха вдвоем вдали от суеты.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/05/b9/34/5e/intercontinental-sanya.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/b9/34/59/intercontinental-sanya.jpg"
+    ],
+    "photo_files": [
       "haitang_resort_1.jpg",
       "haitang_resort_2.jpg",
       "haitang_resort_3.jpg"
-    ]
+    ],
+    "ta_location_id": 5229266,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d5229266-Reviews-InterContinental_Sanya_Haitang_Bay_Resort_by_IHG-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 10,
@@ -224,10 +288,17 @@
     "caveat": "Не камерный Adults Only — в период каникул отель активно принимает семьи с детьми.",
     "reviews_summary": "Гости восхищаются качеством пляжа, энергетикой вечерних программ и приветливой командой. Прекрасный баланс моря и вечерней жизни.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/31/cd/a8/a9/hotel-aerial-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/32/d2/c4/27/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/32/d2/c4/2c/caption.jpg"
+    ],
+    "photo_files": [
       "mgm_sanya_1.jpg",
       "mgm_sanya_2.jpg",
       "mgm_sanya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 2522622,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d2522622-Reviews-MGM_Grand_Sanya-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 11,
@@ -247,10 +318,17 @@
     "caveat": "В высокий сезон цены на проживание динамически растут — бронировать нужно за 3–4 недели.",
     "reviews_summary": "Иностранные туристы хвалят персонал за безупречный английский, чистоту и комфорт сна. Называют отель лучшей базой для посещения Запретного города.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/4f/31/fc/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/4f/31/fb/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/4f/32/00/caption.jpg"
+    ],
+    "photo_files": [
       "park_plaza_bj_1.jpg",
       "park_plaza_bj_2.jpg",
       "park_plaza_bj_3.jpg"
-    ]
+    ],
+    "ta_location_id": 595677,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g294212-d595677-Reviews-Park_Plaza_Beijing_Wangfujing-Beijing.html?m=70260"
   },
   {
     "id": 12,
@@ -270,10 +348,17 @@
     "caveat": "Стандартные номера классического дизайна без ультрасовременного лоска; коридоры требуют обновления.",
     "reviews_summary": "Гости ценят отель за прекрасное расположение и стабильную уборку. Функциональный городской вариант для активных экскурсий.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/59/40/03/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/b6/ba/d8/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/b6/ba/d7/caption.jpg"
+    ],
+    "photo_files": [
       "sunworld_bj_1.jpg",
       "sunworld_bj_2.jpg",
       "sunworld_bj_3.jpg"
-    ]
+    ],
+    "ta_location_id": 305370,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g294212-d305370-Reviews-Sunworld_Dynasty_Hotel_Beijing_Wangfujing-Beijing.html?m=70260"
   },
   {
     "id": 13,
@@ -293,10 +378,17 @@
     "caveat": "До ближайшей станции метро Chongwenmen около 8–10 минут пешком (примерно 650 метров).",
     "reviews_summary": "Туристы хвалят огромные номера, чистоту санузлов и выбор европейских блюд. Отличный отдых в спа после долгих пеших прогулок по Пекину.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/05/e1/d4/03/yin-on-12.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/e6/2a/87/yin-on-12-bar.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/06/9e/93/8d/residence-club.jpg"
+    ],
+    "photo_files": [
       "new_world_bj_1.jpg",
       "new_world_bj_2.jpg",
       "new_world_bj_3.jpg"
-    ]
+    ],
+    "ta_location_id": 4567347,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g294212-d4567347-Reviews-New_World_Beijing_Hotel-Beijing.html?m=70260"
   },
   {
     "id": 14,
@@ -316,10 +408,17 @@
     "caveat": "Историческое здание — часть сантехники и мебели сохраняет классический винтажный стиль; сервис сдержанный.",
     "reviews_summary": "Семьи ставят высший балл за монументальное расположение: историческое сердце столицы прямо у порога. Номера просторные и тихие.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0a/96/14/63/exterior.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0c/e4/1a/2c/hotel-lobby.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0a/96/18/6c/park-view-studio.jpg"
+    ],
+    "photo_files": [
       "nuo_hotel_bj_1.jpg",
       "nuo_hotel_bj_2.jpg",
       "nuo_hotel_bj_3.jpg"
-    ]
+    ],
+    "ta_location_id": 7037463,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g294212-d7037463-Reviews-NUO_Hotel_Beijing-Beijing.html?m=70260"
   },
   {
     "id": 15,
@@ -328,6 +427,9 @@
     "category_slug": "beijing",
     "category_name": "Пекин: экскурсии и метро",
     "hotel_name": "Mercure Hotel Beijing Qianmen 3★",
+    "photo_match_name": "Mercure Beijing Qianmen",
+    "ta_location_id": 33667960,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g294212-d33667960-Reviews-Mercure_Beijing_Qianmen-Beijing.html?m=70260",
     "resort": "Пекин, район Сичэн / Цяньмэнь",
     "rating": 4.8,
     "usp": "Уютный сетевой отель в аутентичном квартале Дашилань: тихий внутренний двор, пешком до площади Тяньаньмэнь и метро Цяньмэнь.",
@@ -362,10 +464,17 @@
     "caveat": "Вид из базовых номеров во внутренний двор или на городские улицы — панорама на реку только в улучшенных категориях.",
     "reviews_summary": "Иностранцы называют отель идеальной базой в Шанхае: метро за углом, чистейшие номера и внимательный ресепшн. Завтраки вкусные и разнообразные.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/c4/a4/56/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/c4/ab/41/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/c4/ab/40/caption.jpg"
+    ],
+    "photo_files": [
       "ssaw_bund_1.jpg",
       "ssaw_bund_2.jpg",
       "ssaw_bund_3.jpg"
-    ]
+    ],
+    "ta_location_id": 653121,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g308272-d653121-Reviews-SSAW_Boutique_Hotel_Shanghai_Bund-Shanghai_Shanghai_Region.html?m=70260"
   },
   {
     "id": 17,
@@ -374,6 +483,7 @@
     "category_slug": "shanghai",
     "category_name": "Шанхай: небоскребы и Бунд",
     "hotel_name": "Golden Tulip New Asia The Bund 4★",
+    "photo_match_name": "Golden Tulip Shanghai Bund",
     "resort": "Шанхай, район Хункоу / Северный Бунд",
     "rating": 4.7,
     "usp": "Европейский стандарт цепочки Louvre Hotels у Северного Бунда: 4 минуты до метро Tiantong Road и моста Вайбайду без наценки первой линии.",
@@ -385,10 +495,17 @@
     "caveat": "Вечером район вокруг отеля очень тихий; до центральной части набережной Бунд нужно пройти пешком около 15 минут.",
     "reviews_summary": "Гости хвалят простор номеров, чистоту постельного белья и сытные завтраки. Удобно добираться как до Пудуна, так и до исторического центра.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/12/20/4a/b8/lounge.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/20/4b/90/deluxe-room.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/c9/9b/b0/caption.jpg"
+    ],
+    "photo_files": [
       "golden_tulip_sh_1.jpg",
       "golden_tulip_sh_2.jpg",
       "golden_tulip_sh_3.jpg"
-    ]
+    ],
+    "ta_location_id": 303018,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g308272-d303018-Reviews-Golden_Tulip_Bund_New_Asia-Shanghai_Shanghai_Region.html?m=70260"
   },
   {
     "id": 18,
@@ -408,10 +525,17 @@
     "caveat": "Базовые категории номеров сохраняют классический стиль отделки; за панорамным видом нужно бронировать высокий этаж.",
     "reviews_summary": "Туристы отмечают непревзойденное транспортное удобство, тишину в номерах и высокий класс сервиса. Отличная отправная точка для шопинга.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/16/f1/b8/74/hotel-entrance.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/f1/b8/64/epicure-on-45.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/f1/b8/02/swimming-pool.jpg"
+    ],
+    "photo_files": [
       "radisson_newworld_1.jpg",
       "radisson_newworld_2.jpg",
       "radisson_newworld_3.jpg"
-    ]
+    ],
+    "ta_location_id": 575893,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g308272-d575893-Reviews-Radisson_Blu_Hotel_Shanghai_New_World-Shanghai_Shanghai_Region.html?m=70260"
   },
   {
     "id": 19,
@@ -431,10 +555,17 @@
     "caveat": "Здание классической постройки — мебель местами не ультрановая; до станции метро Pudong Avenue около 7 минут пешком.",
     "reviews_summary": "Иностранцы ценят отель за прекрасный вид на сияющие высотки, комфортные кровати и привычный международный сервис Accor.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/05/0a/38/81/novotel-atlantis-shanghai.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/0a/38/f4/novotel-atlantis-shanghai.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/0a/39/10/novotel-atlantis-shanghai.jpg"
+    ],
+    "photo_files": [
       "novotel_atlantis_1.jpg",
       "novotel_atlantis_2.jpg",
       "novotel_atlantis_3.jpg"
-    ]
+    ],
+    "ta_location_id": 299582,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g308272-d299582-Reviews-Novotel_Shanghai_Atlantis-Shanghai_Shanghai_Region.html?m=70260"
   },
   {
     "id": 20,
@@ -454,10 +585,17 @@
     "caveat": "Электроника и элементы декора в номерах требуют точечной модернизации; фитнес-зона периодически закрывается на профилактику.",
     "reviews_summary": "Гости хвалят просторные комнаты, чистоту и удобство мгновенного доступа к двум линиям метро. Превосходный выбор по соотношению цены и площади.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/06/ba/c4/51/the-eton-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0a/57/b2/13/hotel-night-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/66/62/49/superbowl-food.jpg"
+    ],
+    "photo_files": [
       "eton_shanghai_1.jpg",
       "eton_shanghai_2.jpg",
       "eton_shanghai_3.jpg"
-    ]
+    ],
+    "ta_location_id": 626309,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g308272-d626309-Reviews-The_Eton_Hotel_Shanghai-Shanghai_Shanghai_Region.html?m=70260"
   },
   {
     "id": 21,
@@ -466,6 +604,7 @@
     "category_slug": "balance",
     "category_name": "Разумный выбор и хабы",
     "hotel_name": "Sunshine Resort Intime Sanya 5★",
+    "photo_match_name": "Resort Intime Sanya",
     "resort": "Санья, бухта Дадунхай",
     "rating": 4.7,
     "usp": "Самый популярный народный курорт Дадунхая: прямой выход на песчаный пляж, пальмовый сад и русскоязычная навигация.",
@@ -477,10 +616,17 @@
     "caveat": "Классический отель с традиционным номерным фондом; завтраки ориентированы на массовый китайский и российский поток.",
     "reviews_summary": "Туристы называют отель лучшим местом для комфортного отдыха без языкового барьера: море прямо у ног, вокруг вся курортная жизнь.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/12/f0/e3/e7/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/f0/e3/e9/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/f0/e4/01/caption.jpg"
+    ],
+    "photo_files": [
       "intime_sanya_1.jpg",
       "intime_sanya_2.jpg",
       "intime_sanya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 308451,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d308451-Reviews-Resort_Intime_Sanya-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 22,
@@ -500,10 +646,17 @@
     "caveat": "Стандартные номера компактные по площади; интерьер комнат классический без дизайнерских изысков.",
     "reviews_summary": "Постоянные клиенты возвращаются за идеальное расположение у моря и спокойствие парка. Отличный честный вариант для экономичного отдыха.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/16/fa/22/da/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/02/62/04/c1/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/02/6e/25/50/caption.jpg"
+    ],
+    "photo_files": [
       "south_china_1.jpg",
       "south_china_2.jpg",
       "south_china_3.jpg"
-    ]
+    ],
+    "ta_location_id": 455660,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d455660-Reviews-South_China_Hotel-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 23,
@@ -523,10 +676,17 @@
     "caveat": "Вторая линия — до пляжа нужно пройти около 5–7 минут через городскую улицу; в коридорах бывает шумно.",
     "reviews_summary": "Молодежь и пары хвалят инстаграмный бассейн на крыше, чистоту и удобство длинного завтрака. Отличная современная альтернатива первой линии.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1a/6f/d9/c3/view-from-another-room.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/7e/4c/09/harman-resort-hotel-sanya.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/18/24/1c/2a/harman-resort-hotel-sanya.jpg"
+    ],
+    "photo_files": [
       "harman_sanya_1.jpg",
       "harman_sanya_2.jpg",
       "harman_sanya_3.jpg"
-    ]
+    ],
+    "ta_location_id": 9857058,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297427-d9857058-Reviews-Harman_Resort_Hotel_Sanya-Sanya_Hainan.html?m=70260"
   },
   {
     "id": 24,
@@ -535,6 +695,8 @@
     "category_slug": "balance",
     "category_name": "Разумный выбор и хабы",
     "hotel_name": "LN Hotel Haizhu Square Guangzhou 4★",
+    "ta_location_id": 581898,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g298555-d581898-Reviews-Guangzhou_Hotel-Guangzhou_Guangdong.html?m=70260",
     "resort": "Гуанчжоу, район Юэсю / Площадь Хайчжу",
     "rating": 4.6,
     "usp": "Идеальный транзитно-экскурсионный адрес: станция метро линий 2 и 6 у входа, пешком до пешеходной Beijing Road и набережной Жемчужной реки.",
@@ -546,6 +708,11 @@
     "caveat": "Завтрак больше ориентирован на традиционную кантонскую кухню; английский язык у персонала базовый.",
     "reviews_summary": "Туристы отмечают идеальную логистику для пересадок и шопинга: метро прямо у входа, свежий ремонт и тишина в номерах.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/19/d1/3a/84/guangzhou-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/04/43/7c/b1/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/15/fb/e8/59/photo0jpg.jpg"
+    ],
+    "photo_files": [
       "ln_guangzhou_1.jpg",
       "ln_guangzhou_2.jpg",
       "ln_guangzhou_3.jpg"
@@ -558,6 +725,7 @@
     "category_slug": "balance",
     "category_name": "Разумный выбор и хабы",
     "hotel_name": "Campanile Hotel Xi'an Bell Tower 4★",
+    "photo_match_name": "Campanile Xi'an Bell Tower Huimin Street",
     "resort": "Сиань, район Бэйлинь / Колокольная башня",
     "rating": 4.8,
     "usp": "Французский сетевой комфорт внутри крепостной стены Сианя: 3 минуты до метро Guangji Street и пеший доступ к Колокольной башне.",
@@ -569,9 +737,16 @@
     "caveat": "Вход в отель расположен в переулке — при первом заезде с чемоданами нужно ориентироваться по указателям; стандартные номера компактные.",
     "reviews_summary": "Иностранцы ставят высший балл за чистоту, тишину и душевное отношение персонала. Идеальная база для осмотра Терракотовой армии и древнего Сианя.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/14/62/c2/48/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/62/7a/3c/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/62/c1/8e/caption.jpg"
+    ],
+    "photo_files": [
       "campanile_xian_1.jpg",
       "campanile_xian_2.jpg",
       "campanile_xian_3.jpg"
-    ]
+    ],
+    "ta_location_id": 813895,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g298557-d813895-Reviews-Campanile_Xi_an_Bell_Tower_Huimin_Street-Xi_an_Shaanxi.html?m=70260"
   }
 ]

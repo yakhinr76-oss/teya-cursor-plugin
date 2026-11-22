@@ -71,6 +71,8 @@ if ( $hide_init ) {
 	$card_class .= ' is-hidden';
 }
 $pool_id     = ! empty( $hotel['pool_id'] ) ? sanitize_html_class( (string) $hotel['pool_id'] ) : '';
+$ta_id       = ! empty( $hotel['ta_location_id'] ) ? (int) $hotel['ta_location_id'] : 0;
+$ta_url      = ! empty( $hotel['tripadvisor_url'] ) ? esc_url( (string) $hotel['tripadvisor_url'] ) : '';
 $honest_raw  = '';
 if ( ! empty( $hotel['caveat'] ) ) {
 	$honest_raw = (string) $hotel['caveat'];
@@ -90,6 +92,12 @@ $honest_raw = trim( $honest_raw );
 	<?php if ( '' !== $pool_id ) : ?>
 		data-pool-id="<?php echo esc_attr( $pool_id ); ?>"
 	<?php endif; ?>
+	<?php if ( $ta_id > 0 ) : ?>
+		data-ta-location-id="<?php echo esc_attr( (string) $ta_id ); ?>"
+	<?php endif; ?>
+	<?php if ( '' !== $ta_url ) : ?>
+		data-tripadvisor-url="<?php echo esc_attr( $ta_url ); ?>"
+	<?php endif; ?>
 	<?php echo $hide_init ? ' hidden' : ''; ?>
 >
 	<div class="turciya-curated-card__top">
@@ -97,9 +105,19 @@ $honest_raw = trim( $honest_raw );
 			<?php if ( ! empty( $hotel['image'] ) ) : ?>
 				<?php
 				$image_alt = ! empty( $hotel['image_alt'] ) ? (string) $hotel['image_alt'] : (string) $hotel['name'];
+				$can_detail = $ta_id > 0 || '' !== $ta_url;
 				if ( $image_remote ) :
 					$image_w = ! empty( $hotel['image_width'] ) ? (int) $hotel['image_width'] : 1200;
 					$image_h = ! empty( $hotel['image_height'] ) ? (int) $hotel['image_height'] : 800;
+					if ( $can_detail ) {
+						echo '<button type="button" class="turciya-curated-card__media-btn" data-hotel-detail-open aria-label="' . esc_attr(
+							sprintf(
+								/* translators: %s: hotel name */
+								__( 'Подробнее об отеле %s', 'zhiraf-ufa' ),
+								(string) $hotel['name']
+							)
+						) . '">';
+					}
 					?>
 					<img
 						class="turciya-curated-card__img"
@@ -110,14 +128,31 @@ $honest_raw = trim( $honest_raw );
 						loading="lazy"
 						decoding="async"
 					/>
+					<?php
+					if ( $can_detail ) {
+						echo '</button>';
+					}
+					?>
 				<?php else : ?>
 					<?php
+					if ( $can_detail ) {
+						echo '<button type="button" class="turciya-curated-card__media-btn" data-hotel-detail-open aria-label="' . esc_attr(
+							sprintf(
+								/* translators: %s: hotel name */
+								__( 'Подробнее об отеле %s', 'zhiraf-ufa' ),
+								(string) $hotel['name']
+							)
+						) . '">';
+					}
 					zhiraf_ufa_img(
 						(string) $hotel['image'],
 						$image_alt,
 						'turciya-curated-card__img',
 						true
 					);
+					if ( $can_detail ) {
+						echo '</button>';
+					}
 					?>
 				<?php endif; ?>
 			<?php endif; ?>

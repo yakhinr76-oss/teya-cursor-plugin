@@ -903,6 +903,7 @@
     if (e.key === 'Escape') {
       closeQuiz();
       closeTurciyaLeadModal();
+      closeHotelModal();
     }
   });
 
@@ -980,6 +981,85 @@
   qsa('[data-turciya-lead-close]').forEach(function (btn) {
     btn.addEventListener('click', closeTurciyaLeadModal);
   });
+
+  var hotelModal = qs('#hotel-modal');
+  var hotelModalBody = hotelModal ? qs('[data-hotel-modal-body]', hotelModal) : null;
+  var hotelModalTitle = hotelModal ? qs('[data-hotel-modal-title]', hotelModal) : null;
+  var hotelModalAttrib = hotelModal ? qs('[data-hotel-modal-attrib]', hotelModal) : null;
+  var hotelModalTaLink = hotelModal ? qs('[data-hotel-modal-ta-link]', hotelModal) : null;
+
+  function closeHotelModal() {
+    if (!hotelModal || hotelModal.hasAttribute('hidden')) return;
+    hotelModal.setAttribute('hidden', '');
+    hotelModal.setAttribute('inert', '');
+    if (!turciyaLeadModal || turciyaLeadModal.hasAttribute('hidden')) {
+      if (!modal || modal.hasAttribute('hidden')) {
+        document.body.style.overflow = '';
+        document.body.classList.remove('quiz-open');
+      }
+    }
+  }
+
+  function openHotelModalFromCard(card) {
+    if (!hotelModal || !hotelModalBody || !card) return;
+    var taUrl = card.getAttribute('data-tripadvisor-url') || '';
+    var taId = card.getAttribute('data-ta-location-id') || '';
+    if (!taUrl && !taId) return;
+    var nameEl = qs('.turciya-curated-card__title', card);
+    var uspEl = qs('.turciya-curated-card__usp', card);
+    var caveatEl = qs('.turciya-curated-card__honest-text', card);
+    var imgEl = qs('.turciya-curated-card__img', card);
+    var title = nameEl ? nameEl.textContent.trim() : '';
+    if (hotelModalTitle) hotelModalTitle.textContent = title;
+    var html = '';
+    if (imgEl && imgEl.getAttribute('src')) {
+      html +=
+        '<div class="hotel-modal__media"><img class="hotel-modal__img" src="' +
+        imgEl.getAttribute('src') +
+        '" alt="' +
+        (imgEl.getAttribute('alt') || title).replace(/"/g, '&quot;') +
+        '" loading="lazy" decoding="async" /></div>';
+    }
+    if (uspEl && uspEl.textContent.trim()) {
+      html += '<p class="hotel-modal__usp">' + uspEl.textContent.trim() + '</p>';
+    }
+    if (caveatEl && caveatEl.textContent.trim()) {
+      html +=
+        '<p class="hotel-modal__caveat"><span class="hotel-modal__caveat-label">' +
+        (qs('.turciya-curated-card__honest-label', card)
+          ? qs('.turciya-curated-card__honest-label', card).textContent.trim()
+          : '') +
+        '</span> ' +
+        caveatEl.textContent.trim() +
+        '</p>';
+    }
+    hotelModalBody.innerHTML = html;
+    if (hotelModalAttrib && hotelModalTaLink && taUrl) {
+      hotelModalTaLink.setAttribute('href', taUrl);
+      hotelModalAttrib.removeAttribute('hidden');
+    } else if (hotelModalAttrib) {
+      hotelModalAttrib.setAttribute('hidden', '');
+    }
+    hotelModal.removeAttribute('hidden');
+    hotelModal.removeAttribute('inert');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('quiz-open');
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-hotel-detail-open]');
+    if (!trigger) return;
+    var card = trigger.closest('[data-curated-card]');
+    if (!card) return;
+    e.preventDefault();
+    openHotelModalFromCard(card);
+  });
+
+  if (hotelModal) {
+    qsa('[data-hotel-modal-close]', hotelModal).forEach(function (btn) {
+      btn.addEventListener('click', closeHotelModal);
+    });
+  }
 
   qsa('[data-lead-channel]').forEach(function (btn) {
     btn.addEventListener('click', function () {

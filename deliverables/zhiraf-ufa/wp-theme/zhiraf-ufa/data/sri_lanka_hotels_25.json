@@ -6,6 +6,7 @@
     "category_slug": "family",
     "category_name": "Семьи: спокойное море и лагуны",
     "hotel_name": "Araliya Beach Resort & Spa 5★",
+    "photo_match_name": "Araliya Hotels & Resorts",
     "resort": "Южное побережье, пляж Унаватуна",
     "rating": 4.7,
     "usp": "Флагманский семейный комплекс в бухте Унаватуна, защищенной коралловым рифом от океанических волн круглый год.",
@@ -17,10 +18,17 @@
     "caveat": "Пляж Унаватуны оживленный и общественный — у кромки воды в сезон многолюдно.",
     "reviews_summary": "Семьи хвалят возможность купать детей в океане без риска обратных течений и чистоту номеров. Отмечают высокий уровень сервиса.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/61/51/5c/experience-paradise-at.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/6f/95/85/unwind-in-tropical-bliss.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/61/48/5f/indulge-in-luxury-and.jpg"
+    ],
+    "photo_files": [
       "araliya_unawatuna_1.jpg",
       "araliya_unawatuna_2.jpg",
       "araliya_unawatuna_3.jpg"
-    ]
+    ],
+    "ta_location_id": 23262280,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g644047-d23262280-Reviews-Araliya_Hotels_&_Resorts-Unawatuna_Galle_District.html?m=70260"
   },
   {
     "id": 2,
@@ -40,10 +48,17 @@
     "caveat": "Территория компактная — любителям масштабных парков и анимации может показаться мало пространства.",
     "reviews_summary": "Гости восхищаются безопасным купанием для малышей, тишиной и вкусными завтраками. Персонал моментально решает любые вопросы.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/18/12/4d/15/cocobay-unawatuna.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/10/08/f6/ed/sea-viwe.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/cd/bf/51/primary.jpg"
+    ],
+    "photo_files": [
       "cocobay_unawatuna_1.jpg",
       "cocobay_unawatuna_2.jpg",
       "cocobay_unawatuna_3.jpg"
-    ]
+    ],
+    "ta_location_id": 3386434,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g644047-d3386434-Reviews-CoCoBay_Unawatuna-Unawatuna_Galle_District.html?m=70260"
   },
   {
     "id": 3,
@@ -63,10 +78,17 @@
     "caveat": "Длительный трансфер из аэропорта Коломбо (около 5–6 часов на авто) — вариант рассчитан на туры от 9–10 ночей.",
     "reviews_summary": "Семьи называют пляж лучшим для малышей на всем острове. Хвалят простор номеров, чистоту и спокойную атмосферу.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/11/71/9a/c1/amaya-beach.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/07/2e/47/amaya-beach.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/07/2d/c6/amaya-beach.jpg"
+    ],
+    "photo_files": [
       "amaya_beach_1.jpg",
       "amaya_beach_2.jpg",
       "amaya_beach_3.jpg"
-    ]
+    ],
+    "ta_location_id": 4198494,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g2193270-d4198494-Reviews-Amaya_Beach__Pasikudah-Kalkudah_Eastern_Province.html?m=70260"
   },
   {
     "id": 4,
@@ -86,10 +108,17 @@
     "caveat": "Сезон спокойного моря на востоке длится с мая по октябрь; зимой сюда приходят дожди.",
     "reviews_summary": "Туристы отмечают колорит деревянных шале, идеальный пляж без волн и приветливость команды. Прекрасный выбор для семейного релакса.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2f/fc/36/cd/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/02/fb/18/62/maalu-maalu-resort-spas.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/02/fb/1b/66/maalu-maalu-resort-spas.jpg"
+    ],
+    "photo_files": [
       "maalu_maalu_1.jpg",
       "maalu_maalu_2.jpg",
       "maalu_maalu_3.jpg"
-    ]
+    ],
+    "ta_location_id": 2258020,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g24914478-d2258020-Reviews-Maalu_Maalu_Resort_&_Spa__Pasikuda-Pasikuda_Eastern_Province.html?m=70260"
   },
   {
     "id": 5,
@@ -98,6 +127,8 @@
     "category_slug": "family",
     "category_name": "Семьи: спокойное море и лагуны",
     "hotel_name": "Anantaya Resort & Spa Pasikudah 5★",
+    "ta_location_id": 10151979,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g2193270-d10151979-Reviews-Anantaya_Resort_Spa-Kalkudah_Eastern_Province.html?m=70260",
     "resort": "Восточное побережье, пляж Пасикуда",
     "rating": 4.7,
     "usp": "Просторный пятизвездочный курорт с бассейнами, виллами и пологим заходом в лагуну для безопасного плавания.",
@@ -109,6 +140,11 @@
     "caveat": "Уединенная локация за пределами поселка — рестораны и магазины только на территории отеля.",
     "reviews_summary": "Гости ценят отель за тишину, чистоту пляжной зоны и предупредительный сервис. Прекрасное место для отдыха от городской суеты.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/11/4b/78/1a/anantaya-resort-spa-passikudah.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/4b/77/5f/anantaya-resort-spa-passikudah.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/35/44/84/anantaya-resort-spa-pasikudah.jpg"
+    ],
+    "photo_files": [
       "anantaya_pasikudah_1.jpg",
       "anantaya_pasikudah_2.jpg",
       "anantaya_pasikudah_3.jpg"
@@ -132,10 +168,17 @@
     "caveat": "В этой части пляжа океан открытый — при сильном волнении купаться лучше в лагунах по соседству.",
     "reviews_summary": "Пары ставят высший балл за эстетику, тишину и великолепные закаты. Считают отель лучшим бутик-резортом Хиккадувы.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1e/27/2e/8d/riff-hikkaduwa.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/71/92/69/riff-hikkaduwa.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/71/91/5e/riff-hikkaduwa.jpg"
+    ],
+    "photo_files": [
       "riff_hikkaduwa_1.jpg",
       "riff_hikkaduwa_2.jpg",
       "riff_hikkaduwa_3.jpg"
-    ]
+    ],
+    "ta_location_id": 14968725,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g304134-d14968725-Reviews-Riff_Hikkaduwa-Hikkaduwa_Galle_District.html?m=70260"
   },
   {
     "id": 7,
@@ -155,10 +198,17 @@
     "caveat": "До центра тусовочной Хиккадувы около 5 минут на тук-туке (пешком вдоль трассы идти некомфортно).",
     "reviews_summary": "Туристы отмечают душевную атмосферу, простор номеров и шум океана за окном. Прекрасный выбор для романтического уединения.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/35/3c/ef/c7/suite-lanka-s-beach-on.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2a/de/a3/23/we-think-suite-lanka.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/30/9d/9d/cf/a-placid-july-evening.jpg"
+    ],
+    "photo_files": [
       "suite_lanka_1.jpg",
       "suite_lanka_2.jpg",
       "suite_lanka_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1181608,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g304134-d1181608-Reviews-Suite_Lanka-Hikkaduwa_Galle_District.html?m=70260"
   },
   {
     "id": 8,
@@ -178,10 +228,17 @@
     "caveat": "Энергичный пляжный клуб — по вечерам играет музыка, отель не подходит для любителей полной тишины.",
     "reviews_summary": "Молодежь и пары в восторге от атмосферы, серф-вайба и вкусной кухни. Называют отель самым стильным местом Велигамы.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/08/4a/45/1b/w15.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/08/04/ed/5d/weligama-15.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/08/4a/45/77/w15.jpg"
+    ],
+    "photo_files": [
       "w15_weligama_1.jpg",
       "w15_weligama_2.jpg",
       "w15_weligama_3.jpg"
-    ]
+    ],
+    "ta_location_id": 7655708,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g612380-d7655708-Reviews-W15_Weligama-Weligama_Matara.html?m=70260"
   },
   {
     "id": 9,
@@ -201,10 +258,17 @@
     "caveat": "Крупный высотный отель — нет ощущения затерянного бунгало среди джунглей.",
     "reviews_summary": "Гости восхищаются панорамой бухты с верхних этажей, качеством завтраков и бассейнами. Идеальное сочетание комфорта 5★ и серфинга.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/11/1b/58/e0/hotel-exterior.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/1b/58/f9/poolside.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/11/1b/59/0d/weligama-bay-marriott.jpg"
+    ],
+    "photo_files": [
       "marriott_weligama_1.jpg",
       "marriott_weligama_2.jpg",
       "marriott_weligama_3.jpg"
-    ]
+    ],
+    "ta_location_id": 12553294,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g612380-d12553294-Reviews-Weligama_Bay_Marriott_Resort_&_Spa-Weligama_Matara.html?m=70260"
   },
   {
     "id": 10,
@@ -224,10 +288,17 @@
     "caveat": "Купание прямо перед отелем часто с волнами — для спокойного плавания гости проходят 200 метров в сторону рифа.",
     "reviews_summary": "Туристы ценят отель за отличную локацию, близость черепах и красивый вид на закат из номеров. Персонал очень дружелюбный.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/16/5b/67/ea/citrus-hikkaduwa.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/cd/e4/f4/citrus-hikkaduwa.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/b3/b7/6e/citrus-hikkaduwa.jpg"
+    ],
+    "photo_files": [
       "citrus_hikkaduwa_1.jpg",
       "citrus_hikkaduwa_2.jpg",
       "citrus_hikkaduwa_3.jpg"
-    ]
+    ],
+    "ta_location_id": 609883,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g304134-d609883-Reviews-Citrus_Hikkaduwa-Hikkaduwa_Galle_District.html?m=70260"
   },
   {
     "id": 11,
@@ -236,6 +307,7 @@
     "category_slug": "bentota",
     "category_name": "Бентота и Берувела: 4–5★",
     "hotel_name": "Centara Ceysands Resort & Spa 4★",
+    "photo_match_name": "Pullman Bentota Resort",
     "resort": "Западное побережье, коса Бентоты",
     "rating": 4.5,
     "usp": "Уникальный курорт на песчаной косе между рекой Бентота и Индийским океаном: прибытие на пароме и полное отсутствие поездов.",
@@ -247,10 +319,17 @@
     "caveat": "Попасть в отель и выбраться в город можно только на отельном пароме через реку (ходит круглосуточно за 2 минуты).",
     "reviews_summary": "Гости в восторге от расположения между рекой и морем, чистоты пляжа и огромного бассейна. Отличный вариант для семейного отдыха.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/34/97/0d/0e/ariel-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/08/c7/ce/centara-ceysands-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/08/c8/37/centara-ceysands-resort.jpg"
+    ],
+    "photo_files": [
       "centara_ceysands_1.jpg",
       "centara_ceysands_2.jpg",
       "centara_ceysands_3.jpg"
-    ]
+    ],
+    "ta_location_id": 4871240,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g612384-d4871240-Reviews-Pullman_Bentota_Resort_and_Spa-Aluthgama_Western_Province.html?m=70260"
   },
   {
     "id": 12,
@@ -270,10 +349,17 @@
     "caveat": "Позади отеля проходит железная дорога (типично для района), но номера ориентированы в сторону океана и сада.",
     "reviews_summary": "Туристы хвалят эстетику архитектуры Бавы, покой парка и великолепные завтраки. Пляж широкий и малолюдный.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/11/e0/bc/98/avani-bentota-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/02/6f/4f/03/avani-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/02/6f/4e/fe/pool-and-beach-view.jpg"
+    ],
+    "photo_files": [
       "thaala_bentota_1.jpg",
       "thaala_bentota_2.jpg",
       "thaala_bentota_3.jpg"
-    ]
+    ],
+    "ta_location_id": 315668,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297895-d315668-Reviews-Thaala_Bentota-Bentota_Galle_District.html?m=70260"
   },
   {
     "id": 13,
@@ -293,10 +379,17 @@
     "caveat": "В летние месяцы на открытом пляже Бентоты поднимается сильная волна — купание требует осторожности.",
     "reviews_summary": "Гости выделяют близость к океану, отличные ужины с морепродуктами и внимательный персонал. Очень душевный отель.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/f2/f3/4f/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/50/94/25/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/f2/f3/67/caption.jpg"
+    ],
+    "photo_files": [
       "ekho_surf_1.jpg",
       "ekho_surf_2.jpg",
       "ekho_surf_3.jpg"
-    ]
+    ],
+    "ta_location_id": 315672,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297895-d315672-Reviews-EKHO_Surf-Bentota_Galle_District.html?m=70260"
   },
   {
     "id": 14,
@@ -316,10 +409,17 @@
     "caveat": "Интерьеры номеров выполнены в традиционном стиле — без ультрамодного минимализма, но поддерживаются в чистоте.",
     "reviews_summary": "Семьи ценят отель за просторные зеленые газоны, близость пляжа и сытный шведский стол. Отличный бюджетный выбор в Берувеле.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/33/14/58/d7/main-house.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/ef/b0/ea/the-palms.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/ef/b0/a2/the-palms.jpg"
+    ],
+    "photo_files": [
       "the_palms_beruwala_1.jpg",
       "the_palms_beruwala_2.jpg",
       "the_palms_beruwala_3.jpg"
-    ]
+    ],
+    "ta_location_id": 596226,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g616019-d596226-Reviews-The_Palms_Zanzibar-Bwejuu_Zanzibar_Island.html?m=70260"
   },
   {
     "id": 15,
@@ -339,10 +439,17 @@
     "caveat": "В сезон отель принимает большие группы гостей — в часы пик в ресторане бывает оживленно.",
     "reviews_summary": "Туристы хвалят ухоженную пальмовую территорию, чистоту бассейна и дружелюбную команду. Надежная курортная «пятерка».",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/06/6d/31/28/super-deluxe-room.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/1b/28/6a/photo0jpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/3d/12/3a/the-hotel--v5083365.jpg"
+    ],
+    "photo_files": [
       "eden_beruwala_1.jpg",
       "eden_beruwala_2.jpg",
       "eden_beruwala_3.jpg"
-    ]
+    ],
+    "ta_location_id": 496617,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1189172-d496617-Reviews-The_Eden_Beruwala-Beruwala_Western_Province.html?m=70260"
   },
   {
     "id": 16,
@@ -362,10 +469,17 @@
     "caveat": "Популярный многолюдный отель в эпицентре курорта — любителям полного уединения лучше выбрать Бентоту.",
     "reviews_summary": "Гости в восторге от черепах прямо у ног, отличных завтраков сети Cinnamon и вида на океан. Лучший отель для первого знакомства со Шри-Ланкой.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0b/a3/be/hotel-exterior.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0b/a3/d9/aerial-view-hikka-tranz.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0b/a3/8a/pool-bar.jpg"
+    ],
+    "photo_files": [
       "hikka_tranz_1.jpg",
       "hikka_tranz_2.jpg",
       "hikka_tranz_3.jpg"
-    ]
+    ],
+    "ta_location_id": 579245,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g304134-d579245-Reviews-Hikka_Tranz_by_Cinnamon-Hikkaduwa_Galle_District.html?m=70260"
   },
   {
     "id": 17,
@@ -385,10 +499,17 @@
     "caveat": "Компактная территория без собственного бассейна — купание рассчитано строго в океане.",
     "reviews_summary": "Туристы хвалят свежайшие морепродукты на ужинах, домашний уют и купание без волн прямо перед отелем. Очень душевный персонал.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/09/62/e5/e7/thaproban-beach-house.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/09/62/e3/4b/thaproban-beach-house.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/09/62/e3/13/thaproban-beach-house.jpg"
+    ],
+    "photo_files": [
       "thaproban_beach_1.jpg",
       "thaproban_beach_2.jpg",
       "thaproban_beach_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1221459,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g644047-d1221459-Reviews-Thaproban_Beach_House-Unawatuna_Galle_District.html?m=70260"
   },
   {
     "id": 18,
@@ -408,10 +529,17 @@
     "caveat": "Берег перед отелем коралловый — для купания нужно пройти 100 метров по песку до пологой лагуны.",
     "reviews_summary": "Хвалят чистоту, вид на бушующий океан с террасы и вкусную еду. Отличная база для активной пары в Хиккадуве.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/85/32/a3/coral-rock-by-bansei.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/85/33/60/coral-rock-by-bansei.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/85/31/e3/coral-rock-by-bansei.jpg"
+    ],
+    "photo_files": [
       "coral_rock_1.jpg",
       "coral_rock_2.jpg",
       "coral_rock_3.jpg"
-    ]
+    ],
+    "ta_location_id": 2440919,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g304134-d2440919-Reviews-Coral_Rock_By_Bansei-Hikkaduwa_Galle_District.html?m=70260"
   },
   {
     "id": 19,
@@ -431,10 +559,17 @@
     "caveat": "Отель пользуется высоким спросом — на пляже перед отелем в разгар сезона бывает много отдыхающих.",
     "reviews_summary": "Семьи отмечают идеальное купание без волн, вкусные ужины и удобство выхода к морю. Отличный компромисс между пляжем и активной жизнью.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0a/31/cd/ee/the-blu-pool-located.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0a/31/86/c0/melt-restaurant-and-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/19/f9/eb/86/blu-bar-directly-on-unawatuna.jpg"
+    ],
+    "photo_files": [
       "calamander_unawatuna_1.jpg",
       "calamander_unawatuna_2.jpg",
       "calamander_unawatuna_3.jpg"
-    ]
+    ],
+    "ta_location_id": 587821,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g644047-d587821-Reviews-Calamander_Unawatuna_Beach-Unawatuna_Galle_District.html?m=70260"
   },
   {
     "id": 20,
@@ -454,10 +589,17 @@
     "caveat": "Компактный номерной фонд — бронировать нужно за несколько месяцев; вечерних тусовок на этом пляже нет.",
     "reviews_summary": "Гости восхищаются купанием в спокойной лагуне с черепахами, тишиной и теплым отношением владельцев. Настоящий скрытый рай.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/cd/64/d6/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2a/51/0a/a1/welcome-to-japanese-cuisine.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2a/51/08/ef/rockside-benny.jpg"
+    ],
+    "photo_files": [
       "rockside_cabanas_1.jpg",
       "rockside_cabanas_2.jpg",
       "rockside_cabanas_3.jpg"
-    ]
+    ],
+    "ta_location_id": 23165540,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g644047-d23165540-Reviews-Rockside_Cabanas_Hotel-Unawatuna_Galle_District.html?m=70260"
   },
   {
     "id": 21,
@@ -477,10 +619,17 @@
     "caveat": "Вход в океан местами имеет коралловые включения — для захода рекомендуется использовать песчаные коридоры.",
     "reviews_summary": "Постоянные клиенты хвалят безупречный сервис, вкуснейшую кухню и простор парка. Идеальное соотношение пятизвездочного комфорта и цены.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0b/91/a7/cinnamon-bey-beruwala.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0b/90/29/cinnamon-bey-beruwala.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/08/2e/c8/d1/cinnamon-bey-beruwala.jpg"
+    ],
+    "photo_files": [
       "cinnamon_bey_1.jpg",
       "cinnamon_bey_2.jpg",
       "cinnamon_bey_3.jpg"
-    ]
+    ],
+    "ta_location_id": 3443680,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g4366271-d3443680-Reviews-Cinnamon_Bey_Beruwala-Moragalla_Beruwala.html?m=70260"
   },
   {
     "id": 22,
@@ -500,10 +649,17 @@
     "caveat": "В сезон цены держатся на верхней планке среднего бюджета — выгодно брать по спецпредложениям туроператоров.",
     "reviews_summary": "Гости в восторге от вышколенного персонала, чистоты номеров и умиротворяющей атмосферы мыса. Превосходный выбор для солидного отпуска.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/03/fa/f5/41/vivanta-by-taj-bentota.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/03/fa/f6/7d/vivanta-by-taj-bentota.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/03/fa/fc/be/vivanta-by-taj-bentota.jpg"
+    ],
+    "photo_files": [
       "taj_bentota_1.jpg",
       "taj_bentota_2.jpg",
       "taj_bentota_3.jpg"
-    ]
+    ],
+    "ta_location_id": 306383,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297895-d306383-Reviews-Taj_Bentota_Resort_&_Spa-Bentota_Galle_District.html?m=70260"
   },
   {
     "id": 23,
@@ -523,10 +679,17 @@
     "caveat": "Специфическая концепция — акцент сделан на оздоровление, правильное питание и тишину, а не на шумную анимацию.",
     "reviews_summary": "Туристы отмечают потрясающий эффект аюрведических процедур, чистоту и заботливое отношение врачей и персонала.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/07/25/3d/08/lanka-princess.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/18/33/94/d4/photo0jpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/74/e9/c0/lanka-princess.jpg"
+    ],
+    "photo_files": [
       "lanka_princess_1.jpg",
       "lanka_princess_2.jpg",
       "lanka_princess_3.jpg"
-    ]
+    ],
+    "ta_location_id": 670193,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g612384-d670193-Reviews-Lanka_Princess_Hotel-Aluthgama_Western_Province.html?m=70260"
   },
   {
     "id": 24,
@@ -535,6 +698,7 @@
     "category_slug": "balance",
     "category_name": "Разумный выбор и баланс",
     "hotel_name": "Fairway Sunset Galle 4★",
+    "photo_match_name": "Fairway Sunset Serviced Apartments",
     "resort": "Южное побережье, Галле / Унаватуна",
     "rating": 4.6,
     "usp": "Стильный современный отель с панорамным rooftop-баром на закат, спа-центром и быстрым доступом к форту Галле и пляжу.",
@@ -546,10 +710,17 @@
     "caveat": "Городской формат у побережья — до пляжа Унаватуны нужно подъехать 3–5 минут на тук-туке или шаттле.",
     "reviews_summary": "Гости хвалят современный комфорт, чистоту комнат и вкусные завтраки. Очень удобная база для поездок по экскурсиям и пляжам.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/62/55/5b/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/34/c1/2c/12/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/34/c1/2c/0f/caption.jpg"
+    ],
+    "photo_files": [
       "fairway_sunset_1.jpg",
       "fairway_sunset_2.jpg",
       "fairway_sunset_3.jpg"
-    ]
+    ],
+    "ta_location_id": 25243371,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297896-d25243371-Reviews-Fairway_Sunset_Serviced_Apartments-Galle_Galle_District.html?m=70260"
   },
   {
     "id": 25,
@@ -558,6 +729,7 @@
     "category_slug": "balance",
     "category_name": "Разумный выбор и баланс",
     "hotel_name": "Uga Bay by Uga Escapes 5★",
+    "photo_match_name": "The Bay an Uga Experience",
     "resort": "Восточное побережье, пляж Пасикуда",
     "rating": 4.7,
     "usp": "Премиальный эко-курорт на первой линии Пасикуды: подземный спа-центр, средиземноморская архитектура и океан без волн.",
@@ -569,9 +741,16 @@
     "caveat": "Восточное побережье — трансфер из Коломбо занимает около 5 часов; в зимний период на море возможен муссон.",
     "reviews_summary": "Туристы называют отель райским уголком: кристальная вода без волн, изысканные ужины и высочайший класс сервиса.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/50/d9/e7/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/bb/b8/76/uga-bay.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/bb/b6/4e/uga-bay.jpg"
+    ],
+    "photo_files": [
       "uga_bay_1.jpg",
       "uga_bay_2.jpg",
       "uga_bay_3.jpg"
-    ]
+    ],
+    "ta_location_id": 3682420,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g2193270-d3682420-Reviews-The_Bay_an_Uga_Experience-Kalkudah_Eastern_Province.html?m=70260"
   }
 ]

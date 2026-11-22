@@ -246,3 +246,8 @@ if ( empty( $hotels ) ) {
 		</div>
 	</div>
 </section>
+<?php
+if ( function_exists( 'zhiraf_ufa_render_hotel_modal_shell' ) ) {
+	zhiraf_ufa_render_hotel_modal_shell();
+}
+?>

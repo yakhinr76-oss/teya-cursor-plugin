@@ -17,10 +17,17 @@
     "caveat": "Территория масштабная: от дальних корпусов до пляжа комфортнее перемещаться на внутреннем шаттл-басе.",
     "reviews_summary": "Семьи в восторге от теплой атмосферы, чистоты и анимации. Отдельно хвалят красоту подводного мира прямо у берега.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/16/30/b8/76/sentido-reef-oasis-senses.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/30/b8/c4/sentido-reef-oasis-senses.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/30/b8/ec/sentido-reef-oasis-senses.jpg"
+    ],
+    "photo_files": [
       "sentido_reef_1.jpg",
       "sentido_reef_2.jpg",
       "sentido_reef_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1118023,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d1118023-Reviews-SENTIDO_Reef_Oasis_Aqua_Park_Resort-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 2,
@@ -40,10 +47,17 @@
     "caveat": "Вторая линия: пляж расположен через дорогу на территории отеля-партнера сети Albatros (курсирует регулярный шаттл).",
     "reviews_summary": "Родители называют отель идеальным выбором для детей благодаря горкам и внимательному персоналу. Еда разнообразная и сытная.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/33/91/c8/ac/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/d0/71/41/aqua-blu-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/05/d0/72/32/aqua-blu-sharm.jpg"
+    ],
+    "photo_files": [
       "albatros_aqua_blu_1.jpg",
       "albatros_aqua_blu_2.jpg",
       "albatros_aqua_blu_3.jpg"
-    ]
+    ],
+    "ta_location_id": 754480,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d754480-Reviews-Pickalbatros_Aqua_Blu_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 3,
@@ -63,10 +77,17 @@
     "caveat": "Водная инфраструктура сфокусирована на детях до 10–12 лет — любителям экстремальных взрослых горок здесь будет скучновато.",
     "reviews_summary": "Семьи с малышами ставят высшие баллы за теплые бассейны и безопасность захода в море. Персонал очень заботлив к детям.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0e/ae/37/overview.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/fe/53/39/sweet-home.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/fe/53/38/l-asiatique-restaurant.jpg"
+    ],
+    "photo_files": [
       "white_beach_1.jpg",
       "white_beach_2.jpg",
       "white_beach_3.jpg"
-    ]
+    ],
+    "ta_location_id": 9805253,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d9805253-Reviews-Pickalbatros_White_Beach_Resort_Hurghada-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 4,
@@ -86,6 +107,14 @@
     "caveat": "Курорт загородный (около 35 км до центра Хургады) — вся жизнь и досуг сосредоточены строго внутри отеля.",
     "reviews_summary": "Гости хвалят отличный песчаный заход и водные развлечения. Отмечают разнообразие ресторанов a la carte и заботу аниматоров.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/30/23/e6/21/overview.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/06/c5/cd/7d/sunrise-select-royal.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/db/9d/5c/sunrise-select-royal.jpg"
+    ],
+    "ta_location_id": 594132,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297550-d594132-Reviews-Sunrise_Royal_Makadi_Resort-Makadi_Bay_Hurghada.html?m=70260",
+    "photo_match_name": "SUNRISE Makadi Bay",
+    "photo_files": [
       "sunrise_royal_makadi_1.jpg",
       "sunrise_royal_makadi_2.jpg",
       "sunrise_royal_makadi_3.jpg"
@@ -109,10 +138,17 @@
     "caveat": "Часть стандартного номерного фонда сохраняет классический стиль — при бронировании стоит выбирать реновированные категории Club или Deluxe.",
     "reviews_summary": "Родители выделяют комфорт лагуны для купания детей даже в ветреные дни. Отмечают красивый парк и доброжелательный сервис.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/34/48/0b/49/zaitouna-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/15/f9/90/db/wind-surfing.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/15/fa/26/c5/desert-rose-resort.jpg"
+    ],
+    "photo_files": [
       "desert_rose_1.jpg",
       "desert_rose_2.jpg",
       "desert_rose_3.jpg"
-    ]
+    ],
+    "ta_location_id": 582755,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d582755-Reviews-Desert_Rose-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 6,
@@ -132,10 +168,17 @@
     "caveat": "Вторая линия курортного бульвара — прогулка до оборудованного пляжа занимает около 5 минут по тенистой аллее.",
     "reviews_summary": "Пары высоко оценивают покой, чистоту садов и великолепный снорклинг. Персонал предупредителен и ненавязчив.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/06/e4/c9/d0/baron-palms-resort-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/0d/48/bc/baron-palms-resort-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/0d/48/7a/baron-palms-resort-sharm.jpg"
+    ],
+    "photo_files": [
       "baron_palms_1.jpg",
       "baron_palms_2.jpg",
       "baron_palms_3.jpg"
-    ]
+    ],
+    "ta_location_id": 597432,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d597432-Reviews-Baron_Palms_Resort_Sharm_El_Sheikh__Adults_Only__All_inclusive-Sharm_El_Sheikh_South_Si.html?m=70260"
   },
   {
     "id": 7,
@@ -155,10 +198,17 @@
     "caveat": "Атмосфера клубная и энергичная — для любителей абсолютной деревенской тишины по вечерам может быть шумно.",
     "reviews_summary": "Гости восхищаются эстетикой отеля, дизайном комнат и атмосферой вечеринок на закате. Риф и море получают высшие баллы.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/26/1e/b4/f2/hall-of-fame-jacuzzi.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/28/34/de/6c/overviews.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/27/5d/ae/3e/hall-of-fame-pool-suite.jpg"
+    ],
+    "photo_files": [
       "meraki_sharm_1.jpg",
       "meraki_sharm_2.jpg",
       "meraki_sharm_3.jpg"
-    ]
+    ],
+    "ta_location_id": 24084498,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d24084498-Reviews-Meraki_Resort_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 8,
@@ -178,10 +228,17 @@
     "caveat": "Номерной фонд неоднороден — при бронировании романтического тура важно фиксировать категорию Superior или Deluxe.",
     "reviews_summary": "Хвалят красоту подводного мира и виды с террас на закате. Отмечают отличную работу барменов и релакс-зоны.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/06/21/c8/61/reef-oasis-blue-bay-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/98/be/53/tennis-courts.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/98/e9/52/infinity-pool.jpg"
+    ],
+    "photo_files": [
       "reef_oasis_blue_1.jpg",
       "reef_oasis_blue_2.jpg",
       "reef_oasis_blue_3.jpg"
-    ]
+    ],
+    "ta_location_id": 658938,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d658938-Reviews-Reef_Oasis_Blue_Bay_Resort_&_Spa-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 9,
@@ -201,10 +258,17 @@
     "caveat": "Отель не закрыт полностью от детей, но инфраструктура зонирована так, что здесь доминируют пары и спокойный отдых.",
     "reviews_summary": "Пары отмечают потрясающие панорамные виды, превосходное питание a la carte и внимание персонала к мелочам.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/23/5f/6d/bf/hotel-overview.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/01/74/38/2b/main-building.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/01/71/a6/84/stella-di-mare-beach.jpg"
+    ],
+    "photo_files": [
       "stella_di_mare_1.jpg",
       "stella_di_mare_2.jpg",
       "stella_di_mare_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1718075,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d1718075-Reviews-Stella_Di_Mare_Beach_Hotel_&_Spa-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 10,
@@ -224,6 +288,14 @@
     "caveat": "При бронировании критически важно выбирать именно категорию The West Bay / Villas, чтобы не попасть в семейные корпуса.",
     "reviews_summary": "Туристы называют отель лучшим местом для релакса в Макади. В восторге от живых кораллов прямо у кромки берега.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1a/eb/b4/5c/swimming-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/10/96/ed/03/fort-arabesque-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/10/96/ef/5a/fort-arabesque-resort.jpg"
+    ],
+    "ta_location_id": 602621,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d602621-Reviews-Fort_Arabesque_Resort_Spa_&_Villas-Hurghada_Red_Sea_and_Sinai.html?m=70260",
+    "photo_match_name": "Fort Arabesque Resort",
+    "photo_files": [
       "fort_arabesque_1.jpg",
       "fort_arabesque_2.jpg",
       "fort_arabesque_3.jpg"
@@ -247,10 +319,17 @@
     "caveat": "Классическая модель пятизвездочного мирового отеля: питание BB/HB, все напитки и ужины оплачиваются по счету (не массовый All Inclusive).",
     "reviews_summary": "Гости восхищаются абсолютным спокойствием, предупредительностью персонала и изысканной подачей блюд в ресторанах.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/23/c9/44/4b/four-seasons-resort-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/06/95/e3/c6/four-seasons-resort-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/06/95/f8/af/sails-lounge-breakfast.jpg"
+    ],
+    "photo_files": [
       "fs_sharm_1.jpg",
       "fs_sharm_2.jpg",
       "fs_sharm_3.jpg"
-    ]
+    ],
+    "ta_location_id": 301880,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d301880-Reviews-Four_Seasons_Resort_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 12,
@@ -270,6 +349,13 @@
     "caveat": "Широкая полоса рифового мелководья — выход на глубину к рифу осуществляется по длинному понтону (курсируют электрокары).",
     "reviews_summary": "Клиенты называют отель лучшим масштабным резортом Египта. Высоко ценят уровень стейк-хауса и детского клуба Rixy.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/33/d6/28/7c/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/d6/28/7d/caption.jpg"
+    ],
+    "ta_location_id": 33996314,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d33996314-Reviews-Rixos_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai.html?m=70260",
+    "photo_match_name": "Rixos Sharm El Sheikh",
+    "photo_files": [
       "rixos_seagate_1.jpg",
       "rixos_seagate_2.jpg",
       "rixos_seagate_3.jpg"
@@ -293,6 +379,14 @@
     "caveat": "Формат строгого релакса и приватности — активных тусовок и шумных вечеринок в отеле нет.",
     "reviews_summary": "Гости отмечают атмосферу восточной сказки, исключительный уровень тактичности персонала и непревзойденный комфорт сьютов.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/3f/f9/a7/the-oberoi-sahl-hasheesh.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/fe/1a/d3/the-oberoi-sahl-hasheesh.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/a2/68/86/the-oberoi-sahl-hasheesh.jpg"
+    ],
+    "ta_location_id": 302029,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g15516847-d302029-Reviews-The_Oberoi_Sahl_Hasheesh-Sahl_Hasheesh_Hurghada.html?m=70260",
+    "photo_match_name": "The Oberoi Sahl Hasheesh",
+    "photo_files": [
       "oberoi_sahl_1.jpg",
       "oberoi_sahl_2.jpg",
       "oberoi_sahl_3.jpg"
@@ -316,6 +410,13 @@
     "caveat": "Концепция питания европейская (BB/HB или Dine Around) — отель не работает в формате массового бюджетного All Inclusive.",
     "reviews_summary": "Высшие оценки за качество пляжа, сервис европейского уровня и изысканную кухню. Идеален для ценителей качественного уединения.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/14/3f/73/46/kempinski-hotel-soma.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/f9/b7/52/golf.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/f9/b6/47/kempinski-hotel-soma.jpg"
+    ],
+    "ta_location_id": 1308172,
+    "photo_match_name": "Kempinski Soma Bay",
+    "photo_files": [
       "kempinski_soma_1.jpg",
       "kempinski_soma_2.jpg",
       "kempinski_soma_3.jpg"
@@ -339,10 +440,17 @@
     "caveat": "Пляжная полоса у самого берега мелководная — для плавания на глубине удобнее спускаться с деревянного пирса.",
     "reviews_summary": "Постоянные клиенты возвращаются каждый сезон ради немецкого порядка, великолепной гастрономии и чистоты парка.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/32/a7/82/04/aerial-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/42/23/58/exclusive-boat-trips.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/dd/06/08/steigenberger-al-dau.jpg"
+    ],
+    "photo_files": [
       "steigenberger_aldau_1.jpg",
       "steigenberger_aldau_2.jpg",
       "steigenberger_aldau_3.jpg"
-    ]
+    ],
+    "ta_location_id": 647102,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d647102-Reviews-Steigenberger_ALDAU_Beach_Hotel-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 16,
@@ -362,10 +470,17 @@
     "caveat": "Вторая линия — до собственного оборудованного пляжа в бухте Белый Рыцарь курсирует регулярный шаттл-бас (3–5 минут).",
     "reviews_summary": "Туристы обожают вечернюю жизнь на SOHO и доброжелательность команды. Отмечают превосходное соотношение цены и сервиса.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/34/41/5f/af/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/10/da/dc/f9/sierra-sharm-el-sheikh.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/20/af/20/sierra-sharm-el-sheikh.jpg"
+    ],
+    "photo_files": [
       "sierra_1.jpg",
       "sierra_2.jpg",
       "sierra_3.jpg"
-    ]
+    ],
+    "ta_location_id": 582611,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d582611-Reviews-Sierra_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 17,
@@ -385,10 +500,17 @@
     "caveat": "Отель городской направленности: номерной фонд классический, в разгар сезона у центральных зон может быть шумно.",
     "reviews_summary": "Молодежь и активные туристы ценят близость городской жизни и центральных кафе. Хвалят энергичную дневную анимацию.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/29/66/d7/ba/naama-bay-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/57/54/ee/pool-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/35/f4/43/reception.jpg"
+    ],
+    "photo_files": [
       "naama_bay_1.jpg",
       "naama_bay_2.jpg",
       "naama_bay_3.jpg"
-    ]
+    ],
+    "ta_location_id": 655581,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d655581-Reviews-Naama_Bay_Hotel_&_Resort-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 18,
@@ -408,10 +530,17 @@
     "caveat": "Специфический дайверский формат: это не пляжный курорт с All Inclusive, а стильный городской бутик-отель.",
     "reviews_summary": "Дайверы со всего мира ставят высший балл за профессионализм инструкторов, безопасность и душевную атмосферу по вечерам.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/23/50/9c/84/camel-dive-club-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/23/50/8a/c2/camel-dive-club-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/21/fe/b0/52/diving-with-camel-dive.jpg"
+    ],
+    "photo_files": [
       "camel_dive_1.jpg",
       "camel_dive_2.jpg",
       "camel_dive_3.jpg"
-    ]
+    ],
+    "ta_location_id": 316693,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d316693-Reviews-Camel_Dive_Club_&_Boutique_Hotel-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 19,
@@ -431,6 +560,13 @@
     "caveat": "Купание в открытом море организовано на отдельном песчаном пляже (курсирует бесплатный шаттл-катер по каналам).",
     "reviews_summary": "Туристы восхищаются атмосферой европейского городка и вечерними прогулками у яхт. Хвалят чистоту и качество коктейлей.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1a/7a/63/05/three-corners-ocean-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0a/03/f4/4c/oceana-restaurant-terrace.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/06/a7/e1/47/three-corners-ocean-view.jpg"
+    ],
+    "ta_location_id": 580711,
+    "photo_match_name": "Three Corners Ocean View",
+    "photo_files": [
       "three_corners_1.jpg",
       "three_corners_2.jpg",
       "three_corners_3.jpg"
@@ -454,10 +590,17 @@
     "caveat": "Многолюдный отель в центре городской суеты — для тихого медитативного релакса лучше выбрать загородный курорт.",
     "reviews_summary": "Отмечают великолепное расположение для шопинга и прогулок. Хвалят доброжелательный персонал и теплоту лагун.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/24/65/6f/hurghada-seagull-beach.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/18/d3/36/hurghada-seagull-beach.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/24/68/25/hurghada-seagull-beach.jpg"
+    ],
+    "photo_files": [
       "seagull_1.jpg",
       "seagull_2.jpg",
       "seagull_3.jpg"
-    ]
+    ],
+    "ta_location_id": 302797,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d302797-Reviews-SeaGull_Beach_Resort-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 21,
@@ -477,10 +620,15 @@
     "caveat": "Отель расположен на мысе — спуск к морю идет по пологой дорожке-серпантину или ступеням.",
     "reviews_summary": "Туристы называют отель лучшим местом для зимнего купания в Шарме. Восхищаются обилием рыб и вкусным питанием.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/v2/photo-o/35/3b/1f/fd/image.jpg"
+    ],
+    "photo_files": [
       "jaz_fanara_1.jpg",
       "jaz_fanara_2.jpg",
       "jaz_fanara_3.jpg"
-    ]
+    ],
+    "ta_location_id": 34712275,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d34712275-Reviews-Jaz_Fanara_Resort-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 22,
@@ -500,10 +648,17 @@
     "caveat": "Каскадная территория на возвышенности — перемещение между пляжами и номерами включает спуски и подъемы.",
     "reviews_summary": "Хвалят живописные панорамы залива, качество шведского стола и возможность выбирать разные пляжи под настроение.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/09/8c/c9/b0/moevenpick-resort-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/09/8c/bd/44/moevenpick-resort-sharm.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/09/8c/b9/98/moevenpick-resort-sharm.jpg"
+    ],
+    "photo_files": [
       "movenpick_sharm_1.jpg",
       "movenpick_sharm_2.jpg",
       "movenpick_sharm_3.jpg"
-    ]
+    ],
+    "ta_location_id": 300144,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297555-d300144-Reviews-Movenpick_Resort_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai.html?m=70260"
   },
   {
     "id": 23,
@@ -523,10 +678,17 @@
     "caveat": "Мебель и декор выполнены в классическом стиле без ультрамодных решений, но все исправно и поддерживается в чистоте.",
     "reviews_summary": "Гости ценят отель за прекрасный заход в море и размеренный спокойный отдых. Персонал очень приветлив и исполнителен.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/28/fe/08/c4/pool-beach-area.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/25/69/cb/entrance.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/25/72/b3/lobby.jpg"
+    ],
+    "photo_files": [
       "continental_hurghada_1.jpg",
       "continental_hurghada_2.jpg",
       "continental_hurghada_3.jpg"
-    ]
+    ],
+    "ta_location_id": 299112,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d299112-Reviews-Continental_Hotel_Hurghada-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 24,
@@ -546,10 +708,17 @@
     "caveat": "Номера простые по дизайну, но просторные; в пик сезона на шведском столе бывает многолюдно.",
     "reviews_summary": "Хвалят удобство лагун и риф прямо у отеля. Отличное честное соотношение цены тура и качества морского отдыха.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2d/02/db/a6/swimming-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/af/b2/ba/arabia-azur-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/7f/74/02/spool.jpg"
+    ],
+    "photo_files": [
       "arabia_azur_1.jpg",
       "arabia_azur_2.jpg",
       "arabia_azur_3.jpg"
-    ]
+    ],
+    "ta_location_id": 651119,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d651119-Reviews-Arabia_Azur_Resort-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 25,
@@ -569,9 +738,16 @@
     "caveat": "Уединенная локация в Сома Бэй — за покупками и городской суетой нужно ехать на такси около 45 минут.",
     "reviews_summary": "Туристы в восторге от простора пляжа, чистоты и тишины. Отдельно благодарят шеф-поваров за качество ужинов.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/1c/10/c9/sentido-palm-royale.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2f/ef/a6/46/main-swimming-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2f/ef/a3/0b/main-swimming-pool-renovated.jpg"
+    ],
+    "photo_files": [
       "palm_royale_1.jpg",
       "palm_royale_2.jpg",
       "palm_royale_3.jpg"
-    ]
+    ],
+    "ta_location_id": 543461,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d543461-Reviews-Palm_Royale_Resort__Soma_Bay-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   }
 ]

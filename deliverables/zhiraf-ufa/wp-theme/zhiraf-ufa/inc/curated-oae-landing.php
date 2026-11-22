@@ -421,6 +421,10 @@ function zhiraf_ufa_oae_json_row_to_card( $row ) {
 	$resort_raw   = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
 	$pool_id      = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$image        = zhiraf_ufa_oae_image_from_json_row( $row );
+	$ta_id        = ! empty( $row['ta_location_id'] ) ? (int) $row['ta_location_id'] : 0;
+	$ta_url       = function_exists( 'zhiraf_ufa_curated_tripadvisor_url_from_row' )
+		? zhiraf_ufa_curated_tripadvisor_url_from_row( $row )
+		: '';
 
 	return array(
 		'destination_slug' => 'oae',
@@ -449,6 +453,8 @@ function zhiraf_ufa_oae_json_row_to_card( $row ) {
 		'description'      => zhiraf_ufa_oae_pool_card_usp( $row ),
 		'caveat'           => zhiraf_ufa_oae_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_oae_pool_price_rub( $row ),
+		'ta_location_id'   => $ta_id,
+		'tripadvisor_url'  => $ta_url,
 	);
 }
 

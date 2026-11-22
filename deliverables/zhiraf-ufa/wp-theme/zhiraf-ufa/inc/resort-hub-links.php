@@ -191,6 +191,111 @@ function zhiraf_ufa_resort_hub_card_resolve( array $link, $dest_slug ) {
  * @param array<string,mixed> $link Resort link row.
  * @param string              $dest_slug Destination slug.
  */
+/**
+ * Parent country hubs that show the prominent v2 resort nav block.
+ *
+ * @return string[]
+ */
+function zhiraf_ufa_resort_v2_parent_country_slugs() {
+	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj' );
+}
+
+/**
+ * Short label for hub / footer (e.g. «Дубай (ОАЭ)»).
+ *
+ * @param string $country Country slug.
+ * @param string $resort  Resort slug.
+ * @return string
+ */
+function zhiraf_ufa_resort_hub_short_label( $country, $resort ) {
+	$country = sanitize_key( (string) $country );
+	$resort  = sanitize_key( (string) $resort );
+	if ( '' === $country || '' === $resort ) {
+		return '';
+	}
+	if ( function_exists( 'zhiraf_ufa_get_resort_landing' ) ) {
+		$row = zhiraf_ufa_get_resort_landing( $country, $resort );
+		if ( is_array( $row ) && ! empty( $row['resort_name'] ) ) {
+			$name = (string) $row['resort_name'];
+			$cn   = ! empty( $row['country_name'] ) ? (string) $row['country_name'] : '';
+			if ( '' !== $cn && 'Турция' !== $cn ) {
+				return sprintf( '%s (%s)', $name, $cn );
+			}
+			if ( 'turciya' === $country && 'antalya' === $resort ) {
+				return __( 'Анталья (Турция)', 'zhiraf-ufa' );
+			}
+
+			return $name;
+		}
+	}
+
+	return $resort;
+}
+
+/**
+ * Hub links for catalog / footer — all approved JSON v2 resort landings.
+ *
+ * @return array<int,array{label:string,url:string,country:string,resort:string}>
+ */
+function zhiraf_ufa_resort_hub_links() {
+	static $links = null;
+	if ( null !== $links ) {
+		return $links;
+	}
+	$links = array();
+	if ( ! function_exists( 'zhiraf_ufa_resort_landing_index' ) || ! function_exists( 'zhiraf_ufa_resort_url' ) ) {
+		return $links;
+	}
+	foreach ( zhiraf_ufa_resort_landing_index() as $row ) {
+		if ( empty( $row['country'] ) || empty( $row['resort'] ) ) {
+			continue;
+		}
+		$country = sanitize_key( (string) $row['country'] );
+		$resort  = sanitize_key( (string) $row['resort'] );
+		$links[] = array(
+			'label'   => zhiraf_ufa_resort_hub_short_label( $country, $resort ),
+			'url'     => zhiraf_ufa_resort_url( $country, $resort ),
+			'country' => $country,
+			'resort'  => $resort,
+		);
+	}
+
+	return $links;
+}
+
+/**
+ * @param string $dest_slug Country landing slug.
+ * @return bool
+ */
+function zhiraf_ufa_destination_show_prominent_resort_nav( $dest_slug ) {
+	$dest_slug = sanitize_key( (string) $dest_slug );
+
+	return in_array( $dest_slug, zhiraf_ufa_resort_v2_parent_country_slugs(), true );
+}
+
+/**
+ * Render prominent resort nav on country landings (under hero).
+ *
+ * @param string              $dest_slug Country slug.
+ * @param array<string,mixed> $dest      Landing row.
+ */
+function zhiraf_ufa_render_destination_prominent_resort_nav( $dest_slug, array $dest ) {
+	if ( ! zhiraf_ufa_destination_show_prominent_resort_nav( $dest_slug ) ) {
+		return;
+	}
+	if ( empty( $dest['resort_links'] ) || ! is_array( $dest['resort_links'] ) ) {
+		return;
+	}
+	get_template_part(
+		'template-parts/destination/destination-resort-nav-prominent',
+		null,
+		array(
+			'dest_slug' => $dest_slug,
+			'links'     => $dest['resort_links'],
+		)
+	);
+}
+
 function zhiraf_ufa_render_resort_hub_card( array $link, $dest_slug ) {
 	$card = zhiraf_ufa_resort_hub_card_resolve( $link, $dest_slug );
 

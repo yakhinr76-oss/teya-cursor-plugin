@@ -664,36 +664,3 @@ function zhiraf_ufa_render_resort_landing( $country, $resort ) {
 	}
 }
 
-/**
- * Hub links for catalog / footer.
- *
- * @return array<int,array{label:string,url:string}>
- */
-function zhiraf_ufa_resort_hub_links() {
-	return array(
-		array(
-			'label' => __( 'Анталья (Турция)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'turciya', 'antalya' ),
-		),
-		array(
-			'label' => __( 'Хургада (Египет)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'egipet', 'hurgada' ),
-		),
-		array(
-			'label' => __( 'Шарм-эль-Шейх (Египет)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'egipet', 'sharm-el-sheyh' ),
-		),
-		array(
-			'label' => __( 'Дубай (ОАЭ)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'oae', 'dubai' ),
-		),
-		array(
-			'label' => __( 'Пхукет (Таиланд)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'tailand', 'phuket' ),
-		),
-		array(
-			'label' => __( 'Нячанг (Вьетнам)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'vietnam', 'nyachang' ),
-		),
-	);
-}

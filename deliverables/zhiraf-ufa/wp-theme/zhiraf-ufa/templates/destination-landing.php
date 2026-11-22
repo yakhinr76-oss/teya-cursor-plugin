@@ -150,6 +150,12 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		</div>
 	</section>
 
+	<?php
+	if ( function_exists( 'zhiraf_ufa_render_destination_prominent_resort_nav' ) ) {
+		zhiraf_ufa_render_destination_prominent_resort_nav( $dest_slug, $dest );
+	}
+	?>
+
 	<?php if ( ! empty( $dest['booking_modes'] ) && is_array( $dest['booking_modes'] ) ) : ?>
 		<section class="section section--domestic-modes bg-sand">
 			<div class="container container--narrow">

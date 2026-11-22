@@ -9,10 +9,15 @@ ZHIRAF_TA_API_KEY is set in wp-config.php.
 
 Usage (from theme root):
   export ZHIRAF_TA_API_KEY='...'   # Terra Discover (preferred)
-  # or: export TRIPADVISOR_API_KEY='...'  # legacy Content API
-  python3 bin/fetch-hotel-photos-content-api.py --dry-run
-  python3 bin/fetch-hotel-photos-content-api.py --file abkhazia_hotels_25.json
-  python3 bin/fetch-hotel-photos-content-api.py --backend terra
+  python3 bin/fetch-hotel-photos-content-api.py --audit
+  python3 bin/fetch-hotel-photos-content-api.py --dry-run --max-hotels 3 --file egypt_hotels_25.json --backend terra
+  python3 bin/fetch-hotel-photos-content-api.py --file uae_hotels_25.json --backend terra
+
+Quota (Mode A): ≤2 HTTP calls per hotel that needs API —
+  0 if ta_location_id + tacdn already in photos[];
+  1 search OR 1 photos if half-known;
+  1 search + 1 photos if location unknown. No /locations/{id} details call
+  (tripadvisor_url comes from search). No second search without geo.
 
 Also loads (if present, gitignored): teya-memory/teya.env.local,
 .tripadvisor.env.local in theme root or repo root.
@@ -31,13 +36,24 @@ import time
 from pathlib import Path
 from typing import Any
 
+from hotel_photos_quota import (
+    hotel_has_mode_a,
+    hotel_needs_api,
+    print_audit_report,
+    audit_hotel_files,
+)
+
 try:
     import requests
 except ImportError:
     print("Install requests: pip install requests", file=sys.stderr)
     sys.exit(1)
 
-THEME_ROOT = Path(__file__).resolve().parent.parent
+_BIN_DIR = Path(__file__).resolve().parent
+if str(_BIN_DIR) not in sys.path:
+    sys.path.insert(0, str(_BIN_DIR))
+
+THEME_ROOT = _BIN_DIR.parent
 DATA_DIR = THEME_ROOT / "data"
 
 DEFAULT_JSON_FILES = (
@@ -175,6 +191,7 @@ def terra_row_web_url(row: dict[str, Any]) -> str:
 
 
 def photos_already_remote(photos: list[Any]) -> bool:
+    """Deprecated alias — use hotel_has_mode_a on full row."""
     if not photos:
         return False
     first = photos[0]
@@ -188,7 +205,30 @@ def terra_headers(key: str) -> dict[str, str]:
     }
 
 
-def content_search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
+class ApiStats:
+    """Terra/Content API call counter for quota reporting."""
+
+    def __init__(self) -> None:
+        self.requests = 0
+        self.search = 0
+        self.photos = 0
+        self.details = 0
+        self.other = 0
+        self.hotels_touched = 0
+
+    def track(self, response: requests.Response, kind: str = "other") -> None:
+        self.requests += 1
+        bucket = kind if kind in ("search", "photos", "details") else "other"
+        setattr(self, bucket, getattr(self, bucket) + 1)
+
+
+def content_search_location_id(
+    session: requests.Session,
+    hotel_name: str,
+    resort: str,
+    key: str,
+    stats: ApiStats | None = None,
+) -> str | None:
     query = f"{clean_hotel_name(hotel_name)} {resort}".strip()
     params = {
         "key": key,
@@ -198,6 +238,8 @@ def content_search_location_id(session: requests.Session, hotel_name: str, resor
     }
     try:
         response = session.get(CONTENT_SEARCH_URL, headers=headers(), params=params, timeout=15)
+        if stats:
+            stats.track(response, "search")
         if response.status_code != 200:
             return None
         data = response.json()
@@ -207,16 +249,6 @@ def content_search_location_id(session: requests.Session, hotel_name: str, resor
     except requests.RequestException as exc:
         print(f"  search error: {exc}")
     return None
-
-
-class ApiStats:
-    """Terra/Content API call counter for quota reporting."""
-
-    def __init__(self) -> None:
-        self.requests = 0
-
-    def track(self, response: requests.Response) -> None:
-        self.requests += 1
 
 
 def terra_search_location(
@@ -240,7 +272,7 @@ def terra_search_location(
             timeout=20,
         )
         if stats:
-            stats.track(response)
+            stats.track(response, "search")
         if response.status_code != 200:
             return None
         data = response.json()
@@ -258,70 +290,36 @@ def terra_search_location(
     return None
 
 
-def terra_search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
-    found = terra_search_location(session, hotel_name, resort, key)
-    return found["id"] if found else None
-
-
-def terra_location_web_url(session: requests.Session, location_id: str, key: str, stats: ApiStats | None = None) -> str:
-    try:
-        response = session.get(
-            f"{TERRA_BASE}/api/locations/{location_id}",
-            headers=terra_headers(key),
-            params={"version": 1},
-            timeout=20,
-        )
-        if stats:
-            stats.track(response)
-        if response.status_code != 200:
-            return ""
-        data = response.json()
-        body = data.get("data") if isinstance(data.get("data"), dict) else data
-        if not isinstance(body, dict):
-            return ""
-        urls = body.get("urls") or {}
-        ta = urls.get("tripadvisor") if isinstance(urls.get("tripadvisor"), dict) else {}
-        if isinstance(ta, dict) and ta.get("url"):
-            return str(ta["url"]).strip()
-        return str(body.get("web_url") or "").strip()
-    except requests.RequestException:
-        return ""
-
-
-def search_location(
+def search_location_once(
     session: requests.Session,
     hotel_name: str,
     resort: str,
     key: str,
     backend: str,
-    stats: ApiStats | None = None,
-    geo_name: str = "",
+    stats: ApiStats | None,
+    geo_name: str,
 ) -> dict[str, str] | None:
-    if backend == "terra":
-        return terra_search_location(session, hotel_name, resort, key, stats, geo_name)
+    """Exactly one search call per hotel (no geo fallback, no terra→content retry)."""
     if backend == "content":
-        loc_id = content_search_location_id(session, hotel_name, resort, key)
+        loc_id = content_search_location_id(session, hotel_name, resort, key, stats)
         return {"id": loc_id, "web_url": ""} if loc_id else None
-    found = terra_search_location(session, hotel_name, resort, key, stats, geo_name)
-    if found:
-        return found
-    loc_id = content_search_location_id(session, hotel_name, resort, key)
-    return {"id": loc_id, "web_url": ""} if loc_id else None
+    return terra_search_location(session, hotel_name, resort, key, stats, geo_name)
 
 
-def search_location_id(
-    session: requests.Session, hotel_name: str, resort: str, key: str, backend: str
-) -> str | None:
-    found = search_location(session, hotel_name, resort, key, backend)
-    return found["id"] if found else None
-
-
-def content_fetch_photo_urls(session: requests.Session, location_id: str, key: str, limit: int) -> list[str]:
+def content_fetch_photo_urls(
+    session: requests.Session,
+    location_id: str,
+    key: str,
+    limit: int,
+    stats: ApiStats | None = None,
+) -> list[str]:
     url = CONTENT_PHOTOS_URL_TEMPLATE.format(location_id=location_id)
-    params = {"key": key, "language": "ru", "limit": limit}
+    params = {"key": key, "language": "ru", "limit": max(limit, 8)}
     urls: list[str] = []
     try:
         response = session.get(url, headers=headers(), params=params, timeout=15)
+        if stats:
+            stats.track(response, "photos")
         if response.status_code != 200:
             return urls
         data = response.json()
@@ -348,11 +346,11 @@ def terra_fetch_photo_urls(
         response = session.get(
             f"{TERRA_BASE}/api/locations/{location_id}/photos",
             headers=terra_headers(key),
-            params={"version": 1},
+            params={"version": 1, "page": 1, "size": max(limit, 12)},
             timeout=20,
         )
         if stats:
-            stats.track(response)
+            stats.track(response, "photos")
         if response.status_code != 200:
             return urls
         data = response.json()
@@ -388,17 +386,10 @@ def fetch_photo_urls(
     limit: int,
     backend: str,
     stats: ApiStats | None = None,
-    fetch_limit: int | None = None,
 ) -> list[str]:
-    want = max(limit, fetch_limit or limit)
-    if backend == "terra":
-        return terra_fetch_photo_urls(session, location_id, key, want, stats)
     if backend == "content":
-        return content_fetch_photo_urls(session, location_id, key, want)
-    urls = terra_fetch_photo_urls(session, location_id, key, want, stats)
-    if urls:
-        return urls
-    return content_fetch_photo_urls(session, location_id, key, want)
+        return content_fetch_photo_urls(session, location_id, key, limit, stats)
+    return terra_fetch_photo_urls(session, location_id, key, limit, stats)
 
 
 def pick_unique_photo_urls(
@@ -440,6 +431,7 @@ def process_file(
     force: bool,
     backend: str,
     stats: ApiStats | None = None,
+    max_hotels: int | None = None,
 ) -> tuple[int, list[str]]:
     print(f"\n--- {path.name} ---")
     with path.open(encoding="utf-8") as fh:
@@ -452,49 +444,71 @@ def process_file(
     not_found: list[str] = []
     used_lead_urls: set[str] = set()
     location_pools: dict[str, list[str]] = {}
+    api_hotel_budget = 0
+    skipped_mode_a = sum(
+        1 for h in hotels if isinstance(h, dict) and not hotel_needs_api(h, force=force)
+    )
+    if skipped_mode_a:
+        print(f"  skip Mode A complete: {skipped_mode_a}")
+
+    effective_backend = backend
+    if backend == "auto":
+        effective_backend = "terra" if os.environ.get("ZHIRAF_TA_API_KEY", "").strip() else "content"
 
     for hotel in hotels:
         if not isinstance(hotel, dict):
             continue
+        if max_hotels is not None and api_hotel_budget >= max_hotels:
+            print(f"  --max-hotels {max_hotels} reached, stop file")
+            break
         name = str(hotel.get("hotel_name") or "")
         resort = str(hotel.get("resort") or "")
         geo_name = terra_geo_name(hotel) if str(hotel.get("country") or "") == "uae" else ""
         current = hotel.get("photos") or []
-        if not force and photos_already_remote(current):
+        if not hotel_needs_api(hotel, force=force):
             continue
 
         print(f"  {name} ({resort})")
         existing_id = hotel.get("ta_location_id")
         loc_id = ""
         ta_url = str(hotel.get("tripadvisor_url") or hotel.get("ta_property_url") or "").strip()
+        calls_before = stats.requests if stats else 0
+
         if existing_id:
             loc_id = str(existing_id)
         else:
-            found = search_location(session, name, resort, key, backend, stats, geo_name)
-            if not found and geo_name:
-                found = search_location(session, name, resort, key, backend, stats, "")
+            found = search_location_once(
+                session, name, resort, key, effective_backend, stats, geo_name
+            )
             if found:
                 loc_id = found["id"]
                 if found.get("web_url"):
                     ta_url = found["web_url"]
         if not loc_id:
-            print("    location not found")
+            print("    location not found (≤1 search)")
             not_found.append(name)
+            api_hotel_budget += 1
+            if stats:
+                stats.hotels_touched += 1
             time.sleep(sleep_s)
             continue
 
-        if not ta_url and backend in ("terra", "auto"):
-            ta_url = terra_location_web_url(session, loc_id, key, stats)
-
-        pool = fetch_photo_urls(session, loc_id, key, limit, backend, stats, fetch_limit=max(limit * 4, 12))
+        pool = fetch_photo_urls(session, loc_id, key, limit, effective_backend, stats)
         photo_urls = pick_unique_photo_urls(pool, loc_id, used_lead_urls, location_pools, limit)
         if not photo_urls:
             print(f"    no photos for location {loc_id}")
             not_found.append(name)
+            api_hotel_budget += 1
+            if stats:
+                stats.hotels_touched += 1
             time.sleep(sleep_s)
             continue
 
-        print(f"    {len(photo_urls)} URL(s), ta={loc_id}")
+        used = (stats.requests - calls_before) if stats else (0 if existing_id else 2)
+        print(f"    {len(photo_urls)} URL(s), ta={loc_id}, HTTP this hotel: {used}")
+        api_hotel_budget += 1
+        if stats:
+            stats.hotels_touched += 1
         if not dry_run:
             old_photos = current if isinstance(current, list) else []
             local_names = [
@@ -528,8 +542,20 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Fetch Tripadvisor photo URLs into data/*.json")
     parser.add_argument("--file", action="append", dest="files", help="Process one data file (repeatable)")
     parser.add_argument("--dry-run", action="store_true", help="Do not write JSON files")
+    parser.add_argument(
+        "--audit",
+        action="store_true",
+        help="Offline: print Mode A stats per data file and exit (no API)",
+    )
     parser.add_argument("--force", action="store_true", help="Replace photos even if URLs already present")
-    parser.add_argument("--limit", type=int, default=3, help="Max photos per hotel (default 3)")
+    parser.add_argument("--limit", type=int, default=3, help="Max CDN photos per hotel in JSON (default 3)")
+    parser.add_argument(
+        "--max-hotels",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Process at most N hotels that need API per run (safe test: --max-hotels 3 --dry-run)",
+    )
     parser.add_argument("--sleep", type=float, default=0.3, help="Delay between API calls in seconds")
     parser.add_argument(
         "--backend",
@@ -539,6 +565,14 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    names = args.files if args.files else list(DEFAULT_JSON_FILES)
+    paths = [DATA_DIR / name for name in names]
+
+    if args.audit:
+        existing = [p for p in paths if p.is_file()]
+        print_audit_report(audit_hotel_files(existing))
+        return 0
+
     key = api_key()
     if not key:
         print(
@@ -547,9 +581,6 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
-
-    names = args.files if args.files else list(DEFAULT_JSON_FILES)
-    paths = [DATA_DIR / name for name in names]
 
     session = requests.Session()
     stats = ApiStats()
@@ -569,12 +600,19 @@ def main() -> int:
             force=args.force,
             backend=args.backend,
             stats=stats,
+            max_hotels=args.max_hotels,
         )
         total += count
         all_not_found.extend(missing)
 
     print(f"\nDone. Hotels updated: {total}")
-    print(f"Terra/Content HTTP requests (quota proxy): {stats.requests}")
+    print(
+        f"Terra/Content HTTP: {stats.requests} total "
+        f"(search={stats.search}, photos={stats.photos}, details={stats.details}, other={stats.other})"
+    )
+    print(f"Hotels with ≥1 API attempt: {stats.hotels_touched}")
+    if stats.hotels_touched:
+        print(f"Avg HTTP per touched hotel: {stats.requests / stats.hotels_touched:.2f}")
     if all_not_found:
         print(f"Hotels without CDN match ({len(all_not_found)}):")
         for name in all_not_found:

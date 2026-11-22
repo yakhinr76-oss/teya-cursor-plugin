@@ -47,18 +47,35 @@ def sync_hotel(
     tripadvisor_url: str,
     photo_limit: int,
     management_first: bool,
+    dry_run: bool = False,
 ) -> dict[str, Any]:
-    loc_status, loc_body = terra_get(f"/locations/{location_id}", api_key=api_key, params={})
-    if loc_status >= 400 or not isinstance(loc_body, dict):
+    ta_url = (tripadvisor_url or "").strip()
+    display_name = slug
+    loc_body: dict[str, Any] | None = None
+
+    if not ta_url:
+        loc_status, loc_body = terra_get(f"/locations/{location_id}", api_key=api_key, params={})
+        if loc_status >= 400 or not isinstance(loc_body, dict):
+            return {
+                "slug": slug,
+                "location_id": location_id,
+                "status": "error",
+                "http_status": loc_status,
+                "error": loc_body if isinstance(loc_body, (dict, str)) else "location fetch failed",
+                "http_calls": 1,
+            }
+        ta_url = tripadvisor_property_url(loc_body)
+        display_name = location_display_name(loc_body)
+
+    if dry_run:
         return {
             "slug": slug,
             "location_id": location_id,
-            "status": "error",
-            "http_status": loc_status,
-            "error": loc_body if isinstance(loc_body, (dict, str)) else "location fetch failed",
+            "tripadvisor_url": ta_url,
+            "name": display_name,
+            "status": "dry_run",
+            "http_calls": 0 if ta_url and tripadvisor_url else 1,
         }
-
-    ta_url = tripadvisor_url or tripadvisor_property_url(loc_body)
     ph_status, ph_body = terra_get(
         f"/locations/{location_id}/photos",
         api_key=api_key,
@@ -69,26 +86,29 @@ def sync_hotel(
             "slug": slug,
             "location_id": location_id,
             "tripadvisor_url": ta_url,
-            "name": location_display_name(loc_body),
+            "name": display_name,
             "status": "error",
             "http_status": ph_status,
             "error": ph_body if isinstance(ph_body, (dict, str)) else "photos fetch failed",
+            "http_calls": 2 if not tripadvisor_url else 1,
         }
 
     all_photos = normalize_photo_entries(ph_body)
     photos = pick_photos_for_display(all_photos, limit=photo_limit, management_first=management_first)
     lead = photos[0]["cdn_url"] if photos else ""
+    http_calls = 1 + (0 if tripadvisor_url else 1)
 
     return {
         "slug": slug,
         "location_id": location_id,
-        "name": location_display_name(loc_body),
+        "name": display_name,
         "tripadvisor_url": ta_url,
         "lead_photo_url": lead,
         "photos": photos,
         "fetched_at": _iso_now(),
         "status": "ok" if photos else "no_photos",
-        "billable_entities_estimate": 2,
+        "billable_entities_estimate": http_calls,
+        "http_calls": http_calls,
     }
 
 
@@ -113,6 +133,14 @@ def main() -> int:
     group.add_argument("--location-id", type=int)
     group.add_argument("--input", type=Path, help="CSV or JSON list: location_id, slug [, tripadvisor_url]")
     parser.add_argument("--slug", type=str, help="Required with --location-id")
+    parser.add_argument("--dry-run", action="store_true", help="No HTTP; validate input rows only")
+    parser.add_argument(
+        "--max-hotels",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Process at most N rows from --input",
+    )
     args = parser.parse_args()
 
     try:
@@ -136,7 +164,8 @@ def main() -> int:
 
     results: list[dict[str, Any]] = []
     errors = 0
-    for row in jobs:
+    http_total = 0
+    for row in jobs[: args.max_hotels] if args.max_hotels else jobs:
         loc_raw = row.get("location_id") or row.get("id") or ""
         slug = row.get("slug") or row.get("post_slug") or ""
         if not loc_raw or not slug:
@@ -150,21 +179,26 @@ def main() -> int:
             tripadvisor_url=row.get("tripadvisor_url") or row.get("ta_url") or "",
             photo_limit=max(1, min(args.photo_limit, 10)),
             management_first=not args.all_sources,
+            dry_run=args.dry_run,
         )
-        if item.get("status") != "ok":
+        if item.get("status") not in ("ok", "dry_run"):
             errors += 1
+        http_total += int(item.get("http_calls") or item.get("billable_entities_estimate") or 0)
         results.append(item)
 
     manifest = {
         "generated_at": _iso_now(),
         "key_source": source,
         "photo_policy": "cdn_embed_link_to_tripadvisor_no_rehost",
-        "billable_entities_note": "≈2 per hotel (location + photos) on first sync",
+        "billable_entities_note": "≤2 per hotel: search+photos OR photos-only if location_id+ta_url known",
         "hotels": results,
     }
-    out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"wrote {out}")
-    print(f"hotels: {len(results)}, errors: {errors}")
+    if not args.dry_run:
+        out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"wrote {out}")
+    else:
+        print("dry-run: manifest not written")
+    print(f"hotels: {len(results)}, errors: {errors}, http_calls (est.): {http_total}")
     return 1 if errors else 0
 
 

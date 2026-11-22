@@ -24,7 +24,6 @@ function zhiraf_ufa_resort_json_registry() {
 		'tailand/pattaya',
 		'vietnam/fukuok',
 		'vietnam/nyachang',
-		'kitaj/sanya',
 		'turciya/antalya',
 	);
 }
@@ -58,7 +57,21 @@ function zhiraf_ufa_get_resort_landing_from_json( $country, $resort ) {
 	if ( ! in_array( $key, zhiraf_ufa_resort_json_registry(), true ) ) {
 		return null;
 	}
-	$file = zhiraf_ufa_resort_json_path( $country, $resort );
+
+	return zhiraf_ufa_load_resort_json_decoded( $country, $resort );
+}
+
+/**
+ * Decode data/resorts/{resort}.json (registry optional — country hubs load off-index).
+ *
+ * @param string $country Country slug.
+ * @param string $resort  Resort slug.
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_load_resort_json_decoded( $country, $resort ) {
+	$country = sanitize_title( (string) $country );
+	$resort  = sanitize_title( (string) $resort );
+	$file    = zhiraf_ufa_resort_json_path( $country, $resort );
 	if ( '' === $file ) {
 		return null;
 	}

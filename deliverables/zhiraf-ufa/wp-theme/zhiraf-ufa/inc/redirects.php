@@ -18,6 +18,7 @@ require_once __DIR__ . '/legacy-attachments.php';
  */
 function zhiraf_ufa_retired_resort_landing_redirects() {
 	return array(
+		'/tour/kitaj/sanya/'           => '/tour/kitaj/',
 		'/tour/turciya/kemer/'         => '/tour/turciya/',
 		'/tour/turciya/alanya/'        => '/tour/turciya/',
 		'/tour/turciya/side/'          => '/tour/turciya/',

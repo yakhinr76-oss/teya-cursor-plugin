@@ -158,6 +158,18 @@ function zhiraf_ufa_current_landing_seo() {
 			);
 		}
 	}
+	$hub = function_exists( 'zhiraf_ufa_country_hub_resort_page_context' ) ? zhiraf_ufa_country_hub_resort_page_context() : null;
+	if ( $hub ) {
+		$resort = function_exists( 'zhiraf_ufa_get_country_hub_resort_landing' )
+			? zhiraf_ufa_get_country_hub_resort_landing( $hub['country'] )
+			: null;
+		if ( $resort ) {
+			return array(
+				'title'       => $resort['title'],
+				'description' => $resort['description'],
+			);
+		}
+	}
 	$ctx = zhiraf_ufa_current_resort_context();
 	if ( $ctx ) {
 		$resort = zhiraf_ufa_get_resort_landing( $ctx['country'], $ctx['resort'] );
@@ -207,6 +219,15 @@ function zhiraf_ufa_og_image_url() {
 		}
 		if ( $pack && ! empty( $pack['image'] ) ) {
 			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $pack['image'], '/' );
+		}
+	}
+	$hub = function_exists( 'zhiraf_ufa_country_hub_resort_page_context' ) ? zhiraf_ufa_country_hub_resort_page_context() : null;
+	if ( $hub ) {
+		$resort = function_exists( 'zhiraf_ufa_get_country_hub_resort_landing' )
+			? zhiraf_ufa_get_country_hub_resort_landing( $hub['country'] )
+			: null;
+		if ( $resort && ! empty( $resort['image'] ) ) {
+			return ZHIRAF_UFA_URI . '/assets/images/' . ltrim( (string) $resort['image'], '/' );
 		}
 	}
 	$ctx = zhiraf_ufa_current_resort_context();
@@ -305,8 +326,11 @@ function zhiraf_ufa_head_meta() {
 	}
 
 	$canonical = is_singular() ? get_permalink() : ( is_front_page() ? home_url( '/' ) : ( is_home() ? home_url( '/blog/' ) : '' ) );
+	$hub_ctx   = function_exists( 'zhiraf_ufa_country_hub_resort_page_context' ) ? zhiraf_ufa_country_hub_resort_page_context() : null;
 	$resort_ctx  = zhiraf_ufa_current_resort_context();
-	if ( $resort_ctx ) {
+	if ( $hub_ctx ) {
+		$canonical = home_url( '/tour/' . $hub_ctx['country'] . '/' );
+	} elseif ( $resort_ctx ) {
 		$canonical = zhiraf_ufa_resort_url( $resort_ctx['country'], $resort_ctx['resort'] );
 	} elseif ( is_page() && function_exists( 'zhiraf_ufa_offer_landing_slugs' ) ) {
 		$slug = get_post_field( 'post_name', get_queried_object_id() );
@@ -440,8 +464,26 @@ function zhiraf_ufa_breadcrumb_json_ld() {
 		'name'     => 'Главная',
 		'item'     => zhiraf_ufa_canonical_public_url( home_url( '/' ) ),
 	);
-	$resort_ctx = zhiraf_ufa_current_resort_context();
-	if ( $resort_ctx ) {
+	$hub_ctx = function_exists( 'zhiraf_ufa_country_hub_resort_page_context' ) ? zhiraf_ufa_country_hub_resort_page_context() : null;
+	if ( $hub_ctx ) {
+		$resort = function_exists( 'zhiraf_ufa_get_country_hub_resort_landing' )
+			? zhiraf_ufa_get_country_hub_resort_landing( $hub_ctx['country'] )
+			: null;
+		if ( $resort ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => __( 'Каталог направлений', 'zhiraf-ufa' ),
+				'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' ) ),
+			);
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'name'     => ! empty( $resort['h1'] ) ? (string) $resort['h1'] : get_the_title(),
+				'item'     => zhiraf_ufa_canonical_public_url( home_url( '/tour/' . $hub_ctx['country'] . '/' ) ),
+			);
+		}
+	} elseif ( ( $resort_ctx = zhiraf_ufa_current_resort_context() ) ) {
 		$resort = zhiraf_ufa_get_resort_landing( $resort_ctx['country'], $resort_ctx['resort'] );
 		if ( $resort ) {
 			$items[] = array(
@@ -545,6 +587,14 @@ function zhiraf_ufa_faq_json_ld() {
 
 	if ( is_front_page() ) {
 		$faq_items = zhiraf_ufa_home_faq_items();
+	} elseif ( function_exists( 'zhiraf_ufa_country_hub_resort_page_context' ) && zhiraf_ufa_country_hub_resort_page_context() ) {
+		$hub_ctx     = zhiraf_ufa_country_hub_resort_page_context();
+		$resort_data = function_exists( 'zhiraf_ufa_get_country_hub_resort_landing' )
+			? zhiraf_ufa_get_country_hub_resort_landing( $hub_ctx['country'] )
+			: null;
+		if ( $resort_data && ! empty( $resort_data['faq'] ) ) {
+			$faq_items = $resort_data['faq'];
+		}
 	} elseif ( zhiraf_ufa_current_resort_context() ) {
 		$resort_ctx  = zhiraf_ufa_current_resort_context();
 		$resort_data = zhiraf_ufa_get_resort_landing( $resort_ctx['country'], $resort_ctx['resort'] );

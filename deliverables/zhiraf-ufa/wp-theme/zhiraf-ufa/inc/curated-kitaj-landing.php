@@ -86,7 +86,7 @@ function zhiraf_ufa_kitaj_resort_keys_from_row( array $row ) {
 function zhiraf_ufa_kitaj_resort_landing_url( $resort_key ) {
 	unset( $resort_key );
 
-	return home_url( '/tour/kitaj/sanya/' );
+	return home_url( '/tour/kitaj/' );
 }
 
 /**

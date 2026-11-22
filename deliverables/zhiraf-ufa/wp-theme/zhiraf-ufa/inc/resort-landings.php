@@ -24,9 +24,90 @@ function zhiraf_ufa_resort_landing_index() {
 		array( 'country' => 'tailand', 'resort' => 'pattaya' ),
 		array( 'country' => 'vietnam', 'resort' => 'fukuok' ),
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
-		array( 'country' => 'kitaj', 'resort' => 'sanya' ),
 		array( 'country' => 'turciya', 'resort' => 'antalya' ),
 	);
+}
+
+/**
+ * Country hubs: resort JSON on /tour/{country}/ (no nested /tour/{country}/{resort}/).
+ *
+ * @return array<string,string> Country slug => resort slug (data/resorts/{resort}.json).
+ */
+function zhiraf_ufa_country_hub_resort_map() {
+	return array(
+		'kitaj' => 'sanya',
+	);
+}
+
+/**
+ * Active country-hub resort page (e.g. page-kitaj.php).
+ *
+ * @return array{country:string,resort:string,page_slug:string}|null
+ */
+function zhiraf_ufa_country_hub_resort_page_context() {
+	if ( ! is_page() ) {
+		return null;
+	}
+	$slug = sanitize_title( (string) get_post_field( 'post_name', get_queried_object_id() ) );
+	$map  = zhiraf_ufa_country_hub_resort_map();
+	if ( '' === $slug || empty( $map[ $slug ] ) ) {
+		return null;
+	}
+
+	return array(
+		'country'   => $slug,
+		'resort'    => sanitize_title( (string) $map[ $slug ] ),
+		'page_slug' => $slug,
+	);
+}
+
+/**
+ * Resort landing data for a consolidated country hub.
+ *
+ * @param string $country Country slug.
+ * @return array<string,mixed>|null
+ */
+function zhiraf_ufa_get_country_hub_resort_landing( $country ) {
+	$country = sanitize_title( (string) $country );
+	$map     = zhiraf_ufa_country_hub_resort_map();
+	if ( empty( $map[ $country ] ) ) {
+		return null;
+	}
+	$resort = sanitize_title( (string) $map[ $country ] );
+	if ( ! function_exists( 'zhiraf_ufa_load_resort_json_decoded' ) ) {
+		return null;
+	}
+	$json = zhiraf_ufa_load_resort_json_decoded( $country, $resort );
+	if ( ! $json ) {
+		return null;
+	}
+	$json['hub_at_country'] = true;
+	$json['public_url']     = home_url( '/tour/' . $country . '/' );
+
+	return function_exists( 'zhiraf_ufa_resort_apply_interlinking' )
+		? zhiraf_ufa_resort_apply_interlinking( $json )
+		: $json;
+}
+
+/**
+ * Render resort v2 template on a country hub URL.
+ *
+ * @param string $country Country slug.
+ */
+function zhiraf_ufa_render_country_hub_resort_landing( $country ) {
+	$resort_data = zhiraf_ufa_get_country_hub_resort_landing( $country );
+	if ( ! $resort_data ) {
+		return;
+	}
+	$is_v2  = ! empty( $resort_data['schema_version'] ) && (int) $resort_data['schema_version'] >= 2;
+	$v2_tpl = ZHIRAF_UFA_DIR . '/templates/resort-landing.php';
+	if ( ! is_readable( $v2_tpl ) ) {
+		$v2_tpl = ZHIRAF_UFA_DIR . '/templates/resort-landing-v2.php';
+	}
+	$template = $is_v2 ? $v2_tpl : ZHIRAF_UFA_DIR . '/templates/resort-landing-classic.php';
+	if ( is_readable( $template ) ) {
+		include $template;
+	}
 }
 
 /**

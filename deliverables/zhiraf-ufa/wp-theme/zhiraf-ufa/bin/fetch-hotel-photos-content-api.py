@@ -99,6 +99,25 @@ EGYPT_REGION_GEO: dict[str, str] = {
 }
 
 # Fallback: resort text may name Makadi / Soma for hurghada rows.
+THAILAND_REGION_GEO: dict[str, str] = {
+    "phuket": "Phuket",
+    "pattaya": "Pattaya",
+    "khaolak": "Khao Lak",
+    "samui": "Koh Samui",
+}
+
+THAILAND_RESORT_GEO_HINTS: tuple[tuple[str, str], ...] = (
+    ("пхукет", "Phuket"),
+    ("phuket", "Phuket"),
+    ("паттай", "Pattaya"),
+    ("pattaya", "Pattaya"),
+    ("самуи", "Koh Samui"),
+    ("samui", "Koh Samui"),
+    ("као-лак", "Khao Lak"),
+    ("khaolak", "Khao Lak"),
+    ("khao lak", "Khao Lak"),
+)
+
 EGYPT_RESORT_GEO_HINTS: tuple[tuple[str, str], ...] = (
     ("макади", "Makadi Bay"),
     ("makadi", "Makadi Bay"),
@@ -171,6 +190,69 @@ def clean_hotel_name(hotel_name: str) -> str:
     return name.replace("★", "").strip()
 
 
+def search_query_name(hotel: dict[str, Any]) -> str:
+    override = str(hotel.get("photo_match_name") or "").strip()
+    if override:
+        return override
+    return str(hotel.get("hotel_name") or "")
+
+
+def _match_tokens(name: str) -> set[str]:
+    cleaned = clean_hotel_name(name).lower()
+    cleaned = re.sub(r"[^a-z0-9]+", " ", cleaned)
+    return {t for t in cleaned.split() if len(t) > 1}
+
+
+def _name_overlap_score(query: str, candidate: str) -> float:
+    q = _match_tokens(query)
+    c = _match_tokens(candidate)
+    if not q or not c:
+        return 0.0
+    return len(q & c) / len(q)
+
+
+def _terra_primary_name(row: dict[str, Any]) -> str:
+    loc = row.get("location") if isinstance(row.get("location"), dict) else row
+    names = loc.get("names") if isinstance(loc.get("names"), list) else []
+    for block in names:
+        if isinstance(block, dict) and block.get("primary"):
+            return str(block.get("value") or "").strip()
+    if names and isinstance(names[0], dict):
+        return str(names[0].get("value") or "").strip()
+    return str(loc.get("name") or row.get("name") or "").strip()
+
+
+def score_terra_search_row(row: dict[str, Any], query_name: str) -> float:
+    """Prefer Hotel_Review listings with name overlap (skip spa/restaurant hits)."""
+    web = terra_row_web_url(row)
+    primary = _terra_primary_name(row)
+    score = 0.0
+    if "/Hotel_Review-" in web:
+        score += 1000.0
+    elif "/Attraction_Review-" in web or "/Restaurant_Review-" in web:
+        score -= 900.0
+    score += _name_overlap_score(query_name, primary) * 450.0
+    loc = row.get("location") if isinstance(row.get("location"), dict) else row
+    rating_block = loc.get("overall_rating") if isinstance(loc.get("overall_rating"), dict) else {}
+    count = int(rating_block.get("count") or 0)
+    if "/Hotel_Review-" in web:
+        score += min(count, 8000) * 0.02
+    return score
+
+
+def pick_best_terra_search_row(items: list[dict[str, Any]], query_name: str) -> dict[str, Any] | None:
+    if not items:
+        return None
+    scored = [(score_terra_search_row(row, query_name), row) for row in items if isinstance(row, dict)]
+    if not scored:
+        return None
+    scored.sort(key=lambda pair: pair[0], reverse=True)
+    best_score, best_row = scored[0]
+    if best_score < 120.0:
+        return None
+    return best_row
+
+
 def terra_geo_name(hotel: dict[str, Any]) -> str:
     country = str(hotel.get("country") or "").strip().lower()
     if country == "uae":
@@ -185,6 +267,9 @@ def terra_geo_name(hotel: dict[str, Any]) -> str:
         for needle, geo in EGYPT_RESORT_GEO_HINTS:
             if needle in resort_l:
                 return geo
+    if country == "thailand":
+        # Terra catalog: geo_name often zeroes results; rank by Hotel_Review + name instead.
+        return ""
     resort = str(hotel.get("resort") or "").strip()
     if not resort:
         return ""
@@ -290,8 +375,8 @@ def terra_search_location(
     geo_name: str = "",
 ) -> dict[str, str] | None:
     clean = clean_hotel_name(hotel_name)
-    geo = geo_name or (resort.split(",")[0].strip() if resort else "")
-    params: dict[str, Any] = {"version": 1, "query": clean, "page": 1, "size": 5}
+    geo = geo_name if geo_name is not None else (resort.split(",")[0].strip() if resort else "")
+    params: dict[str, Any] = {"version": 1, "query": clean, "page": 1, "size": 8}
     if geo:
         params["geo_name"] = geo
     try:
@@ -309,7 +394,7 @@ def terra_search_location(
         items = data.get("data") or []
         if not items:
             return None
-        row = items[0]
+        row = pick_best_terra_search_row(items, clean) or items[0]
         loc_id = terra_row_location_id(row)
         if not loc_id:
             return None
@@ -492,6 +577,7 @@ def process_file(
             print(f"  --max-hotels {max_hotels} reached, stop file")
             break
         name = str(hotel.get("hotel_name") or "")
+        search_name = search_query_name(hotel)
         resort = str(hotel.get("resort") or "")
         geo_name = terra_geo_name(hotel)
         current = hotel.get("photos") or []
@@ -508,7 +594,7 @@ def process_file(
             loc_id = str(existing_id)
         else:
             found = search_location_once(
-                session, name, resort, key, effective_backend, stats, geo_name
+                session, search_name, resort, key, effective_backend, stats, geo_name
             )
             if found:
                 loc_id = found["id"]

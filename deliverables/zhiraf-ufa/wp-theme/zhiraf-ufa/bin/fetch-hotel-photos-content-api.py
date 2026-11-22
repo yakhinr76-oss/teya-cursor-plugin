@@ -90,6 +90,26 @@ UAE_EMIRATE_GEO: dict[str, str] = {
     "umm_al_quwain": "Umm Al Quwain",
 }
 
+EGYPT_REGION_GEO: dict[str, str] = {
+    "sharm": "Sharm El Sheikh",
+    "hurghada": "Hurghada",
+    "makadi": "Hurghada",
+    "soma_bay": "Soma Bay",
+    "sahl_hasheesh": "Hurghada",
+}
+
+# Fallback: resort text may name Makadi / Soma for hurghada rows.
+EGYPT_RESORT_GEO_HINTS: tuple[tuple[str, str], ...] = (
+    ("макади", "Makadi Bay"),
+    ("makadi", "Makadi Bay"),
+    ("сома", "Soma Bay"),
+    ("soma bay", "Soma Bay"),
+    ("сахл", "Hurghada"),
+    ("sahl", "Hurghada"),
+    ("эль-гун", "El Gouna"),
+    ("gouna", "El Gouna"),
+)
+
 ENV_FILE_CANDIDATES = (
     THEME_ROOT / ".tripadvisor.env.local",
     THEME_ROOT.parents[3] / "teya-memory" / "teya.env.local",
@@ -152,9 +172,19 @@ def clean_hotel_name(hotel_name: str) -> str:
 
 
 def terra_geo_name(hotel: dict[str, Any]) -> str:
-    emirate = str(hotel.get("emirate") or "").strip().lower()
-    if emirate and emirate in UAE_EMIRATE_GEO:
-        return UAE_EMIRATE_GEO[emirate]
+    country = str(hotel.get("country") or "").strip().lower()
+    if country == "uae":
+        emirate = str(hotel.get("emirate") or "").strip().lower()
+        if emirate and emirate in UAE_EMIRATE_GEO:
+            return UAE_EMIRATE_GEO[emirate]
+    if country == "egypt":
+        region = str(hotel.get("region") or "").strip().lower()
+        if region and region in EGYPT_REGION_GEO:
+            return EGYPT_REGION_GEO[region]
+        resort_l = str(hotel.get("resort") or "").lower()
+        for needle, geo in EGYPT_RESORT_GEO_HINTS:
+            if needle in resort_l:
+                return geo
     resort = str(hotel.get("resort") or "").strip()
     if not resort:
         return ""
@@ -463,7 +493,7 @@ def process_file(
             break
         name = str(hotel.get("hotel_name") or "")
         resort = str(hotel.get("resort") or "")
-        geo_name = terra_geo_name(hotel) if str(hotel.get("country") or "") == "uae" else ""
+        geo_name = terra_geo_name(hotel)
         current = hotel.get("photos") or []
         if not hotel_needs_api(hotel, force=force):
             continue

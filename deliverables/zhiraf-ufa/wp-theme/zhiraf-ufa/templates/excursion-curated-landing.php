@@ -353,43 +353,33 @@ $day_ranges   = function_exists( 'zhiraf_ufa_excursion_catalog_day_range_map' )
 	<section class="section excursion-final-cta" id="dest-lead">
 		<div class="container container--narrow excursion-final-cta__inner">
 			<h2 class="section-title"><?php echo esc_html( $excursion_pack['final_cta_title'] ); ?></h2>
-			<form class="zhiraf-form dest-landing-lead-form excursion-final-cta__form" data-action="zhiraf_lead" data-form-context="dest-<?php echo esc_attr( $dest_slug ); ?>-excursion">
+			<?php
+			$excursion_prefill = sprintf(
+				/* translators: %s: destination name */
+				__( 'Здравствуйте! Подберите экскурсионный тур в %s из Уфы:', 'zhiraf-ufa' ),
+				$excursion_pack['name']
+			);
+			?>
+			<div class="unified-lead-form-panel excursion-final-cta__panel">
 				<?php
-				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
-					zhiraf_ufa_render_messenger_picker(
+				if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+					zhiraf_ufa_render_unified_lead_form(
 						array(
-							'name'    => 'lead_messenger',
-							'default' => 'WhatsApp',
-							'label'   => __( 'Куда отправить подборку:', 'zhiraf-ufa' ),
+							'form_class'          => 'excursion-final-cta__form',
+							'form_context'        => 'dest-' . $dest_slug . '-excursion',
+							'consent_id'          => 'dest-excursion-' . $dest_slug,
+							'messenger_variant'   => 'quiz',
+							'message'             => $excursion_prefill,
+							'message_placeholder' => __( 'Города, даты, состав, темп', 'zhiraf-ufa' ),
+							'tour'                => $excursion_pack['quiz_prefill'],
+							'destination'         => $excursion_pack['name'],
+							'destination_slug'    => $dest_slug,
+							'lead_tour_attr'      => true,
 						)
 					);
 				}
 				?>
-				<label class="form-label dest-landing-lead-form__field">
-					<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
-					<input type="tel" name="phone" data-phone-mask placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
-				</label>
-				<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php esc_attr_e( 'Города, даты, состав, темп', 'zhiraf-ufa' ); ?>"><?php
-					echo esc_textarea(
-						sprintf(
-							/* translators: %s: destination name */
-							__( 'Здравствуйте! Подберите экскурсионный тур в %s из Уфы: города, даты и состав.', 'zhiraf-ufa' ),
-							$excursion_pack['name']
-						)
-					);
-				?></textarea>
-				<div class="zhiraf-hp" aria-hidden="true">
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $excursion_pack['quiz_prefill'] ); ?>" data-lead-tour />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $excursion_pack['name'] ); ?>" />
-					<input type="hidden" name="destination_slug" value="<?php echo esc_attr( $dest_slug ); ?>" />
-					<input type="hidden" name="uon_hotel_id" value="" />
-				</div>
-				<?php zhiraf_ufa_consent_fields( 'dest-excursion-' . $dest_slug ); ?>
-				<button type="submit" class="btn btn--primary btn--lg btn--block rounded-xl" data-messenger-submit-label>
-					<?php esc_html_e( 'Отправить →', 'zhiraf-ufa' ); ?>
-				</button>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			</div>
 		</div>
 	</section>
 </main>

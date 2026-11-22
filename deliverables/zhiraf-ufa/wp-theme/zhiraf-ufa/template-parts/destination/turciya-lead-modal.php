@@ -113,61 +113,27 @@ $modal_lead   = ! empty( $args['modal_lead'] )
 			<p id="turciya-lead-modal-lead" class="home-quiz__lead home-quiz__lead--modal">
 				<?php echo esc_html( $modal_lead ); ?>
 			</p>
-			<form
-				id="turciya-lead-modal-form"
-				class="zhiraf-form dest-landing-lead-form turciya-lead-modal__form"
-				data-action="zhiraf_lead"
-				data-form-context="<?php echo esc_attr( $form_context ); ?>"
-			>
-				<?php
-				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
-					zhiraf_ufa_render_messenger_picker(
-						array(
-							'name'    => 'lead_messenger',
-							'default' => 'WhatsApp',
-							'label'   => __( 'Куда отправить подборку:', 'zhiraf-ufa' ),
-						)
-					);
-				}
-				?>
-				<input type="hidden" name="contact_channel" value="WhatsApp" />
-				<label class="form-label dest-landing-lead-form__field turciya-lead-modal__phone-field">
-					<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
-					<input
-						type="tel"
-						name="phone"
-						placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>"
-						required
-						class="form-input turciya-lead-modal__phone"
-						autocomplete="tel"
-						inputmode="tel"
-						data-phone-mask
-					/>
-				</label>
-				<div class="turciya-lead-modal__message-wrap">
-					<textarea
-						name="message"
-						class="form-input dest-landing-lead-form__message turciya-lead-modal__message"
-						rows="4"
-						placeholder="<?php esc_attr_e( 'Кемер или Сиде, даты, возраст детей, бюджет', 'zhiraf-ufa' ); ?>"
-					><?php echo esc_textarea( $wa_text ); ?></textarea>
-				</div>
-				<div class="zhiraf-hp" aria-hidden="true">
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $default_tour ); ?>" data-lead-tour id="turciya-lead-modal-tour" />
-					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_name ); ?>" />
-					<input type="hidden" name="destination_slug" value="<?php echo esc_attr( $dest_slug ); ?>" />
-					<input type="hidden" name="uon_hotel_id" id="turciya-lead-modal-uon" value="" />
-				</div>
-				<?php
-				if ( function_exists( 'zhiraf_ufa_consent_fields' ) ) {
-					zhiraf_ufa_consent_fields( $consent_id );
-				}
-				?>
-				<button type="submit" class="btn btn--primary btn--lg btn--block rounded-xl turciya-lead-modal__submit" data-messenger-submit-label>
-					<?php esc_html_e( 'Отправить в WhatsApp →', 'zhiraf-ufa' ); ?>
-				</button>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			<?php
+			if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+				zhiraf_ufa_render_unified_lead_form(
+					array(
+						'form_id'              => 'turciya-lead-modal-form',
+						'form_class'           => 'turciya-lead-modal__form',
+						'form_context'         => $form_context,
+						'consent_id'           => $consent_id,
+						'messenger_variant'    => 'quiz',
+						'message'              => $wa_text,
+						'message_placeholder'  => __( 'Даты, состав, бюджет', 'zhiraf-ufa' ),
+						'tour'                 => $default_tour,
+						'destination'          => $dest_name,
+						'destination_slug'     => $dest_slug,
+						'lead_tour_attr'       => true,
+						'tour_field_id'        => 'turciya-lead-modal-tour',
+						'uon_field_id'         => 'turciya-lead-modal-uon',
+					)
+				);
+			}
+			?>
 		</div>
 	</div>
 </div>

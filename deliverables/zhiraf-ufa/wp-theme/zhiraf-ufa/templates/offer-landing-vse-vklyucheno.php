@@ -146,47 +146,24 @@ $vibe_section = function_exists( 'zhiraf_ufa_get_vibe_section' ) ? zhiraf_ufa_ge
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Подбор семейного отеля All Inclusive', 'zhiraf-ufa' ); ?></h2>
 			<p><?php esc_html_e( 'Укажите состав, месяц поездки и телефон — отправим подборку AI/UAI в WhatsApp или перезвоним.', 'zhiraf-ufa' ); ?></p>
-			<form class="zhiraf-form ai-lead-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="all-inclusive">
-				<div class="dest-landing-lead-form__fields ai-lead-form__fields">
-					<label class="form-label">
-						<span><?php esc_html_e( 'Состав (взрослые и дети)', 'zhiraf-ufa' ); ?></span>
-						<select name="ai_travelers" class="form-input" required>
-							<option value=""><?php esc_html_e( 'Кто едет', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( '2 взрослых', 'zhiraf-ufa' ); ?>"><?php esc_html_e( '2 взрослых', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( '2 взрослых + 1 ребёнок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( '2 взрослых + 1 ребёнок', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( '2 взрослых + 2 детей', 'zhiraf-ufa' ); ?>"><?php esc_html_e( '2 взрослых + 2 детей', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Другой состав', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Другой состав', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<label class="form-label">
-						<span><?php esc_html_e( 'Желаемый месяц', 'zhiraf-ufa' ); ?></span>
-						<select name="ai_month" class="form-input" required>
-							<option value=""><?php esc_html_e( 'Месяц поездки', 'zhiraf-ufa' ); ?></option>
-							<?php
-							$months = array( 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' );
-							foreach ( $months as $m ) {
-								printf( '<option value="%1$s">%1$s</option>', esc_attr( $m ) );
-							}
-							?>
-						</select>
-					</label>
-					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
-					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />
-					<label class="form-label dest-landing-lead-form__channel-label">
-						<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить подборку', 'zhiraf-ufa' ); ?></span>
-						<select name="contact_channel" class="form-input">
-							<option value="<?php esc_attr_e( 'WhatsApp', 'zhiraf-ufa' ); ?>" selected><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Telegram', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $offer['quiz_prefill'] ); ?>" />
-					<input type="hidden" name="message" value="" />
-					<?php zhiraf_ufa_consent_fields( 'all-inclusive' ); ?>
-					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Получить подборку AI/UAI', 'zhiraf-ufa' ); ?></button>
-				</div>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			<div class="unified-lead-form-panel">
+				<?php
+				$ai_prefill = function_exists( 'zhiraf_ufa_hub_messenger_prefill_text' )
+					? zhiraf_ufa_hub_messenger_prefill_text( 'ai' )
+					: __( 'Здравствуйте! Подберите отель «всё включено» с вылетом из Уфы — состав, даты и бюджет в сообщении.', 'zhiraf-ufa' );
+				if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+					zhiraf_ufa_render_unified_lead_form(
+						array(
+							'form_context'      => 'all-inclusive',
+							'consent_id'        => 'all-inclusive',
+							'messenger_variant' => 'quiz',
+							'message'           => $ai_prefill,
+							'tour'              => $offer['quiz_prefill'],
+						)
+					);
+				}
+				?>
+			</div>
 			<p class="dest-landing-cta__meta">
 				<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
 				·

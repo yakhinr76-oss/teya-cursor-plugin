@@ -128,37 +128,25 @@ $resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Готовы обсудить поездку?', 'zhiraf-ufa' ); ?></h2>
 			<p><?php echo esc_html( ! empty( $resort_data['cta_lead'] ) ? $resort_data['cta_lead'] : __( 'Оставьте контакты — перезвоним в рабочее время и предложим 2–4 варианта под ваш бюджет.', 'zhiraf-ufa' ) ); ?></p>
-			<form class="zhiraf-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="resort-<?php echo esc_attr( $resort_lead_id ); ?>">
-				<div class="dest-landing-lead-form__fields">
-					<label class="form-label dest-landing-lead-form__field">
-						<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Ваше имя', 'zhiraf-ufa' ); ?></span>
-						<input type="text" name="name" placeholder="<?php esc_attr_e( 'Как к вам обращаться', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
-					</label>
-					<label class="form-label dest-landing-lead-form__field">
-						<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
-						<input type="tel" name="phone" placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
-					</label>
-					<?php if ( ! empty( $resort_data['cta_message_placeholder'] ) ) : ?>
-						<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php echo esc_attr( $resort_data['cta_message_placeholder'] ); ?>"></textarea>
-					<?php endif; ?>
-					<label class="form-label dest-landing-lead-form__channel-label">
-						<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить подборку', 'zhiraf-ufa' ); ?></span>
-						<select name="contact_channel" class="form-input">
-							<option value="<?php esc_attr_e( 'WhatsApp', 'zhiraf-ufa' ); ?>" selected><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Telegram', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $resort_data['quiz_prefill'] ); ?>" data-lead-tour />
-					<?php if ( '' !== $resort_lead_id ) : ?>
-						<input type="hidden" name="destination" value="<?php echo esc_attr( $resort_lead_id ); ?>" />
-					<?php endif; ?>
-					<input type="hidden" name="express_pick" value="" data-lead-express />
-					<?php zhiraf_ufa_consent_fields( 'resort-lead-' . $resort_lead_id ); ?>
-					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Отправить заявку', 'zhiraf-ufa' ); ?></button>
-				</div>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			<div class="unified-lead-form-panel">
+				<?php
+				if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+					zhiraf_ufa_render_unified_lead_form(
+						array(
+							'form_context'        => 'resort-' . $resort_lead_id,
+							'consent_id'          => 'resort-lead-' . $resort_lead_id,
+							'messenger_variant'   => 'quiz',
+							'message'             => ! empty( $resort_data['cta_message_placeholder'] ) ? (string) $resort_data['cta_message_placeholder'] : '',
+							'message_placeholder' => __( 'Даты, состав, бюджет', 'zhiraf-ufa' ),
+							'tour'                => $resort_data['quiz_prefill'],
+							'destination'         => $resort_lead_id,
+							'lead_tour_attr'      => true,
+							'express_pick'        => '',
+						)
+					);
+				}
+				?>
+			</div>
 			<p class="dest-landing-cta__alt">
 				<button type="button" class="btn btn--outline btn--sm" data-quiz-open data-quiz-prefill="<?php echo esc_attr( $resort_data['quiz_prefill'] ); ?>">
 					<?php esc_html_e( 'Или пройти квиз', 'zhiraf-ufa' ); ?>

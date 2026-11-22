@@ -288,29 +288,25 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 	<section class="section resort-v2-final-cta<?php echo ! empty( $final['panel'] ) ? ' resort-v2-final-cta--panel' : ''; ?>" id="dest-lead">
 		<div class="container container--narrow resort-v2-final-cta__inner<?php echo ! empty( $final['panel'] ) ? ' resort-v2-final-cta__panel' : ''; ?>">
 			<h2 class="section-title"><?php echo esc_html( $final['title'] ?? '' ); ?></h2>
-			<form class="zhiraf-form dest-landing-lead-form resort-v2-final-cta__form" data-action="zhiraf_lead" data-form-context="resort-<?php echo esc_attr( $country_slug . '-' . $resort_slug ); ?>">
+			<div class="unified-lead-form-panel">
 				<?php
-				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
-					zhiraf_ufa_render_messenger_picker(
+				if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+					zhiraf_ufa_render_unified_lead_form(
 						array(
-							'name'    => 'lead_messenger',
-							'default' => 'WhatsApp',
-							'label'   => __( 'Куда отправить подборку:', 'zhiraf-ufa' ),
+							'form_class'          => 'resort-v2-final-cta__form',
+							'form_context'        => 'resort-' . $country_slug . '-' . $resort_slug,
+							'consent_id'          => 'resort-v2-' . $resort_slug,
+							'messenger_variant'   => 'quiz',
+							'message'             => $hero['modal_message'] ?? '',
+							'message_placeholder' => $final['message_placeholder'] ?? __( 'Даты, состав, бюджет', 'zhiraf-ufa' ),
+							'tour'                => $quiz,
+							'destination'         => $country_slug . '/' . $resort_slug,
+							'lead_tour_attr'      => true,
 						)
 					);
 				}
 				?>
-				<label class="form-label dest-landing-lead-form__field">
-					<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
-					<input type="tel" name="phone" data-phone-mask placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
-				</label>
-				<textarea name="message" class="form-input dest-landing-lead-form__message" rows="3" placeholder="<?php echo esc_attr( $final['message_placeholder'] ?? '' ); ?>"><?php echo esc_textarea( $hero['modal_message'] ?? '' ); ?></textarea>
-				<input type="hidden" name="tour" value="<?php echo esc_attr( $quiz ); ?>" data-lead-tour />
-				<input type="hidden" name="destination" value="<?php echo esc_attr( $country_slug . '/' . $resort_slug ); ?>" />
-				<?php zhiraf_ufa_consent_fields( 'resort-v2-' . $resort_slug ); ?>
-				<button type="submit" class="btn btn--primary btn--lg btn--block rounded-xl" data-messenger-submit-label><?php esc_html_e( 'Отправить →', 'zhiraf-ufa' ); ?></button>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			</div>
 			<?php if ( ! empty( $final['peer_links'] ) ) : ?>
 				<div class="resort-v2-peer-links">
 					<?php foreach ( $final['peer_links'] as $link ) : ?>

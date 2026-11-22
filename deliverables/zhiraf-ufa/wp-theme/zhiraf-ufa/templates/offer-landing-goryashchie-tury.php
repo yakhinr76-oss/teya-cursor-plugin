@@ -155,49 +155,24 @@ $dest_options   = function_exists( 'zhiraf_ufa_catalog_hub_destinations' ) ? zhi
 		<div class="container container--narrow dest-landing-cta__inner">
 			<h2><?php esc_html_e( 'Не нашли нужное направление?', 'zhiraf-ufa' ); ?></h2>
 			<p><?php esc_html_e( 'Оставьте телефон и желаемые даты — поставим на мониторинг вылетов из Уфы и пришлём горящие варианты в мессенджер.', 'zhiraf-ufa' ); ?></p>
-			<form class="zhiraf-form hot-lead-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="hot-tours">
-				<div class="dest-landing-lead-form__fields hot-lead-form__fields">
-					<label class="form-label">
-						<span><?php esc_html_e( 'Куда хотите', 'zhiraf-ufa' ); ?></span>
-						<select name="hot_destination" class="form-input" required>
-							<option value=""><?php esc_html_e( 'Выберите направление', 'zhiraf-ufa' ); ?></option>
-							<?php foreach ( $dest_options as $dest ) : ?>
-								<option value="<?php echo esc_attr( $dest['name'] ); ?>"><?php echo esc_html( $dest['name'] ); ?></option>
-							<?php endforeach; ?>
-							<option value="<?php esc_attr_e( 'Любое море / не важно', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Любое море / не важно', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<label class="form-label">
-						<span><?php esc_html_e( 'Бюджет на двоих', 'zhiraf-ufa' ); ?></span>
-						<select name="hot_budget" class="form-input" required>
-							<option value=""><?php esc_html_e( 'Ориентир по бюджету', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'до 100 000 ₽', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'до 100 000 ₽', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( '100 000 – 150 000 ₽', 'zhiraf-ufa' ); ?>"><?php esc_html_e( '100 000 – 150 000 ₽', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( '150 000 – 200 000 ₽', 'zhiraf-ufa' ); ?>"><?php esc_html_e( '150 000 – 200 000 ₽', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'выше 200 000 ₽', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'выше 200 000 ₽', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<label class="form-label">
-						<span><?php esc_html_e( 'Желаемые даты вылета', 'zhiraf-ufa' ); ?></span>
-						<input type="text" name="hot_dates" class="form-input" placeholder="<?php esc_attr_e( 'Например: 25–30 октября или «гибко в ноябре»', 'zhiraf-ufa' ); ?>" required />
-					</label>
-					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
-					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон / WhatsApp', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />
-					<label class="form-label dest-landing-lead-form__channel-label">
-						<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить горящие', 'zhiraf-ufa' ); ?></span>
-						<select name="contact_channel" class="form-input">
-							<option value="<?php esc_attr_e( 'Telegram', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'WhatsApp', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>" selected><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<input type="hidden" name="tour" value="<?php echo esc_attr( $offer['quiz_prefill'] ); ?>" />
-					<input type="hidden" name="message" id="hot-lead-message" value="" />
-					<?php zhiraf_ufa_consent_fields( 'hot-tours' ); ?>
-					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Поймать горящий тур', 'zhiraf-ufa' ); ?></button>
-				</div>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			<div class="unified-lead-form-panel">
+				<?php
+				$hot_prefill = function_exists( 'zhiraf_ufa_hub_messenger_prefill_text' )
+					? zhiraf_ufa_hub_messenger_prefill_text( 'hot' )
+					: __( 'Здравствуйте! Интересуют горящие туры с вылетом из Уфы — подскажите даты и бюджет.', 'zhiraf-ufa' );
+				if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+					zhiraf_ufa_render_unified_lead_form(
+						array(
+							'form_context'      => 'hot-tours',
+							'consent_id'        => 'hot-tours',
+							'messenger_variant' => 'quiz',
+							'message'           => $hot_prefill,
+							'tour'              => $offer['quiz_prefill'],
+						)
+					);
+				}
+				?>
+			</div>
 			<p class="dest-landing-cta__meta">
 				<a href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
 				·

@@ -157,24 +157,22 @@ get_header();
 		<div class="container container--narrow catalog-hub-cta__inner">
 			<h2><?php esc_html_e( 'Не нашли нужное направление?', 'zhiraf-ufa' ); ?></h2>
 			<p><?php esc_html_e( 'Подберём индивидуальные и пакетные туры — оставьте телефон, отправим подборку в удобный мессенджер или перезвоним.', 'zhiraf-ufa' ); ?></p>
-			<form class="zhiraf-form catalog-hub-lead-form dest-landing-lead-form" data-action="zhiraf_lead" data-form-context="catalog-hub">
-				<div class="dest-landing-lead-form__fields">
-					<input type="text" name="name" placeholder="<?php esc_attr_e( 'Ваше имя', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="name" />
-					<input type="tel" name="phone" placeholder="<?php esc_attr_e( 'Телефон', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" />
-					<label class="form-label dest-landing-lead-form__channel-label">
-						<span class="dest-landing-lead-form__channel-text"><?php esc_html_e( 'Куда отправить подборку', 'zhiraf-ufa' ); ?></span>
-						<select name="contact_channel" class="form-input">
-							<option value="<?php esc_attr_e( 'WhatsApp', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'WhatsApp', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Telegram', 'zhiraf-ufa' ); ?>"><?php esc_html_e( 'Telegram', 'zhiraf-ufa' ); ?></option>
-							<option value="<?php esc_attr_e( 'Звонок', 'zhiraf-ufa' ); ?>" selected><?php esc_html_e( 'Звонок', 'zhiraf-ufa' ); ?></option>
-						</select>
-					</label>
-					<input type="hidden" name="tour" value="<?php esc_attr_e( 'Каталог направлений из Уфы', 'zhiraf-ufa' ); ?>" />
-					<?php zhiraf_ufa_consent_fields( 'catalog-hub' ); ?>
-					<button type="submit" class="btn btn--primary btn--lg"><?php esc_html_e( 'Получить подборку', 'zhiraf-ufa' ); ?></button>
-				</div>
-				<p class="form-status" role="status" aria-live="polite"></p>
-			</form>
+			<div class="unified-lead-form-panel">
+				<?php
+				if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+					zhiraf_ufa_render_unified_lead_form(
+						array(
+							'form_class'        => 'catalog-hub-lead-form',
+							'form_context'      => 'catalog-hub',
+							'consent_id'        => 'catalog-hub',
+							'messenger_variant' => 'quiz',
+							'message'           => __( 'Здравствуйте! Подберите тур из каталога направлений — вылет из Уфы, даты и бюджет уточню в сообщении.', 'zhiraf-ufa' ),
+							'tour'              => __( 'Каталог направлений из Уфы', 'zhiraf-ufa' ),
+						)
+					);
+				}
+				?>
+			</div>
 			<p class="catalog-hub-cta__links">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'На главную', 'zhiraf-ufa' ); ?></a>
 				·

@@ -223,7 +223,9 @@
     "message_placeholder": "Бухта, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
       { "label": "Все туры в Египет", "url": "/tour/egipet/" },
-      { "label": "Сравнить с Хургадой", "url": "/tour/egipet/hurgada/" }
+      { "label": "Сравнить с Хургадой", "url": "/tour/egipet/hurgada/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

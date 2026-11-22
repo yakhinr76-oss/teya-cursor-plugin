@@ -208,7 +208,9 @@
     "message_placeholder": "Район, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
       { "label": "Все туры в ОАЭ", "url": "/tour/oae/" },
-      { "label": "Сравнить с Шарджей", "url": "/tour/oae/sharjah/" }
+      { "label": "Сравнить с Шарджей", "url": "/tour/oae/sharjah/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

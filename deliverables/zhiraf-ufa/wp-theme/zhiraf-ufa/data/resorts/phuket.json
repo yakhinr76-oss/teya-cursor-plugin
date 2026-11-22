@@ -221,7 +221,9 @@
     "message_placeholder": "Район, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
       { "label": "Все туры в Таиланд", "url": "/tour/tailand/" },
-      { "label": "Сравнить с Паттайей", "url": "/tour/tailand/pattaya/" }
+      { "label": "Сравнить с Паттайей", "url": "/tour/tailand/pattaya/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

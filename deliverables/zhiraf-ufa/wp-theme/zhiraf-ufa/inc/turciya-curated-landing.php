@@ -382,14 +382,10 @@ function zhiraf_ufa_turciya_resort_region_key( $resort_label ) {
  */
 function zhiraf_ufa_turciya_resort_guide_url( $resort_key ) {
 	$resort_key = sanitize_key( (string) $resort_key );
-	$map        = array(
-		'antalya' => home_url( '/tour/turciya/antalya/' ),
-		'kemer'   => home_url( '/tour/turciya/kemer/' ),
-		'alanya'  => home_url( '/tour/turciya/alanya/' ),
-		'side'    => home_url( '/tour/turciya/side/' ),
-		'belek'   => home_url( '/tour/turciya/belek/' ),
-	);
-	return ! empty( $map[ $resort_key ] ) ? (string) $map[ $resort_key ] : '';
+	if ( 'antalya' === $resort_key ) {
+		return home_url( '/tour/turciya/antalya/' );
+	}
+	return '';
 }
 
 /**

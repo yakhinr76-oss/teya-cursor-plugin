@@ -232,7 +232,9 @@
     "title": "Подберём отель в Анталье под ваш бюджет и тип пляжа за 15 минут",
     "message_placeholder": "Район, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
-      { "label": "Все туры в Турцию", "url": "/tour/turciya/" }
+      { "label": "Все туры в Турцию", "url": "/tour/turciya/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

@@ -223,7 +223,9 @@
     "message_placeholder": "Район, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
       { "label": "Все туры в ОАЭ", "url": "/tour/oae/" },
-      { "label": "Сравнить с Дубаем", "url": "/tour/oae/dubai/" }
+      { "label": "Сравнить с Дубаем", "url": "/tour/oae/dubai/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

@@ -17,10 +17,17 @@
     "caveat": "Остров один из самых больших на Мальдивах — локация виллы относительно центральных ресторанов критична для пеших прогулок с коляской.",
     "reviews_summary": "Семьи отмечают разнообразие детских активностей, ухоженные сады и внимательный сервис. Выделяют возможность найти абсолютно тихий участок пляжа.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/03/cc/46/2e/villa-park.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/03/cc/45/f9/villa-park.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/03/a2/ca/b0/villa-park.jpg"
+    ],
+    "photo_files": [
       "villa_park_1.jpg",
       "villa_park_2.jpg",
       "villa_park_3.jpg"
-    ]
+    ],
+    "ta_location_id": 3801242,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g652068-d3801242-Reviews-Villa_Park-Bukowina_Tatrzanska_Lesser_Poland_Province.html?m=70260"
   },
   {
     "id": 2,
@@ -40,10 +47,17 @@
     "caveat": "Крупный и оживленный резорт с насыщенным трафиком катеров — не подойдет любителям полной изоляции от цивилизации.",
     "reviews_summary": "Родители ценят быстроту доставки из аэропорта, чистоту берега и лазурную воду. Персонал очень внимателен к детям.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/28/b5/b0/a1/main-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/28/b5/b2/c8/wavy-navy-kids-club.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/28/b5/b2/c4/sunset-beach-pool-villa.jpg"
+    ],
+    "photo_files": [
       "villa_nautica_1.jpg",
       "villa_nautica_2.jpg",
       "villa_nautica_3.jpg"
-    ]
+    ],
+    "ta_location_id": 316954,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g2104579-d316954-Reviews-Villa_Nautica_Maldives-Lankanfinolhu_Island_North_Male_Atoll.html?m=70260"
   },
   {
     "id": 3,
@@ -63,10 +77,17 @@
     "caveat": "При бронировании экскурсий и платных услуг важно учитывать мальдивские налоги (16% TGST + 10% service charge).",
     "reviews_summary": "Гости хвалят простор вилл, ухоженную зеленую территорию и работу детского клуба. Отличная безопасная лагуна для плавания детей.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/20/f1/bb/5c/furaveri-maldives.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/34/c2/01/93/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/23/f0/7e/ec/furaveri-maldives.jpg"
+    ],
+    "photo_files": [
       "furaveri_1.jpg",
       "furaveri_2.jpg",
       "furaveri_3.jpg"
-    ]
+    ],
+    "ta_location_id": 8759275,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g12219024-d8759275-Reviews-Furaveri_Maldives-Furaveri_Raa_Atoll.html?m=70260"
   },
   {
     "id": 4,
@@ -86,10 +107,17 @@
     "caveat": "Ужины в популярных ресторанах a la carte требуют обязательного предварительного бронирования через отельное приложение.",
     "reviews_summary": "Семьи выделяют прекрасную кухню, богатый снорклинг и теплое отношение команды. Отдельные гости отмечают необходимость заранее планировать ужины.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/ce/83/06/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/ce/c4/e3/dhigali-suite-front-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/ce/c4/e1/dhigali-suite-aerial.jpg"
+    ],
+    "photo_files": [
       "dhigali_1.jpg",
       "dhigali_2.jpg",
       "dhigali_3.jpg"
-    ]
+    ],
+    "ta_location_id": 11695802,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g13359735-d11695802-Reviews-Niva_Dhigali_Maldives-Dhigali_Raa_Atoll.html?m=70260"
   },
   {
     "id": 5,
@@ -109,10 +137,17 @@
     "caveat": "Снорклинг с берега доступен не со всех сторон острова — для лучшего рифа организуются лодочные выезды.",
     "reviews_summary": "Отмечают просторные новые номера, чистый песок и заботу сотрудников. Хвалят доступность медицинской помощи при акклиматизации детей.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1a/a2/31/66/brennia-kottefaru.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2d/25/01/97/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/22/34/c1/ef/brennia-kottefaru.jpg"
+    ],
+    "photo_files": [
       "brennia_1.jpg",
       "brennia_2.jpg",
       "brennia_3.jpg"
-    ]
+    ],
+    "ta_location_id": 17529129,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g25341452-d17529129-Reviews-Brennia_Kottefaru-Kottefaru_Raa_Atoll.html?m=70260"
   },
   {
     "id": 6,
@@ -121,6 +156,7 @@
     "category_slug": "snorkeling",
     "category_name": "Снорклинг и домашний риф",
     "hotel_name": "Vilamendhoo Island Resort & Spa 4★",
+    "photo_match_name": "Vilamendhoo Island Resort",
     "resort": "Южный Ари, гидросамолет (25 мин)",
     "rating": 4.8,
     "usp": "Эталонный рифовый остров: один из богатейших домашних рифов Мальдив с удобными размеченными проходами к свалу прямо от вилл.",
@@ -132,10 +168,17 @@
     "caveat": "Смежные пляжные вилы (дуплексы) имеют общую стену — ради приватности стоит бронировать Standalone Beach Villa или водные виллы.",
     "reviews_summary": "Снорклингисты называют риф Виламенду лучшим в категории 4★: акулы, мурены и скаты каждый день. Кухня стабильно получает высшие баллы.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/17/82/d7/fa/bonthi-bar-deck.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/83/45/d9/sunset-bar-pool.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/83/45/fa/sunset-bar-pool-sunset.jpg"
+    ],
+    "photo_files": [
       "vilamendhoo_1.jpg",
       "vilamendhoo_2.jpg",
       "vilamendhoo_3.jpg"
-    ]
+    ],
+    "ta_location_id": 317348,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g2095767-d317348-Reviews-Vilamendoo_Resort-Vilamendhoo_Southern_Ari_Atoll.html?m=70260"
   },
   {
     "id": 7,
@@ -155,10 +198,17 @@
     "caveat": "Расположение на океаническом канале создает ощутимые течения — снорклинг требует соблюдения правил безопасности по флагам.",
     "reviews_summary": "Гости восхищаются подводным миром: стаи рыб, черепахи и скаты прямо под пирсом. Катерная доставка избавляет от ожидания гидросамолета.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/d0/49/d3/oblu-at-helengeli-aerials.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/d0/49/ce/oblu-at-helengeli-aerials.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/d0/49/d1/oblu-at-helengeli-aerials.jpg"
+    ],
+    "photo_files": [
       "oblu_helengeli_1.jpg",
       "oblu_helengeli_2.jpg",
       "oblu_helengeli_3.jpg"
-    ]
+    ],
+    "ta_location_id": 8774361,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g6855209-d8774361-Reviews-Oblu_Nature_Helengeli_By_Sentido-Helengeli_Island_North_Male_Atoll.html?m=70260"
   },
   {
     "id": 8,
@@ -178,10 +228,17 @@
     "caveat": "Остров защищен сплошными волнорезами по периметру — здесь нет длинной пологой песчаной косы для открыточных фото.",
     "reviews_summary": "Дайверы и любители подводного мира возвращаются сюда по несколько раз. Ценят за фантастический домашний риф и душевную атмосферу.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/f8/ce/7b/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/0b/a1/19/aerial-view-ellaidhoo.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/70/04/8f/photo0jpg.jpg"
+    ],
+    "photo_files": [
       "ellaidhoo_1.jpg",
       "ellaidhoo_2.jpg",
       "ellaidhoo_3.jpg"
-    ]
+    ],
+    "ta_location_id": 967464,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g6695188-d967464-Reviews-Ellaidhoo_Maldives_by_Cinnamon-Ellaidhoo_Island_North_Ari_Atoll.html?m=70260"
   },
   {
     "id": 9,
@@ -201,10 +258,17 @@
     "caveat": "Базовый All Inclusive и расширенный Dine Around различаются по перечню ресторанов — условия пакета нужно проверять при бронировании.",
     "reviews_summary": "Хвалят размеры вилл, чистоту пляжа и возможность плавать с маской прямо у террасы. Отмечают красивую природу острова.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/31/02/10/64/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1d/1d/6d/2a/aerial-view-of-the-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1d/1d/6c/e9/arrival-jetty-during.jpg"
+    ],
+    "photo_files": [
       "reethi_faru_1.jpg",
       "reethi_faru_2.jpg",
       "reethi_faru_3.jpg"
-    ]
+    ],
+    "ta_location_id": 12658112,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g13321832-d12658112-Reviews-Reethi_Faru_Resort-Filaidhoo_Raa_Atoll.html?m=70260"
   },
   {
     "id": 10,
@@ -224,10 +288,17 @@
     "caveat": "Компактный остров без шумных развлечений — любителям больших курортов с клубами и шоппингом покажется слишком спокойным.",
     "reviews_summary": "Гости восхищаются простотой и удобством: надел маску у номера и сразу плывешь с черепахами. Очень вкусная итальянская кухня.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/18/a0/6a/e4/sandies-bathala-maldives.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/96/fa/03/bathala-island-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/18/9d/2f/93/sandies-bathala-maldives.jpg"
+    ],
+    "photo_files": [
       "sandies_bathala_1.jpg",
       "sandies_bathala_2.jpg",
       "sandies_bathala_3.jpg"
-    ]
+    ],
+    "ta_location_id": 478413,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g2339162-d478413-Reviews-Sandies_Bathala_Maldives-Bathala_Island_North_Ari_Atoll.html?m=70260"
   },
   {
     "id": 11,
@@ -247,10 +318,17 @@
     "caveat": "Камерный остров — любителям дискотек и вечерней анимации программа покажется слишком умиротворенной.",
     "reviews_summary": "Пары в восторге от тишины, романтической атмосферы и чистоты. Возвратные гости называют Команду идеальным местом для медового месяца.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/17/b3/72/a6/aerial.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/b3/70/9c/aerial.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/b3/70/fc/aerial.jpg"
+    ],
+    "photo_files": [
       "komandoo_1.jpg",
       "komandoo_2.jpg",
       "komandoo_3.jpg"
-    ]
+    ],
+    "ta_location_id": 316980,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g3612487-d316980-Reviews-Komandoo_Island_Resort_&_Spa-Komandoo_Lhaviyani_Atoll.html?m=70260"
   },
   {
     "id": 12,
@@ -270,10 +348,17 @@
     "caveat": "Посещение подводного ресторана оплачивается отдельно и не входит в стандартный пакет All Inclusive.",
     "reviews_summary": "Гости восхищаются приватностью водных вилл и сказочными закатами. Называют отель идеальным выбором для романтического признания.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/32/73/08/95/h2o.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/19/9c/66/8d/h2o-underwater-experience.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/16/75/c1/de/you-me-maldives.jpg"
+    ],
+    "photo_files": [
       "you_and_me_1.jpg",
       "you_and_me_2.jpg",
       "you_and_me_3.jpg"
-    ]
+    ],
+    "ta_location_id": 15683937,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g27710360-d15683937-Reviews-You_And_Me_Maldives-Uthurumaafaru_Raa_Atoll.html?m=70260"
   },
   {
     "id": 13,
@@ -293,10 +378,17 @@
     "caveat": "Близость к Мале: на дальнем горизонте виден силуэт столицы, нет ощущения абсолютной затерянности в океане.",
     "reviews_summary": "Пары ценят отель за легкую логистику после перелета, отсутствие детей и вкусную тайскую кухню. Отличный компромисс цены и комфорта.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/13/2a/99/13/aerial-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/2a/98/92/aerial-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/13/2a/98/b3/aerial-view.jpg"
+    ],
+    "photo_files": [
       "centara_ras_fushi_1.jpg",
       "centara_ras_fushi_2.jpg",
       "centara_ras_fushi_3.jpg"
-    ]
+    ],
+    "ta_location_id": 3941005,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g298571-d3941005-Reviews-Centara_Ras_Fushi_Resort_&_Spa_Maldives-Male_North_Male_Atoll.html?m=70260"
   },
   {
     "id": 14,
@@ -316,10 +408,17 @@
     "caveat": "Остров очень компактный — пляжная полоса на суше минимальна, весь отдых сосредоточен на воде.",
     "reviews_summary": "Туристы в восторге от стеклянного пола в виллах, обилия рыб под ногами и тактичной работы батлеров. Идеально для короткого медового месяца.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/33/09/43/f6/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/8d/56/da/aerial-view-of-adaaran.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2c/ae/1d/4b/aerial-view-of-adaaran.jpg"
+    ],
+    "photo_files": [
       "adaaran_vadoo_1.jpg",
       "adaaran_vadoo_2.jpg",
       "adaaran_vadoo_3.jpg"
-    ]
+    ],
+    "ta_location_id": 638253,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g298571-d638253-Reviews-Adaaran_Prestige_Vadoo-Male_North_Male_Atoll.html?m=70260"
   },
   {
     "id": 15,
@@ -339,10 +438,17 @@
     "caveat": "Отель принимает и семьи — в центральных зонах и на основном шведском столе присутствуют дети.",
     "reviews_summary": "Гости восхищаются дизайном, чистотой воды и японским рестораном. Отмечают, что взрослая зона сохраняет полный покой даже при полной загрузке.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/35/3f/30/31/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/35/3f/30/32/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/35/3f/30/30/caption.jpg"
+    ],
+    "photo_files": [
       "le_meridien_maldives_1.jpg",
       "le_meridien_maldives_2.jpg",
       "le_meridien_maldives_3.jpg"
-    ]
+    ],
+    "ta_location_id": 23565173,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g25341446-d23565173-Reviews-Le_Meridien_Maldives_Resort_&_Spa-Thilamaafushi_Lhaviyani_Atoll.html?m=70260"
   },
   {
     "id": 16,
@@ -362,10 +468,17 @@
     "caveat": "Категории номеров сильно различаются по возрасту ремонта: базовые Standard проще, виллы Premium и Water Villa заметно современнее.",
     "reviews_summary": "Постоянные гости возвращаются за легкость логистики, отличный дайв-центр и зеленый парк. Отличное соотношение цены тура и комфорта.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/31/d3/82/aa/a-stunning-aerial-view.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/10/de/91/b2/jacuzzi-pool-villa.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/10/de/93/77/jacuzzi-pool-villa.jpg"
+    ],
+    "photo_files": [
       "bandos_1.jpg",
       "bandos_2.jpg",
       "bandos_3.jpg"
-    ]
+    ],
+    "ta_location_id": 501020,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1203006-d501020-Reviews-Bandos_Maldives-Bandos_North_Male_Atoll.html?m=70260"
   },
   {
     "id": 17,
@@ -385,10 +498,17 @@
     "caveat": "Ночные рейсы катера необходимо подтверждать заранее под расписание международного перелета.",
     "reviews_summary": "Туристы хвалят чистоту песка, вкусное питание и прекрасный вид из водных вилл. Называют отель лучшей бюджетной четверкой на катере.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/21/cb/2e/73/summer-island-maldives.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/9b/24/b3/summer-island-village.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/07/9b/24/ad/summer-island-village.jpg"
+    ],
+    "photo_files": [
       "summer_island_1.jpg",
       "summer_island_2.jpg",
       "summer_island_3.jpg"
-    ]
+    ],
+    "ta_location_id": 316953,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g28096241-d316953-Reviews-Summer_Island_Maldives-One_and_Only_Reethirah_North_Male_Atoll.html?m=70260"
   },
   {
     "id": 18,
@@ -408,10 +528,17 @@
     "caveat": "Из-за близости к главному атоллу в небе периодически видны заходящие на посадку международные самолеты.",
     "reviews_summary": "Семьи и бизнес-туристы отмечают идеальное удобство трансфера, безопасность для детей и высокий уровень сервиса Marriott.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/14/9b/b1/02/aerial-view-of-sheraton.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/9b/b1/67/anchorage-bar-by-the.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/14/9b/b1/16/private-dining-experience.jpg"
+    ],
+    "photo_files": [
       "sheraton_maldives_1.jpg",
       "sheraton_maldives_2.jpg",
       "sheraton_maldives_3.jpg"
-    ]
+    ],
+    "ta_location_id": 478381,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g6695203-d478381-Reviews-Sheraton_Maldives_Full_Moon_Resort_&_Spa-Furanafushi_Island_Kaafu_Atoll.html?m=70260"
   },
   {
     "id": 19,
@@ -431,10 +558,17 @@
     "caveat": "Номера Standard в двухэтажных корпусах простые по интерьеру; водные бунгало дают гораздо более яркие эмоции.",
     "reviews_summary": "Гости ценят отель за простоту, вкусную еду и красивый риф. Отличный вариант для первого знакомства с Мальдивами по разумной цене.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/43/75/92/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/09/36/58/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/09/36/5d/caption.jpg"
+    ],
+    "photo_files": [
       "adaaran_rannalhi_1.jpg",
       "adaaran_rannalhi_2.jpg",
       "adaaran_rannalhi_3.jpg"
-    ]
+    ],
+    "ta_location_id": 1019235,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g3612492-d1019235-Reviews-Adaaran_Club_Rannalhi-Rannalhi_South_Male_Atoll.html?m=70260"
   },
   {
     "id": 20,
@@ -454,10 +588,17 @@
     "caveat": "Отель крупный и оживленный — для тихого медитативного уединения на острове слишком активный социальный ритм.",
     "reviews_summary": "Туристы в восторге от свежести номеров, подводного ресторана и быстроты трансфера. Считают отель лучшим современным выбором рядом с Мале.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/23/c2/85/c3/oblu-xperience-ailafushi.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/23/c2/87/92/oblu-xperience-ailafushi.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/23/c2/86/0d/oblu-xperience-ailafushi.jpg"
+    ],
+    "photo_files": [
       "oblu_ailafushi_1.jpg",
       "oblu_ailafushi_2.jpg",
       "oblu_ailafushi_3.jpg"
-    ]
+    ],
+    "ta_location_id": 23939421,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g34128194-d23939421-Reviews-OBLU_XPERIENCE_Ailafushi__All_Inclusive_with_Free_Transfers-Ailafushi_North_Male_At.html?m=70260"
   },
   {
     "id": 21,
@@ -477,10 +618,17 @@
     "caveat": "Не все рестораны a la carte полностью включены в базовый All Inclusive — в некоторых действует депозитная система.",
     "reviews_summary": "Гости восхищаются дизайном вилл, лагуной без камней и вечерней живой музыкой. Очень элегантный остров для красивого отпуска.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2f/43/4f/39/lagoon-suite-slide.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/23/d7/db/b8/cocoon-maldives.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/23/d1/47/86/cocoon-maldives.jpg"
+    ],
+    "photo_files": [
       "cocoon_maldives_1.jpg",
       "cocoon_maldives_2.jpg",
       "cocoon_maldives_3.jpg"
-    ]
+    ],
+    "ta_location_id": 10043134,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g12219030-d10043134-Reviews-Cocoon_Maldives-Ookolhufinolhu_Lhaviyani_Atoll.html?m=70260"
   },
   {
     "id": 22,
@@ -500,10 +648,17 @@
     "caveat": "Обычный базовый All Inclusive и расширенный Premium AI различаются наполнением мини-бара и экскурсиями.",
     "reviews_summary": "Туристы называют остров раем на земле: безупречный пляж, теплое внимание персонала и незабываемый снорклинг с мантами.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/d2/25/e5/fushifaru-maldives.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/29/5f/e6/22/fushifaru-maldives.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/29/5f/e6/64/fushifaru-maldives.jpg"
+    ],
+    "photo_files": [
       "fushifaru_1.jpg",
       "fushifaru_2.jpg",
       "fushifaru_3.jpg"
-    ]
+    ],
+    "ta_location_id": 12570827,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g14991100-d12570827-Reviews-Fushifaru_Maldives-Fushifaru_Lhaviyani_Atoll.html?m=70260"
   },
   {
     "id": 23,
@@ -523,10 +678,17 @@
     "caveat": "Мини-бар в рамках базового пакета имеет лимит пополнения; экскурсии зависят от условий конкретного бронирования.",
     "reviews_summary": "Снорклингисты и семьи хвалят морскую жизнь заповедника Баа, красивый пляж и внимательную команду обновленного отеля.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/29/4e/cb/80/reethi-beach-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/29/4f/67/41/reethi-beach-resort.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/30/67/e0/ff/caption.jpg"
+    ],
+    "photo_files": [
       "nh_reethi_1.jpg",
       "nh_reethi_2.jpg",
       "nh_reethi_3.jpg"
-    ]
+    ],
+    "ta_location_id": 316948,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g15673425-d316948-Reviews-NH_Collection_Maldives_Reethi_Resort-Fonimagoodhoo_Island_Baa_Atoll.html?m=70260"
   },
   {
     "id": 24,
@@ -546,10 +708,17 @@
     "caveat": "Остров маленький — для длительных пеших прогулок территории недостаточно, акцент сделан на приватность вилл.",
     "reviews_summary": "Гости восхищаются приватными бассейнами у вилл, тишиной и вкусными ужинами. Идеальное место для спокойного отдыха без суеты.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/8f/22/4a/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/8f/25/63/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2e/8f/25/65/caption.jpg"
+    ],
+    "photo_files": [
       "nh_kuda_rah_1.jpg",
       "nh_kuda_rah_2.jpg",
       "nh_kuda_rah_3.jpg"
-    ]
+    ],
+    "ta_location_id": 10748915,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g6852745-d10748915-Reviews-NH_Maldives_Kuda_Rah_Resort-Kuda_Rah_Island_Southern_Ari_Atoll.html?m=70260"
   },
   {
     "id": 25,
@@ -569,9 +738,16 @@
     "caveat": "Водный ресторан a la carte включен без доплат в основном для проживающих в водных виллах; для пляжных категорий возможна доплата.",
     "reviews_summary": "Постоянные клиенты хвалят гастрономию, стильный дизайн белых водных вилл и богатейший риф. Высочайший стандарт итальянского гостеприимства.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/31/60/21/44/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/31/60/22/4b/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/31/60/22/43/caption.jpg"
+    ],
+    "photo_files": [
       "thudufushi_1.jpg",
       "thudufushi_2.jpg",
       "thudufushi_3.jpg"
-    ]
+    ],
+    "ta_location_id": 316952,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1997042-d316952-Reviews-Diamonds_Thudufushi_Maldives_Resort_&_Spa-Thudufushi_Island_Southern_Ari_Atoll.html?m=70260"
   }
 ]

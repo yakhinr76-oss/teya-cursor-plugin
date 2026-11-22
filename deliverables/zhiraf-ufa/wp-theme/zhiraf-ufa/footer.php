@@ -53,6 +53,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 			<ul class="footer-menu">
 				<li><a href="<?php echo esc_url( home_url( '/goryashchie-tury/' ) ); ?>"><?php esc_html_e( 'Горящие туры', 'zhiraf-ufa' ); ?></a></li>
 				<li><a href="<?php echo esc_url( home_url( '/vse-vklyucheno/' ) ); ?>"><?php esc_html_e( 'Всё включено', 'zhiraf-ufa' ); ?></a></li>
+			</ul>
+			<ul class="footer-menu footer-menu--resort-hub">
 				<?php foreach ( zhiraf_ufa_resort_hub_links() as $link ) : ?>
 					<li><a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a></li>
 				<?php endforeach; ?>

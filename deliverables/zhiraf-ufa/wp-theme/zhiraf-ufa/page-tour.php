@@ -72,7 +72,7 @@ get_header();
 
 			<div class="resort-hub-links">
 				<p class="resort-hub-links__title"><?php esc_html_e( 'Популярные курорты для отдыха из Уфы', 'zhiraf-ufa' ); ?></p>
-				<ul class="resort-link-list resort-link-list--inline">
+				<ul class="resort-link-list resort-link-list--grid">
 					<?php foreach ( zhiraf_ufa_resort_hub_links() as $link ) : ?>
 						<li>
 							<a href="<?php echo esc_url( $link['url'] ); ?>"><?php echo esc_html( $link['label'] ); ?></a>

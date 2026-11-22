@@ -88,6 +88,57 @@
   margin: 0;
 }
 
+.resort-link-list--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 10px 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resort-link-list--grid li {
+  margin: 0;
+}
+
+.resort-link-list--grid a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-text);
+  text-align: center;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resort-link-list--grid a:hover,
+.resort-link-list--grid a:focus-visible {
+  border-color: #c85a32;
+  color: #c85a32;
+  box-shadow: 0 4px 14px rgb(200 90 50 / 12%);
+}
+
+.dest-resort-nav-prominent {
+  padding: 28px 0 8px;
+  background: var(--color-sand, #faf7f2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dest-resort-nav-prominent__title {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-family: var(--font-head);
+}
+
+.dest-resort-nav-prominent__grid {
+  margin-bottom: 8px;
+}
+
 .resort-link-list__stat {
   font-size: 0.8125rem;
   color: var(--color-muted);

@@ -28,6 +28,11 @@ function zhiraf_ufa_approved_resort_landing_paths() {
 			$paths[] = '/tour/' . sanitize_title( (string) $row['country'] ) . '/' . sanitize_title( (string) $row['resort'] ) . '/';
 		}
 	}
+	if ( function_exists( 'zhiraf_ufa_country_hub_resort_map' ) ) {
+		foreach ( array_keys( zhiraf_ufa_country_hub_resort_map() ) as $country ) {
+			$paths[] = '/tour/' . sanitize_title( (string) $country ) . '/';
+		}
+	}
 	$paths = array_values( array_unique( $paths ) );
 
 	return $paths;
@@ -197,7 +202,7 @@ function zhiraf_ufa_resort_hub_card_resolve( array $link, $dest_slug ) {
  * @return string[]
  */
 function zhiraf_ufa_resort_v2_parent_country_slugs() {
-	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam', 'kitaj' );
+	return array( 'turciya', 'oae', 'egipet', 'tailand', 'vietnam' );
 }
 
 /**
@@ -215,6 +220,12 @@ function zhiraf_ufa_resort_hub_short_label( $country, $resort ) {
 	}
 	if ( function_exists( 'zhiraf_ufa_get_resort_landing' ) ) {
 		$row = zhiraf_ufa_get_resort_landing( $country, $resort );
+		if ( ! is_array( $row ) && function_exists( 'zhiraf_ufa_get_country_hub_resort_landing' ) ) {
+			$row = zhiraf_ufa_get_country_hub_resort_landing( $country );
+		}
+		if ( is_array( $row ) && ! empty( $row['hub_nav_label'] ) ) {
+			return (string) $row['hub_nav_label'];
+		}
 		if ( is_array( $row ) && ! empty( $row['resort_name'] ) ) {
 			$name = (string) $row['resort_name'];
 			$cn   = ! empty( $row['country_name'] ) ? (string) $row['country_name'] : '';
@@ -258,6 +269,18 @@ function zhiraf_ufa_resort_hub_links() {
 			'country' => $country,
 			'resort'  => $resort,
 		);
+	}
+	if ( function_exists( 'zhiraf_ufa_country_hub_resort_map' ) ) {
+		foreach ( zhiraf_ufa_country_hub_resort_map() as $country => $resort ) {
+			$country = sanitize_key( (string) $country );
+			$resort  = sanitize_key( (string) $resort );
+			$links[] = array(
+				'label'   => zhiraf_ufa_resort_hub_short_label( $country, $resort ),
+				'url'     => home_url( '/tour/' . $country . '/' ),
+				'country' => $country,
+				'resort'  => $resort,
+			);
+		}
 	}
 
 	return $links;

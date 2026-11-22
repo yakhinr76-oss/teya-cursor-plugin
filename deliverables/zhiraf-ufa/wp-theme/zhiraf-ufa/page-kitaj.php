@@ -1,6 +1,6 @@
 <?php
 /**
- * Destination landing (Moscow departure): /tour/kitaj/.
+ * China hub — resort landing v2 (Санья / Хайнань) at /tour/kitaj/.
  *
  * @package Zhiraf_Ufa
  */
@@ -10,5 +10,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-zhiraf_ufa_render_destination_landing( 'kitaj' );
+zhiraf_ufa_render_country_hub_resort_landing( 'kitaj' );
 get_footer();

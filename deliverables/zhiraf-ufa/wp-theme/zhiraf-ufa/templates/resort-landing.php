@@ -12,7 +12,9 @@ if ( ! defined( 'ABSPATH' ) || empty( $resort_data ) ) {
 
 $country_slug = sanitize_title( (string) ( $resort_data['country'] ?? '' ) );
 $resort_slug  = sanitize_title( (string) ( $resort_data['resort'] ?? '' ) );
-$country_url  = home_url( '/tour/' . $country_slug . '/' );
+$hub_at_country = ! empty( $resort_data['hub_at_country'] );
+$country_url    = ! empty( $resort_data['public_url'] ) ? (string) $resort_data['public_url'] : home_url( '/tour/' . $country_slug . '/' );
+$tour_hub_url   = home_url( '/tour/' );
 $hero         = ! empty( $resort_data['hero'] ) && is_array( $resort_data['hero'] ) ? $resort_data['hero'] : array();
 $districts    = ! empty( $resort_data['districts'] ) && is_array( $resort_data['districts'] ) ? $resort_data['districts'] : array();
 $seasons      = ! empty( $resort_data['seasons'] ) && is_array( $resort_data['seasons'] ) ? $resort_data['seasons'] : array();
@@ -32,9 +34,15 @@ $image_alt    = ! empty( $resort_data['image_alt'] ) ? (string) $resort_data['im
 				<nav class="resort-v2-breadcrumb" aria-label="<?php esc_attr_e( 'Хлебные крошки', 'zhiraf-ufa' ); ?>">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Главная', 'zhiraf-ufa' ); ?></a>
 					<span aria-hidden="true">→</span>
-					<a href="<?php echo esc_url( $country_url ); ?>"><?php echo esc_html( $country_name ); ?></a>
-					<span aria-hidden="true">→</span>
-					<span aria-current="page"><?php echo esc_html( $resort_name ); ?></span>
+					<?php if ( $hub_at_country ) : ?>
+						<a href="<?php echo esc_url( $tour_hub_url ); ?>"><?php esc_html_e( 'Направления', 'zhiraf-ufa' ); ?></a>
+						<span aria-hidden="true">→</span>
+						<span aria-current="page"><?php echo esc_html( ! empty( $resort_data['hub_nav_label'] ) ? (string) $resort_data['hub_nav_label'] : sprintf( '%s (%s)', $country_name, $resort_name ) ); ?></span>
+					<?php else : ?>
+						<a href="<?php echo esc_url( $country_url ); ?>"><?php echo esc_html( $country_name ); ?></a>
+						<span aria-hidden="true">→</span>
+						<span aria-current="page"><?php echo esc_html( $resort_name ); ?></span>
+					<?php endif; ?>
 				</nav>
 				<h1><?php echo esc_html( $resort_data['h1'] ?? '' ); ?></h1>
 				<?php if ( ! empty( $hero['lead'] ) ) : ?>

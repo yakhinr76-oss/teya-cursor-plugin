@@ -109,7 +109,7 @@ function zhiraf_ufa_moscow_landing_data() {
 				$out[ $slug ]['resort_links'] = array(
 					array(
 						'label' => __( 'Туры в Санью из Уфы', 'zhiraf-ufa' ),
-						'url'   => home_url( '/tour/kitaj/sanya/' ),
+						'url'   => home_url( '/tour/kitaj/' ),
 						'desc'  => __( 'Остров Хайнань, пляжный сезон с ноября по апрель, безвизовые программы — уточняем по туру.', 'zhiraf-ufa' ),
 					),
 					array(

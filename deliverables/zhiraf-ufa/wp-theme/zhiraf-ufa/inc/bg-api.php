@@ -471,6 +471,16 @@ class Zhiraf_BG_Price_Engine {
 	const LOG_OPTION_KEY = 'zhiraf_bg_sync_log';
 
 	/**
+	 * Transient marker: live hotelsJson returned empty/error (do not refetch on every request).
+	 */
+	const HOTEL_CATALOG_EMPTY_MARKER = '__zhiraf_bg_catalog_empty__';
+
+	/**
+	 * Negative cache TTL when hotelsJson is empty or API errors (seconds).
+	 */
+	const HOTEL_CATALOG_NEGATIVE_TTL = 1800;
+
+	/**
 	 * Target destination countries with BG IDs.
 	 *
 	 * @var array<string,array{id:string,name_ru:string,code:string,currency:string}>
@@ -559,24 +569,77 @@ class Zhiraf_BG_Price_Engine {
 		return (bool) apply_filters( 'zhiraf_ufa_bg_allow_live_hotel_catalog_fetch', false );
 	}
 
+	/**
+	 * Full O(N) hotelsJson name scan — only during BG sync, not on public renders.
+	 *
+	 * @return bool
+	 */
+	private function allow_full_hotel_catalog_name_scan() {
+		if ( $this->allow_live_hotel_catalog_fetch() ) {
+			return true;
+		}
+
+		return (bool) apply_filters( 'zhiraf_ufa_bg_allow_full_hotel_catalog_name_scan', false );
+	}
+
+	/**
+	 * @return void
+	 */
+	private function cache_negative_hotel_catalog() {
+		set_transient(
+			'zhiraf_bg_hotel_catalog_v2',
+			array(
+				self::HOTEL_CATALOG_EMPTY_MARKER => 1,
+			),
+			self::HOTEL_CATALOG_NEGATIVE_TTL
+		);
+	}
+
+	/**
+	 * @param array<string,array{name:string,stars:string}> $catalog Catalog rows.
+	 * @return void
+	 */
+	private function persist_hotel_catalog( array $catalog ) {
+		if ( empty( $catalog ) ) {
+			$this->cache_negative_hotel_catalog();
+			self::$hotel_catalog = array();
+
+			return;
+		}
+		set_transient( 'zhiraf_bg_hotel_catalog_v2', $catalog, DAY_IN_SECONDS );
+		update_option( 'zhiraf_bg_hotel_catalog_v2_backup', $catalog, false );
+		self::$hotel_catalog = $catalog;
+	}
+
 	public function load_hotel_catalog() {
 		if ( is_array( self::$hotel_catalog ) ) {
 			return self::$hotel_catalog;
 		}
 		$cached = get_transient( 'zhiraf_bg_hotel_catalog_v2' );
-		if ( is_array( $cached ) && ! empty( $cached ) ) {
-			self::$hotel_catalog = $cached;
-			return $cached;
+		if ( is_array( $cached ) ) {
+			if ( ! empty( $cached[ self::HOTEL_CATALOG_EMPTY_MARKER ] ) ) {
+				self::$hotel_catalog = array();
+
+				return array();
+			}
+			if ( ! empty( $cached ) ) {
+				self::$hotel_catalog = $cached;
+
+				return $cached;
+			}
+		}
+		if ( ! $this->allow_live_hotel_catalog_fetch() ) {
+			self::$hotel_catalog = array();
+			$this->cache_negative_hotel_catalog();
+
+			return array();
 		}
 		$backup = get_option( 'zhiraf_bg_hotel_catalog_v2_backup', array() );
 		if ( is_array( $backup ) && ! empty( $backup ) ) {
 			self::$hotel_catalog = $backup;
 			set_transient( 'zhiraf_bg_hotel_catalog_v2', $backup, DAY_IN_SECONDS );
+
 			return $backup;
-		}
-		if ( ! $this->allow_live_hotel_catalog_fetch() ) {
-			self::$hotel_catalog = array();
-			return array();
 		}
 		$country_ids = array();
 		foreach ( self::$countries as $c ) {
@@ -598,12 +661,9 @@ class Zhiraf_BG_Price_Engine {
 				);
 			}
 		}
-		if ( ! empty( $catalog ) ) {
-			set_transient( 'zhiraf_bg_hotel_catalog_v2', $catalog, DAY_IN_SECONDS );
-			update_option( 'zhiraf_bg_hotel_catalog_v2_backup', $catalog, false );
-		}
-		self::$hotel_catalog = $catalog;
-		return $catalog;
+		$this->persist_hotel_catalog( $catalog );
+
+		return self::$hotel_catalog;
 	}
 
 	/**
@@ -1062,6 +1122,9 @@ class Zhiraf_BG_Price_Engine {
 	 */
 	public function get_hotel_catalog_match_names( $hotel_name ) {
 		$names = array( trim( (string) $hotel_name ) );
+		if ( ! $this->allow_full_hotel_catalog_name_scan() ) {
+			return array_values( array_unique( array_filter( $names ) ) );
+		}
 		foreach ( $this->load_hotel_catalog() as $row ) {
 			if ( empty( $row['name'] ) ) {
 				continue;
@@ -1084,21 +1147,32 @@ class Zhiraf_BG_Price_Engine {
 	 * @return array<string,mixed>|null
 	 */
 	public function get_hotel_min_tour( $country_slug_or_id, $hotel_name, $hotel_id = '' ) {
+		static $tours_cache   = array();
+		static $result_cache   = array();
 		$hotel_name = trim( (string) $hotel_name );
 		$hotel_id   = trim( (string) $hotel_id );
 		if ( '' === $hotel_name && '' === $hotel_id ) {
 			return null;
 		}
 
-		$catalog    = $this->load_hotel_catalog();
-		$name_hits  = '' !== $hotel_name ? $this->get_hotel_catalog_match_names( $hotel_name ) : array();
+		$slug = self::normalize_country_slug( $country_slug_or_id );
+		$key  = $slug . '|' . $hotel_id . '|' . self::normalize_hotel_match_key( $hotel_name );
+		if ( array_key_exists( $key, $result_cache ) ) {
+			return $result_cache[ $key ];
+		}
+
+		$catalog   = $this->load_hotel_catalog();
+		$name_hits = '' !== $hotel_name ? $this->get_hotel_catalog_match_names( $hotel_name ) : array();
 		if ( '' !== $hotel_id && isset( $catalog[ $hotel_id ]['name'] ) ) {
 			$name_hits[] = (string) $catalog[ $hotel_id ]['name'];
 			$name_hits   = array_values( array_unique( $name_hits ) );
 		}
 
-		$best  = null;
-		$tours = $this->get_country_tours( $country_slug_or_id, 500 );
+		$best = null;
+		if ( ! isset( $tours_cache[ $slug ] ) ) {
+			$tours_cache[ $slug ] = $this->get_country_tours( $country_slug_or_id, 500 );
+		}
+		$tours = $tours_cache[ $slug ];
 		foreach ( $tours as $t ) {
 			if ( empty( $t['price_rur'] ) ) {
 				continue;
@@ -1122,6 +1196,8 @@ class Zhiraf_BG_Price_Engine {
 				$best = $t;
 			}
 		}
+
+		$result_cache[ $key ] = $best;
 
 		return $best;
 	}

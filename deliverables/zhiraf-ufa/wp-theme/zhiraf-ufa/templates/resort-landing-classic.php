@@ -159,6 +159,19 @@ $resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 				·
 				<a href="tel:+79018105018" data-track="phone"><?php esc_html_e( '+7 901 810-50-18', 'zhiraf-ufa' ); ?></a>
 			</p>
+			<?php
+			$peer_links = array();
+			if ( ! empty( $resort_data['final_cta']['peer_links'] ) && is_array( $resort_data['final_cta']['peer_links'] ) ) {
+				$peer_links = $resort_data['final_cta']['peer_links'];
+			}
+			if ( $peer_links ) :
+				?>
+				<div class="resort-v2-peer-links dest-landing-cta__peers">
+					<?php foreach ( $peer_links as $link ) : ?>
+						<a class="resort-v2-peer-chip" href="<?php echo esc_url( home_url( $link['url'] ?? '/' ) ); ?>"><?php echo esc_html( $link['label'] ?? '' ); ?></a>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 </main>

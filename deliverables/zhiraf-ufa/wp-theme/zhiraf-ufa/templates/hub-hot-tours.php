@@ -60,6 +60,10 @@ $badges    = array(
 						<?php esc_html_e( 'Прислать горящие на мои даты', 'zhiraf-ufa' ); ?>
 					</button>
 				</div>
+				<nav class="hub-offer-chip-links hub-offer-hero-crosslinks" aria-label="<?php esc_attr_e( 'Смежные форматы туров', 'zhiraf-ufa' ); ?>">
+					<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/vse-vklyucheno/' ) ); ?>"><?php esc_html_e( 'Всё включено', 'zhiraf-ufa' ); ?></a>
+					<a class="hub-offer-chip" href="<?php echo esc_url( home_url( '/tour/' ) ); ?>"><?php esc_html_e( 'Каталог направлений', 'zhiraf-ufa' ); ?></a>
+				</nav>
 			</div>
 			<div class="dest-landing-hero__visual">
 				<?php zhiraf_ufa_img( $offer['image'], $offer['image_alt'], 'dest-landing-hero__img', true ); ?>

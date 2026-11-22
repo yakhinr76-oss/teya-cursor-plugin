@@ -533,12 +533,20 @@ function zhiraf_ufa_get_resort_landing( $country, $resort ) {
 	if ( function_exists( 'zhiraf_ufa_get_resort_landing_from_json' ) ) {
 		$json = zhiraf_ufa_get_resort_landing_from_json( $country, $resort );
 		if ( $json ) {
-			return $json;
+			return function_exists( 'zhiraf_ufa_resort_apply_interlinking' )
+				? zhiraf_ufa_resort_apply_interlinking( $json )
+				: $json;
 		}
 	}
 	$key  = $country . '/' . $resort;
 	$data = zhiraf_ufa_resort_landing_data();
-	return isset( $data[ $key ] ) ? $data[ $key ] : null;
+	if ( ! isset( $data[ $key ] ) ) {
+		return null;
+	}
+	$row = $data[ $key ];
+	return function_exists( 'zhiraf_ufa_resort_apply_interlinking' )
+		? zhiraf_ufa_resort_apply_interlinking( $row )
+		: $row;
 }
 
 /**
@@ -686,12 +694,24 @@ function zhiraf_ufa_resort_hub_links() {
 			'url'   => zhiraf_ufa_resort_url( 'turciya', 'antalya' ),
 		),
 		array(
+			'label' => __( 'Кемер (Турция)', 'zhiraf-ufa' ),
+			'url'   => zhiraf_ufa_resort_url( 'turciya', 'kemer' ),
+		),
+		array(
 			'label' => __( 'Хургада (Египет)', 'zhiraf-ufa' ),
 			'url'   => zhiraf_ufa_resort_url( 'egipet', 'hurgada' ),
 		),
 		array(
 			'label' => __( 'Шарм-эль-Шейх (Египет)', 'zhiraf-ufa' ),
 			'url'   => zhiraf_ufa_resort_url( 'egipet', 'sharm-el-sheyh' ),
+		),
+		array(
+			'label' => __( 'Дубай (ОАЭ)', 'zhiraf-ufa' ),
+			'url'   => zhiraf_ufa_resort_url( 'oae', 'dubai' ),
+		),
+		array(
+			'label' => __( 'Пхукет (Таиланд)', 'zhiraf-ufa' ),
+			'url'   => zhiraf_ufa_resort_url( 'tailand', 'phuket' ),
 		),
 		array(
 			'label' => __( 'Нячанг (Вьетнам)', 'zhiraf-ufa' ),

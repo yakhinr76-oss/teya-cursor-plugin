@@ -24,8 +24,9 @@ $nights_label = ! empty( $card['nights_label'] )
 	? (string) $card['nights_label']
 	: __( '7 ночей / 2 взр.', 'zhiraf-ufa' );
 ?>
+<div class="dest-hub-card-wrap reveal">
 <a
-	class="dest-hub-card reveal"
+	class="dest-hub-card"
 	href="<?php echo esc_url( $card['url'] ); ?>"
 	data-dest-hub-card="<?php echo esc_attr( $card['slug'] ?? '' ); ?>"
 >
@@ -75,3 +76,4 @@ $nights_label = ! empty( $card['nights_label'] )
 		</span>
 	</span>
 </a>
+</div>

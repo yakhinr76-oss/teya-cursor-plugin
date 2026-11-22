@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ZHIRAF_UFA_VERSION', '1.0.95-about-office-gallery-equal' );
+define( 'ZHIRAF_UFA_VERSION', '1.0.96-sitemap-url-sync' );
 define( 'ZHIRAF_UFA_DIR', get_template_directory() );
 define( 'ZHIRAF_UFA_URI', get_template_directory_uri() );
 
@@ -59,6 +59,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/about-page.php';
 require_once ZHIRAF_UFA_DIR . '/inc/social-icons.php';
 require_once ZHIRAF_UFA_DIR . '/inc/messenger-picker.php';
 require_once ZHIRAF_UFA_DIR . '/inc/seo.php';
+require_once ZHIRAF_UFA_DIR . '/inc/sitemaps.php';
 require_once ZHIRAF_UFA_DIR . '/inc/customizer.php';
 require_once ZHIRAF_UFA_DIR . '/inc/breadcrumbs.php';
 require_once ZHIRAF_UFA_DIR . '/inc/security.php';

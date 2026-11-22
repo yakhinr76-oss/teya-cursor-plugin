@@ -84,15 +84,16 @@ function zhiraf_ufa_egypt_resort_keys_from_row( array $row ) {
  * @return string
  */
 function zhiraf_ufa_egypt_resort_landing_url( $resort_key ) {
-	$map = array(
+	$resort_key = sanitize_key( (string) $resort_key );
+	$map        = array(
 		'hurghada' => 'hurgada',
 		'sharm'    => 'sharm-el-sheyh',
-		'makadi'   => 'makadi-bay',
-		'sahl'     => 'sahl-hasheesh',
 	);
-	$path = ! empty( $map[ $resort_key ] ) ? (string) $map[ $resort_key ] : sanitize_title( (string) $resort_key );
+	if ( empty( $map[ $resort_key ] ) ) {
+		return '';
+	}
 
-	return home_url( '/tour/egipet/' . $path . '/' );
+	return home_url( '/tour/egipet/' . $map[ $resort_key ] . '/' );
 }
 
 /**

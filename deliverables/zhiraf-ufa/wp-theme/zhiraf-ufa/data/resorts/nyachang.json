@@ -221,7 +221,9 @@
     "message_placeholder": "Район, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
       { "label": "Все туры во Вьетнам", "url": "/tour/vietnam/" },
-      { "label": "Сравнить с Фукуоком", "url": "/tour/vietnam/fukuok/" }
+      { "label": "Сравнить с Фукуоком", "url": "/tour/vietnam/fukuok/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

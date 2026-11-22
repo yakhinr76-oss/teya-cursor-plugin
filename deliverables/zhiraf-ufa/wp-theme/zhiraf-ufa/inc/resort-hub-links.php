@@ -34,154 +34,27 @@ function zhiraf_ufa_approved_resort_landing_paths() {
 }
 
 /**
- * Offer hubs linked from resort landings.
+ * Retired resort paths (301 → country hub). Blocked in peer_links / cards.
  *
- * @return array<int,array{label:string,url:string}>
+ * @return string[]
  */
-function zhiraf_ufa_resort_offer_hub_links() {
-	return array(
-		array(
-			'label' => __( 'Горящие туры', 'zhiraf-ufa' ),
-			'url'   => '/goryashchie-tury/',
-		),
-		array(
-			'label' => __( 'Всё включено', 'zhiraf-ufa' ),
-			'url'   => '/vse-vklyucheno/',
-		),
-	);
-}
-
-/**
- * Sibling resort URLs for cross-linking (path without domain).
- *
- * @return array<string,array<int,array{label:string,url:string}>>
- */
-function zhiraf_ufa_resort_sibling_link_map() {
-	return array(
-		'turciya/antalya'    => array(
-			array( 'label' => __( 'Кемер', 'zhiraf-ufa' ), 'url' => '/tour/turciya/kemer/' ),
-			array( 'label' => __( 'Аланья', 'zhiraf-ufa' ), 'url' => '/tour/turciya/alanya/' ),
-			array( 'label' => __( 'Сиде', 'zhiraf-ufa' ), 'url' => '/tour/turciya/side/' ),
-			array( 'label' => __( 'Белек', 'zhiraf-ufa' ), 'url' => '/tour/turciya/belek/' ),
-		),
-		'turciya/kemer'      => array(
-			array( 'label' => __( 'Анталья', 'zhiraf-ufa' ), 'url' => '/tour/turciya/antalya/' ),
-			array( 'label' => __( 'Сиде', 'zhiraf-ufa' ), 'url' => '/tour/turciya/side/' ),
-			array( 'label' => __( 'Белек', 'zhiraf-ufa' ), 'url' => '/tour/turciya/belek/' ),
-		),
-		'turciya/alanya'     => array(
-			array( 'label' => __( 'Сиде', 'zhiraf-ufa' ), 'url' => '/tour/turciya/side/' ),
-			array( 'label' => __( 'Анталья', 'zhiraf-ufa' ), 'url' => '/tour/turciya/antalya/' ),
-		),
-		'turciya/side'       => array(
-			array( 'label' => __( 'Аланья', 'zhiraf-ufa' ), 'url' => '/tour/turciya/alanya/' ),
-			array( 'label' => __( 'Белек', 'zhiraf-ufa' ), 'url' => '/tour/turciya/belek/' ),
-		),
-		'turciya/belek'      => array(
-			array( 'label' => __( 'Анталья', 'zhiraf-ufa' ), 'url' => '/tour/turciya/antalya/' ),
-			array( 'label' => __( 'Сиде', 'zhiraf-ufa' ), 'url' => '/tour/turciya/side/' ),
-		),
-		'egipet/hurgada'     => array(
-			array( 'label' => __( 'Макади-Бей', 'zhiraf-ufa' ), 'url' => '/tour/egipet/makadi-bay/' ),
-			array( 'label' => __( 'Сахл-Хашиш', 'zhiraf-ufa' ), 'url' => '/tour/egipet/sahl-hasheesh/' ),
-			array( 'label' => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ), 'url' => '/tour/egipet/sharm-el-sheyh/' ),
-		),
-		'egipet/sharm-el-sheyh' => array(
-			array( 'label' => __( 'Хургада', 'zhiraf-ufa' ), 'url' => '/tour/egipet/hurgada/' ),
-		),
-		'egipet/makadi-bay'  => array(
-			array( 'label' => __( 'Хургада', 'zhiraf-ufa' ), 'url' => '/tour/egipet/hurgada/' ),
-			array( 'label' => __( 'Сахл-Хашиш', 'zhiraf-ufa' ), 'url' => '/tour/egipet/sahl-hasheesh/' ),
-		),
-		'egipet/sahl-hasheesh' => array(
-			array( 'label' => __( 'Хургада', 'zhiraf-ufa' ), 'url' => '/tour/egipet/hurgada/' ),
-			array( 'label' => __( 'Макади-Бей', 'zhiraf-ufa' ), 'url' => '/tour/egipet/makadi-bay/' ),
-		),
-		'oae/dubai'          => array(
-			array( 'label' => __( 'Шарджа', 'zhiraf-ufa' ), 'url' => '/tour/oae/sharjah/' ),
-		),
-		'oae/sharjah'        => array(
-			array( 'label' => __( 'Дубай', 'zhiraf-ufa' ), 'url' => '/tour/oae/dubai/' ),
-		),
-		'tailand/phuket'     => array(
-			array( 'label' => __( 'Паттайя', 'zhiraf-ufa' ), 'url' => '/tour/tailand/pattaya/' ),
-		),
-		'tailand/pattaya'    => array(
-			array( 'label' => __( 'Пхукет', 'zhiraf-ufa' ), 'url' => '/tour/tailand/phuket/' ),
-		),
-		'vietnam/nyachang'   => array(
-			array( 'label' => __( 'Фукуок', 'zhiraf-ufa' ), 'url' => '/tour/vietnam/fukuok/' ),
-		),
-		'vietnam/fukuok'     => array(
-			array( 'label' => __( 'Нячанг', 'zhiraf-ufa' ), 'url' => '/tour/vietnam/nyachang/' ),
-		),
-	);
-}
-
-/**
- * Merges sibling + offer-hub links into resort final_cta.peer_links (deduped by path).
- *
- * @param array<string,mixed> $resort_data Resort row.
- * @return array<string,mixed>
- */
-function zhiraf_ufa_resort_apply_interlinking( array $resort_data ) {
-	$country = sanitize_title( (string) ( $resort_data['country'] ?? '' ) );
-	$resort  = sanitize_title( (string) ( $resort_data['resort'] ?? '' ) );
-	if ( '' === $country || '' === $resort ) {
-		return $resort_data;
+function zhiraf_ufa_retired_resort_landing_paths() {
+	static $paths = null;
+	if ( null !== $paths ) {
+		return $paths;
 	}
-	$key = $country . '/' . $resort;
-
-	if ( empty( $resort_data['final_cta'] ) || ! is_array( $resort_data['final_cta'] ) ) {
-		$resort_data['final_cta'] = array(
-			'title'                => '',
-			'message_placeholder'  => '',
-			'peer_links'           => array(),
-		);
+	if ( ! function_exists( 'zhiraf_ufa_retired_resort_landing_redirects' ) ) {
+		return array();
 	}
-	if ( empty( $resort_data['final_cta']['peer_links'] ) || ! is_array( $resort_data['final_cta']['peer_links'] ) ) {
-		$resort_data['final_cta']['peer_links'] = array();
-	}
-
-	$seen = array();
-	foreach ( $resort_data['final_cta']['peer_links'] as $link ) {
-		$path = zhiraf_ufa_resort_hub_normalize_path( (string) ( $link['url'] ?? '' ) );
-		if ( '' !== $path ) {
-			$seen[ $path ] = true;
+	$paths = array();
+	foreach ( array_keys( zhiraf_ufa_retired_resort_landing_redirects() ) as $from ) {
+		$norm = zhiraf_ufa_resort_hub_normalize_path( $from );
+		if ( '' !== $norm ) {
+			$paths[] = $norm;
 		}
 	}
 
-	$map     = zhiraf_ufa_resort_sibling_link_map();
-	$extras  = isset( $map[ $key ] ) ? $map[ $key ] : array();
-	$extras  = array_merge( $extras, zhiraf_ufa_resort_offer_hub_links() );
-	$country_url = zhiraf_ufa_resort_hub_normalize_path( home_url( '/tour/' . $country . '/' ) );
-	if ( '' !== $country_url && empty( $seen[ $country_url ] ) ) {
-		array_unshift(
-			$extras,
-			array(
-				'label' => sprintf(
-					/* translators: %s: country name */
-					__( 'Все туры: %s', 'zhiraf-ufa' ),
-					! empty( $resort_data['country_name'] ) ? (string) $resort_data['country_name'] : $country
-				),
-				'url'   => $country_url,
-			)
-		);
-	}
-
-	foreach ( $extras as $link ) {
-		$path = zhiraf_ufa_resort_hub_normalize_path( (string) ( $link['url'] ?? '' ) );
-		if ( '' === $path || ! empty( $seen[ $path ] ) ) {
-			continue;
-		}
-		$resort_data['final_cta']['peer_links'][] = array(
-			'label' => (string) ( $link['label'] ?? '' ),
-			'url'   => $path,
-		);
-		$seen[ $path ] = true;
-	}
-
-	return $resort_data;
+	return $paths;
 }
 
 /**
@@ -223,6 +96,33 @@ function zhiraf_ufa_resort_hub_url_is_approved_landing( $url ) {
 	}
 
 	return in_array( $path, zhiraf_ufa_approved_resort_landing_paths(), true );
+}
+
+/**
+ * Strips links to retired resort URLs from JSON v2 peer_links.
+ *
+ * @param array<string,mixed> $resort_data Resort row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_resort_apply_interlinking( array $resort_data ) {
+	$blocked = array_flip( zhiraf_ufa_retired_resort_landing_paths() );
+	if ( empty( $resort_data['final_cta']['peer_links'] ) || ! is_array( $resort_data['final_cta']['peer_links'] ) ) {
+		return $resort_data;
+	}
+	$clean = array();
+	foreach ( $resort_data['final_cta']['peer_links'] as $link ) {
+		if ( ! is_array( $link ) ) {
+			continue;
+		}
+		$path = zhiraf_ufa_resort_hub_normalize_path( (string) ( $link['url'] ?? '' ) );
+		if ( '' === $path || isset( $blocked[ $path ] ) ) {
+			continue;
+		}
+		$clean[] = $link;
+	}
+	$resort_data['final_cta']['peer_links'] = $clean;
+
+	return $resort_data;
 }
 
 /**

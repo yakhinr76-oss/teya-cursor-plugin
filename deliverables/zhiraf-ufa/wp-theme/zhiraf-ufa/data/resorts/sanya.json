@@ -219,7 +219,9 @@
     "title": "Подберём отель в Санье под ваш бюджет и бухту за 15 минут",
     "message_placeholder": "Бухта, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
-      { "label": "Все туры в Китай", "url": "/tour/kitaj/" }
+      { "label": "Все туры в Китай", "url": "/tour/kitaj/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

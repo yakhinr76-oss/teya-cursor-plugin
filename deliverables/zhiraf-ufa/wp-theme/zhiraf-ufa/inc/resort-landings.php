@@ -18,21 +18,14 @@ function zhiraf_ufa_resort_landing_index() {
 	return array(
 		array( 'country' => 'oae', 'resort' => 'dubai' ),
 		array( 'country' => 'oae', 'resort' => 'sharjah' ),
-		array( 'country' => 'turciya', 'resort' => 'antalya' ),
-		array( 'country' => 'turciya', 'resort' => 'kemer' ),
-		array( 'country' => 'turciya', 'resort' => 'alanya' ),
-		array( 'country' => 'turciya', 'resort' => 'side' ),
-		array( 'country' => 'turciya', 'resort' => 'belek' ),
 		array( 'country' => 'egipet', 'resort' => 'hurgada' ),
 		array( 'country' => 'egipet', 'resort' => 'sharm-el-sheyh' ),
-		array( 'country' => 'egipet', 'resort' => 'makadi-bay' ),
-		array( 'country' => 'egipet', 'resort' => 'sahl-hasheesh' ),
 		array( 'country' => 'tailand', 'resort' => 'phuket' ),
 		array( 'country' => 'tailand', 'resort' => 'pattaya' ),
-		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
 		array( 'country' => 'vietnam', 'resort' => 'fukuok' ),
 		array( 'country' => 'vietnam', 'resort' => 'nyachang' ),
 		array( 'country' => 'kitaj', 'resort' => 'sanya' ),
+		array( 'country' => 'turciya', 'resort' => 'antalya' ),
 	);
 }
 
@@ -42,12 +35,7 @@ function zhiraf_ufa_resort_landing_index() {
  * @return array<string,array<string,mixed>>
  */
 function zhiraf_ufa_resort_landing_data() {
-	$extra = function_exists( 'zhiraf_ufa_turciya_extra_resort_landings' )
-		? zhiraf_ufa_turciya_extra_resort_landings()
-		: array();
-
-	return array_merge(
-		array(
+	return array(
 		'turciya/antalya' => array(
 			'tours_rx'           => '/Лара|Кунду|Коньяалты|Анталия/ui',
 			'tours_meal_prefer'  => 'AI',
@@ -379,32 +367,6 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 			),
 		),
-		'egipet/makadi-bay' => array(
-			'country'       => 'egipet',
-			'country_name'  => __( 'Египет', 'zhiraf-ufa' ),
-			'resort'        => 'makadi-bay',
-			'h1'            => __( 'Туры в Макади-Бей из Уфы', 'zhiraf-ufa' ),
-			'title'         => __( 'Макади-Бей из Уфы — семейные туры на море | Жираф', 'zhiraf-ufa' ),
-			'description'   => __( 'Туры в Макади-Бей с вылетом из Уфы: песчаный залив, аквапарки и All Inclusive в 35 км от Хургады.', 'zhiraf-ufa' ),
-			'image'         => 'resort-egipet-hurghada-2.jpg',
-			'image_alt'     => __( 'Макади-Бей — песчаный пляж Красного моря', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Семейный курортный посёлок к югу от Хургады: широкий песчаный пляж, закрытая бухта и крупные резорты с аквапарками.', 'zhiraf-ufa' ),
-			'quiz_prefill'  => __( 'Макади-Бей, вылет из Уфы', 'zhiraf-ufa' ),
-			'geo_answer'    => __( 'Макади-Бей подходит семьям, которые хотят спокойный песок и инфраструктуру отеля без городской суеты. Трансфер из аэропорта Хургады — около 30–40 минут.', 'zhiraf-ufa' ),
-		),
-		'egipet/sahl-hasheesh' => array(
-			'country'       => 'egipet',
-			'country_name'  => __( 'Египет', 'zhiraf-ufa' ),
-			'resort'        => 'sahl-hasheesh',
-			'h1'            => __( 'Туры в Сахл-Хашиш из Уфы', 'zhiraf-ufa' ),
-			'title'         => __( 'Сахл-Хашиш из Уфы — премиум-туры на море | Жираф', 'zhiraf-ufa' ),
-			'description'   => __( 'Туры в Сахл-Хашиш с вылетом из Уфы: уединённые пляжи, рифы и отели люкс-класса к югу от Хургады.', 'zhiraf-ufa' ),
-			'image'         => 'resort-egipet-el-gouna-2.jpg',
-			'image_alt'     => __( 'Сахл-Хашиш — курортный посёлок у Красного моря', 'zhiraf-ufa' ),
-			'hero_lead'     => __( 'Закрытый курортный район с премиальными отелями, длинными пляжами и тихой атмосферой — альтернатива шумному центру Хургады.', 'zhiraf-ufa' ),
-			'quiz_prefill'  => __( 'Сахл-Хашиш, вылет из Уфы', 'zhiraf-ufa' ),
-			'geo_answer'    => __( 'Сахл-Хашиш выбирают пары и семьи, которым важны просторные пляжи и высокий уровень сервиса. До аэропорта Хургады — около 20–25 минут на трансфере.', 'zhiraf-ufa' ),
-		),
 		'vietnam/nyachang' => array(
 			'tours_rx'          => '/Нячанг/u',
 			'landing_module'    => 'battle',
@@ -517,8 +479,6 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 			),
 		),
-		),
-		$extra
 	);
 }
 
@@ -530,6 +490,28 @@ function zhiraf_ufa_resort_landing_data() {
 function zhiraf_ufa_get_resort_landing( $country, $resort ) {
 	$country = sanitize_title( $country );
 	$resort  = sanitize_title( $resort );
+
+	$retired = function_exists( 'zhiraf_ufa_retired_resort_landing_redirects' )
+		? zhiraf_ufa_retired_resort_landing_redirects()
+		: array();
+	$legacy_key = untrailingslashit( '/tour/' . $country . '/' . $resort );
+	foreach ( array_keys( $retired ) as $from ) {
+		if ( untrailingslashit( $from ) === $legacy_key ) {
+			return null;
+		}
+	}
+
+	$allowed = false;
+	foreach ( zhiraf_ufa_resort_landing_index() as $row ) {
+		if ( $row['country'] === $country && $row['resort'] === $resort ) {
+			$allowed = true;
+			break;
+		}
+	}
+	if ( ! $allowed ) {
+		return null;
+	}
+
 	if ( function_exists( 'zhiraf_ufa_get_resort_landing_from_json' ) ) {
 		$json = zhiraf_ufa_get_resort_landing_from_json( $country, $resort );
 		if ( $json ) {
@@ -692,10 +674,6 @@ function zhiraf_ufa_resort_hub_links() {
 		array(
 			'label' => __( 'Анталья (Турция)', 'zhiraf-ufa' ),
 			'url'   => zhiraf_ufa_resort_url( 'turciya', 'antalya' ),
-		),
-		array(
-			'label' => __( 'Кемер (Турция)', 'zhiraf-ufa' ),
-			'url'   => zhiraf_ufa_resort_url( 'turciya', 'kemer' ),
 		),
 		array(
 			'label' => __( 'Хургада (Египет)', 'zhiraf-ufa' ),

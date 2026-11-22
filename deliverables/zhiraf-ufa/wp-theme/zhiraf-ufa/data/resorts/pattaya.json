@@ -230,7 +230,9 @@
     "message_placeholder": "Район, даты, состав (возраст детей), питание и бюджет на двоих.",
     "peer_links": [
       { "label": "Все туры в Таиланд", "url": "/tour/tailand/" },
-      { "label": "Сравнить с Пхукетом", "url": "/tour/tailand/phuket/" }
+      { "label": "Сравнить с Пхукетом", "url": "/tour/tailand/phuket/" },
+      { "label": "Горящие туры", "url": "/goryashchie-tury/" },
+      { "label": "Всё включено", "url": "/vse-vklyucheno/" }
     ]
   }
 }

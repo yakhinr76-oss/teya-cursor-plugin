@@ -12,12 +12,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once __DIR__ . '/legacy-attachments.php';
 
 /**
+ * Retired PHP resort landings → parent country (JSON v2 index only).
+ *
+ * @return array<string,string> Request path => target path (relative).
+ */
+function zhiraf_ufa_retired_resort_landing_redirects() {
+	return array(
+		'/tour/turciya/kemer/'         => '/tour/turciya/',
+		'/tour/turciya/alanya/'        => '/tour/turciya/',
+		'/tour/turciya/side/'          => '/tour/turciya/',
+		'/tour/turciya/belek/'         => '/tour/turciya/',
+		'/tour/egipet/makadi-bay/'     => '/tour/egipet/',
+		'/tour/egipet/sahl-hasheesh/'  => '/tour/egipet/',
+	);
+}
+
+/**
  * 301 map for old paths (see teya-memory/seo/old-url-map.csv).
  *
  * @return array<string,string> Request path => target path (relative).
  */
 function zhiraf_ufa_legacy_redirect_map() {
-	return array(
+	return array_merge(
+		array(
 		'/kontacty'                    => '/kontakty/',
 		'/kontacty/'                   => '/kontakty/',
 		'/rasskazy'                    => '/blog/',
@@ -33,6 +50,8 @@ function zhiraf_ufa_legacy_redirect_map() {
 		'/tip/plyazhnyj-tur'           => '/tour/',
 		'/tip/ekskursii'               => '/tour/',
 		'/author/admin'                => '/blog/',
+		),
+		zhiraf_ufa_retired_resort_landing_redirects()
 	);
 }
 

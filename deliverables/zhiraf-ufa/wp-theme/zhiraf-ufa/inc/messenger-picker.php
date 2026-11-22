@@ -97,7 +97,7 @@ function zhiraf_ufa_hub_messenger_prefill_text( $hub = 'hot' ) {
 }
 
 /**
- * Hub final CTA: picker + ссылка в мессенджер (без полей и AJAX).
+ * Hub final CTA: unified lead form (picker, phone, message, AJAX).
  *
  * @param array<string,mixed> $args {
  *   @type string $hub              hot|ai — контекст префилла.
@@ -116,20 +116,29 @@ function zhiraf_ufa_render_hub_messenger_cta( $args = array() ) {
 			'messenger_label' => __( 'Куда написать:', 'zhiraf-ufa' ),
 		)
 	);
+	$hub     = sanitize_key( (string) $args['hub'] );
 	$prefill = '' !== (string) $args['prefill']
 		? (string) $args['prefill']
-		: zhiraf_ufa_hub_messenger_prefill_text( (string) $args['hub'] );
-	$urls    = zhiraf_ufa_messenger_channel_urls( $prefill );
+		: zhiraf_ufa_hub_messenger_prefill_text( $hub );
+	$context = 'ai' === $hub ? 'ai-hub-final' : 'hot-hub-final';
 
-	get_template_part(
-		'template-parts/hub/hub-offer-messenger-cta',
-		null,
-		array(
-			'lead'            => (string) $args['lead'],
-			'messenger_label' => (string) $args['messenger_label'],
-			'messenger_urls'  => $urls,
-		)
-	);
+	if ( '' !== (string) $args['lead'] ) {
+		echo '<p class="hub-offer-unified-lead__lead">' . esc_html( (string) $args['lead'] ) . '</p>';
+	}
+
+	if ( function_exists( 'zhiraf_ufa_render_unified_lead_form' ) ) {
+		zhiraf_ufa_render_unified_lead_form(
+			array(
+				'form_context'      => $context,
+				'consent_id'        => $context,
+				'messenger_variant' => 'quiz',
+				'messenger_label'   => (string) $args['messenger_label'],
+				'message'           => $prefill,
+				'tour'              => $prefill,
+				'form_class'        => 'hub-offer-unified-lead',
+			)
+		);
+	}
 }
 
 /**

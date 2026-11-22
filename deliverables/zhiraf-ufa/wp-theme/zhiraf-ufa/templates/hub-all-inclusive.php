@@ -222,7 +222,7 @@ $badges     = array(
 						array(
 							'hub'             => 'ai',
 							'lead'            => __( 'Одно сообщение — подборка AI/UAI с вылетом из Уфы, детали уточним в переписке.', 'zhiraf-ufa' ),
-							'messenger_label' => __( 'Где вам удобнее написать:', 'zhiraf-ufa' ),
+							'messenger_label' => __( 'Куда отправить подборку:', 'zhiraf-ufa' ),
 						)
 					);
 				}

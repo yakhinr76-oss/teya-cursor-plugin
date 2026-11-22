@@ -478,6 +478,15 @@ add_action( 'wp_ajax_zhiraf_quiz', 'zhiraf_ufa_ajax_quiz' );
 add_action( 'wp_ajax_nopriv_zhiraf_quiz', 'zhiraf_ufa_ajax_quiz' );
 
 /**
+ * Unified lead form (messenger + phone + message) for landings and modal.
+ *
+ * @param array<string,mixed> $args Arguments for template-parts/shared/unified-lead-form.php.
+ */
+function zhiraf_ufa_render_unified_lead_form( $args = array() ) {
+	get_template_part( 'template-parts/shared/unified-lead-form', null, is_array( $args ) ? $args : array() );
+}
+
+/**
  * Render consent fields (two unchecked checkboxes) + hidden honeypot.
  *
  * @param string $form_id Form id prefix.

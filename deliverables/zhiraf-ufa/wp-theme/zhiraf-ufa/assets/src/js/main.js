@@ -682,12 +682,9 @@
       return;
     }
     form.dataset.messengerPickerInit = '1';
-    var variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
-    if (form.getAttribute('data-form-context') === 'dest-turciya-compare') {
-      variant = 'compare';
-    }
-    if (form.id === 'turciya-lead-modal-form') {
-      variant = 'compare';
+    var variant = form.getAttribute('data-messenger-variant');
+    if (!variant) {
+      variant = form.id === 'lead-magnet-form' || form.getAttribute('data-form-context') === 'home-lead-magnet' ? 'lead' : 'quiz';
     }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
@@ -972,9 +969,7 @@
     }, 200);
   }
 
-  if (turciyaLeadForm) {
-    initMessengerPicker(turciyaLeadForm);
-  }
+  qsa('.unified-lead-form').forEach(initMessengerPicker);
 
   qsa('[data-turciya-lead-open], [data-curated-lead-open]').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
@@ -1719,7 +1714,6 @@
       });
     });
 
-    qsa('.excursion-final-cta__form', root).forEach(initMessengerPicker);
   }
 
   initExcursionLanding();

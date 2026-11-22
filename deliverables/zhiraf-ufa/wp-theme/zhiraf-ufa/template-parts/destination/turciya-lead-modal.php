@@ -87,7 +87,7 @@ $modal_lead   = ! empty( $args['modal_lead'] )
 	? (string) $args['modal_lead']
 	: ( function_exists( 'zhiraf_ufa_excursion_landing_slugs' ) && in_array( $dest_slug, zhiraf_ufa_excursion_landing_slugs(), true )
 		? __( 'Укажите телефон и выберите MAX, WhatsApp или Telegram — пришлём PDF-программу с днями и ориентиром по цене.', 'zhiraf-ufa' )
-		: __( 'Подберём 2–3 отеля с актуальными ценами на рейс из Уфы. Выберите мессенджер — пришлём расчёт туда.', 'zhiraf-ufa' ) );
+		: __( 'Укажите телефон и выберите мессенджер — пришлём даты и цену с вылетом из Уфы.', 'zhiraf-ufa' ) );
 ?>
 <div
 	id="turciya-lead-modal"
@@ -123,23 +123,35 @@ $modal_lead   = ! empty( $args['modal_lead'] )
 				if ( function_exists( 'zhiraf_ufa_render_messenger_picker' ) ) {
 					zhiraf_ufa_render_messenger_picker(
 						array(
-							'name'    => 'contact_channel',
+							'name'    => 'lead_messenger',
 							'default' => 'WhatsApp',
 							'label'   => __( 'Куда отправить подборку:', 'zhiraf-ufa' ),
 						)
 					);
 				}
 				?>
-				<label class="form-label dest-landing-lead-form__field">
+				<input type="hidden" name="contact_channel" value="WhatsApp" />
+				<label class="form-label dest-landing-lead-form__field turciya-lead-modal__phone-field">
 					<span class="dest-landing-lead-form__field-text"><?php esc_html_e( 'Телефон', 'zhiraf-ufa' ); ?></span>
-					<input type="tel" name="phone" placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>" required class="form-input" autocomplete="tel" inputmode="tel" />
+					<input
+						type="tel"
+						name="phone"
+						placeholder="<?php esc_attr_e( '+7 …', 'zhiraf-ufa' ); ?>"
+						required
+						class="form-input turciya-lead-modal__phone"
+						autocomplete="tel"
+						inputmode="tel"
+						data-phone-mask
+					/>
 				</label>
-				<textarea
-					name="message"
-					class="form-input dest-landing-lead-form__message"
-					rows="3"
-					placeholder="<?php esc_attr_e( 'Кемер или Сиде, даты, возраст детей, бюджет', 'zhiraf-ufa' ); ?>"
-				><?php echo esc_textarea( $wa_text ); ?></textarea>
+				<div class="turciya-lead-modal__message-wrap">
+					<textarea
+						name="message"
+						class="form-input dest-landing-lead-form__message turciya-lead-modal__message"
+						rows="4"
+						placeholder="<?php esc_attr_e( 'Кемер или Сиде, даты, возраст детей, бюджет', 'zhiraf-ufa' ); ?>"
+					><?php echo esc_textarea( $wa_text ); ?></textarea>
+				</div>
 				<div class="zhiraf-hp" aria-hidden="true">
 					<input type="hidden" name="tour" value="<?php echo esc_attr( $default_tour ); ?>" data-lead-tour id="turciya-lead-modal-tour" />
 					<input type="hidden" name="destination" value="<?php echo esc_attr( $dest_name ); ?>" />
@@ -151,7 +163,7 @@ $modal_lead   = ! empty( $args['modal_lead'] )
 					zhiraf_ufa_consent_fields( $consent_id );
 				}
 				?>
-				<button type="submit" class="btn btn--primary btn--lg btn--block" data-messenger-submit-label>
+				<button type="submit" class="btn btn--primary btn--lg btn--block rounded-xl turciya-lead-modal__submit" data-messenger-submit-label>
 					<?php esc_html_e( 'Отправить в WhatsApp →', 'zhiraf-ufa' ); ?>
 				</button>
 				<p class="form-status" role="status" aria-live="polite"></p>

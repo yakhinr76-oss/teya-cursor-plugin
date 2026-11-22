@@ -2148,15 +2148,104 @@
   cursor: pointer;
 }
 
+.turciya-lead-modal__panel {
+  border-radius: 1.5rem;
+  max-width: 440px;
+  padding: clamp(1.35rem, 3vw, 1.75rem) clamp(1.15rem, 3vw, 1.5rem);
+  box-shadow: 0 20px 50px rgb(43 43 43 / 0.12);
+}
+
+.turciya-lead-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.turciya-lead-modal__form .messenger-picker {
+  margin-bottom: 0.25rem;
+}
+
 .turciya-lead-modal__form .messenger-picker__inner {
   min-height: 3.5rem;
   padding: 0.625rem 0.85rem;
+  border-radius: 0.85rem;
+}
+
+.turciya-lead-modal__phone-field {
+  margin: 0;
+}
+
+.turciya-lead-modal__phone-field .dest-landing-lead-form__field-text {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.turciya-lead-modal__phone {
+  width: 100%;
+  border: 1px solid #e7e5e4;
+  border-radius: 9999px;
+  padding: 0.85rem 1.2rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  background: var(--color-white);
+  box-shadow: inset 0 1px 2px rgb(43 43 43 / 0.04);
+}
+
+.turciya-lead-modal__phone:focus {
+  outline: none;
+  border-color: rgb(200 90 50 / 0.45);
+  box-shadow: 0 0 0 3px rgb(200 90 50 / 0.12);
+}
+
+.turciya-lead-modal__message-wrap {
+  position: relative;
+}
+
+.turciya-lead-modal__message {
+  width: 100%;
+  min-height: 6.5rem;
+  border: 1px solid #e7e5e4;
+  border-radius: 1.15rem;
+  padding: 0.95rem 1.05rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  background: #fafaf9;
+  resize: vertical;
+}
+
+.turciya-lead-modal__message-wrap::before {
+  content: '';
+  position: absolute;
+  left: 1.1rem;
+  bottom: -6px;
+  width: 14px;
+  height: 14px;
+  background: #fafaf9;
+  border-left: 1px solid #e7e5e4;
+  border-bottom: 1px solid #e7e5e4;
+  transform: rotate(-45deg);
+  pointer-events: none;
+}
+
+.turciya-lead-modal__submit {
+  margin-top: 0.15rem;
 }
 
 .turciya-lead-modal__form .form-consents {
   font-size: 0.6875rem;
   line-height: 1.4;
   color: #a8a29e;
+}
+
+.turciya-lead-modal .home-quiz__lead--modal {
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-muted);
 }
 
 .turciya-catalog-wa-strip__link.btn {

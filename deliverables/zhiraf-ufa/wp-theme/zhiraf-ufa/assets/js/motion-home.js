@@ -27,6 +27,23 @@
     return d;
   }
 
+  function skipRevealAnimation(el) {
+    if (!el || !el.classList || !el.classList.contains('reveal')) {
+      return true;
+    }
+    if (el.classList.contains('dest-hub-card')) {
+      return true;
+    }
+    if (el.closest && el.closest('#destinations-hub') && el.matches('a, button')) {
+      return true;
+    }
+    var tag = el.tagName;
+    if (tag === 'A' || tag === 'BUTTON') {
+      return true;
+    }
+    return false;
+  }
+
   mm.add('(prefers-reduced-motion: reduce)', function () {
     gsap.set('.reveal', { clearProps: 'all', opacity: 1, y: 0 });
   });
@@ -60,6 +77,9 @@
 
     gsap.utils.toArray('.reveal').forEach(function (el) {
       if (hero && hero.contains(el)) {
+        return;
+      }
+      if (skipRevealAnimation(el)) {
         return;
       }
       gsap.from(el, {

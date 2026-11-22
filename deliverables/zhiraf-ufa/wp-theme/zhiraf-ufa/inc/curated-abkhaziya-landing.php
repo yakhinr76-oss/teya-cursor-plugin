@@ -385,7 +385,7 @@ function zhiraf_ufa_abkhaziya_json_row_to_card( $row ) {
 	$pool_id    = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$image      = zhiraf_ufa_abkhaziya_image_from_json_row( $row );
 
-	return array(
+	$card = array(
 		'destination_slug' => 'abkhaziya',
 		'resort'           => ! empty( $resort[0] ) ? (string) $resort[0] : 'gagra',
 		'pool_id'          => $pool_id,
@@ -412,6 +412,7 @@ function zhiraf_ufa_abkhaziya_json_row_to_card( $row ) {
 		'caveat'           => zhiraf_ufa_abkhaziya_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_abkhaziya_pool_price_rub( $row ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -556,7 +557,7 @@ function zhiraf_ufa_abkhaziya_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_abkhaziya_catalog_filters() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -571,6 +572,7 @@ function zhiraf_ufa_abkhaziya_catalog_filters() {
 		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологий заход и питание.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-adults', 'group' => 'need', 'label' => __( '💑 Парам', 'zhiraf-ufa' ), 'title' => __( 'Спокойные пары', 'zhiraf-ufa' ), 'desc' => __( 'Тишина и вид на море.', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -581,7 +583,7 @@ function zhiraf_ufa_abkhaziya_catalog_default_copy() {
 
 	$pool_size = count( zhiraf_ufa_abkhaziya_json_rows() );
 
-	return array(
+	$card = array(
 		'eyebrow' => sprintf(
 			/* translators: %d: hotels count in JSON pool */
 			__( 'Выборка из базы %d отелей', 'zhiraf-ufa' ),
@@ -590,6 +592,7 @@ function zhiraf_ufa_abkhaziya_catalog_default_copy() {
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Абхазии', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Топ-6 для старта; «Показать ещё» откроет все 25. Нужен отель вне витрины — подберём из полной базы Tourvisor.', 'zhiraf-ufa' ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -617,13 +620,14 @@ function zhiraf_ufa_abkhaziya_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_abkhaziya_resort_chips() {
-	return array(
+	$card = array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-gagra', 'label' => __( 'Гагра', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-pitsunda', 'label' => __( 'Пицунда', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-new_afon', 'label' => __( 'Н. Афон', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-sukhum', 'label' => __( 'Сухум', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -635,7 +639,7 @@ function zhiraf_ufa_abkhaziya_resort_pick_cards() {
 	$counts = zhiraf_ufa_abkhaziya_resort_hotel_counts();
 	$guide  = __( 'К отелям →', 'zhiraf-ufa' );
 
-	return array(
+	$card = array(
 		array(
 			'id'          => 'gagra',
 			'filter_id'   => 'resort-gagra',
@@ -706,16 +710,18 @@ function zhiraf_ufa_abkhaziya_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_abkhaziya_expert_nuances() {
-	return array(
+	$card = array(
 		array( 'icon' => '🛂', 'title' => __( 'Паспорт РФ', 'zhiraf-ufa' ), 'text' => __( 'Внутренний паспорт и рубли — без заграна.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🚐', 'title' => __( 'Трансфер', 'zhiraf-ufa' ), 'text' => __( 'Встреча в Адлере и довоз до отеля в Гагре, Пицунде, Новом Афоне или Сухуме.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🏨', 'title' => __( '25 + полная база', 'zhiraf-ufa' ), 'text' => __( 'На странице — эталонные 25 с текстами; по кнопке в WhatsApp найдём вариант в полном каталоге Tourvisor.', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

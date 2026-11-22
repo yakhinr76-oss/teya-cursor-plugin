@@ -383,7 +383,7 @@ function zhiraf_ufa_maldives_json_row_to_card( $row ) {
 	$pool_id    = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$image      = zhiraf_ufa_maldives_image_from_json_row( $row );
 
-	return array(
+	$card = array(
 		'destination_slug' => 'maldivy',
 		'resort'           => ! empty( $resort[0] ) ? (string) $resort[0] : 'north_male',
 		'pool_id'          => $pool_id,
@@ -410,6 +410,7 @@ function zhiraf_ufa_maldives_json_row_to_card( $row ) {
 		'caveat'           => zhiraf_ufa_maldives_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_maldives_pool_price_rub( $row ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -593,7 +594,7 @@ function zhiraf_ufa_maldives_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_maldives_catalog_filters() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -665,6 +666,7 @@ function zhiraf_ufa_maldives_catalog_filters() {
 			'desc'  => __( 'Богатый AI без переплаты за гидросамолёт.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -673,11 +675,12 @@ function zhiraf_ufa_maldives_catalog_filters() {
 function zhiraf_ufa_maldives_catalog_default_copy() {
 	$filters = zhiraf_ufa_maldives_catalog_filters();
 
-	return array(
+	$card = array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных резортов на Мальдивах', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу: семейный Южный Ари, быстрый катер с Мале, риф у виллы или adults only. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -713,13 +716,14 @@ function zhiraf_ufa_maldives_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_maldives_resort_chips() {
-	return array(
+	$card = array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-north_male', 'label' => __( 'Северный Мале', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-south_ari', 'label' => __( 'Южный Ари', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-raa', 'label' => __( 'Раа', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-lhaviyani', 'label' => __( 'Лавиани', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -731,7 +735,7 @@ function zhiraf_ufa_maldives_resort_pick_cards() {
 	$counts     = zhiraf_ufa_maldives_resort_hotel_counts();
 	$guide_here = __( 'К отелям →', 'zhiraf-ufa' );
 
-	return array(
+	$card = array(
 		array(
 			'id'          => 'north_male',
 			'filter_id'   => 'resort-north_male',
@@ -805,13 +809,14 @@ function zhiraf_ufa_maldives_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_maldives_expert_nuances() {
-	return array(
+	$card = array(
 		array(
 			'icon'  => '✈',
 			'title' => __( 'Перелёт из Уфы', 'zhiraf-ufa' ),
@@ -828,4 +833,5 @@ function zhiraf_ufa_maldives_expert_nuances() {
 			'text'  => __( 'На резорт-острове кафе снаружи нет — сравниваем базовый AI, Premium и Dine Around. Условия фиксируем в договоре, включая налоги TGST.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }

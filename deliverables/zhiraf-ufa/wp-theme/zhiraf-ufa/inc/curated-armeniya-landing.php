@@ -378,7 +378,7 @@ function zhiraf_ufa_armeniya_json_row_to_card( $row ) {
 	$pool_id    = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$image      = zhiraf_ufa_armeniya_image_from_json_row( $row );
 
-	return array(
+	$card = array(
 		'destination_slug' => 'armeniya',
 		'resort'           => ! empty( $resort[0] ) ? (string) $resort[0] : 'yerevan',
 		'pool_id'          => $pool_id,
@@ -405,6 +405,7 @@ function zhiraf_ufa_armeniya_json_row_to_card( $row ) {
 		'caveat'           => zhiraf_ufa_armeniya_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_armeniya_pool_price_rub( $row ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -588,7 +589,7 @@ function zhiraf_ufa_armeniya_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_armeniya_catalog_filters() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -603,6 +604,7 @@ function zhiraf_ufa_armeniya_catalog_filters() {
 		array( 'id' => 'resort-jermuk', 'group' => 'resort', 'label' => __( '🩺 Джермук', 'zhiraf-ufa' ), 'title' => __( 'Джермук', 'zhiraf-ufa' ), 'desc' => __( 'Оздоровительный формат: минеральная вода, неспешный ритм, старшему поколению.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( '3–4★', 'zhiraf-ufa' ), 'desc' => __( 'Бутики и сетевые отели.', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -611,11 +613,12 @@ function zhiraf_ufa_armeniya_catalog_filters() {
 function zhiraf_ufa_armeniya_catalog_default_copy() {
 	$filters = zhiraf_ufa_armeniya_catalog_filters();
 
-	return array(
+	$card = array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Армении', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -643,7 +646,7 @@ function zhiraf_ufa_armeniya_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_armeniya_resort_chips() {
-	return array(
+	$card = array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-yerevan', 'label' => __( 'Ереван', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-dilijan', 'label' => __( 'Дилижан', 'zhiraf-ufa' ) ),
@@ -651,6 +654,7 @@ function zhiraf_ufa_armeniya_resort_chips() {
 		array( 'id' => 'resort-tsaghkadzor', 'label' => __( 'Цахкадзор', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-jermuk', 'label' => __( 'Джермук', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -662,7 +666,7 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 	$counts = zhiraf_ufa_armeniya_resort_hotel_counts();
 	$guide  = __( 'Подобрать тур →', 'zhiraf-ufa' );
 
-	return array(
+	$card = array(
 		array(
 			'id'          => 'yerevan',
 			'filter_id'   => 'resort-yerevan',
@@ -755,17 +759,19 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_armeniya_expert_nuances() {
-	return array(
+	$card = array(
 		array( 'icon' => '🏨', 'title' => __( '25 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Топ-6 на старте, фильтры и «Показать ещё» — весь эталонный пул.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🛂', 'title' => __( 'Безвиз', 'zhiraf-ufa' ), 'text' => __( 'Паспорт РФ — въезд без визы.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🍷', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Бронируем столики и маршруты с дегустациями.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🏔', 'title' => __( 'Севан', 'zhiraf-ufa' ), 'text' => __( '1–2 ночи у озера — закладываем в пакет.', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

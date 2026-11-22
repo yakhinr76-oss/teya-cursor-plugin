@@ -1000,11 +1000,19 @@
     }
   }
 
+  function tripadvisorUrlFromLocationId(taId) {
+    var id = parseInt(String(taId || '').replace(/\D/g, ''), 10);
+    if (!id) return '';
+    return 'https://www.tripadvisor.com/Hotel_Review-d' + id + '-Reviews.html';
+  }
+
   function openHotelModalFromCard(card) {
     if (!hotelModal || !hotelModalBody || !card) return;
     var taUrl = card.getAttribute('data-tripadvisor-url') || '';
     var taId = card.getAttribute('data-ta-location-id') || '';
-    if (!taUrl && !taId) return;
+    if (!taUrl && taId) {
+      taUrl = tripadvisorUrlFromLocationId(taId);
+    }
     var nameEl = qs('.turciya-curated-card__title', card);
     var uspEl = qs('.turciya-curated-card__usp', card);
     var caveatEl = qs('.turciya-curated-card__honest-text', card);

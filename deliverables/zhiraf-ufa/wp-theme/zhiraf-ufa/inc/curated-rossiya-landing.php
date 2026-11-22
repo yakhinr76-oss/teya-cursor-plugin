@@ -579,7 +579,7 @@ function zhiraf_ufa_rossiya_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_rossiya_catalog_filters() {
-	$card = array(
+	return array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -595,7 +595,6 @@ function zhiraf_ufa_rossiya_catalog_filters() {
 		array( 'id' => 'resort-nature', 'group' => 'resort', 'label' => __( '🌲 Природа', 'zhiraf-ufa' ), 'title' => __( 'Байкал, Алтай, Карелия', 'zhiraf-ufa' ), 'desc' => __( 'Эко-отели и отдых у воды.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Питание и бассейн.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -606,7 +605,7 @@ function zhiraf_ufa_rossiya_catalog_default_copy() {
 
 	$pool_size = count( zhiraf_ufa_rossiya_json_rows() );
 
-	$card = array(
+	return array(
 		'eyebrow' => sprintf(
 			/* translators: %d: hotels count in JSON pool */
 			__( 'Выборка из базы %d отелей', 'zhiraf-ufa' ),
@@ -615,7 +614,6 @@ function zhiraf_ufa_rossiya_catalog_default_copy() {
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в России', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Топ-6 для быстрого старта; ниже — «Показать ещё» по всей базе. Пакет с перелётом из Уфы или только отель.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -643,7 +641,7 @@ function zhiraf_ufa_rossiya_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_rossiya_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-sochi', 'label' => __( 'Сочи', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-polyana', 'label' => __( 'Поляна', 'zhiraf-ufa' ) ),
@@ -652,7 +650,6 @@ function zhiraf_ufa_rossiya_resort_chips() {
 		array( 'id' => 'resort-city', 'label' => __( 'Города', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-nature', 'label' => __( 'Природа', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -664,7 +661,7 @@ function zhiraf_ufa_rossiya_resort_pick_cards() {
 	$counts = zhiraf_ufa_rossiya_resort_hotel_counts();
 	$guide  = __( 'К отелям →', 'zhiraf-ufa' );
 
-	$card = array(
+	return array(
 		array(
 			'id'          => 'sochi',
 			'filter_id'   => 'resort-sochi',
@@ -769,18 +766,16 @@ function zhiraf_ufa_rossiya_resort_pick_cards() {
 			),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_rossiya_expert_nuances() {
-	$card = array(
+	return array(
 		array( 'icon' => '✈', 'title' => __( 'Перелёты по РФ', 'zhiraf-ufa' ), 'text' => __( 'Сочи, Анапа, Минводы, Москва и регионы — или бронь только отеля.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🏨', 'title' => __( 'Только проживание', 'zhiraf-ufa' ), 'text' => __( 'Блочные тарифы, если билеты и ж/д уже есть.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🗺', 'title' => __( '50 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Фильтры по Сочи, Поляне, КМВ, городам и природе — «Показать ещё» откроет весь пул.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

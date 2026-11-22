@@ -601,7 +601,7 @@ function zhiraf_ufa_vietnam_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_vietnam_catalog_filters() {
-	$card = array(
+	return array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -673,7 +673,6 @@ function zhiraf_ufa_vietnam_catalog_filters() {
 			'desc'  => __( 'Честные 3–4★ у моря без переплаты за бренд.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -682,12 +681,11 @@ function zhiraf_ufa_vietnam_catalog_filters() {
 function zhiraf_ufa_vietnam_catalog_default_copy() {
 	$filters = zhiraf_ufa_vietnam_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Вьетнаме', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу: All Inclusive в Камрани, остров Фукуок, городской Нячанг или дюны Муйне. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -721,14 +719,13 @@ function zhiraf_ufa_vietnam_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_vietnam_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-cam_ranh', 'label' => __( 'Камрань', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-phu_quoc', 'label' => __( 'Фукуок', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-nha_trang', 'label' => __( 'Нячанг', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-muine', 'label' => __( 'Муйне', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -740,7 +737,7 @@ function zhiraf_ufa_vietnam_resort_pick_cards() {
 	$counts     = zhiraf_ufa_vietnam_resort_hotel_counts();
 	$guide_here = __( 'К отелям →', 'zhiraf-ufa' );
 
-	$card = array(
+	return array(
 		array(
 			'id'          => 'cam_ranh',
 			'filter_id'   => 'resort-cam_ranh',
@@ -814,14 +811,13 @@ function zhiraf_ufa_vietnam_resort_pick_cards() {
 			),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_vietnam_expert_nuances() {
-	$card = array(
+	return array(
 		array(
 			'icon'  => '🛂',
 			'title' => __( 'Без визы до 45 дней', 'zhiraf-ufa' ),
@@ -838,5 +834,4 @@ function zhiraf_ufa_vietnam_expert_nuances() {
 			'text'  => __( 'В городском Нячанге чаще BB и кафе с фо-бо. На Бай Дай в Камрани — крупные резорты с All Inclusive и аквапарками: фиксируем формат питания в договоре до оплаты.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }

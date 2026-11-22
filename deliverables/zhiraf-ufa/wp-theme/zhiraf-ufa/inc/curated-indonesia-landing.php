@@ -573,7 +573,7 @@ function zhiraf_ufa_indonesia_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_indonesia_catalog_filters() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры на Бали: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Нуса-Дуа, Семиньяк, Санур и Убуд. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-nusa_dua', 'group' => 'resort', 'label' => __( '🏝 Нуса-Дуа', 'zhiraf-ufa' ), 'title' => __( 'Нуса-Дуа', 'zhiraf-ufa' ), 'desc' => __( 'Спокойное море и резорты 5★.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-seminyak', 'group' => 'resort', 'label' => __( '🌅 Семиньяк', 'zhiraf-ufa' ), 'title' => __( 'Семиньяк / Чангу', 'zhiraf-ufa' ), 'desc' => __( 'Закаты и кафе.', 'zhiraf-ufa' ) ),
@@ -582,7 +582,6 @@ function zhiraf_ufa_indonesia_catalog_filters() {
 		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Нуса-Дуа и Санур.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( 'Честные 4★.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -591,12 +590,11 @@ function zhiraf_ufa_indonesia_catalog_filters() {
 function zhiraf_ufa_indonesia_catalog_default_copy() {
 	$filters = zhiraf_ufa_indonesia_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Индонезии', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -624,14 +622,13 @@ function zhiraf_ufa_indonesia_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_indonesia_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-nusa_dua', 'label' => __( 'Нуса-Дуа', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-seminyak', 'label' => __( 'Семиньяк', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-sanur', 'label' => __( 'Санур', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-ubud', 'label' => __( 'Убуд', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -642,24 +639,22 @@ function zhiraf_ufa_indonesia_resort_chips() {
 function zhiraf_ufa_indonesia_resort_pick_cards() {
 	$counts = zhiraf_ufa_indonesia_resort_hotel_counts();
 	$guide = __( 'К отелям →', 'zhiraf-ufa' );
-	$card = array(
+	return array(
 		array( 'id' => 'nusa_dua', 'filter_id' => 'resort-nusa_dua', 'guide_url' => zhiraf_ufa_indonesia_resort_landing_url( 'nusa_dua' ), 'guide_label' => $guide, 'name' => __( 'Нуса-Дуа', 'zhiraf-ufa' ), 'subtitle' => __( 'Спокойное море', 'zhiraf-ufa' ), 'tag' => __( 'С детьми', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['nusa_dua'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array( array( 'type' => 'pro', 'text' => __( 'Пологий заход и отели-клубы', 'zhiraf-ufa' ) ) ) ),
 		array( 'id' => 'seminyak', 'filter_id' => 'resort-seminyak', 'guide_url' => zhiraf_ufa_indonesia_resort_landing_url( 'seminyak' ), 'guide_label' => $guide, 'name' => __( 'Семиньяк', 'zhiraf-ufa' ), 'subtitle' => __( 'Закаты и кафе', 'zhiraf-ufa' ), 'tag' => __( 'Для пар', 'zhiraf-ufa' ), 'tag_mod' => 'adults', 'transfer' => __( 'Серф и вечер', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['seminyak'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array( array( 'type' => 'info', 'text' => __( 'Волны — купание по флажкам', 'zhiraf-ufa' ) ) ) ),
 		array( 'id' => 'sanur', 'filter_id' => 'resort-sanur', 'guide_url' => zhiraf_ufa_indonesia_resort_landing_url( 'sanur' ), 'guide_label' => $guide, 'name' => __( 'Санур', 'zhiraf-ufa' ), 'subtitle' => __( 'Семейный пляж', 'zhiraf-ufa' ), 'tag' => __( 'Релакс', 'zhiraf-ufa' ), 'tag_mod' => 'nature', 'transfer' => __( 'Близко к аэропорту', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['sanur'] ?? 0, 'accent_mod' => 'amber', 'bullets' => array() ),
 		array( 'id' => 'ubud', 'filter_id' => 'resort-ubud', 'guide_url' => zhiraf_ufa_indonesia_resort_landing_url( 'ubud' ), 'guide_label' => $guide, 'name' => __( 'Убуд', 'zhiraf-ufa' ), 'subtitle' => __( 'Джунгли', 'zhiraf-ufa' ), 'tag' => __( 'Без моря', 'zhiraf-ufa' ), 'tag_mod' => 'value', 'transfer' => __( 'Комбо с пляжем', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['ubud'] ?? 0, 'accent_mod' => 'lux', 'bullets' => array() ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_indonesia_expert_nuances() {
-	$card = array(
+	return array(
 		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Долгий перелёт со стыковкой — закладываем день на дорогу и отдых в первый день.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🛂', 'title' => __( 'VoA и сбор Бали', 'zhiraf-ufa' ), 'text' => __( 'Виза по прилёту или e-VoA, плюс туристический сбор острова — напомним до оплаты тура.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🌊', 'title' => __( 'Где купаться', 'zhiraf-ufa' ), 'text' => __( 'Спокойная вода — Нуса-Дуа и Санур. Семиньяк и Чангу — серф; для детей чаще Нуса-Дуа.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

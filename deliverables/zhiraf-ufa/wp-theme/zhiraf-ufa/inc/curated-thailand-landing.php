@@ -596,7 +596,7 @@ function zhiraf_ufa_thailand_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_thailand_catalog_filters() {
-	$card = array(
+	return array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -661,7 +661,6 @@ function zhiraf_ufa_thailand_catalog_filters() {
 			'desc'  => __( 'Честные 3–4★ у моря без переплаты за бренд.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -670,12 +669,11 @@ function zhiraf_ufa_thailand_catalog_filters() {
 function zhiraf_ufa_thailand_catalog_default_copy() {
 	$filters = zhiraf_ufa_thailand_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Таиланде', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу: семейный Пхукет, аквапарк Паттайи, тихий Као-Лак или городской Патонг. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -708,14 +706,13 @@ function zhiraf_ufa_thailand_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_thailand_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-phuket', 'label' => __( 'Пхукет', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-pattaya', 'label' => __( 'Паттайя', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-khaolak', 'label' => __( 'Као-Лак', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-samui', 'label' => __( 'Самуи', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -727,7 +724,7 @@ function zhiraf_ufa_thailand_resort_pick_cards() {
 	$counts     = zhiraf_ufa_thailand_resort_hotel_counts();
 	$guide_here = __( 'К отелям →', 'zhiraf-ufa' );
 
-	$card = array(
+	return array(
 		array(
 			'id'          => 'phuket',
 			'filter_id'   => 'resort-phuket',
@@ -801,14 +798,13 @@ function zhiraf_ufa_thailand_resort_pick_cards() {
 			),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_thailand_expert_nuances() {
-	$card = array(
+	return array(
 		array(
 			'icon'  => '✈',
 			'title' => __( 'Перелёт из Уфы', 'zhiraf-ufa' ),
@@ -825,5 +821,4 @@ function zhiraf_ufa_thailand_expert_nuances() {
 			'text'  => __( 'В Таиланде чаще выгодно брать завтраки и ужинать в кафе. Если нужен AI — подбираем клубные резорты заранее и фиксируем в договоре.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }

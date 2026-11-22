@@ -555,7 +555,7 @@ function zhiraf_ufa_india_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_india_catalog_filters() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Гоа: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Южный и Северный Гоа — пляж и BB. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-south_goa', 'group' => 'resort', 'label' => __( '🏖 Юг Гоа', 'zhiraf-ufa' ), 'title' => __( 'Южный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Тишина и длинные пляжи.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-north_goa', 'group' => 'resort', 'label' => __( '🌴 Север Гоа', 'zhiraf-ufa' ), 'title' => __( 'Северный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Кафе и вечерняя жизнь.', 'zhiraf-ufa' ) ),
@@ -565,7 +565,6 @@ function zhiraf_ufa_india_catalog_filters() {
 		array( 'id' => 'need-premium', 'group' => 'need', 'label' => __( '✨ 5★ на юге', 'zhiraf-ufa' ), 'title' => __( 'Классика Южного Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Taj, Leela и сетевые резорты на длинных пляжах.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '3–4★ у моря без переплаты за бренд.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -574,12 +573,11 @@ function zhiraf_ufa_india_catalog_filters() {
 function zhiraf_ufa_india_catalog_default_copy() {
 	$filters = zhiraf_ufa_india_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Индии', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -607,12 +605,11 @@ function zhiraf_ufa_india_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_india_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-south_goa', 'label' => __( 'Юг Гоа', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-north_goa', 'label' => __( 'Север Гоа', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -623,22 +620,20 @@ function zhiraf_ufa_india_resort_chips() {
 function zhiraf_ufa_india_resort_pick_cards() {
 	$counts = zhiraf_ufa_india_resort_hotel_counts();
 	$guide = __( 'К отелям →', 'zhiraf-ufa' );
-	$card = array(
+	return array(
 		array( 'id' => 'south_goa', 'filter_id' => 'resort-south_goa', 'guide_url' => zhiraf_ufa_india_resort_landing_url( 'south_goa' ), 'guide_label' => $guide, 'name' => __( 'Южный Гоа', 'zhiraf-ufa' ), 'subtitle' => __( 'Тихие пляжи', 'zhiraf-ufa' ), 'tag' => __( 'Семья', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['south_goa'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array( array( 'type' => 'pro', 'text' => __( 'Бенаулим и Кавелоссим', 'zhiraf-ufa' ) ) ) ),
 		array( 'id' => 'north_goa', 'filter_id' => 'resort-north_goa', 'guide_url' => zhiraf_ufa_india_resort_landing_url( 'north_goa' ), 'guide_label' => $guide, 'name' => __( 'Северный Гоа', 'zhiraf-ufa' ), 'subtitle' => __( 'Рынки и кафе', 'zhiraf-ufa' ), 'tag' => __( 'Активно', 'zhiraf-ufa' ), 'tag_mod' => 'adults', 'transfer' => __( 'Ближе к аэропорту GOI', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['north_goa'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array( array( 'type' => 'info', 'text' => __( 'Сезон: ноябрь — апрель', 'zhiraf-ufa' ) ) ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_india_expert_nuances() {
-	$card = array(
+	return array(
 		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Стыковка в Москве или Дубае — считаем время и багаж до брони.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🛂', 'title' => __( 'e-Visa', 'zhiraf-ufa' ), 'text' => __( 'Туристическая e-Visa оформляется онлайн до вылета — проверим данные паспорта.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🏖', 'title' => __( 'Юг или Север', 'zhiraf-ufa' ), 'text' => __( 'Юг — длинный песок и тишина. Север — шаки, рынки и вечер. Подберём под состав и месяц.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

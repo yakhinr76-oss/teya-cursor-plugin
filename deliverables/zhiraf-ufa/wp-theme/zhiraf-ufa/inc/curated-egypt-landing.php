@@ -587,7 +587,7 @@ function zhiraf_ufa_egypt_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_egypt_catalog_filters() {
-	$card = array(
+	return array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -652,7 +652,6 @@ function zhiraf_ufa_egypt_catalog_filters() {
 			'desc'  => __( 'Честный All Inclusive без переплаты за бренд.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -661,12 +660,11 @@ function zhiraf_ufa_egypt_catalog_filters() {
 function zhiraf_ufa_egypt_catalog_default_copy() {
 	$filters = zhiraf_ufa_egypt_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Египте', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Подбираем под задачу: песок Хургады, рифы Шарма или люкс Сахл-Хашиш. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -699,14 +697,13 @@ function zhiraf_ufa_egypt_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_egypt_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-hurghada', 'label' => __( 'Хургада — песок', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-sharm', 'label' => __( 'Шарм — рифы', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-makadi', 'label' => __( 'Макади — семьи', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-sahl', 'label' => __( 'Сахл-Хашиш — люкс', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -718,7 +715,7 @@ function zhiraf_ufa_egypt_resort_pick_cards() {
 	$counts     = zhiraf_ufa_egypt_resort_hotel_counts();
 	$guide_here = __( 'На страницу →', 'zhiraf-ufa' );
 
-	$card = array(
+	return array(
 		array(
 			'id'          => 'hurghada',
 			'filter_id'   => 'resort-hurghada',
@@ -793,14 +790,13 @@ function zhiraf_ufa_egypt_resort_pick_cards() {
 			),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_egypt_expert_nuances() {
-	$card = array(
+	return array(
 		array(
 			'icon'  => '🩴',
 			'title' => __( 'Песок или понтон', 'zhiraf-ufa' ),
@@ -817,5 +813,4 @@ function zhiraf_ufa_egypt_expert_nuances() {
 			'text'  => __( 'С декабря по февраль на открытых пляжах Хургады бывает ветер — подбираем лагуны, подогреваемые бассейны и бухты Шарма (Наама, Рас-Ум-Сид).', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }

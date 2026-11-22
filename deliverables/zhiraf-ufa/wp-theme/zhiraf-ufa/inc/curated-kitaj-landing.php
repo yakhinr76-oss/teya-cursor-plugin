@@ -575,7 +575,7 @@ function zhiraf_ufa_kitaj_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_kitaj_catalog_filters() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Санью: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Дадунхай, Ялунвань и Хайтан — цены за двоих с перелётом (часто стыковка в Москве).', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-dadonghai', 'group' => 'resort', 'label' => __( '🏙 Дадунхай', 'zhiraf-ufa' ), 'title' => __( 'Дадунхай', 'zhiraf-ufa' ), 'desc' => __( 'Центр, кафе и инфраструктура.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-yalong', 'group' => 'resort', 'label' => __( '🏝 Ялунвань', 'zhiraf-ufa' ), 'title' => __( 'Ялунвань', 'zhiraf-ufa' ), 'desc' => __( 'Широкий пляж и премиум-отели.', 'zhiraf-ufa' ) ),
@@ -583,7 +583,6 @@ function zhiraf_ufa_kitaj_catalog_filters() {
 		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Бассейны и анимация.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '4–5★ у моря.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -592,12 +591,11 @@ function zhiraf_ufa_kitaj_catalog_filters() {
 function zhiraf_ufa_kitaj_catalog_default_copy() {
 	$filters = zhiraf_ufa_kitaj_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в Китайе', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -625,13 +623,12 @@ function zhiraf_ufa_kitaj_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_kitaj_resort_chips() {
-	$card = array(
+	return array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-dadonghai', 'label' => __( 'Дадунхай', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-yalong', 'label' => __( 'Ялунвань', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-haitang', 'label' => __( 'Хайтан', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -642,22 +639,20 @@ function zhiraf_ufa_kitaj_resort_chips() {
 function zhiraf_ufa_kitaj_resort_pick_cards() {
 	$counts = zhiraf_ufa_kitaj_resort_hotel_counts();
 	$guide = __( 'К отелям →', 'zhiraf-ufa' );
-	$card = array(
+	return array(
 		array( 'id' => 'dadonghai', 'filter_id' => 'resort-dadonghai', 'guide_url' => zhiraf_ufa_kitaj_resort_landing_url( 'dadonghai' ), 'guide_label' => $guide, 'name' => __( 'Дадунхай', 'zhiraf-ufa' ), 'subtitle' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'tag' => __( 'Старт', 'zhiraf-ufa' ), 'tag_mod' => 'family', 'transfer' => __( 'Стыковка в Москве', 'zhiraf-ufa' ), 'featured' => true, 'hotel_count' => $counts['dadonghai'] ?? 0, 'accent_mod' => 'emerald', 'bullets' => array() ),
 		array( 'id' => 'yalong', 'filter_id' => 'resort-yalong', 'guide_url' => zhiraf_ufa_kitaj_resort_landing_url( 'yalong' ), 'guide_label' => $guide, 'name' => __( 'Ялунвань', 'zhiraf-ufa' ), 'subtitle' => __( 'Пляж 7 км', 'zhiraf-ufa' ), 'tag' => __( 'Релакс', 'zhiraf-ufa' ), 'tag_mod' => 'nature', 'transfer' => __( 'Трансфер 40–50 мин', 'zhiraf-ufa' ), 'featured' => false, 'hotel_count' => $counts['yalong'] ?? 0, 'accent_mod' => 'teal', 'bullets' => array() ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_kitaj_expert_nuances() {
-	$card = array(
+	return array(
 		array( 'icon' => '🛂', 'title' => __( 'Виза', 'zhiraf-ufa' ), 'text' => __( 'Групповая виза по прилёту или оформление заранее — уточним до оплаты.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '✈', 'title' => __( 'Вылет', 'zhiraf-ufa' ), 'text' => __( 'Из Уфы — стыковка в Москве; считаем багаж и время на пересадку.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🌴', 'title' => __( 'Бухты', 'zhiraf-ufa' ), 'text' => __( 'Дадунхай — город и кафе; Ялунвань — широкий пляж; Хайтан — новые отели.', 'zhiraf-ufa' ) ),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

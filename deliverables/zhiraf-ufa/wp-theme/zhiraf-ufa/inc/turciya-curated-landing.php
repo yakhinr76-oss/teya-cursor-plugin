@@ -947,7 +947,7 @@ function zhiraf_ufa_turciya_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_turciya_catalog_filters() {
-	$card = array(
+	return array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -1013,7 +1013,6 @@ function zhiraf_ufa_turciya_catalog_filters() {
 			'desc'  => __( 'Отели, где сервис и питание существенно выше уплаченных денег.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1024,12 +1023,11 @@ function zhiraf_ufa_turciya_catalog_filters() {
 function zhiraf_ufa_turciya_catalog_default_copy() {
 	$filters = zhiraf_ufa_turciya_catalog_filters();
 
-	$card = array(
+	return array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : '',
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : '',
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1069,7 +1067,7 @@ function zhiraf_ufa_turciya_resort_hotel_counts() {
 function zhiraf_ufa_turciya_resort_pick_cards() {
 	$counts = zhiraf_ufa_turciya_resort_hotel_counts();
 
-	$card = array(
+	return array(
 		array(
 			'id'           => 'side',
 			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'side' ),
@@ -1189,7 +1187,6 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 			),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1198,7 +1195,7 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_turciya_expert_nuances() {
-	$card = array(
+	return array(
 		array(
 			'icon'  => '🌊',
 			'title' => __( 'Заход в море и пляжи', 'zhiraf-ufa' ),
@@ -1215,7 +1212,6 @@ function zhiraf_ufa_turciya_expert_nuances() {
 			'text'  => __( 'Вылет из Уфы в Анталью — в среднем 4,5–5 часов. Багаж, время вылета и трансфер фиксируем в договоре до оплаты.', 'zhiraf-ufa' ),
 		),
 	);
-	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**

@@ -357,7 +357,7 @@ function zhiraf_ufa_seychelles_json_row_to_card( $row ) {
 	$pool_id    = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$image      = zhiraf_ufa_seychelles_image_from_json_row( $row );
 
-	return array(
+	$card = array(
 		'destination_slug' => 'sejshely',
 		'resort'           => ! empty( $resort[0] ) ? (string) $resort[0] : 'mahe',
 		'pool_id'          => $pool_id,
@@ -384,6 +384,7 @@ function zhiraf_ufa_seychelles_json_row_to_card( $row ) {
 		'caveat'           => zhiraf_ufa_seychelles_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_seychelles_pool_price_rub( $row ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -567,7 +568,7 @@ function zhiraf_ufa_seychelles_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_seychelles_catalog_filters() {
-	return array(
+	$card = array(
 		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры на Сейшелы: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Маэ, Праслин и Ла-Диг — вылет из Уфы.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-mahe', 'group' => 'resort', 'label' => __( '🏝 Маэ', 'zhiraf-ufa' ), 'title' => __( 'Маэ', 'zhiraf-ufa' ), 'desc' => __( 'Аэропорт и Бо-Валлон.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-praslin', 'group' => 'resort', 'label' => __( '🌴 Праслин', 'zhiraf-ufa' ), 'title' => __( 'Праслин', 'zhiraf-ufa' ), 'desc' => __( 'Валлон де Мэ и паром.', 'zhiraf-ufa' ) ),
@@ -575,6 +576,7 @@ function zhiraf_ufa_seychelles_catalog_filters() {
 		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологие бухты Маэ.', 'zhiraf-ufa' ) ),
 		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( 'Селф-кейтеринг и 4★.', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -583,11 +585,12 @@ function zhiraf_ufa_seychelles_catalog_filters() {
 function zhiraf_ufa_seychelles_catalog_default_copy() {
 	$filters = zhiraf_ufa_seychelles_catalog_filters();
 
-	return array(
+	$card = array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей на Сейшелах', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу — семья, пары и честный BB по нашей базе 25 отелей. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -615,12 +618,13 @@ function zhiraf_ufa_seychelles_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_seychelles_resort_chips() {
-	return array(
+	$card = array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-mahe', 'label' => __( 'Маэ', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-praslin', 'label' => __( 'Праслин', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-la_digue', 'label' => __( 'Ла-Диг', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -631,7 +635,7 @@ function zhiraf_ufa_seychelles_resort_chips() {
 function zhiraf_ufa_seychelles_resort_pick_cards() {
 	$counts = zhiraf_ufa_seychelles_resort_hotel_counts();
 	$guide = __( 'К отелям →', 'zhiraf-ufa' );
-	return array(
+	$card = array(
 		array(
 			'id'          => 'mahe',
 			'filter_id'   => 'resort-mahe',
@@ -697,16 +701,18 @@ function zhiraf_ufa_seychelles_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_seychelles_expert_nuances() {
-	return array(
+	$card = array(
 		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Долгий перелёт со стыковкой — планируем ночной прилёт на Маэ и трансфер до отеля.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '🛂', 'title' => __( 'ETA онлайн', 'zhiraf-ufa' ), 'text' => __( 'Безвизовый въезд с электронным разрешением — оформляем до вылета.', 'zhiraf-ufa' ) ),
 		array( 'icon' => '⛴', 'title' => __( 'Острова и паромы', 'zhiraf-ufa' ), 'text' => __( 'Праслин и Ла-Диг — паром или внутренний рейс. Считаем логистику в пакете.', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 

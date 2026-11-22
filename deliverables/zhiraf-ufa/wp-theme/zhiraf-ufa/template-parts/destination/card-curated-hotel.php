@@ -105,7 +105,7 @@ $honest_raw = trim( $honest_raw );
 			<?php if ( ! empty( $hotel['image'] ) ) : ?>
 				<?php
 				$image_alt = ! empty( $hotel['image_alt'] ) ? (string) $hotel['image_alt'] : (string) $hotel['name'];
-				$can_detail = $ta_id > 0 || '' !== $ta_url;
+				$can_detail = ! empty( $hotel['image'] );
 				if ( $image_remote ) :
 					$image_w = ! empty( $hotel['image_width'] ) ? (int) $hotel['image_width'] : 1200;
 					$image_h = ! empty( $hotel['image_height'] ) ? (int) $hotel['image_height'] : 800;

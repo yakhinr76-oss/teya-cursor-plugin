@@ -848,7 +848,7 @@ function zhiraf_ufa_turciya_json_row_to_card( $row ) {
 
 	$bg_hotel_id = ! empty( $row['bg_hotel_id'] ) ? trim( (string) $row['bg_hotel_id'] ) : '';
 
-	return array(
+	$card = array(
 		'bg_hotel_id'   => $bg_hotel_id,
 		'pool_id'       => $pool_id,
 		'json_hotel_id' => $pool_id,
@@ -875,6 +875,7 @@ function zhiraf_ufa_turciya_json_row_to_card( $row ) {
 		'price_rub'     => zhiraf_ufa_turciya_pool_price_rub( $row ),
 		'wa_prefill'    => zhiraf_ufa_turciya_curated_messenger_prefill( $name ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -908,13 +909,17 @@ function zhiraf_ufa_turciya_catalog_hotels() {
 		$row['pool_rank']   = $rank;
 		$row['filter_tags'] = zhiraf_ufa_turciya_starter_filter_tags( $row );
 		if ( '' !== $name_key && isset( $json_by_name[ $name_key ] ) ) {
-			$image = zhiraf_ufa_turciya_image_from_json_row( $json_by_name[ $name_key ] );
+			$json_row = $json_by_name[ $name_key ];
+			$image    = zhiraf_ufa_turciya_image_from_json_row( $json_row );
 			$row['image']         = $image['image'];
 			$row['image_remote']  = $image['image_remote'];
 			$row['image_width']   = $image['image_width'];
 			$row['image_height']  = $image['image_height'];
-			if ( ! empty( $json_by_name[ $name_key ]['id'] ) ) {
-				$row['json_hotel_id'] = (int) $json_by_name[ $name_key ]['id'];
+			if ( ! empty( $json_row['id'] ) ) {
+				$row['json_hotel_id'] = (int) $json_row['id'];
+			}
+			if ( function_exists( 'zhiraf_ufa_curated_card_apply_ta_from_json_row' ) ) {
+				$row = zhiraf_ufa_curated_card_apply_ta_from_json_row( $row, $json_row );
 			}
 		}
 		$hotels[] = zhiraf_ufa_turciya_finalize_catalog_card( zhiraf_ufa_turciya_apply_bg_pricing( $row ) );
@@ -942,7 +947,7 @@ function zhiraf_ufa_turciya_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_turciya_catalog_filters() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -1008,6 +1013,7 @@ function zhiraf_ufa_turciya_catalog_filters() {
 			'desc'  => __( 'Отели, где сервис и питание существенно выше уплаченных денег.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1018,11 +1024,12 @@ function zhiraf_ufa_turciya_catalog_filters() {
 function zhiraf_ufa_turciya_catalog_default_copy() {
 	$filters = zhiraf_ufa_turciya_catalog_filters();
 
-	return array(
+	$card = array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : '',
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : '',
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1062,7 +1069,7 @@ function zhiraf_ufa_turciya_resort_hotel_counts() {
 function zhiraf_ufa_turciya_resort_pick_cards() {
 	$counts = zhiraf_ufa_turciya_resort_hotel_counts();
 
-	return array(
+	$card = array(
 		array(
 			'id'           => 'side',
 			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'side' ),
@@ -1182,6 +1189,7 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1190,7 +1198,7 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_turciya_expert_nuances() {
-	return array(
+	$card = array(
 		array(
 			'icon'  => '🌊',
 			'title' => __( 'Заход в море и пляжи', 'zhiraf-ufa' ),
@@ -1207,6 +1215,7 @@ function zhiraf_ufa_turciya_expert_nuances() {
 			'text'  => __( 'Вылет из Уфы в Анталью — в среднем 4,5–5 часов. Багаж, время вылета и трансфер фиксируем в договоре до оплаты.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**

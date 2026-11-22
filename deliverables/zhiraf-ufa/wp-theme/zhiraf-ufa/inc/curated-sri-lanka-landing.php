@@ -365,7 +365,7 @@ function zhiraf_ufa_sri_lanka_starter_filter_tags( $hotel ) {
 	$pool_id    = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
 	$image      = zhiraf_ufa_sri_lanka_image_from_json_row( $row );
 
-	return array(
+	$card = array(
 		'destination_slug' => 'shri-lanka',
 		'resort'           => ! empty( $resort[0] ) ? (string) $resort[0] : 'south_west',
 		'pool_id'          => $pool_id,
@@ -392,6 +392,7 @@ function zhiraf_ufa_sri_lanka_starter_filter_tags( $hotel ) {
 		'caveat'           => zhiraf_ufa_sri_lanka_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_sri_lanka_pool_price_rub( $row ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -575,7 +576,7 @@ function zhiraf_ufa_sri_lanka_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_sri_lanka_catalog_filters() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -640,6 +641,7 @@ function zhiraf_ufa_sri_lanka_catalog_filters() {
 			'desc'  => __( 'Честные 4–5★ у моря без переплаты за бренд.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -648,11 +650,12 @@ function zhiraf_ufa_sri_lanka_catalog_filters() {
 function zhiraf_ufa_sri_lanka_catalog_default_copy() {
 	$filters = zhiraf_ufa_sri_lanka_catalog_filters();
 
-	return array(
+	$card = array(
 		'eyebrow' => __( 'Выборка из базы 25 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей на Шри-Ланке', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Под задачу: юго-запад, Бентота или Пасикуда — с учётом сезона муссонов. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -684,12 +687,13 @@ function zhiraf_ufa_sri_lanka_resort_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_sri_lanka_resort_chips() {
-	return array(
+	$card = array(
 		array( 'id' => 'starter', 'label' => __( 'Топ-6', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-south_west', 'label' => __( 'Юго-запад', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-west_coast', 'label' => __( 'Бентота', 'zhiraf-ufa' ) ),
 		array( 'id' => 'resort-east_coast', 'label' => __( 'Пасикуда', 'zhiraf-ufa' ) ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -701,7 +705,7 @@ function zhiraf_ufa_sri_lanka_resort_pick_cards() {
 	$counts     = zhiraf_ufa_sri_lanka_resort_hotel_counts();
 	$guide_here = __( 'К отелям →', 'zhiraf-ufa' );
 
-	return array(
+	$card = array(
 		array(
 			'id'          => 'south_west',
 			'filter_id'   => 'resort-south_west',
@@ -757,13 +761,14 @@ function zhiraf_ufa_sri_lanka_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_sri_lanka_expert_nuances() {
-	return array(
+	$card = array(
 		array(
 			'icon'  => '🛂',
 			'title' => __( 'ETA и загранпаспорт', 'zhiraf-ufa' ),
@@ -780,4 +785,5 @@ function zhiraf_ufa_sri_lanka_expert_nuances() {
 			'text'  => __( 'На открытых пляжах бывают течения — купаемся в лагунах Унаватуны, Бентоты или Пасикуды. Фиксируем локацию отеля и сезон до оплаты.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }

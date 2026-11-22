@@ -39,6 +39,44 @@ function zhiraf_ufa_curated_tripadvisor_url_from_row( array $row ) {
 }
 
 /**
+ * Fallback TA property URL when only location id is known (Mode A JSON).
+ *
+ * @param int $location_id Tripadvisor location id.
+ * @return string
+ */
+function zhiraf_ufa_curated_tripadvisor_url_from_location_id( $location_id ) {
+	$location_id = (int) $location_id;
+	if ( $location_id <= 0 ) {
+		return '';
+	}
+
+	return 'https://www.tripadvisor.com/Hotel_Review-d' . $location_id . '-Reviews.html';
+}
+
+/**
+ * Merge ta_location_id + tripadvisor_url from JSON row into curated card payload.
+ *
+ * @param array<string,mixed> $card Render card.
+ * @param array<string,mixed> $row  JSON hotel row.
+ * @return array<string,mixed>
+ */
+function zhiraf_ufa_curated_card_apply_ta_from_json_row( array $card, array $row ) {
+	$ta_id  = ! empty( $row['ta_location_id'] ) ? (int) $row['ta_location_id'] : 0;
+	$ta_url = zhiraf_ufa_curated_tripadvisor_url_from_row( $row );
+	if ( '' === $ta_url && $ta_id > 0 ) {
+		$ta_url = zhiraf_ufa_curated_tripadvisor_url_from_location_id( $ta_id );
+	}
+	if ( $ta_id > 0 ) {
+		$card['ta_location_id'] = $ta_id;
+	}
+	if ( '' !== $ta_url ) {
+		$card['tripadvisor_url'] = esc_url( $ta_url );
+	}
+
+	return $card;
+}
+
+/**
  * H2 for expert nuances block (no Turkey fallback).
  *
  * @param string              $dest_slug Landing slug.

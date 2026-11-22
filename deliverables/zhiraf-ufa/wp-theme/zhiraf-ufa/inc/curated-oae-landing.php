@@ -420,13 +420,9 @@ function zhiraf_ufa_oae_json_row_to_card( $row ) {
 	$need_badge   = zhiraf_ufa_oae_pool_need_badge( $cat );
 	$resort_raw   = ! empty( $row['resort'] ) ? (string) $row['resort'] : '';
 	$pool_id      = ! empty( $row['id'] ) ? (int) $row['id'] : 0;
-	$image        = zhiraf_ufa_oae_image_from_json_row( $row );
-	$ta_id        = ! empty( $row['ta_location_id'] ) ? (int) $row['ta_location_id'] : 0;
-	$ta_url       = function_exists( 'zhiraf_ufa_curated_tripadvisor_url_from_row' )
-		? zhiraf_ufa_curated_tripadvisor_url_from_row( $row )
-		: '';
+	$image = zhiraf_ufa_oae_image_from_json_row( $row );
 
-	return array(
+	$card = array(
 		'destination_slug' => 'oae',
 		'emirate'          => ! empty( $row['emirate'] ) ? (string) $row['emirate'] : '',
 		'resort'           => $emirate_key,
@@ -453,9 +449,8 @@ function zhiraf_ufa_oae_json_row_to_card( $row ) {
 		'description'      => zhiraf_ufa_oae_pool_card_usp( $row ),
 		'caveat'           => zhiraf_ufa_oae_pool_card_caveat( $row ),
 		'price_rub'        => zhiraf_ufa_oae_pool_price_rub( $row ),
-		'ta_location_id'   => $ta_id,
-		'tripadvisor_url'  => $ta_url,
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -556,11 +551,12 @@ function zhiraf_ufa_oae_messenger_channel_urls( $text ) {
 		: $wa_base;
 	$page    = function_exists( 'home_url' ) ? home_url( '/tour/oae/' ) : 'https://zhiraf-ufa.ru/tour/oae/';
 
-	return array(
+	$card = array(
 		'whatsapp' => $wa,
 		'max'      => 'https://max.ru/:share?text=' . rawurlencode( $text ),
 		'telegram' => 'https://t.me/share/url?url=' . rawurlencode( $page ) . '&text=' . rawurlencode( $text ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -663,7 +659,7 @@ function zhiraf_ufa_oae_catalog_hotels() {
  * @return array<int,array<string,string>>
  */
 function zhiraf_ufa_oae_catalog_filters() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
@@ -749,6 +745,7 @@ function zhiraf_ufa_oae_catalog_filters() {
 			'desc'  => __( 'Сервис выше ожиданий относительно бюджета.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -757,11 +754,12 @@ function zhiraf_ufa_oae_catalog_filters() {
 function zhiraf_ufa_oae_catalog_default_copy() {
 	$filters = zhiraf_ufa_oae_catalog_filters();
 
-	return array(
+	$card = array(
 		'eyebrow' => __( 'Выборка из базы 27 отелей', 'zhiraf-ufa' ),
 		'title'   => ! empty( $filters[0]['title'] ) ? (string) $filters[0]['title'] : __( '6 проверенных отелей в ОАЭ', 'zhiraf-ufa' ),
 		'desc'    => ! empty( $filters[0]['desc'] ) ? (string) $filters[0]['desc'] : __( 'Подбираем под задачу: город у метро, пляж JBR или All Inclusive в Рас-эль-Хайме. Цены — за двоих с перелётом из Уфы.', 'zhiraf-ufa' ),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -807,7 +805,7 @@ function zhiraf_ufa_oae_emirate_hotel_counts() {
  * @return array<int,array{id:string,label:string}>
  */
 function zhiraf_ufa_oae_resort_chips() {
-	return array(
+	$card = array(
 		array(
 			'id'    => 'starter',
 			'label' => __( 'Топ-6', 'zhiraf-ufa' ),
@@ -837,6 +835,7 @@ function zhiraf_ufa_oae_resort_chips() {
 			'label' => __( 'Фуджейра', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -849,7 +848,7 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 
 	$guide_here = __( 'На страницу →', 'zhiraf-ufa' );
 
-	return array(
+	$card = array(
 		array(
 			'id'            => 'dubai',
 			'filter_id'     => 'emirate-dubai',
@@ -998,6 +997,7 @@ function zhiraf_ufa_oae_resort_pick_cards() {
 			),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }
 
 /**
@@ -1006,7 +1006,7 @@ function zhiraf_ufa_oae_resort_pick_cards() {
  * @return array<int,array{icon:string,title:string,text:string}>
  */
 function zhiraf_ufa_oae_expert_nuances() {
-	return array(
+	$card = array(
 		array(
 			'icon'  => '🧾',
 			'title' => __( 'Туристический налог', 'zhiraf-ufa' ),
@@ -1023,4 +1023,5 @@ function zhiraf_ufa_oae_expert_nuances() {
 			'text'  => __( 'Аэропорт DXB/SHJ — базовая точка вылета из Уфы. До пляжей RAK и Ajman — 40–90 минут; до Абу-Даби — около 1,5 ч. Учитываем это при семейных поездках с малышами.', 'zhiraf-ufa' ),
 		),
 	);
+	return zhiraf_ufa_curated_card_apply_ta_from_json_row( $card, $row );
 }

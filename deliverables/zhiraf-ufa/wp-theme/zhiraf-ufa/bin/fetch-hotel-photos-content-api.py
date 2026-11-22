@@ -267,7 +267,17 @@ def terra_geo_name(hotel: dict[str, Any]) -> str:
         for needle, geo in EGYPT_RESORT_GEO_HINTS:
             if needle in resort_l:
                 return geo
-    if country in ("thailand", "vietnam", "maldives", "indonesia", "india", "sri_lanka", "china", "seychelles"):
+    if country in (
+        "thailand",
+        "vietnam",
+        "maldives",
+        "indonesia",
+        "india",
+        "sri_lanka",
+        "china",
+        "seychelles",
+        "abkhazia",
+    ):
         # Terra catalog: geo_name often zeroes results; rank by Hotel_Review + name instead.
         return ""
     resort = str(hotel.get("resort") or "").strip()
@@ -547,7 +557,11 @@ def process_file(
     backend: str,
     stats: ApiStats | None = None,
     max_hotels: int | None = None,
+    max_api_requests: int | None = None,
 ) -> tuple[int, list[str]]:
+
+    def api_cap_reached() -> bool:
+        return max_api_requests is not None and stats is not None and stats.requests >= max_api_requests
     print(f"\n--- {path.name} ---")
     with path.open(encoding="utf-8") as fh:
         hotels = json.load(fh)
@@ -584,6 +598,10 @@ def process_file(
         if not hotel_needs_api(hotel, force=force):
             continue
 
+        if api_cap_reached():
+            print(f"  --max-api-requests {max_api_requests} reached, stop file")
+            break
+
         print(f"  {name} ({resort})")
         existing_id = hotel.get("ta_location_id")
         loc_id = ""
@@ -608,6 +626,10 @@ def process_file(
                 stats.hotels_touched += 1
             time.sleep(sleep_s)
             continue
+
+        if api_cap_reached():
+            print(f"  --max-api-requests {max_api_requests} reached before photos, stop file")
+            break
 
         pool = fetch_photo_urls(session, loc_id, key, limit, effective_backend, stats)
         photo_urls = pick_unique_photo_urls(pool, loc_id, used_lead_urls, location_pools, limit)
@@ -672,6 +694,13 @@ def main() -> int:
         metavar="N",
         help="Process at most N hotels that need API per run (safe test: --max-hotels 3 --dry-run)",
     )
+    parser.add_argument(
+        "--max-api-requests",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Hard stop after N Terra/Content HTTP calls in this run (e.g. 60 for abkhazia only)",
+    )
     parser.add_argument("--sleep", type=float, default=0.3, help="Delay between API calls in seconds")
     parser.add_argument(
         "--backend",
@@ -717,6 +746,7 @@ def main() -> int:
             backend=args.backend,
             stats=stats,
             max_hotels=args.max_hotels,
+            max_api_requests=args.max_api_requests,
         )
         total += count
         all_not_found.extend(missing)

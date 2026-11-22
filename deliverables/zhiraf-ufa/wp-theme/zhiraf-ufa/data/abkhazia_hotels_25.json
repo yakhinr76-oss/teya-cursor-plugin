@@ -17,10 +17,17 @@
     "caveat": "Генератор обеспечивает базовое освещение и работу кухни, но при авариях сети в городе кондиционеры в пиковые часы требуют бережной нагрузки.",
     "reviews_summary": "Семьи хвалят красивую парковую территорию с пальмами, теплый бассейн и сытный шведский стол. Отмечают удобство прямого выхода на пляж.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/25/7a/93/89/amza-park-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/25/7a/9a/5e/amza-park-hotel.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/25/7a/99/eb/amza-park-hotel.jpg"
+    ],
+    "photo_files": [
       "amza_park_gagra_1.jpg",
       "amza_park_gagra_2.jpg",
       "amza_park_gagra_3.jpg"
-    ]
+    ],
+    "ta_location_id": 21106262,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1673188-d21106262-Reviews-Amza_Park_Hotel-Gagra_Abkhazia.html?m=70260"
   },
   {
     "id": 2,
@@ -109,10 +116,17 @@
     "caveat": "Территория музейная и историческая — корпуса выполнены в аутентичном стиле, лифтов в малоэтажных зданиях нет.",
     "reviews_summary": "Гости восхищаются красотой древних стен, чистейшим морем и уютным подогреваемым бассейном. Высокий уровень сервиса для Абхазии.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/15/c4/bd/af/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/24/0a/c4/photo0jpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/18/30/de/79/photo0jpg.jpg"
+    ],
+    "photo_files": [
       "abaata_gagra_1.jpg",
       "abaata_gagra_2.jpg",
       "abaata_gagra_3.jpg"
-    ]
+    ],
+    "ta_location_id": 4498269,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1673188-d4498269-Reviews-Hotel_Abaata-Gagra_Abkhazia.html?m=70260"
   },
   {
     "id": 6,
@@ -247,10 +261,17 @@
     "caveat": "Вид из номеров различается: часть комнат выходит на горы и монастырь, часть — на внутренний двор.",
     "reviews_summary": "Гости восхищаются изысканным дизайном, чистотой и потрясающим рестораном на террасе. Называют отель лучшим в Новом Афоне.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/fd/aa/0e/photo6jpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/18/2b/19/f0/abaash-hotel-afon.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/18/2b/19/e3/abaash-hotel-afon.jpg"
+    ],
+    "photo_files": [
       "abaash_afon_1.jpg",
       "abaash_afon_2.jpg",
       "abaash_afon_3.jpg"
-    ]
+    ],
+    "ta_location_id": 17497760,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g4424193-d17497760-Reviews-Abaash_Hotel_Afon-New_Athos_Abkhazia.html?m=70260"
   },
   {
     "id": 12,
@@ -316,10 +337,17 @@
     "caveat": "Деревянная архитектура предполагает повышенную слышимость между номерами; популярное туристическое место днем.",
     "reviews_summary": "Туристы в восторге от шума реки за окном, вида на водопад и вкусной мамалыги с сыром в ресторане. Очень атмосферное место.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/75/5d/c5/getlstd-property-photo.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/a9/49/32/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/a9/48/29/caption.jpg"
+    ],
+    "photo_files": [
       "grifon_afon_1.jpg",
       "grifon_afon_2.jpg",
       "grifon_afon_3.jpg"
-    ]
+    ],
+    "ta_location_id": 11772533,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1956128-d11772533-Reviews-Hotel_Grifon-Adler_Adler_District.html?m=70260"
   },
   {
     "id": 15,
@@ -362,10 +390,17 @@
     "caveat": "Главный исторический корпус № 1 и современный корпус № 2 отличаются по стилистике интерьеров — категорию нужно фиксировать.",
     "reviews_summary": "Отдыхающие называют отель жемчужиной Абхазии: монументальная колоннада, чистейший воздух дендропарка и превосходный спа.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1c/0a/b5/40/photo0jpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/86/c0/f9/amra-park-hotel-spa.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/86/c0/14/amra-park-hotel-spa.jpg"
+    ],
+    "photo_files": [
       "amra_park_1.jpg",
       "amra_park_2.jpg",
       "amra_park_3.jpg"
-    ]
+    ],
+    "ta_location_id": 13943251,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1673188-d13943251-Reviews-Amra_Park_Hotel_&_Spa-Gagra_Abkhazia.html?m=70260"
   },
   {
     "id": 17,
@@ -385,10 +420,17 @@
     "caveat": "В сезон на набережной Новой Гагры кипит ночная жизнь — для абсолютной тишины стоит выбирать номера с видом во двор.",
     "reviews_summary": "Туристы отмечают высокий уровень спа-зоны, теплоту бассейнов в прохладную погоду и развитый досуг. Надежный проверенный резорт.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/17/f7/c8/c2/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/15/24/78/a2/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/17/f7/cb/ec/caption.jpg"
+    ],
+    "photo_files": [
       "alex_resort_1.jpg",
       "alex_resort_2.jpg",
       "alex_resort_3.jpg"
-    ]
+    ],
+    "ta_location_id": 4498283,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1673188-d4498283-Reviews-Alex_Resort_&_Spa_Hotel-Gagra_Abkhazia.html?m=70260"
   },
   {
     "id": 18,
@@ -431,10 +473,17 @@
     "caveat": "Спа-блок компактный (акцент сделан на уличный подогреваемый бассейн и близость пляжа).",
     "reviews_summary": "Путешественники хвалят тихий район Старой Гагры, чистоту дизайнерских номеров и теплоту бассейна. Превосходный бутик-отель.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/34/f6/95/a4/beach-overview.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/19/55/df/48/sunrise-garden-beach.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/19/55/e0/3b/sunrise-garden-beach.jpg"
+    ],
+    "photo_files": [
       "sunrise_garden_1.jpg",
       "sunrise_garden_2.jpg",
       "sunrise_garden_3.jpg"
-    ]
+    ],
+    "ta_location_id": 531863,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g297549-d531863-Reviews-Sunrise_Garden_Beach_Resort-Hurghada_Red_Sea_and_Sinai.html?m=70260"
   },
   {
     "id": 20,
@@ -454,10 +503,17 @@
     "caveat": "Центр Новой Гагры — оживленный район с плотным трафиком и курортной вечерней торговлей.",
     "reviews_summary": "Гости выделяют современный комфорт, прекрасный вид на море с верхних этажей и сытные завтраки со свежей выпечкой.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/ec/7a/6f/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/12/75/4c/1b/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0f/ec/77/eb/caption.jpg"
+    ],
+    "photo_files": [
       "grand_hotel_gagra_1.jpg",
       "grand_hotel_gagra_2.jpg",
       "grand_hotel_gagra_3.jpg"
-    ]
+    ],
+    "ta_location_id": 8573304,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g1673188-d8573304-Reviews-Grand_Hotel_Gagra-Gagra_Abkhazia.html?m=70260"
   },
   {
     "id": 21,
@@ -477,10 +533,17 @@
     "caveat": "Расположен в тихом жилом районе в 15 минутах ходьбы от набережной Махаджиров (на такси 3 минуты за 150 рублей).",
     "reviews_summary": "Туристы называют отель оазисом комфорта в Абхазии: европейская чистота, теплый бассейн и безупречная работа генератора.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/da/e3/52/img-20200816-wa0001-largejpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/1b/ec/ba/49/photo9jpg.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/33/e2/f4/dc/caption.jpg"
+    ],
+    "photo_files": [
       "garuda_sukhum_1.jpg",
       "garuda_sukhum_2.jpg",
       "garuda_sukhum_3.jpg"
-    ]
+    ],
+    "ta_location_id": 21092963,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g775281-d21092963-Reviews-Garuda_Boutique_Hotel-Sukhumi_Abkhazia.html?m=70260"
   },
   {
     "id": 22,
@@ -500,10 +563,17 @@
     "caveat": "Набережная — любимое место прогулок горожан и туристов, по вечерам звучит музыка из открытых кофеен.",
     "reviews_summary": "Гости в восторге от возможности засыпать под шум морского прибоя, чистоты комнат и превосходных завтраков с видом на корабли.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/0e/20/6a/89/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/c2/00/16/getlstd-property-photo.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/0d/d1/b0/32/caption.jpg"
+    ],
+    "photo_files": [
       "dem_sukhum_1.jpg",
       "dem_sukhum_2.jpg",
       "dem_sukhum_3.jpg"
-    ]
+    ],
+    "ta_location_id": 11874429,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g775281-d11874429-Reviews-Hotel_DEM-Sukhumi_Abkhazia.html?m=70260"
   },
   {
     "id": 23,
@@ -523,10 +593,17 @@
     "caveat": "Компактный городской формат без собственной большой прилегающей территории и бассейна.",
     "reviews_summary": "Путешественники хвалят удобную локацию для прогулок по столице, идеальную чистоту санузлов и душевную заботу персонала.",
     "photos": [
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/0f/8a/be/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/0f/8d/ac/caption.jpg",
+      "https://dynamic-media.tacdn.com/media/photo-o/2b/0f/8d/ab/caption.jpg"
+    ],
+    "photo_files": [
       "dioskuria_sukhum_1.jpg",
       "dioskuria_sukhum_2.jpg",
       "dioskuria_sukhum_3.jpg"
-    ]
+    ],
+    "ta_location_id": 10321368,
+    "tripadvisor_url": "https://www.tripadvisor.com/Hotel_Review-g775281-d10321368-Reviews-Dioskuria_Hotel-Sukhumi_Abkhazia.html?m=70260"
   },
   {
     "id": 24,

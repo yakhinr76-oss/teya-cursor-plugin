@@ -267,7 +267,7 @@ def terra_geo_name(hotel: dict[str, Any]) -> str:
         for needle, geo in EGYPT_RESORT_GEO_HINTS:
             if needle in resort_l:
                 return geo
-    if country in ("thailand", "vietnam", "maldives", "indonesia", "india", "sri_lanka"):
+    if country in ("thailand", "vietnam", "maldives", "indonesia", "india", "sri_lanka", "china"):
         # Terra catalog: geo_name often zeroes results; rank by Hotel_Review + name instead.
         return ""
     resort = str(hotel.get("resort") or "").strip()

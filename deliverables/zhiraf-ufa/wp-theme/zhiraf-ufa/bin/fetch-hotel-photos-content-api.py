@@ -64,6 +64,16 @@ TERRA_BASE = "https://terra.tripadvisor.com"
 
 STAR_RE = re.compile(r"\s*\d[+★].*$")
 
+UAE_EMIRATE_GEO: dict[str, str] = {
+    "dubai": "Dubai",
+    "abu_dhabi": "Abu Dhabi",
+    "sharjah": "Sharjah",
+    "ajman": "Ajman",
+    "ras_al_khaimah": "Ras Al Khaimah",
+    "fujairah": "Fujairah",
+    "umm_al_quwain": "Umm Al Quwain",
+}
+
 ENV_FILE_CANDIDATES = (
     THEME_ROOT / ".tripadvisor.env.local",
     THEME_ROOT.parents[3] / "teya-memory" / "teya.env.local",
@@ -125,6 +135,45 @@ def clean_hotel_name(hotel_name: str) -> str:
     return name.replace("★", "").strip()
 
 
+def terra_geo_name(hotel: dict[str, Any]) -> str:
+    emirate = str(hotel.get("emirate") or "").strip().lower()
+    if emirate and emirate in UAE_EMIRATE_GEO:
+        return UAE_EMIRATE_GEO[emirate]
+    resort = str(hotel.get("resort") or "").strip()
+    if not resort:
+        return ""
+    first = resort.split(",")[0].strip()
+    if first.isascii():
+        return first
+    return ""
+
+
+def terra_row_location_id(row: dict[str, Any]) -> str:
+    loc = row.get("location") if isinstance(row.get("location"), dict) else row
+    for candidate in (loc.get("id"), loc.get("location_id"), row.get("location_id"), row.get("id")):
+        if candidate:
+            return str(candidate)
+    return ""
+
+
+def terra_row_web_url(row: dict[str, Any]) -> str:
+    loc = row.get("location") if isinstance(row.get("location"), dict) else row
+    urls = loc.get("urls") if isinstance(loc.get("urls"), dict) else {}
+    if not urls and isinstance(row.get("urls"), dict):
+        urls = row["urls"]
+    ta = urls.get("tripadvisor") if isinstance(urls.get("tripadvisor"), dict) else {}
+    if isinstance(ta, dict):
+        for key in ("main", "url", "property"):
+            if ta.get(key):
+                return str(ta[key]).strip()
+    for key in ("web_url", "tripadvisor_url"):
+        if loc.get(key):
+            return str(loc[key]).strip()
+        if row.get(key):
+            return str(row[key]).strip()
+    return ""
+
+
 def photos_already_remote(photos: list[Any]) -> bool:
     if not photos:
         return False
@@ -160,10 +209,29 @@ def content_search_location_id(session: requests.Session, hotel_name: str, resor
     return None
 
 
-def terra_search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
+class ApiStats:
+    """Terra/Content API call counter for quota reporting."""
+
+    def __init__(self) -> None:
+        self.requests = 0
+
+    def track(self, response: requests.Response) -> None:
+        self.requests += 1
+
+
+def terra_search_location(
+    session: requests.Session,
+    hotel_name: str,
+    resort: str,
+    key: str,
+    stats: ApiStats | None = None,
+    geo_name: str = "",
+) -> dict[str, str] | None:
     clean = clean_hotel_name(hotel_name)
-    geo = resort.split(",")[0].strip() if resort else ""
-    params = {"version": 1, "query": clean, "geo_name": geo}
+    geo = geo_name or (resort.split(",")[0].strip() if resort else "")
+    params: dict[str, Any] = {"version": 1, "query": clean, "page": 1, "size": 5}
+    if geo:
+        params["geo_name"] = geo
     try:
         response = session.get(
             f"{TERRA_BASE}/api/catalog/locations/search",
@@ -171,6 +239,8 @@ def terra_search_location_id(session: requests.Session, hotel_name: str, resort:
             params=params,
             timeout=20,
         )
+        if stats:
+            stats.track(response)
         if response.status_code != 200:
             return None
         data = response.json()
@@ -178,22 +248,72 @@ def terra_search_location_id(session: requests.Session, hotel_name: str, resort:
         if not items:
             return None
         row = items[0]
-        loc_id = row.get("location_id") or row.get("id")
-        return str(loc_id) if loc_id else None
+        loc_id = terra_row_location_id(row)
+        if not loc_id:
+            return None
+        web_url = terra_row_web_url(row)
+        return {"id": loc_id, "web_url": web_url}
     except requests.RequestException as exc:
         print(f"  terra search error: {exc}")
     return None
 
 
+def terra_search_location_id(session: requests.Session, hotel_name: str, resort: str, key: str) -> str | None:
+    found = terra_search_location(session, hotel_name, resort, key)
+    return found["id"] if found else None
+
+
+def terra_location_web_url(session: requests.Session, location_id: str, key: str, stats: ApiStats | None = None) -> str:
+    try:
+        response = session.get(
+            f"{TERRA_BASE}/api/locations/{location_id}",
+            headers=terra_headers(key),
+            params={"version": 1},
+            timeout=20,
+        )
+        if stats:
+            stats.track(response)
+        if response.status_code != 200:
+            return ""
+        data = response.json()
+        body = data.get("data") if isinstance(data.get("data"), dict) else data
+        if not isinstance(body, dict):
+            return ""
+        urls = body.get("urls") or {}
+        ta = urls.get("tripadvisor") if isinstance(urls.get("tripadvisor"), dict) else {}
+        if isinstance(ta, dict) and ta.get("url"):
+            return str(ta["url"]).strip()
+        return str(body.get("web_url") or "").strip()
+    except requests.RequestException:
+        return ""
+
+
+def search_location(
+    session: requests.Session,
+    hotel_name: str,
+    resort: str,
+    key: str,
+    backend: str,
+    stats: ApiStats | None = None,
+    geo_name: str = "",
+) -> dict[str, str] | None:
+    if backend == "terra":
+        return terra_search_location(session, hotel_name, resort, key, stats, geo_name)
+    if backend == "content":
+        loc_id = content_search_location_id(session, hotel_name, resort, key)
+        return {"id": loc_id, "web_url": ""} if loc_id else None
+    found = terra_search_location(session, hotel_name, resort, key, stats, geo_name)
+    if found:
+        return found
+    loc_id = content_search_location_id(session, hotel_name, resort, key)
+    return {"id": loc_id, "web_url": ""} if loc_id else None
+
+
 def search_location_id(
     session: requests.Session, hotel_name: str, resort: str, key: str, backend: str
 ) -> str | None:
-    if backend == "terra":
-        return terra_search_location_id(session, hotel_name, resort, key)
-    if backend == "content":
-        return content_search_location_id(session, hotel_name, resort, key)
-    loc = terra_search_location_id(session, hotel_name, resort, key)
-    return loc or content_search_location_id(session, hotel_name, resort, key)
+    found = search_location(session, hotel_name, resort, key, backend)
+    return found["id"] if found else None
 
 
 def content_fetch_photo_urls(session: requests.Session, location_id: str, key: str, limit: int) -> list[str]:
@@ -220,7 +340,9 @@ def content_fetch_photo_urls(session: requests.Session, location_id: str, key: s
     return urls
 
 
-def terra_fetch_photo_urls(session: requests.Session, location_id: str, key: str, limit: int) -> list[str]:
+def terra_fetch_photo_urls(
+    session: requests.Session, location_id: str, key: str, limit: int, stats: ApiStats | None = None
+) -> list[str]:
     urls: list[str] = []
     try:
         response = session.get(
@@ -229,17 +351,25 @@ def terra_fetch_photo_urls(session: requests.Session, location_id: str, key: str
             params={"version": 1},
             timeout=20,
         )
+        if stats:
+            stats.track(response)
         if response.status_code != 200:
             return urls
         data = response.json()
         for item in data.get("data") or []:
             images = item.get("images") or {}
             u = ""
-            for size in ("large", "original", "medium"):
-                block = images.get(size) or {}
-                u = block.get("url") or ""
-                if u:
-                    break
+            photo_block = item.get("photo") if isinstance(item.get("photo"), dict) else {}
+            if photo_block.get("original_size_url"):
+                u = str(photo_block["original_size_url"])
+            elif photo_block.get("url"):
+                u = str(photo_block["url"])
+            if not u:
+                for size in ("large", "original", "medium"):
+                    block = images.get(size) or {}
+                    u = block.get("url") or ""
+                    if u:
+                        break
             if not u and item.get("url"):
                 u = str(item["url"])
             if u:
@@ -252,16 +382,51 @@ def terra_fetch_photo_urls(session: requests.Session, location_id: str, key: str
 
 
 def fetch_photo_urls(
-    session: requests.Session, location_id: str, key: str, limit: int, backend: str
+    session: requests.Session,
+    location_id: str,
+    key: str,
+    limit: int,
+    backend: str,
+    stats: ApiStats | None = None,
+    fetch_limit: int | None = None,
 ) -> list[str]:
+    want = max(limit, fetch_limit or limit)
     if backend == "terra":
-        return terra_fetch_photo_urls(session, location_id, key, limit)
+        return terra_fetch_photo_urls(session, location_id, key, want, stats)
     if backend == "content":
-        return content_fetch_photo_urls(session, location_id, key, limit)
-    urls = terra_fetch_photo_urls(session, location_id, key, limit)
+        return content_fetch_photo_urls(session, location_id, key, want)
+    urls = terra_fetch_photo_urls(session, location_id, key, want, stats)
     if urls:
         return urls
-    return content_fetch_photo_urls(session, location_id, key, limit)
+    return content_fetch_photo_urls(session, location_id, key, want)
+
+
+def pick_unique_photo_urls(
+    pool: list[str],
+    location_id: str,
+    used_lead_urls: set[str],
+    location_pools: dict[str, list[str]],
+    limit: int,
+) -> list[str]:
+    """Assign up to `limit` CDN URLs; dedupe lead image across hotels sharing a TA location."""
+    if location_id not in location_pools:
+        location_pools[location_id] = list(pool)
+    merged = location_pools[location_id]
+    for u in pool:
+        if u not in merged:
+            merged.append(u)
+    picked: list[str] = []
+    for u in merged:
+        if u in picked:
+            continue
+        if not picked and u in used_lead_urls:
+            continue
+        picked.append(u)
+        if len(picked) == 1:
+            used_lead_urls.add(u)
+        if len(picked) >= limit:
+            break
+    return picked
 
 
 def process_file(
@@ -274,42 +439,75 @@ def process_file(
     sleep_s: float,
     force: bool,
     backend: str,
-) -> int:
+    stats: ApiStats | None = None,
+) -> tuple[int, list[str]]:
     print(f"\n--- {path.name} ---")
     with path.open(encoding="utf-8") as fh:
         hotels = json.load(fh)
     if not isinstance(hotels, list):
         print("  skip: root is not a JSON array")
-        return 0
+        return 0, []
 
     updated = 0
+    not_found: list[str] = []
+    used_lead_urls: set[str] = set()
+    location_pools: dict[str, list[str]] = {}
+
     for hotel in hotels:
         if not isinstance(hotel, dict):
             continue
         name = str(hotel.get("hotel_name") or "")
         resort = str(hotel.get("resort") or "")
+        geo_name = terra_geo_name(hotel) if str(hotel.get("country") or "") == "uae" else ""
         current = hotel.get("photos") or []
         if not force and photos_already_remote(current):
             continue
 
         print(f"  {name} ({resort})")
         existing_id = hotel.get("ta_location_id")
-        loc_id = str(existing_id) if existing_id else search_location_id(session, name, resort, key, backend)
+        loc_id = ""
+        ta_url = str(hotel.get("tripadvisor_url") or hotel.get("ta_property_url") or "").strip()
+        if existing_id:
+            loc_id = str(existing_id)
+        else:
+            found = search_location(session, name, resort, key, backend, stats, geo_name)
+            if not found and geo_name:
+                found = search_location(session, name, resort, key, backend, stats, "")
+            if found:
+                loc_id = found["id"]
+                if found.get("web_url"):
+                    ta_url = found["web_url"]
         if not loc_id:
             print("    location not found")
+            not_found.append(name)
             time.sleep(sleep_s)
             continue
 
-        photo_urls = fetch_photo_urls(session, loc_id, key, limit, backend)
+        if not ta_url and backend in ("terra", "auto"):
+            ta_url = terra_location_web_url(session, loc_id, key, stats)
+
+        pool = fetch_photo_urls(session, loc_id, key, limit, backend, stats, fetch_limit=max(limit * 4, 12))
+        photo_urls = pick_unique_photo_urls(pool, loc_id, used_lead_urls, location_pools, limit)
         if not photo_urls:
             print(f"    no photos for location {loc_id}")
+            not_found.append(name)
             time.sleep(sleep_s)
             continue
 
-        print(f"    {len(photo_urls)} URL(s)")
+        print(f"    {len(photo_urls)} URL(s), ta={loc_id}")
         if not dry_run:
+            old_photos = current if isinstance(current, list) else []
+            local_names = [
+                str(p)
+                for p in old_photos
+                if isinstance(p, str) and p and not p.lower().startswith(("http://", "https://"))
+            ]
+            if local_names:
+                hotel["photo_files"] = local_names
             hotel["photos"] = photo_urls
-            hotel["ta_location_id"] = loc_id
+            hotel["ta_location_id"] = int(loc_id)
+            if ta_url:
+                hotel["tripadvisor_url"] = ta_url
         updated += 1
         time.sleep(sleep_s)
 
@@ -320,8 +518,10 @@ def process_file(
         print(f"  saved ({updated} hotels updated)")
     elif dry_run:
         print(f"  dry-run: would update {updated} hotels")
+    if not_found:
+        print(f"  not found / no photos: {len(not_found)}")
 
-    return updated
+    return updated, not_found
 
 
 def main() -> int:
@@ -352,12 +552,14 @@ def main() -> int:
     paths = [DATA_DIR / name for name in names]
 
     session = requests.Session()
+    stats = ApiStats()
     total = 0
+    all_not_found: list[str] = []
     for path in paths:
         if not path.is_file():
             print(f"Missing {path}, skip.")
             continue
-        total += process_file(
+        count, missing = process_file(
             path,
             session,
             key,
@@ -366,9 +568,17 @@ def main() -> int:
             sleep_s=max(0.0, args.sleep),
             force=args.force,
             backend=args.backend,
+            stats=stats,
         )
+        total += count
+        all_not_found.extend(missing)
 
     print(f"\nDone. Hotels updated: {total}")
+    print(f"Terra/Content HTTP requests (quota proxy): {stats.requests}")
+    if all_not_found:
+        print(f"Hotels without CDN match ({len(all_not_found)}):")
+        for name in all_not_found:
+            print(f"  - {name}")
     return 0
 
 

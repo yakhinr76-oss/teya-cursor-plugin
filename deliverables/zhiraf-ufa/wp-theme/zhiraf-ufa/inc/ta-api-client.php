@@ -134,7 +134,9 @@ function zhiraf_ufa_ta_location_photo_urls( $location_id, $limit = 4 ) {
 	$urls = array();
 	foreach ( $res['body']['data'] as $photo ) {
 		$url = '';
-		if ( ! empty( $photo['images']['large']['url'] ) ) {
+		if ( ! empty( $photo['photo']['original_size_url'] ) ) {
+			$url = (string) $photo['photo']['original_size_url'];
+		} elseif ( ! empty( $photo['images']['large']['url'] ) ) {
 			$url = (string) $photo['images']['large']['url'];
 		} elseif ( ! empty( $photo['images']['original']['url'] ) ) {
 			$url = (string) $photo['images']['original']['url'];

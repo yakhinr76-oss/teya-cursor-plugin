@@ -20,6 +20,25 @@ function zhiraf_ufa_destination_uses_curated_landing( $dest ) {
 }
 
 /**
+ * Tripadvisor property URL from curated hotel JSON row (Mode A — link-out only).
+ *
+ * @param array<string,mixed> $row JSON hotel row.
+ * @return string
+ */
+function zhiraf_ufa_curated_tripadvisor_url_from_row( array $row ) {
+	foreach ( array( 'tripadvisor_url', 'ta_property_url' ) as $key ) {
+		if ( empty( $row[ $key ] ) || ! is_string( $row[ $key ] ) ) {
+			continue;
+		}
+		$url = esc_url_raw( trim( $row[ $key ] ) );
+		if ( $url ) {
+			return $url;
+		}
+	}
+	return '';
+}
+
+/**
  * H2 for expert nuances block (no Turkey fallback).
  *
  * @param string              $dest_slug Landing slug.

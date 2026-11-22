@@ -136,7 +136,9 @@ function zhiraf_ufa_hotel_to_public_row( $post ) {
 		'reviews_summary' => (string) ( $meta['hotel_reviews_summary'] ?? '' ),
 		'category_slug'   => (string) ( $meta['hotel_category_slug'] ?? '' ),
 		'category_name'   => (string) ( $meta['hotel_category_name'] ?? '' ),
+		'ta_location_id'  => (int) ( $meta['hotel_ta_location_id'] ?? 0 ),
 		'ta_property_url' => (string) ( $meta['hotel_ta_property_url'] ?? '' ),
+		'tripadvisor_url' => (string) ( $meta['hotel_ta_property_url'] ?? '' ),
 		'photos'          => $photos,
 	);
 	if ( function_exists( 'zhiraf_ufa_tourvisor_attach_hotel_price' ) ) {
@@ -573,11 +575,22 @@ function zhiraf_ufa_render_hotel_modal_shell() {
 	}
 	$rendered = true;
 	?>
-	<div class="hotel-modal" id="hotel-modal" data-hotel-modal hidden>
+	<div class="hotel-modal" id="hotel-modal" data-hotel-modal hidden inert>
 		<div class="hotel-modal__backdrop" data-hotel-modal-close tabindex="-1"></div>
 		<div class="hotel-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="hotel-modal-title">
 			<button type="button" class="hotel-modal__close" data-hotel-modal-close aria-label="<?php esc_attr_e( 'Закрыть', 'zhiraf-ufa' ); ?>">×</button>
+			<h2 id="hotel-modal-title" class="hotel-modal__title" data-hotel-modal-title></h2>
 			<div class="hotel-modal__body" data-hotel-modal-body></div>
+			<p class="hotel-modal__attrib" data-hotel-modal-attrib hidden>
+				<a
+					class="hotel-modal__ta-link"
+					data-hotel-modal-ta-link
+					href="#"
+					target="_blank"
+					rel="noopener noreferrer"
+					data-source="tripadvisor"
+				><?php esc_html_e( 'Все фото на Tripadvisor →', 'zhiraf-ufa' ); ?></a>
+			</p>
 		</div>
 	</div>
 	<?php

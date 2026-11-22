@@ -419,6 +419,45 @@ function zhiraf_ufa_domestic_catalog_destinations() {
 }
 
 /**
+ * Long-haul destinations on /tour/ (curated landings beyond core zhiraf_ufa_destinations()).
+ *
+ * @return array<int,array<string,mixed>>
+ */
+function zhiraf_ufa_longhaul_catalog_destinations() {
+	if ( ! function_exists( 'zhiraf_ufa_get_destination_landing' ) ) {
+		return array();
+	}
+	$config = function_exists( 'zhiraf_ufa_destination_hero_image_standards' )
+		? zhiraf_ufa_destination_hero_image_standards()
+		: array();
+	$rows   = array(
+		'indiya'     => __( 'Гоа: пляжи Севера и Юга, отели 4–5★, сезон с ноября по март.', 'zhiraf-ufa' ),
+		'indoneziya' => __( 'Бали: Нуса-Дуа, Семиньяк и Убуд — пляж, серф и культура.', 'zhiraf-ufa' ),
+		'maldivy'    => __( 'Атоллы Мальдив: водные виллы, All Inclusive, катер с Мале.', 'zhiraf-ufa' ),
+		'shri-lanka' => __( 'Шри-Ланка: Унаватуна, Бентота и Хиккадува — рифы и муссон по побережью.', 'zhiraf-ufa' ),
+		'sejshely'   => __( 'Сейшелы: Маэ, Праслин и Ла-Диг — гранитные пляжи и приватные резорты.', 'zhiraf-ufa' ),
+	);
+	$out    = array();
+	foreach ( $rows as $slug => $teaser ) {
+		$landing = zhiraf_ufa_get_destination_landing( $slug );
+		if ( ! $landing ) {
+			continue;
+		}
+		$visual = isset( $config[ $slug ] ) ? $config[ $slug ] : array();
+		$out[]  = array(
+			'slug'    => $slug,
+			'name'    => ! empty( $landing['name'] ) ? (string) $landing['name'] : $slug,
+			'image'   => ! empty( $visual['image'] ) ? (string) $visual['image'] : ( ! empty( $landing['image'] ) ? (string) $landing['image'] : 'country-' . $slug . '.jpg' ),
+			'alt'     => ! empty( $visual['alt'] ) ? (string) $visual['alt'] : ( ! empty( $landing['image_alt'] ) ? (string) $landing['image_alt'] : $slug ),
+			'url'     => home_url( '/tour/' . $slug . '/' ),
+			'teaser'  => $teaser,
+			'catalog' => true,
+		);
+	}
+	return $out;
+}
+
+/**
  * Destinations shown on /tour/ catalog hub (priced cards).
  *
  * @return array<int,array<string,mixed>>
@@ -431,7 +470,7 @@ function zhiraf_ufa_catalog_hub_destinations() {
 		}
 		$items[] = $dest;
 	}
-	return array_merge( $items, zhiraf_ufa_domestic_catalog_destinations() );
+	return array_merge( $items, zhiraf_ufa_longhaul_catalog_destinations(), zhiraf_ufa_domestic_catalog_destinations() );
 }
 
 /**

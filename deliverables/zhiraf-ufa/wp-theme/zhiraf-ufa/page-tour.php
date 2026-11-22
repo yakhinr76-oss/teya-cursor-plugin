@@ -66,7 +66,7 @@ get_header();
 							<?php echo esc_html( $offer['label'] ); ?>
 						</a>
 					<?php endforeach; ?>
-					<a class="chip chip--link" href="<?php echo esc_url( home_url( '/#hot-tours' ) ); ?>"><?php esc_html_e( 'Минимальные цены', 'zhiraf-ufa' ); ?></a>
+					<a class="chip chip--link" href="<?php echo esc_url( home_url( '/goryashchie-tury/' ) ); ?>"><?php esc_html_e( 'Минимальные цены', 'zhiraf-ufa' ); ?></a>
 				</div>
 			</div>
 

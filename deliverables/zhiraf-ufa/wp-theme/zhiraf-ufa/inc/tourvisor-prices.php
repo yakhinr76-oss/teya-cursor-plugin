@@ -783,7 +783,11 @@ function zhiraf_ufa_tourvisor_document_cache( $replace = null ) {
  * @return array<string,mixed>|null
  */
 function zhiraf_ufa_tourvisor_find_price( $country, $zhiraf_id = 0, $hotel_name = '' ) {
-	$index = zhiraf_ufa_tourvisor_build_index( zhiraf_ufa_tourvisor_document_cache() );
+	static $index_cache = null;
+	if ( ! is_array( $index_cache ) ) {
+		$index_cache = zhiraf_ufa_tourvisor_build_index( zhiraf_ufa_tourvisor_document_cache() );
+	}
+	$index = $index_cache;
 	$hit   = zhiraf_ufa_tourvisor_lookup_in_index( $index, $country, (int) $zhiraf_id, $hotel_name );
 	if ( ! is_array( $hit ) ) {
 		return null;

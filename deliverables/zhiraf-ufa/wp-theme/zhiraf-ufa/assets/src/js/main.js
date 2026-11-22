@@ -686,6 +686,9 @@
     if (form.getAttribute('data-form-context') === 'dest-turciya-compare') {
       variant = 'compare';
     }
+    if (form.id === 'turciya-lead-modal-form') {
+      variant = 'compare';
+    }
     var submit = qs('[data-messenger-submit-label]', form);
     var radios = qsa('input[type="radio"]', picker);
     if (!radios.length) {

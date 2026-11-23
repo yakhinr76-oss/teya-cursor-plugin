@@ -1,6 +1,6 @@
 # Wave 2 SEO backlog — Шри-Ланка, Бали, Гоа, Сейшелы
 
-**Статус:** curated v1 UX готов; **P0 SEO-контент** в `destination-landings.php` — проход **1.0.57-wave2-seo-content** (SL/ID/IN/SC). P1 meta/ядро — в очереди.  
+**Статус:** curated v1 UX готов; **P0 SEO-контент** в `destination-landings.php` — проход **1.0.57-wave2-seo-content** (SL/ID/IN/SC) **закрыт в PR wave2-seo-p0** (уникальный копирайт + FAQ 9–10). P1 meta/ядро — в очереди.  
 **Для агентов:** не считать wave-2 «готовыми к индексации на проде» без прохода по чеклисту ниже.
 
 ## Эталон (что ожидает план SEO)
@@ -11,15 +11,15 @@
 |---------|--------|------------------|
 | **title / description** | 50–60 / 150–160 символов, Уфа + запрос | Есть, но короче и менее «long-tail» |
 | **hero_lead** | 2–3 предложения + Уфа + 6 отелей + сегменты | Короче, мало LSI (виза, сезон, состав) |
-| **hero_lead_extended** | Абзац GEO + доверие | ❌ SL / ID / IN; ✅ SC частично |
-| **geo_answer** | Блок «как лететь из Уфы» (под FAQ/SEO) | ❌ SL, ID, IN; ✅ SC |
-| **for_who / we_clarify / season** | Три аккордеона SEO-текста | ❌ SL, ID, IN; ✅ SC |
-| **extra_sections** | 2+ H2 с абзацами (виза, сезон, деньги…) | ❌ у wave 2 |
-| **FAQ** | 6–10 вопросов, Уфа, виза, пакет, «Жираф» | SL: 3; ID: 2; IN: 2; SC: 7 ✅ |
-| **resort_links** | Сетка `.dest-resort-link-card` с desc | ❌ SL, ID, IN; ✅ SC |
-| **blog_links** | 2–3 гида с **осмысленными tag** | SL/ID/IN: 2; IN: **1** (эталон — 2 минимум) |
-| **seo_prose_accordions** | `prose_accordion_title` + длинные ответы | ❌ ID, IN; SL/SC: флаги есть |
-| **resort_compare** | Уникальные **image** + 3+ строки в таблице | SL/ID: урезано; ID: дубль `country-indoneziya.jpg` |
+| **hero_lead_extended** | Абзац GEO + доверие | ✅ SL / ID / IN / SC (уникально по стране) |
+| **geo_answer** | Блок «как лететь из Уфы» (под FAQ/SEO) | ✅ wave 2 |
+| **for_who / we_clarify / season** | Три аккордеона SEO-текста | ✅ wave 2 |
+| **extra_sections** | 2+ H2 с абзацами (виза, сезон, деньги…) | ✅ wave 2 |
+| **FAQ** | 6–10 вопросов, Уфа, виза, пакет, «Жираф» | SL: 10; ID: 10; IN: 9; SC: 10 ✅ |
+| **resort_links** | Сетка `.dest-resort-link-card` с desc | ✅ SL (filter), ID/IN/SC (url) |
+| **blog_links** | 2–3 гида с **осмысленными tag** | SL/ID/IN/SC: по 2 ✅ |
+| **seo_prose_accordions** | `prose_accordion_title` + длинные ответы | ✅ ID, IN, SL, SC |
+| **resort_compare** | Уникальные **image** + 3+ строки в таблице | ✅ SL/ID/IN; IN: hero ≠ compare north |
 | **Pick / Expert H2** | Страна, не Турция | ✅ после `1.0.56-wave2-pick-copy-fix` |
 | **Tourvisor / цены** | Живые ориентиры | scaffold 0/25 — слабый сигнал «актуальности» |
 | **Дочерние курорты** | `/tour/{resort}/` при необходимости | Нет отдельных URL (ок для v1, минус long-tail) |

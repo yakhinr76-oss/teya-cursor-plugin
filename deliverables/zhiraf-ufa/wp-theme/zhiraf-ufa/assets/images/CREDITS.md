@@ -49,6 +49,7 @@
 |---|---|---|---|---|
 | resort-phuket.jpg | Таиланд — Пхукет (карточки курортов о.Пхукет) | Phakchira Sukcharearn | https://www.pexels.com/photo/monument-of-buddha-6027591/ | Explore the iconic Big Buddha statue atop Nakkerd Hill in Phuket, Thailand, a serene and spiritual landmark. |
 | resort-abu-dabi.jpg | ОАЭ — Абу-Даби | Daniel Dang | https://www.pexels.com/photo/majestic-exterior-of-sheikh-zayed-grand-mosque-32119558/ | Stunning view of the Sheikh Zayed Grand Mosque in Abu Dhabi with clear blue sky. |
+| resort-sharjah-hero.jpg | ОАЭ — Шарджа (hero `/tour/oae/sharjah/`) | Siarhei Nester | https://www.pexels.com/photo/skyline-view-of-sharjah-with-waterfront-37013932/ | Sharjah skyline with calm waterfront under clear sky. |
 | resort-sanya-2.jpg | Китай — Санья | 茵 夏 | https://www.pexels.com/photo/bird-eye-view-on-tranquil-sea-and-coastline-18227450/ | Explore the scenic coastal beauty of Sanya, Hainan with its sandy beaches and lush greenery. |
 | resort-sanya-3.jpg | Китай — Санья | Alex Peet | https://www.pexels.com/photo/stunning-coastal-view-of-sanya-hainan-39555096/ | Coastal view of Sanya, Hainan (Dadonghai bay); cropped to exclude a building with a logo |
 | resort-severnyj-goa.jpg | Индия — Северный Гоа | Mohit Hambiria | https://www.pexels.com/photo/scenic-beach-view-from-chapora-india-at-sunset-28518933/ | Beach view from Chapora (North Goa) at sunset |

@@ -283,7 +283,7 @@ function zhiraf_ufa_hot_hub_visa_free_cards() {
 		),
 		array(
 			'name'    => __( 'Египет', 'zhiraf-ufa' ),
-			'tagline' => __( '~5,5 ч из Уфы · без визы', 'zhiraf-ufa' ),
+			'tagline' => __( 'из Уфы · без визы', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/egipet/' ),
 			'image'   => 'resort-egipet-hurghada-1.jpg',
 		),

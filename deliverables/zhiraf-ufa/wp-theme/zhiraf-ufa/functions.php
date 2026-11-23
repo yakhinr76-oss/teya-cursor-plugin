@@ -58,6 +58,7 @@ require_once ZHIRAF_UFA_DIR . '/inc/cpt-deals.php';
 require_once ZHIRAF_UFA_DIR . '/inc/about-page.php';
 require_once ZHIRAF_UFA_DIR . '/inc/social-icons.php';
 require_once ZHIRAF_UFA_DIR . '/inc/messenger-picker.php';
+require_once ZHIRAF_UFA_DIR . '/inc/geo-answer.php';
 require_once ZHIRAF_UFA_DIR . '/inc/seo.php';
 require_once ZHIRAF_UFA_DIR . '/inc/customizer.php';
 require_once ZHIRAF_UFA_DIR . '/inc/breadcrumbs.php';

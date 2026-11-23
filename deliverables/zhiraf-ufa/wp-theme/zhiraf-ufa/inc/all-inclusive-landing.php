@@ -166,7 +166,7 @@ function zhiraf_ufa_all_inclusive_destination_tabs() {
 		),
 		array(
 			'id'    => 'egipet',
-			'label' => __( 'Египет · прямой рейс', 'zhiraf-ufa' ),
+			'label' => __( 'Египет · из Уфы', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'oae',

@@ -17,6 +17,19 @@ if ( empty( $dest ) ) {
 	return;
 }
 ?>
+
+	<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
+		<?php
+		get_template_part(
+			'template-parts/sections/geo-answer-block',
+			null,
+			array(
+				'geo_answer' => $dest['geo_answer'],
+			)
+		);
+		?>
+	<?php endif; ?>
+
 	<section class="section dest-landing-prose bg-milky"<?php echo ! empty( $dest['needs_review'] ) ? ' data-needs-review="1"' : ''; ?>>
 		<?php if ( ! empty( $dest['needs_review'] ) ) : ?><!-- ТЕКСТ НА ПРОВЕРКУ: редакторская проверка перед публикацией --><?php endif; ?>
 		<div class="container container--narrow">
@@ -53,9 +66,6 @@ if ( empty( $dest ) ) {
 					<div class="dest-prose-accordion__body">
 						<?php if ( ! empty( $dest['hero_lead_extended'] ) ) : ?>
 							<p><?php echo esc_html( $dest['hero_lead_extended'] ); ?></p>
-						<?php endif; ?>
-						<?php if ( ! empty( $dest['geo_answer'] ) ) : ?>
-							<p><?php echo esc_html( $dest['geo_answer'] ); ?></p>
 						<?php endif; ?>
 						<?php if ( ! empty( $dest['for_who'] ) ) : ?>
 							<h3><?php esc_html_e( 'Для кого подойдёт', 'zhiraf-ufa' ); ?></h3>

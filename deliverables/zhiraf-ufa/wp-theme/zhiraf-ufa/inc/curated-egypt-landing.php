@@ -725,7 +725,7 @@ function zhiraf_ufa_egypt_resort_pick_cards() {
 			'subtitle'    => __( 'Песок и мелководье', 'zhiraf-ufa' ),
 			'tag'         => __( 'Семейный хит', 'zhiraf-ufa' ),
 			'tag_mod'     => 'family',
-			'transfer'    => __( '~5–5,5 ч из Уфы', 'zhiraf-ufa' ),
+			'transfer'    => __( 'из Уфы · прямой или стыковка', 'zhiraf-ufa' ),
 			'featured'    => true,
 			'hotel_count' => $counts['hurghada'],
 			'accent_mod'  => 'emerald',

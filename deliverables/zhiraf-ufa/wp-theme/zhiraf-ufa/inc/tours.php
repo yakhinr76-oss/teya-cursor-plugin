@@ -393,6 +393,60 @@ function zhiraf_ufa_tour_emirate_region( $resort ) {
  * @param int $nights Number of nights.
  * @return string
  */
+/**
+ * Normalize a departure date to YYYY-MM-DD (ISO prefix or DD.MM.YYYY).
+ *
+ * @param string $date Raw date string.
+ * @return string
+ */
+function zhiraf_ufa_normalize_departure_date_ymd( $date ) {
+	$date = trim( (string) $date );
+	if ( preg_match( '/^(\d{4}-\d{2}-\d{2})/', $date, $m ) ) {
+		return $m[1];
+	}
+	if ( preg_match( '/^(\d{2})\.(\d{2})\.(\d{4})$/', $date, $m ) ) {
+		return sprintf( '%s-%s-%s', $m[3], $m[2], $m[1] );
+	}
+
+	return '';
+}
+
+/**
+ * Short Russian departure label, e.g. «30 нояб.» from YYYY-MM-DD.
+ *
+ * @param string $date Departure date.
+ * @return string
+ */
+function zhiraf_ufa_format_departure_date_short( $date ) {
+	$ymd = zhiraf_ufa_normalize_departure_date_ymd( $date );
+	if ( '' === $ymd || ! preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', $ymd, $m ) ) {
+		return '';
+	}
+
+	$months = array(
+		1  => __( 'янв.', 'zhiraf-ufa' ),
+		2  => __( 'фев.', 'zhiraf-ufa' ),
+		3  => __( 'мар.', 'zhiraf-ufa' ),
+		4  => __( 'апр.', 'zhiraf-ufa' ),
+		5  => __( 'мая', 'zhiraf-ufa' ),
+		6  => __( 'июн.', 'zhiraf-ufa' ),
+		7  => __( 'июл.', 'zhiraf-ufa' ),
+		8  => __( 'авг.', 'zhiraf-ufa' ),
+		9  => __( 'сент.', 'zhiraf-ufa' ),
+		10 => __( 'окт.', 'zhiraf-ufa' ),
+		11 => __( 'нояб.', 'zhiraf-ufa' ),
+		12 => __( 'дек.', 'zhiraf-ufa' ),
+	);
+
+	$month = (int) $m[2];
+	$day   = (int) $m[3];
+	if ( ! isset( $months[ $month ] ) || $day < 1 || $day > 31 ) {
+		return '';
+	}
+
+	return sprintf( '%d %s', $day, $months[ $month ] );
+}
+
 function zhiraf_ufa_plural_nights( $nights ) {
 	$n      = (int) $nights;
 	$mod10  = $n % 10;

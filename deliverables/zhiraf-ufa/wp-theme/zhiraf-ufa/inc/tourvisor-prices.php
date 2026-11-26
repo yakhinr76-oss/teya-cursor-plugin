@@ -827,13 +827,14 @@ function zhiraf_ufa_tourvisor_overlay_curated_card( array $card, $country ) {
 
 	$rub  = (int) $hit['price_rub'];
 	$tour = array(
-		'price_rur'      => $rub,
-		'hotel_name'     => '' !== $hit['hotel_name'] ? $hit['hotel_name'] : $name,
-		'departure_date' => (string) $hit['departure_date'],
-		'nights'         => (int) $hit['nights'],
-		'price_date'     => (string) $hit['generated_at'],
-		'place'          => (string) $hit['place'],
-		'source'         => 'tourvisor',
+		'price_rur'       => $rub,
+		'hotel_name'      => '' !== $hit['hotel_name'] ? $hit['hotel_name'] : $name,
+		'departure_date'  => (string) $hit['departure_date'],
+		'departure_city'  => ! empty( $hit['departure_city'] ) ? (string) $hit['departure_city'] : '',
+		'nights'          => (int) $hit['nights'],
+		'price_date'      => (string) $hit['generated_at'],
+		'place'           => (string) $hit['place'],
+		'source'          => 'tourvisor',
 	);
 
 	$card['price_rub']             = $rub;

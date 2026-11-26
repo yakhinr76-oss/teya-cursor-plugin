@@ -57,13 +57,19 @@ if ( $price_amount <= 0 && $is_base_slot ) {
 		$price_amount = zhiraf_ufa_turciya_hub_min_price_rub();
 	}
 }
-$price_label = function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && $price_amount > 0
-	? zhiraf_ufa_turciya_curated_format_price( $price_amount )
-	: ( function_exists( 'zhiraf_ufa_format_tour_price' ) ? zhiraf_ufa_format_tour_price( 0 ) : '' );
+$hotel['price_rub'] = $price_amount;
+$price_caption = function_exists( 'zhiraf_ufa_curated_card_price_caption' )
+	? zhiraf_ufa_curated_card_price_caption( $hotel )
+	: __( 'за двоих с перелётом из Уфы:', 'zhiraf-ufa' );
+$price_label = function_exists( 'zhiraf_ufa_curated_card_price_display' )
+	? zhiraf_ufa_curated_card_price_display( $hotel )
+	: ( function_exists( 'zhiraf_ufa_turciya_curated_format_price' ) && $price_amount > 0
+		? zhiraf_ufa_turciya_curated_format_price( $price_amount )
+		: __( 'Цена по запросу', 'zhiraf-ufa' ) );
 $concept     = ! empty( $hotel['subtitle'] ) ? (string) $hotel['subtitle'] : '';
 $price_note  = function_exists( 'zhiraf_ufa_turciya_curated_price_note' )
-	? zhiraf_ufa_turciya_curated_price_note( $hotel )
-	: __( '7–9 ночей, ориентир (включая прямой перелёт из Уфы, трансфер, страховку и питание).', 'zhiraf-ufa' );
+	? trim( zhiraf_ufa_turciya_curated_price_note( $hotel ) )
+	: '';
 $badge_mod   = ! empty( $hotel['badge_mod'] ) ? sanitize_html_class( (string) $hotel['badge_mod'] ) : 'default';
 $is_starter  = in_array( 'starter', $filter_tags, true );
 $hide_init   = ! empty( $hotel['initial_hidden'] ) || ! $is_starter;
@@ -193,13 +199,15 @@ $honest_raw = trim( $honest_raw );
 	<?php endif; ?>
 	<div class="turciya-curated-card__footer">
 		<div class="turciya-curated-card__price">
-			<span class="turciya-curated-card__price-label"><?php esc_html_e( 'за двоих с перелётом:', 'zhiraf-ufa' ); ?></span>
+			<span class="turciya-curated-card__price-label"><?php echo esc_html( $price_caption ); ?></span>
 			<span class="turciya-curated-card__price-value<?php echo ! empty( $hotel['price_emphasis'] ) ? ' turciya-curated-card__price-value--accent' : ''; ?>">
 				<?php echo esc_html( $price_label ); ?>
 			</span>
-			<span class="turciya-curated-card__price-note">
-				<?php echo esc_html( $price_note ); ?>
-			</span>
+			<?php if ( '' !== $price_note ) : ?>
+				<span class="turciya-curated-card__price-note">
+					<?php echo esc_html( $price_note ); ?>
+				</span>
+			<?php endif; ?>
 		</div>
 		<button
 			type="button"

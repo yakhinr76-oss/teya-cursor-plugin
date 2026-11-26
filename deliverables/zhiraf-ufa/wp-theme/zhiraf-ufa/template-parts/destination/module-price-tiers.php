@@ -51,7 +51,12 @@ $section_lead = $is_turciya
 				?>
 				<article class="<?php echo esc_attr( $card_class ); ?>">
 					<?php if ( $featured && ! empty( $tier['hit_label'] ) ) : ?>
-						<p class="price-tier-card__hit"><?php echo esc_html( $tier['hit_label'] ); ?> 🔥</p>
+						<p class="price-tier-card__hit">
+							<?php if ( function_exists( 'zhiraf_ufa_lucide_icon' ) ) : ?>
+								<?php echo zhiraf_ufa_lucide_icon( 'flame', 16, 'price-tier-card__hit-icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php endif; ?>
+							<?php echo esc_html( $tier['hit_label'] ); ?>
+						</p>
 					<?php endif; ?>
 					<?php if ( ! empty( $tier['image'] ) ) : ?>
 						<div class="price-tier-card__media">

@@ -128,32 +128,32 @@ function zhiraf_ufa_destination_hero_image_standards() {
 function zhiraf_ufa_destination_default_hero_badges( $slug ) {
 	$map = array(
 		'turciya'   => array(
-			array( 'icon' => '✈', 'text' => __( 'Прямой чартер из Уфы • 4,5–5 часов в пути', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 60 дней', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'plane', 'text' => __( 'Прямой чартер из Уфы • 4,5–5 часов в пути', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Без визы • до 60 дней', 'zhiraf-ufa' ) ),
 		),
 		'oae'       => array(
-			array( 'icon' => '✈', 'text' => __( 'Прямой рейс из Уфы ~4,5–5 ч', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Без визы • 90 дней', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'plane', 'text' => __( 'Прямой рейс из Уфы ~4,5–5 ч', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Без визы • 90 дней', 'zhiraf-ufa' ) ),
 		),
 		'egipet'    => array(
-			array( 'icon' => '✈', 'text' => __( 'Вылет из Уфы в Хургаду / Шарм', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Виза по прилёту / e-visa', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'plane', 'text' => __( 'Вылет из Уфы в Хургаду / Шарм', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Виза по прилёту / e-visa', 'zhiraf-ufa' ) ),
 		),
 		'tailand'   => array(
-			array( 'icon' => '✈', 'text' => __( 'Стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 30/45/90 дней', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'plane', 'text' => __( 'Стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Без визы • до 30/45/90 дней', 'zhiraf-ufa' ) ),
 		),
 		'vietnam'   => array(
-			array( 'icon' => '✈', 'text' => __( 'Стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Без визы • до 45 дней', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'plane', 'text' => __( 'Стыковка в Москве из Уфы', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Без визы • до 45 дней', 'zhiraf-ufa' ) ),
 		),
 		'abkhaziya' => array(
-			array( 'icon' => '🚐', 'text' => __( 'Трансфер из аэропорта Адлер (Сочи) до отеля', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Паспорт РФ • оплата в рублях', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'bus', 'text' => __( 'Трансфер из аэропорта Адлер (Сочи) до отеля', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Паспорт РФ • оплата в рублях', 'zhiraf-ufa' ) ),
 		),
 		'rossiya'   => array(
-			array( 'icon' => '🏨', 'text' => __( 'Пакет с перелётом или только проживание', 'zhiraf-ufa' ) ),
-			array( 'icon' => '🛂', 'text' => __( 'Без загранпаспорта', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'hotel', 'text' => __( 'Пакет с перелётом или только проживание', 'zhiraf-ufa' ) ),
+			array( 'icon' => 'passport', 'text' => __( 'Без загранпаспорта', 'zhiraf-ufa' ) ),
 		),
 	);
 
@@ -242,20 +242,20 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Бухта Дадунхай', 'zhiraf-ufa' ),
-					'tag'       => __( '🍍 Движ, инфраструктура и экономия', 'zhiraf-ufa' ),
+					'tag'       => __( 'Движ, инфраструктура и экономия', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Русский квартал и вечерняя набережная', 'zhiraf-ufa' ),
 					'image'     => 'resort-sanya-2.jpg',
 					'cta_label' => __( 'Отели в Дадунхае', 'zhiraf-ufa' ),
 					'cta_href'  => '#dest-tours',
 					'rows'      => array(
 						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'ТЦ «Ананас», русские и китайские рестораны, массаж, рынки', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Много городских отелей 4–5★ и доступный стритфуд', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Много городских отелей 4–5 и доступный стритфуд', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Логистика', 'zhiraf-ufa' ), 'value' => __( '10 минут до центра Саньи на автобусе или такси', 'zhiraf-ufa' ) ),
 					),
 				),
 				array(
 					'title'     => __( 'Бухта Ялонг Бэй', 'zhiraf-ufa' ),
-					'tag'       => __( '🌊 Элитный релакс и чистое море', 'zhiraf-ufa' ),
+					'tag'       => __( 'Элитный релакс и чистое море', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Резорты мировых сетей на первой линии', 'zhiraf-ufa' ),
 					'image'     => 'resort-sanya-3.jpg',
 					'cta_label' => __( 'Отели в Ялонг Бэй', 'zhiraf-ufa' ),
@@ -274,7 +274,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Пхукет', 'zhiraf-ufa' ),
-					'tag'       => __( '🏝 Лазурное море и островной релакс', 'zhiraf-ufa' ),
+					'tag'       => __( 'Лазурное море и островной релакс', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Пляжи Карон, Ката, Банг Тао и островные экскурсии', 'zhiraf-ufa' ),
 					'image'     => 'dest-thailand.jpg',
 					'cta_label' => __( 'Смотреть отели на Пхукете', 'zhiraf-ufa' ),
@@ -287,7 +287,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Паттайя', 'zhiraf-ufa' ),
-					'tag'       => __( '🌆 Движ, экономия и экскурсии', 'zhiraf-ufa' ),
+					'tag'       => __( 'Движ, экономия и экскурсии', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Бангкок рядом, Ко Лан за 15–20 минут на пароме', 'zhiraf-ufa' ),
 					'image'     => 'dest-thailand-new.jpg',
 					'cta_label' => __( 'Смотреть отели в Паттайе', 'zhiraf-ufa' ),
@@ -306,7 +306,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Нячанг', 'zhiraf-ufa' ),
-					'tag'       => __( '🏙 Городской пляж, движ и бюджет', 'zhiraf-ufa' ),
+					'tag'       => __( 'Городской пляж, движ и бюджет', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Лучшее море с марта по сентябрь', 'zhiraf-ufa' ),
 					'image'     => 'resort-vietnam-nha-trang-2.jpg',
 					'cta_label' => __( 'Выбрать туры в Нячанг', 'zhiraf-ufa' ),
@@ -319,7 +319,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Остров Фукуок', 'zhiraf-ufa' ),
-					'tag'       => __( '🏝 Тропический релакс и прозрачное море', 'zhiraf-ufa' ),
+					'tag'       => __( 'Тропический релакс и прозрачное море', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Зимний высокий сезон — ноябрь — апрель', 'zhiraf-ufa' ),
 					'image'     => 'resort-vietnam-phu-quoc-2.jpg',
 					'cta_label' => __( 'Выбрать туры на Фукуок', 'zhiraf-ufa' ),
@@ -338,7 +338,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Дубай', 'zhiraf-ufa' ),
-					'tag'       => __( '🏙 Драйв и шопинг', 'zhiraf-ufa' ),
+					'tag'       => __( 'Драйв и шопинг', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для активных туристов, пар и любителей впечатлений', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~20 мин', 'zhiraf-ufa' ),
 					'image'     => 'dest-uae-new.jpg',
@@ -352,7 +352,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Рас-эль-Хайма / Фуджейра', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Спокойный All Inclusive на 1-й линии', 'zhiraf-ufa' ),
+					'tag'       => __( 'Спокойный All Inclusive на 1-й линии', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Идеально для семей с детьми и спокойного отдыха у моря', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~60 мин', 'zhiraf-ufa' ),
 					'image'     => 'dest-uae.jpg',
@@ -372,7 +372,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Кемер и посёлки', 'zhiraf-ufa' ),
-					'tag'       => __( '🌲 Горы и прохлада', 'zhiraf-ufa' ),
+					'tag'       => __( 'Горы и прохлада', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для ценителей природы и молодёжного отдыха', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~50 мин', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-kemer-2.jpg',
@@ -386,7 +386,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Сиде и Аланья', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Песок и аквапарки', 'zhiraf-ufa' ),
+					'tag'       => __( 'Песок и аквапарки', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для семей с малышами и долгого купания', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: 1–2,5 ч', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-alanya-2.jpg',
@@ -406,7 +406,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Шарм-эль-Шейх', 'zhiraf-ufa' ),
-					'tag'       => __( '🤿 Кораллы и безветренные бухты', 'zhiraf-ufa' ),
+					'tag'       => __( 'Кораллы и безветренные бухты', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Стеновые рифы, снорклинг, бухты без ветра', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-sharm-2.jpg',
 					'cta_label' => __( 'Подбор по Шарму', 'zhiraf-ufa' ),
@@ -419,7 +419,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Хургада', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Песок и семейный отдых', 'zhiraf-ufa' ),
+					'tag'       => __( 'Песок и семейный отдых', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Естественные песчаные пляжи, пологий заход, променад Марина', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-hurghada-2.jpg',
 					'cta_label' => __( 'Подбор по Хургаде', 'zhiraf-ufa' ),
@@ -438,7 +438,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Остров Маэ', 'zhiraf-ufa' ),
-					'tag'       => __( '🏝 Комфорт и Бо-Валлон', 'zhiraf-ufa' ),
+					'tag'       => __( 'Комфорт и Бо-Валлон', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Аэропорт, инфраструктура и аренда авто', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: 20–30 мин от аэропорта', 'zhiraf-ufa' ),
 					'image'     => 'alt-sejshely-3.jpg',
@@ -452,7 +452,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Праслин и Ла-Диг', 'zhiraf-ufa' ),
-					'tag'       => __( '🐢 Валуны и природа', 'zhiraf-ufa' ),
+					'tag'       => __( 'Валуны и природа', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Анс Сурс д’Аржан и пальмы Коко-де-Мер', 'zhiraf-ufa' ),
 					'meta'      => __( 'Добраться: паром или внутренний рейс', 'zhiraf-ufa' ),
 					'image'     => 'country-sejshely.jpg',
@@ -472,7 +472,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Остров-резорт', 'zhiraf-ufa' ),
-					'tag'       => __( '🏝 1 остров = 1 отель', 'zhiraf-ufa' ),
+					'tag'       => __( '1 остров = 1 отель', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Виллы над лагуной и All Inclusive', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: гидросамолёт / катер', 'zhiraf-ufa' ),
 					'image'     => 'resort-maldivy-atoll-1.jpg',
@@ -486,7 +486,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Маафуши / Тодду', 'zhiraf-ufa' ),
-					'tag'       => __( '🏘 Местный остров', 'zhiraf-ufa' ),
+					'tag'       => __( 'Местный остров', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Гестхаусы и экскурсии с местными', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: скоростной катер', 'zhiraf-ufa' ),
 					'image'     => 'resort-maldivy-atoll-2.jpg',
@@ -506,7 +506,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Унаватуна', 'zhiraf-ufa' ),
-					'tag'       => __( '🐢 Без волн', 'zhiraf-ufa' ),
+					'tag'       => __( 'Без волн', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Спокойный океан и семьи с детьми', 'zhiraf-ufa' ),
 					'meta'      => __( 'Юго-запад • лучший сезон: ноябрь–апрель', 'zhiraf-ufa' ),
 					'image'     => 'alt-shri-lanka-beach-1.jpg',
@@ -520,7 +520,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Хиккадува', 'zhiraf-ufa' ),
-					'tag'       => __( '🏄 Серф и черепахи', 'zhiraf-ufa' ),
+					'tag'       => __( 'Серф и черепахи', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Спорт, природа и вечерняя атмосфера', 'zhiraf-ufa' ),
 					'meta'      => __( 'Юго-запад • волны и тусовка', 'zhiraf-ufa' ),
 					'image'     => 'alt-shri-lanka-beach-2.jpg',
@@ -536,11 +536,11 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 		),
 		'indoneziya' => array(
 			'title'   => __( 'Нуса-Дуа или Чангу / Семиньяк?', 'zhiraf-ufa' ),
-			'lead'    => __( 'Спокойное купание и отели 5★ на юго-востоке — или серф, бич-клабы и виллы на западном побережье.', 'zhiraf-ufa' ),
+			'lead'    => __( 'Спокойное купание и отели 5 на юго-востоке — или серф, бич-клабы и виллы на западном побережье.', 'zhiraf-ufa' ),
 			'columns' => array(
 				array(
 					'title'     => __( 'Нуса-Дуа', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Купание и 5★', 'zhiraf-ufa' ),
+					'tag'       => __( 'Купание и 5', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Спокойный океан и курортная зона', 'zhiraf-ufa' ),
 					'meta'      => __( 'Юго-восток • охраняемая территория', 'zhiraf-ufa' ),
 					'image'     => 'alt-indoneziya-beach-1.jpg',
@@ -554,7 +554,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Чангу и Семиньяк', 'zhiraf-ufa' ),
-					'tag'       => __( '🏄 Серф и бич-клабы', 'zhiraf-ufa' ),
+					'tag'       => __( 'Серф и бич-клабы', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Лайфстайл, закаты и волны', 'zhiraf-ufa' ),
 					'meta'      => __( 'Западное побережье • тусовка', 'zhiraf-ufa' ),
 					'image'     => 'alt-indoneziya-beach-2.jpg',
@@ -570,11 +570,11 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 		),
 		'indiya'    => array(
 			'title'   => __( 'Северный или Южный Гоа?', 'zhiraf-ufa' ),
-			'lead'    => __( 'Тусовки, шеки и сансеты на севере — или белый песок, тишина и отели 5★ на юге.', 'zhiraf-ufa' ),
+			'lead'    => __( 'Тусовки, шеки и сансеты на севере — или белый песок, тишина и отели 5 на юге.', 'zhiraf-ufa' ),
 			'columns' => array(
 				array(
 					'title'     => __( 'Северный Гоа', 'zhiraf-ufa' ),
-					'tag'       => __( '🥁 Тусовки и сансеты', 'zhiraf-ufa' ),
+					'tag'       => __( 'Тусовки и сансеты', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Свобода, вечеринки и шеки', 'zhiraf-ufa' ),
 					'meta'      => __( 'Арамболь, Вагатор, Бага', 'zhiraf-ufa' ),
 					'image'     => 'resort-severnyj-goa.jpg',
@@ -583,12 +583,12 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'rows'      => array(
 						array( 'label' => __( 'Атмосфера', 'zhiraf-ufa' ), 'value' => __( 'Сансеты под барабаны в Арамболе, ночные маркеты в Арпоре и вечеринки в Вагаторе', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Инфраструктура', 'zhiraf-ufa' ), 'value' => __( 'Пляжные шеки, смузи, аренда скутеров и колоритные кафе', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Много отелей 3★ и гестхаусов по доступным ценам', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Бюджет', 'zhiraf-ufa' ), 'value' => __( 'Много отелей 3 и гестхаусов по доступным ценам', 'zhiraf-ufa' ) ),
 					),
 				),
 				array(
 					'title'     => __( 'Южный Гоа', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Белый песок и 5★', 'zhiraf-ufa' ),
+					'tag'       => __( 'Белый песок и 5', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Релакс и курортные комплексы', 'zhiraf-ufa' ),
 					'meta'      => __( 'Варка, Кавелоссим, Бенаулим', 'zhiraf-ufa' ),
 					'image'     => 'alt-indiya-beach-1.jpg',
@@ -608,7 +608,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Самарканд', 'zhiraf-ufa' ),
-					'tag'       => __( '🕌 Масштаб Тамерлана', 'zhiraf-ufa' ),
+					'tag'       => __( 'Масштаб Тамерлана', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Регистан, Гур-Эмир, Биби-Ханым', 'zhiraf-ufa' ),
 					'meta'      => __( 'Аэропорт • «Афросиаб»', 'zhiraf-ufa' ),
 					'image'     => 'resort-samarkand.jpg',
@@ -617,12 +617,12 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 					'rows'      => array(
 						array( 'label' => __( 'Архитектура', 'zhiraf-ufa' ), 'value' => __( 'Регистан, Гур-Эмир и Биби-Ханым — бирюзовые купола и монументальный масштаб', 'zhiraf-ufa' ) ),
 						array( 'label' => __( 'Логистика', 'zhiraf-ufa' ), 'value' => __( 'Международный аэропорт, скоростной поезд «Афросиаб» до Ташкента и Бухары', 'zhiraf-ufa' ) ),
-						array( 'label' => __( 'Комфорт', 'zhiraf-ufa' ), 'value' => __( 'Курортный комплекс Silk Road Samarkand с отелями 5★', 'zhiraf-ufa' ) ),
+						array( 'label' => __( 'Комфорт', 'zhiraf-ufa' ), 'value' => __( 'Курортный комплекс Silk Road Samarkand с отелями 5', 'zhiraf-ufa' ) ),
 					),
 				),
 				array(
 					'title'     => __( 'Бухара', 'zhiraf-ufa' ),
-					'tag'       => __( '🏺 Восточная сказка', 'zhiraf-ufa' ),
+					'tag'       => __( 'Восточная сказка', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Калян, Арк, Ляби-Хауз', 'zhiraf-ufa' ),
 					'meta'      => __( 'Исторический центр пешком', 'zhiraf-ufa' ),
 					'image'     => 'alt-uzbekistan-3.jpg',
@@ -642,7 +642,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Ереван', 'zhiraf-ufa' ),
-					'tag'       => __( '🍷 Городской ритм', 'zhiraf-ufa' ),
+					'tag'       => __( 'Городской ритм', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Сарьяна, Каскад, Вернисаж', 'zhiraf-ufa' ),
 					'meta'      => __( '20 мин от аэропорта Звартноц', 'zhiraf-ufa' ),
 					'image'     => 'alt-armeniya-yerevan.jpg',
@@ -656,7 +656,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Дилижан и Севан', 'zhiraf-ufa' ),
-					'tag'       => __( '🌲 Горы и озеро', 'zhiraf-ufa' ),
+					'tag'       => __( 'Горы и озеро', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Природа и перезагрузка', 'zhiraf-ufa' ),
 					'meta'      => __( 'Выезд из Еревана на 1–2 часа', 'zhiraf-ufa' ),
 					'image'     => 'alt-armeniya-sevan.jpg',
@@ -676,7 +676,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Гагра (Новая и Старая)', 'zhiraf-ufa' ),
-					'tag'       => __( '🌴 Движ и набережная', 'zhiraf-ufa' ),
+					'tag'       => __( 'Движ и набережная', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для молодёжи, пар и любителей вечерних прогулок', 'zhiraf-ufa' ),
 					'meta'      => __( 'От границы: ~25 мин', 'zhiraf-ufa' ),
 					'image'     => 'dest-abkhazia.jpg',
@@ -690,7 +690,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Пицунда и Лдзаа', 'zhiraf-ufa' ),
-					'tag'       => __( '🌲 Сосны и штиль', 'zhiraf-ufa' ),
+					'tag'       => __( 'Сосны и штиль', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Идеально для семей с детьми и оздоровления', 'zhiraf-ufa' ),
 					'meta'      => __( 'От границы: ~50 мин', 'zhiraf-ufa' ),
 					'image'     => 'alt-armeniya-2.jpg',
@@ -710,7 +710,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 			'columns' => array(
 				array(
 					'title'     => __( 'Сириус (Имеретинская бухта)', 'zhiraf-ufa' ),
-					'tag'       => __( '🌊 Море и самокаты', 'zhiraf-ufa' ),
+					'tag'       => __( 'Море и самокаты', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для семей, прогулок у моря и активного отдыха', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~15 мин', 'zhiraf-ufa' ),
 					'image'     => 'hero-collage-1.jpg',
@@ -724,7 +724,7 @@ function zhiraf_ufa_default_resort_battle( $slug ) {
 				),
 				array(
 					'title'     => __( 'Красная Поляна и Роза Хутор', 'zhiraf-ufa' ),
-					'tag'       => __( '🏔 Горы и сервис 5★', 'zhiraf-ufa' ),
+					'tag'       => __( 'Горы и сервис 5', 'zhiraf-ufa' ),
 					'subtitle'  => __( 'Для ценителей высокого сервиса, SPA и природы', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~40 мин', 'zhiraf-ufa' ),
 					'image'     => 'hero-collage-2.jpg',

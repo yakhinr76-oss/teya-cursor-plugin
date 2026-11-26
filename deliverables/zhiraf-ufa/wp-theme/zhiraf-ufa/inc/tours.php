@@ -479,15 +479,15 @@ function zhiraf_ufa_tour_flight_info( $tour, $fallback_city = 'Уфа' ) {
 		$carrier .= ', ' . __( 'без багажа', 'zhiraf-ufa' );
 	}
 	if ( 'Москва' === $city ) {
-		return array( 'key' => 'mow', 'icon' => '✈', 'label' => __( 'вылет из Москвы', 'zhiraf-ufa' ), 'line' => $carrier ? sprintf( __( '%s, из Москвы', 'zhiraf-ufa' ), $carrier ) : __( 'из Москвы', 'zhiraf-ufa' ) );
+		return array( 'key' => 'mow', 'icon' => 'plane', 'label' => __( 'вылет из Москвы', 'zhiraf-ufa' ), 'line' => $carrier ? sprintf( __( '%s, из Москвы', 'zhiraf-ufa' ), $carrier ) : __( 'из Москвы', 'zhiraf-ufa' ) );
 	}
 	if ( '' === $airline ) {
-		return array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
+		return array( 'key' => 'ufa', 'icon' => 'plane', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
 	}
 	if ( false !== mb_stripos( $airline, 'стыковка', 0, 'UTF-8' ) ) {
-		return array( 'key' => 'via', 'icon' => '⇄', 'label' => __( 'через Москву', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, стыковка в Москве', 'zhiraf-ufa' ), $carrier ) );
+		return array( 'key' => 'via', 'icon' => 'plane', 'label' => __( 'через Москву', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, стыковка в Москве', 'zhiraf-ufa' ), $carrier ) );
 	}
-	return array( 'key' => 'direct', 'icon' => '✈', 'label' => __( 'прямой рейс', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, прямой рейс из Уфы', 'zhiraf-ufa' ), $carrier ) );
+	return array( 'key' => 'direct', 'icon' => 'plane', 'label' => __( 'прямой рейс', 'zhiraf-ufa' ), 'line' => sprintf( __( '%s, прямой рейс из Уфы', 'zhiraf-ufa' ), $carrier ) );
 }
 
 /**

@@ -35,8 +35,10 @@ $expert_title = function_exists( 'zhiraf_ufa_curated_expert_section_title' )
 		<div class="turciya-expert-nuances__grid">
 			<?php foreach ( $items as $item ) : ?>
 				<article class="turciya-expert-card">
-					<?php if ( ! empty( $item['icon'] ) ) : ?>
-						<span class="turciya-expert-card__icon" aria-hidden="true"><?php echo esc_html( (string) $item['icon'] ); ?></span>
+					<?php if ( ! empty( $item['icon'] ) && function_exists( 'zhiraf_ufa_render_lucide_icon' ) ) : ?>
+						<span class="turciya-expert-card__icon" aria-hidden="true">
+							<?php echo zhiraf_ufa_render_lucide_icon( $item, 22, 'turciya-expert-card__icon-svg' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						</span>
 					<?php endif; ?>
 					<h3 class="turciya-expert-card__title"><?php echo esc_html( $item['title'] ?? '' ); ?></h3>
 					<p class="turciya-expert-card__text"><?php echo esc_html( $item['text'] ?? '' ); ?></p>

@@ -6020,11 +6020,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .catalog-hero__highlights li::before {
-  content: "✓";
+  content: "";
   position: absolute;
   left: 0;
-  color: var(--color-primary);
-  font-weight: 800;
+  top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-primary);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .catalog-hero__collage {

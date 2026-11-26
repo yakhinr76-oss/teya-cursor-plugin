@@ -57,7 +57,7 @@ $pros   = ! empty( $hotel['pros'] ) && is_array( $hotel['pros'] ) ? $hotel['pros
 		<?php if ( ! empty( $pros ) ) : ?>
 			<ul class="featured-hotel-card__pros">
 				<?php foreach ( array_slice( $pros, 0, 3 ) as $pro ) : ?>
-					<li><span class="featured-hotel-card__check" aria-hidden="true">✓</span><?php echo esc_html( $pro ); ?></li>
+					<li><span class="featured-hotel-card__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 16 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php echo esc_html( $pro ); ?></li>
 				<?php endforeach; ?>
 			</ul>
 		<?php endif; ?>

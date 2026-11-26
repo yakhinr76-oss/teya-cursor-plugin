@@ -19,15 +19,15 @@ if ( empty( $dest['slug'] ) ) {
 $min     = function_exists( 'zhiraf_ufa_get_country_min_tour' ) ? zhiraf_ufa_get_country_min_tour( $dest['slug'] ) : null;
 $flight = function_exists( 'zhiraf_ufa_tour_flight_info' )
 	? zhiraf_ufa_tour_flight_info( $min, 'Уфа' )
-	: array( 'key' => 'ufa', 'icon' => '✈', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
+	: array( 'key' => 'ufa', 'icon' => 'plane', 'label' => __( 'вылет из Уфы', 'zhiraf-ufa' ), 'line' => '' );
 $flight_tone = ( 'direct' === $flight['key'] ) ? 'direct' : 'connection';
 if ( ! empty( $dest['domestic'] ) && ! empty( $dest['flight_label'] ) ) {
 	$flight['key']   = 'domestic';
-	$flight['icon']  = '🛂';
+	$flight['icon']  = 'passport';
 	$flight['label'] = (string) $dest['flight_label'];
 	$flight_tone     = 'connection';
 } elseif ( 'mow' === $flight['key'] ) {
-	$flight['icon']  = '⇄';
+	$flight['icon']  = 'plane';
 	$flight['label'] = __( 'через Москву', 'zhiraf-ufa' );
 }
 $package = function_exists( 'zhiraf_ufa_bento_package_summary' ) ? zhiraf_ufa_bento_package_summary( $min ) : '';
@@ -37,7 +37,13 @@ $teaser  = ! empty( $dest['teaser'] ) ? $dest['teaser'] : __( 'Пакетные 
 	<a class="catalog-dest-card__media" href="<?php echo esc_url( $dest['url'] ); ?>">
 		<?php zhiraf_ufa_img( $dest['image'], $dest['alt'], 'catalog-dest-card__img dest-card__img', true ); ?>
 		<span class="catalog-dest-card__flight catalog-dest-card__flight--<?php echo esc_attr( $flight_tone ); ?>">
-			<span aria-hidden="true"><?php echo esc_html( $flight['icon'] ); ?></span>
+			<span aria-hidden="true">
+				<?php
+				if ( function_exists( 'zhiraf_ufa_render_lucide_icon' ) ) {
+					echo zhiraf_ufa_render_lucide_icon( array( 'icon' => $flight['icon'] ), 14, 'catalog-dest-card__flight-icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				}
+				?>
+			</span>
 			<?php echo esc_html( $flight['label'] ); ?>
 		</span>
 		<?php if ( $min && ! empty( $min['price_rur'] ) ) : ?>

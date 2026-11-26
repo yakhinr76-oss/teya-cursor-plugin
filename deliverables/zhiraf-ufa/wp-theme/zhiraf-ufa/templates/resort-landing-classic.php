@@ -36,9 +36,15 @@ $resort_faq_items = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 					<ul class="dest-landing-hero__badges" aria-label="<?php esc_attr_e( 'Ключевые условия поездки', 'zhiraf-ufa' ); ?>">
 						<?php foreach ( $resort_data['hero_badges'] as $badge ) : ?>
 							<li class="dest-landing-hero__badge">
-								<?php if ( ! empty( $badge['icon'] ) ) : ?>
-									<span class="dest-landing-hero__badge-icon" aria-hidden="true"><?php echo esc_html( $badge['icon'] ); ?></span>
-								<?php endif; ?>
+								<?php
+								if ( function_exists( 'zhiraf_ufa_render_hero_badge_icon' ) ) {
+									$icon_markup = zhiraf_ufa_render_hero_badge_icon( $badge );
+									if ( '' !== $icon_markup ) {
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+										echo $icon_markup;
+									}
+								}
+								?>
 								<span><?php echo esc_html( $badge['text'] ?? '' ); ?></span>
 							</li>
 						<?php endforeach; ?>

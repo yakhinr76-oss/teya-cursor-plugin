@@ -19,7 +19,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 		'ufa' => array(
 			array(
 				'slug'        => 'turciya',
-				'flag'        => '🇹🇷',
+				'flag'        => '',
 				'title'       => __( 'Турция', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Анталья, Кемер, Сиде • All Inclusive', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Прямой чартер', 'zhiraf-ufa' ),
@@ -27,7 +27,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'oae',
-				'flag'        => '🇦🇪',
+				'flag'        => '',
 				'title'       => __( 'ОАЭ', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Дубай, Шарджа, Рас-эль-Хайма', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Flydubai', 'zhiraf-ufa' ),
@@ -35,7 +35,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'egipet',
-				'flag'        => '🇪🇬',
+				'flag'        => '',
 				'title'       => __( 'Египет', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Шарм-эль-Шейх, Хургада • All Inclusive', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Прямой чартер', 'zhiraf-ufa' ),
@@ -43,7 +43,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'tailand',
-				'flag'        => '🇹🇭',
+				'flag'        => '',
 				'title'       => __( 'Таиланд', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Пхукет, Паттайя • Завтраки', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Прямой рейс', 'zhiraf-ufa' ),
@@ -51,7 +51,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'rossiya',
-				'flag'        => '🇷🇺',
+				'flag'        => '',
 				'title'       => __( 'Россия (Сочи)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Имеретинский, Красная Поляна', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Без загранпаспорта', 'zhiraf-ufa' ),
@@ -70,7 +70,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 		'mow' => array(
 			array(
 				'slug'        => 'maldivy',
-				'flag'        => '🇲🇻',
+				'flag'        => '',
 				'title'       => __( 'Мальдивы', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Атоллы, виллы на воде • All Inclusive', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
@@ -78,7 +78,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'shri-lanka',
-				'flag'        => '🇱🇰',
+				'flag'        => '',
 				'title'       => __( 'Шри-Ланка', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Бентота, Хиккадува • Завтраки', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
@@ -86,7 +86,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'vietnam',
-				'flag'        => '🇻🇳',
+				'flag'        => '',
 				'title'       => __( 'Вьетнам', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Нячанг, Фукуок • Пляж и SPA', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
@@ -94,7 +94,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'kitaj',
-				'flag'        => '🇨🇳',
+				'flag'        => '',
 				'title'       => __( 'Китай (Хайнань)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Санья • Пляж и тропики', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
@@ -102,7 +102,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'indiya',
-				'flag'        => '🇮🇳',
+				'flag'        => '',
 				'title'       => __( 'Индия (Гоа)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Северный и Южный Гоа • Завтраки', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),
@@ -110,7 +110,7 @@ function zhiraf_ufa_home_destinations_hub_config() {
 			),
 			array(
 				'slug'        => 'indoneziya',
-				'flag'        => '🇮🇩',
+				'flag'        => '',
 				'title'       => __( 'Индонезия (Бали)', 'zhiraf-ufa' ),
 				'teaser'      => __( 'Бали • Пляж и завтраки', 'zhiraf-ufa' ),
 				'flight_badge'=> __( 'Стыковка в Москве', 'zhiraf-ufa' ),

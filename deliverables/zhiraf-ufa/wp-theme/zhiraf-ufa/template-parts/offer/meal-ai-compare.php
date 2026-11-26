@@ -24,8 +24,10 @@ $rows       = ! empty( $args['rows'] ) && is_array( $args['rows'] ) ? $args['row
 			<div class="ai-meal-highlights">
 				<?php foreach ( $highlights as $item ) : ?>
 					<article class="ai-meal-highlight">
-						<?php if ( ! empty( $item['icon'] ) ) : ?>
-							<span class="ai-meal-highlight__icon" aria-hidden="true"><?php echo esc_html( $item['icon'] ); ?></span>
+						<?php if ( ! empty( $item['icon'] ) && function_exists( 'zhiraf_ufa_render_lucide_icon' ) ) : ?>
+							<span class="ai-meal-highlight__icon" aria-hidden="true">
+								<?php echo zhiraf_ufa_render_lucide_icon( $item, 22, 'ai-meal-highlight__icon-svg' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							</span>
 						<?php endif; ?>
 						<h3><?php echo esc_html( $item['title'] ); ?></h3>
 						<p><?php echo esc_html( $item['text'] ); ?></p>
@@ -47,8 +49,24 @@ $rows       = ! empty( $args['rows'] ) && is_array( $args['rows'] ) ? $args['row
 						<?php foreach ( $rows as $row ) : ?>
 							<tr>
 								<th scope="row"><?php echo esc_html( $row['label'] ); ?></th>
-								<td><?php echo ! empty( $row['ai'] ) ? '✓' : '—'; ?></td>
-								<td><?php echo ! empty( $row['uai'] ) ? '✓' : '—'; ?></td>
+								<td>
+									<?php
+									if ( ! empty( $row['ai'] ) && function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+										echo zhiraf_ufa_lucide_icon( 'check', 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									} else {
+										echo '—';
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									if ( ! empty( $row['uai'] ) && function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+										echo zhiraf_ufa_lucide_icon( 'check', 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									} else {
+										echo '—';
+									}
+									?>
+								</td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

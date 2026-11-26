@@ -583,17 +583,17 @@ function zhiraf_ufa_rossiya_catalog_filters() {
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
-			'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ),
+			'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ),
 			'title' => __( 'Россия: топ-6 из базы 50 отелей', 'zhiraf-ufa' ),
 			'desc'  => __( 'По одному якорю на регион: Сочи, Поляна, Анапа, Кавминводы, города и природа. Пакет с перелётом или только отель.', 'zhiraf-ufa' ),
 		),
-		array( 'id' => 'resort-sochi', 'group' => 'resort', 'label' => __( '🌊 Сочи', 'zhiraf-ufa' ), 'title' => __( 'Сочи и Сириус', 'zhiraf-ufa' ), 'desc' => __( 'Море, Олимпийский парк, Имеретинка.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-polyana', 'group' => 'resort', 'label' => __( '⛷ Поляна', 'zhiraf-ufa' ), 'title' => __( 'Красная Поляна', 'zhiraf-ufa' ), 'desc' => __( 'Горы, канатки, летом — треккинг.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-anapa', 'group' => 'resort', 'label' => __( '🏖 Анапа', 'zhiraf-ufa' ), 'title' => __( 'Анапа', 'zhiraf-ufa' ), 'desc' => __( 'Песок и семейные отели.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-kmv', 'group' => 'resort', 'label' => __( '💆 Кавминводы', 'zhiraf-ufa' ), 'title' => __( 'Санатории и СПА', 'zhiraf-ufa' ), 'desc' => __( 'Кисловодск, Пятигорск и др.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-city', 'group' => 'resort', 'label' => __( '🏙 Города', 'zhiraf-ufa' ), 'title' => __( 'СПб, Москва, Калининград', 'zhiraf-ufa' ), 'desc' => __( 'Городские отели и выходные.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-nature', 'group' => 'resort', 'label' => __( '🌲 Природа', 'zhiraf-ufa' ), 'title' => __( 'Байкал, Алтай, Карелия', 'zhiraf-ufa' ), 'desc' => __( 'Эко-отели и отдых у воды.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Питание и бассейн.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sochi', 'group' => 'resort', 'label' => __( 'Сочи', 'zhiraf-ufa' ), 'title' => __( 'Сочи и Сириус', 'zhiraf-ufa' ), 'desc' => __( 'Море, Олимпийский парк, Имеретинка.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-polyana', 'group' => 'resort', 'label' => __( 'Поляна', 'zhiraf-ufa' ), 'title' => __( 'Красная Поляна', 'zhiraf-ufa' ), 'desc' => __( 'Горы, канатки, летом — треккинг.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-anapa', 'group' => 'resort', 'label' => __( 'Анапа', 'zhiraf-ufa' ), 'title' => __( 'Анапа', 'zhiraf-ufa' ), 'desc' => __( 'Песок и семейные отели.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-kmv', 'group' => 'resort', 'label' => __( 'Кавминводы', 'zhiraf-ufa' ), 'title' => __( 'Санатории и СПА', 'zhiraf-ufa' ), 'desc' => __( 'Кисловодск, Пятигорск и др.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-city', 'group' => 'resort', 'label' => __( 'Города', 'zhiraf-ufa' ), 'title' => __( 'СПб, Москва, Калининград', 'zhiraf-ufa' ), 'desc' => __( 'Городские отели и выходные.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-nature', 'group' => 'resort', 'label' => __( 'Природа', 'zhiraf-ufa' ), 'title' => __( 'Байкал, Алтай, Карелия', 'zhiraf-ufa' ), 'desc' => __( 'Эко-отели и отдых у воды.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( 'С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Питание и бассейн.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -773,9 +773,8 @@ function zhiraf_ufa_rossiya_resort_pick_cards() {
  */
 function zhiraf_ufa_rossiya_expert_nuances() {
 	return array(
-		array( 'icon' => '✈', 'title' => __( 'Перелёты по РФ', 'zhiraf-ufa' ), 'text' => __( 'Сочи, Анапа, Минводы, Москва и регионы — или бронь только отеля.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🏨', 'title' => __( 'Только проживание', 'zhiraf-ufa' ), 'text' => __( 'Блочные тарифы, если билеты и ж/д уже есть.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🗺', 'title' => __( '50 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Фильтры по Сочи, Поляне, КМВ, городам и природе — «Показать ещё» откроет весь пул.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'plane', 'title' => __( 'Перелёты по РФ', 'zhiraf-ufa' ), 'text' => __( 'Сочи, Анапа, Минводы, Москва и регионы — или бронь только отеля.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'hotel', 'title' => __( 'Только проживание', 'zhiraf-ufa' ), 'text' => __( 'Блочные тарифы, если билеты и ж/д уже есть.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '', 'title' => __( '50 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Фильтры по Сочи, Поляне, КМВ, городам и природе — «Показать ещё» откроет весь пул.', 'zhiraf-ufa' ) ),
 	);
 }
-

@@ -66,7 +66,7 @@ $quiz_form_id = 'quiz-form';
 		</div>
 
 		<div id="quiz-success-state" class="quiz-modal__success" hidden>
-			<div class="quiz-modal__success-icon" aria-hidden="true">✓</div>
+			<div class="quiz-modal__success-icon" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 24 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 			<h3 class="quiz-modal__success-title"><?php esc_html_e( 'Запрос принят!', 'zhiraf-ufa' ); ?></h3>
 			<p class="quiz-modal__success-text">
 				<?php esc_html_e( 'Максим уже открыл базу туроператоров. Подборка 2–4 отелей придёт в выбранный мессенджер в течение 10–15 минут.', 'zhiraf-ufa' ); ?>

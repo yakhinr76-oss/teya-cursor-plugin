@@ -574,13 +574,13 @@ function zhiraf_ufa_indonesia_catalog_hotels() {
  */
 function zhiraf_ufa_indonesia_catalog_filters() {
 	return array(
-		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры на Бали: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Нуса-Дуа, Семиньяк, Санур и Убуд. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-nusa_dua', 'group' => 'resort', 'label' => __( '🏝 Нуса-Дуа', 'zhiraf-ufa' ), 'title' => __( 'Нуса-Дуа', 'zhiraf-ufa' ), 'desc' => __( 'Спокойное море и резорты 5★.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-seminyak', 'group' => 'resort', 'label' => __( '🌅 Семиньяк', 'zhiraf-ufa' ), 'title' => __( 'Семиньяк / Чангу', 'zhiraf-ufa' ), 'desc' => __( 'Закаты и кафе.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-sanur', 'group' => 'resort', 'label' => __( '🌊 Санур', 'zhiraf-ufa' ), 'title' => __( 'Санур', 'zhiraf-ufa' ), 'desc' => __( 'Семейный восточный пляж.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-ubud', 'group' => 'resort', 'label' => __( '🌿 Убуд', 'zhiraf-ufa' ), 'title' => __( 'Убуд', 'zhiraf-ufa' ), 'desc' => __( 'Джунгли без моря.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Нуса-Дуа и Санур.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( 'Честные 4★.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры на Бали: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Нуса-Дуа, Семиньяк, Санур и Убуд. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-nusa_dua', 'group' => 'resort', 'label' => __( 'Нуса-Дуа', 'zhiraf-ufa' ), 'title' => __( 'Нуса-Дуа', 'zhiraf-ufa' ), 'desc' => __( 'Спокойное море и резорты 5.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-seminyak', 'group' => 'resort', 'label' => __( 'Семиньяк', 'zhiraf-ufa' ), 'title' => __( 'Семиньяк / Чангу', 'zhiraf-ufa' ), 'desc' => __( 'Закаты и кафе.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sanur', 'group' => 'resort', 'label' => __( 'Санур', 'zhiraf-ufa' ), 'title' => __( 'Санур', 'zhiraf-ufa' ), 'desc' => __( 'Семейный восточный пляж.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-ubud', 'group' => 'resort', 'label' => __( 'Убуд', 'zhiraf-ufa' ), 'title' => __( 'Убуд', 'zhiraf-ufa' ), 'desc' => __( 'Джунгли без моря.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( 'С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Нуса-Дуа и Санур.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( 'Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( 'Честные 4.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -652,9 +652,8 @@ function zhiraf_ufa_indonesia_resort_pick_cards() {
  */
 function zhiraf_ufa_indonesia_expert_nuances() {
 	return array(
-		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Долгий перелёт со стыковкой — закладываем день на дорогу и отдых в первый день.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🛂', 'title' => __( 'VoA и сбор Бали', 'zhiraf-ufa' ), 'text' => __( 'Виза по прилёту или e-VoA, плюс туристический сбор острова — напомним до оплаты тура.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🌊', 'title' => __( 'Где купаться', 'zhiraf-ufa' ), 'text' => __( 'Спокойная вода — Нуса-Дуа и Санур. Семиньяк и Чангу — серф; для детей чаще Нуса-Дуа.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'plane', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Долгий перелёт со стыковкой — закладываем день на дорогу и отдых в первый день.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'VoA и сбор Бали', 'zhiraf-ufa' ), 'text' => __( 'Виза по прилёту или e-VoA, плюс туристический сбор острова — напомним до оплаты тура.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'waves', 'title' => __( 'Где купаться', 'zhiraf-ufa' ), 'text' => __( 'Спокойная вода — Нуса-Дуа и Санур. Семиньяк и Чангу — серф; для детей чаще Нуса-Дуа.', 'zhiraf-ufa' ) ),
 	);
 }
-

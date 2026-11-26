@@ -143,7 +143,12 @@ if ( 'sejshely' === $dest_slug ) {
 									?>
 									<li class="turciya-resort-pick__bullet turciya-resort-pick__bullet--<?php echo esc_attr( sanitize_html_class( $b_type ) ); ?>">
 										<span class="turciya-resort-pick__bullet-icon" aria-hidden="true">
-											<?php echo 'info' === $b_type ? 'i' : '✓'; ?>
+											<?php
+											if ( function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+												$icon = 'info' === $b_type ? 'info' : 'check';
+												echo zhiraf_ufa_lucide_icon( $icon, 14 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+											}
+											?>
 										</span>
 										<span><?php echo esc_html( $b_text ); ?></span>
 									</li>

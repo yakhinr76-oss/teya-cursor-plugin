@@ -234,13 +234,13 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'image_alt'     => __( 'Базовый доступный тур в Турцию, Аланья', 'zhiraf-ufa' ),
 			'badge'         => __( 'Старт по Турции', 'zhiraf-ufa' ),
 			'badge_mod'     => 'home-price',
-			'resort_pill'   => __( 'Аланья • 4★ All Inclusive', 'zhiraf-ufa' ),
+			'resort_pill'   => __( 'Аланья • 4 All Inclusive', 'zhiraf-ufa' ),
 			'subtitle'      => __( 'Базовый комфорт', 'zhiraf-ufa' ),
 			'rating'        => '4.35',
-			'name'          => __( 'Sun Fire Beach Hotel 4★', 'zhiraf-ufa' ),
+			'name'          => __( 'Sun Fire Beach Hotel 4', 'zhiraf-ufa' ),
 			'description'   => __( 'Честный вход на море с прямым чартером из Уфы и трёхразовым питанием.', 'zhiraf-ufa' ),
-			'caveat'        => __( 'Пляж через переход, номера 4★ попроще лидеров курорта.', 'zhiraf-ufa' ),
-			'meal'          => __( '4★ All Inclusive', 'zhiraf-ufa' ),
+			'caveat'        => __( 'Пляж через переход, номера 4 попроще лидеров курорта.', 'zhiraf-ufa' ),
+			'meal'          => __( '4 All Inclusive', 'zhiraf-ufa' ),
 			'price_rub'     => $base_price,
 			'price_emphasis'=> true,
 			'wa_prefill'    => zhiraf_ufa_turciya_curated_messenger_prefill( 'Sun Fire Beach Hotel 4★' ),
@@ -253,12 +253,12 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'badge'       => __( 'Идеально детям', 'zhiraf-ufa' ),
 			'badge_mod'   => 'family',
 			'resort_pill' => __( 'Сиде • Песчаный вход', 'zhiraf-ufa' ),
-			'subtitle'    => __( '5★ Ultra All Inclusive', 'zhiraf-ufa' ),
+			'subtitle'    => __( '5 Ultra All Inclusive', 'zhiraf-ufa' ),
 			'rating'      => '4.85',
-			'name'        => __( 'Marvida Family Eco 5★', 'zhiraf-ufa' ),
+			'name'        => __( 'Marvida Family Eco 5', 'zhiraf-ufa' ),
 			'description' => __( 'Пологий песок, луна-парк и отдельный стол для малышей.', 'zhiraf-ufa' ),
 			'caveat'      => __( '2-я линия: до пляжа ~450 м, каждые 5 мин шаттл через озеро.', 'zhiraf-ufa' ),
-			'meal'        => __( '5★ UAI', 'zhiraf-ufa' ),
+			'meal'        => __( '5 UAI', 'zhiraf-ufa' ),
 			'price_rub'   => 174000,
 			'wa_prefill'  => zhiraf_ufa_turciya_curated_messenger_prefill( 'Marvida Family Eco 5★' ),
 		),
@@ -270,12 +270,12 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'badge'       => __( 'Хит цена/качество', 'zhiraf-ufa' ),
 			'badge_mod'   => 'value',
 			'resort_pill' => __( 'Аланья • 1-я линия', 'zhiraf-ufa' ),
-			'subtitle'    => __( '5★ All Inclusive', 'zhiraf-ufa' ),
+			'subtitle'    => __( '5 All Inclusive', 'zhiraf-ufa' ),
 			'rating'      => '4.78',
-			'name'        => __( 'Quattro Beach Spa Resort 5★', 'zhiraf-ufa' ),
+			'name'        => __( 'Quattro Beach Spa Resort 5', 'zhiraf-ufa' ),
 			'description' => __( 'Первая линия, сильная линия морепродуктов и свежие номера.', 'zhiraf-ufa' ),
 			'caveat'      => __( 'Вечером у пляжа оживлённо — ранний сон лучше в корпусе подальше от сцены.', 'zhiraf-ufa' ),
-			'meal'        => __( '5★ AI', 'zhiraf-ufa' ),
+			'meal'        => __( '5 AI', 'zhiraf-ufa' ),
 			'price_rub'   => 152000,
 			'wa_prefill'  => zhiraf_ufa_turciya_curated_messenger_prefill( 'Quattro Beach Spa Resort 5★' ),
 		),
@@ -287,12 +287,12 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'badge'       => __( 'Только для взрослых 16+', 'zhiraf-ufa' ),
 			'badge_mod'   => 'adults',
 			'resort_pill' => __( 'Сиде • 16+', 'zhiraf-ufa' ),
-			'subtitle'    => __( '5★ Ultra All Inclusive', 'zhiraf-ufa' ),
+			'subtitle'    => __( '5 Ultra All Inclusive', 'zhiraf-ufa' ),
 			'rating'      => '4.90',
-			'name'        => __( 'Commodore Elite Suites 5★', 'zhiraf-ufa' ),
+			'name'        => __( 'Commodore Elite Suites 5', 'zhiraf-ufa' ),
 			'description' => __( 'Формат 16+, тишина у бассейна и широкий приватный пляж.', 'zhiraf-ufa' ),
 			'caveat'      => __( 'Часть импортного алкоголя в баре — за доплату (типично для UAI).', 'zhiraf-ufa' ),
-			'meal'        => __( '5★ UAI', 'zhiraf-ufa' ),
+			'meal'        => __( '5 UAI', 'zhiraf-ufa' ),
 			'price_rub'   => 198000,
 			'wa_prefill'  => zhiraf_ufa_turciya_curated_messenger_prefill( 'Commodore Elite Suites 5★' ),
 		),
@@ -304,12 +304,12 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'badge'       => __( 'Сосны и горы', 'zhiraf-ufa' ),
 			'badge_mod'   => 'nature',
 			'resort_pill' => __( 'Кемер • 1-я линия', 'zhiraf-ufa' ),
-			'subtitle'    => __( '5★ Ultra All Inclusive', 'zhiraf-ufa' ),
+			'subtitle'    => __( '5 Ultra All Inclusive', 'zhiraf-ufa' ),
 			'rating'      => '4.82',
-			'name'        => __( 'Akka Antedon Hotel 5★', 'zhiraf-ufa' ),
+			'name'        => __( 'Akka Antedon Hotel 5', 'zhiraf-ufa' ),
 			'description' => __( 'Сосны, чистая вода и целебный хвойный воздух у подножия Тавра.', 'zhiraf-ufa' ),
 			'caveat'      => __( 'Галечный вход в море — без аквашуз не обойтись.', 'zhiraf-ufa' ),
-			'meal'        => __( '5★ UAI', 'zhiraf-ufa' ),
+			'meal'        => __( '5 UAI', 'zhiraf-ufa' ),
 			'price_rub'   => 186000,
 			'wa_prefill'  => zhiraf_ufa_turciya_curated_messenger_prefill( 'Akka Antedon Hotel 5★' ),
 		),
@@ -321,12 +321,12 @@ function zhiraf_ufa_turciya_curated_hotels() {
 			'badge'       => __( 'Премиум-сервис', 'zhiraf-ufa' ),
 			'badge_mod'   => 'premium',
 			'resort_pill' => __( 'Белек • High Class', 'zhiraf-ufa' ),
-			'subtitle'    => __( '5★ High Class All Inclusive', 'zhiraf-ufa' ),
+			'subtitle'    => __( '5 High Class All Inclusive', 'zhiraf-ufa' ),
 			'rating'      => '4.95',
-			'name'        => __( 'Voyage Belek Golf & Spa 5★', 'zhiraf-ufa' ),
+			'name'        => __( 'Voyage Belek Golf & Spa 5', 'zhiraf-ufa' ),
 			'description' => __( 'High Class сервис, гастрономия и виллы среди сосен у своего пляжа.', 'zhiraf-ufa' ),
 			'caveat'      => __( 'A la carte и коллекционный алкоголь — по записи и с доплатой.', 'zhiraf-ufa' ),
-			'meal'        => __( '5★ HCI', 'zhiraf-ufa' ),
+			'meal'        => __( '5 HCI', 'zhiraf-ufa' ),
 			'price_rub'   => 245000,
 			'wa_prefill'  => zhiraf_ufa_turciya_curated_messenger_prefill( 'Voyage Belek Golf & Spa 5★' ),
 		),
@@ -547,16 +547,16 @@ function zhiraf_ufa_turciya_pool_meal_concept( $hotel_name, $category_slug ) {
 	$hotel_name    = (string) $hotel_name;
 	$category_slug = sanitize_key( (string) $category_slug );
 	if ( preg_match( '/4\s*★/u', $hotel_name ) ) {
-		return __( '4★ All Inclusive', 'zhiraf-ufa' );
+		return __( '4 All Inclusive', 'zhiraf-ufa' );
 	}
 	if ( 'premium' === $category_slug ) {
-		return __( '5★ High Class All Inclusive', 'zhiraf-ufa' );
+		return __( '5 High Class All Inclusive', 'zhiraf-ufa' );
 	}
 	if ( in_array( $category_slug, array( 'family', 'couples' ), true ) ) {
-		return __( '5★ Ultra All Inclusive', 'zhiraf-ufa' );
+		return __( '5 Ultra All Inclusive', 'zhiraf-ufa' );
 	}
 
-	return __( '5★ All Inclusive', 'zhiraf-ufa' );
+	return __( '5 All Inclusive', 'zhiraf-ufa' );
 }
 
 /**
@@ -951,42 +951,42 @@ function zhiraf_ufa_turciya_catalog_filters() {
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
-			'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ),
+			'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ),
 			'title' => __( 'Туры в Турцию: 6 проверенных вариантов', 'zhiraf-ufa' ),
 			'desc'  => __( 'Базовый тур с главной страницы + 5 отелей под разные сценарии отдыха с прямым рейсом из Уфы.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'resort-side',
 			'group' => 'resort',
-			'label' => __( '🏖️ Сиде', 'zhiraf-ufa' ),
+			'label' => __( 'Сиде', 'zhiraf-ufa' ),
 			'title' => __( 'Отели Сиде (песчаные пляжи)', 'zhiraf-ufa' ),
 			'desc'  => __( 'Отобранные отели Сиде с пологим берегом без плит — до 6 лучших из нашей базы.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'resort-kemer',
 			'group' => 'resort',
-			'label' => __( '🌲 Кемер', 'zhiraf-ufa' ),
+			'label' => __( 'Кемер', 'zhiraf-ufa' ),
 			'title' => __( 'Отели Кемера (горы и сосны)', 'zhiraf-ufa' ),
 			'desc'  => __( 'Проверенные отели среди реликтовых сосен с кристально чистой водой.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'resort-alanya',
 			'group' => 'resort',
-			'label' => __( '☀️ Аланья', 'zhiraf-ufa' ),
+			'label' => __( 'Аланья', 'zhiraf-ufa' ),
 			'title' => __( 'Отели Аланьи (максимальная выгода)', 'zhiraf-ufa' ),
 			'desc'  => __( 'Лучшие предложения по соотношению цены и тёплого моря.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'resort-belek',
 			'group' => 'resort',
-			'label' => __( '👑 Белек', 'zhiraf-ufa' ),
-			'title' => __( 'Отели Белека (High-End 5★)', 'zhiraf-ufa' ),
+			'label' => __( 'Белек', 'zhiraf-ufa' ),
+			'title' => __( 'Отели Белека (High-End 5)', 'zhiraf-ufa' ),
 			'desc'  => __( 'Флагманские отели с закрытой территорией и сервисом премиум-уровня.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'        => 'resort-antalya',
 			'group'     => 'resort',
-			'label'     => __( '🏙️ Анталья', 'zhiraf-ufa' ),
+			'label'     => __( 'Анталья', 'zhiraf-ufa' ),
 			'title'     => __( 'Отели Антальи (город и Лара)', 'zhiraf-ufa' ),
 			'desc'      => __( 'Короткий трансфер, пляжи Лара / Коньяалты, Калеичи и шопинг — до 6 отелей из базы.', 'zhiraf-ufa' ),
 			'guide_url' => zhiraf_ufa_turciya_resort_guide_url( 'antalya' ),
@@ -994,21 +994,21 @@ function zhiraf_ufa_turciya_catalog_filters() {
 		array(
 			'id'    => 'need-family',
 			'group' => 'need',
-			'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ),
+			'label' => __( 'С детьми', 'zhiraf-ufa' ),
 			'title' => __( 'Отели для отдыха с детьми', 'zhiraf-ufa' ),
 			'desc'  => __( 'Пологий песчаный вход, горки, детское меню и спокойный трансфер.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'need-adults',
 			'group' => 'need',
-			'label' => __( '🥂 Без детей 16+', 'zhiraf-ufa' ),
+			'label' => __( 'Без детей 16+', 'zhiraf-ufa' ),
 			'title' => __( 'Отели только для взрослых (16+ / 18+)', 'zhiraf-ufa' ),
 			'desc'  => __( 'Никакого детского шума, тишина, спа и романтическая атмосфера.', 'zhiraf-ufa' ),
 		),
 		array(
 			'id'    => 'need-price',
 			'group' => 'need',
-			'label' => __( '⚖️ Хит цена/качество', 'zhiraf-ufa' ),
+			'label' => __( 'Хит цена/качество', 'zhiraf-ufa' ),
 			'title' => __( 'Хиты «Цена / Качество»', 'zhiraf-ufa' ),
 			'desc'  => __( 'Отели, где сервис и питание существенно выше уплаченных денег.', 'zhiraf-ufa' ),
 		),
@@ -1143,7 +1143,7 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 			'guide_url'    => zhiraf_ufa_turciya_resort_guide_url( 'belek' ),
 			'guide_label'  => __( 'На страницу →', 'zhiraf-ufa' ),
 			'name'         => __( 'Белек', 'zhiraf-ufa' ),
-			'subtitle'     => __( 'Сервис 5★ Lux', 'zhiraf-ufa' ),
+			'subtitle'     => __( 'Сервис 5 Lux', 'zhiraf-ufa' ),
 			'tag'          => __( 'Премиум', 'zhiraf-ufa' ),
 			'tag_mod'      => 'premium',
 			'transfer'     => __( '~30–40 мин', 'zhiraf-ufa' ),
@@ -1197,17 +1197,17 @@ function zhiraf_ufa_turciya_resort_pick_cards() {
 function zhiraf_ufa_turciya_expert_nuances() {
 	return array(
 		array(
-			'icon'  => '🌊',
+			'icon' => 'waves',
 			'title' => __( 'Заход в море и пляжи', 'zhiraf-ufa' ),
 			'text'  => __( 'На Сиде и Аланье — пологий песок для детей; у Кемера чаще галька, но вода прозрачнее. Уточняем тип берега и пирс до брони.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '🚌',
+			'icon' => 'bus',
 			'title' => __( 'Трансферы по курортам', 'zhiraf-ufa' ),
 			'text'  => __( 'До Антальи и Белека — 20–40 минут от аэропорта. До Сиде и Кемера — около часа, до Аланьи — от 2 часов по побережью. Учитываем это при подборе с детьми.', 'zhiraf-ufa' ),
 		),
 		array(
-			'icon'  => '✈',
+			'icon' => 'plane',
 			'title' => __( 'Прямой чартер из Уфы', 'zhiraf-ufa' ),
 			'text'  => __( 'Вылет из Уфы в Анталью — в среднем 4,5–5 часов. Багаж, время вылета и трансфер фиксируем в договоре до оплаты.', 'zhiraf-ufa' ),
 		),

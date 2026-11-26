@@ -31,21 +31,21 @@ $privacy = home_url( '/politika-konfidenczialnosti/' );
 					</p>
 					<ul class="lead-magnet__bullets">
 						<li>
-							<span class="lead-magnet__check" aria-hidden="true">✓</span>
+							<span class="lead-magnet__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 16 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 							<span>
 								<strong><?php esc_html_e( '5 стран:', 'zhiraf-ufa' ); ?></strong>
 								<?php esc_html_e( ' Турция, ОАЭ, Египет, Таиланд и Россия (Сочи) — в одном сравнении.', 'zhiraf-ufa' ); ?>
 							</span>
 						</li>
 						<li>
-							<span class="lead-magnet__check" aria-hidden="true">✓</span>
+							<span class="lead-magnet__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 16 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 							<span>
 								<strong><?php esc_html_e( 'Без навязчивых звонков:', 'zhiraf-ufa' ); ?></strong>
 								<?php esc_html_e( ' гид приходит в чат, который выберете ниже.', 'zhiraf-ufa' ); ?>
 							</span>
 						</li>
 						<li>
-							<span class="lead-magnet__check" aria-hidden="true">✓</span>
+							<span class="lead-magnet__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 16 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 							<span>
 								<strong><?php esc_html_e( 'Агентство в Уфе с 2011 года', 'zhiraf-ufa' ); ?></strong>
 								<?php esc_html_e( ' (РТА 0012822).', 'zhiraf-ufa' ); ?>

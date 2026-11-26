@@ -36,15 +36,15 @@ function zhiraf_ufa_offer_landing_data() {
 			'image_alt'     => __( 'Горящие туры из Уфы — закат у моря', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
 				array(
-					'icon' => '⏱',
+					'icon' => 'calendar',
 					'text' => __( 'Вылеты на ближайшие 3–7 дней', 'zhiraf-ufa' ),
 				),
 				array(
-					'icon' => '✈',
+					'icon' => 'plane',
 					'text' => __( 'Из аэропорта «Уфа» и через Москву', 'zhiraf-ufa' ),
 				),
 				array(
-					'icon' => '🔥',
+					'icon' => 'flame',
 					'text' => __( 'Места по данным оператора — проверяем при заявке', 'zhiraf-ufa' ),
 				),
 			),
@@ -155,24 +155,24 @@ function zhiraf_ufa_offer_landing_data() {
 			'image'         => 'resort-turciya-kemer-1.jpg',
 			'image_alt'     => __( 'Курорт Кемер — марина и Средиземное море', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
-				array( 'icon' => '🇹🇷', 'text' => __( 'Турция · AI / UAI', 'zhiraf-ufa' ) ),
-				array( 'icon' => '🇪🇬', 'text' => __( 'Египет · AI', 'zhiraf-ufa' ) ),
-				array( 'icon' => '🇦🇪', 'text' => __( 'ОАЭ · отели с AI', 'zhiraf-ufa' ) ),
-				array( 'icon' => '🏝', 'text' => __( 'Таиланд и Вьетнам', 'zhiraf-ufa' ) ),
+				array( 'text' => __( 'Турция · AI / UAI', 'zhiraf-ufa' ) ),
+				array( 'text' => __( 'Египет · AI', 'zhiraf-ufa' ) ),
+				array( 'text' => __( 'ОАЭ · отели с AI', 'zhiraf-ufa' ) ),
+				array( 'icon' => 'palmtree', 'text' => __( 'Таиланд и Вьетнам', 'zhiraf-ufa' ) ),
 			),
 			'meal_highlights' => array(
 				array(
-					'icon' => '🍳',
+					'icon' => 'utensils',
 					'title' => __( 'AI — всё включено', 'zhiraf-ufa' ),
 					'text'  => __( '3-разовое питание + местные напитки у бассейна и в барах отеля.', 'zhiraf-ufa' ),
 				),
 				array(
-					'icon' => '🍸',
+					'icon' => 'wine',
 					'title' => __( 'UAI — ультра', 'zhiraf-ufa' ),
 					'text'  => __( 'Импортный алкоголь, мороженое, рестораны a la carte — по концепции отеля.', 'zhiraf-ufa' ),
 				),
 				array(
-					'icon' => '👶',
+					'icon' => 'baby',
 					'title' => __( 'Для детей', 'zhiraf-ufa' ),
 					'text'  => __( 'Детский буфет, баночное пюре и блендеры — уточняем при подборе семейного отеля.', 'zhiraf-ufa' ),
 				),

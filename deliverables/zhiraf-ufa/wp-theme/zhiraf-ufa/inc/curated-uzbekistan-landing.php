@@ -577,12 +577,12 @@ function zhiraf_ufa_uzbekistan_catalog_hotels() {
  */
 function zhiraf_ufa_uzbekistan_catalog_filters() {
 	return array(
-		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Узбекистан: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Ташкент, Самарканд, Бухара и Хива — экскурсионные маршруты из Уфы.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-tashkent', 'group' => 'resort', 'label' => __( '🏙 Ташкент', 'zhiraf-ufa' ), 'title' => __( 'Ташкент', 'zhiraf-ufa' ), 'desc' => __( 'Старт маршрута.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-samarkand', 'group' => 'resort', 'label' => __( '🕌 Самарканд', 'zhiraf-ufa' ), 'title' => __( 'Самарканд', 'zhiraf-ufa' ), 'desc' => __( 'Регистан и медресе.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-bukhara', 'group' => 'resort', 'label' => __( '🏺 Бухара', 'zhiraf-ufa' ), 'title' => __( 'Бухара', 'zhiraf-ufa' ), 'desc' => __( 'Старый город.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-khiva', 'group' => 'resort', 'label' => __( '🧱 Хива', 'zhiraf-ufa' ), 'title' => __( 'Хива', 'zhiraf-ufa' ), 'desc' => __( 'Ичан-Кала.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Бутики 3–4★', 'zhiraf-ufa' ), 'desc' => __( 'Уютные отели в мединах.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Узбекистан: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Ташкент, Самарканд, Бухара и Хива — экскурсионные маршруты из Уфы.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-tashkent', 'group' => 'resort', 'label' => __( 'Ташкент', 'zhiraf-ufa' ), 'title' => __( 'Ташкент', 'zhiraf-ufa' ), 'desc' => __( 'Старт маршрута.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-samarkand', 'group' => 'resort', 'label' => __( 'Самарканд', 'zhiraf-ufa' ), 'title' => __( 'Самарканд', 'zhiraf-ufa' ), 'desc' => __( 'Регистан и медресе.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-bukhara', 'group' => 'resort', 'label' => __( 'Бухара', 'zhiraf-ufa' ), 'title' => __( 'Бухара', 'zhiraf-ufa' ), 'desc' => __( 'Старый город.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-khiva', 'group' => 'resort', 'label' => __( 'Хива', 'zhiraf-ufa' ), 'title' => __( 'Хива', 'zhiraf-ufa' ), 'desc' => __( 'Ичан-Кала.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( 'Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Бутики 3–4', 'zhiraf-ufa' ), 'desc' => __( 'Уютные отели в мединах.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -665,7 +665,7 @@ function zhiraf_ufa_uzbekistan_resort_pick_cards() {
 			'hotel_count' => $counts['tashkent'] ?? 0,
 			'accent_mod'  => 'indigo',
 			'bullets'     => array(
-				array( 'type' => 'pro', 'text' => __( 'Сетевые 4–5★ у метро — удобно после перелёта', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Сетевые 4–5 у метро — удобно после перелёта', 'zhiraf-ufa' ) ),
 				array( 'type' => 'pro', 'text' => __( 'Базар Чорсу и Tashkent City в шаговой доступности', 'zhiraf-ufa' ) ),
 				array(
 					'type' => 'info',
@@ -689,7 +689,7 @@ function zhiraf_ufa_uzbekistan_resort_pick_cards() {
 			'accent_mod'  => 'emerald',
 			'bullets'     => array(
 				array( 'type' => 'pro', 'text' => __( 'Бутики у Регистана и отели у Гур-Эмира', 'zhiraf-ufa' ) ),
-				array( 'type' => 'pro', 'text' => __( 'Silk Road Samarkand — курортный комплекс 5★', 'zhiraf-ufa' ) ),
+				array( 'type' => 'pro', 'text' => __( 'Silk Road Samarkand — курортный комплекс 5', 'zhiraf-ufa' ) ),
 				array(
 					'type' => 'info',
 					/* translators: %d: hotel count in catalog */
@@ -751,9 +751,8 @@ function zhiraf_ufa_uzbekistan_resort_pick_cards() {
  */
 function zhiraf_ufa_uzbekistan_expert_nuances() {
 	return array(
-		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Прямые и стыковочные рейсы — подберём оптимальный блок.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🚄', 'title' => __( 'Поезда', 'zhiraf-ufa' ), 'text' => __( 'Между городами — скоростной Afrosiyob или классика — заложим в маршрут.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🛂', 'title' => __( 'Виза', 'zhiraf-ufa' ), 'text' => __( 'Для граждан РФ — безвиз до 60 дней, уточним срок поездки.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'plane', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Прямые и стыковочные рейсы — подберём оптимальный блок.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '', 'title' => __( 'Поезда', 'zhiraf-ufa' ), 'text' => __( 'Между городами — скоростной Afrosiyob или классика — заложим в маршрут.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'Виза', 'zhiraf-ufa' ), 'text' => __( 'Для граждан РФ — безвиз до 60 дней, уточним срок поездки.', 'zhiraf-ufa' ) ),
 	);
 }
-

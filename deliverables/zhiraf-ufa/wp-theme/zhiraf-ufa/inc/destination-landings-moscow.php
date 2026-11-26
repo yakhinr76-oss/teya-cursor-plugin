@@ -68,11 +68,11 @@ function zhiraf_ufa_moscow_landing_data() {
 				$out[ $slug ]['hero_lead']      = __( 'Прямой рейс из Москвы (а/к «Аэрофлот»). Поможем состыковать удобный перелёт из Уфы без смены терминала в Шереметьево.', 'zhiraf-ufa' );
 				$out[ $slug ]['hero_badges']    = array(
 					array(
-						'icon' => '🛂',
+						'icon' => 'passport',
 						'text' => __( 'Без визы по спискам туроператора', 'zhiraf-ufa' ),
 					),
 					array(
-						'icon' => '✈',
+						'icon' => 'plane',
 						'text' => __( 'Вылет из Москвы • стыковка из Уфы', 'zhiraf-ufa' ),
 					),
 				);
@@ -125,7 +125,7 @@ function zhiraf_ufa_moscow_landing_data() {
 					array(
 						'label'          => __( 'Хайтан — люкс-побережье', 'zhiraf-ufa' ),
 						'catalog_filter' => 'resort-haitang',
-						'desc'           => __( 'Цепочка 5★ на севере острова, тихие пляжи и СПА.', 'zhiraf-ufa' ),
+						'desc'           => __( 'Цепочка 5 на севере острова, тихие пляжи и СПА.', 'zhiraf-ufa' ),
 					),
 				);
 			} elseif ( 'uzbekistan' === $slug ) {

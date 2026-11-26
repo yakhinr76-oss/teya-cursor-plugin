@@ -48,10 +48,6 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- SVG/icons escaped in helper.
 										echo $icon_markup;
 									}
-								} elseif ( ! empty( $badge['icon'] ) ) {
-									?>
-									<span class="dest-landing-hero__badge-icon" aria-hidden="true"><?php echo esc_html( $badge['icon'] ); ?></span>
-									<?php
 								}
 								?>
 								<span><?php echo esc_html( $badge['text'] ); ?></span>
@@ -112,15 +108,15 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 						? $dest['curated_hero_trust']
 						: array(
 							array(
-								'icon' => '📅',
+								'icon' => 'calendar',
 								'text' => __( 'Вылеты подберём под ваши даты отпуска', 'zhiraf-ufa' ),
 							),
 							array(
-								'icon' => '🛡️',
+								'icon' => 'shield-check',
 								'text' => __( 'Честные цены: сборы и страховка в расчёте', 'zhiraf-ufa' ),
 							),
 							array(
-								'icon' => '💬',
+								'icon' => 'message-circle',
 								'text' => __( 'Ответим в WhatsApp за 15 минут в рабочее время', 'zhiraf-ufa' ),
 							),
 						);
@@ -131,9 +127,15 @@ $dest_faq_items      = function_exists( 'zhiraf_ufa_merge_faq_lists' )
 								<?php continue; ?>
 							<?php endif; ?>
 							<li>
-								<?php if ( ! empty( $trust_row['icon'] ) ) : ?>
-									<span aria-hidden="true"><?php echo esc_html( $trust_row['icon'] ); ?></span>
-								<?php endif; ?>
+								<?php
+								if ( function_exists( 'zhiraf_ufa_render_trust_row_icon' ) ) {
+									$trust_icon = zhiraf_ufa_render_trust_row_icon( $trust_row, 16, 'dest-landing-hero__trust-icon' );
+									if ( '' !== $trust_icon ) {
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+										echo $trust_icon;
+									}
+								}
+								?>
 								<?php echo esc_html( $trust_row['text'] ); ?>
 							</li>
 						<?php endforeach; ?>

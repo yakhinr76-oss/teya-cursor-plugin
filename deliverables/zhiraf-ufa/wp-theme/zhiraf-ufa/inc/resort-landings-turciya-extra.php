@@ -109,7 +109,7 @@ function zhiraf_ufa_turciya_extra_resort_landings() {
 			'country_name' => __( 'Турция', 'zhiraf-ufa' ),
 			'resort'       => 'belek',
 			'h1'           => __( 'Туры в Белек из Уфы', 'zhiraf-ufa' ),
-			'title'        => __( 'Белек из Уфы — премиум 5★ и гольф | Жираф', 'zhiraf-ufa' ),
+			'title'        => __( 'Белек из Уфы — премиум 5 и гольф | Жираф', 'zhiraf-ufa' ),
 			'description'  => __( 'Туры в Белек с вылетом из Уфы: короткий трансфер, закрытые территории, Ultra All Inclusive и гольф-поля.', 'zhiraf-ufa' ),
 			'image'        => 'resort-turciya-belek-1.jpg',
 			'image_alt'    => __( 'Белек — сосновые отели у моря', 'zhiraf-ufa' ),
@@ -120,7 +120,7 @@ function zhiraf_ufa_turciya_extra_resort_landings() {
 				array(
 					'h2'         => __( 'Формат отдыха в Белеке', 'zhiraf-ufa' ),
 					'paragraphs' => array(
-						__( 'Крупные территории 5★, песок, высокий сервис. Часто рекомендуем парам и семьям, которым важны безопасность и спокойствие на резорте.', 'zhiraf-ufa' ),
+						__( 'Крупные территории 5, песок, высокий сервис. Часто рекомендуем парам и семьям, которым важны безопасность и спокойствие на резорте.', 'zhiraf-ufa' ),
 					),
 				),
 			),

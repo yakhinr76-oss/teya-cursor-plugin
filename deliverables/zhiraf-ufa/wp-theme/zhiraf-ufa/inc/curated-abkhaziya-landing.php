@@ -561,16 +561,16 @@ function zhiraf_ufa_abkhaziya_catalog_filters() {
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
-			'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ),
+			'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ),
 			'title' => __( 'Абхазия: топ-6 из базы 25 отелей', 'zhiraf-ufa' ),
 			'desc'  => __( 'По одному якорю на курорт: Гагра, Пицунда, Новый Афон, Сухум. Трансфер из Адлера согласуем до оплаты.', 'zhiraf-ufa' ),
 		),
-		array( 'id' => 'resort-gagra', 'group' => 'resort', 'label' => __( '🌊 Гагра', 'zhiraf-ufa' ), 'title' => __( 'Гагра', 'zhiraf-ufa' ), 'desc' => __( 'Ближе к границе и набережная.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-pitsunda', 'group' => 'resort', 'label' => __( '🌲 Пицунда', 'zhiraf-ufa' ), 'title' => __( 'Пицунда', 'zhiraf-ufa' ), 'desc' => __( 'Сосны и пологий пляж.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-new_afon', 'group' => 'resort', 'label' => __( '⛪ Новый Афон', 'zhiraf-ufa' ), 'title' => __( 'Новый Афон', 'zhiraf-ufa' ), 'desc' => __( 'Пещера и монастырь рядом.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-sukhum', 'group' => 'resort', 'label' => __( '🏙 Сухум', 'zhiraf-ufa' ), 'title' => __( 'Сухум', 'zhiraf-ufa' ), 'desc' => __( 'Столица и набережные.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологий заход и питание.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-adults', 'group' => 'need', 'label' => __( '💑 Парам', 'zhiraf-ufa' ), 'title' => __( 'Спокойные пары', 'zhiraf-ufa' ), 'desc' => __( 'Тишина и вид на море.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-gagra', 'group' => 'resort', 'label' => __( 'Гагра', 'zhiraf-ufa' ), 'title' => __( 'Гагра', 'zhiraf-ufa' ), 'desc' => __( 'Ближе к границе и набережная.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-pitsunda', 'group' => 'resort', 'label' => __( 'Пицунда', 'zhiraf-ufa' ), 'title' => __( 'Пицунда', 'zhiraf-ufa' ), 'desc' => __( 'Сосны и пологий пляж.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-new_afon', 'group' => 'resort', 'label' => __( 'Новый Афон', 'zhiraf-ufa' ), 'title' => __( 'Новый Афон', 'zhiraf-ufa' ), 'desc' => __( 'Пещера и монастырь рядом.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sukhum', 'group' => 'resort', 'label' => __( 'Сухум', 'zhiraf-ufa' ), 'title' => __( 'Сухум', 'zhiraf-ufa' ), 'desc' => __( 'Столица и набережные.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( 'С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологий заход и питание.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-adults', 'group' => 'need', 'label' => __( 'Парам', 'zhiraf-ufa' ), 'title' => __( 'Спокойные пары', 'zhiraf-ufa' ), 'desc' => __( 'Тишина и вид на море.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -714,9 +714,8 @@ function zhiraf_ufa_abkhaziya_resort_pick_cards() {
  */
 function zhiraf_ufa_abkhaziya_expert_nuances() {
 	return array(
-		array( 'icon' => '🛂', 'title' => __( 'Паспорт РФ', 'zhiraf-ufa' ), 'text' => __( 'Внутренний паспорт и рубли — без заграна.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🚐', 'title' => __( 'Трансфер', 'zhiraf-ufa' ), 'text' => __( 'Встреча в Адлере и довоз до отеля в Гагре, Пицунде, Новом Афоне или Сухуме.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🏨', 'title' => __( '25 + полная база', 'zhiraf-ufa' ), 'text' => __( 'На странице — эталонные 25 с текстами; по кнопке в WhatsApp найдём вариант в полном каталоге Tourvisor.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'Паспорт РФ', 'zhiraf-ufa' ), 'text' => __( 'Внутренний паспорт и рубли — без заграна.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'bus', 'title' => __( 'Трансфер', 'zhiraf-ufa' ), 'text' => __( 'Встреча в Адлере и довоз до отеля в Гагре, Пицунде, Новом Афоне или Сухуме.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'hotel', 'title' => __( '25 + полная база', 'zhiraf-ufa' ), 'text' => __( 'На странице — эталонные 25 с текстами; по кнопке в WhatsApp найдём вариант в полном каталоге Tourvisor.', 'zhiraf-ufa' ) ),
 	);
 }
-

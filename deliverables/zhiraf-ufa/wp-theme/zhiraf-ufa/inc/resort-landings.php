@@ -140,7 +140,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'resort_compare'       => array(
 				array(
 					'title'     => __( 'Лара и Кунду', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Песчаные пляжи и резорты All Inclusive', 'zhiraf-ufa' ),
+					'tag'       => __( 'Песчаные пляжи и резорты All Inclusive', 'zhiraf-ufa' ),
 					'meta'      => __( 'Трансфер: ~15 мин от аэропорта', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-antalya-1.jpg',
 					'cta_label' => __( 'Искать отели в Ларе', 'zhiraf-ufa' ),
@@ -162,7 +162,7 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 				array(
 					'title'     => __( 'Коньяалты', 'zhiraf-ufa' ),
-					'tag'       => __( '🏔 Галька, набережная и горы', 'zhiraf-ufa' ),
+					'tag'       => __( 'Галька, набережная и горы', 'zhiraf-ufa' ),
 					'meta'      => __( '10 мин на трамвае до Калеичи', 'zhiraf-ufa' ),
 					'image'     => 'resort-turciya-antalya-2.jpg',
 					'cta_label' => __( 'Искать отели в Коньяалты', 'zhiraf-ufa' ),
@@ -247,7 +247,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'resort_compare'       => array(
 				array(
 					'title'     => __( 'Центр Хургады и Марина', 'zhiraf-ufa' ),
-					'tag'       => __( '🏙 Променад, кафе и колорит', 'zhiraf-ufa' ),
+					'tag'       => __( 'Променад, кафе и колорит', 'zhiraf-ufa' ),
 					'meta'      => __( '~10 мин от аэропорта', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-hurghada-1.jpg',
 					'cta_label' => __( 'Искать отели в центре Хургады', 'zhiraf-ufa' ),
@@ -259,7 +259,7 @@ function zhiraf_ufa_resort_landing_data() {
 						),
 						array(
 							'label' => __( 'Бюджет', 'zhiraf-ufa' ),
-							'value' => __( 'Большой выбор отелей 3–4★ и доступный стритфуд — удобно для коротких поездок.', 'zhiraf-ufa' ),
+							'value' => __( 'Большой выбор отелей 3–4 и доступный стритфуд — удобно для коротких поездок.', 'zhiraf-ufa' ),
 						),
 						array(
 							'label' => __( 'Город', 'zhiraf-ufa' ),
@@ -269,7 +269,7 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 				array(
 					'title'     => __( 'Макади Бэй и Сахл-Хашиш', 'zhiraf-ufa' ),
-					'tag'       => __( '🏝 Резорты 5★ и лазурные лагуны', 'zhiraf-ufa' ),
+					'tag'       => __( 'Резорты 5 и лазурные лагуны', 'zhiraf-ufa' ),
 					'meta'      => __( 'Закрытые курортные зоны', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-el-gouna-1.jpg',
 					'cta_label' => __( 'Искать отели в Макади и Сахл-Хашиш', 'zhiraf-ufa' ),
@@ -345,11 +345,11 @@ function zhiraf_ufa_resort_landing_data() {
 			'image_alt'     => __( 'Шарм-эль-Шейх — лодки у скалистого берега Красного моря', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
 				array(
-					'icon' => '🛂',
+					'icon' => 'passport',
 					'text' => __( 'Sinai Only: до 15 дней без визы, если не выезжаете за пределы Синая', 'zhiraf-ufa' ),
 				),
 				array(
-					'icon' => '🤿',
+					'icon' => 'glasses',
 					'text' => __( 'Рифы и понтоны у отелей — снорклинг прямо с пляжа', 'zhiraf-ufa' ),
 				),
 			),
@@ -364,7 +364,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'resort_compare'       => array(
 				array(
 					'title'     => __( 'Наама Бей и Шарм-эль-Майя', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Песчаный вход, без ветра и променад', 'zhiraf-ufa' ),
+					'tag'       => __( 'Песчаный вход, без ветра и променад', 'zhiraf-ufa' ),
 					'meta'      => __( 'Защищённые бухты', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-sharm-1.jpg',
 					'cta_label' => __( 'Искать отели в Наама Бей', 'zhiraf-ufa' ),
@@ -386,7 +386,7 @@ function zhiraf_ufa_resort_landing_data() {
 				),
 				array(
 					'title'     => __( 'Хадаба и Рас-Умм-Сид', 'zhiraf-ufa' ),
-					'tag'       => __( '🤿 Стеновые рифы и Farsha Cafe', 'zhiraf-ufa' ),
+					'tag'       => __( 'Стеновые рифы и Farsha Cafe', 'zhiraf-ufa' ),
 					'meta'      => __( 'Снорклинг у понтона', 'zhiraf-ufa' ),
 					'image'     => 'resort-egipet-sharm-2.jpg',
 					'cta_label' => __( 'Искать отели в Рас-Умм-Сид', 'zhiraf-ufa' ),
@@ -461,7 +461,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'image_alt'     => __( 'Нячанг — песчаный пляж с пальмами и Южно-Китайское море', 'zhiraf-ufa' ),
 			'hero_badges'   => array(
 				array(
-					'icon' => '🛂',
+					'icon' => 'passport',
 					'text' => __( 'Без визы для граждан РФ до 45 дней', 'zhiraf-ufa' ),
 				),
 			),
@@ -476,7 +476,7 @@ function zhiraf_ufa_resort_landing_data() {
 			'resort_compare'       => array(
 				array(
 					'title'     => __( 'Европейский квартал', 'zhiraf-ufa' ),
-					'tag'       => __( '🏙 Центр и променад', 'zhiraf-ufa' ),
+					'tag'       => __( 'Центр и променад', 'zhiraf-ufa' ),
 					'meta'      => __( 'Пляж Чан Фу', 'zhiraf-ufa' ),
 					'image'     => 'resort-vietnam-nha-trang-2.jpg',
 					'cta_label' => __( 'Искать отели в центре Нячанга', 'zhiraf-ufa' ),
@@ -492,13 +492,13 @@ function zhiraf_ufa_resort_landing_data() {
 						),
 						array(
 							'label' => __( 'Отели', 'zhiraf-ufa' ),
-							'value' => __( 'Широкий выбор городских гостиниц 3–4★ с бассейнами на крышах.', 'zhiraf-ufa' ),
+							'value' => __( 'Широкий выбор городских гостиниц 3–4 с бассейнами на крышах.', 'zhiraf-ufa' ),
 						),
 					),
 				),
 				array(
 					'title'     => __( 'Зоклет и северная бухта', 'zhiraf-ufa' ),
-					'tag'       => __( '🏖 Белый песок и покой', 'zhiraf-ufa' ),
+					'tag'       => __( 'Белый песок и покой', 'zhiraf-ufa' ),
 					'meta'      => __( 'Север Нячанга', 'zhiraf-ufa' ),
 					'image'     => 'resort-vietnam-cam-ranh-1.jpg',
 					'cta_label' => __( 'Искать отели на Зоклете и Севере', 'zhiraf-ufa' ),
@@ -744,4 +744,3 @@ function zhiraf_ufa_render_resort_landing( $country, $resort ) {
 		include $template;
 	}
 }
-

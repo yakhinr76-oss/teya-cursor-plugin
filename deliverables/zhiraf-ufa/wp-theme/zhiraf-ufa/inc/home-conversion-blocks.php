@@ -17,28 +17,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 function zhiraf_ufa_home_express_vacation_chips() {
 	return array(
 		array(
-			'emoji'  => '🏖️',
+			'icon' => 'palmtree',
 			'title'  => __( 'Семейный пляж', 'zhiraf-ufa' ),
 			'text'   => __( 'Турция, ОАЭ — пологий песок, детские клубы и All Inclusive', 'zhiraf-ufa' ),
 			'filter' => 'turkey',
 			'track'  => 'family_beach',
 		),
 		array(
-			'emoji'  => '🌴',
+			'icon' => 'sun',
 			'title'  => __( 'Зимнее лето', 'zhiraf-ufa' ),
 			'text'   => __( 'Египет, Таиланд — теплое море и сезон без дождей прямо сейчас', 'zhiraf-ufa' ),
 			'filter' => 'egypt',
 			'track'  => 'winter_sun',
 		),
 		array(
-			'emoji'  => '🏔️',
+			'icon' => 'mountain',
 			'title'  => __( 'Горы и спа', 'zhiraf-ufa' ),
 			'text'   => __( 'Красная Поляна, Абхазия — подогреваемые бассейны и горный воздух', 'zhiraf-ufa' ),
 			'filter' => 'russia',
 			'track'  => 'mountains',
 		),
 		array(
-			'emoji'       => '🧭',
+			'icon' => 'compass',
 			'title'       => __( 'Экзотика и острова', 'zhiraf-ufa' ),
 			'text'        => __( 'Мальдивы, Шри-Ланка — уединенные лагуны и дайвинг', 'zhiraf-ufa' ),
 			'filter'      => '',
@@ -132,7 +132,7 @@ function zhiraf_ufa_home_life_scenarios() {
 			'overlay'     => __( 'Честный рейтинг 4.7+', 'zhiraf-ufa' ),
 			'badge'       => array(
 				'type'  => 'featured',
-				'label' => __( '★ Топ выбор', 'zhiraf-ufa' ),
+				'label' => __( 'Топ выбор', 'zhiraf-ufa' ),
 			),
 			'cta'         => __( 'Найти отели с высоким рейтингом', 'zhiraf-ufa' ),
 			'vibe'        => 'balance',

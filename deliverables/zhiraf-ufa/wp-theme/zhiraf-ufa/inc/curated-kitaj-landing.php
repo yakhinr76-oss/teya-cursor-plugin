@@ -576,12 +576,12 @@ function zhiraf_ufa_kitaj_catalog_hotels() {
  */
 function zhiraf_ufa_kitaj_catalog_filters() {
 	return array(
-		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Санью: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Дадунхай, Ялунвань и Хайтан — цены за двоих с перелётом (часто стыковка в Москве).', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-dadonghai', 'group' => 'resort', 'label' => __( '🏙 Дадунхай', 'zhiraf-ufa' ), 'title' => __( 'Дадунхай', 'zhiraf-ufa' ), 'desc' => __( 'Центр, кафе и инфраструктура.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-yalong', 'group' => 'resort', 'label' => __( '🏝 Ялунвань', 'zhiraf-ufa' ), 'title' => __( 'Ялунвань', 'zhiraf-ufa' ), 'desc' => __( 'Широкий пляж и премиум-отели.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-haitang', 'group' => 'resort', 'label' => __( '🌴 Хайтан', 'zhiraf-ufa' ), 'title' => __( 'Хайтан', 'zhiraf-ufa' ), 'desc' => __( 'Новые резорты и спокойный ритм.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Бассейны и анимация.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '4–5★ у моря.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Санью: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Дадунхай, Ялунвань и Хайтан — цены за двоих с перелётом (часто стыковка в Москве).', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dadonghai', 'group' => 'resort', 'label' => __( 'Дадунхай', 'zhiraf-ufa' ), 'title' => __( 'Дадунхай', 'zhiraf-ufa' ), 'desc' => __( 'Центр, кафе и инфраструктура.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yalong', 'group' => 'resort', 'label' => __( 'Ялунвань', 'zhiraf-ufa' ), 'title' => __( 'Ялунвань', 'zhiraf-ufa' ), 'desc' => __( 'Широкий пляж и премиум-отели.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-haitang', 'group' => 'resort', 'label' => __( 'Хайтан', 'zhiraf-ufa' ), 'title' => __( 'Хайтан', 'zhiraf-ufa' ), 'desc' => __( 'Новые резорты и спокойный ритм.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( 'С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Бассейны и анимация.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( 'Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '4–5 у моря.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -650,9 +650,8 @@ function zhiraf_ufa_kitaj_resort_pick_cards() {
  */
 function zhiraf_ufa_kitaj_expert_nuances() {
 	return array(
-		array( 'icon' => '🛂', 'title' => __( 'Виза', 'zhiraf-ufa' ), 'text' => __( 'Групповая виза по прилёту или оформление заранее — уточним до оплаты.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '✈', 'title' => __( 'Вылет', 'zhiraf-ufa' ), 'text' => __( 'Из Уфы — стыковка в Москве; считаем багаж и время на пересадку.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🌴', 'title' => __( 'Бухты', 'zhiraf-ufa' ), 'text' => __( 'Дадунхай — город и кафе; Ялунвань — широкий пляж; Хайтан — новые отели.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'Виза', 'zhiraf-ufa' ), 'text' => __( 'Групповая виза по прилёту или оформление заранее — уточним до оплаты.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'plane', 'title' => __( 'Вылет', 'zhiraf-ufa' ), 'text' => __( 'Из Уфы — стыковка в Москве; считаем багаж и время на пересадку.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'palmtree', 'title' => __( 'Бухты', 'zhiraf-ufa' ), 'text' => __( 'Дадунхай — город и кафе; Ялунвань — широкий пляж; Хайтан — новые отели.', 'zhiraf-ufa' ) ),
 	);
 }
-

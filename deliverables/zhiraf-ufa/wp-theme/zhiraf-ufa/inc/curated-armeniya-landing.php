@@ -593,16 +593,16 @@ function zhiraf_ufa_armeniya_catalog_filters() {
 		array(
 			'id'    => 'starter',
 			'group' => 'default',
-			'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ),
+			'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ),
 			'title' => __( 'Армения: топ-6 из базы 25 отелей', 'zhiraf-ufa' ),
 			'desc'  => __( 'По одному якорю на направление: Ереван, Дилижан, Севан, Цахкадзор, Джермук. Вылет из Уфы.', 'zhiraf-ufa' ),
 		),
-		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( '🏙 Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Парам и «первый раз в Армении»: город, кафе, выездные экскурсии.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-dilijan', 'group' => 'resort', 'label' => __( '🌲 Дилижан', 'zhiraf-ufa' ), 'title' => __( 'Дилижан', 'zhiraf-ufa' ), 'desc' => __( 'Семьям и тем, кому нужна тишина: лес, трекинг, без городского шума.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-sevan', 'group' => 'resort', 'label' => __( '💧 Севан', 'zhiraf-ufa' ), 'title' => __( 'Озеро Севан', 'zhiraf-ufa' ), 'desc' => __( 'Короткий «перезагруз» на 1–2 ночи: озеро, монастыри, рыба.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-tsaghkadzor', 'group' => 'resort', 'label' => __( '⛷ Цахкадзор', 'zhiraf-ufa' ), 'title' => __( 'Цахкадзор', 'zhiraf-ufa' ), 'desc' => __( 'Зимой — лыжи и активный отдых; межсезонье — SPA и горный воздух.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-jermuk', 'group' => 'resort', 'label' => __( '🩺 Джермук', 'zhiraf-ufa' ), 'title' => __( 'Джермук', 'zhiraf-ufa' ), 'desc' => __( 'Оздоровительный формат: минеральная вода, неспешный ритм, старшему поколению.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( '3–4★', 'zhiraf-ufa' ), 'desc' => __( 'Бутики и сетевые отели.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-yerevan', 'group' => 'resort', 'label' => __( 'Ереван', 'zhiraf-ufa' ), 'title' => __( 'Ереван', 'zhiraf-ufa' ), 'desc' => __( 'Парам и «первый раз в Армении»: город, кафе, выездные экскурсии.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-dilijan', 'group' => 'resort', 'label' => __( 'Дилижан', 'zhiraf-ufa' ), 'title' => __( 'Дилижан', 'zhiraf-ufa' ), 'desc' => __( 'Семьям и тем, кому нужна тишина: лес, трекинг, без городского шума.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-sevan', 'group' => 'resort', 'label' => __( 'Севан', 'zhiraf-ufa' ), 'title' => __( 'Озеро Севан', 'zhiraf-ufa' ), 'desc' => __( 'Короткий «перезагруз» на 1–2 ночи: озеро, монастыри, рыба.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-tsaghkadzor', 'group' => 'resort', 'label' => __( 'Цахкадзор', 'zhiraf-ufa' ), 'title' => __( 'Цахкадзор', 'zhiraf-ufa' ), 'desc' => __( 'Зимой — лыжи и активный отдых; межсезонье — SPA и горный воздух.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-jermuk', 'group' => 'resort', 'label' => __( 'Джермук', 'zhiraf-ufa' ), 'title' => __( 'Джермук', 'zhiraf-ufa' ), 'desc' => __( 'Оздоровительный формат: минеральная вода, неспешный ритм, старшему поколению.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( 'Цена/качество', 'zhiraf-ufa' ), 'title' => __( '3–4', 'zhiraf-ufa' ), 'desc' => __( 'Бутики и сетевые отели.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -763,10 +763,9 @@ function zhiraf_ufa_armeniya_resort_pick_cards() {
  */
 function zhiraf_ufa_armeniya_expert_nuances() {
 	return array(
-		array( 'icon' => '🏨', 'title' => __( '25 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Топ-6 на старте, фильтры и «Показать ещё» — весь эталонный пул.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🛂', 'title' => __( 'Безвиз', 'zhiraf-ufa' ), 'text' => __( 'Паспорт РФ — въезд без визы.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🍷', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Бронируем столики и маршруты с дегустациями.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🏔', 'title' => __( 'Севан', 'zhiraf-ufa' ), 'text' => __( '1–2 ночи у озера — закладываем в пакет.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'hotel', 'title' => __( '25 отелей в базе', 'zhiraf-ufa' ), 'text' => __( 'Топ-6 на старте, фильтры и «Показать ещё» — весь эталонный пул.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'Безвиз', 'zhiraf-ufa' ), 'text' => __( 'Паспорт РФ — въезд без визы.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'wine', 'title' => __( 'Гастрономия', 'zhiraf-ufa' ), 'text' => __( 'Бронируем столики и маршруты с дегустациями.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'mountain', 'title' => __( 'Севан', 'zhiraf-ufa' ), 'text' => __( '1–2 ночи у озера — закладываем в пакет.', 'zhiraf-ufa' ) ),
 	);
 }
-

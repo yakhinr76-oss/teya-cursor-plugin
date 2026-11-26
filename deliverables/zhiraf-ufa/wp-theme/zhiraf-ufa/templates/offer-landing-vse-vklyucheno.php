@@ -43,9 +43,15 @@ $vibe_section = function_exists( 'zhiraf_ufa_get_vibe_section' ) ? zhiraf_ufa_ge
 					<ul class="dest-landing-hero__badges">
 						<?php foreach ( $offer['hero_badges'] as $badge ) : ?>
 							<li class="dest-landing-hero__badge">
-								<?php if ( ! empty( $badge['icon'] ) ) : ?>
-									<span class="dest-landing-hero__badge-icon" aria-hidden="true"><?php echo esc_html( $badge['icon'] ); ?></span>
-								<?php endif; ?>
+								<?php
+								if ( function_exists( 'zhiraf_ufa_render_hero_badge_icon' ) ) {
+									$icon_markup = zhiraf_ufa_render_hero_badge_icon( $badge );
+									if ( '' !== $icon_markup ) {
+										// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+										echo $icon_markup;
+									}
+								}
+								?>
 								<span><?php echo esc_html( $badge['text'] ); ?></span>
 							</li>
 						<?php endforeach; ?>

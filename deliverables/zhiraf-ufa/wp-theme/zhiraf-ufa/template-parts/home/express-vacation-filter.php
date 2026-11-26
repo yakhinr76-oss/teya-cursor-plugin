@@ -36,7 +36,13 @@ $chips = zhiraf_ufa_home_express_vacation_chips();
 							data-channel="whatsapp"
 							data-cta-context="express_<?php echo esc_attr( $chip['track'] ); ?>"
 						>
-							<span class="express-filter__emoji" aria-hidden="true"><?php echo esc_html( $chip['emoji'] ); ?></span>
+							<span class="express-filter__emoji" aria-hidden="true">
+								<?php
+								if ( ! empty( $chip['icon'] ) && function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+									echo zhiraf_ufa_lucide_icon( (string) $chip['icon'], 20, 'express-filter__icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								}
+								?>
+							</span>
 							<span class="express-filter__chip-title"><?php echo esc_html( $chip['title'] ); ?></span>
 							<span class="express-filter__chip-text"><?php echo esc_html( $chip['text'] ); ?></span>
 						</a>
@@ -47,7 +53,13 @@ $chips = zhiraf_ufa_home_express_vacation_chips();
 							data-express-vacation="<?php echo esc_attr( $chip['filter'] ); ?>"
 							data-cta-context="express_<?php echo esc_attr( $chip['track'] ); ?>"
 						>
-							<span class="express-filter__emoji" aria-hidden="true"><?php echo esc_html( $chip['emoji'] ); ?></span>
+							<span class="express-filter__emoji" aria-hidden="true">
+								<?php
+								if ( ! empty( $chip['icon'] ) && function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+									echo zhiraf_ufa_lucide_icon( (string) $chip['icon'], 20, 'express-filter__icon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								}
+								?>
+							</span>
 							<span class="express-filter__chip-title"><?php echo esc_html( $chip['title'] ); ?></span>
 							<span class="express-filter__chip-text"><?php echo esc_html( $chip['text'] ); ?></span>
 						</button>

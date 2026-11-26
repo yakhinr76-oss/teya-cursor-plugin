@@ -10,3 +10,7 @@ When generating or updating a **country hub** (`/tour/{slug}/`):
 4. **Copy rules:** no tour-operator slang in customer-facing checklist text (`BB`, `HB`, `AI`, `UAI`, `HRG`, `Sinai Only`, `РАК`, etc.). Use plain Russian («завтраки», «всё включено», «Хургада», «Рас-эль-Хайма»).
 5. **CTA labels** (strict): Match the specific risk checklist context. Button is `btn--primary rounded-xl` in `#C85A32`.
 6. **Wordstat refresh:** region **Уфа `regionId=172`**, env `YANDEX_WORDSTAT_API_KEY`, pipeline CSVs `03`→`04`→`05`→`06`; extend with `scripts/wordstat_destination_pipeline.py` (--regenerate-only after raw is updated).
+
+## UI и контент (без эмоджи)
+
+В проекте **zhiraf-ufa** запрещены Unicode-эмоджи в интерфейсе, маркетинговых текстах и PHP/JS-конфигах (включая чипы, FAQ, hero-бейджи, квиз). Для визуальных акцентов — только inline **Lucide SVG** через `zhiraf_ufa_lucide_icon()` / `zhiraf_ufa_render_lucide_icon()` в `inc/lucide-icons.php`. Категория отеля в копирайте: символ **★** (U+2605), не ⭐. Флаги стран в UI не используем.

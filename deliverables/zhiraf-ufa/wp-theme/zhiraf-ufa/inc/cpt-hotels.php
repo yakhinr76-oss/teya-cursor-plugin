@@ -508,7 +508,7 @@ function zhiraf_ufa_hotels_showcase_for_destinations() {
 		'sejshely' => array(
 			'country' => 'seychelles',
 			'title'   => __( '25 эталонных отелей Сейшел', 'zhiraf-ufa' ),
-			'lead'    => __( 'Маэ, Праслин и Ла-Диг: семьи, пары, вело-остров, Self-Catering и баланс 4–5★ у моря — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
+			'lead'    => __( 'Маэ, Праслин и Ла-Диг: семьи, пары, вело-остров, Self-Catering и баланс 4–5 у моря — тексты и фото на нашем сервере.', 'zhiraf-ufa' ),
 		),
 		'shri-lanka' => array(
 			'country' => 'sri_lanka',

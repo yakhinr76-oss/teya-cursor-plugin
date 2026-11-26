@@ -323,7 +323,7 @@ function zhiraf_ufa_destinations() {
 			'image'   => 'country-turciya.jpg',
 			'alt'     => __( 'Турция — отдых на море', 'zhiraf-ufa' ),
 			'url'     => home_url( '/tour/turciya/' ),
-			'teaser'  => __( 'Анталья и Алания: отели 4–5★, All Inclusive, семейные курорты.', 'zhiraf-ufa' ),
+			'teaser'  => __( 'Анталья и Алания: отели 4–5, All Inclusive, семейные курорты.', 'zhiraf-ufa' ),
 			'catalog' => true,
 		),
 		array(
@@ -431,7 +431,7 @@ function zhiraf_ufa_longhaul_catalog_destinations() {
 		? zhiraf_ufa_destination_hero_image_standards()
 		: array();
 	$rows   = array(
-		'indiya'     => __( 'Гоа: пляжи Севера и Юга, отели 4–5★, сезон с ноября по март.', 'zhiraf-ufa' ),
+		'indiya'     => __( 'Гоа: пляжи Севера и Юга, отели 4–5, сезон с ноября по март.', 'zhiraf-ufa' ),
 		'indoneziya' => __( 'Бали: Нуса-Дуа, Семиньяк и Убуд — пляж, серф и культура.', 'zhiraf-ufa' ),
 		'maldivy'    => __( 'Атоллы Мальдив: водные виллы, All Inclusive, катер с Мале.', 'zhiraf-ufa' ),
 		'shri-lanka' => __( 'Шри-Ланка: Унаватуна, Бентота и Хиккадува — рифы и муссон по побережью.', 'zhiraf-ufa' ),

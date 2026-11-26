@@ -1020,7 +1020,7 @@ class Zhiraf_BG_Price_Engine {
 	public static function normalize_hotel_match_key( $name ) {
 		$name = remove_accents( wp_strip_all_tags( (string) $name ) );
 		$name = mb_strtolower( $name, 'UTF-8' );
-		$name = preg_replace( '/[★⭐\*]+/u', ' ', $name );
+		$name = preg_replace( '/[\*]+/u', ' ', $name );
 		$name = preg_replace( '/\b\d\s*\*+\b/u', ' ', $name );
 		$name = preg_replace( '/\b(hotel|hotels|resort|spa|suites|club|golf|beach|apartments)\b/iu', ' ', $name );
 		$name = preg_replace( '/&/u', ' ', $name );
@@ -2145,7 +2145,7 @@ function zhiraf_bg_admin_page_render() {
 							<?php wp_nonce_field( 'zhiraf_bg_sync_nonce', 'zhiraf_bg_nonce' ); ?>
 							<input type="hidden" name="zhiraf_bg_action" value="manual_sync" />
 							<button type="submit" class="button button-secondary button-hero">
-								🔄 <?php esc_html_e( 'Синхронизировать цены сейчас', 'zhiraf-ufa' ); ?>
+								 <?php esc_html_e( 'Синхронизировать цены сейчас', 'zhiraf-ufa' ); ?>
 							</button>
 						</form>
 
@@ -2171,13 +2171,13 @@ function zhiraf_bg_admin_page_render() {
 								<td><strong><?php esc_html_e( 'Источник данных:', 'zhiraf-ufa' ); ?></strong></td>
 								<td>
 									<?php if ( 'live_success' === $last_sync_status ) : ?>
-										<span style="color:#00a32a;font-weight:600;">🟢 Live BG API (Синхронизировано <?php echo esc_html( $last_sync_count ); ?> туров)</span>
+										<span style="color:#00a32a;font-weight:600;"> Live BG API (Синхронизировано <?php echo esc_html( $last_sync_count ); ?> туров)</span>
 									<?php elseif ( 'partial_success' === $last_sync_status ) : ?>
-										<span style="color:#dba617;font-weight:600;">🟡 Live BG API (Частично: <?php echo esc_html( $last_sync_count ); ?> туров)</span>
+										<span style="color:#dba617;font-weight:600;"> Live BG API (Частично: <?php echo esc_html( $last_sync_count ); ?> туров)</span>
 									<?php elseif ( 'sync_warning' === $last_sync_status || 'sync_failed' === $last_sync_status ) : ?>
-										<span style="color:#d63638;font-weight:600;">🔴 Ошибка Live API (0 туров, активен fallback)</span>
+										<span style="color:#d63638;font-weight:600;"> Ошибка Live API (0 туров, активен fallback)</span>
 									<?php else : ?>
-										<span style="color:#2271b1;font-weight:600;">📦 Fixtures Fallback (bg-tours-fixtures.json)</span>
+										<span style="color:#2271b1;font-weight:600;"> Fixtures Fallback (bg-tours-fixtures.json)</span>
 									<?php endif; ?>
 								</td>
 							</tr>
@@ -2193,9 +2193,9 @@ function zhiraf_bg_admin_page_render() {
 								<td><strong><?php esc_html_e( 'Авторизация BG:', 'zhiraf-ufa' ); ?></strong></td>
 								<td>
 									<?php if ( $client->is_configured() ) : ?>
-										<span style="color:#00a32a;">✔ Настроена (Логин: <?php echo esc_html( substr( $login_val, 0, 3 ) . '***' ); ?>)</span>
+										<span style="color:#00a32a;"> Настроена (Логин: <?php echo esc_html( substr( $login_val, 0, 3 ) . '***' ); ?>)</span>
 									<?php else : ?>
-										<span style="color:#d63638;">✖ Не настроена</span>
+										<span style="color:#d63638;"> Не настроена</span>
 									<?php endif; ?>
 								</td>
 							</tr>
@@ -2203,7 +2203,7 @@ function zhiraf_bg_admin_page_render() {
 								<td><strong><?php esc_html_e( 'Сессионные куки (A1/Z1/L):', 'zhiraf-ufa' ); ?></strong></td>
 								<td>
 									<?php if ( ! empty( $cookies['A1'] ) || ! empty( $cookies['Z1'] ) ) : ?>
-										<span style="color:#00a32a;">✔ Активны (Z1 обновляется)</span>
+										<span style="color:#00a32a;"> Активны (Z1 обновляется)</span>
 									<?php else : ?>
 										<span style="color:#646970;">— Будут получены при синхронизации</span>
 									<?php endif; ?>
@@ -2332,11 +2332,11 @@ function zhiraf_bg_admin_page_render() {
 								</td>
 								<td style="text-align:center;">
 									<?php if ( 'ok' === ( $step['status'] ?? '' ) ) : ?>
-										<span style="color:#00a32a;font-weight:600;">✔ OK</span>
+										<span style="color:#00a32a;font-weight:600;"> OK</span>
 									<?php elseif ( 'warning' === ( $step['status'] ?? '' ) ) : ?>
-										<span style="color:#dba617;font-weight:600;">⚠ Внимание</span>
+										<span style="color:#dba617;font-weight:600;"> Внимание</span>
 									<?php else : ?>
-										<span style="color:#d63638;font-weight:600;">✖ Ошибка</span>
+										<span style="color:#d63638;font-weight:600;"> Ошибка</span>
 									<?php endif; ?>
 								</td>
 							</tr>

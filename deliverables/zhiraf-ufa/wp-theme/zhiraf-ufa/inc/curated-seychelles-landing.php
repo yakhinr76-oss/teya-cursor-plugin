@@ -569,12 +569,12 @@ function zhiraf_ufa_seychelles_catalog_hotels() {
  */
 function zhiraf_ufa_seychelles_catalog_filters() {
 	return array(
-		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры на Сейшелы: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Маэ, Праслин и Ла-Диг — вылет из Уфы.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-mahe', 'group' => 'resort', 'label' => __( '🏝 Маэ', 'zhiraf-ufa' ), 'title' => __( 'Маэ', 'zhiraf-ufa' ), 'desc' => __( 'Аэропорт и Бо-Валлон.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-praslin', 'group' => 'resort', 'label' => __( '🌴 Праслин', 'zhiraf-ufa' ), 'title' => __( 'Праслин', 'zhiraf-ufa' ), 'desc' => __( 'Валлон де Мэ и паром.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-la_digue', 'group' => 'resort', 'label' => __( '🚲 Ла-Диг', 'zhiraf-ufa' ), 'title' => __( 'Ла-Диг', 'zhiraf-ufa' ), 'desc' => __( 'Велосипеды и гранит.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологие бухты Маэ.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( 'Селф-кейтеринг и 4★.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры на Сейшелы: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Маэ, Праслин и Ла-Диг — вылет из Уфы.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-mahe', 'group' => 'resort', 'label' => __( 'Маэ', 'zhiraf-ufa' ), 'title' => __( 'Маэ', 'zhiraf-ufa' ), 'desc' => __( 'Аэропорт и Бо-Валлон.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-praslin', 'group' => 'resort', 'label' => __( 'Праслин', 'zhiraf-ufa' ), 'title' => __( 'Праслин', 'zhiraf-ufa' ), 'desc' => __( 'Валлон де Мэ и паром.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-la_digue', 'group' => 'resort', 'label' => __( 'Ла-Диг', 'zhiraf-ufa' ), 'title' => __( 'Ла-Диг', 'zhiraf-ufa' ), 'desc' => __( 'Велосипеды и гранит.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( 'С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Пологие бухты Маэ.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( 'Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( 'Селф-кейтеринг и 4.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -705,9 +705,8 @@ function zhiraf_ufa_seychelles_resort_pick_cards() {
  */
 function zhiraf_ufa_seychelles_expert_nuances() {
 	return array(
-		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Долгий перелёт со стыковкой — планируем ночной прилёт на Маэ и трансфер до отеля.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🛂', 'title' => __( 'ETA онлайн', 'zhiraf-ufa' ), 'text' => __( 'Безвизовый въезд с электронным разрешением — оформляем до вылета.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '⛴', 'title' => __( 'Острова и паромы', 'zhiraf-ufa' ), 'text' => __( 'Праслин и Ла-Диг — паром или внутренний рейс. Считаем логистику в пакете.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'plane', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Долгий перелёт со стыковкой — планируем ночной прилёт на Маэ и трансфер до отеля.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'ETA онлайн', 'zhiraf-ufa' ), 'text' => __( 'Безвизовый въезд с электронным разрешением — оформляем до вылета.', 'zhiraf-ufa' ) ),
+		array( 'icon' => '', 'title' => __( 'Острова и паромы', 'zhiraf-ufa' ), 'text' => __( 'Праслин и Ла-Диг — паром или внутренний рейс. Считаем логистику в пакете.', 'zhiraf-ufa' ) ),
 	);
 }
-

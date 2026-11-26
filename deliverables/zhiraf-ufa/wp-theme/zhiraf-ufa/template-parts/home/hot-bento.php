@@ -61,7 +61,13 @@ $zhiraf_today = function_exists( 'wp_date' ) ? wp_date( 'd.m.Y' ) : date( 'd.m.Y
 			<?php endif; ?>
 			<span class="hot-bento__shade" aria-hidden="true"></span>
 			<span class="hot-bento__label">
-				<span class="hot-bento__icon" aria-hidden="true"><?php echo esc_html( $flight['icon'] ); ?></span>
+				<span class="hot-bento__icon" aria-hidden="true">
+					<?php
+					if ( function_exists( 'zhiraf_ufa_render_lucide_icon' ) && ! empty( $flight['icon'] ) ) {
+						echo zhiraf_ufa_render_lucide_icon( array( 'icon' => $flight['icon'] ), 14, 'hot-bento__icon-svg' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					}
+					?>
+				</span>
 				<?php echo esc_html( $flight['label'] ); ?>
 			</span>
 			<div class="hot-bento__body">

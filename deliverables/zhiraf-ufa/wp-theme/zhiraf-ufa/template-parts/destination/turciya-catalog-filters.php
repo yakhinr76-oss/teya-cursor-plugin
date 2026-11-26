@@ -96,7 +96,7 @@ foreach ( $filters as $filter ) {
 			data-turciya-catalog-reset
 			hidden
 		>
-			<?php esc_html_e( '✕ Сбросить к общему топу', 'zhiraf-ufa' ); ?>
+			<?php esc_html_e( 'Сбросить к общему топу', 'zhiraf-ufa' ); ?>
 		</button>
 	</div>
 

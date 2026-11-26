@@ -556,14 +556,14 @@ function zhiraf_ufa_india_catalog_hotels() {
  */
 function zhiraf_ufa_india_catalog_filters() {
 	return array(
-		array( 'id' => 'starter', 'group' => 'default', 'label' => __( '⭐ Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Гоа: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Южный и Северный Гоа — пляж и BB. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-south_goa', 'group' => 'resort', 'label' => __( '🏖 Юг Гоа', 'zhiraf-ufa' ), 'title' => __( 'Южный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Тишина и длинные пляжи.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'resort-north_goa', 'group' => 'resort', 'label' => __( '🌴 Север Гоа', 'zhiraf-ufa' ), 'title' => __( 'Северный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Кафе и вечерняя жизнь.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( '👨‍👩‍👧 С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Кавелоссим, Мобор и Варка — пологий песок и клубные отели.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-adults', 'group' => 'need', 'label' => __( '🥂 Для пар', 'zhiraf-ufa' ), 'title' => __( 'Отели для пар', 'zhiraf-ufa' ), 'desc' => __( 'Север — закаты и шеки; юг — тихие бухты.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-active', 'group' => 'need', 'label' => __( '🌴 Север', 'zhiraf-ufa' ), 'title' => __( 'Активный Северный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Арамболь, Калангут и Мандрем — рынки и вечер.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-premium', 'group' => 'need', 'label' => __( '✨ 5★ на юге', 'zhiraf-ufa' ), 'title' => __( 'Классика Южного Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Taj, Leela и сетевые резорты на длинных пляжах.', 'zhiraf-ufa' ) ),
-		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( '⚖️ Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '3–4★ у моря без переплаты за бренд.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'starter', 'group' => 'default', 'label' => __( 'Стартовый топ (6)', 'zhiraf-ufa' ), 'title' => __( 'Туры в Гоа: 6 проверенных отелей', 'zhiraf-ufa' ), 'desc' => __( 'Южный и Северный Гоа — пляж и BB. Цены за двоих с перелётом из Уфы.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-south_goa', 'group' => 'resort', 'label' => __( 'Юг Гоа', 'zhiraf-ufa' ), 'title' => __( 'Южный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Тишина и длинные пляжи.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'resort-north_goa', 'group' => 'resort', 'label' => __( 'Север Гоа', 'zhiraf-ufa' ), 'title' => __( 'Северный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Кафе и вечерняя жизнь.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-family', 'group' => 'need', 'label' => __( 'С детьми', 'zhiraf-ufa' ), 'title' => __( 'Семейные', 'zhiraf-ufa' ), 'desc' => __( 'Кавелоссим, Мобор и Варка — пологий песок и клубные отели.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-adults', 'group' => 'need', 'label' => __( 'Для пар', 'zhiraf-ufa' ), 'title' => __( 'Отели для пар', 'zhiraf-ufa' ), 'desc' => __( 'Север — закаты и шеки; юг — тихие бухты.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-active', 'group' => 'need', 'label' => __( 'Север', 'zhiraf-ufa' ), 'title' => __( 'Активный Северный Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Арамболь, Калангут и Мандрем — рынки и вечер.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-premium', 'group' => 'need', 'label' => __( '5 на юге', 'zhiraf-ufa' ), 'title' => __( 'Классика Южного Гоа', 'zhiraf-ufa' ), 'desc' => __( 'Taj, Leela и сетевые резорты на длинных пляжах.', 'zhiraf-ufa' ) ),
+		array( 'id' => 'need-price', 'group' => 'need', 'label' => __( 'Цена/качество', 'zhiraf-ufa' ), 'title' => __( 'Цена / качество', 'zhiraf-ufa' ), 'desc' => __( '3–4 у моря без переплаты за бренд.', 'zhiraf-ufa' ) ),
 	);
 }
 
@@ -631,9 +631,8 @@ function zhiraf_ufa_india_resort_pick_cards() {
  */
 function zhiraf_ufa_india_expert_nuances() {
 	return array(
-		array( 'icon' => '✈', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Стыковка в Москве или Дубае — считаем время и багаж до брони.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🛂', 'title' => __( 'e-Visa', 'zhiraf-ufa' ), 'text' => __( 'Туристическая e-Visa оформляется онлайн до вылета — проверим данные паспорта.', 'zhiraf-ufa' ) ),
-		array( 'icon' => '🏖', 'title' => __( 'Юг или Север', 'zhiraf-ufa' ), 'text' => __( 'Юг — длинный песок и тишина. Север — шаки, рынки и вечер. Подберём под состав и месяц.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'plane', 'title' => __( 'Вылет из Уфы', 'zhiraf-ufa' ), 'text' => __( 'Стыковка в Москве или Дубае — считаем время и багаж до брони.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'passport', 'title' => __( 'e-Visa', 'zhiraf-ufa' ), 'text' => __( 'Туристическая e-Visa оформляется онлайн до вылета — проверим данные паспорта.', 'zhiraf-ufa' ) ),
+		array( 'icon' => 'palmtree', 'title' => __( 'Юг или Север', 'zhiraf-ufa' ), 'text' => __( 'Юг — длинный песок и тишина. Север — шаки, рынки и вечер. Подберём под состав и месяц.', 'zhiraf-ufa' ) ),
 	);
 }
-

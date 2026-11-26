@@ -23,7 +23,14 @@ if ( empty( $items ) ) {
 		<ul class="agency-guarantee-grid">
 			<?php foreach ( $items as $item ) : ?>
 				<li class="agency-guarantee-card reveal">
-					<span class="agency-guarantee-card__icon" aria-hidden="true"><?php echo esc_html( $item['icon'] ?? '✓' ); ?></span>
+					<span class="agency-guarantee-card__icon" aria-hidden="true">
+						<?php
+						$icon_row = array( 'icon' => $item['icon'] ?? 'check' );
+						if ( function_exists( 'zhiraf_ufa_render_lucide_icon' ) ) {
+							echo zhiraf_ufa_render_lucide_icon( $icon_row, 22, 'agency-guarantee-card__icon-svg' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						}
+						?>
+					</span>
 					<h3 class="agency-guarantee-card__title"><?php echo esc_html( $item['title'] ?? '' ); ?></h3>
 					<p class="agency-guarantee-card__text"><?php echo esc_html( $item['text'] ?? '' ); ?></p>
 				</li>

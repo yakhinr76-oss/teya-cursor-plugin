@@ -26,15 +26,15 @@ $office_map_url = function_exists( 'zhiraf_ufa_office_map_url' ) ? zhiraf_ufa_of
 
 				<ul class="office-guarantees__shields">
 					<li>
-						<span class="shield-icon" aria-hidden="true">🏛️</span>
+						<span class="shield-icon" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'landmark', 18 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 						<span><?php esc_html_e( 'Номер в Едином федеральном реестре турагентств (РТА 0012822).', 'zhiraf-ufa' ); ?></span>
 					</li>
 					<li>
-						<span class="shield-icon" aria-hidden="true">📄</span>
+						<span class="shield-icon" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'file-text', 18 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 						<span><?php esc_html_e( 'Работа по официальному договору с выдачей кассовых чеков.', 'zhiraf-ufa' ); ?></span>
 					</li>
 					<li>
-						<span class="shield-icon" aria-hidden="true">💳</span>
+						<span class="shield-icon" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'credit-card', 18 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 						<span><?php esc_html_e( 'Оплата через эквайринг, расчетный счет или наличными в офисе.', 'zhiraf-ufa' ); ?></span>
 					</li>
 				</ul>

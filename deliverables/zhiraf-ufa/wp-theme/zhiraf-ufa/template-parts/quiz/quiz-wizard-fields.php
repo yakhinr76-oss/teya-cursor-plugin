@@ -46,7 +46,14 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 				<label class="quiz-tile quiz-tile--dest">
 					<input type="radio" name="quiz_destination" value="<?php echo esc_attr( $dest['value'] ); ?>" <?php checked( 0 === $i ); ?> required />
 					<span class="quiz-tile__inner">
-						<span class="quiz-tile__emoji" aria-hidden="true"><?php echo esc_html( $dest['emoji'] ); ?></span>
+						<span class="quiz-tile__emoji" aria-hidden="true">
+							<?php
+							$icon = ! empty( $dest['icon'] ) ? (string) $dest['icon'] : 'compass';
+							if ( function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
+								echo zhiraf_ufa_lucide_icon( $icon, 22 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							}
+							?>
+						</span>
 						<span class="quiz-tile__label"><?php echo esc_html( $dest['label'] ); ?></span>
 						<span class="quiz-tile__subtitle"><?php echo esc_html( $dest['subtitle'] ); ?></span>
 					</span>
@@ -64,7 +71,7 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 			<label class="quiz-tile quiz-tile--row">
 				<input type="radio" name="quiz_composition" value="<?php esc_attr_e( 'Семья с детьми', 'zhiraf-ufa' ); ?>" required />
 				<span class="quiz-tile__inner">
-					<span class="quiz-tile__emoji">👨‍👩‍👧</span>
+					<span class="quiz-tile__emoji" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'users', 22 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<span class="quiz-tile__text">
 						<span class="quiz-tile__label"><?php esc_html_e( 'Семья с детьми', 'zhiraf-ufa' ); ?></span>
 						<span class="quiz-tile__subtitle"><?php esc_html_e( 'Важен пологий пляж и детское меню', 'zhiraf-ufa' ); ?></span>
@@ -74,7 +81,7 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 			<label class="quiz-tile quiz-tile--row">
 				<input type="radio" name="quiz_composition" value="<?php esc_attr_e( 'Пара', 'zhiraf-ufa' ); ?>" />
 				<span class="quiz-tile__inner">
-					<span class="quiz-tile__emoji">👩‍❤️‍👨</span>
+					<span class="quiz-tile__emoji" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'heart', 22 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<span class="quiz-tile__text">
 						<span class="quiz-tile__label"><?php esc_html_e( 'Вдвоём / Романтический', 'zhiraf-ufa' ); ?></span>
 						<span class="quiz-tile__subtitle"><?php esc_html_e( 'Спокойная атмосфера, без лишнего шума', 'zhiraf-ufa' ); ?></span>
@@ -84,7 +91,7 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 			<label class="quiz-tile quiz-tile--row">
 				<input type="radio" name="quiz_composition" value="<?php esc_attr_e( 'Компания друзей', 'zhiraf-ufa' ); ?>" />
 				<span class="quiz-tile__inner">
-					<span class="quiz-tile__emoji">👯</span>
+					<span class="quiz-tile__emoji" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'users', 22 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<span class="quiz-tile__text">
 						<span class="quiz-tile__label"><?php esc_html_e( 'Компания друзей', 'zhiraf-ufa' ); ?></span>
 						<span class="quiz-tile__subtitle"><?php esc_html_e( 'Активный отдых, экскурсии', 'zhiraf-ufa' ); ?></span>
@@ -94,7 +101,7 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 			<label class="quiz-tile quiz-tile--row">
 				<input type="radio" name="quiz_composition" value="<?php esc_attr_e( 'Один', 'zhiraf-ufa' ); ?>" />
 				<span class="quiz-tile__inner">
-					<span class="quiz-tile__emoji">🧳</span>
+					<span class="quiz-tile__emoji" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'luggage', 22 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<span class="quiz-tile__text">
 						<span class="quiz-tile__label"><?php esc_html_e( 'Один / Соло-тур', 'zhiraf-ufa' ); ?></span>
 						<span class="quiz-tile__subtitle"><?php esc_html_e( 'Перезагрузка, комфортный отель', 'zhiraf-ufa' ); ?></span>
@@ -141,7 +148,7 @@ $percent_id     = $is_modal ? 'quiz-modal-step-percent' : 'quiz-step-percent';
 
 	<div class="quiz-step quiz-step--final" data-step="4" data-step-title="<?php esc_attr_e( 'Получение подборки', 'zhiraf-ufa' ); ?>" hidden>
 		<div class="quiz-final-head">
-			<span class="quiz-final-head__icon" aria-hidden="true">✓</span>
+			<span class="quiz-final-head__icon" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 22 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 			<h3 class="quiz-step__title"><?php esc_html_e( 'Параметры приняты! Куда прислать расчёт?', 'zhiraf-ufa' ); ?></h3>
 			<p class="quiz-final-head__lead"><?php esc_html_e( 'Подготовим 2–4 проверенных отеля с прямым рейсом из UFA, честными ценами и фото пляжей.', 'zhiraf-ufa' ); ?></p>
 		</div>

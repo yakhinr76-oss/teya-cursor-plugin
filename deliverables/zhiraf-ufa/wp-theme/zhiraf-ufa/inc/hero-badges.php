@@ -16,21 +16,28 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string Safe HTML.
  */
 function zhiraf_ufa_render_hero_badge_icon( array $badge ) {
-	$svg_key = ! empty( $badge['icon_svg'] ) ? sanitize_key( (string) $badge['icon_svg'] ) : '';
-
-	if ( 'passport' === $svg_key ) {
-		return '<svg class="dest-landing-hero__badge-svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
-			. '<path fill="currentColor" d="M6 4h12a2 2 0 0 1 2 2v14l-4-2.5L12 20l-4-1.5L4 20V6a2 2 0 0 1 2-2zm0 2v11.2l2-.75 4 1.5 4-1.5 2 .75V6H6zm4 1.5h4v1.5h-4V7.5zm0 3h4V12h-4v-1.5z"/>'
-			. '</svg>';
+	if ( function_exists( 'zhiraf_ufa_render_lucide_icon' ) ) {
+		$markup = zhiraf_ufa_render_lucide_icon( $badge, 18, 'dest-landing-hero__badge-svg' );
+		if ( '' !== $markup ) {
+			return $markup;
+		}
 	}
 
-	if ( 'plane' === $svg_key && function_exists( 'zhiraf_ufa_lucide_icon' ) ) {
-		return zhiraf_ufa_lucide_icon( 'plane', 18, 'dest-landing-hero__badge-svg' );
-	}
+	return '';
+}
 
-	if ( ! empty( $badge['icon'] ) ) {
-		return '<span class="dest-landing-hero__badge-icon" aria-hidden="true">' . esc_html( (string) $badge['icon'] ) . '</span>';
+/**
+ * Render trust-row / list icon (same rules as badges).
+ *
+ * @param array<string,mixed> $row  Row with icon / icon_svg.
+ * @param int                 $size Icon size.
+ * @param string              $class CSS class.
+ * @return string
+ */
+function zhiraf_ufa_render_trust_row_icon( array $row, $size = 18, $class = '' ) {
+	$class = '' !== $class ? $class : 'dest-landing-hero__trust-icon';
+	if ( function_exists( 'zhiraf_ufa_render_lucide_icon' ) ) {
+		return zhiraf_ufa_render_lucide_icon( $row, $size, $class );
 	}
-
 	return '';
 }

@@ -127,12 +127,12 @@ $prefill_text = sprintf(
 			</h3>
 			<ul class="tour-card__traits" aria-label="<?php esc_attr_e( 'Параметры тура', 'zhiraf-ufa' ); ?>">
 				<li>
-					<span class="tour-card__check" aria-hidden="true">✓</span>
+					<span class="tour-card__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 14 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<span><?php echo esc_html( zhiraf_ufa_tour_beach_line_guess( $tour ) ); ?></span>
 				</li>
 				<?php if ( '' !== $meal_name ) : ?>
 					<li>
-						<span class="tour-card__check" aria-hidden="true">✓</span>
+						<span class="tour-card__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 14 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 						<span>
 							<?php
 							printf(
@@ -145,7 +145,7 @@ $prefill_text = sprintf(
 					</li>
 				<?php endif; ?>
 				<li>
-					<span class="tour-card__check" aria-hidden="true">✓</span>
+					<span class="tour-card__check" aria-hidden="true"><?php echo function_exists( 'zhiraf_ufa_lucide_icon' ) ? zhiraf_ufa_lucide_icon( 'check', 14 ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<span>
 						<?php
 						printf(
